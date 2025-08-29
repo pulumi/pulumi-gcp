@@ -98,12 +98,12 @@ export class ProjectCloudArmorTier extends pulumi.CustomResource {
      * Managed protection tier to be set.
      * Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`, `CA_ENTERPRISE_ANNUAL`.
      */
-    public readonly cloudArmorTier!: pulumi.Output<string>;
+    declare public readonly cloudArmorTier: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
 
     /**
      * Create a ProjectCloudArmorTier resource with the given unique name, arguments, and options.
@@ -118,15 +118,15 @@ export class ProjectCloudArmorTier extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectCloudArmorTierState | undefined;
-            resourceInputs["cloudArmorTier"] = state ? state.cloudArmorTier : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["cloudArmorTier"] = state?.cloudArmorTier;
+            resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as ProjectCloudArmorTierArgs | undefined;
-            if ((!args || args.cloudArmorTier === undefined) && !opts.urn) {
+            if (args?.cloudArmorTier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cloudArmorTier'");
             }
-            resourceInputs["cloudArmorTier"] = args ? args.cloudArmorTier : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["cloudArmorTier"] = args?.cloudArmorTier;
+            resourceInputs["project"] = args?.project;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProjectCloudArmorTier.__pulumiType, name, resourceInputs, opts);

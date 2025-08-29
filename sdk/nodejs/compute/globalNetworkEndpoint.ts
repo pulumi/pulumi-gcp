@@ -91,24 +91,24 @@ export class GlobalNetworkEndpoint extends pulumi.CustomResource {
      * Fully qualified domain name of network endpoint.
      * This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
      */
-    public readonly fqdn!: pulumi.Output<string | undefined>;
+    declare public readonly fqdn: pulumi.Output<string | undefined>;
     /**
      * The global network endpoint group this endpoint is part of.
      */
-    public readonly globalNetworkEndpointGroup!: pulumi.Output<string>;
+    declare public readonly globalNetworkEndpointGroup: pulumi.Output<string>;
     /**
      * IPv4 address external endpoint.
      */
-    public readonly ipAddress!: pulumi.Output<string | undefined>;
+    declare public readonly ipAddress: pulumi.Output<string | undefined>;
     /**
      * Port number of the external endpoint.
      */
-    public readonly port!: pulumi.Output<number>;
+    declare public readonly port: pulumi.Output<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
 
     /**
      * Create a GlobalNetworkEndpoint resource with the given unique name, arguments, and options.
@@ -123,24 +123,24 @@ export class GlobalNetworkEndpoint extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GlobalNetworkEndpointState | undefined;
-            resourceInputs["fqdn"] = state ? state.fqdn : undefined;
-            resourceInputs["globalNetworkEndpointGroup"] = state ? state.globalNetworkEndpointGroup : undefined;
-            resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["fqdn"] = state?.fqdn;
+            resourceInputs["globalNetworkEndpointGroup"] = state?.globalNetworkEndpointGroup;
+            resourceInputs["ipAddress"] = state?.ipAddress;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as GlobalNetworkEndpointArgs | undefined;
-            if ((!args || args.globalNetworkEndpointGroup === undefined) && !opts.urn) {
+            if (args?.globalNetworkEndpointGroup === undefined && !opts.urn) {
                 throw new Error("Missing required property 'globalNetworkEndpointGroup'");
             }
-            if ((!args || args.port === undefined) && !opts.urn) {
+            if (args?.port === undefined && !opts.urn) {
                 throw new Error("Missing required property 'port'");
             }
-            resourceInputs["fqdn"] = args ? args.fqdn : undefined;
-            resourceInputs["globalNetworkEndpointGroup"] = args ? args.globalNetworkEndpointGroup : undefined;
-            resourceInputs["ipAddress"] = args ? args.ipAddress : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["fqdn"] = args?.fqdn;
+            resourceInputs["globalNetworkEndpointGroup"] = args?.globalNetworkEndpointGroup;
+            resourceInputs["ipAddress"] = args?.ipAddress;
+            resourceInputs["port"] = args?.port;
+            resourceInputs["project"] = args?.project;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GlobalNetworkEndpoint.__pulumiType, name, resourceInputs, opts);

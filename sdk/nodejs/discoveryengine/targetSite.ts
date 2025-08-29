@@ -120,7 +120,7 @@ export class TargetSite extends pulumi.CustomResource {
     /**
      * The unique id of the data store.
      */
-    public readonly dataStoreId!: pulumi.Output<string>;
+    declare public readonly dataStoreId: pulumi.Output<string>;
     /**
      * If set to false, a uriPattern is generated to include all pages whose
      * address contains the provided_uri_pattern. If set to true, an uriPattern
@@ -129,64 +129,64 @@ export class TargetSite extends pulumi.CustomResource {
      * providedUriPattern is always normalized to generate the URI pattern to
      * be used by the search engine.
      */
-    public readonly exactMatch!: pulumi.Output<boolean | undefined>;
+    declare public readonly exactMatch: pulumi.Output<boolean | undefined>;
     /**
      * Site search indexing failure reasons.
      * Structure is documented below.
      */
-    public /*out*/ readonly failureReasons!: pulumi.Output<outputs.discoveryengine.TargetSiteFailureReason[]>;
+    declare public /*out*/ readonly failureReasons: pulumi.Output<outputs.discoveryengine.TargetSiteFailureReason[]>;
     /**
      * This is system-generated based on the `providedUriPattern`.
      */
-    public /*out*/ readonly generatedUriPattern!: pulumi.Output<string>;
+    declare public /*out*/ readonly generatedUriPattern: pulumi.Output<string>;
     /**
      * The indexing status.
      */
-    public /*out*/ readonly indexingStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly indexingStatus: pulumi.Output<string>;
     /**
      * The geographic location where the data store should reside. The value can
      * only be one of "global", "us" and "eu".
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The unique full resource name of the target site. Values are of the format
      * `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/siteSearchEngine/targetSites/{target_site_id}`.
      * This field must be a UTF-8 encoded string with a length limit of 1024
      * characters.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The user provided URI pattern from which the `generatedUriPattern` is
      * generated.
      */
-    public readonly providedUriPattern!: pulumi.Output<string>;
+    declare public readonly providedUriPattern: pulumi.Output<string>;
     /**
      * Root domain of the `providedUriPattern`.
      */
-    public /*out*/ readonly rootDomainUri!: pulumi.Output<string>;
+    declare public /*out*/ readonly rootDomainUri: pulumi.Output<string>;
     /**
      * Site ownership and validity verification status.
      * Structure is documented below.
      */
-    public /*out*/ readonly siteVerificationInfos!: pulumi.Output<outputs.discoveryengine.TargetSiteSiteVerificationInfo[]>;
+    declare public /*out*/ readonly siteVerificationInfos: pulumi.Output<outputs.discoveryengine.TargetSiteSiteVerificationInfo[]>;
     /**
      * The unique id of the target site.
      */
-    public /*out*/ readonly targetSiteId!: pulumi.Output<string>;
+    declare public /*out*/ readonly targetSiteId: pulumi.Output<string>;
     /**
      * The possible target site types.
      * Possible values are: `INCLUDE`, `EXCLUDE`.
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string | undefined>;
     /**
      * The target site's last updated time.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a TargetSite resource with the given unique name, arguments, and options.
@@ -201,37 +201,37 @@ export class TargetSite extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TargetSiteState | undefined;
-            resourceInputs["dataStoreId"] = state ? state.dataStoreId : undefined;
-            resourceInputs["exactMatch"] = state ? state.exactMatch : undefined;
-            resourceInputs["failureReasons"] = state ? state.failureReasons : undefined;
-            resourceInputs["generatedUriPattern"] = state ? state.generatedUriPattern : undefined;
-            resourceInputs["indexingStatus"] = state ? state.indexingStatus : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["providedUriPattern"] = state ? state.providedUriPattern : undefined;
-            resourceInputs["rootDomainUri"] = state ? state.rootDomainUri : undefined;
-            resourceInputs["siteVerificationInfos"] = state ? state.siteVerificationInfos : undefined;
-            resourceInputs["targetSiteId"] = state ? state.targetSiteId : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["dataStoreId"] = state?.dataStoreId;
+            resourceInputs["exactMatch"] = state?.exactMatch;
+            resourceInputs["failureReasons"] = state?.failureReasons;
+            resourceInputs["generatedUriPattern"] = state?.generatedUriPattern;
+            resourceInputs["indexingStatus"] = state?.indexingStatus;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["providedUriPattern"] = state?.providedUriPattern;
+            resourceInputs["rootDomainUri"] = state?.rootDomainUri;
+            resourceInputs["siteVerificationInfos"] = state?.siteVerificationInfos;
+            resourceInputs["targetSiteId"] = state?.targetSiteId;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as TargetSiteArgs | undefined;
-            if ((!args || args.dataStoreId === undefined) && !opts.urn) {
+            if (args?.dataStoreId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataStoreId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.providedUriPattern === undefined) && !opts.urn) {
+            if (args?.providedUriPattern === undefined && !opts.urn) {
                 throw new Error("Missing required property 'providedUriPattern'");
             }
-            resourceInputs["dataStoreId"] = args ? args.dataStoreId : undefined;
-            resourceInputs["exactMatch"] = args ? args.exactMatch : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["providedUriPattern"] = args ? args.providedUriPattern : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["dataStoreId"] = args?.dataStoreId;
+            resourceInputs["exactMatch"] = args?.exactMatch;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["providedUriPattern"] = args?.providedUriPattern;
+            resourceInputs["type"] = args?.type;
             resourceInputs["failureReasons"] = undefined /*out*/;
             resourceInputs["generatedUriPattern"] = undefined /*out*/;
             resourceInputs["indexingStatus"] = undefined /*out*/;

@@ -562,15 +562,15 @@ export class CxFlow extends pulumi.CustomResource {
      * Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
      * Structure is documented below.
      */
-    public readonly advancedSettings!: pulumi.Output<outputs.diagflow.CxFlowAdvancedSettings | undefined>;
+    declare public readonly advancedSettings: pulumi.Output<outputs.diagflow.CxFlowAdvancedSettings | undefined>;
     /**
      * The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The human-readable name of the flow.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * A flow's event handlers serve two purposes:
      * They are responsible for handling events (e.g. no match, webhook errors) in the flow.
@@ -578,19 +578,19 @@ export class CxFlow extends pulumi.CustomResource {
      * Unlike transitionRoutes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
      * Structure is documented below.
      */
-    public readonly eventHandlers!: pulumi.Output<outputs.diagflow.CxFlowEventHandler[]>;
+    declare public readonly eventHandlers: pulumi.Output<outputs.diagflow.CxFlowEventHandler[]>;
     /**
      * Marks this as the [Default Start Flow](https://cloud.google.com/dialogflow/cx/docs/concept/flow#start) for an agent. When you create an agent, the Default Start Flow is created automatically.
      * The Default Start Flow cannot be deleted; deleting the `gcp.diagflow.CxFlow` resource does nothing to the underlying GCP resources.
      *
      * > Avoid having multiple `gcp.diagflow.CxFlow` resources linked to the same agent with `isDefaultStartFlow = true` because they will compete to control a single Default Start Flow resource in GCP.
      */
-    public readonly isDefaultStartFlow!: pulumi.Output<boolean | undefined>;
+    declare public readonly isDefaultStartFlow: pulumi.Output<boolean | undefined>;
     /**
      * Knowledge connector configuration.
      * Structure is documented below.
      */
-    public readonly knowledgeConnectorSettings!: pulumi.Output<outputs.diagflow.CxFlowKnowledgeConnectorSettings | undefined>;
+    declare public readonly knowledgeConnectorSettings: pulumi.Output<outputs.diagflow.CxFlowKnowledgeConnectorSettings | undefined>;
     /**
      * The language of the following fields in flow:
      * Flow.event_handlers.trigger_fulfillment.messages
@@ -599,29 +599,29 @@ export class CxFlow extends pulumi.CustomResource {
      * Flow.transition_routes.trigger_fulfillment.conditional_cases
      * If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
      */
-    public readonly languageCode!: pulumi.Output<string | undefined>;
+    declare public readonly languageCode: pulumi.Output<string | undefined>;
     /**
      * The unique identifier of the flow.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * NLU related settings of the flow.
      * Structure is documented below.
      */
-    public readonly nluSettings!: pulumi.Output<outputs.diagflow.CxFlowNluSettings | undefined>;
+    declare public readonly nluSettings: pulumi.Output<outputs.diagflow.CxFlowNluSettings | undefined>;
     /**
      * The agent to create a flow for.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
      */
-    public readonly parent!: pulumi.Output<string | undefined>;
+    declare public readonly parent: pulumi.Output<string | undefined>;
     /**
      * A flow's transition route group serve two purposes:
      * They are responsible for matching the user's first utterances in the flow.
      * They are inherited by every page's [transition route groups][Page.transition_route_groups]. Transition route groups defined in the page have higher priority than those defined in the flow.
      * Format:projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/transitionRouteGroups/<TransitionRouteGroup ID>.
      */
-    public readonly transitionRouteGroups!: pulumi.Output<string[] | undefined>;
+    declare public readonly transitionRouteGroups: pulumi.Output<string[] | undefined>;
     /**
      * A flow's transition routes serve two purposes:
      * They are responsible for matching the user's first utterances in the flow.
@@ -632,7 +632,7 @@ export class CxFlow extends pulumi.CustomResource {
      * TransitionRoutes with intent specified are inherited by pages in the flow.
      * Structure is documented below.
      */
-    public readonly transitionRoutes!: pulumi.Output<outputs.diagflow.CxFlowTransitionRoute[] | undefined>;
+    declare public readonly transitionRoutes: pulumi.Output<outputs.diagflow.CxFlowTransitionRoute[] | undefined>;
 
     /**
      * Create a CxFlow resource with the given unique name, arguments, and options.
@@ -647,34 +647,34 @@ export class CxFlow extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CxFlowState | undefined;
-            resourceInputs["advancedSettings"] = state ? state.advancedSettings : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["eventHandlers"] = state ? state.eventHandlers : undefined;
-            resourceInputs["isDefaultStartFlow"] = state ? state.isDefaultStartFlow : undefined;
-            resourceInputs["knowledgeConnectorSettings"] = state ? state.knowledgeConnectorSettings : undefined;
-            resourceInputs["languageCode"] = state ? state.languageCode : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nluSettings"] = state ? state.nluSettings : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["transitionRouteGroups"] = state ? state.transitionRouteGroups : undefined;
-            resourceInputs["transitionRoutes"] = state ? state.transitionRoutes : undefined;
+            resourceInputs["advancedSettings"] = state?.advancedSettings;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["eventHandlers"] = state?.eventHandlers;
+            resourceInputs["isDefaultStartFlow"] = state?.isDefaultStartFlow;
+            resourceInputs["knowledgeConnectorSettings"] = state?.knowledgeConnectorSettings;
+            resourceInputs["languageCode"] = state?.languageCode;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nluSettings"] = state?.nluSettings;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["transitionRouteGroups"] = state?.transitionRouteGroups;
+            resourceInputs["transitionRoutes"] = state?.transitionRoutes;
         } else {
             const args = argsOrState as CxFlowArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            resourceInputs["advancedSettings"] = args ? args.advancedSettings : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["eventHandlers"] = args ? args.eventHandlers : undefined;
-            resourceInputs["isDefaultStartFlow"] = args ? args.isDefaultStartFlow : undefined;
-            resourceInputs["knowledgeConnectorSettings"] = args ? args.knowledgeConnectorSettings : undefined;
-            resourceInputs["languageCode"] = args ? args.languageCode : undefined;
-            resourceInputs["nluSettings"] = args ? args.nluSettings : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
-            resourceInputs["transitionRouteGroups"] = args ? args.transitionRouteGroups : undefined;
-            resourceInputs["transitionRoutes"] = args ? args.transitionRoutes : undefined;
+            resourceInputs["advancedSettings"] = args?.advancedSettings;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["eventHandlers"] = args?.eventHandlers;
+            resourceInputs["isDefaultStartFlow"] = args?.isDefaultStartFlow;
+            resourceInputs["knowledgeConnectorSettings"] = args?.knowledgeConnectorSettings;
+            resourceInputs["languageCode"] = args?.languageCode;
+            resourceInputs["nluSettings"] = args?.nluSettings;
+            resourceInputs["parent"] = args?.parent;
+            resourceInputs["transitionRouteGroups"] = args?.transitionRouteGroups;
+            resourceInputs["transitionRoutes"] = args?.transitionRoutes;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -80,22 +80,22 @@ export class DefaultServiceAccounts extends pulumi.CustomResource {
     /**
      * The action to be performed in the default service accounts. Valid values are: `DEPRIVILEGE`, `DELETE`, `DISABLE`. Note that `DEPRIVILEGE` action will ignore the REVERT configuration in the restore_policy
      */
-    public readonly action!: pulumi.Output<string>;
+    declare public readonly action: pulumi.Output<string>;
     /**
      * The project ID where service accounts are created.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The action to be performed in the default service accounts on the resource destroy.
      * Valid values are NONE, REVERT and REVERT_AND_IGNORE_FAILURE. It is applied for any action but in the DEPRIVILEGE.
      * If set to REVERT it attempts to restore all default SAs but the DEPRIVILEGE action.
      * If set to REVERT_AND_IGNORE_FAILURE it is the same behavior as REVERT but ignores errors returned by the API.
      */
-    public readonly restorePolicy!: pulumi.Output<string | undefined>;
+    declare public readonly restorePolicy: pulumi.Output<string | undefined>;
     /**
      * The Service Accounts changed by this resource. It is used for `REVERT` the `action` on the destroy.
      */
-    public /*out*/ readonly serviceAccounts!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly serviceAccounts: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a DefaultServiceAccounts resource with the given unique name, arguments, and options.
@@ -110,21 +110,21 @@ export class DefaultServiceAccounts extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DefaultServiceAccountsState | undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["restorePolicy"] = state ? state.restorePolicy : undefined;
-            resourceInputs["serviceAccounts"] = state ? state.serviceAccounts : undefined;
+            resourceInputs["action"] = state?.action;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["restorePolicy"] = state?.restorePolicy;
+            resourceInputs["serviceAccounts"] = state?.serviceAccounts;
         } else {
             const args = argsOrState as DefaultServiceAccountsArgs | undefined;
-            if ((!args || args.action === undefined) && !opts.urn) {
+            if (args?.action === undefined && !opts.urn) {
                 throw new Error("Missing required property 'action'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["restorePolicy"] = args ? args.restorePolicy : undefined;
+            resourceInputs["action"] = args?.action;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["restorePolicy"] = args?.restorePolicy;
             resourceInputs["serviceAccounts"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

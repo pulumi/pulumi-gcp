@@ -95,21 +95,21 @@ export class TargetPool extends pulumi.CustomResource {
      * URL to the backup target pool. Must also set
      * failover_ratio.
      */
-    public readonly backupPool!: pulumi.Output<string | undefined>;
+    declare public readonly backupPool: pulumi.Output<string | undefined>;
     /**
      * Textual description field.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Ratio (0 to 1) of failed nodes before using the
      * backup pool (which must also be set).
      */
-    public readonly failoverRatio!: pulumi.Output<number | undefined>;
+    declare public readonly failoverRatio: pulumi.Output<number | undefined>;
     /**
      * List of zero or one health check name or self_link. Only
      * legacy `gcp.compute.HttpHealthCheck` is supported.
      */
-    public readonly healthChecks!: pulumi.Output<string | undefined>;
+    declare public readonly healthChecks: pulumi.Output<string | undefined>;
     /**
      * List of instances in the pool. They can be given as
      * URLs, or in the form of "zone/name". Note that the instances need not exist
@@ -117,38 +117,38 @@ export class TargetPool extends pulumi.CustomResource {
      * interpolation to create a dependency on the instances from the
      * target pool.
      */
-    public readonly instances!: pulumi.Output<string[]>;
+    declare public readonly instances: pulumi.Output<string[]>;
     /**
      * A unique name for the resource, required by GCE. Changing
      * this forces a new resource to be created.
      *
      * - - -
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Where the target pool resides. Defaults to project
      * region.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The resource URL for the security policy associated with this target pool.
      */
-    public readonly securityPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly securityPolicy: pulumi.Output<string | undefined>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * How to distribute load. Options are "NONE" (no
      * affinity). "CLIENT_IP" (hash of the source/dest addresses / ports), and
      * "CLIENT_IP_PROTO" also includes the protocol (default "NONE").
      */
-    public readonly sessionAffinity!: pulumi.Output<string | undefined>;
+    declare public readonly sessionAffinity: pulumi.Output<string | undefined>;
 
     /**
      * Create a TargetPool resource with the given unique name, arguments, and options.
@@ -163,29 +163,29 @@ export class TargetPool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TargetPoolState | undefined;
-            resourceInputs["backupPool"] = state ? state.backupPool : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["failoverRatio"] = state ? state.failoverRatio : undefined;
-            resourceInputs["healthChecks"] = state ? state.healthChecks : undefined;
-            resourceInputs["instances"] = state ? state.instances : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["securityPolicy"] = state ? state.securityPolicy : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["sessionAffinity"] = state ? state.sessionAffinity : undefined;
+            resourceInputs["backupPool"] = state?.backupPool;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["failoverRatio"] = state?.failoverRatio;
+            resourceInputs["healthChecks"] = state?.healthChecks;
+            resourceInputs["instances"] = state?.instances;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["securityPolicy"] = state?.securityPolicy;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["sessionAffinity"] = state?.sessionAffinity;
         } else {
             const args = argsOrState as TargetPoolArgs | undefined;
-            resourceInputs["backupPool"] = args ? args.backupPool : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["failoverRatio"] = args ? args.failoverRatio : undefined;
-            resourceInputs["healthChecks"] = args ? args.healthChecks : undefined;
-            resourceInputs["instances"] = args ? args.instances : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["securityPolicy"] = args ? args.securityPolicy : undefined;
-            resourceInputs["sessionAffinity"] = args ? args.sessionAffinity : undefined;
+            resourceInputs["backupPool"] = args?.backupPool;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["failoverRatio"] = args?.failoverRatio;
+            resourceInputs["healthChecks"] = args?.healthChecks;
+            resourceInputs["instances"] = args?.instances;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["securityPolicy"] = args?.securityPolicy;
+            resourceInputs["sessionAffinity"] = args?.sessionAffinity;
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

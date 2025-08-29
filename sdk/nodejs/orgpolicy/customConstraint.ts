@@ -108,39 +108,39 @@ export class CustomConstraint extends pulumi.CustomResource {
      * The action to take if the condition is met.
      * Possible values are: `ALLOW`, `DENY`.
      */
-    public readonly actionType!: pulumi.Output<string>;
+    declare public readonly actionType: pulumi.Output<string>;
     /**
      * A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
      */
-    public readonly condition!: pulumi.Output<string>;
+    declare public readonly condition: pulumi.Output<string>;
     /**
      * A human-friendly description of the constraint to display as an error message when the policy is violated.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * A human-friendly name for the constraint.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * A list of RESTful methods for which to enforce the constraint. Can be `CREATE`, `UPDATE`, or both. Not all Google Cloud services support both methods. To see supported methods for each service, find the service in [Supported services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
      */
-    public readonly methodTypes!: pulumi.Output<string[]>;
+    declare public readonly methodTypes: pulumi.Output<string[]>;
     /**
      * Immutable. The name of the custom constraint. This is unique within the organization.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
      */
-    public readonly parent!: pulumi.Output<string>;
+    declare public readonly parent: pulumi.Output<string>;
     /**
      * Immutable. The fully qualified name of the Google Cloud REST resource containing the object and field you want to restrict. For example, `container.googleapis.com/NodePool`.
      */
-    public readonly resourceTypes!: pulumi.Output<string[]>;
+    declare public readonly resourceTypes: pulumi.Output<string[]>;
     /**
      * Output only. The timestamp representing when the constraint was last updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a CustomConstraint resource with the given unique name, arguments, and options.
@@ -155,40 +155,40 @@ export class CustomConstraint extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomConstraintState | undefined;
-            resourceInputs["actionType"] = state ? state.actionType : undefined;
-            resourceInputs["condition"] = state ? state.condition : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["methodTypes"] = state ? state.methodTypes : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["resourceTypes"] = state ? state.resourceTypes : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["actionType"] = state?.actionType;
+            resourceInputs["condition"] = state?.condition;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["methodTypes"] = state?.methodTypes;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["resourceTypes"] = state?.resourceTypes;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as CustomConstraintArgs | undefined;
-            if ((!args || args.actionType === undefined) && !opts.urn) {
+            if (args?.actionType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'actionType'");
             }
-            if ((!args || args.condition === undefined) && !opts.urn) {
+            if (args?.condition === undefined && !opts.urn) {
                 throw new Error("Missing required property 'condition'");
             }
-            if ((!args || args.methodTypes === undefined) && !opts.urn) {
+            if (args?.methodTypes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'methodTypes'");
             }
-            if ((!args || args.parent === undefined) && !opts.urn) {
+            if (args?.parent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            if ((!args || args.resourceTypes === undefined) && !opts.urn) {
+            if (args?.resourceTypes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceTypes'");
             }
-            resourceInputs["actionType"] = args ? args.actionType : undefined;
-            resourceInputs["condition"] = args ? args.condition : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["methodTypes"] = args ? args.methodTypes : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
-            resourceInputs["resourceTypes"] = args ? args.resourceTypes : undefined;
+            resourceInputs["actionType"] = args?.actionType;
+            resourceInputs["condition"] = args?.condition;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["methodTypes"] = args?.methodTypes;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["parent"] = args?.parent;
+            resourceInputs["resourceTypes"] = args?.resourceTypes;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

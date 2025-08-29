@@ -126,47 +126,47 @@ export class Table extends pulumi.CustomResource {
      *
      * -----
      */
-    public readonly automatedBackupPolicy!: pulumi.Output<outputs.bigtable.TableAutomatedBackupPolicy>;
+    declare public readonly automatedBackupPolicy: pulumi.Output<outputs.bigtable.TableAutomatedBackupPolicy>;
     /**
      * Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
      */
-    public readonly changeStreamRetention!: pulumi.Output<string>;
+    declare public readonly changeStreamRetention: pulumi.Output<string>;
     /**
      * A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
      */
-    public readonly columnFamilies!: pulumi.Output<outputs.bigtable.TableColumnFamily[] | undefined>;
+    declare public readonly columnFamilies: pulumi.Output<outputs.bigtable.TableColumnFamily[] | undefined>;
     /**
      * A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
      */
-    public readonly deletionProtection!: pulumi.Output<string>;
+    declare public readonly deletionProtection: pulumi.Output<string>;
     /**
      * The name of the Bigtable instance.
      */
-    public readonly instanceName!: pulumi.Output<string>;
+    declare public readonly instanceName: pulumi.Output<string>;
     /**
      * The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
-     * Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument. Note
-     * that in-place update is not supported, and any in-place modification to the schema will lead to failure. To update a
-     * schema, please clear it (by omitting the field), and update the resource again with a new schema.\n The schema must be a
-     * valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like
-     * delimited_bytes.delimiter) the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single
-     * byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
+     * Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument.
+     * 					Note that in-place update is not supported, and any in-place modification to the schema will lead to failure.
+     * 				    To update a schema, please clear it (by omitting the field), and update the resource again with a new schema.\n
+     * 					
+     * 					The schema must be a valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
+     * 					the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
      */
-    public readonly rowKeySchema!: pulumi.Output<string | undefined>;
+    declare public readonly rowKeySchema: pulumi.Output<string | undefined>;
     /**
      * A list of predefined keys to split the table on.
      * !> **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
      * to delete/recreate the entire `gcp.bigtable.Table` resource.
      */
-    public readonly splitKeys!: pulumi.Output<string[] | undefined>;
+    declare public readonly splitKeys: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a Table resource with the given unique name, arguments, and options.
@@ -181,29 +181,29 @@ export class Table extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TableState | undefined;
-            resourceInputs["automatedBackupPolicy"] = state ? state.automatedBackupPolicy : undefined;
-            resourceInputs["changeStreamRetention"] = state ? state.changeStreamRetention : undefined;
-            resourceInputs["columnFamilies"] = state ? state.columnFamilies : undefined;
-            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["rowKeySchema"] = state ? state.rowKeySchema : undefined;
-            resourceInputs["splitKeys"] = state ? state.splitKeys : undefined;
+            resourceInputs["automatedBackupPolicy"] = state?.automatedBackupPolicy;
+            resourceInputs["changeStreamRetention"] = state?.changeStreamRetention;
+            resourceInputs["columnFamilies"] = state?.columnFamilies;
+            resourceInputs["deletionProtection"] = state?.deletionProtection;
+            resourceInputs["instanceName"] = state?.instanceName;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["rowKeySchema"] = state?.rowKeySchema;
+            resourceInputs["splitKeys"] = state?.splitKeys;
         } else {
             const args = argsOrState as TableArgs | undefined;
-            if ((!args || args.instanceName === undefined) && !opts.urn) {
+            if (args?.instanceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceName'");
             }
-            resourceInputs["automatedBackupPolicy"] = args ? args.automatedBackupPolicy : undefined;
-            resourceInputs["changeStreamRetention"] = args ? args.changeStreamRetention : undefined;
-            resourceInputs["columnFamilies"] = args ? args.columnFamilies : undefined;
-            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["rowKeySchema"] = args ? args.rowKeySchema : undefined;
-            resourceInputs["splitKeys"] = args ? args.splitKeys : undefined;
+            resourceInputs["automatedBackupPolicy"] = args?.automatedBackupPolicy;
+            resourceInputs["changeStreamRetention"] = args?.changeStreamRetention;
+            resourceInputs["columnFamilies"] = args?.columnFamilies;
+            resourceInputs["deletionProtection"] = args?.deletionProtection;
+            resourceInputs["instanceName"] = args?.instanceName;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["rowKeySchema"] = args?.rowKeySchema;
+            resourceInputs["splitKeys"] = args?.splitKeys;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Table.__pulumiType, name, resourceInputs, opts);
@@ -246,12 +246,12 @@ export interface TableState {
      */
     project?: pulumi.Input<string>;
     /**
-     * Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument. Note
-     * that in-place update is not supported, and any in-place modification to the schema will lead to failure. To update a
-     * schema, please clear it (by omitting the field), and update the resource again with a new schema.\n The schema must be a
-     * valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like
-     * delimited_bytes.delimiter) the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single
-     * byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
+     * Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument.
+     * 					Note that in-place update is not supported, and any in-place modification to the schema will lead to failure.
+     * 				    To update a schema, please clear it (by omitting the field), and update the resource again with a new schema.\n
+     * 					
+     * 					The schema must be a valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
+     * 					the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
      */
     rowKeySchema?: pulumi.Input<string>;
     /**
@@ -298,12 +298,12 @@ export interface TableArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument. Note
-     * that in-place update is not supported, and any in-place modification to the schema will lead to failure. To update a
-     * schema, please clear it (by omitting the field), and update the resource again with a new schema.\n The schema must be a
-     * valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like
-     * delimited_bytes.delimiter) the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single
-     * byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
+     * Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument.
+     * 					Note that in-place update is not supported, and any in-place modification to the schema will lead to failure.
+     * 				    To update a schema, please clear it (by omitting the field), and update the resource again with a new schema.\n
+     * 					
+     * 					The schema must be a valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
+     * 					the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
      */
     rowKeySchema?: pulumi.Input<string>;
     /**

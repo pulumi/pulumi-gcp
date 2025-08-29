@@ -88,43 +88,43 @@ export class Environment extends pulumi.CustomResource {
      * Use a container image to start the notebook instance.
      * Structure is documented below.
      */
-    public readonly containerImage!: pulumi.Output<outputs.notebooks.EnvironmentContainerImage | undefined>;
+    declare public readonly containerImage: pulumi.Output<outputs.notebooks.EnvironmentContainerImage | undefined>;
     /**
      * Instance creation time
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * A brief description of this environment.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Display name of this environment for the UI.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * A reference to the zone where the machine resides.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The name specified for the Environment instance.
      * Format: projects/{project_id}/locations/{location}/environments/{environmentId}
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Path to a Bash script that automatically runs after a notebook instance fully boots up.
      * The path must be a URL or Cloud Storage path. Example: "gs://path-to-file/file-name"
      */
-    public readonly postStartupScript!: pulumi.Output<string | undefined>;
+    declare public readonly postStartupScript: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Use a Compute Engine VM image to start the notebook instance.
      * Structure is documented below.
      */
-    public readonly vmImage!: pulumi.Output<outputs.notebooks.EnvironmentVmImage | undefined>;
+    declare public readonly vmImage: pulumi.Output<outputs.notebooks.EnvironmentVmImage | undefined>;
 
     /**
      * Create a Environment resource with the given unique name, arguments, and options.
@@ -139,28 +139,28 @@ export class Environment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EnvironmentState | undefined;
-            resourceInputs["containerImage"] = state ? state.containerImage : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["postStartupScript"] = state ? state.postStartupScript : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["vmImage"] = state ? state.vmImage : undefined;
+            resourceInputs["containerImage"] = state?.containerImage;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["postStartupScript"] = state?.postStartupScript;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["vmImage"] = state?.vmImage;
         } else {
             const args = argsOrState as EnvironmentArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["containerImage"] = args ? args.containerImage : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["postStartupScript"] = args ? args.postStartupScript : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["vmImage"] = args ? args.vmImage : undefined;
+            resourceInputs["containerImage"] = args?.containerImage;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["postStartupScript"] = args?.postStartupScript;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["vmImage"] = args?.vmImage;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

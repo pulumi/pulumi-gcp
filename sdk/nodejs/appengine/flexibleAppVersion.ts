@@ -178,152 +178,152 @@ export class FlexibleAppVersion extends pulumi.CustomResource {
      * Serving configuration for Google Cloud Endpoints.
      * Structure is documented below.
      */
-    public readonly apiConfig!: pulumi.Output<outputs.appengine.FlexibleAppVersionApiConfig | undefined>;
+    declare public readonly apiConfig: pulumi.Output<outputs.appengine.FlexibleAppVersionApiConfig | undefined>;
     /**
      * Automatic scaling is based on request rate, response latencies, and other application metrics.
      * Structure is documented below.
      */
-    public readonly automaticScaling!: pulumi.Output<outputs.appengine.FlexibleAppVersionAutomaticScaling | undefined>;
+    declare public readonly automaticScaling: pulumi.Output<outputs.appengine.FlexibleAppVersionAutomaticScaling | undefined>;
     /**
      * Metadata settings that are supplied to this version to enable beta runtime features.
      */
-    public readonly betaSettings!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly betaSettings: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Duration that static files should be cached by web proxies and browsers.
      * Only applicable if the corresponding StaticFilesHandler does not specify its own expiration time.
      */
-    public readonly defaultExpiration!: pulumi.Output<string | undefined>;
+    declare public readonly defaultExpiration: pulumi.Output<string | undefined>;
     /**
      * If set to `true`, the service will be deleted if it is the last version.
      */
-    public readonly deleteServiceOnDestroy!: pulumi.Output<boolean | undefined>;
+    declare public readonly deleteServiceOnDestroy: pulumi.Output<boolean | undefined>;
     /**
      * Code and application artifacts that make up this version.
      * Structure is documented below.
      */
-    public readonly deployment!: pulumi.Output<outputs.appengine.FlexibleAppVersionDeployment | undefined>;
+    declare public readonly deployment: pulumi.Output<outputs.appengine.FlexibleAppVersionDeployment | undefined>;
     /**
      * Code and application artifacts that make up this version.
      * Structure is documented below.
      */
-    public readonly endpointsApiService!: pulumi.Output<outputs.appengine.FlexibleAppVersionEndpointsApiService | undefined>;
+    declare public readonly endpointsApiService: pulumi.Output<outputs.appengine.FlexibleAppVersionEndpointsApiService | undefined>;
     /**
      * The entrypoint for the application.
      * Structure is documented below.
      */
-    public readonly entrypoint!: pulumi.Output<outputs.appengine.FlexibleAppVersionEntrypoint | undefined>;
+    declare public readonly entrypoint: pulumi.Output<outputs.appengine.FlexibleAppVersionEntrypoint | undefined>;
     /**
      * Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
      */
-    public readonly envVariables!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly envVariables: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Runtime settings for App Engine flexible environment.
      * Structure is documented below.
      */
-    public readonly flexibleRuntimeSettings!: pulumi.Output<outputs.appengine.FlexibleAppVersionFlexibleRuntimeSettings | undefined>;
+    declare public readonly flexibleRuntimeSettings: pulumi.Output<outputs.appengine.FlexibleAppVersionFlexibleRuntimeSettings | undefined>;
     /**
      * An ordered list of URL-matching patterns that should be applied to incoming requests.
      * The first matching URL handles the request and other request handlers are not attempted.
      * Structure is documented below.
      */
-    public readonly handlers!: pulumi.Output<outputs.appengine.FlexibleAppVersionHandler[]>;
+    declare public readonly handlers: pulumi.Output<outputs.appengine.FlexibleAppVersionHandler[]>;
     /**
      * A list of the types of messages that this application is able to receive.
      * Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
      */
-    public readonly inboundServices!: pulumi.Output<string[] | undefined>;
+    declare public readonly inboundServices: pulumi.Output<string[] | undefined>;
     /**
      * Instance class that is used to run this version. Valid values are
      * AutomaticScaling: F1, F2, F4, F4_1G
      * ManualScaling: B1, B2, B4, B8, B4_1G
      * Defaults to F1 for AutomaticScaling and B1 for ManualScaling.
      */
-    public readonly instanceClass!: pulumi.Output<string | undefined>;
+    declare public readonly instanceClass: pulumi.Output<string | undefined>;
     /**
      * Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.
      * Structure is documented below.
      */
-    public readonly livenessCheck!: pulumi.Output<outputs.appengine.FlexibleAppVersionLivenessCheck>;
+    declare public readonly livenessCheck: pulumi.Output<outputs.appengine.FlexibleAppVersionLivenessCheck>;
     /**
      * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
      * Structure is documented below.
      */
-    public readonly manualScaling!: pulumi.Output<outputs.appengine.FlexibleAppVersionManualScaling | undefined>;
+    declare public readonly manualScaling: pulumi.Output<outputs.appengine.FlexibleAppVersionManualScaling | undefined>;
     /**
      * Full path to the Version resource in the API. Example, "v1".
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Extra network settings
      * Structure is documented below.
      */
-    public readonly network!: pulumi.Output<outputs.appengine.FlexibleAppVersionNetwork | undefined>;
+    declare public readonly network: pulumi.Output<outputs.appengine.FlexibleAppVersionNetwork | undefined>;
     /**
      * Files that match this pattern will not be built into this version. Only applicable for Go runtimes.
      */
-    public readonly nobuildFilesRegex!: pulumi.Output<string | undefined>;
+    declare public readonly nobuildFilesRegex: pulumi.Output<string | undefined>;
     /**
      * If set to `true`, the application version will not be deleted.
      */
-    public readonly noopOnDestroy!: pulumi.Output<boolean | undefined>;
+    declare public readonly noopOnDestroy: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
      * Structure is documented below.
      */
-    public readonly readinessCheck!: pulumi.Output<outputs.appengine.FlexibleAppVersionReadinessCheck>;
+    declare public readonly readinessCheck: pulumi.Output<outputs.appengine.FlexibleAppVersionReadinessCheck>;
     /**
      * Machine resources for a version.
      * Structure is documented below.
      */
-    public readonly resources!: pulumi.Output<outputs.appengine.FlexibleAppVersionResources | undefined>;
+    declare public readonly resources: pulumi.Output<outputs.appengine.FlexibleAppVersionResources | undefined>;
     /**
      * Desired runtime. Example python27.
      */
-    public readonly runtime!: pulumi.Output<string>;
+    declare public readonly runtime: pulumi.Output<string>;
     /**
      * The version of the API in the given runtime environment.
      * Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/<language>/config/appref`\
      * Substitute `<language>` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
      */
-    public readonly runtimeApiVersion!: pulumi.Output<string>;
+    declare public readonly runtimeApiVersion: pulumi.Output<string>;
     /**
      * The channel of the runtime to use. Only available for some runtimes.
      */
-    public readonly runtimeChannel!: pulumi.Output<string | undefined>;
+    declare public readonly runtimeChannel: pulumi.Output<string | undefined>;
     /**
      * The path or name of the app's main executable.
      */
-    public readonly runtimeMainExecutablePath!: pulumi.Output<string | undefined>;
+    declare public readonly runtimeMainExecutablePath: pulumi.Output<string | undefined>;
     /**
      * AppEngine service resource. Can contain numbers, letters, and hyphens.
      */
-    public readonly service!: pulumi.Output<string>;
+    declare public readonly service: pulumi.Output<string>;
     /**
      * The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as
      * default if this field is neither provided in app.yaml file nor through CLI flag.
      */
-    public readonly serviceAccount!: pulumi.Output<string>;
+    declare public readonly serviceAccount: pulumi.Output<string>;
     /**
      * Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
      * Default value is `SERVING`.
      * Possible values are: `SERVING`, `STOPPED`.
      */
-    public readonly servingStatus!: pulumi.Output<string | undefined>;
+    declare public readonly servingStatus: pulumi.Output<string | undefined>;
     /**
      * Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
      * Reserved names,"default", "latest", and any name with the prefix "ah-".
      */
-    public readonly versionId!: pulumi.Output<string | undefined>;
+    declare public readonly versionId: pulumi.Output<string | undefined>;
     /**
      * Enables VPC connectivity for standard apps.
      * Structure is documented below.
      */
-    public readonly vpcAccessConnector!: pulumi.Output<outputs.appengine.FlexibleAppVersionVpcAccessConnector | undefined>;
+    declare public readonly vpcAccessConnector: pulumi.Output<outputs.appengine.FlexibleAppVersionVpcAccessConnector | undefined>;
 
     /**
      * Create a FlexibleAppVersion resource with the given unique name, arguments, and options.
@@ -338,81 +338,81 @@ export class FlexibleAppVersion extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FlexibleAppVersionState | undefined;
-            resourceInputs["apiConfig"] = state ? state.apiConfig : undefined;
-            resourceInputs["automaticScaling"] = state ? state.automaticScaling : undefined;
-            resourceInputs["betaSettings"] = state ? state.betaSettings : undefined;
-            resourceInputs["defaultExpiration"] = state ? state.defaultExpiration : undefined;
-            resourceInputs["deleteServiceOnDestroy"] = state ? state.deleteServiceOnDestroy : undefined;
-            resourceInputs["deployment"] = state ? state.deployment : undefined;
-            resourceInputs["endpointsApiService"] = state ? state.endpointsApiService : undefined;
-            resourceInputs["entrypoint"] = state ? state.entrypoint : undefined;
-            resourceInputs["envVariables"] = state ? state.envVariables : undefined;
-            resourceInputs["flexibleRuntimeSettings"] = state ? state.flexibleRuntimeSettings : undefined;
-            resourceInputs["handlers"] = state ? state.handlers : undefined;
-            resourceInputs["inboundServices"] = state ? state.inboundServices : undefined;
-            resourceInputs["instanceClass"] = state ? state.instanceClass : undefined;
-            resourceInputs["livenessCheck"] = state ? state.livenessCheck : undefined;
-            resourceInputs["manualScaling"] = state ? state.manualScaling : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["nobuildFilesRegex"] = state ? state.nobuildFilesRegex : undefined;
-            resourceInputs["noopOnDestroy"] = state ? state.noopOnDestroy : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["readinessCheck"] = state ? state.readinessCheck : undefined;
-            resourceInputs["resources"] = state ? state.resources : undefined;
-            resourceInputs["runtime"] = state ? state.runtime : undefined;
-            resourceInputs["runtimeApiVersion"] = state ? state.runtimeApiVersion : undefined;
-            resourceInputs["runtimeChannel"] = state ? state.runtimeChannel : undefined;
-            resourceInputs["runtimeMainExecutablePath"] = state ? state.runtimeMainExecutablePath : undefined;
-            resourceInputs["service"] = state ? state.service : undefined;
-            resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
-            resourceInputs["servingStatus"] = state ? state.servingStatus : undefined;
-            resourceInputs["versionId"] = state ? state.versionId : undefined;
-            resourceInputs["vpcAccessConnector"] = state ? state.vpcAccessConnector : undefined;
+            resourceInputs["apiConfig"] = state?.apiConfig;
+            resourceInputs["automaticScaling"] = state?.automaticScaling;
+            resourceInputs["betaSettings"] = state?.betaSettings;
+            resourceInputs["defaultExpiration"] = state?.defaultExpiration;
+            resourceInputs["deleteServiceOnDestroy"] = state?.deleteServiceOnDestroy;
+            resourceInputs["deployment"] = state?.deployment;
+            resourceInputs["endpointsApiService"] = state?.endpointsApiService;
+            resourceInputs["entrypoint"] = state?.entrypoint;
+            resourceInputs["envVariables"] = state?.envVariables;
+            resourceInputs["flexibleRuntimeSettings"] = state?.flexibleRuntimeSettings;
+            resourceInputs["handlers"] = state?.handlers;
+            resourceInputs["inboundServices"] = state?.inboundServices;
+            resourceInputs["instanceClass"] = state?.instanceClass;
+            resourceInputs["livenessCheck"] = state?.livenessCheck;
+            resourceInputs["manualScaling"] = state?.manualScaling;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["nobuildFilesRegex"] = state?.nobuildFilesRegex;
+            resourceInputs["noopOnDestroy"] = state?.noopOnDestroy;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["readinessCheck"] = state?.readinessCheck;
+            resourceInputs["resources"] = state?.resources;
+            resourceInputs["runtime"] = state?.runtime;
+            resourceInputs["runtimeApiVersion"] = state?.runtimeApiVersion;
+            resourceInputs["runtimeChannel"] = state?.runtimeChannel;
+            resourceInputs["runtimeMainExecutablePath"] = state?.runtimeMainExecutablePath;
+            resourceInputs["service"] = state?.service;
+            resourceInputs["serviceAccount"] = state?.serviceAccount;
+            resourceInputs["servingStatus"] = state?.servingStatus;
+            resourceInputs["versionId"] = state?.versionId;
+            resourceInputs["vpcAccessConnector"] = state?.vpcAccessConnector;
         } else {
             const args = argsOrState as FlexibleAppVersionArgs | undefined;
-            if ((!args || args.livenessCheck === undefined) && !opts.urn) {
+            if (args?.livenessCheck === undefined && !opts.urn) {
                 throw new Error("Missing required property 'livenessCheck'");
             }
-            if ((!args || args.readinessCheck === undefined) && !opts.urn) {
+            if (args?.readinessCheck === undefined && !opts.urn) {
                 throw new Error("Missing required property 'readinessCheck'");
             }
-            if ((!args || args.runtime === undefined) && !opts.urn) {
+            if (args?.runtime === undefined && !opts.urn) {
                 throw new Error("Missing required property 'runtime'");
             }
-            if ((!args || args.service === undefined) && !opts.urn) {
+            if (args?.service === undefined && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
-            resourceInputs["apiConfig"] = args ? args.apiConfig : undefined;
-            resourceInputs["automaticScaling"] = args ? args.automaticScaling : undefined;
-            resourceInputs["betaSettings"] = args ? args.betaSettings : undefined;
-            resourceInputs["defaultExpiration"] = args ? args.defaultExpiration : undefined;
-            resourceInputs["deleteServiceOnDestroy"] = args ? args.deleteServiceOnDestroy : undefined;
-            resourceInputs["deployment"] = args ? args.deployment : undefined;
-            resourceInputs["endpointsApiService"] = args ? args.endpointsApiService : undefined;
-            resourceInputs["entrypoint"] = args ? args.entrypoint : undefined;
-            resourceInputs["envVariables"] = args ? args.envVariables : undefined;
-            resourceInputs["flexibleRuntimeSettings"] = args ? args.flexibleRuntimeSettings : undefined;
-            resourceInputs["handlers"] = args ? args.handlers : undefined;
-            resourceInputs["inboundServices"] = args ? args.inboundServices : undefined;
-            resourceInputs["instanceClass"] = args ? args.instanceClass : undefined;
-            resourceInputs["livenessCheck"] = args ? args.livenessCheck : undefined;
-            resourceInputs["manualScaling"] = args ? args.manualScaling : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["nobuildFilesRegex"] = args ? args.nobuildFilesRegex : undefined;
-            resourceInputs["noopOnDestroy"] = args ? args.noopOnDestroy : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["readinessCheck"] = args ? args.readinessCheck : undefined;
-            resourceInputs["resources"] = args ? args.resources : undefined;
-            resourceInputs["runtime"] = args ? args.runtime : undefined;
-            resourceInputs["runtimeApiVersion"] = args ? args.runtimeApiVersion : undefined;
-            resourceInputs["runtimeChannel"] = args ? args.runtimeChannel : undefined;
-            resourceInputs["runtimeMainExecutablePath"] = args ? args.runtimeMainExecutablePath : undefined;
-            resourceInputs["service"] = args ? args.service : undefined;
-            resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
-            resourceInputs["servingStatus"] = args ? args.servingStatus : undefined;
-            resourceInputs["versionId"] = args ? args.versionId : undefined;
-            resourceInputs["vpcAccessConnector"] = args ? args.vpcAccessConnector : undefined;
+            resourceInputs["apiConfig"] = args?.apiConfig;
+            resourceInputs["automaticScaling"] = args?.automaticScaling;
+            resourceInputs["betaSettings"] = args?.betaSettings;
+            resourceInputs["defaultExpiration"] = args?.defaultExpiration;
+            resourceInputs["deleteServiceOnDestroy"] = args?.deleteServiceOnDestroy;
+            resourceInputs["deployment"] = args?.deployment;
+            resourceInputs["endpointsApiService"] = args?.endpointsApiService;
+            resourceInputs["entrypoint"] = args?.entrypoint;
+            resourceInputs["envVariables"] = args?.envVariables;
+            resourceInputs["flexibleRuntimeSettings"] = args?.flexibleRuntimeSettings;
+            resourceInputs["handlers"] = args?.handlers;
+            resourceInputs["inboundServices"] = args?.inboundServices;
+            resourceInputs["instanceClass"] = args?.instanceClass;
+            resourceInputs["livenessCheck"] = args?.livenessCheck;
+            resourceInputs["manualScaling"] = args?.manualScaling;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["nobuildFilesRegex"] = args?.nobuildFilesRegex;
+            resourceInputs["noopOnDestroy"] = args?.noopOnDestroy;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["readinessCheck"] = args?.readinessCheck;
+            resourceInputs["resources"] = args?.resources;
+            resourceInputs["runtime"] = args?.runtime;
+            resourceInputs["runtimeApiVersion"] = args?.runtimeApiVersion;
+            resourceInputs["runtimeChannel"] = args?.runtimeChannel;
+            resourceInputs["runtimeMainExecutablePath"] = args?.runtimeMainExecutablePath;
+            resourceInputs["service"] = args?.service;
+            resourceInputs["serviceAccount"] = args?.serviceAccount;
+            resourceInputs["servingStatus"] = args?.servingStatus;
+            resourceInputs["versionId"] = args?.versionId;
+            resourceInputs["vpcAccessConnector"] = args?.vpcAccessConnector;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

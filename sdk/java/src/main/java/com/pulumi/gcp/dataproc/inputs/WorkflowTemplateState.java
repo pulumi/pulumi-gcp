@@ -38,26 +38,14 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Optional. Timeout duration for the DAG of jobs, expressed in seconds (see [JSON representation of
-     * duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10
-     * minutes (&#34;600s&#34;) to 24 hours (&#34;86400s&#34;). The timer begins when the first job is submitted. If the workflow is running at
-     * the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running
-     * on a [managed
-     * cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster),
-     * the cluster is deleted.
+     * Optional. Timeout duration for the DAG of jobs, expressed in seconds (see [JSON representation of duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes (&#34;600s&#34;) to 24 hours (&#34;86400s&#34;). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a [managed cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
      * 
      */
     @Import(name="dagTimeout")
     private @Nullable Output<String> dagTimeout;
 
     /**
-     * @return Optional. Timeout duration for the DAG of jobs, expressed in seconds (see [JSON representation of
-     * duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10
-     * minutes (&#34;600s&#34;) to 24 hours (&#34;86400s&#34;). The timer begins when the first job is submitted. If the workflow is running at
-     * the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running
-     * on a [managed
-     * cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster),
-     * the cluster is deleted.
+     * @return Optional. Timeout duration for the DAG of jobs, expressed in seconds (see [JSON representation of duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes (&#34;600s&#34;) to 24 hours (&#34;86400s&#34;). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a [managed cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
      * 
      */
     public Optional<Output<String>> dagTimeout() {
@@ -102,24 +90,20 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created
-     * by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC
-     * 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63
-     * characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be
-     * associated with a template. **Note**: This field is non-authoritative, and will only manage the labels present in your
-     * configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created
-     * by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC
-     * 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63
-     * characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be
-     * associated with a template. **Note**: This field is non-authoritative, and will only manage the labels present in your
-     * configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * @return Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -157,16 +141,14 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided
-     * when the template is instantiated.
+     * Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
      * 
      */
     @Import(name="parameters")
     private @Nullable Output<List<WorkflowTemplateParameterArgs>> parameters;
 
     /**
-     * @return Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided
-     * when the template is instantiated.
+     * @return Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
      * 
      */
     public Optional<Output<List<WorkflowTemplateParameterArgs>>> parameters() {
@@ -315,13 +297,7 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dagTimeout Optional. Timeout duration for the DAG of jobs, expressed in seconds (see [JSON representation of
-         * duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10
-         * minutes (&#34;600s&#34;) to 24 hours (&#34;86400s&#34;). The timer begins when the first job is submitted. If the workflow is running at
-         * the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running
-         * on a [managed
-         * cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster),
-         * the cluster is deleted.
+         * @param dagTimeout Optional. Timeout duration for the DAG of jobs, expressed in seconds (see [JSON representation of duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes (&#34;600s&#34;) to 24 hours (&#34;86400s&#34;). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a [managed cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
          * 
          * @return builder
          * 
@@ -332,13 +308,7 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dagTimeout Optional. Timeout duration for the DAG of jobs, expressed in seconds (see [JSON representation of
-         * duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10
-         * minutes (&#34;600s&#34;) to 24 hours (&#34;86400s&#34;). The timer begins when the first job is submitted. If the workflow is running at
-         * the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running
-         * on a [managed
-         * cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster),
-         * the cluster is deleted.
+         * @param dagTimeout Optional. Timeout duration for the DAG of jobs, expressed in seconds (see [JSON representation of duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes (&#34;600s&#34;) to 24 hours (&#34;86400s&#34;). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a [managed cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
          * 
          * @return builder
          * 
@@ -409,12 +379,10 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param labels Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created
-         * by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC
-         * 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63
-         * characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be
-         * associated with a template. **Note**: This field is non-authoritative, and will only manage the labels present in your
-         * configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * @param labels Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -425,12 +393,10 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param labels Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created
-         * by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC
-         * 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63
-         * characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be
-         * associated with a template. **Note**: This field is non-authoritative, and will only manage the labels present in your
-         * configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * @param labels Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -482,8 +448,7 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param parameters Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided
-         * when the template is instantiated.
+         * @param parameters Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
          * 
          * @return builder
          * 
@@ -494,8 +459,7 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param parameters Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided
-         * when the template is instantiated.
+         * @param parameters Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
          * 
          * @return builder
          * 
@@ -505,8 +469,7 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param parameters Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided
-         * when the template is instantiated.
+         * @param parameters Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
          * 
          * @return builder
          * 

@@ -195,7 +195,7 @@ export class DataAccessScope extends pulumi.CustomResource {
      * to see all data except data labeled with A and data labeled with B and data
      * with labels A and B.
      */
-    public readonly allowAll!: pulumi.Output<boolean | undefined>;
+    declare public readonly allowAll: pulumi.Output<boolean | undefined>;
     /**
      * The allowed labels for the scope. There has to be at
      * least one label allowed for the scope to be valid.
@@ -205,21 +205,21 @@ export class DataAccessScope extends pulumi.CustomResource {
      * to see data with labeled with A or B or (A and B).
      * Structure is documented below.
      */
-    public readonly allowedDataAccessLabels!: pulumi.Output<outputs.chronicle.DataAccessScopeAllowedDataAccessLabel[] | undefined>;
+    declare public readonly allowedDataAccessLabels: pulumi.Output<outputs.chronicle.DataAccessScopeAllowedDataAccessLabel[] | undefined>;
     /**
      * Output only. The user who created the data access scope.
      */
-    public /*out*/ readonly author!: pulumi.Output<string>;
+    declare public /*out*/ readonly author: pulumi.Output<string>;
     /**
      * Output only. The time at which the data access scope was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Required. The user provided scope id which will become the last part of the name
      * of the scope resource.
      * Needs to be compliant with https://google.aip.dev/122
      */
-    public readonly dataAccessScopeId!: pulumi.Output<string>;
+    declare public readonly dataAccessScopeId: pulumi.Output<string>;
     /**
      * Optional. The denied labels for the scope.
      * The logical operator for evaluation of the denied labels is AND.
@@ -228,42 +228,42 @@ export class DataAccessScope extends pulumi.CustomResource {
      * and data with labels A and B.
      * Structure is documented below.
      */
-    public readonly deniedDataAccessLabels!: pulumi.Output<outputs.chronicle.DataAccessScopeDeniedDataAccessLabel[] | undefined>;
+    declare public readonly deniedDataAccessLabels: pulumi.Output<outputs.chronicle.DataAccessScopeDeniedDataAccessLabel[] | undefined>;
     /**
      * Optional. A description of the data access scope for a human reader.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Output only. The name to be used for display to customers of the data access scope.
      */
-    public /*out*/ readonly displayName!: pulumi.Output<string>;
+    declare public /*out*/ readonly displayName: pulumi.Output<string>;
     /**
      * The unique identifier for the Chronicle instance, which is the same as the customer ID.
      */
-    public readonly instance!: pulumi.Output<string>;
+    declare public readonly instance: pulumi.Output<string>;
     /**
      * Output only. The user who last updated the data access scope.
      */
-    public /*out*/ readonly lastEditor!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastEditor: pulumi.Output<string>;
     /**
      * The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The unique full name of the data access scope. This unique identifier is generated using values provided for the URL parameters.
      * Format:
      * projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{data_access_scope_id}
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Output only. The time at which the data access scope was last updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a DataAccessScope resource with the given unique name, arguments, and options.
@@ -278,39 +278,39 @@ export class DataAccessScope extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DataAccessScopeState | undefined;
-            resourceInputs["allowAll"] = state ? state.allowAll : undefined;
-            resourceInputs["allowedDataAccessLabels"] = state ? state.allowedDataAccessLabels : undefined;
-            resourceInputs["author"] = state ? state.author : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dataAccessScopeId"] = state ? state.dataAccessScopeId : undefined;
-            resourceInputs["deniedDataAccessLabels"] = state ? state.deniedDataAccessLabels : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["instance"] = state ? state.instance : undefined;
-            resourceInputs["lastEditor"] = state ? state.lastEditor : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["allowAll"] = state?.allowAll;
+            resourceInputs["allowedDataAccessLabels"] = state?.allowedDataAccessLabels;
+            resourceInputs["author"] = state?.author;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dataAccessScopeId"] = state?.dataAccessScopeId;
+            resourceInputs["deniedDataAccessLabels"] = state?.deniedDataAccessLabels;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["instance"] = state?.instance;
+            resourceInputs["lastEditor"] = state?.lastEditor;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as DataAccessScopeArgs | undefined;
-            if ((!args || args.dataAccessScopeId === undefined) && !opts.urn) {
+            if (args?.dataAccessScopeId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataAccessScopeId'");
             }
-            if ((!args || args.instance === undefined) && !opts.urn) {
+            if (args?.instance === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instance'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["allowAll"] = args ? args.allowAll : undefined;
-            resourceInputs["allowedDataAccessLabels"] = args ? args.allowedDataAccessLabels : undefined;
-            resourceInputs["dataAccessScopeId"] = args ? args.dataAccessScopeId : undefined;
-            resourceInputs["deniedDataAccessLabels"] = args ? args.deniedDataAccessLabels : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["instance"] = args ? args.instance : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["allowAll"] = args?.allowAll;
+            resourceInputs["allowedDataAccessLabels"] = args?.allowedDataAccessLabels;
+            resourceInputs["dataAccessScopeId"] = args?.dataAccessScopeId;
+            resourceInputs["deniedDataAccessLabels"] = args?.deniedDataAccessLabels;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["instance"] = args?.instance;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
             resourceInputs["author"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;

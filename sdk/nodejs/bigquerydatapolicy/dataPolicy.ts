@@ -142,33 +142,33 @@ export class DataPolicy extends pulumi.CustomResource {
      * The data masking policy that specifies the data masking rule to use.
      * Structure is documented below.
      */
-    public readonly dataMaskingPolicy!: pulumi.Output<outputs.bigquerydatapolicy.DataPolicyDataMaskingPolicy | undefined>;
+    declare public readonly dataMaskingPolicy: pulumi.Output<outputs.bigquerydatapolicy.DataPolicyDataMaskingPolicy | undefined>;
     /**
      * User-assigned (human readable) ID of the data policy that needs to be unique within a project. Used as {dataPolicyId} in part of the resource name.
      */
-    public readonly dataPolicyId!: pulumi.Output<string>;
+    declare public readonly dataPolicyId: pulumi.Output<string>;
     /**
      * The enrollment level of the service.
      * Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
      */
-    public readonly dataPolicyType!: pulumi.Output<string>;
+    declare public readonly dataPolicyType: pulumi.Output<string>;
     /**
      * The name of the location of the data policy.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Resource name of this data policy, in the format of projects/{project_number}/locations/{locationId}/dataPolicies/{dataPolicyId}.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Policy tag resource name, in the format of projects/{project_number}/locations/{locationId}/taxonomies/{taxonomyId}/policyTags/{policyTag_id}.
      */
-    public readonly policyTag!: pulumi.Output<string>;
+    declare public readonly policyTag: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
 
     /**
      * Create a DataPolicy resource with the given unique name, arguments, and options.
@@ -183,33 +183,33 @@ export class DataPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DataPolicyState | undefined;
-            resourceInputs["dataMaskingPolicy"] = state ? state.dataMaskingPolicy : undefined;
-            resourceInputs["dataPolicyId"] = state ? state.dataPolicyId : undefined;
-            resourceInputs["dataPolicyType"] = state ? state.dataPolicyType : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["policyTag"] = state ? state.policyTag : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["dataMaskingPolicy"] = state?.dataMaskingPolicy;
+            resourceInputs["dataPolicyId"] = state?.dataPolicyId;
+            resourceInputs["dataPolicyType"] = state?.dataPolicyType;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["policyTag"] = state?.policyTag;
+            resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as DataPolicyArgs | undefined;
-            if ((!args || args.dataPolicyId === undefined) && !opts.urn) {
+            if (args?.dataPolicyId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataPolicyId'");
             }
-            if ((!args || args.dataPolicyType === undefined) && !opts.urn) {
+            if (args?.dataPolicyType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataPolicyType'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.policyTag === undefined) && !opts.urn) {
+            if (args?.policyTag === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyTag'");
             }
-            resourceInputs["dataMaskingPolicy"] = args ? args.dataMaskingPolicy : undefined;
-            resourceInputs["dataPolicyId"] = args ? args.dataPolicyId : undefined;
-            resourceInputs["dataPolicyType"] = args ? args.dataPolicyType : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["policyTag"] = args ? args.policyTag : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["dataMaskingPolicy"] = args?.dataMaskingPolicy;
+            resourceInputs["dataPolicyId"] = args?.dataPolicyId;
+            resourceInputs["dataPolicyType"] = args?.dataPolicyType;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["policyTag"] = args?.policyTag;
+            resourceInputs["project"] = args?.project;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -90,22 +90,22 @@ export class LiteReservation extends pulumi.CustomResource {
     /**
      * Name of the reservation.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The region of the pubsub lite reservation.
      */
-    public readonly region!: pulumi.Output<string | undefined>;
+    declare public readonly region: pulumi.Output<string | undefined>;
     /**
      * The reserved throughput capacity. Every unit of throughput capacity is
      * equivalent to 1 MiB/s of published messages or 2 MiB/s of subscribed
      * messages.
      */
-    public readonly throughputCapacity!: pulumi.Output<number>;
+    declare public readonly throughputCapacity: pulumi.Output<number>;
 
     /**
      * Create a LiteReservation resource with the given unique name, arguments, and options.
@@ -120,19 +120,19 @@ export class LiteReservation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LiteReservationState | undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["throughputCapacity"] = state ? state.throughputCapacity : undefined;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["throughputCapacity"] = state?.throughputCapacity;
         } else {
             const args = argsOrState as LiteReservationArgs | undefined;
-            if ((!args || args.throughputCapacity === undefined) && !opts.urn) {
+            if (args?.throughputCapacity === undefined && !opts.urn) {
                 throw new Error("Missing required property 'throughputCapacity'");
             }
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["throughputCapacity"] = args ? args.throughputCapacity : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["throughputCapacity"] = args?.throughputCapacity;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(LiteReservation.__pulumiType, name, resourceInputs, opts);

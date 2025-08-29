@@ -560,12 +560,12 @@ export class Certificate extends pulumi.CustomResource {
      * argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificateAuthority`
      * should be set to `my-ca`.
      */
-    public readonly certificateAuthority!: pulumi.Output<string | undefined>;
+    declare public readonly certificateAuthority: pulumi.Output<string | undefined>;
     /**
      * Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.
      * Structure is documented below.
      */
-    public /*out*/ readonly certificateDescriptions!: pulumi.Output<outputs.certificateauthority.CertificateCertificateDescription[]>;
+    declare public /*out*/ readonly certificateDescriptions: pulumi.Output<outputs.certificateauthority.CertificateCertificateDescription[]>;
     /**
      * The resource name for a CertificateTemplate used to issue this certificate,
      * in the format `projects/*&#47;locations/*&#47;certificateTemplates/*`. If this is specified,
@@ -573,84 +573,84 @@ export class Certificate extends pulumi.CustomResource {
      * omitted, no template will be used. This template must be in the same location
      * as the Certificate.
      */
-    public readonly certificateTemplate!: pulumi.Output<string | undefined>;
+    declare public readonly certificateTemplate: pulumi.Output<string | undefined>;
     /**
      * The config used to create a self-signed X.509 certificate or CSR.
      * Structure is documented below.
      */
-    public readonly config!: pulumi.Output<outputs.certificateauthority.CertificateConfig | undefined>;
+    declare public readonly config: pulumi.Output<outputs.certificateauthority.CertificateConfig | undefined>;
     /**
      * The time that this resource was created on the server.
      * This is in RFC3339 text format.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The resource name of the issuing CertificateAuthority in the format `projects/*&#47;locations/*&#47;caPools/*&#47;certificateAuthorities/*`.
      */
-    public /*out*/ readonly issuerCertificateAuthority!: pulumi.Output<string>;
+    declare public /*out*/ readonly issuerCertificateAuthority: pulumi.Output<string>;
     /**
      * Labels with user-defined metadata to apply to this resource.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
      * "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
      * fractional digits, terminated by 's'. Example: "3.5s".
      */
-    public readonly lifetime!: pulumi.Output<string | undefined>;
+    declare public readonly lifetime: pulumi.Output<string | undefined>;
     /**
      * Location of the Certificate. A full list of valid locations can be found by
      * running `gcloud privateca locations list`.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The name for this Certificate.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Output only. The pem-encoded, signed X.509 certificate.
      */
-    public /*out*/ readonly pemCertificate!: pulumi.Output<string>;
+    declare public /*out*/ readonly pemCertificate: pulumi.Output<string>;
     /**
      * The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC 5246.
      */
-    public /*out*/ readonly pemCertificateChains!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly pemCertificateChains: pulumi.Output<string[]>;
     /**
      * Immutable. A pem-encoded X.509 certificate signing request (CSR).
      */
-    public readonly pemCsr!: pulumi.Output<string | undefined>;
+    declare public readonly pemCsr: pulumi.Output<string | undefined>;
     /**
      * The name of the CaPool this Certificate belongs to.
      */
-    public readonly pool!: pulumi.Output<string>;
+    declare public readonly pool: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Output only. Details regarding the revocation of this Certificate. This Certificate is
      * considered revoked if and only if this field is present.
      * Structure is documented below.
      */
-    public /*out*/ readonly revocationDetails!: pulumi.Output<outputs.certificateauthority.CertificateRevocationDetail[]>;
+    declare public /*out*/ readonly revocationDetails: pulumi.Output<outputs.certificateauthority.CertificateRevocationDetail[]>;
     /**
      * Output only. The time at which this CertificateAuthority was updated.
      * This is in RFC3339 text format.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Certificate resource with the given unique name, arguments, and options.
@@ -665,43 +665,43 @@ export class Certificate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CertificateState | undefined;
-            resourceInputs["certificateAuthority"] = state ? state.certificateAuthority : undefined;
-            resourceInputs["certificateDescriptions"] = state ? state.certificateDescriptions : undefined;
-            resourceInputs["certificateTemplate"] = state ? state.certificateTemplate : undefined;
-            resourceInputs["config"] = state ? state.config : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["issuerCertificateAuthority"] = state ? state.issuerCertificateAuthority : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["lifetime"] = state ? state.lifetime : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["pemCertificate"] = state ? state.pemCertificate : undefined;
-            resourceInputs["pemCertificateChains"] = state ? state.pemCertificateChains : undefined;
-            resourceInputs["pemCsr"] = state ? state.pemCsr : undefined;
-            resourceInputs["pool"] = state ? state.pool : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["revocationDetails"] = state ? state.revocationDetails : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["certificateAuthority"] = state?.certificateAuthority;
+            resourceInputs["certificateDescriptions"] = state?.certificateDescriptions;
+            resourceInputs["certificateTemplate"] = state?.certificateTemplate;
+            resourceInputs["config"] = state?.config;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["issuerCertificateAuthority"] = state?.issuerCertificateAuthority;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["lifetime"] = state?.lifetime;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["pemCertificate"] = state?.pemCertificate;
+            resourceInputs["pemCertificateChains"] = state?.pemCertificateChains;
+            resourceInputs["pemCsr"] = state?.pemCsr;
+            resourceInputs["pool"] = state?.pool;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["revocationDetails"] = state?.revocationDetails;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as CertificateArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.pool === undefined) && !opts.urn) {
+            if (args?.pool === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pool'");
             }
-            resourceInputs["certificateAuthority"] = args ? args.certificateAuthority : undefined;
-            resourceInputs["certificateTemplate"] = args ? args.certificateTemplate : undefined;
-            resourceInputs["config"] = args ? args.config : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["lifetime"] = args ? args.lifetime : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["pemCsr"] = args ? args.pemCsr : undefined;
-            resourceInputs["pool"] = args ? args.pool : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["certificateAuthority"] = args?.certificateAuthority;
+            resourceInputs["certificateTemplate"] = args?.certificateTemplate;
+            resourceInputs["config"] = args?.config;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["lifetime"] = args?.lifetime;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["pemCsr"] = args?.pemCsr;
+            resourceInputs["pool"] = args?.pool;
+            resourceInputs["project"] = args?.project;
             resourceInputs["certificateDescriptions"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;

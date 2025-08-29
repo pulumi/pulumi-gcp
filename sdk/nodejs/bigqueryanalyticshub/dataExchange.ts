@@ -136,60 +136,60 @@ export class DataExchange extends pulumi.CustomResource {
     /**
      * The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
      */
-    public readonly dataExchangeId!: pulumi.Output<string>;
+    declare public readonly dataExchangeId: pulumi.Output<string>;
     /**
      * Description of the data exchange.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Type of discovery on the discovery page for all the listings under this exchange. Cannot be set for a Data Clean Room. Updating this field also updates (overwrites) the discoveryType field for all the listings under this exchange.
      * Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
      */
-    public readonly discoveryType!: pulumi.Output<string>;
+    declare public readonly discoveryType: pulumi.Output<string>;
     /**
      * Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Documentation describing the data exchange.
      */
-    public readonly documentation!: pulumi.Output<string | undefined>;
+    declare public readonly documentation: pulumi.Output<string | undefined>;
     /**
      * Base64 encoded image representing the data exchange.
      */
-    public readonly icon!: pulumi.Output<string | undefined>;
+    declare public readonly icon: pulumi.Output<string | undefined>;
     /**
      * Number of listings contained in the data exchange.
      */
-    public /*out*/ readonly listingCount!: pulumi.Output<number>;
+    declare public /*out*/ readonly listingCount: pulumi.Output<number>;
     /**
      * The name of the location this data exchange.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user. Once enabled, this setting cannot be turned off.
      */
-    public readonly logLinkedDatasetQueryUserEmail!: pulumi.Output<boolean | undefined>;
+    declare public readonly logLinkedDatasetQueryUserEmail: pulumi.Output<boolean | undefined>;
     /**
      * The resource name of the data exchange, for example:
      * "projects/myproject/locations/US/dataExchanges/123"
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Email or URL of the primary point of contact of the data exchange.
      */
-    public readonly primaryContact!: pulumi.Output<string | undefined>;
+    declare public readonly primaryContact: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Configurable data sharing environment option for a data exchange.
      * This field is required for data clean room exchanges.
      * Structure is documented below.
      */
-    public readonly sharingEnvironmentConfig!: pulumi.Output<outputs.bigqueryanalyticshub.DataExchangeSharingEnvironmentConfig>;
+    declare public readonly sharingEnvironmentConfig: pulumi.Output<outputs.bigqueryanalyticshub.DataExchangeSharingEnvironmentConfig>;
 
     /**
      * Create a DataExchange resource with the given unique name, arguments, and options.
@@ -204,41 +204,41 @@ export class DataExchange extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DataExchangeState | undefined;
-            resourceInputs["dataExchangeId"] = state ? state.dataExchangeId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["discoveryType"] = state ? state.discoveryType : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["documentation"] = state ? state.documentation : undefined;
-            resourceInputs["icon"] = state ? state.icon : undefined;
-            resourceInputs["listingCount"] = state ? state.listingCount : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["logLinkedDatasetQueryUserEmail"] = state ? state.logLinkedDatasetQueryUserEmail : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["primaryContact"] = state ? state.primaryContact : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["sharingEnvironmentConfig"] = state ? state.sharingEnvironmentConfig : undefined;
+            resourceInputs["dataExchangeId"] = state?.dataExchangeId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["discoveryType"] = state?.discoveryType;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["documentation"] = state?.documentation;
+            resourceInputs["icon"] = state?.icon;
+            resourceInputs["listingCount"] = state?.listingCount;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["logLinkedDatasetQueryUserEmail"] = state?.logLinkedDatasetQueryUserEmail;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["primaryContact"] = state?.primaryContact;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["sharingEnvironmentConfig"] = state?.sharingEnvironmentConfig;
         } else {
             const args = argsOrState as DataExchangeArgs | undefined;
-            if ((!args || args.dataExchangeId === undefined) && !opts.urn) {
+            if (args?.dataExchangeId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataExchangeId'");
             }
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["dataExchangeId"] = args ? args.dataExchangeId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["discoveryType"] = args ? args.discoveryType : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["documentation"] = args ? args.documentation : undefined;
-            resourceInputs["icon"] = args ? args.icon : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["logLinkedDatasetQueryUserEmail"] = args ? args.logLinkedDatasetQueryUserEmail : undefined;
-            resourceInputs["primaryContact"] = args ? args.primaryContact : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["sharingEnvironmentConfig"] = args ? args.sharingEnvironmentConfig : undefined;
+            resourceInputs["dataExchangeId"] = args?.dataExchangeId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["discoveryType"] = args?.discoveryType;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["documentation"] = args?.documentation;
+            resourceInputs["icon"] = args?.icon;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["logLinkedDatasetQueryUserEmail"] = args?.logLinkedDatasetQueryUserEmail;
+            resourceInputs["primaryContact"] = args?.primaryContact;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["sharingEnvironmentConfig"] = args?.sharingEnvironmentConfig;
             resourceInputs["listingCount"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         }

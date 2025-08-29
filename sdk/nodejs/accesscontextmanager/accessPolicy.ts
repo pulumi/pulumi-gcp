@@ -98,29 +98,29 @@ export class AccessPolicy extends pulumi.CustomResource {
     /**
      * Time the AccessPolicy was created in UTC.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Resource name of the AccessPolicy. Format: '{{policy_id}}'
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The parent of this AccessPolicy in the Cloud Resource Hierarchy.
      * Format: 'organizations/{{organization_id}}'
      */
-    public readonly parent!: pulumi.Output<string>;
+    declare public readonly parent: pulumi.Output<string>;
     /**
      * Folder or project on which this policy is applicable.
      * Format: 'folders/{{folder_id}}' or 'projects/{{project_number}}'
      */
-    public readonly scopes!: pulumi.Output<string | undefined>;
+    declare public readonly scopes: pulumi.Output<string | undefined>;
     /**
      * Human readable title. Does not affect behavior.
      */
-    public readonly title!: pulumi.Output<string>;
+    declare public readonly title: pulumi.Output<string>;
     /**
      * Time the AccessPolicy was updated in UTC.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a AccessPolicy resource with the given unique name, arguments, and options.
@@ -135,23 +135,23 @@ export class AccessPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessPolicyState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["scopes"] = state ? state.scopes : undefined;
-            resourceInputs["title"] = state ? state.title : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["scopes"] = state?.scopes;
+            resourceInputs["title"] = state?.title;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as AccessPolicyArgs | undefined;
-            if ((!args || args.parent === undefined) && !opts.urn) {
+            if (args?.parent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            if ((!args || args.title === undefined) && !opts.urn) {
+            if (args?.title === undefined && !opts.urn) {
                 throw new Error("Missing required property 'title'");
             }
-            resourceInputs["parent"] = args ? args.parent : undefined;
-            resourceInputs["scopes"] = args ? args.scopes : undefined;
-            resourceInputs["title"] = args ? args.title : undefined;
+            resourceInputs["parent"] = args?.parent;
+            resourceInputs["scopes"] = args?.scopes;
+            resourceInputs["title"] = args?.title;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;

@@ -164,37 +164,37 @@ export class User extends pulumi.CustomResource {
      *
      * Possible values are: `ABANDON`.
      */
-    public readonly deletionPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly deletionPolicy: pulumi.Output<string | undefined>;
     /**
      * The host the user can connect from. This is only supported
      * for BUILT_IN users in MySQL instances. Don't set this field for PostgreSQL and SQL Server instances.
      * Can be an IP address. Changing this forces a new resource to be created.
      */
-    public readonly host!: pulumi.Output<string>;
+    declare public readonly host: pulumi.Output<string>;
     /**
      * The name of the Cloud SQL instance. Changing this
      * forces a new resource to be created.
      */
-    public readonly instance!: pulumi.Output<string>;
+    declare public readonly instance: pulumi.Output<string>;
     /**
      * The name of the user. Changing this forces a new resource
      * to be created.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The password for the user. Can be updated. For Postgres
      * instances this is a Required field, unless type is set to either CLOUD_IAM_USER
      * or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
      * and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
      */
-    public readonly password!: pulumi.Output<string | undefined>;
-    public readonly passwordPolicy!: pulumi.Output<outputs.sql.UserPasswordPolicy | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
+    declare public readonly passwordPolicy: pulumi.Output<outputs.sql.UserPasswordPolicy | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
-    public /*out*/ readonly sqlServerUserDetails!: pulumi.Output<outputs.sql.UserSqlServerUserDetail[]>;
+    declare public readonly project: pulumi.Output<string>;
+    declare public /*out*/ readonly sqlServerUserDetails: pulumi.Output<outputs.sql.UserSqlServerUserDetail[]>;
     /**
      * The user type. It determines the method to authenticate the
      * user during login. The default is the database's built-in user type. Flags
@@ -203,7 +203,7 @@ export class User extends pulumi.CustomResource {
      * [Postgres](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/users#sqlusertype)
      * and [MySQL](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/users#sqlusertype).
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string | undefined>;
 
     /**
      * Create a User resource with the given unique name, arguments, and options.
@@ -218,28 +218,28 @@ export class User extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserState | undefined;
-            resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
-            resourceInputs["host"] = state ? state.host : undefined;
-            resourceInputs["instance"] = state ? state.instance : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["passwordPolicy"] = state ? state.passwordPolicy : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["sqlServerUserDetails"] = state ? state.sqlServerUserDetails : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
+            resourceInputs["host"] = state?.host;
+            resourceInputs["instance"] = state?.instance;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["passwordPolicy"] = state?.passwordPolicy;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["sqlServerUserDetails"] = state?.sqlServerUserDetails;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as UserArgs | undefined;
-            if ((!args || args.instance === undefined) && !opts.urn) {
+            if (args?.instance === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instance'");
             }
-            resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
-            resourceInputs["host"] = args ? args.host : undefined;
-            resourceInputs["instance"] = args ? args.instance : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
+            resourceInputs["host"] = args?.host;
+            resourceInputs["instance"] = args?.instance;
+            resourceInputs["name"] = args?.name;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["passwordPolicy"] = args ? args.passwordPolicy : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["passwordPolicy"] = args?.passwordPolicy;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["type"] = args?.type;
             resourceInputs["sqlServerUserDetails"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

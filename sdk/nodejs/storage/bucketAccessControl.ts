@@ -90,15 +90,15 @@ export class BucketAccessControl extends pulumi.CustomResource {
     /**
      * The name of the bucket.
      */
-    public readonly bucket!: pulumi.Output<string>;
+    declare public readonly bucket: pulumi.Output<string>;
     /**
      * The domain associated with the entity.
      */
-    public /*out*/ readonly domain!: pulumi.Output<string>;
+    declare public /*out*/ readonly domain: pulumi.Output<string>;
     /**
      * The email address associated with the entity.
      */
-    public /*out*/ readonly email!: pulumi.Output<string>;
+    declare public /*out*/ readonly email: pulumi.Output<string>;
     /**
      * The entity holding the permission, in one of the following forms:
      * user-userId
@@ -116,12 +116,12 @@ export class BucketAccessControl extends pulumi.CustomResource {
      * To refer to all members of the Google Apps for Business domain
      * example.com, the entity would be domain-example.com.
      */
-    public readonly entity!: pulumi.Output<string>;
+    declare public readonly entity: pulumi.Output<string>;
     /**
      * The access permission for the entity.
      * Possible values are: `OWNER`, `READER`, `WRITER`.
      */
-    public readonly role!: pulumi.Output<string | undefined>;
+    declare public readonly role: pulumi.Output<string | undefined>;
 
     /**
      * Create a BucketAccessControl resource with the given unique name, arguments, and options.
@@ -136,22 +136,22 @@ export class BucketAccessControl extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BucketAccessControlState | undefined;
-            resourceInputs["bucket"] = state ? state.bucket : undefined;
-            resourceInputs["domain"] = state ? state.domain : undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["entity"] = state ? state.entity : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["bucket"] = state?.bucket;
+            resourceInputs["domain"] = state?.domain;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["entity"] = state?.entity;
+            resourceInputs["role"] = state?.role;
         } else {
             const args = argsOrState as BucketAccessControlArgs | undefined;
-            if ((!args || args.bucket === undefined) && !opts.urn) {
+            if (args?.bucket === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            if ((!args || args.entity === undefined) && !opts.urn) {
+            if (args?.entity === undefined && !opts.urn) {
                 throw new Error("Missing required property 'entity'");
             }
-            resourceInputs["bucket"] = args ? args.bucket : undefined;
-            resourceInputs["entity"] = args ? args.entity : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["entity"] = args?.entity;
+            resourceInputs["role"] = args?.role;
             resourceInputs["domain"] = undefined /*out*/;
             resourceInputs["email"] = undefined /*out*/;
         }

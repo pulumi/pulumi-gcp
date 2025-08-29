@@ -249,23 +249,23 @@ export class ServicePerimeter extends pulumi.CustomResource {
     /**
      * Time the AccessPolicy was created in UTC.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Description of the ServicePerimeter and its use. Does not affect
      * behavior.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Resource name for the ServicePerimeter. The shortName component must
      * begin with a letter and only include alphanumeric and '_'.
      * Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The AccessPolicy this ServicePerimeter lives in.
      * Format: accessPolicies/{policy_id}
      */
-    public readonly parent!: pulumi.Output<string>;
+    declare public readonly parent: pulumi.Output<string>;
     /**
      * Specifies the type of the Perimeter. There are two types: regular and
      * bridge. Regular Service Perimeter contains resources, access levels,
@@ -284,7 +284,7 @@ export class ServicePerimeter extends pulumi.CustomResource {
      * Default value is `PERIMETER_TYPE_REGULAR`.
      * Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
      */
-    public readonly perimeterType!: pulumi.Output<string | undefined>;
+    declare public readonly perimeterType: pulumi.Output<string | undefined>;
     /**
      * Proposed (or dry run) ServicePerimeter configuration.
      * This configuration allows to specify and test ServicePerimeter configuration
@@ -292,22 +292,22 @@ export class ServicePerimeter extends pulumi.CustomResource {
      * the `useExplicitDryRunSpec` flag is set.
      * Structure is documented below.
      */
-    public readonly spec!: pulumi.Output<outputs.accesscontextmanager.ServicePerimeterSpec | undefined>;
+    declare public readonly spec: pulumi.Output<outputs.accesscontextmanager.ServicePerimeterSpec | undefined>;
     /**
      * ServicePerimeter configuration. Specifies sets of resources,
      * restricted services and access levels that determine
      * perimeter content and boundaries.
      * Structure is documented below.
      */
-    public readonly status!: pulumi.Output<outputs.accesscontextmanager.ServicePerimeterStatus | undefined>;
+    declare public readonly status: pulumi.Output<outputs.accesscontextmanager.ServicePerimeterStatus | undefined>;
     /**
      * Human readable title. Must be unique within the Policy.
      */
-    public readonly title!: pulumi.Output<string>;
+    declare public readonly title: pulumi.Output<string>;
     /**
      * Time the AccessPolicy was updated in UTC.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists
      * for all Service Perimeters, and that spec is identical to the status for those
@@ -319,7 +319,7 @@ export class ServicePerimeter extends pulumi.CustomResource {
      * between currently enforced and suggested restrictions. useExplicitDryRunSpec must
      * bet set to True if any of the fields in the spec are set to non-default values.
      */
-    public readonly useExplicitDryRunSpec!: pulumi.Output<boolean | undefined>;
+    declare public readonly useExplicitDryRunSpec: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a ServicePerimeter resource with the given unique name, arguments, and options.
@@ -334,32 +334,32 @@ export class ServicePerimeter extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServicePerimeterState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["perimeterType"] = state ? state.perimeterType : undefined;
-            resourceInputs["spec"] = state ? state.spec : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["title"] = state ? state.title : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["useExplicitDryRunSpec"] = state ? state.useExplicitDryRunSpec : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["perimeterType"] = state?.perimeterType;
+            resourceInputs["spec"] = state?.spec;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["title"] = state?.title;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["useExplicitDryRunSpec"] = state?.useExplicitDryRunSpec;
         } else {
             const args = argsOrState as ServicePerimeterArgs | undefined;
-            if ((!args || args.parent === undefined) && !opts.urn) {
+            if (args?.parent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            if ((!args || args.title === undefined) && !opts.urn) {
+            if (args?.title === undefined && !opts.urn) {
                 throw new Error("Missing required property 'title'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
-            resourceInputs["perimeterType"] = args ? args.perimeterType : undefined;
-            resourceInputs["spec"] = args ? args.spec : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["title"] = args ? args.title : undefined;
-            resourceInputs["useExplicitDryRunSpec"] = args ? args.useExplicitDryRunSpec : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["parent"] = args?.parent;
+            resourceInputs["perimeterType"] = args?.perimeterType;
+            resourceInputs["spec"] = args?.spec;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["title"] = args?.title;
+            resourceInputs["useExplicitDryRunSpec"] = args?.useExplicitDryRunSpec;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }

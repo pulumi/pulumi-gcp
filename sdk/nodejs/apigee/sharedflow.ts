@@ -66,33 +66,33 @@ export class Sharedflow extends pulumi.CustomResource {
      *
      * - - -
      */
-    public readonly configBundle!: pulumi.Output<string>;
-    public readonly detectMd5hash!: pulumi.Output<string | undefined>;
+    declare public readonly configBundle: pulumi.Output<string>;
+    declare public readonly detectMd5hash: pulumi.Output<string | undefined>;
     /**
      * The id of the most recently created revision for this shared flow.
      */
-    public /*out*/ readonly latestRevisionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly latestRevisionId: pulumi.Output<string>;
     /**
      * (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned lastModified timestamp.
      */
-    public /*out*/ readonly md5hash!: pulumi.Output<string>;
+    declare public /*out*/ readonly md5hash: pulumi.Output<string>;
     /**
      * Metadata describing the shared flow.
      * Structure is documented below.
      */
-    public /*out*/ readonly metaDatas!: pulumi.Output<outputs.apigee.SharedflowMetaData[]>;
+    declare public /*out*/ readonly metaDatas: pulumi.Output<outputs.apigee.SharedflowMetaData[]>;
     /**
      * The ID of the shared flow.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The Apigee Organization name associated with the Apigee instance.
      */
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * A list of revisions of this shared flow.
      */
-    public /*out*/ readonly revisions!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly revisions: pulumi.Output<string[]>;
 
     /**
      * Create a Sharedflow resource with the given unique name, arguments, and options.
@@ -107,26 +107,26 @@ export class Sharedflow extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SharedflowState | undefined;
-            resourceInputs["configBundle"] = state ? state.configBundle : undefined;
-            resourceInputs["detectMd5hash"] = state ? state.detectMd5hash : undefined;
-            resourceInputs["latestRevisionId"] = state ? state.latestRevisionId : undefined;
-            resourceInputs["md5hash"] = state ? state.md5hash : undefined;
-            resourceInputs["metaDatas"] = state ? state.metaDatas : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["revisions"] = state ? state.revisions : undefined;
+            resourceInputs["configBundle"] = state?.configBundle;
+            resourceInputs["detectMd5hash"] = state?.detectMd5hash;
+            resourceInputs["latestRevisionId"] = state?.latestRevisionId;
+            resourceInputs["md5hash"] = state?.md5hash;
+            resourceInputs["metaDatas"] = state?.metaDatas;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["revisions"] = state?.revisions;
         } else {
             const args = argsOrState as SharedflowArgs | undefined;
-            if ((!args || args.configBundle === undefined) && !opts.urn) {
+            if (args?.configBundle === undefined && !opts.urn) {
                 throw new Error("Missing required property 'configBundle'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            resourceInputs["configBundle"] = args ? args.configBundle : undefined;
-            resourceInputs["detectMd5hash"] = args ? args.detectMd5hash : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
+            resourceInputs["configBundle"] = args?.configBundle;
+            resourceInputs["detectMd5hash"] = args?.detectMd5hash;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
             resourceInputs["latestRevisionId"] = undefined /*out*/;
             resourceInputs["md5hash"] = undefined /*out*/;
             resourceInputs["metaDatas"] = undefined /*out*/;

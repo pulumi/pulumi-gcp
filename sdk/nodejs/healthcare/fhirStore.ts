@@ -171,18 +171,18 @@ export class FhirStore extends pulumi.CustomResource {
      * Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
      * Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
      */
-    public readonly complexDataTypeReferenceParsing!: pulumi.Output<string>;
+    declare public readonly complexDataTypeReferenceParsing: pulumi.Output<string>;
     /**
      * Identifies the dataset addressed by this request. Must be in the format
      * 'projects/{project}/locations/{location}/datasets/{dataset}'
      */
-    public readonly dataset!: pulumi.Output<string>;
+    declare public readonly dataset: pulumi.Output<string>;
     /**
      * If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
      * If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
      * The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
      */
-    public readonly defaultSearchHandlingStrict!: pulumi.Output<boolean | undefined>;
+    declare public readonly defaultSearchHandlingStrict: pulumi.Output<boolean | undefined>;
     /**
      * Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
      * creation. The default value is false, meaning that the API will enforce referential integrity and fail the
@@ -191,7 +191,7 @@ export class FhirStore extends pulumi.CustomResource {
      * Patient.get$everything, will not return all the results if broken references exist.
      * ** Changing this property may recreate the FHIR store (removing all data) **
      */
-    public readonly disableReferentialIntegrity!: pulumi.Output<boolean | undefined>;
+    declare public readonly disableReferentialIntegrity: pulumi.Output<boolean | undefined>;
     /**
      * Whether to disable resource versioning for this FHIR store. This field can not be changed after the creation
      * of FHIR store. If set to false, which is the default behavior, all write operations will cause historical
@@ -200,11 +200,11 @@ export class FhirStore extends pulumi.CustomResource {
      * attempts to read the historical versions.
      * ** Changing this property may recreate the FHIR store (removing all data) **
      */
-    public readonly disableResourceVersioning!: pulumi.Output<boolean | undefined>;
+    declare public readonly disableResourceVersioning: pulumi.Output<boolean | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Whether to allow the bulk import API to accept history bundles and directly insert historical resource
      * versions into the FHIR store. Importing resource histories creates resource interactions that appear to have
@@ -213,12 +213,12 @@ export class FhirStore extends pulumi.CustomResource {
      * ** Changing this property may recreate the FHIR store (removing all data) **
      * ** This property can be changed manually in the Google Cloud Healthcare admin console without recreating the FHIR store **
      */
-    public readonly enableHistoryImport!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableHistoryImport: pulumi.Output<boolean | undefined>;
     /**
      * Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
      * resource versions into the FHIR store. If set to false, using history bundles fails with an error.
      */
-    public readonly enableHistoryModifications!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableHistoryModifications: pulumi.Output<boolean | undefined>;
     /**
      * Whether this FHIR store has the updateCreate capability. This determines if the client can use an Update
      * operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through
@@ -227,7 +227,7 @@ export class FhirStore extends pulumi.CustomResource {
      * identifiers, those IDs will be part of the FHIR resource path recorded in Cloud audit logs and Cloud Pub/Sub
      * notifications.
      */
-    public readonly enableUpdateCreate!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableUpdateCreate: pulumi.Output<boolean | undefined>;
     /**
      * User-supplied key-value pairs used to organize FHIR stores.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
@@ -241,12 +241,12 @@ export class FhirStore extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The resource name for the FhirStore.
      * ** Changing this property may recreate the FHIR store (removing all data) **
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * (Optional, Deprecated)
      * A nested object resource.
@@ -256,21 +256,21 @@ export class FhirStore extends pulumi.CustomResource {
      *
      * @deprecated `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
      */
-    public readonly notificationConfig!: pulumi.Output<outputs.healthcare.FhirStoreNotificationConfig | undefined>;
+    declare public readonly notificationConfig: pulumi.Output<outputs.healthcare.FhirStoreNotificationConfig | undefined>;
     /**
      * A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
      * Structure is documented below.
      */
-    public readonly notificationConfigs!: pulumi.Output<outputs.healthcare.FhirStoreNotificationConfig[] | undefined>;
+    declare public readonly notificationConfigs: pulumi.Output<outputs.healthcare.FhirStoreNotificationConfig[] | undefined>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The fully qualified name of this dataset
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * A list of streaming configs that configure the destinations of streaming export for every resource mutation in
      * this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next
@@ -280,13 +280,13 @@ export class FhirStore extends pulumi.CustomResource {
      * the order of dozens of seconds) is expected before the results show up in the streaming destination.
      * Structure is documented below.
      */
-    public readonly streamConfigs!: pulumi.Output<outputs.healthcare.FhirStoreStreamConfig[] | undefined>;
+    declare public readonly streamConfigs: pulumi.Output<outputs.healthcare.FhirStoreStreamConfig[] | undefined>;
     /**
      * The FHIR specification version.
      * Default value is `STU3`.
      * Possible values are: `DSTU2`, `STU3`, `R4`.
      */
-    public readonly version!: pulumi.Output<string | undefined>;
+    declare public readonly version: pulumi.Output<string | undefined>;
 
     /**
      * Create a FhirStore resource with the given unique name, arguments, and options.
@@ -301,42 +301,42 @@ export class FhirStore extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FhirStoreState | undefined;
-            resourceInputs["complexDataTypeReferenceParsing"] = state ? state.complexDataTypeReferenceParsing : undefined;
-            resourceInputs["dataset"] = state ? state.dataset : undefined;
-            resourceInputs["defaultSearchHandlingStrict"] = state ? state.defaultSearchHandlingStrict : undefined;
-            resourceInputs["disableReferentialIntegrity"] = state ? state.disableReferentialIntegrity : undefined;
-            resourceInputs["disableResourceVersioning"] = state ? state.disableResourceVersioning : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["enableHistoryImport"] = state ? state.enableHistoryImport : undefined;
-            resourceInputs["enableHistoryModifications"] = state ? state.enableHistoryModifications : undefined;
-            resourceInputs["enableUpdateCreate"] = state ? state.enableUpdateCreate : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["notificationConfig"] = state ? state.notificationConfig : undefined;
-            resourceInputs["notificationConfigs"] = state ? state.notificationConfigs : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["streamConfigs"] = state ? state.streamConfigs : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["complexDataTypeReferenceParsing"] = state?.complexDataTypeReferenceParsing;
+            resourceInputs["dataset"] = state?.dataset;
+            resourceInputs["defaultSearchHandlingStrict"] = state?.defaultSearchHandlingStrict;
+            resourceInputs["disableReferentialIntegrity"] = state?.disableReferentialIntegrity;
+            resourceInputs["disableResourceVersioning"] = state?.disableResourceVersioning;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["enableHistoryImport"] = state?.enableHistoryImport;
+            resourceInputs["enableHistoryModifications"] = state?.enableHistoryModifications;
+            resourceInputs["enableUpdateCreate"] = state?.enableUpdateCreate;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["notificationConfig"] = state?.notificationConfig;
+            resourceInputs["notificationConfigs"] = state?.notificationConfigs;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["streamConfigs"] = state?.streamConfigs;
+            resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as FhirStoreArgs | undefined;
-            if ((!args || args.dataset === undefined) && !opts.urn) {
+            if (args?.dataset === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataset'");
             }
-            resourceInputs["complexDataTypeReferenceParsing"] = args ? args.complexDataTypeReferenceParsing : undefined;
-            resourceInputs["dataset"] = args ? args.dataset : undefined;
-            resourceInputs["defaultSearchHandlingStrict"] = args ? args.defaultSearchHandlingStrict : undefined;
-            resourceInputs["disableReferentialIntegrity"] = args ? args.disableReferentialIntegrity : undefined;
-            resourceInputs["disableResourceVersioning"] = args ? args.disableResourceVersioning : undefined;
-            resourceInputs["enableHistoryImport"] = args ? args.enableHistoryImport : undefined;
-            resourceInputs["enableHistoryModifications"] = args ? args.enableHistoryModifications : undefined;
-            resourceInputs["enableUpdateCreate"] = args ? args.enableUpdateCreate : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["notificationConfig"] = args ? args.notificationConfig : undefined;
-            resourceInputs["notificationConfigs"] = args ? args.notificationConfigs : undefined;
-            resourceInputs["streamConfigs"] = args ? args.streamConfigs : undefined;
-            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["complexDataTypeReferenceParsing"] = args?.complexDataTypeReferenceParsing;
+            resourceInputs["dataset"] = args?.dataset;
+            resourceInputs["defaultSearchHandlingStrict"] = args?.defaultSearchHandlingStrict;
+            resourceInputs["disableReferentialIntegrity"] = args?.disableReferentialIntegrity;
+            resourceInputs["disableResourceVersioning"] = args?.disableResourceVersioning;
+            resourceInputs["enableHistoryImport"] = args?.enableHistoryImport;
+            resourceInputs["enableHistoryModifications"] = args?.enableHistoryModifications;
+            resourceInputs["enableUpdateCreate"] = args?.enableUpdateCreate;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["notificationConfig"] = args?.notificationConfig;
+            resourceInputs["notificationConfigs"] = args?.notificationConfigs;
+            resourceInputs["streamConfigs"] = args?.streamConfigs;
+            resourceInputs["version"] = args?.version;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;

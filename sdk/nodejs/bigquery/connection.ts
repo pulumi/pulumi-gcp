@@ -324,48 +324,48 @@ export class Connection extends pulumi.CustomResource {
      * Connection properties specific to Amazon Web Services.
      * Structure is documented below.
      */
-    public readonly aws!: pulumi.Output<outputs.bigquery.ConnectionAws | undefined>;
+    declare public readonly aws: pulumi.Output<outputs.bigquery.ConnectionAws | undefined>;
     /**
      * Container for connection properties specific to Azure.
      * Structure is documented below.
      */
-    public readonly azure!: pulumi.Output<outputs.bigquery.ConnectionAzure | undefined>;
+    declare public readonly azure: pulumi.Output<outputs.bigquery.ConnectionAzure | undefined>;
     /**
      * Container for connection properties for delegation of access to GCP resources.
      * Structure is documented below.
      */
-    public readonly cloudResource!: pulumi.Output<outputs.bigquery.ConnectionCloudResource | undefined>;
+    declare public readonly cloudResource: pulumi.Output<outputs.bigquery.ConnectionCloudResource | undefined>;
     /**
      * Connection properties specific to Cloud Spanner
      * Structure is documented below.
      */
-    public readonly cloudSpanner!: pulumi.Output<outputs.bigquery.ConnectionCloudSpanner | undefined>;
+    declare public readonly cloudSpanner: pulumi.Output<outputs.bigquery.ConnectionCloudSpanner | undefined>;
     /**
      * Connection properties specific to the Cloud SQL.
      * Structure is documented below.
      */
-    public readonly cloudSql!: pulumi.Output<outputs.bigquery.ConnectionCloudSql | undefined>;
+    declare public readonly cloudSql: pulumi.Output<outputs.bigquery.ConnectionCloudSql | undefined>;
     /**
      * Optional connection id that should be assigned to the created connection.
      */
-    public readonly connectionId!: pulumi.Output<string>;
+    declare public readonly connectionId: pulumi.Output<string>;
     /**
      * A descriptive description for the connection
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * A descriptive name for the connection
      */
-    public readonly friendlyName!: pulumi.Output<string | undefined>;
+    declare public readonly friendlyName: pulumi.Output<string | undefined>;
     /**
      * True if the connection has credential assigned.
      */
-    public /*out*/ readonly hasCredential!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly hasCredential: pulumi.Output<boolean>;
     /**
      * Optional. The Cloud KMS key that is used for encryption.
      * Example: projects/[kmsProjectId]/locations/[region]/keyRings/[keyRegion]/cryptoKeys/[key]
      */
-    public readonly kmsKeyName!: pulumi.Output<string | undefined>;
+    declare public readonly kmsKeyName: pulumi.Output<string | undefined>;
     /**
      * The geographic location where the connection should reside.
      * Cloud SQL instance must be in the same location as the connection
@@ -375,22 +375,22 @@ export class Connection extends pulumi.CustomResource {
      * AWS allowed regions are aws-us-east-1
      * Azure allowed regions are azure-eastus2
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * The resource name of the connection in the form of:
      * "projects/{project_id}/locations/{location_id}/connections/{connectionId}"
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Container for connection properties to execute stored procedures for Apache Spark. resources.
      * Structure is documented below.
      */
-    public readonly spark!: pulumi.Output<outputs.bigquery.ConnectionSpark | undefined>;
+    declare public readonly spark: pulumi.Output<outputs.bigquery.ConnectionSpark | undefined>;
 
     /**
      * Create a Connection resource with the given unique name, arguments, and options.
@@ -405,34 +405,34 @@ export class Connection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectionState | undefined;
-            resourceInputs["aws"] = state ? state.aws : undefined;
-            resourceInputs["azure"] = state ? state.azure : undefined;
-            resourceInputs["cloudResource"] = state ? state.cloudResource : undefined;
-            resourceInputs["cloudSpanner"] = state ? state.cloudSpanner : undefined;
-            resourceInputs["cloudSql"] = state ? state.cloudSql : undefined;
-            resourceInputs["connectionId"] = state ? state.connectionId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["friendlyName"] = state ? state.friendlyName : undefined;
-            resourceInputs["hasCredential"] = state ? state.hasCredential : undefined;
-            resourceInputs["kmsKeyName"] = state ? state.kmsKeyName : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["spark"] = state ? state.spark : undefined;
+            resourceInputs["aws"] = state?.aws;
+            resourceInputs["azure"] = state?.azure;
+            resourceInputs["cloudResource"] = state?.cloudResource;
+            resourceInputs["cloudSpanner"] = state?.cloudSpanner;
+            resourceInputs["cloudSql"] = state?.cloudSql;
+            resourceInputs["connectionId"] = state?.connectionId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["friendlyName"] = state?.friendlyName;
+            resourceInputs["hasCredential"] = state?.hasCredential;
+            resourceInputs["kmsKeyName"] = state?.kmsKeyName;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["spark"] = state?.spark;
         } else {
             const args = argsOrState as ConnectionArgs | undefined;
-            resourceInputs["aws"] = args ? args.aws : undefined;
-            resourceInputs["azure"] = args ? args.azure : undefined;
-            resourceInputs["cloudResource"] = args ? args.cloudResource : undefined;
-            resourceInputs["cloudSpanner"] = args ? args.cloudSpanner : undefined;
-            resourceInputs["cloudSql"] = args ? args.cloudSql : undefined;
-            resourceInputs["connectionId"] = args ? args.connectionId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["friendlyName"] = args ? args.friendlyName : undefined;
-            resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["spark"] = args ? args.spark : undefined;
+            resourceInputs["aws"] = args?.aws;
+            resourceInputs["azure"] = args?.azure;
+            resourceInputs["cloudResource"] = args?.cloudResource;
+            resourceInputs["cloudSpanner"] = args?.cloudSpanner;
+            resourceInputs["cloudSql"] = args?.cloudSql;
+            resourceInputs["connectionId"] = args?.connectionId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["friendlyName"] = args?.friendlyName;
+            resourceInputs["kmsKeyName"] = args?.kmsKeyName;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["spark"] = args?.spark;
             resourceInputs["hasCredential"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         }

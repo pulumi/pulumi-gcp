@@ -140,26 +140,26 @@ export class CertificateIssuanceConfig extends pulumi.CustomResource {
      * The CA that issues the workload certificate. It includes the CA address, type, authentication to CA service, etc.
      * Structure is documented below.
      */
-    public readonly certificateAuthorityConfig!: pulumi.Output<outputs.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfig>;
+    declare public readonly certificateAuthorityConfig: pulumi.Output<outputs.certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfig>;
     /**
      * The creation timestamp of a CertificateIssuanceConfig. Timestamp is in RFC3339 UTC "Zulu" format,
      * accurate to nanoseconds with up to nine fractional digits.
      * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * One or more paragraphs of text description of a CertificateIssuanceConfig.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Key algorithm to use when generating the private key.
      * Possible values are: `RSA_2048`, `ECDSA_P256`.
      */
-    public readonly keyAlgorithm!: pulumi.Output<string>;
+    declare public readonly keyAlgorithm: pulumi.Output<string>;
     /**
      * 'Set of label tags associated with the CertificateIssuanceConfig resource.
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "count": "3" }.
@@ -167,44 +167,44 @@ export class CertificateIssuanceConfig extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Lifetime of issued certificates. A duration in seconds with up to nine fractional digits, ending with 's'.
      * Example: "1814400s". Valid values are from 21 days (1814400s) to 30 days (2592000s)
      */
-    public readonly lifetime!: pulumi.Output<string>;
+    declare public readonly lifetime: pulumi.Output<string>;
     /**
      * The Certificate Manager location. If not specified, "global" is used.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * A user-defined name of the certificate issuance config.
      * CertificateIssuanceConfig names must be unique globally.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * It specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate.
      * Must be a number between 1-99, inclusive.
      * You must set the rotation window percentage in relation to the certificate lifetime so that certificate renewal occurs at least 7 days after
      * the certificate has been issued and at least 7 days before it expires.
      */
-    public readonly rotationWindowPercentage!: pulumi.Output<number>;
+    declare public readonly rotationWindowPercentage: pulumi.Output<number>;
     /**
      * The last update timestamp of a CertificateIssuanceConfig. Timestamp is in RFC3339 UTC "Zulu" format,
      * accurate to nanoseconds with up to nine fractional digits.
      * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a CertificateIssuanceConfig resource with the given unique name, arguments, and options.
@@ -219,42 +219,42 @@ export class CertificateIssuanceConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CertificateIssuanceConfigState | undefined;
-            resourceInputs["certificateAuthorityConfig"] = state ? state.certificateAuthorityConfig : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["keyAlgorithm"] = state ? state.keyAlgorithm : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["lifetime"] = state ? state.lifetime : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["rotationWindowPercentage"] = state ? state.rotationWindowPercentage : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["certificateAuthorityConfig"] = state?.certificateAuthorityConfig;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["keyAlgorithm"] = state?.keyAlgorithm;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["lifetime"] = state?.lifetime;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["rotationWindowPercentage"] = state?.rotationWindowPercentage;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as CertificateIssuanceConfigArgs | undefined;
-            if ((!args || args.certificateAuthorityConfig === undefined) && !opts.urn) {
+            if (args?.certificateAuthorityConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'certificateAuthorityConfig'");
             }
-            if ((!args || args.keyAlgorithm === undefined) && !opts.urn) {
+            if (args?.keyAlgorithm === undefined && !opts.urn) {
                 throw new Error("Missing required property 'keyAlgorithm'");
             }
-            if ((!args || args.lifetime === undefined) && !opts.urn) {
+            if (args?.lifetime === undefined && !opts.urn) {
                 throw new Error("Missing required property 'lifetime'");
             }
-            if ((!args || args.rotationWindowPercentage === undefined) && !opts.urn) {
+            if (args?.rotationWindowPercentage === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rotationWindowPercentage'");
             }
-            resourceInputs["certificateAuthorityConfig"] = args ? args.certificateAuthorityConfig : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["keyAlgorithm"] = args ? args.keyAlgorithm : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["lifetime"] = args ? args.lifetime : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["rotationWindowPercentage"] = args ? args.rotationWindowPercentage : undefined;
+            resourceInputs["certificateAuthorityConfig"] = args?.certificateAuthorityConfig;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["keyAlgorithm"] = args?.keyAlgorithm;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["lifetime"] = args?.lifetime;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["rotationWindowPercentage"] = args?.rotationWindowPercentage;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;

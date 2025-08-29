@@ -129,13 +129,13 @@ export class NodePool extends pulumi.CustomResource {
      * Configuration required by cluster autoscaler to adjust
      * the size of the node pool to the current cluster usage. Structure is documented below.
      */
-    public readonly autoscaling!: pulumi.Output<outputs.container.NodePoolAutoscaling | undefined>;
+    declare public readonly autoscaling: pulumi.Output<outputs.container.NodePoolAutoscaling | undefined>;
     /**
      * The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
      *
      * - - -
      */
-    public readonly cluster!: pulumi.Output<string>;
+    declare public readonly cluster: pulumi.Output<string>;
     /**
      * The initial number of nodes for the pool. In
      * regional or multi-zonal clusters, this is the number of nodes per zone. Changing
@@ -145,26 +145,26 @@ export class NodePool extends pulumi.CustomResource {
      * need this value, don't set it.  If you do need it, you can use a lifecycle block to
      * ignore subsqeuent changes to this field.
      */
-    public readonly initialNodeCount!: pulumi.Output<number>;
+    declare public readonly initialNodeCount: pulumi.Output<number>;
     /**
      * The resource URLs of the managed instance groups associated with this node pool.
      */
-    public /*out*/ readonly instanceGroupUrls!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly instanceGroupUrls: pulumi.Output<string[]>;
     /**
      * The location (region or zone) of the cluster.
      *
      * - - -
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * List of instance group URLs which have been assigned to this node pool.
      */
-    public /*out*/ readonly managedInstanceGroupUrls!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly managedInstanceGroupUrls: pulumi.Output<string[]>;
     /**
      * Node management configuration, wherein auto-repair and
      * auto-upgrade is configured. Structure is documented below.
      */
-    public readonly management!: pulumi.Output<outputs.container.NodePoolManagement>;
+    declare public readonly management: pulumi.Output<outputs.container.NodePoolManagement>;
     /**
      * The maximum number of pods per node in this node pool.
      * Note that this does not work on node pools which are "route-based" - that is, node
@@ -172,33 +172,33 @@ export class NodePool extends pulumi.CustomResource {
      * See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
      * for more information.
      */
-    public readonly maxPodsPerNode!: pulumi.Output<number>;
+    declare public readonly maxPodsPerNode: pulumi.Output<number>;
     /**
      * The name of the node pool. If left blank, the provider will
      * auto-generate a unique name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Creates a unique name for the node pool beginning
      * with the specified prefix. Conflicts with `name`.
      */
-    public readonly namePrefix!: pulumi.Output<string>;
+    declare public readonly namePrefix: pulumi.Output<string>;
     /**
      * The network configuration of the pool. Such as
      * configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
      * documented below
      */
-    public readonly networkConfig!: pulumi.Output<outputs.container.NodePoolNetworkConfig>;
+    declare public readonly networkConfig: pulumi.Output<outputs.container.NodePoolNetworkConfig>;
     /**
      * Parameters used in creating the node pool. See
      * gcp.container.Cluster for schema.
      */
-    public readonly nodeConfig!: pulumi.Output<outputs.container.NodePoolNodeConfig>;
+    declare public readonly nodeConfig: pulumi.Output<outputs.container.NodePoolNodeConfig>;
     /**
      * The number of nodes per instance group. This field can be used to
      * update the number of nodes per instance group but should not be used alongside `autoscaling`.
      */
-    public readonly nodeCount!: pulumi.Output<number>;
+    declare public readonly nodeCount: pulumi.Output<number>;
     /**
      * The list of zones in which the node pool's nodes should be located. Nodes must
      * be in the region of their regional cluster or in the same region as their
@@ -209,30 +209,30 @@ export class NodePool extends pulumi.CustomResource {
      * upon being unset. You must manually reconcile the list of zones with your
      * cluster.
      */
-    public readonly nodeLocations!: pulumi.Output<string[]>;
-    public /*out*/ readonly operation!: pulumi.Output<string>;
+    declare public readonly nodeLocations: pulumi.Output<string[]>;
+    declare public /*out*/ readonly operation: pulumi.Output<string>;
     /**
      * Specifies a custom placement policy for the
      * nodes.
      */
-    public readonly placementPolicy!: pulumi.Output<outputs.container.NodePoolPlacementPolicy | undefined>;
+    declare public readonly placementPolicy: pulumi.Output<outputs.container.NodePoolPlacementPolicy | undefined>;
     /**
      * The ID of the project in which to create the node pool. If blank,
      * the provider-configured project will be used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Specifies node pool-level settings of queued provisioning.
      * Structure is documented below.
      *
      * <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
      */
-    public readonly queuedProvisioning!: pulumi.Output<outputs.container.NodePoolQueuedProvisioning | undefined>;
+    declare public readonly queuedProvisioning: pulumi.Output<outputs.container.NodePoolQueuedProvisioning | undefined>;
     /**
      * Specify node upgrade settings to change how GKE upgrades nodes.
      * The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
      */
-    public readonly upgradeSettings!: pulumi.Output<outputs.container.NodePoolUpgradeSettings>;
+    declare public readonly upgradeSettings: pulumi.Output<outputs.container.NodePoolUpgradeSettings>;
     /**
      * The Kubernetes version for the nodes in this pool. Note that if this field
      * and `autoUpgrade` are both specified, they will fight each other for what the node version should
@@ -241,7 +241,7 @@ export class NodePool extends pulumi.CustomResource {
      * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
      * `versionPrefix` field to approximate fuzzy versions in a provider-compatible way.
      */
-    public readonly version!: pulumi.Output<string>;
+    declare public readonly version: pulumi.Output<string>;
 
     /**
      * Create a NodePool resource with the given unique name, arguments, and options.
@@ -256,48 +256,48 @@ export class NodePool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NodePoolState | undefined;
-            resourceInputs["autoscaling"] = state ? state.autoscaling : undefined;
-            resourceInputs["cluster"] = state ? state.cluster : undefined;
-            resourceInputs["initialNodeCount"] = state ? state.initialNodeCount : undefined;
-            resourceInputs["instanceGroupUrls"] = state ? state.instanceGroupUrls : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["managedInstanceGroupUrls"] = state ? state.managedInstanceGroupUrls : undefined;
-            resourceInputs["management"] = state ? state.management : undefined;
-            resourceInputs["maxPodsPerNode"] = state ? state.maxPodsPerNode : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namePrefix"] = state ? state.namePrefix : undefined;
-            resourceInputs["networkConfig"] = state ? state.networkConfig : undefined;
-            resourceInputs["nodeConfig"] = state ? state.nodeConfig : undefined;
-            resourceInputs["nodeCount"] = state ? state.nodeCount : undefined;
-            resourceInputs["nodeLocations"] = state ? state.nodeLocations : undefined;
-            resourceInputs["operation"] = state ? state.operation : undefined;
-            resourceInputs["placementPolicy"] = state ? state.placementPolicy : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["queuedProvisioning"] = state ? state.queuedProvisioning : undefined;
-            resourceInputs["upgradeSettings"] = state ? state.upgradeSettings : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["autoscaling"] = state?.autoscaling;
+            resourceInputs["cluster"] = state?.cluster;
+            resourceInputs["initialNodeCount"] = state?.initialNodeCount;
+            resourceInputs["instanceGroupUrls"] = state?.instanceGroupUrls;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["managedInstanceGroupUrls"] = state?.managedInstanceGroupUrls;
+            resourceInputs["management"] = state?.management;
+            resourceInputs["maxPodsPerNode"] = state?.maxPodsPerNode;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namePrefix"] = state?.namePrefix;
+            resourceInputs["networkConfig"] = state?.networkConfig;
+            resourceInputs["nodeConfig"] = state?.nodeConfig;
+            resourceInputs["nodeCount"] = state?.nodeCount;
+            resourceInputs["nodeLocations"] = state?.nodeLocations;
+            resourceInputs["operation"] = state?.operation;
+            resourceInputs["placementPolicy"] = state?.placementPolicy;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["queuedProvisioning"] = state?.queuedProvisioning;
+            resourceInputs["upgradeSettings"] = state?.upgradeSettings;
+            resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as NodePoolArgs | undefined;
-            if ((!args || args.cluster === undefined) && !opts.urn) {
+            if (args?.cluster === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cluster'");
             }
-            resourceInputs["autoscaling"] = args ? args.autoscaling : undefined;
-            resourceInputs["cluster"] = args ? args.cluster : undefined;
-            resourceInputs["initialNodeCount"] = args ? args.initialNodeCount : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["management"] = args ? args.management : undefined;
-            resourceInputs["maxPodsPerNode"] = args ? args.maxPodsPerNode : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["namePrefix"] = args ? args.namePrefix : undefined;
-            resourceInputs["networkConfig"] = args ? args.networkConfig : undefined;
-            resourceInputs["nodeConfig"] = args ? args.nodeConfig : undefined;
-            resourceInputs["nodeCount"] = args ? args.nodeCount : undefined;
-            resourceInputs["nodeLocations"] = args ? args.nodeLocations : undefined;
-            resourceInputs["placementPolicy"] = args ? args.placementPolicy : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["queuedProvisioning"] = args ? args.queuedProvisioning : undefined;
-            resourceInputs["upgradeSettings"] = args ? args.upgradeSettings : undefined;
-            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["autoscaling"] = args?.autoscaling;
+            resourceInputs["cluster"] = args?.cluster;
+            resourceInputs["initialNodeCount"] = args?.initialNodeCount;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["management"] = args?.management;
+            resourceInputs["maxPodsPerNode"] = args?.maxPodsPerNode;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["namePrefix"] = args?.namePrefix;
+            resourceInputs["networkConfig"] = args?.networkConfig;
+            resourceInputs["nodeConfig"] = args?.nodeConfig;
+            resourceInputs["nodeCount"] = args?.nodeCount;
+            resourceInputs["nodeLocations"] = args?.nodeLocations;
+            resourceInputs["placementPolicy"] = args?.placementPolicy;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["queuedProvisioning"] = args?.queuedProvisioning;
+            resourceInputs["upgradeSettings"] = args?.upgradeSettings;
+            resourceInputs["version"] = args?.version;
             resourceInputs["instanceGroupUrls"] = undefined /*out*/;
             resourceInputs["managedInstanceGroupUrls"] = undefined /*out*/;
             resourceInputs["operation"] = undefined /*out*/;

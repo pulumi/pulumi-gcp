@@ -336,20 +336,20 @@ export class PreventionInspectTemplate extends pulumi.CustomResource {
     /**
      * A description of the inspect template.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * User set display name of the inspect template.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * The core content of the template.
      * Structure is documented below.
      */
-    public readonly inspectConfig!: pulumi.Output<outputs.dataloss.PreventionInspectTemplateInspectConfig | undefined>;
+    declare public readonly inspectConfig: pulumi.Output<outputs.dataloss.PreventionInspectTemplateInspectConfig | undefined>;
     /**
      * The resource name of the inspect template. Set by the server.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The parent of the inspect template in any of the following formats:
      * * `projects/{{project}}`
@@ -357,13 +357,13 @@ export class PreventionInspectTemplate extends pulumi.CustomResource {
      * * `organizations/{{organization_id}}`
      * * `organizations/{{organization_id}}/locations/{{location}}`
      */
-    public readonly parent!: pulumi.Output<string>;
+    declare public readonly parent: pulumi.Output<string>;
     /**
      * The template id can contain uppercase and lowercase letters, numbers, and hyphens;
      * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
      * 100 characters. Can be empty to allow the system to generate one.
      */
-    public readonly templateId!: pulumi.Output<string>;
+    declare public readonly templateId: pulumi.Output<string>;
 
     /**
      * Create a PreventionInspectTemplate resource with the given unique name, arguments, and options.
@@ -378,22 +378,22 @@ export class PreventionInspectTemplate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PreventionInspectTemplateState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["inspectConfig"] = state ? state.inspectConfig : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["templateId"] = state ? state.templateId : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["inspectConfig"] = state?.inspectConfig;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["templateId"] = state?.templateId;
         } else {
             const args = argsOrState as PreventionInspectTemplateArgs | undefined;
-            if ((!args || args.parent === undefined) && !opts.urn) {
+            if (args?.parent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["inspectConfig"] = args ? args.inspectConfig : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
-            resourceInputs["templateId"] = args ? args.templateId : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["inspectConfig"] = args?.inspectConfig;
+            resourceInputs["parent"] = args?.parent;
+            resourceInputs["templateId"] = args?.templateId;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

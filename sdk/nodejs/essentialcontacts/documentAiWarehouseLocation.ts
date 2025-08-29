@@ -68,17 +68,17 @@ export class DocumentAiWarehouseLocation extends pulumi.CustomResource {
      * The access control mode for accessing the customer data.
      * Possible values are: `ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_GCI`, `ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_BYOID`, `ACL_MODE_UNIVERSAL_ACCESS`.
      */
-    public readonly accessControlMode!: pulumi.Output<string>;
+    declare public readonly accessControlMode: pulumi.Output<string>;
     /**
      * The type of database used to store customer data.
      * Possible values are: `DB_INFRA_SPANNER`, `DB_CLOUD_SQL_POSTGRES`.
      */
-    public readonly databaseType!: pulumi.Output<string>;
+    declare public readonly databaseType: pulumi.Output<string>;
     /**
      * The default role for the person who create a document.
      * Possible values are: `DOCUMENT_ADMIN`, `DOCUMENT_EDITOR`, `DOCUMENT_VIEWER`.
      */
-    public readonly documentCreatorDefaultRole!: pulumi.Output<string | undefined>;
+    declare public readonly documentCreatorDefaultRole: pulumi.Output<string | undefined>;
     /**
      * The KMS key used for CMEK encryption. It is required that
      * the kms key is in the same region as the endpoint. The
@@ -86,15 +86,15 @@ export class DocumentAiWarehouseLocation extends pulumi.CustomResource {
      * encryption is available. If the kmsKey is left empty, no
      * encryption will be enforced.
      */
-    public readonly kmsKey!: pulumi.Output<string | undefined>;
+    declare public readonly kmsKey: pulumi.Output<string | undefined>;
     /**
      * The location in which the instance is to be provisioned. It takes the form projects/{projectNumber}/locations/{location}.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The unique identifier of the project.
      */
-    public readonly projectNumber!: pulumi.Output<string>;
+    declare public readonly projectNumber: pulumi.Output<string>;
 
     /**
      * Create a DocumentAiWarehouseLocation resource with the given unique name, arguments, and options.
@@ -109,32 +109,32 @@ export class DocumentAiWarehouseLocation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DocumentAiWarehouseLocationState | undefined;
-            resourceInputs["accessControlMode"] = state ? state.accessControlMode : undefined;
-            resourceInputs["databaseType"] = state ? state.databaseType : undefined;
-            resourceInputs["documentCreatorDefaultRole"] = state ? state.documentCreatorDefaultRole : undefined;
-            resourceInputs["kmsKey"] = state ? state.kmsKey : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["projectNumber"] = state ? state.projectNumber : undefined;
+            resourceInputs["accessControlMode"] = state?.accessControlMode;
+            resourceInputs["databaseType"] = state?.databaseType;
+            resourceInputs["documentCreatorDefaultRole"] = state?.documentCreatorDefaultRole;
+            resourceInputs["kmsKey"] = state?.kmsKey;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["projectNumber"] = state?.projectNumber;
         } else {
             const args = argsOrState as DocumentAiWarehouseLocationArgs | undefined;
-            if ((!args || args.accessControlMode === undefined) && !opts.urn) {
+            if (args?.accessControlMode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accessControlMode'");
             }
-            if ((!args || args.databaseType === undefined) && !opts.urn) {
+            if (args?.databaseType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'databaseType'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectNumber === undefined) && !opts.urn) {
+            if (args?.projectNumber === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectNumber'");
             }
-            resourceInputs["accessControlMode"] = args ? args.accessControlMode : undefined;
-            resourceInputs["databaseType"] = args ? args.databaseType : undefined;
-            resourceInputs["documentCreatorDefaultRole"] = args ? args.documentCreatorDefaultRole : undefined;
-            resourceInputs["kmsKey"] = args ? args.kmsKey : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["projectNumber"] = args ? args.projectNumber : undefined;
+            resourceInputs["accessControlMode"] = args?.accessControlMode;
+            resourceInputs["databaseType"] = args?.databaseType;
+            resourceInputs["documentCreatorDefaultRole"] = args?.documentCreatorDefaultRole;
+            resourceInputs["kmsKey"] = args?.kmsKey;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["projectNumber"] = args?.projectNumber;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DocumentAiWarehouseLocation.__pulumiType, name, resourceInputs, opts);

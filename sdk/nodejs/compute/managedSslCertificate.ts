@@ -143,25 +143,25 @@ export class ManagedSslCertificate extends pulumi.CustomResource {
     /**
      * The unique identifier for the resource.
      */
-    public /*out*/ readonly certificateId!: pulumi.Output<number>;
+    declare public /*out*/ readonly certificateId: pulumi.Output<number>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * An optional description of this resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Expire time of the certificate in RFC3339 text format.
      */
-    public /*out*/ readonly expireTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly expireTime: pulumi.Output<string>;
     /**
      * Properties relevant to a managed certificate.  These will be used if the
      * certificate is managed (as indicated by a value of `MANAGED` in `type`).
      * Structure is documented below.
      */
-    public readonly managed!: pulumi.Output<outputs.compute.ManagedSslCertificateManaged | undefined>;
+    declare public readonly managed: pulumi.Output<outputs.compute.ManagedSslCertificateManaged | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -172,27 +172,27 @@ export class ManagedSslCertificate extends pulumi.CustomResource {
      * character, which cannot be a dash.
      * These are in the same namespace as the managed SSL certificates.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * Domains associated with the certificate via Subject Alternative Name.
      */
-    public /*out*/ readonly subjectAlternativeNames!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly subjectAlternativeNames: pulumi.Output<string[]>;
     /**
      * Enum field whose value is always `MANAGED` - used to signal to the API
      * which type this is.
      * Default value is `MANAGED`.
      * Possible values are: `MANAGED`.
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string | undefined>;
 
     /**
      * Create a ManagedSslCertificate resource with the given unique name, arguments, and options.
@@ -207,23 +207,23 @@ export class ManagedSslCertificate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ManagedSslCertificateState | undefined;
-            resourceInputs["certificateId"] = state ? state.certificateId : undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["expireTime"] = state ? state.expireTime : undefined;
-            resourceInputs["managed"] = state ? state.managed : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["subjectAlternativeNames"] = state ? state.subjectAlternativeNames : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["certificateId"] = state?.certificateId;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["expireTime"] = state?.expireTime;
+            resourceInputs["managed"] = state?.managed;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["subjectAlternativeNames"] = state?.subjectAlternativeNames;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as ManagedSslCertificateArgs | undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["managed"] = args ? args.managed : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["managed"] = args?.managed;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["type"] = args?.type;
             resourceInputs["certificateId"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["expireTime"] = undefined /*out*/;

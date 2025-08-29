@@ -92,65 +92,65 @@ export class BackupPolicy extends pulumi.CustomResource {
     /**
      * The total number of volumes assigned by this backup policy.
      */
-    public /*out*/ readonly assignedVolumeCount!: pulumi.Output<number>;
+    declare public /*out*/ readonly assignedVolumeCount: pulumi.Output<number>;
     /**
      * Create time of the backup policy. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Number of daily backups to keep. Note that the minimum daily backup limit is 2.
      */
-    public readonly dailyBackupLimit!: pulumi.Output<number>;
+    declare public readonly dailyBackupLimit: pulumi.Output<number>;
     /**
      * An optional description of this resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * If enabled, make backups automatically according to the schedules.
      * This will be applied to all volumes that have this policy attached and enforced on volume level.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Name of the region for the policy to apply to.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Number of monthly backups to keep. Note that the sum of daily, weekly and monthly backups should be greater than 1.
      */
-    public readonly monthlyBackupLimit!: pulumi.Output<number>;
+    declare public readonly monthlyBackupLimit: pulumi.Output<number>;
     /**
      * The name of the backup policy. Needs to be unique per location.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The state of the backup policy.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Number of weekly backups to keep. Note that the sum of daily, weekly and monthly backups should be greater than 1.
      */
-    public readonly weeklyBackupLimit!: pulumi.Output<number>;
+    declare public readonly weeklyBackupLimit: pulumi.Output<number>;
 
     /**
      * Create a BackupPolicy resource with the given unique name, arguments, and options.
@@ -165,43 +165,43 @@ export class BackupPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BackupPolicyState | undefined;
-            resourceInputs["assignedVolumeCount"] = state ? state.assignedVolumeCount : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dailyBackupLimit"] = state ? state.dailyBackupLimit : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["monthlyBackupLimit"] = state ? state.monthlyBackupLimit : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["weeklyBackupLimit"] = state ? state.weeklyBackupLimit : undefined;
+            resourceInputs["assignedVolumeCount"] = state?.assignedVolumeCount;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dailyBackupLimit"] = state?.dailyBackupLimit;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["monthlyBackupLimit"] = state?.monthlyBackupLimit;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["weeklyBackupLimit"] = state?.weeklyBackupLimit;
         } else {
             const args = argsOrState as BackupPolicyArgs | undefined;
-            if ((!args || args.dailyBackupLimit === undefined) && !opts.urn) {
+            if (args?.dailyBackupLimit === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dailyBackupLimit'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.monthlyBackupLimit === undefined) && !opts.urn) {
+            if (args?.monthlyBackupLimit === undefined && !opts.urn) {
                 throw new Error("Missing required property 'monthlyBackupLimit'");
             }
-            if ((!args || args.weeklyBackupLimit === undefined) && !opts.urn) {
+            if (args?.weeklyBackupLimit === undefined && !opts.urn) {
                 throw new Error("Missing required property 'weeklyBackupLimit'");
             }
-            resourceInputs["dailyBackupLimit"] = args ? args.dailyBackupLimit : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["monthlyBackupLimit"] = args ? args.monthlyBackupLimit : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["weeklyBackupLimit"] = args ? args.weeklyBackupLimit : undefined;
+            resourceInputs["dailyBackupLimit"] = args?.dailyBackupLimit;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["monthlyBackupLimit"] = args?.monthlyBackupLimit;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["weeklyBackupLimit"] = args?.weeklyBackupLimit;
             resourceInputs["assignedVolumeCount"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;

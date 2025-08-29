@@ -72,78 +72,78 @@ export class GitRepositoryLink extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Required. Git Clone URI.
      */
-    public readonly cloneUri!: pulumi.Output<string>;
+    declare public readonly cloneUri: pulumi.Output<string>;
     /**
      * Output only. [Output only] Create timestamp
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Output only. [Output only] Delete timestamp
      */
-    public /*out*/ readonly deleteTime!: pulumi.Output<string>;
-    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly deleteTime: pulumi.Output<string>;
+    declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Optional. This checksum is computed by the server based on the value of other
      * fields, and may be sent on update and delete requests to ensure the
      * client has an up-to-date value before proceeding.
      */
-    public readonly etag!: pulumi.Output<string | undefined>;
+    declare public readonly etag: pulumi.Output<string | undefined>;
     /**
      * Required. The ID to use for the repository, which will become the final component of
      * the repository's resource name. This ID should be unique in the connection.
      * Allows alphanumeric characters and any of -._~%!$&'()*+,;=@.
      */
-    public readonly gitRepositoryLinkId!: pulumi.Output<string>;
+    declare public readonly gitRepositoryLinkId: pulumi.Output<string>;
     /**
      * Optional. Labels as key value pairs
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Identifier. Resource name of the repository, in the format
      * `projects/*&#47;locations/*&#47;connections/*&#47;gitRepositoryLinks/*`.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
      */
-    public readonly parentConnection!: pulumi.Output<string>;
+    declare public readonly parentConnection: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Output only. Set to true when the connection is being set up or updated in the
      * background.
      */
-    public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly reconciling: pulumi.Output<boolean>;
     /**
      * Output only. A system-assigned unique identifier for a the GitRepositoryLink.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * Output only. [Output only] Update timestamp
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a GitRepositoryLink resource with the given unique name, arguments, and options.
@@ -158,45 +158,45 @@ export class GitRepositoryLink extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GitRepositoryLinkState | undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["cloneUri"] = state ? state.cloneUri : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["deleteTime"] = state ? state.deleteTime : undefined;
-            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["gitRepositoryLinkId"] = state ? state.gitRepositoryLinkId : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parentConnection"] = state ? state.parentConnection : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["reconciling"] = state ? state.reconciling : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["cloneUri"] = state?.cloneUri;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deleteTime"] = state?.deleteTime;
+            resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["gitRepositoryLinkId"] = state?.gitRepositoryLinkId;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parentConnection"] = state?.parentConnection;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["reconciling"] = state?.reconciling;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as GitRepositoryLinkArgs | undefined;
-            if ((!args || args.cloneUri === undefined) && !opts.urn) {
+            if (args?.cloneUri === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cloneUri'");
             }
-            if ((!args || args.gitRepositoryLinkId === undefined) && !opts.urn) {
+            if (args?.gitRepositoryLinkId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'gitRepositoryLinkId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.parentConnection === undefined) && !opts.urn) {
+            if (args?.parentConnection === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parentConnection'");
             }
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["cloneUri"] = args ? args.cloneUri : undefined;
-            resourceInputs["etag"] = args ? args.etag : undefined;
-            resourceInputs["gitRepositoryLinkId"] = args ? args.gitRepositoryLinkId : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["parentConnection"] = args ? args.parentConnection : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["cloneUri"] = args?.cloneUri;
+            resourceInputs["etag"] = args?.etag;
+            resourceInputs["gitRepositoryLinkId"] = args?.gitRepositoryLinkId;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["parentConnection"] = args?.parentConnection;
+            resourceInputs["project"] = args?.project;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;

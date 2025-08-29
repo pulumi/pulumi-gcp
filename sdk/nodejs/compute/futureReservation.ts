@@ -132,38 +132,38 @@ export class FutureReservation extends pulumi.CustomResource {
      * Aggregate reservation details for the future reservation.
      * Structure is documented below.
      */
-    public readonly aggregateReservation!: pulumi.Output<outputs.compute.FutureReservationAggregateReservation | undefined>;
+    declare public readonly aggregateReservation: pulumi.Output<outputs.compute.FutureReservationAggregateReservation | undefined>;
     /**
      * Future timestamp when the FR auto-created reservations will be deleted by Compute Engine.
      */
-    public readonly autoCreatedReservationsDeleteTime!: pulumi.Output<string | undefined>;
+    declare public readonly autoCreatedReservationsDeleteTime: pulumi.Output<string | undefined>;
     /**
      * Specifies the duration of auto-created reservations. It represents relative time to future reservation startTime when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
      * Structure is documented below.
      */
-    public readonly autoCreatedReservationsDuration!: pulumi.Output<outputs.compute.FutureReservationAutoCreatedReservationsDuration | undefined>;
+    declare public readonly autoCreatedReservationsDuration: pulumi.Output<outputs.compute.FutureReservationAutoCreatedReservationsDuration | undefined>;
     /**
      * Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created reservations will be deleted at Future Reservation's end time (default) or at user's defined timestamp if any of the [autoCreatedReservationsDeleteTime, autoCreatedReservationsDuration] values is specified. For keeping auto-created reservation indefinitely, this value should be set to false.
      */
-    public readonly autoDeleteAutoCreatedReservations!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoDeleteAutoCreatedReservations: pulumi.Output<boolean | undefined>;
     /**
      * If not present, then FR will not deliver a new commitment or update an existing commitment.
      * Structure is documented below.
      */
-    public readonly commitmentInfo!: pulumi.Output<outputs.compute.FutureReservationCommitmentInfo | undefined>;
+    declare public readonly commitmentInfo: pulumi.Output<outputs.compute.FutureReservationCommitmentInfo | undefined>;
     /**
      * The creation timestamp for this future reservation in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * Type of the deployment requested as part of future reservation.
      * Possible values are: `DENSE`, `FLEXIBLE`.
      */
-    public readonly deploymentType!: pulumi.Output<string | undefined>;
+    declare public readonly deploymentType: pulumi.Output<string | undefined>;
     /**
      * An optional description of this resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -173,71 +173,71 @@ export class FutureReservation extends pulumi.CustomResource {
      * characters must be a dash, lowercase letter, or digit, except the las
      * character, which cannot be a dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
      */
-    public readonly namePrefix!: pulumi.Output<string | undefined>;
+    declare public readonly namePrefix: pulumi.Output<string | undefined>;
     /**
      * Planning state before being submitted for evaluation
      * Possible values are: `DRAFT`, `SUBMITTED`.
      */
-    public readonly planningStatus!: pulumi.Output<string>;
+    declare public readonly planningStatus: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The reservation mode which determines reservation-termination behavior and expected pricing.
      * Possible values are: `CALENDAR`, `DEFAULT`.
      */
-    public readonly reservationMode!: pulumi.Output<string | undefined>;
+    declare public readonly reservationMode: pulumi.Output<string | undefined>;
     /**
      * Name of reservations where the capacity is provisioned at the time of delivery of future reservations. If the reservation with the given name does not exist already, it is created automatically at the time of Approval with INACTIVE state till specified start-time. Either provide the reservationName or a namePrefix.
      */
-    public readonly reservationName!: pulumi.Output<string | undefined>;
+    declare public readonly reservationName: pulumi.Output<string | undefined>;
     /**
      * Maintenance information for this reservation
      * Possible values are: `GROUPED`, `INDEPENDENT`.
      */
-    public readonly schedulingType!: pulumi.Output<string | undefined>;
+    declare public readonly schedulingType: pulumi.Output<string | undefined>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * Server-defined URL for this resource with the resource id.
      */
-    public /*out*/ readonly selfLinkWithId!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLinkWithId: pulumi.Output<string>;
     /**
      * Settings for sharing the future reservation
      * Structure is documented below.
      */
-    public readonly shareSettings!: pulumi.Output<outputs.compute.FutureReservationShareSettings | undefined>;
+    declare public readonly shareSettings: pulumi.Output<outputs.compute.FutureReservationShareSettings | undefined>;
     /**
      * Indicates whether the auto-created reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from the delivered reservation.
      */
-    public readonly specificReservationRequired!: pulumi.Output<boolean | undefined>;
+    declare public readonly specificReservationRequired: pulumi.Output<boolean | undefined>;
     /**
      * Future Reservation configuration to indicate instance properties and total count.
      * Structure is documented below.
      */
-    public readonly specificSkuProperties!: pulumi.Output<outputs.compute.FutureReservationSpecificSkuProperties | undefined>;
+    declare public readonly specificSkuProperties: pulumi.Output<outputs.compute.FutureReservationSpecificSkuProperties | undefined>;
     /**
      * [Output only] Status of the Future Reservation
      * Structure is documented below.
      */
-    public /*out*/ readonly statuses!: pulumi.Output<outputs.compute.FutureReservationStatus[]>;
+    declare public /*out*/ readonly statuses: pulumi.Output<outputs.compute.FutureReservationStatus[]>;
     /**
      * Time window for this Future Reservation.
      * Structure is documented below.
      */
-    public readonly timeWindow!: pulumi.Output<outputs.compute.FutureReservationTimeWindow>;
+    declare public readonly timeWindow: pulumi.Output<outputs.compute.FutureReservationTimeWindow>;
     /**
      * URL of the Zone where this future reservation resides.
      */
-    public /*out*/ readonly zone!: pulumi.Output<string>;
+    declare public /*out*/ readonly zone: pulumi.Output<string>;
 
     /**
      * Create a FutureReservation resource with the given unique name, arguments, and options.
@@ -252,52 +252,52 @@ export class FutureReservation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FutureReservationState | undefined;
-            resourceInputs["aggregateReservation"] = state ? state.aggregateReservation : undefined;
-            resourceInputs["autoCreatedReservationsDeleteTime"] = state ? state.autoCreatedReservationsDeleteTime : undefined;
-            resourceInputs["autoCreatedReservationsDuration"] = state ? state.autoCreatedReservationsDuration : undefined;
-            resourceInputs["autoDeleteAutoCreatedReservations"] = state ? state.autoDeleteAutoCreatedReservations : undefined;
-            resourceInputs["commitmentInfo"] = state ? state.commitmentInfo : undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["deploymentType"] = state ? state.deploymentType : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namePrefix"] = state ? state.namePrefix : undefined;
-            resourceInputs["planningStatus"] = state ? state.planningStatus : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["reservationMode"] = state ? state.reservationMode : undefined;
-            resourceInputs["reservationName"] = state ? state.reservationName : undefined;
-            resourceInputs["schedulingType"] = state ? state.schedulingType : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["selfLinkWithId"] = state ? state.selfLinkWithId : undefined;
-            resourceInputs["shareSettings"] = state ? state.shareSettings : undefined;
-            resourceInputs["specificReservationRequired"] = state ? state.specificReservationRequired : undefined;
-            resourceInputs["specificSkuProperties"] = state ? state.specificSkuProperties : undefined;
-            resourceInputs["statuses"] = state ? state.statuses : undefined;
-            resourceInputs["timeWindow"] = state ? state.timeWindow : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["aggregateReservation"] = state?.aggregateReservation;
+            resourceInputs["autoCreatedReservationsDeleteTime"] = state?.autoCreatedReservationsDeleteTime;
+            resourceInputs["autoCreatedReservationsDuration"] = state?.autoCreatedReservationsDuration;
+            resourceInputs["autoDeleteAutoCreatedReservations"] = state?.autoDeleteAutoCreatedReservations;
+            resourceInputs["commitmentInfo"] = state?.commitmentInfo;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["deploymentType"] = state?.deploymentType;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namePrefix"] = state?.namePrefix;
+            resourceInputs["planningStatus"] = state?.planningStatus;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["reservationMode"] = state?.reservationMode;
+            resourceInputs["reservationName"] = state?.reservationName;
+            resourceInputs["schedulingType"] = state?.schedulingType;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["selfLinkWithId"] = state?.selfLinkWithId;
+            resourceInputs["shareSettings"] = state?.shareSettings;
+            resourceInputs["specificReservationRequired"] = state?.specificReservationRequired;
+            resourceInputs["specificSkuProperties"] = state?.specificSkuProperties;
+            resourceInputs["statuses"] = state?.statuses;
+            resourceInputs["timeWindow"] = state?.timeWindow;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as FutureReservationArgs | undefined;
-            if ((!args || args.timeWindow === undefined) && !opts.urn) {
+            if (args?.timeWindow === undefined && !opts.urn) {
                 throw new Error("Missing required property 'timeWindow'");
             }
-            resourceInputs["aggregateReservation"] = args ? args.aggregateReservation : undefined;
-            resourceInputs["autoCreatedReservationsDeleteTime"] = args ? args.autoCreatedReservationsDeleteTime : undefined;
-            resourceInputs["autoCreatedReservationsDuration"] = args ? args.autoCreatedReservationsDuration : undefined;
-            resourceInputs["autoDeleteAutoCreatedReservations"] = args ? args.autoDeleteAutoCreatedReservations : undefined;
-            resourceInputs["commitmentInfo"] = args ? args.commitmentInfo : undefined;
-            resourceInputs["deploymentType"] = args ? args.deploymentType : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["namePrefix"] = args ? args.namePrefix : undefined;
-            resourceInputs["planningStatus"] = args ? args.planningStatus : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["reservationMode"] = args ? args.reservationMode : undefined;
-            resourceInputs["reservationName"] = args ? args.reservationName : undefined;
-            resourceInputs["schedulingType"] = args ? args.schedulingType : undefined;
-            resourceInputs["shareSettings"] = args ? args.shareSettings : undefined;
-            resourceInputs["specificReservationRequired"] = args ? args.specificReservationRequired : undefined;
-            resourceInputs["specificSkuProperties"] = args ? args.specificSkuProperties : undefined;
-            resourceInputs["timeWindow"] = args ? args.timeWindow : undefined;
+            resourceInputs["aggregateReservation"] = args?.aggregateReservation;
+            resourceInputs["autoCreatedReservationsDeleteTime"] = args?.autoCreatedReservationsDeleteTime;
+            resourceInputs["autoCreatedReservationsDuration"] = args?.autoCreatedReservationsDuration;
+            resourceInputs["autoDeleteAutoCreatedReservations"] = args?.autoDeleteAutoCreatedReservations;
+            resourceInputs["commitmentInfo"] = args?.commitmentInfo;
+            resourceInputs["deploymentType"] = args?.deploymentType;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["namePrefix"] = args?.namePrefix;
+            resourceInputs["planningStatus"] = args?.planningStatus;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["reservationMode"] = args?.reservationMode;
+            resourceInputs["reservationName"] = args?.reservationName;
+            resourceInputs["schedulingType"] = args?.schedulingType;
+            resourceInputs["shareSettings"] = args?.shareSettings;
+            resourceInputs["specificReservationRequired"] = args?.specificReservationRequired;
+            resourceInputs["specificSkuProperties"] = args?.specificSkuProperties;
+            resourceInputs["timeWindow"] = args?.timeWindow;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;

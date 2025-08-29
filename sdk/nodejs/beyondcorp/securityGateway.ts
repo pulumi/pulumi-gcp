@@ -81,27 +81,27 @@ export class SecurityGateway extends pulumi.CustomResource {
     /**
      * Output only. Timestamp when the resource was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Service account used for operations that involve resources in consumer projects.
      */
-    public /*out*/ readonly delegatingServiceAccount!: pulumi.Output<string>;
+    declare public /*out*/ readonly delegatingServiceAccount: pulumi.Output<string>;
     /**
      * Optional. An arbitrary user-provided name for the SecurityGateway.
      * Cannot exceed 64 characters.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * Output only. IP addresses that will be used for establishing
      * connection to the endpoints.
      */
-    public /*out*/ readonly externalIps!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly externalIps: pulumi.Output<string[]>;
     /**
      * Optional. Map of Hubs that represents regional data path deployment with GCP region
      * as a key.
      * Structure is documented below.
      */
-    public readonly hubs!: pulumi.Output<outputs.beyondcorp.SecurityGatewayHub[] | undefined>;
+    declare public readonly hubs: pulumi.Output<outputs.beyondcorp.SecurityGatewayHub[] | undefined>;
     /**
      * (Optional, Deprecated)
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
@@ -110,23 +110,23 @@ export class SecurityGateway extends pulumi.CustomResource {
      *
      * @deprecated `location` is deprecated and will be removed in a future major release.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * Identifier. Name of the resource.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Optional. User-settable SecurityGateway resource ID.
      * * Must start with a letter.
      * * Must contain between 4-63 characters from `/a-z-/`.
      * * Must end with a number or letter.
      */
-    public readonly securityGatewayId!: pulumi.Output<string>;
+    declare public readonly securityGatewayId: pulumi.Output<string>;
     /**
      * Output only. The operational state of the SecurityGateway.
      * Possible values:
@@ -138,11 +138,11 @@ export class SecurityGateway extends pulumi.CustomResource {
      * DOWN
      * ERROR
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Output only. Timestamp when the resource was last modified.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a SecurityGateway resource with the given unique name, arguments, and options.
@@ -157,27 +157,27 @@ export class SecurityGateway extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecurityGatewayState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["delegatingServiceAccount"] = state ? state.delegatingServiceAccount : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["externalIps"] = state ? state.externalIps : undefined;
-            resourceInputs["hubs"] = state ? state.hubs : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["securityGatewayId"] = state ? state.securityGatewayId : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["delegatingServiceAccount"] = state?.delegatingServiceAccount;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["externalIps"] = state?.externalIps;
+            resourceInputs["hubs"] = state?.hubs;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["securityGatewayId"] = state?.securityGatewayId;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as SecurityGatewayArgs | undefined;
-            if ((!args || args.securityGatewayId === undefined) && !opts.urn) {
+            if (args?.securityGatewayId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'securityGatewayId'");
             }
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["hubs"] = args ? args.hubs : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["securityGatewayId"] = args ? args.securityGatewayId : undefined;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["hubs"] = args?.hubs;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["securityGatewayId"] = args?.securityGatewayId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["delegatingServiceAccount"] = undefined /*out*/;
             resourceInputs["externalIps"] = undefined /*out*/;

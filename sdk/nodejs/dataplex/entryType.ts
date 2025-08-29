@@ -135,73 +135,73 @@ export class EntryType extends pulumi.CustomResource {
     /**
      * The time when the EntryType was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Description of the EntryType.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * User friendly display name.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The entry type id of the entry type.
      */
-    public readonly entryTypeId!: pulumi.Output<string | undefined>;
+    declare public readonly entryTypeId: pulumi.Output<string | undefined>;
     /**
      * User-defined labels for the EntryType.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location where entry type will be created in.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * The relative resource name of the EntryType, of the form: projects/{project_number}/locations/{location_id}/entryTypes/{entry_type_id}
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The platform that Entries of this type belongs to.
      */
-    public readonly platform!: pulumi.Output<string | undefined>;
+    declare public readonly platform: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * AspectInfo for the entry type.
      * Structure is documented below.
      */
-    public readonly requiredAspects!: pulumi.Output<outputs.dataplex.EntryTypeRequiredAspect[] | undefined>;
+    declare public readonly requiredAspects: pulumi.Output<outputs.dataplex.EntryTypeRequiredAspect[] | undefined>;
     /**
      * The system that Entries of this type belongs to.
      */
-    public readonly system!: pulumi.Output<string | undefined>;
+    declare public readonly system: pulumi.Output<string | undefined>;
     /**
      * Indicates the class this Entry Type belongs to, for example, TABLE, DATABASE, MODEL.
      */
-    public readonly typeAliases!: pulumi.Output<string[] | undefined>;
+    declare public readonly typeAliases: pulumi.Output<string[] | undefined>;
     /**
      * System generated globally unique ID for the EntryType. This ID will be different if the EntryType is deleted and re-created with the same name.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * The time when the EntryType was last updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a EntryType resource with the given unique name, arguments, and options.
@@ -216,34 +216,34 @@ export class EntryType extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EntryTypeState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["entryTypeId"] = state ? state.entryTypeId : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["platform"] = state ? state.platform : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["requiredAspects"] = state ? state.requiredAspects : undefined;
-            resourceInputs["system"] = state ? state.system : undefined;
-            resourceInputs["typeAliases"] = state ? state.typeAliases : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["entryTypeId"] = state?.entryTypeId;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["platform"] = state?.platform;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["requiredAspects"] = state?.requiredAspects;
+            resourceInputs["system"] = state?.system;
+            resourceInputs["typeAliases"] = state?.typeAliases;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as EntryTypeArgs | undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["entryTypeId"] = args ? args.entryTypeId : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["platform"] = args ? args.platform : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["requiredAspects"] = args ? args.requiredAspects : undefined;
-            resourceInputs["system"] = args ? args.system : undefined;
-            resourceInputs["typeAliases"] = args ? args.typeAliases : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["entryTypeId"] = args?.entryTypeId;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["platform"] = args?.platform;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["requiredAspects"] = args?.requiredAspects;
+            resourceInputs["system"] = args?.system;
+            resourceInputs["typeAliases"] = args?.typeAliases;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

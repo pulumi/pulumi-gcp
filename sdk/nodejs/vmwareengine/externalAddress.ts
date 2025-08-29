@@ -102,43 +102,43 @@ export class ExternalAddress extends pulumi.CustomResource {
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
      * up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * User-provided description for this resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The external IP address of a workload VM.
      */
-    public /*out*/ readonly externalIp!: pulumi.Output<string>;
+    declare public /*out*/ readonly externalIp: pulumi.Output<string>;
     /**
      * The internal IP address of a workload VM.
      */
-    public readonly internalIp!: pulumi.Output<string>;
+    declare public readonly internalIp: pulumi.Output<string>;
     /**
      * The ID of the external IP Address.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The resource name of the private cloud to create a new external address in.
      * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
      * For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
      */
-    public readonly parent!: pulumi.Output<string>;
+    declare public readonly parent: pulumi.Output<string>;
     /**
      * State of the resource.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * System-generated unique identifier for the resource.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * Last updated time of this resource.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
      * fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a ExternalAddress resource with the given unique name, arguments, and options.
@@ -153,27 +153,27 @@ export class ExternalAddress extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ExternalAddressState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["externalIp"] = state ? state.externalIp : undefined;
-            resourceInputs["internalIp"] = state ? state.internalIp : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["externalIp"] = state?.externalIp;
+            resourceInputs["internalIp"] = state?.internalIp;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as ExternalAddressArgs | undefined;
-            if ((!args || args.internalIp === undefined) && !opts.urn) {
+            if (args?.internalIp === undefined && !opts.urn) {
                 throw new Error("Missing required property 'internalIp'");
             }
-            if ((!args || args.parent === undefined) && !opts.urn) {
+            if (args?.parent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["internalIp"] = args ? args.internalIp : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["internalIp"] = args?.internalIp;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["parent"] = args?.parent;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["externalIp"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;

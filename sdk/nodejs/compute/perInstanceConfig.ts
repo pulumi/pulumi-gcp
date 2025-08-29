@@ -149,7 +149,7 @@ export class PerInstanceConfig extends pulumi.CustomResource {
     /**
      * The instance group manager this instance config is part of.
      */
-    public readonly instanceGroupManager!: pulumi.Output<string>;
+    declare public readonly instanceGroupManager: pulumi.Output<string>;
     /**
      * The minimal action to perform on the instance during an update.
      * Default is `NONE`. Possible values are:
@@ -158,7 +158,7 @@ export class PerInstanceConfig extends pulumi.CustomResource {
      * * REFRESH
      * * NONE
      */
-    public readonly minimalAction!: pulumi.Output<string | undefined>;
+    declare public readonly minimalAction: pulumi.Output<string | undefined>;
     /**
      * The most disruptive action to perform on the instance during an update.
      * Default is `REPLACE`. Possible values are:
@@ -167,36 +167,36 @@ export class PerInstanceConfig extends pulumi.CustomResource {
      * * REFRESH
      * * NONE
      */
-    public readonly mostDisruptiveAllowedAction!: pulumi.Output<string | undefined>;
+    declare public readonly mostDisruptiveAllowedAction: pulumi.Output<string | undefined>;
     /**
      * The name for this per-instance config and its corresponding instance.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The preserved state for this instance.
      * Structure is documented below.
      */
-    public readonly preservedState!: pulumi.Output<outputs.compute.PerInstanceConfigPreservedState | undefined>;
+    declare public readonly preservedState: pulumi.Output<outputs.compute.PerInstanceConfigPreservedState | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * When true, deleting this config will immediately remove the underlying instance.
      * When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
      */
-    public readonly removeInstanceOnDestroy!: pulumi.Output<boolean | undefined>;
+    declare public readonly removeInstanceOnDestroy: pulumi.Output<boolean | undefined>;
     /**
      * When true, deleting this config will immediately remove any specified state from the underlying instance.
      * When false, deleting this config will *not* immediately remove any state from the underlying instance.
      * State will be removed on the next instance recreation or update.
      */
-    public readonly removeInstanceStateOnDestroy!: pulumi.Output<boolean | undefined>;
+    declare public readonly removeInstanceStateOnDestroy: pulumi.Output<boolean | undefined>;
     /**
      * Zone where the containing instance group manager is located
      */
-    public readonly zone!: pulumi.Output<string>;
+    declare public readonly zone: pulumi.Output<string>;
 
     /**
      * Create a PerInstanceConfig resource with the given unique name, arguments, and options.
@@ -211,29 +211,29 @@ export class PerInstanceConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PerInstanceConfigState | undefined;
-            resourceInputs["instanceGroupManager"] = state ? state.instanceGroupManager : undefined;
-            resourceInputs["minimalAction"] = state ? state.minimalAction : undefined;
-            resourceInputs["mostDisruptiveAllowedAction"] = state ? state.mostDisruptiveAllowedAction : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["preservedState"] = state ? state.preservedState : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["removeInstanceOnDestroy"] = state ? state.removeInstanceOnDestroy : undefined;
-            resourceInputs["removeInstanceStateOnDestroy"] = state ? state.removeInstanceStateOnDestroy : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["instanceGroupManager"] = state?.instanceGroupManager;
+            resourceInputs["minimalAction"] = state?.minimalAction;
+            resourceInputs["mostDisruptiveAllowedAction"] = state?.mostDisruptiveAllowedAction;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["preservedState"] = state?.preservedState;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["removeInstanceOnDestroy"] = state?.removeInstanceOnDestroy;
+            resourceInputs["removeInstanceStateOnDestroy"] = state?.removeInstanceStateOnDestroy;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as PerInstanceConfigArgs | undefined;
-            if ((!args || args.instanceGroupManager === undefined) && !opts.urn) {
+            if (args?.instanceGroupManager === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceGroupManager'");
             }
-            resourceInputs["instanceGroupManager"] = args ? args.instanceGroupManager : undefined;
-            resourceInputs["minimalAction"] = args ? args.minimalAction : undefined;
-            resourceInputs["mostDisruptiveAllowedAction"] = args ? args.mostDisruptiveAllowedAction : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["preservedState"] = args ? args.preservedState : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["removeInstanceOnDestroy"] = args ? args.removeInstanceOnDestroy : undefined;
-            resourceInputs["removeInstanceStateOnDestroy"] = args ? args.removeInstanceStateOnDestroy : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["instanceGroupManager"] = args?.instanceGroupManager;
+            resourceInputs["minimalAction"] = args?.minimalAction;
+            resourceInputs["mostDisruptiveAllowedAction"] = args?.mostDisruptiveAllowedAction;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["preservedState"] = args?.preservedState;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["removeInstanceOnDestroy"] = args?.removeInstanceOnDestroy;
+            resourceInputs["removeInstanceStateOnDestroy"] = args?.removeInstanceStateOnDestroy;
+            resourceInputs["zone"] = args?.zone;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PerInstanceConfig.__pulumiType, name, resourceInputs, opts);

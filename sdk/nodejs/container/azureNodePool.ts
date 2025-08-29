@@ -153,83 +153,81 @@ export class AzureNodePool extends pulumi.CustomResource {
     }
 
     /**
-     * Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size
-     * of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required),
-     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-     * `effectiveAnnotations` for all of the annotations present on the resource.
+     * Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Autoscaler configuration for this node pool.
      */
-    public readonly autoscaling!: pulumi.Output<outputs.container.AzureNodePoolAutoscaling>;
+    declare public readonly autoscaling: pulumi.Output<outputs.container.AzureNodePoolAutoscaling>;
     /**
      * Optional. The Azure availability zone of the nodes in this nodepool. When unspecified, it defaults to `1`.
      */
-    public readonly azureAvailabilityZone!: pulumi.Output<string>;
+    declare public readonly azureAvailabilityZone: pulumi.Output<string>;
     /**
      * The azureCluster for the resource
      */
-    public readonly cluster!: pulumi.Output<string>;
+    declare public readonly cluster: pulumi.Output<string>;
     /**
      * The node configuration of the node pool.
      */
-    public readonly config!: pulumi.Output<outputs.container.AzureNodePoolConfig>;
+    declare public readonly config: pulumi.Output<outputs.container.AzureNodePoolConfig>;
     /**
      * Output only. The time at which this node pool was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
-    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The location for the resource
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The Management configuration for this node pool.
      */
-    public readonly management!: pulumi.Output<outputs.container.AzureNodePoolManagement>;
+    declare public readonly management: pulumi.Output<outputs.container.AzureNodePoolManagement>;
     /**
      * The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
      */
-    public readonly maxPodsConstraint!: pulumi.Output<outputs.container.AzureNodePoolMaxPodsConstraint>;
+    declare public readonly maxPodsConstraint: pulumi.Output<outputs.container.AzureNodePoolMaxPodsConstraint>;
     /**
      * The name of this resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The project for the resource
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Output only. If set, there are currently pending changes to the node pool.
      */
-    public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly reconciling: pulumi.Output<boolean>;
     /**
      * Output only. The current state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The ARM ID of the subnet where the node pool VMs run. Make sure it's a subnet under the virtual network in the cluster configuration.
      */
-    public readonly subnetId!: pulumi.Output<string>;
+    declare public readonly subnetId: pulumi.Output<string>;
     /**
      * Output only. A globally unique identifier for the node pool.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * Output only. The time at which this node pool was last updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * The Kubernetes version (e.g. `1.19.10-gke.1000`) running on this node pool.
      */
-    public readonly version!: pulumi.Output<string>;
+    declare public readonly version: pulumi.Output<string>;
 
     /**
      * Create a AzureNodePool resource with the given unique name, arguments, and options.
@@ -244,60 +242,60 @@ export class AzureNodePool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AzureNodePoolState | undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["autoscaling"] = state ? state.autoscaling : undefined;
-            resourceInputs["azureAvailabilityZone"] = state ? state.azureAvailabilityZone : undefined;
-            resourceInputs["cluster"] = state ? state.cluster : undefined;
-            resourceInputs["config"] = state ? state.config : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["management"] = state ? state.management : undefined;
-            resourceInputs["maxPodsConstraint"] = state ? state.maxPodsConstraint : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["reconciling"] = state ? state.reconciling : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["autoscaling"] = state?.autoscaling;
+            resourceInputs["azureAvailabilityZone"] = state?.azureAvailabilityZone;
+            resourceInputs["cluster"] = state?.cluster;
+            resourceInputs["config"] = state?.config;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["management"] = state?.management;
+            resourceInputs["maxPodsConstraint"] = state?.maxPodsConstraint;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["reconciling"] = state?.reconciling;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["subnetId"] = state?.subnetId;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as AzureNodePoolArgs | undefined;
-            if ((!args || args.autoscaling === undefined) && !opts.urn) {
+            if (args?.autoscaling === undefined && !opts.urn) {
                 throw new Error("Missing required property 'autoscaling'");
             }
-            if ((!args || args.cluster === undefined) && !opts.urn) {
+            if (args?.cluster === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cluster'");
             }
-            if ((!args || args.config === undefined) && !opts.urn) {
+            if (args?.config === undefined && !opts.urn) {
                 throw new Error("Missing required property 'config'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.maxPodsConstraint === undefined) && !opts.urn) {
+            if (args?.maxPodsConstraint === undefined && !opts.urn) {
                 throw new Error("Missing required property 'maxPodsConstraint'");
             }
-            if ((!args || args.subnetId === undefined) && !opts.urn) {
+            if (args?.subnetId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'subnetId'");
             }
-            if ((!args || args.version === undefined) && !opts.urn) {
+            if (args?.version === undefined && !opts.urn) {
                 throw new Error("Missing required property 'version'");
             }
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["autoscaling"] = args ? args.autoscaling : undefined;
-            resourceInputs["azureAvailabilityZone"] = args ? args.azureAvailabilityZone : undefined;
-            resourceInputs["cluster"] = args ? args.cluster : undefined;
-            resourceInputs["config"] = args ? args.config : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["management"] = args ? args.management : undefined;
-            resourceInputs["maxPodsConstraint"] = args ? args.maxPodsConstraint : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["subnetId"] = args ? args.subnetId : undefined;
-            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["autoscaling"] = args?.autoscaling;
+            resourceInputs["azureAvailabilityZone"] = args?.azureAvailabilityZone;
+            resourceInputs["cluster"] = args?.cluster;
+            resourceInputs["config"] = args?.config;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["management"] = args?.management;
+            resourceInputs["maxPodsConstraint"] = args?.maxPodsConstraint;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["subnetId"] = args?.subnetId;
+            resourceInputs["version"] = args?.version;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
@@ -316,12 +314,10 @@ export class AzureNodePool extends pulumi.CustomResource {
  */
 export interface AzureNodePoolState {
     /**
-     * Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size
-     * of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required),
-     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-     * `effectiveAnnotations` for all of the annotations present on the resource.
+     * Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -400,12 +396,10 @@ export interface AzureNodePoolState {
  */
 export interface AzureNodePoolArgs {
     /**
-     * Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size
-     * of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required),
-     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-     * `effectiveAnnotations` for all of the annotations present on the resource.
+     * Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

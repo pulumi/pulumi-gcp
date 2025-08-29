@@ -92,7 +92,7 @@ export class OrganizationsPolicyBinding extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Represents a textual expression in the Common Expression Language
      * (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of
@@ -119,63 +119,63 @@ export class OrganizationsPolicyBinding extends pulumi.CustomResource {
      * additional information.
      * Structure is documented below.
      */
-    public readonly condition!: pulumi.Output<outputs.iam.OrganizationsPolicyBindingCondition | undefined>;
+    declare public readonly condition: pulumi.Output<outputs.iam.OrganizationsPolicyBindingCondition | undefined>;
     /**
      * Output only. The time when the policy binding was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Optional. The description of the policy binding. Must be less than or equal to 63 characters.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * Optional. The etag for the policy binding. If this is provided on update, it must match the server's etag.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The location of the Policy Binding
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The name of the policy binding in the format `{binding_parent/locations/{location}/policyBindings/{policy_binding_id}`
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The parent organization of the Policy Binding.
      */
-    public readonly organization!: pulumi.Output<string>;
+    declare public readonly organization: pulumi.Output<string>;
     /**
      * Required. Immutable. The resource name of the policy to be bound. The binding parent and policy must belong to the same Organization (or Project).
      */
-    public readonly policy!: pulumi.Output<string>;
+    declare public readonly policy: pulumi.Output<string>;
     /**
      * The Policy Binding ID.
      */
-    public readonly policyBindingId!: pulumi.Output<string>;
+    declare public readonly policyBindingId: pulumi.Output<string>;
     /**
      * Immutable. The kind of the policy to attach in this binding. This
      * field must be one of the following:  - Left empty (will be automatically set
      * to the policy kind) - The input policy kind   Possible values:  POLICY_KIND_UNSPECIFIED PRINCIPAL_ACCESS_BOUNDARY ACCESS
      */
-    public readonly policyKind!: pulumi.Output<string | undefined>;
+    declare public readonly policyKind: pulumi.Output<string | undefined>;
     /**
      * Output only. The globally unique ID of the policy to be bound.
      */
-    public /*out*/ readonly policyUid!: pulumi.Output<string>;
+    declare public /*out*/ readonly policyUid: pulumi.Output<string>;
     /**
      * Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
      * Structure is documented below.
      */
-    public readonly target!: pulumi.Output<outputs.iam.OrganizationsPolicyBindingTarget>;
+    declare public readonly target: pulumi.Output<outputs.iam.OrganizationsPolicyBindingTarget>;
     /**
      * Output only. The globally unique ID of the policy binding. Assigned when the policy binding is created.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * Output only. The time when the policy binding was most recently updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a OrganizationsPolicyBinding resource with the given unique name, arguments, and options.
@@ -190,48 +190,48 @@ export class OrganizationsPolicyBinding extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrganizationsPolicyBindingState | undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["condition"] = state ? state.condition : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["organization"] = state ? state.organization : undefined;
-            resourceInputs["policy"] = state ? state.policy : undefined;
-            resourceInputs["policyBindingId"] = state ? state.policyBindingId : undefined;
-            resourceInputs["policyKind"] = state ? state.policyKind : undefined;
-            resourceInputs["policyUid"] = state ? state.policyUid : undefined;
-            resourceInputs["target"] = state ? state.target : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["condition"] = state?.condition;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["organization"] = state?.organization;
+            resourceInputs["policy"] = state?.policy;
+            resourceInputs["policyBindingId"] = state?.policyBindingId;
+            resourceInputs["policyKind"] = state?.policyKind;
+            resourceInputs["policyUid"] = state?.policyUid;
+            resourceInputs["target"] = state?.target;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as OrganizationsPolicyBindingArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.organization === undefined) && !opts.urn) {
+            if (args?.organization === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organization'");
             }
-            if ((!args || args.policy === undefined) && !opts.urn) {
+            if (args?.policy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policy'");
             }
-            if ((!args || args.policyBindingId === undefined) && !opts.urn) {
+            if (args?.policyBindingId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyBindingId'");
             }
-            if ((!args || args.target === undefined) && !opts.urn) {
+            if (args?.target === undefined && !opts.urn) {
                 throw new Error("Missing required property 'target'");
             }
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["condition"] = args ? args.condition : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["organization"] = args ? args.organization : undefined;
-            resourceInputs["policy"] = args ? args.policy : undefined;
-            resourceInputs["policyBindingId"] = args ? args.policyBindingId : undefined;
-            resourceInputs["policyKind"] = args ? args.policyKind : undefined;
-            resourceInputs["target"] = args ? args.target : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["condition"] = args?.condition;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["organization"] = args?.organization;
+            resourceInputs["policy"] = args?.policy;
+            resourceInputs["policyBindingId"] = args?.policyBindingId;
+            resourceInputs["policyKind"] = args?.policyKind;
+            resourceInputs["target"] = args?.target;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;

@@ -133,52 +133,52 @@ export class ManagedZone extends pulumi.CustomResource {
     /**
      * Time the Namespace was created in UTC.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * DNS Name of the resource.
      */
-    public readonly dns!: pulumi.Output<string>;
+    declare public readonly dns: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Resource labels to represent user provided metadata.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Name of Managed Zone needs to be created.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of the Target Project.
      */
-    public readonly targetProject!: pulumi.Output<string>;
+    declare public readonly targetProject: pulumi.Output<string>;
     /**
      * The name of the Target Project VPC Network.
      */
-    public readonly targetVpc!: pulumi.Output<string>;
+    declare public readonly targetVpc: pulumi.Output<string>;
     /**
      * Time the Namespace was updated in UTC.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a ManagedZone resource with the given unique name, arguments, and options.
@@ -193,35 +193,35 @@ export class ManagedZone extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ManagedZoneState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["dns"] = state ? state.dns : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["targetProject"] = state ? state.targetProject : undefined;
-            resourceInputs["targetVpc"] = state ? state.targetVpc : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["dns"] = state?.dns;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["targetProject"] = state?.targetProject;
+            resourceInputs["targetVpc"] = state?.targetVpc;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as ManagedZoneArgs | undefined;
-            if ((!args || args.dns === undefined) && !opts.urn) {
+            if (args?.dns === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dns'");
             }
-            if ((!args || args.targetProject === undefined) && !opts.urn) {
+            if (args?.targetProject === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetProject'");
             }
-            if ((!args || args.targetVpc === undefined) && !opts.urn) {
+            if (args?.targetVpc === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetVpc'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["dns"] = args ? args.dns : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["targetProject"] = args ? args.targetProject : undefined;
-            resourceInputs["targetVpc"] = args ? args.targetVpc : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["dns"] = args?.dns;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["targetProject"] = args?.targetProject;
+            resourceInputs["targetVpc"] = args?.targetVpc;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;

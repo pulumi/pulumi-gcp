@@ -389,87 +389,87 @@ export class ConnectionProfile extends pulumi.CustomResource {
     /**
      * BigQuery warehouse profile.
      */
-    public readonly bigqueryProfile!: pulumi.Output<outputs.datastream.ConnectionProfileBigqueryProfile | undefined>;
+    declare public readonly bigqueryProfile: pulumi.Output<outputs.datastream.ConnectionProfileBigqueryProfile | undefined>;
     /**
      * The connection profile identifier.
      */
-    public readonly connectionProfileId!: pulumi.Output<string>;
+    declare public readonly connectionProfileId: pulumi.Output<string>;
     /**
      * Create the connection profile without validating it.
      */
-    public readonly createWithoutValidation!: pulumi.Output<boolean | undefined>;
+    declare public readonly createWithoutValidation: pulumi.Output<boolean | undefined>;
     /**
      * Display name.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Forward SSH tunnel connectivity.
      * Structure is documented below.
      */
-    public readonly forwardSshConnectivity!: pulumi.Output<outputs.datastream.ConnectionProfileForwardSshConnectivity | undefined>;
+    declare public readonly forwardSshConnectivity: pulumi.Output<outputs.datastream.ConnectionProfileForwardSshConnectivity | undefined>;
     /**
      * Cloud Storage bucket profile.
      * Structure is documented below.
      */
-    public readonly gcsProfile!: pulumi.Output<outputs.datastream.ConnectionProfileGcsProfile | undefined>;
+    declare public readonly gcsProfile: pulumi.Output<outputs.datastream.ConnectionProfileGcsProfile | undefined>;
     /**
      * Labels.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the location this connection profile is located in.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * MySQL database profile.
      * Structure is documented below.
      */
-    public readonly mysqlProfile!: pulumi.Output<outputs.datastream.ConnectionProfileMysqlProfile | undefined>;
+    declare public readonly mysqlProfile: pulumi.Output<outputs.datastream.ConnectionProfileMysqlProfile | undefined>;
     /**
      * The resource's name.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Oracle database profile.
      * Structure is documented below.
      */
-    public readonly oracleProfile!: pulumi.Output<outputs.datastream.ConnectionProfileOracleProfile | undefined>;
+    declare public readonly oracleProfile: pulumi.Output<outputs.datastream.ConnectionProfileOracleProfile | undefined>;
     /**
      * PostgreSQL database profile.
      * Structure is documented below.
      */
-    public readonly postgresqlProfile!: pulumi.Output<outputs.datastream.ConnectionProfilePostgresqlProfile | undefined>;
+    declare public readonly postgresqlProfile: pulumi.Output<outputs.datastream.ConnectionProfilePostgresqlProfile | undefined>;
     /**
      * Private connectivity.
      * Structure is documented below.
      */
-    public readonly privateConnectivity!: pulumi.Output<outputs.datastream.ConnectionProfilePrivateConnectivity | undefined>;
+    declare public readonly privateConnectivity: pulumi.Output<outputs.datastream.ConnectionProfilePrivateConnectivity | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Salesforce profile.
      * Structure is documented below.
      */
-    public readonly salesforceProfile!: pulumi.Output<outputs.datastream.ConnectionProfileSalesforceProfile | undefined>;
+    declare public readonly salesforceProfile: pulumi.Output<outputs.datastream.ConnectionProfileSalesforceProfile | undefined>;
     /**
      * SQL Server database profile.
      * Structure is documented below.
      */
-    public readonly sqlServerProfile!: pulumi.Output<outputs.datastream.ConnectionProfileSqlServerProfile | undefined>;
+    declare public readonly sqlServerProfile: pulumi.Output<outputs.datastream.ConnectionProfileSqlServerProfile | undefined>;
 
     /**
      * Create a ConnectionProfile resource with the given unique name, arguments, and options.
@@ -484,50 +484,50 @@ export class ConnectionProfile extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectionProfileState | undefined;
-            resourceInputs["bigqueryProfile"] = state ? state.bigqueryProfile : undefined;
-            resourceInputs["connectionProfileId"] = state ? state.connectionProfileId : undefined;
-            resourceInputs["createWithoutValidation"] = state ? state.createWithoutValidation : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["forwardSshConnectivity"] = state ? state.forwardSshConnectivity : undefined;
-            resourceInputs["gcsProfile"] = state ? state.gcsProfile : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["mysqlProfile"] = state ? state.mysqlProfile : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["oracleProfile"] = state ? state.oracleProfile : undefined;
-            resourceInputs["postgresqlProfile"] = state ? state.postgresqlProfile : undefined;
-            resourceInputs["privateConnectivity"] = state ? state.privateConnectivity : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["salesforceProfile"] = state ? state.salesforceProfile : undefined;
-            resourceInputs["sqlServerProfile"] = state ? state.sqlServerProfile : undefined;
+            resourceInputs["bigqueryProfile"] = state?.bigqueryProfile;
+            resourceInputs["connectionProfileId"] = state?.connectionProfileId;
+            resourceInputs["createWithoutValidation"] = state?.createWithoutValidation;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["forwardSshConnectivity"] = state?.forwardSshConnectivity;
+            resourceInputs["gcsProfile"] = state?.gcsProfile;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["mysqlProfile"] = state?.mysqlProfile;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["oracleProfile"] = state?.oracleProfile;
+            resourceInputs["postgresqlProfile"] = state?.postgresqlProfile;
+            resourceInputs["privateConnectivity"] = state?.privateConnectivity;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["salesforceProfile"] = state?.salesforceProfile;
+            resourceInputs["sqlServerProfile"] = state?.sqlServerProfile;
         } else {
             const args = argsOrState as ConnectionProfileArgs | undefined;
-            if ((!args || args.connectionProfileId === undefined) && !opts.urn) {
+            if (args?.connectionProfileId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectionProfileId'");
             }
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["bigqueryProfile"] = args ? args.bigqueryProfile : undefined;
-            resourceInputs["connectionProfileId"] = args ? args.connectionProfileId : undefined;
-            resourceInputs["createWithoutValidation"] = args ? args.createWithoutValidation : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["forwardSshConnectivity"] = args ? args.forwardSshConnectivity : undefined;
-            resourceInputs["gcsProfile"] = args ? args.gcsProfile : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["mysqlProfile"] = args ? args.mysqlProfile : undefined;
-            resourceInputs["oracleProfile"] = args ? args.oracleProfile : undefined;
-            resourceInputs["postgresqlProfile"] = args ? args.postgresqlProfile : undefined;
-            resourceInputs["privateConnectivity"] = args ? args.privateConnectivity : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["salesforceProfile"] = args ? args.salesforceProfile : undefined;
-            resourceInputs["sqlServerProfile"] = args ? args.sqlServerProfile : undefined;
+            resourceInputs["bigqueryProfile"] = args?.bigqueryProfile;
+            resourceInputs["connectionProfileId"] = args?.connectionProfileId;
+            resourceInputs["createWithoutValidation"] = args?.createWithoutValidation;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["forwardSshConnectivity"] = args?.forwardSshConnectivity;
+            resourceInputs["gcsProfile"] = args?.gcsProfile;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["mysqlProfile"] = args?.mysqlProfile;
+            resourceInputs["oracleProfile"] = args?.oracleProfile;
+            resourceInputs["postgresqlProfile"] = args?.postgresqlProfile;
+            resourceInputs["privateConnectivity"] = args?.privateConnectivity;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["salesforceProfile"] = args?.salesforceProfile;
+            resourceInputs["sqlServerProfile"] = args?.sqlServerProfile;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;

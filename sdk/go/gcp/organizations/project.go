@@ -141,9 +141,7 @@ import (
 type Project struct {
 	pulumi.CustomResourceState
 
-	// Create the 'default' network automatically. Default true. If set to false, the default network will be deleted. Note
-	// that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
-	// if you set autoCreateNetwork to false, since the network will exist momentarily.
+	// Create the 'default' network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set autoCreateNetwork to false, since the network will exist momentarily.
 	AutoCreateNetwork pulumi.BoolPtrOutput `pulumi:"autoCreateNetwork"`
 	// The alphanumeric ID of the billing account this project
 	// belongs to. The user or service account performing this operation with the provider
@@ -218,9 +216,7 @@ func GetProject(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Project resources.
 type projectState struct {
-	// Create the 'default' network automatically. Default true. If set to false, the default network will be deleted. Note
-	// that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
-	// if you set autoCreateNetwork to false, since the network will exist momentarily.
+	// Create the 'default' network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set autoCreateNetwork to false, since the network will exist momentarily.
 	AutoCreateNetwork *bool `pulumi:"autoCreateNetwork"`
 	// The alphanumeric ID of the billing account this project
 	// belongs to. The user or service account performing this operation with the provider
@@ -261,9 +257,7 @@ type projectState struct {
 }
 
 type ProjectState struct {
-	// Create the 'default' network automatically. Default true. If set to false, the default network will be deleted. Note
-	// that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
-	// if you set autoCreateNetwork to false, since the network will exist momentarily.
+	// Create the 'default' network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set autoCreateNetwork to false, since the network will exist momentarily.
 	AutoCreateNetwork pulumi.BoolPtrInput
 	// The alphanumeric ID of the billing account this project
 	// belongs to. The user or service account performing this operation with the provider
@@ -308,9 +302,7 @@ func (ProjectState) ElementType() reflect.Type {
 }
 
 type projectArgs struct {
-	// Create the 'default' network automatically. Default true. If set to false, the default network will be deleted. Note
-	// that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
-	// if you set autoCreateNetwork to false, since the network will exist momentarily.
+	// Create the 'default' network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set autoCreateNetwork to false, since the network will exist momentarily.
 	AutoCreateNetwork *bool `pulumi:"autoCreateNetwork"`
 	// The alphanumeric ID of the billing account this project
 	// belongs to. The user or service account performing this operation with the provider
@@ -346,9 +338,7 @@ type projectArgs struct {
 
 // The set of arguments for constructing a Project resource.
 type ProjectArgs struct {
-	// Create the 'default' network automatically. Default true. If set to false, the default network will be deleted. Note
-	// that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
-	// if you set autoCreateNetwork to false, since the network will exist momentarily.
+	// Create the 'default' network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set autoCreateNetwork to false, since the network will exist momentarily.
 	AutoCreateNetwork pulumi.BoolPtrInput
 	// The alphanumeric ID of the billing account this project
 	// belongs to. The user or service account performing this operation with the provider
@@ -469,9 +459,7 @@ func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOu
 	return o
 }
 
-// Create the 'default' network automatically. Default true. If set to false, the default network will be deleted. Note
-// that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
-// if you set autoCreateNetwork to false, since the network will exist momentarily.
+// Create the 'default' network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set autoCreateNetwork to false, since the network will exist momentarily.
 func (o ProjectOutput) AutoCreateNetwork() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.AutoCreateNetwork }).(pulumi.BoolPtrOutput)
 }

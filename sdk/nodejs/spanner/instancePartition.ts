@@ -94,45 +94,45 @@ export class InstancePartition extends pulumi.CustomResource {
      * The name of the instance partition's configuration (similar to a region) which
      * defines the geographic placement and replication of data in this instance partition.
      */
-    public readonly config!: pulumi.Output<string>;
+    declare public readonly config: pulumi.Output<string>;
     /**
      * The descriptive name for this instance partition as it appears in UIs.
      * Must be unique per project and between 4 and 30 characters in length.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * The instance to create the instance partition in.
      */
-    public readonly instance!: pulumi.Output<string>;
+    declare public readonly instance: pulumi.Output<string>;
     /**
      * A unique identifier for the instance partition, which cannot be changed after
      * the instance partition is created. The name must be between 2 and 64 characters
      * and match the regular expression [a-z][a-z0-9\\-]{0,61}[a-z0-9].
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The number of nodes allocated to this instance partition. One node equals
      * 1000 processing units. Exactly one of either nodeCount or processingUnits
      * must be present.
      */
-    public readonly nodeCount!: pulumi.Output<number | undefined>;
+    declare public readonly nodeCount: pulumi.Output<number | undefined>;
     /**
      * The number of processing units allocated to this instance partition.
      * Exactly one of either nodeCount or processingUnits must be present.
      */
-    public readonly processingUnits!: pulumi.Output<number | undefined>;
+    declare public readonly processingUnits: pulumi.Output<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The current instance partition state. Possible values are:
      * CREATING: The instance partition is being created. Resources are being
      * allocated for the instance partition.
      * READY: The instance partition has been allocated resources and is ready for use.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
 
     /**
      * Create a InstancePartition resource with the given unique name, arguments, and options.
@@ -147,32 +147,32 @@ export class InstancePartition extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstancePartitionState | undefined;
-            resourceInputs["config"] = state ? state.config : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["instance"] = state ? state.instance : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nodeCount"] = state ? state.nodeCount : undefined;
-            resourceInputs["processingUnits"] = state ? state.processingUnits : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["config"] = state?.config;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["instance"] = state?.instance;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nodeCount"] = state?.nodeCount;
+            resourceInputs["processingUnits"] = state?.processingUnits;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["state"] = state?.state;
         } else {
             const args = argsOrState as InstancePartitionArgs | undefined;
-            if ((!args || args.config === undefined) && !opts.urn) {
+            if (args?.config === undefined && !opts.urn) {
                 throw new Error("Missing required property 'config'");
             }
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.instance === undefined) && !opts.urn) {
+            if (args?.instance === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instance'");
             }
-            resourceInputs["config"] = args ? args.config : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["instance"] = args ? args.instance : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["nodeCount"] = args ? args.nodeCount : undefined;
-            resourceInputs["processingUnits"] = args ? args.processingUnits : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["config"] = args?.config;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["instance"] = args?.instance;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["nodeCount"] = args?.nodeCount;
+            resourceInputs["processingUnits"] = args?.processingUnits;
+            resourceInputs["project"] = args?.project;
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

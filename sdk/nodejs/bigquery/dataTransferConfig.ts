@@ -199,39 +199,39 @@ export class DataTransferConfig extends pulumi.CustomResource {
      * just [today-1]. Only valid if the data source supports the feature.
      * Set the value to 0 to use the default value.
      */
-    public readonly dataRefreshWindowDays!: pulumi.Output<number | undefined>;
+    declare public readonly dataRefreshWindowDays: pulumi.Output<number | undefined>;
     /**
      * The data source id. Cannot be changed once the transfer config is created.
      */
-    public readonly dataSourceId!: pulumi.Output<string>;
+    declare public readonly dataSourceId: pulumi.Output<string>;
     /**
      * The BigQuery target dataset id.
      */
-    public readonly destinationDatasetId!: pulumi.Output<string | undefined>;
+    declare public readonly destinationDatasetId: pulumi.Output<string | undefined>;
     /**
      * When set to true, no runs are scheduled for a given transfer.
      */
-    public readonly disabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly disabled: pulumi.Output<boolean | undefined>;
     /**
      * The user specified display name for the transfer config.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Email notifications will be sent according to these preferences to the
      * email address of the user who owns this transfer config.
      * Structure is documented below.
      */
-    public readonly emailPreferences!: pulumi.Output<outputs.bigquery.DataTransferConfigEmailPreferences | undefined>;
+    declare public readonly emailPreferences: pulumi.Output<outputs.bigquery.DataTransferConfigEmailPreferences | undefined>;
     /**
      * Represents the encryption configuration for a transfer.
      * Structure is documented below.
      */
-    public readonly encryptionConfiguration!: pulumi.Output<outputs.bigquery.DataTransferConfigEncryptionConfiguration | undefined>;
+    declare public readonly encryptionConfiguration: pulumi.Output<outputs.bigquery.DataTransferConfigEncryptionConfiguration | undefined>;
     /**
      * The geographic location where the transfer config should reside.
      * Examples: US, EU, asia-northeast1. The default value is US.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * The resource name of the transfer config. Transfer config names have the
      * form projects/{projectId}/locations/{location}/transferConfigs/{configId}
@@ -239,24 +239,24 @@ export class DataTransferConfig extends pulumi.CustomResource {
      * where configId is usually a uuid, but this is not required.
      * The name is ignored when creating a transfer config.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Pub/Sub topic where notifications will be sent after transfer runs
      * associated with this transfer config finish.
      */
-    public readonly notificationPubsubTopic!: pulumi.Output<string | undefined>;
+    declare public readonly notificationPubsubTopic: pulumi.Output<string | undefined>;
     /**
      * Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
      * section for each data source. For example the parameters for Cloud Storage transfers are listed here:
      * https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
      * **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
      */
-    public readonly params!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly params: pulumi.Output<{[key: string]: string}>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Data transfer schedule. If the data source does not support a custom
      * schedule, this should be empty. If it is empty, the default value for
@@ -268,12 +268,12 @@ export class DataTransferConfig extends pulumi.CustomResource {
      * NOTE: The minimum interval time between recurring transfers depends
      * on the data source; refer to the documentation for your data source.
      */
-    public readonly schedule!: pulumi.Output<string | undefined>;
+    declare public readonly schedule: pulumi.Output<string | undefined>;
     /**
      * Options customizing the data transfer schedule.
      * Structure is documented below.
      */
-    public readonly scheduleOptions!: pulumi.Output<outputs.bigquery.DataTransferConfigScheduleOptions | undefined>;
+    declare public readonly scheduleOptions: pulumi.Output<outputs.bigquery.DataTransferConfigScheduleOptions | undefined>;
     /**
      * Different parameters are configured primarily using the the `params` field on this
      * resource. This block contains the parameters which contain secrets or passwords so that they can be marked
@@ -283,13 +283,13 @@ export class DataTransferConfig extends pulumi.CustomResource {
      * to a different credential configuration in the config will require an apply to update state.
      * Structure is documented below.
      */
-    public readonly sensitiveParams!: pulumi.Output<outputs.bigquery.DataTransferConfigSensitiveParams | undefined>;
+    declare public readonly sensitiveParams: pulumi.Output<outputs.bigquery.DataTransferConfigSensitiveParams | undefined>;
     /**
      * Service account email. If this field is set, transfer config will
      * be created with this service account credentials. It requires that
      * requesting user calling this API has permissions to act as this service account.
      */
-    public readonly serviceAccountName!: pulumi.Output<string | undefined>;
+    declare public readonly serviceAccountName: pulumi.Output<string | undefined>;
 
     /**
      * Create a DataTransferConfig resource with the given unique name, arguments, and options.
@@ -304,48 +304,48 @@ export class DataTransferConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DataTransferConfigState | undefined;
-            resourceInputs["dataRefreshWindowDays"] = state ? state.dataRefreshWindowDays : undefined;
-            resourceInputs["dataSourceId"] = state ? state.dataSourceId : undefined;
-            resourceInputs["destinationDatasetId"] = state ? state.destinationDatasetId : undefined;
-            resourceInputs["disabled"] = state ? state.disabled : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["emailPreferences"] = state ? state.emailPreferences : undefined;
-            resourceInputs["encryptionConfiguration"] = state ? state.encryptionConfiguration : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["notificationPubsubTopic"] = state ? state.notificationPubsubTopic : undefined;
-            resourceInputs["params"] = state ? state.params : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["schedule"] = state ? state.schedule : undefined;
-            resourceInputs["scheduleOptions"] = state ? state.scheduleOptions : undefined;
-            resourceInputs["sensitiveParams"] = state ? state.sensitiveParams : undefined;
-            resourceInputs["serviceAccountName"] = state ? state.serviceAccountName : undefined;
+            resourceInputs["dataRefreshWindowDays"] = state?.dataRefreshWindowDays;
+            resourceInputs["dataSourceId"] = state?.dataSourceId;
+            resourceInputs["destinationDatasetId"] = state?.destinationDatasetId;
+            resourceInputs["disabled"] = state?.disabled;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["emailPreferences"] = state?.emailPreferences;
+            resourceInputs["encryptionConfiguration"] = state?.encryptionConfiguration;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["notificationPubsubTopic"] = state?.notificationPubsubTopic;
+            resourceInputs["params"] = state?.params;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["schedule"] = state?.schedule;
+            resourceInputs["scheduleOptions"] = state?.scheduleOptions;
+            resourceInputs["sensitiveParams"] = state?.sensitiveParams;
+            resourceInputs["serviceAccountName"] = state?.serviceAccountName;
         } else {
             const args = argsOrState as DataTransferConfigArgs | undefined;
-            if ((!args || args.dataSourceId === undefined) && !opts.urn) {
+            if (args?.dataSourceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataSourceId'");
             }
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.params === undefined) && !opts.urn) {
+            if (args?.params === undefined && !opts.urn) {
                 throw new Error("Missing required property 'params'");
             }
-            resourceInputs["dataRefreshWindowDays"] = args ? args.dataRefreshWindowDays : undefined;
-            resourceInputs["dataSourceId"] = args ? args.dataSourceId : undefined;
-            resourceInputs["destinationDatasetId"] = args ? args.destinationDatasetId : undefined;
-            resourceInputs["disabled"] = args ? args.disabled : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["emailPreferences"] = args ? args.emailPreferences : undefined;
-            resourceInputs["encryptionConfiguration"] = args ? args.encryptionConfiguration : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["notificationPubsubTopic"] = args ? args.notificationPubsubTopic : undefined;
-            resourceInputs["params"] = args ? args.params : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["schedule"] = args ? args.schedule : undefined;
-            resourceInputs["scheduleOptions"] = args ? args.scheduleOptions : undefined;
-            resourceInputs["sensitiveParams"] = args ? args.sensitiveParams : undefined;
-            resourceInputs["serviceAccountName"] = args ? args.serviceAccountName : undefined;
+            resourceInputs["dataRefreshWindowDays"] = args?.dataRefreshWindowDays;
+            resourceInputs["dataSourceId"] = args?.dataSourceId;
+            resourceInputs["destinationDatasetId"] = args?.destinationDatasetId;
+            resourceInputs["disabled"] = args?.disabled;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["emailPreferences"] = args?.emailPreferences;
+            resourceInputs["encryptionConfiguration"] = args?.encryptionConfiguration;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["notificationPubsubTopic"] = args?.notificationPubsubTopic;
+            resourceInputs["params"] = args?.params;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["schedule"] = args?.schedule;
+            resourceInputs["scheduleOptions"] = args?.scheduleOptions;
+            resourceInputs["sensitiveParams"] = args?.sensitiveParams;
+            resourceInputs["serviceAccountName"] = args?.serviceAccountName;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

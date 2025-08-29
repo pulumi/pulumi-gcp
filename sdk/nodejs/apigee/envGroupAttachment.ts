@@ -65,15 +65,15 @@ export class EnvGroupAttachment extends pulumi.CustomResource {
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
      */
-    public readonly envgroupId!: pulumi.Output<string>;
+    declare public readonly envgroupId: pulumi.Output<string>;
     /**
      * The resource ID of the environment.
      */
-    public readonly environment!: pulumi.Output<string>;
+    declare public readonly environment: pulumi.Output<string>;
     /**
      * The name of the newly created  attachment (output parameter).
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
 
     /**
      * Create a EnvGroupAttachment resource with the given unique name, arguments, and options.
@@ -88,19 +88,19 @@ export class EnvGroupAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EnvGroupAttachmentState | undefined;
-            resourceInputs["envgroupId"] = state ? state.envgroupId : undefined;
-            resourceInputs["environment"] = state ? state.environment : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["envgroupId"] = state?.envgroupId;
+            resourceInputs["environment"] = state?.environment;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as EnvGroupAttachmentArgs | undefined;
-            if ((!args || args.envgroupId === undefined) && !opts.urn) {
+            if (args?.envgroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'envgroupId'");
             }
-            if ((!args || args.environment === undefined) && !opts.urn) {
+            if (args?.environment === undefined && !opts.urn) {
                 throw new Error("Missing required property 'environment'");
             }
-            resourceInputs["envgroupId"] = args ? args.envgroupId : undefined;
-            resourceInputs["environment"] = args ? args.environment : undefined;
+            resourceInputs["envgroupId"] = args?.envgroupId;
+            resourceInputs["environment"] = args?.environment;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

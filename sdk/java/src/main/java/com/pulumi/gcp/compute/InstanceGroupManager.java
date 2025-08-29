@@ -701,16 +701,14 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.targetPools);
     }
     /**
-     * The target number of running instances for this managed instance group. This value should always be explicitly set
-     * unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+     * The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
      * 
      */
     @Export(name="targetSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> targetSize;
 
     /**
-     * @return The target number of running instances for this managed instance group. This value should always be explicitly set
-     * unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+     * @return The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
      * 
      */
     public Output<Integer> targetSize() {

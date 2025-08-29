@@ -84,49 +84,49 @@ export class NetworkPeering extends pulumi.CustomResource {
     /**
      * Whether to export the custom routes to the peer network. Defaults to `false`.
      */
-    public readonly exportCustomRoutes!: pulumi.Output<boolean | undefined>;
+    declare public readonly exportCustomRoutes: pulumi.Output<boolean | undefined>;
     /**
      * Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
      */
-    public readonly exportSubnetRoutesWithPublicIp!: pulumi.Output<boolean | undefined>;
+    declare public readonly exportSubnetRoutesWithPublicIp: pulumi.Output<boolean | undefined>;
     /**
      * Whether to import the custom routes from the peer network. Defaults to `false`.
      */
-    public readonly importCustomRoutes!: pulumi.Output<boolean | undefined>;
+    declare public readonly importCustomRoutes: pulumi.Output<boolean | undefined>;
     /**
      * Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
      */
-    public readonly importSubnetRoutesWithPublicIp!: pulumi.Output<boolean | undefined>;
+    declare public readonly importSubnetRoutesWithPublicIp: pulumi.Output<boolean | undefined>;
     /**
      * Name of the peering.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The primary network of the peering.
      */
-    public readonly network!: pulumi.Output<string>;
+    declare public readonly network: pulumi.Output<string>;
     /**
      * The peer network in the peering. The peer network
      * may belong to a different project.
      */
-    public readonly peerNetwork!: pulumi.Output<string>;
+    declare public readonly peerNetwork: pulumi.Output<string>;
     /**
      * Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY. Possible values: ["IPV4_ONLY", "IPV4_IPV6"].
      */
-    public readonly stackType!: pulumi.Output<string | undefined>;
+    declare public readonly stackType: pulumi.Output<string | undefined>;
     /**
      * State for the peering, either `ACTIVE` or `INACTIVE`. The peering is
      * `ACTIVE` when there's a matching configuration in the peer network.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Details about the current state of the peering.
      */
-    public /*out*/ readonly stateDetails!: pulumi.Output<string>;
+    declare public /*out*/ readonly stateDetails: pulumi.Output<string>;
     /**
      * The update strategy determines the semantics for updates and deletes to the peering connection configuration. The default value is INDEPENDENT. Possible values: ["INDEPENDENT", "CONSENSUS"]
      */
-    public readonly updateStrategy!: pulumi.Output<string | undefined>;
+    declare public readonly updateStrategy: pulumi.Output<string | undefined>;
 
     /**
      * Create a NetworkPeering resource with the given unique name, arguments, and options.
@@ -141,34 +141,34 @@ export class NetworkPeering extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkPeeringState | undefined;
-            resourceInputs["exportCustomRoutes"] = state ? state.exportCustomRoutes : undefined;
-            resourceInputs["exportSubnetRoutesWithPublicIp"] = state ? state.exportSubnetRoutesWithPublicIp : undefined;
-            resourceInputs["importCustomRoutes"] = state ? state.importCustomRoutes : undefined;
-            resourceInputs["importSubnetRoutesWithPublicIp"] = state ? state.importSubnetRoutesWithPublicIp : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["peerNetwork"] = state ? state.peerNetwork : undefined;
-            resourceInputs["stackType"] = state ? state.stackType : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["stateDetails"] = state ? state.stateDetails : undefined;
-            resourceInputs["updateStrategy"] = state ? state.updateStrategy : undefined;
+            resourceInputs["exportCustomRoutes"] = state?.exportCustomRoutes;
+            resourceInputs["exportSubnetRoutesWithPublicIp"] = state?.exportSubnetRoutesWithPublicIp;
+            resourceInputs["importCustomRoutes"] = state?.importCustomRoutes;
+            resourceInputs["importSubnetRoutesWithPublicIp"] = state?.importSubnetRoutesWithPublicIp;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["peerNetwork"] = state?.peerNetwork;
+            resourceInputs["stackType"] = state?.stackType;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["stateDetails"] = state?.stateDetails;
+            resourceInputs["updateStrategy"] = state?.updateStrategy;
         } else {
             const args = argsOrState as NetworkPeeringArgs | undefined;
-            if ((!args || args.network === undefined) && !opts.urn) {
+            if (args?.network === undefined && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
-            if ((!args || args.peerNetwork === undefined) && !opts.urn) {
+            if (args?.peerNetwork === undefined && !opts.urn) {
                 throw new Error("Missing required property 'peerNetwork'");
             }
-            resourceInputs["exportCustomRoutes"] = args ? args.exportCustomRoutes : undefined;
-            resourceInputs["exportSubnetRoutesWithPublicIp"] = args ? args.exportSubnetRoutesWithPublicIp : undefined;
-            resourceInputs["importCustomRoutes"] = args ? args.importCustomRoutes : undefined;
-            resourceInputs["importSubnetRoutesWithPublicIp"] = args ? args.importSubnetRoutesWithPublicIp : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["peerNetwork"] = args ? args.peerNetwork : undefined;
-            resourceInputs["stackType"] = args ? args.stackType : undefined;
-            resourceInputs["updateStrategy"] = args ? args.updateStrategy : undefined;
+            resourceInputs["exportCustomRoutes"] = args?.exportCustomRoutes;
+            resourceInputs["exportSubnetRoutesWithPublicIp"] = args?.exportSubnetRoutesWithPublicIp;
+            resourceInputs["importCustomRoutes"] = args?.importCustomRoutes;
+            resourceInputs["importSubnetRoutesWithPublicIp"] = args?.importSubnetRoutesWithPublicIp;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["peerNetwork"] = args?.peerNetwork;
+            resourceInputs["stackType"] = args?.stackType;
+            resourceInputs["updateStrategy"] = args?.updateStrategy;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateDetails"] = undefined /*out*/;
         }

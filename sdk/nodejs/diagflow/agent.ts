@@ -92,18 +92,18 @@ export class Agent extends pulumi.CustomResource {
      * * API_VERSION_V2_BETA_1: V2beta1 API.
      * Possible values are: `API_VERSION_V1`, `API_VERSION_V2`, `API_VERSION_V2_BETA_1`.
      */
-    public readonly apiVersion!: pulumi.Output<string>;
+    declare public readonly apiVersion: pulumi.Output<string>;
     /**
      * The URI of the agent's avatar, which are used throughout the Dialogflow console. When an image URL is entered
      * into this field, the Dialogflow will save the image in the backend. The address of the backend image returned
      * from the API will be shown in the [avatarUriBackend] field.
      */
-    public readonly avatarUri!: pulumi.Output<string | undefined>;
+    declare public readonly avatarUri: pulumi.Output<string | undefined>;
     /**
      * The URI of the agent's avatar as returned from the API. Output only. To provide an image URL for the agent avatar,
      * the [avatarUri] field can be used.
      */
-    public /*out*/ readonly avatarUriBackend!: pulumi.Output<string>;
+    declare public /*out*/ readonly avatarUriBackend: pulumi.Output<string>;
     /**
      * To filter out false positive results and still get variety in matched natural language inputs for your agent,
      * you can tune the machine learning classification threshold. If the returned score value is less than the threshold
@@ -111,24 +111,24 @@ export class Agent extends pulumi.CustomResource {
      * triggered. The score values range from 0.0 (completely uncertain) to 1.0 (completely certain). If set to 0.0, the
      * default of 0.3 is used.
      */
-    public readonly classificationThreshold!: pulumi.Output<number | undefined>;
+    declare public readonly classificationThreshold: pulumi.Output<number | undefined>;
     /**
      * The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/docs/reference/language)
      * for a list of the currently supported language codes. This field cannot be updated after creation.
      */
-    public readonly defaultLanguageCode!: pulumi.Output<string>;
+    declare public readonly defaultLanguageCode: pulumi.Output<string>;
     /**
      * The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The name of this agent.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Determines whether this agent should log conversation queries.
      */
-    public readonly enableLogging!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableLogging: pulumi.Output<boolean | undefined>;
     /**
      * Determines how intents are detected from user queries.
      * * MATCH_MODE_HYBRID: Best for agents with a small number of examples in intents and/or wide use of templates
@@ -137,16 +137,16 @@ export class Agent extends pulumi.CustomResource {
      * using @sys.any or very large developer entities.
      * Possible values are: `MATCH_MODE_HYBRID`, `MATCH_MODE_ML_ONLY`.
      */
-    public readonly matchMode!: pulumi.Output<string>;
+    declare public readonly matchMode: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The list of all languages supported by this agent (except for the defaultLanguageCode).
      */
-    public readonly supportedLanguageCodes!: pulumi.Output<string[] | undefined>;
+    declare public readonly supportedLanguageCodes: pulumi.Output<string[] | undefined>;
     /**
      * The agent tier. If not specified, TIER_STANDARD is assumed.
      * * TIER_STANDARD: Standard tier.
@@ -155,12 +155,12 @@ export class Agent extends pulumi.CustomResource {
      * NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
      * the the provider state and Dialogflow if the agent tier is changed outside of the provider.
      */
-    public readonly tier!: pulumi.Output<string | undefined>;
+    declare public readonly tier: pulumi.Output<string | undefined>;
     /**
      * The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
      * Europe/Paris.
      */
-    public readonly timeZone!: pulumi.Output<string>;
+    declare public readonly timeZone: pulumi.Output<string>;
 
     /**
      * Create a Agent resource with the given unique name, arguments, and options.
@@ -175,42 +175,42 @@ export class Agent extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AgentState | undefined;
-            resourceInputs["apiVersion"] = state ? state.apiVersion : undefined;
-            resourceInputs["avatarUri"] = state ? state.avatarUri : undefined;
-            resourceInputs["avatarUriBackend"] = state ? state.avatarUriBackend : undefined;
-            resourceInputs["classificationThreshold"] = state ? state.classificationThreshold : undefined;
-            resourceInputs["defaultLanguageCode"] = state ? state.defaultLanguageCode : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["enableLogging"] = state ? state.enableLogging : undefined;
-            resourceInputs["matchMode"] = state ? state.matchMode : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["supportedLanguageCodes"] = state ? state.supportedLanguageCodes : undefined;
-            resourceInputs["tier"] = state ? state.tier : undefined;
-            resourceInputs["timeZone"] = state ? state.timeZone : undefined;
+            resourceInputs["apiVersion"] = state?.apiVersion;
+            resourceInputs["avatarUri"] = state?.avatarUri;
+            resourceInputs["avatarUriBackend"] = state?.avatarUriBackend;
+            resourceInputs["classificationThreshold"] = state?.classificationThreshold;
+            resourceInputs["defaultLanguageCode"] = state?.defaultLanguageCode;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["enableLogging"] = state?.enableLogging;
+            resourceInputs["matchMode"] = state?.matchMode;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["supportedLanguageCodes"] = state?.supportedLanguageCodes;
+            resourceInputs["tier"] = state?.tier;
+            resourceInputs["timeZone"] = state?.timeZone;
         } else {
             const args = argsOrState as AgentArgs | undefined;
-            if ((!args || args.defaultLanguageCode === undefined) && !opts.urn) {
+            if (args?.defaultLanguageCode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'defaultLanguageCode'");
             }
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.timeZone === undefined) && !opts.urn) {
+            if (args?.timeZone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'timeZone'");
             }
-            resourceInputs["apiVersion"] = args ? args.apiVersion : undefined;
-            resourceInputs["avatarUri"] = args ? args.avatarUri : undefined;
-            resourceInputs["classificationThreshold"] = args ? args.classificationThreshold : undefined;
-            resourceInputs["defaultLanguageCode"] = args ? args.defaultLanguageCode : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["enableLogging"] = args ? args.enableLogging : undefined;
-            resourceInputs["matchMode"] = args ? args.matchMode : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["supportedLanguageCodes"] = args ? args.supportedLanguageCodes : undefined;
-            resourceInputs["tier"] = args ? args.tier : undefined;
-            resourceInputs["timeZone"] = args ? args.timeZone : undefined;
+            resourceInputs["apiVersion"] = args?.apiVersion;
+            resourceInputs["avatarUri"] = args?.avatarUri;
+            resourceInputs["classificationThreshold"] = args?.classificationThreshold;
+            resourceInputs["defaultLanguageCode"] = args?.defaultLanguageCode;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["enableLogging"] = args?.enableLogging;
+            resourceInputs["matchMode"] = args?.matchMode;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["supportedLanguageCodes"] = args?.supportedLanguageCodes;
+            resourceInputs["tier"] = args?.tier;
+            resourceInputs["timeZone"] = args?.timeZone;
             resourceInputs["avatarUriBackend"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

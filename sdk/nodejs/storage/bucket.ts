@@ -195,130 +195,129 @@ export class Bucket extends pulumi.CustomResource {
     /**
      * The bucket's [Autoclass](https://cloud.google.com/storage/docs/autoclass) configuration.  Structure is documented below.
      */
-    public readonly autoclass!: pulumi.Output<outputs.storage.BucketAutoclass | undefined>;
+    declare public readonly autoclass: pulumi.Output<outputs.storage.BucketAutoclass | undefined>;
     /**
      * The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
      */
-    public readonly cors!: pulumi.Output<outputs.storage.BucketCor[] | undefined>;
+    declare public readonly cors: pulumi.Output<outputs.storage.BucketCor[] | undefined>;
     /**
      * The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
      */
-    public readonly customPlacementConfig!: pulumi.Output<outputs.storage.BucketCustomPlacementConfig | undefined>;
+    declare public readonly customPlacementConfig: pulumi.Output<outputs.storage.BucketCustomPlacementConfig | undefined>;
     /**
      * Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
      */
-    public readonly defaultEventBasedHold!: pulumi.Output<boolean | undefined>;
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly defaultEventBasedHold: pulumi.Output<boolean | undefined>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
      */
-    public readonly enableObjectRetention!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableObjectRetention: pulumi.Output<boolean | undefined>;
     /**
      * The bucket's encryption configuration. Structure is documented below.
      */
-    public readonly encryption!: pulumi.Output<outputs.storage.BucketEncryption | undefined>;
+    declare public readonly encryption: pulumi.Output<outputs.storage.BucketEncryption | undefined>;
     /**
      * When deleting a bucket, this
      * boolean option will delete all contained objects. If you try to delete a
      * bucket that contains objects, the provider will fail that run.
      */
-    public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceDestroy: pulumi.Output<boolean | undefined>;
     /**
      * The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniformBucketLevelAccess` must be enabled on bucket.
      */
-    public readonly hierarchicalNamespace!: pulumi.Output<outputs.storage.BucketHierarchicalNamespace | undefined>;
+    declare public readonly hierarchicalNamespace: pulumi.Output<outputs.storage.BucketHierarchicalNamespace | undefined>;
     /**
      * The bucket IP filtering configuration. Specifies the network sources that can access the bucket, as well as its underlying objects. Structure is documented below.
      */
-    public readonly ipFilter!: pulumi.Output<outputs.storage.BucketIpFilter | undefined>;
+    declare public readonly ipFilter: pulumi.Output<outputs.storage.BucketIpFilter | undefined>;
     /**
      * A map of key/value label pairs to assign to the bucket.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
      */
-    public readonly lifecycleRules!: pulumi.Output<outputs.storage.BucketLifecycleRule[] | undefined>;
+    declare public readonly lifecycleRules: pulumi.Output<outputs.storage.BucketLifecycleRule[] | undefined>;
     /**
      * The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
      *
      * - - -
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
      */
-    public readonly logging!: pulumi.Output<outputs.storage.BucketLogging | undefined>;
+    declare public readonly logging: pulumi.Output<outputs.storage.BucketLogging | undefined>;
     /**
      * The name of the bucket. Bucket names must be in lowercase and no more than 63 characters long. You can find the complete list of bucket naming rules [here](https://cloud.google.com/storage/docs/buckets#naming).
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The project number of the project in which the resource belongs.
      */
-    public /*out*/ readonly projectNumber!: pulumi.Output<number>;
+    declare public /*out*/ readonly projectNumber: pulumi.Output<number>;
     /**
      * Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention) only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
      */
-    public readonly publicAccessPrevention!: pulumi.Output<string>;
+    declare public readonly publicAccessPrevention: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
      */
-    public readonly requesterPays!: pulumi.Output<boolean | undefined>;
+    declare public readonly requesterPays: pulumi.Output<boolean | undefined>;
     /**
      * Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
      */
-    public readonly retentionPolicy!: pulumi.Output<outputs.storage.BucketRetentionPolicy | undefined>;
+    declare public readonly retentionPolicy: pulumi.Output<outputs.storage.BucketRetentionPolicy | undefined>;
     /**
      * The recovery point objective for cross-region replication of the bucket. Applicable only for dual and multi-region buckets. `"DEFAULT"` sets default replication. `"ASYNC_TURBO"` value enables turbo replication, valid for dual-region buckets only. See [Turbo Replication](https://cloud.google.com/storage/docs/managing-turbo-replication) for more information. If rpo is not specified at bucket creation, it defaults to `"DEFAULT"` for dual and multi-region buckets. **NOTE** If used with single-region bucket, It will throw an error.
      */
-    public readonly rpo!: pulumi.Output<string>;
+    declare public readonly rpo: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
-     * The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot
-     * be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+     * The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
      */
-    public readonly softDeletePolicy!: pulumi.Output<outputs.storage.BucketSoftDeletePolicy>;
+    declare public readonly softDeletePolicy: pulumi.Output<outputs.storage.BucketSoftDeletePolicy>;
     /**
      * The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
      */
-    public readonly storageClass!: pulumi.Output<string | undefined>;
+    declare public readonly storageClass: pulumi.Output<string | undefined>;
     /**
      * The creation time of the bucket in RFC 3339 format.
      */
-    public /*out*/ readonly timeCreated!: pulumi.Output<string>;
+    declare public /*out*/ readonly timeCreated: pulumi.Output<string>;
     /**
      * Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
      */
-    public readonly uniformBucketLevelAccess!: pulumi.Output<boolean>;
+    declare public readonly uniformBucketLevelAccess: pulumi.Output<boolean>;
     /**
      * The time at which the bucket's metadata or IAM policy was last updated, in RFC 3339 format.
      */
-    public /*out*/ readonly updated!: pulumi.Output<string>;
+    declare public /*out*/ readonly updated: pulumi.Output<string>;
     /**
      * The base URL of the bucket, in the format `gs://<bucket-name>`.
      */
-    public /*out*/ readonly url!: pulumi.Output<string>;
+    declare public /*out*/ readonly url: pulumi.Output<string>;
     /**
      * The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
      */
-    public readonly versioning!: pulumi.Output<outputs.storage.BucketVersioning>;
+    declare public readonly versioning: pulumi.Output<outputs.storage.BucketVersioning>;
     /**
      * Configuration if the bucket acts as a website. Structure is documented below.
      */
-    public readonly website!: pulumi.Output<outputs.storage.BucketWebsite>;
+    declare public readonly website: pulumi.Output<outputs.storage.BucketWebsite>;
 
     /**
      * Create a Bucket resource with the given unique name, arguments, and options.
@@ -333,66 +332,66 @@ export class Bucket extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BucketState | undefined;
-            resourceInputs["autoclass"] = state ? state.autoclass : undefined;
-            resourceInputs["cors"] = state ? state.cors : undefined;
-            resourceInputs["customPlacementConfig"] = state ? state.customPlacementConfig : undefined;
-            resourceInputs["defaultEventBasedHold"] = state ? state.defaultEventBasedHold : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["enableObjectRetention"] = state ? state.enableObjectRetention : undefined;
-            resourceInputs["encryption"] = state ? state.encryption : undefined;
-            resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
-            resourceInputs["hierarchicalNamespace"] = state ? state.hierarchicalNamespace : undefined;
-            resourceInputs["ipFilter"] = state ? state.ipFilter : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["lifecycleRules"] = state ? state.lifecycleRules : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["logging"] = state ? state.logging : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["projectNumber"] = state ? state.projectNumber : undefined;
-            resourceInputs["publicAccessPrevention"] = state ? state.publicAccessPrevention : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["requesterPays"] = state ? state.requesterPays : undefined;
-            resourceInputs["retentionPolicy"] = state ? state.retentionPolicy : undefined;
-            resourceInputs["rpo"] = state ? state.rpo : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["softDeletePolicy"] = state ? state.softDeletePolicy : undefined;
-            resourceInputs["storageClass"] = state ? state.storageClass : undefined;
-            resourceInputs["timeCreated"] = state ? state.timeCreated : undefined;
-            resourceInputs["uniformBucketLevelAccess"] = state ? state.uniformBucketLevelAccess : undefined;
-            resourceInputs["updated"] = state ? state.updated : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
-            resourceInputs["versioning"] = state ? state.versioning : undefined;
-            resourceInputs["website"] = state ? state.website : undefined;
+            resourceInputs["autoclass"] = state?.autoclass;
+            resourceInputs["cors"] = state?.cors;
+            resourceInputs["customPlacementConfig"] = state?.customPlacementConfig;
+            resourceInputs["defaultEventBasedHold"] = state?.defaultEventBasedHold;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["enableObjectRetention"] = state?.enableObjectRetention;
+            resourceInputs["encryption"] = state?.encryption;
+            resourceInputs["forceDestroy"] = state?.forceDestroy;
+            resourceInputs["hierarchicalNamespace"] = state?.hierarchicalNamespace;
+            resourceInputs["ipFilter"] = state?.ipFilter;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["lifecycleRules"] = state?.lifecycleRules;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["logging"] = state?.logging;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["projectNumber"] = state?.projectNumber;
+            resourceInputs["publicAccessPrevention"] = state?.publicAccessPrevention;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["requesterPays"] = state?.requesterPays;
+            resourceInputs["retentionPolicy"] = state?.retentionPolicy;
+            resourceInputs["rpo"] = state?.rpo;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["softDeletePolicy"] = state?.softDeletePolicy;
+            resourceInputs["storageClass"] = state?.storageClass;
+            resourceInputs["timeCreated"] = state?.timeCreated;
+            resourceInputs["uniformBucketLevelAccess"] = state?.uniformBucketLevelAccess;
+            resourceInputs["updated"] = state?.updated;
+            resourceInputs["url"] = state?.url;
+            resourceInputs["versioning"] = state?.versioning;
+            resourceInputs["website"] = state?.website;
         } else {
             const args = argsOrState as BucketArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["autoclass"] = args ? args.autoclass : undefined;
-            resourceInputs["cors"] = args ? args.cors : undefined;
-            resourceInputs["customPlacementConfig"] = args ? args.customPlacementConfig : undefined;
-            resourceInputs["defaultEventBasedHold"] = args ? args.defaultEventBasedHold : undefined;
-            resourceInputs["enableObjectRetention"] = args ? args.enableObjectRetention : undefined;
-            resourceInputs["encryption"] = args ? args.encryption : undefined;
-            resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
-            resourceInputs["hierarchicalNamespace"] = args ? args.hierarchicalNamespace : undefined;
-            resourceInputs["ipFilter"] = args ? args.ipFilter : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["lifecycleRules"] = args ? args.lifecycleRules : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["logging"] = args ? args.logging : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["publicAccessPrevention"] = args ? args.publicAccessPrevention : undefined;
-            resourceInputs["requesterPays"] = args ? args.requesterPays : undefined;
-            resourceInputs["retentionPolicy"] = args ? args.retentionPolicy : undefined;
-            resourceInputs["rpo"] = args ? args.rpo : undefined;
-            resourceInputs["softDeletePolicy"] = args ? args.softDeletePolicy : undefined;
-            resourceInputs["storageClass"] = args ? args.storageClass : undefined;
-            resourceInputs["uniformBucketLevelAccess"] = args ? args.uniformBucketLevelAccess : undefined;
-            resourceInputs["versioning"] = args ? args.versioning : undefined;
-            resourceInputs["website"] = args ? args.website : undefined;
+            resourceInputs["autoclass"] = args?.autoclass;
+            resourceInputs["cors"] = args?.cors;
+            resourceInputs["customPlacementConfig"] = args?.customPlacementConfig;
+            resourceInputs["defaultEventBasedHold"] = args?.defaultEventBasedHold;
+            resourceInputs["enableObjectRetention"] = args?.enableObjectRetention;
+            resourceInputs["encryption"] = args?.encryption;
+            resourceInputs["forceDestroy"] = args?.forceDestroy;
+            resourceInputs["hierarchicalNamespace"] = args?.hierarchicalNamespace;
+            resourceInputs["ipFilter"] = args?.ipFilter;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["lifecycleRules"] = args?.lifecycleRules;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["logging"] = args?.logging;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["publicAccessPrevention"] = args?.publicAccessPrevention;
+            resourceInputs["requesterPays"] = args?.requesterPays;
+            resourceInputs["retentionPolicy"] = args?.retentionPolicy;
+            resourceInputs["rpo"] = args?.rpo;
+            resourceInputs["softDeletePolicy"] = args?.softDeletePolicy;
+            resourceInputs["storageClass"] = args?.storageClass;
+            resourceInputs["uniformBucketLevelAccess"] = args?.uniformBucketLevelAccess;
+            resourceInputs["versioning"] = args?.versioning;
+            resourceInputs["website"] = args?.website;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["projectNumber"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
@@ -507,8 +506,7 @@ export interface BucketState {
      */
     selfLink?: pulumi.Input<string>;
     /**
-     * The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot
-     * be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+     * The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
      */
     softDeletePolicy?: pulumi.Input<inputs.storage.BucketSoftDeletePolicy>;
     /**
@@ -627,8 +625,7 @@ export interface BucketArgs {
      */
     rpo?: pulumi.Input<string>;
     /**
-     * The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot
-     * be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+     * The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
      */
     softDeletePolicy?: pulumi.Input<inputs.storage.BucketSoftDeletePolicy>;
     /**

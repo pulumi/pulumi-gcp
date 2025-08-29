@@ -162,67 +162,67 @@ export class NetworkAttachment extends pulumi.CustomResource {
      * An array of connections for all the producers connected to this network attachment.
      * Structure is documented below.
      */
-    public /*out*/ readonly connectionEndpoints!: pulumi.Output<outputs.compute.NetworkAttachmentConnectionEndpoint[]>;
+    declare public /*out*/ readonly connectionEndpoints: pulumi.Output<outputs.compute.NetworkAttachmentConnectionEndpoint[]>;
     /**
      * The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
      * Possible values are: `ACCEPT_AUTOMATIC`, `ACCEPT_MANUAL`, `INVALID`.
      */
-    public readonly connectionPreference!: pulumi.Output<string>;
+    declare public readonly connectionPreference: pulumi.Output<string>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Fingerprint of this resource. A hash of the contents stored in this object. This
      * field is used in optimistic locking. An up-to-date fingerprint must be provided in order to patch.
      */
-    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly fingerprint: pulumi.Output<string>;
     /**
      * Type of the resource.
      */
-    public /*out*/ readonly kind!: pulumi.Output<string>;
+    declare public /*out*/ readonly kind: pulumi.Output<string>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The URL of the network which the Network Attachment belongs to. Practically it is inferred by fetching the network of the first subnetwork associated.
      * Because it is required that all the subnetworks must be from the same network, it is assured that the Network Attachment belongs to the same network as all the subnetworks.
      */
-    public /*out*/ readonly network!: pulumi.Output<string>;
+    declare public /*out*/ readonly network: pulumi.Output<string>;
     /**
      * Projects that are allowed to connect to this network attachment. The project can be specified using its id or number.
      */
-    public readonly producerAcceptLists!: pulumi.Output<string[] | undefined>;
+    declare public readonly producerAcceptLists: pulumi.Output<string[] | undefined>;
     /**
      * Projects that are not allowed to connect to this network attachment. The project can be specified using its id or number.
      */
-    public readonly producerRejectLists!: pulumi.Output<string[] | undefined>;
+    declare public readonly producerRejectLists: pulumi.Output<string[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * URL of the region where the network attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Server-defined URL for the resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * Server-defined URL for this resource's resource id.
      */
-    public /*out*/ readonly selfLinkWithId!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLinkWithId: pulumi.Output<string>;
     /**
      * An array of URLs where each entry is the URL of a subnet provided by the service consumer to use for endpoints in the producers that connect to this network attachment.
      */
-    public readonly subnetworks!: pulumi.Output<string[]>;
+    declare public readonly subnetworks: pulumi.Output<string[]>;
 
     /**
      * Create a NetworkAttachment resource with the given unique name, arguments, and options.
@@ -237,37 +237,37 @@ export class NetworkAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkAttachmentState | undefined;
-            resourceInputs["connectionEndpoints"] = state ? state.connectionEndpoints : undefined;
-            resourceInputs["connectionPreference"] = state ? state.connectionPreference : undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
-            resourceInputs["kind"] = state ? state.kind : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["producerAcceptLists"] = state ? state.producerAcceptLists : undefined;
-            resourceInputs["producerRejectLists"] = state ? state.producerRejectLists : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["selfLinkWithId"] = state ? state.selfLinkWithId : undefined;
-            resourceInputs["subnetworks"] = state ? state.subnetworks : undefined;
+            resourceInputs["connectionEndpoints"] = state?.connectionEndpoints;
+            resourceInputs["connectionPreference"] = state?.connectionPreference;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["fingerprint"] = state?.fingerprint;
+            resourceInputs["kind"] = state?.kind;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["producerAcceptLists"] = state?.producerAcceptLists;
+            resourceInputs["producerRejectLists"] = state?.producerRejectLists;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["selfLinkWithId"] = state?.selfLinkWithId;
+            resourceInputs["subnetworks"] = state?.subnetworks;
         } else {
             const args = argsOrState as NetworkAttachmentArgs | undefined;
-            if ((!args || args.connectionPreference === undefined) && !opts.urn) {
+            if (args?.connectionPreference === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectionPreference'");
             }
-            if ((!args || args.subnetworks === undefined) && !opts.urn) {
+            if (args?.subnetworks === undefined && !opts.urn) {
                 throw new Error("Missing required property 'subnetworks'");
             }
-            resourceInputs["connectionPreference"] = args ? args.connectionPreference : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["producerAcceptLists"] = args ? args.producerAcceptLists : undefined;
-            resourceInputs["producerRejectLists"] = args ? args.producerRejectLists : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["subnetworks"] = args ? args.subnetworks : undefined;
+            resourceInputs["connectionPreference"] = args?.connectionPreference;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["producerAcceptLists"] = args?.producerAcceptLists;
+            resourceInputs["producerRejectLists"] = args?.producerRejectLists;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["subnetworks"] = args?.subnetworks;
             resourceInputs["connectionEndpoints"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;

@@ -231,93 +231,93 @@ export class Task extends pulumi.CustomResource {
     /**
      * The time when the task was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * User-provided description of the task.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * User friendly display name.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Configuration for the cluster
      * Structure is documented below.
      */
-    public readonly executionSpec!: pulumi.Output<outputs.dataplex.TaskExecutionSpec>;
+    declare public readonly executionSpec: pulumi.Output<outputs.dataplex.TaskExecutionSpec>;
     /**
      * Configuration for the cluster
      * Structure is documented below.
      */
-    public /*out*/ readonly executionStatuses!: pulumi.Output<outputs.dataplex.TaskExecutionStatus[]>;
+    declare public /*out*/ readonly executionStatuses: pulumi.Output<outputs.dataplex.TaskExecutionStatus[]>;
     /**
      * User-defined labels for the task.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The lake in which the task will be created in.
      */
-    public readonly lake!: pulumi.Output<string | undefined>;
+    declare public readonly lake: pulumi.Output<string | undefined>;
     /**
      * The location in which the task will be created in.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * (Output)
      * The relative resource name of the job, of the form: projects/{project_number}/locations/{locationId}/lakes/{lakeId}/tasks/{taskId}/jobs/{jobId}.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
      * Structure is documented below.
      */
-    public readonly notebook!: pulumi.Output<outputs.dataplex.TaskNotebook | undefined>;
+    declare public readonly notebook: pulumi.Output<outputs.dataplex.TaskNotebook | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
      * Structure is documented below.
      */
-    public readonly spark!: pulumi.Output<outputs.dataplex.TaskSpark | undefined>;
+    declare public readonly spark: pulumi.Output<outputs.dataplex.TaskSpark | undefined>;
     /**
      * (Output)
      * Execution state for the job.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The task Id of the task.
      */
-    public readonly taskId!: pulumi.Output<string | undefined>;
+    declare public readonly taskId: pulumi.Output<string | undefined>;
     /**
      * Configuration for the cluster
      * Structure is documented below.
      */
-    public readonly triggerSpec!: pulumi.Output<outputs.dataplex.TaskTriggerSpec>;
+    declare public readonly triggerSpec: pulumi.Output<outputs.dataplex.TaskTriggerSpec>;
     /**
      * (Output)
      * System generated globally unique ID for the job.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * (Output)
      * Last update time of the status.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Task resource with the given unique name, arguments, and options.
@@ -332,44 +332,44 @@ export class Task extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TaskState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["executionSpec"] = state ? state.executionSpec : undefined;
-            resourceInputs["executionStatuses"] = state ? state.executionStatuses : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["lake"] = state ? state.lake : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["notebook"] = state ? state.notebook : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["spark"] = state ? state.spark : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["taskId"] = state ? state.taskId : undefined;
-            resourceInputs["triggerSpec"] = state ? state.triggerSpec : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["executionSpec"] = state?.executionSpec;
+            resourceInputs["executionStatuses"] = state?.executionStatuses;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["lake"] = state?.lake;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["notebook"] = state?.notebook;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["spark"] = state?.spark;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["taskId"] = state?.taskId;
+            resourceInputs["triggerSpec"] = state?.triggerSpec;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as TaskArgs | undefined;
-            if ((!args || args.executionSpec === undefined) && !opts.urn) {
+            if (args?.executionSpec === undefined && !opts.urn) {
                 throw new Error("Missing required property 'executionSpec'");
             }
-            if ((!args || args.triggerSpec === undefined) && !opts.urn) {
+            if (args?.triggerSpec === undefined && !opts.urn) {
                 throw new Error("Missing required property 'triggerSpec'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["executionSpec"] = args ? args.executionSpec : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["lake"] = args ? args.lake : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["notebook"] = args ? args.notebook : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["spark"] = args ? args.spark : undefined;
-            resourceInputs["taskId"] = args ? args.taskId : undefined;
-            resourceInputs["triggerSpec"] = args ? args.triggerSpec : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["executionSpec"] = args?.executionSpec;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["lake"] = args?.lake;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["notebook"] = args?.notebook;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["spark"] = args?.spark;
+            resourceInputs["taskId"] = args?.taskId;
+            resourceInputs["triggerSpec"] = args?.triggerSpec;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["executionStatuses"] = undefined /*out*/;

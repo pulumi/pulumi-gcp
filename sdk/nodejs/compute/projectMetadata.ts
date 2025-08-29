@@ -89,12 +89,12 @@ export class ProjectMetadata extends pulumi.CustomResource {
      *
      * - - -
      */
-    public readonly metadata!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly metadata: pulumi.Output<{[key: string]: string}>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
 
     /**
      * Create a ProjectMetadata resource with the given unique name, arguments, and options.
@@ -109,15 +109,15 @@ export class ProjectMetadata extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectMetadataState | undefined;
-            resourceInputs["metadata"] = state ? state.metadata : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["metadata"] = state?.metadata;
+            resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as ProjectMetadataArgs | undefined;
-            if ((!args || args.metadata === undefined) && !opts.urn) {
+            if (args?.metadata === undefined && !opts.urn) {
                 throw new Error("Missing required property 'metadata'");
             }
-            resourceInputs["metadata"] = args ? args.metadata : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["metadata"] = args?.metadata;
+            resourceInputs["project"] = args?.project;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProjectMetadata.__pulumiType, name, resourceInputs, opts);

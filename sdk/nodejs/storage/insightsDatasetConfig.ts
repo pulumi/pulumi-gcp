@@ -140,98 +140,98 @@ export class InsightsDatasetConfig extends pulumi.CustomResource {
     /**
      * The UTC time at which the DatasetConfig was created. This is auto-populated.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The user-defined ID of the DatasetConfig
      */
-    public readonly datasetConfigId!: pulumi.Output<string>;
+    declare public readonly datasetConfigId: pulumi.Output<string>;
     /**
      * State of the DatasetConfig.
      */
-    public /*out*/ readonly datasetConfigState!: pulumi.Output<string>;
+    declare public /*out*/ readonly datasetConfigState: pulumi.Output<string>;
     /**
      * An optional user-provided description for the dataset configuration with a maximum length of 256 characters.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Defined the options for excluding cloud storage buckets for the DatasetConfig.
      * Structure is documented below.
      */
-    public readonly excludeCloudStorageBuckets!: pulumi.Output<outputs.storage.InsightsDatasetConfigExcludeCloudStorageBuckets | undefined>;
+    declare public readonly excludeCloudStorageBuckets: pulumi.Output<outputs.storage.InsightsDatasetConfigExcludeCloudStorageBuckets | undefined>;
     /**
      * Defines the options for excluding cloud storage locations for the DatasetConfig.
      * Structure is documented below.
      */
-    public readonly excludeCloudStorageLocations!: pulumi.Output<outputs.storage.InsightsDatasetConfigExcludeCloudStorageLocations | undefined>;
+    declare public readonly excludeCloudStorageLocations: pulumi.Output<outputs.storage.InsightsDatasetConfigExcludeCloudStorageLocations | undefined>;
     /**
      * Identity used by DatasetConfig.
      * Structure is documented below.
      */
-    public readonly identity!: pulumi.Output<outputs.storage.InsightsDatasetConfigIdentity>;
+    declare public readonly identity: pulumi.Output<outputs.storage.InsightsDatasetConfigIdentity>;
     /**
      * Defines the options for including cloud storage buckets for the DatasetConfig.
      * Structure is documented below.
      */
-    public readonly includeCloudStorageBuckets!: pulumi.Output<outputs.storage.InsightsDatasetConfigIncludeCloudStorageBuckets | undefined>;
+    declare public readonly includeCloudStorageBuckets: pulumi.Output<outputs.storage.InsightsDatasetConfigIncludeCloudStorageBuckets | undefined>;
     /**
      * Defines the options for including cloud storage locations for the DatasetConfig.
      * Structure is documented below.
      */
-    public readonly includeCloudStorageLocations!: pulumi.Output<outputs.storage.InsightsDatasetConfigIncludeCloudStorageLocations | undefined>;
+    declare public readonly includeCloudStorageLocations: pulumi.Output<outputs.storage.InsightsDatasetConfigIncludeCloudStorageLocations | undefined>;
     /**
      * If set to true, the request includes all the newly created buckets in the dataset that meet the inclusion and exclusion rules.
      */
-    public readonly includeNewlyCreatedBuckets!: pulumi.Output<boolean | undefined>;
-    public readonly linkDataset!: pulumi.Output<boolean | undefined>;
+    declare public readonly includeNewlyCreatedBuckets: pulumi.Output<boolean | undefined>;
+    declare public readonly linkDataset: pulumi.Output<boolean | undefined>;
     /**
      * Details of the linked DatasetConfig.
      * Structure is documented below.
      */
-    public /*out*/ readonly links!: pulumi.Output<outputs.storage.InsightsDatasetConfigLink[]>;
+    declare public /*out*/ readonly links: pulumi.Output<outputs.storage.InsightsDatasetConfigLink[]>;
     /**
      * The location of the DatasetConfig.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The full canonical resource name of the DatasetConfig (e.g., projects/P/locations/L/datasetConfigs/ID).
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Organization resource ID that the source projects should belong to.
      * Projects that do not belong to the provided organization are not considered when creating the dataset.
      */
-    public readonly organizationNumber!: pulumi.Output<string>;
+    declare public readonly organizationNumber: pulumi.Output<string>;
     /**
      * Defines the options for providing a source organization for the DatasetConfig.
      */
-    public readonly organizationScope!: pulumi.Output<boolean | undefined>;
+    declare public readonly organizationScope: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Number of days of history that must be retained.
      */
-    public readonly retentionPeriodDays!: pulumi.Output<number>;
+    declare public readonly retentionPeriodDays: pulumi.Output<number>;
     /**
      * Defines the options for providing source folders for the DatasetConfig.
      * Structure is documented below.
      */
-    public readonly sourceFolders!: pulumi.Output<outputs.storage.InsightsDatasetConfigSourceFolders | undefined>;
+    declare public readonly sourceFolders: pulumi.Output<outputs.storage.InsightsDatasetConfigSourceFolders | undefined>;
     /**
      * Defines the options for providing source projects for the DatasetConfig.
      * Structure is documented below.
      */
-    public readonly sourceProjects!: pulumi.Output<outputs.storage.InsightsDatasetConfigSourceProjects | undefined>;
+    declare public readonly sourceProjects: pulumi.Output<outputs.storage.InsightsDatasetConfigSourceProjects | undefined>;
     /**
      * System generated unique identifier for the resource.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * The UTC time at which the DatasetConfig was updated. This is auto-populated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a InsightsDatasetConfig resource with the given unique name, arguments, and options.
@@ -246,58 +246,58 @@ export class InsightsDatasetConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InsightsDatasetConfigState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["datasetConfigId"] = state ? state.datasetConfigId : undefined;
-            resourceInputs["datasetConfigState"] = state ? state.datasetConfigState : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["excludeCloudStorageBuckets"] = state ? state.excludeCloudStorageBuckets : undefined;
-            resourceInputs["excludeCloudStorageLocations"] = state ? state.excludeCloudStorageLocations : undefined;
-            resourceInputs["identity"] = state ? state.identity : undefined;
-            resourceInputs["includeCloudStorageBuckets"] = state ? state.includeCloudStorageBuckets : undefined;
-            resourceInputs["includeCloudStorageLocations"] = state ? state.includeCloudStorageLocations : undefined;
-            resourceInputs["includeNewlyCreatedBuckets"] = state ? state.includeNewlyCreatedBuckets : undefined;
-            resourceInputs["linkDataset"] = state ? state.linkDataset : undefined;
-            resourceInputs["links"] = state ? state.links : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["organizationNumber"] = state ? state.organizationNumber : undefined;
-            resourceInputs["organizationScope"] = state ? state.organizationScope : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["retentionPeriodDays"] = state ? state.retentionPeriodDays : undefined;
-            resourceInputs["sourceFolders"] = state ? state.sourceFolders : undefined;
-            resourceInputs["sourceProjects"] = state ? state.sourceProjects : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["datasetConfigId"] = state?.datasetConfigId;
+            resourceInputs["datasetConfigState"] = state?.datasetConfigState;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["excludeCloudStorageBuckets"] = state?.excludeCloudStorageBuckets;
+            resourceInputs["excludeCloudStorageLocations"] = state?.excludeCloudStorageLocations;
+            resourceInputs["identity"] = state?.identity;
+            resourceInputs["includeCloudStorageBuckets"] = state?.includeCloudStorageBuckets;
+            resourceInputs["includeCloudStorageLocations"] = state?.includeCloudStorageLocations;
+            resourceInputs["includeNewlyCreatedBuckets"] = state?.includeNewlyCreatedBuckets;
+            resourceInputs["linkDataset"] = state?.linkDataset;
+            resourceInputs["links"] = state?.links;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["organizationNumber"] = state?.organizationNumber;
+            resourceInputs["organizationScope"] = state?.organizationScope;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["retentionPeriodDays"] = state?.retentionPeriodDays;
+            resourceInputs["sourceFolders"] = state?.sourceFolders;
+            resourceInputs["sourceProjects"] = state?.sourceProjects;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as InsightsDatasetConfigArgs | undefined;
-            if ((!args || args.datasetConfigId === undefined) && !opts.urn) {
+            if (args?.datasetConfigId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'datasetConfigId'");
             }
-            if ((!args || args.identity === undefined) && !opts.urn) {
+            if (args?.identity === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identity'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.retentionPeriodDays === undefined) && !opts.urn) {
+            if (args?.retentionPeriodDays === undefined && !opts.urn) {
                 throw new Error("Missing required property 'retentionPeriodDays'");
             }
-            resourceInputs["datasetConfigId"] = args ? args.datasetConfigId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["excludeCloudStorageBuckets"] = args ? args.excludeCloudStorageBuckets : undefined;
-            resourceInputs["excludeCloudStorageLocations"] = args ? args.excludeCloudStorageLocations : undefined;
-            resourceInputs["identity"] = args ? args.identity : undefined;
-            resourceInputs["includeCloudStorageBuckets"] = args ? args.includeCloudStorageBuckets : undefined;
-            resourceInputs["includeCloudStorageLocations"] = args ? args.includeCloudStorageLocations : undefined;
-            resourceInputs["includeNewlyCreatedBuckets"] = args ? args.includeNewlyCreatedBuckets : undefined;
-            resourceInputs["linkDataset"] = args ? args.linkDataset : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["organizationNumber"] = args ? args.organizationNumber : undefined;
-            resourceInputs["organizationScope"] = args ? args.organizationScope : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["retentionPeriodDays"] = args ? args.retentionPeriodDays : undefined;
-            resourceInputs["sourceFolders"] = args ? args.sourceFolders : undefined;
-            resourceInputs["sourceProjects"] = args ? args.sourceProjects : undefined;
+            resourceInputs["datasetConfigId"] = args?.datasetConfigId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["excludeCloudStorageBuckets"] = args?.excludeCloudStorageBuckets;
+            resourceInputs["excludeCloudStorageLocations"] = args?.excludeCloudStorageLocations;
+            resourceInputs["identity"] = args?.identity;
+            resourceInputs["includeCloudStorageBuckets"] = args?.includeCloudStorageBuckets;
+            resourceInputs["includeCloudStorageLocations"] = args?.includeCloudStorageLocations;
+            resourceInputs["includeNewlyCreatedBuckets"] = args?.includeNewlyCreatedBuckets;
+            resourceInputs["linkDataset"] = args?.linkDataset;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["organizationNumber"] = args?.organizationNumber;
+            resourceInputs["organizationScope"] = args?.organizationScope;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["retentionPeriodDays"] = args?.retentionPeriodDays;
+            resourceInputs["sourceFolders"] = args?.sourceFolders;
+            resourceInputs["sourceProjects"] = args?.sourceProjects;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["datasetConfigState"] = undefined /*out*/;
             resourceInputs["links"] = undefined /*out*/;

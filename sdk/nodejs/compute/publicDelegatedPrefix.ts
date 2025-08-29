@@ -158,25 +158,25 @@ export class PublicDelegatedPrefix extends pulumi.CustomResource {
     /**
      * The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
      */
-    public readonly allocatablePrefixLength!: pulumi.Output<number>;
+    declare public readonly allocatablePrefixLength: pulumi.Output<number>;
     /**
      * An optional description of this resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The IP address range, in CIDR format, represented by this public delegated prefix.
      */
-    public readonly ipCidrRange!: pulumi.Output<string>;
+    declare public readonly ipCidrRange: pulumi.Output<string>;
     /**
      * If true, the prefix will be live migrated.
      */
-    public readonly isLiveMigration!: pulumi.Output<boolean | undefined>;
+    declare public readonly isLiveMigration: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
      * EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
      * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
      */
-    public readonly mode!: pulumi.Output<string | undefined>;
+    declare public readonly mode: pulumi.Output<string | undefined>;
     /**
      * Name of the resource. The name must be 1-63 characters long, and
      * comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -185,24 +185,24 @@ export class PublicDelegatedPrefix extends pulumi.CustomResource {
      * following characters must be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix.
      */
-    public readonly parentPrefix!: pulumi.Output<string>;
+    declare public readonly parentPrefix: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * A region where the prefix will reside.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
 
     /**
      * Create a PublicDelegatedPrefix resource with the given unique name, arguments, and options.
@@ -217,36 +217,36 @@ export class PublicDelegatedPrefix extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PublicDelegatedPrefixState | undefined;
-            resourceInputs["allocatablePrefixLength"] = state ? state.allocatablePrefixLength : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["ipCidrRange"] = state ? state.ipCidrRange : undefined;
-            resourceInputs["isLiveMigration"] = state ? state.isLiveMigration : undefined;
-            resourceInputs["mode"] = state ? state.mode : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parentPrefix"] = state ? state.parentPrefix : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["allocatablePrefixLength"] = state?.allocatablePrefixLength;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["ipCidrRange"] = state?.ipCidrRange;
+            resourceInputs["isLiveMigration"] = state?.isLiveMigration;
+            resourceInputs["mode"] = state?.mode;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parentPrefix"] = state?.parentPrefix;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["selfLink"] = state?.selfLink;
         } else {
             const args = argsOrState as PublicDelegatedPrefixArgs | undefined;
-            if ((!args || args.ipCidrRange === undefined) && !opts.urn) {
+            if (args?.ipCidrRange === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ipCidrRange'");
             }
-            if ((!args || args.parentPrefix === undefined) && !opts.urn) {
+            if (args?.parentPrefix === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parentPrefix'");
             }
-            if ((!args || args.region === undefined) && !opts.urn) {
+            if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            resourceInputs["allocatablePrefixLength"] = args ? args.allocatablePrefixLength : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
-            resourceInputs["isLiveMigration"] = args ? args.isLiveMigration : undefined;
-            resourceInputs["mode"] = args ? args.mode : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["parentPrefix"] = args ? args.parentPrefix : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["allocatablePrefixLength"] = args?.allocatablePrefixLength;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["ipCidrRange"] = args?.ipCidrRange;
+            resourceInputs["isLiveMigration"] = args?.isLiveMigration;
+            resourceInputs["mode"] = args?.mode;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["parentPrefix"] = args?.parentPrefix;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

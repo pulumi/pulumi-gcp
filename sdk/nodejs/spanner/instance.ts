@@ -118,7 +118,7 @@ export class Instance extends pulumi.CustomResource {
         return obj['__pulumiType'] === Instance.__pulumiType;
     }
 
-    public readonly autoscalingConfig!: pulumi.Output<outputs.spanner.InstanceAutoscalingConfig | undefined>;
+    declare public readonly autoscalingConfig: pulumi.Output<outputs.spanner.InstanceAutoscalingConfig | undefined>;
     /**
      * The name of the instance's configuration (similar but not
      * quite the same as a region) which defines the geographic placement and
@@ -127,40 +127,40 @@ export class Instance extends pulumi.CustomResource {
      * In order to obtain a valid list please consult the
      * [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
      */
-    public readonly config!: pulumi.Output<string>;
+    declare public readonly config: pulumi.Output<string>;
     /**
      * Controls the default backup behavior for new databases within the instance.
      * Note that `AUTOMATIC` is not permitted for free instances, as backups and backup schedules are not allowed for free instances.
      * if unset or NONE, no default backup schedule will be created for new databases within the instance.
      * Possible values are: `NONE`, `AUTOMATIC`.
      */
-    public readonly defaultBackupScheduleType!: pulumi.Output<string>;
+    declare public readonly defaultBackupScheduleType: pulumi.Output<string>;
     /**
      * The descriptive name for this instance as it appears in UIs. Must be
      * unique per project and between 4 and 30 characters in length.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * The edition selected for this instance. Different editions provide different capabilities at different price points.
      * Possible values are: `EDITION_UNSPECIFIED`, `STANDARD`, `ENTERPRISE`, `ENTERPRISE_PLUS`.
      */
-    public readonly edition!: pulumi.Output<string>;
+    declare public readonly edition: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * When deleting a spanner instance, this boolean option will delete all backups of this instance.
      * This must be set to true if you created a backup manually in the console.
      */
-    public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceDestroy: pulumi.Output<boolean | undefined>;
     /**
      * The type of this instance. The type can be used to distinguish product variants, that can affect aspects like:
      * usage restrictions, quotas and billing. Currently this is used to distinguish FREE_INSTANCE vs PROVISIONED instances.
      * When configured as FREE_INSTANCE, the field `edition` should not be configured.
      * Possible values are: `PROVISIONED`, `FREE_INSTANCE`.
      */
-    public readonly instanceType!: pulumi.Output<string>;
+    declare public readonly instanceType: pulumi.Output<string>;
     /**
      * An object containing a list of "key": value pairs.
      * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -168,30 +168,30 @@ export class Instance extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A unique identifier for the instance, which cannot be changed after
      * the instance is created. The name must be between 6 and 30 characters
      * in length.
      * If not provided, a random string starting with `tf-` will be selected.
      */
-    public readonly name!: pulumi.Output<string>;
-    public readonly numNodes!: pulumi.Output<number>;
-    public readonly processingUnits!: pulumi.Output<number>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly numNodes: pulumi.Output<number>;
+    declare public readonly processingUnits: pulumi.Output<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Instance status: `CREATING` or `READY`.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -206,41 +206,41 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["autoscalingConfig"] = state ? state.autoscalingConfig : undefined;
-            resourceInputs["config"] = state ? state.config : undefined;
-            resourceInputs["defaultBackupScheduleType"] = state ? state.defaultBackupScheduleType : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["edition"] = state ? state.edition : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
-            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["numNodes"] = state ? state.numNodes : undefined;
-            resourceInputs["processingUnits"] = state ? state.processingUnits : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["autoscalingConfig"] = state?.autoscalingConfig;
+            resourceInputs["config"] = state?.config;
+            resourceInputs["defaultBackupScheduleType"] = state?.defaultBackupScheduleType;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["edition"] = state?.edition;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["forceDestroy"] = state?.forceDestroy;
+            resourceInputs["instanceType"] = state?.instanceType;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["numNodes"] = state?.numNodes;
+            resourceInputs["processingUnits"] = state?.processingUnits;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["state"] = state?.state;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.config === undefined) && !opts.urn) {
+            if (args?.config === undefined && !opts.urn) {
                 throw new Error("Missing required property 'config'");
             }
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            resourceInputs["autoscalingConfig"] = args ? args.autoscalingConfig : undefined;
-            resourceInputs["config"] = args ? args.config : undefined;
-            resourceInputs["defaultBackupScheduleType"] = args ? args.defaultBackupScheduleType : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["edition"] = args ? args.edition : undefined;
-            resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
-            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["numNodes"] = args ? args.numNodes : undefined;
-            resourceInputs["processingUnits"] = args ? args.processingUnits : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["autoscalingConfig"] = args?.autoscalingConfig;
+            resourceInputs["config"] = args?.config;
+            resourceInputs["defaultBackupScheduleType"] = args?.defaultBackupScheduleType;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["edition"] = args?.edition;
+            resourceInputs["forceDestroy"] = args?.forceDestroy;
+            resourceInputs["instanceType"] = args?.instanceType;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["numNodes"] = args?.numNodes;
+            resourceInputs["processingUnits"] = args?.processingUnits;
+            resourceInputs["project"] = args?.project;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;

@@ -78,44 +78,44 @@ export class TagKey extends pulumi.CustomResource {
      * Output only. Creation time.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * User-assigned description of the TagKey. Must not exceed 256 characters.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The generated numeric id for the TagKey.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Output only. Namespaced name of the TagKey.
      */
-    public /*out*/ readonly namespacedName!: pulumi.Output<string>;
+    declare public /*out*/ readonly namespacedName: pulumi.Output<string>;
     /**
      * Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id} or projects/{project_id_or_number}.
      */
-    public readonly parent!: pulumi.Output<string>;
+    declare public readonly parent: pulumi.Output<string>;
     /**
      * Optional. A purpose cannot be changed once set.
      * A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
      * Possible values are: `GCE_FIREWALL`.
      */
-    public readonly purpose!: pulumi.Output<string | undefined>;
+    declare public readonly purpose: pulumi.Output<string | undefined>;
     /**
      * Optional. Purpose data cannot be changed once set.
      * Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = "<project-name>/<vpc-name>"`.
      */
-    public readonly purposeData!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly purposeData: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
      * The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\), and forward slashes (/).
      */
-    public readonly shortName!: pulumi.Output<string>;
+    declare public readonly shortName: pulumi.Output<string>;
     /**
      * Output only. Update time.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a TagKey resource with the given unique name, arguments, and options.
@@ -130,28 +130,28 @@ export class TagKey extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TagKeyState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namespacedName"] = state ? state.namespacedName : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["purpose"] = state ? state.purpose : undefined;
-            resourceInputs["purposeData"] = state ? state.purposeData : undefined;
-            resourceInputs["shortName"] = state ? state.shortName : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namespacedName"] = state?.namespacedName;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["purpose"] = state?.purpose;
+            resourceInputs["purposeData"] = state?.purposeData;
+            resourceInputs["shortName"] = state?.shortName;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as TagKeyArgs | undefined;
-            if ((!args || args.parent === undefined) && !opts.urn) {
+            if (args?.parent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            if ((!args || args.shortName === undefined) && !opts.urn) {
+            if (args?.shortName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'shortName'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
-            resourceInputs["purpose"] = args ? args.purpose : undefined;
-            resourceInputs["purposeData"] = args ? args.purposeData : undefined;
-            resourceInputs["shortName"] = args ? args.shortName : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["parent"] = args?.parent;
+            resourceInputs["purpose"] = args?.purpose;
+            resourceInputs["purposeData"] = args?.purposeData;
+            resourceInputs["shortName"] = args?.shortName;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["namespacedName"] = undefined /*out*/;

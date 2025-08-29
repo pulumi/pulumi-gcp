@@ -81,46 +81,46 @@ export class Occurence extends pulumi.CustomResource {
      * which authority this attestation was intended to sign.
      * Structure is documented below.
      */
-    public readonly attestation!: pulumi.Output<outputs.containeranalysis.OccurenceAttestation>;
+    declare public readonly attestation: pulumi.Output<outputs.containeranalysis.OccurenceAttestation>;
     /**
      * The time when the repository was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The note kind which explicitly denotes which of the occurrence
      * details are specified. This field can be used as a filter in list
      * requests.
      */
-    public /*out*/ readonly kind!: pulumi.Output<string>;
+    declare public /*out*/ readonly kind: pulumi.Output<string>;
     /**
      * The name of the occurrence.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The analysis note associated with this occurrence, in the form of
      * projects/[PROJECT]/notes/[NOTE_ID]. This field can be used as a
      * filter in list requests.
      */
-    public readonly noteName!: pulumi.Output<string>;
+    declare public readonly noteName: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * A description of actions that can be taken to remedy the note.
      */
-    public readonly remediation!: pulumi.Output<string | undefined>;
+    declare public readonly remediation: pulumi.Output<string | undefined>;
     /**
      * Required. Immutable. A URI that represents the resource for which
      * the occurrence applies. For example,
      * https://gcr.io/project/image@sha256:123abc for a Docker image.
      */
-    public readonly resourceUri!: pulumi.Output<string>;
+    declare public readonly resourceUri: pulumi.Output<string>;
     /**
      * The time when the repository was last updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Occurence resource with the given unique name, arguments, and options.
@@ -135,31 +135,31 @@ export class Occurence extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OccurenceState | undefined;
-            resourceInputs["attestation"] = state ? state.attestation : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["kind"] = state ? state.kind : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["noteName"] = state ? state.noteName : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["remediation"] = state ? state.remediation : undefined;
-            resourceInputs["resourceUri"] = state ? state.resourceUri : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["attestation"] = state?.attestation;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["kind"] = state?.kind;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["noteName"] = state?.noteName;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["remediation"] = state?.remediation;
+            resourceInputs["resourceUri"] = state?.resourceUri;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as OccurenceArgs | undefined;
-            if ((!args || args.attestation === undefined) && !opts.urn) {
+            if (args?.attestation === undefined && !opts.urn) {
                 throw new Error("Missing required property 'attestation'");
             }
-            if ((!args || args.noteName === undefined) && !opts.urn) {
+            if (args?.noteName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'noteName'");
             }
-            if ((!args || args.resourceUri === undefined) && !opts.urn) {
+            if (args?.resourceUri === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceUri'");
             }
-            resourceInputs["attestation"] = args ? args.attestation : undefined;
-            resourceInputs["noteName"] = args ? args.noteName : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["remediation"] = args ? args.remediation : undefined;
-            resourceInputs["resourceUri"] = args ? args.resourceUri : undefined;
+            resourceInputs["attestation"] = args?.attestation;
+            resourceInputs["noteName"] = args?.noteName;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["remediation"] = args?.remediation;
+            resourceInputs["resourceUri"] = args?.resourceUri;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

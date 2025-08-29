@@ -199,71 +199,71 @@ export class Connection extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Configuration for connections to Bitbucket Cloud.
      * Structure is documented below.
      */
-    public readonly bitbucketCloudConfig!: pulumi.Output<outputs.cloudbuildv2.ConnectionBitbucketCloudConfig | undefined>;
+    declare public readonly bitbucketCloudConfig: pulumi.Output<outputs.cloudbuildv2.ConnectionBitbucketCloudConfig | undefined>;
     /**
      * Configuration for connections to Bitbucket Data Center.
      * Structure is documented below.
      */
-    public readonly bitbucketDataCenterConfig!: pulumi.Output<outputs.cloudbuildv2.ConnectionBitbucketDataCenterConfig | undefined>;
+    declare public readonly bitbucketDataCenterConfig: pulumi.Output<outputs.cloudbuildv2.ConnectionBitbucketDataCenterConfig | undefined>;
     /**
      * Output only. Server assigned timestamp for when the connection was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
      */
-    public readonly disabled!: pulumi.Output<boolean | undefined>;
-    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly disabled: pulumi.Output<boolean | undefined>;
+    declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Configuration for connections to github.com.
      * Structure is documented below.
      */
-    public readonly githubConfig!: pulumi.Output<outputs.cloudbuildv2.ConnectionGithubConfig | undefined>;
+    declare public readonly githubConfig: pulumi.Output<outputs.cloudbuildv2.ConnectionGithubConfig | undefined>;
     /**
      * Configuration for connections to an instance of GitHub Enterprise.
      * Structure is documented below.
      */
-    public readonly githubEnterpriseConfig!: pulumi.Output<outputs.cloudbuildv2.ConnectionGithubEnterpriseConfig | undefined>;
+    declare public readonly githubEnterpriseConfig: pulumi.Output<outputs.cloudbuildv2.ConnectionGithubEnterpriseConfig | undefined>;
     /**
      * Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
      * Structure is documented below.
      */
-    public readonly gitlabConfig!: pulumi.Output<outputs.cloudbuildv2.ConnectionGitlabConfig | undefined>;
+    declare public readonly gitlabConfig: pulumi.Output<outputs.cloudbuildv2.ConnectionGitlabConfig | undefined>;
     /**
      * Output only. Installation state of the Connection.
      * Structure is documented below.
      */
-    public /*out*/ readonly installationStates!: pulumi.Output<outputs.cloudbuildv2.ConnectionInstallationState[]>;
+    declare public /*out*/ readonly installationStates: pulumi.Output<outputs.cloudbuildv2.ConnectionInstallationState[]>;
     /**
      * The location for the resource
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Immutable. The resource name of the connection.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Output only. Set to true when the connection is being set up or updated in the background.
      */
-    public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly reconciling: pulumi.Output<boolean>;
     /**
      * Output only. Server assigned timestamp for when the connection was updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Connection resource with the given unique name, arguments, and options.
@@ -278,37 +278,37 @@ export class Connection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectionState | undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["bitbucketCloudConfig"] = state ? state.bitbucketCloudConfig : undefined;
-            resourceInputs["bitbucketDataCenterConfig"] = state ? state.bitbucketDataCenterConfig : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["disabled"] = state ? state.disabled : undefined;
-            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["githubConfig"] = state ? state.githubConfig : undefined;
-            resourceInputs["githubEnterpriseConfig"] = state ? state.githubEnterpriseConfig : undefined;
-            resourceInputs["gitlabConfig"] = state ? state.gitlabConfig : undefined;
-            resourceInputs["installationStates"] = state ? state.installationStates : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["reconciling"] = state ? state.reconciling : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["bitbucketCloudConfig"] = state?.bitbucketCloudConfig;
+            resourceInputs["bitbucketDataCenterConfig"] = state?.bitbucketDataCenterConfig;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["disabled"] = state?.disabled;
+            resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["githubConfig"] = state?.githubConfig;
+            resourceInputs["githubEnterpriseConfig"] = state?.githubEnterpriseConfig;
+            resourceInputs["gitlabConfig"] = state?.gitlabConfig;
+            resourceInputs["installationStates"] = state?.installationStates;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["reconciling"] = state?.reconciling;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as ConnectionArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["bitbucketCloudConfig"] = args ? args.bitbucketCloudConfig : undefined;
-            resourceInputs["bitbucketDataCenterConfig"] = args ? args.bitbucketDataCenterConfig : undefined;
-            resourceInputs["disabled"] = args ? args.disabled : undefined;
-            resourceInputs["githubConfig"] = args ? args.githubConfig : undefined;
-            resourceInputs["githubEnterpriseConfig"] = args ? args.githubEnterpriseConfig : undefined;
-            resourceInputs["gitlabConfig"] = args ? args.gitlabConfig : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["bitbucketCloudConfig"] = args?.bitbucketCloudConfig;
+            resourceInputs["bitbucketDataCenterConfig"] = args?.bitbucketDataCenterConfig;
+            resourceInputs["disabled"] = args?.disabled;
+            resourceInputs["githubConfig"] = args?.githubConfig;
+            resourceInputs["githubEnterpriseConfig"] = args?.githubEnterpriseConfig;
+            resourceInputs["gitlabConfig"] = args?.gitlabConfig;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;

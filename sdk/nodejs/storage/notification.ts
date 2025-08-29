@@ -100,31 +100,31 @@ export class Notification extends pulumi.CustomResource {
     /**
      * The name of the bucket.
      */
-    public readonly bucket!: pulumi.Output<string>;
+    declare public readonly bucket: pulumi.Output<string>;
     /**
      * A set of key/value attribute pairs to attach to each Cloud PubSub message published for this notification subscription
      */
-    public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly customAttributes: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * List of event type filters for this notification config. If not specified, Cloud Storage will send notifications for all event types. The valid types are: `"OBJECT_FINALIZE"`, `"OBJECT_METADATA_UPDATE"`, `"OBJECT_DELETE"`, `"OBJECT_ARCHIVE"`
      */
-    public readonly eventTypes!: pulumi.Output<string[] | undefined>;
+    declare public readonly eventTypes: pulumi.Output<string[] | undefined>;
     /**
      * The ID of the created notification.
      */
-    public /*out*/ readonly notificationId!: pulumi.Output<string>;
+    declare public /*out*/ readonly notificationId: pulumi.Output<string>;
     /**
      * Specifies a prefix path filter for this notification config. Cloud Storage will only send notifications for objects in this bucket whose names begin with the specified prefix.
      */
-    public readonly objectNamePrefix!: pulumi.Output<string | undefined>;
+    declare public readonly objectNamePrefix: pulumi.Output<string | undefined>;
     /**
      * The desired content of the Payload. One of `"JSON_API_V1"` or `"NONE"`.
      */
-    public readonly payloadFormat!: pulumi.Output<string>;
+    declare public readonly payloadFormat: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * The Cloud PubSub topic to which this subscription publishes. Expects either the
      * topic name, assumed to belong to the default GCP provider project, or the project-level name,
@@ -133,7 +133,7 @@ export class Notification extends pulumi.CustomResource {
      *
      * - - -
      */
-    public readonly topic!: pulumi.Output<string>;
+    declare public readonly topic: pulumi.Output<string>;
 
     /**
      * Create a Notification resource with the given unique name, arguments, and options.
@@ -148,31 +148,31 @@ export class Notification extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NotificationState | undefined;
-            resourceInputs["bucket"] = state ? state.bucket : undefined;
-            resourceInputs["customAttributes"] = state ? state.customAttributes : undefined;
-            resourceInputs["eventTypes"] = state ? state.eventTypes : undefined;
-            resourceInputs["notificationId"] = state ? state.notificationId : undefined;
-            resourceInputs["objectNamePrefix"] = state ? state.objectNamePrefix : undefined;
-            resourceInputs["payloadFormat"] = state ? state.payloadFormat : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["topic"] = state ? state.topic : undefined;
+            resourceInputs["bucket"] = state?.bucket;
+            resourceInputs["customAttributes"] = state?.customAttributes;
+            resourceInputs["eventTypes"] = state?.eventTypes;
+            resourceInputs["notificationId"] = state?.notificationId;
+            resourceInputs["objectNamePrefix"] = state?.objectNamePrefix;
+            resourceInputs["payloadFormat"] = state?.payloadFormat;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["topic"] = state?.topic;
         } else {
             const args = argsOrState as NotificationArgs | undefined;
-            if ((!args || args.bucket === undefined) && !opts.urn) {
+            if (args?.bucket === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            if ((!args || args.payloadFormat === undefined) && !opts.urn) {
+            if (args?.payloadFormat === undefined && !opts.urn) {
                 throw new Error("Missing required property 'payloadFormat'");
             }
-            if ((!args || args.topic === undefined) && !opts.urn) {
+            if (args?.topic === undefined && !opts.urn) {
                 throw new Error("Missing required property 'topic'");
             }
-            resourceInputs["bucket"] = args ? args.bucket : undefined;
-            resourceInputs["customAttributes"] = args ? args.customAttributes : undefined;
-            resourceInputs["eventTypes"] = args ? args.eventTypes : undefined;
-            resourceInputs["objectNamePrefix"] = args ? args.objectNamePrefix : undefined;
-            resourceInputs["payloadFormat"] = args ? args.payloadFormat : undefined;
-            resourceInputs["topic"] = args ? args.topic : undefined;
+            resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["customAttributes"] = args?.customAttributes;
+            resourceInputs["eventTypes"] = args?.eventTypes;
+            resourceInputs["objectNamePrefix"] = args?.objectNamePrefix;
+            resourceInputs["payloadFormat"] = args?.payloadFormat;
+            resourceInputs["topic"] = args?.topic;
             resourceInputs["notificationId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         }

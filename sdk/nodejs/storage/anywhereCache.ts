@@ -86,39 +86,39 @@ export class AnywhereCache extends pulumi.CustomResource {
      * Default value is `admit-on-first-miss`.
      * Possible values are: `admit-on-first-miss`, `admit-on-second-miss`.
      */
-    public readonly admissionPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly admissionPolicy: pulumi.Output<string | undefined>;
     /**
      * The ID of the Anywhere cache instance.
      */
-    public /*out*/ readonly anywhereCacheId!: pulumi.Output<string>;
+    declare public /*out*/ readonly anywhereCacheId: pulumi.Output<string>;
     /**
      * A reference to Bucket resource
      */
-    public readonly bucket!: pulumi.Output<string>;
+    declare public readonly bucket: pulumi.Output<string>;
     /**
      * The creation time of the cache instance in RFC 3339 format.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * True if the cache instance has an active Update long-running operation.
      */
-    public /*out*/ readonly pendingUpdate!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly pendingUpdate: pulumi.Output<boolean>;
     /**
      * The current state of the cache instance.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The TTL of all cache entries in whole seconds. e.g., "7200s". It defaults to `86400s`
      */
-    public readonly ttl!: pulumi.Output<string | undefined>;
+    declare public readonly ttl: pulumi.Output<string | undefined>;
     /**
      * The modification time of the cache instance metadata in RFC 3339 format.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * The zone in which the cache instance needs to be created. For example, `us-central1-a.`
      */
-    public readonly zone!: pulumi.Output<string>;
+    declare public readonly zone: pulumi.Output<string>;
 
     /**
      * Create a AnywhereCache resource with the given unique name, arguments, and options.
@@ -133,27 +133,27 @@ export class AnywhereCache extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AnywhereCacheState | undefined;
-            resourceInputs["admissionPolicy"] = state ? state.admissionPolicy : undefined;
-            resourceInputs["anywhereCacheId"] = state ? state.anywhereCacheId : undefined;
-            resourceInputs["bucket"] = state ? state.bucket : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["pendingUpdate"] = state ? state.pendingUpdate : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["ttl"] = state ? state.ttl : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["admissionPolicy"] = state?.admissionPolicy;
+            resourceInputs["anywhereCacheId"] = state?.anywhereCacheId;
+            resourceInputs["bucket"] = state?.bucket;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["pendingUpdate"] = state?.pendingUpdate;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["ttl"] = state?.ttl;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as AnywhereCacheArgs | undefined;
-            if ((!args || args.bucket === undefined) && !opts.urn) {
+            if (args?.bucket === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            if ((!args || args.zone === undefined) && !opts.urn) {
+            if (args?.zone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
-            resourceInputs["admissionPolicy"] = args ? args.admissionPolicy : undefined;
-            resourceInputs["bucket"] = args ? args.bucket : undefined;
-            resourceInputs["ttl"] = args ? args.ttl : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["admissionPolicy"] = args?.admissionPolicy;
+            resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["ttl"] = args?.ttl;
+            resourceInputs["zone"] = args?.zone;
             resourceInputs["anywhereCacheId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["pendingUpdate"] = undefined /*out*/;

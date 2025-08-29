@@ -91,40 +91,40 @@ export class V2ProjectNotificationConfig extends pulumi.CustomResource {
     /**
      * This must be unique within the project.
      */
-    public readonly configId!: pulumi.Output<string>;
+    declare public readonly configId: pulumi.Output<string>;
     /**
      * The description of the notification config (max of 1024 characters).
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Location ID of the parent organization. Only global is supported at the moment.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * The resource name of this notification config, in the format
      * `projects/{{projectId}}/locations/{{location}}/notificationConfigs/{{config_id}}`.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The Pub/Sub topic to send notifications to. Its format is
      * "projects/[projectId]/topics/[topic]".
      */
-    public readonly pubsubTopic!: pulumi.Output<string | undefined>;
+    declare public readonly pubsubTopic: pulumi.Output<string | undefined>;
     /**
      * The service account that needs "pubsub.topics.publish" permission to
      * publish to the Pub/Sub topic.
      */
-    public /*out*/ readonly serviceAccount!: pulumi.Output<string>;
+    declare public /*out*/ readonly serviceAccount: pulumi.Output<string>;
     /**
      * The config for triggering streaming-based notifications.
      * Structure is documented below.
      */
-    public readonly streamingConfig!: pulumi.Output<outputs.securitycenter.V2ProjectNotificationConfigStreamingConfig>;
+    declare public readonly streamingConfig: pulumi.Output<outputs.securitycenter.V2ProjectNotificationConfigStreamingConfig>;
 
     /**
      * Create a V2ProjectNotificationConfig resource with the given unique name, arguments, and options.
@@ -139,28 +139,28 @@ export class V2ProjectNotificationConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as V2ProjectNotificationConfigState | undefined;
-            resourceInputs["configId"] = state ? state.configId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pubsubTopic"] = state ? state.pubsubTopic : undefined;
-            resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
-            resourceInputs["streamingConfig"] = state ? state.streamingConfig : undefined;
+            resourceInputs["configId"] = state?.configId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pubsubTopic"] = state?.pubsubTopic;
+            resourceInputs["serviceAccount"] = state?.serviceAccount;
+            resourceInputs["streamingConfig"] = state?.streamingConfig;
         } else {
             const args = argsOrState as V2ProjectNotificationConfigArgs | undefined;
-            if ((!args || args.configId === undefined) && !opts.urn) {
+            if (args?.configId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'configId'");
             }
-            if ((!args || args.streamingConfig === undefined) && !opts.urn) {
+            if (args?.streamingConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'streamingConfig'");
             }
-            resourceInputs["configId"] = args ? args.configId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["pubsubTopic"] = args ? args.pubsubTopic : undefined;
-            resourceInputs["streamingConfig"] = args ? args.streamingConfig : undefined;
+            resourceInputs["configId"] = args?.configId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["pubsubTopic"] = args?.pubsubTopic;
+            resourceInputs["streamingConfig"] = args?.streamingConfig;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["serviceAccount"] = undefined /*out*/;
         }

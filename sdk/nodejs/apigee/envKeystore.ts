@@ -62,16 +62,16 @@ export class EnvKeystore extends pulumi.CustomResource {
     /**
      * Aliases in this keystore.
      */
-    public /*out*/ readonly aliases!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly aliases: pulumi.Output<string[]>;
     /**
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
      */
-    public readonly envId!: pulumi.Output<string>;
+    declare public readonly envId: pulumi.Output<string>;
     /**
      * The name of the newly created keystore.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a EnvKeystore resource with the given unique name, arguments, and options.
@@ -86,16 +86,16 @@ export class EnvKeystore extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EnvKeystoreState | undefined;
-            resourceInputs["aliases"] = state ? state.aliases : undefined;
-            resourceInputs["envId"] = state ? state.envId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["aliases"] = state?.aliases;
+            resourceInputs["envId"] = state?.envId;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as EnvKeystoreArgs | undefined;
-            if ((!args || args.envId === undefined) && !opts.urn) {
+            if (args?.envId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'envId'");
             }
-            resourceInputs["envId"] = args ? args.envId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["envId"] = args?.envId;
+            resourceInputs["name"] = args?.name;
             resourceInputs["aliases"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

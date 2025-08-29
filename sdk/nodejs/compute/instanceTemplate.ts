@@ -307,52 +307,52 @@ export class InstanceTemplate extends pulumi.CustomResource {
     /**
      * Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
      */
-    public readonly advancedMachineFeatures!: pulumi.Output<outputs.compute.InstanceTemplateAdvancedMachineFeatures | undefined>;
+    declare public readonly advancedMachineFeatures: pulumi.Output<outputs.compute.InstanceTemplateAdvancedMachineFeatures | undefined>;
     /**
      * Whether to allow sending and receiving of
      * packets with non-matching source or destination IPs. This defaults to false.
      */
-    public readonly canIpForward!: pulumi.Output<boolean | undefined>;
+    declare public readonly canIpForward: pulumi.Output<boolean | undefined>;
     /**
      * Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
      */
-    public readonly confidentialInstanceConfig!: pulumi.Output<outputs.compute.InstanceTemplateConfidentialInstanceConfig>;
+    declare public readonly confidentialInstanceConfig: pulumi.Output<outputs.compute.InstanceTemplateConfidentialInstanceConfig>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * A brief description of this resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Disks to attach to instances created from this template.
      * This can be specified multiple times for multiple disks. Structure is
      * documented below.
      */
-    public readonly disks!: pulumi.Output<outputs.compute.InstanceTemplateDisk[]>;
+    declare public readonly disks: pulumi.Output<outputs.compute.InstanceTemplateDisk[]>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
      * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
      */
-    public readonly enableDisplay!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableDisplay: pulumi.Output<boolean | undefined>;
     /**
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
      */
-    public readonly guestAccelerators!: pulumi.Output<outputs.compute.InstanceTemplateGuestAccelerator[] | undefined>;
+    declare public readonly guestAccelerators: pulumi.Output<outputs.compute.InstanceTemplateGuestAccelerator[] | undefined>;
     /**
      * A brief description to use for instances
      * created from this template.
      */
-    public readonly instanceDescription!: pulumi.Output<string | undefined>;
+    declare public readonly instanceDescription: pulumi.Output<string | undefined>;
     /**
      * Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
      */
-    public readonly keyRevocationActionType!: pulumi.Output<string | undefined>;
+    declare public readonly keyRevocationActionType: pulumi.Output<string | undefined>;
     /**
      * A set of key/value label pairs to assign to instances
      * created from this template.
@@ -360,38 +360,37 @@ export class InstanceTemplate extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The machine type to create. To create a machine with a custom type (such as extended memory), format the value like
-     * custom-VCPUS-MEM_IN_MB like custom-6-20480 for 6 vCPU and 20GB of RAM.
+     * The machine type to create. To create a machine with a custom type (such as extended memory), format the value like custom-VCPUS-MEM_IN_MB like custom-6-20480 for 6 vCPU and 20GB of RAM.
      */
-    public readonly machineType!: pulumi.Output<string>;
+    declare public readonly machineType: pulumi.Output<string>;
     /**
      * Metadata key/value pairs to make available from
      * within instances created from this template.
      */
-    public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly metadata: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The unique fingerprint of the metadata.
      */
-    public /*out*/ readonly metadataFingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly metadataFingerprint: pulumi.Output<string>;
     /**
      * An alternative to using the
      * startup-script metadata key, mostly to match the computeInstance resource.
      * This replaces the startup-script metadata key on the created instance and
      * thus the two mechanisms are not allowed to be used simultaneously.
      */
-    public readonly metadataStartupScript!: pulumi.Output<string | undefined>;
+    declare public readonly metadataStartupScript: pulumi.Output<string | undefined>;
     /**
      * Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
      * `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
      */
-    public readonly minCpuPlatform!: pulumi.Output<string | undefined>;
+    declare public readonly minCpuPlatform: pulumi.Output<string | undefined>;
     /**
      * The name of the instance template. If you leave
      * this blank, the provider will auto-generate a unique name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Creates a unique name beginning with the specified
      * prefix. Conflicts with `name`. Max length is 54 characters.
@@ -403,13 +402,13 @@ export class InstanceTemplate extends pulumi.CustomResource {
      * Resulting name for a `namePrefix` 38 - 54 characters:
      * `namePrefix` + YYmmdd + 3 digit incremental counter
      */
-    public readonly namePrefix!: pulumi.Output<string>;
+    declare public readonly namePrefix: pulumi.Output<string>;
     /**
      * Networks to attach to instances created from
      * this template. This can be specified multiple times for multiple networks.
      * Structure is documented below.
      */
-    public readonly networkInterfaces!: pulumi.Output<outputs.compute.InstanceTemplateNetworkInterface[] | undefined>;
+    declare public readonly networkInterfaces: pulumi.Output<outputs.compute.InstanceTemplateNetworkInterface[] | undefined>;
     /**
      * (Optional, Configures network performance settings for the instance created from the
      * template. Structure is documented below. **Note**: `machineType`
@@ -418,24 +417,24 @@ export class InstanceTemplate extends pulumi.CustomResource {
      * in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
      * in order for this setting to take effect.
      */
-    public readonly networkPerformanceConfig!: pulumi.Output<outputs.compute.InstanceTemplateNetworkPerformanceConfig | undefined>;
+    declare public readonly networkPerformanceConfig: pulumi.Output<outputs.compute.InstanceTemplateNetworkPerformanceConfig | undefined>;
     /**
      * numeric identifier of the resource.
      */
-    public /*out*/ readonly numericId!: pulumi.Output<string>;
+    declare public /*out*/ readonly numericId: pulumi.Output<string>;
     /**
      * Beta key/value pair represents partner metadata assigned to instance template where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
      */
-    public readonly partnerMetadata!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly partnerMetadata: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * An instance template is a global resource that is not
      * bound to a zone or a region. However, you can still specify some regional
@@ -444,51 +443,51 @@ export class InstanceTemplate extends pulumi.CustomResource {
      * resource is tied to a specific region. Defaults to the region of the
      * Provider if no value is given.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Specifies the reservations that this instance can consume from.
      * Structure is documented below.
      */
-    public readonly reservationAffinity!: pulumi.Output<outputs.compute.InstanceTemplateReservationAffinity | undefined>;
+    declare public readonly reservationAffinity: pulumi.Output<outputs.compute.InstanceTemplateReservationAffinity | undefined>;
     /**
      * A set of key/value resource manager tag pairs to bind to the instances. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
      */
-    public readonly resourceManagerTags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly resourceManagerTags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      */
-    public readonly resourcePolicies!: pulumi.Output<string | undefined>;
+    declare public readonly resourcePolicies: pulumi.Output<string | undefined>;
     /**
      * The scheduling strategy to use. More details about
      * this configuration option are detailed below.
      */
-    public readonly scheduling!: pulumi.Output<outputs.compute.InstanceTemplateScheduling>;
+    declare public readonly scheduling: pulumi.Output<outputs.compute.InstanceTemplateScheduling>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * A special URI of the created resource that uniquely identifies this instance template with the following format: `projects/{{project}}/global/instanceTemplates/{{name}}?uniqueId={{uniqueId}}`
      * Referencing an instance template via this attribute prevents Time of Check to Time of Use attacks when the instance template resides in a shared/untrusted environment.
      */
-    public /*out*/ readonly selfLinkUnique!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLinkUnique: pulumi.Output<string>;
     /**
      * Service account to attach to the instance. Structure is documented below.
      */
-    public readonly serviceAccount!: pulumi.Output<outputs.compute.InstanceTemplateServiceAccount | undefined>;
+    declare public readonly serviceAccount: pulumi.Output<outputs.compute.InstanceTemplateServiceAccount | undefined>;
     /**
      * Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
      * **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
      */
-    public readonly shieldedInstanceConfig!: pulumi.Output<outputs.compute.InstanceTemplateShieldedInstanceConfig>;
+    declare public readonly shieldedInstanceConfig: pulumi.Output<outputs.compute.InstanceTemplateShieldedInstanceConfig>;
     /**
      * Tags to attach to the instance.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * The unique fingerprint of the tags.
      */
-    public /*out*/ readonly tagsFingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly tagsFingerprint: pulumi.Output<string>;
 
     /**
      * Create a InstanceTemplate resource with the given unique name, arguments, and options.
@@ -503,78 +502,78 @@ export class InstanceTemplate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceTemplateState | undefined;
-            resourceInputs["advancedMachineFeatures"] = state ? state.advancedMachineFeatures : undefined;
-            resourceInputs["canIpForward"] = state ? state.canIpForward : undefined;
-            resourceInputs["confidentialInstanceConfig"] = state ? state.confidentialInstanceConfig : undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["disks"] = state ? state.disks : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["enableDisplay"] = state ? state.enableDisplay : undefined;
-            resourceInputs["guestAccelerators"] = state ? state.guestAccelerators : undefined;
-            resourceInputs["instanceDescription"] = state ? state.instanceDescription : undefined;
-            resourceInputs["keyRevocationActionType"] = state ? state.keyRevocationActionType : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["machineType"] = state ? state.machineType : undefined;
-            resourceInputs["metadata"] = state ? state.metadata : undefined;
-            resourceInputs["metadataFingerprint"] = state ? state.metadataFingerprint : undefined;
-            resourceInputs["metadataStartupScript"] = state ? state.metadataStartupScript : undefined;
-            resourceInputs["minCpuPlatform"] = state ? state.minCpuPlatform : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namePrefix"] = state ? state.namePrefix : undefined;
-            resourceInputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
-            resourceInputs["networkPerformanceConfig"] = state ? state.networkPerformanceConfig : undefined;
-            resourceInputs["numericId"] = state ? state.numericId : undefined;
-            resourceInputs["partnerMetadata"] = state ? state.partnerMetadata : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["reservationAffinity"] = state ? state.reservationAffinity : undefined;
-            resourceInputs["resourceManagerTags"] = state ? state.resourceManagerTags : undefined;
-            resourceInputs["resourcePolicies"] = state ? state.resourcePolicies : undefined;
-            resourceInputs["scheduling"] = state ? state.scheduling : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["selfLinkUnique"] = state ? state.selfLinkUnique : undefined;
-            resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
-            resourceInputs["shieldedInstanceConfig"] = state ? state.shieldedInstanceConfig : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["tagsFingerprint"] = state ? state.tagsFingerprint : undefined;
+            resourceInputs["advancedMachineFeatures"] = state?.advancedMachineFeatures;
+            resourceInputs["canIpForward"] = state?.canIpForward;
+            resourceInputs["confidentialInstanceConfig"] = state?.confidentialInstanceConfig;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["disks"] = state?.disks;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["enableDisplay"] = state?.enableDisplay;
+            resourceInputs["guestAccelerators"] = state?.guestAccelerators;
+            resourceInputs["instanceDescription"] = state?.instanceDescription;
+            resourceInputs["keyRevocationActionType"] = state?.keyRevocationActionType;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["machineType"] = state?.machineType;
+            resourceInputs["metadata"] = state?.metadata;
+            resourceInputs["metadataFingerprint"] = state?.metadataFingerprint;
+            resourceInputs["metadataStartupScript"] = state?.metadataStartupScript;
+            resourceInputs["minCpuPlatform"] = state?.minCpuPlatform;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namePrefix"] = state?.namePrefix;
+            resourceInputs["networkInterfaces"] = state?.networkInterfaces;
+            resourceInputs["networkPerformanceConfig"] = state?.networkPerformanceConfig;
+            resourceInputs["numericId"] = state?.numericId;
+            resourceInputs["partnerMetadata"] = state?.partnerMetadata;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["reservationAffinity"] = state?.reservationAffinity;
+            resourceInputs["resourceManagerTags"] = state?.resourceManagerTags;
+            resourceInputs["resourcePolicies"] = state?.resourcePolicies;
+            resourceInputs["scheduling"] = state?.scheduling;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["selfLinkUnique"] = state?.selfLinkUnique;
+            resourceInputs["serviceAccount"] = state?.serviceAccount;
+            resourceInputs["shieldedInstanceConfig"] = state?.shieldedInstanceConfig;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["tagsFingerprint"] = state?.tagsFingerprint;
         } else {
             const args = argsOrState as InstanceTemplateArgs | undefined;
-            if ((!args || args.disks === undefined) && !opts.urn) {
+            if (args?.disks === undefined && !opts.urn) {
                 throw new Error("Missing required property 'disks'");
             }
-            if ((!args || args.machineType === undefined) && !opts.urn) {
+            if (args?.machineType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'machineType'");
             }
-            resourceInputs["advancedMachineFeatures"] = args ? args.advancedMachineFeatures : undefined;
-            resourceInputs["canIpForward"] = args ? args.canIpForward : undefined;
-            resourceInputs["confidentialInstanceConfig"] = args ? args.confidentialInstanceConfig : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["disks"] = args ? args.disks : undefined;
-            resourceInputs["enableDisplay"] = args ? args.enableDisplay : undefined;
-            resourceInputs["guestAccelerators"] = args ? args.guestAccelerators : undefined;
-            resourceInputs["instanceDescription"] = args ? args.instanceDescription : undefined;
-            resourceInputs["keyRevocationActionType"] = args ? args.keyRevocationActionType : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["machineType"] = args ? args.machineType : undefined;
-            resourceInputs["metadata"] = args ? args.metadata : undefined;
-            resourceInputs["metadataStartupScript"] = args ? args.metadataStartupScript : undefined;
-            resourceInputs["minCpuPlatform"] = args ? args.minCpuPlatform : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["namePrefix"] = args ? args.namePrefix : undefined;
-            resourceInputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
-            resourceInputs["networkPerformanceConfig"] = args ? args.networkPerformanceConfig : undefined;
-            resourceInputs["partnerMetadata"] = args ? args.partnerMetadata : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["reservationAffinity"] = args ? args.reservationAffinity : undefined;
-            resourceInputs["resourceManagerTags"] = args ? args.resourceManagerTags : undefined;
-            resourceInputs["resourcePolicies"] = args ? args.resourcePolicies : undefined;
-            resourceInputs["scheduling"] = args ? args.scheduling : undefined;
-            resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
-            resourceInputs["shieldedInstanceConfig"] = args ? args.shieldedInstanceConfig : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["advancedMachineFeatures"] = args?.advancedMachineFeatures;
+            resourceInputs["canIpForward"] = args?.canIpForward;
+            resourceInputs["confidentialInstanceConfig"] = args?.confidentialInstanceConfig;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["disks"] = args?.disks;
+            resourceInputs["enableDisplay"] = args?.enableDisplay;
+            resourceInputs["guestAccelerators"] = args?.guestAccelerators;
+            resourceInputs["instanceDescription"] = args?.instanceDescription;
+            resourceInputs["keyRevocationActionType"] = args?.keyRevocationActionType;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["machineType"] = args?.machineType;
+            resourceInputs["metadata"] = args?.metadata;
+            resourceInputs["metadataStartupScript"] = args?.metadataStartupScript;
+            resourceInputs["minCpuPlatform"] = args?.minCpuPlatform;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["namePrefix"] = args?.namePrefix;
+            resourceInputs["networkInterfaces"] = args?.networkInterfaces;
+            resourceInputs["networkPerformanceConfig"] = args?.networkPerformanceConfig;
+            resourceInputs["partnerMetadata"] = args?.partnerMetadata;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["reservationAffinity"] = args?.reservationAffinity;
+            resourceInputs["resourceManagerTags"] = args?.resourceManagerTags;
+            resourceInputs["resourcePolicies"] = args?.resourcePolicies;
+            resourceInputs["scheduling"] = args?.scheduling;
+            resourceInputs["serviceAccount"] = args?.serviceAccount;
+            resourceInputs["shieldedInstanceConfig"] = args?.shieldedInstanceConfig;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["metadataFingerprint"] = undefined /*out*/;
@@ -653,8 +652,7 @@ export interface InstanceTemplateState {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The machine type to create. To create a machine with a custom type (such as extended memory), format the value like
-     * custom-VCPUS-MEM_IN_MB like custom-6-20480 for 6 vCPU and 20GB of RAM.
+     * The machine type to create. To create a machine with a custom type (such as extended memory), format the value like custom-VCPUS-MEM_IN_MB like custom-6-20480 for 6 vCPU and 20GB of RAM.
      */
     machineType?: pulumi.Input<string>;
     /**
@@ -836,8 +834,7 @@ export interface InstanceTemplateArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The machine type to create. To create a machine with a custom type (such as extended memory), format the value like
-     * custom-VCPUS-MEM_IN_MB like custom-6-20480 for 6 vCPU and 20GB of RAM.
+     * The machine type to create. To create a machine with a custom type (such as extended memory), format the value like custom-VCPUS-MEM_IN_MB like custom-6-20480 for 6 vCPU and 20GB of RAM.
      */
     machineType: pulumi.Input<string>;
     /**

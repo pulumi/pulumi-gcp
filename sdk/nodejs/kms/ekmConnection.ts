@@ -96,40 +96,40 @@ export class EkmConnection extends pulumi.CustomResource {
      * Output only. The time at which the EkmConnection was created.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
      */
-    public readonly cryptoSpacePath!: pulumi.Output<string>;
+    declare public readonly cryptoSpacePath: pulumi.Output<string>;
     /**
      * Optional. Etag of the currently stored EkmConnection.
      */
-    public readonly etag!: pulumi.Output<string>;
+    declare public readonly etag: pulumi.Output<string>;
     /**
      * Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL
      * Default value is `MANUAL`.
      * Possible values are: `MANUAL`, `CLOUD_KMS`.
      */
-    public readonly keyManagementMode!: pulumi.Output<string | undefined>;
+    declare public readonly keyManagementMode: pulumi.Output<string | undefined>;
     /**
      * The location for the EkmConnection.
      * A full list of valid locations can be found by running `gcloud kms locations list`.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The resource name for the EkmConnection.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported
      * Structure is documented below.
      */
-    public readonly serviceResolvers!: pulumi.Output<outputs.kms.EkmConnectionServiceResolver[]>;
+    declare public readonly serviceResolvers: pulumi.Output<outputs.kms.EkmConnectionServiceResolver[]>;
 
     /**
      * Create a EkmConnection resource with the given unique name, arguments, and options.
@@ -144,29 +144,29 @@ export class EkmConnection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EkmConnectionState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["cryptoSpacePath"] = state ? state.cryptoSpacePath : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["keyManagementMode"] = state ? state.keyManagementMode : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["serviceResolvers"] = state ? state.serviceResolvers : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["cryptoSpacePath"] = state?.cryptoSpacePath;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["keyManagementMode"] = state?.keyManagementMode;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["serviceResolvers"] = state?.serviceResolvers;
         } else {
             const args = argsOrState as EkmConnectionArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.serviceResolvers === undefined) && !opts.urn) {
+            if (args?.serviceResolvers === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceResolvers'");
             }
-            resourceInputs["cryptoSpacePath"] = args ? args.cryptoSpacePath : undefined;
-            resourceInputs["etag"] = args ? args.etag : undefined;
-            resourceInputs["keyManagementMode"] = args ? args.keyManagementMode : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["serviceResolvers"] = args ? args.serviceResolvers : undefined;
+            resourceInputs["cryptoSpacePath"] = args?.cryptoSpacePath;
+            resourceInputs["etag"] = args?.etag;
+            resourceInputs["keyManagementMode"] = args?.keyManagementMode;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["serviceResolvers"] = args?.serviceResolvers;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

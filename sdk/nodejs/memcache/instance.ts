@@ -133,54 +133,54 @@ export class Instance extends pulumi.CustomResource {
      * The full name of the GCE network to connect the instance to.  If not provided,
      * 'default' will be used.
      */
-    public readonly authorizedNetwork!: pulumi.Output<string>;
+    declare public readonly authorizedNetwork: pulumi.Output<string>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Endpoint for Discovery API
      */
-    public /*out*/ readonly discoveryEndpoint!: pulumi.Output<string>;
+    declare public /*out*/ readonly discoveryEndpoint: pulumi.Output<string>;
     /**
      * A user-visible name for the instance.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Resource labels to represent user-provided metadata.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Maintenance policy for an instance.
      * Structure is documented below.
      */
-    public readonly maintenancePolicy!: pulumi.Output<outputs.memcache.InstanceMaintenancePolicy | undefined>;
+    declare public readonly maintenancePolicy: pulumi.Output<outputs.memcache.InstanceMaintenancePolicy | undefined>;
     /**
      * Output only. Published maintenance schedule.
      * Structure is documented below.
      */
-    public /*out*/ readonly maintenanceSchedules!: pulumi.Output<outputs.memcache.InstanceMaintenanceSchedule[]>;
+    declare public /*out*/ readonly maintenanceSchedules: pulumi.Output<outputs.memcache.InstanceMaintenanceSchedule[]>;
     /**
      * The full version of memcached server running on this instance.
      */
-    public /*out*/ readonly memcacheFullVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly memcacheFullVersion: pulumi.Output<string>;
     /**
      * Additional information about the instance state, if available.
      * Structure is documented below.
      */
-    public /*out*/ readonly memcacheNodes!: pulumi.Output<outputs.memcache.InstanceMemcacheNode[]>;
+    declare public /*out*/ readonly memcacheNodes: pulumi.Output<outputs.memcache.InstanceMemcacheNode[]>;
     /**
      * User-specified parameters for this memcache instance.
      * Structure is documented below.
      */
-    public readonly memcacheParameters!: pulumi.Output<outputs.memcache.InstanceMemcacheParameters | undefined>;
+    declare public readonly memcacheParameters: pulumi.Output<outputs.memcache.InstanceMemcacheParameters | undefined>;
     /**
      * The major version of Memcached software. If not provided, latest supported version will be used.
      * Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
@@ -188,45 +188,45 @@ export class Instance extends pulumi.CustomResource {
      * Default value is `MEMCACHE_1_5`.
      * Possible values are: `MEMCACHE_1_5`, `MEMCACHE_1_6_15`.
      */
-    public readonly memcacheVersion!: pulumi.Output<string | undefined>;
+    declare public readonly memcacheVersion: pulumi.Output<string | undefined>;
     /**
      * The resource name of the instance.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Configuration for memcache nodes.
      * Structure is documented below.
      */
-    public readonly nodeConfig!: pulumi.Output<outputs.memcache.InstanceNodeConfig>;
+    declare public readonly nodeConfig: pulumi.Output<outputs.memcache.InstanceNodeConfig>;
     /**
      * Number of nodes in the memcache instance.
      */
-    public readonly nodeCount!: pulumi.Output<number>;
+    declare public readonly nodeCount: pulumi.Output<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The region of the Memcache instance. If it is not provided, the provider region is used.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Contains the name of allocated IP address ranges associated with
      * the private service access connection for example, "test-default"
      * associated with IP range 10.0.0.0/29.
      */
-    public readonly reservedIpRangeIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly reservedIpRangeIds: pulumi.Output<string[] | undefined>;
     /**
      * Zones where memcache nodes should be provisioned.  If not
      * provided, all zones will be used.
      */
-    public readonly zones!: pulumi.Output<string[]>;
+    declare public readonly zones: pulumi.Output<string[]>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -241,47 +241,47 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["authorizedNetwork"] = state ? state.authorizedNetwork : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["discoveryEndpoint"] = state ? state.discoveryEndpoint : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["maintenancePolicy"] = state ? state.maintenancePolicy : undefined;
-            resourceInputs["maintenanceSchedules"] = state ? state.maintenanceSchedules : undefined;
-            resourceInputs["memcacheFullVersion"] = state ? state.memcacheFullVersion : undefined;
-            resourceInputs["memcacheNodes"] = state ? state.memcacheNodes : undefined;
-            resourceInputs["memcacheParameters"] = state ? state.memcacheParameters : undefined;
-            resourceInputs["memcacheVersion"] = state ? state.memcacheVersion : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nodeConfig"] = state ? state.nodeConfig : undefined;
-            resourceInputs["nodeCount"] = state ? state.nodeCount : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["reservedIpRangeIds"] = state ? state.reservedIpRangeIds : undefined;
-            resourceInputs["zones"] = state ? state.zones : undefined;
+            resourceInputs["authorizedNetwork"] = state?.authorizedNetwork;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["discoveryEndpoint"] = state?.discoveryEndpoint;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["maintenancePolicy"] = state?.maintenancePolicy;
+            resourceInputs["maintenanceSchedules"] = state?.maintenanceSchedules;
+            resourceInputs["memcacheFullVersion"] = state?.memcacheFullVersion;
+            resourceInputs["memcacheNodes"] = state?.memcacheNodes;
+            resourceInputs["memcacheParameters"] = state?.memcacheParameters;
+            resourceInputs["memcacheVersion"] = state?.memcacheVersion;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nodeConfig"] = state?.nodeConfig;
+            resourceInputs["nodeCount"] = state?.nodeCount;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["reservedIpRangeIds"] = state?.reservedIpRangeIds;
+            resourceInputs["zones"] = state?.zones;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.nodeConfig === undefined) && !opts.urn) {
+            if (args?.nodeConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nodeConfig'");
             }
-            if ((!args || args.nodeCount === undefined) && !opts.urn) {
+            if (args?.nodeCount === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nodeCount'");
             }
-            resourceInputs["authorizedNetwork"] = args ? args.authorizedNetwork : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
-            resourceInputs["memcacheParameters"] = args ? args.memcacheParameters : undefined;
-            resourceInputs["memcacheVersion"] = args ? args.memcacheVersion : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["nodeConfig"] = args ? args.nodeConfig : undefined;
-            resourceInputs["nodeCount"] = args ? args.nodeCount : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["reservedIpRangeIds"] = args ? args.reservedIpRangeIds : undefined;
-            resourceInputs["zones"] = args ? args.zones : undefined;
+            resourceInputs["authorizedNetwork"] = args?.authorizedNetwork;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["maintenancePolicy"] = args?.maintenancePolicy;
+            resourceInputs["memcacheParameters"] = args?.memcacheParameters;
+            resourceInputs["memcacheVersion"] = args?.memcacheVersion;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["nodeConfig"] = args?.nodeConfig;
+            resourceInputs["nodeCount"] = args?.nodeCount;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["reservedIpRangeIds"] = args?.reservedIpRangeIds;
+            resourceInputs["zones"] = args?.zones;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["discoveryEndpoint"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;

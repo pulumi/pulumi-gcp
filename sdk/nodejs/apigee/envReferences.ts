@@ -62,24 +62,24 @@ export class EnvReferences extends pulumi.CustomResource {
     /**
      * Optional. A human-readable description of this reference.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
      */
-    public readonly envId!: pulumi.Output<string>;
+    declare public readonly envId: pulumi.Output<string>;
     /**
      * Required. The resource id of this reference. Values must match the regular expression [\w\s-.]+.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resourceType.
      */
-    public readonly refers!: pulumi.Output<string>;
+    declare public readonly refers: pulumi.Output<string>;
     /**
      * The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.
      */
-    public readonly resourceType!: pulumi.Output<string>;
+    declare public readonly resourceType: pulumi.Output<string>;
 
     /**
      * Create a EnvReferences resource with the given unique name, arguments, and options.
@@ -94,27 +94,27 @@ export class EnvReferences extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EnvReferencesState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["envId"] = state ? state.envId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["refers"] = state ? state.refers : undefined;
-            resourceInputs["resourceType"] = state ? state.resourceType : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["envId"] = state?.envId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["refers"] = state?.refers;
+            resourceInputs["resourceType"] = state?.resourceType;
         } else {
             const args = argsOrState as EnvReferencesArgs | undefined;
-            if ((!args || args.envId === undefined) && !opts.urn) {
+            if (args?.envId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'envId'");
             }
-            if ((!args || args.refers === undefined) && !opts.urn) {
+            if (args?.refers === undefined && !opts.urn) {
                 throw new Error("Missing required property 'refers'");
             }
-            if ((!args || args.resourceType === undefined) && !opts.urn) {
+            if (args?.resourceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceType'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["envId"] = args ? args.envId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["refers"] = args ? args.refers : undefined;
-            resourceInputs["resourceType"] = args ? args.resourceType : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["envId"] = args?.envId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["refers"] = args?.refers;
+            resourceInputs["resourceType"] = args?.resourceType;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EnvReferences.__pulumiType, name, resourceInputs, opts);

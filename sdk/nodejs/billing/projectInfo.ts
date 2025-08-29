@@ -84,12 +84,12 @@ export class ProjectInfo extends pulumi.CustomResource {
      * any. Set to empty string to disable billing for the project.
      * For example, `"012345-567890-ABCDEF"` or `""`.
      */
-    public readonly billingAccount!: pulumi.Output<string>;
+    declare public readonly billingAccount: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
 
     /**
      * Create a ProjectInfo resource with the given unique name, arguments, and options.
@@ -104,15 +104,15 @@ export class ProjectInfo extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectInfoState | undefined;
-            resourceInputs["billingAccount"] = state ? state.billingAccount : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["billingAccount"] = state?.billingAccount;
+            resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as ProjectInfoArgs | undefined;
-            if ((!args || args.billingAccount === undefined) && !opts.urn) {
+            if (args?.billingAccount === undefined && !opts.urn) {
                 throw new Error("Missing required property 'billingAccount'");
             }
-            resourceInputs["billingAccount"] = args ? args.billingAccount : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["billingAccount"] = args?.billingAccount;
+            resourceInputs["project"] = args?.project;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProjectInfo.__pulumiType, name, resourceInputs, opts);

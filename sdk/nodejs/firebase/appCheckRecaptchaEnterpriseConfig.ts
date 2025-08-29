@@ -103,27 +103,27 @@ export class AppCheckRecaptchaEnterpriseConfig extends pulumi.CustomResource {
      * The ID of an
      * [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
      */
-    public readonly appId!: pulumi.Output<string>;
+    declare public readonly appId: pulumi.Output<string>;
     /**
      * The relative resource name of the reCAPTCHA Enterprise configuration object
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The score-based site key created in reCAPTCHA Enterprise used to invoke reCAPTCHA and generate the reCAPTCHA tokens for your application.
      * **Important**: This is not the siteSecret (as it is in reCAPTCHA v3), but rather your score-based reCAPTCHA Enterprise site key.
      */
-    public readonly siteKey!: pulumi.Output<string>;
+    declare public readonly siteKey: pulumi.Output<string>;
     /**
      * Specifies the duration for which App Check tokens exchanged from reCAPTCHA Enterprise artifacts will be valid.
      * If unset, a default value of 1 hour is assumed. Must be between 30 minutes and 7 days, inclusive.
      * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
      */
-    public readonly tokenTtl!: pulumi.Output<string>;
+    declare public readonly tokenTtl: pulumi.Output<string>;
 
     /**
      * Create a AppCheckRecaptchaEnterpriseConfig resource with the given unique name, arguments, and options.
@@ -138,23 +138,23 @@ export class AppCheckRecaptchaEnterpriseConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AppCheckRecaptchaEnterpriseConfigState | undefined;
-            resourceInputs["appId"] = state ? state.appId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["siteKey"] = state ? state.siteKey : undefined;
-            resourceInputs["tokenTtl"] = state ? state.tokenTtl : undefined;
+            resourceInputs["appId"] = state?.appId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["siteKey"] = state?.siteKey;
+            resourceInputs["tokenTtl"] = state?.tokenTtl;
         } else {
             const args = argsOrState as AppCheckRecaptchaEnterpriseConfigArgs | undefined;
-            if ((!args || args.appId === undefined) && !opts.urn) {
+            if (args?.appId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'appId'");
             }
-            if ((!args || args.siteKey === undefined) && !opts.urn) {
+            if (args?.siteKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteKey'");
             }
-            resourceInputs["appId"] = args ? args.appId : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["siteKey"] = args ? args.siteKey : undefined;
-            resourceInputs["tokenTtl"] = args ? args.tokenTtl : undefined;
+            resourceInputs["appId"] = args?.appId;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["siteKey"] = args?.siteKey;
+            resourceInputs["tokenTtl"] = args?.tokenTtl;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

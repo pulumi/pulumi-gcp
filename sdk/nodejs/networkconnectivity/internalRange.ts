@@ -239,93 +239,93 @@ export class InternalRange extends pulumi.CustomResource {
      * Options for automatically allocating a free range with a size given by prefixLength.
      * Structure is documented below.
      */
-    public readonly allocationOptions!: pulumi.Output<outputs.networkconnectivity.InternalRangeAllocationOptions | undefined>;
+    declare public readonly allocationOptions: pulumi.Output<outputs.networkconnectivity.InternalRangeAllocationOptions | undefined>;
     /**
      * An optional description of this resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Optional. List of IP CIDR ranges to be excluded. Resulting reserved Internal Range will not overlap with any CIDR blocks mentioned in this list.
      * Only IPv4 CIDR ranges are supported.
      */
-    public readonly excludeCidrRanges!: pulumi.Output<string[] | undefined>;
+    declare public readonly excludeCidrRanges: pulumi.Output<string[] | undefined>;
     /**
      * Immutable ranges cannot have their fields modified, except for labels and description.
      */
-    public readonly immutable!: pulumi.Output<boolean | undefined>;
+    declare public readonly immutable: pulumi.Output<boolean | undefined>;
     /**
      * The IP range that this internal range defines.
      * NOTE: IPv6 ranges are limited to usage=EXTERNAL_TO_VPC and peering=FOR_SELF
      * NOTE: For IPv6 Ranges this field is compulsory, i.e. the address range must be specified explicitly.
      */
-    public readonly ipCidrRange!: pulumi.Output<string>;
+    declare public readonly ipCidrRange: pulumi.Output<string>;
     /**
      * User-defined labels.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Specification for migration with source and target resource names.
      * Structure is documented below.
      */
-    public readonly migration!: pulumi.Output<outputs.networkconnectivity.InternalRangeMigration | undefined>;
+    declare public readonly migration: pulumi.Output<outputs.networkconnectivity.InternalRangeMigration | undefined>;
     /**
      * The name of the policy based route.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Fully-qualified URL of the network that this route applies to, for example: projects/my-project/global/networks/my-network.
      */
-    public readonly network!: pulumi.Output<string>;
+    declare public readonly network: pulumi.Output<string>;
     /**
      * Optional. Types of resources that are allowed to overlap with the current internal range.
      * Each value may be one of: `OVERLAP_ROUTE_RANGE`, `OVERLAP_EXISTING_SUBNET_RANGE`.
      */
-    public readonly overlaps!: pulumi.Output<string[] | undefined>;
+    declare public readonly overlaps: pulumi.Output<string[] | undefined>;
     /**
      * The type of peering set for this internal range.
      * Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
      */
-    public readonly peering!: pulumi.Output<string>;
+    declare public readonly peering: pulumi.Output<string>;
     /**
      * An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.
      * If both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
      * NOTE: For IPv6 this field only works if ipCidrRange is set as well, and both fields must match. In other words, with IPv6 this field only works as
      * a redundant parameter.
      */
-    public readonly prefixLength!: pulumi.Output<number | undefined>;
+    declare public readonly prefixLength: pulumi.Output<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Optional. Can be set to narrow down or pick a different address space while searching for a free range.
      * If not set, defaults to the "10.0.0.0/8" address space. This can be used to search in other rfc-1918 address spaces like "172.16.0.0/12" and "192.168.0.0/16" or non-rfc-1918 address spaces used in the VPC.
      */
-    public readonly targetCidrRanges!: pulumi.Output<string[] | undefined>;
+    declare public readonly targetCidrRanges: pulumi.Output<string[] | undefined>;
     /**
      * The type of usage set for this InternalRange.
      * Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`, `FOR_MIGRATION`.
      */
-    public readonly usage!: pulumi.Output<string>;
+    declare public readonly usage: pulumi.Output<string>;
     /**
      * Output only. The list of resources that refer to this internal range.
      * Resources that use the internal range for their range allocation are referred to as users of the range.
      * Other resources mark themselves as users while doing so by creating a reference to this internal range. Having a user, based on this reference, prevents deletion of the internal range referred to. Can be empty.
      */
-    public /*out*/ readonly users!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly users: pulumi.Output<string[]>;
 
     /**
      * Create a InternalRange resource with the given unique name, arguments, and options.
@@ -340,50 +340,50 @@ export class InternalRange extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InternalRangeState | undefined;
-            resourceInputs["allocationOptions"] = state ? state.allocationOptions : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["excludeCidrRanges"] = state ? state.excludeCidrRanges : undefined;
-            resourceInputs["immutable"] = state ? state.immutable : undefined;
-            resourceInputs["ipCidrRange"] = state ? state.ipCidrRange : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["migration"] = state ? state.migration : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["overlaps"] = state ? state.overlaps : undefined;
-            resourceInputs["peering"] = state ? state.peering : undefined;
-            resourceInputs["prefixLength"] = state ? state.prefixLength : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["targetCidrRanges"] = state ? state.targetCidrRanges : undefined;
-            resourceInputs["usage"] = state ? state.usage : undefined;
-            resourceInputs["users"] = state ? state.users : undefined;
+            resourceInputs["allocationOptions"] = state?.allocationOptions;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["excludeCidrRanges"] = state?.excludeCidrRanges;
+            resourceInputs["immutable"] = state?.immutable;
+            resourceInputs["ipCidrRange"] = state?.ipCidrRange;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["migration"] = state?.migration;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["overlaps"] = state?.overlaps;
+            resourceInputs["peering"] = state?.peering;
+            resourceInputs["prefixLength"] = state?.prefixLength;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["targetCidrRanges"] = state?.targetCidrRanges;
+            resourceInputs["usage"] = state?.usage;
+            resourceInputs["users"] = state?.users;
         } else {
             const args = argsOrState as InternalRangeArgs | undefined;
-            if ((!args || args.network === undefined) && !opts.urn) {
+            if (args?.network === undefined && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
-            if ((!args || args.peering === undefined) && !opts.urn) {
+            if (args?.peering === undefined && !opts.urn) {
                 throw new Error("Missing required property 'peering'");
             }
-            if ((!args || args.usage === undefined) && !opts.urn) {
+            if (args?.usage === undefined && !opts.urn) {
                 throw new Error("Missing required property 'usage'");
             }
-            resourceInputs["allocationOptions"] = args ? args.allocationOptions : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["excludeCidrRanges"] = args ? args.excludeCidrRanges : undefined;
-            resourceInputs["immutable"] = args ? args.immutable : undefined;
-            resourceInputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["migration"] = args ? args.migration : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["overlaps"] = args ? args.overlaps : undefined;
-            resourceInputs["peering"] = args ? args.peering : undefined;
-            resourceInputs["prefixLength"] = args ? args.prefixLength : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["targetCidrRanges"] = args ? args.targetCidrRanges : undefined;
-            resourceInputs["usage"] = args ? args.usage : undefined;
+            resourceInputs["allocationOptions"] = args?.allocationOptions;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["excludeCidrRanges"] = args?.excludeCidrRanges;
+            resourceInputs["immutable"] = args?.immutable;
+            resourceInputs["ipCidrRange"] = args?.ipCidrRange;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["migration"] = args?.migration;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["overlaps"] = args?.overlaps;
+            resourceInputs["peering"] = args?.peering;
+            resourceInputs["prefixLength"] = args?.prefixLength;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["targetCidrRanges"] = args?.targetCidrRanges;
+            resourceInputs["usage"] = args?.usage;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["users"] = undefined /*out*/;

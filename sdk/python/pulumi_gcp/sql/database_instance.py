@@ -81,8 +81,7 @@ class DatabaseInstanceArgs:
         :param pulumi.Input['DatabaseInstanceReplicaConfigurationArgs'] replica_configuration: The configuration for replication. The
                configuration is detailed below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] replica_names: List of replica names. Can be updated.
-        :param pulumi.Input['DatabaseInstanceReplicationClusterArgs'] replication_cluster: A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
-               after both the primary and replica are created.
+        :param pulumi.Input['DatabaseInstanceReplicationClusterArgs'] replication_cluster: A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
         :param pulumi.Input['DatabaseInstanceRestoreBackupContextArgs'] restore_backup_context: The context needed to restore the database to a backup run. This field will
                cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
                **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
@@ -313,8 +312,7 @@ class DatabaseInstanceArgs:
     @pulumi.getter(name="replicationCluster")
     def replication_cluster(self) -> Optional[pulumi.Input['DatabaseInstanceReplicationClusterArgs']]:
         """
-        A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
-        after both the primary and replica are created.
+        A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
         """
         return pulumi.get(self, "replication_cluster")
 
@@ -447,8 +445,7 @@ class _DatabaseInstanceState:
         :param pulumi.Input['DatabaseInstanceReplicaConfigurationArgs'] replica_configuration: The configuration for replication. The
                configuration is detailed below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] replica_names: List of replica names. Can be updated.
-        :param pulumi.Input['DatabaseInstanceReplicationClusterArgs'] replication_cluster: A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
-               after both the primary and replica are created.
+        :param pulumi.Input['DatabaseInstanceReplicationClusterArgs'] replication_cluster: A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
         :param pulumi.Input['DatabaseInstanceRestoreBackupContextArgs'] restore_backup_context: The context needed to restore the database to a backup run. This field will
                cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
                **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
@@ -813,8 +810,7 @@ class _DatabaseInstanceState:
     @pulumi.getter(name="replicationCluster")
     def replication_cluster(self) -> Optional[pulumi.Input['DatabaseInstanceReplicationClusterArgs']]:
         """
-        A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
-        after both the primary and replica are created.
+        A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
         """
         return pulumi.get(self, "replication_cluster")
 
@@ -1197,8 +1193,7 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[Union['DatabaseInstanceReplicaConfigurationArgs', 'DatabaseInstanceReplicaConfigurationArgsDict']] replica_configuration: The configuration for replication. The
                configuration is detailed below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] replica_names: List of replica names. Can be updated.
-        :param pulumi.Input[Union['DatabaseInstanceReplicationClusterArgs', 'DatabaseInstanceReplicationClusterArgsDict']] replication_cluster: A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
-               after both the primary and replica are created.
+        :param pulumi.Input[Union['DatabaseInstanceReplicationClusterArgs', 'DatabaseInstanceReplicationClusterArgsDict']] replication_cluster: A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
         :param pulumi.Input[Union['DatabaseInstanceRestoreBackupContextArgs', 'DatabaseInstanceRestoreBackupContextArgsDict']] restore_backup_context: The context needed to restore the database to a backup run. This field will
                cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
                **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
@@ -1616,8 +1611,7 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[Union['DatabaseInstanceReplicaConfigurationArgs', 'DatabaseInstanceReplicaConfigurationArgsDict']] replica_configuration: The configuration for replication. The
                configuration is detailed below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] replica_names: List of replica names. Can be updated.
-        :param pulumi.Input[Union['DatabaseInstanceReplicationClusterArgs', 'DatabaseInstanceReplicationClusterArgsDict']] replication_cluster: A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
-               after both the primary and replica are created.
+        :param pulumi.Input[Union['DatabaseInstanceReplicationClusterArgs', 'DatabaseInstanceReplicationClusterArgsDict']] replication_cluster: A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
         :param pulumi.Input[Union['DatabaseInstanceRestoreBackupContextArgs', 'DatabaseInstanceRestoreBackupContextArgsDict']] restore_backup_context: The context needed to restore the database to a backup run. This field will
                cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
                **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
@@ -1870,8 +1864,7 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter(name="replicationCluster")
     def replication_cluster(self) -> pulumi.Output['outputs.DatabaseInstanceReplicationCluster']:
         """
-        A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
-        after both the primary and replica are created.
+        A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
         """
         return pulumi.get(self, "replication_cluster")
 

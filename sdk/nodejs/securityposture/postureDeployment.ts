@@ -60,79 +60,79 @@ export class PostureDeployment extends pulumi.CustomResource {
     /**
      * Time the posture deployment was created in UTC.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Description of the posture deployment.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * This is an output only optional field which will be filled in case when
      * PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
      * It denotes the desired posture to be deployed.
      */
-    public /*out*/ readonly desiredPostureId!: pulumi.Output<string>;
+    declare public /*out*/ readonly desiredPostureId: pulumi.Output<string>;
     /**
      * This is an output only optional field which will be filled in case when
      * PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
      * It denotes the desired posture revisionId to be deployed.
      */
-    public /*out*/ readonly desiredPostureRevisionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly desiredPostureRevisionId: pulumi.Output<string>;
     /**
      * For Resource freshness validation (https://google.aip.dev/154)
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * This is a output only optional field which will be filled in case where
      * PostureDeployment enters a failure state like UPDATE_FAILED or
      * CREATE_FAILED or DELETE_FAILED. It will have the failure message for posture deployment's
      * CREATE/UPDATE/DELETE methods.
      */
-    public /*out*/ readonly failureMessage!: pulumi.Output<string>;
+    declare public /*out*/ readonly failureMessage: pulumi.Output<string>;
     /**
      * The location of the resource, eg. global`.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Name of the posture deployment instance.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
      */
-    public readonly parent!: pulumi.Output<string>;
+    declare public readonly parent: pulumi.Output<string>;
     /**
      * ID of the posture deployment.
      */
-    public readonly postureDeploymentId!: pulumi.Output<string>;
+    declare public readonly postureDeploymentId: pulumi.Output<string>;
     /**
      * Relative name of the posture which needs to be deployed. It should be in the format:
      * organizations/{organization_id}/locations/{location}/postures/{posture_id}
      */
-    public readonly postureId!: pulumi.Output<string>;
+    declare public readonly postureId: pulumi.Output<string>;
     /**
      * Revision_id the posture which needs to be deployed.
      */
-    public readonly postureRevisionId!: pulumi.Output<string>;
+    declare public readonly postureRevisionId: pulumi.Output<string>;
     /**
      * If set, there are currently changes in flight to the posture deployment.
      */
-    public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly reconciling: pulumi.Output<boolean>;
     /**
      * State of the posture deployment. A posture deployment can be in the following terminal states:
      * ACTIVE, CREATE_FAILED, UPDATE_FAILED, DELETE_FAILED.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The resource on which the posture should be deployed. This can be in one of the following formats:
      * projects/{project_number},
      * folders/{folder_number},
      * organizations/{organization_id}
      */
-    public readonly targetResource!: pulumi.Output<string>;
+    declare public readonly targetResource: pulumi.Output<string>;
     /**
      * Time the posture deployment was updated in UTC.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a PostureDeployment resource with the given unique name, arguments, and options.
@@ -147,49 +147,49 @@ export class PostureDeployment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PostureDeploymentState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["desiredPostureId"] = state ? state.desiredPostureId : undefined;
-            resourceInputs["desiredPostureRevisionId"] = state ? state.desiredPostureRevisionId : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["failureMessage"] = state ? state.failureMessage : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["postureDeploymentId"] = state ? state.postureDeploymentId : undefined;
-            resourceInputs["postureId"] = state ? state.postureId : undefined;
-            resourceInputs["postureRevisionId"] = state ? state.postureRevisionId : undefined;
-            resourceInputs["reconciling"] = state ? state.reconciling : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["targetResource"] = state ? state.targetResource : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["desiredPostureId"] = state?.desiredPostureId;
+            resourceInputs["desiredPostureRevisionId"] = state?.desiredPostureRevisionId;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["failureMessage"] = state?.failureMessage;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["postureDeploymentId"] = state?.postureDeploymentId;
+            resourceInputs["postureId"] = state?.postureId;
+            resourceInputs["postureRevisionId"] = state?.postureRevisionId;
+            resourceInputs["reconciling"] = state?.reconciling;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["targetResource"] = state?.targetResource;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as PostureDeploymentArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.parent === undefined) && !opts.urn) {
+            if (args?.parent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            if ((!args || args.postureDeploymentId === undefined) && !opts.urn) {
+            if (args?.postureDeploymentId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'postureDeploymentId'");
             }
-            if ((!args || args.postureId === undefined) && !opts.urn) {
+            if (args?.postureId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'postureId'");
             }
-            if ((!args || args.postureRevisionId === undefined) && !opts.urn) {
+            if (args?.postureRevisionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'postureRevisionId'");
             }
-            if ((!args || args.targetResource === undefined) && !opts.urn) {
+            if (args?.targetResource === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetResource'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
-            resourceInputs["postureDeploymentId"] = args ? args.postureDeploymentId : undefined;
-            resourceInputs["postureId"] = args ? args.postureId : undefined;
-            resourceInputs["postureRevisionId"] = args ? args.postureRevisionId : undefined;
-            resourceInputs["targetResource"] = args ? args.targetResource : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["parent"] = args?.parent;
+            resourceInputs["postureDeploymentId"] = args?.postureDeploymentId;
+            resourceInputs["postureId"] = args?.postureId;
+            resourceInputs["postureRevisionId"] = args?.postureRevisionId;
+            resourceInputs["targetResource"] = args?.targetResource;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["desiredPostureId"] = undefined /*out*/;
             resourceInputs["desiredPostureRevisionId"] = undefined /*out*/;

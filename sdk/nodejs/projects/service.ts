@@ -74,24 +74,24 @@ export class Service extends pulumi.CustomResource {
      * will be returned if the service to be disabled has usage in last 30 days.
      * Defaults to `false`.
      */
-    public readonly checkIfServiceHasUsageOnDestroy!: pulumi.Output<boolean | undefined>;
+    declare public readonly checkIfServiceHasUsageOnDestroy: pulumi.Output<boolean | undefined>;
     /**
      * If `true`, services that are enabled
      * and which depend on this service should also be disabled when this service is
      * destroyed. If `false` or unset, an error will be generated if any enabled
      * services depend on this service when destroying it.
      */
-    public readonly disableDependentServices!: pulumi.Output<boolean | undefined>;
-    public readonly disableOnDestroy!: pulumi.Output<boolean | undefined>;
+    declare public readonly disableDependentServices: pulumi.Output<boolean | undefined>;
+    declare public readonly disableOnDestroy: pulumi.Output<boolean | undefined>;
     /**
      * The project ID. If not provided, the provider project
      * is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The service to enable.
      */
-    public readonly service!: pulumi.Output<string>;
+    declare public readonly service: pulumi.Output<string>;
 
     /**
      * Create a Service resource with the given unique name, arguments, and options.
@@ -106,21 +106,21 @@ export class Service extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceState | undefined;
-            resourceInputs["checkIfServiceHasUsageOnDestroy"] = state ? state.checkIfServiceHasUsageOnDestroy : undefined;
-            resourceInputs["disableDependentServices"] = state ? state.disableDependentServices : undefined;
-            resourceInputs["disableOnDestroy"] = state ? state.disableOnDestroy : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["service"] = state ? state.service : undefined;
+            resourceInputs["checkIfServiceHasUsageOnDestroy"] = state?.checkIfServiceHasUsageOnDestroy;
+            resourceInputs["disableDependentServices"] = state?.disableDependentServices;
+            resourceInputs["disableOnDestroy"] = state?.disableOnDestroy;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["service"] = state?.service;
         } else {
             const args = argsOrState as ServiceArgs | undefined;
-            if ((!args || args.service === undefined) && !opts.urn) {
+            if (args?.service === undefined && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
-            resourceInputs["checkIfServiceHasUsageOnDestroy"] = args ? args.checkIfServiceHasUsageOnDestroy : undefined;
-            resourceInputs["disableDependentServices"] = args ? args.disableDependentServices : undefined;
-            resourceInputs["disableOnDestroy"] = args ? args.disableOnDestroy : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["service"] = args ? args.service : undefined;
+            resourceInputs["checkIfServiceHasUsageOnDestroy"] = args?.checkIfServiceHasUsageOnDestroy;
+            resourceInputs["disableDependentServices"] = args?.disableDependentServices;
+            resourceInputs["disableOnDestroy"] = args?.disableOnDestroy;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["service"] = args?.service;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Service.__pulumiType, name, resourceInputs, opts);

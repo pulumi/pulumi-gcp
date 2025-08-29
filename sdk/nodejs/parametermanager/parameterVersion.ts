@@ -144,38 +144,38 @@ export class ParameterVersion extends pulumi.CustomResource {
     /**
      * The time at which the Parameter Version was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The current state of Parameter Version. This field is only applicable for updating Parameter Version.
      */
-    public readonly disabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly disabled: pulumi.Output<boolean | undefined>;
     /**
      * The resource name of the Cloud KMS CryptoKeyVersion used to decrypt parameter version payload. Format
      * `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
      */
-    public /*out*/ readonly kmsKeyVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly kmsKeyVersion: pulumi.Output<string>;
     /**
      * The resource name of the Parameter Version. Format:
      * `projects/{{project}}/locations/global/parameters/{{parameter_id}}/versions/{{parameter_version_id}}`
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Parameter Manager Parameter resource.
      */
-    public readonly parameter!: pulumi.Output<string>;
+    declare public readonly parameter: pulumi.Output<string>;
     /**
      * The Parameter data.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    public readonly parameterData!: pulumi.Output<string>;
+    declare public readonly parameterData: pulumi.Output<string>;
     /**
      * Version ID of the Parameter Version Resource. This must be unique within the Parameter.
      */
-    public readonly parameterVersionId!: pulumi.Output<string>;
+    declare public readonly parameterVersionId: pulumi.Output<string>;
     /**
      * The time at which the Parameter Version was updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a ParameterVersion resource with the given unique name, arguments, and options.
@@ -190,29 +190,29 @@ export class ParameterVersion extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ParameterVersionState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["disabled"] = state ? state.disabled : undefined;
-            resourceInputs["kmsKeyVersion"] = state ? state.kmsKeyVersion : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parameter"] = state ? state.parameter : undefined;
-            resourceInputs["parameterData"] = state ? state.parameterData : undefined;
-            resourceInputs["parameterVersionId"] = state ? state.parameterVersionId : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["disabled"] = state?.disabled;
+            resourceInputs["kmsKeyVersion"] = state?.kmsKeyVersion;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parameter"] = state?.parameter;
+            resourceInputs["parameterData"] = state?.parameterData;
+            resourceInputs["parameterVersionId"] = state?.parameterVersionId;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as ParameterVersionArgs | undefined;
-            if ((!args || args.parameter === undefined) && !opts.urn) {
+            if (args?.parameter === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parameter'");
             }
-            if ((!args || args.parameterData === undefined) && !opts.urn) {
+            if (args?.parameterData === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parameterData'");
             }
-            if ((!args || args.parameterVersionId === undefined) && !opts.urn) {
+            if (args?.parameterVersionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parameterVersionId'");
             }
-            resourceInputs["disabled"] = args ? args.disabled : undefined;
-            resourceInputs["parameter"] = args ? args.parameter : undefined;
+            resourceInputs["disabled"] = args?.disabled;
+            resourceInputs["parameter"] = args?.parameter;
             resourceInputs["parameterData"] = args?.parameterData ? pulumi.secret(args.parameterData) : undefined;
-            resourceInputs["parameterVersionId"] = args ? args.parameterVersionId : undefined;
+            resourceInputs["parameterVersionId"] = args?.parameterVersionId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["kmsKeyVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

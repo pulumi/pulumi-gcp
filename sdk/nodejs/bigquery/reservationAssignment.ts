@@ -90,33 +90,33 @@ export class ReservationAssignment extends pulumi.CustomResource {
     /**
      * The resource which will use the reservation. E.g. projects/myproject, folders/123, organizations/456.
      */
-    public readonly assignee!: pulumi.Output<string>;
+    declare public readonly assignee: pulumi.Output<string>;
     /**
      * Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
      */
-    public readonly jobType!: pulumi.Output<string>;
+    declare public readonly jobType: pulumi.Output<string>;
     /**
      * The location for the resource
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Output only. The resource name of the assignment.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The reservation for the resource
      */
-    public readonly reservation!: pulumi.Output<string>;
+    declare public readonly reservation: pulumi.Output<string>;
     /**
      * Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.
      * Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
 
     /**
      * Create a ReservationAssignment resource with the given unique name, arguments, and options.
@@ -131,29 +131,29 @@ export class ReservationAssignment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ReservationAssignmentState | undefined;
-            resourceInputs["assignee"] = state ? state.assignee : undefined;
-            resourceInputs["jobType"] = state ? state.jobType : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["reservation"] = state ? state.reservation : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["assignee"] = state?.assignee;
+            resourceInputs["jobType"] = state?.jobType;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["reservation"] = state?.reservation;
+            resourceInputs["state"] = state?.state;
         } else {
             const args = argsOrState as ReservationAssignmentArgs | undefined;
-            if ((!args || args.assignee === undefined) && !opts.urn) {
+            if (args?.assignee === undefined && !opts.urn) {
                 throw new Error("Missing required property 'assignee'");
             }
-            if ((!args || args.jobType === undefined) && !opts.urn) {
+            if (args?.jobType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'jobType'");
             }
-            if ((!args || args.reservation === undefined) && !opts.urn) {
+            if (args?.reservation === undefined && !opts.urn) {
                 throw new Error("Missing required property 'reservation'");
             }
-            resourceInputs["assignee"] = args ? args.assignee : undefined;
-            resourceInputs["jobType"] = args ? args.jobType : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["reservation"] = args ? args.reservation : undefined;
+            resourceInputs["assignee"] = args?.assignee;
+            resourceInputs["jobType"] = args?.jobType;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["reservation"] = args?.reservation;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }

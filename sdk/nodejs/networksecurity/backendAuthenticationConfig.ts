@@ -175,60 +175,60 @@ export class BackendAuthenticationConfig extends pulumi.CustomResource {
      * Reference to a Certificate resource from the certificatemanager.googleapis.com namespace.
      * Used by a BackendService to negotiate mTLS when the backend connection uses TLS and the backend requests a client certificate. Must have a CLIENT_AUTH scope.
      */
-    public readonly clientCertificate!: pulumi.Output<string | undefined>;
+    declare public readonly clientCertificate: pulumi.Output<string | undefined>;
     /**
      * Time the BackendAuthenticationConfig was created in UTC.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * A free-text description of the resource. Max length 1024 characters.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Set of label tags associated with the BackendAuthenticationConfig resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location of the backend authentication config.
      * The default value is `global`.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * Name of the BackendAuthenticationConfig resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Reference to a TrustConfig resource from the certificatemanager.googleapis.com namespace.
      * A BackendService uses the chain of trust represented by this TrustConfig, if specified, to validate the server certificates presented by the backend. Required unless wellKnownRoots is set to PUBLIC_ROOTS.
      */
-    public readonly trustConfig!: pulumi.Output<string | undefined>;
+    declare public readonly trustConfig: pulumi.Output<string | undefined>;
     /**
      * Time the BackendAuthenticationConfig was updated in UTC.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * Well known roots to use for server certificate validation. If set to NONE, the BackendService will only validate server certificates against roots specified in TrustConfig.
      * If set to PUBLIC_ROOTS, the BackendService uses a set of well-known public roots, in addition to any roots specified in the trustConfig field, when validating the server certificates presented by the backend.
      * Validation with these roots is only considered when the TlsSettings.sni field in the BackendService is set. The well-known roots are a set of root CAs managed by Google. CAs in this set can be added or removed without notice.
      * Possible values are: `NONE`, `PUBLIC_ROOTS`.
      */
-    public readonly wellKnownRoots!: pulumi.Output<string | undefined>;
+    declare public readonly wellKnownRoots: pulumi.Output<string | undefined>;
 
     /**
      * Create a BackendAuthenticationConfig resource with the given unique name, arguments, and options.
@@ -243,28 +243,28 @@ export class BackendAuthenticationConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BackendAuthenticationConfigState | undefined;
-            resourceInputs["clientCertificate"] = state ? state.clientCertificate : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["trustConfig"] = state ? state.trustConfig : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["wellKnownRoots"] = state ? state.wellKnownRoots : undefined;
+            resourceInputs["clientCertificate"] = state?.clientCertificate;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["trustConfig"] = state?.trustConfig;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["wellKnownRoots"] = state?.wellKnownRoots;
         } else {
             const args = argsOrState as BackendAuthenticationConfigArgs | undefined;
-            resourceInputs["clientCertificate"] = args ? args.clientCertificate : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["trustConfig"] = args ? args.trustConfig : undefined;
-            resourceInputs["wellKnownRoots"] = args ? args.wellKnownRoots : undefined;
+            resourceInputs["clientCertificate"] = args?.clientCertificate;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["trustConfig"] = args?.trustConfig;
+            resourceInputs["wellKnownRoots"] = args?.wellKnownRoots;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;

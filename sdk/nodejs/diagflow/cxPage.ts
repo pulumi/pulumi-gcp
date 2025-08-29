@@ -757,31 +757,31 @@ export class CxPage extends pulumi.CustomResource {
      * Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
      * Structure is documented below.
      */
-    public readonly advancedSettings!: pulumi.Output<outputs.diagflow.CxPageAdvancedSettings | undefined>;
+    declare public readonly advancedSettings: pulumi.Output<outputs.diagflow.CxPageAdvancedSettings | undefined>;
     /**
      * The human-readable name of the page, unique within the agent.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * The fulfillment to call when the session is entering the page.
      * Structure is documented below.
      */
-    public readonly entryFulfillment!: pulumi.Output<outputs.diagflow.CxPageEntryFulfillment | undefined>;
+    declare public readonly entryFulfillment: pulumi.Output<outputs.diagflow.CxPageEntryFulfillment | undefined>;
     /**
      * Handlers associated with the page to handle events such as webhook errors, no match or no input.
      * Structure is documented below.
      */
-    public readonly eventHandlers!: pulumi.Output<outputs.diagflow.CxPageEventHandler[] | undefined>;
+    declare public readonly eventHandlers: pulumi.Output<outputs.diagflow.CxPageEventHandler[] | undefined>;
     /**
      * The form associated with the page, used for collecting parameters relevant to the page.
      * Structure is documented below.
      */
-    public readonly form!: pulumi.Output<outputs.diagflow.CxPageForm | undefined>;
+    declare public readonly form: pulumi.Output<outputs.diagflow.CxPageForm | undefined>;
     /**
      * Knowledge connector configuration.
      * Structure is documented below.
      */
-    public readonly knowledgeConnectorSettings!: pulumi.Output<outputs.diagflow.CxPageKnowledgeConnectorSettings | undefined>;
+    declare public readonly knowledgeConnectorSettings: pulumi.Output<outputs.diagflow.CxPageKnowledgeConnectorSettings | undefined>;
     /**
      * The language of the following fields in page:
      * Page.entry_fulfillment.messages
@@ -796,24 +796,24 @@ export class CxPage extends pulumi.CustomResource {
      * Page.transition_routes.trigger_fulfillment.conditional_cases
      * If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
      */
-    public readonly languageCode!: pulumi.Output<string | undefined>;
+    declare public readonly languageCode: pulumi.Output<string | undefined>;
     /**
      * The unique identifier of the page.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The flow to create a page for.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
      */
-    public readonly parent!: pulumi.Output<string | undefined>;
+    declare public readonly parent: pulumi.Output<string | undefined>;
     /**
      * Ordered list of TransitionRouteGroups associated with the page. Transition route groups must be unique within a page.
      * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route > page's transition route group > flow's transition routes.
      * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence.
      * Format:projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/transitionRouteGroups/<TransitionRouteGroup ID>.
      */
-    public readonly transitionRouteGroups!: pulumi.Output<string[] | undefined>;
+    declare public readonly transitionRouteGroups: pulumi.Output<string[] | undefined>;
     /**
      * A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow.
      * When we are in a certain page, the TransitionRoutes are evalauted in the following order:
@@ -825,7 +825,7 @@ export class CxPage extends pulumi.CustomResource {
      * TransitionRoutes defined in the transition route groups with only condition specified.
      * Structure is documented below.
      */
-    public readonly transitionRoutes!: pulumi.Output<outputs.diagflow.CxPageTransitionRoute[] | undefined>;
+    declare public readonly transitionRoutes: pulumi.Output<outputs.diagflow.CxPageTransitionRoute[] | undefined>;
 
     /**
      * Create a CxPage resource with the given unique name, arguments, and options.
@@ -840,32 +840,32 @@ export class CxPage extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CxPageState | undefined;
-            resourceInputs["advancedSettings"] = state ? state.advancedSettings : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["entryFulfillment"] = state ? state.entryFulfillment : undefined;
-            resourceInputs["eventHandlers"] = state ? state.eventHandlers : undefined;
-            resourceInputs["form"] = state ? state.form : undefined;
-            resourceInputs["knowledgeConnectorSettings"] = state ? state.knowledgeConnectorSettings : undefined;
-            resourceInputs["languageCode"] = state ? state.languageCode : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["transitionRouteGroups"] = state ? state.transitionRouteGroups : undefined;
-            resourceInputs["transitionRoutes"] = state ? state.transitionRoutes : undefined;
+            resourceInputs["advancedSettings"] = state?.advancedSettings;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["entryFulfillment"] = state?.entryFulfillment;
+            resourceInputs["eventHandlers"] = state?.eventHandlers;
+            resourceInputs["form"] = state?.form;
+            resourceInputs["knowledgeConnectorSettings"] = state?.knowledgeConnectorSettings;
+            resourceInputs["languageCode"] = state?.languageCode;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["transitionRouteGroups"] = state?.transitionRouteGroups;
+            resourceInputs["transitionRoutes"] = state?.transitionRoutes;
         } else {
             const args = argsOrState as CxPageArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            resourceInputs["advancedSettings"] = args ? args.advancedSettings : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["entryFulfillment"] = args ? args.entryFulfillment : undefined;
-            resourceInputs["eventHandlers"] = args ? args.eventHandlers : undefined;
-            resourceInputs["form"] = args ? args.form : undefined;
-            resourceInputs["knowledgeConnectorSettings"] = args ? args.knowledgeConnectorSettings : undefined;
-            resourceInputs["languageCode"] = args ? args.languageCode : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
-            resourceInputs["transitionRouteGroups"] = args ? args.transitionRouteGroups : undefined;
-            resourceInputs["transitionRoutes"] = args ? args.transitionRoutes : undefined;
+            resourceInputs["advancedSettings"] = args?.advancedSettings;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["entryFulfillment"] = args?.entryFulfillment;
+            resourceInputs["eventHandlers"] = args?.eventHandlers;
+            resourceInputs["form"] = args?.form;
+            resourceInputs["knowledgeConnectorSettings"] = args?.knowledgeConnectorSettings;
+            resourceInputs["languageCode"] = args?.languageCode;
+            resourceInputs["parent"] = args?.parent;
+            resourceInputs["transitionRouteGroups"] = args?.transitionRouteGroups;
+            resourceInputs["transitionRoutes"] = args?.transitionRoutes;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

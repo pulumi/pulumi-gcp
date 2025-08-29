@@ -140,76 +140,76 @@ export class NetworkFirewallPolicyPacketMirroringRule extends pulumi.CustomResou
     /**
      * The Action to perform when the client connection triggers the rule. Valid actions are "mirror", "doNotMirror", "gotoNext".
      */
-    public readonly action!: pulumi.Output<string>;
+    declare public readonly action: pulumi.Output<string>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * An optional description for this resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The direction in which this rule applies.
      * Possible values are: `INGRESS`, `EGRESS`.
      */
-    public readonly direction!: pulumi.Output<string>;
+    declare public readonly direction: pulumi.Output<string>;
     /**
      * Denotes whether the firewall policy rule is disabled.
      * When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist.
      * If this is unspecified, the firewall policy rule will be enabled.
      */
-    public readonly disabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly disabled: pulumi.Output<boolean | undefined>;
     /**
      * The firewall policy of the resource.
      */
-    public readonly firewallPolicy!: pulumi.Output<string>;
+    declare public readonly firewallPolicy: pulumi.Output<string>;
     /**
      * Type of the resource. Always `compute#packetMirroringRule` for firewall policy packet mirroring rules
      */
-    public /*out*/ readonly kind!: pulumi.Output<string>;
+    declare public /*out*/ readonly kind: pulumi.Output<string>;
     /**
      * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
      * Structure is documented below.
      */
-    public readonly match!: pulumi.Output<outputs.compute.NetworkFirewallPolicyPacketMirroringRuleMatch>;
+    declare public readonly match: pulumi.Output<outputs.compute.NetworkFirewallPolicyPacketMirroringRuleMatch>;
     /**
      * An integer indicating the priority of a rule in the list.
      * The priority must be a positive value between 0 and 2147483647.
      * Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
      */
-    public readonly priority!: pulumi.Output<number>;
+    declare public readonly priority: pulumi.Output<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * An optional name for the rule. This field is not a unique identifier and can be updated.
      */
-    public readonly ruleName!: pulumi.Output<string | undefined>;
+    declare public readonly ruleName: pulumi.Output<string | undefined>;
     /**
      * Calculation of the complexity of a single firewall policy rule.
      */
-    public /*out*/ readonly ruleTupleCount!: pulumi.Output<number>;
+    declare public /*out*/ readonly ruleTupleCount: pulumi.Output<number>;
     /**
      * A fully-qualified URL of a SecurityProfile resource instance.
      * Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
      * Must be specified if action = 'mirror' and cannot be specified for other actions.
      */
-    public readonly securityProfileGroup!: pulumi.Output<string | undefined>;
+    declare public readonly securityProfileGroup: pulumi.Output<string | undefined>;
     /**
      * A list of secure tags that controls which instances the firewall rule applies to.
      * If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
      * targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
      * Structure is documented below.
      */
-    public readonly targetSecureTags!: pulumi.Output<outputs.compute.NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag[] | undefined>;
+    declare public readonly targetSecureTags: pulumi.Output<outputs.compute.NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag[] | undefined>;
     /**
      * Boolean flag indicating if the traffic should be TLS decrypted.
      * Can be set only if action = 'mirror' and cannot be set for other actions.
      */
-    public readonly tlsInspect!: pulumi.Output<boolean | undefined>;
+    declare public readonly tlsInspect: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a NetworkFirewallPolicyPacketMirroringRule resource with the given unique name, arguments, and options.
@@ -224,50 +224,50 @@ export class NetworkFirewallPolicyPacketMirroringRule extends pulumi.CustomResou
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkFirewallPolicyPacketMirroringRuleState | undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["direction"] = state ? state.direction : undefined;
-            resourceInputs["disabled"] = state ? state.disabled : undefined;
-            resourceInputs["firewallPolicy"] = state ? state.firewallPolicy : undefined;
-            resourceInputs["kind"] = state ? state.kind : undefined;
-            resourceInputs["match"] = state ? state.match : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["ruleName"] = state ? state.ruleName : undefined;
-            resourceInputs["ruleTupleCount"] = state ? state.ruleTupleCount : undefined;
-            resourceInputs["securityProfileGroup"] = state ? state.securityProfileGroup : undefined;
-            resourceInputs["targetSecureTags"] = state ? state.targetSecureTags : undefined;
-            resourceInputs["tlsInspect"] = state ? state.tlsInspect : undefined;
+            resourceInputs["action"] = state?.action;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["direction"] = state?.direction;
+            resourceInputs["disabled"] = state?.disabled;
+            resourceInputs["firewallPolicy"] = state?.firewallPolicy;
+            resourceInputs["kind"] = state?.kind;
+            resourceInputs["match"] = state?.match;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["ruleName"] = state?.ruleName;
+            resourceInputs["ruleTupleCount"] = state?.ruleTupleCount;
+            resourceInputs["securityProfileGroup"] = state?.securityProfileGroup;
+            resourceInputs["targetSecureTags"] = state?.targetSecureTags;
+            resourceInputs["tlsInspect"] = state?.tlsInspect;
         } else {
             const args = argsOrState as NetworkFirewallPolicyPacketMirroringRuleArgs | undefined;
-            if ((!args || args.action === undefined) && !opts.urn) {
+            if (args?.action === undefined && !opts.urn) {
                 throw new Error("Missing required property 'action'");
             }
-            if ((!args || args.direction === undefined) && !opts.urn) {
+            if (args?.direction === undefined && !opts.urn) {
                 throw new Error("Missing required property 'direction'");
             }
-            if ((!args || args.firewallPolicy === undefined) && !opts.urn) {
+            if (args?.firewallPolicy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'firewallPolicy'");
             }
-            if ((!args || args.match === undefined) && !opts.urn) {
+            if (args?.match === undefined && !opts.urn) {
                 throw new Error("Missing required property 'match'");
             }
-            if ((!args || args.priority === undefined) && !opts.urn) {
+            if (args?.priority === undefined && !opts.urn) {
                 throw new Error("Missing required property 'priority'");
             }
-            resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["direction"] = args ? args.direction : undefined;
-            resourceInputs["disabled"] = args ? args.disabled : undefined;
-            resourceInputs["firewallPolicy"] = args ? args.firewallPolicy : undefined;
-            resourceInputs["match"] = args ? args.match : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["ruleName"] = args ? args.ruleName : undefined;
-            resourceInputs["securityProfileGroup"] = args ? args.securityProfileGroup : undefined;
-            resourceInputs["targetSecureTags"] = args ? args.targetSecureTags : undefined;
-            resourceInputs["tlsInspect"] = args ? args.tlsInspect : undefined;
+            resourceInputs["action"] = args?.action;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["direction"] = args?.direction;
+            resourceInputs["disabled"] = args?.disabled;
+            resourceInputs["firewallPolicy"] = args?.firewallPolicy;
+            resourceInputs["match"] = args?.match;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["ruleName"] = args?.ruleName;
+            resourceInputs["securityProfileGroup"] = args?.securityProfileGroup;
+            resourceInputs["targetSecureTags"] = args?.targetSecureTags;
+            resourceInputs["tlsInspect"] = args?.tlsInspect;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["ruleTupleCount"] = undefined /*out*/;

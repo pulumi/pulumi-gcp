@@ -84,48 +84,48 @@ export class Channel extends pulumi.CustomResource {
     /**
      * The activation token for the channel. The token must be used by the provider to register the channel for publishing.
      */
-    public /*out*/ readonly activationToken!: pulumi.Output<string>;
+    declare public /*out*/ readonly activationToken: pulumi.Output<string>;
     /**
      * The creation time.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
      */
-    public readonly cryptoKeyName!: pulumi.Output<string | undefined>;
+    declare public readonly cryptoKeyName: pulumi.Output<string | undefined>;
     /**
      * The location for the resource
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The resource name of the channel. Must be unique within the location on the project.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
      */
-    public /*out*/ readonly pubsubTopic!: pulumi.Output<string>;
+    declare public /*out*/ readonly pubsubTopic: pulumi.Output<string>;
     /**
      * The state of a Channel.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
      */
-    public readonly thirdPartyProvider!: pulumi.Output<string | undefined>;
+    declare public readonly thirdPartyProvider: pulumi.Output<string | undefined>;
     /**
      * Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * The last-modified time.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Channel resource with the given unique name, arguments, and options.
@@ -140,27 +140,27 @@ export class Channel extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ChannelState | undefined;
-            resourceInputs["activationToken"] = state ? state.activationToken : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["cryptoKeyName"] = state ? state.cryptoKeyName : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pubsubTopic"] = state ? state.pubsubTopic : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["thirdPartyProvider"] = state ? state.thirdPartyProvider : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["activationToken"] = state?.activationToken;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["cryptoKeyName"] = state?.cryptoKeyName;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pubsubTopic"] = state?.pubsubTopic;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["thirdPartyProvider"] = state?.thirdPartyProvider;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as ChannelArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["cryptoKeyName"] = args ? args.cryptoKeyName : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["thirdPartyProvider"] = args ? args.thirdPartyProvider : undefined;
+            resourceInputs["cryptoKeyName"] = args?.cryptoKeyName;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["thirdPartyProvider"] = args?.thirdPartyProvider;
             resourceInputs["activationToken"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["pubsubTopic"] = undefined /*out*/;

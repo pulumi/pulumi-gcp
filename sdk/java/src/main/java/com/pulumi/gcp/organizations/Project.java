@@ -175,18 +175,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:organizations/project:Project")
 public class Project extends com.pulumi.resources.CustomResource {
     /**
-     * Create the &#39;default&#39; network automatically. Default true. If set to false, the default network will be deleted. Note
-     * that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
-     * if you set auto_create_network to false, since the network will exist momentarily.
+     * Create the &#39;default&#39; network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set auto_create_network to false, since the network will exist momentarily.
      * 
      */
     @Export(name="autoCreateNetwork", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoCreateNetwork;
 
     /**
-     * @return Create the &#39;default&#39; network automatically. Default true. If set to false, the default network will be deleted. Note
-     * that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
-     * if you set auto_create_network to false, since the network will exist momentarily.
+     * @return Create the &#39;default&#39; network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set auto_create_network to false, since the network will exist momentarily.
      * 
      */
     public Output<Optional<Boolean>> autoCreateNetwork() {

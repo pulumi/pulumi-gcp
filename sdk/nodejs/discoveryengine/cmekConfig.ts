@@ -92,60 +92,60 @@ export class CmekConfig extends pulumi.CustomResource {
     /**
      * The unique id of the cmek config.
      */
-    public readonly cmekConfigId!: pulumi.Output<string | undefined>;
+    declare public readonly cmekConfigId: pulumi.Output<string | undefined>;
     /**
      * The default CmekConfig for the Customer.
      */
-    public /*out*/ readonly isDefault!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly isDefault: pulumi.Output<boolean>;
     /**
      * KMS key resource name which will be used to encrypt resources
      * `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`.
      */
-    public readonly kmsKey!: pulumi.Output<string>;
+    declare public readonly kmsKey: pulumi.Output<string>;
     /**
      * KMS key version resource name which will be used to encrypt resources
      * `<kms_key>/cryptoKeyVersions/{keyVersion}`.
      */
-    public /*out*/ readonly kmsKeyVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly kmsKeyVersion: pulumi.Output<string>;
     /**
      * The timestamp of the last key rotation.
      */
-    public /*out*/ readonly lastRotationTimestampMicros!: pulumi.Output<number>;
+    declare public /*out*/ readonly lastRotationTimestampMicros: pulumi.Output<number>;
     /**
      * The geographic location where the CMEK config should reside. The value can
      * only be one of "us" and "eu".
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The unique full resource name of the cmek config. Values are of the format
      * `projects/{project}/locations/{location}/cmekConfigs/{cmek_config_id}`.
      * This field must be a UTF-8 encoded string with a length limit of 1024
      * characters.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Whether the NotebookLM Corpus is ready to be used.
      */
-    public /*out*/ readonly notebooklmState!: pulumi.Output<string>;
+    declare public /*out*/ readonly notebooklmState: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Set the following CmekConfig as the default to be used for child resources
      * if one is not specified. The default value is true.
      */
-    public readonly setDefault!: pulumi.Output<boolean | undefined>;
+    declare public readonly setDefault: pulumi.Output<boolean | undefined>;
     /**
      * Single-regional CMEKs that are required for some VAIS features.
      * Structure is documented below.
      */
-    public readonly singleRegionKeys!: pulumi.Output<outputs.discoveryengine.CmekConfigSingleRegionKey[] | undefined>;
+    declare public readonly singleRegionKeys: pulumi.Output<outputs.discoveryengine.CmekConfigSingleRegionKey[] | undefined>;
     /**
      * The state of the CmekConfig.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
 
     /**
      * Create a CmekConfig resource with the given unique name, arguments, and options.
@@ -160,32 +160,32 @@ export class CmekConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CmekConfigState | undefined;
-            resourceInputs["cmekConfigId"] = state ? state.cmekConfigId : undefined;
-            resourceInputs["isDefault"] = state ? state.isDefault : undefined;
-            resourceInputs["kmsKey"] = state ? state.kmsKey : undefined;
-            resourceInputs["kmsKeyVersion"] = state ? state.kmsKeyVersion : undefined;
-            resourceInputs["lastRotationTimestampMicros"] = state ? state.lastRotationTimestampMicros : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["notebooklmState"] = state ? state.notebooklmState : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["setDefault"] = state ? state.setDefault : undefined;
-            resourceInputs["singleRegionKeys"] = state ? state.singleRegionKeys : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["cmekConfigId"] = state?.cmekConfigId;
+            resourceInputs["isDefault"] = state?.isDefault;
+            resourceInputs["kmsKey"] = state?.kmsKey;
+            resourceInputs["kmsKeyVersion"] = state?.kmsKeyVersion;
+            resourceInputs["lastRotationTimestampMicros"] = state?.lastRotationTimestampMicros;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["notebooklmState"] = state?.notebooklmState;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["setDefault"] = state?.setDefault;
+            resourceInputs["singleRegionKeys"] = state?.singleRegionKeys;
+            resourceInputs["state"] = state?.state;
         } else {
             const args = argsOrState as CmekConfigArgs | undefined;
-            if ((!args || args.kmsKey === undefined) && !opts.urn) {
+            if (args?.kmsKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'kmsKey'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["cmekConfigId"] = args ? args.cmekConfigId : undefined;
-            resourceInputs["kmsKey"] = args ? args.kmsKey : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["setDefault"] = args ? args.setDefault : undefined;
-            resourceInputs["singleRegionKeys"] = args ? args.singleRegionKeys : undefined;
+            resourceInputs["cmekConfigId"] = args?.cmekConfigId;
+            resourceInputs["kmsKey"] = args?.kmsKey;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["setDefault"] = args?.setDefault;
+            resourceInputs["singleRegionKeys"] = args?.singleRegionKeys;
             resourceInputs["isDefault"] = undefined /*out*/;
             resourceInputs["kmsKeyVersion"] = undefined /*out*/;
             resourceInputs["lastRotationTimestampMicros"] = undefined /*out*/;

@@ -132,88 +132,88 @@ export class Registration extends pulumi.CustomResource {
     /**
      * The list of contact notices that the caller acknowledges. Possible value is PUBLIC_CONTACT_DATA_ACKNOWLEDGEMENT
      */
-    public readonly contactNotices!: pulumi.Output<string[] | undefined>;
+    declare public readonly contactNotices: pulumi.Output<string[] | undefined>;
     /**
      * Required. Settings for contact information linked to the Registration.
      * Structure is documented below.
      */
-    public readonly contactSettings!: pulumi.Output<outputs.clouddomains.RegistrationContactSettings>;
+    declare public readonly contactSettings: pulumi.Output<outputs.clouddomains.RegistrationContactSettings>;
     /**
      * Output only. Time at which the automation was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Settings controlling the DNS configuration of the Registration.
      * Structure is documented below.
      */
-    public readonly dnsSettings!: pulumi.Output<outputs.clouddomains.RegistrationDnsSettings | undefined>;
+    declare public readonly dnsSettings: pulumi.Output<outputs.clouddomains.RegistrationDnsSettings | undefined>;
     /**
      * Required. The domain name. Unicode domain names must be expressed in Punycode format.
      */
-    public readonly domainName!: pulumi.Output<string>;
+    declare public readonly domainName: pulumi.Output<string>;
     /**
      * The list of domain notices that you acknowledge. Possible value is HSTS_PRELOADED
      */
-    public readonly domainNotices!: pulumi.Output<string[] | undefined>;
+    declare public readonly domainNotices: pulumi.Output<string[] | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Output only. Time at which the automation was updated.
      */
-    public /*out*/ readonly expireTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly expireTime: pulumi.Output<string>;
     /**
      * Output only. The set of issues with the Registration that require attention.
      */
-    public /*out*/ readonly issues!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly issues: pulumi.Output<string[]>;
     /**
      * Set of labels associated with the Registration.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location for the resource
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Settings for management of the Registration, including renewal, billing, and transfer
      * Structure is documented below.
      */
-    public readonly managementSettings!: pulumi.Output<outputs.clouddomains.RegistrationManagementSettings>;
+    declare public readonly managementSettings: pulumi.Output<outputs.clouddomains.RegistrationManagementSettings>;
     /**
      * Output only. Name of the Registration resource, in the format projects/*&#47;locations/*&#47;registrations/<domain_name>.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Output only. The reason the domain registration failed. Only set for domains in REGISTRATION_FAILED state.
      */
-    public /*out*/ readonly registerFailureReason!: pulumi.Output<string>;
+    declare public /*out*/ readonly registerFailureReason: pulumi.Output<string>;
     /**
      * Output only. The current state of the Registration.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Output only. Set of options for the contactSettings.privacy field that this Registration supports.
      */
-    public /*out*/ readonly supportedPrivacies!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly supportedPrivacies: pulumi.Output<string[]>;
     /**
      * Required. Yearly price to register or renew the domain. The value that should be put here can be obtained from
      * registrations.retrieveRegisterParameters or registrations.searchDomains calls.
      * Structure is documented below.
      */
-    public readonly yearlyPrice!: pulumi.Output<outputs.clouddomains.RegistrationYearlyPrice>;
+    declare public readonly yearlyPrice: pulumi.Output<outputs.clouddomains.RegistrationYearlyPrice>;
 
     /**
      * Create a Registration resource with the given unique name, arguments, and options.
@@ -228,49 +228,49 @@ export class Registration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegistrationState | undefined;
-            resourceInputs["contactNotices"] = state ? state.contactNotices : undefined;
-            resourceInputs["contactSettings"] = state ? state.contactSettings : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dnsSettings"] = state ? state.dnsSettings : undefined;
-            resourceInputs["domainName"] = state ? state.domainName : undefined;
-            resourceInputs["domainNotices"] = state ? state.domainNotices : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["expireTime"] = state ? state.expireTime : undefined;
-            resourceInputs["issues"] = state ? state.issues : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["managementSettings"] = state ? state.managementSettings : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["registerFailureReason"] = state ? state.registerFailureReason : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["supportedPrivacies"] = state ? state.supportedPrivacies : undefined;
-            resourceInputs["yearlyPrice"] = state ? state.yearlyPrice : undefined;
+            resourceInputs["contactNotices"] = state?.contactNotices;
+            resourceInputs["contactSettings"] = state?.contactSettings;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dnsSettings"] = state?.dnsSettings;
+            resourceInputs["domainName"] = state?.domainName;
+            resourceInputs["domainNotices"] = state?.domainNotices;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["expireTime"] = state?.expireTime;
+            resourceInputs["issues"] = state?.issues;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["managementSettings"] = state?.managementSettings;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["registerFailureReason"] = state?.registerFailureReason;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["supportedPrivacies"] = state?.supportedPrivacies;
+            resourceInputs["yearlyPrice"] = state?.yearlyPrice;
         } else {
             const args = argsOrState as RegistrationArgs | undefined;
-            if ((!args || args.contactSettings === undefined) && !opts.urn) {
+            if (args?.contactSettings === undefined && !opts.urn) {
                 throw new Error("Missing required property 'contactSettings'");
             }
-            if ((!args || args.domainName === undefined) && !opts.urn) {
+            if (args?.domainName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domainName'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.yearlyPrice === undefined) && !opts.urn) {
+            if (args?.yearlyPrice === undefined && !opts.urn) {
                 throw new Error("Missing required property 'yearlyPrice'");
             }
-            resourceInputs["contactNotices"] = args ? args.contactNotices : undefined;
-            resourceInputs["contactSettings"] = args ? args.contactSettings : undefined;
-            resourceInputs["dnsSettings"] = args ? args.dnsSettings : undefined;
-            resourceInputs["domainName"] = args ? args.domainName : undefined;
-            resourceInputs["domainNotices"] = args ? args.domainNotices : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["managementSettings"] = args ? args.managementSettings : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["yearlyPrice"] = args ? args.yearlyPrice : undefined;
+            resourceInputs["contactNotices"] = args?.contactNotices;
+            resourceInputs["contactSettings"] = args?.contactSettings;
+            resourceInputs["dnsSettings"] = args?.dnsSettings;
+            resourceInputs["domainName"] = args?.domainName;
+            resourceInputs["domainNotices"] = args?.domainNotices;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["managementSettings"] = args?.managementSettings;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["yearlyPrice"] = args?.yearlyPrice;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["expireTime"] = undefined /*out*/;

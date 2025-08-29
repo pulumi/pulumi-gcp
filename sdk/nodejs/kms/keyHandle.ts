@@ -153,26 +153,26 @@ export class KeyHandle extends pulumi.CustomResource {
      * product/project/location, for example
      * `projects/1/locations/us-east1/keyRings/foo/cryptoKeys/bar-ffffff`
      */
-    public /*out*/ readonly kmsKey!: pulumi.Output<string>;
+    declare public /*out*/ readonly kmsKey: pulumi.Output<string>;
     /**
      * The location for the KeyHandle.
      * A full list of valid locations can be found by running `gcloud kms locations list`.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The resource name for the KeyHandle.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Selector of the resource type where we want to protect resources.
      * For example, `storage.googleapis.com/Bucket`.
      */
-    public readonly resourceTypeSelector!: pulumi.Output<string>;
+    declare public readonly resourceTypeSelector: pulumi.Output<string>;
 
     /**
      * Create a KeyHandle resource with the given unique name, arguments, and options.
@@ -187,23 +187,23 @@ export class KeyHandle extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KeyHandleState | undefined;
-            resourceInputs["kmsKey"] = state ? state.kmsKey : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["resourceTypeSelector"] = state ? state.resourceTypeSelector : undefined;
+            resourceInputs["kmsKey"] = state?.kmsKey;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["resourceTypeSelector"] = state?.resourceTypeSelector;
         } else {
             const args = argsOrState as KeyHandleArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.resourceTypeSelector === undefined) && !opts.urn) {
+            if (args?.resourceTypeSelector === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceTypeSelector'");
             }
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["resourceTypeSelector"] = args ? args.resourceTypeSelector : undefined;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["resourceTypeSelector"] = args?.resourceTypeSelector;
             resourceInputs["kmsKey"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -132,21 +132,21 @@ export class EngineSplitTraffic extends pulumi.CustomResource {
     /**
      * If set to true traffic will be migrated to this version.
      */
-    public readonly migrateTraffic!: pulumi.Output<boolean | undefined>;
+    declare public readonly migrateTraffic: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The name of the service these settings apply to.
      */
-    public readonly service!: pulumi.Output<string>;
+    declare public readonly service: pulumi.Output<string>;
     /**
      * Mapping that defines fractional HTTP traffic diversion to different versions within the service.
      * Structure is documented below.
      */
-    public readonly split!: pulumi.Output<outputs.appengine.EngineSplitTrafficSplit>;
+    declare public readonly split: pulumi.Output<outputs.appengine.EngineSplitTrafficSplit>;
 
     /**
      * Create a EngineSplitTraffic resource with the given unique name, arguments, and options.
@@ -161,22 +161,22 @@ export class EngineSplitTraffic extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EngineSplitTrafficState | undefined;
-            resourceInputs["migrateTraffic"] = state ? state.migrateTraffic : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["service"] = state ? state.service : undefined;
-            resourceInputs["split"] = state ? state.split : undefined;
+            resourceInputs["migrateTraffic"] = state?.migrateTraffic;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["service"] = state?.service;
+            resourceInputs["split"] = state?.split;
         } else {
             const args = argsOrState as EngineSplitTrafficArgs | undefined;
-            if ((!args || args.service === undefined) && !opts.urn) {
+            if (args?.service === undefined && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
-            if ((!args || args.split === undefined) && !opts.urn) {
+            if (args?.split === undefined && !opts.urn) {
                 throw new Error("Missing required property 'split'");
             }
-            resourceInputs["migrateTraffic"] = args ? args.migrateTraffic : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["service"] = args ? args.service : undefined;
-            resourceInputs["split"] = args ? args.split : undefined;
+            resourceInputs["migrateTraffic"] = args?.migrateTraffic;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["service"] = args?.service;
+            resourceInputs["split"] = args?.split;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EngineSplitTraffic.__pulumiType, name, resourceInputs, opts);

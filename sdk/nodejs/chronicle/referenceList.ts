@@ -90,11 +90,11 @@ export class ReferenceList extends pulumi.CustomResource {
     /**
      * Required. A user-provided description of the reference list.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * Output only. The unique display name of the reference list.
      */
-    public /*out*/ readonly displayName!: pulumi.Output<string>;
+    declare public /*out*/ readonly displayName: pulumi.Output<string>;
     /**
      * Required. The entries of the reference list.
      * When listed, they are returned in the order that was specified at creation
@@ -103,26 +103,26 @@ export class ReferenceList extends pulumi.CustomResource {
      * This is returned only when the view is REFERENCE_LIST_VIEW_FULL.
      * Structure is documented below.
      */
-    public readonly entries!: pulumi.Output<outputs.chronicle.ReferenceListEntry[]>;
+    declare public readonly entries: pulumi.Output<outputs.chronicle.ReferenceListEntry[]>;
     /**
      * The unique identifier for the Chronicle instance, which is the same as the customer ID.
      */
-    public readonly instance!: pulumi.Output<string>;
+    declare public readonly instance: pulumi.Output<string>;
     /**
      * The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Output only. The resource name of the reference list.
      * Format:
      * projects/{project}/locations/{location}/instances/{instance}/referenceLists/{reference_list}
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Required. The ID to use for the reference list. This is also the display name for
      * the reference list. It must satisfy the following requirements:
@@ -131,33 +131,33 @@ export class ReferenceList extends pulumi.CustomResource {
      * - Has length < 256.
      * - Must be unique.
      */
-    public readonly referenceListId!: pulumi.Output<string>;
+    declare public readonly referenceListId: pulumi.Output<string>;
     /**
      * Output only. The timestamp when the reference list was last updated.
      */
-    public /*out*/ readonly revisionCreateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly revisionCreateTime: pulumi.Output<string>;
     /**
      * Output only. The count of self-authored rules using the reference list.
      */
-    public /*out*/ readonly ruleAssociationsCount!: pulumi.Output<number>;
+    declare public /*out*/ readonly ruleAssociationsCount: pulumi.Output<number>;
     /**
      * Output only. The resource names for the associated self-authored Rules that use this
      * reference list.
      * This is returned only when the view is REFERENCE_LIST_VIEW_FULL.
      */
-    public /*out*/ readonly rules!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly rules: pulumi.Output<string[]>;
     /**
      * ScopeInfo specifies the scope info of the reference list.
      * Structure is documented below.
      */
-    public /*out*/ readonly scopeInfos!: pulumi.Output<outputs.chronicle.ReferenceListScopeInfo[]>;
+    declare public /*out*/ readonly scopeInfos: pulumi.Output<outputs.chronicle.ReferenceListScopeInfo[]>;
     /**
      * Possible values:
      * REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING
      * REFERENCE_LIST_SYNTAX_TYPE_REGEX
      * REFERENCE_LIST_SYNTAX_TYPE_CIDR
      */
-    public readonly syntaxType!: pulumi.Output<string>;
+    declare public readonly syntaxType: pulumi.Output<string>;
 
     /**
      * Create a ReferenceList resource with the given unique name, arguments, and options.
@@ -172,46 +172,46 @@ export class ReferenceList extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ReferenceListState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["entries"] = state ? state.entries : undefined;
-            resourceInputs["instance"] = state ? state.instance : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["referenceListId"] = state ? state.referenceListId : undefined;
-            resourceInputs["revisionCreateTime"] = state ? state.revisionCreateTime : undefined;
-            resourceInputs["ruleAssociationsCount"] = state ? state.ruleAssociationsCount : undefined;
-            resourceInputs["rules"] = state ? state.rules : undefined;
-            resourceInputs["scopeInfos"] = state ? state.scopeInfos : undefined;
-            resourceInputs["syntaxType"] = state ? state.syntaxType : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["entries"] = state?.entries;
+            resourceInputs["instance"] = state?.instance;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["referenceListId"] = state?.referenceListId;
+            resourceInputs["revisionCreateTime"] = state?.revisionCreateTime;
+            resourceInputs["ruleAssociationsCount"] = state?.ruleAssociationsCount;
+            resourceInputs["rules"] = state?.rules;
+            resourceInputs["scopeInfos"] = state?.scopeInfos;
+            resourceInputs["syntaxType"] = state?.syntaxType;
         } else {
             const args = argsOrState as ReferenceListArgs | undefined;
-            if ((!args || args.description === undefined) && !opts.urn) {
+            if (args?.description === undefined && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            if ((!args || args.entries === undefined) && !opts.urn) {
+            if (args?.entries === undefined && !opts.urn) {
                 throw new Error("Missing required property 'entries'");
             }
-            if ((!args || args.instance === undefined) && !opts.urn) {
+            if (args?.instance === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instance'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.referenceListId === undefined) && !opts.urn) {
+            if (args?.referenceListId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'referenceListId'");
             }
-            if ((!args || args.syntaxType === undefined) && !opts.urn) {
+            if (args?.syntaxType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'syntaxType'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["entries"] = args ? args.entries : undefined;
-            resourceInputs["instance"] = args ? args.instance : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["referenceListId"] = args ? args.referenceListId : undefined;
-            resourceInputs["syntaxType"] = args ? args.syntaxType : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["entries"] = args?.entries;
+            resourceInputs["instance"] = args?.instance;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["referenceListId"] = args?.referenceListId;
+            resourceInputs["syntaxType"] = args?.syntaxType;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["revisionCreateTime"] = undefined /*out*/;

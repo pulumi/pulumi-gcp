@@ -163,12 +163,12 @@ export class JobIAMBinding extends pulumi.CustomResource {
         return obj['__pulumiType'] === JobIAMBinding.__pulumiType;
     }
 
-    public readonly condition!: pulumi.Output<outputs.dataproc.JobIAMBindingCondition | undefined>;
+    declare public readonly condition: pulumi.Output<outputs.dataproc.JobIAMBindingCondition | undefined>;
     /**
      * (Computed) The etag of the jobs's IAM policy.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
-    public readonly jobId!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
+    declare public readonly jobId: pulumi.Output<string>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -179,17 +179,17 @@ export class JobIAMBinding extends pulumi.CustomResource {
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
-    public readonly members!: pulumi.Output<string[]>;
+    declare public readonly members: pulumi.Output<string[]>;
     /**
      * The project in which the job belongs. If it
      * is not provided, the provider will use a default.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The region in which the job belongs. If it
      * is not provided, the provider will use a default.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
@@ -197,7 +197,7 @@ export class JobIAMBinding extends pulumi.CustomResource {
      *
      * `gcp.dataproc.JobIAMPolicy` only:
      */
-    public readonly role!: pulumi.Output<string>;
+    declare public readonly role: pulumi.Output<string>;
 
     /**
      * Create a JobIAMBinding resource with the given unique name, arguments, and options.
@@ -212,30 +212,30 @@ export class JobIAMBinding extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as JobIAMBindingState | undefined;
-            resourceInputs["condition"] = state ? state.condition : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["jobId"] = state ? state.jobId : undefined;
-            resourceInputs["members"] = state ? state.members : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["condition"] = state?.condition;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["jobId"] = state?.jobId;
+            resourceInputs["members"] = state?.members;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["role"] = state?.role;
         } else {
             const args = argsOrState as JobIAMBindingArgs | undefined;
-            if ((!args || args.jobId === undefined) && !opts.urn) {
+            if (args?.jobId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'jobId'");
             }
-            if ((!args || args.members === undefined) && !opts.urn) {
+            if (args?.members === undefined && !opts.urn) {
                 throw new Error("Missing required property 'members'");
             }
-            if ((!args || args.role === undefined) && !opts.urn) {
+            if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            resourceInputs["condition"] = args ? args.condition : undefined;
-            resourceInputs["jobId"] = args ? args.jobId : undefined;
-            resourceInputs["members"] = args ? args.members : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["condition"] = args?.condition;
+            resourceInputs["jobId"] = args?.jobId;
+            resourceInputs["members"] = args?.members;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["role"] = args?.role;
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -165,12 +165,10 @@ import (
 type AzureNodePool struct {
 	pulumi.CustomResourceState
 
-	// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size
-	// of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required),
-	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// `effectiveAnnotations` for all of the annotations present on the resource.
+	// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Autoscaler configuration for this node pool.
 	Autoscaling AzureNodePoolAutoscalingOutput `pulumi:"autoscaling"`
@@ -260,12 +258,10 @@ func GetAzureNodePool(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AzureNodePool resources.
 type azureNodePoolState struct {
-	// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size
-	// of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required),
-	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// `effectiveAnnotations` for all of the annotations present on the resource.
+	// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Autoscaler configuration for this node pool.
 	Autoscaling *AzureNodePoolAutoscaling `pulumi:"autoscaling"`
@@ -305,12 +301,10 @@ type azureNodePoolState struct {
 }
 
 type AzureNodePoolState struct {
-	// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size
-	// of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required),
-	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// `effectiveAnnotations` for all of the annotations present on the resource.
+	// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Autoscaler configuration for this node pool.
 	Autoscaling AzureNodePoolAutoscalingPtrInput
@@ -354,12 +348,10 @@ func (AzureNodePoolState) ElementType() reflect.Type {
 }
 
 type azureNodePoolArgs struct {
-	// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size
-	// of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required),
-	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// `effectiveAnnotations` for all of the annotations present on the resource.
+	// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Autoscaler configuration for this node pool.
 	Autoscaling AzureNodePoolAutoscaling `pulumi:"autoscaling"`
@@ -387,12 +379,10 @@ type azureNodePoolArgs struct {
 
 // The set of arguments for constructing a AzureNodePool resource.
 type AzureNodePoolArgs struct {
-	// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size
-	// of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required),
-	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// `effectiveAnnotations` for all of the annotations present on the resource.
+	// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Autoscaler configuration for this node pool.
 	Autoscaling AzureNodePoolAutoscalingInput
@@ -505,12 +495,10 @@ func (o AzureNodePoolOutput) ToAzureNodePoolOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size
-// of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required),
-// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-// `effectiveAnnotations` for all of the annotations present on the resource.
+// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+//
+// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o AzureNodePoolOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AzureNodePool) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }

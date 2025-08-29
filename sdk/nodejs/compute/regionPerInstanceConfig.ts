@@ -160,7 +160,7 @@ export class RegionPerInstanceConfig extends pulumi.CustomResource {
      * * REFRESH
      * * NONE
      */
-    public readonly minimalAction!: pulumi.Output<string | undefined>;
+    declare public readonly minimalAction: pulumi.Output<string | undefined>;
     /**
      * The most disruptive action to perform on the instance during an update.
      * Default is `REPLACE`. Possible values are:
@@ -169,40 +169,40 @@ export class RegionPerInstanceConfig extends pulumi.CustomResource {
      * * REFRESH
      * * NONE
      */
-    public readonly mostDisruptiveAllowedAction!: pulumi.Output<string | undefined>;
+    declare public readonly mostDisruptiveAllowedAction: pulumi.Output<string | undefined>;
     /**
      * The name for this per-instance config and its corresponding instance.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The preserved state for this instance.
      * Structure is documented below.
      */
-    public readonly preservedState!: pulumi.Output<outputs.compute.RegionPerInstanceConfigPreservedState | undefined>;
+    declare public readonly preservedState: pulumi.Output<outputs.compute.RegionPerInstanceConfigPreservedState | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Region where the containing instance group manager is located
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The region instance group manager this instance config is part of.
      */
-    public readonly regionInstanceGroupManager!: pulumi.Output<string>;
+    declare public readonly regionInstanceGroupManager: pulumi.Output<string>;
     /**
      * When true, deleting this config will immediately remove the underlying instance.
      * When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
      */
-    public readonly removeInstanceOnDestroy!: pulumi.Output<boolean | undefined>;
+    declare public readonly removeInstanceOnDestroy: pulumi.Output<boolean | undefined>;
     /**
      * When true, deleting this config will immediately remove any specified state from the underlying instance.
      * When false, deleting this config will *not* immediately remove any state from the underlying instance.
      * State will be removed on the next instance recreation or update.
      */
-    public readonly removeInstanceStateOnDestroy!: pulumi.Output<boolean | undefined>;
+    declare public readonly removeInstanceStateOnDestroy: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a RegionPerInstanceConfig resource with the given unique name, arguments, and options.
@@ -217,29 +217,29 @@ export class RegionPerInstanceConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegionPerInstanceConfigState | undefined;
-            resourceInputs["minimalAction"] = state ? state.minimalAction : undefined;
-            resourceInputs["mostDisruptiveAllowedAction"] = state ? state.mostDisruptiveAllowedAction : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["preservedState"] = state ? state.preservedState : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["regionInstanceGroupManager"] = state ? state.regionInstanceGroupManager : undefined;
-            resourceInputs["removeInstanceOnDestroy"] = state ? state.removeInstanceOnDestroy : undefined;
-            resourceInputs["removeInstanceStateOnDestroy"] = state ? state.removeInstanceStateOnDestroy : undefined;
+            resourceInputs["minimalAction"] = state?.minimalAction;
+            resourceInputs["mostDisruptiveAllowedAction"] = state?.mostDisruptiveAllowedAction;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["preservedState"] = state?.preservedState;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["regionInstanceGroupManager"] = state?.regionInstanceGroupManager;
+            resourceInputs["removeInstanceOnDestroy"] = state?.removeInstanceOnDestroy;
+            resourceInputs["removeInstanceStateOnDestroy"] = state?.removeInstanceStateOnDestroy;
         } else {
             const args = argsOrState as RegionPerInstanceConfigArgs | undefined;
-            if ((!args || args.regionInstanceGroupManager === undefined) && !opts.urn) {
+            if (args?.regionInstanceGroupManager === undefined && !opts.urn) {
                 throw new Error("Missing required property 'regionInstanceGroupManager'");
             }
-            resourceInputs["minimalAction"] = args ? args.minimalAction : undefined;
-            resourceInputs["mostDisruptiveAllowedAction"] = args ? args.mostDisruptiveAllowedAction : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["preservedState"] = args ? args.preservedState : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["regionInstanceGroupManager"] = args ? args.regionInstanceGroupManager : undefined;
-            resourceInputs["removeInstanceOnDestroy"] = args ? args.removeInstanceOnDestroy : undefined;
-            resourceInputs["removeInstanceStateOnDestroy"] = args ? args.removeInstanceStateOnDestroy : undefined;
+            resourceInputs["minimalAction"] = args?.minimalAction;
+            resourceInputs["mostDisruptiveAllowedAction"] = args?.mostDisruptiveAllowedAction;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["preservedState"] = args?.preservedState;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["regionInstanceGroupManager"] = args?.regionInstanceGroupManager;
+            resourceInputs["removeInstanceOnDestroy"] = args?.removeInstanceOnDestroy;
+            resourceInputs["removeInstanceStateOnDestroy"] = args?.removeInstanceStateOnDestroy;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RegionPerInstanceConfig.__pulumiType, name, resourceInputs, opts);

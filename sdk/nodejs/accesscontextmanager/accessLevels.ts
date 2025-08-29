@@ -114,12 +114,12 @@ export class AccessLevels extends pulumi.CustomResource {
      * The desired Access Levels that should replace all existing Access Levels in the Access Policy.
      * Structure is documented below.
      */
-    public readonly accessLevels!: pulumi.Output<outputs.accesscontextmanager.AccessLevelsAccessLevel[] | undefined>;
+    declare public readonly accessLevels: pulumi.Output<outputs.accesscontextmanager.AccessLevelsAccessLevel[] | undefined>;
     /**
      * The AccessPolicy this AccessLevel lives in.
      * Format: accessPolicies/{policy_id}
      */
-    public readonly parent!: pulumi.Output<string>;
+    declare public readonly parent: pulumi.Output<string>;
 
     /**
      * Create a AccessLevels resource with the given unique name, arguments, and options.
@@ -134,15 +134,15 @@ export class AccessLevels extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessLevelsState | undefined;
-            resourceInputs["accessLevels"] = state ? state.accessLevels : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
+            resourceInputs["accessLevels"] = state?.accessLevels;
+            resourceInputs["parent"] = state?.parent;
         } else {
             const args = argsOrState as AccessLevelsArgs | undefined;
-            if ((!args || args.parent === undefined) && !opts.urn) {
+            if (args?.parent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            resourceInputs["accessLevels"] = args ? args.accessLevels : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["accessLevels"] = args?.accessLevels;
+            resourceInputs["parent"] = args?.parent;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AccessLevels.__pulumiType, name, resourceInputs, opts);

@@ -662,8 +662,7 @@ class _FunctionState:
         :param pulumi.Input[_builtins.str] status: Describes the current stage of a deployment.
         :param pulumi.Input[_builtins.int] timeout: Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
         :param pulumi.Input[_builtins.bool] trigger_http: Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `event_trigger`.
-        :param pulumi.Input[_builtins.str] version_id: The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being
-               created.
+        :param pulumi.Input[_builtins.str] version_id: The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being created.
         :param pulumi.Input[_builtins.str] vpc_connector: The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*/locations/*/connectors/*`.
         :param pulumi.Input[_builtins.str] vpc_connector_egress_settings: The egress settings for the connector, controlling what traffic is diverted through it. Allowed values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`. Defaults to `PRIVATE_RANGES_ONLY`. If unset, this field preserves the previously set value.
         """
@@ -1165,8 +1164,7 @@ class _FunctionState:
     @pulumi.getter(name="versionId")
     def version_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being
-        created.
+        The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being created.
         """
         return pulumi.get(self, "version_id")
 
@@ -1695,8 +1693,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] status: Describes the current stage of a deployment.
         :param pulumi.Input[_builtins.int] timeout: Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
         :param pulumi.Input[_builtins.bool] trigger_http: Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `event_trigger`.
-        :param pulumi.Input[_builtins.str] version_id: The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being
-               created.
+        :param pulumi.Input[_builtins.str] version_id: The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being created.
         :param pulumi.Input[_builtins.str] vpc_connector: The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*/locations/*/connectors/*`.
         :param pulumi.Input[_builtins.str] vpc_connector_egress_settings: The egress settings for the connector, controlling what traffic is diverted through it. Allowed values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`. Defaults to `PRIVATE_RANGES_ONLY`. If unset, this field preserves the previously set value.
         """
@@ -2030,8 +2027,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter(name="versionId")
     def version_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being
-        created.
+        The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being created.
         """
         return pulumi.get(self, "version_id")
 

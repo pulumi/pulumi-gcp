@@ -223,100 +223,100 @@ export class GdcSparkApplication extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * An ApplicationEnvironment from which to inherit configuration properties.
      */
-    public readonly applicationEnvironment!: pulumi.Output<string | undefined>;
+    declare public readonly applicationEnvironment: pulumi.Output<string | undefined>;
     /**
      * The timestamp when the resource was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * List of container image uris for additional file dependencies. Dependent files are sequentially copied from each image. If a file with the same name exists in 2 images then the file from later image is used.
      */
-    public readonly dependencyImages!: pulumi.Output<string[] | undefined>;
+    declare public readonly dependencyImages: pulumi.Output<string[] | undefined>;
     /**
      * User-provided human-readable name to be used in user interfaces.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The labels to associate with this application. Labels may be used for filtering and billing tracking.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location of the spark application.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * URL for a monitoring UI for this application (for eventual Spark PHS/UI support) Out of scope for private GA
      */
-    public /*out*/ readonly monitoringEndpoint!: pulumi.Output<string>;
+    declare public /*out*/ readonly monitoringEndpoint: pulumi.Output<string>;
     /**
      * Identifier. The name of the application. Format: projects/{project}/locations/{location}/serviceInstances/{service_instance}/sparkApplications/{application}
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The Kubernetes namespace in which to create the application. This namespace must already exist on the cluster.
      */
-    public readonly namespace!: pulumi.Output<string | undefined>;
+    declare public readonly namespace: pulumi.Output<string | undefined>;
     /**
      * An HCFS URI pointing to the location of stdout and stdout of the application Mainly useful for Pantheon and gcloud Not in scope for private GA
      */
-    public /*out*/ readonly outputUri!: pulumi.Output<string>;
+    declare public /*out*/ readonly outputUri: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * application-specific properties.
      */
-    public readonly properties!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly properties: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Represents the PySparkApplicationConfig.
      * Structure is documented below.
      */
-    public readonly pysparkApplicationConfig!: pulumi.Output<outputs.dataproc.GdcSparkApplicationPysparkApplicationConfig | undefined>;
+    declare public readonly pysparkApplicationConfig: pulumi.Output<outputs.dataproc.GdcSparkApplicationPysparkApplicationConfig | undefined>;
     /**
      * Whether the application is currently reconciling. True if the current state of the resource does not match the intended state, and the system is working to reconcile them, whether or not the change was user initiated.
      */
-    public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly reconciling: pulumi.Output<boolean>;
     /**
      * The id of the service instance to which this spark application belongs.
      */
-    public readonly serviceinstance!: pulumi.Output<string>;
+    declare public readonly serviceinstance: pulumi.Output<string>;
     /**
      * Represents the SparkApplicationConfig.
      * Structure is documented below.
      */
-    public readonly sparkApplicationConfig!: pulumi.Output<outputs.dataproc.GdcSparkApplicationSparkApplicationConfig | undefined>;
+    declare public readonly sparkApplicationConfig: pulumi.Output<outputs.dataproc.GdcSparkApplicationSparkApplicationConfig | undefined>;
     /**
      * The id of the application
      */
-    public readonly sparkApplicationId!: pulumi.Output<string>;
+    declare public readonly sparkApplicationId: pulumi.Output<string>;
     /**
      * Represents the SparkRApplicationConfig.
      * Structure is documented below.
      */
-    public readonly sparkRApplicationConfig!: pulumi.Output<outputs.dataproc.GdcSparkApplicationSparkRApplicationConfig | undefined>;
+    declare public readonly sparkRApplicationConfig: pulumi.Output<outputs.dataproc.GdcSparkApplicationSparkRApplicationConfig | undefined>;
     /**
      * Represents the SparkRApplicationConfig.
      * Structure is documented below.
      */
-    public readonly sparkSqlApplicationConfig!: pulumi.Output<outputs.dataproc.GdcSparkApplicationSparkSqlApplicationConfig | undefined>;
+    declare public readonly sparkSqlApplicationConfig: pulumi.Output<outputs.dataproc.GdcSparkApplicationSparkSqlApplicationConfig | undefined>;
     /**
      * The current state.
      * Possible values:
@@ -328,23 +328,23 @@ export class GdcSparkApplication extends pulumi.CustomResource {
      * * `SUCCEEDED`
      * * `FAILED`
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * A message explaining the current state.
      */
-    public /*out*/ readonly stateMessage!: pulumi.Output<string>;
+    declare public /*out*/ readonly stateMessage: pulumi.Output<string>;
     /**
      * System generated unique identifier for this application, formatted as UUID4.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * The timestamp when the resource was most recently updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * The Dataproc version of this application.
      */
-    public readonly version!: pulumi.Output<string | undefined>;
+    declare public readonly version: pulumi.Output<string | undefined>;
 
     /**
      * Create a GdcSparkApplication resource with the given unique name, arguments, and options.
@@ -359,61 +359,61 @@ export class GdcSparkApplication extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GdcSparkApplicationState | undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["applicationEnvironment"] = state ? state.applicationEnvironment : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dependencyImages"] = state ? state.dependencyImages : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["monitoringEndpoint"] = state ? state.monitoringEndpoint : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namespace"] = state ? state.namespace : undefined;
-            resourceInputs["outputUri"] = state ? state.outputUri : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["properties"] = state ? state.properties : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["pysparkApplicationConfig"] = state ? state.pysparkApplicationConfig : undefined;
-            resourceInputs["reconciling"] = state ? state.reconciling : undefined;
-            resourceInputs["serviceinstance"] = state ? state.serviceinstance : undefined;
-            resourceInputs["sparkApplicationConfig"] = state ? state.sparkApplicationConfig : undefined;
-            resourceInputs["sparkApplicationId"] = state ? state.sparkApplicationId : undefined;
-            resourceInputs["sparkRApplicationConfig"] = state ? state.sparkRApplicationConfig : undefined;
-            resourceInputs["sparkSqlApplicationConfig"] = state ? state.sparkSqlApplicationConfig : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["stateMessage"] = state ? state.stateMessage : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["applicationEnvironment"] = state?.applicationEnvironment;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dependencyImages"] = state?.dependencyImages;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["monitoringEndpoint"] = state?.monitoringEndpoint;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namespace"] = state?.namespace;
+            resourceInputs["outputUri"] = state?.outputUri;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["properties"] = state?.properties;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["pysparkApplicationConfig"] = state?.pysparkApplicationConfig;
+            resourceInputs["reconciling"] = state?.reconciling;
+            resourceInputs["serviceinstance"] = state?.serviceinstance;
+            resourceInputs["sparkApplicationConfig"] = state?.sparkApplicationConfig;
+            resourceInputs["sparkApplicationId"] = state?.sparkApplicationId;
+            resourceInputs["sparkRApplicationConfig"] = state?.sparkRApplicationConfig;
+            resourceInputs["sparkSqlApplicationConfig"] = state?.sparkSqlApplicationConfig;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["stateMessage"] = state?.stateMessage;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as GdcSparkApplicationArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.serviceinstance === undefined) && !opts.urn) {
+            if (args?.serviceinstance === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceinstance'");
             }
-            if ((!args || args.sparkApplicationId === undefined) && !opts.urn) {
+            if (args?.sparkApplicationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sparkApplicationId'");
             }
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["applicationEnvironment"] = args ? args.applicationEnvironment : undefined;
-            resourceInputs["dependencyImages"] = args ? args.dependencyImages : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["namespace"] = args ? args.namespace : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["properties"] = args ? args.properties : undefined;
-            resourceInputs["pysparkApplicationConfig"] = args ? args.pysparkApplicationConfig : undefined;
-            resourceInputs["serviceinstance"] = args ? args.serviceinstance : undefined;
-            resourceInputs["sparkApplicationConfig"] = args ? args.sparkApplicationConfig : undefined;
-            resourceInputs["sparkApplicationId"] = args ? args.sparkApplicationId : undefined;
-            resourceInputs["sparkRApplicationConfig"] = args ? args.sparkRApplicationConfig : undefined;
-            resourceInputs["sparkSqlApplicationConfig"] = args ? args.sparkSqlApplicationConfig : undefined;
-            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["applicationEnvironment"] = args?.applicationEnvironment;
+            resourceInputs["dependencyImages"] = args?.dependencyImages;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["namespace"] = args?.namespace;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["properties"] = args?.properties;
+            resourceInputs["pysparkApplicationConfig"] = args?.pysparkApplicationConfig;
+            resourceInputs["serviceinstance"] = args?.serviceinstance;
+            resourceInputs["sparkApplicationConfig"] = args?.sparkApplicationConfig;
+            resourceInputs["sparkApplicationId"] = args?.sparkApplicationId;
+            resourceInputs["sparkRApplicationConfig"] = args?.sparkRApplicationConfig;
+            resourceInputs["sparkSqlApplicationConfig"] = args?.sparkSqlApplicationConfig;
+            resourceInputs["version"] = args?.version;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;

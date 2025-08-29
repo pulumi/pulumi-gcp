@@ -110,50 +110,50 @@ export class InstanceGroup extends pulumi.CustomResource {
      * An optional textual description of the instance
      * group.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The list of instances in the group, in `selfLink` format.
      * When adding instances they must all be in the same network and zone as the instance group.
      */
-    public readonly instances!: pulumi.Output<string[]>;
+    declare public readonly instances: pulumi.Output<string[]>;
     /**
      * The name of the instance group. Must be 1-63
      * characters long and comply with
      * [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
      * include lowercase letters, numbers, and hyphens.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The named port configuration. See the section below
      * for details on configuration. Structure is documented below.
      */
-    public readonly namedPorts!: pulumi.Output<outputs.compute.InstanceGroupNamedPort[] | undefined>;
+    declare public readonly namedPorts: pulumi.Output<outputs.compute.InstanceGroupNamedPort[] | undefined>;
     /**
      * The URL of the network the instance group is in. If
      * this is different from the network where the instances are in, the creation
      * fails. Defaults to the network where the instances are in (if neither
      * `network` nor `instances` is specified, this field will be blank).
      */
-    public readonly network!: pulumi.Output<string>;
+    declare public readonly network: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * The number of instances in the group.
      */
-    public /*out*/ readonly size!: pulumi.Output<number>;
+    declare public /*out*/ readonly size: pulumi.Output<number>;
     /**
      * The zone that this instance group should be created in.
      *
      * - - -
      */
-    public readonly zone!: pulumi.Output<string>;
+    declare public readonly zone: pulumi.Output<string>;
 
     /**
      * Create a InstanceGroup resource with the given unique name, arguments, and options.
@@ -168,24 +168,24 @@ export class InstanceGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceGroupState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["instances"] = state ? state.instances : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namedPorts"] = state ? state.namedPorts : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["instances"] = state?.instances;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namedPorts"] = state?.namedPorts;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as InstanceGroupArgs | undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["instances"] = args ? args.instances : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["namedPorts"] = args ? args.namedPorts : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["instances"] = args?.instances;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["namedPorts"] = args?.namedPorts;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["zone"] = args?.zone;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["size"] = undefined /*out*/;
         }

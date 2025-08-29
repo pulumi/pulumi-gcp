@@ -314,22 +314,22 @@ export class CertificateTemplateIamMember extends pulumi.CustomResource {
     /**
      * Used to find the parent resource to bind the IAM policy to
      */
-    public readonly certificateTemplate!: pulumi.Output<string>;
+    declare public readonly certificateTemplate: pulumi.Output<string>;
     /**
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    public readonly condition!: pulumi.Output<outputs.certificateauthority.CertificateTemplateIamMemberCondition | undefined>;
+    declare public readonly condition: pulumi.Output<outputs.certificateauthority.CertificateTemplateIamMemberCondition | undefined>;
     /**
      * (Computed) The etag of the IAM policy.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
      * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
      * location is specified, it is taken from the provider configuration.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -343,18 +343,18 @@ export class CertificateTemplateIamMember extends pulumi.CustomResource {
      * * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
      */
-    public readonly member!: pulumi.Output<string>;
+    declare public readonly member: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.certificateauthority.CertificateTemplateIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    public readonly role!: pulumi.Output<string>;
+    declare public readonly role: pulumi.Output<string>;
 
     /**
      * Create a CertificateTemplateIamMember resource with the given unique name, arguments, and options.
@@ -369,30 +369,30 @@ export class CertificateTemplateIamMember extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CertificateTemplateIamMemberState | undefined;
-            resourceInputs["certificateTemplate"] = state ? state.certificateTemplate : undefined;
-            resourceInputs["condition"] = state ? state.condition : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["member"] = state ? state.member : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["certificateTemplate"] = state?.certificateTemplate;
+            resourceInputs["condition"] = state?.condition;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["member"] = state?.member;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["role"] = state?.role;
         } else {
             const args = argsOrState as CertificateTemplateIamMemberArgs | undefined;
-            if ((!args || args.certificateTemplate === undefined) && !opts.urn) {
+            if (args?.certificateTemplate === undefined && !opts.urn) {
                 throw new Error("Missing required property 'certificateTemplate'");
             }
-            if ((!args || args.member === undefined) && !opts.urn) {
+            if (args?.member === undefined && !opts.urn) {
                 throw new Error("Missing required property 'member'");
             }
-            if ((!args || args.role === undefined) && !opts.urn) {
+            if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            resourceInputs["certificateTemplate"] = args ? args.certificateTemplate : undefined;
-            resourceInputs["condition"] = args ? args.condition : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["member"] = args ? args.member : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["certificateTemplate"] = args?.certificateTemplate;
+            resourceInputs["condition"] = args?.condition;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["member"] = args?.member;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["role"] = args?.role;
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

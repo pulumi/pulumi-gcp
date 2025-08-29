@@ -207,12 +207,10 @@ namespace Pulumi.Gcp.Container
     public partial class AzureCluster : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
-        /// all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required),
-        /// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-        /// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-        /// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-        /// `effective_annotations` for all of the annotations present on the resource.
+        /// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
@@ -236,10 +234,7 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.AzureClusterAzureServicesAuthentication?> AzureServicesAuthentication { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the
-        /// `AzureCluster`. `AzureClient` names are formatted as
-        /// `projects/&lt;project-number&gt;/locations/&lt;region&gt;/azureClients/&lt;client-id&gt;`. See Resource Names
-        /// (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
+        /// Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/&lt;project-number&gt;/locations/&lt;region&gt;/azureClients/&lt;client-id&gt;`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
         /// </summary>
         [Output("client")]
         public Output<string?> Client { get; private set; } = null!;
@@ -399,12 +394,10 @@ namespace Pulumi.Gcp.Container
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
-        /// all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required),
-        /// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-        /// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-        /// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-        /// `effective_annotations` for all of the annotations present on the resource.
+        /// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -431,10 +424,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.AzureClusterAzureServicesAuthenticationArgs>? AzureServicesAuthentication { get; set; }
 
         /// <summary>
-        /// Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the
-        /// `AzureCluster`. `AzureClient` names are formatted as
-        /// `projects/&lt;project-number&gt;/locations/&lt;region&gt;/azureClients/&lt;client-id&gt;`. See Resource Names
-        /// (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
+        /// Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/&lt;project-number&gt;/locations/&lt;region&gt;/azureClients/&lt;client-id&gt;`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
         /// </summary>
         [Input("client")]
         public Input<string>? Client { get; set; }
@@ -505,12 +495,10 @@ namespace Pulumi.Gcp.Container
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
-        /// all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required),
-        /// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-        /// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-        /// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-        /// `effective_annotations` for all of the annotations present on the resource.
+        /// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -537,10 +525,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.AzureClusterAzureServicesAuthenticationGetArgs>? AzureServicesAuthentication { get; set; }
 
         /// <summary>
-        /// Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the
-        /// `AzureCluster`. `AzureClient` names are formatted as
-        /// `projects/&lt;project-number&gt;/locations/&lt;region&gt;/azureClients/&lt;client-id&gt;`. See Resource Names
-        /// (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
+        /// Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/&lt;project-number&gt;/locations/&lt;region&gt;/azureClients/&lt;client-id&gt;`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
         /// </summary>
         [Input("client")]
         public Input<string>? Client { get; set; }

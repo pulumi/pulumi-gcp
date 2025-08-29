@@ -477,71 +477,71 @@ export class Job extends pulumi.CustomResource {
      * Copies a table.
      * Structure is documented below.
      */
-    public readonly copy!: pulumi.Output<outputs.bigquery.JobCopy | undefined>;
+    declare public readonly copy: pulumi.Output<outputs.bigquery.JobCopy | undefined>;
     /**
      * (Output)
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Configures an extract job.
      * Structure is documented below.
      */
-    public readonly extract!: pulumi.Output<outputs.bigquery.JobExtract | undefined>;
+    declare public readonly extract: pulumi.Output<outputs.bigquery.JobExtract | undefined>;
     /**
      * The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
      */
-    public readonly jobId!: pulumi.Output<string>;
+    declare public readonly jobId: pulumi.Output<string>;
     /**
      * Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
      */
-    public readonly jobTimeoutMs!: pulumi.Output<string | undefined>;
+    declare public readonly jobTimeoutMs: pulumi.Output<string | undefined>;
     /**
      * (Output)
      * The type of the job.
      */
-    public /*out*/ readonly jobType!: pulumi.Output<string>;
+    declare public /*out*/ readonly jobType: pulumi.Output<string>;
     /**
      * The labels associated with this job. You can use these to organize and group your jobs.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Configures a load job.
      * Structure is documented below.
      */
-    public readonly load!: pulumi.Output<outputs.bigquery.JobLoad | undefined>;
+    declare public readonly load: pulumi.Output<outputs.bigquery.JobLoad | undefined>;
     /**
      * The geographic location of the job. The default value is US.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * (Output)
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Configures a query job.
      * Structure is documented below.
      */
-    public readonly query!: pulumi.Output<outputs.bigquery.JobQuery | undefined>;
+    declare public readonly query: pulumi.Output<outputs.bigquery.JobQuery | undefined>;
     /**
      * The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
      * Structure is documented below.
      */
-    public /*out*/ readonly statuses!: pulumi.Output<outputs.bigquery.JobStatus[]>;
+    declare public /*out*/ readonly statuses: pulumi.Output<outputs.bigquery.JobStatus[]>;
     /**
      * Email address of the user who ran the job.
      */
-    public /*out*/ readonly userEmail!: pulumi.Output<string>;
+    declare public /*out*/ readonly userEmail: pulumi.Output<string>;
 
     /**
      * Create a Job resource with the given unique name, arguments, and options.
@@ -556,34 +556,34 @@ export class Job extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as JobState | undefined;
-            resourceInputs["copy"] = state ? state.copy : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["extract"] = state ? state.extract : undefined;
-            resourceInputs["jobId"] = state ? state.jobId : undefined;
-            resourceInputs["jobTimeoutMs"] = state ? state.jobTimeoutMs : undefined;
-            resourceInputs["jobType"] = state ? state.jobType : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["load"] = state ? state.load : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["query"] = state ? state.query : undefined;
-            resourceInputs["statuses"] = state ? state.statuses : undefined;
-            resourceInputs["userEmail"] = state ? state.userEmail : undefined;
+            resourceInputs["copy"] = state?.copy;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["extract"] = state?.extract;
+            resourceInputs["jobId"] = state?.jobId;
+            resourceInputs["jobTimeoutMs"] = state?.jobTimeoutMs;
+            resourceInputs["jobType"] = state?.jobType;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["load"] = state?.load;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["query"] = state?.query;
+            resourceInputs["statuses"] = state?.statuses;
+            resourceInputs["userEmail"] = state?.userEmail;
         } else {
             const args = argsOrState as JobArgs | undefined;
-            if ((!args || args.jobId === undefined) && !opts.urn) {
+            if (args?.jobId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'jobId'");
             }
-            resourceInputs["copy"] = args ? args.copy : undefined;
-            resourceInputs["extract"] = args ? args.extract : undefined;
-            resourceInputs["jobId"] = args ? args.jobId : undefined;
-            resourceInputs["jobTimeoutMs"] = args ? args.jobTimeoutMs : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["load"] = args ? args.load : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["query"] = args ? args.query : undefined;
+            resourceInputs["copy"] = args?.copy;
+            resourceInputs["extract"] = args?.extract;
+            resourceInputs["jobId"] = args?.jobId;
+            resourceInputs["jobTimeoutMs"] = args?.jobTimeoutMs;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["load"] = args?.load;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["query"] = args?.query;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["jobType"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;

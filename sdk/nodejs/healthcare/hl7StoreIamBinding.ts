@@ -141,18 +141,18 @@ export class Hl7StoreIamBinding extends pulumi.CustomResource {
         return obj['__pulumiType'] === Hl7StoreIamBinding.__pulumiType;
     }
 
-    public readonly condition!: pulumi.Output<outputs.healthcare.Hl7StoreIamBindingCondition | undefined>;
+    declare public readonly condition: pulumi.Output<outputs.healthcare.Hl7StoreIamBindingCondition | undefined>;
     /**
      * (Computed) The etag of the HL7v2 store's IAM policy.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The HL7v2 store ID, in the form
      * `{project_id}/{location_name}/{dataset_name}/{hl7_v2_store_name}` or
      * `{location_name}/{dataset_name}/{hl7_v2_store_name}`. In the second form, the provider's
      * project setting will be used as a fallback.
      */
-    public readonly hl7V2StoreId!: pulumi.Output<string>;
+    declare public readonly hl7V2StoreId: pulumi.Output<string>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -163,13 +163,13 @@ export class Hl7StoreIamBinding extends pulumi.CustomResource {
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
-    public readonly members!: pulumi.Output<string[]>;
+    declare public readonly members: pulumi.Output<string[]>;
     /**
      * The role that should be applied. Only one
      * `gcp.healthcare.Hl7StoreIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    public readonly role!: pulumi.Output<string>;
+    declare public readonly role: pulumi.Output<string>;
 
     /**
      * Create a Hl7StoreIamBinding resource with the given unique name, arguments, and options.
@@ -184,26 +184,26 @@ export class Hl7StoreIamBinding extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as Hl7StoreIamBindingState | undefined;
-            resourceInputs["condition"] = state ? state.condition : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["hl7V2StoreId"] = state ? state.hl7V2StoreId : undefined;
-            resourceInputs["members"] = state ? state.members : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["condition"] = state?.condition;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["hl7V2StoreId"] = state?.hl7V2StoreId;
+            resourceInputs["members"] = state?.members;
+            resourceInputs["role"] = state?.role;
         } else {
             const args = argsOrState as Hl7StoreIamBindingArgs | undefined;
-            if ((!args || args.hl7V2StoreId === undefined) && !opts.urn) {
+            if (args?.hl7V2StoreId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hl7V2StoreId'");
             }
-            if ((!args || args.members === undefined) && !opts.urn) {
+            if (args?.members === undefined && !opts.urn) {
                 throw new Error("Missing required property 'members'");
             }
-            if ((!args || args.role === undefined) && !opts.urn) {
+            if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            resourceInputs["condition"] = args ? args.condition : undefined;
-            resourceInputs["hl7V2StoreId"] = args ? args.hl7V2StoreId : undefined;
-            resourceInputs["members"] = args ? args.members : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["condition"] = args?.condition;
+            resourceInputs["hl7V2StoreId"] = args?.hl7V2StoreId;
+            resourceInputs["members"] = args?.members;
+            resourceInputs["role"] = args?.role;
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -160,50 +160,50 @@ export class KeystoresAliasesSelfSignedCert extends pulumi.CustomResource {
      * This must be provided for all formats except selfsignedcert; self-signed certs may specify the alias in either
      * this parameter or the JSON body.
      */
-    public readonly alias!: pulumi.Output<string>;
+    declare public readonly alias: pulumi.Output<string>;
     /**
      * Validity duration of certificate, in days. Accepts positive non-zero value. Defaults to 365.
      */
-    public readonly certValidityInDays!: pulumi.Output<number | undefined>;
+    declare public readonly certValidityInDays: pulumi.Output<number | undefined>;
     /**
      * Chain of certificates under this alias.
      * Structure is documented below.
      */
-    public /*out*/ readonly certsInfos!: pulumi.Output<outputs.apigee.KeystoresAliasesSelfSignedCertCertsInfo[]>;
+    declare public /*out*/ readonly certsInfos: pulumi.Output<outputs.apigee.KeystoresAliasesSelfSignedCertCertsInfo[]>;
     /**
      * The Apigee environment name
      */
-    public readonly environment!: pulumi.Output<string>;
+    declare public readonly environment: pulumi.Output<string>;
     /**
      * Key size. Default and maximum value is 2048 bits.
      */
-    public readonly keySize!: pulumi.Output<string | undefined>;
+    declare public readonly keySize: pulumi.Output<string | undefined>;
     /**
      * The Apigee keystore name associated in an Apigee environment
      */
-    public readonly keystore!: pulumi.Output<string>;
+    declare public readonly keystore: pulumi.Output<string>;
     /**
      * The Apigee Organization name associated with the Apigee environment
      */
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * Signature algorithm to generate private key. Valid values are SHA512withRSA, SHA384withRSA, and SHA256withRSA
      */
-    public readonly sigAlg!: pulumi.Output<string>;
+    declare public readonly sigAlg: pulumi.Output<string>;
     /**
      * Subject details.
      * Structure is documented below.
      */
-    public readonly subject!: pulumi.Output<outputs.apigee.KeystoresAliasesSelfSignedCertSubject>;
+    declare public readonly subject: pulumi.Output<outputs.apigee.KeystoresAliasesSelfSignedCertSubject>;
     /**
      * List of alternative host names. Maximum length is 255 characters for each value.
      * Structure is documented below.
      */
-    public readonly subjectAlternativeDnsNames!: pulumi.Output<outputs.apigee.KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames | undefined>;
+    declare public readonly subjectAlternativeDnsNames: pulumi.Output<outputs.apigee.KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames | undefined>;
     /**
      * Optional.Type of Alias
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a KeystoresAliasesSelfSignedCert resource with the given unique name, arguments, and options.
@@ -218,46 +218,46 @@ export class KeystoresAliasesSelfSignedCert extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KeystoresAliasesSelfSignedCertState | undefined;
-            resourceInputs["alias"] = state ? state.alias : undefined;
-            resourceInputs["certValidityInDays"] = state ? state.certValidityInDays : undefined;
-            resourceInputs["certsInfos"] = state ? state.certsInfos : undefined;
-            resourceInputs["environment"] = state ? state.environment : undefined;
-            resourceInputs["keySize"] = state ? state.keySize : undefined;
-            resourceInputs["keystore"] = state ? state.keystore : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["sigAlg"] = state ? state.sigAlg : undefined;
-            resourceInputs["subject"] = state ? state.subject : undefined;
-            resourceInputs["subjectAlternativeDnsNames"] = state ? state.subjectAlternativeDnsNames : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["alias"] = state?.alias;
+            resourceInputs["certValidityInDays"] = state?.certValidityInDays;
+            resourceInputs["certsInfos"] = state?.certsInfos;
+            resourceInputs["environment"] = state?.environment;
+            resourceInputs["keySize"] = state?.keySize;
+            resourceInputs["keystore"] = state?.keystore;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["sigAlg"] = state?.sigAlg;
+            resourceInputs["subject"] = state?.subject;
+            resourceInputs["subjectAlternativeDnsNames"] = state?.subjectAlternativeDnsNames;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as KeystoresAliasesSelfSignedCertArgs | undefined;
-            if ((!args || args.alias === undefined) && !opts.urn) {
+            if (args?.alias === undefined && !opts.urn) {
                 throw new Error("Missing required property 'alias'");
             }
-            if ((!args || args.environment === undefined) && !opts.urn) {
+            if (args?.environment === undefined && !opts.urn) {
                 throw new Error("Missing required property 'environment'");
             }
-            if ((!args || args.keystore === undefined) && !opts.urn) {
+            if (args?.keystore === undefined && !opts.urn) {
                 throw new Error("Missing required property 'keystore'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if ((!args || args.sigAlg === undefined) && !opts.urn) {
+            if (args?.sigAlg === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sigAlg'");
             }
-            if ((!args || args.subject === undefined) && !opts.urn) {
+            if (args?.subject === undefined && !opts.urn) {
                 throw new Error("Missing required property 'subject'");
             }
-            resourceInputs["alias"] = args ? args.alias : undefined;
-            resourceInputs["certValidityInDays"] = args ? args.certValidityInDays : undefined;
-            resourceInputs["environment"] = args ? args.environment : undefined;
-            resourceInputs["keySize"] = args ? args.keySize : undefined;
-            resourceInputs["keystore"] = args ? args.keystore : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["sigAlg"] = args ? args.sigAlg : undefined;
-            resourceInputs["subject"] = args ? args.subject : undefined;
-            resourceInputs["subjectAlternativeDnsNames"] = args ? args.subjectAlternativeDnsNames : undefined;
+            resourceInputs["alias"] = args?.alias;
+            resourceInputs["certValidityInDays"] = args?.certValidityInDays;
+            resourceInputs["environment"] = args?.environment;
+            resourceInputs["keySize"] = args?.keySize;
+            resourceInputs["keystore"] = args?.keystore;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["sigAlg"] = args?.sigAlg;
+            resourceInputs["subject"] = args?.subject;
+            resourceInputs["subjectAlternativeDnsNames"] = args?.subjectAlternativeDnsNames;
             resourceInputs["certsInfos"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }

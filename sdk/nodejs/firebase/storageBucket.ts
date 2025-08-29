@@ -79,16 +79,16 @@ export class StorageBucket extends pulumi.CustomResource {
     /**
      * Required. Immutable. The ID of the underlying Google Cloud Storage bucket
      */
-    public readonly bucketId!: pulumi.Output<string | undefined>;
+    declare public readonly bucketId: pulumi.Output<string | undefined>;
     /**
      * Resource name of the bucket in the format projects/PROJECT_IDENTIFIER/buckets/BUCKET_ID
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
 
     /**
      * Create a StorageBucket resource with the given unique name, arguments, and options.
@@ -103,13 +103,13 @@ export class StorageBucket extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StorageBucketState | undefined;
-            resourceInputs["bucketId"] = state ? state.bucketId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["bucketId"] = state?.bucketId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as StorageBucketArgs | undefined;
-            resourceInputs["bucketId"] = args ? args.bucketId : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["bucketId"] = args?.bucketId;
+            resourceInputs["project"] = args?.project;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

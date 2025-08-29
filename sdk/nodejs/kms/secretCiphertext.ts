@@ -94,21 +94,21 @@ export class SecretCiphertext extends pulumi.CustomResource {
      * The additional authenticated data used for integrity checks during encryption and decryption.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    public readonly additionalAuthenticatedData!: pulumi.Output<string | undefined>;
+    declare public readonly additionalAuthenticatedData: pulumi.Output<string | undefined>;
     /**
      * Contains the result of encrypting the provided plaintext, encoded in base64.
      */
-    public /*out*/ readonly ciphertext!: pulumi.Output<string>;
+    declare public /*out*/ readonly ciphertext: pulumi.Output<string>;
     /**
      * The full name of the CryptoKey that will be used to encrypt the provided plaintext.
      * Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
      */
-    public readonly cryptoKey!: pulumi.Output<string>;
+    declare public readonly cryptoKey: pulumi.Output<string>;
     /**
      * The plaintext to be encrypted.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    public readonly plaintext!: pulumi.Output<string>;
+    declare public readonly plaintext: pulumi.Output<string>;
 
     /**
      * Create a SecretCiphertext resource with the given unique name, arguments, and options.
@@ -123,20 +123,20 @@ export class SecretCiphertext extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecretCiphertextState | undefined;
-            resourceInputs["additionalAuthenticatedData"] = state ? state.additionalAuthenticatedData : undefined;
-            resourceInputs["ciphertext"] = state ? state.ciphertext : undefined;
-            resourceInputs["cryptoKey"] = state ? state.cryptoKey : undefined;
-            resourceInputs["plaintext"] = state ? state.plaintext : undefined;
+            resourceInputs["additionalAuthenticatedData"] = state?.additionalAuthenticatedData;
+            resourceInputs["ciphertext"] = state?.ciphertext;
+            resourceInputs["cryptoKey"] = state?.cryptoKey;
+            resourceInputs["plaintext"] = state?.plaintext;
         } else {
             const args = argsOrState as SecretCiphertextArgs | undefined;
-            if ((!args || args.cryptoKey === undefined) && !opts.urn) {
+            if (args?.cryptoKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cryptoKey'");
             }
-            if ((!args || args.plaintext === undefined) && !opts.urn) {
+            if (args?.plaintext === undefined && !opts.urn) {
                 throw new Error("Missing required property 'plaintext'");
             }
             resourceInputs["additionalAuthenticatedData"] = args?.additionalAuthenticatedData ? pulumi.secret(args.additionalAuthenticatedData) : undefined;
-            resourceInputs["cryptoKey"] = args ? args.cryptoKey : undefined;
+            resourceInputs["cryptoKey"] = args?.cryptoKey;
             resourceInputs["plaintext"] = args?.plaintext ? pulumi.secret(args.plaintext) : undefined;
             resourceInputs["ciphertext"] = undefined /*out*/;
         }

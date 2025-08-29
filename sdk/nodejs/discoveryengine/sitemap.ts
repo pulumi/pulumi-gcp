@@ -80,36 +80,36 @@ export class Sitemap extends pulumi.CustomResource {
     /**
      * Timestamp when the sitemap was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The unique id of the data store.
      */
-    public readonly dataStoreId!: pulumi.Output<string>;
+    declare public readonly dataStoreId: pulumi.Output<string>;
     /**
      * The geographic location where the data store should reside. The value can
      * only be one of "global", "us" and "eu".
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The unique full resource name of the sitemap. Values are of the format
      * `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/siteSearchEngine/sitemaps/{sitemap_id}`.
      * This field must be a UTF-8 encoded string with a length limit of 1024
      * characters.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The unique id of the sitemap.
      */
-    public /*out*/ readonly sitemapId!: pulumi.Output<string>;
+    declare public /*out*/ readonly sitemapId: pulumi.Output<string>;
     /**
      * Public URI for the sitemap, e.g. "www.example.com/sitemap.xml".
      */
-    public readonly uri!: pulumi.Output<string | undefined>;
+    declare public readonly uri: pulumi.Output<string | undefined>;
 
     /**
      * Create a Sitemap resource with the given unique name, arguments, and options.
@@ -124,25 +124,25 @@ export class Sitemap extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SitemapState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dataStoreId"] = state ? state.dataStoreId : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["sitemapId"] = state ? state.sitemapId : undefined;
-            resourceInputs["uri"] = state ? state.uri : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dataStoreId"] = state?.dataStoreId;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["sitemapId"] = state?.sitemapId;
+            resourceInputs["uri"] = state?.uri;
         } else {
             const args = argsOrState as SitemapArgs | undefined;
-            if ((!args || args.dataStoreId === undefined) && !opts.urn) {
+            if (args?.dataStoreId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataStoreId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["dataStoreId"] = args ? args.dataStoreId : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["uri"] = args ? args.uri : undefined;
+            resourceInputs["dataStoreId"] = args?.dataStoreId;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["uri"] = args?.uri;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["sitemapId"] = undefined /*out*/;

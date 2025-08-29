@@ -41,12 +41,10 @@ class AwsClusterArgs:
         :param pulumi.Input['AwsClusterFleetArgs'] fleet: Fleet configuration.
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input['AwsClusterNetworkingArgs'] networking: Cluster-wide networking configuration.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
-               all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-               separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-               alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-               non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-               `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input['AwsClusterBinaryAuthorizationArgs'] binary_authorization: Configuration options for the Binary Authorization feature.
         :param pulumi.Input[_builtins.str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input['AwsClusterLoggingConfigArgs'] logging_config: Logging configuration.
@@ -148,12 +146,10 @@ class AwsClusterArgs:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
-        all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-        separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-        alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-        non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-        `effective_annotations` for all of the annotations present on the resource.
+        Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -248,12 +244,10 @@ class _AwsClusterState:
                  workload_identity_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AwsClusterWorkloadIdentityConfigArgs']]]] = None):
         """
         Input properties used for looking up and filtering AwsCluster resources.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
-               all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-               separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-               alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-               non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-               `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input['AwsClusterAuthorizationArgs'] authorization: Configuration related to the cluster RBAC settings.
         :param pulumi.Input[_builtins.str] aws_region: The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
         :param pulumi.Input['AwsClusterBinaryAuthorizationArgs'] binary_authorization: Configuration options for the Binary Authorization feature.
@@ -321,12 +315,10 @@ class _AwsClusterState:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
-        all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-        separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-        alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-        non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-        `effective_annotations` for all of the annotations present on the resource.
+        Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -849,12 +841,10 @@ class AwsCluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
-               all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-               separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-               alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-               non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-               `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[Union['AwsClusterAuthorizationArgs', 'AwsClusterAuthorizationArgsDict']] authorization: Configuration related to the cluster RBAC settings.
         :param pulumi.Input[_builtins.str] aws_region: The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
         :param pulumi.Input[Union['AwsClusterBinaryAuthorizationArgs', 'AwsClusterBinaryAuthorizationArgsDict']] binary_authorization: Configuration options for the Binary Authorization feature.
@@ -1236,12 +1226,10 @@ class AwsCluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
-               all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-               separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-               alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-               non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-               `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[Union['AwsClusterAuthorizationArgs', 'AwsClusterAuthorizationArgsDict']] authorization: Configuration related to the cluster RBAC settings.
         :param pulumi.Input[_builtins.str] aws_region: The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
         :param pulumi.Input[Union['AwsClusterBinaryAuthorizationArgs', 'AwsClusterBinaryAuthorizationArgsDict']] binary_authorization: Configuration options for the Binary Authorization feature.
@@ -1293,12 +1281,10 @@ class AwsCluster(pulumi.CustomResource):
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
-        Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
-        all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-        separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-        alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-        non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-        `effective_annotations` for all of the annotations present on the resource.
+        Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 

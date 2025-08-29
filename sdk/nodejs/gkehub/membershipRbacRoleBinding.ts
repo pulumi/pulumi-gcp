@@ -102,57 +102,57 @@ export class MembershipRbacRoleBinding extends pulumi.CustomResource {
     /**
      * Time the RBAC Role Binding was created in UTC.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Time the RBAC Role Binding was deleted in UTC.
      */
-    public /*out*/ readonly deleteTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly deleteTime: pulumi.Output<string>;
     /**
      * Location of the Membership
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Id of the membership
      */
-    public readonly membershipId!: pulumi.Output<string>;
+    declare public readonly membershipId: pulumi.Output<string>;
     /**
      * The client-provided identifier of the RBAC Role Binding.
      */
-    public readonly membershipRbacRoleBindingId!: pulumi.Output<string>;
+    declare public readonly membershipRbacRoleBindingId: pulumi.Output<string>;
     /**
      * The resource name for the RBAC Role Binding
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Role to bind to the principal.
      * Structure is documented below.
      */
-    public readonly role!: pulumi.Output<outputs.gkehub.MembershipRbacRoleBindingRole>;
+    declare public readonly role: pulumi.Output<outputs.gkehub.MembershipRbacRoleBindingRole>;
     /**
      * State of the RBAC Role Binding resource.
      * Structure is documented below.
      */
-    public /*out*/ readonly states!: pulumi.Output<outputs.gkehub.MembershipRbacRoleBindingState[]>;
+    declare public /*out*/ readonly states: pulumi.Output<outputs.gkehub.MembershipRbacRoleBindingState[]>;
     /**
      * Google-generated UUID for this resource.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * Time the RBAC Role Binding was updated in UTC.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * Principal that is be authorized in the cluster (at least of one the oneof
      * is required). Updating one will unset the other automatically.
      * user is the name of the user as seen by the kubernetes cluster, example
      * "alice" or "alice@domain.tld"
      */
-    public readonly user!: pulumi.Output<string>;
+    declare public readonly user: pulumi.Output<string>;
 
     /**
      * Create a MembershipRbacRoleBinding resource with the given unique name, arguments, and options.
@@ -167,41 +167,41 @@ export class MembershipRbacRoleBinding extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MembershipRbacRoleBindingState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["deleteTime"] = state ? state.deleteTime : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["membershipId"] = state ? state.membershipId : undefined;
-            resourceInputs["membershipRbacRoleBindingId"] = state ? state.membershipRbacRoleBindingId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
-            resourceInputs["states"] = state ? state.states : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["user"] = state ? state.user : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deleteTime"] = state?.deleteTime;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["membershipId"] = state?.membershipId;
+            resourceInputs["membershipRbacRoleBindingId"] = state?.membershipRbacRoleBindingId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["role"] = state?.role;
+            resourceInputs["states"] = state?.states;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["user"] = state?.user;
         } else {
             const args = argsOrState as MembershipRbacRoleBindingArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.membershipId === undefined) && !opts.urn) {
+            if (args?.membershipId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'membershipId'");
             }
-            if ((!args || args.membershipRbacRoleBindingId === undefined) && !opts.urn) {
+            if (args?.membershipRbacRoleBindingId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'membershipRbacRoleBindingId'");
             }
-            if ((!args || args.role === undefined) && !opts.urn) {
+            if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            if ((!args || args.user === undefined) && !opts.urn) {
+            if (args?.user === undefined && !opts.urn) {
                 throw new Error("Missing required property 'user'");
             }
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["membershipId"] = args ? args.membershipId : undefined;
-            resourceInputs["membershipRbacRoleBindingId"] = args ? args.membershipRbacRoleBindingId : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
-            resourceInputs["user"] = args ? args.user : undefined;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["membershipId"] = args?.membershipId;
+            resourceInputs["membershipRbacRoleBindingId"] = args?.membershipRbacRoleBindingId;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["role"] = args?.role;
+            resourceInputs["user"] = args?.user;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

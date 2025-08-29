@@ -148,19 +148,19 @@ export class Instance extends pulumi.CustomResource {
      * Output only. List of access_points.
      * Contains a list of IPv4 addresses used for client side configuration.
      */
-    public /*out*/ readonly accessPoints!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly accessPoints: pulumi.Output<string[]>;
     /**
      * Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
      */
-    public readonly capacityGib!: pulumi.Output<string>;
+    declare public readonly capacityGib: pulumi.Output<string>;
     /**
      * The time when the instance was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The version of DAOS software running in the instance.
      */
-    public /*out*/ readonly daosVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly daosVersion: pulumi.Output<string>;
     /**
      * Parallelstore Instance deployment type.
      * Possible values:
@@ -168,11 +168,11 @@ export class Instance extends pulumi.CustomResource {
      * SCRATCH
      * PERSISTENT
      */
-    public readonly deploymentType!: pulumi.Output<string | undefined>;
+    declare public readonly deploymentType: pulumi.Output<string | undefined>;
     /**
      * The description of the instance. 2048 characters or less.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Stripe level for directories.
      * MIN when directory has a small number of files.
@@ -183,18 +183,18 @@ export class Instance extends pulumi.CustomResource {
      * DIRECTORY_STRIPE_LEVEL_BALANCED
      * DIRECTORY_STRIPE_LEVEL_MAX
      */
-    public readonly directoryStripeLevel!: pulumi.Output<string | undefined>;
+    declare public readonly directoryStripeLevel: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Immutable. Contains the id of the allocated IP address
      * range associated with the private service access connection for example, \"test-default\"
      * associated with IP range 10.0.0.0/29. This field is populated by the service
      * and contains the value currently used by the service.
      */
-    public /*out*/ readonly effectiveReservedIpRange!: pulumi.Output<string>;
+    declare public /*out*/ readonly effectiveReservedIpRange: pulumi.Output<string>;
     /**
      * Stripe level for files.
      * MIN better suited for small size files.
@@ -205,7 +205,7 @@ export class Instance extends pulumi.CustomResource {
      * FILE_STRIPE_LEVEL_BALANCED
      * FILE_STRIPE_LEVEL_MAX
      */
-    public readonly fileStripeLevel!: pulumi.Output<string | undefined>;
+    declare public readonly fileStripeLevel: pulumi.Output<string | undefined>;
     /**
      * The logical name of the Parallelstore instance in the user project with the following restrictions:
      * * Must contain only lowercase letters, numbers, and hyphens.
@@ -214,7 +214,7 @@ export class Instance extends pulumi.CustomResource {
      * * Must end with a number or a letter.
      * * Must be unique within the customer project/ location
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * Cloud Labels are a flexible and lightweight mechanism for
      * organizing cloud resources into groups that reflect a customer's organizational
@@ -238,38 +238,38 @@ export class Instance extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Part of `parent`. See documentation of `projectsId`.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Identifier. The resource name of the instance, in the format
      * `projects/{project}/locations/{location}/instances/{instance_id}`
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Immutable. The name of the Google Compute Engine [VPC network](https://cloud.google.com/vpc/docs/vpc)
      * to which the instance is connected.
      */
-    public readonly network!: pulumi.Output<string | undefined>;
+    declare public readonly network: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Immutable. Contains the id of the allocated IP address range
      * associated with the private service access connection for example, \"test-default\"
      * associated with IP range 10.0.0.0/29. If no range id is provided all ranges will
      * be considered.
      */
-    public readonly reservedIpRange!: pulumi.Output<string | undefined>;
+    declare public readonly reservedIpRange: pulumi.Output<string | undefined>;
     /**
      * The instance state.
      * Possible values:
@@ -280,11 +280,11 @@ export class Instance extends pulumi.CustomResource {
      * FAILED
      * UPGRADING
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The time when the instance was updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -299,48 +299,48 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["accessPoints"] = state ? state.accessPoints : undefined;
-            resourceInputs["capacityGib"] = state ? state.capacityGib : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["daosVersion"] = state ? state.daosVersion : undefined;
-            resourceInputs["deploymentType"] = state ? state.deploymentType : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["directoryStripeLevel"] = state ? state.directoryStripeLevel : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["effectiveReservedIpRange"] = state ? state.effectiveReservedIpRange : undefined;
-            resourceInputs["fileStripeLevel"] = state ? state.fileStripeLevel : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["reservedIpRange"] = state ? state.reservedIpRange : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["accessPoints"] = state?.accessPoints;
+            resourceInputs["capacityGib"] = state?.capacityGib;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["daosVersion"] = state?.daosVersion;
+            resourceInputs["deploymentType"] = state?.deploymentType;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["directoryStripeLevel"] = state?.directoryStripeLevel;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["effectiveReservedIpRange"] = state?.effectiveReservedIpRange;
+            resourceInputs["fileStripeLevel"] = state?.fileStripeLevel;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["reservedIpRange"] = state?.reservedIpRange;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.capacityGib === undefined) && !opts.urn) {
+            if (args?.capacityGib === undefined && !opts.urn) {
                 throw new Error("Missing required property 'capacityGib'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["capacityGib"] = args ? args.capacityGib : undefined;
-            resourceInputs["deploymentType"] = args ? args.deploymentType : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["directoryStripeLevel"] = args ? args.directoryStripeLevel : undefined;
-            resourceInputs["fileStripeLevel"] = args ? args.fileStripeLevel : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["reservedIpRange"] = args ? args.reservedIpRange : undefined;
+            resourceInputs["capacityGib"] = args?.capacityGib;
+            resourceInputs["deploymentType"] = args?.deploymentType;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["directoryStripeLevel"] = args?.directoryStripeLevel;
+            resourceInputs["fileStripeLevel"] = args?.fileStripeLevel;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["reservedIpRange"] = args?.reservedIpRange;
             resourceInputs["accessPoints"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["daosVersion"] = undefined /*out*/;

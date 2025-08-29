@@ -308,17 +308,17 @@ export class RegionSecurityPolicyRule extends pulumi.CustomResource {
      * * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR.
      * * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
      */
-    public readonly action!: pulumi.Output<string>;
+    declare public readonly action: pulumi.Output<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * A match condition that incoming traffic is evaluated against.
      * If it evaluates to true, the corresponding 'action' is enforced.
      * Structure is documented below.
      */
-    public readonly match!: pulumi.Output<outputs.compute.RegionSecurityPolicyRuleMatch | undefined>;
+    declare public readonly match: pulumi.Output<outputs.compute.RegionSecurityPolicyRuleMatch | undefined>;
     /**
      * A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced.
      * The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields').
@@ -330,41 +330,41 @@ export class RegionSecurityPolicyRule extends pulumi.CustomResource {
      * The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4FragmentOffset" with a value between 1 and 0x1fff inclusive
      * Structure is documented below.
      */
-    public readonly networkMatch!: pulumi.Output<outputs.compute.RegionSecurityPolicyRuleNetworkMatch | undefined>;
+    declare public readonly networkMatch: pulumi.Output<outputs.compute.RegionSecurityPolicyRuleNetworkMatch | undefined>;
     /**
      * Preconfigured WAF configuration to be applied for the rule.
      * If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
      * Structure is documented below.
      */
-    public readonly preconfiguredWafConfig!: pulumi.Output<outputs.compute.RegionSecurityPolicyRulePreconfiguredWafConfig | undefined>;
+    declare public readonly preconfiguredWafConfig: pulumi.Output<outputs.compute.RegionSecurityPolicyRulePreconfiguredWafConfig | undefined>;
     /**
      * If set to true, the specified action is not enforced.
      */
-    public readonly preview!: pulumi.Output<boolean | undefined>;
+    declare public readonly preview: pulumi.Output<boolean | undefined>;
     /**
      * An integer indicating the priority of a rule in the list.
      * The priority must be a positive value between 0 and 2147483647.
      * Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
      */
-    public readonly priority!: pulumi.Output<number>;
+    declare public readonly priority: pulumi.Output<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
      * Structure is documented below.
      */
-    public readonly rateLimitOptions!: pulumi.Output<outputs.compute.RegionSecurityPolicyRuleRateLimitOptions | undefined>;
+    declare public readonly rateLimitOptions: pulumi.Output<outputs.compute.RegionSecurityPolicyRuleRateLimitOptions | undefined>;
     /**
      * The Region in which the created Region Security Policy rule should reside.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The name of the security policy this rule belongs to.
      */
-    public readonly securityPolicy!: pulumi.Output<string>;
+    declare public readonly securityPolicy: pulumi.Output<string>;
 
     /**
      * Create a RegionSecurityPolicyRule resource with the given unique name, arguments, and options.
@@ -379,42 +379,42 @@ export class RegionSecurityPolicyRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegionSecurityPolicyRuleState | undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["match"] = state ? state.match : undefined;
-            resourceInputs["networkMatch"] = state ? state.networkMatch : undefined;
-            resourceInputs["preconfiguredWafConfig"] = state ? state.preconfiguredWafConfig : undefined;
-            resourceInputs["preview"] = state ? state.preview : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["rateLimitOptions"] = state ? state.rateLimitOptions : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["securityPolicy"] = state ? state.securityPolicy : undefined;
+            resourceInputs["action"] = state?.action;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["match"] = state?.match;
+            resourceInputs["networkMatch"] = state?.networkMatch;
+            resourceInputs["preconfiguredWafConfig"] = state?.preconfiguredWafConfig;
+            resourceInputs["preview"] = state?.preview;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["rateLimitOptions"] = state?.rateLimitOptions;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["securityPolicy"] = state?.securityPolicy;
         } else {
             const args = argsOrState as RegionSecurityPolicyRuleArgs | undefined;
-            if ((!args || args.action === undefined) && !opts.urn) {
+            if (args?.action === undefined && !opts.urn) {
                 throw new Error("Missing required property 'action'");
             }
-            if ((!args || args.priority === undefined) && !opts.urn) {
+            if (args?.priority === undefined && !opts.urn) {
                 throw new Error("Missing required property 'priority'");
             }
-            if ((!args || args.region === undefined) && !opts.urn) {
+            if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            if ((!args || args.securityPolicy === undefined) && !opts.urn) {
+            if (args?.securityPolicy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'securityPolicy'");
             }
-            resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["match"] = args ? args.match : undefined;
-            resourceInputs["networkMatch"] = args ? args.networkMatch : undefined;
-            resourceInputs["preconfiguredWafConfig"] = args ? args.preconfiguredWafConfig : undefined;
-            resourceInputs["preview"] = args ? args.preview : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["rateLimitOptions"] = args ? args.rateLimitOptions : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["securityPolicy"] = args ? args.securityPolicy : undefined;
+            resourceInputs["action"] = args?.action;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["match"] = args?.match;
+            resourceInputs["networkMatch"] = args?.networkMatch;
+            resourceInputs["preconfiguredWafConfig"] = args?.preconfiguredWafConfig;
+            resourceInputs["preview"] = args?.preview;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["rateLimitOptions"] = args?.rateLimitOptions;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["securityPolicy"] = args?.securityPolicy;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RegionSecurityPolicyRule.__pulumiType, name, resourceInputs, opts);

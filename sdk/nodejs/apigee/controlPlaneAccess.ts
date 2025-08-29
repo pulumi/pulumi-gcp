@@ -106,18 +106,18 @@ export class ControlPlaneAccess extends pulumi.CustomResource {
      * The `service-account-name` is formatted like an email address. For example: serviceAccount@my_project_id.iam.gserviceaccount.com
      * You might specify multiple service accounts, for example, if you have multiple environments and wish to assign a unique service account to each one.
      */
-    public readonly analyticsPublisherIdentities!: pulumi.Output<string[] | undefined>;
+    declare public readonly analyticsPublisherIdentities: pulumi.Output<string[] | undefined>;
     /**
      * Name of the Apigee organization.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Array of service accounts to grant access to control plane resources (for the Synchronizer component), each specified using the following format: `serviceAccount:service-account-name`.
      * The `service-account-name` is formatted like an email address. For example: serviceAccount@my_project_id.iam.gserviceaccount.com
      * You might specify multiple service accounts, for example, if you have multiple environments and wish to assign a unique service account to each one.
      * The service accounts must have **Apigee Synchronizer Manager** role. See also [Create service accounts](https://cloud.google.com/apigee/docs/hybrid/v1.8/sa-about#create-the-service-accounts).
      */
-    public readonly synchronizerIdentities!: pulumi.Output<string[] | undefined>;
+    declare public readonly synchronizerIdentities: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a ControlPlaneAccess resource with the given unique name, arguments, and options.
@@ -132,14 +132,14 @@ export class ControlPlaneAccess extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ControlPlaneAccessState | undefined;
-            resourceInputs["analyticsPublisherIdentities"] = state ? state.analyticsPublisherIdentities : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["synchronizerIdentities"] = state ? state.synchronizerIdentities : undefined;
+            resourceInputs["analyticsPublisherIdentities"] = state?.analyticsPublisherIdentities;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["synchronizerIdentities"] = state?.synchronizerIdentities;
         } else {
             const args = argsOrState as ControlPlaneAccessArgs | undefined;
-            resourceInputs["analyticsPublisherIdentities"] = args ? args.analyticsPublisherIdentities : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["synchronizerIdentities"] = args ? args.synchronizerIdentities : undefined;
+            resourceInputs["analyticsPublisherIdentities"] = args?.analyticsPublisherIdentities;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["synchronizerIdentities"] = args?.synchronizerIdentities;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ControlPlaneAccess.__pulumiType, name, resourceInputs, opts);

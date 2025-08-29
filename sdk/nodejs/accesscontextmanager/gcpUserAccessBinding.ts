@@ -105,29 +105,29 @@ export class GcpUserAccessBinding extends pulumi.CustomResource {
     /**
      * Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
      */
-    public readonly accessLevels!: pulumi.Output<string | undefined>;
+    declare public readonly accessLevels: pulumi.Output<string | undefined>;
     /**
      * Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
      */
-    public readonly groupKey!: pulumi.Output<string>;
+    declare public readonly groupKey: pulumi.Output<string>;
     /**
      * Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by RFC 3986 Section 2.3). Should not be specified by the client during creation. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Required. ID of the parent organization.
      */
-    public readonly organizationId!: pulumi.Output<string>;
+    declare public readonly organizationId: pulumi.Output<string>;
     /**
      * Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
      * Structure is documented below.
      */
-    public readonly scopedAccessSettings!: pulumi.Output<outputs.accesscontextmanager.GcpUserAccessBindingScopedAccessSetting[] | undefined>;
+    declare public readonly scopedAccessSettings: pulumi.Output<outputs.accesscontextmanager.GcpUserAccessBindingScopedAccessSetting[] | undefined>;
     /**
      * Optional. The Google Cloud session length (GCSL) policy for the group key.
      * Structure is documented below.
      */
-    public readonly sessionSettings!: pulumi.Output<outputs.accesscontextmanager.GcpUserAccessBindingSessionSettings | undefined>;
+    declare public readonly sessionSettings: pulumi.Output<outputs.accesscontextmanager.GcpUserAccessBindingSessionSettings | undefined>;
 
     /**
      * Create a GcpUserAccessBinding resource with the given unique name, arguments, and options.
@@ -142,25 +142,25 @@ export class GcpUserAccessBinding extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GcpUserAccessBindingState | undefined;
-            resourceInputs["accessLevels"] = state ? state.accessLevels : undefined;
-            resourceInputs["groupKey"] = state ? state.groupKey : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["organizationId"] = state ? state.organizationId : undefined;
-            resourceInputs["scopedAccessSettings"] = state ? state.scopedAccessSettings : undefined;
-            resourceInputs["sessionSettings"] = state ? state.sessionSettings : undefined;
+            resourceInputs["accessLevels"] = state?.accessLevels;
+            resourceInputs["groupKey"] = state?.groupKey;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["organizationId"] = state?.organizationId;
+            resourceInputs["scopedAccessSettings"] = state?.scopedAccessSettings;
+            resourceInputs["sessionSettings"] = state?.sessionSettings;
         } else {
             const args = argsOrState as GcpUserAccessBindingArgs | undefined;
-            if ((!args || args.groupKey === undefined) && !opts.urn) {
+            if (args?.groupKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupKey'");
             }
-            if ((!args || args.organizationId === undefined) && !opts.urn) {
+            if (args?.organizationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            resourceInputs["accessLevels"] = args ? args.accessLevels : undefined;
-            resourceInputs["groupKey"] = args ? args.groupKey : undefined;
-            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
-            resourceInputs["scopedAccessSettings"] = args ? args.scopedAccessSettings : undefined;
-            resourceInputs["sessionSettings"] = args ? args.sessionSettings : undefined;
+            resourceInputs["accessLevels"] = args?.accessLevels;
+            resourceInputs["groupKey"] = args?.groupKey;
+            resourceInputs["organizationId"] = args?.organizationId;
+            resourceInputs["scopedAccessSettings"] = args?.scopedAccessSettings;
+            resourceInputs["sessionSettings"] = args?.sessionSettings;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

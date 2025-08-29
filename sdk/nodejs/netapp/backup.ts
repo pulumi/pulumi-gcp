@@ -123,79 +123,79 @@ export class Backup extends pulumi.CustomResource {
     /**
      * Region in which backup is stored.
      */
-    public /*out*/ readonly backupRegion!: pulumi.Output<string>;
+    declare public /*out*/ readonly backupRegion: pulumi.Output<string>;
     /**
      * Type of backup, manually created or created by a backup policy. Possible Values : [TYPE_UNSPECIFIED, MANUAL, SCHEDULED]
      */
-    public /*out*/ readonly backupType!: pulumi.Output<string>;
+    declare public /*out*/ readonly backupType: pulumi.Output<string>;
     /**
      * Backups of a volume build incrementally on top of each other. They form a "backup chain".
      * Total size of all backups in a chain in bytes = baseline backup size + sum(incremental backup size)
      */
-    public /*out*/ readonly chainStorageBytes!: pulumi.Output<string>;
+    declare public /*out*/ readonly chainStorageBytes: pulumi.Output<string>;
     /**
      * Create time of the backup. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Location of the backup.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The resource name of the backup. Needs to be unique per location.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * If specified, backup will be created from the given snapshot. If not specified,
      * there will be a new snapshot taken to initiate the backup creation.
      * Format: `projects/{{projectId}}/locations/{{location}}/volumes/{{volumename}}/snapshots/{{snapshotname}}``
      */
-    public readonly sourceSnapshot!: pulumi.Output<string | undefined>;
+    declare public readonly sourceSnapshot: pulumi.Output<string | undefined>;
     /**
      * ID of volumes this backup belongs to. Format: `projects/{{projects_id}}/locations/{{location}}/volumes/{{name}}``
      */
-    public readonly sourceVolume!: pulumi.Output<string | undefined>;
+    declare public readonly sourceVolume: pulumi.Output<string | undefined>;
     /**
      * The state of the Backup Vault. Possible Values : [STATE_UNSPECIFIED, CREATING, UPLOADING, READY, DELETING, ERROR, UPDATING]
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Name of the backup vault to store the backup in.
      */
-    public readonly vaultName!: pulumi.Output<string>;
+    declare public readonly vaultName: pulumi.Output<string>;
     /**
      * Region of the volume from which the backup was created.
      */
-    public /*out*/ readonly volumeRegion!: pulumi.Output<string>;
+    declare public /*out*/ readonly volumeRegion: pulumi.Output<string>;
     /**
      * Size of the file system when the backup was created. When creating a new volume from the backup, the volume capacity will have to be at least as big.
      */
-    public /*out*/ readonly volumeUsageBytes!: pulumi.Output<string>;
+    declare public /*out*/ readonly volumeUsageBytes: pulumi.Output<string>;
 
     /**
      * Create a Backup resource with the given unique name, arguments, and options.
@@ -210,39 +210,39 @@ export class Backup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BackupState | undefined;
-            resourceInputs["backupRegion"] = state ? state.backupRegion : undefined;
-            resourceInputs["backupType"] = state ? state.backupType : undefined;
-            resourceInputs["chainStorageBytes"] = state ? state.chainStorageBytes : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["sourceSnapshot"] = state ? state.sourceSnapshot : undefined;
-            resourceInputs["sourceVolume"] = state ? state.sourceVolume : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["vaultName"] = state ? state.vaultName : undefined;
-            resourceInputs["volumeRegion"] = state ? state.volumeRegion : undefined;
-            resourceInputs["volumeUsageBytes"] = state ? state.volumeUsageBytes : undefined;
+            resourceInputs["backupRegion"] = state?.backupRegion;
+            resourceInputs["backupType"] = state?.backupType;
+            resourceInputs["chainStorageBytes"] = state?.chainStorageBytes;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["sourceSnapshot"] = state?.sourceSnapshot;
+            resourceInputs["sourceVolume"] = state?.sourceVolume;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["vaultName"] = state?.vaultName;
+            resourceInputs["volumeRegion"] = state?.volumeRegion;
+            resourceInputs["volumeUsageBytes"] = state?.volumeUsageBytes;
         } else {
             const args = argsOrState as BackupArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.vaultName === undefined) && !opts.urn) {
+            if (args?.vaultName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vaultName'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["sourceSnapshot"] = args ? args.sourceSnapshot : undefined;
-            resourceInputs["sourceVolume"] = args ? args.sourceVolume : undefined;
-            resourceInputs["vaultName"] = args ? args.vaultName : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["sourceSnapshot"] = args?.sourceSnapshot;
+            resourceInputs["sourceVolume"] = args?.sourceVolume;
+            resourceInputs["vaultName"] = args?.vaultName;
             resourceInputs["backupRegion"] = undefined /*out*/;
             resourceInputs["backupType"] = undefined /*out*/;
             resourceInputs["chainStorageBytes"] = undefined /*out*/;

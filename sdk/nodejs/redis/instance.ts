@@ -271,34 +271,34 @@ export class Instance extends pulumi.CustomResource {
      * If provided, it must be a different zone from the one provided in
      * [locationId].
      */
-    public readonly alternativeLocationId!: pulumi.Output<string>;
+    declare public readonly alternativeLocationId: pulumi.Output<string>;
     /**
      * Optional. Indicates whether OSS Redis AUTH is enabled for the
      * instance. If set to "true" AUTH is enabled on the instance.
      * Default value is "false" meaning AUTH is disabled.
      */
-    public readonly authEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly authEnabled: pulumi.Output<boolean | undefined>;
     /**
      * AUTH String set on the instance. This field will only be populated if authEnabled is true.
      */
-    public /*out*/ readonly authString!: pulumi.Output<string>;
+    declare public /*out*/ readonly authString: pulumi.Output<string>;
     /**
      * The full name of the Google Compute Engine network to which the
      * instance is connected. If left unspecified, the default network
      * will be used.
      */
-    public readonly authorizedNetwork!: pulumi.Output<string>;
+    declare public readonly authorizedNetwork: pulumi.Output<string>;
     /**
      * The connection mode of the Redis instance.
      * Default value is `DIRECT_PEERING`.
      * Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
      */
-    public readonly connectMode!: pulumi.Output<string | undefined>;
+    declare public readonly connectMode: pulumi.Output<string | undefined>;
     /**
      * (Output)
      * The time when the certificate was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The current zone where the Redis endpoint is placed.
      * For Basic Tier instances, this will always be the same as the
@@ -306,20 +306,20 @@ export class Instance extends pulumi.CustomResource {
      * instances, this can be either [locationId] or [alternativeLocationId]
      * and can change after a failover event.
      */
-    public /*out*/ readonly currentLocationId!: pulumi.Output<string>;
+    declare public /*out*/ readonly currentLocationId: pulumi.Output<string>;
     /**
      * Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
      * instance. If this is provided, CMEK is enabled.
      */
-    public readonly customerManagedKey!: pulumi.Output<string | undefined>;
+    declare public readonly customerManagedKey: pulumi.Output<string | undefined>;
     /**
      * An arbitrary and optional user-provided name for the instance.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The CIDR range of internal addresses that are reserved for this
      * instance. If not provided, the service will choose an unused /29
@@ -327,18 +327,18 @@ export class Instance extends pulumi.CustomResource {
      * unique and non-overlapping with existing subnets in an authorized
      * network.
      */
-    public /*out*/ readonly effectiveReservedIpRange!: pulumi.Output<string>;
+    declare public /*out*/ readonly effectiveReservedIpRange: pulumi.Output<string>;
     /**
      * Hostname or IP address of the exposed Redis endpoint used by clients
      * to connect to the service.
      */
-    public /*out*/ readonly host!: pulumi.Output<string>;
+    declare public /*out*/ readonly host: pulumi.Output<string>;
     /**
      * Resource labels to represent user provided metadata.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The zone where the instance will be provisioned. If not provided,
      * the service will choose a zone for the instance. For STANDARD_HA tier,
@@ -346,71 +346,71 @@ export class Instance extends pulumi.CustomResource {
      * zonal failures. If [alternativeLocationId] is also provided, it must
      * be different from [locationId].
      */
-    public readonly locationId!: pulumi.Output<string>;
+    declare public readonly locationId: pulumi.Output<string>;
     /**
      * Maintenance policy for an instance.
      * Structure is documented below.
      */
-    public readonly maintenancePolicy!: pulumi.Output<outputs.redis.InstanceMaintenancePolicy | undefined>;
+    declare public readonly maintenancePolicy: pulumi.Output<outputs.redis.InstanceMaintenancePolicy | undefined>;
     /**
      * Upcoming maintenance schedule.
      * Structure is documented below.
      */
-    public /*out*/ readonly maintenanceSchedules!: pulumi.Output<outputs.redis.InstanceMaintenanceSchedule[]>;
+    declare public /*out*/ readonly maintenanceSchedules: pulumi.Output<outputs.redis.InstanceMaintenanceSchedule[]>;
     /**
      * The self service update maintenance version.
      */
-    public readonly maintenanceVersion!: pulumi.Output<string>;
+    declare public readonly maintenanceVersion: pulumi.Output<string>;
     /**
      * Redis memory size in GiB.
      */
-    public readonly memorySizeGb!: pulumi.Output<number>;
+    declare public readonly memorySizeGb: pulumi.Output<number>;
     /**
      * The ID of the instance or a fully qualified identifier for the instance.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Output only. Info per node.
      * Structure is documented below.
      */
-    public /*out*/ readonly nodes!: pulumi.Output<outputs.redis.InstanceNode[]>;
+    declare public /*out*/ readonly nodes: pulumi.Output<outputs.redis.InstanceNode[]>;
     /**
      * Persistence configuration for an instance.
      * Structure is documented below.
      */
-    public readonly persistenceConfig!: pulumi.Output<outputs.redis.InstancePersistenceConfig>;
+    declare public readonly persistenceConfig: pulumi.Output<outputs.redis.InstancePersistenceConfig>;
     /**
      * Output only. Cloud IAM identity used by import / export operations
      * to transfer data to/from Cloud Storage. Format is "serviceAccount:".
      * The value may change over time for a given instance so should be
      * checked before each import/export operation.
      */
-    public /*out*/ readonly persistenceIamIdentity!: pulumi.Output<string>;
+    declare public /*out*/ readonly persistenceIamIdentity: pulumi.Output<string>;
     /**
      * The port number of the exposed Redis endpoint.
      */
-    public /*out*/ readonly port!: pulumi.Output<number>;
+    declare public /*out*/ readonly port: pulumi.Output<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only.
      * Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes
      * will exhibit some lag behind the primary. Write requests must target 'host'.
      */
-    public /*out*/ readonly readEndpoint!: pulumi.Output<string>;
+    declare public /*out*/ readonly readEndpoint: pulumi.Output<string>;
     /**
      * Output only. The port number of the exposed readonly redis endpoint. Standard tier only.
      * Write requests should target 'port'.
      */
-    public /*out*/ readonly readEndpointPort!: pulumi.Output<number>;
+    declare public /*out*/ readonly readEndpointPort: pulumi.Output<number>;
     /**
      * Optional. Read replica mode. Can only be specified when trying to create the instance.
      * If not set, Memorystore Redis backend will default to READ_REPLICAS_DISABLED.
@@ -420,30 +420,30 @@ export class Instance extends pulumi.CustomResource {
      * can scale up and down the number of replicas.
      * Possible values are: `READ_REPLICAS_DISABLED`, `READ_REPLICAS_ENABLED`.
      */
-    public readonly readReplicasMode!: pulumi.Output<string>;
+    declare public readonly readReplicasMode: pulumi.Output<string>;
     /**
      * Redis configuration parameters, according to http://redis.io/topics/config.
      * Please check Memorystore documentation for the list of supported parameters:
      * https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
      */
-    public readonly redisConfigs!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly redisConfigs: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The version of Redis software. If not provided, latest supported
      * version will be used. Please check the API documentation linked
      * at the top for the latest valid values.
      */
-    public readonly redisVersion!: pulumi.Output<string>;
+    declare public readonly redisVersion: pulumi.Output<string>;
     /**
      * The name of the Redis region of the instance.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Optional. The number of replica nodes. The valid range for the Standard Tier with
      * read replicas enabled is [1-5] and defaults to 2. If read replicas are not enabled
      * for a Standard Tier instance, the only valid value is 1 and the default is 1.
      * The valid value for basic tier is 0 and the default is also 0.
      */
-    public readonly replicaCount!: pulumi.Output<number>;
+    declare public readonly replicaCount: pulumi.Output<number>;
     /**
      * The CIDR range of internal addresses that are reserved for this
      * instance. If not provided, the service will choose an unused /29
@@ -451,19 +451,19 @@ export class Instance extends pulumi.CustomResource {
      * unique and non-overlapping with existing subnets in an authorized
      * network.
      */
-    public readonly reservedIpRange!: pulumi.Output<string>;
+    declare public readonly reservedIpRange: pulumi.Output<string>;
     /**
      * Optional. Additional IP range for node placement. Required when enabling read replicas on
      * an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or
      * "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address
      * range associated with the private service access connection, or "auto".
      */
-    public readonly secondaryIpRange!: pulumi.Output<string>;
+    declare public readonly secondaryIpRange: pulumi.Output<string>;
     /**
      * List of server CA certificates for the instance.
      * Structure is documented below.
      */
-    public /*out*/ readonly serverCaCerts!: pulumi.Output<outputs.redis.InstanceServerCaCert[]>;
+    declare public /*out*/ readonly serverCaCerts: pulumi.Output<outputs.redis.InstanceServerCaCert[]>;
     /**
      * The service tier of the instance. Must be one of these values:
      * - BASIC: standalone instance
@@ -471,14 +471,14 @@ export class Instance extends pulumi.CustomResource {
      * Default value is `BASIC`.
      * Possible values are: `BASIC`, `STANDARD_HA`.
      */
-    public readonly tier!: pulumi.Output<string | undefined>;
+    declare public readonly tier: pulumi.Output<string | undefined>;
     /**
      * The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
      * - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
      * Default value is `DISABLED`.
      * Possible values are: `SERVER_AUTHENTICATION`, `DISABLED`.
      */
-    public readonly transitEncryptionMode!: pulumi.Output<string | undefined>;
+    declare public readonly transitEncryptionMode: pulumi.Output<string | undefined>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -493,71 +493,71 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["alternativeLocationId"] = state ? state.alternativeLocationId : undefined;
-            resourceInputs["authEnabled"] = state ? state.authEnabled : undefined;
-            resourceInputs["authString"] = state ? state.authString : undefined;
-            resourceInputs["authorizedNetwork"] = state ? state.authorizedNetwork : undefined;
-            resourceInputs["connectMode"] = state ? state.connectMode : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["currentLocationId"] = state ? state.currentLocationId : undefined;
-            resourceInputs["customerManagedKey"] = state ? state.customerManagedKey : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["effectiveReservedIpRange"] = state ? state.effectiveReservedIpRange : undefined;
-            resourceInputs["host"] = state ? state.host : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["locationId"] = state ? state.locationId : undefined;
-            resourceInputs["maintenancePolicy"] = state ? state.maintenancePolicy : undefined;
-            resourceInputs["maintenanceSchedules"] = state ? state.maintenanceSchedules : undefined;
-            resourceInputs["maintenanceVersion"] = state ? state.maintenanceVersion : undefined;
-            resourceInputs["memorySizeGb"] = state ? state.memorySizeGb : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nodes"] = state ? state.nodes : undefined;
-            resourceInputs["persistenceConfig"] = state ? state.persistenceConfig : undefined;
-            resourceInputs["persistenceIamIdentity"] = state ? state.persistenceIamIdentity : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["readEndpoint"] = state ? state.readEndpoint : undefined;
-            resourceInputs["readEndpointPort"] = state ? state.readEndpointPort : undefined;
-            resourceInputs["readReplicasMode"] = state ? state.readReplicasMode : undefined;
-            resourceInputs["redisConfigs"] = state ? state.redisConfigs : undefined;
-            resourceInputs["redisVersion"] = state ? state.redisVersion : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["replicaCount"] = state ? state.replicaCount : undefined;
-            resourceInputs["reservedIpRange"] = state ? state.reservedIpRange : undefined;
-            resourceInputs["secondaryIpRange"] = state ? state.secondaryIpRange : undefined;
-            resourceInputs["serverCaCerts"] = state ? state.serverCaCerts : undefined;
-            resourceInputs["tier"] = state ? state.tier : undefined;
-            resourceInputs["transitEncryptionMode"] = state ? state.transitEncryptionMode : undefined;
+            resourceInputs["alternativeLocationId"] = state?.alternativeLocationId;
+            resourceInputs["authEnabled"] = state?.authEnabled;
+            resourceInputs["authString"] = state?.authString;
+            resourceInputs["authorizedNetwork"] = state?.authorizedNetwork;
+            resourceInputs["connectMode"] = state?.connectMode;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["currentLocationId"] = state?.currentLocationId;
+            resourceInputs["customerManagedKey"] = state?.customerManagedKey;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["effectiveReservedIpRange"] = state?.effectiveReservedIpRange;
+            resourceInputs["host"] = state?.host;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["locationId"] = state?.locationId;
+            resourceInputs["maintenancePolicy"] = state?.maintenancePolicy;
+            resourceInputs["maintenanceSchedules"] = state?.maintenanceSchedules;
+            resourceInputs["maintenanceVersion"] = state?.maintenanceVersion;
+            resourceInputs["memorySizeGb"] = state?.memorySizeGb;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nodes"] = state?.nodes;
+            resourceInputs["persistenceConfig"] = state?.persistenceConfig;
+            resourceInputs["persistenceIamIdentity"] = state?.persistenceIamIdentity;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["readEndpoint"] = state?.readEndpoint;
+            resourceInputs["readEndpointPort"] = state?.readEndpointPort;
+            resourceInputs["readReplicasMode"] = state?.readReplicasMode;
+            resourceInputs["redisConfigs"] = state?.redisConfigs;
+            resourceInputs["redisVersion"] = state?.redisVersion;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["replicaCount"] = state?.replicaCount;
+            resourceInputs["reservedIpRange"] = state?.reservedIpRange;
+            resourceInputs["secondaryIpRange"] = state?.secondaryIpRange;
+            resourceInputs["serverCaCerts"] = state?.serverCaCerts;
+            resourceInputs["tier"] = state?.tier;
+            resourceInputs["transitEncryptionMode"] = state?.transitEncryptionMode;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.memorySizeGb === undefined) && !opts.urn) {
+            if (args?.memorySizeGb === undefined && !opts.urn) {
                 throw new Error("Missing required property 'memorySizeGb'");
             }
-            resourceInputs["alternativeLocationId"] = args ? args.alternativeLocationId : undefined;
-            resourceInputs["authEnabled"] = args ? args.authEnabled : undefined;
-            resourceInputs["authorizedNetwork"] = args ? args.authorizedNetwork : undefined;
-            resourceInputs["connectMode"] = args ? args.connectMode : undefined;
-            resourceInputs["customerManagedKey"] = args ? args.customerManagedKey : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["locationId"] = args ? args.locationId : undefined;
-            resourceInputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
-            resourceInputs["maintenanceVersion"] = args ? args.maintenanceVersion : undefined;
-            resourceInputs["memorySizeGb"] = args ? args.memorySizeGb : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["persistenceConfig"] = args ? args.persistenceConfig : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["readReplicasMode"] = args ? args.readReplicasMode : undefined;
-            resourceInputs["redisConfigs"] = args ? args.redisConfigs : undefined;
-            resourceInputs["redisVersion"] = args ? args.redisVersion : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["replicaCount"] = args ? args.replicaCount : undefined;
-            resourceInputs["reservedIpRange"] = args ? args.reservedIpRange : undefined;
-            resourceInputs["secondaryIpRange"] = args ? args.secondaryIpRange : undefined;
-            resourceInputs["tier"] = args ? args.tier : undefined;
-            resourceInputs["transitEncryptionMode"] = args ? args.transitEncryptionMode : undefined;
+            resourceInputs["alternativeLocationId"] = args?.alternativeLocationId;
+            resourceInputs["authEnabled"] = args?.authEnabled;
+            resourceInputs["authorizedNetwork"] = args?.authorizedNetwork;
+            resourceInputs["connectMode"] = args?.connectMode;
+            resourceInputs["customerManagedKey"] = args?.customerManagedKey;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["locationId"] = args?.locationId;
+            resourceInputs["maintenancePolicy"] = args?.maintenancePolicy;
+            resourceInputs["maintenanceVersion"] = args?.maintenanceVersion;
+            resourceInputs["memorySizeGb"] = args?.memorySizeGb;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["persistenceConfig"] = args?.persistenceConfig;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["readReplicasMode"] = args?.readReplicasMode;
+            resourceInputs["redisConfigs"] = args?.redisConfigs;
+            resourceInputs["redisVersion"] = args?.redisVersion;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["replicaCount"] = args?.replicaCount;
+            resourceInputs["reservedIpRange"] = args?.reservedIpRange;
+            resourceInputs["secondaryIpRange"] = args?.secondaryIpRange;
+            resourceInputs["tier"] = args?.tier;
+            resourceInputs["transitEncryptionMode"] = args?.transitEncryptionMode;
             resourceInputs["authString"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["currentLocationId"] = undefined /*out*/;

@@ -118,26 +118,26 @@ export class WorkloadIdentityPoolManagedIdentity extends pulumi.CustomResource {
      * 50 AttestationRules can be set.
      * Structure is documented below.
      */
-    public readonly attestationRules!: pulumi.Output<outputs.iam.WorkloadIdentityPoolManagedIdentityAttestationRule[] | undefined>;
+    declare public readonly attestationRules: pulumi.Output<outputs.iam.WorkloadIdentityPoolManagedIdentityAttestationRule[] | undefined>;
     /**
      * A description of the managed identity. Cannot exceed 256 characters.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Whether the managed identity is disabled. If disabled, credentials may no longer be issued for
      * the identity, however existing credentials will still be accepted until they expire.
      */
-    public readonly disabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly disabled: pulumi.Output<boolean | undefined>;
     /**
      * The resource name of the managed identity as
      * `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/namespaces/{workload_identity_pool_namespace_id}/managedIdentities/{workload_identity_pool_managed_identity_id}`.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The current state of the managed identity.
      * * `ACTIVE`: The managed identity is active.
@@ -146,13 +146,13 @@ export class WorkloadIdentityPoolManagedIdentity extends pulumi.CustomResource {
      * identity using UndeleteWorkloadIdentityPoolManagedIdentity. You cannot reuse the ID of a
      * soft-deleted managed identity until it is permanently deleted.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The ID to use for the pool, which becomes the final component of the resource name. This
      * value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
      * `gcp-` is reserved for use by Google, and may not be specified.
      */
-    public readonly workloadIdentityPoolId!: pulumi.Output<string>;
+    declare public readonly workloadIdentityPoolId: pulumi.Output<string>;
     /**
      * The ID to use for the managed identity. This value must:
      * * contain at most 63 characters
@@ -162,7 +162,7 @@ export class WorkloadIdentityPoolManagedIdentity extends pulumi.CustomResource {
      *
      * The prefix `gcp-` will be reserved for future uses.
      */
-    public readonly workloadIdentityPoolManagedIdentityId!: pulumi.Output<string>;
+    declare public readonly workloadIdentityPoolManagedIdentityId: pulumi.Output<string>;
     /**
      * The ID to use for the namespace. This value must:
      * * contain at most 63 characters
@@ -172,7 +172,7 @@ export class WorkloadIdentityPoolManagedIdentity extends pulumi.CustomResource {
      *
      * The prefix `gcp-` will be reserved for future uses.
      */
-    public readonly workloadIdentityPoolNamespaceId!: pulumi.Output<string>;
+    declare public readonly workloadIdentityPoolNamespaceId: pulumi.Output<string>;
 
     /**
      * Create a WorkloadIdentityPoolManagedIdentity resource with the given unique name, arguments, and options.
@@ -187,33 +187,33 @@ export class WorkloadIdentityPoolManagedIdentity extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkloadIdentityPoolManagedIdentityState | undefined;
-            resourceInputs["attestationRules"] = state ? state.attestationRules : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["disabled"] = state ? state.disabled : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["workloadIdentityPoolId"] = state ? state.workloadIdentityPoolId : undefined;
-            resourceInputs["workloadIdentityPoolManagedIdentityId"] = state ? state.workloadIdentityPoolManagedIdentityId : undefined;
-            resourceInputs["workloadIdentityPoolNamespaceId"] = state ? state.workloadIdentityPoolNamespaceId : undefined;
+            resourceInputs["attestationRules"] = state?.attestationRules;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["disabled"] = state?.disabled;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["workloadIdentityPoolId"] = state?.workloadIdentityPoolId;
+            resourceInputs["workloadIdentityPoolManagedIdentityId"] = state?.workloadIdentityPoolManagedIdentityId;
+            resourceInputs["workloadIdentityPoolNamespaceId"] = state?.workloadIdentityPoolNamespaceId;
         } else {
             const args = argsOrState as WorkloadIdentityPoolManagedIdentityArgs | undefined;
-            if ((!args || args.workloadIdentityPoolId === undefined) && !opts.urn) {
+            if (args?.workloadIdentityPoolId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workloadIdentityPoolId'");
             }
-            if ((!args || args.workloadIdentityPoolManagedIdentityId === undefined) && !opts.urn) {
+            if (args?.workloadIdentityPoolManagedIdentityId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workloadIdentityPoolManagedIdentityId'");
             }
-            if ((!args || args.workloadIdentityPoolNamespaceId === undefined) && !opts.urn) {
+            if (args?.workloadIdentityPoolNamespaceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workloadIdentityPoolNamespaceId'");
             }
-            resourceInputs["attestationRules"] = args ? args.attestationRules : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["disabled"] = args ? args.disabled : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["workloadIdentityPoolId"] = args ? args.workloadIdentityPoolId : undefined;
-            resourceInputs["workloadIdentityPoolManagedIdentityId"] = args ? args.workloadIdentityPoolManagedIdentityId : undefined;
-            resourceInputs["workloadIdentityPoolNamespaceId"] = args ? args.workloadIdentityPoolNamespaceId : undefined;
+            resourceInputs["attestationRules"] = args?.attestationRules;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["disabled"] = args?.disabled;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["workloadIdentityPoolId"] = args?.workloadIdentityPoolId;
+            resourceInputs["workloadIdentityPoolManagedIdentityId"] = args?.workloadIdentityPoolManagedIdentityId;
+            resourceInputs["workloadIdentityPoolNamespaceId"] = args?.workloadIdentityPoolNamespaceId;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }

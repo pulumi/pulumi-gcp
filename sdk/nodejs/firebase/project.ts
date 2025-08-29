@@ -89,16 +89,16 @@ export class Project extends pulumi.CustomResource {
     /**
      * The GCP project display name
      */
-    public /*out*/ readonly displayName!: pulumi.Output<string>;
+    declare public /*out*/ readonly displayName: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The number of the Google Project that Firebase is enabled on.
      */
-    public /*out*/ readonly projectNumber!: pulumi.Output<string>;
+    declare public /*out*/ readonly projectNumber: pulumi.Output<string>;
 
     /**
      * Create a Project resource with the given unique name, arguments, and options.
@@ -113,12 +113,12 @@ export class Project extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectState | undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["projectNumber"] = state ? state.projectNumber : undefined;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["projectNumber"] = state?.projectNumber;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["project"] = args?.project;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["projectNumber"] = undefined /*out*/;
         }

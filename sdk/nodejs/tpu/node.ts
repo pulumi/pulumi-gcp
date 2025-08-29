@@ -132,7 +132,7 @@ export class Node extends pulumi.CustomResource {
     /**
      * The type of hardware accelerators associated with this node.
      */
-    public readonly acceleratorType!: pulumi.Output<string>;
+    declare public readonly acceleratorType: pulumi.Output<string>;
     /**
      * The CIDR block that the TPU node will use when selecting an IP
      * address. This CIDR block must be a /29 block; the Compute Engine
@@ -143,76 +143,76 @@ export class Node extends pulumi.CustomResource {
      * subnetworks in the user's provided network, or the provided network
      * is peered with another network that is using that CIDR block.
      */
-    public readonly cidrBlock!: pulumi.Output<string>;
+    declare public readonly cidrBlock: pulumi.Output<string>;
     /**
      * The user-supplied description of the TPU. Maximum of 512 characters.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Resource labels to represent user provided metadata.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The immutable name of the TPU.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The name of a network to peer the TPU node to. It must be a
      * preexisting Compute Engine network inside of the project on which
      * this API has been activated. If none is provided, "default" will be
      * used.
      */
-    public readonly network!: pulumi.Output<string>;
+    declare public readonly network: pulumi.Output<string>;
     /**
      * The network endpoints where TPU workers can be accessed and sent work.
      * It is recommended that Tensorflow clients of the node first reach out
      * to the first (index 0) entry.
      * Structure is documented below.
      */
-    public /*out*/ readonly networkEndpoints!: pulumi.Output<outputs.tpu.NodeNetworkEndpoint[]>;
+    declare public /*out*/ readonly networkEndpoints: pulumi.Output<outputs.tpu.NodeNetworkEndpoint[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Sets the scheduling options for this TPU instance.
      * Structure is documented below.
      */
-    public readonly schedulingConfig!: pulumi.Output<outputs.tpu.NodeSchedulingConfig | undefined>;
+    declare public readonly schedulingConfig: pulumi.Output<outputs.tpu.NodeSchedulingConfig | undefined>;
     /**
      * The service account used to run the tensor flow services within the
      * node. To share resources, including Google Cloud Storage data, with
      * the Tensorflow job running in the Node, this account must have
      * permissions to that data.
      */
-    public /*out*/ readonly serviceAccount!: pulumi.Output<string>;
+    declare public /*out*/ readonly serviceAccount: pulumi.Output<string>;
     /**
      * The version of Tensorflow running in the Node.
      */
-    public readonly tensorflowVersion!: pulumi.Output<string>;
+    declare public readonly tensorflowVersion: pulumi.Output<string>;
     /**
      * Whether the VPC peering for the node is set up through Service Networking API.
      * The VPC Peering should be set up before provisioning the node. If this field is set,
      * cidrBlock field should not be specified. If the network that you want to peer the
      * TPU Node to is a Shared VPC network, the node must be created with this this field enabled.
      */
-    public readonly useServiceNetworking!: pulumi.Output<boolean | undefined>;
+    declare public readonly useServiceNetworking: pulumi.Output<boolean | undefined>;
     /**
      * The GCP location for the TPU. If it is not provided, the provider zone is used.
      */
-    public readonly zone!: pulumi.Output<string>;
+    declare public readonly zone: pulumi.Output<string>;
 
     /**
      * Create a Node resource with the given unique name, arguments, and options.
@@ -227,40 +227,40 @@ export class Node extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NodeState | undefined;
-            resourceInputs["acceleratorType"] = state ? state.acceleratorType : undefined;
-            resourceInputs["cidrBlock"] = state ? state.cidrBlock : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["networkEndpoints"] = state ? state.networkEndpoints : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["schedulingConfig"] = state ? state.schedulingConfig : undefined;
-            resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
-            resourceInputs["tensorflowVersion"] = state ? state.tensorflowVersion : undefined;
-            resourceInputs["useServiceNetworking"] = state ? state.useServiceNetworking : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["acceleratorType"] = state?.acceleratorType;
+            resourceInputs["cidrBlock"] = state?.cidrBlock;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["networkEndpoints"] = state?.networkEndpoints;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["schedulingConfig"] = state?.schedulingConfig;
+            resourceInputs["serviceAccount"] = state?.serviceAccount;
+            resourceInputs["tensorflowVersion"] = state?.tensorflowVersion;
+            resourceInputs["useServiceNetworking"] = state?.useServiceNetworking;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as NodeArgs | undefined;
-            if ((!args || args.acceleratorType === undefined) && !opts.urn) {
+            if (args?.acceleratorType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'acceleratorType'");
             }
-            if ((!args || args.tensorflowVersion === undefined) && !opts.urn) {
+            if (args?.tensorflowVersion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tensorflowVersion'");
             }
-            resourceInputs["acceleratorType"] = args ? args.acceleratorType : undefined;
-            resourceInputs["cidrBlock"] = args ? args.cidrBlock : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["schedulingConfig"] = args ? args.schedulingConfig : undefined;
-            resourceInputs["tensorflowVersion"] = args ? args.tensorflowVersion : undefined;
-            resourceInputs["useServiceNetworking"] = args ? args.useServiceNetworking : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["acceleratorType"] = args?.acceleratorType;
+            resourceInputs["cidrBlock"] = args?.cidrBlock;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["schedulingConfig"] = args?.schedulingConfig;
+            resourceInputs["tensorflowVersion"] = args?.tensorflowVersion;
+            resourceInputs["useServiceNetworking"] = args?.useServiceNetworking;
+            resourceInputs["zone"] = args?.zone;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["networkEndpoints"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;

@@ -188,11 +188,11 @@ export class RegionTargetHttpProxy extends pulumi.CustomResource {
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * An optional description of this resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Specifies how long to keep a connection open, after completing a response,
      * while there is no matching traffic (in seconds). If an HTTP keepalive is
@@ -200,7 +200,7 @@ export class RegionTargetHttpProxy extends pulumi.CustomResource {
      * HTTP(S) load balancer, the minimum allowed value is 5 seconds and the
      * maximum allowed value is 600 seconds.
      */
-    public readonly httpKeepAliveTimeoutSec!: pulumi.Output<number | undefined>;
+    declare public readonly httpKeepAliveTimeoutSec: pulumi.Output<number | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -210,30 +210,30 @@ export class RegionTargetHttpProxy extends pulumi.CustomResource {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The unique identifier for the resource.
      */
-    public /*out*/ readonly proxyId!: pulumi.Output<number>;
+    declare public /*out*/ readonly proxyId: pulumi.Output<number>;
     /**
      * The Region in which the created target https proxy should reside.
      * If it is not provided, the provider region is used.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * A reference to the RegionUrlMap resource that defines the mapping from URL
      * to the BackendService.
      */
-    public readonly urlMap!: pulumi.Output<string>;
+    declare public readonly urlMap: pulumi.Output<string>;
 
     /**
      * Create a RegionTargetHttpProxy resource with the given unique name, arguments, and options.
@@ -248,26 +248,26 @@ export class RegionTargetHttpProxy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegionTargetHttpProxyState | undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["httpKeepAliveTimeoutSec"] = state ? state.httpKeepAliveTimeoutSec : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["proxyId"] = state ? state.proxyId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["urlMap"] = state ? state.urlMap : undefined;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["httpKeepAliveTimeoutSec"] = state?.httpKeepAliveTimeoutSec;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["proxyId"] = state?.proxyId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["urlMap"] = state?.urlMap;
         } else {
             const args = argsOrState as RegionTargetHttpProxyArgs | undefined;
-            if ((!args || args.urlMap === undefined) && !opts.urn) {
+            if (args?.urlMap === undefined && !opts.urn) {
                 throw new Error("Missing required property 'urlMap'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["httpKeepAliveTimeoutSec"] = args ? args.httpKeepAliveTimeoutSec : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["urlMap"] = args ? args.urlMap : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["httpKeepAliveTimeoutSec"] = args?.httpKeepAliveTimeoutSec;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["urlMap"] = args?.urlMap;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["proxyId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;

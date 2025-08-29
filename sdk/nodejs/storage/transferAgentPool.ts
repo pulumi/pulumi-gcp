@@ -98,11 +98,11 @@ export class TransferAgentPool extends pulumi.CustomResource {
      * Specifies the bandwidth limit details. If this field is unspecified, the default value is set as 'No Limit'.
      * Structure is documented below.
      */
-    public readonly bandwidthLimit!: pulumi.Output<outputs.storage.TransferAgentPoolBandwidthLimit | undefined>;
+    declare public readonly bandwidthLimit: pulumi.Output<outputs.storage.TransferAgentPoolBandwidthLimit | undefined>;
     /**
      * Specifies the client-specified AgentPool description.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * The ID of the agent pool to create.
      * The agentPoolId must meet the following requirements:
@@ -113,16 +113,16 @@ export class TransferAgentPool extends pulumi.CustomResource {
      * * One or more numerals or lowercase ASCII characters.
      * As expressed by the regular expression: ^(?!goog)a-z?$.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Specifies the state of the AgentPool.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
 
     /**
      * Create a TransferAgentPool resource with the given unique name, arguments, and options.
@@ -137,17 +137,17 @@ export class TransferAgentPool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TransferAgentPoolState | undefined;
-            resourceInputs["bandwidthLimit"] = state ? state.bandwidthLimit : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["bandwidthLimit"] = state?.bandwidthLimit;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["state"] = state?.state;
         } else {
             const args = argsOrState as TransferAgentPoolArgs | undefined;
-            resourceInputs["bandwidthLimit"] = args ? args.bandwidthLimit : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["bandwidthLimit"] = args?.bandwidthLimit;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

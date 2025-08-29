@@ -85,23 +85,23 @@ export class Brand extends pulumi.CustomResource {
     /**
      * Application name displayed on OAuth consent screen.
      */
-    public readonly applicationTitle!: pulumi.Output<string>;
+    declare public readonly applicationTitle: pulumi.Output<string>;
     /**
      * Output only. Identifier of the brand, in the format `projects/{project_number}/brands/{brand_id}`
      * NOTE: The name can also be expressed as `projects/{project_id}/brands/{brand_id}`, e.g. when importing.
      * NOTE: The brand identification corresponds to the project number as only one
      * brand can be created per project.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Whether the brand is only intended for usage inside the GSuite organization only.
      */
-    public /*out*/ readonly orgInternalOnly!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly orgInternalOnly: pulumi.Output<boolean>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Support email displayed on the OAuth consent screen. Can be either a
      * user or group email. When a user email is specified, the caller must
@@ -109,7 +109,7 @@ export class Brand extends pulumi.CustomResource {
      * specified, the caller can be either a user or a service account which
      * is an owner of the specified group in Cloud Identity.
      */
-    public readonly supportEmail!: pulumi.Output<string>;
+    declare public readonly supportEmail: pulumi.Output<string>;
 
     /**
      * Create a Brand resource with the given unique name, arguments, and options.
@@ -124,22 +124,22 @@ export class Brand extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BrandState | undefined;
-            resourceInputs["applicationTitle"] = state ? state.applicationTitle : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgInternalOnly"] = state ? state.orgInternalOnly : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["supportEmail"] = state ? state.supportEmail : undefined;
+            resourceInputs["applicationTitle"] = state?.applicationTitle;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgInternalOnly"] = state?.orgInternalOnly;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["supportEmail"] = state?.supportEmail;
         } else {
             const args = argsOrState as BrandArgs | undefined;
-            if ((!args || args.applicationTitle === undefined) && !opts.urn) {
+            if (args?.applicationTitle === undefined && !opts.urn) {
                 throw new Error("Missing required property 'applicationTitle'");
             }
-            if ((!args || args.supportEmail === undefined) && !opts.urn) {
+            if (args?.supportEmail === undefined && !opts.urn) {
                 throw new Error("Missing required property 'supportEmail'");
             }
-            resourceInputs["applicationTitle"] = args ? args.applicationTitle : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["supportEmail"] = args ? args.supportEmail : undefined;
+            resourceInputs["applicationTitle"] = args?.applicationTitle;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["supportEmail"] = args?.supportEmail;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["orgInternalOnly"] = undefined /*out*/;
         }

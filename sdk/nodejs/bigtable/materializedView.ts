@@ -104,28 +104,28 @@ export class MaterializedView extends pulumi.CustomResource {
     /**
      * Set to true to make the MaterializedView protected against deletion.
      */
-    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
+    declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
      * The name of the instance to create the materialized view within.
      */
-    public readonly instance!: pulumi.Output<string | undefined>;
+    declare public readonly instance: pulumi.Output<string | undefined>;
     /**
      * The unique name of the materialized view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
      */
-    public readonly materializedViewId!: pulumi.Output<string>;
+    declare public readonly materializedViewId: pulumi.Output<string>;
     /**
      * The unique name of the requested materialized view. Values are of the form `projects/<project>/instances/<instance>/materializedViews/<materializedViewId>`.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The materialized view's select query.
      */
-    public readonly query!: pulumi.Output<string>;
+    declare public readonly query: pulumi.Output<string>;
 
     /**
      * Create a MaterializedView resource with the given unique name, arguments, and options.
@@ -140,25 +140,25 @@ export class MaterializedView extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MaterializedViewState | undefined;
-            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            resourceInputs["instance"] = state ? state.instance : undefined;
-            resourceInputs["materializedViewId"] = state ? state.materializedViewId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["query"] = state ? state.query : undefined;
+            resourceInputs["deletionProtection"] = state?.deletionProtection;
+            resourceInputs["instance"] = state?.instance;
+            resourceInputs["materializedViewId"] = state?.materializedViewId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["query"] = state?.query;
         } else {
             const args = argsOrState as MaterializedViewArgs | undefined;
-            if ((!args || args.materializedViewId === undefined) && !opts.urn) {
+            if (args?.materializedViewId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'materializedViewId'");
             }
-            if ((!args || args.query === undefined) && !opts.urn) {
+            if (args?.query === undefined && !opts.urn) {
                 throw new Error("Missing required property 'query'");
             }
-            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            resourceInputs["instance"] = args ? args.instance : undefined;
-            resourceInputs["materializedViewId"] = args ? args.materializedViewId : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["query"] = args ? args.query : undefined;
+            resourceInputs["deletionProtection"] = args?.deletionProtection;
+            resourceInputs["instance"] = args?.instance;
+            resourceInputs["materializedViewId"] = args?.materializedViewId;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["query"] = args?.query;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

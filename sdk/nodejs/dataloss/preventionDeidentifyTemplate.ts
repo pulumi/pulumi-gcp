@@ -203,24 +203,24 @@ export class PreventionDeidentifyTemplate extends pulumi.CustomResource {
     /**
      * The creation timestamp of an deidentifyTemplate. Set by the server.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Configuration of the deidentify template
      * Structure is documented below.
      */
-    public readonly deidentifyConfig!: pulumi.Output<outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfig>;
+    declare public readonly deidentifyConfig: pulumi.Output<outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfig>;
     /**
      * A description of the template.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * User set display name of the template.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * The resource name of the template. Set by the server.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The parent of the template in any of the following formats:
      * * `projects/{{project}}`
@@ -228,17 +228,17 @@ export class PreventionDeidentifyTemplate extends pulumi.CustomResource {
      * * `organizations/{{organization_id}}`
      * * `organizations/{{organization_id}}/locations/{{location}}`
      */
-    public readonly parent!: pulumi.Output<string>;
+    declare public readonly parent: pulumi.Output<string>;
     /**
      * The template id can contain uppercase and lowercase letters, numbers, and hyphens;
      * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
      * 100 characters. Can be empty to allow the system to generate one.
      */
-    public readonly templateId!: pulumi.Output<string>;
+    declare public readonly templateId: pulumi.Output<string>;
     /**
      * The last update timestamp of an deidentifyTemplate. Set by the server.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a PreventionDeidentifyTemplate resource with the given unique name, arguments, and options.
@@ -253,27 +253,27 @@ export class PreventionDeidentifyTemplate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PreventionDeidentifyTemplateState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["deidentifyConfig"] = state ? state.deidentifyConfig : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["templateId"] = state ? state.templateId : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deidentifyConfig"] = state?.deidentifyConfig;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["templateId"] = state?.templateId;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as PreventionDeidentifyTemplateArgs | undefined;
-            if ((!args || args.deidentifyConfig === undefined) && !opts.urn) {
+            if (args?.deidentifyConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'deidentifyConfig'");
             }
-            if ((!args || args.parent === undefined) && !opts.urn) {
+            if (args?.parent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            resourceInputs["deidentifyConfig"] = args ? args.deidentifyConfig : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
-            resourceInputs["templateId"] = args ? args.templateId : undefined;
+            resourceInputs["deidentifyConfig"] = args?.deidentifyConfig;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["parent"] = args?.parent;
+            resourceInputs["templateId"] = args?.templateId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;

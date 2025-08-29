@@ -21,16 +21,14 @@ public final class DatasetAccessState extends com.pulumi.resources.ResourceArgs 
     public static final DatasetAccessState Empty = new DatasetAccessState();
 
     /**
-     * If true, represents that that the iam_member in the config was translated to a different member type by the API, and is
-     * stored in state as a different member type
+     * If true, represents that that the iam_member in the config was translated to a different member type by the API, and is stored in state as a different member type
      * 
      */
     @Import(name="apiUpdatedMember")
     private @Nullable Output<Boolean> apiUpdatedMember;
 
     /**
-     * @return If true, represents that that the iam_member in the config was translated to a different member type by the API, and is
-     * stored in state as a different member type
+     * @return If true, represents that that the iam_member in the config was translated to a different member type by the API, and is stored in state as a different member type
      * 
      */
     public Optional<Output<Boolean>> apiUpdatedMember() {
@@ -310,8 +308,7 @@ public final class DatasetAccessState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param apiUpdatedMember If true, represents that that the iam_member in the config was translated to a different member type by the API, and is
-         * stored in state as a different member type
+         * @param apiUpdatedMember If true, represents that that the iam_member in the config was translated to a different member type by the API, and is stored in state as a different member type
          * 
          * @return builder
          * 
@@ -322,8 +319,7 @@ public final class DatasetAccessState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param apiUpdatedMember If true, represents that that the iam_member in the config was translated to a different member type by the API, and is
-         * stored in state as a different member type
+         * @param apiUpdatedMember If true, represents that that the iam_member in the config was translated to a different member type by the API, and is stored in state as a different member type
          * 
          * @return builder
          * 

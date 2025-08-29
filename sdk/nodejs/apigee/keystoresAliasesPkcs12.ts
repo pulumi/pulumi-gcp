@@ -64,42 +64,42 @@ export class KeystoresAliasesPkcs12 extends pulumi.CustomResource {
     /**
      * Alias Name
      */
-    public readonly alias!: pulumi.Output<string>;
+    declare public readonly alias: pulumi.Output<string>;
     /**
      * Chain of certificates under this alias.
      * Structure is documented below.
      */
-    public /*out*/ readonly certsInfos!: pulumi.Output<outputs.apigee.KeystoresAliasesPkcs12CertsInfo[]>;
+    declare public /*out*/ readonly certsInfos: pulumi.Output<outputs.apigee.KeystoresAliasesPkcs12CertsInfo[]>;
     /**
      * Environment associated with the alias
      */
-    public readonly environment!: pulumi.Output<string>;
+    declare public readonly environment: pulumi.Output<string>;
     /**
      * PKCS12 file content
      *
      * - - -
      */
-    public readonly file!: pulumi.Output<string>;
+    declare public readonly file: pulumi.Output<string>;
     /**
      * Hash of the pkcs file
      */
-    public readonly filehash!: pulumi.Output<string>;
+    declare public readonly filehash: pulumi.Output<string>;
     /**
      * Keystore Name
      */
-    public readonly keystore!: pulumi.Output<string>;
+    declare public readonly keystore: pulumi.Output<string>;
     /**
      * Organization ID associated with the alias, without organization/ prefix
      */
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * Password for the PKCS12 file if it's encrypted
      */
-    public readonly password!: pulumi.Output<string>;
+    declare public readonly password: pulumi.Output<string>;
     /**
      * Optional.Type of Alias
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a KeystoresAliasesPkcs12 resource with the given unique name, arguments, and options.
@@ -114,42 +114,42 @@ export class KeystoresAliasesPkcs12 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KeystoresAliasesPkcs12State | undefined;
-            resourceInputs["alias"] = state ? state.alias : undefined;
-            resourceInputs["certsInfos"] = state ? state.certsInfos : undefined;
-            resourceInputs["environment"] = state ? state.environment : undefined;
-            resourceInputs["file"] = state ? state.file : undefined;
-            resourceInputs["filehash"] = state ? state.filehash : undefined;
-            resourceInputs["keystore"] = state ? state.keystore : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["alias"] = state?.alias;
+            resourceInputs["certsInfos"] = state?.certsInfos;
+            resourceInputs["environment"] = state?.environment;
+            resourceInputs["file"] = state?.file;
+            resourceInputs["filehash"] = state?.filehash;
+            resourceInputs["keystore"] = state?.keystore;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as KeystoresAliasesPkcs12Args | undefined;
-            if ((!args || args.alias === undefined) && !opts.urn) {
+            if (args?.alias === undefined && !opts.urn) {
                 throw new Error("Missing required property 'alias'");
             }
-            if ((!args || args.environment === undefined) && !opts.urn) {
+            if (args?.environment === undefined && !opts.urn) {
                 throw new Error("Missing required property 'environment'");
             }
-            if ((!args || args.file === undefined) && !opts.urn) {
+            if (args?.file === undefined && !opts.urn) {
                 throw new Error("Missing required property 'file'");
             }
-            if ((!args || args.filehash === undefined) && !opts.urn) {
+            if (args?.filehash === undefined && !opts.urn) {
                 throw new Error("Missing required property 'filehash'");
             }
-            if ((!args || args.keystore === undefined) && !opts.urn) {
+            if (args?.keystore === undefined && !opts.urn) {
                 throw new Error("Missing required property 'keystore'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            resourceInputs["alias"] = args ? args.alias : undefined;
-            resourceInputs["environment"] = args ? args.environment : undefined;
-            resourceInputs["file"] = args ? args.file : undefined;
-            resourceInputs["filehash"] = args ? args.filehash : undefined;
-            resourceInputs["keystore"] = args ? args.keystore : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["alias"] = args?.alias;
+            resourceInputs["environment"] = args?.environment;
+            resourceInputs["file"] = args?.file;
+            resourceInputs["filehash"] = args?.filehash;
+            resourceInputs["keystore"] = args?.keystore;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["password"] = args?.password;
             resourceInputs["certsInfos"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }

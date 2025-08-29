@@ -71,18 +71,18 @@ export class ProjectMetadataItem extends pulumi.CustomResource {
     /**
      * The metadata key to set.
      */
-    public readonly key!: pulumi.Output<string>;
+    declare public readonly key: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The value to set for the given metadata key.
      *
      * - - -
      */
-    public readonly value!: pulumi.Output<string>;
+    declare public readonly value: pulumi.Output<string>;
 
     /**
      * Create a ProjectMetadataItem resource with the given unique name, arguments, and options.
@@ -97,20 +97,20 @@ export class ProjectMetadataItem extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectMetadataItemState | undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["value"] = state?.value;
         } else {
             const args = argsOrState as ProjectMetadataItemArgs | undefined;
-            if ((!args || args.key === undefined) && !opts.urn) {
+            if (args?.key === undefined && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
-            if ((!args || args.value === undefined) && !opts.urn) {
+            if (args?.value === undefined && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            resourceInputs["key"] = args ? args.key : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["key"] = args?.key;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["value"] = args?.value;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProjectMetadataItem.__pulumiType, name, resourceInputs, opts);

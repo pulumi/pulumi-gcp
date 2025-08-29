@@ -206,13 +206,13 @@ export class AlertPolicy extends pulumi.CustomResource {
      * Control over how this alert policy's notification channels are notified.
      * Structure is documented below.
      */
-    public readonly alertStrategy!: pulumi.Output<outputs.monitoring.AlertPolicyAlertStrategy | undefined>;
+    declare public readonly alertStrategy: pulumi.Output<outputs.monitoring.AlertPolicyAlertStrategy | undefined>;
     /**
      * How to combine the results of multiple conditions to
      * determine if an incident should be opened.
      * Possible values are: `AND`, `OR`, `AND_WITH_MATCHING_RESOURCE`.
      */
-    public readonly combiner!: pulumi.Output<string>;
+    declare public readonly combiner: pulumi.Output<string>;
     /**
      * A list of conditions for the policy. The conditions are combined by
      * AND or OR according to the combiner field. If the combined conditions
@@ -220,21 +220,21 @@ export class AlertPolicy extends pulumi.CustomResource {
      * one to six conditions.
      * Structure is documented below.
      */
-    public readonly conditions!: pulumi.Output<outputs.monitoring.AlertPolicyCondition[]>;
+    declare public readonly conditions: pulumi.Output<outputs.monitoring.AlertPolicyCondition[]>;
     /**
      * A read-only record of the creation of the alerting policy.
      * If provided in a call to create or update, this field will
      * be ignored.
      * Structure is documented below.
      */
-    public /*out*/ readonly creationRecords!: pulumi.Output<outputs.monitoring.AlertPolicyCreationRecord[]>;
+    declare public /*out*/ readonly creationRecords: pulumi.Output<outputs.monitoring.AlertPolicyCreationRecord[]>;
     /**
      * A short name or phrase used to identify the policy in
      * dashboards, notifications, and incidents. To avoid confusion, don't use
      * the same display name for multiple policies in the same project. The
      * name is limited to 512 Unicode characters.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Documentation that is included with notifications and incidents related
      * to this policy. Best practice is for the documentation to include information
@@ -243,16 +243,16 @@ export class AlertPolicy extends pulumi.CustomResource {
      * limited capacity might not show this documentation.
      * Structure is documented below.
      */
-    public readonly documentation!: pulumi.Output<outputs.monitoring.AlertPolicyDocumentation | undefined>;
+    declare public readonly documentation: pulumi.Output<outputs.monitoring.AlertPolicyDocumentation | undefined>;
     /**
      * Whether or not the policy is enabled. The default is true.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * The unique resource name for this policy.
      * Its syntax is: projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Identifies the notification channels to which notifications should be
      * sent when incidents are opened or closed or when new violations occur
@@ -262,19 +262,19 @@ export class AlertPolicy extends pulumi.CustomResource {
      * entries in this field is
      * `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`
      */
-    public readonly notificationChannels!: pulumi.Output<string[] | undefined>;
+    declare public readonly notificationChannels: pulumi.Output<string[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The severity of an alert policy indicates how important incidents generated
      * by that policy are. The severity level will be displayed on the Incident
      * detail page and in notifications.
      * Possible values are: `CRITICAL`, `ERROR`, `WARNING`.
      */
-    public readonly severity!: pulumi.Output<string | undefined>;
+    declare public readonly severity: pulumi.Output<string | undefined>;
     /**
      * This field is intended to be used for organizing and identifying the AlertPolicy
      * objects.The field can contain up to 64 entries. Each key and value is limited
@@ -282,7 +282,7 @@ export class AlertPolicy extends pulumi.CustomResource {
      * can contain only lowercase letters, numerals, underscores, and dashes. Keys
      * must begin with a letter.
      */
-    public readonly userLabels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly userLabels: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a AlertPolicy resource with the given unique name, arguments, and options.
@@ -297,39 +297,39 @@ export class AlertPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AlertPolicyState | undefined;
-            resourceInputs["alertStrategy"] = state ? state.alertStrategy : undefined;
-            resourceInputs["combiner"] = state ? state.combiner : undefined;
-            resourceInputs["conditions"] = state ? state.conditions : undefined;
-            resourceInputs["creationRecords"] = state ? state.creationRecords : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["documentation"] = state ? state.documentation : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["notificationChannels"] = state ? state.notificationChannels : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["severity"] = state ? state.severity : undefined;
-            resourceInputs["userLabels"] = state ? state.userLabels : undefined;
+            resourceInputs["alertStrategy"] = state?.alertStrategy;
+            resourceInputs["combiner"] = state?.combiner;
+            resourceInputs["conditions"] = state?.conditions;
+            resourceInputs["creationRecords"] = state?.creationRecords;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["documentation"] = state?.documentation;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["notificationChannels"] = state?.notificationChannels;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["severity"] = state?.severity;
+            resourceInputs["userLabels"] = state?.userLabels;
         } else {
             const args = argsOrState as AlertPolicyArgs | undefined;
-            if ((!args || args.combiner === undefined) && !opts.urn) {
+            if (args?.combiner === undefined && !opts.urn) {
                 throw new Error("Missing required property 'combiner'");
             }
-            if ((!args || args.conditions === undefined) && !opts.urn) {
+            if (args?.conditions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'conditions'");
             }
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            resourceInputs["alertStrategy"] = args ? args.alertStrategy : undefined;
-            resourceInputs["combiner"] = args ? args.combiner : undefined;
-            resourceInputs["conditions"] = args ? args.conditions : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["documentation"] = args ? args.documentation : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["notificationChannels"] = args ? args.notificationChannels : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["severity"] = args ? args.severity : undefined;
-            resourceInputs["userLabels"] = args ? args.userLabels : undefined;
+            resourceInputs["alertStrategy"] = args?.alertStrategy;
+            resourceInputs["combiner"] = args?.combiner;
+            resourceInputs["conditions"] = args?.conditions;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["documentation"] = args?.documentation;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["notificationChannels"] = args?.notificationChannels;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["severity"] = args?.severity;
+            resourceInputs["userLabels"] = args?.userLabels;
             resourceInputs["creationRecords"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         }

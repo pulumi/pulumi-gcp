@@ -122,28 +122,28 @@ export class EdgeCacheKeyset extends pulumi.CustomResource {
     /**
      * A human-readable description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Set of label tags associated with the EdgeCache resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Name of the resource; provided by the client when the resource is created.
      * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
      * and all following characters must be a dash, underscore, letter or digit.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * An ordered list of Ed25519 public keys to use for validating signed requests.
      * You must specify `publicKeys` or `validationSharedKeys` (or both). The keys in `publicKeys` are checked first.
@@ -153,12 +153,12 @@ export class EdgeCacheKeyset extends pulumi.CustomResource {
      * Ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
      * Structure is documented below.
      */
-    public readonly publicKeys!: pulumi.Output<outputs.networkservices.EdgeCacheKeysetPublicKey[] | undefined>;
+    declare public readonly publicKeys: pulumi.Output<outputs.networkservices.EdgeCacheKeysetPublicKey[] | undefined>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * An ordered list of shared keys to use for validating signed requests.
      * Shared keys are secret.  Ensure that only authorized users can add `validationSharedKeys` to a keyset.
@@ -166,7 +166,7 @@ export class EdgeCacheKeyset extends pulumi.CustomResource {
      * You must specify `publicKeys` or `validationSharedKeys` (or both). The keys in `publicKeys` are checked first.
      * Structure is documented below.
      */
-    public readonly validationSharedKeys!: pulumi.Output<outputs.networkservices.EdgeCacheKeysetValidationSharedKey[] | undefined>;
+    declare public readonly validationSharedKeys: pulumi.Output<outputs.networkservices.EdgeCacheKeysetValidationSharedKey[] | undefined>;
 
     /**
      * Create a EdgeCacheKeyset resource with the given unique name, arguments, and options.
@@ -181,22 +181,22 @@ export class EdgeCacheKeyset extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EdgeCacheKeysetState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["publicKeys"] = state ? state.publicKeys : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["validationSharedKeys"] = state ? state.validationSharedKeys : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["publicKeys"] = state?.publicKeys;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["validationSharedKeys"] = state?.validationSharedKeys;
         } else {
             const args = argsOrState as EdgeCacheKeysetArgs | undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["publicKeys"] = args ? args.publicKeys : undefined;
-            resourceInputs["validationSharedKeys"] = args ? args.validationSharedKeys : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["publicKeys"] = args?.publicKeys;
+            resourceInputs["validationSharedKeys"] = args?.validationSharedKeys;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
         }

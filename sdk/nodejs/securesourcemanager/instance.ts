@@ -500,7 +500,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Time the Instance was created in UTC.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The deletion policy for the instance. Setting `ABANDON` allows the resource
      * to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
@@ -511,72 +511,72 @@ export class Instance extends pulumi.CustomResource {
      * * PREVENT
      * * ABANDON
      */
-    public readonly deletionPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly deletionPolicy: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * A list of hostnames for this instance.
      * Structure is documented below.
      */
-    public /*out*/ readonly hostConfigs!: pulumi.Output<outputs.securesourcemanager.InstanceHostConfig[]>;
+    declare public /*out*/ readonly hostConfigs: pulumi.Output<outputs.securesourcemanager.InstanceHostConfig[]>;
     /**
      * The name for the Instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * Customer-managed encryption key name, in the format projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
      */
-    public readonly kmsKey!: pulumi.Output<string | undefined>;
+    declare public readonly kmsKey: pulumi.Output<string | undefined>;
     /**
      * Labels as key value pairs.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location for the Instance.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The resource name for the Instance.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Private settings for private instance.
      * Structure is documented below.
      */
-    public readonly privateConfig!: pulumi.Output<outputs.securesourcemanager.InstancePrivateConfig | undefined>;
+    declare public readonly privateConfig: pulumi.Output<outputs.securesourcemanager.InstancePrivateConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The current state of the Instance.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Provides information about the current instance state.
      */
-    public /*out*/ readonly stateNote!: pulumi.Output<string>;
+    declare public /*out*/ readonly stateNote: pulumi.Output<string>;
     /**
      * Time the Instance was updated in UTC.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * Configuration for Workforce Identity Federation to support third party identity provider.
      * If unset, defaults to the Google OIDC IdP.
      * Structure is documented below.
      */
-    public readonly workforceIdentityFederationConfig!: pulumi.Output<outputs.securesourcemanager.InstanceWorkforceIdentityFederationConfig | undefined>;
+    declare public readonly workforceIdentityFederationConfig: pulumi.Output<outputs.securesourcemanager.InstanceWorkforceIdentityFederationConfig | undefined>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -591,38 +591,38 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["hostConfigs"] = state ? state.hostConfigs : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["kmsKey"] = state ? state.kmsKey : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["privateConfig"] = state ? state.privateConfig : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["stateNote"] = state ? state.stateNote : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["workforceIdentityFederationConfig"] = state ? state.workforceIdentityFederationConfig : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["hostConfigs"] = state?.hostConfigs;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["kmsKey"] = state?.kmsKey;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["privateConfig"] = state?.privateConfig;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["stateNote"] = state?.stateNote;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["workforceIdentityFederationConfig"] = state?.workforceIdentityFederationConfig;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["kmsKey"] = args ? args.kmsKey : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["privateConfig"] = args ? args.privateConfig : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["workforceIdentityFederationConfig"] = args ? args.workforceIdentityFederationConfig : undefined;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["kmsKey"] = args?.kmsKey;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["privateConfig"] = args?.privateConfig;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["workforceIdentityFederationConfig"] = args?.workforceIdentityFederationConfig;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["hostConfigs"] = undefined /*out*/;

@@ -102,20 +102,20 @@ export class AppCheckDebugToken extends pulumi.CustomResource {
      * [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id),
      * or [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id)
      */
-    public readonly appId!: pulumi.Output<string>;
+    declare public readonly appId: pulumi.Output<string>;
     /**
      * The last segment of the resource name of the debug token.
      */
-    public /*out*/ readonly debugTokenId!: pulumi.Output<string>;
+    declare public /*out*/ readonly debugTokenId: pulumi.Output<string>;
     /**
      * A human readable display name used to identify this debug token.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The secret token itself. Must be provided during creation, and must be a UUID4,
      * case insensitive. You may use a method of your choice such as random/random_uuid
@@ -125,7 +125,7 @@ export class AppCheckDebugToken extends pulumi.CustomResource {
      * For security reasons, this field will never be populated in any response.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    public readonly token!: pulumi.Output<string>;
+    declare public readonly token: pulumi.Output<string>;
 
     /**
      * Create a AppCheckDebugToken resource with the given unique name, arguments, and options.
@@ -140,25 +140,25 @@ export class AppCheckDebugToken extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AppCheckDebugTokenState | undefined;
-            resourceInputs["appId"] = state ? state.appId : undefined;
-            resourceInputs["debugTokenId"] = state ? state.debugTokenId : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["token"] = state ? state.token : undefined;
+            resourceInputs["appId"] = state?.appId;
+            resourceInputs["debugTokenId"] = state?.debugTokenId;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["token"] = state?.token;
         } else {
             const args = argsOrState as AppCheckDebugTokenArgs | undefined;
-            if ((!args || args.appId === undefined) && !opts.urn) {
+            if (args?.appId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'appId'");
             }
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.token === undefined) && !opts.urn) {
+            if (args?.token === undefined && !opts.urn) {
                 throw new Error("Missing required property 'token'");
             }
-            resourceInputs["appId"] = args ? args.appId : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["appId"] = args?.appId;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["project"] = args?.project;
             resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
             resourceInputs["debugTokenId"] = undefined /*out*/;
         }

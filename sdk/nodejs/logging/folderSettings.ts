@@ -93,31 +93,31 @@ export class FolderSettings extends pulumi.CustomResource {
     /**
      * If set to true, the _Default sink in newly created projects and folders will created in a disabled state. This can be used to automatically disable log storage if there is already an aggregated sink configured in the hierarchy. The _Default sink can be re-enabled manually if needed.
      */
-    public readonly disableDefaultSink!: pulumi.Output<boolean>;
+    declare public readonly disableDefaultSink: pulumi.Output<boolean>;
     /**
      * The folder for which to retrieve settings.
      */
-    public readonly folder!: pulumi.Output<string>;
+    declare public readonly folder: pulumi.Output<string>;
     /**
      * The resource name for the configured Cloud KMS key.
      */
-    public readonly kmsKeyName!: pulumi.Output<string>;
+    declare public readonly kmsKeyName: pulumi.Output<string>;
     /**
      * The service account that will be used by the Log Router to access your Cloud KMS key.
      */
-    public /*out*/ readonly kmsServiceAccountId!: pulumi.Output<string>;
+    declare public /*out*/ readonly kmsServiceAccountId: pulumi.Output<string>;
     /**
      * The service account for the given container. Sinks use this service account as their writerIdentity if no custom service account is provided.
      */
-    public /*out*/ readonly loggingServiceAccountId!: pulumi.Output<string>;
+    declare public /*out*/ readonly loggingServiceAccountId: pulumi.Output<string>;
     /**
      * The resource name of the settings.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The storage location that Cloud Logging will use to create new resources when a location is needed but not explicitly provided.
      */
-    public readonly storageLocation!: pulumi.Output<string>;
+    declare public readonly storageLocation: pulumi.Output<string>;
 
     /**
      * Create a FolderSettings resource with the given unique name, arguments, and options.
@@ -132,22 +132,22 @@ export class FolderSettings extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FolderSettingsState | undefined;
-            resourceInputs["disableDefaultSink"] = state ? state.disableDefaultSink : undefined;
-            resourceInputs["folder"] = state ? state.folder : undefined;
-            resourceInputs["kmsKeyName"] = state ? state.kmsKeyName : undefined;
-            resourceInputs["kmsServiceAccountId"] = state ? state.kmsServiceAccountId : undefined;
-            resourceInputs["loggingServiceAccountId"] = state ? state.loggingServiceAccountId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["storageLocation"] = state ? state.storageLocation : undefined;
+            resourceInputs["disableDefaultSink"] = state?.disableDefaultSink;
+            resourceInputs["folder"] = state?.folder;
+            resourceInputs["kmsKeyName"] = state?.kmsKeyName;
+            resourceInputs["kmsServiceAccountId"] = state?.kmsServiceAccountId;
+            resourceInputs["loggingServiceAccountId"] = state?.loggingServiceAccountId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["storageLocation"] = state?.storageLocation;
         } else {
             const args = argsOrState as FolderSettingsArgs | undefined;
-            if ((!args || args.folder === undefined) && !opts.urn) {
+            if (args?.folder === undefined && !opts.urn) {
                 throw new Error("Missing required property 'folder'");
             }
-            resourceInputs["disableDefaultSink"] = args ? args.disableDefaultSink : undefined;
-            resourceInputs["folder"] = args ? args.folder : undefined;
-            resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
-            resourceInputs["storageLocation"] = args ? args.storageLocation : undefined;
+            resourceInputs["disableDefaultSink"] = args?.disableDefaultSink;
+            resourceInputs["folder"] = args?.folder;
+            resourceInputs["kmsKeyName"] = args?.kmsKeyName;
+            resourceInputs["storageLocation"] = args?.storageLocation;
             resourceInputs["kmsServiceAccountId"] = undefined /*out*/;
             resourceInputs["loggingServiceAccountId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

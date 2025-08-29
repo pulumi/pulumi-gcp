@@ -150,25 +150,25 @@ export class PreventionStoredInfoType extends pulumi.CustomResource {
     /**
      * A description of the info type.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Dictionary which defines the rule.
      * Structure is documented below.
      */
-    public readonly dictionary!: pulumi.Output<outputs.dataloss.PreventionStoredInfoTypeDictionary | undefined>;
+    declare public readonly dictionary: pulumi.Output<outputs.dataloss.PreventionStoredInfoTypeDictionary | undefined>;
     /**
      * User set display name of the info type.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * Dictionary which defines the rule.
      * Structure is documented below.
      */
-    public readonly largeCustomDictionary!: pulumi.Output<outputs.dataloss.PreventionStoredInfoTypeLargeCustomDictionary | undefined>;
+    declare public readonly largeCustomDictionary: pulumi.Output<outputs.dataloss.PreventionStoredInfoTypeLargeCustomDictionary | undefined>;
     /**
      * The resource name of the info type. Set by the server.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The parent of the info type in any of the following formats:
      * * `projects/{{project}}`
@@ -176,18 +176,18 @@ export class PreventionStoredInfoType extends pulumi.CustomResource {
      * * `organizations/{{organization_id}}`
      * * `organizations/{{organization_id}}/locations/{{location}}`
      */
-    public readonly parent!: pulumi.Output<string>;
+    declare public readonly parent: pulumi.Output<string>;
     /**
      * Regular expression which defines the rule.
      * Structure is documented below.
      */
-    public readonly regex!: pulumi.Output<outputs.dataloss.PreventionStoredInfoTypeRegex | undefined>;
+    declare public readonly regex: pulumi.Output<outputs.dataloss.PreventionStoredInfoTypeRegex | undefined>;
     /**
      * The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
      * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is 100
      * characters. Can be empty to allow the system to generate one.
      */
-    public readonly storedInfoTypeId!: pulumi.Output<string>;
+    declare public readonly storedInfoTypeId: pulumi.Output<string>;
 
     /**
      * Create a PreventionStoredInfoType resource with the given unique name, arguments, and options.
@@ -202,26 +202,26 @@ export class PreventionStoredInfoType extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PreventionStoredInfoTypeState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["dictionary"] = state ? state.dictionary : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["largeCustomDictionary"] = state ? state.largeCustomDictionary : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["regex"] = state ? state.regex : undefined;
-            resourceInputs["storedInfoTypeId"] = state ? state.storedInfoTypeId : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["dictionary"] = state?.dictionary;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["largeCustomDictionary"] = state?.largeCustomDictionary;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["regex"] = state?.regex;
+            resourceInputs["storedInfoTypeId"] = state?.storedInfoTypeId;
         } else {
             const args = argsOrState as PreventionStoredInfoTypeArgs | undefined;
-            if ((!args || args.parent === undefined) && !opts.urn) {
+            if (args?.parent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["dictionary"] = args ? args.dictionary : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["largeCustomDictionary"] = args ? args.largeCustomDictionary : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
-            resourceInputs["regex"] = args ? args.regex : undefined;
-            resourceInputs["storedInfoTypeId"] = args ? args.storedInfoTypeId : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["dictionary"] = args?.dictionary;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["largeCustomDictionary"] = args?.largeCustomDictionary;
+            resourceInputs["parent"] = args?.parent;
+            resourceInputs["regex"] = args?.regex;
+            resourceInputs["storedInfoTypeId"] = args?.storedInfoTypeId;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

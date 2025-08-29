@@ -119,27 +119,27 @@ export class CertificateMapEntry extends pulumi.CustomResource {
      * There can be defined up to fifteen certificates in each Certificate Map Entry.
      * Each certificate must match pattern projects/*&#47;locations/*&#47;certificates/*.
      */
-    public readonly certificates!: pulumi.Output<string[]>;
+    declare public readonly certificates: pulumi.Output<string[]>;
     /**
      * Creation timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
      * with nanosecond resolution and up to nine fractional digits.
      * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * A human-readable description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com)
      * for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for
      * selecting a proper certificate.
      */
-    public readonly hostname!: pulumi.Output<string | undefined>;
+    declare public readonly hostname: pulumi.Output<string | undefined>;
     /**
      * Set of labels associated with a Certificate Map Entry.
      * An object containing a list of "key": value pairs.
@@ -148,41 +148,41 @@ export class CertificateMapEntry extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A map entry that is inputted into the cetrificate map
      */
-    public readonly map!: pulumi.Output<string>;
+    declare public readonly map: pulumi.Output<string>;
     /**
      * A predefined matcher for particular cases, other than SNI selection
      */
-    public readonly matcher!: pulumi.Output<string | undefined>;
+    declare public readonly matcher: pulumi.Output<string | undefined>;
     /**
      * A user-defined name of the Certificate Map Entry. Certificate Map Entry
      * names must be unique globally and match pattern
      * 'projects/*&#47;locations/*&#47;certificateMaps/*&#47;certificateMapEntries/*'
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * A serving state of this Certificate Map Entry.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
      * with nanosecond resolution and up to nine fractional digits.
      * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a CertificateMapEntry resource with the given unique name, arguments, and options.
@@ -197,35 +197,35 @@ export class CertificateMapEntry extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CertificateMapEntryState | undefined;
-            resourceInputs["certificates"] = state ? state.certificates : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["hostname"] = state ? state.hostname : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["map"] = state ? state.map : undefined;
-            resourceInputs["matcher"] = state ? state.matcher : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["certificates"] = state?.certificates;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["hostname"] = state?.hostname;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["map"] = state?.map;
+            resourceInputs["matcher"] = state?.matcher;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as CertificateMapEntryArgs | undefined;
-            if ((!args || args.certificates === undefined) && !opts.urn) {
+            if (args?.certificates === undefined && !opts.urn) {
                 throw new Error("Missing required property 'certificates'");
             }
-            if ((!args || args.map === undefined) && !opts.urn) {
+            if (args?.map === undefined && !opts.urn) {
                 throw new Error("Missing required property 'map'");
             }
-            resourceInputs["certificates"] = args ? args.certificates : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["hostname"] = args ? args.hostname : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["map"] = args ? args.map : undefined;
-            resourceInputs["matcher"] = args ? args.matcher : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["certificates"] = args?.certificates;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["hostname"] = args?.hostname;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["map"] = args?.map;
+            resourceInputs["matcher"] = args?.matcher;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;

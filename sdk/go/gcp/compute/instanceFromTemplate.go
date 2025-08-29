@@ -92,16 +92,15 @@ type InstanceFromTemplate struct {
 	BootDisk InstanceFromTemplateBootDiskOutput `pulumi:"bootDisk"`
 	// Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
 	CanIpForward pulumi.BoolOutput `pulumi:"canIpForward"`
-	// The Confidential VM config being used by the instance. onHostMaintenance has to be set to TERMINATE or this will fail to
-	// create.
+	// The Confidential VM config being used by the instance.  onHostMaintenance has to be set to TERMINATE or this will fail to create.
 	ConfidentialInstanceConfig InstanceFromTemplateConfidentialInstanceConfigOutput `pulumi:"confidentialInstanceConfig"`
 	// The CPU platform used by this instance.
 	CpuPlatform pulumi.StringOutput `pulumi:"cpuPlatform"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
-	// Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
-	// SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance
-	// life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
+	// Current status of the instance.
+	// 					This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED.
+	// 					For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
 	CurrentStatus pulumi.StringOutput `pulumi:"currentStatus"`
 	// Whether deletion protection is enabled on this instance.
 	DeletionProtection pulumi.BoolOutput `pulumi:"deletionProtection"`
@@ -114,22 +113,20 @@ type InstanceFromTemplate struct {
 	EnableDisplay pulumi.BoolOutput `pulumi:"enableDisplay"`
 	// List of the type and count of accelerator cards attached to the instance.
 	GuestAccelerators InstanceFromTemplateGuestAcceleratorArrayOutput `pulumi:"guestAccelerators"`
-	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-	// labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
-	// exceed 253 characters. Changing this forces a new resource to be created.
+	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
 	Hostname pulumi.StringOutput `pulumi:"hostname"`
 	// Encryption key used to provide data encryption on the given instance.
 	InstanceEncryptionKey InstanceFromTemplateInstanceEncryptionKeyOutput `pulumi:"instanceEncryptionKey"`
 	// The server-assigned unique identifier of this instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
-	// default.
+	// Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the default.
 	KeyRevocationActionType pulumi.StringOutput `pulumi:"keyRevocationActionType"`
 	// The unique fingerprint of the labels.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
-	// A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
-	// the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-	// the resource.
+	// A set of key/value label pairs assigned to the instance.
+	//
+	//                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	//                 Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The machine type to create.
 	MachineType pulumi.StringOutput `pulumi:"machineType"`
@@ -146,15 +143,13 @@ type InstanceFromTemplate struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The networks attached to the instance.
 	NetworkInterfaces InstanceFromTemplateNetworkInterfaceArrayOutput `pulumi:"networkInterfaces"`
-	// Configures network performance settings for the instance. If not specified, the instance will be created with its
-	// default network performance configuration.
+	// Configures network performance settings for the instance. If not specified, the instance will be created with its default network performance configuration.
 	NetworkPerformanceConfig InstanceFromTemplateNetworkPerformanceConfigOutput `pulumi:"networkPerformanceConfig"`
 	// Stores additional params passed with the request, but not persisted as part of resource payload.
 	Params InstanceFromTemplateParamsOutput `pulumi:"params"`
 	// Partner Metadata Map made available within the instance.
 	PartnerMetadata pulumi.StringMapOutput `pulumi:"partnerMetadata"`
-	// The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink
-	// nor project are provided, the provider project is used.
+	// The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink nor project are provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
@@ -238,16 +233,15 @@ type instanceFromTemplateState struct {
 	BootDisk *InstanceFromTemplateBootDisk `pulumi:"bootDisk"`
 	// Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
 	CanIpForward *bool `pulumi:"canIpForward"`
-	// The Confidential VM config being used by the instance. onHostMaintenance has to be set to TERMINATE or this will fail to
-	// create.
+	// The Confidential VM config being used by the instance.  onHostMaintenance has to be set to TERMINATE or this will fail to create.
 	ConfidentialInstanceConfig *InstanceFromTemplateConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
 	// The CPU platform used by this instance.
 	CpuPlatform *string `pulumi:"cpuPlatform"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
-	// Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
-	// SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance
-	// life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
+	// Current status of the instance.
+	// 					This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED.
+	// 					For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
 	CurrentStatus *string `pulumi:"currentStatus"`
 	// Whether deletion protection is enabled on this instance.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
@@ -260,22 +254,20 @@ type instanceFromTemplateState struct {
 	EnableDisplay *bool `pulumi:"enableDisplay"`
 	// List of the type and count of accelerator cards attached to the instance.
 	GuestAccelerators []InstanceFromTemplateGuestAccelerator `pulumi:"guestAccelerators"`
-	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-	// labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
-	// exceed 253 characters. Changing this forces a new resource to be created.
+	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
 	Hostname *string `pulumi:"hostname"`
 	// Encryption key used to provide data encryption on the given instance.
 	InstanceEncryptionKey *InstanceFromTemplateInstanceEncryptionKey `pulumi:"instanceEncryptionKey"`
 	// The server-assigned unique identifier of this instance.
 	InstanceId *string `pulumi:"instanceId"`
-	// Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
-	// default.
+	// Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the default.
 	KeyRevocationActionType *string `pulumi:"keyRevocationActionType"`
 	// The unique fingerprint of the labels.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
-	// A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
-	// the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-	// the resource.
+	// A set of key/value label pairs assigned to the instance.
+	//
+	//                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	//                 Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The machine type to create.
 	MachineType *string `pulumi:"machineType"`
@@ -292,15 +284,13 @@ type instanceFromTemplateState struct {
 	Name *string `pulumi:"name"`
 	// The networks attached to the instance.
 	NetworkInterfaces []InstanceFromTemplateNetworkInterface `pulumi:"networkInterfaces"`
-	// Configures network performance settings for the instance. If not specified, the instance will be created with its
-	// default network performance configuration.
+	// Configures network performance settings for the instance. If not specified, the instance will be created with its default network performance configuration.
 	NetworkPerformanceConfig *InstanceFromTemplateNetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
 	// Stores additional params passed with the request, but not persisted as part of resource payload.
 	Params *InstanceFromTemplateParams `pulumi:"params"`
 	// Partner Metadata Map made available within the instance.
 	PartnerMetadata map[string]string `pulumi:"partnerMetadata"`
-	// The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink
-	// nor project are provided, the provider project is used.
+	// The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink nor project are provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
@@ -347,16 +337,15 @@ type InstanceFromTemplateState struct {
 	BootDisk InstanceFromTemplateBootDiskPtrInput
 	// Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
 	CanIpForward pulumi.BoolPtrInput
-	// The Confidential VM config being used by the instance. onHostMaintenance has to be set to TERMINATE or this will fail to
-	// create.
+	// The Confidential VM config being used by the instance.  onHostMaintenance has to be set to TERMINATE or this will fail to create.
 	ConfidentialInstanceConfig InstanceFromTemplateConfidentialInstanceConfigPtrInput
 	// The CPU platform used by this instance.
 	CpuPlatform pulumi.StringPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
-	// Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
-	// SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance
-	// life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
+	// Current status of the instance.
+	// 					This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED.
+	// 					For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
 	CurrentStatus pulumi.StringPtrInput
 	// Whether deletion protection is enabled on this instance.
 	DeletionProtection pulumi.BoolPtrInput
@@ -369,22 +358,20 @@ type InstanceFromTemplateState struct {
 	EnableDisplay pulumi.BoolPtrInput
 	// List of the type and count of accelerator cards attached to the instance.
 	GuestAccelerators InstanceFromTemplateGuestAcceleratorArrayInput
-	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-	// labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
-	// exceed 253 characters. Changing this forces a new resource to be created.
+	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
 	Hostname pulumi.StringPtrInput
 	// Encryption key used to provide data encryption on the given instance.
 	InstanceEncryptionKey InstanceFromTemplateInstanceEncryptionKeyPtrInput
 	// The server-assigned unique identifier of this instance.
 	InstanceId pulumi.StringPtrInput
-	// Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
-	// default.
+	// Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the default.
 	KeyRevocationActionType pulumi.StringPtrInput
 	// The unique fingerprint of the labels.
 	LabelFingerprint pulumi.StringPtrInput
-	// A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
-	// the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-	// the resource.
+	// A set of key/value label pairs assigned to the instance.
+	//
+	//                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	//                 Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The machine type to create.
 	MachineType pulumi.StringPtrInput
@@ -401,15 +388,13 @@ type InstanceFromTemplateState struct {
 	Name pulumi.StringPtrInput
 	// The networks attached to the instance.
 	NetworkInterfaces InstanceFromTemplateNetworkInterfaceArrayInput
-	// Configures network performance settings for the instance. If not specified, the instance will be created with its
-	// default network performance configuration.
+	// Configures network performance settings for the instance. If not specified, the instance will be created with its default network performance configuration.
 	NetworkPerformanceConfig InstanceFromTemplateNetworkPerformanceConfigPtrInput
 	// Stores additional params passed with the request, but not persisted as part of resource payload.
 	Params InstanceFromTemplateParamsPtrInput
 	// Partner Metadata Map made available within the instance.
 	PartnerMetadata pulumi.StringMapInput
-	// The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink
-	// nor project are provided, the provider project is used.
+	// The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink nor project are provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
@@ -460,8 +445,7 @@ type instanceFromTemplateArgs struct {
 	BootDisk *InstanceFromTemplateBootDisk `pulumi:"bootDisk"`
 	// Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
 	CanIpForward *bool `pulumi:"canIpForward"`
-	// The Confidential VM config being used by the instance. onHostMaintenance has to be set to TERMINATE or this will fail to
-	// create.
+	// The Confidential VM config being used by the instance.  onHostMaintenance has to be set to TERMINATE or this will fail to create.
 	ConfidentialInstanceConfig *InstanceFromTemplateConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
 	// Whether deletion protection is enabled on this instance.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
@@ -473,18 +457,16 @@ type instanceFromTemplateArgs struct {
 	EnableDisplay *bool `pulumi:"enableDisplay"`
 	// List of the type and count of accelerator cards attached to the instance.
 	GuestAccelerators []InstanceFromTemplateGuestAccelerator `pulumi:"guestAccelerators"`
-	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-	// labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
-	// exceed 253 characters. Changing this forces a new resource to be created.
+	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
 	Hostname *string `pulumi:"hostname"`
 	// Encryption key used to provide data encryption on the given instance.
 	InstanceEncryptionKey *InstanceFromTemplateInstanceEncryptionKey `pulumi:"instanceEncryptionKey"`
-	// Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
-	// default.
+	// Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the default.
 	KeyRevocationActionType *string `pulumi:"keyRevocationActionType"`
-	// A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
-	// the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-	// the resource.
+	// A set of key/value label pairs assigned to the instance.
+	//
+	//                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	//                 Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The machine type to create.
 	MachineType *string `pulumi:"machineType"`
@@ -499,15 +481,13 @@ type instanceFromTemplateArgs struct {
 	Name *string `pulumi:"name"`
 	// The networks attached to the instance.
 	NetworkInterfaces []InstanceFromTemplateNetworkInterface `pulumi:"networkInterfaces"`
-	// Configures network performance settings for the instance. If not specified, the instance will be created with its
-	// default network performance configuration.
+	// Configures network performance settings for the instance. If not specified, the instance will be created with its default network performance configuration.
 	NetworkPerformanceConfig *InstanceFromTemplateNetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
 	// Stores additional params passed with the request, but not persisted as part of resource payload.
 	Params *InstanceFromTemplateParams `pulumi:"params"`
 	// Partner Metadata Map made available within the instance.
 	PartnerMetadata map[string]string `pulumi:"partnerMetadata"`
-	// The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink
-	// nor project are provided, the provider project is used.
+	// The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink nor project are provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Specifies the reservations that this instance can consume from.
 	ReservationAffinity *InstanceFromTemplateReservationAffinity `pulumi:"reservationAffinity"`
@@ -549,8 +529,7 @@ type InstanceFromTemplateArgs struct {
 	BootDisk InstanceFromTemplateBootDiskPtrInput
 	// Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
 	CanIpForward pulumi.BoolPtrInput
-	// The Confidential VM config being used by the instance. onHostMaintenance has to be set to TERMINATE or this will fail to
-	// create.
+	// The Confidential VM config being used by the instance.  onHostMaintenance has to be set to TERMINATE or this will fail to create.
 	ConfidentialInstanceConfig InstanceFromTemplateConfidentialInstanceConfigPtrInput
 	// Whether deletion protection is enabled on this instance.
 	DeletionProtection pulumi.BoolPtrInput
@@ -562,18 +541,16 @@ type InstanceFromTemplateArgs struct {
 	EnableDisplay pulumi.BoolPtrInput
 	// List of the type and count of accelerator cards attached to the instance.
 	GuestAccelerators InstanceFromTemplateGuestAcceleratorArrayInput
-	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-	// labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
-	// exceed 253 characters. Changing this forces a new resource to be created.
+	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
 	Hostname pulumi.StringPtrInput
 	// Encryption key used to provide data encryption on the given instance.
 	InstanceEncryptionKey InstanceFromTemplateInstanceEncryptionKeyPtrInput
-	// Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
-	// default.
+	// Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the default.
 	KeyRevocationActionType pulumi.StringPtrInput
-	// A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
-	// the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-	// the resource.
+	// A set of key/value label pairs assigned to the instance.
+	//
+	//                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	//                 Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The machine type to create.
 	MachineType pulumi.StringPtrInput
@@ -588,15 +565,13 @@ type InstanceFromTemplateArgs struct {
 	Name pulumi.StringPtrInput
 	// The networks attached to the instance.
 	NetworkInterfaces InstanceFromTemplateNetworkInterfaceArrayInput
-	// Configures network performance settings for the instance. If not specified, the instance will be created with its
-	// default network performance configuration.
+	// Configures network performance settings for the instance. If not specified, the instance will be created with its default network performance configuration.
 	NetworkPerformanceConfig InstanceFromTemplateNetworkPerformanceConfigPtrInput
 	// Stores additional params passed with the request, but not persisted as part of resource payload.
 	Params InstanceFromTemplateParamsPtrInput
 	// Partner Metadata Map made available within the instance.
 	PartnerMetadata pulumi.StringMapInput
-	// The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink
-	// nor project are provided, the provider project is used.
+	// The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink nor project are provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Specifies the reservations that this instance can consume from.
 	ReservationAffinity InstanceFromTemplateReservationAffinityPtrInput
@@ -740,8 +715,7 @@ func (o InstanceFromTemplateOutput) CanIpForward() pulumi.BoolOutput {
 	return o.ApplyT(func(v *InstanceFromTemplate) pulumi.BoolOutput { return v.CanIpForward }).(pulumi.BoolOutput)
 }
 
-// The Confidential VM config being used by the instance. onHostMaintenance has to be set to TERMINATE or this will fail to
-// create.
+// The Confidential VM config being used by the instance.  onHostMaintenance has to be set to TERMINATE or this will fail to create.
 func (o InstanceFromTemplateOutput) ConfidentialInstanceConfig() InstanceFromTemplateConfidentialInstanceConfigOutput {
 	return o.ApplyT(func(v *InstanceFromTemplate) InstanceFromTemplateConfidentialInstanceConfigOutput {
 		return v.ConfidentialInstanceConfig
@@ -758,9 +732,10 @@ func (o InstanceFromTemplateOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceFromTemplate) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
 }
 
-// Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
-// SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance
-// life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
+// Current status of the instance.
+//
+//	This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED.
+//	For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
 func (o InstanceFromTemplateOutput) CurrentStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceFromTemplate) pulumi.StringOutput { return v.CurrentStatus }).(pulumi.StringOutput)
 }
@@ -796,9 +771,7 @@ func (o InstanceFromTemplateOutput) GuestAccelerators() InstanceFromTemplateGues
 	}).(InstanceFromTemplateGuestAcceleratorArrayOutput)
 }
 
-// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-// labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
-// exceed 253 characters. Changing this forces a new resource to be created.
+// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
 func (o InstanceFromTemplateOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceFromTemplate) pulumi.StringOutput { return v.Hostname }).(pulumi.StringOutput)
 }
@@ -815,8 +788,7 @@ func (o InstanceFromTemplateOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceFromTemplate) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
-// default.
+// Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the default.
 func (o InstanceFromTemplateOutput) KeyRevocationActionType() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceFromTemplate) pulumi.StringOutput { return v.KeyRevocationActionType }).(pulumi.StringOutput)
 }
@@ -826,9 +798,10 @@ func (o InstanceFromTemplateOutput) LabelFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceFromTemplate) pulumi.StringOutput { return v.LabelFingerprint }).(pulumi.StringOutput)
 }
 
-// A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
-// the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-// the resource.
+// A set of key/value label pairs assigned to the instance.
+//
+//	**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+//	Please refer to the field 'effective_labels' for all of the labels present on the resource.
 func (o InstanceFromTemplateOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *InstanceFromTemplate) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -871,8 +844,7 @@ func (o InstanceFromTemplateOutput) NetworkInterfaces() InstanceFromTemplateNetw
 	}).(InstanceFromTemplateNetworkInterfaceArrayOutput)
 }
 
-// Configures network performance settings for the instance. If not specified, the instance will be created with its
-// default network performance configuration.
+// Configures network performance settings for the instance. If not specified, the instance will be created with its default network performance configuration.
 func (o InstanceFromTemplateOutput) NetworkPerformanceConfig() InstanceFromTemplateNetworkPerformanceConfigOutput {
 	return o.ApplyT(func(v *InstanceFromTemplate) InstanceFromTemplateNetworkPerformanceConfigOutput {
 		return v.NetworkPerformanceConfig
@@ -889,8 +861,7 @@ func (o InstanceFromTemplateOutput) PartnerMetadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *InstanceFromTemplate) pulumi.StringMapOutput { return v.PartnerMetadata }).(pulumi.StringMapOutput)
 }
 
-// The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink
-// nor project are provided, the provider project is used.
+// The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink nor project are provided, the provider project is used.
 func (o InstanceFromTemplateOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceFromTemplate) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

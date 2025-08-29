@@ -117,81 +117,82 @@ export class Asset extends pulumi.CustomResource {
     /**
      * Output only. The time when the asset was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The zone for the resource
      */
-    public readonly dataplexZone!: pulumi.Output<string>;
+    declare public readonly dataplexZone: pulumi.Output<string>;
     /**
      * Optional. Description of the asset.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Required. Specification of the discovery feature applied to data referenced by this asset. When this spec is left unset, the asset will use the spec set on the parent zone.
      */
-    public readonly discoverySpec!: pulumi.Output<outputs.dataplex.AssetDiscoverySpec>;
+    declare public readonly discoverySpec: pulumi.Output<outputs.dataplex.AssetDiscoverySpec>;
     /**
      * Output only. Status of the discovery feature applied to data referenced by this asset.
      */
-    public /*out*/ readonly discoveryStatuses!: pulumi.Output<outputs.dataplex.AssetDiscoveryStatus[]>;
+    declare public /*out*/ readonly discoveryStatuses: pulumi.Output<outputs.dataplex.AssetDiscoveryStatus[]>;
     /**
      * Optional. User friendly display name.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
-     * Optional. User defined labels for the asset. **Note**: This field is non-authoritative, and will only manage the labels
-     * present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the
-     * resource.
+     * Optional. User defined labels for the asset.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The lake for the resource
      */
-    public readonly lake!: pulumi.Output<string>;
+    declare public readonly lake: pulumi.Output<string>;
     /**
      * The location for the resource
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The name of the asset.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The project for the resource
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Required. Immutable. Specification of the resource that is referenced by this asset.
      */
-    public readonly resourceSpec!: pulumi.Output<outputs.dataplex.AssetResourceSpec>;
+    declare public readonly resourceSpec: pulumi.Output<outputs.dataplex.AssetResourceSpec>;
     /**
      * Output only. Status of the resource referenced by this asset.
      */
-    public /*out*/ readonly resourceStatuses!: pulumi.Output<outputs.dataplex.AssetResourceStatus[]>;
+    declare public /*out*/ readonly resourceStatuses: pulumi.Output<outputs.dataplex.AssetResourceStatus[]>;
     /**
      * Output only. Status of the security policy applied to resource referenced by this asset.
      */
-    public /*out*/ readonly securityStatuses!: pulumi.Output<outputs.dataplex.AssetSecurityStatus[]>;
+    declare public /*out*/ readonly securityStatuses: pulumi.Output<outputs.dataplex.AssetSecurityStatus[]>;
     /**
      * Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * Output only. The time when the asset was last updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Asset resource with the given unique name, arguments, and options.
@@ -206,52 +207,52 @@ export class Asset extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AssetState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dataplexZone"] = state ? state.dataplexZone : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["discoverySpec"] = state ? state.discoverySpec : undefined;
-            resourceInputs["discoveryStatuses"] = state ? state.discoveryStatuses : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["lake"] = state ? state.lake : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["resourceSpec"] = state ? state.resourceSpec : undefined;
-            resourceInputs["resourceStatuses"] = state ? state.resourceStatuses : undefined;
-            resourceInputs["securityStatuses"] = state ? state.securityStatuses : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dataplexZone"] = state?.dataplexZone;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["discoverySpec"] = state?.discoverySpec;
+            resourceInputs["discoveryStatuses"] = state?.discoveryStatuses;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["lake"] = state?.lake;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["resourceSpec"] = state?.resourceSpec;
+            resourceInputs["resourceStatuses"] = state?.resourceStatuses;
+            resourceInputs["securityStatuses"] = state?.securityStatuses;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as AssetArgs | undefined;
-            if ((!args || args.dataplexZone === undefined) && !opts.urn) {
+            if (args?.dataplexZone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataplexZone'");
             }
-            if ((!args || args.discoverySpec === undefined) && !opts.urn) {
+            if (args?.discoverySpec === undefined && !opts.urn) {
                 throw new Error("Missing required property 'discoverySpec'");
             }
-            if ((!args || args.lake === undefined) && !opts.urn) {
+            if (args?.lake === undefined && !opts.urn) {
                 throw new Error("Missing required property 'lake'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.resourceSpec === undefined) && !opts.urn) {
+            if (args?.resourceSpec === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceSpec'");
             }
-            resourceInputs["dataplexZone"] = args ? args.dataplexZone : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["discoverySpec"] = args ? args.discoverySpec : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["lake"] = args ? args.lake : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["resourceSpec"] = args ? args.resourceSpec : undefined;
+            resourceInputs["dataplexZone"] = args?.dataplexZone;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["discoverySpec"] = args?.discoverySpec;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["lake"] = args?.lake;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["resourceSpec"] = args?.resourceSpec;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["discoveryStatuses"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
@@ -302,9 +303,10 @@ export interface AssetState {
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Optional. User defined labels for the asset. **Note**: This field is non-authoritative, and will only manage the labels
-     * present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the
-     * resource.
+     * Optional. User defined labels for the asset.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -374,9 +376,10 @@ export interface AssetArgs {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Optional. User defined labels for the asset. **Note**: This field is non-authoritative, and will only manage the labels
-     * present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the
-     * resource.
+     * Optional. User defined labels for the asset.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

@@ -242,17 +242,17 @@ export class Runtime extends pulumi.CustomResource {
      * The config settings for accessing runtime.
      * Structure is documented below.
      */
-    public readonly accessConfig!: pulumi.Output<outputs.notebooks.RuntimeAccessConfig | undefined>;
+    declare public readonly accessConfig: pulumi.Output<outputs.notebooks.RuntimeAccessConfig | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The health state of this runtime. For a list of possible output
      * values, see `https://cloud.google.com/vertex-ai/docs/workbench/
      * reference/rest/v1/projects.locations.runtimes#healthstate`.
      */
-    public /*out*/ readonly healthState!: pulumi.Output<string>;
+    declare public /*out*/ readonly healthState: pulumi.Output<string>;
     /**
      * The labels to associate with this runtime. Label **keys** must
      * contain 1 to 63 characters, and must conform to [RFC 1035]
@@ -264,45 +264,45 @@ export class Runtime extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A reference to the zone where the machine resides.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Contains Runtime daemon metrics such as Service status and JupyterLab
      * status
      * Structure is documented below.
      */
-    public /*out*/ readonly metrics!: pulumi.Output<outputs.notebooks.RuntimeMetric[]>;
+    declare public /*out*/ readonly metrics: pulumi.Output<outputs.notebooks.RuntimeMetric[]>;
     /**
      * The name specified for the Notebook runtime.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The config settings for software inside the runtime.
      * Structure is documented below.
      */
-    public readonly softwareConfig!: pulumi.Output<outputs.notebooks.RuntimeSoftwareConfig>;
+    declare public readonly softwareConfig: pulumi.Output<outputs.notebooks.RuntimeSoftwareConfig>;
     /**
      * The state of this runtime.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Use a Compute Engine VM image to start the managed notebook instance.
      * Structure is documented below.
      */
-    public readonly virtualMachine!: pulumi.Output<outputs.notebooks.RuntimeVirtualMachine | undefined>;
+    declare public readonly virtualMachine: pulumi.Output<outputs.notebooks.RuntimeVirtualMachine | undefined>;
 
     /**
      * Create a Runtime resource with the given unique name, arguments, and options.
@@ -317,30 +317,30 @@ export class Runtime extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RuntimeState | undefined;
-            resourceInputs["accessConfig"] = state ? state.accessConfig : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["healthState"] = state ? state.healthState : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["metrics"] = state ? state.metrics : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["softwareConfig"] = state ? state.softwareConfig : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["virtualMachine"] = state ? state.virtualMachine : undefined;
+            resourceInputs["accessConfig"] = state?.accessConfig;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["healthState"] = state?.healthState;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["metrics"] = state?.metrics;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["softwareConfig"] = state?.softwareConfig;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["virtualMachine"] = state?.virtualMachine;
         } else {
             const args = argsOrState as RuntimeArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["accessConfig"] = args ? args.accessConfig : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["softwareConfig"] = args ? args.softwareConfig : undefined;
-            resourceInputs["virtualMachine"] = args ? args.virtualMachine : undefined;
+            resourceInputs["accessConfig"] = args?.accessConfig;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["softwareConfig"] = args?.softwareConfig;
+            resourceInputs["virtualMachine"] = args?.virtualMachine;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["healthState"] = undefined /*out*/;
             resourceInputs["metrics"] = undefined /*out*/;

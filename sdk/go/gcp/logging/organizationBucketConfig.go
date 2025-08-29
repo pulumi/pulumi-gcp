@@ -76,9 +76,7 @@ type OrganizationBucketConfig struct {
 
 	// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
 	BucketId pulumi.StringOutput `pulumi:"bucketId"`
-	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
-	// key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
-	// updating the log bucket. Changing the KMS key is allowed.
+	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
 	CmekSettings OrganizationBucketConfigCmekSettingsPtrOutput `pulumi:"cmekSettings"`
 	// Describes this bucket.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -137,9 +135,7 @@ func GetOrganizationBucketConfig(ctx *pulumi.Context,
 type organizationBucketConfigState struct {
 	// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
 	BucketId *string `pulumi:"bucketId"`
-	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
-	// key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
-	// updating the log bucket. Changing the KMS key is allowed.
+	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
 	CmekSettings *OrganizationBucketConfigCmekSettings `pulumi:"cmekSettings"`
 	// Describes this bucket.
 	Description *string `pulumi:"description"`
@@ -160,9 +156,7 @@ type organizationBucketConfigState struct {
 type OrganizationBucketConfigState struct {
 	// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
 	BucketId pulumi.StringPtrInput
-	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
-	// key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
-	// updating the log bucket. Changing the KMS key is allowed.
+	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
 	CmekSettings OrganizationBucketConfigCmekSettingsPtrInput
 	// Describes this bucket.
 	Description pulumi.StringPtrInput
@@ -187,9 +181,7 @@ func (OrganizationBucketConfigState) ElementType() reflect.Type {
 type organizationBucketConfigArgs struct {
 	// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
 	BucketId string `pulumi:"bucketId"`
-	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
-	// key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
-	// updating the log bucket. Changing the KMS key is allowed.
+	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
 	CmekSettings *OrganizationBucketConfigCmekSettings `pulumi:"cmekSettings"`
 	// Describes this bucket.
 	Description *string `pulumi:"description"`
@@ -207,9 +199,7 @@ type organizationBucketConfigArgs struct {
 type OrganizationBucketConfigArgs struct {
 	// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
 	BucketId pulumi.StringInput
-	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
-	// key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
-	// updating the log bucket. Changing the KMS key is allowed.
+	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
 	CmekSettings OrganizationBucketConfigCmekSettingsPtrInput
 	// Describes this bucket.
 	Description pulumi.StringPtrInput
@@ -315,9 +305,7 @@ func (o OrganizationBucketConfigOutput) BucketId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationBucketConfig) pulumi.StringOutput { return v.BucketId }).(pulumi.StringOutput)
 }
 
-// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
-// key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
-// updating the log bucket. Changing the KMS key is allowed.
+// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
 func (o OrganizationBucketConfigOutput) CmekSettings() OrganizationBucketConfigCmekSettingsPtrOutput {
 	return o.ApplyT(func(v *OrganizationBucketConfig) OrganizationBucketConfigCmekSettingsPtrOutput { return v.CmekSettings }).(OrganizationBucketConfigCmekSettingsPtrOutput)
 }

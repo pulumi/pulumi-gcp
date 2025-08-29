@@ -337,133 +337,133 @@ export class Connection extends pulumi.CustomResource {
      * authConfig for the connection.
      * Structure is documented below.
      */
-    public readonly authConfig!: pulumi.Output<outputs.integrationconnectors.ConnectionAuthConfig | undefined>;
+    declare public readonly authConfig: pulumi.Output<outputs.integrationconnectors.ConnectionAuthConfig | undefined>;
     /**
      * Config Variables for the connection.
      * Structure is documented below.
      */
-    public readonly configVariables!: pulumi.Output<outputs.integrationconnectors.ConnectionConfigVariable[] | undefined>;
+    declare public readonly configVariables: pulumi.Output<outputs.integrationconnectors.ConnectionConfigVariable[] | undefined>;
     /**
      * Connection revision. This field is only updated when the connection is created or updated by User.
      */
-    public /*out*/ readonly connectionRevision!: pulumi.Output<string>;
+    declare public /*out*/ readonly connectionRevision: pulumi.Output<string>;
     /**
      * connectorVersion of the Connector.
      */
-    public readonly connectorVersion!: pulumi.Output<string>;
+    declare public readonly connectorVersion: pulumi.Output<string>;
     /**
      * This configuration provides infra configs like rate limit threshold which need to be configurable for every connector version.
      * Structure is documented below.
      */
-    public /*out*/ readonly connectorVersionInfraConfigs!: pulumi.Output<outputs.integrationconnectors.ConnectionConnectorVersionInfraConfig[]>;
+    declare public /*out*/ readonly connectorVersionInfraConfigs: pulumi.Output<outputs.integrationconnectors.ConnectionConnectorVersionInfraConfig[]>;
     /**
      * Flag to mark the version indicating the launch stage.
      */
-    public /*out*/ readonly connectorVersionLaunchStage!: pulumi.Output<string>;
+    declare public /*out*/ readonly connectorVersionLaunchStage: pulumi.Output<string>;
     /**
      * Time the Namespace was created in UTC.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * An arbitrary description for the Connection.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Define the Connectors target endpoint.
      * Structure is documented below.
      */
-    public readonly destinationConfigs!: pulumi.Output<outputs.integrationconnectors.ConnectionDestinationConfig[] | undefined>;
+    declare public readonly destinationConfigs: pulumi.Output<outputs.integrationconnectors.ConnectionDestinationConfig[] | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Eventing Configuration of a connection
      * Structure is documented below.
      */
-    public readonly eventingConfig!: pulumi.Output<outputs.integrationconnectors.ConnectionEventingConfig | undefined>;
+    declare public readonly eventingConfig: pulumi.Output<outputs.integrationconnectors.ConnectionEventingConfig | undefined>;
     /**
      * Eventing enablement type. Will be nil if eventing is not enabled.
      * Possible values are: `EVENTING_AND_CONNECTION`, `ONLY_EVENTING`.
      */
-    public readonly eventingEnablementType!: pulumi.Output<string | undefined>;
+    declare public readonly eventingEnablementType: pulumi.Output<string | undefined>;
     /**
      * Eventing Runtime Data.
      * Structure is documented below.
      */
-    public /*out*/ readonly eventingRuntimeDatas!: pulumi.Output<outputs.integrationconnectors.ConnectionEventingRuntimeData[]>;
+    declare public /*out*/ readonly eventingRuntimeDatas: pulumi.Output<outputs.integrationconnectors.ConnectionEventingRuntimeData[]>;
     /**
      * Resource labels to represent user provided metadata.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Location in which Connection needs to be created.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Determines whether or no a connection is locked. If locked, a reason must be specified.
      * Structure is documented below.
      */
-    public readonly lockConfig!: pulumi.Output<outputs.integrationconnectors.ConnectionLockConfig | undefined>;
+    declare public readonly lockConfig: pulumi.Output<outputs.integrationconnectors.ConnectionLockConfig | undefined>;
     /**
      * Log configuration for the connection.
      * Structure is documented below.
      */
-    public readonly logConfig!: pulumi.Output<outputs.integrationconnectors.ConnectionLogConfig | undefined>;
+    declare public readonly logConfig: pulumi.Output<outputs.integrationconnectors.ConnectionLogConfig | undefined>;
     /**
      * Name of Connection needs to be created.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Node configuration for the connection.
      * Structure is documented below.
      */
-    public readonly nodeConfig!: pulumi.Output<outputs.integrationconnectors.ConnectionNodeConfig>;
+    declare public readonly nodeConfig: pulumi.Output<outputs.integrationconnectors.ConnectionNodeConfig>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Service account needed for runtime plane to access Google Cloud resources.
      */
-    public readonly serviceAccount!: pulumi.Output<string>;
+    declare public readonly serviceAccount: pulumi.Output<string>;
     /**
      * The name of the Service Directory service name. Used for Private Harpoon to resolve the ILB address.
      * e.g. "projects/cloud-connectors-e2e-testing/locations/us-central1/namespaces/istio-system/services/istio-ingressgateway-connectors"
      */
-    public /*out*/ readonly serviceDirectory!: pulumi.Output<string>;
+    declare public /*out*/ readonly serviceDirectory: pulumi.Output<string>;
     /**
      * SSL Configuration of a connection
      * Structure is documented below.
      */
-    public readonly sslConfig!: pulumi.Output<outputs.integrationconnectors.ConnectionSslConfig | undefined>;
+    declare public readonly sslConfig: pulumi.Output<outputs.integrationconnectors.ConnectionSslConfig | undefined>;
     /**
      * (Output)
      * Current status of eventing.
      * Structure is documented below.
      */
-    public /*out*/ readonly statuses!: pulumi.Output<outputs.integrationconnectors.ConnectionStatus[]>;
+    declare public /*out*/ readonly statuses: pulumi.Output<outputs.integrationconnectors.ConnectionStatus[]>;
     /**
      * This subscription type enum states the subscription type of the project.
      */
-    public /*out*/ readonly subscriptionType!: pulumi.Output<string>;
+    declare public /*out*/ readonly subscriptionType: pulumi.Output<string>;
     /**
      * Suspended indicates if a user has suspended a connection or not.
      */
-    public readonly suspended!: pulumi.Output<boolean | undefined>;
+    declare public readonly suspended: pulumi.Output<boolean | undefined>;
     /**
      * Time the Namespace was updated in UTC.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Connection resource with the given unique name, arguments, and options.
@@ -478,59 +478,59 @@ export class Connection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectionState | undefined;
-            resourceInputs["authConfig"] = state ? state.authConfig : undefined;
-            resourceInputs["configVariables"] = state ? state.configVariables : undefined;
-            resourceInputs["connectionRevision"] = state ? state.connectionRevision : undefined;
-            resourceInputs["connectorVersion"] = state ? state.connectorVersion : undefined;
-            resourceInputs["connectorVersionInfraConfigs"] = state ? state.connectorVersionInfraConfigs : undefined;
-            resourceInputs["connectorVersionLaunchStage"] = state ? state.connectorVersionLaunchStage : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["destinationConfigs"] = state ? state.destinationConfigs : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["eventingConfig"] = state ? state.eventingConfig : undefined;
-            resourceInputs["eventingEnablementType"] = state ? state.eventingEnablementType : undefined;
-            resourceInputs["eventingRuntimeDatas"] = state ? state.eventingRuntimeDatas : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["lockConfig"] = state ? state.lockConfig : undefined;
-            resourceInputs["logConfig"] = state ? state.logConfig : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nodeConfig"] = state ? state.nodeConfig : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
-            resourceInputs["serviceDirectory"] = state ? state.serviceDirectory : undefined;
-            resourceInputs["sslConfig"] = state ? state.sslConfig : undefined;
-            resourceInputs["statuses"] = state ? state.statuses : undefined;
-            resourceInputs["subscriptionType"] = state ? state.subscriptionType : undefined;
-            resourceInputs["suspended"] = state ? state.suspended : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["authConfig"] = state?.authConfig;
+            resourceInputs["configVariables"] = state?.configVariables;
+            resourceInputs["connectionRevision"] = state?.connectionRevision;
+            resourceInputs["connectorVersion"] = state?.connectorVersion;
+            resourceInputs["connectorVersionInfraConfigs"] = state?.connectorVersionInfraConfigs;
+            resourceInputs["connectorVersionLaunchStage"] = state?.connectorVersionLaunchStage;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["destinationConfigs"] = state?.destinationConfigs;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["eventingConfig"] = state?.eventingConfig;
+            resourceInputs["eventingEnablementType"] = state?.eventingEnablementType;
+            resourceInputs["eventingRuntimeDatas"] = state?.eventingRuntimeDatas;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["lockConfig"] = state?.lockConfig;
+            resourceInputs["logConfig"] = state?.logConfig;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nodeConfig"] = state?.nodeConfig;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["serviceAccount"] = state?.serviceAccount;
+            resourceInputs["serviceDirectory"] = state?.serviceDirectory;
+            resourceInputs["sslConfig"] = state?.sslConfig;
+            resourceInputs["statuses"] = state?.statuses;
+            resourceInputs["subscriptionType"] = state?.subscriptionType;
+            resourceInputs["suspended"] = state?.suspended;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as ConnectionArgs | undefined;
-            if ((!args || args.connectorVersion === undefined) && !opts.urn) {
+            if (args?.connectorVersion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectorVersion'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["authConfig"] = args ? args.authConfig : undefined;
-            resourceInputs["configVariables"] = args ? args.configVariables : undefined;
-            resourceInputs["connectorVersion"] = args ? args.connectorVersion : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["destinationConfigs"] = args ? args.destinationConfigs : undefined;
-            resourceInputs["eventingConfig"] = args ? args.eventingConfig : undefined;
-            resourceInputs["eventingEnablementType"] = args ? args.eventingEnablementType : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["lockConfig"] = args ? args.lockConfig : undefined;
-            resourceInputs["logConfig"] = args ? args.logConfig : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["nodeConfig"] = args ? args.nodeConfig : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
-            resourceInputs["sslConfig"] = args ? args.sslConfig : undefined;
-            resourceInputs["suspended"] = args ? args.suspended : undefined;
+            resourceInputs["authConfig"] = args?.authConfig;
+            resourceInputs["configVariables"] = args?.configVariables;
+            resourceInputs["connectorVersion"] = args?.connectorVersion;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["destinationConfigs"] = args?.destinationConfigs;
+            resourceInputs["eventingConfig"] = args?.eventingConfig;
+            resourceInputs["eventingEnablementType"] = args?.eventingEnablementType;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["lockConfig"] = args?.lockConfig;
+            resourceInputs["logConfig"] = args?.logConfig;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["nodeConfig"] = args?.nodeConfig;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["serviceAccount"] = args?.serviceAccount;
+            resourceInputs["sslConfig"] = args?.sslConfig;
+            resourceInputs["suspended"] = args?.suspended;
             resourceInputs["connectionRevision"] = undefined /*out*/;
             resourceInputs["connectorVersionInfraConfigs"] = undefined /*out*/;
             resourceInputs["connectorVersionLaunchStage"] = undefined /*out*/;

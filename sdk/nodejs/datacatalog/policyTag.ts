@@ -107,35 +107,35 @@ export class PolicyTag extends pulumi.CustomResource {
     /**
      * Resource names of child policy tags of this policy tag.
      */
-    public /*out*/ readonly childPolicyTags!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly childPolicyTags: pulumi.Output<string[]>;
     /**
      * Description of this policy tag. It must: contain only unicode characters, tabs,
      * newlines, carriage returns and page breaks; and be at most 2000 bytes long when
      * encoded in UTF-8. If not set, defaults to an empty description.
      * If not set, defaults to an empty description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * User defined name of this policy tag. It must: be unique within the parent
      * taxonomy; contain only unicode letters, numbers, underscores, dashes and spaces;
      * not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Resource name of this policy tag, whose format is:
      * "projects/{project}/locations/{region}/taxonomies/{taxonomy}/policyTags/{policytag}"
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Resource name of this policy tag's parent policy tag.
      * If empty, it means this policy tag is a top level policy tag.
      * If not set, defaults to an empty string.
      */
-    public readonly parentPolicyTag!: pulumi.Output<string | undefined>;
+    declare public readonly parentPolicyTag: pulumi.Output<string | undefined>;
     /**
      * Taxonomy the policy tag is associated with
      */
-    public readonly taxonomy!: pulumi.Output<string>;
+    declare public readonly taxonomy: pulumi.Output<string>;
 
     /**
      * Create a PolicyTag resource with the given unique name, arguments, and options.
@@ -150,24 +150,24 @@ export class PolicyTag extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyTagState | undefined;
-            resourceInputs["childPolicyTags"] = state ? state.childPolicyTags : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parentPolicyTag"] = state ? state.parentPolicyTag : undefined;
-            resourceInputs["taxonomy"] = state ? state.taxonomy : undefined;
+            resourceInputs["childPolicyTags"] = state?.childPolicyTags;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parentPolicyTag"] = state?.parentPolicyTag;
+            resourceInputs["taxonomy"] = state?.taxonomy;
         } else {
             const args = argsOrState as PolicyTagArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.taxonomy === undefined) && !opts.urn) {
+            if (args?.taxonomy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'taxonomy'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["parentPolicyTag"] = args ? args.parentPolicyTag : undefined;
-            resourceInputs["taxonomy"] = args ? args.taxonomy : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["parentPolicyTag"] = args?.parentPolicyTag;
+            resourceInputs["taxonomy"] = args?.taxonomy;
             resourceInputs["childPolicyTags"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         }

@@ -155,41 +155,41 @@ export class NodeTemplate extends pulumi.CustomResource {
      * node template
      * Structure is documented below.
      */
-    public readonly accelerators!: pulumi.Output<outputs.compute.NodeTemplateAccelerator[] | undefined>;
+    declare public readonly accelerators: pulumi.Output<outputs.compute.NodeTemplateAccelerator[] | undefined>;
     /**
      * CPU overcommit.
      * Default value is `NONE`.
      * Possible values are: `ENABLED`, `NONE`.
      */
-    public readonly cpuOvercommitType!: pulumi.Output<string | undefined>;
+    declare public readonly cpuOvercommitType: pulumi.Output<string | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * An optional textual description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * List of the type, size and count of disks attached to the
      * node template
      * Structure is documented below.
      */
-    public readonly disks!: pulumi.Output<outputs.compute.NodeTemplateDisk[] | undefined>;
+    declare public readonly disks: pulumi.Output<outputs.compute.NodeTemplateDisk[] | undefined>;
     /**
      * Name of the resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Labels to use for node affinity, which will be used in
      * instance scheduling.
      */
-    public readonly nodeAffinityLabels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly nodeAffinityLabels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Node type to use for nodes group that are created from this template.
      * Only one of nodeTypeFlexibility and nodeType can be specified.
      */
-    public readonly nodeType!: pulumi.Output<string | undefined>;
+    declare public readonly nodeType: pulumi.Output<string | undefined>;
     /**
      * Flexible properties for the desired node type. Node groups that
      * use this node template will create nodes of a type that matches
@@ -197,27 +197,27 @@ export class NodeTemplate extends pulumi.CustomResource {
      * be specified.
      * Structure is documented below.
      */
-    public readonly nodeTypeFlexibility!: pulumi.Output<outputs.compute.NodeTemplateNodeTypeFlexibility | undefined>;
+    declare public readonly nodeTypeFlexibility: pulumi.Output<outputs.compute.NodeTemplateNodeTypeFlexibility | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Region where nodes using the node template will be created.
      * If it is not provided, the provider region is used.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * The server binding policy for nodes using this template. Determines
      * where the nodes should restart following a maintenance event.
      * Structure is documented below.
      */
-    public readonly serverBinding!: pulumi.Output<outputs.compute.NodeTemplateServerBinding>;
+    declare public readonly serverBinding: pulumi.Output<outputs.compute.NodeTemplateServerBinding>;
 
     /**
      * Create a NodeTemplate resource with the given unique name, arguments, and options.
@@ -232,32 +232,32 @@ export class NodeTemplate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NodeTemplateState | undefined;
-            resourceInputs["accelerators"] = state ? state.accelerators : undefined;
-            resourceInputs["cpuOvercommitType"] = state ? state.cpuOvercommitType : undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["disks"] = state ? state.disks : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nodeAffinityLabels"] = state ? state.nodeAffinityLabels : undefined;
-            resourceInputs["nodeType"] = state ? state.nodeType : undefined;
-            resourceInputs["nodeTypeFlexibility"] = state ? state.nodeTypeFlexibility : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["serverBinding"] = state ? state.serverBinding : undefined;
+            resourceInputs["accelerators"] = state?.accelerators;
+            resourceInputs["cpuOvercommitType"] = state?.cpuOvercommitType;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["disks"] = state?.disks;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nodeAffinityLabels"] = state?.nodeAffinityLabels;
+            resourceInputs["nodeType"] = state?.nodeType;
+            resourceInputs["nodeTypeFlexibility"] = state?.nodeTypeFlexibility;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["serverBinding"] = state?.serverBinding;
         } else {
             const args = argsOrState as NodeTemplateArgs | undefined;
-            resourceInputs["accelerators"] = args ? args.accelerators : undefined;
-            resourceInputs["cpuOvercommitType"] = args ? args.cpuOvercommitType : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["disks"] = args ? args.disks : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["nodeAffinityLabels"] = args ? args.nodeAffinityLabels : undefined;
-            resourceInputs["nodeType"] = args ? args.nodeType : undefined;
-            resourceInputs["nodeTypeFlexibility"] = args ? args.nodeTypeFlexibility : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["serverBinding"] = args ? args.serverBinding : undefined;
+            resourceInputs["accelerators"] = args?.accelerators;
+            resourceInputs["cpuOvercommitType"] = args?.cpuOvercommitType;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["disks"] = args?.disks;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["nodeAffinityLabels"] = args?.nodeAffinityLabels;
+            resourceInputs["nodeType"] = args?.nodeType;
+            resourceInputs["nodeTypeFlexibility"] = args?.nodeTypeFlexibility;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["serverBinding"] = args?.serverBinding;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         }

@@ -138,109 +138,109 @@ export class Job extends pulumi.CustomResource {
     /**
      * List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
      */
-    public readonly additionalExperiments!: pulumi.Output<string[]>;
+    declare public readonly additionalExperiments: pulumi.Output<string[]>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Enable/disable the use of [Streaming Engine](https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline#streaming-engine) for the job. Note that Streaming Engine is enabled by default for pipelines developed against the Beam SDK for Python v2.21.0 or later when using Python 3.
      */
-    public readonly enableStreamingEngine!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableStreamingEngine: pulumi.Output<boolean | undefined>;
     /**
      * The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
      */
-    public readonly ipConfiguration!: pulumi.Output<string | undefined>;
+    declare public readonly ipConfiguration: pulumi.Output<string | undefined>;
     /**
      * The unique ID of this job.
      */
-    public /*out*/ readonly jobId!: pulumi.Output<string>;
+    declare public /*out*/ readonly jobId: pulumi.Output<string>;
     /**
      * The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
      */
-    public readonly kmsKeyName!: pulumi.Output<string | undefined>;
+    declare public readonly kmsKeyName: pulumi.Output<string | undefined>;
     /**
      * User labels to be specified for the job. Keys and values should follow the restrictions
      * specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The machine type to use for the job.
      */
-    public readonly machineType!: pulumi.Output<string | undefined>;
+    declare public readonly machineType: pulumi.Output<string | undefined>;
     /**
      * The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
      */
-    public readonly maxWorkers!: pulumi.Output<number | undefined>;
+    declare public readonly maxWorkers: pulumi.Output<number | undefined>;
     /**
      * A unique name for the resource, required by Dataflow.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The network to which VMs will be assigned. If it is not provided, "default" will be used.
      */
-    public readonly network!: pulumi.Output<string | undefined>;
+    declare public readonly network: pulumi.Output<string | undefined>;
     /**
      * One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
      */
-    public readonly onDelete!: pulumi.Output<string | undefined>;
+    declare public readonly onDelete: pulumi.Output<string | undefined>;
     /**
      * **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
      * case-sensitive based on the language on which the pipeline is coded, mostly Java.
      * **Note**: do not configure Dataflow options here in parameters.
      */
-    public readonly parameters!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly parameters: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The project in which the resource belongs. If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The region in which the created job should run.
      */
-    public readonly region!: pulumi.Output<string | undefined>;
+    declare public readonly region: pulumi.Output<string | undefined>;
     /**
      * The Service Account email used to create the job. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
      */
-    public readonly serviceAccountEmail!: pulumi.Output<string | undefined>;
+    declare public readonly serviceAccountEmail: pulumi.Output<string | undefined>;
     /**
      * If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
      */
-    public readonly skipWaitOnJobTermination!: pulumi.Output<boolean | undefined>;
+    declare public readonly skipWaitOnJobTermination: pulumi.Output<boolean | undefined>;
     /**
      * The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK". If the [subnetwork is located in a Shared VPC network](https://cloud.google.com/dataflow/docs/guides/specifying-networks#shared), you must use the complete URL. For example `"googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET_NAME"`
      */
-    public readonly subnetwork!: pulumi.Output<string | undefined>;
+    declare public readonly subnetwork: pulumi.Output<string | undefined>;
     /**
      * A writeable location on GCS for the Dataflow job to dump its temporary data.
      *
      * - - -
      */
-    public readonly tempGcsLocation!: pulumi.Output<string>;
+    declare public readonly tempGcsLocation: pulumi.Output<string>;
     /**
      * The GCS path to the Dataflow job template.
      */
-    public readonly templateGcsPath!: pulumi.Output<string>;
+    declare public readonly templateGcsPath: pulumi.Output<string>;
     /**
      * Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
      */
-    public readonly transformNameMapping!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly transformNameMapping: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * The zone in which the created job should run. If it is not provided, the provider zone is used.
      */
-    public readonly zone!: pulumi.Output<string | undefined>;
+    declare public readonly zone: pulumi.Output<string | undefined>;
 
     /**
      * Create a Job resource with the given unique name, arguments, and options.
@@ -255,59 +255,59 @@ export class Job extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as JobState | undefined;
-            resourceInputs["additionalExperiments"] = state ? state.additionalExperiments : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["enableStreamingEngine"] = state ? state.enableStreamingEngine : undefined;
-            resourceInputs["ipConfiguration"] = state ? state.ipConfiguration : undefined;
-            resourceInputs["jobId"] = state ? state.jobId : undefined;
-            resourceInputs["kmsKeyName"] = state ? state.kmsKeyName : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["machineType"] = state ? state.machineType : undefined;
-            resourceInputs["maxWorkers"] = state ? state.maxWorkers : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["onDelete"] = state ? state.onDelete : undefined;
-            resourceInputs["parameters"] = state ? state.parameters : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["serviceAccountEmail"] = state ? state.serviceAccountEmail : undefined;
-            resourceInputs["skipWaitOnJobTermination"] = state ? state.skipWaitOnJobTermination : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["subnetwork"] = state ? state.subnetwork : undefined;
-            resourceInputs["tempGcsLocation"] = state ? state.tempGcsLocation : undefined;
-            resourceInputs["templateGcsPath"] = state ? state.templateGcsPath : undefined;
-            resourceInputs["transformNameMapping"] = state ? state.transformNameMapping : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["additionalExperiments"] = state?.additionalExperiments;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["enableStreamingEngine"] = state?.enableStreamingEngine;
+            resourceInputs["ipConfiguration"] = state?.ipConfiguration;
+            resourceInputs["jobId"] = state?.jobId;
+            resourceInputs["kmsKeyName"] = state?.kmsKeyName;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["machineType"] = state?.machineType;
+            resourceInputs["maxWorkers"] = state?.maxWorkers;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["onDelete"] = state?.onDelete;
+            resourceInputs["parameters"] = state?.parameters;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["serviceAccountEmail"] = state?.serviceAccountEmail;
+            resourceInputs["skipWaitOnJobTermination"] = state?.skipWaitOnJobTermination;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["subnetwork"] = state?.subnetwork;
+            resourceInputs["tempGcsLocation"] = state?.tempGcsLocation;
+            resourceInputs["templateGcsPath"] = state?.templateGcsPath;
+            resourceInputs["transformNameMapping"] = state?.transformNameMapping;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as JobArgs | undefined;
-            if ((!args || args.tempGcsLocation === undefined) && !opts.urn) {
+            if (args?.tempGcsLocation === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tempGcsLocation'");
             }
-            if ((!args || args.templateGcsPath === undefined) && !opts.urn) {
+            if (args?.templateGcsPath === undefined && !opts.urn) {
                 throw new Error("Missing required property 'templateGcsPath'");
             }
-            resourceInputs["additionalExperiments"] = args ? args.additionalExperiments : undefined;
-            resourceInputs["enableStreamingEngine"] = args ? args.enableStreamingEngine : undefined;
-            resourceInputs["ipConfiguration"] = args ? args.ipConfiguration : undefined;
-            resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["machineType"] = args ? args.machineType : undefined;
-            resourceInputs["maxWorkers"] = args ? args.maxWorkers : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["onDelete"] = args ? args.onDelete : undefined;
-            resourceInputs["parameters"] = args ? args.parameters : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["serviceAccountEmail"] = args ? args.serviceAccountEmail : undefined;
-            resourceInputs["skipWaitOnJobTermination"] = args ? args.skipWaitOnJobTermination : undefined;
-            resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
-            resourceInputs["tempGcsLocation"] = args ? args.tempGcsLocation : undefined;
-            resourceInputs["templateGcsPath"] = args ? args.templateGcsPath : undefined;
-            resourceInputs["transformNameMapping"] = args ? args.transformNameMapping : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["additionalExperiments"] = args?.additionalExperiments;
+            resourceInputs["enableStreamingEngine"] = args?.enableStreamingEngine;
+            resourceInputs["ipConfiguration"] = args?.ipConfiguration;
+            resourceInputs["kmsKeyName"] = args?.kmsKeyName;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["machineType"] = args?.machineType;
+            resourceInputs["maxWorkers"] = args?.maxWorkers;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["onDelete"] = args?.onDelete;
+            resourceInputs["parameters"] = args?.parameters;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["serviceAccountEmail"] = args?.serviceAccountEmail;
+            resourceInputs["skipWaitOnJobTermination"] = args?.skipWaitOnJobTermination;
+            resourceInputs["subnetwork"] = args?.subnetwork;
+            resourceInputs["tempGcsLocation"] = args?.tempGcsLocation;
+            resourceInputs["templateGcsPath"] = args?.templateGcsPath;
+            resourceInputs["transformNameMapping"] = args?.transformNameMapping;
+            resourceInputs["zone"] = args?.zone;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["jobId"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;

@@ -190,8 +190,9 @@ type Cluster struct {
 	EffectiveLabels             pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	GracefulDecommissionTimeout pulumi.StringPtrOutput `pulumi:"gracefulDecommissionTimeout"`
 	// The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
-	// to the field 'effective_labels' for all of the labels present on the resource.
+	//
+	//                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	//                 Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the cluster, unique within the project and
 	// zone.
@@ -255,8 +256,9 @@ type clusterState struct {
 	EffectiveLabels             map[string]string `pulumi:"effectiveLabels"`
 	GracefulDecommissionTimeout *string           `pulumi:"gracefulDecommissionTimeout"`
 	// The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
-	// to the field 'effective_labels' for all of the labels present on the resource.
+	//
+	//                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	//                 Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the cluster, unique within the project and
 	// zone.
@@ -286,8 +288,9 @@ type ClusterState struct {
 	EffectiveLabels             pulumi.StringMapInput
 	GracefulDecommissionTimeout pulumi.StringPtrInput
 	// The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
-	// to the field 'effective_labels' for all of the labels present on the resource.
+	//
+	//                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	//                 Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The name of the cluster, unique within the project and
 	// zone.
@@ -317,8 +320,9 @@ type clusterArgs struct {
 	ClusterConfig               *ClusterClusterConfig `pulumi:"clusterConfig"`
 	GracefulDecommissionTimeout *string               `pulumi:"gracefulDecommissionTimeout"`
 	// The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
-	// to the field 'effective_labels' for all of the labels present on the resource.
+	//
+	//                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	//                 Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the cluster, unique within the project and
 	// zone.
@@ -343,8 +347,9 @@ type ClusterArgs struct {
 	ClusterConfig               ClusterClusterConfigPtrInput
 	GracefulDecommissionTimeout pulumi.StringPtrInput
 	// The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
-	// to the field 'effective_labels' for all of the labels present on the resource.
+	//
+	//                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	//                 Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The name of the cluster, unique within the project and
 	// zone.
@@ -467,8 +472,9 @@ func (o ClusterOutput) GracefulDecommissionTimeout() pulumi.StringPtrOutput {
 }
 
 // The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
-// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
-// to the field 'effective_labels' for all of the labels present on the resource.
+//
+//	**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+//	Please refer to the field 'effective_labels' for all of the labels present on the resource.
 func (o ClusterOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }

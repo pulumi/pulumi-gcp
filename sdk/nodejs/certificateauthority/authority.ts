@@ -375,32 +375,32 @@ export class Authority extends pulumi.CustomResource {
      * URLs for accessing content published by this CA, such as the CA certificate and CRLs.
      * Structure is documented below.
      */
-    public /*out*/ readonly accessUrls!: pulumi.Output<outputs.certificateauthority.AuthorityAccessUrl[]>;
+    declare public /*out*/ readonly accessUrls: pulumi.Output<outputs.certificateauthority.AuthorityAccessUrl[]>;
     /**
      * The user provided Resource ID for this Certificate Authority.
      */
-    public readonly certificateAuthorityId!: pulumi.Output<string>;
+    declare public readonly certificateAuthorityId: pulumi.Output<string>;
     /**
      * The config used to create a self-signed X.509 certificate or CSR.
      * Structure is documented below.
      */
-    public readonly config!: pulumi.Output<outputs.certificateauthority.AuthorityConfig>;
+    declare public readonly config: pulumi.Output<outputs.certificateauthority.AuthorityConfig>;
     /**
      * The time at which this CertificateAuthority was created.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
      * fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
-    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
      * Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
      * Possible values: ENABLED, DISABLED, STAGED.
      */
-    public readonly desiredState!: pulumi.Output<string | undefined>;
+    declare public readonly desiredState: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
      * such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
@@ -408,19 +408,19 @@ export class Authority extends pulumi.CustomResource {
      * my-bucket, you would simply specify `my-bucket`. If not specified, a managed bucket will be
      * created.
      */
-    public readonly gcsBucket!: pulumi.Output<string | undefined>;
+    declare public readonly gcsBucket: pulumi.Output<string | undefined>;
     /**
      * This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
      * Use with care. Defaults to `false`.
      */
-    public readonly ignoreActiveCertificatesOnDeletion!: pulumi.Output<boolean | undefined>;
+    declare public readonly ignoreActiveCertificatesOnDeletion: pulumi.Output<boolean | undefined>;
     /**
      * Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority
      * is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA
      * certificate. Otherwise, it is used to sign a CSR.
      * Structure is documented below.
      */
-    public readonly keySpec!: pulumi.Output<outputs.certificateauthority.AuthorityKeySpec>;
+    declare public readonly keySpec: pulumi.Output<outputs.certificateauthority.AuthorityKeySpec>;
     /**
      * Labels with user-defined metadata.
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
@@ -429,65 +429,65 @@ export class Authority extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
      * "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
      * fractional digits, terminated by 's'. Example: "3.5s".
      */
-    public readonly lifetime!: pulumi.Output<string | undefined>;
+    declare public readonly lifetime: pulumi.Output<string | undefined>;
     /**
      * Location of the CertificateAuthority. A full list of valid locations can be found by
      * running `gcloud privateca locations list`.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The resource name for this CertificateAuthority in the format
      * projects/*&#47;locations/*&#47;certificateAuthorities/*.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
      */
-    public readonly pemCaCertificate!: pulumi.Output<string | undefined>;
+    declare public readonly pemCaCertificate: pulumi.Output<string | undefined>;
     /**
      * This CertificateAuthority's certificate chain, including the current
      * CertificateAuthority's certificate. Ordered such that the root issuer is the final
      * element (consistent with RFC 5246). For a self-signed CA, this will only list the current
      * CertificateAuthority's certificate.
      */
-    public /*out*/ readonly pemCaCertificates!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly pemCaCertificates: pulumi.Output<string[]>;
     /**
      * The name of the CaPool this Certificate Authority belongs to.
      */
-    public readonly pool!: pulumi.Output<string>;
+    declare public readonly pool: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * If this flag is set, the Certificate Authority will be deleted as soon as
      * possible without a 30-day grace period where undeletion would have been
      * allowed. If you proceed, there will be no way to recover this CA.
      * Use with care. Defaults to `false`.
      */
-    public readonly skipGracePeriod!: pulumi.Output<boolean | undefined>;
+    declare public readonly skipGracePeriod: pulumi.Output<boolean | undefined>;
     /**
      * The State for this CertificateAuthority.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * If this is a subordinate CertificateAuthority, this field will be set
      * with the subordinate configuration, which describes its issuers.
      * Structure is documented below.
      */
-    public readonly subordinateConfig!: pulumi.Output<outputs.certificateauthority.AuthoritySubordinateConfig | undefined>;
+    declare public readonly subordinateConfig: pulumi.Output<outputs.certificateauthority.AuthoritySubordinateConfig | undefined>;
     /**
      * The Type of this CertificateAuthority.
      * > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
@@ -495,19 +495,19 @@ export class Authority extends pulumi.CustomResource {
      * Default value is `SELF_SIGNED`.
      * Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string | undefined>;
     /**
      * The time at which this CertificateAuthority was updated.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
      * fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs,
      * that can be specified by users.
      * Structure is documented below.
      */
-    public readonly userDefinedAccessUrls!: pulumi.Output<outputs.certificateauthority.AuthorityUserDefinedAccessUrls | undefined>;
+    declare public readonly userDefinedAccessUrls: pulumi.Output<outputs.certificateauthority.AuthorityUserDefinedAccessUrls | undefined>;
 
     /**
      * Create a Authority resource with the given unique name, arguments, and options.
@@ -522,65 +522,65 @@ export class Authority extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AuthorityState | undefined;
-            resourceInputs["accessUrls"] = state ? state.accessUrls : undefined;
-            resourceInputs["certificateAuthorityId"] = state ? state.certificateAuthorityId : undefined;
-            resourceInputs["config"] = state ? state.config : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            resourceInputs["desiredState"] = state ? state.desiredState : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["gcsBucket"] = state ? state.gcsBucket : undefined;
-            resourceInputs["ignoreActiveCertificatesOnDeletion"] = state ? state.ignoreActiveCertificatesOnDeletion : undefined;
-            resourceInputs["keySpec"] = state ? state.keySpec : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["lifetime"] = state ? state.lifetime : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["pemCaCertificate"] = state ? state.pemCaCertificate : undefined;
-            resourceInputs["pemCaCertificates"] = state ? state.pemCaCertificates : undefined;
-            resourceInputs["pool"] = state ? state.pool : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["skipGracePeriod"] = state ? state.skipGracePeriod : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["subordinateConfig"] = state ? state.subordinateConfig : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["userDefinedAccessUrls"] = state ? state.userDefinedAccessUrls : undefined;
+            resourceInputs["accessUrls"] = state?.accessUrls;
+            resourceInputs["certificateAuthorityId"] = state?.certificateAuthorityId;
+            resourceInputs["config"] = state?.config;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionProtection"] = state?.deletionProtection;
+            resourceInputs["desiredState"] = state?.desiredState;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["gcsBucket"] = state?.gcsBucket;
+            resourceInputs["ignoreActiveCertificatesOnDeletion"] = state?.ignoreActiveCertificatesOnDeletion;
+            resourceInputs["keySpec"] = state?.keySpec;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["lifetime"] = state?.lifetime;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["pemCaCertificate"] = state?.pemCaCertificate;
+            resourceInputs["pemCaCertificates"] = state?.pemCaCertificates;
+            resourceInputs["pool"] = state?.pool;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["skipGracePeriod"] = state?.skipGracePeriod;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["subordinateConfig"] = state?.subordinateConfig;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["userDefinedAccessUrls"] = state?.userDefinedAccessUrls;
         } else {
             const args = argsOrState as AuthorityArgs | undefined;
-            if ((!args || args.certificateAuthorityId === undefined) && !opts.urn) {
+            if (args?.certificateAuthorityId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'certificateAuthorityId'");
             }
-            if ((!args || args.config === undefined) && !opts.urn) {
+            if (args?.config === undefined && !opts.urn) {
                 throw new Error("Missing required property 'config'");
             }
-            if ((!args || args.keySpec === undefined) && !opts.urn) {
+            if (args?.keySpec === undefined && !opts.urn) {
                 throw new Error("Missing required property 'keySpec'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.pool === undefined) && !opts.urn) {
+            if (args?.pool === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pool'");
             }
-            resourceInputs["certificateAuthorityId"] = args ? args.certificateAuthorityId : undefined;
-            resourceInputs["config"] = args ? args.config : undefined;
-            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            resourceInputs["desiredState"] = args ? args.desiredState : undefined;
-            resourceInputs["gcsBucket"] = args ? args.gcsBucket : undefined;
-            resourceInputs["ignoreActiveCertificatesOnDeletion"] = args ? args.ignoreActiveCertificatesOnDeletion : undefined;
-            resourceInputs["keySpec"] = args ? args.keySpec : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["lifetime"] = args ? args.lifetime : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["pemCaCertificate"] = args ? args.pemCaCertificate : undefined;
-            resourceInputs["pool"] = args ? args.pool : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["skipGracePeriod"] = args ? args.skipGracePeriod : undefined;
-            resourceInputs["subordinateConfig"] = args ? args.subordinateConfig : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["userDefinedAccessUrls"] = args ? args.userDefinedAccessUrls : undefined;
+            resourceInputs["certificateAuthorityId"] = args?.certificateAuthorityId;
+            resourceInputs["config"] = args?.config;
+            resourceInputs["deletionProtection"] = args?.deletionProtection;
+            resourceInputs["desiredState"] = args?.desiredState;
+            resourceInputs["gcsBucket"] = args?.gcsBucket;
+            resourceInputs["ignoreActiveCertificatesOnDeletion"] = args?.ignoreActiveCertificatesOnDeletion;
+            resourceInputs["keySpec"] = args?.keySpec;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["lifetime"] = args?.lifetime;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["pemCaCertificate"] = args?.pemCaCertificate;
+            resourceInputs["pool"] = args?.pool;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["skipGracePeriod"] = args?.skipGracePeriod;
+            resourceInputs["subordinateConfig"] = args?.subordinateConfig;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["userDefinedAccessUrls"] = args?.userDefinedAccessUrls;
             resourceInputs["accessUrls"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;

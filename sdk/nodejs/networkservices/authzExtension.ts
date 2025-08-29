@@ -102,85 +102,85 @@ export class AuthzExtension extends pulumi.CustomResource {
     /**
      * The :authority header in the gRPC request sent from Envoy to the extension service.
      */
-    public readonly authority!: pulumi.Output<string>;
+    declare public readonly authority: pulumi.Output<string>;
     /**
      * The timestamp when the resource was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * A human-readable description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Determines how the proxy behaves if the call to the extension fails or times out.
      * When set to TRUE, request or response processing continues without error. Any subsequent extensions in the extension chain are also executed. When set to FALSE or the default setting of FALSE is used, one of the following happens:
      * * If response headers have not been delivered to the downstream client, a generic 500 error is returned to the client. The error response can be tailored by configuring a custom error response in the load balancer.
      * * If response headers have been delivered, then the HTTP stream to the downstream client is reset.
      */
-    public readonly failOpen!: pulumi.Output<boolean>;
+    declare public readonly failOpen: pulumi.Output<boolean>;
     /**
      * List of the HTTP headers to forward to the extension (from the client). If omitted, all headers are sent. Each element is a string indicating the header name.
      */
-    public readonly forwardHeaders!: pulumi.Output<string[] | undefined>;
+    declare public readonly forwardHeaders: pulumi.Output<string[] | undefined>;
     /**
      * Set of labels associated with the AuthzExtension resource.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * All backend services and forwarding rules referenced by this extension must share the same load balancing scheme.
      * For more information, refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
      * Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
      */
-    public readonly loadBalancingScheme!: pulumi.Output<string>;
+    declare public readonly loadBalancingScheme: pulumi.Output<string>;
     /**
      * The location of the resource.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The metadata provided here is included as part of the metadataContext (of type google.protobuf.Struct) in the ProcessingRequest message sent to the extension server. The metadata is available under the namespace com.google.authz_extension.<resourceName>. The following variables are supported in the metadata Struct:
      * {forwarding_rule_id} - substituted with the forwarding rule's fully qualified resource name.
      */
-    public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly metadata: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Identifier. Name of the AuthzExtension resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The reference to the service that runs the extension.
      * To configure a callout extension, service must be a fully-qualified reference to a [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices) in the format:
      * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/backendServices/{backendService} or https://www.googleapis.com/compute/v1/projects/{project}/global/backendServices/{backendService}.
      */
-    public readonly service!: pulumi.Output<string>;
+    declare public readonly service: pulumi.Output<string>;
     /**
      * Specifies the timeout for each individual message on the stream. The timeout must be between 10-10000 milliseconds.
      */
-    public readonly timeout!: pulumi.Output<string>;
+    declare public readonly timeout: pulumi.Output<string>;
     /**
      * The timestamp when the resource was updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set.
      * Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`.
      */
-    public readonly wireFormat!: pulumi.Output<string>;
+    declare public readonly wireFormat: pulumi.Output<string>;
 
     /**
      * Create a AuthzExtension resource with the given unique name, arguments, and options.
@@ -195,53 +195,53 @@ export class AuthzExtension extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AuthzExtensionState | undefined;
-            resourceInputs["authority"] = state ? state.authority : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["failOpen"] = state ? state.failOpen : undefined;
-            resourceInputs["forwardHeaders"] = state ? state.forwardHeaders : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["loadBalancingScheme"] = state ? state.loadBalancingScheme : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["metadata"] = state ? state.metadata : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["service"] = state ? state.service : undefined;
-            resourceInputs["timeout"] = state ? state.timeout : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["wireFormat"] = state ? state.wireFormat : undefined;
+            resourceInputs["authority"] = state?.authority;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["failOpen"] = state?.failOpen;
+            resourceInputs["forwardHeaders"] = state?.forwardHeaders;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["loadBalancingScheme"] = state?.loadBalancingScheme;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["metadata"] = state?.metadata;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["service"] = state?.service;
+            resourceInputs["timeout"] = state?.timeout;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["wireFormat"] = state?.wireFormat;
         } else {
             const args = argsOrState as AuthzExtensionArgs | undefined;
-            if ((!args || args.authority === undefined) && !opts.urn) {
+            if (args?.authority === undefined && !opts.urn) {
                 throw new Error("Missing required property 'authority'");
             }
-            if ((!args || args.loadBalancingScheme === undefined) && !opts.urn) {
+            if (args?.loadBalancingScheme === undefined && !opts.urn) {
                 throw new Error("Missing required property 'loadBalancingScheme'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.service === undefined) && !opts.urn) {
+            if (args?.service === undefined && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
-            if ((!args || args.timeout === undefined) && !opts.urn) {
+            if (args?.timeout === undefined && !opts.urn) {
                 throw new Error("Missing required property 'timeout'");
             }
-            resourceInputs["authority"] = args ? args.authority : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["failOpen"] = args ? args.failOpen : undefined;
-            resourceInputs["forwardHeaders"] = args ? args.forwardHeaders : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["loadBalancingScheme"] = args ? args.loadBalancingScheme : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["metadata"] = args ? args.metadata : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["service"] = args ? args.service : undefined;
-            resourceInputs["timeout"] = args ? args.timeout : undefined;
-            resourceInputs["wireFormat"] = args ? args.wireFormat : undefined;
+            resourceInputs["authority"] = args?.authority;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["failOpen"] = args?.failOpen;
+            resourceInputs["forwardHeaders"] = args?.forwardHeaders;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["loadBalancingScheme"] = args?.loadBalancingScheme;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["metadata"] = args?.metadata;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["service"] = args?.service;
+            resourceInputs["timeout"] = args?.timeout;
+            resourceInputs["wireFormat"] = args?.wireFormat;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;

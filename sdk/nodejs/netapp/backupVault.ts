@@ -89,70 +89,70 @@ export class BackupVault extends pulumi.CustomResource {
     /**
      * Region in which backup is stored.
      */
-    public readonly backupRegion!: pulumi.Output<string | undefined>;
+    declare public readonly backupRegion: pulumi.Output<string | undefined>;
     /**
      * Backup retention policy defining the retention of the backups.
      * Structure is documented below.
      */
-    public readonly backupRetentionPolicy!: pulumi.Output<outputs.netapp.BackupVaultBackupRetentionPolicy | undefined>;
+    declare public readonly backupRetentionPolicy: pulumi.Output<outputs.netapp.BackupVaultBackupRetentionPolicy | undefined>;
     /**
      * Type of the backup vault to be created. Default is IN_REGION.
      * Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
      */
-    public readonly backupVaultType!: pulumi.Output<string>;
+    declare public readonly backupVaultType: pulumi.Output<string>;
     /**
      * Create time of the backup vault. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * An optional description of this resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Name of the Backup vault created in backup region.
      */
-    public /*out*/ readonly destinationBackupVault!: pulumi.Output<string>;
+    declare public /*out*/ readonly destinationBackupVault: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Location (region) of the backup vault.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The resource name of the backup vault. Needs to be unique per location.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Name of the Backup vault created in source region.
      */
-    public /*out*/ readonly sourceBackupVault!: pulumi.Output<string>;
+    declare public /*out*/ readonly sourceBackupVault: pulumi.Output<string>;
     /**
      * Region in which the backup vault is created.
      */
-    public /*out*/ readonly sourceRegion!: pulumi.Output<string>;
+    declare public /*out*/ readonly sourceRegion: pulumi.Output<string>;
     /**
      * The state of the Backup Vault.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
 
     /**
      * Create a BackupVault resource with the given unique name, arguments, and options.
@@ -167,34 +167,34 @@ export class BackupVault extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BackupVaultState | undefined;
-            resourceInputs["backupRegion"] = state ? state.backupRegion : undefined;
-            resourceInputs["backupRetentionPolicy"] = state ? state.backupRetentionPolicy : undefined;
-            resourceInputs["backupVaultType"] = state ? state.backupVaultType : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["destinationBackupVault"] = state ? state.destinationBackupVault : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["sourceBackupVault"] = state ? state.sourceBackupVault : undefined;
-            resourceInputs["sourceRegion"] = state ? state.sourceRegion : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["backupRegion"] = state?.backupRegion;
+            resourceInputs["backupRetentionPolicy"] = state?.backupRetentionPolicy;
+            resourceInputs["backupVaultType"] = state?.backupVaultType;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["destinationBackupVault"] = state?.destinationBackupVault;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["sourceBackupVault"] = state?.sourceBackupVault;
+            resourceInputs["sourceRegion"] = state?.sourceRegion;
+            resourceInputs["state"] = state?.state;
         } else {
             const args = argsOrState as BackupVaultArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["backupRegion"] = args ? args.backupRegion : undefined;
-            resourceInputs["backupRetentionPolicy"] = args ? args.backupRetentionPolicy : undefined;
-            resourceInputs["backupVaultType"] = args ? args.backupVaultType : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["backupRegion"] = args?.backupRegion;
+            resourceInputs["backupRetentionPolicy"] = args?.backupRetentionPolicy;
+            resourceInputs["backupVaultType"] = args?.backupVaultType;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["destinationBackupVault"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;

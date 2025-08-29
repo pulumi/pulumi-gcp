@@ -135,41 +135,41 @@ export class PreferenceSet extends pulumi.CustomResource {
     /**
      * Output only. The timestamp when the preference set was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * A description of the preference set.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * User-friendly display name. Maximum length is 63 characters.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * Part of `parent`. See documentation of `projectsId`.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Output only. Name of the preference set.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Required. User specified ID for the preference set. It will become the last component of the preference set name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression `a-z?`.
      */
-    public readonly preferenceSetId!: pulumi.Output<string>;
+    declare public readonly preferenceSetId: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Output only. The timestamp when the preference set was last updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * VirtualMachinePreferences enables you to create sets of assumptions, for example, a geographical location and pricing track, for your migrated virtual machines. The set of preferences influence recommendations for migrating virtual machine assets.
      * Structure is documented below.
      */
-    public readonly virtualMachinePreferences!: pulumi.Output<outputs.migrationcenter.PreferenceSetVirtualMachinePreferences | undefined>;
+    declare public readonly virtualMachinePreferences: pulumi.Output<outputs.migrationcenter.PreferenceSetVirtualMachinePreferences | undefined>;
 
     /**
      * Create a PreferenceSet resource with the given unique name, arguments, and options.
@@ -184,29 +184,29 @@ export class PreferenceSet extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PreferenceSetState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["preferenceSetId"] = state ? state.preferenceSetId : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["virtualMachinePreferences"] = state ? state.virtualMachinePreferences : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["preferenceSetId"] = state?.preferenceSetId;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["virtualMachinePreferences"] = state?.virtualMachinePreferences;
         } else {
             const args = argsOrState as PreferenceSetArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.preferenceSetId === undefined) && !opts.urn) {
+            if (args?.preferenceSetId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'preferenceSetId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["preferenceSetId"] = args ? args.preferenceSetId : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["virtualMachinePreferences"] = args ? args.virtualMachinePreferences : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["preferenceSetId"] = args?.preferenceSetId;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["virtualMachinePreferences"] = args?.virtualMachinePreferences;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;

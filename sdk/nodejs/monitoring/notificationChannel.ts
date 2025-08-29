@@ -109,15 +109,15 @@ export class NotificationChannel extends pulumi.CustomResource {
     /**
      * An optional human-readable description of this notification channel. This description may provide additional details, beyond the display name, for the channel. This may not exceed 1024 Unicode characters.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * An optional human-readable name for this notification channel. It is recommended that you specify a non-empty and unique name in order to make it easier to identify the channels in your project, though this is not enforced. The display name is limited to 512 Unicode characters.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of notifications to a particular channel without removing the channel from all alerting policies that reference the channel. This is a more convenient approach when the change is temporary and you want to receive notifications from the same set of alerting policies on the channel at some point in the future.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * If true, the notification channel will be deleted regardless
      * of its use in alert policies (the policies will be updated
@@ -125,7 +125,7 @@ export class NotificationChannel extends pulumi.CustomResource {
      * referenced by an existing alerting policy will fail to be
      * deleted in a delete operation.
      */
-    public readonly forceDelete!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceDelete: pulumi.Output<boolean | undefined>;
     /**
      * Configuration fields that define the channel and its behavior. The
      * permissible and required labels are specified in the
@@ -134,18 +134,18 @@ export class NotificationChannel extends pulumi.CustomResource {
      * determine if there are upstream changes to these fields. They can also be configured via
      * the sensitiveLabels block, but cannot be configured in both places.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The full REST resource name for this channel. The syntax is:
      * projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]
      * The [CHANNEL_ID] is automatically assigned by the server on creation.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Different notification type behaviors are configured primarily using the the `labels` field on this
      * resource. This block contains the labels which contain secrets or passwords so that they can be marked
@@ -155,19 +155,19 @@ export class NotificationChannel extends pulumi.CustomResource {
      * to a different credential configuration in the config will require an apply to update state.
      * Structure is documented below.
      */
-    public readonly sensitiveLabels!: pulumi.Output<outputs.monitoring.NotificationChannelSensitiveLabels | undefined>;
+    declare public readonly sensitiveLabels: pulumi.Output<outputs.monitoring.NotificationChannelSensitiveLabels | undefined>;
     /**
      * The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as "email", "slack", etc...
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema, unlike the labels field. This field is intended to be used for organizing and identifying the NotificationChannel objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
      */
-    public readonly userLabels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly userLabels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require verification or that this specific channel has been exempted from verification because it was created prior to verification being required for channels of this type.This field cannot be modified using a standard UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel.
      */
-    public /*out*/ readonly verificationStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly verificationStatus: pulumi.Output<string>;
 
     /**
      * Create a NotificationChannel resource with the given unique name, arguments, and options.
@@ -182,31 +182,31 @@ export class NotificationChannel extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NotificationChannelState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["sensitiveLabels"] = state ? state.sensitiveLabels : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["userLabels"] = state ? state.userLabels : undefined;
-            resourceInputs["verificationStatus"] = state ? state.verificationStatus : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["forceDelete"] = state?.forceDelete;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["sensitiveLabels"] = state?.sensitiveLabels;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["userLabels"] = state?.userLabels;
+            resourceInputs["verificationStatus"] = state?.verificationStatus;
         } else {
             const args = argsOrState as NotificationChannelArgs | undefined;
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["sensitiveLabels"] = args ? args.sensitiveLabels : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["userLabels"] = args ? args.userLabels : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["forceDelete"] = args?.forceDelete;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["sensitiveLabels"] = args?.sensitiveLabels;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["userLabels"] = args?.userLabels;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["verificationStatus"] = undefined /*out*/;
         }

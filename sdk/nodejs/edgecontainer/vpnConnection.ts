@@ -118,70 +118,70 @@ export class VpnConnection extends pulumi.CustomResource {
     /**
      * The canonical Cluster name to connect to. It is in the form of projects/{project}/locations/{location}/clusters/{cluster}.
      */
-    public readonly cluster!: pulumi.Output<string>;
+    declare public readonly cluster: pulumi.Output<string>;
     /**
      * The time when the VPN connection was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * A nested object resource.
      * Structure is documented below.
      */
-    public /*out*/ readonly details!: pulumi.Output<outputs.edgecontainer.VpnConnectionDetail[]>;
+    declare public /*out*/ readonly details: pulumi.Output<outputs.edgecontainer.VpnConnectionDetail[]>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Whether this VPN connection has HA enabled on cluster side. If enabled, when creating VPN connection we will attempt to use 2 ANG floating IPs.
      */
-    public readonly enableHighAvailability!: pulumi.Output<boolean>;
+    declare public readonly enableHighAvailability: pulumi.Output<boolean>;
     /**
      * Labels associated with this resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Google Cloud Platform location.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The resource name of VPN connection
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * NAT gateway IP, or WAN IP address. If a customer has multiple NAT IPs, the customer needs to configure NAT such that only one external IP maps to the GMEC Anthos cluster.
      * This is empty if NAT is not used.
      */
-    public readonly natGatewayIp!: pulumi.Output<string | undefined>;
+    declare public readonly natGatewayIp: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The VPN connection Cloud Router name.
      */
-    public readonly router!: pulumi.Output<string | undefined>;
+    declare public readonly router: pulumi.Output<string | undefined>;
     /**
      * The time when the VPN connection was last updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * The network ID of VPC to connect to.
      */
-    public readonly vpc!: pulumi.Output<string | undefined>;
+    declare public readonly vpc: pulumi.Output<string | undefined>;
     /**
      * Project detail of the VPC network. Required if VPC is in a different project than the cluster project.
      * Structure is documented below.
      */
-    public readonly vpcProject!: pulumi.Output<outputs.edgecontainer.VpnConnectionVpcProject | undefined>;
+    declare public readonly vpcProject: pulumi.Output<outputs.edgecontainer.VpnConnectionVpcProject | undefined>;
 
     /**
      * Create a VpnConnection resource with the given unique name, arguments, and options.
@@ -196,39 +196,39 @@ export class VpnConnection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VpnConnectionState | undefined;
-            resourceInputs["cluster"] = state ? state.cluster : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["details"] = state ? state.details : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["enableHighAvailability"] = state ? state.enableHighAvailability : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["natGatewayIp"] = state ? state.natGatewayIp : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["router"] = state ? state.router : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["vpc"] = state ? state.vpc : undefined;
-            resourceInputs["vpcProject"] = state ? state.vpcProject : undefined;
+            resourceInputs["cluster"] = state?.cluster;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["details"] = state?.details;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["enableHighAvailability"] = state?.enableHighAvailability;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["natGatewayIp"] = state?.natGatewayIp;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["router"] = state?.router;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["vpc"] = state?.vpc;
+            resourceInputs["vpcProject"] = state?.vpcProject;
         } else {
             const args = argsOrState as VpnConnectionArgs | undefined;
-            if ((!args || args.cluster === undefined) && !opts.urn) {
+            if (args?.cluster === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cluster'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["cluster"] = args ? args.cluster : undefined;
-            resourceInputs["enableHighAvailability"] = args ? args.enableHighAvailability : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["natGatewayIp"] = args ? args.natGatewayIp : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["router"] = args ? args.router : undefined;
-            resourceInputs["vpc"] = args ? args.vpc : undefined;
-            resourceInputs["vpcProject"] = args ? args.vpcProject : undefined;
+            resourceInputs["cluster"] = args?.cluster;
+            resourceInputs["enableHighAvailability"] = args?.enableHighAvailability;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["natGatewayIp"] = args?.natGatewayIp;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["router"] = args?.router;
+            resourceInputs["vpc"] = args?.vpc;
+            resourceInputs["vpcProject"] = args?.vpcProject;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["details"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;

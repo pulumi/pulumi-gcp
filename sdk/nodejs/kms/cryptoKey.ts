@@ -110,20 +110,20 @@ export class CryptoKey extends pulumi.CustomResource {
      * The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
      * The resource name is in the format "projects/*&#47;locations/*&#47;ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
      */
-    public readonly cryptoKeyBackend!: pulumi.Output<string>;
+    declare public readonly cryptoKeyBackend: pulumi.Output<string>;
     /**
      * The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
      * If not specified at creation time, the default duration is 30 days.
      */
-    public readonly destroyScheduledDuration!: pulumi.Output<string>;
+    declare public readonly destroyScheduledDuration: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Whether this key may contain imported versions only.
      */
-    public readonly importOnly!: pulumi.Output<boolean>;
+    declare public readonly importOnly: pulumi.Output<boolean>;
     /**
      * The policy used for Key Access Justifications Policy Enforcement. If this
      * field is present and this key is enrolled in Key Access Justifications
@@ -135,60 +135,60 @@ export class CryptoKey extends pulumi.CustomResource {
      * This field is currently in beta and is subject to change.
      * Structure is documented below.
      */
-    public readonly keyAccessJustificationsPolicy!: pulumi.Output<outputs.kms.CryptoKeyKeyAccessJustificationsPolicy>;
+    declare public readonly keyAccessJustificationsPolicy: pulumi.Output<outputs.kms.CryptoKeyKeyAccessJustificationsPolicy>;
     /**
      * The KeyRing that this key belongs to.
      * Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
      */
-    public readonly keyRing!: pulumi.Output<string>;
+    declare public readonly keyRing: pulumi.Output<string>;
     /**
      * Labels with user-defined metadata to apply to this resource.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The resource name for the CryptoKey.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * A copy of the primary CryptoKeyVersion that will be used by cryptoKeys.encrypt when this CryptoKey is given in EncryptRequest.name.
      * Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be unset.
      * Structure is documented below.
      */
-    public /*out*/ readonly primaries!: pulumi.Output<outputs.kms.CryptoKeyPrimary[]>;
+    declare public /*out*/ readonly primaries: pulumi.Output<outputs.kms.CryptoKeyPrimary[]>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The immutable purpose of this CryptoKey. See the
      * [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
      * for possible inputs.
      * Default value is "ENCRYPT_DECRYPT".
      */
-    public readonly purpose!: pulumi.Output<string | undefined>;
+    declare public readonly purpose: pulumi.Output<string | undefined>;
     /**
      * Every time this period passes, generate a new CryptoKeyVersion and set it as the primary.
      * The first rotation will take place after the specified period. The rotation period has
      * the format of a decimal number with up to 9 fractional digits, followed by the
      * letter `s` (seconds). It must be greater than a day (ie, 86400).
      */
-    public readonly rotationPeriod!: pulumi.Output<string | undefined>;
+    declare public readonly rotationPeriod: pulumi.Output<string | undefined>;
     /**
      * If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
      * You must use the `gcp.kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
      * or `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
      * This field is only applicable during initial CryptoKey creation.
      */
-    public readonly skipInitialVersionCreation!: pulumi.Output<boolean | undefined>;
+    declare public readonly skipInitialVersionCreation: pulumi.Output<boolean | undefined>;
     /**
      * A template describing settings for new crypto key versions.
      * Structure is documented below.
      */
-    public readonly versionTemplate!: pulumi.Output<outputs.kms.CryptoKeyVersionTemplate>;
+    declare public readonly versionTemplate: pulumi.Output<outputs.kms.CryptoKeyVersionTemplate>;
 
     /**
      * Create a CryptoKey resource with the given unique name, arguments, and options.
@@ -203,36 +203,36 @@ export class CryptoKey extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CryptoKeyState | undefined;
-            resourceInputs["cryptoKeyBackend"] = state ? state.cryptoKeyBackend : undefined;
-            resourceInputs["destroyScheduledDuration"] = state ? state.destroyScheduledDuration : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["importOnly"] = state ? state.importOnly : undefined;
-            resourceInputs["keyAccessJustificationsPolicy"] = state ? state.keyAccessJustificationsPolicy : undefined;
-            resourceInputs["keyRing"] = state ? state.keyRing : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["primaries"] = state ? state.primaries : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["purpose"] = state ? state.purpose : undefined;
-            resourceInputs["rotationPeriod"] = state ? state.rotationPeriod : undefined;
-            resourceInputs["skipInitialVersionCreation"] = state ? state.skipInitialVersionCreation : undefined;
-            resourceInputs["versionTemplate"] = state ? state.versionTemplate : undefined;
+            resourceInputs["cryptoKeyBackend"] = state?.cryptoKeyBackend;
+            resourceInputs["destroyScheduledDuration"] = state?.destroyScheduledDuration;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["importOnly"] = state?.importOnly;
+            resourceInputs["keyAccessJustificationsPolicy"] = state?.keyAccessJustificationsPolicy;
+            resourceInputs["keyRing"] = state?.keyRing;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["primaries"] = state?.primaries;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["purpose"] = state?.purpose;
+            resourceInputs["rotationPeriod"] = state?.rotationPeriod;
+            resourceInputs["skipInitialVersionCreation"] = state?.skipInitialVersionCreation;
+            resourceInputs["versionTemplate"] = state?.versionTemplate;
         } else {
             const args = argsOrState as CryptoKeyArgs | undefined;
-            if ((!args || args.keyRing === undefined) && !opts.urn) {
+            if (args?.keyRing === undefined && !opts.urn) {
                 throw new Error("Missing required property 'keyRing'");
             }
-            resourceInputs["cryptoKeyBackend"] = args ? args.cryptoKeyBackend : undefined;
-            resourceInputs["destroyScheduledDuration"] = args ? args.destroyScheduledDuration : undefined;
-            resourceInputs["importOnly"] = args ? args.importOnly : undefined;
-            resourceInputs["keyAccessJustificationsPolicy"] = args ? args.keyAccessJustificationsPolicy : undefined;
-            resourceInputs["keyRing"] = args ? args.keyRing : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["purpose"] = args ? args.purpose : undefined;
-            resourceInputs["rotationPeriod"] = args ? args.rotationPeriod : undefined;
-            resourceInputs["skipInitialVersionCreation"] = args ? args.skipInitialVersionCreation : undefined;
-            resourceInputs["versionTemplate"] = args ? args.versionTemplate : undefined;
+            resourceInputs["cryptoKeyBackend"] = args?.cryptoKeyBackend;
+            resourceInputs["destroyScheduledDuration"] = args?.destroyScheduledDuration;
+            resourceInputs["importOnly"] = args?.importOnly;
+            resourceInputs["keyAccessJustificationsPolicy"] = args?.keyAccessJustificationsPolicy;
+            resourceInputs["keyRing"] = args?.keyRing;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["purpose"] = args?.purpose;
+            resourceInputs["rotationPeriod"] = args?.rotationPeriod;
+            resourceInputs["skipInitialVersionCreation"] = args?.skipInitialVersionCreation;
+            resourceInputs["versionTemplate"] = args?.versionTemplate;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["primaries"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;

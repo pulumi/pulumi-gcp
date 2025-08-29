@@ -77,9 +77,7 @@ type FolderBucketConfig struct {
 
 	// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
 	BucketId pulumi.StringOutput `pulumi:"bucketId"`
-	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
-	// key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
-	// updating the log bucket. Changing the KMS key is allowed.
+	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
 	CmekSettings FolderBucketConfigCmekSettingsPtrOutput `pulumi:"cmekSettings"`
 	// Describes this bucket.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -138,9 +136,7 @@ func GetFolderBucketConfig(ctx *pulumi.Context,
 type folderBucketConfigState struct {
 	// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
 	BucketId *string `pulumi:"bucketId"`
-	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
-	// key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
-	// updating the log bucket. Changing the KMS key is allowed.
+	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
 	CmekSettings *FolderBucketConfigCmekSettings `pulumi:"cmekSettings"`
 	// Describes this bucket.
 	Description *string `pulumi:"description"`
@@ -161,9 +157,7 @@ type folderBucketConfigState struct {
 type FolderBucketConfigState struct {
 	// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
 	BucketId pulumi.StringPtrInput
-	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
-	// key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
-	// updating the log bucket. Changing the KMS key is allowed.
+	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
 	CmekSettings FolderBucketConfigCmekSettingsPtrInput
 	// Describes this bucket.
 	Description pulumi.StringPtrInput
@@ -188,9 +182,7 @@ func (FolderBucketConfigState) ElementType() reflect.Type {
 type folderBucketConfigArgs struct {
 	// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
 	BucketId string `pulumi:"bucketId"`
-	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
-	// key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
-	// updating the log bucket. Changing the KMS key is allowed.
+	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
 	CmekSettings *FolderBucketConfigCmekSettings `pulumi:"cmekSettings"`
 	// Describes this bucket.
 	Description *string `pulumi:"description"`
@@ -208,9 +200,7 @@ type folderBucketConfigArgs struct {
 type FolderBucketConfigArgs struct {
 	// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
 	BucketId pulumi.StringInput
-	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
-	// key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
-	// updating the log bucket. Changing the KMS key is allowed.
+	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
 	CmekSettings FolderBucketConfigCmekSettingsPtrInput
 	// Describes this bucket.
 	Description pulumi.StringPtrInput
@@ -316,9 +306,7 @@ func (o FolderBucketConfigOutput) BucketId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FolderBucketConfig) pulumi.StringOutput { return v.BucketId }).(pulumi.StringOutput)
 }
 
-// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
-// key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
-// updating the log bucket. Changing the KMS key is allowed.
+// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
 func (o FolderBucketConfigOutput) CmekSettings() FolderBucketConfigCmekSettingsPtrOutput {
 	return o.ApplyT(func(v *FolderBucketConfig) FolderBucketConfigCmekSettingsPtrOutput { return v.CmekSettings }).(FolderBucketConfigCmekSettingsPtrOutput)
 }

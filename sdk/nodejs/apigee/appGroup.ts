@@ -165,50 +165,50 @@ export class AppGroup extends pulumi.CustomResource {
     /**
      * Internal identifier that cannot be edited
      */
-    public /*out*/ readonly appGroupId!: pulumi.Output<string>;
+    declare public /*out*/ readonly appGroupId: pulumi.Output<string>;
     /**
      * A list of attributes
      * Structure is documented below.
      */
-    public readonly attributes!: pulumi.Output<outputs.apigee.AppGroupAttribute[] | undefined>;
+    declare public readonly attributes: pulumi.Output<outputs.apigee.AppGroupAttribute[] | undefined>;
     /**
      * Channel identifier identifies the owner maintaining this grouping.
      */
-    public readonly channelId!: pulumi.Output<string | undefined>;
+    declare public readonly channelId: pulumi.Output<string | undefined>;
     /**
      * A reference to the associated storefront/marketplace.
      */
-    public readonly channelUri!: pulumi.Output<string | undefined>;
+    declare public readonly channelUri: pulumi.Output<string | undefined>;
     /**
      * Created time as milliseconds since epoch.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * App group name displayed in the UI
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * Modified time as milliseconds since epoch.
      */
-    public /*out*/ readonly lastModifiedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastModifiedAt: pulumi.Output<string>;
     /**
      * Name of the AppGroup. Characters you can use in the name are restricted to: A-Z0-9._-$ %.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The Apigee Organization associated with the Apigee app group,
      * in the format `organizations/{{org_name}}`.
      */
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * App group name displayed in the UI
      */
-    public /*out*/ readonly organization!: pulumi.Output<string>;
+    declare public /*out*/ readonly organization: pulumi.Output<string>;
     /**
      * Valid values are active or inactive. Note that the status of the AppGroup should be updated via UpdateAppGroupRequest by setting the action as active or inactive.
      * Possible values are: `active`, `inactive`.
      */
-    public readonly status!: pulumi.Output<string | undefined>;
+    declare public readonly status: pulumi.Output<string | undefined>;
 
     /**
      * Create a AppGroup resource with the given unique name, arguments, and options.
@@ -223,29 +223,29 @@ export class AppGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AppGroupState | undefined;
-            resourceInputs["appGroupId"] = state ? state.appGroupId : undefined;
-            resourceInputs["attributes"] = state ? state.attributes : undefined;
-            resourceInputs["channelId"] = state ? state.channelId : undefined;
-            resourceInputs["channelUri"] = state ? state.channelUri : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["lastModifiedAt"] = state ? state.lastModifiedAt : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["organization"] = state ? state.organization : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["appGroupId"] = state?.appGroupId;
+            resourceInputs["attributes"] = state?.attributes;
+            resourceInputs["channelId"] = state?.channelId;
+            resourceInputs["channelUri"] = state?.channelUri;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["lastModifiedAt"] = state?.lastModifiedAt;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["organization"] = state?.organization;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as AppGroupArgs | undefined;
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            resourceInputs["attributes"] = args ? args.attributes : undefined;
-            resourceInputs["channelId"] = args ? args.channelId : undefined;
-            resourceInputs["channelUri"] = args ? args.channelUri : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["attributes"] = args?.attributes;
+            resourceInputs["channelId"] = args?.channelId;
+            resourceInputs["channelUri"] = args?.channelUri;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["status"] = args?.status;
             resourceInputs["appGroupId"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["lastModifiedAt"] = undefined /*out*/;

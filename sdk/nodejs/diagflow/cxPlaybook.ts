@@ -208,61 +208,61 @@ export class CxPlaybook extends pulumi.CustomResource {
      * The timestamp of initial playbook creation.
      * Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The human-readable name of the playbook, unique within an agent.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * High level description of the goal the playbook intend to accomplish. A goal should be concise since it's visible to other playbooks that may reference this playbook.
      */
-    public readonly goal!: pulumi.Output<string>;
+    declare public readonly goal: pulumi.Output<string>;
     /**
      * Instruction to accomplish target goal.
      * Structure is documented below.
      */
-    public readonly instruction!: pulumi.Output<outputs.diagflow.CxPlaybookInstruction | undefined>;
+    declare public readonly instruction: pulumi.Output<outputs.diagflow.CxPlaybookInstruction | undefined>;
     /**
      * Llm model settings for the playbook.
      * Structure is documented below.
      */
-    public readonly llmModelSettings!: pulumi.Output<outputs.diagflow.CxPlaybookLlmModelSettings | undefined>;
+    declare public readonly llmModelSettings: pulumi.Output<outputs.diagflow.CxPlaybookLlmModelSettings | undefined>;
     /**
      * The unique identifier of the Playbook.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/playbooks/<Playbook ID>.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The agent to create a Playbook for.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
      */
-    public readonly parent!: pulumi.Output<string | undefined>;
+    declare public readonly parent: pulumi.Output<string | undefined>;
     /**
      * Type of the playbook.
      * Possible values are: `PLAYBOOK_TYPE_UNSPECIFIED`, `TASK`, `ROUTINE`.
      */
-    public readonly playbookType!: pulumi.Output<string | undefined>;
+    declare public readonly playbookType: pulumi.Output<string | undefined>;
     /**
      * The resource name of flows referenced by the current playbook in the instructions.
      */
-    public /*out*/ readonly referencedFlows!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly referencedFlows: pulumi.Output<string[]>;
     /**
      * The resource name of other playbooks referenced by the current playbook in the instructions.
      */
-    public /*out*/ readonly referencedPlaybooks!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly referencedPlaybooks: pulumi.Output<string[]>;
     /**
      * The resource name of tools referenced by the current playbook in the instructions. If not provided explicitly, they are will be implied using the tool being referenced in goal and steps.
      */
-    public readonly referencedTools!: pulumi.Output<string[] | undefined>;
+    declare public readonly referencedTools: pulumi.Output<string[] | undefined>;
     /**
      * Estimated number of tokes current playbook takes when sent to the LLM.
      */
-    public /*out*/ readonly tokenCount!: pulumi.Output<string>;
+    declare public /*out*/ readonly tokenCount: pulumi.Output<string>;
     /**
      * Last time the playbook version was updated.
      * Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a CxPlaybook resource with the given unique name, arguments, and options.
@@ -277,34 +277,34 @@ export class CxPlaybook extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CxPlaybookState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["goal"] = state ? state.goal : undefined;
-            resourceInputs["instruction"] = state ? state.instruction : undefined;
-            resourceInputs["llmModelSettings"] = state ? state.llmModelSettings : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["playbookType"] = state ? state.playbookType : undefined;
-            resourceInputs["referencedFlows"] = state ? state.referencedFlows : undefined;
-            resourceInputs["referencedPlaybooks"] = state ? state.referencedPlaybooks : undefined;
-            resourceInputs["referencedTools"] = state ? state.referencedTools : undefined;
-            resourceInputs["tokenCount"] = state ? state.tokenCount : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["goal"] = state?.goal;
+            resourceInputs["instruction"] = state?.instruction;
+            resourceInputs["llmModelSettings"] = state?.llmModelSettings;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["playbookType"] = state?.playbookType;
+            resourceInputs["referencedFlows"] = state?.referencedFlows;
+            resourceInputs["referencedPlaybooks"] = state?.referencedPlaybooks;
+            resourceInputs["referencedTools"] = state?.referencedTools;
+            resourceInputs["tokenCount"] = state?.tokenCount;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as CxPlaybookArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.goal === undefined) && !opts.urn) {
+            if (args?.goal === undefined && !opts.urn) {
                 throw new Error("Missing required property 'goal'");
             }
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["goal"] = args ? args.goal : undefined;
-            resourceInputs["instruction"] = args ? args.instruction : undefined;
-            resourceInputs["llmModelSettings"] = args ? args.llmModelSettings : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
-            resourceInputs["playbookType"] = args ? args.playbookType : undefined;
-            resourceInputs["referencedTools"] = args ? args.referencedTools : undefined;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["goal"] = args?.goal;
+            resourceInputs["instruction"] = args?.instruction;
+            resourceInputs["llmModelSettings"] = args?.llmModelSettings;
+            resourceInputs["parent"] = args?.parent;
+            resourceInputs["playbookType"] = args?.playbookType;
+            resourceInputs["referencedTools"] = args?.referencedTools;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["referencedFlows"] = undefined /*out*/;

@@ -18,18 +18,14 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     public static final ProjectState Empty = new ProjectState();
 
     /**
-     * Create the &#39;default&#39; network automatically. Default true. If set to false, the default network will be deleted. Note
-     * that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
-     * if you set auto_create_network to false, since the network will exist momentarily.
+     * Create the &#39;default&#39; network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set auto_create_network to false, since the network will exist momentarily.
      * 
      */
     @Import(name="autoCreateNetwork")
     private @Nullable Output<Boolean> autoCreateNetwork;
 
     /**
-     * @return Create the &#39;default&#39; network automatically. Default true. If set to false, the default network will be deleted. Note
-     * that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
-     * if you set auto_create_network to false, since the network will exist momentarily.
+     * @return Create the &#39;default&#39; network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set auto_create_network to false, since the network will exist momentarily.
      * 
      */
     public Optional<Output<Boolean>> autoCreateNetwork() {
@@ -259,9 +255,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoCreateNetwork Create the &#39;default&#39; network automatically. Default true. If set to false, the default network will be deleted. Note
-         * that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
-         * if you set auto_create_network to false, since the network will exist momentarily.
+         * @param autoCreateNetwork Create the &#39;default&#39; network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set auto_create_network to false, since the network will exist momentarily.
          * 
          * @return builder
          * 
@@ -272,9 +266,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoCreateNetwork Create the &#39;default&#39; network automatically. Default true. If set to false, the default network will be deleted. Note
-         * that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
-         * if you set auto_create_network to false, since the network will exist momentarily.
+         * @param autoCreateNetwork Create the &#39;default&#39; network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set auto_create_network to false, since the network will exist momentarily.
          * 
          * @return builder
          * 

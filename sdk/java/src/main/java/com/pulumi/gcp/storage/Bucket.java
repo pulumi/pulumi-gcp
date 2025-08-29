@@ -643,16 +643,14 @@ public class Bucket extends com.pulumi.resources.CustomResource {
         return this.selfLink;
     }
     /**
-     * The bucket&#39;s soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot
-     * be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+     * The bucket&#39;s soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
      * 
      */
     @Export(name="softDeletePolicy", refs={BucketSoftDeletePolicy.class}, tree="[0]")
     private Output<BucketSoftDeletePolicy> softDeletePolicy;
 
     /**
-     * @return The bucket&#39;s soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot
-     * be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+     * @return The bucket&#39;s soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
      * 
      */
     public Output<BucketSoftDeletePolicy> softDeletePolicy() {

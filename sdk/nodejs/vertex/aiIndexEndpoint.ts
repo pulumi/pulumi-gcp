@@ -145,71 +145,71 @@ export class AiIndexEndpoint extends pulumi.CustomResource {
     /**
      * The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The description of the Index.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Used to perform consistent read-modify-write updates.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The labels with user-defined metadata to organize your Indexes.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The resource name of the Index.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the index endpoint should be peered.
      * Private services access must already be configured for the network. If left unspecified, the index endpoint is not peered with any network.
      * [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`.
      * Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
      */
-    public readonly network!: pulumi.Output<string | undefined>;
+    declare public readonly network: pulumi.Output<string | undefined>;
     /**
      * Optional. Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
      * Structure is documented below.
      */
-    public readonly privateServiceConnectConfig!: pulumi.Output<outputs.vertex.AiIndexEndpointPrivateServiceConnectConfig>;
+    declare public readonly privateServiceConnectConfig: pulumi.Output<outputs.vertex.AiIndexEndpointPrivateServiceConnectConfig>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * If publicEndpointEnabled is true, this field will be populated with the domain name to use for this index endpoint.
      */
-    public /*out*/ readonly publicEndpointDomainName!: pulumi.Output<string>;
+    declare public /*out*/ readonly publicEndpointDomainName: pulumi.Output<string>;
     /**
      * If true, the deployed index will be accessible through public endpoint.
      */
-    public readonly publicEndpointEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly publicEndpointEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The region of the index endpoint. eg us-central1
      */
-    public readonly region!: pulumi.Output<string | undefined>;
+    declare public readonly region: pulumi.Output<string | undefined>;
     /**
      * The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a AiIndexEndpoint resource with the given unique name, arguments, and options.
@@ -224,34 +224,34 @@ export class AiIndexEndpoint extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AiIndexEndpointState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["privateServiceConnectConfig"] = state ? state.privateServiceConnectConfig : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["publicEndpointDomainName"] = state ? state.publicEndpointDomainName : undefined;
-            resourceInputs["publicEndpointEnabled"] = state ? state.publicEndpointEnabled : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["privateServiceConnectConfig"] = state?.privateServiceConnectConfig;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["publicEndpointDomainName"] = state?.publicEndpointDomainName;
+            resourceInputs["publicEndpointEnabled"] = state?.publicEndpointEnabled;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as AiIndexEndpointArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["privateServiceConnectConfig"] = args ? args.privateServiceConnectConfig : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["publicEndpointEnabled"] = args ? args.publicEndpointEnabled : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["privateServiceConnectConfig"] = args?.privateServiceConnectConfig;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["publicEndpointEnabled"] = args?.publicEndpointEnabled;
+            resourceInputs["region"] = args?.region;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;

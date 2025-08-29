@@ -121,12 +121,12 @@ export class ServicePerimeters extends pulumi.CustomResource {
      * The AccessPolicy this ServicePerimeter lives in.
      * Format: accessPolicies/{policy_id}
      */
-    public readonly parent!: pulumi.Output<string>;
+    declare public readonly parent: pulumi.Output<string>;
     /**
      * The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
      * Structure is documented below.
      */
-    public readonly servicePerimeters!: pulumi.Output<outputs.accesscontextmanager.ServicePerimetersServicePerimeter[] | undefined>;
+    declare public readonly servicePerimeters: pulumi.Output<outputs.accesscontextmanager.ServicePerimetersServicePerimeter[] | undefined>;
 
     /**
      * Create a ServicePerimeters resource with the given unique name, arguments, and options.
@@ -141,15 +141,15 @@ export class ServicePerimeters extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServicePerimetersState | undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["servicePerimeters"] = state ? state.servicePerimeters : undefined;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["servicePerimeters"] = state?.servicePerimeters;
         } else {
             const args = argsOrState as ServicePerimetersArgs | undefined;
-            if ((!args || args.parent === undefined) && !opts.urn) {
+            if (args?.parent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            resourceInputs["parent"] = args ? args.parent : undefined;
-            resourceInputs["servicePerimeters"] = args ? args.servicePerimeters : undefined;
+            resourceInputs["parent"] = args?.parent;
+            resourceInputs["servicePerimeters"] = args?.servicePerimeters;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServicePerimeters.__pulumiType, name, resourceInputs, opts);

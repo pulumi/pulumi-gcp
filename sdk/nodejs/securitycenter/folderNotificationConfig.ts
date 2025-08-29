@@ -72,35 +72,35 @@ export class FolderNotificationConfig extends pulumi.CustomResource {
     /**
      * This must be unique within the organization.
      */
-    public readonly configId!: pulumi.Output<string>;
+    declare public readonly configId: pulumi.Output<string>;
     /**
      * The description of the notification config (max of 1024 characters).
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Numerical ID of the parent folder.
      */
-    public readonly folder!: pulumi.Output<string>;
+    declare public readonly folder: pulumi.Output<string>;
     /**
      * The resource name of this notification config, in the format
      * `folders/{{folder}}/notificationConfigs/{{config_id}}`.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The Pub/Sub topic to send notifications to. Its format is
      * "projects/[projectId]/topics/[topic]".
      */
-    public readonly pubsubTopic!: pulumi.Output<string>;
+    declare public readonly pubsubTopic: pulumi.Output<string>;
     /**
      * The service account that needs "pubsub.topics.publish" permission to
      * publish to the Pub/Sub topic.
      */
-    public /*out*/ readonly serviceAccount!: pulumi.Output<string>;
+    declare public /*out*/ readonly serviceAccount: pulumi.Output<string>;
     /**
      * The config for triggering streaming-based notifications.
      * Structure is documented below.
      */
-    public readonly streamingConfig!: pulumi.Output<outputs.securitycenter.FolderNotificationConfigStreamingConfig>;
+    declare public readonly streamingConfig: pulumi.Output<outputs.securitycenter.FolderNotificationConfigStreamingConfig>;
 
     /**
      * Create a FolderNotificationConfig resource with the given unique name, arguments, and options.
@@ -115,32 +115,32 @@ export class FolderNotificationConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FolderNotificationConfigState | undefined;
-            resourceInputs["configId"] = state ? state.configId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["folder"] = state ? state.folder : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["pubsubTopic"] = state ? state.pubsubTopic : undefined;
-            resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
-            resourceInputs["streamingConfig"] = state ? state.streamingConfig : undefined;
+            resourceInputs["configId"] = state?.configId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["folder"] = state?.folder;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["pubsubTopic"] = state?.pubsubTopic;
+            resourceInputs["serviceAccount"] = state?.serviceAccount;
+            resourceInputs["streamingConfig"] = state?.streamingConfig;
         } else {
             const args = argsOrState as FolderNotificationConfigArgs | undefined;
-            if ((!args || args.configId === undefined) && !opts.urn) {
+            if (args?.configId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'configId'");
             }
-            if ((!args || args.folder === undefined) && !opts.urn) {
+            if (args?.folder === undefined && !opts.urn) {
                 throw new Error("Missing required property 'folder'");
             }
-            if ((!args || args.pubsubTopic === undefined) && !opts.urn) {
+            if (args?.pubsubTopic === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pubsubTopic'");
             }
-            if ((!args || args.streamingConfig === undefined) && !opts.urn) {
+            if (args?.streamingConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'streamingConfig'");
             }
-            resourceInputs["configId"] = args ? args.configId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["folder"] = args ? args.folder : undefined;
-            resourceInputs["pubsubTopic"] = args ? args.pubsubTopic : undefined;
-            resourceInputs["streamingConfig"] = args ? args.streamingConfig : undefined;
+            resourceInputs["configId"] = args?.configId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["folder"] = args?.folder;
+            resourceInputs["pubsubTopic"] = args?.pubsubTopic;
+            resourceInputs["streamingConfig"] = args?.streamingConfig;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["serviceAccount"] = undefined /*out*/;
         }

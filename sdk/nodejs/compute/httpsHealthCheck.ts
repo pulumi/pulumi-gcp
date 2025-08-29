@@ -92,27 +92,27 @@ export class HttpsHealthCheck extends pulumi.CustomResource {
      * How often (in seconds) to send a health check. The default value is 5
      * seconds.
      */
-    public readonly checkIntervalSec!: pulumi.Output<number | undefined>;
+    declare public readonly checkIntervalSec: pulumi.Output<number | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * A so-far unhealthy instance will be marked healthy after this many
      * consecutive successes. The default value is 2.
      */
-    public readonly healthyThreshold!: pulumi.Output<number | undefined>;
+    declare public readonly healthyThreshold: pulumi.Output<number | undefined>;
     /**
      * The value of the host header in the HTTPS health check request. If
      * left empty (default value), the public IP on behalf of which this
      * health check is performed will be used.
      */
-    public readonly host!: pulumi.Output<string | undefined>;
+    declare public readonly host: pulumi.Output<string | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -122,37 +122,37 @@ export class HttpsHealthCheck extends pulumi.CustomResource {
      * characters must be a dash, lowercase letter, or digit, except the
      * last character, which cannot be a dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The TCP port number for the HTTPS health check request.
      * The default value is 443.
      */
-    public readonly port!: pulumi.Output<number | undefined>;
+    declare public readonly port: pulumi.Output<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The request path of the HTTPS health check request.
      * The default value is /.
      */
-    public readonly requestPath!: pulumi.Output<string | undefined>;
+    declare public readonly requestPath: pulumi.Output<string | undefined>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * How long (in seconds) to wait before claiming failure.
      * The default value is 5 seconds.  It is invalid for timeoutSec to have
      * greater value than checkIntervalSec.
      */
-    public readonly timeoutSec!: pulumi.Output<number | undefined>;
+    declare public readonly timeoutSec: pulumi.Output<number | undefined>;
     /**
      * A so-far healthy instance will be marked unhealthy after this many
      * consecutive failures. The default value is 2.
      */
-    public readonly unhealthyThreshold!: pulumi.Output<number | undefined>;
+    declare public readonly unhealthyThreshold: pulumi.Output<number | undefined>;
 
     /**
      * Create a HttpsHealthCheck resource with the given unique name, arguments, and options.
@@ -167,30 +167,30 @@ export class HttpsHealthCheck extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HttpsHealthCheckState | undefined;
-            resourceInputs["checkIntervalSec"] = state ? state.checkIntervalSec : undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["healthyThreshold"] = state ? state.healthyThreshold : undefined;
-            resourceInputs["host"] = state ? state.host : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["requestPath"] = state ? state.requestPath : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["timeoutSec"] = state ? state.timeoutSec : undefined;
-            resourceInputs["unhealthyThreshold"] = state ? state.unhealthyThreshold : undefined;
+            resourceInputs["checkIntervalSec"] = state?.checkIntervalSec;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["healthyThreshold"] = state?.healthyThreshold;
+            resourceInputs["host"] = state?.host;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["requestPath"] = state?.requestPath;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["timeoutSec"] = state?.timeoutSec;
+            resourceInputs["unhealthyThreshold"] = state?.unhealthyThreshold;
         } else {
             const args = argsOrState as HttpsHealthCheckArgs | undefined;
-            resourceInputs["checkIntervalSec"] = args ? args.checkIntervalSec : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["healthyThreshold"] = args ? args.healthyThreshold : undefined;
-            resourceInputs["host"] = args ? args.host : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["requestPath"] = args ? args.requestPath : undefined;
-            resourceInputs["timeoutSec"] = args ? args.timeoutSec : undefined;
-            resourceInputs["unhealthyThreshold"] = args ? args.unhealthyThreshold : undefined;
+            resourceInputs["checkIntervalSec"] = args?.checkIntervalSec;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["healthyThreshold"] = args?.healthyThreshold;
+            resourceInputs["host"] = args?.host;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["port"] = args?.port;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["requestPath"] = args?.requestPath;
+            resourceInputs["timeoutSec"] = args?.timeoutSec;
+            resourceInputs["unhealthyThreshold"] = args?.unhealthyThreshold;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         }

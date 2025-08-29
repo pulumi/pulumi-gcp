@@ -133,12 +133,12 @@ export class OrganizationCustomModule extends pulumi.CustomResource {
      * or project in which you are viewing the custom module. Otherwise, ancestorModule
      * specifies the organization or folder from which the custom module is inherited.
      */
-    public /*out*/ readonly ancestorModule!: pulumi.Output<string>;
+    declare public /*out*/ readonly ancestorModule: pulumi.Output<string>;
     /**
      * The user specified custom configuration for the module.
      * Structure is documented below.
      */
-    public readonly customConfig!: pulumi.Output<outputs.securitycenter.OrganizationCustomModuleCustomConfig>;
+    declare public readonly customConfig: pulumi.Output<outputs.securitycenter.OrganizationCustomModuleCustomConfig>;
     /**
      * The display name of the Security Health Analytics custom module. This
      * display name becomes the finding category for all findings that are
@@ -146,31 +146,31 @@ export class OrganizationCustomModule extends pulumi.CustomResource {
      * 128 characters, start with a lowercase letter, and contain alphanumeric
      * characters or underscores only.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * The enablement state of the custom module.
      * Possible values are: `ENABLED`, `DISABLED`.
      */
-    public readonly enablementState!: pulumi.Output<string>;
+    declare public readonly enablementState: pulumi.Output<string>;
     /**
      * The editor that last updated the custom module.
      */
-    public /*out*/ readonly lastEditor!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastEditor: pulumi.Output<string>;
     /**
      * The resource name of the custom module. Its format is "organizations/{org_id}/securityHealthAnalyticsSettings/customModules/{customModule}".
      * The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Numerical ID of the parent organization.
      */
-    public readonly organization!: pulumi.Output<string>;
+    declare public readonly organization: pulumi.Output<string>;
     /**
      * The time at which the custom module was last updated.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
      * up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a OrganizationCustomModule resource with the given unique name, arguments, and options.
@@ -185,32 +185,32 @@ export class OrganizationCustomModule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrganizationCustomModuleState | undefined;
-            resourceInputs["ancestorModule"] = state ? state.ancestorModule : undefined;
-            resourceInputs["customConfig"] = state ? state.customConfig : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["enablementState"] = state ? state.enablementState : undefined;
-            resourceInputs["lastEditor"] = state ? state.lastEditor : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["organization"] = state ? state.organization : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["ancestorModule"] = state?.ancestorModule;
+            resourceInputs["customConfig"] = state?.customConfig;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["enablementState"] = state?.enablementState;
+            resourceInputs["lastEditor"] = state?.lastEditor;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["organization"] = state?.organization;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as OrganizationCustomModuleArgs | undefined;
-            if ((!args || args.customConfig === undefined) && !opts.urn) {
+            if (args?.customConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'customConfig'");
             }
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.enablementState === undefined) && !opts.urn) {
+            if (args?.enablementState === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enablementState'");
             }
-            if ((!args || args.organization === undefined) && !opts.urn) {
+            if (args?.organization === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organization'");
             }
-            resourceInputs["customConfig"] = args ? args.customConfig : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["enablementState"] = args ? args.enablementState : undefined;
-            resourceInputs["organization"] = args ? args.organization : undefined;
+            resourceInputs["customConfig"] = args?.customConfig;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["enablementState"] = args?.enablementState;
+            resourceInputs["organization"] = args?.organization;
             resourceInputs["ancestorModule"] = undefined /*out*/;
             resourceInputs["lastEditor"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

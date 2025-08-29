@@ -154,63 +154,63 @@ export class ChatEngine extends pulumi.CustomResource {
      * Configurations for a chat Engine.
      * Structure is documented below.
      */
-    public readonly chatEngineConfig!: pulumi.Output<outputs.discoveryengine.ChatEngineChatEngineConfig>;
+    declare public readonly chatEngineConfig: pulumi.Output<outputs.discoveryengine.ChatEngineChatEngineConfig>;
     /**
      * Additional information of the Chat Engine.
      * Structure is documented below.
      */
-    public /*out*/ readonly chatEngineMetadatas!: pulumi.Output<outputs.discoveryengine.ChatEngineChatEngineMetadata[]>;
+    declare public /*out*/ readonly chatEngineMetadatas: pulumi.Output<outputs.discoveryengine.ChatEngineChatEngineMetadata[]>;
     /**
      * The collection ID.
      */
-    public readonly collectionId!: pulumi.Output<string>;
+    declare public readonly collectionId: pulumi.Output<string>;
     /**
      * Common config spec that specifies the metadata of the engine.
      * Structure is documented below.
      */
-    public readonly commonConfig!: pulumi.Output<outputs.discoveryengine.ChatEngineCommonConfig | undefined>;
+    declare public readonly commonConfig: pulumi.Output<outputs.discoveryengine.ChatEngineCommonConfig | undefined>;
     /**
      * Timestamp the Engine was created at.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
      */
-    public readonly dataStoreIds!: pulumi.Output<string[]>;
+    declare public readonly dataStoreIds: pulumi.Output<string[]>;
     /**
      * The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * The ID to use for chat engine.
      */
-    public readonly engineId!: pulumi.Output<string>;
+    declare public readonly engineId: pulumi.Output<string>;
     /**
      * The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked to the engine.
      * Default value is `GENERIC`.
      * Possible values are: `GENERIC`.
      */
-    public readonly industryVertical!: pulumi.Output<string | undefined>;
+    declare public readonly industryVertical: pulumi.Output<string | undefined>;
     /**
      * Location.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The unique full resource name of the chat engine. Values are of the format
      * `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
      * This field must be a UTF-8 encoded string with a length limit of 1024
      * characters.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Timestamp the Engine was last updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a ChatEngine resource with the given unique name, arguments, and options.
@@ -225,48 +225,48 @@ export class ChatEngine extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ChatEngineState | undefined;
-            resourceInputs["chatEngineConfig"] = state ? state.chatEngineConfig : undefined;
-            resourceInputs["chatEngineMetadatas"] = state ? state.chatEngineMetadatas : undefined;
-            resourceInputs["collectionId"] = state ? state.collectionId : undefined;
-            resourceInputs["commonConfig"] = state ? state.commonConfig : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dataStoreIds"] = state ? state.dataStoreIds : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["engineId"] = state ? state.engineId : undefined;
-            resourceInputs["industryVertical"] = state ? state.industryVertical : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["chatEngineConfig"] = state?.chatEngineConfig;
+            resourceInputs["chatEngineMetadatas"] = state?.chatEngineMetadatas;
+            resourceInputs["collectionId"] = state?.collectionId;
+            resourceInputs["commonConfig"] = state?.commonConfig;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dataStoreIds"] = state?.dataStoreIds;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["engineId"] = state?.engineId;
+            resourceInputs["industryVertical"] = state?.industryVertical;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as ChatEngineArgs | undefined;
-            if ((!args || args.chatEngineConfig === undefined) && !opts.urn) {
+            if (args?.chatEngineConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'chatEngineConfig'");
             }
-            if ((!args || args.collectionId === undefined) && !opts.urn) {
+            if (args?.collectionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'collectionId'");
             }
-            if ((!args || args.dataStoreIds === undefined) && !opts.urn) {
+            if (args?.dataStoreIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataStoreIds'");
             }
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.engineId === undefined) && !opts.urn) {
+            if (args?.engineId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'engineId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["chatEngineConfig"] = args ? args.chatEngineConfig : undefined;
-            resourceInputs["collectionId"] = args ? args.collectionId : undefined;
-            resourceInputs["commonConfig"] = args ? args.commonConfig : undefined;
-            resourceInputs["dataStoreIds"] = args ? args.dataStoreIds : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["engineId"] = args ? args.engineId : undefined;
-            resourceInputs["industryVertical"] = args ? args.industryVertical : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["chatEngineConfig"] = args?.chatEngineConfig;
+            resourceInputs["collectionId"] = args?.collectionId;
+            resourceInputs["commonConfig"] = args?.commonConfig;
+            resourceInputs["dataStoreIds"] = args?.dataStoreIds;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["engineId"] = args?.engineId;
+            resourceInputs["industryVertical"] = args?.industryVertical;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
             resourceInputs["chatEngineMetadatas"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

@@ -76,18 +76,18 @@ export class MuteConfig extends pulumi.CustomResource {
      * The time at which the mute config was created. This field is set by
      * the server and will be ignored if provided on config creation.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * A description of the mute config.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Optional. The expiry of the mute config. Only applicable for dynamic configs.
      * If the expiry is set, when the config expires, it is removed from all findings.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
      * nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public readonly expiryTime!: pulumi.Output<string | undefined>;
+    declare public readonly expiryTime: pulumi.Output<string | undefined>;
     /**
      * An expression that defines the filter to apply across create/update
      * events of findings. While creating a filter string, be mindful of
@@ -95,42 +95,42 @@ export class MuteConfig extends pulumi.CustomResource {
      * If a filter contains project = X but is created under the
      * project = Y scope, it might not match any findings.
      */
-    public readonly filter!: pulumi.Output<string>;
+    declare public readonly filter: pulumi.Output<string>;
     /**
      * Email address of the user who last edited the mute config. This
      * field is set by the server and will be ignored if provided on
      * config creation or update.
      */
-    public /*out*/ readonly mostRecentEditor!: pulumi.Output<string>;
+    declare public /*out*/ readonly mostRecentEditor: pulumi.Output<string>;
     /**
      * Unique identifier provided by the client within the parent scope.
      */
-    public readonly muteConfigId!: pulumi.Output<string>;
+    declare public readonly muteConfigId: pulumi.Output<string>;
     /**
      * Name of the mute config. Its format is
      * organizations/{organization}/muteConfigs/{configId},
      * folders/{folder}/muteConfigs/{configId},
      * or projects/{project}/muteConfigs/{configId}
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Resource name of the new mute configs's parent. Its format is
      * "organizations/[organizationId]", "folders/[folderId]", or
      * "projects/[projectId]".
      */
-    public readonly parent!: pulumi.Output<string>;
+    declare public readonly parent: pulumi.Output<string>;
     /**
      * The type of the mute config, which determines what type of mute state the config affects.
      * Default value is `DYNAMIC`.
      * Possible values are: `MUTE_CONFIG_TYPE_UNSPECIFIED`, `STATIC`, `DYNAMIC`.
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string | undefined>;
     /**
      * Output only. The most recent time at which the mute config was
      * updated. This field is set by the server and will be ignored if
      * provided on config creation or update.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a MuteConfig resource with the given unique name, arguments, and options.
@@ -145,33 +145,33 @@ export class MuteConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MuteConfigState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["expiryTime"] = state ? state.expiryTime : undefined;
-            resourceInputs["filter"] = state ? state.filter : undefined;
-            resourceInputs["mostRecentEditor"] = state ? state.mostRecentEditor : undefined;
-            resourceInputs["muteConfigId"] = state ? state.muteConfigId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["expiryTime"] = state?.expiryTime;
+            resourceInputs["filter"] = state?.filter;
+            resourceInputs["mostRecentEditor"] = state?.mostRecentEditor;
+            resourceInputs["muteConfigId"] = state?.muteConfigId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as MuteConfigArgs | undefined;
-            if ((!args || args.filter === undefined) && !opts.urn) {
+            if (args?.filter === undefined && !opts.urn) {
                 throw new Error("Missing required property 'filter'");
             }
-            if ((!args || args.muteConfigId === undefined) && !opts.urn) {
+            if (args?.muteConfigId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'muteConfigId'");
             }
-            if ((!args || args.parent === undefined) && !opts.urn) {
+            if (args?.parent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["expiryTime"] = args ? args.expiryTime : undefined;
-            resourceInputs["filter"] = args ? args.filter : undefined;
-            resourceInputs["muteConfigId"] = args ? args.muteConfigId : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["expiryTime"] = args?.expiryTime;
+            resourceInputs["filter"] = args?.filter;
+            resourceInputs["muteConfigId"] = args?.muteConfigId;
+            resourceInputs["parent"] = args?.parent;
+            resourceInputs["type"] = args?.type;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["mostRecentEditor"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

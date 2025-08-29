@@ -98,37 +98,37 @@ export class AutoscalingPolicy extends pulumi.CustomResource {
      * Basic algorithm for autoscaling.
      * Structure is documented below.
      */
-    public readonly basicAlgorithm!: pulumi.Output<outputs.dataproc.AutoscalingPolicyBasicAlgorithm | undefined>;
+    declare public readonly basicAlgorithm: pulumi.Output<outputs.dataproc.AutoscalingPolicyBasicAlgorithm | undefined>;
     /**
      * The  location where the autoscaling policy should reside.
      * The default value is `global`.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * The "resource name" of the autoscaling policy.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
      * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
      * 3 and 50 characters.
      */
-    public readonly policyId!: pulumi.Output<string>;
+    declare public readonly policyId: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Describes how the autoscaler will operate for secondary workers.
      * Structure is documented below.
      */
-    public readonly secondaryWorkerConfig!: pulumi.Output<outputs.dataproc.AutoscalingPolicySecondaryWorkerConfig | undefined>;
+    declare public readonly secondaryWorkerConfig: pulumi.Output<outputs.dataproc.AutoscalingPolicySecondaryWorkerConfig | undefined>;
     /**
      * Describes how the autoscaler will operate for primary workers.
      * Structure is documented below.
      */
-    public readonly workerConfig!: pulumi.Output<outputs.dataproc.AutoscalingPolicyWorkerConfig | undefined>;
+    declare public readonly workerConfig: pulumi.Output<outputs.dataproc.AutoscalingPolicyWorkerConfig | undefined>;
 
     /**
      * Create a AutoscalingPolicy resource with the given unique name, arguments, and options.
@@ -143,24 +143,24 @@ export class AutoscalingPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AutoscalingPolicyState | undefined;
-            resourceInputs["basicAlgorithm"] = state ? state.basicAlgorithm : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["policyId"] = state ? state.policyId : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["secondaryWorkerConfig"] = state ? state.secondaryWorkerConfig : undefined;
-            resourceInputs["workerConfig"] = state ? state.workerConfig : undefined;
+            resourceInputs["basicAlgorithm"] = state?.basicAlgorithm;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["policyId"] = state?.policyId;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["secondaryWorkerConfig"] = state?.secondaryWorkerConfig;
+            resourceInputs["workerConfig"] = state?.workerConfig;
         } else {
             const args = argsOrState as AutoscalingPolicyArgs | undefined;
-            if ((!args || args.policyId === undefined) && !opts.urn) {
+            if (args?.policyId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyId'");
             }
-            resourceInputs["basicAlgorithm"] = args ? args.basicAlgorithm : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["policyId"] = args ? args.policyId : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["secondaryWorkerConfig"] = args ? args.secondaryWorkerConfig : undefined;
-            resourceInputs["workerConfig"] = args ? args.workerConfig : undefined;
+            resourceInputs["basicAlgorithm"] = args?.basicAlgorithm;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["policyId"] = args?.policyId;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["secondaryWorkerConfig"] = args?.secondaryWorkerConfig;
+            resourceInputs["workerConfig"] = args?.workerConfig;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

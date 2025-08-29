@@ -135,7 +135,7 @@ export class Policy extends pulumi.CustomResource {
      * requests will always be permitted regardless of your admission rules.
      * Structure is documented below.
      */
-    public readonly admissionWhitelistPatterns!: pulumi.Output<outputs.binaryauthorization.PolicyAdmissionWhitelistPattern[] | undefined>;
+    declare public readonly admissionWhitelistPatterns: pulumi.Output<outputs.binaryauthorization.PolicyAdmissionWhitelistPattern[] | undefined>;
     /**
      * Per-cluster admission rules. An admission rule specifies either that
      * all container images used in a pod creation request must be attested
@@ -148,29 +148,29 @@ export class Policy extends pulumi.CustomResource {
      * (e.g. `us-central1`).
      * Structure is documented below.
      */
-    public readonly clusterAdmissionRules!: pulumi.Output<outputs.binaryauthorization.PolicyClusterAdmissionRule[] | undefined>;
+    declare public readonly clusterAdmissionRules: pulumi.Output<outputs.binaryauthorization.PolicyClusterAdmissionRule[] | undefined>;
     /**
      * Default admission rule for a cluster without a per-cluster admission
      * rule.
      * Structure is documented below.
      */
-    public readonly defaultAdmissionRule!: pulumi.Output<outputs.binaryauthorization.PolicyDefaultAdmissionRule>;
+    declare public readonly defaultAdmissionRule: pulumi.Output<outputs.binaryauthorization.PolicyDefaultAdmissionRule>;
     /**
      * A descriptive comment.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Controls the evaluation of a Google-maintained global admission policy
      * for common system-level images. Images not covered by the global
      * policy will be subject to the project admission policy.
      * Possible values are: `ENABLE`, `DISABLE`.
      */
-    public readonly globalPolicyEvaluationMode!: pulumi.Output<string>;
+    declare public readonly globalPolicyEvaluationMode: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
 
     /**
      * Create a Policy resource with the given unique name, arguments, and options.
@@ -185,23 +185,23 @@ export class Policy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyState | undefined;
-            resourceInputs["admissionWhitelistPatterns"] = state ? state.admissionWhitelistPatterns : undefined;
-            resourceInputs["clusterAdmissionRules"] = state ? state.clusterAdmissionRules : undefined;
-            resourceInputs["defaultAdmissionRule"] = state ? state.defaultAdmissionRule : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["globalPolicyEvaluationMode"] = state ? state.globalPolicyEvaluationMode : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["admissionWhitelistPatterns"] = state?.admissionWhitelistPatterns;
+            resourceInputs["clusterAdmissionRules"] = state?.clusterAdmissionRules;
+            resourceInputs["defaultAdmissionRule"] = state?.defaultAdmissionRule;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["globalPolicyEvaluationMode"] = state?.globalPolicyEvaluationMode;
+            resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as PolicyArgs | undefined;
-            if ((!args || args.defaultAdmissionRule === undefined) && !opts.urn) {
+            if (args?.defaultAdmissionRule === undefined && !opts.urn) {
                 throw new Error("Missing required property 'defaultAdmissionRule'");
             }
-            resourceInputs["admissionWhitelistPatterns"] = args ? args.admissionWhitelistPatterns : undefined;
-            resourceInputs["clusterAdmissionRules"] = args ? args.clusterAdmissionRules : undefined;
-            resourceInputs["defaultAdmissionRule"] = args ? args.defaultAdmissionRule : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["globalPolicyEvaluationMode"] = args ? args.globalPolicyEvaluationMode : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["admissionWhitelistPatterns"] = args?.admissionWhitelistPatterns;
+            resourceInputs["clusterAdmissionRules"] = args?.clusterAdmissionRules;
+            resourceInputs["defaultAdmissionRule"] = args?.defaultAdmissionRule;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["globalPolicyEvaluationMode"] = args?.globalPolicyEvaluationMode;
+            resourceInputs["project"] = args?.project;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Policy.__pulumiType, name, resourceInputs, opts);

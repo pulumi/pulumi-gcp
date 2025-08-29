@@ -600,19 +600,19 @@ export class RestorePlan extends pulumi.CustomResource {
      * A reference to the BackupPlan from which Backups may be used
      * as the source for Restores created via this RestorePlan.
      */
-    public readonly backupPlan!: pulumi.Output<string>;
+    declare public readonly backupPlan: pulumi.Output<string>;
     /**
      * The source cluster from which Restores will be created via this RestorePlan.
      */
-    public readonly cluster!: pulumi.Output<string>;
+    declare public readonly cluster: pulumi.Output<string>;
     /**
      * User specified descriptive string for this RestorePlan.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Description: A set of custom labels supplied by the user.
      * A list of key->value pairs.
@@ -621,42 +621,42 @@ export class RestorePlan extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The region of the Restore Plan.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The full name of the BackupPlan Resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Defines the configuration of Restores created via this RestorePlan.
      * Structure is documented below.
      */
-    public readonly restoreConfig!: pulumi.Output<outputs.gkebackup.RestorePlanRestoreConfig>;
+    declare public readonly restoreConfig: pulumi.Output<outputs.gkebackup.RestorePlanRestoreConfig>;
     /**
      * The State of the RestorePlan.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Detailed description of why RestorePlan is in its current state.
      */
-    public /*out*/ readonly stateReason!: pulumi.Output<string>;
+    declare public /*out*/ readonly stateReason: pulumi.Output<string>;
     /**
      * Server generated, unique identifier of UUID format.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
 
     /**
      * Create a RestorePlan resource with the given unique name, arguments, and options.
@@ -671,41 +671,41 @@ export class RestorePlan extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RestorePlanState | undefined;
-            resourceInputs["backupPlan"] = state ? state.backupPlan : undefined;
-            resourceInputs["cluster"] = state ? state.cluster : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["restoreConfig"] = state ? state.restoreConfig : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["stateReason"] = state ? state.stateReason : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
+            resourceInputs["backupPlan"] = state?.backupPlan;
+            resourceInputs["cluster"] = state?.cluster;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["restoreConfig"] = state?.restoreConfig;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["stateReason"] = state?.stateReason;
+            resourceInputs["uid"] = state?.uid;
         } else {
             const args = argsOrState as RestorePlanArgs | undefined;
-            if ((!args || args.backupPlan === undefined) && !opts.urn) {
+            if (args?.backupPlan === undefined && !opts.urn) {
                 throw new Error("Missing required property 'backupPlan'");
             }
-            if ((!args || args.cluster === undefined) && !opts.urn) {
+            if (args?.cluster === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cluster'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.restoreConfig === undefined) && !opts.urn) {
+            if (args?.restoreConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'restoreConfig'");
             }
-            resourceInputs["backupPlan"] = args ? args.backupPlan : undefined;
-            resourceInputs["cluster"] = args ? args.cluster : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["restoreConfig"] = args ? args.restoreConfig : undefined;
+            resourceInputs["backupPlan"] = args?.backupPlan;
+            resourceInputs["cluster"] = args?.cluster;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["restoreConfig"] = args?.restoreConfig;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;

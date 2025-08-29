@@ -79,23 +79,23 @@ export class Contact extends pulumi.CustomResource {
     /**
      * The email address to send notifications to. This does not need to be a Google account.
      */
-    public readonly email!: pulumi.Output<string>;
+    declare public readonly email: pulumi.Output<string>;
     /**
      * The preferred language for notifications, as a ISO 639-1 language code. See Supported languages for a list of supported languages.
      */
-    public readonly languageTag!: pulumi.Output<string>;
+    declare public readonly languageTag: pulumi.Output<string>;
     /**
      * The identifier for the contact. Format: {resourceType}/{resource_id}/contacts/{contact_id}
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The categories of notifications that the contact will receive communications for.
      */
-    public readonly notificationCategorySubscriptions!: pulumi.Output<string[]>;
+    declare public readonly notificationCategorySubscriptions: pulumi.Output<string[]>;
     /**
      * The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
      */
-    public readonly parent!: pulumi.Output<string>;
+    declare public readonly parent: pulumi.Output<string>;
 
     /**
      * Create a Contact resource with the given unique name, arguments, and options.
@@ -110,29 +110,29 @@ export class Contact extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ContactState | undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["languageTag"] = state ? state.languageTag : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["notificationCategorySubscriptions"] = state ? state.notificationCategorySubscriptions : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["languageTag"] = state?.languageTag;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["notificationCategorySubscriptions"] = state?.notificationCategorySubscriptions;
+            resourceInputs["parent"] = state?.parent;
         } else {
             const args = argsOrState as ContactArgs | undefined;
-            if ((!args || args.email === undefined) && !opts.urn) {
+            if (args?.email === undefined && !opts.urn) {
                 throw new Error("Missing required property 'email'");
             }
-            if ((!args || args.languageTag === undefined) && !opts.urn) {
+            if (args?.languageTag === undefined && !opts.urn) {
                 throw new Error("Missing required property 'languageTag'");
             }
-            if ((!args || args.notificationCategorySubscriptions === undefined) && !opts.urn) {
+            if (args?.notificationCategorySubscriptions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'notificationCategorySubscriptions'");
             }
-            if ((!args || args.parent === undefined) && !opts.urn) {
+            if (args?.parent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            resourceInputs["email"] = args ? args.email : undefined;
-            resourceInputs["languageTag"] = args ? args.languageTag : undefined;
-            resourceInputs["notificationCategorySubscriptions"] = args ? args.notificationCategorySubscriptions : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["email"] = args?.email;
+            resourceInputs["languageTag"] = args?.languageTag;
+            resourceInputs["notificationCategorySubscriptions"] = args?.notificationCategorySubscriptions;
+            resourceInputs["parent"] = args?.parent;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

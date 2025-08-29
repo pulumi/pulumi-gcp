@@ -122,30 +122,30 @@ export class AuthorizedView extends pulumi.CustomResource {
         return obj['__pulumiType'] === AuthorizedView.__pulumiType;
     }
 
-    public readonly deletionProtection!: pulumi.Output<string>;
+    declare public readonly deletionProtection: pulumi.Output<string>;
     /**
      * The name of the Bigtable instance in which the authorized view belongs.
      */
-    public readonly instanceName!: pulumi.Output<string>;
+    declare public readonly instanceName: pulumi.Output<string>;
     /**
      * The name of the authorized view. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
      *
      * -----
      */
-    public readonly subsetView!: pulumi.Output<outputs.bigtable.AuthorizedViewSubsetView | undefined>;
+    declare public readonly subsetView: pulumi.Output<outputs.bigtable.AuthorizedViewSubsetView | undefined>;
     /**
      * The name of the Bigtable table in which the authorized view belongs.
      */
-    public readonly tableName!: pulumi.Output<string>;
+    declare public readonly tableName: pulumi.Output<string>;
 
     /**
      * Create a AuthorizedView resource with the given unique name, arguments, and options.
@@ -160,26 +160,26 @@ export class AuthorizedView extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AuthorizedViewState | undefined;
-            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["subsetView"] = state ? state.subsetView : undefined;
-            resourceInputs["tableName"] = state ? state.tableName : undefined;
+            resourceInputs["deletionProtection"] = state?.deletionProtection;
+            resourceInputs["instanceName"] = state?.instanceName;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["subsetView"] = state?.subsetView;
+            resourceInputs["tableName"] = state?.tableName;
         } else {
             const args = argsOrState as AuthorizedViewArgs | undefined;
-            if ((!args || args.instanceName === undefined) && !opts.urn) {
+            if (args?.instanceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceName'");
             }
-            if ((!args || args.tableName === undefined) && !opts.urn) {
+            if (args?.tableName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tableName'");
             }
-            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["subsetView"] = args ? args.subsetView : undefined;
-            resourceInputs["tableName"] = args ? args.tableName : undefined;
+            resourceInputs["deletionProtection"] = args?.deletionProtection;
+            resourceInputs["instanceName"] = args?.instanceName;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["subsetView"] = args?.subsetView;
+            resourceInputs["tableName"] = args?.tableName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AuthorizedView.__pulumiType, name, resourceInputs, opts);

@@ -376,34 +376,34 @@ export class Service extends pulumi.CustomResource {
      * (For legacy support, if `template.metadata.name` is unset in state while
      * this field is set to false, the revision name will still autogenerate.)
      */
-    public readonly autogenerateRevisionName!: pulumi.Output<boolean | undefined>;
+    declare public readonly autogenerateRevisionName: pulumi.Output<boolean | undefined>;
     /**
      * The location of the cloud run instance. eg us-central1
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Metadata associated with this Service, including name, namespace, labels,
      * and annotations.
      * Structure is documented below.
      */
-    public readonly metadata!: pulumi.Output<outputs.cloudrun.ServiceMetadata>;
+    declare public readonly metadata: pulumi.Output<outputs.cloudrun.ServiceMetadata>;
     /**
      * Name must be unique within a Google Cloud project and region.
      * Is required when creating resources. Name is primarily intended
      * for creation idempotence and configuration definition. Cannot be updated.
      * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * (Output)
      * Status of the condition, one of True, False, Unknown.
      */
-    public /*out*/ readonly statuses!: pulumi.Output<outputs.cloudrun.ServiceStatus[]>;
+    declare public /*out*/ readonly statuses: pulumi.Output<outputs.cloudrun.ServiceStatus[]>;
     /**
      * template holds the latest specification for the Revision to
      * be stamped out. The template references the container image, and may also
@@ -416,13 +416,13 @@ export class Service extends pulumi.CustomResource {
      * responsible for materializing the container image from source.
      * Structure is documented below.
      */
-    public readonly template!: pulumi.Output<outputs.cloudrun.ServiceTemplate | undefined>;
+    declare public readonly template: pulumi.Output<outputs.cloudrun.ServiceTemplate | undefined>;
     /**
      * Traffic specifies how to distribute traffic over a collection of Knative Revisions
      * and Configurations
      * Structure is documented below.
      */
-    public readonly traffics!: pulumi.Output<outputs.cloudrun.ServiceTraffic[]>;
+    declare public readonly traffics: pulumi.Output<outputs.cloudrun.ServiceTraffic[]>;
 
     /**
      * Create a Service resource with the given unique name, arguments, and options.
@@ -437,26 +437,26 @@ export class Service extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceState | undefined;
-            resourceInputs["autogenerateRevisionName"] = state ? state.autogenerateRevisionName : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["metadata"] = state ? state.metadata : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["statuses"] = state ? state.statuses : undefined;
-            resourceInputs["template"] = state ? state.template : undefined;
-            resourceInputs["traffics"] = state ? state.traffics : undefined;
+            resourceInputs["autogenerateRevisionName"] = state?.autogenerateRevisionName;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["metadata"] = state?.metadata;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["statuses"] = state?.statuses;
+            resourceInputs["template"] = state?.template;
+            resourceInputs["traffics"] = state?.traffics;
         } else {
             const args = argsOrState as ServiceArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["autogenerateRevisionName"] = args ? args.autogenerateRevisionName : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["metadata"] = args ? args.metadata : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["template"] = args ? args.template : undefined;
-            resourceInputs["traffics"] = args ? args.traffics : undefined;
+            resourceInputs["autogenerateRevisionName"] = args?.autogenerateRevisionName;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["metadata"] = args?.metadata;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["template"] = args?.template;
+            resourceInputs["traffics"] = args?.traffics;
             resourceInputs["statuses"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

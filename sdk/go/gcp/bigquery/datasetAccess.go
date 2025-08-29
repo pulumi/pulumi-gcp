@@ -246,8 +246,7 @@ import (
 type DatasetAccess struct {
 	pulumi.CustomResourceState
 
-	// If true, represents that that the iamMember in the config was translated to a different member type by the API, and is
-	// stored in state as a different member type
+	// If true, represents that that the iamMember in the config was translated to a different member type by the API, and is stored in state as a different member type
 	ApiUpdatedMember pulumi.BoolOutput `pulumi:"apiUpdatedMember"`
 	// Grants all resources of particular types in a particular dataset read access to the current dataset.
 	// Structure is documented below.
@@ -336,8 +335,7 @@ func GetDatasetAccess(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DatasetAccess resources.
 type datasetAccessState struct {
-	// If true, represents that that the iamMember in the config was translated to a different member type by the API, and is
-	// stored in state as a different member type
+	// If true, represents that that the iamMember in the config was translated to a different member type by the API, and is stored in state as a different member type
 	ApiUpdatedMember *bool `pulumi:"apiUpdatedMember"`
 	// Grants all resources of particular types in a particular dataset read access to the current dataset.
 	// Structure is documented below.
@@ -394,8 +392,7 @@ type datasetAccessState struct {
 }
 
 type DatasetAccessState struct {
-	// If true, represents that that the iamMember in the config was translated to a different member type by the API, and is
-	// stored in state as a different member type
+	// If true, represents that that the iamMember in the config was translated to a different member type by the API, and is stored in state as a different member type
 	ApiUpdatedMember pulumi.BoolPtrInput
 	// Grants all resources of particular types in a particular dataset read access to the current dataset.
 	// Structure is documented below.
@@ -653,8 +650,7 @@ func (o DatasetAccessOutput) ToDatasetAccessOutputWithContext(ctx context.Contex
 	return o
 }
 
-// If true, represents that that the iamMember in the config was translated to a different member type by the API, and is
-// stored in state as a different member type
+// If true, represents that that the iamMember in the config was translated to a different member type by the API, and is stored in state as a different member type
 func (o DatasetAccessOutput) ApiUpdatedMember() pulumi.BoolOutput {
 	return o.ApplyT(func(v *DatasetAccess) pulumi.BoolOutput { return v.ApiUpdatedMember }).(pulumi.BoolOutput)
 }

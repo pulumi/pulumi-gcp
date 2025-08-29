@@ -175,60 +175,60 @@ export class AccountConnector extends pulumi.CustomResource {
      * to https://google.aip.dev/122#resource-id-segments Names must be unique
      * per-project per-location.
      */
-    public readonly accountConnectorId!: pulumi.Output<string>;
+    declare public readonly accountConnectorId: pulumi.Output<string>;
     /**
      * Optional. Allows users to store small amounts of arbitrary data.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Output only. The timestamp when the userConnection was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
-    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Optional. Labels as key value pairs
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location of the resource.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Identifier. The resource name of the userConnection, in the format
      * `projects/{project}/locations/{location}/accountConnectors/{account_connector_id}`.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Output only. Start OAuth flow by clicking on this URL.
      */
-    public /*out*/ readonly oauthStartUri!: pulumi.Output<string>;
+    declare public /*out*/ readonly oauthStartUri: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * ProviderOAuthConfig is the OAuth config for a provider.
      * Structure is documented below.
      */
-    public readonly providerOauthConfig!: pulumi.Output<outputs.developerconnect.AccountConnectorProviderOauthConfig | undefined>;
+    declare public readonly providerOauthConfig: pulumi.Output<outputs.developerconnect.AccountConnectorProviderOauthConfig | undefined>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Output only. The timestamp when the userConnection was updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a AccountConnector resource with the given unique name, arguments, and options.
@@ -243,33 +243,33 @@ export class AccountConnector extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountConnectorState | undefined;
-            resourceInputs["accountConnectorId"] = state ? state.accountConnectorId : undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["oauthStartUri"] = state ? state.oauthStartUri : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["providerOauthConfig"] = state ? state.providerOauthConfig : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["accountConnectorId"] = state?.accountConnectorId;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["oauthStartUri"] = state?.oauthStartUri;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["providerOauthConfig"] = state?.providerOauthConfig;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as AccountConnectorArgs | undefined;
-            if ((!args || args.accountConnectorId === undefined) && !opts.urn) {
+            if (args?.accountConnectorId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountConnectorId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["accountConnectorId"] = args ? args.accountConnectorId : undefined;
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["providerOauthConfig"] = args ? args.providerOauthConfig : undefined;
+            resourceInputs["accountConnectorId"] = args?.accountConnectorId;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["providerOauthConfig"] = args?.providerOauthConfig;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;

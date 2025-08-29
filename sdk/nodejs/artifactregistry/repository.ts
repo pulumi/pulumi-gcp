@@ -651,43 +651,43 @@ export class Repository extends pulumi.CustomResource {
      * unique within a repository and be under 128 characters in length.
      * Structure is documented below.
      */
-    public readonly cleanupPolicies!: pulumi.Output<outputs.artifactregistry.RepositoryCleanupPolicy[] | undefined>;
+    declare public readonly cleanupPolicies: pulumi.Output<outputs.artifactregistry.RepositoryCleanupPolicy[] | undefined>;
     /**
      * If true, the cleanup pipeline is prevented from deleting versions in this
      * repository.
      */
-    public readonly cleanupPolicyDryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly cleanupPolicyDryRun: pulumi.Output<boolean | undefined>;
     /**
      * The time when the repository was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The user-provided description of the repository.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Docker repository config contains repository level configuration for the repositories of docker type.
      * Structure is documented below.
      */
-    public readonly dockerConfig!: pulumi.Output<outputs.artifactregistry.RepositoryDockerConfig | undefined>;
+    declare public readonly dockerConfig: pulumi.Output<outputs.artifactregistry.RepositoryDockerConfig | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The format of packages that are stored in the repository. Supported formats
      * can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
      * You can only create alpha formats if you are a member of the
      * [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
      */
-    public readonly format!: pulumi.Output<string>;
+    declare public readonly format: pulumi.Output<string>;
     /**
      * The Cloud KMS resource name of the customer managed encryption key that’s
      * used to encrypt the contents of the Repository. Has the form:
      * `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
      * This value may not be changed after the Repository has been created.
      */
-    public readonly kmsKeyName!: pulumi.Output<string | undefined>;
+    declare public readonly kmsKeyName: pulumi.Output<string | undefined>;
     /**
      * Labels with user-defined metadata.
      * This field may contain up to 64 entries. Label keys and values may be no
@@ -698,7 +698,7 @@ export class Repository extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the repository's location. In addition to specific regions,
      * special values for multi-region locations are `asia`, `europe`, and `us`.
@@ -707,59 +707,59 @@ export class Repository extends pulumi.CustomResource {
      * gcp.artifactregistry.getLocations
      * data source for possible values.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * MavenRepositoryConfig is maven related repository details.
      * Provides additional configuration details for repositories of the maven
      * format type.
      * Structure is documented below.
      */
-    public readonly mavenConfig!: pulumi.Output<outputs.artifactregistry.RepositoryMavenConfig | undefined>;
+    declare public readonly mavenConfig: pulumi.Output<outputs.artifactregistry.RepositoryMavenConfig | undefined>;
     /**
      * The mode configures the repository to serve artifacts from different sources.
      * Default value is `STANDARD_REPOSITORY`.
      * Possible values are: `STANDARD_REPOSITORY`, `VIRTUAL_REPOSITORY`, `REMOTE_REPOSITORY`.
      */
-    public readonly mode!: pulumi.Output<string | undefined>;
+    declare public readonly mode: pulumi.Output<string | undefined>;
     /**
      * The name of the repository, for example:
      * "repo1"
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Configuration specific for a Remote Repository.
      * Structure is documented below.
      */
-    public readonly remoteRepositoryConfig!: pulumi.Output<outputs.artifactregistry.RepositoryRemoteRepositoryConfig | undefined>;
+    declare public readonly remoteRepositoryConfig: pulumi.Output<outputs.artifactregistry.RepositoryRemoteRepositoryConfig | undefined>;
     /**
      * The last part of the repository name, for example:
      * "repo1"
      */
-    public readonly repositoryId!: pulumi.Output<string>;
+    declare public readonly repositoryId: pulumi.Output<string>;
     /**
      * The time when the repository was last updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * Configuration specific for a Virtual Repository.
      * Structure is documented below.
      */
-    public readonly virtualRepositoryConfig!: pulumi.Output<outputs.artifactregistry.RepositoryVirtualRepositoryConfig | undefined>;
+    declare public readonly virtualRepositoryConfig: pulumi.Output<outputs.artifactregistry.RepositoryVirtualRepositoryConfig | undefined>;
     /**
      * Configuration for vulnerability scanning of artifacts stored in this repository.
      * Structure is documented below.
      */
-    public readonly vulnerabilityScanningConfig!: pulumi.Output<outputs.artifactregistry.RepositoryVulnerabilityScanningConfig>;
+    declare public readonly vulnerabilityScanningConfig: pulumi.Output<outputs.artifactregistry.RepositoryVulnerabilityScanningConfig>;
 
     /**
      * Create a Repository resource with the given unique name, arguments, and options.
@@ -774,49 +774,49 @@ export class Repository extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RepositoryState | undefined;
-            resourceInputs["cleanupPolicies"] = state ? state.cleanupPolicies : undefined;
-            resourceInputs["cleanupPolicyDryRun"] = state ? state.cleanupPolicyDryRun : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["dockerConfig"] = state ? state.dockerConfig : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["format"] = state ? state.format : undefined;
-            resourceInputs["kmsKeyName"] = state ? state.kmsKeyName : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["mavenConfig"] = state ? state.mavenConfig : undefined;
-            resourceInputs["mode"] = state ? state.mode : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["remoteRepositoryConfig"] = state ? state.remoteRepositoryConfig : undefined;
-            resourceInputs["repositoryId"] = state ? state.repositoryId : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["virtualRepositoryConfig"] = state ? state.virtualRepositoryConfig : undefined;
-            resourceInputs["vulnerabilityScanningConfig"] = state ? state.vulnerabilityScanningConfig : undefined;
+            resourceInputs["cleanupPolicies"] = state?.cleanupPolicies;
+            resourceInputs["cleanupPolicyDryRun"] = state?.cleanupPolicyDryRun;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["dockerConfig"] = state?.dockerConfig;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["format"] = state?.format;
+            resourceInputs["kmsKeyName"] = state?.kmsKeyName;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["mavenConfig"] = state?.mavenConfig;
+            resourceInputs["mode"] = state?.mode;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["remoteRepositoryConfig"] = state?.remoteRepositoryConfig;
+            resourceInputs["repositoryId"] = state?.repositoryId;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["virtualRepositoryConfig"] = state?.virtualRepositoryConfig;
+            resourceInputs["vulnerabilityScanningConfig"] = state?.vulnerabilityScanningConfig;
         } else {
             const args = argsOrState as RepositoryArgs | undefined;
-            if ((!args || args.format === undefined) && !opts.urn) {
+            if (args?.format === undefined && !opts.urn) {
                 throw new Error("Missing required property 'format'");
             }
-            if ((!args || args.repositoryId === undefined) && !opts.urn) {
+            if (args?.repositoryId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'repositoryId'");
             }
-            resourceInputs["cleanupPolicies"] = args ? args.cleanupPolicies : undefined;
-            resourceInputs["cleanupPolicyDryRun"] = args ? args.cleanupPolicyDryRun : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["dockerConfig"] = args ? args.dockerConfig : undefined;
-            resourceInputs["format"] = args ? args.format : undefined;
-            resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["mavenConfig"] = args ? args.mavenConfig : undefined;
-            resourceInputs["mode"] = args ? args.mode : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["remoteRepositoryConfig"] = args ? args.remoteRepositoryConfig : undefined;
-            resourceInputs["repositoryId"] = args ? args.repositoryId : undefined;
-            resourceInputs["virtualRepositoryConfig"] = args ? args.virtualRepositoryConfig : undefined;
-            resourceInputs["vulnerabilityScanningConfig"] = args ? args.vulnerabilityScanningConfig : undefined;
+            resourceInputs["cleanupPolicies"] = args?.cleanupPolicies;
+            resourceInputs["cleanupPolicyDryRun"] = args?.cleanupPolicyDryRun;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["dockerConfig"] = args?.dockerConfig;
+            resourceInputs["format"] = args?.format;
+            resourceInputs["kmsKeyName"] = args?.kmsKeyName;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["mavenConfig"] = args?.mavenConfig;
+            resourceInputs["mode"] = args?.mode;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["remoteRepositoryConfig"] = args?.remoteRepositoryConfig;
+            resourceInputs["repositoryId"] = args?.repositoryId;
+            resourceInputs["virtualRepositoryConfig"] = args?.virtualRepositoryConfig;
+            resourceInputs["vulnerabilityScanningConfig"] = args?.vulnerabilityScanningConfig;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

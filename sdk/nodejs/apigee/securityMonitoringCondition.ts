@@ -118,45 +118,45 @@ export class SecurityMonitoringCondition extends pulumi.CustomResource {
     /**
      * Resource ID of the security monitoring condition.
      */
-    public readonly conditionId!: pulumi.Output<string>;
+    declare public readonly conditionId: pulumi.Output<string>;
     /**
      * The timestamp at which this profile was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * A nested object resource.
      */
-    public readonly includeAllResources!: pulumi.Output<outputs.apigee.SecurityMonitoringConditionIncludeAllResources | undefined>;
+    declare public readonly includeAllResources: pulumi.Output<outputs.apigee.SecurityMonitoringConditionIncludeAllResources | undefined>;
     /**
      * Name of the security monitoring condition resource,
      * in the format `organizations/{{org_name}}/securityMonitoringConditions/{{condition_id}}`.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The Apigee Organization associated with the Apigee Security Monitoring Condition,
      * in the format `organizations/{{org_name}}`.
      */
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * ID of security profile of the security monitoring condition.
      */
-    public readonly profile!: pulumi.Output<string>;
+    declare public readonly profile: pulumi.Output<string>;
     /**
      * ID of security profile of the security monitoring condition.
      */
-    public readonly scope!: pulumi.Output<string>;
+    declare public readonly scope: pulumi.Output<string>;
     /**
      * Total number of deployed resources within scope.
      */
-    public /*out*/ readonly totalDeployedResources!: pulumi.Output<number>;
+    declare public /*out*/ readonly totalDeployedResources: pulumi.Output<number>;
     /**
      * Total number of monitored resources within this condition.
      */
-    public /*out*/ readonly totalMonitoredResources!: pulumi.Output<number>;
+    declare public /*out*/ readonly totalMonitoredResources: pulumi.Output<number>;
     /**
      * The timestamp at which this profile was most recently updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a SecurityMonitoringCondition resource with the given unique name, arguments, and options.
@@ -171,35 +171,35 @@ export class SecurityMonitoringCondition extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecurityMonitoringConditionState | undefined;
-            resourceInputs["conditionId"] = state ? state.conditionId : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["includeAllResources"] = state ? state.includeAllResources : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["profile"] = state ? state.profile : undefined;
-            resourceInputs["scope"] = state ? state.scope : undefined;
-            resourceInputs["totalDeployedResources"] = state ? state.totalDeployedResources : undefined;
-            resourceInputs["totalMonitoredResources"] = state ? state.totalMonitoredResources : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["conditionId"] = state?.conditionId;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["includeAllResources"] = state?.includeAllResources;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["profile"] = state?.profile;
+            resourceInputs["scope"] = state?.scope;
+            resourceInputs["totalDeployedResources"] = state?.totalDeployedResources;
+            resourceInputs["totalMonitoredResources"] = state?.totalMonitoredResources;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as SecurityMonitoringConditionArgs | undefined;
-            if ((!args || args.conditionId === undefined) && !opts.urn) {
+            if (args?.conditionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'conditionId'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if ((!args || args.profile === undefined) && !opts.urn) {
+            if (args?.profile === undefined && !opts.urn) {
                 throw new Error("Missing required property 'profile'");
             }
-            if ((!args || args.scope === undefined) && !opts.urn) {
+            if (args?.scope === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scope'");
             }
-            resourceInputs["conditionId"] = args ? args.conditionId : undefined;
-            resourceInputs["includeAllResources"] = args ? args.includeAllResources : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["profile"] = args ? args.profile : undefined;
-            resourceInputs["scope"] = args ? args.scope : undefined;
+            resourceInputs["conditionId"] = args?.conditionId;
+            resourceInputs["includeAllResources"] = args?.includeAllResources;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["profile"] = args?.profile;
+            resourceInputs["scope"] = args?.scope;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["totalDeployedResources"] = undefined /*out*/;

@@ -296,11 +296,11 @@ export class IAMPolicy extends pulumi.CustomResource {
     /**
      * (Computed) The etag of the organization's IAM policy.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The organization id of the target organization.
      */
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * The `gcp.organizations.getIAMPolicy` data source that represents
      * the IAM policy that will be applied to the organization. The policy will be
@@ -311,7 +311,7 @@ export class IAMPolicy extends pulumi.CustomResource {
      * Deleting this removes all policies from the organization, locking out users without
      * organization-level access.
      */
-    public readonly policyData!: pulumi.Output<string>;
+    declare public readonly policyData: pulumi.Output<string>;
 
     /**
      * Create a IAMPolicy resource with the given unique name, arguments, and options.
@@ -326,19 +326,19 @@ export class IAMPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IAMPolicyState | undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["policyData"] = state ? state.policyData : undefined;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["policyData"] = state?.policyData;
         } else {
             const args = argsOrState as IAMPolicyArgs | undefined;
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if ((!args || args.policyData === undefined) && !opts.urn) {
+            if (args?.policyData === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyData'");
             }
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["policyData"] = args ? args.policyData : undefined;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["policyData"] = args?.policyData;
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

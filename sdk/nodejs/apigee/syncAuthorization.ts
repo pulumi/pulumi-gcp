@@ -106,18 +106,18 @@ export class SyncAuthorization extends pulumi.CustomResource {
      * Entity tag (ETag) used for optimistic concurrency control as a way to help prevent simultaneous updates from overwriting each other.
      * Used internally during updates.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Array of service accounts to grant access to control plane resources, each specified using the following format: `serviceAccount:service-account-name`.
      * The `service-account-name` is formatted like an email address. For example: my-synchronizer-manager-serviceAccount@my_project_id.iam.gserviceaccount.com
      * You might specify multiple service accounts, for example, if you have multiple environments and wish to assign a unique service account to each one.
      * The service accounts must have **Apigee Synchronizer Manager** role. See also [Create service accounts](https://cloud.google.com/apigee/docs/hybrid/v1.8/sa-about#create-the-service-accounts).
      */
-    public readonly identities!: pulumi.Output<string[]>;
+    declare public readonly identities: pulumi.Output<string[]>;
     /**
      * Name of the Apigee organization.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a SyncAuthorization resource with the given unique name, arguments, and options.
@@ -132,16 +132,16 @@ export class SyncAuthorization extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SyncAuthorizationState | undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["identities"] = state ? state.identities : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["identities"] = state?.identities;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as SyncAuthorizationArgs | undefined;
-            if ((!args || args.identities === undefined) && !opts.urn) {
+            if (args?.identities === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identities'");
             }
-            resourceInputs["identities"] = args ? args.identities : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["identities"] = args?.identities;
+            resourceInputs["name"] = args?.name;
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

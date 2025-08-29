@@ -155,67 +155,67 @@ export class PrivateCloud extends pulumi.CustomResource {
     /**
      * The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
      */
-    public readonly deletionDelayHours!: pulumi.Output<number | undefined>;
+    declare public readonly deletionDelayHours: pulumi.Output<number | undefined>;
     /**
      * User-provided description for this private cloud.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Details about a HCX Cloud Manager appliance.
      * Structure is documented below.
      */
-    public /*out*/ readonly hcxes!: pulumi.Output<outputs.vmwareengine.PrivateCloudHcx[]>;
+    declare public /*out*/ readonly hcxes: pulumi.Output<outputs.vmwareengine.PrivateCloudHcx[]>;
     /**
      * The location where the PrivateCloud should reside.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The management cluster for this private cloud. This used for creating and managing the default cluster.
      * Structure is documented below.
      */
-    public readonly managementCluster!: pulumi.Output<outputs.vmwareengine.PrivateCloudManagementCluster>;
+    declare public readonly managementCluster: pulumi.Output<outputs.vmwareengine.PrivateCloudManagementCluster>;
     /**
      * The ID of the PrivateCloud.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Network configuration in the consumer project with which the peering has to be done.
      * Structure is documented below.
      */
-    public readonly networkConfig!: pulumi.Output<outputs.vmwareengine.PrivateCloudNetworkConfig>;
+    declare public readonly networkConfig: pulumi.Output<outputs.vmwareengine.PrivateCloudNetworkConfig>;
     /**
      * Details about a NSX Manager appliance.
      * Structure is documented below.
      */
-    public /*out*/ readonly nsxes!: pulumi.Output<outputs.vmwareengine.PrivateCloudNsx[]>;
+    declare public /*out*/ readonly nsxes: pulumi.Output<outputs.vmwareengine.PrivateCloudNsx[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * While set true, deletionDelayHours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletionDelayHours field. It can be used both alone and together with deletion_delay_hours.
      */
-    public readonly sendDeletionDelayHoursIfZero!: pulumi.Output<boolean | undefined>;
+    declare public readonly sendDeletionDelayHoursIfZero: pulumi.Output<boolean | undefined>;
     /**
      * State of the appliance.
      * Possible values are: `ACTIVE`, `CREATING`.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Initial type of the private cloud.
      * Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string | undefined>;
     /**
      * System-generated unique identifier for the resource.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * Details about a vCenter Server management appliance.
      * Structure is documented below.
      */
-    public /*out*/ readonly vcenters!: pulumi.Output<outputs.vmwareengine.PrivateCloudVcenter[]>;
+    declare public /*out*/ readonly vcenters: pulumi.Output<outputs.vmwareengine.PrivateCloudVcenter[]>;
 
     /**
      * Create a PrivateCloud resource with the given unique name, arguments, and options.
@@ -230,40 +230,40 @@ export class PrivateCloud extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PrivateCloudState | undefined;
-            resourceInputs["deletionDelayHours"] = state ? state.deletionDelayHours : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["hcxes"] = state ? state.hcxes : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["managementCluster"] = state ? state.managementCluster : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networkConfig"] = state ? state.networkConfig : undefined;
-            resourceInputs["nsxes"] = state ? state.nsxes : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["sendDeletionDelayHoursIfZero"] = state ? state.sendDeletionDelayHoursIfZero : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["vcenters"] = state ? state.vcenters : undefined;
+            resourceInputs["deletionDelayHours"] = state?.deletionDelayHours;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["hcxes"] = state?.hcxes;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["managementCluster"] = state?.managementCluster;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networkConfig"] = state?.networkConfig;
+            resourceInputs["nsxes"] = state?.nsxes;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["sendDeletionDelayHoursIfZero"] = state?.sendDeletionDelayHoursIfZero;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["vcenters"] = state?.vcenters;
         } else {
             const args = argsOrState as PrivateCloudArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.managementCluster === undefined) && !opts.urn) {
+            if (args?.managementCluster === undefined && !opts.urn) {
                 throw new Error("Missing required property 'managementCluster'");
             }
-            if ((!args || args.networkConfig === undefined) && !opts.urn) {
+            if (args?.networkConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkConfig'");
             }
-            resourceInputs["deletionDelayHours"] = args ? args.deletionDelayHours : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["managementCluster"] = args ? args.managementCluster : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networkConfig"] = args ? args.networkConfig : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["sendDeletionDelayHoursIfZero"] = args ? args.sendDeletionDelayHoursIfZero : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["deletionDelayHours"] = args?.deletionDelayHours;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["managementCluster"] = args?.managementCluster;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networkConfig"] = args?.networkConfig;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["sendDeletionDelayHoursIfZero"] = args?.sendDeletionDelayHoursIfZero;
+            resourceInputs["type"] = args?.type;
             resourceInputs["hcxes"] = undefined /*out*/;
             resourceInputs["nsxes"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;

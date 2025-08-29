@@ -23,8 +23,7 @@ class DashboardArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Dashboard resource.
-        :param pulumi.Input[_builtins.str] dashboard_json: The JSON representation of a dashboard, following the format at
-               https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
+        :param pulumi.Input[_builtins.str] dashboard_json: The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -36,8 +35,7 @@ class DashboardArgs:
     @pulumi.getter(name="dashboardJson")
     def dashboard_json(self) -> pulumi.Input[_builtins.str]:
         """
-        The JSON representation of a dashboard, following the format at
-        https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
+        The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
         """
         return pulumi.get(self, "dashboard_json")
 
@@ -66,8 +64,7 @@ class _DashboardState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Dashboard resources.
-        :param pulumi.Input[_builtins.str] dashboard_json: The JSON representation of a dashboard, following the format at
-               https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
+        :param pulumi.Input[_builtins.str] dashboard_json: The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -80,8 +77,7 @@ class _DashboardState:
     @pulumi.getter(name="dashboardJson")
     def dashboard_json(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The JSON representation of a dashboard, following the format at
-        https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
+        The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
         """
         return pulumi.get(self, "dashboard_json")
 
@@ -231,8 +227,7 @@ class Dashboard(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] dashboard_json: The JSON representation of a dashboard, following the format at
-               https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
+        :param pulumi.Input[_builtins.str] dashboard_json: The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -408,8 +403,7 @@ class Dashboard(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] dashboard_json: The JSON representation of a dashboard, following the format at
-               https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
+        :param pulumi.Input[_builtins.str] dashboard_json: The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -425,8 +419,7 @@ class Dashboard(pulumi.CustomResource):
     @pulumi.getter(name="dashboardJson")
     def dashboard_json(self) -> pulumi.Output[_builtins.str]:
         """
-        The JSON representation of a dashboard, following the format at
-        https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
+        The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
         """
         return pulumi.get(self, "dashboard_json")
 

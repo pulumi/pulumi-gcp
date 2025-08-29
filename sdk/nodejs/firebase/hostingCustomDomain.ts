@@ -151,7 +151,7 @@ export class HostingCustomDomain extends pulumi.CustomResource {
      * `GROUPED` cert type, while Blaze plan can select any option.
      * Possible values are: `GROUPED`, `PROJECT_GROUPED`, `DEDICATED`.
      */
-    public readonly certPreference!: pulumi.Output<string>;
+    declare public readonly certPreference: pulumi.Output<string>;
     /**
      * The SSL certificate Hosting has for this `CustomDomain`'s domain name.
      * For new `CustomDomain`s, this often represents Hosting's intent to create
@@ -159,31 +159,31 @@ export class HostingCustomDomain extends pulumi.CustomResource {
      * more.
      * Structure is documented below.
      */
-    public /*out*/ readonly certs!: pulumi.Output<outputs.firebase.HostingCustomDomainCert[]>;
+    declare public /*out*/ readonly certs: pulumi.Output<outputs.firebase.HostingCustomDomainCert[]>;
     /**
      * The `CustomDomain`'s create time.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The ID of the `CustomDomain`, which is the domain name you'd like to use with Firebase Hosting.
      */
-    public readonly customDomain!: pulumi.Output<string>;
+    declare public readonly customDomain: pulumi.Output<string>;
     /**
      * The time the `CustomDomain` was deleted; null for `CustomDomains` that
      * haven't been deleted. Deleted `CustomDomains` persist for approximately 30
      * days, after which time Hosting removes them completely.
      */
-    public /*out*/ readonly deleteTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly deleteTime: pulumi.Output<string>;
     /**
      * A string that represents the current state of the `CustomDomain` and
      * allows you to confirm its initial state in requests that would modify it.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The minimum time before a soft-deleted `CustomDomain` is completely removed
      * from Hosting; null for `CustomDomains` that haven't been deleted.
      */
-    public /*out*/ readonly expireTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly expireTime: pulumi.Output<string>;
     /**
      * The host state of your domain name. Host state is determined by checking each
      * IP address associated with your domain name to see if it's serving
@@ -206,18 +206,18 @@ export class HostingCustomDomain extends pulumi.CustomResource {
      * Hosting. If the `CustomDomain`'s `OwnershipState` is also `ACTIVE`, Hosting
      * serves your Hosting Site's content on the domain name.
      */
-    public /*out*/ readonly hostState!: pulumi.Output<string>;
+    declare public /*out*/ readonly hostState: pulumi.Output<string>;
     /**
      * A set of errors Hosting systems encountered when trying to establish
      * Hosting's ability to serve secure content for your domain name. Resolve
      * these issues to ensure your `CustomDomain` behaves properly.
      * Structure is documented below.
      */
-    public /*out*/ readonly issues!: pulumi.Output<outputs.firebase.HostingCustomDomainIssue[]>;
+    declare public /*out*/ readonly issues: pulumi.Output<outputs.firebase.HostingCustomDomainIssue[]>;
     /**
      * The fully-qualified name of the `CustomDomain`.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ownership state of your domain name. Ownership is determined at a
      * Firebase project level, and established by adding `TXT` records to your
@@ -252,41 +252,41 @@ export class HostingCustomDomain extends pulumi.CustomResource {
      * Your `CustomDomain`'s domain name has `TXT` records that grant its project
      * permission to act on its behalf.
      */
-    public /*out*/ readonly ownershipState!: pulumi.Output<string>;
+    declare public /*out*/ readonly ownershipState: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * if true, indicates that Hosting's systems are attempting to
      * make the `CustomDomain`'s state match your preferred state. This is most
      * frequently `true` when initially provisioning a `CustomDomain` or when creating
      * a new SSL certificate to match an updated `certPreference`
      */
-    public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly reconciling: pulumi.Output<boolean>;
     /**
      * A domain name that this CustomDomain should direct traffic towards. If
      * specified, Hosting will respond to requests against this CustomDomain
      * with an HTTP 301 code, and route traffic to the specified `redirectTarget`
      * instead.
      */
-    public readonly redirectTarget!: pulumi.Output<string | undefined>;
+    declare public readonly redirectTarget: pulumi.Output<string | undefined>;
     /**
      * A set of updates you should make to the domain name's DNS records to
      * let Hosting serve secure content on its behalf.
      * Structure is documented below.
      */
-    public /*out*/ readonly requiredDnsUpdates!: pulumi.Output<outputs.firebase.HostingCustomDomainRequiredDnsUpdate[]>;
+    declare public /*out*/ readonly requiredDnsUpdates: pulumi.Output<outputs.firebase.HostingCustomDomainRequiredDnsUpdate[]>;
     /**
      * The ID of the site in which to create this custom domain association.
      */
-    public readonly siteId!: pulumi.Output<string>;
+    declare public readonly siteId: pulumi.Output<string>;
     /**
      * The last time the `CustomDomain` was updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
-    public readonly waitDnsVerification!: pulumi.Output<boolean | undefined>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
+    declare public readonly waitDnsVerification: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a HostingCustomDomain resource with the given unique name, arguments, and options.
@@ -301,38 +301,38 @@ export class HostingCustomDomain extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HostingCustomDomainState | undefined;
-            resourceInputs["certPreference"] = state ? state.certPreference : undefined;
-            resourceInputs["certs"] = state ? state.certs : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["customDomain"] = state ? state.customDomain : undefined;
-            resourceInputs["deleteTime"] = state ? state.deleteTime : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["expireTime"] = state ? state.expireTime : undefined;
-            resourceInputs["hostState"] = state ? state.hostState : undefined;
-            resourceInputs["issues"] = state ? state.issues : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["ownershipState"] = state ? state.ownershipState : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["reconciling"] = state ? state.reconciling : undefined;
-            resourceInputs["redirectTarget"] = state ? state.redirectTarget : undefined;
-            resourceInputs["requiredDnsUpdates"] = state ? state.requiredDnsUpdates : undefined;
-            resourceInputs["siteId"] = state ? state.siteId : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["waitDnsVerification"] = state ? state.waitDnsVerification : undefined;
+            resourceInputs["certPreference"] = state?.certPreference;
+            resourceInputs["certs"] = state?.certs;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["customDomain"] = state?.customDomain;
+            resourceInputs["deleteTime"] = state?.deleteTime;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["expireTime"] = state?.expireTime;
+            resourceInputs["hostState"] = state?.hostState;
+            resourceInputs["issues"] = state?.issues;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["ownershipState"] = state?.ownershipState;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["reconciling"] = state?.reconciling;
+            resourceInputs["redirectTarget"] = state?.redirectTarget;
+            resourceInputs["requiredDnsUpdates"] = state?.requiredDnsUpdates;
+            resourceInputs["siteId"] = state?.siteId;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["waitDnsVerification"] = state?.waitDnsVerification;
         } else {
             const args = argsOrState as HostingCustomDomainArgs | undefined;
-            if ((!args || args.customDomain === undefined) && !opts.urn) {
+            if (args?.customDomain === undefined && !opts.urn) {
                 throw new Error("Missing required property 'customDomain'");
             }
-            if ((!args || args.siteId === undefined) && !opts.urn) {
+            if (args?.siteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
-            resourceInputs["certPreference"] = args ? args.certPreference : undefined;
-            resourceInputs["customDomain"] = args ? args.customDomain : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["redirectTarget"] = args ? args.redirectTarget : undefined;
-            resourceInputs["siteId"] = args ? args.siteId : undefined;
-            resourceInputs["waitDnsVerification"] = args ? args.waitDnsVerification : undefined;
+            resourceInputs["certPreference"] = args?.certPreference;
+            resourceInputs["customDomain"] = args?.customDomain;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["redirectTarget"] = args?.redirectTarget;
+            resourceInputs["siteId"] = args?.siteId;
+            resourceInputs["waitDnsVerification"] = args?.waitDnsVerification;
             resourceInputs["certs"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;

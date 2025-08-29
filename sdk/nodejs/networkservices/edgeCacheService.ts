@@ -448,81 +448,81 @@ export class EdgeCacheService extends pulumi.CustomResource {
     /**
      * A human-readable description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Disables HTTP/2.
      * HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
      * Some legacy HTTP clients may have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from being advertised and negotiated.
      */
-    public readonly disableHttp2!: pulumi.Output<boolean | undefined>;
+    declare public readonly disableHttp2: pulumi.Output<boolean | undefined>;
     /**
      * HTTP/3 (IETF QUIC) and Google QUIC are enabled by default.
      */
-    public readonly disableQuic!: pulumi.Output<boolean>;
+    declare public readonly disableQuic: pulumi.Output<boolean>;
     /**
      * Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the EdgeCacheService.
      */
-    public readonly edgeSecurityPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly edgeSecurityPolicy: pulumi.Output<string | undefined>;
     /**
      * URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService.
      * Note that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
      */
-    public readonly edgeSslCertificates!: pulumi.Output<string[] | undefined>;
+    declare public readonly edgeSslCertificates: pulumi.Output<string[] | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The IPv4 addresses associated with this service. Addresses are static for the lifetime of the service.
      */
-    public /*out*/ readonly ipv4Addresses!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly ipv4Addresses: pulumi.Output<string[]>;
     /**
      * The IPv6 addresses associated with this service. Addresses are static for the lifetime of the service.
      */
-    public /*out*/ readonly ipv6Addresses!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly ipv6Addresses: pulumi.Output<string[]>;
     /**
      * Set of label tags associated with the EdgeCache resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
      * Structure is documented below.
      */
-    public readonly logConfig!: pulumi.Output<outputs.networkservices.EdgeCacheServiceLogConfig | undefined>;
+    declare public readonly logConfig: pulumi.Output<outputs.networkservices.EdgeCacheServiceLogConfig | undefined>;
     /**
      * Name of the resource; provided by the client when the resource is created.
      * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
      * and all following characters must be a dash, underscore, letter or digit.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Require TLS (HTTPS) for all clients connecting to this service.
      * Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
      * You must have at least one (1) edgeSslCertificate specified to enable this.
      */
-    public readonly requireTls!: pulumi.Output<boolean>;
+    declare public readonly requireTls: pulumi.Output<boolean>;
     /**
      * Defines how requests are routed, modified, cached and/or which origin content is filled from.
      * Structure is documented below.
      */
-    public readonly routing!: pulumi.Output<outputs.networkservices.EdgeCacheServiceRouting>;
+    declare public readonly routing: pulumi.Output<outputs.networkservices.EdgeCacheServiceRouting>;
     /**
      * URL of the SslPolicy resource that will be associated with the EdgeCacheService.
      * If not set, the EdgeCacheService has no SSL policy configured, and will default to the "COMPATIBLE" policy.
      */
-    public readonly sslPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly sslPolicy: pulumi.Output<string | undefined>;
 
     /**
      * Create a EdgeCacheService resource with the given unique name, arguments, and options.
@@ -537,39 +537,39 @@ export class EdgeCacheService extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EdgeCacheServiceState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["disableHttp2"] = state ? state.disableHttp2 : undefined;
-            resourceInputs["disableQuic"] = state ? state.disableQuic : undefined;
-            resourceInputs["edgeSecurityPolicy"] = state ? state.edgeSecurityPolicy : undefined;
-            resourceInputs["edgeSslCertificates"] = state ? state.edgeSslCertificates : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["ipv4Addresses"] = state ? state.ipv4Addresses : undefined;
-            resourceInputs["ipv6Addresses"] = state ? state.ipv6Addresses : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["logConfig"] = state ? state.logConfig : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["requireTls"] = state ? state.requireTls : undefined;
-            resourceInputs["routing"] = state ? state.routing : undefined;
-            resourceInputs["sslPolicy"] = state ? state.sslPolicy : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["disableHttp2"] = state?.disableHttp2;
+            resourceInputs["disableQuic"] = state?.disableQuic;
+            resourceInputs["edgeSecurityPolicy"] = state?.edgeSecurityPolicy;
+            resourceInputs["edgeSslCertificates"] = state?.edgeSslCertificates;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["ipv4Addresses"] = state?.ipv4Addresses;
+            resourceInputs["ipv6Addresses"] = state?.ipv6Addresses;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["logConfig"] = state?.logConfig;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["requireTls"] = state?.requireTls;
+            resourceInputs["routing"] = state?.routing;
+            resourceInputs["sslPolicy"] = state?.sslPolicy;
         } else {
             const args = argsOrState as EdgeCacheServiceArgs | undefined;
-            if ((!args || args.routing === undefined) && !opts.urn) {
+            if (args?.routing === undefined && !opts.urn) {
                 throw new Error("Missing required property 'routing'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["disableHttp2"] = args ? args.disableHttp2 : undefined;
-            resourceInputs["disableQuic"] = args ? args.disableQuic : undefined;
-            resourceInputs["edgeSecurityPolicy"] = args ? args.edgeSecurityPolicy : undefined;
-            resourceInputs["edgeSslCertificates"] = args ? args.edgeSslCertificates : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["logConfig"] = args ? args.logConfig : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["requireTls"] = args ? args.requireTls : undefined;
-            resourceInputs["routing"] = args ? args.routing : undefined;
-            resourceInputs["sslPolicy"] = args ? args.sslPolicy : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["disableHttp2"] = args?.disableHttp2;
+            resourceInputs["disableQuic"] = args?.disableQuic;
+            resourceInputs["edgeSecurityPolicy"] = args?.edgeSecurityPolicy;
+            resourceInputs["edgeSslCertificates"] = args?.edgeSslCertificates;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["logConfig"] = args?.logConfig;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["requireTls"] = args?.requireTls;
+            resourceInputs["routing"] = args?.routing;
+            resourceInputs["sslPolicy"] = args?.sslPolicy;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["ipv4Addresses"] = undefined /*out*/;
             resourceInputs["ipv6Addresses"] = undefined /*out*/;

@@ -147,46 +147,46 @@ export class Plugin extends pulumi.CustomResource {
      * The configuration of actions supported by the plugin.
      * Structure is documented below.
      */
-    public readonly actionsConfigs!: pulumi.Output<outputs.apihub.PluginActionsConfig[] | undefined>;
+    declare public readonly actionsConfigs: pulumi.Output<outputs.apihub.PluginActionsConfig[] | undefined>;
     /**
      * ConfigTemplate represents the configuration template for a plugin.
      * Structure is documented below.
      */
-    public readonly configTemplate!: pulumi.Output<outputs.apihub.PluginConfigTemplate | undefined>;
+    declare public readonly configTemplate: pulumi.Output<outputs.apihub.PluginConfigTemplate | undefined>;
     /**
      * Timestamp indicating when the plugin was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The plugin description. Max length is 2000 characters (Unicode code
      * points).
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The display name of the plugin. Max length is 50 characters (Unicode code
      * points).
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Documentation details.
      * Structure is documented below.
      */
-    public readonly documentation!: pulumi.Output<outputs.apihub.PluginDocumentation | undefined>;
+    declare public readonly documentation: pulumi.Output<outputs.apihub.PluginDocumentation | undefined>;
     /**
      * The information related to the service implemented by the plugin
      * developer, used to invoke the plugin's functionality.
      * Structure is documented below.
      */
-    public readonly hostingService!: pulumi.Output<outputs.apihub.PluginHostingService | undefined>;
+    declare public readonly hostingService: pulumi.Output<outputs.apihub.PluginHostingService | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Identifier. The name of the plugin.
      * Format: `projects/{project}/locations/{location}/plugins/{plugin}`
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The type of the plugin, indicating whether it is 'SYSTEM_OWNED' or
      * 'USER_OWNED'.
@@ -195,14 +195,14 @@ export class Plugin extends pulumi.CustomResource {
      * SYSTEM_OWNED
      * USER_OWNED
      */
-    public /*out*/ readonly ownershipType!: pulumi.Output<string>;
+    declare public /*out*/ readonly ownershipType: pulumi.Output<string>;
     /**
      * Possible values:
      * PLUGIN_CATEGORY_UNSPECIFIED
      * API_GATEWAY
      * API_PRODUCER
      */
-    public readonly pluginCategory!: pulumi.Output<string | undefined>;
+    declare public readonly pluginCategory: pulumi.Output<string | undefined>;
     /**
      * The ID to use for the Plugin resource, which will become the final
      * component of the Plugin's resource name. This field is optional.
@@ -216,12 +216,12 @@ export class Plugin extends pulumi.CustomResource {
      * its length is limited to 1000 characters and valid characters are
      * /a-z[0-9]-_/.
      */
-    public readonly pluginId!: pulumi.Output<string>;
+    declare public readonly pluginId: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Represents the state of the plugin.
      * Note this field will not be set for plugins developed via plugin
@@ -231,11 +231,11 @@ export class Plugin extends pulumi.CustomResource {
      * ENABLED
      * DISABLED
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Timestamp indicating when the plugin was last updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Plugin resource with the given unique name, arguments, and options.
@@ -250,42 +250,42 @@ export class Plugin extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PluginState | undefined;
-            resourceInputs["actionsConfigs"] = state ? state.actionsConfigs : undefined;
-            resourceInputs["configTemplate"] = state ? state.configTemplate : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["documentation"] = state ? state.documentation : undefined;
-            resourceInputs["hostingService"] = state ? state.hostingService : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["ownershipType"] = state ? state.ownershipType : undefined;
-            resourceInputs["pluginCategory"] = state ? state.pluginCategory : undefined;
-            resourceInputs["pluginId"] = state ? state.pluginId : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["actionsConfigs"] = state?.actionsConfigs;
+            resourceInputs["configTemplate"] = state?.configTemplate;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["documentation"] = state?.documentation;
+            resourceInputs["hostingService"] = state?.hostingService;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["ownershipType"] = state?.ownershipType;
+            resourceInputs["pluginCategory"] = state?.pluginCategory;
+            resourceInputs["pluginId"] = state?.pluginId;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as PluginArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.pluginId === undefined) && !opts.urn) {
+            if (args?.pluginId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pluginId'");
             }
-            resourceInputs["actionsConfigs"] = args ? args.actionsConfigs : undefined;
-            resourceInputs["configTemplate"] = args ? args.configTemplate : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["documentation"] = args ? args.documentation : undefined;
-            resourceInputs["hostingService"] = args ? args.hostingService : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["pluginCategory"] = args ? args.pluginCategory : undefined;
-            resourceInputs["pluginId"] = args ? args.pluginId : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["actionsConfigs"] = args?.actionsConfigs;
+            resourceInputs["configTemplate"] = args?.configTemplate;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["documentation"] = args?.documentation;
+            resourceInputs["hostingService"] = args?.hostingService;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["pluginCategory"] = args?.pluginCategory;
+            resourceInputs["pluginId"] = args?.pluginId;
+            resourceInputs["project"] = args?.project;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["ownershipType"] = undefined /*out*/;

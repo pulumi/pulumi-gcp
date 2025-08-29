@@ -90,73 +90,73 @@ export class Interconnect extends pulumi.CustomResource {
     /**
      * Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
      */
-    public readonly aaiEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly aaiEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Administrative status of the interconnect. When this is set to true, the Interconnect is
      * functional and can carry traffic. When set to false, no packets can be carried over the
      * interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
      */
-    public readonly adminEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly adminEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Configuration that enables Media Access Control security (MACsec) on the Cloud
      * Interconnect connection between Google and your on-premises router.
      * Structure is documented below.
      */
-    public readonly applicationAwareInterconnect!: pulumi.Output<outputs.compute.InterconnectApplicationAwareInterconnect | undefined>;
+    declare public readonly applicationAwareInterconnect: pulumi.Output<outputs.compute.InterconnectApplicationAwareInterconnect | undefined>;
     /**
      * interconnects.list of features available for this Interconnect connection. Can take the value:
      * MACSEC. If present then the Interconnect connection is provisioned on MACsec capable hardware
      * ports. If not present then the Interconnect connection is provisioned on non-MACsec capable
      * ports and MACsec isn't supported and enabling MACsec fails).
      */
-    public /*out*/ readonly availableFeatures!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly availableFeatures: pulumi.Output<string[]>;
     /**
      * A list of CircuitInfo objects, that describe the individual circuits in this LAG.
      * Structure is documented below.
      */
-    public /*out*/ readonly circuitInfos!: pulumi.Output<outputs.compute.InterconnectCircuitInfo[]>;
+    declare public /*out*/ readonly circuitInfos: pulumi.Output<outputs.compute.InterconnectCircuitInfo[]>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * Customer name, to put in the Letter of Authorization as the party authorized to request a
      * crossconnect. This field is required for Dedicated and Partner Interconnect, should not be specified
      * for cross-cloud interconnect.
      */
-    public readonly customerName!: pulumi.Output<string | undefined>;
+    declare public readonly customerName: pulumi.Output<string | undefined>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * A list of outages expected for this Interconnect.
      * Structure is documented below.
      */
-    public /*out*/ readonly expectedOutages!: pulumi.Output<outputs.compute.InterconnectExpectedOutage[]>;
+    declare public /*out*/ readonly expectedOutages: pulumi.Output<outputs.compute.InterconnectExpectedOutage[]>;
     /**
      * IP address configured on the Google side of the Interconnect link.
      * This can be used only for ping tests.
      */
-    public /*out*/ readonly googleIpAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly googleIpAddress: pulumi.Output<string>;
     /**
      * Google reference ID to be used when raising support tickets with Google or otherwise to debug
      * backend connectivity issues.
      */
-    public /*out*/ readonly googleReferenceId!: pulumi.Output<string>;
+    declare public /*out*/ readonly googleReferenceId: pulumi.Output<string>;
     /**
      * A list of the URLs of all InterconnectAttachments configured to use this Interconnect.
      */
-    public /*out*/ readonly interconnectAttachments!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly interconnectAttachments: pulumi.Output<string[]>;
     /**
      * URLs of InterconnectGroups that include this Interconnect.
      * Order is arbitrary and items are unique.
      */
-    public /*out*/ readonly interconnectGroups!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly interconnectGroups: pulumi.Output<string[]>;
     /**
      * Type of interconnect. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
      * Can take one of the following values:
@@ -164,7 +164,7 @@ export class Interconnect extends pulumi.CustomResource {
      * - DEDICATED: A dedicated physical interconnection with the customer.
      * Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
      */
-    public readonly interconnectType!: pulumi.Output<string>;
+    declare public readonly interconnectType: pulumi.Output<string>;
     /**
      * A fingerprint for the labels being applied to this Interconnect, which is essentially a hash
      * of the labels set used for optimistic locking. The fingerprint is initially generated by
@@ -172,7 +172,7 @@ export class Interconnect extends pulumi.CustomResource {
      * You must always provide an up-to-date fingerprint hash in order to update or change labels,
      * otherwise the request will fail with error 412 conditionNotMet.
      */
-    public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly labelFingerprint: pulumi.Output<string>;
     /**
      * Labels for this resource. These can only be added or modified by the setLabels
      * method. Each label key/value pair must comply with RFC1035. Label values may be empty.
@@ -180,7 +180,7 @@ export class Interconnect extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Type of link requested. Note that this field indicates the speed of each of the links in the
      * bundle, not the speed of the entire bundle. Can take one of the following values:
@@ -189,23 +189,23 @@ export class Interconnect extends pulumi.CustomResource {
      * - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
      * Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
      */
-    public readonly linkType!: pulumi.Output<string>;
+    declare public readonly linkType: pulumi.Output<string>;
     /**
      * URL of the InterconnectLocation object that represents where this connection is to be provisioned.
      * Specifies the location inside Google's Networks.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Configuration that enables Media Access Control security (MACsec) on the Cloud
      * Interconnect connection between Google and your on-premises router.
      * Structure is documented below.
      */
-    public readonly macsec!: pulumi.Output<outputs.compute.InterconnectMacsec | undefined>;
+    declare public readonly macsec: pulumi.Output<outputs.compute.InterconnectMacsec | undefined>;
     /**
      * Enable or disable MACsec on this Interconnect connection.
      * MACsec enablement fails if the MACsec object is not specified.
      */
-    public readonly macsecEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly macsecEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be
      * 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -213,7 +213,7 @@ export class Interconnect extends pulumi.CustomResource {
      * character must be a lowercase letter, and all following characters must be a dash,
      * lowercase letter, or digit, except the last character, which cannot be a dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Email address to contact the customer NOC for operations and maintenance notifications
      * regarding this Interconnect. If specified, this will be used for notifications in addition to
@@ -221,7 +221,7 @@ export class Interconnect extends pulumi.CustomResource {
      * This field is required for users who sign up for Cloud Interconnect using workforce identity
      * federation.
      */
-    public readonly nocContactEmail!: pulumi.Output<string | undefined>;
+    declare public readonly nocContactEmail: pulumi.Output<string | undefined>;
     /**
      * The current status of this Interconnect's functionality, which can take one of the following:
      * - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may
@@ -231,32 +231,32 @@ export class Interconnect extends pulumi.CustomResource {
      * - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No
      * attachments may be provisioned or updated on this Interconnect.
      */
-    public /*out*/ readonly operationalStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly operationalStatus: pulumi.Output<string>;
     /**
      * IP address configured on the customer side of the Interconnect link.
      * The customer should configure this IP address during turnup when prompted by Google NOC.
      * This can be used only for ping tests.
      */
-    public /*out*/ readonly peerIpAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly peerIpAddress: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Number of links actually provisioned in this interconnect.
      */
-    public /*out*/ readonly provisionedLinkCount!: pulumi.Output<number>;
+    declare public /*out*/ readonly provisionedLinkCount: pulumi.Output<number>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside
      * of Google's network that the interconnect is connected to.
      */
-    public readonly remoteLocation!: pulumi.Output<string | undefined>;
+    declare public readonly remoteLocation: pulumi.Output<string | undefined>;
     /**
      * interconnects.list of features requested for this Interconnect connection. Options: IF_MACSEC (
      * If specified then the connection is created on MACsec capable hardware ports. If not
@@ -265,15 +265,15 @@ export class Interconnect extends pulumi.CustomResource {
      * does not work with the API, and will be removed in an upcoming major version.
      * Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
      */
-    public readonly requestedFeatures!: pulumi.Output<string[] | undefined>;
+    declare public readonly requestedFeatures: pulumi.Output<string[] | undefined>;
     /**
      * Target number of physical links in the link bundle, as requested by the customer.
      */
-    public readonly requestedLinkCount!: pulumi.Output<number>;
+    declare public readonly requestedLinkCount: pulumi.Output<number>;
     /**
      * Reserved for future use.
      */
-    public /*out*/ readonly satisfiesPzs!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly satisfiesPzs: pulumi.Output<boolean>;
     /**
      * (Output)
      * State of this notification. Note that the versions of this enum prefixed with "NS_" have
@@ -284,12 +284,11 @@ export class Interconnect extends pulumi.CustomResource {
      * outage was due to start.
      * - COMPLETED: The outage associated with this notification is complete.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
-     * A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be
-     * deleted if this list is non-empty.
+     * A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be deleted if this list is non-empty.
      */
-    public /*out*/ readonly wireGroups!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly wireGroups: pulumi.Output<string[]>;
 
     /**
      * Create a Interconnect resource with the given unique name, arguments, and options.
@@ -304,71 +303,71 @@ export class Interconnect extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InterconnectState | undefined;
-            resourceInputs["aaiEnabled"] = state ? state.aaiEnabled : undefined;
-            resourceInputs["adminEnabled"] = state ? state.adminEnabled : undefined;
-            resourceInputs["applicationAwareInterconnect"] = state ? state.applicationAwareInterconnect : undefined;
-            resourceInputs["availableFeatures"] = state ? state.availableFeatures : undefined;
-            resourceInputs["circuitInfos"] = state ? state.circuitInfos : undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["customerName"] = state ? state.customerName : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["expectedOutages"] = state ? state.expectedOutages : undefined;
-            resourceInputs["googleIpAddress"] = state ? state.googleIpAddress : undefined;
-            resourceInputs["googleReferenceId"] = state ? state.googleReferenceId : undefined;
-            resourceInputs["interconnectAttachments"] = state ? state.interconnectAttachments : undefined;
-            resourceInputs["interconnectGroups"] = state ? state.interconnectGroups : undefined;
-            resourceInputs["interconnectType"] = state ? state.interconnectType : undefined;
-            resourceInputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["linkType"] = state ? state.linkType : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["macsec"] = state ? state.macsec : undefined;
-            resourceInputs["macsecEnabled"] = state ? state.macsecEnabled : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nocContactEmail"] = state ? state.nocContactEmail : undefined;
-            resourceInputs["operationalStatus"] = state ? state.operationalStatus : undefined;
-            resourceInputs["peerIpAddress"] = state ? state.peerIpAddress : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["provisionedLinkCount"] = state ? state.provisionedLinkCount : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["remoteLocation"] = state ? state.remoteLocation : undefined;
-            resourceInputs["requestedFeatures"] = state ? state.requestedFeatures : undefined;
-            resourceInputs["requestedLinkCount"] = state ? state.requestedLinkCount : undefined;
-            resourceInputs["satisfiesPzs"] = state ? state.satisfiesPzs : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["wireGroups"] = state ? state.wireGroups : undefined;
+            resourceInputs["aaiEnabled"] = state?.aaiEnabled;
+            resourceInputs["adminEnabled"] = state?.adminEnabled;
+            resourceInputs["applicationAwareInterconnect"] = state?.applicationAwareInterconnect;
+            resourceInputs["availableFeatures"] = state?.availableFeatures;
+            resourceInputs["circuitInfos"] = state?.circuitInfos;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["customerName"] = state?.customerName;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["expectedOutages"] = state?.expectedOutages;
+            resourceInputs["googleIpAddress"] = state?.googleIpAddress;
+            resourceInputs["googleReferenceId"] = state?.googleReferenceId;
+            resourceInputs["interconnectAttachments"] = state?.interconnectAttachments;
+            resourceInputs["interconnectGroups"] = state?.interconnectGroups;
+            resourceInputs["interconnectType"] = state?.interconnectType;
+            resourceInputs["labelFingerprint"] = state?.labelFingerprint;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["linkType"] = state?.linkType;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["macsec"] = state?.macsec;
+            resourceInputs["macsecEnabled"] = state?.macsecEnabled;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nocContactEmail"] = state?.nocContactEmail;
+            resourceInputs["operationalStatus"] = state?.operationalStatus;
+            resourceInputs["peerIpAddress"] = state?.peerIpAddress;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["provisionedLinkCount"] = state?.provisionedLinkCount;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["remoteLocation"] = state?.remoteLocation;
+            resourceInputs["requestedFeatures"] = state?.requestedFeatures;
+            resourceInputs["requestedLinkCount"] = state?.requestedLinkCount;
+            resourceInputs["satisfiesPzs"] = state?.satisfiesPzs;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["wireGroups"] = state?.wireGroups;
         } else {
             const args = argsOrState as InterconnectArgs | undefined;
-            if ((!args || args.interconnectType === undefined) && !opts.urn) {
+            if (args?.interconnectType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'interconnectType'");
             }
-            if ((!args || args.linkType === undefined) && !opts.urn) {
+            if (args?.linkType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'linkType'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.requestedLinkCount === undefined) && !opts.urn) {
+            if (args?.requestedLinkCount === undefined && !opts.urn) {
                 throw new Error("Missing required property 'requestedLinkCount'");
             }
-            resourceInputs["aaiEnabled"] = args ? args.aaiEnabled : undefined;
-            resourceInputs["adminEnabled"] = args ? args.adminEnabled : undefined;
-            resourceInputs["applicationAwareInterconnect"] = args ? args.applicationAwareInterconnect : undefined;
-            resourceInputs["customerName"] = args ? args.customerName : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["interconnectType"] = args ? args.interconnectType : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["linkType"] = args ? args.linkType : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["macsec"] = args ? args.macsec : undefined;
-            resourceInputs["macsecEnabled"] = args ? args.macsecEnabled : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["nocContactEmail"] = args ? args.nocContactEmail : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["remoteLocation"] = args ? args.remoteLocation : undefined;
-            resourceInputs["requestedFeatures"] = args ? args.requestedFeatures : undefined;
-            resourceInputs["requestedLinkCount"] = args ? args.requestedLinkCount : undefined;
+            resourceInputs["aaiEnabled"] = args?.aaiEnabled;
+            resourceInputs["adminEnabled"] = args?.adminEnabled;
+            resourceInputs["applicationAwareInterconnect"] = args?.applicationAwareInterconnect;
+            resourceInputs["customerName"] = args?.customerName;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["interconnectType"] = args?.interconnectType;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["linkType"] = args?.linkType;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["macsec"] = args?.macsec;
+            resourceInputs["macsecEnabled"] = args?.macsecEnabled;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["nocContactEmail"] = args?.nocContactEmail;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["remoteLocation"] = args?.remoteLocation;
+            resourceInputs["requestedFeatures"] = args?.requestedFeatures;
+            resourceInputs["requestedLinkCount"] = args?.requestedLinkCount;
             resourceInputs["availableFeatures"] = undefined /*out*/;
             resourceInputs["circuitInfos"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
@@ -597,8 +596,7 @@ export interface InterconnectState {
      */
     state?: pulumi.Input<string>;
     /**
-     * A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be
-     * deleted if this list is non-empty.
+     * A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be deleted if this list is non-empty.
      */
     wireGroups?: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -82,15 +82,15 @@ export class MonitoredProject extends pulumi.CustomResource {
     /**
      * Output only. The time when this `MonitoredProject` was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
      */
-    public readonly metricsScope!: pulumi.Output<string>;
+    declare public readonly metricsScope: pulumi.Output<string>;
     /**
      * Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a MonitoredProject resource with the given unique name, arguments, and options.
@@ -105,16 +105,16 @@ export class MonitoredProject extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MonitoredProjectState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["metricsScope"] = state ? state.metricsScope : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["metricsScope"] = state?.metricsScope;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as MonitoredProjectArgs | undefined;
-            if ((!args || args.metricsScope === undefined) && !opts.urn) {
+            if (args?.metricsScope === undefined && !opts.urn) {
                 throw new Error("Missing required property 'metricsScope'");
             }
-            resourceInputs["metricsScope"] = args ? args.metricsScope : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["metricsScope"] = args?.metricsScope;
+            resourceInputs["name"] = args?.name;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

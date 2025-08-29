@@ -101,43 +101,43 @@ export class CxGenerator extends pulumi.CustomResource {
     /**
      * The human-readable name of the generator, unique within the agent.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * The language to create generators for the following fields:
      * * Generator.prompt_text.text
      * If not specified, the agent's default language is used.
      */
-    public readonly languageCode!: pulumi.Output<string | undefined>;
+    declare public readonly languageCode: pulumi.Output<string | undefined>;
     /**
      * The LLM model settings.
      * Structure is documented below.
      */
-    public readonly llmModelSettings!: pulumi.Output<outputs.diagflow.CxGeneratorLlmModelSettings | undefined>;
+    declare public readonly llmModelSettings: pulumi.Output<outputs.diagflow.CxGeneratorLlmModelSettings | undefined>;
     /**
      * Parameters passed to the LLM to configure its behavior.
      * Structure is documented below.
      */
-    public readonly modelParameter!: pulumi.Output<outputs.diagflow.CxGeneratorModelParameter | undefined>;
+    declare public readonly modelParameter: pulumi.Output<outputs.diagflow.CxGeneratorModelParameter | undefined>;
     /**
      * The unique identifier of the Generator.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/generators/<Generator ID>.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The agent to create a Generator for.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
      */
-    public readonly parent!: pulumi.Output<string | undefined>;
+    declare public readonly parent: pulumi.Output<string | undefined>;
     /**
      * List of custom placeholders in the prompt text.
      * Structure is documented below.
      */
-    public readonly placeholders!: pulumi.Output<outputs.diagflow.CxGeneratorPlaceholder[] | undefined>;
+    declare public readonly placeholders: pulumi.Output<outputs.diagflow.CxGeneratorPlaceholder[] | undefined>;
     /**
      * Prompt for the LLM model.
      * Structure is documented below.
      */
-    public readonly promptText!: pulumi.Output<outputs.diagflow.CxGeneratorPromptText>;
+    declare public readonly promptText: pulumi.Output<outputs.diagflow.CxGeneratorPromptText>;
 
     /**
      * Create a CxGenerator resource with the given unique name, arguments, and options.
@@ -152,29 +152,29 @@ export class CxGenerator extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CxGeneratorState | undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["languageCode"] = state ? state.languageCode : undefined;
-            resourceInputs["llmModelSettings"] = state ? state.llmModelSettings : undefined;
-            resourceInputs["modelParameter"] = state ? state.modelParameter : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["placeholders"] = state ? state.placeholders : undefined;
-            resourceInputs["promptText"] = state ? state.promptText : undefined;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["languageCode"] = state?.languageCode;
+            resourceInputs["llmModelSettings"] = state?.llmModelSettings;
+            resourceInputs["modelParameter"] = state?.modelParameter;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["placeholders"] = state?.placeholders;
+            resourceInputs["promptText"] = state?.promptText;
         } else {
             const args = argsOrState as CxGeneratorArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.promptText === undefined) && !opts.urn) {
+            if (args?.promptText === undefined && !opts.urn) {
                 throw new Error("Missing required property 'promptText'");
             }
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["languageCode"] = args ? args.languageCode : undefined;
-            resourceInputs["llmModelSettings"] = args ? args.llmModelSettings : undefined;
-            resourceInputs["modelParameter"] = args ? args.modelParameter : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
-            resourceInputs["placeholders"] = args ? args.placeholders : undefined;
-            resourceInputs["promptText"] = args ? args.promptText : undefined;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["languageCode"] = args?.languageCode;
+            resourceInputs["llmModelSettings"] = args?.llmModelSettings;
+            resourceInputs["modelParameter"] = args?.modelParameter;
+            resourceInputs["parent"] = args?.parent;
+            resourceInputs["placeholders"] = args?.placeholders;
+            resourceInputs["promptText"] = args?.promptText;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

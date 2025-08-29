@@ -132,68 +132,68 @@ export class BranchRule extends pulumi.CustomResource {
     /**
      * Determines if allow stale reviews or approvals before merging to the branch.
      */
-    public readonly allowStaleReviews!: pulumi.Output<boolean | undefined>;
+    declare public readonly allowStaleReviews: pulumi.Output<boolean | undefined>;
     /**
      * The ID for the BranchRule.
      */
-    public readonly branchRuleId!: pulumi.Output<string>;
+    declare public readonly branchRuleId: pulumi.Output<string>;
     /**
      * Time the BranchRule was created in UTC.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Determines if the branch rule is disabled or not.
      */
-    public readonly disabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly disabled: pulumi.Output<boolean | undefined>;
     /**
      * The BranchRule matches branches based on the specified regular expression. Use .* to match all branches.
      */
-    public readonly includePattern!: pulumi.Output<string>;
+    declare public readonly includePattern: pulumi.Output<string>;
     /**
      * The location for the Repository.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The minimum number of approvals required for the branch rule to be matched.
      */
-    public readonly minimumApprovalsCount!: pulumi.Output<number | undefined>;
+    declare public readonly minimumApprovalsCount: pulumi.Output<number | undefined>;
     /**
      * The minimum number of reviews required for the branch rule to be matched.
      */
-    public readonly minimumReviewsCount!: pulumi.Output<number | undefined>;
+    declare public readonly minimumReviewsCount: pulumi.Output<number | undefined>;
     /**
      * The resource name for the BranchRule.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The ID for the Repository.
      */
-    public readonly repositoryId!: pulumi.Output<string>;
+    declare public readonly repositoryId: pulumi.Output<string>;
     /**
      * Determines if require comments resolved before merging to the branch.
      */
-    public readonly requireCommentsResolved!: pulumi.Output<boolean | undefined>;
+    declare public readonly requireCommentsResolved: pulumi.Output<boolean | undefined>;
     /**
      * Determines if require linear history before merging to the branch.
      */
-    public readonly requireLinearHistory!: pulumi.Output<boolean | undefined>;
+    declare public readonly requireLinearHistory: pulumi.Output<boolean | undefined>;
     /**
      * Determines if the branch rule requires a pull request or not.
      */
-    public readonly requirePullRequest!: pulumi.Output<boolean | undefined>;
+    declare public readonly requirePullRequest: pulumi.Output<boolean | undefined>;
     /**
      * Unique identifier of the BranchRule.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * Time the BranchRule was updated in UTC.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a BranchRule resource with the given unique name, arguments, and options.
@@ -208,48 +208,48 @@ export class BranchRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BranchRuleState | undefined;
-            resourceInputs["allowStaleReviews"] = state ? state.allowStaleReviews : undefined;
-            resourceInputs["branchRuleId"] = state ? state.branchRuleId : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["disabled"] = state ? state.disabled : undefined;
-            resourceInputs["includePattern"] = state ? state.includePattern : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["minimumApprovalsCount"] = state ? state.minimumApprovalsCount : undefined;
-            resourceInputs["minimumReviewsCount"] = state ? state.minimumReviewsCount : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["repositoryId"] = state ? state.repositoryId : undefined;
-            resourceInputs["requireCommentsResolved"] = state ? state.requireCommentsResolved : undefined;
-            resourceInputs["requireLinearHistory"] = state ? state.requireLinearHistory : undefined;
-            resourceInputs["requirePullRequest"] = state ? state.requirePullRequest : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["allowStaleReviews"] = state?.allowStaleReviews;
+            resourceInputs["branchRuleId"] = state?.branchRuleId;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["disabled"] = state?.disabled;
+            resourceInputs["includePattern"] = state?.includePattern;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["minimumApprovalsCount"] = state?.minimumApprovalsCount;
+            resourceInputs["minimumReviewsCount"] = state?.minimumReviewsCount;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["repositoryId"] = state?.repositoryId;
+            resourceInputs["requireCommentsResolved"] = state?.requireCommentsResolved;
+            resourceInputs["requireLinearHistory"] = state?.requireLinearHistory;
+            resourceInputs["requirePullRequest"] = state?.requirePullRequest;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as BranchRuleArgs | undefined;
-            if ((!args || args.branchRuleId === undefined) && !opts.urn) {
+            if (args?.branchRuleId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'branchRuleId'");
             }
-            if ((!args || args.includePattern === undefined) && !opts.urn) {
+            if (args?.includePattern === undefined && !opts.urn) {
                 throw new Error("Missing required property 'includePattern'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.repositoryId === undefined) && !opts.urn) {
+            if (args?.repositoryId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'repositoryId'");
             }
-            resourceInputs["allowStaleReviews"] = args ? args.allowStaleReviews : undefined;
-            resourceInputs["branchRuleId"] = args ? args.branchRuleId : undefined;
-            resourceInputs["disabled"] = args ? args.disabled : undefined;
-            resourceInputs["includePattern"] = args ? args.includePattern : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["minimumApprovalsCount"] = args ? args.minimumApprovalsCount : undefined;
-            resourceInputs["minimumReviewsCount"] = args ? args.minimumReviewsCount : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["repositoryId"] = args ? args.repositoryId : undefined;
-            resourceInputs["requireCommentsResolved"] = args ? args.requireCommentsResolved : undefined;
-            resourceInputs["requireLinearHistory"] = args ? args.requireLinearHistory : undefined;
-            resourceInputs["requirePullRequest"] = args ? args.requirePullRequest : undefined;
+            resourceInputs["allowStaleReviews"] = args?.allowStaleReviews;
+            resourceInputs["branchRuleId"] = args?.branchRuleId;
+            resourceInputs["disabled"] = args?.disabled;
+            resourceInputs["includePattern"] = args?.includePattern;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["minimumApprovalsCount"] = args?.minimumApprovalsCount;
+            resourceInputs["minimumReviewsCount"] = args?.minimumReviewsCount;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["repositoryId"] = args?.repositoryId;
+            resourceInputs["requireCommentsResolved"] = args?.requireCommentsResolved;
+            resourceInputs["requireLinearHistory"] = args?.requireLinearHistory;
+            resourceInputs["requirePullRequest"] = args?.requirePullRequest;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;

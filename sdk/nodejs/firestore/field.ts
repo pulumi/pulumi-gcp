@@ -189,15 +189,15 @@ export class Field extends pulumi.CustomResource {
     /**
      * The id of the collection group to configure.
      */
-    public readonly collection!: pulumi.Output<string>;
+    declare public readonly collection: pulumi.Output<string>;
     /**
      * The Firestore database id. Defaults to `"(default)"`.
      */
-    public readonly database!: pulumi.Output<string | undefined>;
+    declare public readonly database: pulumi.Output<string | undefined>;
     /**
      * The id of the field to configure.
      */
-    public readonly field!: pulumi.Output<string>;
+    declare public readonly field: pulumi.Output<string>;
     /**
      * The single field index configuration for this field.
      * Creating an index configuration for this field will override any inherited configuration with the
@@ -205,22 +205,22 @@ export class Field extends pulumi.CustomResource {
      * the field.
      * Structure is documented below.
      */
-    public readonly indexConfig!: pulumi.Output<outputs.firestore.FieldIndexConfig | undefined>;
+    declare public readonly indexConfig: pulumi.Output<outputs.firestore.FieldIndexConfig | undefined>;
     /**
      * The name of this field. Format:
      * `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/fields/{{field}}`
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The TTL configuration for this Field. If set to an empty block (i.e. `ttlConfig {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
      * Structure is documented below.
      */
-    public readonly ttlConfig!: pulumi.Output<outputs.firestore.FieldTtlConfig | undefined>;
+    declare public readonly ttlConfig: pulumi.Output<outputs.firestore.FieldTtlConfig | undefined>;
 
     /**
      * Create a Field resource with the given unique name, arguments, and options.
@@ -235,27 +235,27 @@ export class Field extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FieldState | undefined;
-            resourceInputs["collection"] = state ? state.collection : undefined;
-            resourceInputs["database"] = state ? state.database : undefined;
-            resourceInputs["field"] = state ? state.field : undefined;
-            resourceInputs["indexConfig"] = state ? state.indexConfig : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["ttlConfig"] = state ? state.ttlConfig : undefined;
+            resourceInputs["collection"] = state?.collection;
+            resourceInputs["database"] = state?.database;
+            resourceInputs["field"] = state?.field;
+            resourceInputs["indexConfig"] = state?.indexConfig;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["ttlConfig"] = state?.ttlConfig;
         } else {
             const args = argsOrState as FieldArgs | undefined;
-            if ((!args || args.collection === undefined) && !opts.urn) {
+            if (args?.collection === undefined && !opts.urn) {
                 throw new Error("Missing required property 'collection'");
             }
-            if ((!args || args.field === undefined) && !opts.urn) {
+            if (args?.field === undefined && !opts.urn) {
                 throw new Error("Missing required property 'field'");
             }
-            resourceInputs["collection"] = args ? args.collection : undefined;
-            resourceInputs["database"] = args ? args.database : undefined;
-            resourceInputs["field"] = args ? args.field : undefined;
-            resourceInputs["indexConfig"] = args ? args.indexConfig : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["ttlConfig"] = args ? args.ttlConfig : undefined;
+            resourceInputs["collection"] = args?.collection;
+            resourceInputs["database"] = args?.database;
+            resourceInputs["field"] = args?.field;
+            resourceInputs["indexConfig"] = args?.indexConfig;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["ttlConfig"] = args?.ttlConfig;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

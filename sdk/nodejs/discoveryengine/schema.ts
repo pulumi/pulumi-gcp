@@ -94,32 +94,32 @@ export class Schema extends pulumi.CustomResource {
     /**
      * The unique id of the data store.
      */
-    public readonly dataStoreId!: pulumi.Output<string>;
+    declare public readonly dataStoreId: pulumi.Output<string>;
     /**
      * The JSON representation of the schema.
      */
-    public readonly jsonSchema!: pulumi.Output<string | undefined>;
+    declare public readonly jsonSchema: pulumi.Output<string | undefined>;
     /**
      * The geographic location where the data store should reside. The value can
      * only be one of "global", "us" and "eu".
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The unique full resource name of the schema. Values are of the format
      * `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/schemas/{schema_id}`.
      * This field must be a UTF-8 encoded string with a length limit of 1024
      * characters.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The unique id of the schema.
      */
-    public readonly schemaId!: pulumi.Output<string>;
+    declare public readonly schemaId: pulumi.Output<string>;
 
     /**
      * Create a Schema resource with the given unique name, arguments, and options.
@@ -134,28 +134,28 @@ export class Schema extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SchemaState | undefined;
-            resourceInputs["dataStoreId"] = state ? state.dataStoreId : undefined;
-            resourceInputs["jsonSchema"] = state ? state.jsonSchema : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["schemaId"] = state ? state.schemaId : undefined;
+            resourceInputs["dataStoreId"] = state?.dataStoreId;
+            resourceInputs["jsonSchema"] = state?.jsonSchema;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["schemaId"] = state?.schemaId;
         } else {
             const args = argsOrState as SchemaArgs | undefined;
-            if ((!args || args.dataStoreId === undefined) && !opts.urn) {
+            if (args?.dataStoreId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataStoreId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.schemaId === undefined) && !opts.urn) {
+            if (args?.schemaId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'schemaId'");
             }
-            resourceInputs["dataStoreId"] = args ? args.dataStoreId : undefined;
-            resourceInputs["jsonSchema"] = args ? args.jsonSchema : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["schemaId"] = args ? args.schemaId : undefined;
+            resourceInputs["dataStoreId"] = args?.dataStoreId;
+            resourceInputs["jsonSchema"] = args?.jsonSchema;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["schemaId"] = args?.schemaId;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -118,26 +118,26 @@ export class CxEntityType extends pulumi.CustomResource {
      * * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
      * Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
      */
-    public readonly autoExpansionMode!: pulumi.Output<string | undefined>;
+    declare public readonly autoExpansionMode: pulumi.Output<string | undefined>;
     /**
      * The human-readable name of the entity type, unique within the agent.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Enables fuzzy entity extraction during classification.
      */
-    public readonly enableFuzzyExtraction!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableFuzzyExtraction: pulumi.Output<boolean | undefined>;
     /**
      * The collection of entity entries associated with the entity type.
      * Structure is documented below.
      */
-    public readonly entities!: pulumi.Output<outputs.diagflow.CxEntityTypeEntity[]>;
+    declare public readonly entities: pulumi.Output<outputs.diagflow.CxEntityTypeEntity[]>;
     /**
      * Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry giant(an adjective), you might consider adding giants(a noun) as an exclusion.
      * If the kind of entity type is KIND_MAP, then the phrases specified by entities and excluded phrases should be mutually exclusive.
      * Structure is documented below.
      */
-    public readonly excludedPhrases!: pulumi.Output<outputs.diagflow.CxEntityTypeExcludedPhrase[] | undefined>;
+    declare public readonly excludedPhrases: pulumi.Output<outputs.diagflow.CxEntityTypeExcludedPhrase[] | undefined>;
     /**
      * Indicates whether the entity type can be automatically expanded.
      * * KIND_MAP: Map entity types allow mapping of a group of synonyms to a canonical value.
@@ -145,7 +145,7 @@ export class CxEntityType extends pulumi.CustomResource {
      * * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
      * Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
      */
-    public readonly kind!: pulumi.Output<string>;
+    declare public readonly kind: pulumi.Output<string>;
     /**
      * The language of the following fields in entityType:
      * EntityType.entities.value
@@ -153,21 +153,21 @@ export class CxEntityType extends pulumi.CustomResource {
      * EntityType.excluded_phrases.value
      * If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
      */
-    public readonly languageCode!: pulumi.Output<string | undefined>;
+    declare public readonly languageCode: pulumi.Output<string | undefined>;
     /**
      * The unique identifier of the entity type.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/entityTypes/<Entity Type ID>.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The agent to create a entity type for.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
      */
-    public readonly parent!: pulumi.Output<string | undefined>;
+    declare public readonly parent: pulumi.Output<string | undefined>;
     /**
      * Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name when logging.
      */
-    public readonly redact!: pulumi.Output<boolean | undefined>;
+    declare public readonly redact: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a CxEntityType resource with the given unique name, arguments, and options.
@@ -182,36 +182,36 @@ export class CxEntityType extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CxEntityTypeState | undefined;
-            resourceInputs["autoExpansionMode"] = state ? state.autoExpansionMode : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["enableFuzzyExtraction"] = state ? state.enableFuzzyExtraction : undefined;
-            resourceInputs["entities"] = state ? state.entities : undefined;
-            resourceInputs["excludedPhrases"] = state ? state.excludedPhrases : undefined;
-            resourceInputs["kind"] = state ? state.kind : undefined;
-            resourceInputs["languageCode"] = state ? state.languageCode : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["redact"] = state ? state.redact : undefined;
+            resourceInputs["autoExpansionMode"] = state?.autoExpansionMode;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["enableFuzzyExtraction"] = state?.enableFuzzyExtraction;
+            resourceInputs["entities"] = state?.entities;
+            resourceInputs["excludedPhrases"] = state?.excludedPhrases;
+            resourceInputs["kind"] = state?.kind;
+            resourceInputs["languageCode"] = state?.languageCode;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["redact"] = state?.redact;
         } else {
             const args = argsOrState as CxEntityTypeArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.entities === undefined) && !opts.urn) {
+            if (args?.entities === undefined && !opts.urn) {
                 throw new Error("Missing required property 'entities'");
             }
-            if ((!args || args.kind === undefined) && !opts.urn) {
+            if (args?.kind === undefined && !opts.urn) {
                 throw new Error("Missing required property 'kind'");
             }
-            resourceInputs["autoExpansionMode"] = args ? args.autoExpansionMode : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["enableFuzzyExtraction"] = args ? args.enableFuzzyExtraction : undefined;
-            resourceInputs["entities"] = args ? args.entities : undefined;
-            resourceInputs["excludedPhrases"] = args ? args.excludedPhrases : undefined;
-            resourceInputs["kind"] = args ? args.kind : undefined;
-            resourceInputs["languageCode"] = args ? args.languageCode : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
-            resourceInputs["redact"] = args ? args.redact : undefined;
+            resourceInputs["autoExpansionMode"] = args?.autoExpansionMode;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["enableFuzzyExtraction"] = args?.enableFuzzyExtraction;
+            resourceInputs["entities"] = args?.entities;
+            resourceInputs["excludedPhrases"] = args?.excludedPhrases;
+            resourceInputs["kind"] = args?.kind;
+            resourceInputs["languageCode"] = args?.languageCode;
+            resourceInputs["parent"] = args?.parent;
+            resourceInputs["redact"] = args?.redact;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

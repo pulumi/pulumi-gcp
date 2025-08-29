@@ -105,12 +105,12 @@ export class ApplicationUrlDispatchRules extends pulumi.CustomResource {
      * Rules to match an HTTP request and dispatch that request to a service.
      * Structure is documented below.
      */
-    public readonly dispatchRules!: pulumi.Output<outputs.appengine.ApplicationUrlDispatchRulesDispatchRule[]>;
+    declare public readonly dispatchRules: pulumi.Output<outputs.appengine.ApplicationUrlDispatchRulesDispatchRule[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
 
     /**
      * Create a ApplicationUrlDispatchRules resource with the given unique name, arguments, and options.
@@ -125,15 +125,15 @@ export class ApplicationUrlDispatchRules extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationUrlDispatchRulesState | undefined;
-            resourceInputs["dispatchRules"] = state ? state.dispatchRules : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["dispatchRules"] = state?.dispatchRules;
+            resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as ApplicationUrlDispatchRulesArgs | undefined;
-            if ((!args || args.dispatchRules === undefined) && !opts.urn) {
+            if (args?.dispatchRules === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dispatchRules'");
             }
-            resourceInputs["dispatchRules"] = args ? args.dispatchRules : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["dispatchRules"] = args?.dispatchRules;
+            resourceInputs["project"] = args?.project;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ApplicationUrlDispatchRules.__pulumiType, name, resourceInputs, opts);

@@ -271,32 +271,32 @@ export class Slo extends pulumi.CustomResource {
      * `basicSli`, `requestBasedSli`, `windowsBasedSli`
      * Structure is documented below.
      */
-    public readonly basicSli!: pulumi.Output<outputs.monitoring.SloBasicSli | undefined>;
+    declare public readonly basicSli: pulumi.Output<outputs.monitoring.SloBasicSli | undefined>;
     /**
      * A calendar period, semantically "since the start of the current
      * <calendarPeriod>".
      * Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
      */
-    public readonly calendarPeriod!: pulumi.Output<string | undefined>;
+    declare public readonly calendarPeriod: pulumi.Output<string | undefined>;
     /**
      * Name used for UI elements listing this SLO.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * The fraction of service that must be good in order for this objective
      * to be met. 0 < goal <= 0.999
      */
-    public readonly goal!: pulumi.Output<number>;
+    declare public readonly goal: pulumi.Output<number>;
     /**
      * The full resource name for this service. The syntax is:
      * projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME]
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * A request-based SLI defines a SLI for which atomic units of
      * service are counted directly.
@@ -307,20 +307,20 @@ export class Slo extends pulumi.CustomResource {
      * `basicSli`, `requestBasedSli`, `windowsBasedSli`
      * Structure is documented below.
      */
-    public readonly requestBasedSli!: pulumi.Output<outputs.monitoring.SloRequestBasedSli | undefined>;
+    declare public readonly requestBasedSli: pulumi.Output<outputs.monitoring.SloRequestBasedSli | undefined>;
     /**
      * A rolling time period, semantically "in the past X days".
      * Must be between 1 to 30 days, inclusive.
      */
-    public readonly rollingPeriodDays!: pulumi.Output<number | undefined>;
+    declare public readonly rollingPeriodDays: pulumi.Output<number | undefined>;
     /**
      * ID of the service to which this SLO belongs.
      */
-    public readonly service!: pulumi.Output<string>;
+    declare public readonly service: pulumi.Output<string>;
     /**
      * The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
      */
-    public readonly sloId!: pulumi.Output<string>;
+    declare public readonly sloId: pulumi.Output<string>;
     /**
      * This field is intended to be used for organizing and identifying the AlertPolicy
      * objects.The field can contain up to 64 entries. Each key and value is limited
@@ -328,7 +328,7 @@ export class Slo extends pulumi.CustomResource {
      * can contain only lowercase letters, numerals, underscores, and dashes. Keys
      * must begin with a letter.
      */
-    public readonly userLabels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly userLabels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A windows-based SLI defines the criteria for time windows.
      * goodService is defined based off the count of these time windows
@@ -340,7 +340,7 @@ export class Slo extends pulumi.CustomResource {
      * `basicSli`, `requestBasedSli`, `windowsBasedSli`
      * Structure is documented below.
      */
-    public readonly windowsBasedSli!: pulumi.Output<outputs.monitoring.SloWindowsBasedSli | undefined>;
+    declare public readonly windowsBasedSli: pulumi.Output<outputs.monitoring.SloWindowsBasedSli | undefined>;
 
     /**
      * Create a Slo resource with the given unique name, arguments, and options.
@@ -355,37 +355,37 @@ export class Slo extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SloState | undefined;
-            resourceInputs["basicSli"] = state ? state.basicSli : undefined;
-            resourceInputs["calendarPeriod"] = state ? state.calendarPeriod : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["goal"] = state ? state.goal : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["requestBasedSli"] = state ? state.requestBasedSli : undefined;
-            resourceInputs["rollingPeriodDays"] = state ? state.rollingPeriodDays : undefined;
-            resourceInputs["service"] = state ? state.service : undefined;
-            resourceInputs["sloId"] = state ? state.sloId : undefined;
-            resourceInputs["userLabels"] = state ? state.userLabels : undefined;
-            resourceInputs["windowsBasedSli"] = state ? state.windowsBasedSli : undefined;
+            resourceInputs["basicSli"] = state?.basicSli;
+            resourceInputs["calendarPeriod"] = state?.calendarPeriod;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["goal"] = state?.goal;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["requestBasedSli"] = state?.requestBasedSli;
+            resourceInputs["rollingPeriodDays"] = state?.rollingPeriodDays;
+            resourceInputs["service"] = state?.service;
+            resourceInputs["sloId"] = state?.sloId;
+            resourceInputs["userLabels"] = state?.userLabels;
+            resourceInputs["windowsBasedSli"] = state?.windowsBasedSli;
         } else {
             const args = argsOrState as SloArgs | undefined;
-            if ((!args || args.goal === undefined) && !opts.urn) {
+            if (args?.goal === undefined && !opts.urn) {
                 throw new Error("Missing required property 'goal'");
             }
-            if ((!args || args.service === undefined) && !opts.urn) {
+            if (args?.service === undefined && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
-            resourceInputs["basicSli"] = args ? args.basicSli : undefined;
-            resourceInputs["calendarPeriod"] = args ? args.calendarPeriod : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["goal"] = args ? args.goal : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["requestBasedSli"] = args ? args.requestBasedSli : undefined;
-            resourceInputs["rollingPeriodDays"] = args ? args.rollingPeriodDays : undefined;
-            resourceInputs["service"] = args ? args.service : undefined;
-            resourceInputs["sloId"] = args ? args.sloId : undefined;
-            resourceInputs["userLabels"] = args ? args.userLabels : undefined;
-            resourceInputs["windowsBasedSli"] = args ? args.windowsBasedSli : undefined;
+            resourceInputs["basicSli"] = args?.basicSli;
+            resourceInputs["calendarPeriod"] = args?.calendarPeriod;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["goal"] = args?.goal;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["requestBasedSli"] = args?.requestBasedSli;
+            resourceInputs["rollingPeriodDays"] = args?.rollingPeriodDays;
+            resourceInputs["service"] = args?.service;
+            resourceInputs["sloId"] = args?.sloId;
+            resourceInputs["userLabels"] = args?.userLabels;
+            resourceInputs["windowsBasedSli"] = args?.windowsBasedSli;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

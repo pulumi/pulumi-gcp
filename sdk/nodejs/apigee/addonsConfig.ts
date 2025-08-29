@@ -156,11 +156,11 @@ export class AddonsConfig extends pulumi.CustomResource {
      * Addon configurations of the Apigee organization.
      * Structure is documented below.
      */
-    public readonly addonsConfig!: pulumi.Output<outputs.apigee.AddonsConfigAddonsConfig | undefined>;
+    declare public readonly addonsConfig: pulumi.Output<outputs.apigee.AddonsConfigAddonsConfig | undefined>;
     /**
      * Name of the Apigee organization.
      */
-    public readonly org!: pulumi.Output<string>;
+    declare public readonly org: pulumi.Output<string>;
 
     /**
      * Create a AddonsConfig resource with the given unique name, arguments, and options.
@@ -175,15 +175,15 @@ export class AddonsConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AddonsConfigState | undefined;
-            resourceInputs["addonsConfig"] = state ? state.addonsConfig : undefined;
-            resourceInputs["org"] = state ? state.org : undefined;
+            resourceInputs["addonsConfig"] = state?.addonsConfig;
+            resourceInputs["org"] = state?.org;
         } else {
             const args = argsOrState as AddonsConfigArgs | undefined;
-            if ((!args || args.org === undefined) && !opts.urn) {
+            if (args?.org === undefined && !opts.urn) {
                 throw new Error("Missing required property 'org'");
             }
-            resourceInputs["addonsConfig"] = args ? args.addonsConfig : undefined;
-            resourceInputs["org"] = args ? args.org : undefined;
+            resourceInputs["addonsConfig"] = args?.addonsConfig;
+            resourceInputs["org"] = args?.org;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AddonsConfig.__pulumiType, name, resourceInputs, opts);

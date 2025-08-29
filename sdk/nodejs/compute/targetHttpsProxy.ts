@@ -368,22 +368,22 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
      * sslCertificates and certificateManagerCertificates fields can not be defined together.
      * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
      */
-    public readonly certificateManagerCertificates!: pulumi.Output<string[] | undefined>;
+    declare public readonly certificateManagerCertificates: pulumi.Output<string[] | undefined>;
     /**
      * A reference to the CertificateMap resource uri that identifies a certificate map
      * associated with the given target proxy. This field is only supported for EXTERNAL and EXTERNAL_MANAGED load balancing schemes.
      * For INTERNAL_MANAGED, use certificateManagerCertificates instead.
      * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
      */
-    public readonly certificateMap!: pulumi.Output<string | undefined>;
+    declare public readonly certificateMap: pulumi.Output<string | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * An optional description of this resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
      * This field will be ignored when inserting a TargetHttpsProxy. An up-to-date fingerprint must be provided in order to
@@ -391,7 +391,7 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
      * To see the latest fingerprint, make a get() request to retrieve the TargetHttpsProxy.
      * A base64-encoded string.
      */
-    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly fingerprint: pulumi.Output<string>;
     /**
      * Specifies how long to keep a connection open, after completing a response,
      * while there is no matching traffic (in seconds). If an HTTP keepalive is
@@ -403,7 +403,7 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
      * maximum allowed value is 600 seconds. For Global external HTTP(S) load
      * balancer (classic), this option is not available publicly.
      */
-    public readonly httpKeepAliveTimeoutSec!: pulumi.Output<number | undefined>;
+    declare public readonly httpKeepAliveTimeoutSec: pulumi.Output<number | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -413,21 +413,21 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * This field only applies when the forwarding rule that references
      * this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
      */
-    public readonly proxyBind!: pulumi.Output<boolean>;
+    declare public readonly proxyBind: pulumi.Output<boolean>;
     /**
      * The unique identifier for the resource.
      */
-    public /*out*/ readonly proxyId!: pulumi.Output<number>;
+    declare public /*out*/ readonly proxyId: pulumi.Output<number>;
     /**
      * Specifies the QUIC override policy for this resource. This determines
      * whether the load balancer will attempt to negotiate QUIC with clients
@@ -436,11 +436,11 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
      * Default value is `NONE`.
      * Possible values are: `NONE`, `ENABLE`, `DISABLE`.
      */
-    public readonly quicOverride!: pulumi.Output<string | undefined>;
+    declare public readonly quicOverride: pulumi.Output<string | undefined>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * A URL referring to a networksecurity.ServerTlsPolicy
      * resource that describes how the proxy should authenticate inbound
@@ -456,19 +456,19 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
      * receive a resourceInUseByAnotherResource error. Use lifecycle.create_before_destroy
      * within the ServerTlsPolicy resource to avoid this.
      */
-    public readonly serverTlsPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly serverTlsPolicy: pulumi.Output<string | undefined>;
     /**
      * URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
      * Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
      * sslCertificates and certificateManagerCertificates can not be defined together.
      */
-    public readonly sslCertificates!: pulumi.Output<string[] | undefined>;
+    declare public readonly sslCertificates: pulumi.Output<string[] | undefined>;
     /**
      * A reference to the SslPolicy resource that will be associated with
      * the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
      * resource will not have any SSL policy configured.
      */
-    public readonly sslPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly sslPolicy: pulumi.Output<string | undefined>;
     /**
      * Specifies whether TLS 1.3 0-RTT Data (“Early Data”) should be accepted for this service.
      * Early Data allows a TLS resumption handshake to include the initial application payload
@@ -476,12 +476,12 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
      * This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
      * Possible values are: `STRICT`, `PERMISSIVE`, `UNRESTRICTED`, `DISABLED`.
      */
-    public readonly tlsEarlyData!: pulumi.Output<string>;
+    declare public readonly tlsEarlyData: pulumi.Output<string>;
     /**
      * A reference to the UrlMap resource that defines the mapping from URL
      * to the BackendService.
      */
-    public readonly urlMap!: pulumi.Output<string>;
+    declare public readonly urlMap: pulumi.Output<string>;
 
     /**
      * Create a TargetHttpsProxy resource with the given unique name, arguments, and options.
@@ -496,41 +496,41 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TargetHttpsProxyState | undefined;
-            resourceInputs["certificateManagerCertificates"] = state ? state.certificateManagerCertificates : undefined;
-            resourceInputs["certificateMap"] = state ? state.certificateMap : undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
-            resourceInputs["httpKeepAliveTimeoutSec"] = state ? state.httpKeepAliveTimeoutSec : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["proxyBind"] = state ? state.proxyBind : undefined;
-            resourceInputs["proxyId"] = state ? state.proxyId : undefined;
-            resourceInputs["quicOverride"] = state ? state.quicOverride : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["serverTlsPolicy"] = state ? state.serverTlsPolicy : undefined;
-            resourceInputs["sslCertificates"] = state ? state.sslCertificates : undefined;
-            resourceInputs["sslPolicy"] = state ? state.sslPolicy : undefined;
-            resourceInputs["tlsEarlyData"] = state ? state.tlsEarlyData : undefined;
-            resourceInputs["urlMap"] = state ? state.urlMap : undefined;
+            resourceInputs["certificateManagerCertificates"] = state?.certificateManagerCertificates;
+            resourceInputs["certificateMap"] = state?.certificateMap;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["fingerprint"] = state?.fingerprint;
+            resourceInputs["httpKeepAliveTimeoutSec"] = state?.httpKeepAliveTimeoutSec;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["proxyBind"] = state?.proxyBind;
+            resourceInputs["proxyId"] = state?.proxyId;
+            resourceInputs["quicOverride"] = state?.quicOverride;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["serverTlsPolicy"] = state?.serverTlsPolicy;
+            resourceInputs["sslCertificates"] = state?.sslCertificates;
+            resourceInputs["sslPolicy"] = state?.sslPolicy;
+            resourceInputs["tlsEarlyData"] = state?.tlsEarlyData;
+            resourceInputs["urlMap"] = state?.urlMap;
         } else {
             const args = argsOrState as TargetHttpsProxyArgs | undefined;
-            if ((!args || args.urlMap === undefined) && !opts.urn) {
+            if (args?.urlMap === undefined && !opts.urn) {
                 throw new Error("Missing required property 'urlMap'");
             }
-            resourceInputs["certificateManagerCertificates"] = args ? args.certificateManagerCertificates : undefined;
-            resourceInputs["certificateMap"] = args ? args.certificateMap : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["httpKeepAliveTimeoutSec"] = args ? args.httpKeepAliveTimeoutSec : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["proxyBind"] = args ? args.proxyBind : undefined;
-            resourceInputs["quicOverride"] = args ? args.quicOverride : undefined;
-            resourceInputs["serverTlsPolicy"] = args ? args.serverTlsPolicy : undefined;
-            resourceInputs["sslCertificates"] = args ? args.sslCertificates : undefined;
-            resourceInputs["sslPolicy"] = args ? args.sslPolicy : undefined;
-            resourceInputs["tlsEarlyData"] = args ? args.tlsEarlyData : undefined;
-            resourceInputs["urlMap"] = args ? args.urlMap : undefined;
+            resourceInputs["certificateManagerCertificates"] = args?.certificateManagerCertificates;
+            resourceInputs["certificateMap"] = args?.certificateMap;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["httpKeepAliveTimeoutSec"] = args?.httpKeepAliveTimeoutSec;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["proxyBind"] = args?.proxyBind;
+            resourceInputs["quicOverride"] = args?.quicOverride;
+            resourceInputs["serverTlsPolicy"] = args?.serverTlsPolicy;
+            resourceInputs["sslCertificates"] = args?.sslCertificates;
+            resourceInputs["sslPolicy"] = args?.sslPolicy;
+            resourceInputs["tlsEarlyData"] = args?.tlsEarlyData;
+            resourceInputs["urlMap"] = args?.urlMap;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["proxyId"] = undefined /*out*/;

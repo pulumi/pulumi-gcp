@@ -84,35 +84,35 @@ export class HmacKey extends pulumi.CustomResource {
     /**
      * The access ID of the HMAC Key.
      */
-    public /*out*/ readonly accessId!: pulumi.Output<string>;
+    declare public /*out*/ readonly accessId: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * HMAC secret key material.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    public /*out*/ readonly secret!: pulumi.Output<string>;
+    declare public /*out*/ readonly secret: pulumi.Output<string>;
     /**
      * The email address of the key's associated service account.
      */
-    public readonly serviceAccountEmail!: pulumi.Output<string>;
+    declare public readonly serviceAccountEmail: pulumi.Output<string>;
     /**
      * The state of the key. Can be set to one of ACTIVE, INACTIVE.
      * Default value is `ACTIVE`.
      * Possible values are: `ACTIVE`, `INACTIVE`.
      */
-    public readonly state!: pulumi.Output<string | undefined>;
+    declare public readonly state: pulumi.Output<string | undefined>;
     /**
      * 'The creation time of the HMAC key in RFC 3339 format. '
      */
-    public /*out*/ readonly timeCreated!: pulumi.Output<string>;
+    declare public /*out*/ readonly timeCreated: pulumi.Output<string>;
     /**
      * 'The last modification time of the HMAC key metadata in RFC 3339 format.'
      */
-    public /*out*/ readonly updated!: pulumi.Output<string>;
+    declare public /*out*/ readonly updated: pulumi.Output<string>;
 
     /**
      * Create a HmacKey resource with the given unique name, arguments, and options.
@@ -127,21 +127,21 @@ export class HmacKey extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HmacKeyState | undefined;
-            resourceInputs["accessId"] = state ? state.accessId : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["secret"] = state ? state.secret : undefined;
-            resourceInputs["serviceAccountEmail"] = state ? state.serviceAccountEmail : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["timeCreated"] = state ? state.timeCreated : undefined;
-            resourceInputs["updated"] = state ? state.updated : undefined;
+            resourceInputs["accessId"] = state?.accessId;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["secret"] = state?.secret;
+            resourceInputs["serviceAccountEmail"] = state?.serviceAccountEmail;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["timeCreated"] = state?.timeCreated;
+            resourceInputs["updated"] = state?.updated;
         } else {
             const args = argsOrState as HmacKeyArgs | undefined;
-            if ((!args || args.serviceAccountEmail === undefined) && !opts.urn) {
+            if (args?.serviceAccountEmail === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceAccountEmail'");
             }
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["serviceAccountEmail"] = args ? args.serviceAccountEmail : undefined;
-            resourceInputs["state"] = args ? args.state : undefined;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["serviceAccountEmail"] = args?.serviceAccountEmail;
+            resourceInputs["state"] = args?.state;
             resourceInputs["accessId"] = undefined /*out*/;
             resourceInputs["secret"] = undefined /*out*/;
             resourceInputs["timeCreated"] = undefined /*out*/;

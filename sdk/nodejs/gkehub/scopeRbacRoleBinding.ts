@@ -122,75 +122,75 @@ export class ScopeRbacRoleBinding extends pulumi.CustomResource {
     /**
      * Time the RBAC Role Binding was created in UTC.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Time the RBAC Role Binding was deleted in UTC.
      */
-    public /*out*/ readonly deleteTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly deleteTime: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Principal that is be authorized in the cluster (at least of one the oneof
      * is required). Updating one will unset the other automatically.
      * group is the group, as seen by the kubernetes cluster.
      */
-    public readonly group!: pulumi.Output<string | undefined>;
+    declare public readonly group: pulumi.Output<string | undefined>;
     /**
      * Labels for this ScopeRBACRoleBinding.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The resource name for the RBAC Role Binding
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Role to bind to the principal.
      * Structure is documented below.
      */
-    public readonly role!: pulumi.Output<outputs.gkehub.ScopeRbacRoleBindingRole>;
+    declare public readonly role: pulumi.Output<outputs.gkehub.ScopeRbacRoleBindingRole>;
     /**
      * Id of the scope
      */
-    public readonly scopeId!: pulumi.Output<string>;
+    declare public readonly scopeId: pulumi.Output<string>;
     /**
      * The client-provided identifier of the RBAC Role Binding.
      */
-    public readonly scopeRbacRoleBindingId!: pulumi.Output<string>;
+    declare public readonly scopeRbacRoleBindingId: pulumi.Output<string>;
     /**
      * State of the RBAC Role Binding resource.
      * Structure is documented below.
      */
-    public /*out*/ readonly states!: pulumi.Output<outputs.gkehub.ScopeRbacRoleBindingState[]>;
+    declare public /*out*/ readonly states: pulumi.Output<outputs.gkehub.ScopeRbacRoleBindingState[]>;
     /**
      * Google-generated UUID for this resource.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * Time the RBAC Role Binding was updated in UTC.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * Principal that is be authorized in the cluster (at least of one the oneof
      * is required). Updating one will unset the other automatically.
      * user is the name of the user as seen by the kubernetes cluster, example
      * "alice" or "alice@domain.tld"
      */
-    public readonly user!: pulumi.Output<string | undefined>;
+    declare public readonly user: pulumi.Output<string | undefined>;
 
     /**
      * Create a ScopeRbacRoleBinding resource with the given unique name, arguments, and options.
@@ -205,39 +205,39 @@ export class ScopeRbacRoleBinding extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ScopeRbacRoleBindingState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["deleteTime"] = state ? state.deleteTime : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["group"] = state ? state.group : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
-            resourceInputs["scopeId"] = state ? state.scopeId : undefined;
-            resourceInputs["scopeRbacRoleBindingId"] = state ? state.scopeRbacRoleBindingId : undefined;
-            resourceInputs["states"] = state ? state.states : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["user"] = state ? state.user : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deleteTime"] = state?.deleteTime;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["group"] = state?.group;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["role"] = state?.role;
+            resourceInputs["scopeId"] = state?.scopeId;
+            resourceInputs["scopeRbacRoleBindingId"] = state?.scopeRbacRoleBindingId;
+            resourceInputs["states"] = state?.states;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["user"] = state?.user;
         } else {
             const args = argsOrState as ScopeRbacRoleBindingArgs | undefined;
-            if ((!args || args.role === undefined) && !opts.urn) {
+            if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            if ((!args || args.scopeId === undefined) && !opts.urn) {
+            if (args?.scopeId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scopeId'");
             }
-            if ((!args || args.scopeRbacRoleBindingId === undefined) && !opts.urn) {
+            if (args?.scopeRbacRoleBindingId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scopeRbacRoleBindingId'");
             }
-            resourceInputs["group"] = args ? args.group : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
-            resourceInputs["scopeId"] = args ? args.scopeId : undefined;
-            resourceInputs["scopeRbacRoleBindingId"] = args ? args.scopeRbacRoleBindingId : undefined;
-            resourceInputs["user"] = args ? args.user : undefined;
+            resourceInputs["group"] = args?.group;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["role"] = args?.role;
+            resourceInputs["scopeId"] = args?.scopeId;
+            resourceInputs["scopeRbacRoleBindingId"] = args?.scopeRbacRoleBindingId;
+            resourceInputs["user"] = args?.user;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;

@@ -156,39 +156,39 @@ export class ConsumerQuotaOverride extends pulumi.CustomResource {
     /**
      * If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
      */
-    public readonly dimensions!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly dimensions: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * If the new quota would decrease the existing quota by more than 10%, the request is rejected.
      * If `force` is `true`, that safety check is ignored.
      */
-    public readonly force!: pulumi.Output<boolean | undefined>;
+    declare public readonly force: pulumi.Output<boolean | undefined>;
     /**
      * The limit on the metric, e.g. `/project/region`.
      * > Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
      * E.g. use `/project/user` instead of `1/{project}/{user}`.
      */
-    public readonly limit!: pulumi.Output<string>;
+    declare public readonly limit: pulumi.Output<string>;
     /**
      * The metric that should be limited, e.g. `compute.googleapis.com/cpus`.
      */
-    public readonly metric!: pulumi.Output<string>;
+    declare public readonly metric: pulumi.Output<string>;
     /**
      * The server-generated name of the quota override.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The overriding quota limit value. Can be any nonnegative integer, or -1 (unlimited quota).
      */
-    public readonly overrideValue!: pulumi.Output<string>;
+    declare public readonly overrideValue: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The service that the metrics belong to, e.g. `compute.googleapis.com`.
      */
-    public readonly service!: pulumi.Output<string>;
+    declare public readonly service: pulumi.Output<string>;
 
     /**
      * Create a ConsumerQuotaOverride resource with the given unique name, arguments, and options.
@@ -203,35 +203,35 @@ export class ConsumerQuotaOverride extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConsumerQuotaOverrideState | undefined;
-            resourceInputs["dimensions"] = state ? state.dimensions : undefined;
-            resourceInputs["force"] = state ? state.force : undefined;
-            resourceInputs["limit"] = state ? state.limit : undefined;
-            resourceInputs["metric"] = state ? state.metric : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["overrideValue"] = state ? state.overrideValue : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["service"] = state ? state.service : undefined;
+            resourceInputs["dimensions"] = state?.dimensions;
+            resourceInputs["force"] = state?.force;
+            resourceInputs["limit"] = state?.limit;
+            resourceInputs["metric"] = state?.metric;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["overrideValue"] = state?.overrideValue;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["service"] = state?.service;
         } else {
             const args = argsOrState as ConsumerQuotaOverrideArgs | undefined;
-            if ((!args || args.limit === undefined) && !opts.urn) {
+            if (args?.limit === undefined && !opts.urn) {
                 throw new Error("Missing required property 'limit'");
             }
-            if ((!args || args.metric === undefined) && !opts.urn) {
+            if (args?.metric === undefined && !opts.urn) {
                 throw new Error("Missing required property 'metric'");
             }
-            if ((!args || args.overrideValue === undefined) && !opts.urn) {
+            if (args?.overrideValue === undefined && !opts.urn) {
                 throw new Error("Missing required property 'overrideValue'");
             }
-            if ((!args || args.service === undefined) && !opts.urn) {
+            if (args?.service === undefined && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
-            resourceInputs["dimensions"] = args ? args.dimensions : undefined;
-            resourceInputs["force"] = args ? args.force : undefined;
-            resourceInputs["limit"] = args ? args.limit : undefined;
-            resourceInputs["metric"] = args ? args.metric : undefined;
-            resourceInputs["overrideValue"] = args ? args.overrideValue : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["service"] = args ? args.service : undefined;
+            resourceInputs["dimensions"] = args?.dimensions;
+            resourceInputs["force"] = args?.force;
+            resourceInputs["limit"] = args?.limit;
+            resourceInputs["metric"] = args?.metric;
+            resourceInputs["overrideValue"] = args?.overrideValue;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["service"] = args?.service;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

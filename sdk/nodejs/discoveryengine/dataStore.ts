@@ -159,45 +159,45 @@ export class DataStore extends pulumi.CustomResource {
      * Configuration data for advance site search.
      * Structure is documented below.
      */
-    public readonly advancedSiteSearchConfig!: pulumi.Output<outputs.discoveryengine.DataStoreAdvancedSiteSearchConfig | undefined>;
+    declare public readonly advancedSiteSearchConfig: pulumi.Output<outputs.discoveryengine.DataStoreAdvancedSiteSearchConfig | undefined>;
     /**
      * The content config of the data store.
      * Possible values are: `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`.
      */
-    public readonly contentConfig!: pulumi.Output<string>;
+    declare public readonly contentConfig: pulumi.Output<string>;
     /**
      * If true, an advanced data store for site search will be created. If the
      * data store is not configured as site search (GENERIC vertical and
      * PUBLIC_WEBSITE contentConfig), this flag will be ignored.
      */
-    public readonly createAdvancedSiteSearch!: pulumi.Output<boolean | undefined>;
+    declare public readonly createAdvancedSiteSearch: pulumi.Output<boolean | undefined>;
     /**
      * Timestamp when the DataStore was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The unique id of the data store.
      */
-    public readonly dataStoreId!: pulumi.Output<string>;
+    declare public readonly dataStoreId: pulumi.Output<string>;
     /**
      * The id of the default Schema associated with this data store.
      */
-    public /*out*/ readonly defaultSchemaId!: pulumi.Output<string>;
+    declare public /*out*/ readonly defaultSchemaId: pulumi.Output<string>;
     /**
      * The display name of the data store. This field must be a UTF-8 encoded
      * string with a length limit of 128 characters.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Configuration for Document understanding and enrichment.
      * Structure is documented below.
      */
-    public readonly documentProcessingConfig!: pulumi.Output<outputs.discoveryengine.DataStoreDocumentProcessingConfig | undefined>;
+    declare public readonly documentProcessingConfig: pulumi.Output<outputs.discoveryengine.DataStoreDocumentProcessingConfig | undefined>;
     /**
      * The industry vertical that the data store registers.
      * Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
      */
-    public readonly industryVertical!: pulumi.Output<string>;
+    declare public readonly industryVertical: pulumi.Output<string>;
     /**
      * KMS key resource name which will be used to encrypt resources:
      * `/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`
@@ -206,24 +206,24 @@ export class DataStore extends pulumi.CustomResource {
      * If this field is set and processed successfully, the DataStore will be
      * protected by the KMS key, as indicated in the cmekConfig field.
      */
-    public readonly kmsKeyName!: pulumi.Output<string | undefined>;
+    declare public readonly kmsKeyName: pulumi.Output<string | undefined>;
     /**
      * The geographic location where the data store should reside. The value can
      * only be one of "global", "us" and "eu".
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The unique full resource name of the data store. Values are of the format
      * `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`.
      * This field must be a UTF-8 encoded string with a length limit of 1024
      * characters.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * A boolean flag indicating whether to skip the default schema creation for
      * the data store. Only enable this flag if you are certain that the default
@@ -233,12 +233,12 @@ export class DataStore extends pulumi.CustomResource {
      * This flag cannot be specified if `data_store.starting_schema` is
      * specified.
      */
-    public readonly skipDefaultSchemaCreation!: pulumi.Output<boolean | undefined>;
+    declare public readonly skipDefaultSchemaCreation: pulumi.Output<boolean | undefined>;
     /**
      * The solutions that the data store enrolls.
      * Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`, `SOLUTION_TYPE_GENERATIVE_CHAT`.
      */
-    public readonly solutionTypes!: pulumi.Output<string[] | undefined>;
+    declare public readonly solutionTypes: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a DataStore resource with the given unique name, arguments, and options.
@@ -253,50 +253,50 @@ export class DataStore extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DataStoreState | undefined;
-            resourceInputs["advancedSiteSearchConfig"] = state ? state.advancedSiteSearchConfig : undefined;
-            resourceInputs["contentConfig"] = state ? state.contentConfig : undefined;
-            resourceInputs["createAdvancedSiteSearch"] = state ? state.createAdvancedSiteSearch : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dataStoreId"] = state ? state.dataStoreId : undefined;
-            resourceInputs["defaultSchemaId"] = state ? state.defaultSchemaId : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["documentProcessingConfig"] = state ? state.documentProcessingConfig : undefined;
-            resourceInputs["industryVertical"] = state ? state.industryVertical : undefined;
-            resourceInputs["kmsKeyName"] = state ? state.kmsKeyName : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["skipDefaultSchemaCreation"] = state ? state.skipDefaultSchemaCreation : undefined;
-            resourceInputs["solutionTypes"] = state ? state.solutionTypes : undefined;
+            resourceInputs["advancedSiteSearchConfig"] = state?.advancedSiteSearchConfig;
+            resourceInputs["contentConfig"] = state?.contentConfig;
+            resourceInputs["createAdvancedSiteSearch"] = state?.createAdvancedSiteSearch;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dataStoreId"] = state?.dataStoreId;
+            resourceInputs["defaultSchemaId"] = state?.defaultSchemaId;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["documentProcessingConfig"] = state?.documentProcessingConfig;
+            resourceInputs["industryVertical"] = state?.industryVertical;
+            resourceInputs["kmsKeyName"] = state?.kmsKeyName;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["skipDefaultSchemaCreation"] = state?.skipDefaultSchemaCreation;
+            resourceInputs["solutionTypes"] = state?.solutionTypes;
         } else {
             const args = argsOrState as DataStoreArgs | undefined;
-            if ((!args || args.contentConfig === undefined) && !opts.urn) {
+            if (args?.contentConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'contentConfig'");
             }
-            if ((!args || args.dataStoreId === undefined) && !opts.urn) {
+            if (args?.dataStoreId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataStoreId'");
             }
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.industryVertical === undefined) && !opts.urn) {
+            if (args?.industryVertical === undefined && !opts.urn) {
                 throw new Error("Missing required property 'industryVertical'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["advancedSiteSearchConfig"] = args ? args.advancedSiteSearchConfig : undefined;
-            resourceInputs["contentConfig"] = args ? args.contentConfig : undefined;
-            resourceInputs["createAdvancedSiteSearch"] = args ? args.createAdvancedSiteSearch : undefined;
-            resourceInputs["dataStoreId"] = args ? args.dataStoreId : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["documentProcessingConfig"] = args ? args.documentProcessingConfig : undefined;
-            resourceInputs["industryVertical"] = args ? args.industryVertical : undefined;
-            resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["skipDefaultSchemaCreation"] = args ? args.skipDefaultSchemaCreation : undefined;
-            resourceInputs["solutionTypes"] = args ? args.solutionTypes : undefined;
+            resourceInputs["advancedSiteSearchConfig"] = args?.advancedSiteSearchConfig;
+            resourceInputs["contentConfig"] = args?.contentConfig;
+            resourceInputs["createAdvancedSiteSearch"] = args?.createAdvancedSiteSearch;
+            resourceInputs["dataStoreId"] = args?.dataStoreId;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["documentProcessingConfig"] = args?.documentProcessingConfig;
+            resourceInputs["industryVertical"] = args?.industryVertical;
+            resourceInputs["kmsKeyName"] = args?.kmsKeyName;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["skipDefaultSchemaCreation"] = args?.skipDefaultSchemaCreation;
+            resourceInputs["solutionTypes"] = args?.solutionTypes;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["defaultSchemaId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

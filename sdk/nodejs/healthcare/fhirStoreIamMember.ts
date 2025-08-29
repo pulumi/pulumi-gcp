@@ -141,18 +141,18 @@ export class FhirStoreIamMember extends pulumi.CustomResource {
         return obj['__pulumiType'] === FhirStoreIamMember.__pulumiType;
     }
 
-    public readonly condition!: pulumi.Output<outputs.healthcare.FhirStoreIamMemberCondition | undefined>;
+    declare public readonly condition: pulumi.Output<outputs.healthcare.FhirStoreIamMemberCondition | undefined>;
     /**
      * (Computed) The etag of the FHIR store's IAM policy.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The FHIR store ID, in the form
      * `{project_id}/{location_name}/{dataset_name}/{fhir_store_name}` or
      * `{location_name}/{dataset_name}/{fhir_store_name}`. In the second form, the provider's
      * project setting will be used as a fallback.
      */
-    public readonly fhirStoreId!: pulumi.Output<string>;
+    declare public readonly fhirStoreId: pulumi.Output<string>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -163,13 +163,13 @@ export class FhirStoreIamMember extends pulumi.CustomResource {
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
-    public readonly member!: pulumi.Output<string>;
+    declare public readonly member: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.healthcare.FhirStoreIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    public readonly role!: pulumi.Output<string>;
+    declare public readonly role: pulumi.Output<string>;
 
     /**
      * Create a FhirStoreIamMember resource with the given unique name, arguments, and options.
@@ -184,26 +184,26 @@ export class FhirStoreIamMember extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FhirStoreIamMemberState | undefined;
-            resourceInputs["condition"] = state ? state.condition : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["fhirStoreId"] = state ? state.fhirStoreId : undefined;
-            resourceInputs["member"] = state ? state.member : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["condition"] = state?.condition;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["fhirStoreId"] = state?.fhirStoreId;
+            resourceInputs["member"] = state?.member;
+            resourceInputs["role"] = state?.role;
         } else {
             const args = argsOrState as FhirStoreIamMemberArgs | undefined;
-            if ((!args || args.fhirStoreId === undefined) && !opts.urn) {
+            if (args?.fhirStoreId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'fhirStoreId'");
             }
-            if ((!args || args.member === undefined) && !opts.urn) {
+            if (args?.member === undefined && !opts.urn) {
                 throw new Error("Missing required property 'member'");
             }
-            if ((!args || args.role === undefined) && !opts.urn) {
+            if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            resourceInputs["condition"] = args ? args.condition : undefined;
-            resourceInputs["fhirStoreId"] = args ? args.fhirStoreId : undefined;
-            resourceInputs["member"] = args ? args.member : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["condition"] = args?.condition;
+            resourceInputs["fhirStoreId"] = args?.fhirStoreId;
+            resourceInputs["member"] = args?.member;
+            resourceInputs["role"] = args?.role;
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

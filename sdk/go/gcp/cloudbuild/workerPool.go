@@ -151,9 +151,10 @@ import (
 type WorkerPool struct {
 	pulumi.CustomResourceState
 
-	// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
-	// limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
-	// configuration. Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Output only. Time at which the request to create the `WorkerPool` was received.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -217,9 +218,10 @@ func GetWorkerPool(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkerPool resources.
 type workerPoolState struct {
-	// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
-	// limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
-	// configuration. Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Output only. Time at which the request to create the `WorkerPool` was received.
 	CreateTime *string `pulumi:"createTime"`
@@ -251,9 +253,10 @@ type workerPoolState struct {
 }
 
 type WorkerPoolState struct {
-	// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
-	// limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
-	// configuration. Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Output only. Time at which the request to create the `WorkerPool` was received.
 	CreateTime pulumi.StringPtrInput
@@ -289,9 +292,10 @@ func (WorkerPoolState) ElementType() reflect.Type {
 }
 
 type workerPoolArgs struct {
-	// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
-	// limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
-	// configuration. Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
 	DisplayName *string `pulumi:"displayName"`
@@ -313,9 +317,10 @@ type workerPoolArgs struct {
 
 // The set of arguments for constructing a WorkerPool resource.
 type WorkerPoolArgs struct {
-	// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
-	// limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
-	// configuration. Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
 	DisplayName pulumi.StringPtrInput
@@ -422,9 +427,10 @@ func (o WorkerPoolOutput) ToWorkerPoolOutputWithContext(ctx context.Context) Wor
 	return o
 }
 
-// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
-// limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
-// configuration. Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+//
+// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o WorkerPoolOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkerPool) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }

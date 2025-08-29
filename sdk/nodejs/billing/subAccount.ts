@@ -62,30 +62,30 @@ export class SubAccount extends pulumi.CustomResource {
     /**
      * The billing account id.
      */
-    public /*out*/ readonly billingAccountId!: pulumi.Output<string>;
+    declare public /*out*/ readonly billingAccountId: pulumi.Output<string>;
     /**
      * If set to "RENAME_ON_DESTROY" the billing account displayName
      * will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
      * Default is "".
      */
-    public readonly deletionPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly deletionPolicy: pulumi.Output<string | undefined>;
     /**
      * The display name of the billing account.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * The name of the master billing account that the subaccount
      * will be created under in the form `{billing_account_id}` or `billingAccounts/{billing_account_id}`.
      */
-    public readonly masterBillingAccount!: pulumi.Output<string>;
+    declare public readonly masterBillingAccount: pulumi.Output<string>;
     /**
      * The resource name of the billing account in the form `billingAccounts/{billing_account_id}`.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * `true` if the billing account is open, `false` if the billing account is closed.
      */
-    public /*out*/ readonly open!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly open: pulumi.Output<boolean>;
 
     /**
      * Create a SubAccount resource with the given unique name, arguments, and options.
@@ -100,23 +100,23 @@ export class SubAccount extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SubAccountState | undefined;
-            resourceInputs["billingAccountId"] = state ? state.billingAccountId : undefined;
-            resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["masterBillingAccount"] = state ? state.masterBillingAccount : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["open"] = state ? state.open : undefined;
+            resourceInputs["billingAccountId"] = state?.billingAccountId;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["masterBillingAccount"] = state?.masterBillingAccount;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["open"] = state?.open;
         } else {
             const args = argsOrState as SubAccountArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.masterBillingAccount === undefined) && !opts.urn) {
+            if (args?.masterBillingAccount === undefined && !opts.urn) {
                 throw new Error("Missing required property 'masterBillingAccount'");
             }
-            resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["masterBillingAccount"] = args ? args.masterBillingAccount : undefined;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["masterBillingAccount"] = args?.masterBillingAccount;
             resourceInputs["billingAccountId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["open"] = undefined /*out*/;

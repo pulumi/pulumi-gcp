@@ -96,93 +96,93 @@ export class AuthConfig extends pulumi.CustomResource {
     /**
      * Certificate id for client certificate.
      */
-    public /*out*/ readonly certificateId!: pulumi.Output<string>;
+    declare public /*out*/ readonly certificateId: pulumi.Output<string>;
     /**
      * Raw client certificate
      * Structure is documented below.
      */
-    public readonly clientCertificate!: pulumi.Output<outputs.applicationintegration.AuthConfigClientCertificate | undefined>;
+    declare public readonly clientCertificate: pulumi.Output<outputs.applicationintegration.AuthConfigClientCertificate | undefined>;
     /**
      * The timestamp when the auth config is created.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The creator's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
      */
-    public /*out*/ readonly creatorEmail!: pulumi.Output<string>;
+    declare public /*out*/ readonly creatorEmail: pulumi.Output<string>;
     /**
      * Credential type of the encrypted credential.
      */
-    public /*out*/ readonly credentialType!: pulumi.Output<string>;
+    declare public /*out*/ readonly credentialType: pulumi.Output<string>;
     /**
      * Raw auth credentials.
      * Structure is documented below.
      */
-    public readonly decryptedCredential!: pulumi.Output<outputs.applicationintegration.AuthConfigDecryptedCredential | undefined>;
+    declare public readonly decryptedCredential: pulumi.Output<outputs.applicationintegration.AuthConfigDecryptedCredential | undefined>;
     /**
      * A description of the auth config.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The name of the auth config.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Auth credential encrypted by Cloud KMS. Can be decrypted as Credential with proper KMS key.
      * A base64-encoded string.
      */
-    public /*out*/ readonly encryptedCredential!: pulumi.Output<string>;
+    declare public /*out*/ readonly encryptedCredential: pulumi.Output<string>;
     /**
      * User can define the time to receive notification after which the auth config becomes invalid. Support up to 30 days. Support granularity in hours.
      * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
      */
-    public readonly expiryNotificationDurations!: pulumi.Output<string[] | undefined>;
+    declare public readonly expiryNotificationDurations: pulumi.Output<string[] | undefined>;
     /**
      * The last modifier's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
      */
-    public /*out*/ readonly lastModifierEmail!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastModifierEmail: pulumi.Output<string>;
     /**
      * Location in which client needs to be provisioned.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Resource name of the auth config.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * User provided expiry time to override. For the example of Salesforce, username/password credentials can be valid for 6 months depending on the instance settings.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public readonly overrideValidTime!: pulumi.Output<string | undefined>;
+    declare public readonly overrideValidTime: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The reason / details of the current status.
      */
-    public /*out*/ readonly reason!: pulumi.Output<string>;
+    declare public /*out*/ readonly reason: pulumi.Output<string>;
     /**
      * The status of the auth config.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The timestamp when the auth config is modified.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * The time until the auth config is valid. Empty or max value is considered the auth config won't expire.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly validTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly validTime: pulumi.Output<string>;
     /**
      * The visibility of the auth config.
      * Possible values are: `PRIVATE`, `CLIENT_VISIBLE`.
      */
-    public readonly visibility!: pulumi.Output<string | undefined>;
+    declare public readonly visibility: pulumi.Output<string | undefined>;
 
     /**
      * Create a AuthConfig resource with the given unique name, arguments, and options.
@@ -197,43 +197,43 @@ export class AuthConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AuthConfigState | undefined;
-            resourceInputs["certificateId"] = state ? state.certificateId : undefined;
-            resourceInputs["clientCertificate"] = state ? state.clientCertificate : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["creatorEmail"] = state ? state.creatorEmail : undefined;
-            resourceInputs["credentialType"] = state ? state.credentialType : undefined;
-            resourceInputs["decryptedCredential"] = state ? state.decryptedCredential : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["encryptedCredential"] = state ? state.encryptedCredential : undefined;
-            resourceInputs["expiryNotificationDurations"] = state ? state.expiryNotificationDurations : undefined;
-            resourceInputs["lastModifierEmail"] = state ? state.lastModifierEmail : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["overrideValidTime"] = state ? state.overrideValidTime : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["reason"] = state ? state.reason : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["validTime"] = state ? state.validTime : undefined;
-            resourceInputs["visibility"] = state ? state.visibility : undefined;
+            resourceInputs["certificateId"] = state?.certificateId;
+            resourceInputs["clientCertificate"] = state?.clientCertificate;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["creatorEmail"] = state?.creatorEmail;
+            resourceInputs["credentialType"] = state?.credentialType;
+            resourceInputs["decryptedCredential"] = state?.decryptedCredential;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["encryptedCredential"] = state?.encryptedCredential;
+            resourceInputs["expiryNotificationDurations"] = state?.expiryNotificationDurations;
+            resourceInputs["lastModifierEmail"] = state?.lastModifierEmail;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["overrideValidTime"] = state?.overrideValidTime;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["reason"] = state?.reason;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["validTime"] = state?.validTime;
+            resourceInputs["visibility"] = state?.visibility;
         } else {
             const args = argsOrState as AuthConfigArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["clientCertificate"] = args ? args.clientCertificate : undefined;
-            resourceInputs["decryptedCredential"] = args ? args.decryptedCredential : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["expiryNotificationDurations"] = args ? args.expiryNotificationDurations : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["overrideValidTime"] = args ? args.overrideValidTime : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["visibility"] = args ? args.visibility : undefined;
+            resourceInputs["clientCertificate"] = args?.clientCertificate;
+            resourceInputs["decryptedCredential"] = args?.decryptedCredential;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["expiryNotificationDurations"] = args?.expiryNotificationDurations;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["overrideValidTime"] = args?.overrideValidTime;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["visibility"] = args?.visibility;
             resourceInputs["certificateId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["creatorEmail"] = undefined /*out*/;

@@ -106,39 +106,39 @@ export class Key extends pulumi.CustomResource {
     /**
      * Arbitrary map of values that, when changed, will trigger a new key to be generated.
      */
-    public readonly keepers!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly keepers: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The algorithm used to generate the key. KEY_ALG_RSA_2048 is the default algorithm.
      * Valid values are listed at
      * [ServiceAccountPrivateKeyType](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys#ServiceAccountKeyAlgorithm)
      * (only used on create)
      */
-    public readonly keyAlgorithm!: pulumi.Output<string | undefined>;
+    declare public readonly keyAlgorithm: pulumi.Output<string | undefined>;
     /**
      * The name used for this key pair
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The private key in JSON format, base64 encoded. This is what you normally get as a file when creating
      * service account keys through the CLI or web console. This is only populated when creating a new key.
      */
-    public /*out*/ readonly privateKey!: pulumi.Output<string>;
+    declare public /*out*/ readonly privateKey: pulumi.Output<string>;
     /**
      * The output format of the private key. TYPE_GOOGLE_CREDENTIALS_FILE is the default output format.
      */
-    public readonly privateKeyType!: pulumi.Output<string | undefined>;
+    declare public readonly privateKeyType: pulumi.Output<string | undefined>;
     /**
      * The public key, base64 encoded
      */
-    public /*out*/ readonly publicKey!: pulumi.Output<string>;
+    declare public /*out*/ readonly publicKey: pulumi.Output<string>;
     /**
      * Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `publicKeyType` and `privateKeyType`.
      */
-    public readonly publicKeyData!: pulumi.Output<string | undefined>;
+    declare public readonly publicKeyData: pulumi.Output<string | undefined>;
     /**
      * The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
      */
-    public readonly publicKeyType!: pulumi.Output<string | undefined>;
+    declare public readonly publicKeyType: pulumi.Output<string | undefined>;
     /**
      * The Service account id of the Key. This can be a string in the format
      * `{ACCOUNT}` or `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. If the `{ACCOUNT}`-only syntax is used, either
@@ -147,16 +147,16 @@ export class Key extends pulumi.CustomResource {
      * syntax is used, the `{ACCOUNT}` specified can be the full email address of the service account or the service account's
      * unique id. Substituting `-` as a wildcard for the `{PROJECT_ID}` will infer the project from the account.
      */
-    public readonly serviceAccountId!: pulumi.Output<string>;
+    declare public readonly serviceAccountId: pulumi.Output<string>;
     /**
      * The key can be used after this timestamp. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly validAfter!: pulumi.Output<string>;
+    declare public /*out*/ readonly validAfter: pulumi.Output<string>;
     /**
      * The key can be used before this timestamp.
      * A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly validBefore!: pulumi.Output<string>;
+    declare public /*out*/ readonly validBefore: pulumi.Output<string>;
 
     /**
      * Create a Key resource with the given unique name, arguments, and options.
@@ -171,28 +171,28 @@ export class Key extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KeyState | undefined;
-            resourceInputs["keepers"] = state ? state.keepers : undefined;
-            resourceInputs["keyAlgorithm"] = state ? state.keyAlgorithm : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["privateKey"] = state ? state.privateKey : undefined;
-            resourceInputs["privateKeyType"] = state ? state.privateKeyType : undefined;
-            resourceInputs["publicKey"] = state ? state.publicKey : undefined;
-            resourceInputs["publicKeyData"] = state ? state.publicKeyData : undefined;
-            resourceInputs["publicKeyType"] = state ? state.publicKeyType : undefined;
-            resourceInputs["serviceAccountId"] = state ? state.serviceAccountId : undefined;
-            resourceInputs["validAfter"] = state ? state.validAfter : undefined;
-            resourceInputs["validBefore"] = state ? state.validBefore : undefined;
+            resourceInputs["keepers"] = state?.keepers;
+            resourceInputs["keyAlgorithm"] = state?.keyAlgorithm;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["privateKey"] = state?.privateKey;
+            resourceInputs["privateKeyType"] = state?.privateKeyType;
+            resourceInputs["publicKey"] = state?.publicKey;
+            resourceInputs["publicKeyData"] = state?.publicKeyData;
+            resourceInputs["publicKeyType"] = state?.publicKeyType;
+            resourceInputs["serviceAccountId"] = state?.serviceAccountId;
+            resourceInputs["validAfter"] = state?.validAfter;
+            resourceInputs["validBefore"] = state?.validBefore;
         } else {
             const args = argsOrState as KeyArgs | undefined;
-            if ((!args || args.serviceAccountId === undefined) && !opts.urn) {
+            if (args?.serviceAccountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceAccountId'");
             }
-            resourceInputs["keepers"] = args ? args.keepers : undefined;
-            resourceInputs["keyAlgorithm"] = args ? args.keyAlgorithm : undefined;
-            resourceInputs["privateKeyType"] = args ? args.privateKeyType : undefined;
-            resourceInputs["publicKeyData"] = args ? args.publicKeyData : undefined;
-            resourceInputs["publicKeyType"] = args ? args.publicKeyType : undefined;
-            resourceInputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
+            resourceInputs["keepers"] = args?.keepers;
+            resourceInputs["keyAlgorithm"] = args?.keyAlgorithm;
+            resourceInputs["privateKeyType"] = args?.privateKeyType;
+            resourceInputs["publicKeyData"] = args?.publicKeyData;
+            resourceInputs["publicKeyType"] = args?.publicKeyType;
+            resourceInputs["serviceAccountId"] = args?.serviceAccountId;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["privateKey"] = undefined /*out*/;
             resourceInputs["publicKey"] = undefined /*out*/;

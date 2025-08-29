@@ -163,66 +163,66 @@ export class Workflow extends pulumi.CustomResource {
      * the execution level takes precedence.
      * Possible values are: `CALL_LOG_LEVEL_UNSPECIFIED`, `LOG_ALL_CALLS`, `LOG_ERRORS_ONLY`, `LOG_NONE`.
      */
-    public readonly callLogLevel!: pulumi.Output<string | undefined>;
+    declare public readonly callLogLevel: pulumi.Output<string | undefined>;
     /**
      * The timestamp of when the workflow was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The KMS key used to encrypt workflow and execution data.
      * Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
      */
-    public readonly cryptoKeyName!: pulumi.Output<string | undefined>;
-    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
+    declare public readonly cryptoKeyName: pulumi.Output<string | undefined>;
+    declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
      * Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Describes the level of execution history to be stored for this workflow. This configuration
      * determines how much information about workflow executions is preserved. If not specified,
      * defaults to EXECUTION_HISTORY_LEVEL_UNSPECIFIED.
      * Possible values are: `EXECUTION_HISTORY_LEVEL_UNSPECIFIED`, `EXECUTION_HISTORY_BASIC`, `EXECUTION_HISTORY_DETAILED`.
      */
-    public readonly executionHistoryLevel!: pulumi.Output<string | undefined>;
+    declare public readonly executionHistoryLevel: pulumi.Output<string | undefined>;
     /**
      * A set of key/value label pairs to assign to this Workflow.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Name of the Workflow.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Creates a unique name beginning with the
      * specified prefix. If this and name are unspecified, a random value is chosen for the name.
      */
-    public readonly namePrefix!: pulumi.Output<string>;
+    declare public readonly namePrefix: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The region of the workflow.
      */
-    public readonly region!: pulumi.Output<string | undefined>;
+    declare public readonly region: pulumi.Output<string | undefined>;
     /**
      * The revision of the workflow. A new one is generated if the service account or source contents is changed.
      */
-    public /*out*/ readonly revisionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly revisionId: pulumi.Output<string>;
     /**
      * Name of the service account associated with the latest workflow version. This service
      * account represents the identity of the workflow and determines what permissions the workflow has.
@@ -232,29 +232,29 @@ export class Workflow extends pulumi.CustomResource {
      * If not provided, workflow will use the project's default service account.
      * Modifying this field for an existing workflow results in a new workflow revision.
      */
-    public readonly serviceAccount!: pulumi.Output<string>;
+    declare public readonly serviceAccount: pulumi.Output<string>;
     /**
      * Workflow code to be executed. The size limit is 128KB.
      */
-    public readonly sourceContents!: pulumi.Output<string | undefined>;
+    declare public readonly sourceContents: pulumi.Output<string | undefined>;
     /**
      * State of the workflow deployment.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * A map of resource manager tags. Resource manager tag keys and values have the same definition
      * as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in
      * the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with "GOOGLE" or "WORKFLOWS".
      */
-    public readonly userEnvVars!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly userEnvVars: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Workflow resource with the given unique name, arguments, and options.
@@ -269,42 +269,42 @@ export class Workflow extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkflowState | undefined;
-            resourceInputs["callLogLevel"] = state ? state.callLogLevel : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["cryptoKeyName"] = state ? state.cryptoKeyName : undefined;
-            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["executionHistoryLevel"] = state ? state.executionHistoryLevel : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namePrefix"] = state ? state.namePrefix : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["revisionId"] = state ? state.revisionId : undefined;
-            resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
-            resourceInputs["sourceContents"] = state ? state.sourceContents : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["userEnvVars"] = state ? state.userEnvVars : undefined;
+            resourceInputs["callLogLevel"] = state?.callLogLevel;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["cryptoKeyName"] = state?.cryptoKeyName;
+            resourceInputs["deletionProtection"] = state?.deletionProtection;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["executionHistoryLevel"] = state?.executionHistoryLevel;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namePrefix"] = state?.namePrefix;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["revisionId"] = state?.revisionId;
+            resourceInputs["serviceAccount"] = state?.serviceAccount;
+            resourceInputs["sourceContents"] = state?.sourceContents;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["userEnvVars"] = state?.userEnvVars;
         } else {
             const args = argsOrState as WorkflowArgs | undefined;
-            resourceInputs["callLogLevel"] = args ? args.callLogLevel : undefined;
-            resourceInputs["cryptoKeyName"] = args ? args.cryptoKeyName : undefined;
-            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["executionHistoryLevel"] = args ? args.executionHistoryLevel : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["namePrefix"] = args ? args.namePrefix : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
-            resourceInputs["sourceContents"] = args ? args.sourceContents : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["userEnvVars"] = args ? args.userEnvVars : undefined;
+            resourceInputs["callLogLevel"] = args?.callLogLevel;
+            resourceInputs["cryptoKeyName"] = args?.cryptoKeyName;
+            resourceInputs["deletionProtection"] = args?.deletionProtection;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["executionHistoryLevel"] = args?.executionHistoryLevel;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["namePrefix"] = args?.namePrefix;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["serviceAccount"] = args?.serviceAccount;
+            resourceInputs["sourceContents"] = args?.sourceContents;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["userEnvVars"] = args?.userEnvVars;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;

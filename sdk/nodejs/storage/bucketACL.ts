@@ -74,19 +74,19 @@ export class BucketACL extends pulumi.CustomResource {
      *
      * - - -
      */
-    public readonly bucket!: pulumi.Output<string>;
+    declare public readonly bucket: pulumi.Output<string>;
     /**
      * Configure this ACL to be the default ACL.
      */
-    public readonly defaultAcl!: pulumi.Output<string | undefined>;
+    declare public readonly defaultAcl: pulumi.Output<string | undefined>;
     /**
      * The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control/lists#predefined-acl) to apply. Must be set if `roleEntity` is not.
      */
-    public readonly predefinedAcl!: pulumi.Output<string | undefined>;
+    declare public readonly predefinedAcl: pulumi.Output<string | undefined>;
     /**
      * List of role/entity pairs in the form `ROLE:entity`. See [GCS Bucket ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)  for more details. Must be set if `predefinedAcl` is not.
      */
-    public readonly roleEntities!: pulumi.Output<string[]>;
+    declare public readonly roleEntities: pulumi.Output<string[]>;
 
     /**
      * Create a BucketACL resource with the given unique name, arguments, and options.
@@ -101,19 +101,19 @@ export class BucketACL extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BucketACLState | undefined;
-            resourceInputs["bucket"] = state ? state.bucket : undefined;
-            resourceInputs["defaultAcl"] = state ? state.defaultAcl : undefined;
-            resourceInputs["predefinedAcl"] = state ? state.predefinedAcl : undefined;
-            resourceInputs["roleEntities"] = state ? state.roleEntities : undefined;
+            resourceInputs["bucket"] = state?.bucket;
+            resourceInputs["defaultAcl"] = state?.defaultAcl;
+            resourceInputs["predefinedAcl"] = state?.predefinedAcl;
+            resourceInputs["roleEntities"] = state?.roleEntities;
         } else {
             const args = argsOrState as BucketACLArgs | undefined;
-            if ((!args || args.bucket === undefined) && !opts.urn) {
+            if (args?.bucket === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            resourceInputs["bucket"] = args ? args.bucket : undefined;
-            resourceInputs["defaultAcl"] = args ? args.defaultAcl : undefined;
-            resourceInputs["predefinedAcl"] = args ? args.predefinedAcl : undefined;
-            resourceInputs["roleEntities"] = args ? args.roleEntities : undefined;
+            resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["defaultAcl"] = args?.defaultAcl;
+            resourceInputs["predefinedAcl"] = args?.predefinedAcl;
+            resourceInputs["roleEntities"] = args?.roleEntities;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(BucketACL.__pulumiType, name, resourceInputs, opts);

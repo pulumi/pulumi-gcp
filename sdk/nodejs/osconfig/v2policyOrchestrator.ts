@@ -118,48 +118,48 @@ export class V2PolicyOrchestrator extends pulumi.CustomResource {
      * - `UPSERT` - Orchestrator will create or update target resources.
      * - `DELETE` - Orchestrator will delete target resources, if they exist
      */
-    public readonly action!: pulumi.Output<string>;
+    declare public readonly action: pulumi.Output<string>;
     /**
      * Output only. Timestamp when the policy orchestrator resource was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Optional. Freeform text describing the purpose of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Optional. Labels as key value pairs
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Immutable. Identifier. In form of
      * * `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}`
      * * `folders/{folder_id}/locations/global/policyOrchestrators/{orchestrator_id}`
      * * `projects/{project_id_or_number}/locations/global/policyOrchestrators/{orchestrator_id}`
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Represents a resource that is being orchestrated by the policy orchestrator.
      * Structure is documented below.
      */
-    public readonly orchestratedResource!: pulumi.Output<outputs.osconfig.V2PolicyOrchestratorOrchestratedResource>;
+    declare public readonly orchestratedResource: pulumi.Output<outputs.osconfig.V2PolicyOrchestratorOrchestratedResource>;
     /**
      * Defines a set of selectors which drive which resources are in scope of policy
      * orchestration.
      * Structure is documented below.
      */
-    public readonly orchestrationScope!: pulumi.Output<outputs.osconfig.V2PolicyOrchestratorOrchestrationScope | undefined>;
+    declare public readonly orchestrationScope: pulumi.Output<outputs.osconfig.V2PolicyOrchestratorOrchestrationScope | undefined>;
     /**
      * Describes the state of the orchestration process.
      * Structure is documented below.
      */
-    public /*out*/ readonly orchestrationStates!: pulumi.Output<outputs.osconfig.V2PolicyOrchestratorOrchestrationState[]>;
+    declare public /*out*/ readonly orchestrationStates: pulumi.Output<outputs.osconfig.V2PolicyOrchestratorOrchestrationState[]>;
     /**
      * Required. The logical identifier of the policy orchestrator, with the following
      * restrictions:
@@ -169,22 +169,22 @@ export class V2PolicyOrchestrator extends pulumi.CustomResource {
      * * Must end with a number or a letter.
      * * Must be unique within the parent.
      */
-    public readonly policyOrchestratorId!: pulumi.Output<string>;
+    declare public readonly policyOrchestratorId: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Output only. Set to true, if the there are ongoing changes being applied by the
      * orchestrator.
      */
-    public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly reconciling: pulumi.Output<boolean>;
     /**
      * Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
      * Allowed values:
@@ -194,11 +194,11 @@ export class V2PolicyOrchestrator extends pulumi.CustomResource {
      * instead of an enum, to avoid the need of propagating new states to all the
      * client code.
      */
-    public readonly state!: pulumi.Output<string | undefined>;
+    declare public readonly state: pulumi.Output<string | undefined>;
     /**
      * Output only. Timestamp when the policy orchestrator resource was last modified.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a V2PolicyOrchestrator resource with the given unique name, arguments, and options.
@@ -213,40 +213,40 @@ export class V2PolicyOrchestrator extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as V2PolicyOrchestratorState | undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orchestratedResource"] = state ? state.orchestratedResource : undefined;
-            resourceInputs["orchestrationScope"] = state ? state.orchestrationScope : undefined;
-            resourceInputs["orchestrationStates"] = state ? state.orchestrationStates : undefined;
-            resourceInputs["policyOrchestratorId"] = state ? state.policyOrchestratorId : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["reconciling"] = state ? state.reconciling : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["action"] = state?.action;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orchestratedResource"] = state?.orchestratedResource;
+            resourceInputs["orchestrationScope"] = state?.orchestrationScope;
+            resourceInputs["orchestrationStates"] = state?.orchestrationStates;
+            resourceInputs["policyOrchestratorId"] = state?.policyOrchestratorId;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["reconciling"] = state?.reconciling;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as V2PolicyOrchestratorArgs | undefined;
-            if ((!args || args.action === undefined) && !opts.urn) {
+            if (args?.action === undefined && !opts.urn) {
                 throw new Error("Missing required property 'action'");
             }
-            if ((!args || args.orchestratedResource === undefined) && !opts.urn) {
+            if (args?.orchestratedResource === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orchestratedResource'");
             }
-            if ((!args || args.policyOrchestratorId === undefined) && !opts.urn) {
+            if (args?.policyOrchestratorId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyOrchestratorId'");
             }
-            resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["orchestratedResource"] = args ? args.orchestratedResource : undefined;
-            resourceInputs["orchestrationScope"] = args ? args.orchestrationScope : undefined;
-            resourceInputs["policyOrchestratorId"] = args ? args.policyOrchestratorId : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["state"] = args ? args.state : undefined;
+            resourceInputs["action"] = args?.action;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["orchestratedResource"] = args?.orchestratedResource;
+            resourceInputs["orchestrationScope"] = args?.orchestrationScope;
+            resourceInputs["policyOrchestratorId"] = args?.policyOrchestratorId;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["state"] = args?.state;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

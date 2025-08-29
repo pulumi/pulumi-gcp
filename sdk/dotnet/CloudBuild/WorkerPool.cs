@@ -144,9 +144,10 @@ namespace Pulumi.Gcp.CloudBuild
     public partial class WorkerPool : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
-        /// limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
-        /// configuration. Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
@@ -279,9 +280,10 @@ namespace Pulumi.Gcp.CloudBuild
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
-        /// limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
-        /// configuration. Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -346,9 +348,10 @@ namespace Pulumi.Gcp.CloudBuild
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
-        /// limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
-        /// configuration. Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {

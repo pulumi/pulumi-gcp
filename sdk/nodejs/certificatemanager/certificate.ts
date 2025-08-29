@@ -374,48 +374,48 @@ export class Certificate extends pulumi.CustomResource {
     /**
      * A human-readable description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Set of label tags associated with the Certificate resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The Certificate Manager location. If not specified, "global" is used.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * Configuration and state of a Managed Certificate.
      * Certificate Manager provisions and renews Managed Certificates
      * automatically, for as long as it's authorized to do so.
      * Structure is documented below.
      */
-    public readonly managed!: pulumi.Output<outputs.certificatemanager.CertificateManaged | undefined>;
+    declare public readonly managed: pulumi.Output<outputs.certificatemanager.CertificateManaged | undefined>;
     /**
      * A user-defined name of the certificate. Certificate names must be unique
      * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
      * and all following characters must be a dash, underscore, letter or digit.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6)
      */
-    public /*out*/ readonly sanDnsnames!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly sanDnsnames: pulumi.Output<string[]>;
     /**
      * The scope of the certificate.
      * DEFAULT: Certificates with default scope are served from core Google data centers.
@@ -427,14 +427,14 @@ export class Certificate extends pulumi.CustomResource {
      * CLIENT_AUTH: Certificates with CLIENT_AUTH scope are used by a load balancer (TLS client) to be presented to the backend (TLS server) when backend mTLS is configured.
      * See https://cloud.google.com/load-balancing/docs/backend-authenticated-tls-backend-mtls#client-certificate.
      */
-    public readonly scope!: pulumi.Output<string | undefined>;
+    declare public readonly scope: pulumi.Output<string | undefined>;
     /**
      * Certificate data for a SelfManaged Certificate.
      * SelfManaged Certificates are uploaded by the user. Updating such
      * certificates before they expire remains the user's responsibility.
      * Structure is documented below.
      */
-    public readonly selfManaged!: pulumi.Output<outputs.certificatemanager.CertificateSelfManaged | undefined>;
+    declare public readonly selfManaged: pulumi.Output<outputs.certificatemanager.CertificateSelfManaged | undefined>;
 
     /**
      * Create a Certificate resource with the given unique name, arguments, and options.
@@ -449,27 +449,27 @@ export class Certificate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CertificateState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["managed"] = state ? state.managed : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["sanDnsnames"] = state ? state.sanDnsnames : undefined;
-            resourceInputs["scope"] = state ? state.scope : undefined;
-            resourceInputs["selfManaged"] = state ? state.selfManaged : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["managed"] = state?.managed;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["sanDnsnames"] = state?.sanDnsnames;
+            resourceInputs["scope"] = state?.scope;
+            resourceInputs["selfManaged"] = state?.selfManaged;
         } else {
             const args = argsOrState as CertificateArgs | undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["managed"] = args ? args.managed : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["scope"] = args ? args.scope : undefined;
-            resourceInputs["selfManaged"] = args ? args.selfManaged : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["managed"] = args?.managed;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["scope"] = args?.scope;
+            resourceInputs["selfManaged"] = args?.selfManaged;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["sanDnsnames"] = undefined /*out*/;

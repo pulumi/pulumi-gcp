@@ -132,66 +132,66 @@ export class MirroringDeployment extends pulumi.CustomResource {
      * The timestamp when the resource was created.
      * See https://google.aip.dev/148#timestamps.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * User-provided description of the deployment.
      * Used as additional context for the deployment.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The regional forwarding rule that fronts the mirroring collectors, for
      * example: `projects/123456789/regions/us-central1/forwardingRules/my-rule`.
      * See https://google.aip.dev/124.
      */
-    public readonly forwardingRule!: pulumi.Output<string>;
+    declare public readonly forwardingRule: pulumi.Output<string>;
     /**
      * Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The cloud location of the deployment, e.g. `us-central1-a` or `asia-south1-b`.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The deployment group that this deployment is a part of, for example:
      * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
      * See https://google.aip.dev/124.
      */
-    public readonly mirroringDeploymentGroup!: pulumi.Output<string>;
+    declare public readonly mirroringDeploymentGroup: pulumi.Output<string>;
     /**
      * The ID to use for the new deployment, which will become the final
      * component of the deployment's resource name.
      */
-    public readonly mirroringDeploymentId!: pulumi.Output<string>;
+    declare public readonly mirroringDeploymentId: pulumi.Output<string>;
     /**
      * The resource name of this deployment, for example:
      * `projects/123456789/locations/us-central1-a/mirroringDeployments/my-dep`.
      * See https://google.aip.dev/122 for more details.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The current state of the resource does not match the user's intended state,
      * and the system is working to reconcile them. This part of the normal
      * operation (e.g. linking a new association to the parent group).
      * See https://google.aip.dev/128.
      */
-    public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly reconciling: pulumi.Output<boolean>;
     /**
      * The current state of the deployment.
      * See https://google.aip.dev/216.
@@ -203,12 +203,12 @@ export class MirroringDeployment extends pulumi.CustomResource {
      * OUT_OF_SYNC
      * DELETE_FAILED
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The timestamp when the resource was most recently updated.
      * See https://google.aip.dev/148#timestamps.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a MirroringDeployment resource with the given unique name, arguments, and options.
@@ -223,41 +223,41 @@ export class MirroringDeployment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MirroringDeploymentState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["forwardingRule"] = state ? state.forwardingRule : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["mirroringDeploymentGroup"] = state ? state.mirroringDeploymentGroup : undefined;
-            resourceInputs["mirroringDeploymentId"] = state ? state.mirroringDeploymentId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["reconciling"] = state ? state.reconciling : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["forwardingRule"] = state?.forwardingRule;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["mirroringDeploymentGroup"] = state?.mirroringDeploymentGroup;
+            resourceInputs["mirroringDeploymentId"] = state?.mirroringDeploymentId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["reconciling"] = state?.reconciling;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as MirroringDeploymentArgs | undefined;
-            if ((!args || args.forwardingRule === undefined) && !opts.urn) {
+            if (args?.forwardingRule === undefined && !opts.urn) {
                 throw new Error("Missing required property 'forwardingRule'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.mirroringDeploymentGroup === undefined) && !opts.urn) {
+            if (args?.mirroringDeploymentGroup === undefined && !opts.urn) {
                 throw new Error("Missing required property 'mirroringDeploymentGroup'");
             }
-            if ((!args || args.mirroringDeploymentId === undefined) && !opts.urn) {
+            if (args?.mirroringDeploymentId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'mirroringDeploymentId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["forwardingRule"] = args ? args.forwardingRule : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["mirroringDeploymentGroup"] = args ? args.mirroringDeploymentGroup : undefined;
-            resourceInputs["mirroringDeploymentId"] = args ? args.mirroringDeploymentId : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["forwardingRule"] = args?.forwardingRule;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["mirroringDeploymentGroup"] = args?.mirroringDeploymentGroup;
+            resourceInputs["mirroringDeploymentId"] = args?.mirroringDeploymentId;
+            resourceInputs["project"] = args?.project;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

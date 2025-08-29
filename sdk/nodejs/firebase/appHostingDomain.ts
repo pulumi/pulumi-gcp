@@ -127,63 +127,63 @@ export class AppHostingDomain extends pulumi.CustomResource {
     /**
      * The ID of the Backend that this Domain is associated with
      */
-    public readonly backend!: pulumi.Output<string>;
+    declare public readonly backend: pulumi.Output<string>;
     /**
      * Time at which the domain was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The status of a custom domain's linkage to the Backend.
      * Structure is documented below.
      */
-    public /*out*/ readonly customDomainStatuses!: pulumi.Output<outputs.firebase.AppHostingDomainCustomDomainStatus[]>;
+    declare public /*out*/ readonly customDomainStatuses: pulumi.Output<outputs.firebase.AppHostingDomainCustomDomainStatus[]>;
     /**
      * Time at which the domain was deleted.
      */
-    public /*out*/ readonly deleteTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly deleteTime: pulumi.Output<string>;
     /**
      * Id of the domain to create.
      * Must be a valid domain name, such as "foo.com"
      */
-    public readonly domainId!: pulumi.Output<string>;
+    declare public readonly domainId: pulumi.Output<string>;
     /**
      * Server-computed checksum based on other values; may be sent
      * on update or delete to ensure operation is done on expected resource.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The location of the Backend that this Domain is associated with
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Identifier. The resource name of the domain, e.g.
      * `projects/{project}/locations/{locationId}/backends/{backendId}/domains/{domainId}`
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Time at which a soft-deleted domain will be purged, rendering in
      * permanently deleted.
      */
-    public /*out*/ readonly purgeTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly purgeTime: pulumi.Output<string>;
     /**
      * The serving behavior of the domain. If specified, the domain will
      * serve content other than its Backend's live content.
      * Structure is documented below.
      */
-    public readonly serve!: pulumi.Output<outputs.firebase.AppHostingDomainServe | undefined>;
+    declare public readonly serve: pulumi.Output<outputs.firebase.AppHostingDomainServe | undefined>;
     /**
      * System-assigned, unique identifier.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * Time at which the domain was last updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a AppHostingDomain resource with the given unique name, arguments, and options.
@@ -198,35 +198,35 @@ export class AppHostingDomain extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AppHostingDomainState | undefined;
-            resourceInputs["backend"] = state ? state.backend : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["customDomainStatuses"] = state ? state.customDomainStatuses : undefined;
-            resourceInputs["deleteTime"] = state ? state.deleteTime : undefined;
-            resourceInputs["domainId"] = state ? state.domainId : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["purgeTime"] = state ? state.purgeTime : undefined;
-            resourceInputs["serve"] = state ? state.serve : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["backend"] = state?.backend;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["customDomainStatuses"] = state?.customDomainStatuses;
+            resourceInputs["deleteTime"] = state?.deleteTime;
+            resourceInputs["domainId"] = state?.domainId;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["purgeTime"] = state?.purgeTime;
+            resourceInputs["serve"] = state?.serve;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as AppHostingDomainArgs | undefined;
-            if ((!args || args.backend === undefined) && !opts.urn) {
+            if (args?.backend === undefined && !opts.urn) {
                 throw new Error("Missing required property 'backend'");
             }
-            if ((!args || args.domainId === undefined) && !opts.urn) {
+            if (args?.domainId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domainId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["backend"] = args ? args.backend : undefined;
-            resourceInputs["domainId"] = args ? args.domainId : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["serve"] = args ? args.serve : undefined;
+            resourceInputs["backend"] = args?.backend;
+            resourceInputs["domainId"] = args?.domainId;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["serve"] = args?.serve;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["customDomainStatuses"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;

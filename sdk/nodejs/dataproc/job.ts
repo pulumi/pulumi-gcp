@@ -96,11 +96,11 @@ export class Job extends pulumi.CustomResource {
     /**
      * If present, the location of miscellaneous control files which may be used as part of job setup and handling. If not present, control files may be placed in the same location as driver_output_uri.
      */
-    public /*out*/ readonly driverControlsFilesUri!: pulumi.Output<string>;
+    declare public /*out*/ readonly driverControlsFilesUri: pulumi.Output<string>;
     /**
      * A URI pointing to the location of the stdout of the job's driver program.
      */
-    public /*out*/ readonly driverOutputResourceUri!: pulumi.Output<string>;
+    declare public /*out*/ readonly driverOutputResourceUri: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      *
@@ -108,77 +108,77 @@ export class Job extends pulumi.CustomResource {
      *
      * * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * By default, you can only delete inactive jobs within
      * Dataproc. Setting this to true, and calling destroy, will ensure that the
      * job is first cancelled before issuing the delete.
      */
-    public readonly forceDelete!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceDelete: pulumi.Output<boolean | undefined>;
     /**
      * The config of Hadoop job
      */
-    public readonly hadoopConfig!: pulumi.Output<outputs.dataproc.JobHadoopConfig | undefined>;
+    declare public readonly hadoopConfig: pulumi.Output<outputs.dataproc.JobHadoopConfig | undefined>;
     /**
      * The config of hive job
      */
-    public readonly hiveConfig!: pulumi.Output<outputs.dataproc.JobHiveConfig | undefined>;
+    declare public readonly hiveConfig: pulumi.Output<outputs.dataproc.JobHiveConfig | undefined>;
     /**
      * The list of labels (key/value pairs) to add to the job.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The config of pag job.
      */
-    public readonly pigConfig!: pulumi.Output<outputs.dataproc.JobPigConfig | undefined>;
+    declare public readonly pigConfig: pulumi.Output<outputs.dataproc.JobPigConfig | undefined>;
     /**
      * The config of job placement.
      */
-    public readonly placement!: pulumi.Output<outputs.dataproc.JobPlacement>;
+    declare public readonly placement: pulumi.Output<outputs.dataproc.JobPlacement>;
     /**
      * The config of presto job
      */
-    public readonly prestoConfig!: pulumi.Output<outputs.dataproc.JobPrestoConfig | undefined>;
+    declare public readonly prestoConfig: pulumi.Output<outputs.dataproc.JobPrestoConfig | undefined>;
     /**
      * The project in which the `cluster` can be found and jobs
      * subsequently run against. If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The config of pySpark job.
      */
-    public readonly pysparkConfig!: pulumi.Output<outputs.dataproc.JobPysparkConfig | undefined>;
+    declare public readonly pysparkConfig: pulumi.Output<outputs.dataproc.JobPysparkConfig | undefined>;
     /**
      * The reference of the job
      */
-    public readonly reference!: pulumi.Output<outputs.dataproc.JobReference>;
+    declare public readonly reference: pulumi.Output<outputs.dataproc.JobReference>;
     /**
      * The Cloud Dataproc region. This essentially determines which clusters are available
      * for this job to be submitted to. If not specified, defaults to `global`.
      */
-    public readonly region!: pulumi.Output<string | undefined>;
+    declare public readonly region: pulumi.Output<string | undefined>;
     /**
      * Optional. Job scheduling configuration.
      */
-    public readonly scheduling!: pulumi.Output<outputs.dataproc.JobScheduling | undefined>;
+    declare public readonly scheduling: pulumi.Output<outputs.dataproc.JobScheduling | undefined>;
     /**
      * The config of the Spark job.
      */
-    public readonly sparkConfig!: pulumi.Output<outputs.dataproc.JobSparkConfig | undefined>;
+    declare public readonly sparkConfig: pulumi.Output<outputs.dataproc.JobSparkConfig | undefined>;
     /**
      * The config of SparkSql job
      */
-    public readonly sparksqlConfig!: pulumi.Output<outputs.dataproc.JobSparksqlConfig | undefined>;
+    declare public readonly sparksqlConfig: pulumi.Output<outputs.dataproc.JobSparksqlConfig | undefined>;
     /**
      * The status of the job.
      */
-    public /*out*/ readonly statuses!: pulumi.Output<outputs.dataproc.JobStatus[]>;
+    declare public /*out*/ readonly statuses: pulumi.Output<outputs.dataproc.JobStatus[]>;
 
     /**
      * Create a Job resource with the given unique name, arguments, and options.
@@ -193,44 +193,44 @@ export class Job extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as JobState | undefined;
-            resourceInputs["driverControlsFilesUri"] = state ? state.driverControlsFilesUri : undefined;
-            resourceInputs["driverOutputResourceUri"] = state ? state.driverOutputResourceUri : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
-            resourceInputs["hadoopConfig"] = state ? state.hadoopConfig : undefined;
-            resourceInputs["hiveConfig"] = state ? state.hiveConfig : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["pigConfig"] = state ? state.pigConfig : undefined;
-            resourceInputs["placement"] = state ? state.placement : undefined;
-            resourceInputs["prestoConfig"] = state ? state.prestoConfig : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["pysparkConfig"] = state ? state.pysparkConfig : undefined;
-            resourceInputs["reference"] = state ? state.reference : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["scheduling"] = state ? state.scheduling : undefined;
-            resourceInputs["sparkConfig"] = state ? state.sparkConfig : undefined;
-            resourceInputs["sparksqlConfig"] = state ? state.sparksqlConfig : undefined;
-            resourceInputs["statuses"] = state ? state.statuses : undefined;
+            resourceInputs["driverControlsFilesUri"] = state?.driverControlsFilesUri;
+            resourceInputs["driverOutputResourceUri"] = state?.driverOutputResourceUri;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["forceDelete"] = state?.forceDelete;
+            resourceInputs["hadoopConfig"] = state?.hadoopConfig;
+            resourceInputs["hiveConfig"] = state?.hiveConfig;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["pigConfig"] = state?.pigConfig;
+            resourceInputs["placement"] = state?.placement;
+            resourceInputs["prestoConfig"] = state?.prestoConfig;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["pysparkConfig"] = state?.pysparkConfig;
+            resourceInputs["reference"] = state?.reference;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["scheduling"] = state?.scheduling;
+            resourceInputs["sparkConfig"] = state?.sparkConfig;
+            resourceInputs["sparksqlConfig"] = state?.sparksqlConfig;
+            resourceInputs["statuses"] = state?.statuses;
         } else {
             const args = argsOrState as JobArgs | undefined;
-            if ((!args || args.placement === undefined) && !opts.urn) {
+            if (args?.placement === undefined && !opts.urn) {
                 throw new Error("Missing required property 'placement'");
             }
-            resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
-            resourceInputs["hadoopConfig"] = args ? args.hadoopConfig : undefined;
-            resourceInputs["hiveConfig"] = args ? args.hiveConfig : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["pigConfig"] = args ? args.pigConfig : undefined;
-            resourceInputs["placement"] = args ? args.placement : undefined;
-            resourceInputs["prestoConfig"] = args ? args.prestoConfig : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["pysparkConfig"] = args ? args.pysparkConfig : undefined;
-            resourceInputs["reference"] = args ? args.reference : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["scheduling"] = args ? args.scheduling : undefined;
-            resourceInputs["sparkConfig"] = args ? args.sparkConfig : undefined;
-            resourceInputs["sparksqlConfig"] = args ? args.sparksqlConfig : undefined;
+            resourceInputs["forceDelete"] = args?.forceDelete;
+            resourceInputs["hadoopConfig"] = args?.hadoopConfig;
+            resourceInputs["hiveConfig"] = args?.hiveConfig;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["pigConfig"] = args?.pigConfig;
+            resourceInputs["placement"] = args?.placement;
+            resourceInputs["prestoConfig"] = args?.prestoConfig;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["pysparkConfig"] = args?.pysparkConfig;
+            resourceInputs["reference"] = args?.reference;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["scheduling"] = args?.scheduling;
+            resourceInputs["sparkConfig"] = args?.sparkConfig;
+            resourceInputs["sparksqlConfig"] = args?.sparksqlConfig;
             resourceInputs["driverControlsFilesUri"] = undefined /*out*/;
             resourceInputs["driverOutputResourceUri"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;

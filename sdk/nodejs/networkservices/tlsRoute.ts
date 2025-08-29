@@ -189,44 +189,44 @@ export class TlsRoute extends pulumi.CustomResource {
     /**
      * Time the TlsRoute was created in UTC.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * A free-text description of the resource. Max length 1024 characters.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
      * Each gateway reference should match the pattern: projects/*&#47;locations/global/gateways/<gateway_name>
      */
-    public readonly gateways!: pulumi.Output<string[] | undefined>;
+    declare public readonly gateways: pulumi.Output<string[] | undefined>;
     /**
      * Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
      * Each mesh reference should match the pattern: projects/*&#47;locations/global/meshes/<mesh_name>
      * The attached Mesh should be of a type SIDECAR
      */
-    public readonly meshes!: pulumi.Output<string[] | undefined>;
+    declare public readonly meshes: pulumi.Output<string[] | undefined>;
     /**
      * Name of the TlsRoute resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Rules that define how traffic is routed and handled.
      * Structure is documented below.
      */
-    public readonly rules!: pulumi.Output<outputs.networkservices.TlsRouteRule[]>;
+    declare public readonly rules: pulumi.Output<outputs.networkservices.TlsRouteRule[]>;
     /**
      * Server-defined URL of this resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * Time the TlsRoute was updated in UTC.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a TlsRoute resource with the given unique name, arguments, and options.
@@ -241,26 +241,26 @@ export class TlsRoute extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TlsRouteState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["gateways"] = state ? state.gateways : undefined;
-            resourceInputs["meshes"] = state ? state.meshes : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["rules"] = state ? state.rules : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["gateways"] = state?.gateways;
+            resourceInputs["meshes"] = state?.meshes;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["rules"] = state?.rules;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as TlsRouteArgs | undefined;
-            if ((!args || args.rules === undefined) && !opts.urn) {
+            if (args?.rules === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rules'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["gateways"] = args ? args.gateways : undefined;
-            resourceInputs["meshes"] = args ? args.meshes : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["rules"] = args ? args.rules : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["gateways"] = args?.gateways;
+            resourceInputs["meshes"] = args?.meshes;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["rules"] = args?.rules;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;

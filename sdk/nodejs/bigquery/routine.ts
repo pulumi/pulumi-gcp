@@ -297,67 +297,67 @@ export class Routine extends pulumi.CustomResource {
      * Input/output argument of a function or a stored procedure.
      * Structure is documented below.
      */
-    public readonly arguments!: pulumi.Output<outputs.bigquery.RoutineArgument[] | undefined>;
+    declare public readonly arguments: pulumi.Output<outputs.bigquery.RoutineArgument[] | undefined>;
     /**
      * The time when this routine was created, in milliseconds since the
      * epoch.
      */
-    public /*out*/ readonly creationTime!: pulumi.Output<number>;
+    declare public /*out*/ readonly creationTime: pulumi.Output<number>;
     /**
      * If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
      * Possible values are: `DATA_MASKING`.
      */
-    public readonly dataGovernanceType!: pulumi.Output<string | undefined>;
+    declare public readonly dataGovernanceType: pulumi.Output<string | undefined>;
     /**
      * The ID of the dataset containing this routine
      */
-    public readonly datasetId!: pulumi.Output<string>;
+    declare public readonly datasetId: pulumi.Output<string>;
     /**
      * The body of the routine. For functions, this is the expression in the AS clause.
      * If language=SQL, it is the substring inside (but excluding) the parentheses.
      */
-    public readonly definitionBody!: pulumi.Output<string>;
+    declare public readonly definitionBody: pulumi.Output<string>;
     /**
      * The description of the routine if defined.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The determinism level of the JavaScript UDF if defined.
      * Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
      */
-    public readonly determinismLevel!: pulumi.Output<string | undefined>;
+    declare public readonly determinismLevel: pulumi.Output<string | undefined>;
     /**
      * Optional. If language = "JAVASCRIPT", this field stores the path of the
      * imported JAVASCRIPT libraries.
      */
-    public readonly importedLibraries!: pulumi.Output<string[] | undefined>;
+    declare public readonly importedLibraries: pulumi.Output<string[] | undefined>;
     /**
      * The language of the routine.
      * Possible values are: `SQL`, `JAVASCRIPT`, `PYTHON`, `JAVA`, `SCALA`.
      */
-    public readonly language!: pulumi.Output<string | undefined>;
+    declare public readonly language: pulumi.Output<string | undefined>;
     /**
      * The time when this routine was modified, in milliseconds since the
      * epoch.
      */
-    public /*out*/ readonly lastModifiedTime!: pulumi.Output<number>;
+    declare public /*out*/ readonly lastModifiedTime: pulumi.Output<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Remote function specific options.
      * Structure is documented below.
      */
-    public readonly remoteFunctionOptions!: pulumi.Output<outputs.bigquery.RoutineRemoteFunctionOptions | undefined>;
+    declare public readonly remoteFunctionOptions: pulumi.Output<outputs.bigquery.RoutineRemoteFunctionOptions | undefined>;
     /**
      * Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
      * If absent, the return table type is inferred from definitionBody at query time in each query
      * that references this routine. If present, then the columns in the evaluated table result will
      * be cast to match the column types specificed in return table type, at query time.
      */
-    public readonly returnTableType!: pulumi.Output<string | undefined>;
+    declare public readonly returnTableType: pulumi.Output<string | undefined>;
     /**
      * A JSON schema for the return type. Optional if language = "SQL"; required otherwise.
      * If absent, the return type is inferred from definitionBody at query time in each query
@@ -369,26 +369,26 @@ export class Routine extends pulumi.CustomResource {
      * cannot suppress the recurring diff this causes. As a workaround, we recommend using
      * the schema as returned by the API.
      */
-    public readonly returnType!: pulumi.Output<string | undefined>;
+    declare public readonly returnType: pulumi.Output<string | undefined>;
     /**
      * The ID of the the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
      */
-    public readonly routineId!: pulumi.Output<string>;
+    declare public readonly routineId: pulumi.Output<string>;
     /**
      * The type of routine.
      * Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
      */
-    public readonly routineType!: pulumi.Output<string>;
+    declare public readonly routineType: pulumi.Output<string>;
     /**
      * Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine's configuration.
      * Possible values are: `DEFINER`, `INVOKER`.
      */
-    public readonly securityMode!: pulumi.Output<string | undefined>;
+    declare public readonly securityMode: pulumi.Output<string | undefined>;
     /**
      * Optional. If language is one of "PYTHON", "JAVA", "SCALA", this field stores the options for spark stored procedure.
      * Structure is documented below.
      */
-    public readonly sparkOptions!: pulumi.Output<outputs.bigquery.RoutineSparkOptions | undefined>;
+    declare public readonly sparkOptions: pulumi.Output<outputs.bigquery.RoutineSparkOptions | undefined>;
 
     /**
      * Create a Routine resource with the given unique name, arguments, and options.
@@ -403,54 +403,54 @@ export class Routine extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RoutineState | undefined;
-            resourceInputs["arguments"] = state ? state.arguments : undefined;
-            resourceInputs["creationTime"] = state ? state.creationTime : undefined;
-            resourceInputs["dataGovernanceType"] = state ? state.dataGovernanceType : undefined;
-            resourceInputs["datasetId"] = state ? state.datasetId : undefined;
-            resourceInputs["definitionBody"] = state ? state.definitionBody : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["determinismLevel"] = state ? state.determinismLevel : undefined;
-            resourceInputs["importedLibraries"] = state ? state.importedLibraries : undefined;
-            resourceInputs["language"] = state ? state.language : undefined;
-            resourceInputs["lastModifiedTime"] = state ? state.lastModifiedTime : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["remoteFunctionOptions"] = state ? state.remoteFunctionOptions : undefined;
-            resourceInputs["returnTableType"] = state ? state.returnTableType : undefined;
-            resourceInputs["returnType"] = state ? state.returnType : undefined;
-            resourceInputs["routineId"] = state ? state.routineId : undefined;
-            resourceInputs["routineType"] = state ? state.routineType : undefined;
-            resourceInputs["securityMode"] = state ? state.securityMode : undefined;
-            resourceInputs["sparkOptions"] = state ? state.sparkOptions : undefined;
+            resourceInputs["arguments"] = state?.arguments;
+            resourceInputs["creationTime"] = state?.creationTime;
+            resourceInputs["dataGovernanceType"] = state?.dataGovernanceType;
+            resourceInputs["datasetId"] = state?.datasetId;
+            resourceInputs["definitionBody"] = state?.definitionBody;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["determinismLevel"] = state?.determinismLevel;
+            resourceInputs["importedLibraries"] = state?.importedLibraries;
+            resourceInputs["language"] = state?.language;
+            resourceInputs["lastModifiedTime"] = state?.lastModifiedTime;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["remoteFunctionOptions"] = state?.remoteFunctionOptions;
+            resourceInputs["returnTableType"] = state?.returnTableType;
+            resourceInputs["returnType"] = state?.returnType;
+            resourceInputs["routineId"] = state?.routineId;
+            resourceInputs["routineType"] = state?.routineType;
+            resourceInputs["securityMode"] = state?.securityMode;
+            resourceInputs["sparkOptions"] = state?.sparkOptions;
         } else {
             const args = argsOrState as RoutineArgs | undefined;
-            if ((!args || args.datasetId === undefined) && !opts.urn) {
+            if (args?.datasetId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'datasetId'");
             }
-            if ((!args || args.definitionBody === undefined) && !opts.urn) {
+            if (args?.definitionBody === undefined && !opts.urn) {
                 throw new Error("Missing required property 'definitionBody'");
             }
-            if ((!args || args.routineId === undefined) && !opts.urn) {
+            if (args?.routineId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'routineId'");
             }
-            if ((!args || args.routineType === undefined) && !opts.urn) {
+            if (args?.routineType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'routineType'");
             }
-            resourceInputs["arguments"] = args ? args.arguments : undefined;
-            resourceInputs["dataGovernanceType"] = args ? args.dataGovernanceType : undefined;
-            resourceInputs["datasetId"] = args ? args.datasetId : undefined;
-            resourceInputs["definitionBody"] = args ? args.definitionBody : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["determinismLevel"] = args ? args.determinismLevel : undefined;
-            resourceInputs["importedLibraries"] = args ? args.importedLibraries : undefined;
-            resourceInputs["language"] = args ? args.language : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["remoteFunctionOptions"] = args ? args.remoteFunctionOptions : undefined;
-            resourceInputs["returnTableType"] = args ? args.returnTableType : undefined;
-            resourceInputs["returnType"] = args ? args.returnType : undefined;
-            resourceInputs["routineId"] = args ? args.routineId : undefined;
-            resourceInputs["routineType"] = args ? args.routineType : undefined;
-            resourceInputs["securityMode"] = args ? args.securityMode : undefined;
-            resourceInputs["sparkOptions"] = args ? args.sparkOptions : undefined;
+            resourceInputs["arguments"] = args?.arguments;
+            resourceInputs["dataGovernanceType"] = args?.dataGovernanceType;
+            resourceInputs["datasetId"] = args?.datasetId;
+            resourceInputs["definitionBody"] = args?.definitionBody;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["determinismLevel"] = args?.determinismLevel;
+            resourceInputs["importedLibraries"] = args?.importedLibraries;
+            resourceInputs["language"] = args?.language;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["remoteFunctionOptions"] = args?.remoteFunctionOptions;
+            resourceInputs["returnTableType"] = args?.returnTableType;
+            resourceInputs["returnType"] = args?.returnType;
+            resourceInputs["routineId"] = args?.routineId;
+            resourceInputs["routineType"] = args?.routineType;
+            resourceInputs["securityMode"] = args?.securityMode;
+            resourceInputs["sparkOptions"] = args?.sparkOptions;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["lastModifiedTime"] = undefined /*out*/;
         }

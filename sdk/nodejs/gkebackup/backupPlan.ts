@@ -440,31 +440,31 @@ export class BackupPlan extends pulumi.CustomResource {
      * Defines the configuration of Backups created via this BackupPlan.
      * Structure is documented below.
      */
-    public readonly backupConfig!: pulumi.Output<outputs.gkebackup.BackupPlanBackupConfig | undefined>;
+    declare public readonly backupConfig: pulumi.Output<outputs.gkebackup.BackupPlanBackupConfig | undefined>;
     /**
      * Defines a schedule for automatic Backup creation via this BackupPlan.
      * Structure is documented below.
      */
-    public readonly backupSchedule!: pulumi.Output<outputs.gkebackup.BackupPlanBackupSchedule | undefined>;
+    declare public readonly backupSchedule: pulumi.Output<outputs.gkebackup.BackupPlanBackupSchedule | undefined>;
     /**
      * The source cluster from which Backups will be created via this BackupPlan.
      */
-    public readonly cluster!: pulumi.Output<string>;
+    declare public readonly cluster: pulumi.Output<string>;
     /**
      * This flag indicates whether this BackupPlan has been deactivated.
      * Setting this field to True locks the BackupPlan such that no further updates will be allowed
      * (except deletes), including the deactivated field itself. It also prevents any new Backups
      * from being created via this BackupPlan (including scheduled Backups).
      */
-    public readonly deactivated!: pulumi.Output<boolean>;
+    declare public readonly deactivated: pulumi.Output<boolean>;
     /**
      * User specified descriptive string for this BackupPlan.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * etag is used for optimistic concurrency control as a way to help prevent simultaneous
      * updates of a backup plan from overwriting each other. It is strongly suggested that
@@ -473,7 +473,7 @@ export class BackupPlan extends pulumi.CustomResource {
      * and systems are expected to put that etag in the request to backupPlans.patch or
      * backupPlans.delete to ensure that their change will be applied to the same version of the resource.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Description: A set of custom labels supplied by the user.
      * A list of key->value pairs.
@@ -482,46 +482,46 @@ export class BackupPlan extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The region of the Backup Plan.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The full name of the BackupPlan Resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
      */
-    public /*out*/ readonly protectedPodCount!: pulumi.Output<number>;
+    declare public /*out*/ readonly protectedPodCount: pulumi.Output<number>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * RetentionPolicy governs lifecycle of Backups created under this plan.
      * Structure is documented below.
      */
-    public readonly retentionPolicy!: pulumi.Output<outputs.gkebackup.BackupPlanRetentionPolicy | undefined>;
+    declare public readonly retentionPolicy: pulumi.Output<outputs.gkebackup.BackupPlanRetentionPolicy | undefined>;
     /**
      * The State of the BackupPlan.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Detailed description of why BackupPlan is in its current state.
      */
-    public /*out*/ readonly stateReason!: pulumi.Output<string>;
+    declare public /*out*/ readonly stateReason: pulumi.Output<string>;
     /**
      * Server generated, unique identifier of UUID format.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
 
     /**
      * Create a BackupPlan resource with the given unique name, arguments, and options.
@@ -536,41 +536,41 @@ export class BackupPlan extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BackupPlanState | undefined;
-            resourceInputs["backupConfig"] = state ? state.backupConfig : undefined;
-            resourceInputs["backupSchedule"] = state ? state.backupSchedule : undefined;
-            resourceInputs["cluster"] = state ? state.cluster : undefined;
-            resourceInputs["deactivated"] = state ? state.deactivated : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["protectedPodCount"] = state ? state.protectedPodCount : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["retentionPolicy"] = state ? state.retentionPolicy : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["stateReason"] = state ? state.stateReason : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
+            resourceInputs["backupConfig"] = state?.backupConfig;
+            resourceInputs["backupSchedule"] = state?.backupSchedule;
+            resourceInputs["cluster"] = state?.cluster;
+            resourceInputs["deactivated"] = state?.deactivated;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["protectedPodCount"] = state?.protectedPodCount;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["retentionPolicy"] = state?.retentionPolicy;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["stateReason"] = state?.stateReason;
+            resourceInputs["uid"] = state?.uid;
         } else {
             const args = argsOrState as BackupPlanArgs | undefined;
-            if ((!args || args.cluster === undefined) && !opts.urn) {
+            if (args?.cluster === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cluster'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["backupConfig"] = args ? args.backupConfig : undefined;
-            resourceInputs["backupSchedule"] = args ? args.backupSchedule : undefined;
-            resourceInputs["cluster"] = args ? args.cluster : undefined;
-            resourceInputs["deactivated"] = args ? args.deactivated : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["retentionPolicy"] = args ? args.retentionPolicy : undefined;
+            resourceInputs["backupConfig"] = args?.backupConfig;
+            resourceInputs["backupSchedule"] = args?.backupSchedule;
+            resourceInputs["cluster"] = args?.cluster;
+            resourceInputs["deactivated"] = args?.deactivated;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["retentionPolicy"] = args?.retentionPolicy;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["protectedPodCount"] = undefined /*out*/;

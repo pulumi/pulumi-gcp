@@ -206,8 +206,7 @@ namespace Pulumi.Gcp.BigQuery
     public partial class DatasetAccess : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// If true, represents that that the iam_member in the config was translated to a different member type by the API, and is
-        /// stored in state as a different member type
+        /// If true, represents that that the iam_member in the config was translated to a different member type by the API, and is stored in state as a different member type
         /// </summary>
         [Output("apiUpdatedMember")]
         public Output<bool> ApiUpdatedMember { get; private set; } = null!;
@@ -467,8 +466,7 @@ namespace Pulumi.Gcp.BigQuery
     public sealed class DatasetAccessState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If true, represents that that the iam_member in the config was translated to a different member type by the API, and is
-        /// stored in state as a different member type
+        /// If true, represents that that the iam_member in the config was translated to a different member type by the API, and is stored in state as a different member type
         /// </summary>
         [Input("apiUpdatedMember")]
         public Input<bool>? ApiUpdatedMember { get; set; }

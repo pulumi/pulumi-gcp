@@ -87,7 +87,7 @@ export class Curation extends pulumi.CustomResource {
     /**
      * The time at which the curation was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The ID to use for the curation resource, which will become the final
      * component of the curations's resource name. This field is optional.
@@ -98,15 +98,15 @@ export class Curation extends pulumi.CustomResource {
      * This value should be 4-500 characters, and valid characters
      * are /a-z[0-9]-_/.
      */
-    public readonly curationId!: pulumi.Output<string>;
+    declare public readonly curationId: pulumi.Output<string>;
     /**
      * The description of the curation.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The display name of the curation.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * The endpoint to be triggered for curation.
      * The endpoint will be invoked with a request payload containing
@@ -115,7 +115,7 @@ export class Curation extends pulumi.CustomResource {
      * ApiMetadata.
      * Structure is documented below.
      */
-    public readonly endpoint!: pulumi.Output<outputs.apihub.CurationEndpoint>;
+    declare public readonly endpoint: pulumi.Output<outputs.apihub.CurationEndpoint>;
     /**
      * The error code of the last execution of the curation. The error code is
      * populated only when the last execution state is failed.
@@ -124,12 +124,12 @@ export class Curation extends pulumi.CustomResource {
      * INTERNAL_ERROR
      * UNAUTHORIZED
      */
-    public /*out*/ readonly lastExecutionErrorCode!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastExecutionErrorCode: pulumi.Output<string>;
     /**
      * Error message describing the failure, if any, during the last execution of
      * the curation.
      */
-    public /*out*/ readonly lastExecutionErrorMessage!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastExecutionErrorMessage: pulumi.Output<string>;
     /**
      * The last execution state of the curation.
      * Possible values:
@@ -137,33 +137,33 @@ export class Curation extends pulumi.CustomResource {
      * SUCCEEDED
      * FAILED
      */
-    public /*out*/ readonly lastExecutionState!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastExecutionState: pulumi.Output<string>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Identifier. The name of the curation.
      * Format:
      * `projects/{project}/locations/{location}/curations/{curation}`
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The plugin instances and associated actions that are using the curation.
      * Note: A particular curation could be used by multiple plugin instances or
      * multiple actions in a plugin instance.
      * Structure is documented below.
      */
-    public /*out*/ readonly pluginInstanceActions!: pulumi.Output<outputs.apihub.CurationPluginInstanceAction[]>;
+    declare public /*out*/ readonly pluginInstanceActions: pulumi.Output<outputs.apihub.CurationPluginInstanceAction[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The time at which the curation was last updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Curation resource with the given unique name, arguments, and options.
@@ -178,39 +178,39 @@ export class Curation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CurationState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["curationId"] = state ? state.curationId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["endpoint"] = state ? state.endpoint : undefined;
-            resourceInputs["lastExecutionErrorCode"] = state ? state.lastExecutionErrorCode : undefined;
-            resourceInputs["lastExecutionErrorMessage"] = state ? state.lastExecutionErrorMessage : undefined;
-            resourceInputs["lastExecutionState"] = state ? state.lastExecutionState : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["pluginInstanceActions"] = state ? state.pluginInstanceActions : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["curationId"] = state?.curationId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["endpoint"] = state?.endpoint;
+            resourceInputs["lastExecutionErrorCode"] = state?.lastExecutionErrorCode;
+            resourceInputs["lastExecutionErrorMessage"] = state?.lastExecutionErrorMessage;
+            resourceInputs["lastExecutionState"] = state?.lastExecutionState;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["pluginInstanceActions"] = state?.pluginInstanceActions;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as CurationArgs | undefined;
-            if ((!args || args.curationId === undefined) && !opts.urn) {
+            if (args?.curationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'curationId'");
             }
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.endpoint === undefined) && !opts.urn) {
+            if (args?.endpoint === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpoint'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["curationId"] = args ? args.curationId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["endpoint"] = args ? args.endpoint : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["curationId"] = args?.curationId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["endpoint"] = args?.endpoint;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["lastExecutionErrorCode"] = undefined /*out*/;
             resourceInputs["lastExecutionErrorMessage"] = undefined /*out*/;

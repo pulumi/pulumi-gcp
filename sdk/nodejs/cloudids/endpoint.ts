@@ -97,49 +97,49 @@ export class Endpoint extends pulumi.CustomResource {
     /**
      * Creation timestamp in RFC 3339 text format.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * An optional description of the endpoint.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * URL of the endpoint's network address to which traffic is to be sent by Packet Mirroring.
      */
-    public /*out*/ readonly endpointForwardingRule!: pulumi.Output<string>;
+    declare public /*out*/ readonly endpointForwardingRule: pulumi.Output<string>;
     /**
      * Internal IP address of the endpoint's network entry point.
      */
-    public /*out*/ readonly endpointIp!: pulumi.Output<string>;
+    declare public /*out*/ readonly endpointIp: pulumi.Output<string>;
     /**
      * The location for the endpoint.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Name of the endpoint in the format projects/{project_id}/locations/{locationId}/endpoints/{endpointId}.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Name of the VPC network that is connected to the IDS endpoint. This can either contain the VPC network name itself (like "src-net") or the full URL to the network (like "projects/{project_id}/global/networks/src-net").
      */
-    public readonly network!: pulumi.Output<string>;
+    declare public readonly network: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The minimum alert severity level that is reported by the endpoint.
      * Possible values are: `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, `CRITICAL`.
      */
-    public readonly severity!: pulumi.Output<string>;
+    declare public readonly severity: pulumi.Output<string>;
     /**
      * Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
      */
-    public readonly threatExceptions!: pulumi.Output<string[] | undefined>;
+    declare public readonly threatExceptions: pulumi.Output<string[] | undefined>;
     /**
      * Last update timestamp in RFC 3339 text format.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Endpoint resource with the given unique name, arguments, and options.
@@ -154,35 +154,35 @@ export class Endpoint extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EndpointState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["endpointForwardingRule"] = state ? state.endpointForwardingRule : undefined;
-            resourceInputs["endpointIp"] = state ? state.endpointIp : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["severity"] = state ? state.severity : undefined;
-            resourceInputs["threatExceptions"] = state ? state.threatExceptions : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["endpointForwardingRule"] = state?.endpointForwardingRule;
+            resourceInputs["endpointIp"] = state?.endpointIp;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["severity"] = state?.severity;
+            resourceInputs["threatExceptions"] = state?.threatExceptions;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as EndpointArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.network === undefined) && !opts.urn) {
+            if (args?.network === undefined && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
-            if ((!args || args.severity === undefined) && !opts.urn) {
+            if (args?.severity === undefined && !opts.urn) {
                 throw new Error("Missing required property 'severity'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["severity"] = args ? args.severity : undefined;
-            resourceInputs["threatExceptions"] = args ? args.threatExceptions : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["severity"] = args?.severity;
+            resourceInputs["threatExceptions"] = args?.threatExceptions;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["endpointForwardingRule"] = undefined /*out*/;
             resourceInputs["endpointIp"] = undefined /*out*/;

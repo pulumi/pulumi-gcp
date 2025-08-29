@@ -124,34 +124,34 @@ export class SecurityProfileV2 extends pulumi.CustomResource {
     /**
      * The timestamp at which this profile was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Description of the security profile.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Name of the security profile v2 resource,
      * in the format `organizations/{{org_name}}/securityProfilesV2/{{profile_id}}`.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The Apigee Organization associated with the Apigee Security Profile V2,
      * in the format `organizations/{{org_name}}`.
      */
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * A map of the assessment name and the assessment config.
      * Structure is documented below.
      */
-    public readonly profileAssessmentConfigs!: pulumi.Output<outputs.apigee.SecurityProfileV2ProfileAssessmentConfig[]>;
+    declare public readonly profileAssessmentConfigs: pulumi.Output<outputs.apigee.SecurityProfileV2ProfileAssessmentConfig[]>;
     /**
      * Resource ID of the security profile.
      */
-    public readonly profileId!: pulumi.Output<string>;
+    declare public readonly profileId: pulumi.Output<string>;
     /**
      * The timestamp at which this profile was most recently updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a SecurityProfileV2 resource with the given unique name, arguments, and options.
@@ -166,28 +166,28 @@ export class SecurityProfileV2 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecurityProfileV2State | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["profileAssessmentConfigs"] = state ? state.profileAssessmentConfigs : undefined;
-            resourceInputs["profileId"] = state ? state.profileId : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["profileAssessmentConfigs"] = state?.profileAssessmentConfigs;
+            resourceInputs["profileId"] = state?.profileId;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as SecurityProfileV2Args | undefined;
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if ((!args || args.profileAssessmentConfigs === undefined) && !opts.urn) {
+            if (args?.profileAssessmentConfigs === undefined && !opts.urn) {
                 throw new Error("Missing required property 'profileAssessmentConfigs'");
             }
-            if ((!args || args.profileId === undefined) && !opts.urn) {
+            if (args?.profileId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'profileId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["profileAssessmentConfigs"] = args ? args.profileAssessmentConfigs : undefined;
-            resourceInputs["profileId"] = args ? args.profileId : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["profileAssessmentConfigs"] = args?.profileAssessmentConfigs;
+            resourceInputs["profileId"] = args?.profileId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;

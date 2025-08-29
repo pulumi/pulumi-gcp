@@ -105,9 +105,7 @@ class TableArgs:
                type definition in field schema. Structure is documented below.
         :param pulumi.Input['TableTableConstraintsArgs'] table_constraints: Defines the primary key and foreign keys. 
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] table_metadata_view: View sets the optional parameter "view": Specifies the view that determines which table information is returned. By
-               default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values:
-               TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
+        :param pulumi.Input[_builtins.str] table_metadata_view: View sets the optional parameter "view": Specifies the view that determines which table information is returned. By default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values: TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
         :param pulumi.Input['TableTableReplicationInfoArgs'] table_replication_info: Replication info of a table created
                using "AS REPLICA" DDL like:
                `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`.
@@ -480,9 +478,7 @@ class TableArgs:
     @pulumi.getter(name="tableMetadataView")
     def table_metadata_view(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        View sets the optional parameter "view": Specifies the view that determines which table information is returned. By
-        default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values:
-        TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
+        View sets the optional parameter "view": Specifies the view that determines which table information is returned. By default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values: TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
         """
         return pulumi.get(self, "table_metadata_view")
 
@@ -658,9 +654,7 @@ class _TableState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] table_id: A unique ID for the resource.
                Changing this forces a new resource to be created.
-        :param pulumi.Input[_builtins.str] table_metadata_view: View sets the optional parameter "view": Specifies the view that determines which table information is returned. By
-               default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values:
-               TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
+        :param pulumi.Input[_builtins.str] table_metadata_view: View sets the optional parameter "view": Specifies the view that determines which table information is returned. By default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values: TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
         :param pulumi.Input['TableTableReplicationInfoArgs'] table_replication_info: Replication info of a table created
                using "AS REPLICA" DDL like:
                `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`.
@@ -1208,9 +1202,7 @@ class _TableState:
     @pulumi.getter(name="tableMetadataView")
     def table_metadata_view(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        View sets the optional parameter "view": Specifies the view that determines which table information is returned. By
-        default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values:
-        TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
+        View sets the optional parameter "view": Specifies the view that determines which table information is returned. By default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values: TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
         """
         return pulumi.get(self, "table_metadata_view")
 
@@ -1448,9 +1440,7 @@ class Table(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] table_id: A unique ID for the resource.
                Changing this forces a new resource to be created.
-        :param pulumi.Input[_builtins.str] table_metadata_view: View sets the optional parameter "view": Specifies the view that determines which table information is returned. By
-               default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values:
-               TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
+        :param pulumi.Input[_builtins.str] table_metadata_view: View sets the optional parameter "view": Specifies the view that determines which table information is returned. By default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values: TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
         :param pulumi.Input[Union['TableTableReplicationInfoArgs', 'TableTableReplicationInfoArgsDict']] table_replication_info: Replication info of a table created
                using "AS REPLICA" DDL like:
                `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`.
@@ -1785,9 +1775,7 @@ class Table(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] table_id: A unique ID for the resource.
                Changing this forces a new resource to be created.
-        :param pulumi.Input[_builtins.str] table_metadata_view: View sets the optional parameter "view": Specifies the view that determines which table information is returned. By
-               default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values:
-               TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
+        :param pulumi.Input[_builtins.str] table_metadata_view: View sets the optional parameter "view": Specifies the view that determines which table information is returned. By default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values: TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
         :param pulumi.Input[Union['TableTableReplicationInfoArgs', 'TableTableReplicationInfoArgsDict']] table_replication_info: Replication info of a table created
                using "AS REPLICA" DDL like:
                `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`.
@@ -2165,9 +2153,7 @@ class Table(pulumi.CustomResource):
     @pulumi.getter(name="tableMetadataView")
     def table_metadata_view(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        View sets the optional parameter "view": Specifies the view that determines which table information is returned. By
-        default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values:
-        TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
+        View sets the optional parameter "view": Specifies the view that determines which table information is returned. By default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values: TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
         """
         return pulumi.get(self, "table_metadata_view")
 

@@ -338,106 +338,106 @@ export class Batch extends pulumi.CustomResource {
      * The ID to use for the batch, which will become the final component of the batch's resource name.
      * This value must be 4-63 characters. Valid characters are /[a-z][0-9]-/.
      */
-    public readonly batchId!: pulumi.Output<string | undefined>;
+    declare public readonly batchId: pulumi.Output<string | undefined>;
     /**
      * The time when the batch was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The email address of the user who created the batch.
      */
-    public /*out*/ readonly creator!: pulumi.Output<string>;
+    declare public /*out*/ readonly creator: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Environment configuration for the batch execution.
      * Structure is documented below.
      */
-    public readonly environmentConfig!: pulumi.Output<outputs.dataproc.BatchEnvironmentConfig | undefined>;
+    declare public readonly environmentConfig: pulumi.Output<outputs.dataproc.BatchEnvironmentConfig | undefined>;
     /**
      * The labels to associate with this batch.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location in which the batch will be created in.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * The resource name of the batch.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The resource name of the operation associated with this batch.
      */
-    public /*out*/ readonly operation!: pulumi.Output<string>;
+    declare public /*out*/ readonly operation: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * PySpark batch config.
      * Structure is documented below.
      */
-    public readonly pysparkBatch!: pulumi.Output<outputs.dataproc.BatchPysparkBatch | undefined>;
+    declare public readonly pysparkBatch: pulumi.Output<outputs.dataproc.BatchPysparkBatch | undefined>;
     /**
      * Runtime configuration for the batch execution.
      * Structure is documented below.
      */
-    public readonly runtimeConfig!: pulumi.Output<outputs.dataproc.BatchRuntimeConfig | undefined>;
+    declare public readonly runtimeConfig: pulumi.Output<outputs.dataproc.BatchRuntimeConfig | undefined>;
     /**
      * Runtime information about batch execution.
      * Structure is documented below.
      */
-    public /*out*/ readonly runtimeInfos!: pulumi.Output<outputs.dataproc.BatchRuntimeInfo[]>;
+    declare public /*out*/ readonly runtimeInfos: pulumi.Output<outputs.dataproc.BatchRuntimeInfo[]>;
     /**
      * Spark batch config.
      * Structure is documented below.
      */
-    public readonly sparkBatch!: pulumi.Output<outputs.dataproc.BatchSparkBatch | undefined>;
+    declare public readonly sparkBatch: pulumi.Output<outputs.dataproc.BatchSparkBatch | undefined>;
     /**
      * SparkR batch config.
      * Structure is documented below.
      */
-    public readonly sparkRBatch!: pulumi.Output<outputs.dataproc.BatchSparkRBatch | undefined>;
+    declare public readonly sparkRBatch: pulumi.Output<outputs.dataproc.BatchSparkRBatch | undefined>;
     /**
      * Spark SQL batch config.
      * Structure is documented below.
      */
-    public readonly sparkSqlBatch!: pulumi.Output<outputs.dataproc.BatchSparkSqlBatch | undefined>;
+    declare public readonly sparkSqlBatch: pulumi.Output<outputs.dataproc.BatchSparkSqlBatch | undefined>;
     /**
      * (Output)
      * The state of the batch at this point in history. For possible values, see the [API documentation](https://cloud.google.com/dataproc-serverless/docs/reference/rest/v1/projects.locations.batches#State).
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Historical state information for the batch.
      * Structure is documented below.
      */
-    public /*out*/ readonly stateHistories!: pulumi.Output<outputs.dataproc.BatchStateHistory[]>;
+    declare public /*out*/ readonly stateHistories: pulumi.Output<outputs.dataproc.BatchStateHistory[]>;
     /**
      * (Output)
      * Details about the state at this point in history.
      */
-    public /*out*/ readonly stateMessage!: pulumi.Output<string>;
+    declare public /*out*/ readonly stateMessage: pulumi.Output<string>;
     /**
      * Batch state details, such as a failure description if the state is FAILED.
      */
-    public /*out*/ readonly stateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly stateTime: pulumi.Output<string>;
     /**
      * A batch UUID (Unique Universal Identifier). The service generates this value when it creates the batch.
      */
-    public /*out*/ readonly uuid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uuid: pulumi.Output<string>;
 
     /**
      * Create a Batch resource with the given unique name, arguments, and options.
@@ -452,40 +452,40 @@ export class Batch extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BatchState | undefined;
-            resourceInputs["batchId"] = state ? state.batchId : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["creator"] = state ? state.creator : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["environmentConfig"] = state ? state.environmentConfig : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["operation"] = state ? state.operation : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["pysparkBatch"] = state ? state.pysparkBatch : undefined;
-            resourceInputs["runtimeConfig"] = state ? state.runtimeConfig : undefined;
-            resourceInputs["runtimeInfos"] = state ? state.runtimeInfos : undefined;
-            resourceInputs["sparkBatch"] = state ? state.sparkBatch : undefined;
-            resourceInputs["sparkRBatch"] = state ? state.sparkRBatch : undefined;
-            resourceInputs["sparkSqlBatch"] = state ? state.sparkSqlBatch : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["stateHistories"] = state ? state.stateHistories : undefined;
-            resourceInputs["stateMessage"] = state ? state.stateMessage : undefined;
-            resourceInputs["stateTime"] = state ? state.stateTime : undefined;
-            resourceInputs["uuid"] = state ? state.uuid : undefined;
+            resourceInputs["batchId"] = state?.batchId;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["creator"] = state?.creator;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["environmentConfig"] = state?.environmentConfig;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["operation"] = state?.operation;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["pysparkBatch"] = state?.pysparkBatch;
+            resourceInputs["runtimeConfig"] = state?.runtimeConfig;
+            resourceInputs["runtimeInfos"] = state?.runtimeInfos;
+            resourceInputs["sparkBatch"] = state?.sparkBatch;
+            resourceInputs["sparkRBatch"] = state?.sparkRBatch;
+            resourceInputs["sparkSqlBatch"] = state?.sparkSqlBatch;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["stateHistories"] = state?.stateHistories;
+            resourceInputs["stateMessage"] = state?.stateMessage;
+            resourceInputs["stateTime"] = state?.stateTime;
+            resourceInputs["uuid"] = state?.uuid;
         } else {
             const args = argsOrState as BatchArgs | undefined;
-            resourceInputs["batchId"] = args ? args.batchId : undefined;
-            resourceInputs["environmentConfig"] = args ? args.environmentConfig : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["pysparkBatch"] = args ? args.pysparkBatch : undefined;
-            resourceInputs["runtimeConfig"] = args ? args.runtimeConfig : undefined;
-            resourceInputs["sparkBatch"] = args ? args.sparkBatch : undefined;
-            resourceInputs["sparkRBatch"] = args ? args.sparkRBatch : undefined;
-            resourceInputs["sparkSqlBatch"] = args ? args.sparkSqlBatch : undefined;
+            resourceInputs["batchId"] = args?.batchId;
+            resourceInputs["environmentConfig"] = args?.environmentConfig;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["pysparkBatch"] = args?.pysparkBatch;
+            resourceInputs["runtimeConfig"] = args?.runtimeConfig;
+            resourceInputs["sparkBatch"] = args?.sparkBatch;
+            resourceInputs["sparkRBatch"] = args?.sparkRBatch;
+            resourceInputs["sparkSqlBatch"] = args?.sparkSqlBatch;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["creator"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;

@@ -186,65 +186,65 @@ export class NodeGroup extends pulumi.CustomResource {
      * One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
      * Structure is documented below.
      */
-    public readonly autoscalingPolicy!: pulumi.Output<outputs.compute.NodeGroupAutoscalingPolicy>;
+    declare public readonly autoscalingPolicy: pulumi.Output<outputs.compute.NodeGroupAutoscalingPolicy>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * An optional textual description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The initial number of nodes in the node group. One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
      */
-    public readonly initialSize!: pulumi.Output<number | undefined>;
+    declare public readonly initialSize: pulumi.Output<number | undefined>;
     /**
      * Specifies the frequency of planned maintenance events. Set to one of the following:
      * - AS_NEEDED: Hosts are eligible to receive infrastructure and hypervisor updates as they become available.
      * - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
      * Possible values are: `AS_NEEDED`, `RECURRENT`.
      */
-    public readonly maintenanceInterval!: pulumi.Output<string>;
+    declare public readonly maintenanceInterval: pulumi.Output<string>;
     /**
      * Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
      */
-    public readonly maintenancePolicy!: pulumi.Output<string | undefined>;
+    declare public readonly maintenancePolicy: pulumi.Output<string | undefined>;
     /**
      * contains properties for the timeframe of maintenance
      * Structure is documented below.
      */
-    public readonly maintenanceWindow!: pulumi.Output<outputs.compute.NodeGroupMaintenanceWindow | undefined>;
+    declare public readonly maintenanceWindow: pulumi.Output<outputs.compute.NodeGroupMaintenanceWindow | undefined>;
     /**
      * Name of the resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The URL of the node template to which this node group belongs.
      */
-    public readonly nodeTemplate!: pulumi.Output<string>;
+    declare public readonly nodeTemplate: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * Share settings for the node group.
      * Structure is documented below.
      */
-    public readonly shareSettings!: pulumi.Output<outputs.compute.NodeGroupShareSettings>;
+    declare public readonly shareSettings: pulumi.Output<outputs.compute.NodeGroupShareSettings>;
     /**
      * The total number of nodes in the node group.
      */
-    public /*out*/ readonly size!: pulumi.Output<number>;
+    declare public /*out*/ readonly size: pulumi.Output<number>;
     /**
      * Zone where this node group is located
      */
-    public readonly zone!: pulumi.Output<string>;
+    declare public readonly zone: pulumi.Output<string>;
 
     /**
      * Create a NodeGroup resource with the given unique name, arguments, and options.
@@ -259,36 +259,36 @@ export class NodeGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NodeGroupState | undefined;
-            resourceInputs["autoscalingPolicy"] = state ? state.autoscalingPolicy : undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["initialSize"] = state ? state.initialSize : undefined;
-            resourceInputs["maintenanceInterval"] = state ? state.maintenanceInterval : undefined;
-            resourceInputs["maintenancePolicy"] = state ? state.maintenancePolicy : undefined;
-            resourceInputs["maintenanceWindow"] = state ? state.maintenanceWindow : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nodeTemplate"] = state ? state.nodeTemplate : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["shareSettings"] = state ? state.shareSettings : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["autoscalingPolicy"] = state?.autoscalingPolicy;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["initialSize"] = state?.initialSize;
+            resourceInputs["maintenanceInterval"] = state?.maintenanceInterval;
+            resourceInputs["maintenancePolicy"] = state?.maintenancePolicy;
+            resourceInputs["maintenanceWindow"] = state?.maintenanceWindow;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nodeTemplate"] = state?.nodeTemplate;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["shareSettings"] = state?.shareSettings;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as NodeGroupArgs | undefined;
-            if ((!args || args.nodeTemplate === undefined) && !opts.urn) {
+            if (args?.nodeTemplate === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nodeTemplate'");
             }
-            resourceInputs["autoscalingPolicy"] = args ? args.autoscalingPolicy : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["initialSize"] = args ? args.initialSize : undefined;
-            resourceInputs["maintenanceInterval"] = args ? args.maintenanceInterval : undefined;
-            resourceInputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
-            resourceInputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["nodeTemplate"] = args ? args.nodeTemplate : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["shareSettings"] = args ? args.shareSettings : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["autoscalingPolicy"] = args?.autoscalingPolicy;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["initialSize"] = args?.initialSize;
+            resourceInputs["maintenanceInterval"] = args?.maintenanceInterval;
+            resourceInputs["maintenancePolicy"] = args?.maintenancePolicy;
+            resourceInputs["maintenanceWindow"] = args?.maintenanceWindow;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["nodeTemplate"] = args?.nodeTemplate;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["shareSettings"] = args?.shareSettings;
+            resourceInputs["zone"] = args?.zone;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["size"] = undefined /*out*/;

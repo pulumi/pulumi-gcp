@@ -94,60 +94,60 @@ export class BackupVault extends pulumi.CustomResource {
      * Default value is `WITHIN_ORGANIZATION`.
      * Possible values are: `ACCESS_RESTRICTION_UNSPECIFIED`, `WITHIN_PROJECT`, `WITHIN_ORGANIZATION`, `UNRESTRICTED`, `WITHIN_ORG_BUT_UNRESTRICTED_FOR_BA`.
      */
-    public readonly accessRestriction!: pulumi.Output<string | undefined>;
+    declare public readonly accessRestriction: pulumi.Output<string | undefined>;
     /**
      * Allow idempotent deletion of backup vault. The request will still succeed in case the backup vault does not exist.
      */
-    public readonly allowMissing!: pulumi.Output<boolean | undefined>;
+    declare public readonly allowMissing: pulumi.Output<boolean | undefined>;
     /**
      * Optional. User annotations. See https://google.aip.dev/128#annotations
      * Stores small amounts of arbitrary data.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Output only. The number of backups in this backup vault.
      */
-    public /*out*/ readonly backupCount!: pulumi.Output<string>;
+    declare public /*out*/ readonly backupCount: pulumi.Output<string>;
     /**
      * Required. The default and minimum enforced retention for each backup within the backup vault. The enforced retention for each backup can be extended.
      */
-    public readonly backupMinimumEnforcedRetentionDuration!: pulumi.Output<string>;
+    declare public readonly backupMinimumEnforcedRetentionDuration: pulumi.Output<string>;
     /**
      * How a backup's enforced retention end time is inherited. Default value is `INHERIT_VAULT_RETENTION` if not provided during creation.
      * Possible values are: `BACKUP_RETENTION_INHERITANCE_UNSPECIFIED`, `INHERIT_VAULT_RETENTION`, `MATCH_BACKUP_EXPIRE_TIME`.
      */
-    public readonly backupRetentionInheritance!: pulumi.Output<string | undefined>;
+    declare public readonly backupRetentionInheritance: pulumi.Output<string | undefined>;
     /**
      * Required. ID of the requesting object.
      */
-    public readonly backupVaultId!: pulumi.Output<string>;
+    declare public readonly backupVaultId: pulumi.Output<string>;
     /**
      * Output only. The time when the instance was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Output only. Set to true when there are no backups nested under this resource.
      */
-    public /*out*/ readonly deletable!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly deletable: pulumi.Output<boolean>;
     /**
      * Optional. The description of the BackupVault instance (2048 characters or less).
      */
-    public readonly description!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Optional. Time after which the BackupVault resource is locked.
      */
-    public readonly effectiveTime!: pulumi.Output<string | undefined>;
+    declare public readonly effectiveTime: pulumi.Output<string | undefined>;
     /**
      * Optional. Server specified ETag for the backup vault resource to prevent simultaneous updates from overwiting each other.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * (Optional, Deprecated)
      * If set, the following restrictions against deletion of the backup vault instance can be overridden:
@@ -158,52 +158,52 @@ export class BackupVault extends pulumi.CustomResource {
      *
      * @deprecated `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
      */
-    public readonly forceDelete!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceDelete: pulumi.Output<boolean | undefined>;
     /**
      * If set, allow update to extend the minimum enforced retention for backup vault. This overrides
      * the restriction against conflicting retention periods. This conflict may occur when the
      * expiration schedule defined by the associated backup plan is shorter than the minimum
      * retention set by the backup vault.
      */
-    public readonly forceUpdate!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceUpdate: pulumi.Output<boolean | undefined>;
     /**
      * If set, the following restrictions against deletion of the backup vault instance can be overridden:
      * * deletion of a backup vault instance that is being referenced by an active backup plan.
      */
-    public readonly ignoreBackupPlanReferences!: pulumi.Output<boolean | undefined>;
+    declare public readonly ignoreBackupPlanReferences: pulumi.Output<boolean | undefined>;
     /**
      * If set, the following restrictions against deletion of the backup vault instance can be overridden:
      * * deletion of a backup vault instance containing no backups, but still containing empty datasources.
      */
-    public readonly ignoreInactiveDatasources!: pulumi.Output<boolean | undefined>;
+    declare public readonly ignoreInactiveDatasources: pulumi.Output<boolean | undefined>;
     /**
      * Optional. Resource labels to represent user provided metadata.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The GCP location for the backup vault.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Output only. Identifier. The resource name.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Output only. Service account used by the BackupVault Service for this BackupVault.  The user should grant this account permissions in their workload project to enable the service to run backups and restores there.
      */
-    public /*out*/ readonly serviceAccount!: pulumi.Output<string>;
+    declare public /*out*/ readonly serviceAccount: pulumi.Output<string>;
     /**
      * Output only. The BackupVault resource instance state.
      * Possible values:
@@ -213,19 +213,19 @@ export class BackupVault extends pulumi.CustomResource {
      * DELETING
      * ERROR
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Output only. Total size of the storage used by all backup resources.
      */
-    public /*out*/ readonly totalStoredBytes!: pulumi.Output<string>;
+    declare public /*out*/ readonly totalStoredBytes: pulumi.Output<string>;
     /**
      * Output only. Output only Immutable after resource creation until resource deletion.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * Output only. The time when the instance was updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a BackupVault resource with the given unique name, arguments, and options.
@@ -240,60 +240,60 @@ export class BackupVault extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BackupVaultState | undefined;
-            resourceInputs["accessRestriction"] = state ? state.accessRestriction : undefined;
-            resourceInputs["allowMissing"] = state ? state.allowMissing : undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["backupCount"] = state ? state.backupCount : undefined;
-            resourceInputs["backupMinimumEnforcedRetentionDuration"] = state ? state.backupMinimumEnforcedRetentionDuration : undefined;
-            resourceInputs["backupRetentionInheritance"] = state ? state.backupRetentionInheritance : undefined;
-            resourceInputs["backupVaultId"] = state ? state.backupVaultId : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["deletable"] = state ? state.deletable : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["effectiveTime"] = state ? state.effectiveTime : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
-            resourceInputs["forceUpdate"] = state ? state.forceUpdate : undefined;
-            resourceInputs["ignoreBackupPlanReferences"] = state ? state.ignoreBackupPlanReferences : undefined;
-            resourceInputs["ignoreInactiveDatasources"] = state ? state.ignoreInactiveDatasources : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["totalStoredBytes"] = state ? state.totalStoredBytes : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["accessRestriction"] = state?.accessRestriction;
+            resourceInputs["allowMissing"] = state?.allowMissing;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["backupCount"] = state?.backupCount;
+            resourceInputs["backupMinimumEnforcedRetentionDuration"] = state?.backupMinimumEnforcedRetentionDuration;
+            resourceInputs["backupRetentionInheritance"] = state?.backupRetentionInheritance;
+            resourceInputs["backupVaultId"] = state?.backupVaultId;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletable"] = state?.deletable;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["effectiveTime"] = state?.effectiveTime;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["forceDelete"] = state?.forceDelete;
+            resourceInputs["forceUpdate"] = state?.forceUpdate;
+            resourceInputs["ignoreBackupPlanReferences"] = state?.ignoreBackupPlanReferences;
+            resourceInputs["ignoreInactiveDatasources"] = state?.ignoreInactiveDatasources;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["serviceAccount"] = state?.serviceAccount;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["totalStoredBytes"] = state?.totalStoredBytes;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as BackupVaultArgs | undefined;
-            if ((!args || args.backupMinimumEnforcedRetentionDuration === undefined) && !opts.urn) {
+            if (args?.backupMinimumEnforcedRetentionDuration === undefined && !opts.urn) {
                 throw new Error("Missing required property 'backupMinimumEnforcedRetentionDuration'");
             }
-            if ((!args || args.backupVaultId === undefined) && !opts.urn) {
+            if (args?.backupVaultId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'backupVaultId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["accessRestriction"] = args ? args.accessRestriction : undefined;
-            resourceInputs["allowMissing"] = args ? args.allowMissing : undefined;
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["backupMinimumEnforcedRetentionDuration"] = args ? args.backupMinimumEnforcedRetentionDuration : undefined;
-            resourceInputs["backupRetentionInheritance"] = args ? args.backupRetentionInheritance : undefined;
-            resourceInputs["backupVaultId"] = args ? args.backupVaultId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["effectiveTime"] = args ? args.effectiveTime : undefined;
-            resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
-            resourceInputs["forceUpdate"] = args ? args.forceUpdate : undefined;
-            resourceInputs["ignoreBackupPlanReferences"] = args ? args.ignoreBackupPlanReferences : undefined;
-            resourceInputs["ignoreInactiveDatasources"] = args ? args.ignoreInactiveDatasources : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["accessRestriction"] = args?.accessRestriction;
+            resourceInputs["allowMissing"] = args?.allowMissing;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["backupMinimumEnforcedRetentionDuration"] = args?.backupMinimumEnforcedRetentionDuration;
+            resourceInputs["backupRetentionInheritance"] = args?.backupRetentionInheritance;
+            resourceInputs["backupVaultId"] = args?.backupVaultId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["effectiveTime"] = args?.effectiveTime;
+            resourceInputs["forceDelete"] = args?.forceDelete;
+            resourceInputs["forceUpdate"] = args?.forceUpdate;
+            resourceInputs["ignoreBackupPlanReferences"] = args?.ignoreBackupPlanReferences;
+            resourceInputs["ignoreInactiveDatasources"] = args?.ignoreInactiveDatasources;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
             resourceInputs["backupCount"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deletable"] = undefined /*out*/;

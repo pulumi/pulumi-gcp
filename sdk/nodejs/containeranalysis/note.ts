@@ -126,49 +126,49 @@ export class Note extends pulumi.CustomResource {
      * project.
      * Structure is documented below.
      */
-    public readonly attestationAuthority!: pulumi.Output<outputs.containeranalysis.NoteAttestationAuthority>;
+    declare public readonly attestationAuthority: pulumi.Output<outputs.containeranalysis.NoteAttestationAuthority>;
     /**
      * The time this note was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Time of expiration for this note. Leave empty if note does not expire.
      */
-    public readonly expirationTime!: pulumi.Output<string | undefined>;
+    declare public readonly expirationTime: pulumi.Output<string | undefined>;
     /**
      * The type of analysis this note describes
      */
-    public /*out*/ readonly kind!: pulumi.Output<string>;
+    declare public /*out*/ readonly kind: pulumi.Output<string>;
     /**
      * A detailed description of the note
      */
-    public readonly longDescription!: pulumi.Output<string | undefined>;
+    declare public readonly longDescription: pulumi.Output<string | undefined>;
     /**
      * The name of the note.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Names of other notes related to this note.
      */
-    public readonly relatedNoteNames!: pulumi.Output<string[] | undefined>;
+    declare public readonly relatedNoteNames: pulumi.Output<string[] | undefined>;
     /**
      * URLs associated with this note and related metadata.
      * Structure is documented below.
      */
-    public readonly relatedUrls!: pulumi.Output<outputs.containeranalysis.NoteRelatedUrl[] | undefined>;
+    declare public readonly relatedUrls: pulumi.Output<outputs.containeranalysis.NoteRelatedUrl[] | undefined>;
     /**
      * A one sentence description of the note.
      */
-    public readonly shortDescription!: pulumi.Output<string | undefined>;
+    declare public readonly shortDescription: pulumi.Output<string | undefined>;
     /**
      * The time this note was last updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Note resource with the given unique name, arguments, and options.
@@ -183,30 +183,30 @@ export class Note extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NoteState | undefined;
-            resourceInputs["attestationAuthority"] = state ? state.attestationAuthority : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["expirationTime"] = state ? state.expirationTime : undefined;
-            resourceInputs["kind"] = state ? state.kind : undefined;
-            resourceInputs["longDescription"] = state ? state.longDescription : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["relatedNoteNames"] = state ? state.relatedNoteNames : undefined;
-            resourceInputs["relatedUrls"] = state ? state.relatedUrls : undefined;
-            resourceInputs["shortDescription"] = state ? state.shortDescription : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["attestationAuthority"] = state?.attestationAuthority;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["expirationTime"] = state?.expirationTime;
+            resourceInputs["kind"] = state?.kind;
+            resourceInputs["longDescription"] = state?.longDescription;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["relatedNoteNames"] = state?.relatedNoteNames;
+            resourceInputs["relatedUrls"] = state?.relatedUrls;
+            resourceInputs["shortDescription"] = state?.shortDescription;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as NoteArgs | undefined;
-            if ((!args || args.attestationAuthority === undefined) && !opts.urn) {
+            if (args?.attestationAuthority === undefined && !opts.urn) {
                 throw new Error("Missing required property 'attestationAuthority'");
             }
-            resourceInputs["attestationAuthority"] = args ? args.attestationAuthority : undefined;
-            resourceInputs["expirationTime"] = args ? args.expirationTime : undefined;
-            resourceInputs["longDescription"] = args ? args.longDescription : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["relatedNoteNames"] = args ? args.relatedNoteNames : undefined;
-            resourceInputs["relatedUrls"] = args ? args.relatedUrls : undefined;
-            resourceInputs["shortDescription"] = args ? args.shortDescription : undefined;
+            resourceInputs["attestationAuthority"] = args?.attestationAuthority;
+            resourceInputs["expirationTime"] = args?.expirationTime;
+            resourceInputs["longDescription"] = args?.longDescription;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["relatedNoteNames"] = args?.relatedNoteNames;
+            resourceInputs["relatedUrls"] = args?.relatedUrls;
+            resourceInputs["shortDescription"] = args?.shortDescription;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;

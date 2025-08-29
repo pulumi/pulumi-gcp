@@ -67,39 +67,39 @@ export class EventThreatDetectionCustomModule extends pulumi.CustomResource {
      * Config for the module. For the resident module, its config value is defined at this level.
      * For the inherited module, its config value is inherited from the ancestor module.
      */
-    public readonly config!: pulumi.Output<string>;
+    declare public readonly config: pulumi.Output<string>;
     /**
      * The human readable name to be displayed for the module.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * The state of enablement for the module at the given level of the hierarchy.
      * Possible values are: `ENABLED`, `DISABLED`.
      */
-    public readonly enablementState!: pulumi.Output<string>;
+    declare public readonly enablementState: pulumi.Output<string>;
     /**
      * The editor that last updated the custom module
      */
-    public /*out*/ readonly lastEditor!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastEditor: pulumi.Output<string>;
     /**
      * The resource name of the Event Threat Detection custom module.
      * Its format is "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}".
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Numerical ID of the parent organization.
      */
-    public readonly organization!: pulumi.Output<string>;
+    declare public readonly organization: pulumi.Output<string>;
     /**
      * Immutable. Type for the module. e.g. CONFIGURABLE_BAD_IP.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * The time at which the custom module was last updated.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
      * up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a EventThreatDetectionCustomModule resource with the given unique name, arguments, and options.
@@ -114,33 +114,33 @@ export class EventThreatDetectionCustomModule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EventThreatDetectionCustomModuleState | undefined;
-            resourceInputs["config"] = state ? state.config : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["enablementState"] = state ? state.enablementState : undefined;
-            resourceInputs["lastEditor"] = state ? state.lastEditor : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["organization"] = state ? state.organization : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["config"] = state?.config;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["enablementState"] = state?.enablementState;
+            resourceInputs["lastEditor"] = state?.lastEditor;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["organization"] = state?.organization;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as EventThreatDetectionCustomModuleArgs | undefined;
-            if ((!args || args.config === undefined) && !opts.urn) {
+            if (args?.config === undefined && !opts.urn) {
                 throw new Error("Missing required property 'config'");
             }
-            if ((!args || args.enablementState === undefined) && !opts.urn) {
+            if (args?.enablementState === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enablementState'");
             }
-            if ((!args || args.organization === undefined) && !opts.urn) {
+            if (args?.organization === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organization'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["config"] = args ? args.config : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["enablementState"] = args ? args.enablementState : undefined;
-            resourceInputs["organization"] = args ? args.organization : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["config"] = args?.config;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["enablementState"] = args?.enablementState;
+            resourceInputs["organization"] = args?.organization;
+            resourceInputs["type"] = args?.type;
             resourceInputs["lastEditor"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;

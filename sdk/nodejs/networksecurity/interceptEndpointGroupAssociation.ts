@@ -108,39 +108,39 @@ export class InterceptEndpointGroupAssociation extends pulumi.CustomResource {
      * The timestamp when the resource was created.
      * See https://google.aip.dev/148#timestamps.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The endpoint group that this association is connected to, for example:
      * `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
      * See https://google.aip.dev/124.
      */
-    public readonly interceptEndpointGroup!: pulumi.Output<string>;
+    declare public readonly interceptEndpointGroup: pulumi.Output<string>;
     /**
      * The ID to use for the new association, which will become the final
      * component of the endpoint group's resource name. If not provided, the
      * server will generate a unique ID.
      */
-    public readonly interceptEndpointGroupAssociationId!: pulumi.Output<string | undefined>;
+    declare public readonly interceptEndpointGroupAssociationId: pulumi.Output<string | undefined>;
     /**
      * Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The cloud location of the association, currently restricted to `global`.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The list of locations where the association is configured. This information
      * is retrieved from the linked endpoint group.
      * Structure is documented below.
      */
-    public /*out*/ readonly locations!: pulumi.Output<outputs.networksecurity.InterceptEndpointGroupAssociationLocation[]>;
+    declare public /*out*/ readonly locations: pulumi.Output<outputs.networksecurity.InterceptEndpointGroupAssociationLocation[]>;
     /**
      * (Deprecated)
      * The list of locations where the association is present. This information
@@ -150,36 +150,36 @@ export class InterceptEndpointGroupAssociation extends pulumi.CustomResource {
      *
      * @deprecated `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
      */
-    public /*out*/ readonly locationsDetails!: pulumi.Output<outputs.networksecurity.InterceptEndpointGroupAssociationLocationsDetail[]>;
+    declare public /*out*/ readonly locationsDetails: pulumi.Output<outputs.networksecurity.InterceptEndpointGroupAssociationLocationsDetail[]>;
     /**
      * The resource name of this endpoint group association, for example:
      * `projects/123456789/locations/global/interceptEndpointGroupAssociations/my-eg-association`.
      * See https://google.aip.dev/122 for more details.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The VPC network that is associated. for example:
      * `projects/123456789/global/networks/my-network`.
      * See https://google.aip.dev/124.
      */
-    public readonly network!: pulumi.Output<string>;
+    declare public readonly network: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The current state of the resource does not match the user's intended state,
      * and the system is working to reconcile them. This part of the normal
      * operation (e.g. adding a new location to the target deployment group).
      * See https://google.aip.dev/128.
      */
-    public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly reconciling: pulumi.Output<boolean>;
     /**
      * (Output)
      * The current state of the association in this location.
@@ -188,12 +188,12 @@ export class InterceptEndpointGroupAssociation extends pulumi.CustomResource {
      * ACTIVE
      * OUT_OF_SYNC
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The timestamp when the resource was most recently updated.
      * See https://google.aip.dev/148#timestamps.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a InterceptEndpointGroupAssociation resource with the given unique name, arguments, and options.
@@ -208,38 +208,38 @@ export class InterceptEndpointGroupAssociation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InterceptEndpointGroupAssociationState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["interceptEndpointGroup"] = state ? state.interceptEndpointGroup : undefined;
-            resourceInputs["interceptEndpointGroupAssociationId"] = state ? state.interceptEndpointGroupAssociationId : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["locations"] = state ? state.locations : undefined;
-            resourceInputs["locationsDetails"] = state ? state.locationsDetails : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["reconciling"] = state ? state.reconciling : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["interceptEndpointGroup"] = state?.interceptEndpointGroup;
+            resourceInputs["interceptEndpointGroupAssociationId"] = state?.interceptEndpointGroupAssociationId;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["locations"] = state?.locations;
+            resourceInputs["locationsDetails"] = state?.locationsDetails;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["reconciling"] = state?.reconciling;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as InterceptEndpointGroupAssociationArgs | undefined;
-            if ((!args || args.interceptEndpointGroup === undefined) && !opts.urn) {
+            if (args?.interceptEndpointGroup === undefined && !opts.urn) {
                 throw new Error("Missing required property 'interceptEndpointGroup'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.network === undefined) && !opts.urn) {
+            if (args?.network === undefined && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
-            resourceInputs["interceptEndpointGroup"] = args ? args.interceptEndpointGroup : undefined;
-            resourceInputs["interceptEndpointGroupAssociationId"] = args ? args.interceptEndpointGroupAssociationId : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["interceptEndpointGroup"] = args?.interceptEndpointGroup;
+            resourceInputs["interceptEndpointGroupAssociationId"] = args?.interceptEndpointGroupAssociationId;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["project"] = args?.project;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["locations"] = undefined /*out*/;

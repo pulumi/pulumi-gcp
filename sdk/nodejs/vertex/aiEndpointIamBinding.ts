@@ -34,13 +34,13 @@ export class AiEndpointIamBinding extends pulumi.CustomResource {
         return obj['__pulumiType'] === AiEndpointIamBinding.__pulumiType;
     }
 
-    public readonly condition!: pulumi.Output<outputs.vertex.AiEndpointIamBindingCondition | undefined>;
-    public readonly endpoint!: pulumi.Output<string>;
-    public /*out*/ readonly etag!: pulumi.Output<string>;
-    public readonly location!: pulumi.Output<string>;
-    public readonly members!: pulumi.Output<string[]>;
-    public readonly project!: pulumi.Output<string>;
-    public readonly role!: pulumi.Output<string>;
+    declare public readonly condition: pulumi.Output<outputs.vertex.AiEndpointIamBindingCondition | undefined>;
+    declare public readonly endpoint: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
+    declare public readonly members: pulumi.Output<string[]>;
+    declare public readonly project: pulumi.Output<string>;
+    declare public readonly role: pulumi.Output<string>;
 
     /**
      * Create a AiEndpointIamBinding resource with the given unique name, arguments, and options.
@@ -55,30 +55,30 @@ export class AiEndpointIamBinding extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AiEndpointIamBindingState | undefined;
-            resourceInputs["condition"] = state ? state.condition : undefined;
-            resourceInputs["endpoint"] = state ? state.endpoint : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["members"] = state ? state.members : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["condition"] = state?.condition;
+            resourceInputs["endpoint"] = state?.endpoint;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["members"] = state?.members;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["role"] = state?.role;
         } else {
             const args = argsOrState as AiEndpointIamBindingArgs | undefined;
-            if ((!args || args.endpoint === undefined) && !opts.urn) {
+            if (args?.endpoint === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpoint'");
             }
-            if ((!args || args.members === undefined) && !opts.urn) {
+            if (args?.members === undefined && !opts.urn) {
                 throw new Error("Missing required property 'members'");
             }
-            if ((!args || args.role === undefined) && !opts.urn) {
+            if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            resourceInputs["condition"] = args ? args.condition : undefined;
-            resourceInputs["endpoint"] = args ? args.endpoint : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["members"] = args ? args.members : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["condition"] = args?.condition;
+            resourceInputs["endpoint"] = args?.endpoint;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["members"] = args?.members;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["role"] = args?.role;
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

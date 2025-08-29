@@ -33,9 +33,7 @@ class BillingAccountBucketConfigArgs:
         :param pulumi.Input[_builtins.str] billing_account: The parent resource that contains the logging bucket.
         :param pulumi.Input[_builtins.str] bucket_id: The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
         :param pulumi.Input[_builtins.str] location: The location of the bucket.
-        :param pulumi.Input['BillingAccountBucketConfigCmekSettingsArgs'] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
-               key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
-               updating the log bucket. Changing the KMS key is allowed.
+        :param pulumi.Input['BillingAccountBucketConfigCmekSettingsArgs'] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
         :param pulumi.Input[_builtins.str] description: Describes this bucket.
         :param pulumi.Input[Sequence[pulumi.Input['BillingAccountBucketConfigIndexConfigArgs']]] index_configs: A list of indexed fields and related configuration data. Structure is documented below.
         :param pulumi.Input[_builtins.int] retention_days: Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
@@ -92,9 +90,7 @@ class BillingAccountBucketConfigArgs:
     @pulumi.getter(name="cmekSettings")
     def cmek_settings(self) -> Optional[pulumi.Input['BillingAccountBucketConfigCmekSettingsArgs']]:
         """
-        The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
-        key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
-        updating the log bucket. Changing the KMS key is allowed.
+        The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
         """
         return pulumi.get(self, "cmek_settings")
 
@@ -155,9 +151,7 @@ class _BillingAccountBucketConfigState:
         Input properties used for looking up and filtering BillingAccountBucketConfig resources.
         :param pulumi.Input[_builtins.str] billing_account: The parent resource that contains the logging bucket.
         :param pulumi.Input[_builtins.str] bucket_id: The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
-        :param pulumi.Input['BillingAccountBucketConfigCmekSettingsArgs'] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
-               key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
-               updating the log bucket. Changing the KMS key is allowed.
+        :param pulumi.Input['BillingAccountBucketConfigCmekSettingsArgs'] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
         :param pulumi.Input[_builtins.str] description: Describes this bucket.
         :param pulumi.Input[Sequence[pulumi.Input['BillingAccountBucketConfigIndexConfigArgs']]] index_configs: A list of indexed fields and related configuration data. Structure is documented below.
         :param pulumi.Input[_builtins.str] lifecycle_state: The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
@@ -212,9 +206,7 @@ class _BillingAccountBucketConfigState:
     @pulumi.getter(name="cmekSettings")
     def cmek_settings(self) -> Optional[pulumi.Input['BillingAccountBucketConfigCmekSettingsArgs']]:
         """
-        The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
-        key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
-        updating the log bucket. Changing the KMS key is allowed.
+        The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
         """
         return pulumi.get(self, "cmek_settings")
 
@@ -348,9 +340,7 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] billing_account: The parent resource that contains the logging bucket.
         :param pulumi.Input[_builtins.str] bucket_id: The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
-        :param pulumi.Input[Union['BillingAccountBucketConfigCmekSettingsArgs', 'BillingAccountBucketConfigCmekSettingsArgsDict']] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
-               key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
-               updating the log bucket. Changing the KMS key is allowed.
+        :param pulumi.Input[Union['BillingAccountBucketConfigCmekSettingsArgs', 'BillingAccountBucketConfigCmekSettingsArgsDict']] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
         :param pulumi.Input[_builtins.str] description: Describes this bucket.
         :param pulumi.Input[Sequence[pulumi.Input[Union['BillingAccountBucketConfigIndexConfigArgs', 'BillingAccountBucketConfigIndexConfigArgsDict']]]] index_configs: A list of indexed fields and related configuration data. Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location of the bucket.
@@ -471,9 +461,7 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] billing_account: The parent resource that contains the logging bucket.
         :param pulumi.Input[_builtins.str] bucket_id: The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
-        :param pulumi.Input[Union['BillingAccountBucketConfigCmekSettingsArgs', 'BillingAccountBucketConfigCmekSettingsArgsDict']] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
-               key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
-               updating the log bucket. Changing the KMS key is allowed.
+        :param pulumi.Input[Union['BillingAccountBucketConfigCmekSettingsArgs', 'BillingAccountBucketConfigCmekSettingsArgsDict']] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
         :param pulumi.Input[_builtins.str] description: Describes this bucket.
         :param pulumi.Input[Sequence[pulumi.Input[Union['BillingAccountBucketConfigIndexConfigArgs', 'BillingAccountBucketConfigIndexConfigArgsDict']]]] index_configs: A list of indexed fields and related configuration data. Structure is documented below.
         :param pulumi.Input[_builtins.str] lifecycle_state: The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
@@ -516,9 +504,7 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
     @pulumi.getter(name="cmekSettings")
     def cmek_settings(self) -> pulumi.Output[Optional['outputs.BillingAccountBucketConfigCmekSettings']]:
         """
-        The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
-        key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
-        updating the log bucket. Changing the KMS key is allowed.
+        The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
         """
         return pulumi.get(self, "cmek_settings")
 

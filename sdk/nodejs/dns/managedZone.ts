@@ -311,101 +311,101 @@ export class ManagedZone extends pulumi.CustomResource {
      * Cloud logging configuration
      * Structure is documented below.
      */
-    public readonly cloudLoggingConfig!: pulumi.Output<outputs.dns.ManagedZoneCloudLoggingConfig>;
+    declare public readonly cloudLoggingConfig: pulumi.Output<outputs.dns.ManagedZoneCloudLoggingConfig>;
     /**
      * The time that this resource was created on the server.
      * This is in RFC3339 text format.
      */
-    public /*out*/ readonly creationTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTime: pulumi.Output<string>;
     /**
      * A textual description field. Defaults to 'Managed by Pulumi'.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The DNS name of this managed zone, for instance "example.com.".
      */
-    public readonly dnsName!: pulumi.Output<string>;
+    declare public readonly dnsName: pulumi.Output<string>;
     /**
      * DNSSEC configuration
      * Structure is documented below.
      */
-    public readonly dnssecConfig!: pulumi.Output<outputs.dns.ManagedZoneDnssecConfig>;
+    declare public readonly dnssecConfig: pulumi.Output<outputs.dns.ManagedZoneDnssecConfig>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Set this true to delete all records in the zone.
      */
-    public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceDestroy: pulumi.Output<boolean | undefined>;
     /**
      * The presence for this field indicates that outbound forwarding is enabled
      * for this zone. The value of this field contains the set of destinations
      * to forward to.
      * Structure is documented below.
      */
-    public readonly forwardingConfig!: pulumi.Output<outputs.dns.ManagedZoneForwardingConfig | undefined>;
+    declare public readonly forwardingConfig: pulumi.Output<outputs.dns.ManagedZoneForwardingConfig | undefined>;
     /**
      * A set of key/value label pairs to assign to this ManagedZone.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Unique identifier for the resource; defined by the server.
      */
-    public /*out*/ readonly managedZoneId!: pulumi.Output<string>;
+    declare public /*out*/ readonly managedZoneId: pulumi.Output<string>;
     /**
      * User assigned name for this resource.
      * Must be unique within the project.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Delegate your managedZone to these virtual name servers;
      * defined by the server
      */
-    public /*out*/ readonly nameServers!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly nameServers: pulumi.Output<string[]>;
     /**
      * The presence of this field indicates that DNS Peering is enabled for this
      * zone. The value of this field contains the network to peer with.
      * Structure is documented below.
      */
-    public readonly peeringConfig!: pulumi.Output<outputs.dns.ManagedZonePeeringConfig | undefined>;
+    declare public readonly peeringConfig: pulumi.Output<outputs.dns.ManagedZonePeeringConfig | undefined>;
     /**
      * For privately visible zones, the set of Virtual Private Cloud
      * resources that the zone is visible from. At least one of `gkeClusters` or `networks` must be specified.
      * Structure is documented below.
      */
-    public readonly privateVisibilityConfig!: pulumi.Output<outputs.dns.ManagedZonePrivateVisibilityConfig | undefined>;
+    declare public readonly privateVisibilityConfig: pulumi.Output<outputs.dns.ManagedZonePrivateVisibilityConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
      * lookup queries using automatically configured records for VPC resources. This only applies
      * to networks listed under `privateVisibilityConfig`.
      */
-    public readonly reverseLookup!: pulumi.Output<boolean | undefined>;
+    declare public readonly reverseLookup: pulumi.Output<boolean | undefined>;
     /**
      * The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
      * Structure is documented below.
      */
-    public readonly serviceDirectoryConfig!: pulumi.Output<outputs.dns.ManagedZoneServiceDirectoryConfig | undefined>;
+    declare public readonly serviceDirectoryConfig: pulumi.Output<outputs.dns.ManagedZoneServiceDirectoryConfig | undefined>;
     /**
      * The zone's visibility: public zones are exposed to the Internet,
      * while private zones are visible only to Virtual Private Cloud resources.
      * Default value is `public`.
      * Possible values are: `private`, `public`.
      */
-    public readonly visibility!: pulumi.Output<string | undefined>;
+    declare public readonly visibility: pulumi.Output<string | undefined>;
 
     /**
      * Create a ManagedZone resource with the given unique name, arguments, and options.
@@ -420,44 +420,44 @@ export class ManagedZone extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ManagedZoneState | undefined;
-            resourceInputs["cloudLoggingConfig"] = state ? state.cloudLoggingConfig : undefined;
-            resourceInputs["creationTime"] = state ? state.creationTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["dnsName"] = state ? state.dnsName : undefined;
-            resourceInputs["dnssecConfig"] = state ? state.dnssecConfig : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
-            resourceInputs["forwardingConfig"] = state ? state.forwardingConfig : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["managedZoneId"] = state ? state.managedZoneId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nameServers"] = state ? state.nameServers : undefined;
-            resourceInputs["peeringConfig"] = state ? state.peeringConfig : undefined;
-            resourceInputs["privateVisibilityConfig"] = state ? state.privateVisibilityConfig : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["reverseLookup"] = state ? state.reverseLookup : undefined;
-            resourceInputs["serviceDirectoryConfig"] = state ? state.serviceDirectoryConfig : undefined;
-            resourceInputs["visibility"] = state ? state.visibility : undefined;
+            resourceInputs["cloudLoggingConfig"] = state?.cloudLoggingConfig;
+            resourceInputs["creationTime"] = state?.creationTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["dnsName"] = state?.dnsName;
+            resourceInputs["dnssecConfig"] = state?.dnssecConfig;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["forceDestroy"] = state?.forceDestroy;
+            resourceInputs["forwardingConfig"] = state?.forwardingConfig;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["managedZoneId"] = state?.managedZoneId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nameServers"] = state?.nameServers;
+            resourceInputs["peeringConfig"] = state?.peeringConfig;
+            resourceInputs["privateVisibilityConfig"] = state?.privateVisibilityConfig;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["reverseLookup"] = state?.reverseLookup;
+            resourceInputs["serviceDirectoryConfig"] = state?.serviceDirectoryConfig;
+            resourceInputs["visibility"] = state?.visibility;
         } else {
             const args = argsOrState as ManagedZoneArgs | undefined;
-            if ((!args || args.dnsName === undefined) && !opts.urn) {
+            if (args?.dnsName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dnsName'");
             }
-            resourceInputs["cloudLoggingConfig"] = args ? args.cloudLoggingConfig : undefined;
-            resourceInputs["description"] = (args ? args.description : undefined) ?? "Managed by Pulumi";
-            resourceInputs["dnsName"] = args ? args.dnsName : undefined;
-            resourceInputs["dnssecConfig"] = args ? args.dnssecConfig : undefined;
-            resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
-            resourceInputs["forwardingConfig"] = args ? args.forwardingConfig : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["peeringConfig"] = args ? args.peeringConfig : undefined;
-            resourceInputs["privateVisibilityConfig"] = args ? args.privateVisibilityConfig : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["reverseLookup"] = args ? args.reverseLookup : undefined;
-            resourceInputs["serviceDirectoryConfig"] = args ? args.serviceDirectoryConfig : undefined;
-            resourceInputs["visibility"] = args ? args.visibility : undefined;
+            resourceInputs["cloudLoggingConfig"] = args?.cloudLoggingConfig;
+            resourceInputs["description"] = (args?.description) ?? "Managed by Pulumi";
+            resourceInputs["dnsName"] = args?.dnsName;
+            resourceInputs["dnssecConfig"] = args?.dnssecConfig;
+            resourceInputs["forceDestroy"] = args?.forceDestroy;
+            resourceInputs["forwardingConfig"] = args?.forwardingConfig;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["peeringConfig"] = args?.peeringConfig;
+            resourceInputs["privateVisibilityConfig"] = args?.privateVisibilityConfig;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["reverseLookup"] = args?.reverseLookup;
+            resourceInputs["serviceDirectoryConfig"] = args?.serviceDirectoryConfig;
+            resourceInputs["visibility"] = args?.visibility;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["managedZoneId"] = undefined /*out*/;

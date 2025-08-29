@@ -157,9 +157,10 @@ namespace Pulumi.Gcp.DataPlex
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. User defined labels for the asset. **Note**: This field is non-authoritative, and will only manage the labels
-        /// present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
-        /// resource.
+        /// Optional. User defined labels for the asset.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -309,9 +310,10 @@ namespace Pulumi.Gcp.DataPlex
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Optional. User defined labels for the asset. **Note**: This field is non-authoritative, and will only manage the labels
-        /// present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
-        /// resource.
+        /// Optional. User defined labels for the asset.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -419,9 +421,10 @@ namespace Pulumi.Gcp.DataPlex
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Optional. User defined labels for the asset. **Note**: This field is non-authoritative, and will only manage the labels
-        /// present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
-        /// resource.
+        /// Optional. User defined labels for the asset.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {

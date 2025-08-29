@@ -90,22 +90,22 @@ export class RestoreChannel extends pulumi.CustomResource {
     /**
      * User specified descriptive string for this RestoreChannel.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The project where Backups will be restored.
      * The format is `projects/{project}`.
      * {project} can be project number or project id.
      */
-    public readonly destinationProject!: pulumi.Output<string>;
+    declare public readonly destinationProject: pulumi.Output<string>;
     /**
      * The projectId where Backups will be restored.
      * Example Project ID: "my-project-id".
      */
-    public /*out*/ readonly destinationProjectId!: pulumi.Output<string>;
+    declare public /*out*/ readonly destinationProjectId: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * etag is used for optimistic concurrency control as a way to help prevent simultaneous
      * updates of a restore channel from overwriting each other. It is strongly suggested that
@@ -114,7 +114,7 @@ export class RestoreChannel extends pulumi.CustomResource {
      * and systems are expected to put that etag in the request to restoreChannels.patch or
      * restoreChannels.delete to ensure that their change will be applied to the same version of the resource.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Description: A set of custom labels supplied by the user.
      * A list of key->value pairs.
@@ -123,29 +123,29 @@ export class RestoreChannel extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The region of the Restore Channel.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The full name of the RestoreChannel Resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Server generated, unique identifier of UUID format.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
 
     /**
      * Create a RestoreChannel resource with the given unique name, arguments, and options.
@@ -160,31 +160,31 @@ export class RestoreChannel extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RestoreChannelState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["destinationProject"] = state ? state.destinationProject : undefined;
-            resourceInputs["destinationProjectId"] = state ? state.destinationProjectId : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["destinationProject"] = state?.destinationProject;
+            resourceInputs["destinationProjectId"] = state?.destinationProjectId;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["uid"] = state?.uid;
         } else {
             const args = argsOrState as RestoreChannelArgs | undefined;
-            if ((!args || args.destinationProject === undefined) && !opts.urn) {
+            if (args?.destinationProject === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destinationProject'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["destinationProject"] = args ? args.destinationProject : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["destinationProject"] = args?.destinationProject;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
             resourceInputs["destinationProjectId"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;

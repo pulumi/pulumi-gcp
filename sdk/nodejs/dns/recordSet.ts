@@ -316,33 +316,33 @@ export class RecordSet extends pulumi.CustomResource {
      * The name of the zone in which this record set will
      * reside.
      */
-    public readonly managedZone!: pulumi.Output<string>;
+    declare public readonly managedZone: pulumi.Output<string>;
     /**
      * The DNS name this record set will apply to.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The configuration for steering traffic based on query.
      * Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
      * Structure is documented below.
      */
-    public readonly routingPolicy!: pulumi.Output<outputs.dns.RecordSetRoutingPolicy | undefined>;
-    public readonly rrdatas!: pulumi.Output<string[] | undefined>;
+    declare public readonly routingPolicy: pulumi.Output<outputs.dns.RecordSetRoutingPolicy | undefined>;
+    declare public readonly rrdatas: pulumi.Output<string[] | undefined>;
     /**
      * The time-to-live of this record set (seconds).
      */
-    public readonly ttl!: pulumi.Output<number | undefined>;
+    declare public readonly ttl: pulumi.Output<number | undefined>;
     /**
      * The DNS record set type.
      *
      * - - -
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a RecordSet resource with the given unique name, arguments, and options.
@@ -357,31 +357,31 @@ export class RecordSet extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RecordSetState | undefined;
-            resourceInputs["managedZone"] = state ? state.managedZone : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["routingPolicy"] = state ? state.routingPolicy : undefined;
-            resourceInputs["rrdatas"] = state ? state.rrdatas : undefined;
-            resourceInputs["ttl"] = state ? state.ttl : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["managedZone"] = state?.managedZone;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["routingPolicy"] = state?.routingPolicy;
+            resourceInputs["rrdatas"] = state?.rrdatas;
+            resourceInputs["ttl"] = state?.ttl;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as RecordSetArgs | undefined;
-            if ((!args || args.managedZone === undefined) && !opts.urn) {
+            if (args?.managedZone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'managedZone'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["managedZone"] = args ? args.managedZone : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["routingPolicy"] = args ? args.routingPolicy : undefined;
-            resourceInputs["rrdatas"] = args ? args.rrdatas : undefined;
-            resourceInputs["ttl"] = args ? args.ttl : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["managedZone"] = args?.managedZone;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["routingPolicy"] = args?.routingPolicy;
+            resourceInputs["rrdatas"] = args?.rrdatas;
+            resourceInputs["ttl"] = args?.ttl;
+            resourceInputs["type"] = args?.type;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RecordSet.__pulumiType, name, resourceInputs, opts);

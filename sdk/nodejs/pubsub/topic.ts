@@ -317,12 +317,12 @@ export class Topic extends pulumi.CustomResource {
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Settings for ingestion from a data source into this topic.
      * Structure is documented below.
      */
-    public readonly ingestionDataSourceSettings!: pulumi.Output<outputs.pubsub.TopicIngestionDataSourceSettings | undefined>;
+    declare public readonly ingestionDataSourceSettings: pulumi.Output<outputs.pubsub.TopicIngestionDataSourceSettings | undefined>;
     /**
      * The resource name of the Cloud KMS CryptoKey to be used to protect access
      * to messages published on this topic. Your project's PubSub service account
@@ -330,14 +330,14 @@ export class Topic extends pulumi.CustomResource {
      * `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
      * The expected format is `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`
      */
-    public readonly kmsKeyName!: pulumi.Output<string | undefined>;
+    declare public readonly kmsKeyName: pulumi.Output<string | undefined>;
     /**
      * A set of key/value label pairs to assign to this Topic.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Indicates the minimum duration to retain a message after it is published
      * to the topic. If this field is set, messages published to the topic in
@@ -348,39 +348,39 @@ export class Topic extends pulumi.CustomResource {
      * The rotation period has the format of a decimal number, followed by the
      * letter `s` (seconds). Cannot be more than 31 days or less than 10 minutes.
      */
-    public readonly messageRetentionDuration!: pulumi.Output<string | undefined>;
+    declare public readonly messageRetentionDuration: pulumi.Output<string | undefined>;
     /**
      * Policy constraining the set of Google Cloud Platform regions where
      * messages published to the topic may be stored. If not present, then no
      * constraints are in effect.
      * Structure is documented below.
      */
-    public readonly messageStoragePolicy!: pulumi.Output<outputs.pubsub.TopicMessageStoragePolicy>;
+    declare public readonly messageStoragePolicy: pulumi.Output<outputs.pubsub.TopicMessageStoragePolicy>;
     /**
      * Transforms to be applied to messages published to the topic. Transforms are applied in the
      * order specified.
      * Structure is documented below.
      */
-    public readonly messageTransforms!: pulumi.Output<outputs.pubsub.TopicMessageTransform[] | undefined>;
+    declare public readonly messageTransforms: pulumi.Output<outputs.pubsub.TopicMessageTransform[] | undefined>;
     /**
      * Name of the topic.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Settings for validating messages published against a schema.
      * Structure is documented below.
      */
-    public readonly schemaSettings!: pulumi.Output<outputs.pubsub.TopicSchemaSettings | undefined>;
+    declare public readonly schemaSettings: pulumi.Output<outputs.pubsub.TopicSchemaSettings | undefined>;
 
     /**
      * Create a Topic resource with the given unique name, arguments, and options.
@@ -395,28 +395,28 @@ export class Topic extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TopicState | undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["ingestionDataSourceSettings"] = state ? state.ingestionDataSourceSettings : undefined;
-            resourceInputs["kmsKeyName"] = state ? state.kmsKeyName : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["messageRetentionDuration"] = state ? state.messageRetentionDuration : undefined;
-            resourceInputs["messageStoragePolicy"] = state ? state.messageStoragePolicy : undefined;
-            resourceInputs["messageTransforms"] = state ? state.messageTransforms : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["schemaSettings"] = state ? state.schemaSettings : undefined;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["ingestionDataSourceSettings"] = state?.ingestionDataSourceSettings;
+            resourceInputs["kmsKeyName"] = state?.kmsKeyName;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["messageRetentionDuration"] = state?.messageRetentionDuration;
+            resourceInputs["messageStoragePolicy"] = state?.messageStoragePolicy;
+            resourceInputs["messageTransforms"] = state?.messageTransforms;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["schemaSettings"] = state?.schemaSettings;
         } else {
             const args = argsOrState as TopicArgs | undefined;
-            resourceInputs["ingestionDataSourceSettings"] = args ? args.ingestionDataSourceSettings : undefined;
-            resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["messageRetentionDuration"] = args ? args.messageRetentionDuration : undefined;
-            resourceInputs["messageStoragePolicy"] = args ? args.messageStoragePolicy : undefined;
-            resourceInputs["messageTransforms"] = args ? args.messageTransforms : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["schemaSettings"] = args ? args.schemaSettings : undefined;
+            resourceInputs["ingestionDataSourceSettings"] = args?.ingestionDataSourceSettings;
+            resourceInputs["kmsKeyName"] = args?.kmsKeyName;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["messageRetentionDuration"] = args?.messageRetentionDuration;
+            resourceInputs["messageStoragePolicy"] = args?.messageStoragePolicy;
+            resourceInputs["messageTransforms"] = args?.messageTransforms;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["schemaSettings"] = args?.schemaSettings;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
         }

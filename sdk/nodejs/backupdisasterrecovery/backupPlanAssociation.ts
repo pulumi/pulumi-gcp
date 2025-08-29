@@ -143,54 +143,54 @@ export class BackupPlanAssociation extends pulumi.CustomResource {
      * - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
      * - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
      */
-    public readonly backupPlan!: pulumi.Output<string>;
+    declare public readonly backupPlan: pulumi.Output<string>;
     /**
      * The id of backupplan association
      */
-    public readonly backupPlanAssociationId!: pulumi.Output<string>;
+    declare public readonly backupPlanAssociationId: pulumi.Output<string>;
     /**
      * The time when the instance was created
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Resource name of data source which will be used as storage location for backups taken
      */
-    public /*out*/ readonly dataSource!: pulumi.Output<string>;
+    declare public /*out*/ readonly dataSource: pulumi.Output<string>;
     /**
      * The point in time when the last successful backup was captured from the source
      */
-    public /*out*/ readonly lastSuccessfulBackupConsistencyTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastSuccessfulBackupConsistencyTime: pulumi.Output<string>;
     /**
      * The location for the backupplan association
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The name of backup plan association resource created
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The resource for which BPA needs to be created
      */
-    public readonly resource!: pulumi.Output<string>;
+    declare public readonly resource: pulumi.Output<string>;
     /**
      * The resource type of workload on which backupplan is applied.
      * Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", and "compute.googleapis.com/RegionDisk"
      */
-    public readonly resourceType!: pulumi.Output<string>;
+    declare public readonly resourceType: pulumi.Output<string>;
     /**
      * Message for rules config info
      * Structure is documented below.
      */
-    public /*out*/ readonly rulesConfigInfos!: pulumi.Output<outputs.backupdisasterrecovery.BackupPlanAssociationRulesConfigInfo[]>;
+    declare public /*out*/ readonly rulesConfigInfos: pulumi.Output<outputs.backupdisasterrecovery.BackupPlanAssociationRulesConfigInfo[]>;
     /**
      * The time when the instance was updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a BackupPlanAssociation resource with the given unique name, arguments, and options.
@@ -205,41 +205,41 @@ export class BackupPlanAssociation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BackupPlanAssociationState | undefined;
-            resourceInputs["backupPlan"] = state ? state.backupPlan : undefined;
-            resourceInputs["backupPlanAssociationId"] = state ? state.backupPlanAssociationId : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dataSource"] = state ? state.dataSource : undefined;
-            resourceInputs["lastSuccessfulBackupConsistencyTime"] = state ? state.lastSuccessfulBackupConsistencyTime : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["resource"] = state ? state.resource : undefined;
-            resourceInputs["resourceType"] = state ? state.resourceType : undefined;
-            resourceInputs["rulesConfigInfos"] = state ? state.rulesConfigInfos : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["backupPlan"] = state?.backupPlan;
+            resourceInputs["backupPlanAssociationId"] = state?.backupPlanAssociationId;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dataSource"] = state?.dataSource;
+            resourceInputs["lastSuccessfulBackupConsistencyTime"] = state?.lastSuccessfulBackupConsistencyTime;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["resource"] = state?.resource;
+            resourceInputs["resourceType"] = state?.resourceType;
+            resourceInputs["rulesConfigInfos"] = state?.rulesConfigInfos;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as BackupPlanAssociationArgs | undefined;
-            if ((!args || args.backupPlan === undefined) && !opts.urn) {
+            if (args?.backupPlan === undefined && !opts.urn) {
                 throw new Error("Missing required property 'backupPlan'");
             }
-            if ((!args || args.backupPlanAssociationId === undefined) && !opts.urn) {
+            if (args?.backupPlanAssociationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'backupPlanAssociationId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.resource === undefined) && !opts.urn) {
+            if (args?.resource === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resource'");
             }
-            if ((!args || args.resourceType === undefined) && !opts.urn) {
+            if (args?.resourceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceType'");
             }
-            resourceInputs["backupPlan"] = args ? args.backupPlan : undefined;
-            resourceInputs["backupPlanAssociationId"] = args ? args.backupPlanAssociationId : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["resource"] = args ? args.resource : undefined;
-            resourceInputs["resourceType"] = args ? args.resourceType : undefined;
+            resourceInputs["backupPlan"] = args?.backupPlan;
+            resourceInputs["backupPlanAssociationId"] = args?.backupPlanAssociationId;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["resource"] = args?.resource;
+            resourceInputs["resourceType"] = args?.resourceType;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["dataSource"] = undefined /*out*/;
             resourceInputs["lastSuccessfulBackupConsistencyTime"] = undefined /*out*/;

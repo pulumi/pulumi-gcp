@@ -62,30 +62,30 @@ export class SQuotaAdjusterSettings extends pulumi.CustomResource {
     /**
      * The resource container that determines if the quota adjuster is set for this project.
      */
-    public /*out*/ readonly effectiveContainer!: pulumi.Output<string>;
+    declare public /*out*/ readonly effectiveContainer: pulumi.Output<string>;
     /**
      * Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
      */
-    public /*out*/ readonly effectiveEnablement!: pulumi.Output<string>;
+    declare public /*out*/ readonly effectiveEnablement: pulumi.Output<string>;
     /**
      * Required. The configured value of the enablement at the given resource.
      * Possible values are: `ENABLED`, `DISABLED`.
      */
-    public readonly enablement!: pulumi.Output<string>;
+    declare public readonly enablement: pulumi.Output<string>;
     /**
      * Indicates whether the setting is inherited or explicitly specified.
      */
-    public /*out*/ readonly inherited!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly inherited: pulumi.Output<boolean>;
     /**
      * The resource container from which the setting is inherited. This refers to the  nearest ancestor with enablement set (either ENABLED or DISABLED).
      * The value can be `organizations/{organization_id}`, `folders/{folder_id}`, or can be `default` if no ancestor exists with enablement set.
      * The value will be empty when `enablement` is specified on this resource container.
      */
-    public /*out*/ readonly inheritedFrom!: pulumi.Output<string>;
+    declare public /*out*/ readonly inheritedFrom: pulumi.Output<string>;
     /**
      * The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
      */
-    public readonly parent!: pulumi.Output<string>;
+    declare public readonly parent: pulumi.Output<string>;
 
     /**
      * Create a SQuotaAdjusterSettings resource with the given unique name, arguments, and options.
@@ -100,19 +100,19 @@ export class SQuotaAdjusterSettings extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SQuotaAdjusterSettingsState | undefined;
-            resourceInputs["effectiveContainer"] = state ? state.effectiveContainer : undefined;
-            resourceInputs["effectiveEnablement"] = state ? state.effectiveEnablement : undefined;
-            resourceInputs["enablement"] = state ? state.enablement : undefined;
-            resourceInputs["inherited"] = state ? state.inherited : undefined;
-            resourceInputs["inheritedFrom"] = state ? state.inheritedFrom : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
+            resourceInputs["effectiveContainer"] = state?.effectiveContainer;
+            resourceInputs["effectiveEnablement"] = state?.effectiveEnablement;
+            resourceInputs["enablement"] = state?.enablement;
+            resourceInputs["inherited"] = state?.inherited;
+            resourceInputs["inheritedFrom"] = state?.inheritedFrom;
+            resourceInputs["parent"] = state?.parent;
         } else {
             const args = argsOrState as SQuotaAdjusterSettingsArgs | undefined;
-            if ((!args || args.enablement === undefined) && !opts.urn) {
+            if (args?.enablement === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enablement'");
             }
-            resourceInputs["enablement"] = args ? args.enablement : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["enablement"] = args?.enablement;
+            resourceInputs["parent"] = args?.parent;
             resourceInputs["effectiveContainer"] = undefined /*out*/;
             resourceInputs["effectiveEnablement"] = undefined /*out*/;
             resourceInputs["inherited"] = undefined /*out*/;

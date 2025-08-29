@@ -304,54 +304,54 @@ export class NotebookExecution extends pulumi.CustomResource {
      * The Dataform Repository containing the input notebook.
      * Structure is documented below.
      */
-    public readonly dataformRepositorySource!: pulumi.Output<outputs.colab.NotebookExecutionDataformRepositorySource | undefined>;
+    declare public readonly dataformRepositorySource: pulumi.Output<outputs.colab.NotebookExecutionDataformRepositorySource | undefined>;
     /**
      * The content of the input notebook in ipynb format.
      * Structure is documented below.
      */
-    public readonly directNotebookSource!: pulumi.Output<outputs.colab.NotebookExecutionDirectNotebookSource | undefined>;
+    declare public readonly directNotebookSource: pulumi.Output<outputs.colab.NotebookExecutionDirectNotebookSource | undefined>;
     /**
      * Required. The display name of the Notebook Execution.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Max running time of the execution job in seconds (default 86400s / 24 hrs).
      */
-    public readonly executionTimeout!: pulumi.Output<string | undefined>;
+    declare public readonly executionTimeout: pulumi.Output<string | undefined>;
     /**
      * The user email to run the execution as.
      */
-    public readonly executionUser!: pulumi.Output<string | undefined>;
+    declare public readonly executionUser: pulumi.Output<string | undefined>;
     /**
      * The Cloud Storage uri for the input notebook.
      * Structure is documented below.
      */
-    public readonly gcsNotebookSource!: pulumi.Output<outputs.colab.NotebookExecutionGcsNotebookSource | undefined>;
+    declare public readonly gcsNotebookSource: pulumi.Output<outputs.colab.NotebookExecutionGcsNotebookSource | undefined>;
     /**
      * The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
      */
-    public readonly gcsOutputUri!: pulumi.Output<string>;
+    declare public readonly gcsOutputUri: pulumi.Output<string>;
     /**
      * The location for the resource: https://cloud.google.com/colab/docs/locations
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * User specified ID for the Notebook Execution Job
      */
-    public readonly notebookExecutionJobId!: pulumi.Output<string>;
+    declare public readonly notebookExecutionJobId: pulumi.Output<string>;
     /**
      * The NotebookRuntimeTemplate to source compute configuration from.
      */
-    public readonly notebookRuntimeTemplateResourceName!: pulumi.Output<string | undefined>;
+    declare public readonly notebookRuntimeTemplateResourceName: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The service account to run the execution as.
      */
-    public readonly serviceAccount!: pulumi.Output<string | undefined>;
+    declare public readonly serviceAccount: pulumi.Output<string | undefined>;
 
     /**
      * Create a NotebookExecution resource with the given unique name, arguments, and options.
@@ -366,41 +366,41 @@ export class NotebookExecution extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NotebookExecutionState | undefined;
-            resourceInputs["dataformRepositorySource"] = state ? state.dataformRepositorySource : undefined;
-            resourceInputs["directNotebookSource"] = state ? state.directNotebookSource : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["executionTimeout"] = state ? state.executionTimeout : undefined;
-            resourceInputs["executionUser"] = state ? state.executionUser : undefined;
-            resourceInputs["gcsNotebookSource"] = state ? state.gcsNotebookSource : undefined;
-            resourceInputs["gcsOutputUri"] = state ? state.gcsOutputUri : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["notebookExecutionJobId"] = state ? state.notebookExecutionJobId : undefined;
-            resourceInputs["notebookRuntimeTemplateResourceName"] = state ? state.notebookRuntimeTemplateResourceName : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
+            resourceInputs["dataformRepositorySource"] = state?.dataformRepositorySource;
+            resourceInputs["directNotebookSource"] = state?.directNotebookSource;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["executionTimeout"] = state?.executionTimeout;
+            resourceInputs["executionUser"] = state?.executionUser;
+            resourceInputs["gcsNotebookSource"] = state?.gcsNotebookSource;
+            resourceInputs["gcsOutputUri"] = state?.gcsOutputUri;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["notebookExecutionJobId"] = state?.notebookExecutionJobId;
+            resourceInputs["notebookRuntimeTemplateResourceName"] = state?.notebookRuntimeTemplateResourceName;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["serviceAccount"] = state?.serviceAccount;
         } else {
             const args = argsOrState as NotebookExecutionArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.gcsOutputUri === undefined) && !opts.urn) {
+            if (args?.gcsOutputUri === undefined && !opts.urn) {
                 throw new Error("Missing required property 'gcsOutputUri'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["dataformRepositorySource"] = args ? args.dataformRepositorySource : undefined;
-            resourceInputs["directNotebookSource"] = args ? args.directNotebookSource : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["executionTimeout"] = args ? args.executionTimeout : undefined;
-            resourceInputs["executionUser"] = args ? args.executionUser : undefined;
-            resourceInputs["gcsNotebookSource"] = args ? args.gcsNotebookSource : undefined;
-            resourceInputs["gcsOutputUri"] = args ? args.gcsOutputUri : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["notebookExecutionJobId"] = args ? args.notebookExecutionJobId : undefined;
-            resourceInputs["notebookRuntimeTemplateResourceName"] = args ? args.notebookRuntimeTemplateResourceName : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
+            resourceInputs["dataformRepositorySource"] = args?.dataformRepositorySource;
+            resourceInputs["directNotebookSource"] = args?.directNotebookSource;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["executionTimeout"] = args?.executionTimeout;
+            resourceInputs["executionUser"] = args?.executionUser;
+            resourceInputs["gcsNotebookSource"] = args?.gcsNotebookSource;
+            resourceInputs["gcsOutputUri"] = args?.gcsOutputUri;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["notebookExecutionJobId"] = args?.notebookExecutionJobId;
+            resourceInputs["notebookRuntimeTemplateResourceName"] = args?.notebookRuntimeTemplateResourceName;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["serviceAccount"] = args?.serviceAccount;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(NotebookExecution.__pulumiType, name, resourceInputs, opts);

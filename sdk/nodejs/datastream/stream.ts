@@ -1019,77 +1019,77 @@ export class Stream extends pulumi.CustomResource {
      * Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
      * Structure is documented below.
      */
-    public readonly backfillAll!: pulumi.Output<outputs.datastream.StreamBackfillAll | undefined>;
+    declare public readonly backfillAll: pulumi.Output<outputs.datastream.StreamBackfillAll | undefined>;
     /**
      * Backfill strategy to disable automatic backfill for the Stream's objects.
      */
-    public readonly backfillNone!: pulumi.Output<outputs.datastream.StreamBackfillNone | undefined>;
+    declare public readonly backfillNone: pulumi.Output<outputs.datastream.StreamBackfillNone | undefined>;
     /**
      * Create the stream without validating it.
      */
-    public readonly createWithoutValidation!: pulumi.Output<boolean | undefined>;
+    declare public readonly createWithoutValidation: pulumi.Output<boolean | undefined>;
     /**
      * A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
      * will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
      */
-    public readonly customerManagedEncryptionKey!: pulumi.Output<string | undefined>;
+    declare public readonly customerManagedEncryptionKey: pulumi.Output<string | undefined>;
     /**
      * Desired state of the Stream. Set this field to `RUNNING` to start the stream,
      * `NOT_STARTED` to create the stream without starting and `PAUSED` to pause
      * the stream from a `RUNNING` state.
      * Possible values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
      */
-    public readonly desiredState!: pulumi.Output<string | undefined>;
+    declare public readonly desiredState: pulumi.Output<string | undefined>;
     /**
      * Destination connection profile configuration.
      * Structure is documented below.
      */
-    public readonly destinationConfig!: pulumi.Output<outputs.datastream.StreamDestinationConfig>;
+    declare public readonly destinationConfig: pulumi.Output<outputs.datastream.StreamDestinationConfig>;
     /**
      * Display name.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Labels.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the location this stream is located in.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The stream's name.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Source connection profile configuration.
      * Structure is documented below.
      */
-    public readonly sourceConfig!: pulumi.Output<outputs.datastream.StreamSourceConfig>;
+    declare public readonly sourceConfig: pulumi.Output<outputs.datastream.StreamSourceConfig>;
     /**
      * The state of the stream.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The stream identifier.
      */
-    public readonly streamId!: pulumi.Output<string>;
+    declare public readonly streamId: pulumi.Output<string>;
 
     /**
      * Create a Stream resource with the given unique name, arguments, and options.
@@ -1104,51 +1104,51 @@ export class Stream extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StreamState | undefined;
-            resourceInputs["backfillAll"] = state ? state.backfillAll : undefined;
-            resourceInputs["backfillNone"] = state ? state.backfillNone : undefined;
-            resourceInputs["createWithoutValidation"] = state ? state.createWithoutValidation : undefined;
-            resourceInputs["customerManagedEncryptionKey"] = state ? state.customerManagedEncryptionKey : undefined;
-            resourceInputs["desiredState"] = state ? state.desiredState : undefined;
-            resourceInputs["destinationConfig"] = state ? state.destinationConfig : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["sourceConfig"] = state ? state.sourceConfig : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["streamId"] = state ? state.streamId : undefined;
+            resourceInputs["backfillAll"] = state?.backfillAll;
+            resourceInputs["backfillNone"] = state?.backfillNone;
+            resourceInputs["createWithoutValidation"] = state?.createWithoutValidation;
+            resourceInputs["customerManagedEncryptionKey"] = state?.customerManagedEncryptionKey;
+            resourceInputs["desiredState"] = state?.desiredState;
+            resourceInputs["destinationConfig"] = state?.destinationConfig;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["sourceConfig"] = state?.sourceConfig;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["streamId"] = state?.streamId;
         } else {
             const args = argsOrState as StreamArgs | undefined;
-            if ((!args || args.destinationConfig === undefined) && !opts.urn) {
+            if (args?.destinationConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destinationConfig'");
             }
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.sourceConfig === undefined) && !opts.urn) {
+            if (args?.sourceConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceConfig'");
             }
-            if ((!args || args.streamId === undefined) && !opts.urn) {
+            if (args?.streamId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'streamId'");
             }
-            resourceInputs["backfillAll"] = args ? args.backfillAll : undefined;
-            resourceInputs["backfillNone"] = args ? args.backfillNone : undefined;
-            resourceInputs["createWithoutValidation"] = args ? args.createWithoutValidation : undefined;
-            resourceInputs["customerManagedEncryptionKey"] = args ? args.customerManagedEncryptionKey : undefined;
-            resourceInputs["desiredState"] = args ? args.desiredState : undefined;
-            resourceInputs["destinationConfig"] = args ? args.destinationConfig : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["sourceConfig"] = args ? args.sourceConfig : undefined;
-            resourceInputs["streamId"] = args ? args.streamId : undefined;
+            resourceInputs["backfillAll"] = args?.backfillAll;
+            resourceInputs["backfillNone"] = args?.backfillNone;
+            resourceInputs["createWithoutValidation"] = args?.createWithoutValidation;
+            resourceInputs["customerManagedEncryptionKey"] = args?.customerManagedEncryptionKey;
+            resourceInputs["desiredState"] = args?.desiredState;
+            resourceInputs["destinationConfig"] = args?.destinationConfig;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["sourceConfig"] = args?.sourceConfig;
+            resourceInputs["streamId"] = args?.streamId;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;

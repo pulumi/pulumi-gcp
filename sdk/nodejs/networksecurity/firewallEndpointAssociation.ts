@@ -68,70 +68,70 @@ export class FirewallEndpointAssociation extends pulumi.CustomResource {
     /**
      * Time the firewall endpoint was created in UTC.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Whether the association is disabled. True indicates that traffic will not be intercepted.
      * > **Note:** The API will reject the request if this value is set to true when creating the resource,
      * otherwise on an update the association can be disabled.
      */
-    public readonly disabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly disabled: pulumi.Output<boolean | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The URL of the firewall endpoint that is being associated.
      */
-    public readonly firewallEndpoint!: pulumi.Output<string>;
+    declare public readonly firewallEndpoint: pulumi.Output<string>;
     /**
      * A map of key/value label pairs to assign to the resource.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location (zone) of the firewall endpoint association.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The name of the firewall endpoint association resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The URL of the network that is being associated.
      */
-    public readonly network!: pulumi.Output<string>;
+    declare public readonly network: pulumi.Output<string>;
     /**
      * The name of the parent this firewall endpoint association belongs to.
      * Format: projects/{project_id}.
      */
-    public readonly parent!: pulumi.Output<string | undefined>;
+    declare public readonly parent: pulumi.Output<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Whether reconciling is in progress, recommended per https://google.aip.dev/128.
      */
-    public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly reconciling: pulumi.Output<boolean>;
     /**
      * Server-defined URL of this resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * The current state of the endpoint.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The URL of the TlsInspectionPolicy that is being associated.
      */
-    public readonly tlsInspectionPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly tlsInspectionPolicy: pulumi.Output<string | undefined>;
     /**
      * Time the firewall endpoint was updated in UTC.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a FirewallEndpointAssociation resource with the given unique name, arguments, and options.
@@ -146,40 +146,40 @@ export class FirewallEndpointAssociation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FirewallEndpointAssociationState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["disabled"] = state ? state.disabled : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["firewallEndpoint"] = state ? state.firewallEndpoint : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["reconciling"] = state ? state.reconciling : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["tlsInspectionPolicy"] = state ? state.tlsInspectionPolicy : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["disabled"] = state?.disabled;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["firewallEndpoint"] = state?.firewallEndpoint;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["reconciling"] = state?.reconciling;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["tlsInspectionPolicy"] = state?.tlsInspectionPolicy;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as FirewallEndpointAssociationArgs | undefined;
-            if ((!args || args.firewallEndpoint === undefined) && !opts.urn) {
+            if (args?.firewallEndpoint === undefined && !opts.urn) {
                 throw new Error("Missing required property 'firewallEndpoint'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.network === undefined) && !opts.urn) {
+            if (args?.network === undefined && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
-            resourceInputs["disabled"] = args ? args.disabled : undefined;
-            resourceInputs["firewallEndpoint"] = args ? args.firewallEndpoint : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
-            resourceInputs["tlsInspectionPolicy"] = args ? args.tlsInspectionPolicy : undefined;
+            resourceInputs["disabled"] = args?.disabled;
+            resourceInputs["firewallEndpoint"] = args?.firewallEndpoint;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["parent"] = args?.parent;
+            resourceInputs["tlsInspectionPolicy"] = args?.tlsInspectionPolicy;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;

@@ -92,40 +92,40 @@ export class InterconnectAttachmentGroup extends pulumi.CustomResource {
      * The size of this map is limited by an "Attachments per group" quota.
      * Structure is documented below.
      */
-    public readonly attachments!: pulumi.Output<outputs.compute.InterconnectAttachmentGroupAttachment[] | undefined>;
+    declare public readonly attachments: pulumi.Output<outputs.compute.InterconnectAttachmentGroupAttachment[] | undefined>;
     /**
      * The redundancy this group is configured to support. The way a
      * user queries what SLA their Attachment gets is by looking at this field of
      * the Attachment's AttachmentGroup.
      * Structure is documented below.
      */
-    public /*out*/ readonly configureds!: pulumi.Output<outputs.compute.InterconnectAttachmentGroupConfigured[]>;
+    declare public /*out*/ readonly configureds: pulumi.Output<outputs.compute.InterconnectAttachmentGroupConfigured[]>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The user's intent for this group. This is the only required field besides
      * the name that must be specified on group creation.
      * Structure is documented below.
      */
-    public readonly intent!: pulumi.Output<outputs.compute.InterconnectAttachmentGroupIntent>;
+    declare public readonly intent: pulumi.Output<outputs.compute.InterconnectAttachmentGroupIntent>;
     /**
      * The URL of an InterconnectGroup that groups these Attachments'
      * Interconnects. Customers do not need to set this unless directed by
      * Google Support.
      */
-    public readonly interconnectGroup!: pulumi.Output<string | undefined>;
+    declare public readonly interconnectGroup: pulumi.Output<string | undefined>;
     /**
      * An analysis of the logical layout of Attachments in this
      * group. Every Attachment in the group is shown once in this structure.
      * Structure is documented below.
      */
-    public /*out*/ readonly logicalStructures!: pulumi.Output<outputs.compute.InterconnectAttachmentGroupLogicalStructure[]>;
+    declare public /*out*/ readonly logicalStructures: pulumi.Output<outputs.compute.InterconnectAttachmentGroupLogicalStructure[]>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be
      * 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -133,12 +133,12 @@ export class InterconnectAttachmentGroup extends pulumi.CustomResource {
      * character must be a lowercase letter, and all following characters must be a dash,
      * lowercase letter, or digit, except the last character, which cannot be a dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
 
     /**
      * Create a InterconnectAttachmentGroup resource with the given unique name, arguments, and options.
@@ -153,26 +153,26 @@ export class InterconnectAttachmentGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InterconnectAttachmentGroupState | undefined;
-            resourceInputs["attachments"] = state ? state.attachments : undefined;
-            resourceInputs["configureds"] = state ? state.configureds : undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["intent"] = state ? state.intent : undefined;
-            resourceInputs["interconnectGroup"] = state ? state.interconnectGroup : undefined;
-            resourceInputs["logicalStructures"] = state ? state.logicalStructures : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["attachments"] = state?.attachments;
+            resourceInputs["configureds"] = state?.configureds;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["intent"] = state?.intent;
+            resourceInputs["interconnectGroup"] = state?.interconnectGroup;
+            resourceInputs["logicalStructures"] = state?.logicalStructures;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as InterconnectAttachmentGroupArgs | undefined;
-            if ((!args || args.intent === undefined) && !opts.urn) {
+            if (args?.intent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'intent'");
             }
-            resourceInputs["attachments"] = args ? args.attachments : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["intent"] = args ? args.intent : undefined;
-            resourceInputs["interconnectGroup"] = args ? args.interconnectGroup : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["attachments"] = args?.attachments;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["intent"] = args?.intent;
+            resourceInputs["interconnectGroup"] = args?.interconnectGroup;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
             resourceInputs["configureds"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["logicalStructures"] = undefined /*out*/;

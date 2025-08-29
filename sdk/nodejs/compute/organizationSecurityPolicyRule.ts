@@ -97,53 +97,53 @@ export class OrganizationSecurityPolicyRule extends pulumi.CustomResource {
      * The Action to perform when the client connection triggers the rule. Can currently be either
      * "allow", "deny" or "gotoNext".
      */
-    public readonly action!: pulumi.Output<string>;
+    declare public readonly action: pulumi.Output<string>;
     /**
      * A description of the rule.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The direction in which this rule applies. If unspecified an INGRESS rule is created.
      * Possible values are: `INGRESS`, `EGRESS`.
      */
-    public readonly direction!: pulumi.Output<string | undefined>;
+    declare public readonly direction: pulumi.Output<string | undefined>;
     /**
      * Denotes whether to enable logging for a particular rule.
      * If logging is enabled, logs will be exported to the
      * configured export destination in Stackdriver.
      */
-    public readonly enableLogging!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableLogging: pulumi.Output<boolean | undefined>;
     /**
      * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
      * Structure is documented below.
      */
-    public readonly match!: pulumi.Output<outputs.compute.OrganizationSecurityPolicyRuleMatch>;
+    declare public readonly match: pulumi.Output<outputs.compute.OrganizationSecurityPolicyRuleMatch>;
     /**
      * The ID of the OrganizationSecurityPolicy this rule applies to.
      */
-    public readonly policyId!: pulumi.Output<string>;
+    declare public readonly policyId: pulumi.Output<string>;
     /**
      * If set to true, the specified action is not enforced.
      */
-    public readonly preview!: pulumi.Output<boolean | undefined>;
+    declare public readonly preview: pulumi.Output<boolean | undefined>;
     /**
      * An integer indicating the priority of a rule in the list. The priority must be a value
      * between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
      * highest priority and 2147483647 is the lowest prority.
      */
-    public readonly priority!: pulumi.Output<number>;
+    declare public readonly priority: pulumi.Output<number>;
     /**
      * A list of network resource URLs to which this rule applies.
      * This field allows you to control which network's VMs get
      * this rule. If this field is left blank, all VMs
      * within the organization will receive the rule.
      */
-    public readonly targetResources!: pulumi.Output<string[] | undefined>;
+    declare public readonly targetResources: pulumi.Output<string[] | undefined>;
     /**
      * A list of service accounts indicating the sets of
      * instances that are applied with this rule.
      */
-    public readonly targetServiceAccounts!: pulumi.Output<string[] | undefined>;
+    declare public readonly targetServiceAccounts: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a OrganizationSecurityPolicyRule resource with the given unique name, arguments, and options.
@@ -158,40 +158,40 @@ export class OrganizationSecurityPolicyRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrganizationSecurityPolicyRuleState | undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["direction"] = state ? state.direction : undefined;
-            resourceInputs["enableLogging"] = state ? state.enableLogging : undefined;
-            resourceInputs["match"] = state ? state.match : undefined;
-            resourceInputs["policyId"] = state ? state.policyId : undefined;
-            resourceInputs["preview"] = state ? state.preview : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["targetResources"] = state ? state.targetResources : undefined;
-            resourceInputs["targetServiceAccounts"] = state ? state.targetServiceAccounts : undefined;
+            resourceInputs["action"] = state?.action;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["direction"] = state?.direction;
+            resourceInputs["enableLogging"] = state?.enableLogging;
+            resourceInputs["match"] = state?.match;
+            resourceInputs["policyId"] = state?.policyId;
+            resourceInputs["preview"] = state?.preview;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["targetResources"] = state?.targetResources;
+            resourceInputs["targetServiceAccounts"] = state?.targetServiceAccounts;
         } else {
             const args = argsOrState as OrganizationSecurityPolicyRuleArgs | undefined;
-            if ((!args || args.action === undefined) && !opts.urn) {
+            if (args?.action === undefined && !opts.urn) {
                 throw new Error("Missing required property 'action'");
             }
-            if ((!args || args.match === undefined) && !opts.urn) {
+            if (args?.match === undefined && !opts.urn) {
                 throw new Error("Missing required property 'match'");
             }
-            if ((!args || args.policyId === undefined) && !opts.urn) {
+            if (args?.policyId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyId'");
             }
-            if ((!args || args.priority === undefined) && !opts.urn) {
+            if (args?.priority === undefined && !opts.urn) {
                 throw new Error("Missing required property 'priority'");
             }
-            resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["direction"] = args ? args.direction : undefined;
-            resourceInputs["enableLogging"] = args ? args.enableLogging : undefined;
-            resourceInputs["match"] = args ? args.match : undefined;
-            resourceInputs["policyId"] = args ? args.policyId : undefined;
-            resourceInputs["preview"] = args ? args.preview : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["targetResources"] = args ? args.targetResources : undefined;
-            resourceInputs["targetServiceAccounts"] = args ? args.targetServiceAccounts : undefined;
+            resourceInputs["action"] = args?.action;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["direction"] = args?.direction;
+            resourceInputs["enableLogging"] = args?.enableLogging;
+            resourceInputs["match"] = args?.match;
+            resourceInputs["policyId"] = args?.policyId;
+            resourceInputs["preview"] = args?.preview;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["targetResources"] = args?.targetResources;
+            resourceInputs["targetServiceAccounts"] = args?.targetServiceAccounts;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(OrganizationSecurityPolicyRule.__pulumiType, name, resourceInputs, opts);

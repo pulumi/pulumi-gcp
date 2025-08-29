@@ -190,57 +190,57 @@ export class Runtime extends pulumi.CustomResource {
     /**
      * Triggers an upgrade anytime the runtime is started if it is upgradable.
      */
-    public readonly autoUpgrade!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoUpgrade: pulumi.Output<boolean | undefined>;
     /**
      * The description of the Runtime.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
      */
-    public readonly desiredState!: pulumi.Output<string | undefined>;
+    declare public readonly desiredState: pulumi.Output<string | undefined>;
     /**
      * Required. The display name of the Runtime.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Output only. Timestamp when this NotebookRuntime will be expired.
      */
-    public /*out*/ readonly expirationTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly expirationTime: pulumi.Output<string>;
     /**
      * Output only. Checks if the NotebookRuntime is upgradable.
      */
-    public /*out*/ readonly isUpgradable!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly isUpgradable: pulumi.Output<boolean>;
     /**
      * The location for the resource: https://cloud.google.com/colab/docs/locations
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The resource name of the Runtime
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * 'Runtime specific information used for NotebookRuntime creation.'
      * Structure is documented below.
      */
-    public readonly notebookRuntimeTemplateRef!: pulumi.Output<outputs.colab.RuntimeNotebookRuntimeTemplateRef | undefined>;
+    declare public readonly notebookRuntimeTemplateRef: pulumi.Output<outputs.colab.RuntimeNotebookRuntimeTemplateRef | undefined>;
     /**
      * Output only. The type of the notebook runtime.
      */
-    public /*out*/ readonly notebookRuntimeType!: pulumi.Output<string>;
+    declare public /*out*/ readonly notebookRuntimeType: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The user email of the NotebookRuntime.
      */
-    public readonly runtimeUser!: pulumi.Output<string>;
+    declare public readonly runtimeUser: pulumi.Output<string>;
     /**
      * Output only. The state of the runtime.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
 
     /**
      * Create a Runtime resource with the given unique name, arguments, and options.
@@ -255,39 +255,39 @@ export class Runtime extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RuntimeState | undefined;
-            resourceInputs["autoUpgrade"] = state ? state.autoUpgrade : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["desiredState"] = state ? state.desiredState : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["expirationTime"] = state ? state.expirationTime : undefined;
-            resourceInputs["isUpgradable"] = state ? state.isUpgradable : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["notebookRuntimeTemplateRef"] = state ? state.notebookRuntimeTemplateRef : undefined;
-            resourceInputs["notebookRuntimeType"] = state ? state.notebookRuntimeType : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["runtimeUser"] = state ? state.runtimeUser : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["autoUpgrade"] = state?.autoUpgrade;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["desiredState"] = state?.desiredState;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["expirationTime"] = state?.expirationTime;
+            resourceInputs["isUpgradable"] = state?.isUpgradable;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["notebookRuntimeTemplateRef"] = state?.notebookRuntimeTemplateRef;
+            resourceInputs["notebookRuntimeType"] = state?.notebookRuntimeType;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["runtimeUser"] = state?.runtimeUser;
+            resourceInputs["state"] = state?.state;
         } else {
             const args = argsOrState as RuntimeArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.runtimeUser === undefined) && !opts.urn) {
+            if (args?.runtimeUser === undefined && !opts.urn) {
                 throw new Error("Missing required property 'runtimeUser'");
             }
-            resourceInputs["autoUpgrade"] = args ? args.autoUpgrade : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["desiredState"] = args ? args.desiredState : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["notebookRuntimeTemplateRef"] = args ? args.notebookRuntimeTemplateRef : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["runtimeUser"] = args ? args.runtimeUser : undefined;
+            resourceInputs["autoUpgrade"] = args?.autoUpgrade;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["desiredState"] = args?.desiredState;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["notebookRuntimeTemplateRef"] = args?.notebookRuntimeTemplateRef;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["runtimeUser"] = args?.runtimeUser;
             resourceInputs["expirationTime"] = undefined /*out*/;
             resourceInputs["isUpgradable"] = undefined /*out*/;
             resourceInputs["notebookRuntimeType"] = undefined /*out*/;

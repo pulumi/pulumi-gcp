@@ -106,51 +106,51 @@ export class PrincipalAccessBoundaryPolicy extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Output only. The time when the principal access boundary policy was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Principal access boundary policy details
      * Structure is documented below.
      */
-    public readonly details!: pulumi.Output<outputs.iam.PrincipalAccessBoundaryPolicyDetails>;
+    declare public readonly details: pulumi.Output<outputs.iam.PrincipalAccessBoundaryPolicyDetails>;
     /**
      * The description of the principal access boundary policy. Must be less than or equal to 63 characters.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * The etag for the principal access boundary. If this is provided on update, it must match the server's etag.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The location the principal access boundary policy is in.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Identifier. The resource name of the principal access boundary policy.  The following format is supported:
      * `organizations/{organization_id}/locations/{location}/principalAccessBoundaryPolicies/{policy_id}`
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The parent organization of the principal access boundary policy.
      */
-    public readonly organization!: pulumi.Output<string>;
+    declare public readonly organization: pulumi.Output<string>;
     /**
      * The ID to use to create the principal access boundary policy.
      * This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, hyphens, or dots. Pattern, /a-z{2,62}/.
      */
-    public readonly principalAccessBoundaryPolicyId!: pulumi.Output<string>;
+    declare public readonly principalAccessBoundaryPolicyId: pulumi.Output<string>;
     /**
      * Output only. The globally unique ID of the principal access boundary policy.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * Output only. The time when the principal access boundary policy was most recently updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a PrincipalAccessBoundaryPolicy resource with the given unique name, arguments, and options.
@@ -165,35 +165,35 @@ export class PrincipalAccessBoundaryPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PrincipalAccessBoundaryPolicyState | undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["details"] = state ? state.details : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["organization"] = state ? state.organization : undefined;
-            resourceInputs["principalAccessBoundaryPolicyId"] = state ? state.principalAccessBoundaryPolicyId : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["details"] = state?.details;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["organization"] = state?.organization;
+            resourceInputs["principalAccessBoundaryPolicyId"] = state?.principalAccessBoundaryPolicyId;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as PrincipalAccessBoundaryPolicyArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.organization === undefined) && !opts.urn) {
+            if (args?.organization === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organization'");
             }
-            if ((!args || args.principalAccessBoundaryPolicyId === undefined) && !opts.urn) {
+            if (args?.principalAccessBoundaryPolicyId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'principalAccessBoundaryPolicyId'");
             }
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["details"] = args ? args.details : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["organization"] = args ? args.organization : undefined;
-            resourceInputs["principalAccessBoundaryPolicyId"] = args ? args.principalAccessBoundaryPolicyId : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["details"] = args?.details;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["organization"] = args?.organization;
+            resourceInputs["principalAccessBoundaryPolicyId"] = args?.principalAccessBoundaryPolicyId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;

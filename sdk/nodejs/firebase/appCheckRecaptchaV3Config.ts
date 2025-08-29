@@ -97,32 +97,32 @@ export class AppCheckRecaptchaV3Config extends pulumi.CustomResource {
      * The ID of an
      * [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
      */
-    public readonly appId!: pulumi.Output<string>;
+    declare public readonly appId: pulumi.Output<string>;
     /**
      * The relative resource name of the reCAPTCHA V3 configuration object
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The site secret used to identify your service for reCAPTCHA v3 verification.
      * For security reasons, this field will never be populated in any response.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    public readonly siteSecret!: pulumi.Output<string>;
+    declare public readonly siteSecret: pulumi.Output<string>;
     /**
      * Whether the siteSecret was previously set. Since we will never return the siteSecret field, this field is the only way to find out whether it was previously set.
      */
-    public /*out*/ readonly siteSecretSet!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly siteSecretSet: pulumi.Output<boolean>;
     /**
      * Specifies the duration for which App Check tokens exchanged from reCAPTCHA V3 artifacts will be valid.
      * If unset, a default value of 1 hour is assumed. Must be between 30 minutes and 7 days, inclusive.
      * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
      */
-    public readonly tokenTtl!: pulumi.Output<string>;
+    declare public readonly tokenTtl: pulumi.Output<string>;
 
     /**
      * Create a AppCheckRecaptchaV3Config resource with the given unique name, arguments, and options.
@@ -137,24 +137,24 @@ export class AppCheckRecaptchaV3Config extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AppCheckRecaptchaV3ConfigState | undefined;
-            resourceInputs["appId"] = state ? state.appId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["siteSecret"] = state ? state.siteSecret : undefined;
-            resourceInputs["siteSecretSet"] = state ? state.siteSecretSet : undefined;
-            resourceInputs["tokenTtl"] = state ? state.tokenTtl : undefined;
+            resourceInputs["appId"] = state?.appId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["siteSecret"] = state?.siteSecret;
+            resourceInputs["siteSecretSet"] = state?.siteSecretSet;
+            resourceInputs["tokenTtl"] = state?.tokenTtl;
         } else {
             const args = argsOrState as AppCheckRecaptchaV3ConfigArgs | undefined;
-            if ((!args || args.appId === undefined) && !opts.urn) {
+            if (args?.appId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'appId'");
             }
-            if ((!args || args.siteSecret === undefined) && !opts.urn) {
+            if (args?.siteSecret === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteSecret'");
             }
-            resourceInputs["appId"] = args ? args.appId : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["appId"] = args?.appId;
+            resourceInputs["project"] = args?.project;
             resourceInputs["siteSecret"] = args?.siteSecret ? pulumi.secret(args.siteSecret) : undefined;
-            resourceInputs["tokenTtl"] = args ? args.tokenTtl : undefined;
+            resourceInputs["tokenTtl"] = args?.tokenTtl;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["siteSecretSet"] = undefined /*out*/;
         }

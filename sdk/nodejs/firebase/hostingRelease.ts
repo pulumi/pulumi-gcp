@@ -143,25 +143,25 @@ export class HostingRelease extends pulumi.CustomResource {
      * The ID of the channel to which the release belongs. If not provided, the release will
      * belong to the default "live" channel
      */
-    public readonly channelId!: pulumi.Output<string | undefined>;
+    declare public readonly channelId: pulumi.Output<string | undefined>;
     /**
      * The deploy description when the release was created. The value can be up to 512 characters.
      */
-    public readonly message!: pulumi.Output<string | undefined>;
+    declare public readonly message: pulumi.Output<string | undefined>;
     /**
      * The unique identifier for the release, in either of the following formats:
      * sites/SITE_ID/releases/RELEASE_ID
      * sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The unique identifier for the Release.
      */
-    public /*out*/ readonly releaseId!: pulumi.Output<string>;
+    declare public /*out*/ readonly releaseId: pulumi.Output<string>;
     /**
      * Required. The ID of the site to which the release belongs.
      */
-    public readonly siteId!: pulumi.Output<string>;
+    declare public readonly siteId: pulumi.Output<string>;
     /**
      * The type of the release; indicates what happened to the content of the site. There is no need to specify
      * `DEPLOY` or `ROLLBACK` type if a `versionName` is provided.
@@ -170,14 +170,14 @@ export class HostingRelease extends pulumi.CustomResource {
      * SITE_DISABLE: The release prevents the site from serving content. Firebase Hosting acts as if the site never existed
      * Possible values are: `DEPLOY`, `ROLLBACK`, `SITE_DISABLE`.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * The unique identifier for a version, in the format: sites/SITE_ID/versions/VERSION_ID.
      * The content of the version specified will be actively displayed on the appropriate URL.
      * The Version must belong to the same site as in the `siteId`.
      * This parameter must be empty if the `type` of the release is `SITE_DISABLE`.
      */
-    public readonly versionName!: pulumi.Output<string | undefined>;
+    declare public readonly versionName: pulumi.Output<string | undefined>;
 
     /**
      * Create a HostingRelease resource with the given unique name, arguments, and options.
@@ -192,23 +192,23 @@ export class HostingRelease extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HostingReleaseState | undefined;
-            resourceInputs["channelId"] = state ? state.channelId : undefined;
-            resourceInputs["message"] = state ? state.message : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["releaseId"] = state ? state.releaseId : undefined;
-            resourceInputs["siteId"] = state ? state.siteId : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["versionName"] = state ? state.versionName : undefined;
+            resourceInputs["channelId"] = state?.channelId;
+            resourceInputs["message"] = state?.message;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["releaseId"] = state?.releaseId;
+            resourceInputs["siteId"] = state?.siteId;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["versionName"] = state?.versionName;
         } else {
             const args = argsOrState as HostingReleaseArgs | undefined;
-            if ((!args || args.siteId === undefined) && !opts.urn) {
+            if (args?.siteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
-            resourceInputs["channelId"] = args ? args.channelId : undefined;
-            resourceInputs["message"] = args ? args.message : undefined;
-            resourceInputs["siteId"] = args ? args.siteId : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["versionName"] = args ? args.versionName : undefined;
+            resourceInputs["channelId"] = args?.channelId;
+            resourceInputs["message"] = args?.message;
+            resourceInputs["siteId"] = args?.siteId;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["versionName"] = args?.versionName;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["releaseId"] = undefined /*out*/;
         }

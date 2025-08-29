@@ -108,34 +108,34 @@ export class ServiceProjectAttachment extends pulumi.CustomResource {
     /**
      * Output only. Create time.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * "Identifier. The resource name of a ServiceProjectAttachment. Format:\"projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\""
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * "Immutable. Service project name in the format: \"projects/abc\"
      * or \"projects/123\". As input, project name with either project id or number
      * are accepted. As output, this field will contain project number."
      */
-    public readonly serviceProject!: pulumi.Output<string | undefined>;
+    declare public readonly serviceProject: pulumi.Output<string | undefined>;
     /**
      * Required. The service project attachment identifier must contain the projectId of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
      */
-    public readonly serviceProjectAttachmentId!: pulumi.Output<string>;
+    declare public readonly serviceProjectAttachmentId: pulumi.Output<string>;
     /**
      * ServiceProjectAttachment state.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Output only. A globally unique identifier (in UUID4 format) for the `ServiceProjectAttachment`.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
 
     /**
      * Create a ServiceProjectAttachment resource with the given unique name, arguments, and options.
@@ -150,21 +150,21 @@ export class ServiceProjectAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceProjectAttachmentState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["serviceProject"] = state ? state.serviceProject : undefined;
-            resourceInputs["serviceProjectAttachmentId"] = state ? state.serviceProjectAttachmentId : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["serviceProject"] = state?.serviceProject;
+            resourceInputs["serviceProjectAttachmentId"] = state?.serviceProjectAttachmentId;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["uid"] = state?.uid;
         } else {
             const args = argsOrState as ServiceProjectAttachmentArgs | undefined;
-            if ((!args || args.serviceProjectAttachmentId === undefined) && !opts.urn) {
+            if (args?.serviceProjectAttachmentId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceProjectAttachmentId'");
             }
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["serviceProject"] = args ? args.serviceProject : undefined;
-            resourceInputs["serviceProjectAttachmentId"] = args ? args.serviceProjectAttachmentId : undefined;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["serviceProject"] = args?.serviceProject;
+            resourceInputs["serviceProjectAttachmentId"] = args?.serviceProjectAttachmentId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;

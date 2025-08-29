@@ -71,39 +71,39 @@ export class DomainTrust extends pulumi.CustomResource {
      * The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
      * of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
      */
-    public readonly domain!: pulumi.Output<string>;
+    declare public readonly domain: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Whether the trusted side has forest/domain wide access or selective access to an approved set of resources.
      */
-    public readonly selectiveAuthentication!: pulumi.Output<boolean | undefined>;
+    declare public readonly selectiveAuthentication: pulumi.Output<boolean | undefined>;
     /**
      * The target DNS server IP addresses which can resolve the remote domain involved in the trust.
      */
-    public readonly targetDnsIpAddresses!: pulumi.Output<string[]>;
+    declare public readonly targetDnsIpAddresses: pulumi.Output<string[]>;
     /**
      * The fully qualified target domain name which will be in trust with the current domain.
      */
-    public readonly targetDomainName!: pulumi.Output<string>;
+    declare public readonly targetDomainName: pulumi.Output<string>;
     /**
      * The trust direction, which decides if the current domain is trusted, trusting, or both.
      * Possible values are: `INBOUND`, `OUTBOUND`, `BIDIRECTIONAL`.
      */
-    public readonly trustDirection!: pulumi.Output<string>;
+    declare public readonly trustDirection: pulumi.Output<string>;
     /**
      * The trust secret used for the handshake with the target domain. This will not be stored.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    public readonly trustHandshakeSecret!: pulumi.Output<string>;
+    declare public readonly trustHandshakeSecret: pulumi.Output<string>;
     /**
      * The type of trust represented by the trust resource.
      * Possible values are: `FOREST`, `EXTERNAL`.
      */
-    public readonly trustType!: pulumi.Output<string>;
+    declare public readonly trustType: pulumi.Output<string>;
 
     /**
      * Create a DomainTrust resource with the given unique name, arguments, and options.
@@ -118,42 +118,42 @@ export class DomainTrust extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainTrustState | undefined;
-            resourceInputs["domain"] = state ? state.domain : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["selectiveAuthentication"] = state ? state.selectiveAuthentication : undefined;
-            resourceInputs["targetDnsIpAddresses"] = state ? state.targetDnsIpAddresses : undefined;
-            resourceInputs["targetDomainName"] = state ? state.targetDomainName : undefined;
-            resourceInputs["trustDirection"] = state ? state.trustDirection : undefined;
-            resourceInputs["trustHandshakeSecret"] = state ? state.trustHandshakeSecret : undefined;
-            resourceInputs["trustType"] = state ? state.trustType : undefined;
+            resourceInputs["domain"] = state?.domain;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["selectiveAuthentication"] = state?.selectiveAuthentication;
+            resourceInputs["targetDnsIpAddresses"] = state?.targetDnsIpAddresses;
+            resourceInputs["targetDomainName"] = state?.targetDomainName;
+            resourceInputs["trustDirection"] = state?.trustDirection;
+            resourceInputs["trustHandshakeSecret"] = state?.trustHandshakeSecret;
+            resourceInputs["trustType"] = state?.trustType;
         } else {
             const args = argsOrState as DomainTrustArgs | undefined;
-            if ((!args || args.domain === undefined) && !opts.urn) {
+            if (args?.domain === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domain'");
             }
-            if ((!args || args.targetDnsIpAddresses === undefined) && !opts.urn) {
+            if (args?.targetDnsIpAddresses === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetDnsIpAddresses'");
             }
-            if ((!args || args.targetDomainName === undefined) && !opts.urn) {
+            if (args?.targetDomainName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetDomainName'");
             }
-            if ((!args || args.trustDirection === undefined) && !opts.urn) {
+            if (args?.trustDirection === undefined && !opts.urn) {
                 throw new Error("Missing required property 'trustDirection'");
             }
-            if ((!args || args.trustHandshakeSecret === undefined) && !opts.urn) {
+            if (args?.trustHandshakeSecret === undefined && !opts.urn) {
                 throw new Error("Missing required property 'trustHandshakeSecret'");
             }
-            if ((!args || args.trustType === undefined) && !opts.urn) {
+            if (args?.trustType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'trustType'");
             }
-            resourceInputs["domain"] = args ? args.domain : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["selectiveAuthentication"] = args ? args.selectiveAuthentication : undefined;
-            resourceInputs["targetDnsIpAddresses"] = args ? args.targetDnsIpAddresses : undefined;
-            resourceInputs["targetDomainName"] = args ? args.targetDomainName : undefined;
-            resourceInputs["trustDirection"] = args ? args.trustDirection : undefined;
+            resourceInputs["domain"] = args?.domain;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["selectiveAuthentication"] = args?.selectiveAuthentication;
+            resourceInputs["targetDnsIpAddresses"] = args?.targetDnsIpAddresses;
+            resourceInputs["targetDomainName"] = args?.targetDomainName;
+            resourceInputs["trustDirection"] = args?.trustDirection;
             resourceInputs["trustHandshakeSecret"] = args?.trustHandshakeSecret ? pulumi.secret(args.trustHandshakeSecret) : undefined;
-            resourceInputs["trustType"] = args ? args.trustType : undefined;
+            resourceInputs["trustType"] = args?.trustType;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["trustHandshakeSecret"] };

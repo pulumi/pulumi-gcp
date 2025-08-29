@@ -206,63 +206,63 @@ export class Instance extends pulumi.CustomResource {
      * machineType you have selected.
      * Structure is documented below.
      */
-    public readonly acceleratorConfig!: pulumi.Output<outputs.notebooks.InstanceAcceleratorConfig | undefined>;
+    declare public readonly acceleratorConfig: pulumi.Output<outputs.notebooks.InstanceAcceleratorConfig | undefined>;
     /**
      * The size of the boot disk in GB attached to this instance,
      * up to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB.
      * If not specified, this defaults to 100.
      */
-    public readonly bootDiskSizeGb!: pulumi.Output<number | undefined>;
+    declare public readonly bootDiskSizeGb: pulumi.Output<number | undefined>;
     /**
      * Possible disk types for notebook instances.
      * Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
      */
-    public readonly bootDiskType!: pulumi.Output<string | undefined>;
+    declare public readonly bootDiskType: pulumi.Output<string | undefined>;
     /**
      * Use a container image to start the notebook instance.
      * Structure is documented below.
      */
-    public readonly containerImage!: pulumi.Output<outputs.notebooks.InstanceContainerImage | undefined>;
+    declare public readonly containerImage: pulumi.Output<outputs.notebooks.InstanceContainerImage | undefined>;
     /**
      * Instance creation time
      */
-    public readonly createTime!: pulumi.Output<string>;
+    declare public readonly createTime: pulumi.Output<string>;
     /**
      * Specify a custom Cloud Storage path where the GPU driver is stored.
      * If not specified, we'll automatically choose from official GPU drivers.
      */
-    public readonly customGpuDriverPath!: pulumi.Output<string | undefined>;
+    declare public readonly customGpuDriverPath: pulumi.Output<string | undefined>;
     /**
      * The size of the data disk in GB attached to this instance,
      * up to a maximum of 64000 GB (64 TB).
      * You can choose the size of the data disk based on how big your notebooks and data are.
      * If not specified, this defaults to 100.
      */
-    public readonly dataDiskSizeGb!: pulumi.Output<number | undefined>;
+    declare public readonly dataDiskSizeGb: pulumi.Output<number | undefined>;
     /**
      * Possible disk types for notebook instances.
      * Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
      */
-    public readonly dataDiskType!: pulumi.Output<string | undefined>;
+    declare public readonly dataDiskType: pulumi.Output<string | undefined>;
     /**
      * Desired state of the Notebook Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
      */
-    public readonly desiredState!: pulumi.Output<string | undefined>;
+    declare public readonly desiredState: pulumi.Output<string | undefined>;
     /**
      * Disk encryption method used on the boot and data disks, defaults to GMEK.
      * Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
      */
-    public readonly diskEncryption!: pulumi.Output<string>;
+    declare public readonly diskEncryption: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Whether the end user authorizes Google Cloud to install GPU driver
      * on this instance. If this field is empty or set to false, the GPU driver
      * won't be installed. Only applicable to instances with GPUs.
      */
-    public readonly installGpuDriver!: pulumi.Output<boolean | undefined>;
+    declare public readonly installGpuDriver: pulumi.Output<boolean | undefined>;
     /**
      * The list of owners of this instance after creation.
      * Format: alias@example.com.
@@ -270,12 +270,12 @@ export class Instance extends pulumi.CustomResource {
      * If not specified, all of the service account users of
      * your VM instance's service account can use the instance.
      */
-    public readonly instanceOwners!: pulumi.Output<string[] | undefined>;
+    declare public readonly instanceOwners: pulumi.Output<string[] | undefined>;
     /**
      * The KMS key used to encrypt the disks, only applicable if diskEncryption is CMEK.
      * Format: projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}
      */
-    public readonly kmsKey!: pulumi.Output<string | undefined>;
+    declare public readonly kmsKey: pulumi.Output<string | undefined>;
     /**
      * Labels to apply to this instance. These can be later modified by the setLabels method.
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -283,74 +283,74 @@ export class Instance extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A reference to the zone where the machine resides.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * A reference to a machine type which defines VM kind.
      */
-    public readonly machineType!: pulumi.Output<string>;
+    declare public readonly machineType: pulumi.Output<string>;
     /**
      * Custom metadata to apply to this instance.
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
      */
-    public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly metadata: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name specified for the Notebook instance.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The name of the VPC that this instance is in.
      * Format: projects/{project_id}/global/networks/{network_id}
      */
-    public readonly network!: pulumi.Output<string>;
+    declare public readonly network: pulumi.Output<string>;
     /**
      * The type of vNIC driver.
      * Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
      */
-    public readonly nicType!: pulumi.Output<string | undefined>;
+    declare public readonly nicType: pulumi.Output<string | undefined>;
     /**
      * The notebook instance will not register with the proxy..
      */
-    public readonly noProxyAccess!: pulumi.Output<boolean | undefined>;
+    declare public readonly noProxyAccess: pulumi.Output<boolean | undefined>;
     /**
      * No public IP will be assigned to this instance.
      */
-    public readonly noPublicIp!: pulumi.Output<boolean | undefined>;
+    declare public readonly noPublicIp: pulumi.Output<boolean | undefined>;
     /**
      * If true, the data disk will not be auto deleted when deleting the instance.
      */
-    public readonly noRemoveDataDisk!: pulumi.Output<boolean | undefined>;
+    declare public readonly noRemoveDataDisk: pulumi.Output<boolean | undefined>;
     /**
      * Path to a Bash script that automatically runs after a
      * notebook instance fully boots up. The path must be a URL
      * or Cloud Storage path (gs://path-to-file/file-name).
      */
-    public readonly postStartupScript!: pulumi.Output<string | undefined>;
+    declare public readonly postStartupScript: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The proxy endpoint that is used to access the Jupyter notebook.
      * Only returned when the resource is in a `PROVISIONED` state. If
      * needed you can utilize `pulumi up -refresh-only` to await
      * the population of this value.
      */
-    public /*out*/ readonly proxyUri!: pulumi.Output<string>;
+    declare public /*out*/ readonly proxyUri: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Reservation Affinity for consuming Zonal reservation.
      * Structure is documented below.
      */
-    public readonly reservationAffinity!: pulumi.Output<outputs.notebooks.InstanceReservationAffinity | undefined>;
+    declare public readonly reservationAffinity: pulumi.Output<outputs.notebooks.InstanceReservationAffinity | undefined>;
     /**
      * The service account on this instance, giving access to other
      * Google Cloud services. You can use any service account within
@@ -358,42 +358,42 @@ export class Instance extends pulumi.CustomResource {
      * permission to use the instance. If not specified,
      * the Compute Engine default service account is used.
      */
-    public readonly serviceAccount!: pulumi.Output<string>;
+    declare public readonly serviceAccount: pulumi.Output<string>;
     /**
      * Optional. The URIs of service account scopes to be included in Compute Engine instances.
      * If not specified, the following scopes are defined:
      * - https://www.googleapis.com/auth/cloud-platform
      * - https://www.googleapis.com/auth/userinfo.email
      */
-    public readonly serviceAccountScopes!: pulumi.Output<string[]>;
+    declare public readonly serviceAccountScopes: pulumi.Output<string[]>;
     /**
      * A set of Shielded Instance options. Check [Images using supported Shielded VM features]
      * Not all combinations are valid
      * Structure is documented below.
      */
-    public readonly shieldedInstanceConfig!: pulumi.Output<outputs.notebooks.InstanceShieldedInstanceConfig>;
+    declare public readonly shieldedInstanceConfig: pulumi.Output<outputs.notebooks.InstanceShieldedInstanceConfig>;
     /**
      * The state of this instance.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The name of the subnet that this instance is in.
      * Format: projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}
      */
-    public readonly subnet!: pulumi.Output<string>;
+    declare public readonly subnet: pulumi.Output<string>;
     /**
      * The Compute Engine tags to add to instance.
      */
-    public readonly tags!: pulumi.Output<string[]>;
+    declare public readonly tags: pulumi.Output<string[]>;
     /**
      * Instance update time.
      */
-    public readonly updateTime!: pulumi.Output<string>;
+    declare public readonly updateTime: pulumi.Output<string>;
     /**
      * Use a Compute Engine VM image to start the notebook instance.
      * Structure is documented below.
      */
-    public readonly vmImage!: pulumi.Output<outputs.notebooks.InstanceVmImage | undefined>;
+    declare public readonly vmImage: pulumi.Output<outputs.notebooks.InstanceVmImage | undefined>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -408,84 +408,84 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["acceleratorConfig"] = state ? state.acceleratorConfig : undefined;
-            resourceInputs["bootDiskSizeGb"] = state ? state.bootDiskSizeGb : undefined;
-            resourceInputs["bootDiskType"] = state ? state.bootDiskType : undefined;
-            resourceInputs["containerImage"] = state ? state.containerImage : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["customGpuDriverPath"] = state ? state.customGpuDriverPath : undefined;
-            resourceInputs["dataDiskSizeGb"] = state ? state.dataDiskSizeGb : undefined;
-            resourceInputs["dataDiskType"] = state ? state.dataDiskType : undefined;
-            resourceInputs["desiredState"] = state ? state.desiredState : undefined;
-            resourceInputs["diskEncryption"] = state ? state.diskEncryption : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["installGpuDriver"] = state ? state.installGpuDriver : undefined;
-            resourceInputs["instanceOwners"] = state ? state.instanceOwners : undefined;
-            resourceInputs["kmsKey"] = state ? state.kmsKey : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["machineType"] = state ? state.machineType : undefined;
-            resourceInputs["metadata"] = state ? state.metadata : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["nicType"] = state ? state.nicType : undefined;
-            resourceInputs["noProxyAccess"] = state ? state.noProxyAccess : undefined;
-            resourceInputs["noPublicIp"] = state ? state.noPublicIp : undefined;
-            resourceInputs["noRemoveDataDisk"] = state ? state.noRemoveDataDisk : undefined;
-            resourceInputs["postStartupScript"] = state ? state.postStartupScript : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["proxyUri"] = state ? state.proxyUri : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["reservationAffinity"] = state ? state.reservationAffinity : undefined;
-            resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
-            resourceInputs["serviceAccountScopes"] = state ? state.serviceAccountScopes : undefined;
-            resourceInputs["shieldedInstanceConfig"] = state ? state.shieldedInstanceConfig : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["subnet"] = state ? state.subnet : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["vmImage"] = state ? state.vmImage : undefined;
+            resourceInputs["acceleratorConfig"] = state?.acceleratorConfig;
+            resourceInputs["bootDiskSizeGb"] = state?.bootDiskSizeGb;
+            resourceInputs["bootDiskType"] = state?.bootDiskType;
+            resourceInputs["containerImage"] = state?.containerImage;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["customGpuDriverPath"] = state?.customGpuDriverPath;
+            resourceInputs["dataDiskSizeGb"] = state?.dataDiskSizeGb;
+            resourceInputs["dataDiskType"] = state?.dataDiskType;
+            resourceInputs["desiredState"] = state?.desiredState;
+            resourceInputs["diskEncryption"] = state?.diskEncryption;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["installGpuDriver"] = state?.installGpuDriver;
+            resourceInputs["instanceOwners"] = state?.instanceOwners;
+            resourceInputs["kmsKey"] = state?.kmsKey;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["machineType"] = state?.machineType;
+            resourceInputs["metadata"] = state?.metadata;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["nicType"] = state?.nicType;
+            resourceInputs["noProxyAccess"] = state?.noProxyAccess;
+            resourceInputs["noPublicIp"] = state?.noPublicIp;
+            resourceInputs["noRemoveDataDisk"] = state?.noRemoveDataDisk;
+            resourceInputs["postStartupScript"] = state?.postStartupScript;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["proxyUri"] = state?.proxyUri;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["reservationAffinity"] = state?.reservationAffinity;
+            resourceInputs["serviceAccount"] = state?.serviceAccount;
+            resourceInputs["serviceAccountScopes"] = state?.serviceAccountScopes;
+            resourceInputs["shieldedInstanceConfig"] = state?.shieldedInstanceConfig;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["subnet"] = state?.subnet;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["vmImage"] = state?.vmImage;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.machineType === undefined) && !opts.urn) {
+            if (args?.machineType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'machineType'");
             }
-            resourceInputs["acceleratorConfig"] = args ? args.acceleratorConfig : undefined;
-            resourceInputs["bootDiskSizeGb"] = args ? args.bootDiskSizeGb : undefined;
-            resourceInputs["bootDiskType"] = args ? args.bootDiskType : undefined;
-            resourceInputs["containerImage"] = args ? args.containerImage : undefined;
-            resourceInputs["createTime"] = args ? args.createTime : undefined;
-            resourceInputs["customGpuDriverPath"] = args ? args.customGpuDriverPath : undefined;
-            resourceInputs["dataDiskSizeGb"] = args ? args.dataDiskSizeGb : undefined;
-            resourceInputs["dataDiskType"] = args ? args.dataDiskType : undefined;
-            resourceInputs["desiredState"] = args ? args.desiredState : undefined;
-            resourceInputs["diskEncryption"] = args ? args.diskEncryption : undefined;
-            resourceInputs["installGpuDriver"] = args ? args.installGpuDriver : undefined;
-            resourceInputs["instanceOwners"] = args ? args.instanceOwners : undefined;
-            resourceInputs["kmsKey"] = args ? args.kmsKey : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["machineType"] = args ? args.machineType : undefined;
-            resourceInputs["metadata"] = args ? args.metadata : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["nicType"] = args ? args.nicType : undefined;
-            resourceInputs["noProxyAccess"] = args ? args.noProxyAccess : undefined;
-            resourceInputs["noPublicIp"] = args ? args.noPublicIp : undefined;
-            resourceInputs["noRemoveDataDisk"] = args ? args.noRemoveDataDisk : undefined;
-            resourceInputs["postStartupScript"] = args ? args.postStartupScript : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["reservationAffinity"] = args ? args.reservationAffinity : undefined;
-            resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
-            resourceInputs["serviceAccountScopes"] = args ? args.serviceAccountScopes : undefined;
-            resourceInputs["shieldedInstanceConfig"] = args ? args.shieldedInstanceConfig : undefined;
-            resourceInputs["subnet"] = args ? args.subnet : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["updateTime"] = args ? args.updateTime : undefined;
-            resourceInputs["vmImage"] = args ? args.vmImage : undefined;
+            resourceInputs["acceleratorConfig"] = args?.acceleratorConfig;
+            resourceInputs["bootDiskSizeGb"] = args?.bootDiskSizeGb;
+            resourceInputs["bootDiskType"] = args?.bootDiskType;
+            resourceInputs["containerImage"] = args?.containerImage;
+            resourceInputs["createTime"] = args?.createTime;
+            resourceInputs["customGpuDriverPath"] = args?.customGpuDriverPath;
+            resourceInputs["dataDiskSizeGb"] = args?.dataDiskSizeGb;
+            resourceInputs["dataDiskType"] = args?.dataDiskType;
+            resourceInputs["desiredState"] = args?.desiredState;
+            resourceInputs["diskEncryption"] = args?.diskEncryption;
+            resourceInputs["installGpuDriver"] = args?.installGpuDriver;
+            resourceInputs["instanceOwners"] = args?.instanceOwners;
+            resourceInputs["kmsKey"] = args?.kmsKey;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["machineType"] = args?.machineType;
+            resourceInputs["metadata"] = args?.metadata;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["nicType"] = args?.nicType;
+            resourceInputs["noProxyAccess"] = args?.noProxyAccess;
+            resourceInputs["noPublicIp"] = args?.noPublicIp;
+            resourceInputs["noRemoveDataDisk"] = args?.noRemoveDataDisk;
+            resourceInputs["postStartupScript"] = args?.postStartupScript;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["reservationAffinity"] = args?.reservationAffinity;
+            resourceInputs["serviceAccount"] = args?.serviceAccount;
+            resourceInputs["serviceAccountScopes"] = args?.serviceAccountScopes;
+            resourceInputs["shieldedInstanceConfig"] = args?.shieldedInstanceConfig;
+            resourceInputs["subnet"] = args?.subnet;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["updateTime"] = args?.updateTime;
+            resourceInputs["vmImage"] = args?.vmImage;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["proxyUri"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;

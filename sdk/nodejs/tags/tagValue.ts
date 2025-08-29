@@ -83,33 +83,33 @@ export class TagValue extends pulumi.CustomResource {
      * Output only. Creation time.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * User-assigned description of the TagValue. Must not exceed 256 characters.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The generated numeric id for the TagValue.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Output only. Namespaced name of the TagValue. Will be in the format {parentNamespace}/{tagKeyShortName}/{shortName}.
      */
-    public /*out*/ readonly namespacedName!: pulumi.Output<string>;
+    declare public /*out*/ readonly namespacedName: pulumi.Output<string>;
     /**
      * Input only. The resource name of the new TagValue's parent. Must be of the form tagKeys/{tag_key_id}.
      */
-    public readonly parent!: pulumi.Output<string>;
+    declare public readonly parent: pulumi.Output<string>;
     /**
      * Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
      * The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\), and forward slashes (/).
      */
-    public readonly shortName!: pulumi.Output<string>;
+    declare public readonly shortName: pulumi.Output<string>;
     /**
      * Output only. Update time.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a TagValue resource with the given unique name, arguments, and options.
@@ -124,24 +124,24 @@ export class TagValue extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TagValueState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namespacedName"] = state ? state.namespacedName : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["shortName"] = state ? state.shortName : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namespacedName"] = state?.namespacedName;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["shortName"] = state?.shortName;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as TagValueArgs | undefined;
-            if ((!args || args.parent === undefined) && !opts.urn) {
+            if (args?.parent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            if ((!args || args.shortName === undefined) && !opts.urn) {
+            if (args?.shortName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'shortName'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
-            resourceInputs["shortName"] = args ? args.shortName : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["parent"] = args?.parent;
+            resourceInputs["shortName"] = args?.shortName;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["namespacedName"] = undefined /*out*/;

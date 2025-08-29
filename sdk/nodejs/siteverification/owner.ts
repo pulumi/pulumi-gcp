@@ -128,12 +128,12 @@ export class Owner extends pulumi.CustomResource {
      *
      * - - -
      */
-    public readonly email!: pulumi.Output<string>;
+    declare public readonly email: pulumi.Output<string>;
     /**
      * The id of of the web resource to which the owner will be added, in the form `webResource/<resource_id>`,
      * such as `webResource/https://www.example.com/`
      */
-    public readonly webResourceId!: pulumi.Output<string>;
+    declare public readonly webResourceId: pulumi.Output<string>;
 
     /**
      * Create a Owner resource with the given unique name, arguments, and options.
@@ -148,18 +148,18 @@ export class Owner extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OwnerState | undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["webResourceId"] = state ? state.webResourceId : undefined;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["webResourceId"] = state?.webResourceId;
         } else {
             const args = argsOrState as OwnerArgs | undefined;
-            if ((!args || args.email === undefined) && !opts.urn) {
+            if (args?.email === undefined && !opts.urn) {
                 throw new Error("Missing required property 'email'");
             }
-            if ((!args || args.webResourceId === undefined) && !opts.urn) {
+            if (args?.webResourceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'webResourceId'");
             }
-            resourceInputs["email"] = args ? args.email : undefined;
-            resourceInputs["webResourceId"] = args ? args.webResourceId : undefined;
+            resourceInputs["email"] = args?.email;
+            resourceInputs["webResourceId"] = args?.webResourceId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Owner.__pulumiType, name, resourceInputs, opts);

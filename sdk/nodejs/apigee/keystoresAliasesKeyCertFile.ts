@@ -64,43 +64,43 @@ export class KeystoresAliasesKeyCertFile extends pulumi.CustomResource {
     /**
      * Alias Name
      */
-    public readonly alias!: pulumi.Output<string>;
+    declare public readonly alias: pulumi.Output<string>;
     /**
      * Cert content
      *
      *
      * - - -
      */
-    public readonly cert!: pulumi.Output<string>;
+    declare public readonly cert: pulumi.Output<string>;
     /**
      * Chain of certificates under this alias.
      * Structure is documented below.
      */
-    public readonly certsInfo!: pulumi.Output<outputs.apigee.KeystoresAliasesKeyCertFileCertsInfo>;
+    declare public readonly certsInfo: pulumi.Output<outputs.apigee.KeystoresAliasesKeyCertFileCertsInfo>;
     /**
      * Environment associated with the alias
      */
-    public readonly environment!: pulumi.Output<string>;
+    declare public readonly environment: pulumi.Output<string>;
     /**
      * Private Key content, omit if uploading to truststore
      */
-    public readonly key!: pulumi.Output<string | undefined>;
+    declare public readonly key: pulumi.Output<string | undefined>;
     /**
      * Keystore Name
      */
-    public readonly keystore!: pulumi.Output<string>;
+    declare public readonly keystore: pulumi.Output<string>;
     /**
      * Organization ID associated with the alias, without organization/ prefix
      */
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * Password for the Private Key if it's encrypted
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * Optional.Type of Alias
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a KeystoresAliasesKeyCertFile resource with the given unique name, arguments, and options.
@@ -115,39 +115,39 @@ export class KeystoresAliasesKeyCertFile extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KeystoresAliasesKeyCertFileState | undefined;
-            resourceInputs["alias"] = state ? state.alias : undefined;
-            resourceInputs["cert"] = state ? state.cert : undefined;
-            resourceInputs["certsInfo"] = state ? state.certsInfo : undefined;
-            resourceInputs["environment"] = state ? state.environment : undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["keystore"] = state ? state.keystore : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["alias"] = state?.alias;
+            resourceInputs["cert"] = state?.cert;
+            resourceInputs["certsInfo"] = state?.certsInfo;
+            resourceInputs["environment"] = state?.environment;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["keystore"] = state?.keystore;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as KeystoresAliasesKeyCertFileArgs | undefined;
-            if ((!args || args.alias === undefined) && !opts.urn) {
+            if (args?.alias === undefined && !opts.urn) {
                 throw new Error("Missing required property 'alias'");
             }
-            if ((!args || args.cert === undefined) && !opts.urn) {
+            if (args?.cert === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cert'");
             }
-            if ((!args || args.environment === undefined) && !opts.urn) {
+            if (args?.environment === undefined && !opts.urn) {
                 throw new Error("Missing required property 'environment'");
             }
-            if ((!args || args.keystore === undefined) && !opts.urn) {
+            if (args?.keystore === undefined && !opts.urn) {
                 throw new Error("Missing required property 'keystore'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            resourceInputs["alias"] = args ? args.alias : undefined;
-            resourceInputs["cert"] = args ? args.cert : undefined;
-            resourceInputs["certsInfo"] = args ? args.certsInfo : undefined;
-            resourceInputs["environment"] = args ? args.environment : undefined;
+            resourceInputs["alias"] = args?.alias;
+            resourceInputs["cert"] = args?.cert;
+            resourceInputs["certsInfo"] = args?.certsInfo;
+            resourceInputs["environment"] = args?.environment;
             resourceInputs["key"] = args?.key ? pulumi.secret(args.key) : undefined;
-            resourceInputs["keystore"] = args ? args.keystore : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
+            resourceInputs["keystore"] = args?.keystore;
+            resourceInputs["orgId"] = args?.orgId;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["type"] = undefined /*out*/;
         }

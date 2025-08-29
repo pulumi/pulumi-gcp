@@ -363,24 +363,24 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
      * Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
      * Structure is documented below.
      */
-    public readonly appEngine!: pulumi.Output<outputs.compute.RegionNetworkEndpointGroupAppEngine | undefined>;
+    declare public readonly appEngine: pulumi.Output<outputs.compute.RegionNetworkEndpointGroupAppEngine | undefined>;
     /**
      * This field is only used for SERVERLESS NEGs.
      * Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
      * Structure is documented below.
      */
-    public readonly cloudFunction!: pulumi.Output<outputs.compute.RegionNetworkEndpointGroupCloudFunction | undefined>;
+    declare public readonly cloudFunction: pulumi.Output<outputs.compute.RegionNetworkEndpointGroupCloudFunction | undefined>;
     /**
      * This field is only used for SERVERLESS NEGs.
      * Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
      * Structure is documented below.
      */
-    public readonly cloudRun!: pulumi.Output<outputs.compute.RegionNetworkEndpointGroupCloudRun | undefined>;
+    declare public readonly cloudRun: pulumi.Output<outputs.compute.RegionNetworkEndpointGroupCloudRun | undefined>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Name of the resource; provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -390,54 +390,54 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * This field is only used for PSC and INTERNET NEGs.
      * The URL of the network to which all network endpoints in the NEG belong. Uses
      * "default" project network if unspecified.
      */
-    public readonly network!: pulumi.Output<string | undefined>;
+    declare public readonly network: pulumi.Output<string | undefined>;
     /**
      * Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.
      * Default value is `SERVERLESS`.
      * Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `GCE_VM_IP_PORTMAP`.
      */
-    public readonly networkEndpointType!: pulumi.Output<string | undefined>;
+    declare public readonly networkEndpointType: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * This field is only used for PSC NEGs.
      * Structure is documented below.
      */
-    public readonly pscData!: pulumi.Output<outputs.compute.RegionNetworkEndpointGroupPscData>;
+    declare public readonly pscData: pulumi.Output<outputs.compute.RegionNetworkEndpointGroupPscData>;
     /**
      * This field is only used for PSC and INTERNET NEGs.
      * The target service url used to set up private service connection to
      * a Google API or a PSC Producer Service Attachment.
      */
-    public readonly pscTargetService!: pulumi.Output<string | undefined>;
+    declare public readonly pscTargetService: pulumi.Output<string | undefined>;
     /**
      * A reference to the region where the regional NEGs reside.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * This field is only used for SERVERLESS NEGs.
      * Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
      * Structure is documented below.
      */
-    public readonly serverlessDeployment!: pulumi.Output<outputs.compute.RegionNetworkEndpointGroupServerlessDeployment | undefined>;
+    declare public readonly serverlessDeployment: pulumi.Output<outputs.compute.RegionNetworkEndpointGroupServerlessDeployment | undefined>;
     /**
      * This field is only used for PSC NEGs.
      * Optional URL of the subnetwork to which all network endpoints in the NEG belong.
      */
-    public readonly subnetwork!: pulumi.Output<string | undefined>;
+    declare public readonly subnetwork: pulumi.Output<string | undefined>;
 
     /**
      * Create a RegionNetworkEndpointGroup resource with the given unique name, arguments, and options.
@@ -452,38 +452,38 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegionNetworkEndpointGroupState | undefined;
-            resourceInputs["appEngine"] = state ? state.appEngine : undefined;
-            resourceInputs["cloudFunction"] = state ? state.cloudFunction : undefined;
-            resourceInputs["cloudRun"] = state ? state.cloudRun : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["networkEndpointType"] = state ? state.networkEndpointType : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pscData"] = state ? state.pscData : undefined;
-            resourceInputs["pscTargetService"] = state ? state.pscTargetService : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["serverlessDeployment"] = state ? state.serverlessDeployment : undefined;
-            resourceInputs["subnetwork"] = state ? state.subnetwork : undefined;
+            resourceInputs["appEngine"] = state?.appEngine;
+            resourceInputs["cloudFunction"] = state?.cloudFunction;
+            resourceInputs["cloudRun"] = state?.cloudRun;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["networkEndpointType"] = state?.networkEndpointType;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pscData"] = state?.pscData;
+            resourceInputs["pscTargetService"] = state?.pscTargetService;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["serverlessDeployment"] = state?.serverlessDeployment;
+            resourceInputs["subnetwork"] = state?.subnetwork;
         } else {
             const args = argsOrState as RegionNetworkEndpointGroupArgs | undefined;
-            if ((!args || args.region === undefined) && !opts.urn) {
+            if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            resourceInputs["appEngine"] = args ? args.appEngine : undefined;
-            resourceInputs["cloudFunction"] = args ? args.cloudFunction : undefined;
-            resourceInputs["cloudRun"] = args ? args.cloudRun : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["networkEndpointType"] = args ? args.networkEndpointType : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["pscData"] = args ? args.pscData : undefined;
-            resourceInputs["pscTargetService"] = args ? args.pscTargetService : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["serverlessDeployment"] = args ? args.serverlessDeployment : undefined;
-            resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
+            resourceInputs["appEngine"] = args?.appEngine;
+            resourceInputs["cloudFunction"] = args?.cloudFunction;
+            resourceInputs["cloudRun"] = args?.cloudRun;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["networkEndpointType"] = args?.networkEndpointType;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["pscData"] = args?.pscData;
+            resourceInputs["pscTargetService"] = args?.pscTargetService;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["serverlessDeployment"] = args?.serverlessDeployment;
+            resourceInputs["subnetwork"] = args?.subnetwork;
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

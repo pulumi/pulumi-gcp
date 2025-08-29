@@ -98,36 +98,36 @@ export class Topic extends pulumi.CustomResource {
     /**
      * The cluster name.
      */
-    public readonly cluster!: pulumi.Output<string>;
+    declare public readonly cluster: pulumi.Output<string>;
     /**
      * Configuration for the topic that are overridden from the cluster defaults. The key of the map is a Kafka topic property name, for example: `cleanup.policy=compact`, `compression.type=producer`.
      */
-    public readonly configs!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly configs: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The name of the topic. The `topic` segment is used when connecting directly to the cluster. Must be in the format `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID/topics/TOPIC_ID`.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The number of partitions in a topic. You can increase the partition count for a topic, but you cannot decrease it. Increasing partitions for a topic that uses a key might change how messages are distributed.
      */
-    public readonly partitionCount!: pulumi.Output<number | undefined>;
+    declare public readonly partitionCount: pulumi.Output<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The number of replicas of each partition. A replication factor of 3 is recommended for high availability.
      */
-    public readonly replicationFactor!: pulumi.Output<number>;
+    declare public readonly replicationFactor: pulumi.Output<number>;
     /**
      * The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
      */
-    public readonly topicId!: pulumi.Output<string>;
+    declare public readonly topicId: pulumi.Output<string>;
 
     /**
      * Create a Topic resource with the given unique name, arguments, and options.
@@ -142,35 +142,35 @@ export class Topic extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TopicState | undefined;
-            resourceInputs["cluster"] = state ? state.cluster : undefined;
-            resourceInputs["configs"] = state ? state.configs : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["partitionCount"] = state ? state.partitionCount : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["replicationFactor"] = state ? state.replicationFactor : undefined;
-            resourceInputs["topicId"] = state ? state.topicId : undefined;
+            resourceInputs["cluster"] = state?.cluster;
+            resourceInputs["configs"] = state?.configs;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["partitionCount"] = state?.partitionCount;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["replicationFactor"] = state?.replicationFactor;
+            resourceInputs["topicId"] = state?.topicId;
         } else {
             const args = argsOrState as TopicArgs | undefined;
-            if ((!args || args.cluster === undefined) && !opts.urn) {
+            if (args?.cluster === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cluster'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.replicationFactor === undefined) && !opts.urn) {
+            if (args?.replicationFactor === undefined && !opts.urn) {
                 throw new Error("Missing required property 'replicationFactor'");
             }
-            if ((!args || args.topicId === undefined) && !opts.urn) {
+            if (args?.topicId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'topicId'");
             }
-            resourceInputs["cluster"] = args ? args.cluster : undefined;
-            resourceInputs["configs"] = args ? args.configs : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["partitionCount"] = args ? args.partitionCount : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["replicationFactor"] = args ? args.replicationFactor : undefined;
-            resourceInputs["topicId"] = args ? args.topicId : undefined;
+            resourceInputs["cluster"] = args?.cluster;
+            resourceInputs["configs"] = args?.configs;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["partitionCount"] = args?.partitionCount;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["replicationFactor"] = args?.replicationFactor;
+            resourceInputs["topicId"] = args?.topicId;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -142,38 +142,38 @@ export class TargetServer extends pulumi.CustomResource {
     /**
      * A human-readable description of this TargetServer.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
      */
-    public readonly envId!: pulumi.Output<string>;
+    declare public readonly envId: pulumi.Output<string>;
     /**
      * The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
      */
-    public readonly host!: pulumi.Output<string>;
+    declare public readonly host: pulumi.Output<string>;
     /**
      * Enabling/disabling a TargetServer is useful when TargetServers are used in load balancing configurations, and one or more TargetServers need to taken out of rotation periodically. Defaults to true.
      */
-    public readonly isEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly isEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The resource id of this reference. Values must match the regular expression [\w\s-.]+.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
      */
-    public readonly port!: pulumi.Output<number>;
+    declare public readonly port: pulumi.Output<number>;
     /**
      * Immutable. The protocol used by this TargetServer.
      * Possible values are: `HTTP`, `HTTP2`, `GRPC_TARGET`, `GRPC`, `EXTERNAL_CALLOUT`.
      */
-    public readonly protocol!: pulumi.Output<string>;
+    declare public readonly protocol: pulumi.Output<string>;
     /**
      * Specifies TLS configuration info for this TargetServer. The JSON name is sSLInfo for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
      * Structure is documented below.
      */
-    public readonly sSlInfo!: pulumi.Output<outputs.apigee.TargetServerSSlInfo | undefined>;
+    declare public readonly sSlInfo: pulumi.Output<outputs.apigee.TargetServerSSlInfo | undefined>;
 
     /**
      * Create a TargetServer resource with the given unique name, arguments, and options.
@@ -188,33 +188,33 @@ export class TargetServer extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TargetServerState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["envId"] = state ? state.envId : undefined;
-            resourceInputs["host"] = state ? state.host : undefined;
-            resourceInputs["isEnabled"] = state ? state.isEnabled : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["protocol"] = state ? state.protocol : undefined;
-            resourceInputs["sSlInfo"] = state ? state.sSlInfo : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["envId"] = state?.envId;
+            resourceInputs["host"] = state?.host;
+            resourceInputs["isEnabled"] = state?.isEnabled;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["protocol"] = state?.protocol;
+            resourceInputs["sSlInfo"] = state?.sSlInfo;
         } else {
             const args = argsOrState as TargetServerArgs | undefined;
-            if ((!args || args.envId === undefined) && !opts.urn) {
+            if (args?.envId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'envId'");
             }
-            if ((!args || args.host === undefined) && !opts.urn) {
+            if (args?.host === undefined && !opts.urn) {
                 throw new Error("Missing required property 'host'");
             }
-            if ((!args || args.port === undefined) && !opts.urn) {
+            if (args?.port === undefined && !opts.urn) {
                 throw new Error("Missing required property 'port'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["envId"] = args ? args.envId : undefined;
-            resourceInputs["host"] = args ? args.host : undefined;
-            resourceInputs["isEnabled"] = args ? args.isEnabled : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
-            resourceInputs["protocol"] = args ? args.protocol : undefined;
-            resourceInputs["sSlInfo"] = args ? args.sSlInfo : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["envId"] = args?.envId;
+            resourceInputs["host"] = args?.host;
+            resourceInputs["isEnabled"] = args?.isEnabled;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["port"] = args?.port;
+            resourceInputs["protocol"] = args?.protocol;
+            resourceInputs["sSlInfo"] = args?.sSlInfo;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TargetServer.__pulumiType, name, resourceInputs, opts);

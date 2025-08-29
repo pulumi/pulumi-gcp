@@ -72,71 +72,71 @@ export class ApiConfig extends pulumi.CustomResource {
     /**
      * The API to attach the config to.
      */
-    public readonly api!: pulumi.Output<string>;
+    declare public readonly api: pulumi.Output<string>;
     /**
      * Identifier to assign to the API Config. Must be unique within scope of the parent resource(api).
      */
-    public readonly apiConfigId!: pulumi.Output<string>;
+    declare public readonly apiConfigId: pulumi.Output<string>;
     /**
      * Creates a unique name beginning with the
      * specified prefix. If this and apiConfigId are unspecified, a random value is chosen for the name.
      */
-    public readonly apiConfigIdPrefix!: pulumi.Output<string>;
+    declare public readonly apiConfigIdPrefix: pulumi.Output<string>;
     /**
      * A user-visible name for the API.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Immutable. Gateway specific configuration.
      * If not specified, backend authentication will be set to use OIDC authentication using the default compute service account
      * Structure is documented below.
      */
-    public readonly gatewayConfig!: pulumi.Output<outputs.apigateway.ApiConfigGatewayConfig | undefined>;
+    declare public readonly gatewayConfig: pulumi.Output<outputs.apigateway.ApiConfigGatewayConfig | undefined>;
     /**
      * gRPC service definition files. If specified, openapiDocuments must not be included.
      * Structure is documented below.
      */
-    public readonly grpcServices!: pulumi.Output<outputs.apigateway.ApiConfigGrpcService[] | undefined>;
+    declare public readonly grpcServices: pulumi.Output<outputs.apigateway.ApiConfigGrpcService[] | undefined>;
     /**
      * Resource labels to represent user-provided metadata.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
      * If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
      * Structure is documented below.
      */
-    public readonly managedServiceConfigs!: pulumi.Output<outputs.apigateway.ApiConfigManagedServiceConfig[] | undefined>;
+    declare public readonly managedServiceConfigs: pulumi.Output<outputs.apigateway.ApiConfigManagedServiceConfig[] | undefined>;
     /**
      * The resource name of the API Config.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * OpenAPI specification documents. If specified, grpcServices and managedServiceConfigs must not be included.
      * Structure is documented below.
      */
-    public readonly openapiDocuments!: pulumi.Output<outputs.apigateway.ApiConfigOpenapiDocument[] | undefined>;
+    declare public readonly openapiDocuments: pulumi.Output<outputs.apigateway.ApiConfigOpenapiDocument[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
      */
-    public /*out*/ readonly serviceConfigId!: pulumi.Output<string>;
+    declare public /*out*/ readonly serviceConfigId: pulumi.Output<string>;
 
     /**
      * Create a ApiConfig resource with the given unique name, arguments, and options.
@@ -151,35 +151,35 @@ export class ApiConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApiConfigState | undefined;
-            resourceInputs["api"] = state ? state.api : undefined;
-            resourceInputs["apiConfigId"] = state ? state.apiConfigId : undefined;
-            resourceInputs["apiConfigIdPrefix"] = state ? state.apiConfigIdPrefix : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["gatewayConfig"] = state ? state.gatewayConfig : undefined;
-            resourceInputs["grpcServices"] = state ? state.grpcServices : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["managedServiceConfigs"] = state ? state.managedServiceConfigs : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["openapiDocuments"] = state ? state.openapiDocuments : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["serviceConfigId"] = state ? state.serviceConfigId : undefined;
+            resourceInputs["api"] = state?.api;
+            resourceInputs["apiConfigId"] = state?.apiConfigId;
+            resourceInputs["apiConfigIdPrefix"] = state?.apiConfigIdPrefix;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["gatewayConfig"] = state?.gatewayConfig;
+            resourceInputs["grpcServices"] = state?.grpcServices;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["managedServiceConfigs"] = state?.managedServiceConfigs;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["openapiDocuments"] = state?.openapiDocuments;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["serviceConfigId"] = state?.serviceConfigId;
         } else {
             const args = argsOrState as ApiConfigArgs | undefined;
-            if ((!args || args.api === undefined) && !opts.urn) {
+            if (args?.api === undefined && !opts.urn) {
                 throw new Error("Missing required property 'api'");
             }
-            resourceInputs["api"] = args ? args.api : undefined;
-            resourceInputs["apiConfigId"] = args ? args.apiConfigId : undefined;
-            resourceInputs["apiConfigIdPrefix"] = args ? args.apiConfigIdPrefix : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["gatewayConfig"] = args ? args.gatewayConfig : undefined;
-            resourceInputs["grpcServices"] = args ? args.grpcServices : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["managedServiceConfigs"] = args ? args.managedServiceConfigs : undefined;
-            resourceInputs["openapiDocuments"] = args ? args.openapiDocuments : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["api"] = args?.api;
+            resourceInputs["apiConfigId"] = args?.apiConfigId;
+            resourceInputs["apiConfigIdPrefix"] = args?.apiConfigIdPrefix;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["gatewayConfig"] = args?.gatewayConfig;
+            resourceInputs["grpcServices"] = args?.grpcServices;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["managedServiceConfigs"] = args?.managedServiceConfigs;
+            resourceInputs["openapiDocuments"] = args?.openapiDocuments;
+            resourceInputs["project"] = args?.project;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;

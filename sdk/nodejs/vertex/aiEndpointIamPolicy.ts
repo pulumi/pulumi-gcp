@@ -32,11 +32,11 @@ export class AiEndpointIamPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === AiEndpointIamPolicy.__pulumiType;
     }
 
-    public readonly endpoint!: pulumi.Output<string>;
-    public /*out*/ readonly etag!: pulumi.Output<string>;
-    public readonly location!: pulumi.Output<string>;
-    public readonly policyData!: pulumi.Output<string>;
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly endpoint: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
+    declare public readonly policyData: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
 
     /**
      * Create a AiEndpointIamPolicy resource with the given unique name, arguments, and options.
@@ -51,23 +51,23 @@ export class AiEndpointIamPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AiEndpointIamPolicyState | undefined;
-            resourceInputs["endpoint"] = state ? state.endpoint : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["policyData"] = state ? state.policyData : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["endpoint"] = state?.endpoint;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["policyData"] = state?.policyData;
+            resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as AiEndpointIamPolicyArgs | undefined;
-            if ((!args || args.endpoint === undefined) && !opts.urn) {
+            if (args?.endpoint === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpoint'");
             }
-            if ((!args || args.policyData === undefined) && !opts.urn) {
+            if (args?.policyData === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyData'");
             }
-            resourceInputs["endpoint"] = args ? args.endpoint : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["policyData"] = args ? args.policyData : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["endpoint"] = args?.endpoint;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["policyData"] = args?.policyData;
+            resourceInputs["project"] = args?.project;
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

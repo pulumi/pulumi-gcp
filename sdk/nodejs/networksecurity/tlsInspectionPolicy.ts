@@ -274,56 +274,56 @@ export class TlsInspectionPolicy extends pulumi.CustomResource {
     /**
      * A CA pool resource used to issue interception certificates.
      */
-    public readonly caPool!: pulumi.Output<string>;
+    declare public readonly caPool: pulumi.Output<string>;
     /**
      * The timestamp when the resource was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * List of custom TLS cipher suites selected. This field is valid only if the selected tlsFeatureProfile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
      */
-    public readonly customTlsFeatures!: pulumi.Output<string[] | undefined>;
+    declare public readonly customTlsFeatures: pulumi.Output<string[] | undefined>;
     /**
      * Free-text description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * If FALSE (the default), use our default set of public CAs in addition to any CAs specified in trustConfig. These public CAs are currently based on the Mozilla Root Program and are subject to change over time. If TRUE, do not accept our default set of public CAs. Only CAs specified in trustConfig will be accepted.
      */
-    public readonly excludePublicCaSet!: pulumi.Output<boolean | undefined>;
+    declare public readonly excludePublicCaSet: pulumi.Output<boolean | undefined>;
     /**
      * The location of the tls inspection policy.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
      * Default value is `TLS_VERSION_UNSPECIFIED`.
      * Possible values are: `TLS_VERSION_UNSPECIFIED`, `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
      */
-    public readonly minTlsVersion!: pulumi.Output<string | undefined>;
+    declare public readonly minTlsVersion: pulumi.Output<string | undefined>;
     /**
      * Short name of the TlsInspectionPolicy resource to be created.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers (\"PROFILE_COMPATIBLE\"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
      * Default value is `PROFILE_UNSPECIFIED`.
      * Possible values are: `PROFILE_UNSPECIFIED`, `PROFILE_COMPATIBLE`, `PROFILE_MODERN`, `PROFILE_RESTRICTED`, `PROFILE_CUSTOM`.
      */
-    public readonly tlsFeatureProfile!: pulumi.Output<string | undefined>;
+    declare public readonly tlsFeatureProfile: pulumi.Output<string | undefined>;
     /**
      * A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form \"projects/{project}/locations/{location}/trustConfigs/{trust_config}\". This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Trust config and the TLS inspection policy must be in the same region. Note that Secure Web Proxy does not yet honor this field.
      */
-    public readonly trustConfig!: pulumi.Output<string | undefined>;
+    declare public readonly trustConfig: pulumi.Output<string | undefined>;
     /**
      * The timestamp when the resource was updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a TlsInspectionPolicy resource with the given unique name, arguments, and options.
@@ -338,33 +338,33 @@ export class TlsInspectionPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TlsInspectionPolicyState | undefined;
-            resourceInputs["caPool"] = state ? state.caPool : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["customTlsFeatures"] = state ? state.customTlsFeatures : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["excludePublicCaSet"] = state ? state.excludePublicCaSet : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["minTlsVersion"] = state ? state.minTlsVersion : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["tlsFeatureProfile"] = state ? state.tlsFeatureProfile : undefined;
-            resourceInputs["trustConfig"] = state ? state.trustConfig : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["caPool"] = state?.caPool;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["customTlsFeatures"] = state?.customTlsFeatures;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["excludePublicCaSet"] = state?.excludePublicCaSet;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["minTlsVersion"] = state?.minTlsVersion;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["tlsFeatureProfile"] = state?.tlsFeatureProfile;
+            resourceInputs["trustConfig"] = state?.trustConfig;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as TlsInspectionPolicyArgs | undefined;
-            if ((!args || args.caPool === undefined) && !opts.urn) {
+            if (args?.caPool === undefined && !opts.urn) {
                 throw new Error("Missing required property 'caPool'");
             }
-            resourceInputs["caPool"] = args ? args.caPool : undefined;
-            resourceInputs["customTlsFeatures"] = args ? args.customTlsFeatures : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["excludePublicCaSet"] = args ? args.excludePublicCaSet : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["minTlsVersion"] = args ? args.minTlsVersion : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["tlsFeatureProfile"] = args ? args.tlsFeatureProfile : undefined;
-            resourceInputs["trustConfig"] = args ? args.trustConfig : undefined;
+            resourceInputs["caPool"] = args?.caPool;
+            resourceInputs["customTlsFeatures"] = args?.customTlsFeatures;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["excludePublicCaSet"] = args?.excludePublicCaSet;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["minTlsVersion"] = args?.minTlsVersion;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["tlsFeatureProfile"] = args?.tlsFeatureProfile;
+            resourceInputs["trustConfig"] = args?.trustConfig;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }

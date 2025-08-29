@@ -172,34 +172,34 @@ export class EdgeCacheOrigin extends pulumi.CustomResource {
      * Enable AWS Signature Version 4 origin authentication.
      * Structure is documented below.
      */
-    public readonly awsV4Authentication!: pulumi.Output<outputs.networkservices.EdgeCacheOriginAwsV4Authentication | undefined>;
+    declare public readonly awsV4Authentication: pulumi.Output<outputs.networkservices.EdgeCacheOriginAwsV4Authentication | undefined>;
     /**
      * A human-readable description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The Origin resource to try when the current origin cannot be reached.
      * After maxAttempts is reached, the configured failoverOrigin will be used to fulfil the request.
      * The value of timeout.maxAttemptsTimeout dictates the timeout across all origins.
      * A reference to a Topic resource.
      */
-    public readonly failoverOrigin!: pulumi.Output<string | undefined>;
+    declare public readonly failoverOrigin: pulumi.Output<string | undefined>;
     /**
      * The FlexShieldingOptions to be used for all routes to this origin.
      * If not set, defaults to a global caching layer in front of the origin.
      * Structure is documented below.
      */
-    public readonly flexShielding!: pulumi.Output<outputs.networkservices.EdgeCacheOriginFlexShielding | undefined>;
+    declare public readonly flexShielding: pulumi.Output<outputs.networkservices.EdgeCacheOriginFlexShielding | undefined>;
     /**
      * Set of label tags associated with the EdgeCache resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The maximum number of attempts to cache fill from this origin. Another attempt is made when a cache fill fails with one of the retryConditions.
      * Once maxAttempts to this origin have failed the failoverOrigin will be used, if one is specified. That failoverOrigin may specify its own maxAttempts,
@@ -210,52 +210,52 @@ export class EdgeCacheOrigin extends pulumi.CustomResource {
      * If no origin returns a valid response, an HTTP 502 will be returned to the client.
      * Defaults to 1. Must be a value greater than 0 and less than 4.
      */
-    public readonly maxAttempts!: pulumi.Output<number | undefined>;
+    declare public readonly maxAttempts: pulumi.Output<number | undefined>;
     /**
      * Name of the resource; provided by the client when the resource is created.
      * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
      * and all following characters must be a dash, underscore, letter or digit.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * A fully qualified domain name (FQDN) or IP address reachable over the public Internet, or the address of a Google Cloud Storage bucket.
      * This address will be used as the origin for cache requests - e.g. FQDN: media-backend.example.com, IPv4: 35.218.1.1, IPv6: 2607:f8b0:4012:809::200e, Cloud Storage: gs://bucketname
      * When providing an FQDN (hostname), it must be publicly resolvable (e.g. via Google public DNS) and IP addresses must be publicly routable.  It must not contain a protocol (e.g., https://) and it must not contain any slashes.
      * If a Cloud Storage bucket is provided, it must be in the canonical "gs://bucketname" format. Other forms, such as "storage.googleapis.com", will be rejected.
      */
-    public readonly originAddress!: pulumi.Output<string>;
+    declare public readonly originAddress: pulumi.Output<string>;
     /**
      * The override actions, including url rewrites and header
      * additions, for requests that use this origin.
      * Structure is documented below.
      */
-    public readonly originOverrideAction!: pulumi.Output<outputs.networkservices.EdgeCacheOriginOriginOverrideAction | undefined>;
+    declare public readonly originOverrideAction: pulumi.Output<outputs.networkservices.EdgeCacheOriginOriginOverrideAction | undefined>;
     /**
      * Follow redirects from this origin.
      * Structure is documented below.
      */
-    public readonly originRedirect!: pulumi.Output<outputs.networkservices.EdgeCacheOriginOriginRedirect | undefined>;
+    declare public readonly originRedirect: pulumi.Output<outputs.networkservices.EdgeCacheOriginOriginRedirect | undefined>;
     /**
      * The port to connect to the origin on.
      * Defaults to port 443 for HTTP2 and HTTPS protocols, and port 80 for HTTP.
      */
-    public readonly port!: pulumi.Output<number>;
+    declare public readonly port: pulumi.Output<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The protocol to use to connect to the configured origin. Defaults to HTTP2, and it is strongly recommended that users use HTTP2 for both security & performance.
      * When using HTTP2 or HTTPS as the protocol, a valid, publicly-signed, unexpired TLS (SSL) certificate must be presented by the origin server.
      * Possible values are: `HTTP2`, `HTTPS`, `HTTP`.
      */
-    public readonly protocol!: pulumi.Output<string>;
+    declare public readonly protocol: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Specifies one or more retry conditions for the configured origin.
      * If the failure mode during a connection attempt to the origin matches the configured retryCondition(s),
@@ -272,12 +272,12 @@ export class EdgeCacheOrigin extends pulumi.CustomResource {
      * - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
      * Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
      */
-    public readonly retryConditions!: pulumi.Output<string[]>;
+    declare public readonly retryConditions: pulumi.Output<string[]>;
     /**
      * The connection and HTTP timeout configuration for this origin.
      * Structure is documented below.
      */
-    public readonly timeout!: pulumi.Output<outputs.networkservices.EdgeCacheOriginTimeout | undefined>;
+    declare public readonly timeout: pulumi.Output<outputs.networkservices.EdgeCacheOriginTimeout | undefined>;
 
     /**
      * Create a EdgeCacheOrigin resource with the given unique name, arguments, and options.
@@ -292,43 +292,43 @@ export class EdgeCacheOrigin extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EdgeCacheOriginState | undefined;
-            resourceInputs["awsV4Authentication"] = state ? state.awsV4Authentication : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["failoverOrigin"] = state ? state.failoverOrigin : undefined;
-            resourceInputs["flexShielding"] = state ? state.flexShielding : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["maxAttempts"] = state ? state.maxAttempts : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["originAddress"] = state ? state.originAddress : undefined;
-            resourceInputs["originOverrideAction"] = state ? state.originOverrideAction : undefined;
-            resourceInputs["originRedirect"] = state ? state.originRedirect : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["protocol"] = state ? state.protocol : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["retryConditions"] = state ? state.retryConditions : undefined;
-            resourceInputs["timeout"] = state ? state.timeout : undefined;
+            resourceInputs["awsV4Authentication"] = state?.awsV4Authentication;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["failoverOrigin"] = state?.failoverOrigin;
+            resourceInputs["flexShielding"] = state?.flexShielding;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["maxAttempts"] = state?.maxAttempts;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["originAddress"] = state?.originAddress;
+            resourceInputs["originOverrideAction"] = state?.originOverrideAction;
+            resourceInputs["originRedirect"] = state?.originRedirect;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["protocol"] = state?.protocol;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["retryConditions"] = state?.retryConditions;
+            resourceInputs["timeout"] = state?.timeout;
         } else {
             const args = argsOrState as EdgeCacheOriginArgs | undefined;
-            if ((!args || args.originAddress === undefined) && !opts.urn) {
+            if (args?.originAddress === undefined && !opts.urn) {
                 throw new Error("Missing required property 'originAddress'");
             }
-            resourceInputs["awsV4Authentication"] = args ? args.awsV4Authentication : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["failoverOrigin"] = args ? args.failoverOrigin : undefined;
-            resourceInputs["flexShielding"] = args ? args.flexShielding : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["maxAttempts"] = args ? args.maxAttempts : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["originAddress"] = args ? args.originAddress : undefined;
-            resourceInputs["originOverrideAction"] = args ? args.originOverrideAction : undefined;
-            resourceInputs["originRedirect"] = args ? args.originRedirect : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["protocol"] = args ? args.protocol : undefined;
-            resourceInputs["retryConditions"] = args ? args.retryConditions : undefined;
-            resourceInputs["timeout"] = args ? args.timeout : undefined;
+            resourceInputs["awsV4Authentication"] = args?.awsV4Authentication;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["failoverOrigin"] = args?.failoverOrigin;
+            resourceInputs["flexShielding"] = args?.flexShielding;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["maxAttempts"] = args?.maxAttempts;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["originAddress"] = args?.originAddress;
+            resourceInputs["originOverrideAction"] = args?.originOverrideAction;
+            resourceInputs["originRedirect"] = args?.originRedirect;
+            resourceInputs["port"] = args?.port;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["protocol"] = args?.protocol;
+            resourceInputs["retryConditions"] = args?.retryConditions;
+            resourceInputs["timeout"] = args?.timeout;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
         }

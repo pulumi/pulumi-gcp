@@ -58,12 +58,12 @@ export class EnvironmentAddonsConfig extends pulumi.CustomResource {
     /**
      * Flag to enable/disable Analytics.
      */
-    public readonly analyticsEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly analyticsEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
      */
-    public readonly envId!: pulumi.Output<string>;
+    declare public readonly envId: pulumi.Output<string>;
 
     /**
      * Create a EnvironmentAddonsConfig resource with the given unique name, arguments, and options.
@@ -78,15 +78,15 @@ export class EnvironmentAddonsConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EnvironmentAddonsConfigState | undefined;
-            resourceInputs["analyticsEnabled"] = state ? state.analyticsEnabled : undefined;
-            resourceInputs["envId"] = state ? state.envId : undefined;
+            resourceInputs["analyticsEnabled"] = state?.analyticsEnabled;
+            resourceInputs["envId"] = state?.envId;
         } else {
             const args = argsOrState as EnvironmentAddonsConfigArgs | undefined;
-            if ((!args || args.envId === undefined) && !opts.urn) {
+            if (args?.envId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'envId'");
             }
-            resourceInputs["analyticsEnabled"] = args ? args.analyticsEnabled : undefined;
-            resourceInputs["envId"] = args ? args.envId : undefined;
+            resourceInputs["analyticsEnabled"] = args?.analyticsEnabled;
+            resourceInputs["envId"] = args?.envId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EnvironmentAddonsConfig.__pulumiType, name, resourceInputs, opts);

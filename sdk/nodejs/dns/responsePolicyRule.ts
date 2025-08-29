@@ -109,30 +109,30 @@ export class ResponsePolicyRule extends pulumi.CustomResource {
     /**
      * Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
      */
-    public readonly behavior!: pulumi.Output<string | undefined>;
+    declare public readonly behavior: pulumi.Output<string | undefined>;
     /**
      * The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
      */
-    public readonly dnsName!: pulumi.Output<string>;
+    declare public readonly dnsName: pulumi.Output<string>;
     /**
      * Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name;
      * in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
      * Structure is documented below.
      */
-    public readonly localData!: pulumi.Output<outputs.dns.ResponsePolicyRuleLocalData | undefined>;
+    declare public readonly localData: pulumi.Output<outputs.dns.ResponsePolicyRuleLocalData | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Identifies the response policy addressed by this request.
      */
-    public readonly responsePolicy!: pulumi.Output<string>;
+    declare public readonly responsePolicy: pulumi.Output<string>;
     /**
      * An identifier for this rule. Must be unique with the ResponsePolicy.
      */
-    public readonly ruleName!: pulumi.Output<string>;
+    declare public readonly ruleName: pulumi.Output<string>;
 
     /**
      * Create a ResponsePolicyRule resource with the given unique name, arguments, and options.
@@ -147,29 +147,29 @@ export class ResponsePolicyRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ResponsePolicyRuleState | undefined;
-            resourceInputs["behavior"] = state ? state.behavior : undefined;
-            resourceInputs["dnsName"] = state ? state.dnsName : undefined;
-            resourceInputs["localData"] = state ? state.localData : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["responsePolicy"] = state ? state.responsePolicy : undefined;
-            resourceInputs["ruleName"] = state ? state.ruleName : undefined;
+            resourceInputs["behavior"] = state?.behavior;
+            resourceInputs["dnsName"] = state?.dnsName;
+            resourceInputs["localData"] = state?.localData;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["responsePolicy"] = state?.responsePolicy;
+            resourceInputs["ruleName"] = state?.ruleName;
         } else {
             const args = argsOrState as ResponsePolicyRuleArgs | undefined;
-            if ((!args || args.dnsName === undefined) && !opts.urn) {
+            if (args?.dnsName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dnsName'");
             }
-            if ((!args || args.responsePolicy === undefined) && !opts.urn) {
+            if (args?.responsePolicy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'responsePolicy'");
             }
-            if ((!args || args.ruleName === undefined) && !opts.urn) {
+            if (args?.ruleName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ruleName'");
             }
-            resourceInputs["behavior"] = args ? args.behavior : undefined;
-            resourceInputs["dnsName"] = args ? args.dnsName : undefined;
-            resourceInputs["localData"] = args ? args.localData : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["responsePolicy"] = args ? args.responsePolicy : undefined;
-            resourceInputs["ruleName"] = args ? args.ruleName : undefined;
+            resourceInputs["behavior"] = args?.behavior;
+            resourceInputs["dnsName"] = args?.dnsName;
+            resourceInputs["localData"] = args?.localData;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["responsePolicy"] = args?.responsePolicy;
+            resourceInputs["ruleName"] = args?.ruleName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ResponsePolicyRule.__pulumiType, name, resourceInputs, opts);

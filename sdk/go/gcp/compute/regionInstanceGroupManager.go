@@ -267,8 +267,7 @@ type RegionInstanceGroupManager struct {
 	// instances in the group are added. Updating the target pools attribute does
 	// not affect existing instances.
 	TargetPools pulumi.StringArrayOutput `pulumi:"targetPools"`
-	// The target number of running instances for this managed instance group. This value should always be explicitly set
-	// unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+	// The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
 	TargetSize pulumi.IntOutput `pulumi:"targetSize"`
 	// The target number of stopped instances for this managed instance group.
 	TargetStoppedSize pulumi.IntOutput `pulumi:"targetStoppedSize"`
@@ -402,8 +401,7 @@ type regionInstanceGroupManagerState struct {
 	// instances in the group are added. Updating the target pools attribute does
 	// not affect existing instances.
 	TargetPools []string `pulumi:"targetPools"`
-	// The target number of running instances for this managed instance group. This value should always be explicitly set
-	// unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+	// The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
 	TargetSize *int `pulumi:"targetSize"`
 	// The target number of stopped instances for this managed instance group.
 	TargetStoppedSize *int `pulumi:"targetStoppedSize"`
@@ -502,8 +500,7 @@ type RegionInstanceGroupManagerState struct {
 	// instances in the group are added. Updating the target pools attribute does
 	// not affect existing instances.
 	TargetPools pulumi.StringArrayInput
-	// The target number of running instances for this managed instance group. This value should always be explicitly set
-	// unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+	// The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
 	TargetSize pulumi.IntPtrInput
 	// The target number of stopped instances for this managed instance group.
 	TargetStoppedSize pulumi.IntPtrInput
@@ -594,8 +591,7 @@ type regionInstanceGroupManagerArgs struct {
 	// instances in the group are added. Updating the target pools attribute does
 	// not affect existing instances.
 	TargetPools []string `pulumi:"targetPools"`
-	// The target number of running instances for this managed instance group. This value should always be explicitly set
-	// unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+	// The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
 	TargetSize *int `pulumi:"targetSize"`
 	// The target number of stopped instances for this managed instance group.
 	TargetStoppedSize *int `pulumi:"targetStoppedSize"`
@@ -683,8 +679,7 @@ type RegionInstanceGroupManagerArgs struct {
 	// instances in the group are added. Updating the target pools attribute does
 	// not affect existing instances.
 	TargetPools pulumi.StringArrayInput
-	// The target number of running instances for this managed instance group. This value should always be explicitly set
-	// unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+	// The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
 	TargetSize pulumi.IntPtrInput
 	// The target number of stopped instances for this managed instance group.
 	TargetStoppedSize pulumi.IntPtrInput
@@ -962,8 +957,7 @@ func (o RegionInstanceGroupManagerOutput) TargetPools() pulumi.StringArrayOutput
 	return o.ApplyT(func(v *RegionInstanceGroupManager) pulumi.StringArrayOutput { return v.TargetPools }).(pulumi.StringArrayOutput)
 }
 
-// The target number of running instances for this managed instance group. This value should always be explicitly set
-// unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+// The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
 func (o RegionInstanceGroupManagerOutput) TargetSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *RegionInstanceGroupManager) pulumi.IntOutput { return v.TargetSize }).(pulumi.IntOutput)
 }

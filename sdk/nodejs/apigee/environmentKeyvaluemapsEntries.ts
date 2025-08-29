@@ -133,15 +133,15 @@ export class EnvironmentKeyvaluemapsEntries extends pulumi.CustomResource {
      * The Apigee environment keyvalumaps Id associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}/keyvaluemaps/{{keyvaluemap_name}}`.
      */
-    public readonly envKeyvaluemapId!: pulumi.Output<string>;
+    declare public readonly envKeyvaluemapId: pulumi.Output<string>;
     /**
      * Required. Resource URI that can be used to identify the scope of the key value map entries.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Required. Data or payload that is being retrieved and associated with the unique key.
      */
-    public readonly value!: pulumi.Output<string>;
+    declare public readonly value: pulumi.Output<string>;
 
     /**
      * Create a EnvironmentKeyvaluemapsEntries resource with the given unique name, arguments, and options.
@@ -156,20 +156,20 @@ export class EnvironmentKeyvaluemapsEntries extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EnvironmentKeyvaluemapsEntriesState | undefined;
-            resourceInputs["envKeyvaluemapId"] = state ? state.envKeyvaluemapId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["envKeyvaluemapId"] = state?.envKeyvaluemapId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["value"] = state?.value;
         } else {
             const args = argsOrState as EnvironmentKeyvaluemapsEntriesArgs | undefined;
-            if ((!args || args.envKeyvaluemapId === undefined) && !opts.urn) {
+            if (args?.envKeyvaluemapId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'envKeyvaluemapId'");
             }
-            if ((!args || args.value === undefined) && !opts.urn) {
+            if (args?.value === undefined && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            resourceInputs["envKeyvaluemapId"] = args ? args.envKeyvaluemapId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["envKeyvaluemapId"] = args?.envKeyvaluemapId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["value"] = args?.value;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EnvironmentKeyvaluemapsEntries.__pulumiType, name, resourceInputs, opts);

@@ -75,19 +75,19 @@ export class InstanceConfig extends pulumi.CustomResource {
      * Only set for user managed configurations.
      * baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this configuration.
      */
-    public readonly baseConfig!: pulumi.Output<string>;
+    declare public readonly baseConfig: pulumi.Output<string>;
     /**
      * Output only. Whether this instance config is a Google or User Managed Configuration.
      */
-    public /*out*/ readonly configType!: pulumi.Output<string>;
+    declare public /*out*/ readonly configType: pulumi.Output<string>;
     /**
      * The name of this instance configuration as it appears in UIs.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * An object containing a list of "key": value pairs.
      * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -95,27 +95,27 @@ export class InstanceConfig extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A unique identifier for the instance configuration. Values are of the
      * form projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The geographic placement of nodes in this instance configuration and their replication properties.
      * Structure is documented below.
      */
-    public readonly replicas!: pulumi.Output<outputs.spanner.InstanceConfigReplica[]>;
+    declare public readonly replicas: pulumi.Output<outputs.spanner.InstanceConfigReplica[]>;
 
     /**
      * Create a InstanceConfig resource with the given unique name, arguments, and options.
@@ -130,29 +130,29 @@ export class InstanceConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceConfigState | undefined;
-            resourceInputs["baseConfig"] = state ? state.baseConfig : undefined;
-            resourceInputs["configType"] = state ? state.configType : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["replicas"] = state ? state.replicas : undefined;
+            resourceInputs["baseConfig"] = state?.baseConfig;
+            resourceInputs["configType"] = state?.configType;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["replicas"] = state?.replicas;
         } else {
             const args = argsOrState as InstanceConfigArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.replicas === undefined) && !opts.urn) {
+            if (args?.replicas === undefined && !opts.urn) {
                 throw new Error("Missing required property 'replicas'");
             }
-            resourceInputs["baseConfig"] = args ? args.baseConfig : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["replicas"] = args ? args.replicas : undefined;
+            resourceInputs["baseConfig"] = args?.baseConfig;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["replicas"] = args?.replicas;
             resourceInputs["configType"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;

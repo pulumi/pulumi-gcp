@@ -803,16 +803,14 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
         return this.replicaNames;
     }
     /**
-     * A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
-     * after both the primary and replica are created.
+     * A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
      * 
      */
     @Export(name="replicationCluster", refs={DatabaseInstanceReplicationCluster.class}, tree="[0]")
     private Output<DatabaseInstanceReplicationCluster> replicationCluster;
 
     /**
-     * @return A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
-     * after both the primary and replica are created.
+     * @return A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
      * 
      */
     public Output<DatabaseInstanceReplicationCluster> replicationCluster() {

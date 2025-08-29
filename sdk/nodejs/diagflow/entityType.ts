@@ -95,16 +95,16 @@ export class EntityType extends pulumi.CustomResource {
     /**
      * The name of this entity type to be displayed on the console.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Enables fuzzy entity extraction during classification.
      */
-    public readonly enableFuzzyExtraction!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableFuzzyExtraction: pulumi.Output<boolean | undefined>;
     /**
      * The collection of entity entries associated with the entity type.
      * Structure is documented below.
      */
-    public readonly entities!: pulumi.Output<outputs.diagflow.EntityTypeEntity[] | undefined>;
+    declare public readonly entities: pulumi.Output<outputs.diagflow.EntityTypeEntity[] | undefined>;
     /**
      * Indicates the kind of entity type.
      * * KIND_MAP: Map entity types allow mapping of a group of synonyms to a reference value.
@@ -113,17 +113,17 @@ export class EntityType extends pulumi.CustomResource {
      * * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
      * Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
      */
-    public readonly kind!: pulumi.Output<string>;
+    declare public readonly kind: pulumi.Output<string>;
     /**
      * The unique identifier of the entity type.
      * Format: projects/<Project ID>/agent/entityTypes/<Entity type ID>.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
 
     /**
      * Create a EntityType resource with the given unique name, arguments, and options.
@@ -138,25 +138,25 @@ export class EntityType extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EntityTypeState | undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["enableFuzzyExtraction"] = state ? state.enableFuzzyExtraction : undefined;
-            resourceInputs["entities"] = state ? state.entities : undefined;
-            resourceInputs["kind"] = state ? state.kind : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["enableFuzzyExtraction"] = state?.enableFuzzyExtraction;
+            resourceInputs["entities"] = state?.entities;
+            resourceInputs["kind"] = state?.kind;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as EntityTypeArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.kind === undefined) && !opts.urn) {
+            if (args?.kind === undefined && !opts.urn) {
                 throw new Error("Missing required property 'kind'");
             }
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["enableFuzzyExtraction"] = args ? args.enableFuzzyExtraction : undefined;
-            resourceInputs["entities"] = args ? args.entities : undefined;
-            resourceInputs["kind"] = args ? args.kind : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["enableFuzzyExtraction"] = args?.enableFuzzyExtraction;
+            resourceInputs["entities"] = args?.entities;
+            resourceInputs["kind"] = args?.kind;
+            resourceInputs["project"] = args?.project;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

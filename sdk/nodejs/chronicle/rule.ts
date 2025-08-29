@@ -122,19 +122,19 @@ export class Rule extends pulumi.CustomResource {
      * Output only. The run frequencies that are allowed for the rule.
      * Populated in BASIC view and FULL view.
      */
-    public /*out*/ readonly allowedRunFrequencies!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly allowedRunFrequencies: pulumi.Output<string[]>;
     /**
      * Output only. The author of the rule. Extracted from the meta section of text.
      * Populated in BASIC view and FULL view.
      */
-    public /*out*/ readonly author!: pulumi.Output<string>;
+    declare public /*out*/ readonly author: pulumi.Output<string>;
     /**
      * Output only. A list of a rule's corresponding compilation diagnostic messages
      * such as compilation errors and compilation warnings.
      * Populated in FULL view.
      * Structure is documented below.
      */
-    public /*out*/ readonly compilationDiagnostics!: pulumi.Output<outputs.chronicle.RuleCompilationDiagnostic[]>;
+    declare public /*out*/ readonly compilationDiagnostics: pulumi.Output<outputs.chronicle.RuleCompilationDiagnostic[]>;
     /**
      * Output only. The current compilation state of the rule.
      * Populated in FULL view.
@@ -143,16 +143,16 @@ export class Rule extends pulumi.CustomResource {
      * SUCCEEDED
      * FAILED
      */
-    public /*out*/ readonly compilationState!: pulumi.Output<string>;
+    declare public /*out*/ readonly compilationState: pulumi.Output<string>;
     /**
      * Output only. The timestamp of when the rule was created.
      * Populated in FULL view.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Output only. Resource names of the data tables used in this rule.
      */
-    public /*out*/ readonly dataTables!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly dataTables: pulumi.Output<string[]>;
     /**
      * Policy to determine if the rule should be deleted forcefully.
      * If deletionPolicy = "FORCE", any retrohunts and any detections associated with the rule
@@ -162,12 +162,12 @@ export class Rule extends pulumi.CustomResource {
      * deployment associated with this rule will also be deleted.
      * Possible values: DEFAULT, FORCE
      */
-    public readonly deletionPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly deletionPolicy: pulumi.Output<string | undefined>;
     /**
      * The display name of the severity level. Extracted from the meta section of
      * the rule text.
      */
-    public /*out*/ readonly displayName!: pulumi.Output<string>;
+    declare public /*out*/ readonly displayName: pulumi.Output<string>;
     /**
      * The etag for this rule.
      * If this is provided on update, the request will succeed if and only if it
@@ -175,58 +175,58 @@ export class Rule extends pulumi.CustomResource {
      * otherwise.
      * Populated in BASIC view and FULL view.
      */
-    public readonly etag!: pulumi.Output<string>;
+    declare public readonly etag: pulumi.Output<string>;
     /**
      * The unique identifier for the Chronicle instance, which is the same as the customer ID.
      */
-    public readonly instance!: pulumi.Output<string>;
+    declare public readonly instance: pulumi.Output<string>;
     /**
      * The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Output only. Additional metadata specified in the meta section of text.
      * Populated in FULL view.
      */
-    public /*out*/ readonly metadata!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly metadata: pulumi.Output<{[key: string]: string}>;
     /**
      * Full resource name for the rule. This unique identifier is generated using values provided for the URL parameters.
      * Format:
      * projects/{project}/locations/{location}/instances/{instance}/rules/{rule}
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Output only. Indicate the rule can run in near real time live rule.
      * If this is true, the rule uses the near real time live rule when the run
      * frequency is set to LIVE.
      */
-    public /*out*/ readonly nearRealTimeLiveRuleEligible!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly nearRealTimeLiveRuleEligible: pulumi.Output<boolean>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Output only. Resource names of the reference lists used in this rule.
      * Populated in FULL view.
      */
-    public /*out*/ readonly referenceLists!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly referenceLists: pulumi.Output<string[]>;
     /**
      * Output only. The timestamp of when the rule revision was created.
      * Populated in FULL, REVISION_METADATA_ONLY views.
      */
-    public /*out*/ readonly revisionCreateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly revisionCreateTime: pulumi.Output<string>;
     /**
      * Output only. The revision ID of the rule.
      * A new revision is created whenever the rule text is changed in any way.
      * Format: v_{10 digits}_{9 digits}
      * Populated in REVISION_METADATA_ONLY view and FULL view.
      */
-    public /*out*/ readonly revisionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly revisionId: pulumi.Output<string>;
     /**
      * Rule Id is the ID of the Rule.
      */
-    public readonly ruleId!: pulumi.Output<string>;
+    declare public readonly ruleId: pulumi.Output<string>;
     /**
      * Resource name of the DataAccessScope bound to this rule.
      * Populated in BASIC view and FULL view.
@@ -236,7 +236,7 @@ export class Rule extends pulumi.CustomResource {
      * The scope should be in the format:
      * "projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{scope}".
      */
-    public readonly scope!: pulumi.Output<string | undefined>;
+    declare public readonly scope: pulumi.Output<string | undefined>;
     /**
      * (Output)
      * Output only. The severity of a rule's compilation diagnostic.
@@ -245,19 +245,19 @@ export class Rule extends pulumi.CustomResource {
      * WARNING
      * ERROR
      */
-    public /*out*/ readonly severities!: pulumi.Output<outputs.chronicle.RuleSeverity[]>;
+    declare public /*out*/ readonly severities: pulumi.Output<outputs.chronicle.RuleSeverity[]>;
     /**
      * The YARA-L content of the rule.
      * Populated in FULL view.
      */
-    public readonly text!: pulumi.Output<string | undefined>;
+    declare public readonly text: pulumi.Output<string | undefined>;
     /**
      * Possible values:
      * RULE_TYPE_UNSPECIFIED
      * SINGLE_EVENT
      * MULTI_EVENT
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a Rule resource with the given unique name, arguments, and options.
@@ -272,45 +272,45 @@ export class Rule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RuleState | undefined;
-            resourceInputs["allowedRunFrequencies"] = state ? state.allowedRunFrequencies : undefined;
-            resourceInputs["author"] = state ? state.author : undefined;
-            resourceInputs["compilationDiagnostics"] = state ? state.compilationDiagnostics : undefined;
-            resourceInputs["compilationState"] = state ? state.compilationState : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dataTables"] = state ? state.dataTables : undefined;
-            resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["instance"] = state ? state.instance : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["metadata"] = state ? state.metadata : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nearRealTimeLiveRuleEligible"] = state ? state.nearRealTimeLiveRuleEligible : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["referenceLists"] = state ? state.referenceLists : undefined;
-            resourceInputs["revisionCreateTime"] = state ? state.revisionCreateTime : undefined;
-            resourceInputs["revisionId"] = state ? state.revisionId : undefined;
-            resourceInputs["ruleId"] = state ? state.ruleId : undefined;
-            resourceInputs["scope"] = state ? state.scope : undefined;
-            resourceInputs["severities"] = state ? state.severities : undefined;
-            resourceInputs["text"] = state ? state.text : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["allowedRunFrequencies"] = state?.allowedRunFrequencies;
+            resourceInputs["author"] = state?.author;
+            resourceInputs["compilationDiagnostics"] = state?.compilationDiagnostics;
+            resourceInputs["compilationState"] = state?.compilationState;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dataTables"] = state?.dataTables;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["instance"] = state?.instance;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["metadata"] = state?.metadata;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nearRealTimeLiveRuleEligible"] = state?.nearRealTimeLiveRuleEligible;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["referenceLists"] = state?.referenceLists;
+            resourceInputs["revisionCreateTime"] = state?.revisionCreateTime;
+            resourceInputs["revisionId"] = state?.revisionId;
+            resourceInputs["ruleId"] = state?.ruleId;
+            resourceInputs["scope"] = state?.scope;
+            resourceInputs["severities"] = state?.severities;
+            resourceInputs["text"] = state?.text;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as RuleArgs | undefined;
-            if ((!args || args.instance === undefined) && !opts.urn) {
+            if (args?.instance === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instance'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
-            resourceInputs["etag"] = args ? args.etag : undefined;
-            resourceInputs["instance"] = args ? args.instance : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["ruleId"] = args ? args.ruleId : undefined;
-            resourceInputs["scope"] = args ? args.scope : undefined;
-            resourceInputs["text"] = args ? args.text : undefined;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
+            resourceInputs["etag"] = args?.etag;
+            resourceInputs["instance"] = args?.instance;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["ruleId"] = args?.ruleId;
+            resourceInputs["scope"] = args?.scope;
+            resourceInputs["text"] = args?.text;
             resourceInputs["allowedRunFrequencies"] = undefined /*out*/;
             resourceInputs["author"] = undefined /*out*/;
             resourceInputs["compilationDiagnostics"] = undefined /*out*/;

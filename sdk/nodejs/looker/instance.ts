@@ -295,66 +295,66 @@ export class Instance extends pulumi.CustomResource {
      * Looker instance Admin settings.
      * Structure is documented below.
      */
-    public readonly adminSettings!: pulumi.Output<outputs.looker.InstanceAdminSettings | undefined>;
+    declare public readonly adminSettings: pulumi.Output<outputs.looker.InstanceAdminSettings | undefined>;
     /**
      * Network name in the consumer project in the format of: projects/{project}/global/networks/{network}
      * Note that the consumer network may be in a different GCP project than the consumer
      * project that is hosting the Looker Instance.
      */
-    public readonly consumerNetwork!: pulumi.Output<string | undefined>;
+    declare public readonly consumerNetwork: pulumi.Output<string | undefined>;
     /**
      * The time the instance was created in RFC3339 UTC "Zulu" format,
      * accurate to nanoseconds.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Custom domain settings for a Looker instance.
      * Structure is documented below.
      */
-    public readonly customDomain!: pulumi.Output<outputs.looker.InstanceCustomDomain | undefined>;
+    declare public readonly customDomain: pulumi.Output<outputs.looker.InstanceCustomDomain | undefined>;
     /**
      * Policy to determine if the cluster should be deleted forcefully.
      * If setting deletionPolicy = "FORCE", the Looker instance will be deleted regardless
      * of its nested resources. If set to "DEFAULT", Looker instances that still have
      * nested resources will return an error. Possible values: DEFAULT, FORCE
      */
-    public readonly deletionPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly deletionPolicy: pulumi.Output<string | undefined>;
     /**
      * Maintenance denial period for this instance.
      * You must allow at least 14 days of maintenance availability
      * between any two deny maintenance periods.
      * Structure is documented below.
      */
-    public readonly denyMaintenancePeriod!: pulumi.Output<outputs.looker.InstanceDenyMaintenancePeriod | undefined>;
+    declare public readonly denyMaintenancePeriod: pulumi.Output<outputs.looker.InstanceDenyMaintenancePeriod | undefined>;
     /**
      * Public Egress IP (IPv4).
      */
-    public /*out*/ readonly egressPublicIp!: pulumi.Output<string>;
+    declare public /*out*/ readonly egressPublicIp: pulumi.Output<string>;
     /**
      * Looker instance encryption settings.
      * Structure is documented below.
      */
-    public readonly encryptionConfig!: pulumi.Output<outputs.looker.InstanceEncryptionConfig>;
+    declare public readonly encryptionConfig: pulumi.Output<outputs.looker.InstanceEncryptionConfig>;
     /**
      * FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
      */
-    public readonly fipsEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly fipsEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Private Ingress IP (IPv4).
      */
-    public /*out*/ readonly ingressPrivateIp!: pulumi.Output<string>;
+    declare public /*out*/ readonly ingressPrivateIp: pulumi.Output<string>;
     /**
      * Public Ingress IP (IPv4).
      */
-    public /*out*/ readonly ingressPublicIp!: pulumi.Output<string>;
+    declare public /*out*/ readonly ingressPublicIp: pulumi.Output<string>;
     /**
      * Looker instance URI which can be used to access the Looker Instance UI.
      */
-    public /*out*/ readonly lookerUri!: pulumi.Output<string>;
+    declare public /*out*/ readonly lookerUri: pulumi.Output<string>;
     /**
      * The Looker version that the instance is using.
      */
-    public /*out*/ readonly lookerVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly lookerVersion: pulumi.Output<string>;
     /**
      * Maintenance window for an instance.
      * Maintenance of your instance takes place once a month, and will require
@@ -362,16 +362,16 @@ export class Instance extends pulumi.CustomResource {
      * disrupt service.
      * Structure is documented below.
      */
-    public readonly maintenanceWindow!: pulumi.Output<outputs.looker.InstanceMaintenanceWindow | undefined>;
+    declare public readonly maintenanceWindow: pulumi.Output<outputs.looker.InstanceMaintenanceWindow | undefined>;
     /**
      * The ID of the instance or a fully qualified identifier for the instance.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Looker Instance OAuth login settings.
      * Structure is documented below.
      */
-    public readonly oauthConfig!: pulumi.Output<outputs.looker.InstanceOauthConfig>;
+    declare public readonly oauthConfig: pulumi.Output<outputs.looker.InstanceOauthConfig>;
     /**
      * Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
      * - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
@@ -388,43 +388,43 @@ export class Instance extends pulumi.CustomResource {
      * Default value is `LOOKER_CORE_TRIAL`.
      * Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`, `LOOKER_CORE_NONPROD_STANDARD_ANNUAL`, `LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL`, `LOOKER_CORE_NONPROD_EMBED_ANNUAL`, `LOOKER_CORE_TRIAL_STANDARD`, `LOOKER_CORE_TRIAL_ENTERPRISE`, `LOOKER_CORE_TRIAL_EMBED`.
      */
-    public readonly platformEdition!: pulumi.Output<string | undefined>;
+    declare public readonly platformEdition: pulumi.Output<string | undefined>;
     /**
      * Whether private IP is enabled on the Looker instance.
      */
-    public readonly privateIpEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly privateIpEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Information for Private Service Connect (PSC) setup for a Looker instance.
      * Structure is documented below.
      */
-    public readonly pscConfig!: pulumi.Output<outputs.looker.InstancePscConfig | undefined>;
+    declare public readonly pscConfig: pulumi.Output<outputs.looker.InstancePscConfig | undefined>;
     /**
      * Whether Public Service Connect (PSC) is enabled on the Looker instance
      */
-    public readonly pscEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly pscEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Whether public IP is enabled on the Looker instance.
      */
-    public readonly publicIpEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly publicIpEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The name of the Looker region of the instance.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Name of a reserved IP address range within the consumer network, to be used for
      * private service access connection. User may or may not specify this in a request.
      */
-    public readonly reservedRange!: pulumi.Output<string | undefined>;
+    declare public readonly reservedRange: pulumi.Output<string | undefined>;
     /**
      * The time the instance was updated in RFC3339 UTC "Zulu" format,
      * accurate to nanoseconds.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * Metadata about users for a Looker instance.
      * These settings are only available when platform edition LOOKER_CORE_STANDARD is set.
@@ -435,7 +435,7 @@ export class Instance extends pulumi.CustomResource {
      * total users, distributed across Viewer, Standard, and Developer.
      * Structure is documented below.
      */
-    public readonly userMetadata!: pulumi.Output<outputs.looker.InstanceUserMetadata | undefined>;
+    declare public readonly userMetadata: pulumi.Output<outputs.looker.InstanceUserMetadata | undefined>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -450,56 +450,56 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["adminSettings"] = state ? state.adminSettings : undefined;
-            resourceInputs["consumerNetwork"] = state ? state.consumerNetwork : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["customDomain"] = state ? state.customDomain : undefined;
-            resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
-            resourceInputs["denyMaintenancePeriod"] = state ? state.denyMaintenancePeriod : undefined;
-            resourceInputs["egressPublicIp"] = state ? state.egressPublicIp : undefined;
-            resourceInputs["encryptionConfig"] = state ? state.encryptionConfig : undefined;
-            resourceInputs["fipsEnabled"] = state ? state.fipsEnabled : undefined;
-            resourceInputs["ingressPrivateIp"] = state ? state.ingressPrivateIp : undefined;
-            resourceInputs["ingressPublicIp"] = state ? state.ingressPublicIp : undefined;
-            resourceInputs["lookerUri"] = state ? state.lookerUri : undefined;
-            resourceInputs["lookerVersion"] = state ? state.lookerVersion : undefined;
-            resourceInputs["maintenanceWindow"] = state ? state.maintenanceWindow : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["oauthConfig"] = state ? state.oauthConfig : undefined;
-            resourceInputs["platformEdition"] = state ? state.platformEdition : undefined;
-            resourceInputs["privateIpEnabled"] = state ? state.privateIpEnabled : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pscConfig"] = state ? state.pscConfig : undefined;
-            resourceInputs["pscEnabled"] = state ? state.pscEnabled : undefined;
-            resourceInputs["publicIpEnabled"] = state ? state.publicIpEnabled : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["reservedRange"] = state ? state.reservedRange : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["userMetadata"] = state ? state.userMetadata : undefined;
+            resourceInputs["adminSettings"] = state?.adminSettings;
+            resourceInputs["consumerNetwork"] = state?.consumerNetwork;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["customDomain"] = state?.customDomain;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
+            resourceInputs["denyMaintenancePeriod"] = state?.denyMaintenancePeriod;
+            resourceInputs["egressPublicIp"] = state?.egressPublicIp;
+            resourceInputs["encryptionConfig"] = state?.encryptionConfig;
+            resourceInputs["fipsEnabled"] = state?.fipsEnabled;
+            resourceInputs["ingressPrivateIp"] = state?.ingressPrivateIp;
+            resourceInputs["ingressPublicIp"] = state?.ingressPublicIp;
+            resourceInputs["lookerUri"] = state?.lookerUri;
+            resourceInputs["lookerVersion"] = state?.lookerVersion;
+            resourceInputs["maintenanceWindow"] = state?.maintenanceWindow;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["oauthConfig"] = state?.oauthConfig;
+            resourceInputs["platformEdition"] = state?.platformEdition;
+            resourceInputs["privateIpEnabled"] = state?.privateIpEnabled;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pscConfig"] = state?.pscConfig;
+            resourceInputs["pscEnabled"] = state?.pscEnabled;
+            resourceInputs["publicIpEnabled"] = state?.publicIpEnabled;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["reservedRange"] = state?.reservedRange;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["userMetadata"] = state?.userMetadata;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.oauthConfig === undefined) && !opts.urn) {
+            if (args?.oauthConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'oauthConfig'");
             }
-            resourceInputs["adminSettings"] = args ? args.adminSettings : undefined;
-            resourceInputs["consumerNetwork"] = args ? args.consumerNetwork : undefined;
-            resourceInputs["customDomain"] = args ? args.customDomain : undefined;
-            resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
-            resourceInputs["denyMaintenancePeriod"] = args ? args.denyMaintenancePeriod : undefined;
-            resourceInputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
-            resourceInputs["fipsEnabled"] = args ? args.fipsEnabled : undefined;
-            resourceInputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["oauthConfig"] = args ? args.oauthConfig : undefined;
-            resourceInputs["platformEdition"] = args ? args.platformEdition : undefined;
-            resourceInputs["privateIpEnabled"] = args ? args.privateIpEnabled : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["pscConfig"] = args ? args.pscConfig : undefined;
-            resourceInputs["pscEnabled"] = args ? args.pscEnabled : undefined;
-            resourceInputs["publicIpEnabled"] = args ? args.publicIpEnabled : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["reservedRange"] = args ? args.reservedRange : undefined;
-            resourceInputs["userMetadata"] = args ? args.userMetadata : undefined;
+            resourceInputs["adminSettings"] = args?.adminSettings;
+            resourceInputs["consumerNetwork"] = args?.consumerNetwork;
+            resourceInputs["customDomain"] = args?.customDomain;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
+            resourceInputs["denyMaintenancePeriod"] = args?.denyMaintenancePeriod;
+            resourceInputs["encryptionConfig"] = args?.encryptionConfig;
+            resourceInputs["fipsEnabled"] = args?.fipsEnabled;
+            resourceInputs["maintenanceWindow"] = args?.maintenanceWindow;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["oauthConfig"] = args?.oauthConfig;
+            resourceInputs["platformEdition"] = args?.platformEdition;
+            resourceInputs["privateIpEnabled"] = args?.privateIpEnabled;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["pscConfig"] = args?.pscConfig;
+            resourceInputs["pscEnabled"] = args?.pscEnabled;
+            resourceInputs["publicIpEnabled"] = args?.publicIpEnabled;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["reservedRange"] = args?.reservedRange;
+            resourceInputs["userMetadata"] = args?.userMetadata;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["egressPublicIp"] = undefined /*out*/;
             resourceInputs["ingressPrivateIp"] = undefined /*out*/;

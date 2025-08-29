@@ -446,74 +446,74 @@ export class WorkerPool extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Settings for the Binary Authorization feature.
      * Structure is documented below.
      */
-    public readonly binaryAuthorization!: pulumi.Output<outputs.cloudrunv2.WorkerPoolBinaryAuthorization | undefined>;
+    declare public readonly binaryAuthorization: pulumi.Output<outputs.cloudrunv2.WorkerPoolBinaryAuthorization | undefined>;
     /**
      * Arbitrary identifier for the API client.
      */
-    public readonly client!: pulumi.Output<string | undefined>;
+    declare public readonly client: pulumi.Output<string | undefined>;
     /**
      * Arbitrary version identifier for the API client.
      */
-    public readonly clientVersion!: pulumi.Output<string | undefined>;
+    declare public readonly clientVersion: pulumi.Output<string | undefined>;
     /**
      * The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the WorkerPool does not reach its Serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
      * Structure is documented below.
      */
-    public /*out*/ readonly conditions!: pulumi.Output<outputs.cloudrunv2.WorkerPoolCondition[]>;
+    declare public /*out*/ readonly conditions: pulumi.Output<outputs.cloudrunv2.WorkerPoolCondition[]>;
     /**
      * The creation time.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Email address of the authenticated creator.
      */
-    public /*out*/ readonly creator!: pulumi.Output<string>;
+    declare public /*out*/ readonly creator: pulumi.Output<string>;
     /**
      * One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
      * For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
      */
-    public readonly customAudiences!: pulumi.Output<string[] | undefined>;
+    declare public readonly customAudiences: pulumi.Output<string[] | undefined>;
     /**
      * The deletion time.
      */
-    public /*out*/ readonly deleteTime!: pulumi.Output<string>;
-    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
+    declare public /*out*/ readonly deleteTime: pulumi.Output<string>;
+    declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
      * User-provided description of the WorkerPool. This field currently has a 512-character limit.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * For a deleted resource, the time after which it will be permanently deleted.
      */
-    public /*out*/ readonly expireTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly expireTime: pulumi.Output<string>;
     /**
      * A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
      */
-    public /*out*/ readonly generation!: pulumi.Output<string>;
+    declare public /*out*/ readonly generation: pulumi.Output<string>;
     /**
      * Detailed status information for corresponding instance splits. See comments in reconciling for additional information on reconciliation process in Cloud Run.
      * Structure is documented below.
      */
-    public /*out*/ readonly instanceSplitStatuses!: pulumi.Output<outputs.cloudrunv2.WorkerPoolInstanceSplitStatus[]>;
+    declare public /*out*/ readonly instanceSplitStatuses: pulumi.Output<outputs.cloudrunv2.WorkerPoolInstanceSplitStatus[]>;
     /**
      * Specifies how to distribute instances over a collection of Revisions belonging to the WorkerPool. If instance split is empty or not provided, defaults to 100% instances assigned to the latest Ready Revision.
      * Structure is documented below.
      */
-    public readonly instanceSplits!: pulumi.Output<outputs.cloudrunv2.WorkerPoolInstanceSplit[]>;
+    declare public readonly instanceSplits: pulumi.Output<outputs.cloudrunv2.WorkerPoolInstanceSplit[]>;
     /**
      * Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
      * environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
@@ -522,78 +522,78 @@ export class WorkerPool extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Email address of the last authenticated modifier.
      */
-    public /*out*/ readonly lastModifier!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastModifier: pulumi.Output<string>;
     /**
      * Name of the last created revision. See comments in reconciling for additional information on reconciliation process in Cloud Run.
      */
-    public /*out*/ readonly latestCreatedRevision!: pulumi.Output<string>;
+    declare public /*out*/ readonly latestCreatedRevision: pulumi.Output<string>;
     /**
      * Name of the latest revision that is serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run.
      */
-    public /*out*/ readonly latestReadyRevision!: pulumi.Output<string>;
+    declare public /*out*/ readonly latestReadyRevision: pulumi.Output<string>;
     /**
      * The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
      * If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
      * For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
      * Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
      */
-    public readonly launchStage!: pulumi.Output<string>;
+    declare public readonly launchStage: pulumi.Output<string>;
     /**
      * The location of the cloud run worker pool
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Name of the WorkerPool.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The generation of this WorkerPool currently serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
      */
-    public /*out*/ readonly observedGeneration!: pulumi.Output<string>;
+    declare public /*out*/ readonly observedGeneration: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Returns true if the WorkerPool is currently being acted upon by the system to bring it into the desired state.
      * When a new WorkerPool is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the WorkerPool to the desired serving state. This process is called reconciliation. While reconciliation is in process, observedGeneration, latest_ready_revison, trafficStatuses, and uri will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the WorkerPool, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
      * If reconciliation succeeded, the following fields will match: traffic and trafficStatuses, observedGeneration and generation, latestReadyRevision and latestCreatedRevision.
      * If reconciliation failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision, or empty for newly created WorkerPools. Additional information on the failure can be found in terminalCondition and conditions.
      */
-    public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly reconciling: pulumi.Output<boolean>;
     /**
      * Scaling settings that apply to the worker pool.
      * Structure is documented below.
      */
-    public readonly scaling!: pulumi.Output<outputs.cloudrunv2.WorkerPoolScaling>;
+    declare public readonly scaling: pulumi.Output<outputs.cloudrunv2.WorkerPoolScaling>;
     /**
      * The template used to create revisions for this WorkerPool.
      * Structure is documented below.
      */
-    public readonly template!: pulumi.Output<outputs.cloudrunv2.WorkerPoolTemplate>;
+    declare public readonly template: pulumi.Output<outputs.cloudrunv2.WorkerPoolTemplate>;
     /**
      * The Condition of this WorkerPool, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
      * Structure is documented below.
      */
-    public /*out*/ readonly terminalConditions!: pulumi.Output<outputs.cloudrunv2.WorkerPoolTerminalCondition[]>;
+    declare public /*out*/ readonly terminalConditions: pulumi.Output<outputs.cloudrunv2.WorkerPoolTerminalCondition[]>;
     /**
      * Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * The last-modified time.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a WorkerPool resource with the given unique name, arguments, and options.
@@ -608,63 +608,63 @@ export class WorkerPool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkerPoolState | undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["binaryAuthorization"] = state ? state.binaryAuthorization : undefined;
-            resourceInputs["client"] = state ? state.client : undefined;
-            resourceInputs["clientVersion"] = state ? state.clientVersion : undefined;
-            resourceInputs["conditions"] = state ? state.conditions : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["creator"] = state ? state.creator : undefined;
-            resourceInputs["customAudiences"] = state ? state.customAudiences : undefined;
-            resourceInputs["deleteTime"] = state ? state.deleteTime : undefined;
-            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["expireTime"] = state ? state.expireTime : undefined;
-            resourceInputs["generation"] = state ? state.generation : undefined;
-            resourceInputs["instanceSplitStatuses"] = state ? state.instanceSplitStatuses : undefined;
-            resourceInputs["instanceSplits"] = state ? state.instanceSplits : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["lastModifier"] = state ? state.lastModifier : undefined;
-            resourceInputs["latestCreatedRevision"] = state ? state.latestCreatedRevision : undefined;
-            resourceInputs["latestReadyRevision"] = state ? state.latestReadyRevision : undefined;
-            resourceInputs["launchStage"] = state ? state.launchStage : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["observedGeneration"] = state ? state.observedGeneration : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["reconciling"] = state ? state.reconciling : undefined;
-            resourceInputs["scaling"] = state ? state.scaling : undefined;
-            resourceInputs["template"] = state ? state.template : undefined;
-            resourceInputs["terminalConditions"] = state ? state.terminalConditions : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["binaryAuthorization"] = state?.binaryAuthorization;
+            resourceInputs["client"] = state?.client;
+            resourceInputs["clientVersion"] = state?.clientVersion;
+            resourceInputs["conditions"] = state?.conditions;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["creator"] = state?.creator;
+            resourceInputs["customAudiences"] = state?.customAudiences;
+            resourceInputs["deleteTime"] = state?.deleteTime;
+            resourceInputs["deletionProtection"] = state?.deletionProtection;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["expireTime"] = state?.expireTime;
+            resourceInputs["generation"] = state?.generation;
+            resourceInputs["instanceSplitStatuses"] = state?.instanceSplitStatuses;
+            resourceInputs["instanceSplits"] = state?.instanceSplits;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["lastModifier"] = state?.lastModifier;
+            resourceInputs["latestCreatedRevision"] = state?.latestCreatedRevision;
+            resourceInputs["latestReadyRevision"] = state?.latestReadyRevision;
+            resourceInputs["launchStage"] = state?.launchStage;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["observedGeneration"] = state?.observedGeneration;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["reconciling"] = state?.reconciling;
+            resourceInputs["scaling"] = state?.scaling;
+            resourceInputs["template"] = state?.template;
+            resourceInputs["terminalConditions"] = state?.terminalConditions;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as WorkerPoolArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.template === undefined) && !opts.urn) {
+            if (args?.template === undefined && !opts.urn) {
                 throw new Error("Missing required property 'template'");
             }
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["binaryAuthorization"] = args ? args.binaryAuthorization : undefined;
-            resourceInputs["client"] = args ? args.client : undefined;
-            resourceInputs["clientVersion"] = args ? args.clientVersion : undefined;
-            resourceInputs["customAudiences"] = args ? args.customAudiences : undefined;
-            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["instanceSplits"] = args ? args.instanceSplits : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["launchStage"] = args ? args.launchStage : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["scaling"] = args ? args.scaling : undefined;
-            resourceInputs["template"] = args ? args.template : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["binaryAuthorization"] = args?.binaryAuthorization;
+            resourceInputs["client"] = args?.client;
+            resourceInputs["clientVersion"] = args?.clientVersion;
+            resourceInputs["customAudiences"] = args?.customAudiences;
+            resourceInputs["deletionProtection"] = args?.deletionProtection;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["instanceSplits"] = args?.instanceSplits;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["launchStage"] = args?.launchStage;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["scaling"] = args?.scaling;
+            resourceInputs["template"] = args?.template;
             resourceInputs["conditions"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["creator"] = undefined /*out*/;

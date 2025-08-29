@@ -85,7 +85,7 @@ export class FirewallPolicyAssociation extends pulumi.CustomResource {
     /**
      * The target that the firewall policy is attached to.
      */
-    public readonly attachmentTarget!: pulumi.Output<string>;
+    declare public readonly attachmentTarget: pulumi.Output<string>;
     /**
      * The firewall policy of the resource.
      * This field can be updated to refer to a different Firewall Policy, which will create a new association from that new
@@ -93,15 +93,15 @@ export class FirewallPolicyAssociation extends pulumi.CustomResource {
      * **Note** Due to potential risks with this operation it is *highly* recommended to use the `createBeforeDestroy` life cycle option
      * on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
      */
-    public readonly firewallPolicy!: pulumi.Output<string>;
+    declare public readonly firewallPolicy: pulumi.Output<string>;
     /**
      * The name for an association.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The short name of the firewall policy of the association.
      */
-    public /*out*/ readonly shortName!: pulumi.Output<string>;
+    declare public /*out*/ readonly shortName: pulumi.Output<string>;
 
     /**
      * Create a FirewallPolicyAssociation resource with the given unique name, arguments, and options.
@@ -116,21 +116,21 @@ export class FirewallPolicyAssociation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FirewallPolicyAssociationState | undefined;
-            resourceInputs["attachmentTarget"] = state ? state.attachmentTarget : undefined;
-            resourceInputs["firewallPolicy"] = state ? state.firewallPolicy : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["shortName"] = state ? state.shortName : undefined;
+            resourceInputs["attachmentTarget"] = state?.attachmentTarget;
+            resourceInputs["firewallPolicy"] = state?.firewallPolicy;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["shortName"] = state?.shortName;
         } else {
             const args = argsOrState as FirewallPolicyAssociationArgs | undefined;
-            if ((!args || args.attachmentTarget === undefined) && !opts.urn) {
+            if (args?.attachmentTarget === undefined && !opts.urn) {
                 throw new Error("Missing required property 'attachmentTarget'");
             }
-            if ((!args || args.firewallPolicy === undefined) && !opts.urn) {
+            if (args?.firewallPolicy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'firewallPolicy'");
             }
-            resourceInputs["attachmentTarget"] = args ? args.attachmentTarget : undefined;
-            resourceInputs["firewallPolicy"] = args ? args.firewallPolicy : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["attachmentTarget"] = args?.attachmentTarget;
+            resourceInputs["firewallPolicy"] = args?.firewallPolicy;
+            resourceInputs["name"] = args?.name;
             resourceInputs["shortName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

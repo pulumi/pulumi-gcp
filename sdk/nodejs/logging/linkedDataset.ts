@@ -104,42 +104,42 @@ export class LinkedDataset extends pulumi.CustomResource {
      * Views corresponding to the LogViews in the bucket.
      * Structure is documented below.
      */
-    public readonly bigqueryDatasets!: pulumi.Output<outputs.logging.LinkedDatasetBigqueryDataset[]>;
+    declare public readonly bigqueryDatasets: pulumi.Output<outputs.logging.LinkedDatasetBigqueryDataset[]>;
     /**
      * The bucket to which the linked dataset is attached.
      */
-    public readonly bucket!: pulumi.Output<string>;
+    declare public readonly bucket: pulumi.Output<string>;
     /**
      * Output only. The creation timestamp of the link. A timestamp in RFC3339 UTC "Zulu" format,
      * with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z"
      * and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Describes this link. The maximum length of the description is 8000 characters.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Output only. The linked dataset lifecycle state.
      */
-    public /*out*/ readonly lifecycleState!: pulumi.Output<string>;
+    declare public /*out*/ readonly lifecycleState: pulumi.Output<string>;
     /**
      * The id of the linked dataset.
      */
-    public readonly linkId!: pulumi.Output<string>;
+    declare public readonly linkId: pulumi.Output<string>;
     /**
      * The location of the linked dataset.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The resource name of the linked dataset. The name can have up to 100 characters. A valid link id
      * (at the end of the link name) must only have alphanumeric characters and underscores within it.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The parent of the linked dataset.
      */
-    public readonly parent!: pulumi.Output<string>;
+    declare public readonly parent: pulumi.Output<string>;
 
     /**
      * Create a LinkedDataset resource with the given unique name, arguments, and options.
@@ -154,29 +154,29 @@ export class LinkedDataset extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LinkedDatasetState | undefined;
-            resourceInputs["bigqueryDatasets"] = state ? state.bigqueryDatasets : undefined;
-            resourceInputs["bucket"] = state ? state.bucket : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["lifecycleState"] = state ? state.lifecycleState : undefined;
-            resourceInputs["linkId"] = state ? state.linkId : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
+            resourceInputs["bigqueryDatasets"] = state?.bigqueryDatasets;
+            resourceInputs["bucket"] = state?.bucket;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["lifecycleState"] = state?.lifecycleState;
+            resourceInputs["linkId"] = state?.linkId;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parent"] = state?.parent;
         } else {
             const args = argsOrState as LinkedDatasetArgs | undefined;
-            if ((!args || args.bucket === undefined) && !opts.urn) {
+            if (args?.bucket === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            if ((!args || args.linkId === undefined) && !opts.urn) {
+            if (args?.linkId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'linkId'");
             }
-            resourceInputs["bigqueryDatasets"] = args ? args.bigqueryDatasets : undefined;
-            resourceInputs["bucket"] = args ? args.bucket : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["linkId"] = args ? args.linkId : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["bigqueryDatasets"] = args?.bigqueryDatasets;
+            resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["linkId"] = args?.linkId;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["parent"] = args?.parent;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["lifecycleState"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

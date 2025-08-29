@@ -63,21 +63,21 @@ export class ServiceIdentity extends pulumi.CustomResource {
     /**
      * The email address of the Google managed service account.
      */
-    public /*out*/ readonly email!: pulumi.Output<string>;
+    declare public /*out*/ readonly email: pulumi.Output<string>;
     /**
      * The folder in which the resource belongs.
      */
-    public readonly folder!: pulumi.Output<string>;
+    declare public readonly folder: pulumi.Output<string>;
     /**
      * The Identity of the Google managed service account in the form 'serviceAccount:{email}'. This value is often used to refer to the service account in order to grant IAM permissions.
      */
-    public /*out*/ readonly member!: pulumi.Output<string>;
+    declare public /*out*/ readonly member: pulumi.Output<string>;
     /**
      * The service to generate identity for.
      *
      * - - -
      */
-    public readonly service!: pulumi.Output<string>;
+    declare public readonly service: pulumi.Output<string>;
 
     /**
      * Create a ServiceIdentity resource with the given unique name, arguments, and options.
@@ -92,20 +92,20 @@ export class ServiceIdentity extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceIdentityState | undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["folder"] = state ? state.folder : undefined;
-            resourceInputs["member"] = state ? state.member : undefined;
-            resourceInputs["service"] = state ? state.service : undefined;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["folder"] = state?.folder;
+            resourceInputs["member"] = state?.member;
+            resourceInputs["service"] = state?.service;
         } else {
             const args = argsOrState as ServiceIdentityArgs | undefined;
-            if ((!args || args.folder === undefined) && !opts.urn) {
+            if (args?.folder === undefined && !opts.urn) {
                 throw new Error("Missing required property 'folder'");
             }
-            if ((!args || args.service === undefined) && !opts.urn) {
+            if (args?.service === undefined && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
-            resourceInputs["folder"] = args ? args.folder : undefined;
-            resourceInputs["service"] = args ? args.service : undefined;
+            resourceInputs["folder"] = args?.folder;
+            resourceInputs["service"] = args?.service;
             resourceInputs["email"] = undefined /*out*/;
             resourceInputs["member"] = undefined /*out*/;
         }

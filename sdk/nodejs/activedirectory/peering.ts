@@ -38,47 +38,47 @@ export class Peering extends pulumi.CustomResource {
     /**
      * The full names of the Google Compute Engine networks to which the instance is connected. Caller needs to make sure that CIDR subnets do not overlap between networks, else peering creation will fail.
      */
-    public readonly authorizedNetwork!: pulumi.Output<string>;
+    declare public readonly authorizedNetwork: pulumi.Output<string>;
     /**
      * Full domain resource path for the Managed AD Domain involved in peering. The resource path should be in the form projects/{projectId}/locations/global/domains/{domainName}
      */
-    public readonly domainResource!: pulumi.Output<string>;
+    declare public readonly domainResource: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Resource labels that can contain user-provided metadata
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Unique name of the peering in this scope including projects and location using the form: projects/{projectId}/locations/global/peerings/{peeringId}.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * (Required)
      */
-    public readonly peeringId!: pulumi.Output<string>;
+    declare public readonly peeringId: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The current state of this Peering.
      */
-    public readonly status!: pulumi.Output<string | undefined>;
+    declare public readonly status: pulumi.Output<string | undefined>;
     /**
      * Additional information about the current status of this peering, if available.
      */
-    public readonly statusMessage!: pulumi.Output<string | undefined>;
+    declare public readonly statusMessage: pulumi.Output<string | undefined>;
 
     /**
      * Create a Peering resource with the given unique name, arguments, and options.
@@ -93,34 +93,34 @@ export class Peering extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PeeringState | undefined;
-            resourceInputs["authorizedNetwork"] = state ? state.authorizedNetwork : undefined;
-            resourceInputs["domainResource"] = state ? state.domainResource : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["peeringId"] = state ? state.peeringId : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["statusMessage"] = state ? state.statusMessage : undefined;
+            resourceInputs["authorizedNetwork"] = state?.authorizedNetwork;
+            resourceInputs["domainResource"] = state?.domainResource;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["peeringId"] = state?.peeringId;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["statusMessage"] = state?.statusMessage;
         } else {
             const args = argsOrState as PeeringArgs | undefined;
-            if ((!args || args.authorizedNetwork === undefined) && !opts.urn) {
+            if (args?.authorizedNetwork === undefined && !opts.urn) {
                 throw new Error("Missing required property 'authorizedNetwork'");
             }
-            if ((!args || args.domainResource === undefined) && !opts.urn) {
+            if (args?.domainResource === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domainResource'");
             }
-            if ((!args || args.peeringId === undefined) && !opts.urn) {
+            if (args?.peeringId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'peeringId'");
             }
-            resourceInputs["authorizedNetwork"] = args ? args.authorizedNetwork : undefined;
-            resourceInputs["domainResource"] = args ? args.domainResource : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["peeringId"] = args ? args.peeringId : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["statusMessage"] = args ? args.statusMessage : undefined;
+            resourceInputs["authorizedNetwork"] = args?.authorizedNetwork;
+            resourceInputs["domainResource"] = args?.domainResource;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["peeringId"] = args?.peeringId;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["statusMessage"] = args?.statusMessage;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;

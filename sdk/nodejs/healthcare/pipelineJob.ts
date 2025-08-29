@@ -297,19 +297,19 @@ export class PipelineJob extends pulumi.CustomResource {
      * Specifies the backfill configuration.
      * Structure is documented below.
      */
-    public readonly backfillPipelineJob!: pulumi.Output<outputs.healthcare.PipelineJobBackfillPipelineJob | undefined>;
+    declare public readonly backfillPipelineJob: pulumi.Output<outputs.healthcare.PipelineJobBackfillPipelineJob | undefined>;
     /**
      * Healthcare Dataset under which the Pipeline Job is to run
      */
-    public readonly dataset!: pulumi.Output<string>;
+    declare public readonly dataset: pulumi.Output<string>;
     /**
      * If true, disables writing lineage for the pipeline.
      */
-    public readonly disableLineage!: pulumi.Output<boolean | undefined>;
+    declare public readonly disableLineage: pulumi.Output<boolean | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * User-supplied key-value pairs used to organize Pipeline Jobs.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
@@ -325,34 +325,34 @@ export class PipelineJob extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Location where the Pipeline Job is to run
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Specifies mapping configuration.
      * Structure is documented below.
      */
-    public readonly mappingPipelineJob!: pulumi.Output<outputs.healthcare.PipelineJobMappingPipelineJob | undefined>;
+    declare public readonly mappingPipelineJob: pulumi.Output<outputs.healthcare.PipelineJobMappingPipelineJob | undefined>;
     /**
      * Specifies the name of the pipeline job. This field is user-assigned.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Specifies reconciliation configuration.
      * Structure is documented below.
      */
-    public readonly reconciliationPipelineJob!: pulumi.Output<outputs.healthcare.PipelineJobReconciliationPipelineJob | undefined>;
+    declare public readonly reconciliationPipelineJob: pulumi.Output<outputs.healthcare.PipelineJobReconciliationPipelineJob | undefined>;
     /**
      * The fully qualified name of this dataset
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
 
     /**
      * Create a PipelineJob resource with the given unique name, arguments, and options.
@@ -367,33 +367,33 @@ export class PipelineJob extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PipelineJobState | undefined;
-            resourceInputs["backfillPipelineJob"] = state ? state.backfillPipelineJob : undefined;
-            resourceInputs["dataset"] = state ? state.dataset : undefined;
-            resourceInputs["disableLineage"] = state ? state.disableLineage : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["mappingPipelineJob"] = state ? state.mappingPipelineJob : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["reconciliationPipelineJob"] = state ? state.reconciliationPipelineJob : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["backfillPipelineJob"] = state?.backfillPipelineJob;
+            resourceInputs["dataset"] = state?.dataset;
+            resourceInputs["disableLineage"] = state?.disableLineage;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["mappingPipelineJob"] = state?.mappingPipelineJob;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["reconciliationPipelineJob"] = state?.reconciliationPipelineJob;
+            resourceInputs["selfLink"] = state?.selfLink;
         } else {
             const args = argsOrState as PipelineJobArgs | undefined;
-            if ((!args || args.dataset === undefined) && !opts.urn) {
+            if (args?.dataset === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataset'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["backfillPipelineJob"] = args ? args.backfillPipelineJob : undefined;
-            resourceInputs["dataset"] = args ? args.dataset : undefined;
-            resourceInputs["disableLineage"] = args ? args.disableLineage : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["mappingPipelineJob"] = args ? args.mappingPipelineJob : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["reconciliationPipelineJob"] = args ? args.reconciliationPipelineJob : undefined;
+            resourceInputs["backfillPipelineJob"] = args?.backfillPipelineJob;
+            resourceInputs["dataset"] = args?.dataset;
+            resourceInputs["disableLineage"] = args?.disableLineage;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["mappingPipelineJob"] = args?.mappingPipelineJob;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["reconciliationPipelineJob"] = args?.reconciliationPipelineJob;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;

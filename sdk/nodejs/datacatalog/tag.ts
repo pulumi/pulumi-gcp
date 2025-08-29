@@ -329,35 +329,35 @@ export class Tag extends pulumi.CustomResource {
      * For attaching a tag to a nested column, use `.` to separate the column names. Example:
      * `outer_column.inner_column`
      */
-    public readonly column!: pulumi.Output<string | undefined>;
+    declare public readonly column: pulumi.Output<string | undefined>;
     /**
      * This maps the ID of a tag field to the value of and additional information about that field.
      * Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
      * Structure is documented below.
      */
-    public readonly fields!: pulumi.Output<outputs.datacatalog.TagField[]>;
+    declare public readonly fields: pulumi.Output<outputs.datacatalog.TagField[]>;
     /**
      * The resource name of the tag in URL format. Example:
      * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}/tags/{tag_id} or
      * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id}
      * where tagId is a system-generated identifier. Note that this Tag may not actually be stored in the location in this name.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
      * all entries in that group.
      */
-    public readonly parent!: pulumi.Output<string | undefined>;
+    declare public readonly parent: pulumi.Output<string | undefined>;
     /**
      * The resource name of the tag template that this tag uses. Example:
      * projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}
      * This field cannot be modified after creation.
      */
-    public readonly template!: pulumi.Output<string>;
+    declare public readonly template: pulumi.Output<string>;
     /**
      * The display name of the tag template.
      */
-    public /*out*/ readonly templateDisplayname!: pulumi.Output<string>;
+    declare public /*out*/ readonly templateDisplayname: pulumi.Output<string>;
 
     /**
      * Create a Tag resource with the given unique name, arguments, and options.
@@ -372,24 +372,24 @@ export class Tag extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TagState | undefined;
-            resourceInputs["column"] = state ? state.column : undefined;
-            resourceInputs["fields"] = state ? state.fields : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["template"] = state ? state.template : undefined;
-            resourceInputs["templateDisplayname"] = state ? state.templateDisplayname : undefined;
+            resourceInputs["column"] = state?.column;
+            resourceInputs["fields"] = state?.fields;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["template"] = state?.template;
+            resourceInputs["templateDisplayname"] = state?.templateDisplayname;
         } else {
             const args = argsOrState as TagArgs | undefined;
-            if ((!args || args.fields === undefined) && !opts.urn) {
+            if (args?.fields === undefined && !opts.urn) {
                 throw new Error("Missing required property 'fields'");
             }
-            if ((!args || args.template === undefined) && !opts.urn) {
+            if (args?.template === undefined && !opts.urn) {
                 throw new Error("Missing required property 'template'");
             }
-            resourceInputs["column"] = args ? args.column : undefined;
-            resourceInputs["fields"] = args ? args.fields : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
-            resourceInputs["template"] = args ? args.template : undefined;
+            resourceInputs["column"] = args?.column;
+            resourceInputs["fields"] = args?.fields;
+            resourceInputs["parent"] = args?.parent;
+            resourceInputs["template"] = args?.template;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["templateDisplayname"] = undefined /*out*/;
         }

@@ -92,30 +92,30 @@ export class DnsZone extends pulumi.CustomResource {
     /**
      * Description for the zone.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * ID of the dns zone.
      */
-    public readonly dnsZoneId!: pulumi.Output<string>;
+    declare public readonly dnsZoneId: pulumi.Output<string>;
     /**
      * Doamin for the zone.
      */
-    public readonly domain!: pulumi.Output<string>;
+    declare public readonly domain: pulumi.Output<string>;
     /**
      * Name of the Dns Zone in the following format:
      * organizations/{organization}/dnsZones/{dnsZone}.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The Apigee Organization associated with the Apigee instance,
      * in the format `organizations/{{org_name}}`.
      */
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * Peering zone config
      * Structure is documented below.
      */
-    public readonly peeringConfig!: pulumi.Output<outputs.apigee.DnsZonePeeringConfig>;
+    declare public readonly peeringConfig: pulumi.Output<outputs.apigee.DnsZonePeeringConfig>;
 
     /**
      * Create a DnsZone resource with the given unique name, arguments, and options.
@@ -130,34 +130,34 @@ export class DnsZone extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DnsZoneState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["dnsZoneId"] = state ? state.dnsZoneId : undefined;
-            resourceInputs["domain"] = state ? state.domain : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["peeringConfig"] = state ? state.peeringConfig : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["dnsZoneId"] = state?.dnsZoneId;
+            resourceInputs["domain"] = state?.domain;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["peeringConfig"] = state?.peeringConfig;
         } else {
             const args = argsOrState as DnsZoneArgs | undefined;
-            if ((!args || args.description === undefined) && !opts.urn) {
+            if (args?.description === undefined && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            if ((!args || args.dnsZoneId === undefined) && !opts.urn) {
+            if (args?.dnsZoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dnsZoneId'");
             }
-            if ((!args || args.domain === undefined) && !opts.urn) {
+            if (args?.domain === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domain'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if ((!args || args.peeringConfig === undefined) && !opts.urn) {
+            if (args?.peeringConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'peeringConfig'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["dnsZoneId"] = args ? args.dnsZoneId : undefined;
-            resourceInputs["domain"] = args ? args.domain : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["peeringConfig"] = args ? args.peeringConfig : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["dnsZoneId"] = args?.dnsZoneId;
+            resourceInputs["domain"] = args?.domain;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["peeringConfig"] = args?.peeringConfig;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

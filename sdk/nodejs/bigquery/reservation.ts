@@ -92,26 +92,26 @@ export class Reservation extends pulumi.CustomResource {
      * The configuration parameters for the auto scaling feature.
      * Structure is documented below.
      */
-    public readonly autoscale!: pulumi.Output<outputs.bigquery.ReservationAutoscale | undefined>;
+    declare public readonly autoscale: pulumi.Output<outputs.bigquery.ReservationAutoscale | undefined>;
     /**
      * Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
      */
-    public readonly concurrency!: pulumi.Output<number | undefined>;
+    declare public readonly concurrency: pulumi.Output<number | undefined>;
     /**
      * The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
      */
-    public readonly edition!: pulumi.Output<string>;
+    declare public readonly edition: pulumi.Output<string>;
     /**
      * If false, any query using this reservation will use idle slots from other reservations within
      * the same admin project. If true, a query using this reservation will execute with the slot
      * capacity specified above at most.
      */
-    public readonly ignoreIdleSlots!: pulumi.Output<boolean | undefined>;
+    declare public readonly ignoreIdleSlots: pulumi.Output<boolean | undefined>;
     /**
      * The geographic location where the transfer config should reside.
      * Examples: US, EU, asia-northeast1. The default value is US.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
      * (if ignoreIdleSlots is false) and scaled slots. If present, the reservation won't use
@@ -146,27 +146,27 @@ export class Reservation extends pulumi.CustomResource {
      * maxSlots to 0 and set scalingMode to SCALING_MODE_UNSPECIFIED to disable the maxSlots
      * feature.
      */
-    public readonly maxSlots!: pulumi.Output<number | undefined>;
+    declare public readonly maxSlots: pulumi.Output<number | undefined>;
     /**
      * The name of the reservation. This field must only contain alphanumeric characters or dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The location where the reservation was originally created. This is set only during the
      * failover reservation's creation. All billing charges for the failover reservation will be
      * applied to this location.
      */
-    public /*out*/ readonly originalPrimaryLocation!: pulumi.Output<string>;
+    declare public /*out*/ readonly originalPrimaryLocation: pulumi.Output<string>;
     /**
      * The current location of the reservation's primary replica. This field is only set for
      * reservations using the managed disaster recovery feature.
      */
-    public /*out*/ readonly primaryLocation!: pulumi.Output<string>;
+    declare public /*out*/ readonly primaryLocation: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The Disaster Recovery(DR) replication status of the reservation. This is only available for
      * the primary replicas of DR/failover reservations and provides information about the both the
@@ -176,7 +176,7 @@ export class Reservation extends pulumi.CustomResource {
      * operations on the reservation have succeeded.
      * Structure is documented below.
      */
-    public /*out*/ readonly replicationStatuses!: pulumi.Output<outputs.bigquery.ReservationReplicationStatus[]>;
+    declare public /*out*/ readonly replicationStatuses: pulumi.Output<outputs.bigquery.ReservationReplicationStatus[]>;
     /**
      * The scaling mode for the reservation. If the field is present but maxSlots is not present,
      * requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
@@ -212,19 +212,19 @@ export class Reservation extends pulumi.CustomResource {
      * Otherwise the request will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
      * Possible values are: `SCALING_MODE_UNSPECIFIED`, `AUTOSCALE_ONLY`, `IDLE_SLOTS_ONLY`, `ALL_SLOTS`.
      */
-    public readonly scalingMode!: pulumi.Output<string | undefined>;
+    declare public readonly scalingMode: pulumi.Output<string | undefined>;
     /**
      * The current location of the reservation's secondary replica. This field is only set for
      * reservations using the managed disaster recovery feature. Users can set this in create
      * reservation calls to create a failover reservation or in update reservation calls to convert
      * a non-failover reservation to a failover reservation(or vice versa).
      */
-    public readonly secondaryLocation!: pulumi.Output<string | undefined>;
+    declare public readonly secondaryLocation: pulumi.Output<string | undefined>;
     /**
      * Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
      * unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
      */
-    public readonly slotCapacity!: pulumi.Output<number>;
+    declare public readonly slotCapacity: pulumi.Output<number>;
 
     /**
      * Create a Reservation resource with the given unique name, arguments, and options.
@@ -239,36 +239,36 @@ export class Reservation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ReservationState | undefined;
-            resourceInputs["autoscale"] = state ? state.autoscale : undefined;
-            resourceInputs["concurrency"] = state ? state.concurrency : undefined;
-            resourceInputs["edition"] = state ? state.edition : undefined;
-            resourceInputs["ignoreIdleSlots"] = state ? state.ignoreIdleSlots : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["maxSlots"] = state ? state.maxSlots : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["originalPrimaryLocation"] = state ? state.originalPrimaryLocation : undefined;
-            resourceInputs["primaryLocation"] = state ? state.primaryLocation : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["replicationStatuses"] = state ? state.replicationStatuses : undefined;
-            resourceInputs["scalingMode"] = state ? state.scalingMode : undefined;
-            resourceInputs["secondaryLocation"] = state ? state.secondaryLocation : undefined;
-            resourceInputs["slotCapacity"] = state ? state.slotCapacity : undefined;
+            resourceInputs["autoscale"] = state?.autoscale;
+            resourceInputs["concurrency"] = state?.concurrency;
+            resourceInputs["edition"] = state?.edition;
+            resourceInputs["ignoreIdleSlots"] = state?.ignoreIdleSlots;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["maxSlots"] = state?.maxSlots;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["originalPrimaryLocation"] = state?.originalPrimaryLocation;
+            resourceInputs["primaryLocation"] = state?.primaryLocation;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["replicationStatuses"] = state?.replicationStatuses;
+            resourceInputs["scalingMode"] = state?.scalingMode;
+            resourceInputs["secondaryLocation"] = state?.secondaryLocation;
+            resourceInputs["slotCapacity"] = state?.slotCapacity;
         } else {
             const args = argsOrState as ReservationArgs | undefined;
-            if ((!args || args.slotCapacity === undefined) && !opts.urn) {
+            if (args?.slotCapacity === undefined && !opts.urn) {
                 throw new Error("Missing required property 'slotCapacity'");
             }
-            resourceInputs["autoscale"] = args ? args.autoscale : undefined;
-            resourceInputs["concurrency"] = args ? args.concurrency : undefined;
-            resourceInputs["edition"] = args ? args.edition : undefined;
-            resourceInputs["ignoreIdleSlots"] = args ? args.ignoreIdleSlots : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["maxSlots"] = args ? args.maxSlots : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["scalingMode"] = args ? args.scalingMode : undefined;
-            resourceInputs["secondaryLocation"] = args ? args.secondaryLocation : undefined;
-            resourceInputs["slotCapacity"] = args ? args.slotCapacity : undefined;
+            resourceInputs["autoscale"] = args?.autoscale;
+            resourceInputs["concurrency"] = args?.concurrency;
+            resourceInputs["edition"] = args?.edition;
+            resourceInputs["ignoreIdleSlots"] = args?.ignoreIdleSlots;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["maxSlots"] = args?.maxSlots;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["scalingMode"] = args?.scalingMode;
+            resourceInputs["secondaryLocation"] = args?.secondaryLocation;
+            resourceInputs["slotCapacity"] = args?.slotCapacity;
             resourceInputs["originalPrimaryLocation"] = undefined /*out*/;
             resourceInputs["primaryLocation"] = undefined /*out*/;
             resourceInputs["replicationStatuses"] = undefined /*out*/;

@@ -103,23 +103,23 @@ export class V2FolderSccBigQueryExport extends pulumi.CustomResource {
      * numbers, and hyphens, must start with a letter, must end with either a letter or a number,
      * and must be 63 characters or less.
      */
-    public readonly bigQueryExportId!: pulumi.Output<string>;
+    declare public readonly bigQueryExportId: pulumi.Output<string>;
     /**
      * The time at which the BigQuery export was created. This field is set by the server and will be ignored if provided on export on creation.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The dataset to write findings' updates to.
      * Its format is "projects/[projectId]/datasets/[bigqueryDatasetId]".
      * BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
      */
-    public readonly dataset!: pulumi.Output<string | undefined>;
+    declare public readonly dataset: pulumi.Output<string | undefined>;
     /**
      * The description of the notification config (max of 1024 characters).
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Expression that defines the filter to apply across create/update
      * events of findings. The
@@ -141,37 +141,37 @@ export class V2FolderSccBigQueryExport extends pulumi.CustomResource {
      * [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
      * for information on how to write a filter.
      */
-    public readonly filter!: pulumi.Output<string | undefined>;
+    declare public readonly filter: pulumi.Output<string | undefined>;
     /**
      * The folder where Cloud Security Command Center Big Query Export
      * Config lives in.
      */
-    public readonly folder!: pulumi.Output<string>;
+    declare public readonly folder: pulumi.Output<string>;
     /**
      * The BigQuery export configuration is stored in this location. If not provided, Use global as default.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * Email address of the user who last edited the BigQuery export.
      * This field is set by the server and will be ignored if provided on export creation or update.
      */
-    public /*out*/ readonly mostRecentEditor!: pulumi.Output<string>;
+    declare public /*out*/ readonly mostRecentEditor: pulumi.Output<string>;
     /**
      * The resource name of this export, in the format
      * `folders/{{folder}}/locations/{{location}}/bigQueryExports/{{big_query_export_id}}`.
      * This field is provided in responses, and is ignored when provided in create requests.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The service account that needs permission to create table and upload data to the BigQuery dataset.
      */
-    public /*out*/ readonly principal!: pulumi.Output<string>;
+    declare public /*out*/ readonly principal: pulumi.Output<string>;
     /**
      * The most recent time at which the BigQuery export was updated. This field is set by the server and will be ignored if provided on export creation or update.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a V2FolderSccBigQueryExport resource with the given unique name, arguments, and options.
@@ -186,31 +186,31 @@ export class V2FolderSccBigQueryExport extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as V2FolderSccBigQueryExportState | undefined;
-            resourceInputs["bigQueryExportId"] = state ? state.bigQueryExportId : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dataset"] = state ? state.dataset : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["filter"] = state ? state.filter : undefined;
-            resourceInputs["folder"] = state ? state.folder : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["mostRecentEditor"] = state ? state.mostRecentEditor : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["principal"] = state ? state.principal : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["bigQueryExportId"] = state?.bigQueryExportId;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dataset"] = state?.dataset;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["filter"] = state?.filter;
+            resourceInputs["folder"] = state?.folder;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["mostRecentEditor"] = state?.mostRecentEditor;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["principal"] = state?.principal;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as V2FolderSccBigQueryExportArgs | undefined;
-            if ((!args || args.bigQueryExportId === undefined) && !opts.urn) {
+            if (args?.bigQueryExportId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bigQueryExportId'");
             }
-            if ((!args || args.folder === undefined) && !opts.urn) {
+            if (args?.folder === undefined && !opts.urn) {
                 throw new Error("Missing required property 'folder'");
             }
-            resourceInputs["bigQueryExportId"] = args ? args.bigQueryExportId : undefined;
-            resourceInputs["dataset"] = args ? args.dataset : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["filter"] = args ? args.filter : undefined;
-            resourceInputs["folder"] = args ? args.folder : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["bigQueryExportId"] = args?.bigQueryExportId;
+            resourceInputs["dataset"] = args?.dataset;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["filter"] = args?.filter;
+            resourceInputs["folder"] = args?.folder;
+            resourceInputs["location"] = args?.location;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["mostRecentEditor"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

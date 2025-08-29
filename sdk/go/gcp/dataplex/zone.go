@@ -106,9 +106,10 @@ type Zone struct {
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
-	// Optional. User defined labels for the zone. **Note**: This field is non-authoritative, and will only manage the labels
-	// present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the
-	// resource.
+	// Optional. User defined labels for the zone.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The lake for the resource
 	Lake pulumi.StringOutput `pulumi:"lake"`
@@ -194,9 +195,10 @@ type zoneState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
-	// Optional. User defined labels for the zone. **Note**: This field is non-authoritative, and will only manage the labels
-	// present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the
-	// resource.
+	// Optional. User defined labels for the zone.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The lake for the resource
 	Lake *string `pulumi:"lake"`
@@ -233,9 +235,10 @@ type ZoneState struct {
 	DisplayName pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
-	// Optional. User defined labels for the zone. **Note**: This field is non-authoritative, and will only manage the labels
-	// present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the
-	// resource.
+	// Optional. User defined labels for the zone.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The lake for the resource
 	Lake pulumi.StringPtrInput
@@ -270,9 +273,10 @@ type zoneArgs struct {
 	DiscoverySpec ZoneDiscoverySpec `pulumi:"discoverySpec"`
 	// Optional. User friendly display name.
 	DisplayName *string `pulumi:"displayName"`
-	// Optional. User defined labels for the zone. **Note**: This field is non-authoritative, and will only manage the labels
-	// present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the
-	// resource.
+	// Optional. User defined labels for the zone.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The lake for the resource
 	Lake string `pulumi:"lake"`
@@ -296,9 +300,10 @@ type ZoneArgs struct {
 	DiscoverySpec ZoneDiscoverySpecInput
 	// Optional. User friendly display name.
 	DisplayName pulumi.StringPtrInput
-	// Optional. User defined labels for the zone. **Note**: This field is non-authoritative, and will only manage the labels
-	// present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the
-	// resource.
+	// Optional. User defined labels for the zone.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The lake for the resource
 	Lake pulumi.StringInput
@@ -431,9 +436,10 @@ func (o ZoneOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
-// Optional. User defined labels for the zone. **Note**: This field is non-authoritative, and will only manage the labels
-// present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the
-// resource.
+// Optional. User defined labels for the zone.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o ZoneOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }

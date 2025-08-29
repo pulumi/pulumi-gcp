@@ -95,31 +95,31 @@ export class Repository extends pulumi.CustomResource {
     /**
      * If set to true, skip repository creation if a repository with the same name already exists.
      */
-    public readonly createIgnoreAlreadyExists!: pulumi.Output<boolean | undefined>;
+    declare public readonly createIgnoreAlreadyExists: pulumi.Output<boolean | undefined>;
     /**
      * Resource name of the repository, of the form `{{repo}}`.
      * The repo name may contain slashes. eg, `name/with/slash`
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * How this repository publishes a change in the repository through Cloud Pub/Sub.
      * Keyed by the topic names.
      * Structure is documented below.
      */
-    public readonly pubsubConfigs!: pulumi.Output<outputs.sourcerepo.RepositoryPubsubConfig[] | undefined>;
+    declare public readonly pubsubConfigs: pulumi.Output<outputs.sourcerepo.RepositoryPubsubConfig[] | undefined>;
     /**
      * The disk usage of the repo, in bytes.
      */
-    public /*out*/ readonly size!: pulumi.Output<number>;
+    declare public /*out*/ readonly size: pulumi.Output<number>;
     /**
      * URL to clone the repository from Google Cloud Source Repositories.
      */
-    public /*out*/ readonly url!: pulumi.Output<string>;
+    declare public /*out*/ readonly url: pulumi.Output<string>;
 
     /**
      * Create a Repository resource with the given unique name, arguments, and options.
@@ -134,18 +134,18 @@ export class Repository extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RepositoryState | undefined;
-            resourceInputs["createIgnoreAlreadyExists"] = state ? state.createIgnoreAlreadyExists : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pubsubConfigs"] = state ? state.pubsubConfigs : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["createIgnoreAlreadyExists"] = state?.createIgnoreAlreadyExists;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pubsubConfigs"] = state?.pubsubConfigs;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["url"] = state?.url;
         } else {
             const args = argsOrState as RepositoryArgs | undefined;
-            resourceInputs["createIgnoreAlreadyExists"] = args ? args.createIgnoreAlreadyExists : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["pubsubConfigs"] = args ? args.pubsubConfigs : undefined;
+            resourceInputs["createIgnoreAlreadyExists"] = args?.createIgnoreAlreadyExists;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["pubsubConfigs"] = args?.pubsubConfigs;
             resourceInputs["size"] = undefined /*out*/;
             resourceInputs["url"] = undefined /*out*/;
         }

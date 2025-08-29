@@ -313,7 +313,7 @@ export class WorkforcePoolProvider extends pulumi.CustomResource {
      * The expression must output a boolean representing whether to allow the federation.
      * The following keywords may be referenced in the expressions:
      */
-    public readonly attributeCondition!: pulumi.Output<string | undefined>;
+    declare public readonly attributeCondition: pulumi.Output<string | undefined>;
     /**
      * Maps attributes from the authentication credentials issued by an external identity provider
      * to Google Cloud attributes, such as `subject` and `segment`.
@@ -358,20 +358,20 @@ export class WorkforcePoolProvider extends pulumi.CustomResource {
      * An object containing a list of `"key": value` pairs.
      * Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
      */
-    public readonly attributeMapping!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly attributeMapping: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A user-specified description of the provider. Cannot exceed 256 characters.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
      * However, existing tokens still grant access.
      */
-    public readonly disabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly disabled: pulumi.Output<boolean | undefined>;
     /**
      * A user-specified display name for the provider. Cannot exceed 32 characters.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * The configuration for OAuth 2.0 client used to get the additional user
      * attributes. This should be used when users can't get the desired claims
@@ -379,32 +379,32 @@ export class WorkforcePoolProvider extends pulumi.CustomResource {
      * supported with SAML and OIDC protocol.
      * Structure is documented below.
      */
-    public readonly extraAttributesOauth2Client!: pulumi.Output<outputs.iam.WorkforcePoolProviderExtraAttributesOauth2Client | undefined>;
+    declare public readonly extraAttributesOauth2Client: pulumi.Output<outputs.iam.WorkforcePoolProviderExtraAttributesOauth2Client | undefined>;
     /**
      * The location for the resource.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Output only. The resource name of the provider.
      * Format: `locations/{location}/workforcePools/{workforcePoolId}/providers/{providerId}`
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Represents an OpenId Connect 1.0 identity provider.
      * Structure is documented below.
      */
-    public readonly oidc!: pulumi.Output<outputs.iam.WorkforcePoolProviderOidc | undefined>;
+    declare public readonly oidc: pulumi.Output<outputs.iam.WorkforcePoolProviderOidc | undefined>;
     /**
      * The ID for the provider, which becomes the final component of the resource name.
      * This value must be 4-32 characters, and may contain the characters [a-z0-9-].
      * The prefix `gcp-` is reserved for use by Google, and may not be specified.
      */
-    public readonly providerId!: pulumi.Output<string>;
+    declare public readonly providerId: pulumi.Output<string>;
     /**
      * Represents a SAML identity provider.
      * Structure is documented below.
      */
-    public readonly saml!: pulumi.Output<outputs.iam.WorkforcePoolProviderSaml | undefined>;
+    declare public readonly saml: pulumi.Output<outputs.iam.WorkforcePoolProviderSaml | undefined>;
     /**
      * The current state of the provider.
      * * STATE_UNSPECIFIED: State unspecified.
@@ -413,14 +413,14 @@ export class WorkforcePoolProvider extends pulumi.CustomResource {
      * deleted after approximately 30 days. You can restore a soft-deleted provider using
      * [providers.undelete](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools.providers/undelete#google.iam.admin.v1.WorkforcePools.UndeleteWorkforcePoolProvider).
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The ID to use for the pool, which becomes the final component of the resource name.
      * The IDs must be a globally unique string of 6 to 63 lowercase letters, digits, or hyphens.
      * It must start with a letter, and cannot have a trailing hyphen.
      * The prefix `gcp-` is reserved for use by Google, and may not be specified.
      */
-    public readonly workforcePoolId!: pulumi.Output<string>;
+    declare public readonly workforcePoolId: pulumi.Output<string>;
 
     /**
      * Create a WorkforcePoolProvider resource with the given unique name, arguments, and options.
@@ -435,41 +435,41 @@ export class WorkforcePoolProvider extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkforcePoolProviderState | undefined;
-            resourceInputs["attributeCondition"] = state ? state.attributeCondition : undefined;
-            resourceInputs["attributeMapping"] = state ? state.attributeMapping : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["disabled"] = state ? state.disabled : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["extraAttributesOauth2Client"] = state ? state.extraAttributesOauth2Client : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["oidc"] = state ? state.oidc : undefined;
-            resourceInputs["providerId"] = state ? state.providerId : undefined;
-            resourceInputs["saml"] = state ? state.saml : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["workforcePoolId"] = state ? state.workforcePoolId : undefined;
+            resourceInputs["attributeCondition"] = state?.attributeCondition;
+            resourceInputs["attributeMapping"] = state?.attributeMapping;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["disabled"] = state?.disabled;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["extraAttributesOauth2Client"] = state?.extraAttributesOauth2Client;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["oidc"] = state?.oidc;
+            resourceInputs["providerId"] = state?.providerId;
+            resourceInputs["saml"] = state?.saml;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["workforcePoolId"] = state?.workforcePoolId;
         } else {
             const args = argsOrState as WorkforcePoolProviderArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.providerId === undefined) && !opts.urn) {
+            if (args?.providerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'providerId'");
             }
-            if ((!args || args.workforcePoolId === undefined) && !opts.urn) {
+            if (args?.workforcePoolId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workforcePoolId'");
             }
-            resourceInputs["attributeCondition"] = args ? args.attributeCondition : undefined;
-            resourceInputs["attributeMapping"] = args ? args.attributeMapping : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["disabled"] = args ? args.disabled : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["extraAttributesOauth2Client"] = args ? args.extraAttributesOauth2Client : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["oidc"] = args ? args.oidc : undefined;
-            resourceInputs["providerId"] = args ? args.providerId : undefined;
-            resourceInputs["saml"] = args ? args.saml : undefined;
-            resourceInputs["workforcePoolId"] = args ? args.workforcePoolId : undefined;
+            resourceInputs["attributeCondition"] = args?.attributeCondition;
+            resourceInputs["attributeMapping"] = args?.attributeMapping;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["disabled"] = args?.disabled;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["extraAttributesOauth2Client"] = args?.extraAttributesOauth2Client;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["oidc"] = args?.oidc;
+            resourceInputs["providerId"] = args?.providerId;
+            resourceInputs["saml"] = args?.saml;
+            resourceInputs["workforcePoolId"] = args?.workforcePoolId;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }

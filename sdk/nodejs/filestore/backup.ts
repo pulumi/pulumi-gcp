@@ -104,38 +104,38 @@ export class Backup extends pulumi.CustomResource {
     /**
      * The amount of bytes needed to allocate a full copy of the snapshot content.
      */
-    public /*out*/ readonly capacityGb!: pulumi.Output<string>;
+    declare public /*out*/ readonly capacityGb: pulumi.Output<string>;
     /**
      * The time when the snapshot was created in RFC3339 text format.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Amount of bytes that will be downloaded if the backup is restored.
      */
-    public /*out*/ readonly downloadBytes!: pulumi.Output<string>;
+    declare public /*out*/ readonly downloadBytes: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * KMS key name used for data encryption.
      */
-    public /*out*/ readonly kmsKeyName!: pulumi.Output<string>;
+    declare public /*out*/ readonly kmsKeyName: pulumi.Output<string>;
     /**
      * Resource labels to represent user-provided metadata.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The resource name of the backup. The name must be unique within the specified instance.
      * The name must be 1-63 characters long, and comply with
@@ -145,44 +145,44 @@ export class Backup extends pulumi.CustomResource {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Name of the file share in the source Cloud Filestore instance that the backup is created from.
      */
-    public readonly sourceFileShare!: pulumi.Output<string>;
+    declare public readonly sourceFileShare: pulumi.Output<string>;
     /**
      * The resource name of the source Cloud Filestore instance, in the format projects/{projectId}/locations/{locationId}/instances/{instanceId}, used to create this backup.
      */
-    public readonly sourceInstance!: pulumi.Output<string>;
+    declare public readonly sourceInstance: pulumi.Output<string>;
     /**
      * The service tier of the source Cloud Filestore instance that this backup is created from.
      */
-    public /*out*/ readonly sourceInstanceTier!: pulumi.Output<string>;
+    declare public /*out*/ readonly sourceInstanceTier: pulumi.Output<string>;
     /**
      * The backup state.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
      */
-    public /*out*/ readonly storageBytes!: pulumi.Output<string>;
+    declare public /*out*/ readonly storageBytes: pulumi.Output<string>;
     /**
      * A map of resource manager tags.
      * Resource manager tag keys and values have the same definition as resource manager tags.
      * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
      * The field is ignored (both PUT & PATCH) when empty.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Backup resource with the given unique name, arguments, and options.
@@ -197,42 +197,42 @@ export class Backup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BackupState | undefined;
-            resourceInputs["capacityGb"] = state ? state.capacityGb : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["downloadBytes"] = state ? state.downloadBytes : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["kmsKeyName"] = state ? state.kmsKeyName : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["sourceFileShare"] = state ? state.sourceFileShare : undefined;
-            resourceInputs["sourceInstance"] = state ? state.sourceInstance : undefined;
-            resourceInputs["sourceInstanceTier"] = state ? state.sourceInstanceTier : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["storageBytes"] = state ? state.storageBytes : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["capacityGb"] = state?.capacityGb;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["downloadBytes"] = state?.downloadBytes;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["kmsKeyName"] = state?.kmsKeyName;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["sourceFileShare"] = state?.sourceFileShare;
+            resourceInputs["sourceInstance"] = state?.sourceInstance;
+            resourceInputs["sourceInstanceTier"] = state?.sourceInstanceTier;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["storageBytes"] = state?.storageBytes;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as BackupArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.sourceFileShare === undefined) && !opts.urn) {
+            if (args?.sourceFileShare === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceFileShare'");
             }
-            if ((!args || args.sourceInstance === undefined) && !opts.urn) {
+            if (args?.sourceInstance === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceInstance'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["sourceFileShare"] = args ? args.sourceFileShare : undefined;
-            resourceInputs["sourceInstance"] = args ? args.sourceInstance : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["sourceFileShare"] = args?.sourceFileShare;
+            resourceInputs["sourceInstance"] = args?.sourceInstance;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["capacityGb"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["downloadBytes"] = undefined /*out*/;

@@ -197,71 +197,71 @@ export class NodePool extends pulumi.CustomResource {
     /**
      * The name of the target Distributed Cloud Edge Cluster.
      */
-    public readonly cluster!: pulumi.Output<string>;
+    declare public readonly cluster: pulumi.Output<string>;
     /**
      * The time when the node pool was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Labels associated with this resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Local disk encryption options. This field is only used when enabling CMEK support.
      * Structure is documented below.
      */
-    public readonly localDiskEncryption!: pulumi.Output<outputs.edgecontainer.NodePoolLocalDiskEncryption | undefined>;
+    declare public readonly localDiskEncryption: pulumi.Output<outputs.edgecontainer.NodePoolLocalDiskEncryption | undefined>;
     /**
      * The location of the resource.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Only machines matching this filter will be allowed to join the node pool.
      * The filtering language accepts strings like "name=<name>", and is
      * documented in more detail in [AIP-160](https://google.aip.dev/160).
      */
-    public readonly machineFilter!: pulumi.Output<string>;
+    declare public readonly machineFilter: pulumi.Output<string>;
     /**
      * The resource name of the node pool.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Configuration for each node in the NodePool
      * Structure is documented below.
      */
-    public readonly nodeConfig!: pulumi.Output<outputs.edgecontainer.NodePoolNodeConfig>;
+    declare public readonly nodeConfig: pulumi.Output<outputs.edgecontainer.NodePoolNodeConfig>;
     /**
      * The number of nodes in the pool.
      */
-    public readonly nodeCount!: pulumi.Output<number>;
+    declare public readonly nodeCount: pulumi.Output<number>;
     /**
      * Name of the Google Distributed Cloud Edge zone where this node pool will be created. For example: `us-central1-edge-customer-a`.
      */
-    public readonly nodeLocation!: pulumi.Output<string>;
+    declare public readonly nodeLocation: pulumi.Output<string>;
     /**
      * The lowest release version among all worker nodes.
      */
-    public /*out*/ readonly nodeVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly nodeVersion: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The time when the node pool was last updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a NodePool resource with the given unique name, arguments, and options.
@@ -276,45 +276,45 @@ export class NodePool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NodePoolState | undefined;
-            resourceInputs["cluster"] = state ? state.cluster : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["localDiskEncryption"] = state ? state.localDiskEncryption : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["machineFilter"] = state ? state.machineFilter : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nodeConfig"] = state ? state.nodeConfig : undefined;
-            resourceInputs["nodeCount"] = state ? state.nodeCount : undefined;
-            resourceInputs["nodeLocation"] = state ? state.nodeLocation : undefined;
-            resourceInputs["nodeVersion"] = state ? state.nodeVersion : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["cluster"] = state?.cluster;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["localDiskEncryption"] = state?.localDiskEncryption;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["machineFilter"] = state?.machineFilter;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nodeConfig"] = state?.nodeConfig;
+            resourceInputs["nodeCount"] = state?.nodeCount;
+            resourceInputs["nodeLocation"] = state?.nodeLocation;
+            resourceInputs["nodeVersion"] = state?.nodeVersion;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as NodePoolArgs | undefined;
-            if ((!args || args.cluster === undefined) && !opts.urn) {
+            if (args?.cluster === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cluster'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.nodeCount === undefined) && !opts.urn) {
+            if (args?.nodeCount === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nodeCount'");
             }
-            if ((!args || args.nodeLocation === undefined) && !opts.urn) {
+            if (args?.nodeLocation === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nodeLocation'");
             }
-            resourceInputs["cluster"] = args ? args.cluster : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["localDiskEncryption"] = args ? args.localDiskEncryption : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["machineFilter"] = args ? args.machineFilter : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["nodeConfig"] = args ? args.nodeConfig : undefined;
-            resourceInputs["nodeCount"] = args ? args.nodeCount : undefined;
-            resourceInputs["nodeLocation"] = args ? args.nodeLocation : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["cluster"] = args?.cluster;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["localDiskEncryption"] = args?.localDiskEncryption;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["machineFilter"] = args?.machineFilter;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["nodeConfig"] = args?.nodeConfig;
+            resourceInputs["nodeCount"] = args?.nodeCount;
+            resourceInputs["nodeLocation"] = args?.nodeLocation;
+            resourceInputs["project"] = args?.project;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["nodeVersion"] = undefined /*out*/;

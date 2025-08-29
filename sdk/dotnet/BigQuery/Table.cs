@@ -370,9 +370,7 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string> TableId { get; private set; } = null!;
 
         /// <summary>
-        /// View sets the optional parameter "view": Specifies the view that determines which table information is returned. By
-        /// default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values:
-        /// TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
+        /// View sets the optional parameter "view": Specifies the view that determines which table information is returned. By default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values: TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
         /// </summary>
         [Output("tableMetadataView")]
         public Output<string?> TableMetadataView { get; private set; } = null!;
@@ -650,9 +648,7 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string> TableId { get; set; } = null!;
 
         /// <summary>
-        /// View sets the optional parameter "view": Specifies the view that determines which table information is returned. By
-        /// default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values:
-        /// TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
+        /// View sets the optional parameter "view": Specifies the view that determines which table information is returned. By default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values: TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
         /// </summary>
         [Input("tableMetadataView")]
         public Input<string>? TableMetadataView { get; set; }
@@ -983,9 +979,7 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? TableId { get; set; }
 
         /// <summary>
-        /// View sets the optional parameter "view": Specifies the view that determines which table information is returned. By
-        /// default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values:
-        /// TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
+        /// View sets the optional parameter "view": Specifies the view that determines which table information is returned. By default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values: TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
         /// </summary>
         [Input("tableMetadataView")]
         public Input<string>? TableMetadataView { get; set; }

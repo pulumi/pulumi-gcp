@@ -116,42 +116,42 @@ export class Policy extends pulumi.CustomResource {
      * Names such as .internal are not available when an alternative name server is specified.
      * Structure is documented below.
      */
-    public readonly alternativeNameServerConfig!: pulumi.Output<outputs.dns.PolicyAlternativeNameServerConfig | undefined>;
+    declare public readonly alternativeNameServerConfig: pulumi.Output<outputs.dns.PolicyAlternativeNameServerConfig | undefined>;
     /**
      * A textual description field. Defaults to 'Managed by Pulumi'.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Configurations related to DNS64 for this Policy.
      * Structure is documented below.
      */
-    public readonly dns64Config!: pulumi.Output<outputs.dns.PolicyDns64Config>;
+    declare public readonly dns64Config: pulumi.Output<outputs.dns.PolicyDns64Config>;
     /**
      * Allows networks bound to this policy to receive DNS queries sent
      * by VMs or applications over VPN connections. When enabled, a
      * virtual IP address will be allocated from each of the sub-networks
      * that are bound to this policy.
      */
-    public readonly enableInboundForwarding!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableInboundForwarding: pulumi.Output<boolean | undefined>;
     /**
      * Controls whether logging is enabled for the networks bound to this policy.
      * Defaults to no logging if not set.
      */
-    public readonly enableLogging!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableLogging: pulumi.Output<boolean | undefined>;
     /**
      * User assigned name for this policy.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * List of network names specifying networks to which this policy is applied.
      * Structure is documented below.
      */
-    public readonly networks!: pulumi.Output<outputs.dns.PolicyNetwork[] | undefined>;
+    declare public readonly networks: pulumi.Output<outputs.dns.PolicyNetwork[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
 
     /**
      * Create a Policy resource with the given unique name, arguments, and options.
@@ -166,24 +166,24 @@ export class Policy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyState | undefined;
-            resourceInputs["alternativeNameServerConfig"] = state ? state.alternativeNameServerConfig : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["dns64Config"] = state ? state.dns64Config : undefined;
-            resourceInputs["enableInboundForwarding"] = state ? state.enableInboundForwarding : undefined;
-            resourceInputs["enableLogging"] = state ? state.enableLogging : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networks"] = state ? state.networks : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["alternativeNameServerConfig"] = state?.alternativeNameServerConfig;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["dns64Config"] = state?.dns64Config;
+            resourceInputs["enableInboundForwarding"] = state?.enableInboundForwarding;
+            resourceInputs["enableLogging"] = state?.enableLogging;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networks"] = state?.networks;
+            resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as PolicyArgs | undefined;
-            resourceInputs["alternativeNameServerConfig"] = args ? args.alternativeNameServerConfig : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["dns64Config"] = args ? args.dns64Config : undefined;
-            resourceInputs["enableInboundForwarding"] = args ? args.enableInboundForwarding : undefined;
-            resourceInputs["enableLogging"] = args ? args.enableLogging : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networks"] = args ? args.networks : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["alternativeNameServerConfig"] = args?.alternativeNameServerConfig;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["dns64Config"] = args?.dns64Config;
+            resourceInputs["enableInboundForwarding"] = args?.enableInboundForwarding;
+            resourceInputs["enableLogging"] = args?.enableLogging;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networks"] = args?.networks;
+            resourceInputs["project"] = args?.project;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Policy.__pulumiType, name, resourceInputs, opts);

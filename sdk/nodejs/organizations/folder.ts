@@ -70,43 +70,43 @@ export class Folder extends pulumi.CustomResource {
     /**
      * Optional capabilities configured for this folder.
      */
-    public /*out*/ readonly configuredCapabilities!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly configuredCapabilities: pulumi.Output<string[]>;
     /**
      * Timestamp when the Folder was created. Assigned by the server.
      * A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
-    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
      * The folder’s display name.
      * A folder’s display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * The folder id from the name "folders/{folder_id}"
      */
-    public /*out*/ readonly folderId!: pulumi.Output<string>;
+    declare public /*out*/ readonly folderId: pulumi.Output<string>;
     /**
      * The lifecycle state of the folder such as `ACTIVE` or `DELETE_REQUESTED`.
      */
-    public /*out*/ readonly lifecycleState!: pulumi.Output<string>;
+    declare public /*out*/ readonly lifecycleState: pulumi.Output<string>;
     /**
      * Management Project associated with this folder (if capability is enabled).
      */
-    public /*out*/ readonly managementProject!: pulumi.Output<string>;
+    declare public /*out*/ readonly managementProject: pulumi.Output<string>;
     /**
      * The resource name of the Folder. Its format is folders/{folder_id}.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The resource name of the parent Folder or Organization.
      * Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
      */
-    public readonly parent!: pulumi.Output<string>;
+    declare public readonly parent: pulumi.Output<string>;
     /**
      * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when  mutated. This field is only set at create time and modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the `gcp.tags.TagValue` resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Folder resource with the given unique name, arguments, and options.
@@ -121,28 +121,28 @@ export class Folder extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FolderState | undefined;
-            resourceInputs["configuredCapabilities"] = state ? state.configuredCapabilities : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["folderId"] = state ? state.folderId : undefined;
-            resourceInputs["lifecycleState"] = state ? state.lifecycleState : undefined;
-            resourceInputs["managementProject"] = state ? state.managementProject : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["configuredCapabilities"] = state?.configuredCapabilities;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionProtection"] = state?.deletionProtection;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["folderId"] = state?.folderId;
+            resourceInputs["lifecycleState"] = state?.lifecycleState;
+            resourceInputs["managementProject"] = state?.managementProject;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as FolderArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.parent === undefined) && !opts.urn) {
+            if (args?.parent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["deletionProtection"] = args?.deletionProtection;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["parent"] = args?.parent;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["configuredCapabilities"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["folderId"] = undefined /*out*/;

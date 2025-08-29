@@ -545,48 +545,48 @@ export class WorkstationConfig extends pulumi.CustomResource {
      * A list of port ranges specifying single ports or ranges of ports that are externally accessible in the workstation. Allowed ports must be one of 22, 80, or within range 1024-65535. If not specified defaults to ports 22, 80, and ports 1024-65535.
      * Structure is documented below.
      */
-    public readonly allowedPorts!: pulumi.Output<outputs.workstations.WorkstationConfigAllowedPort[]>;
+    declare public readonly allowedPorts: pulumi.Output<outputs.workstations.WorkstationConfigAllowedPort[]>;
     /**
      * Client-specified annotations. This is distinct from labels.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Status conditions describing the current resource state.
      * Structure is documented below.
      */
-    public /*out*/ readonly conditions!: pulumi.Output<outputs.workstations.WorkstationConfigCondition[]>;
+    declare public /*out*/ readonly conditions: pulumi.Output<outputs.workstations.WorkstationConfigCondition[]>;
     /**
      * Container that will be run for each workstation using this configuration when that workstation is started.
      * Structure is documented below.
      */
-    public readonly container!: pulumi.Output<outputs.workstations.WorkstationConfigContainer>;
+    declare public readonly container: pulumi.Output<outputs.workstations.WorkstationConfigContainer>;
     /**
      * Time when this resource was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the conditions field.
      */
-    public /*out*/ readonly degraded!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly degraded: pulumi.Output<boolean>;
     /**
      * Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
      */
-    public readonly disableTcpConnections!: pulumi.Output<boolean | undefined>;
+    declare public readonly disableTcpConnections: pulumi.Output<boolean | undefined>;
     /**
      * Human-readable name for this resource.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
      */
-    public readonly enableAuditAgent!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableAuditAgent: pulumi.Output<boolean | undefined>;
     /**
      * Encrypts resources of this workstation configuration using a customer-managed encryption key.
      * If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata.
@@ -594,87 +594,87 @@ export class WorkstationConfig extends pulumi.CustomResource {
      * If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
      * Structure is documented below.
      */
-    public readonly encryptionKey!: pulumi.Output<outputs.workstations.WorkstationConfigEncryptionKey | undefined>;
+    declare public readonly encryptionKey: pulumi.Output<outputs.workstations.WorkstationConfigEncryptionKey | undefined>;
     /**
      * Ephemeral directories which won't persist across workstation sessions.
      * Structure is documented below.
      */
-    public readonly ephemeralDirectories!: pulumi.Output<outputs.workstations.WorkstationConfigEphemeralDirectory[]>;
+    declare public readonly ephemeralDirectories: pulumi.Output<outputs.workstations.WorkstationConfigEphemeralDirectory[]>;
     /**
      * Checksum computed by the server.
      * May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Runtime host for a workstation.
      * Structure is documented below.
      */
-    public readonly host!: pulumi.Output<outputs.workstations.WorkstationConfigHost>;
+    declare public readonly host: pulumi.Output<outputs.workstations.WorkstationConfigHost>;
     /**
      * How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
      * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
      */
-    public readonly idleTimeout!: pulumi.Output<string | undefined>;
+    declare public readonly idleTimeout: pulumi.Output<string | undefined>;
     /**
      * Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location where the workstation cluster config should reside.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Maximum number of workstations under this configuration a user can have workstations.workstation.use permission on. Only enforced on CreateWorkstation API calls on the user issuing the API request.
      */
-    public readonly maxUsableWorkstations!: pulumi.Output<number>;
+    declare public readonly maxUsableWorkstations: pulumi.Output<number>;
     /**
      * Full name of this resource.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Directories to persist across workstation sessions.
      * Structure is documented below.
      */
-    public readonly persistentDirectories!: pulumi.Output<outputs.workstations.WorkstationConfigPersistentDirectory[]>;
+    declare public readonly persistentDirectories: pulumi.Output<outputs.workstations.WorkstationConfigPersistentDirectory[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Readiness checks to be performed on a workstation.
      * Structure is documented below.
      */
-    public readonly readinessChecks!: pulumi.Output<outputs.workstations.WorkstationConfigReadinessCheck[] | undefined>;
+    declare public readonly readinessChecks: pulumi.Output<outputs.workstations.WorkstationConfigReadinessCheck[] | undefined>;
     /**
      * Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`.
      * If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
      */
-    public readonly replicaZones!: pulumi.Output<string[]>;
+    declare public readonly replicaZones: pulumi.Output<string[]>;
     /**
      * How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryptionKey` is set. Defaults to 12 hours.
      * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
      */
-    public readonly runningTimeout!: pulumi.Output<string | undefined>;
+    declare public readonly runningTimeout: pulumi.Output<string | undefined>;
     /**
      * The system-generated UID of the resource.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * The ID of the parent workstation cluster.
      */
-    public readonly workstationClusterId!: pulumi.Output<string>;
+    declare public readonly workstationClusterId: pulumi.Output<string>;
     /**
      * The ID to be assigned to the workstation cluster config.
      */
-    public readonly workstationConfigId!: pulumi.Output<string>;
+    declare public readonly workstationConfigId: pulumi.Output<string>;
 
     /**
      * Create a WorkstationConfig resource with the given unique name, arguments, and options.
@@ -689,66 +689,66 @@ export class WorkstationConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkstationConfigState | undefined;
-            resourceInputs["allowedPorts"] = state ? state.allowedPorts : undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["conditions"] = state ? state.conditions : undefined;
-            resourceInputs["container"] = state ? state.container : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["degraded"] = state ? state.degraded : undefined;
-            resourceInputs["disableTcpConnections"] = state ? state.disableTcpConnections : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["enableAuditAgent"] = state ? state.enableAuditAgent : undefined;
-            resourceInputs["encryptionKey"] = state ? state.encryptionKey : undefined;
-            resourceInputs["ephemeralDirectories"] = state ? state.ephemeralDirectories : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["host"] = state ? state.host : undefined;
-            resourceInputs["idleTimeout"] = state ? state.idleTimeout : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["maxUsableWorkstations"] = state ? state.maxUsableWorkstations : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["persistentDirectories"] = state ? state.persistentDirectories : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["readinessChecks"] = state ? state.readinessChecks : undefined;
-            resourceInputs["replicaZones"] = state ? state.replicaZones : undefined;
-            resourceInputs["runningTimeout"] = state ? state.runningTimeout : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["workstationClusterId"] = state ? state.workstationClusterId : undefined;
-            resourceInputs["workstationConfigId"] = state ? state.workstationConfigId : undefined;
+            resourceInputs["allowedPorts"] = state?.allowedPorts;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["conditions"] = state?.conditions;
+            resourceInputs["container"] = state?.container;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["degraded"] = state?.degraded;
+            resourceInputs["disableTcpConnections"] = state?.disableTcpConnections;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["enableAuditAgent"] = state?.enableAuditAgent;
+            resourceInputs["encryptionKey"] = state?.encryptionKey;
+            resourceInputs["ephemeralDirectories"] = state?.ephemeralDirectories;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["host"] = state?.host;
+            resourceInputs["idleTimeout"] = state?.idleTimeout;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["maxUsableWorkstations"] = state?.maxUsableWorkstations;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["persistentDirectories"] = state?.persistentDirectories;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["readinessChecks"] = state?.readinessChecks;
+            resourceInputs["replicaZones"] = state?.replicaZones;
+            resourceInputs["runningTimeout"] = state?.runningTimeout;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["workstationClusterId"] = state?.workstationClusterId;
+            resourceInputs["workstationConfigId"] = state?.workstationConfigId;
         } else {
             const args = argsOrState as WorkstationConfigArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.workstationClusterId === undefined) && !opts.urn) {
+            if (args?.workstationClusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workstationClusterId'");
             }
-            if ((!args || args.workstationConfigId === undefined) && !opts.urn) {
+            if (args?.workstationConfigId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workstationConfigId'");
             }
-            resourceInputs["allowedPorts"] = args ? args.allowedPorts : undefined;
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["container"] = args ? args.container : undefined;
-            resourceInputs["disableTcpConnections"] = args ? args.disableTcpConnections : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["enableAuditAgent"] = args ? args.enableAuditAgent : undefined;
-            resourceInputs["encryptionKey"] = args ? args.encryptionKey : undefined;
-            resourceInputs["ephemeralDirectories"] = args ? args.ephemeralDirectories : undefined;
-            resourceInputs["host"] = args ? args.host : undefined;
-            resourceInputs["idleTimeout"] = args ? args.idleTimeout : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["maxUsableWorkstations"] = args ? args.maxUsableWorkstations : undefined;
-            resourceInputs["persistentDirectories"] = args ? args.persistentDirectories : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["readinessChecks"] = args ? args.readinessChecks : undefined;
-            resourceInputs["replicaZones"] = args ? args.replicaZones : undefined;
-            resourceInputs["runningTimeout"] = args ? args.runningTimeout : undefined;
-            resourceInputs["workstationClusterId"] = args ? args.workstationClusterId : undefined;
-            resourceInputs["workstationConfigId"] = args ? args.workstationConfigId : undefined;
+            resourceInputs["allowedPorts"] = args?.allowedPorts;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["container"] = args?.container;
+            resourceInputs["disableTcpConnections"] = args?.disableTcpConnections;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["enableAuditAgent"] = args?.enableAuditAgent;
+            resourceInputs["encryptionKey"] = args?.encryptionKey;
+            resourceInputs["ephemeralDirectories"] = args?.ephemeralDirectories;
+            resourceInputs["host"] = args?.host;
+            resourceInputs["idleTimeout"] = args?.idleTimeout;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["maxUsableWorkstations"] = args?.maxUsableWorkstations;
+            resourceInputs["persistentDirectories"] = args?.persistentDirectories;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["readinessChecks"] = args?.readinessChecks;
+            resourceInputs["replicaZones"] = args?.replicaZones;
+            resourceInputs["runningTimeout"] = args?.runningTimeout;
+            resourceInputs["workstationClusterId"] = args?.workstationClusterId;
+            resourceInputs["workstationConfigId"] = args?.workstationConfigId;
             resourceInputs["conditions"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["degraded"] = undefined /*out*/;

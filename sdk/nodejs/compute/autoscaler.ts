@@ -210,15 +210,15 @@ export class Autoscaler extends pulumi.CustomResource {
      * on cpuUtilization to 0.6 or 60%.
      * Structure is documented below.
      */
-    public readonly autoscalingPolicy!: pulumi.Output<outputs.compute.AutoscalerAutoscalingPolicy>;
+    declare public readonly autoscalingPolicy: pulumi.Output<outputs.compute.AutoscalerAutoscalingPolicy>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * An optional description of this resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Name of the resource. The name must be 1-63 characters long and match
      * the regular expression `a-z?` which means the
@@ -226,24 +226,24 @@ export class Autoscaler extends pulumi.CustomResource {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * URL of the managed instance group that this autoscaler will scale.
      */
-    public readonly target!: pulumi.Output<string>;
+    declare public readonly target: pulumi.Output<string>;
     /**
      * URL of the zone where the instance group resides.
      */
-    public readonly zone!: pulumi.Output<string>;
+    declare public readonly zone: pulumi.Output<string>;
 
     /**
      * Create a Autoscaler resource with the given unique name, arguments, and options.
@@ -258,28 +258,28 @@ export class Autoscaler extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AutoscalerState | undefined;
-            resourceInputs["autoscalingPolicy"] = state ? state.autoscalingPolicy : undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["target"] = state ? state.target : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["autoscalingPolicy"] = state?.autoscalingPolicy;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["target"] = state?.target;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as AutoscalerArgs | undefined;
-            if ((!args || args.autoscalingPolicy === undefined) && !opts.urn) {
+            if (args?.autoscalingPolicy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'autoscalingPolicy'");
             }
-            if ((!args || args.target === undefined) && !opts.urn) {
+            if (args?.target === undefined && !opts.urn) {
                 throw new Error("Missing required property 'target'");
             }
-            resourceInputs["autoscalingPolicy"] = args ? args.autoscalingPolicy : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["target"] = args ? args.target : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["autoscalingPolicy"] = args?.autoscalingPolicy;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["target"] = args?.target;
+            resourceInputs["zone"] = args?.zone;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         }

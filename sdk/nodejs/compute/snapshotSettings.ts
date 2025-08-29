@@ -82,13 +82,13 @@ export class SnapshotSettings extends pulumi.CustomResource {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Policy of which storage location is going to be resolved, and additional data
      * that particularizes how the policy is going to be carried out
      * Structure is documented below.
      */
-    public readonly storageLocation!: pulumi.Output<outputs.compute.SnapshotSettingsStorageLocation>;
+    declare public readonly storageLocation: pulumi.Output<outputs.compute.SnapshotSettingsStorageLocation>;
 
     /**
      * Create a SnapshotSettings resource with the given unique name, arguments, and options.
@@ -103,15 +103,15 @@ export class SnapshotSettings extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SnapshotSettingsState | undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["storageLocation"] = state ? state.storageLocation : undefined;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["storageLocation"] = state?.storageLocation;
         } else {
             const args = argsOrState as SnapshotSettingsArgs | undefined;
-            if ((!args || args.storageLocation === undefined) && !opts.urn) {
+            if (args?.storageLocation === undefined && !opts.urn) {
                 throw new Error("Missing required property 'storageLocation'");
             }
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["storageLocation"] = args ? args.storageLocation : undefined;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["storageLocation"] = args?.storageLocation;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SnapshotSettings.__pulumiType, name, resourceInputs, opts);

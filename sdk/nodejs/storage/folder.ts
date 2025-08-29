@@ -90,32 +90,32 @@ export class Folder extends pulumi.CustomResource {
     /**
      * The name of the bucket that contains the folder.
      */
-    public readonly bucket!: pulumi.Output<string>;
+    declare public readonly bucket: pulumi.Output<string>;
     /**
      * The timestamp at which this folder was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * If set to true, items within folder if any will be force destroyed.
      */
-    public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceDestroy: pulumi.Output<boolean | undefined>;
     /**
      * The metadata generation of the folder.
      */
-    public /*out*/ readonly metageneration!: pulumi.Output<string>;
+    declare public /*out*/ readonly metageneration: pulumi.Output<string>;
     /**
      * The name of the folder expressed as a path. Must include
      * trailing '/'. For example, `example_dir/example_dir2/`, `example@#/`, `a-b/d-f/`.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * The timestamp at which this folder was most recently updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Folder resource with the given unique name, arguments, and options.
@@ -130,21 +130,21 @@ export class Folder extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FolderState | undefined;
-            resourceInputs["bucket"] = state ? state.bucket : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
-            resourceInputs["metageneration"] = state ? state.metageneration : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["bucket"] = state?.bucket;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["forceDestroy"] = state?.forceDestroy;
+            resourceInputs["metageneration"] = state?.metageneration;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as FolderArgs | undefined;
-            if ((!args || args.bucket === undefined) && !opts.urn) {
+            if (args?.bucket === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            resourceInputs["bucket"] = args ? args.bucket : undefined;
-            resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["forceDestroy"] = args?.forceDestroy;
+            resourceInputs["name"] = args?.name;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["metageneration"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;

@@ -63,31 +63,31 @@ export class ServicePerimeterIngressPolicy extends pulumi.CustomResource {
     /**
      * The name of the Access Policy this resource belongs to.
      */
-    public /*out*/ readonly accessPolicyId!: pulumi.Output<string>;
+    declare public /*out*/ readonly accessPolicyId: pulumi.Output<string>;
     /**
      * The perimeter etag is internally used to prevent overwriting the list of policies on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of policies. The policy defined in this resource is added or removed from that list, and then this etag is sent with the PATCH call along with the updated policies.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Defines the conditions on the source of a request causing this `IngressPolicy`
      * to apply.
      * Structure is documented below.
      */
-    public readonly ingressFrom!: pulumi.Output<outputs.accesscontextmanager.ServicePerimeterIngressPolicyIngressFrom | undefined>;
+    declare public readonly ingressFrom: pulumi.Output<outputs.accesscontextmanager.ServicePerimeterIngressPolicyIngressFrom | undefined>;
     /**
      * Defines the conditions on the `ApiOperation` and request destination that cause
      * this `IngressPolicy` to apply.
      * Structure is documented below.
      */
-    public readonly ingressTo!: pulumi.Output<outputs.accesscontextmanager.ServicePerimeterIngressPolicyIngressTo | undefined>;
+    declare public readonly ingressTo: pulumi.Output<outputs.accesscontextmanager.ServicePerimeterIngressPolicyIngressTo | undefined>;
     /**
      * The name of the Service Perimeter to add this resource to.
      */
-    public readonly perimeter!: pulumi.Output<string>;
+    declare public readonly perimeter: pulumi.Output<string>;
     /**
      * Human readable title. Must be unique within the perimeter. Does not affect behavior.
      */
-    public readonly title!: pulumi.Output<string | undefined>;
+    declare public readonly title: pulumi.Output<string | undefined>;
 
     /**
      * Create a ServicePerimeterIngressPolicy resource with the given unique name, arguments, and options.
@@ -102,21 +102,21 @@ export class ServicePerimeterIngressPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServicePerimeterIngressPolicyState | undefined;
-            resourceInputs["accessPolicyId"] = state ? state.accessPolicyId : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["ingressFrom"] = state ? state.ingressFrom : undefined;
-            resourceInputs["ingressTo"] = state ? state.ingressTo : undefined;
-            resourceInputs["perimeter"] = state ? state.perimeter : undefined;
-            resourceInputs["title"] = state ? state.title : undefined;
+            resourceInputs["accessPolicyId"] = state?.accessPolicyId;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["ingressFrom"] = state?.ingressFrom;
+            resourceInputs["ingressTo"] = state?.ingressTo;
+            resourceInputs["perimeter"] = state?.perimeter;
+            resourceInputs["title"] = state?.title;
         } else {
             const args = argsOrState as ServicePerimeterIngressPolicyArgs | undefined;
-            if ((!args || args.perimeter === undefined) && !opts.urn) {
+            if (args?.perimeter === undefined && !opts.urn) {
                 throw new Error("Missing required property 'perimeter'");
             }
-            resourceInputs["ingressFrom"] = args ? args.ingressFrom : undefined;
-            resourceInputs["ingressTo"] = args ? args.ingressTo : undefined;
-            resourceInputs["perimeter"] = args ? args.perimeter : undefined;
-            resourceInputs["title"] = args ? args.title : undefined;
+            resourceInputs["ingressFrom"] = args?.ingressFrom;
+            resourceInputs["ingressTo"] = args?.ingressTo;
+            resourceInputs["perimeter"] = args?.perimeter;
+            resourceInputs["title"] = args?.title;
             resourceInputs["accessPolicyId"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
         }

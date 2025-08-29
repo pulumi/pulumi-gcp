@@ -67,26 +67,20 @@ public class Environment extends com.pulumi.resources.CustomResource {
         return this.effectiveLabels;
     }
     /**
-     * User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
-     * are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
-     * must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must
-     * conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys
-     * and values must be &lt;= 128 bytes in size. **Note**: This field is non-authoritative, and will only manage the labels
-     * present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
-     * resource.
+     * User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys and values must be &lt;= 128 bytes in size.
+     * 
+     *                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     *                 Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
-     * are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
-     * must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must
-     * conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys
-     * and values must be &lt;= 128 bytes in size. **Note**: This field is non-authoritative, and will only manage the labels
-     * present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
-     * resource.
+     * @return User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys and values must be &lt;= 128 bytes in size.
+     * 
+     *                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     *                 Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {

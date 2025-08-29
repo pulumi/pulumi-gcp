@@ -113,33 +113,33 @@ export class TagTemplate extends pulumi.CustomResource {
     /**
      * The display name for this template.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of fieldId will be resulting in re-creating of field. The change of primitiveType will be resulting in re-creating of field, however if the field is a required, you cannot update it.
      * Structure is documented below.
      */
-    public readonly fields!: pulumi.Output<outputs.datacatalog.TagTemplateField[]>;
+    declare public readonly fields: pulumi.Output<outputs.datacatalog.TagTemplateField[]>;
     /**
      * This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
      */
-    public readonly forceDelete!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceDelete: pulumi.Output<boolean | undefined>;
     /**
      * The resource name of the tag template in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Template location region.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The id of the tag template to create.
      */
-    public readonly tagTemplateId!: pulumi.Output<string>;
+    declare public readonly tagTemplateId: pulumi.Output<string>;
 
     /**
      * Create a TagTemplate resource with the given unique name, arguments, and options.
@@ -154,27 +154,27 @@ export class TagTemplate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TagTemplateState | undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["fields"] = state ? state.fields : undefined;
-            resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["tagTemplateId"] = state ? state.tagTemplateId : undefined;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["fields"] = state?.fields;
+            resourceInputs["forceDelete"] = state?.forceDelete;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["tagTemplateId"] = state?.tagTemplateId;
         } else {
             const args = argsOrState as TagTemplateArgs | undefined;
-            if ((!args || args.fields === undefined) && !opts.urn) {
+            if (args?.fields === undefined && !opts.urn) {
                 throw new Error("Missing required property 'fields'");
             }
-            if ((!args || args.tagTemplateId === undefined) && !opts.urn) {
+            if (args?.tagTemplateId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tagTemplateId'");
             }
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["fields"] = args ? args.fields : undefined;
-            resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["tagTemplateId"] = args ? args.tagTemplateId : undefined;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["fields"] = args?.fields;
+            resourceInputs["forceDelete"] = args?.forceDelete;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["tagTemplateId"] = args?.tagTemplateId;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

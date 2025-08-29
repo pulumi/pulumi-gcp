@@ -118,9 +118,7 @@ namespace Pulumi.Gcp.Organizations
     public partial class Project : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Create the 'default' network automatically. Default true. If set to false, the default network will be deleted. Note
-        /// that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
-        /// if you set auto_create_network to false, since the network will exist momentarily.
+        /// Create the 'default' network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set auto_create_network to false, since the network will exist momentarily.
         /// </summary>
         [Output("autoCreateNetwork")]
         public Output<bool?> AutoCreateNetwork { get; private set; } = null!;
@@ -255,9 +253,7 @@ namespace Pulumi.Gcp.Organizations
     public sealed class ProjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Create the 'default' network automatically. Default true. If set to false, the default network will be deleted. Note
-        /// that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
-        /// if you set auto_create_network to false, since the network will exist momentarily.
+        /// Create the 'default' network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set auto_create_network to false, since the network will exist momentarily.
         /// </summary>
         [Input("autoCreateNetwork")]
         public Input<bool>? AutoCreateNetwork { get; set; }
@@ -343,9 +339,7 @@ namespace Pulumi.Gcp.Organizations
     public sealed class ProjectState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Create the 'default' network automatically. Default true. If set to false, the default network will be deleted. Note
-        /// that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
-        /// if you set auto_create_network to false, since the network will exist momentarily.
+        /// Create the 'default' network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set auto_create_network to false, since the network will exist momentarily.
         /// </summary>
         [Input("autoCreateNetwork")]
         public Input<bool>? AutoCreateNetwork { get; set; }

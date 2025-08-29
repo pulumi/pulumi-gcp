@@ -72,15 +72,15 @@ export class SharedVPCServiceProject extends pulumi.CustomResource {
     /**
      * The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted. Possible values are: "ABANDON".
      */
-    public readonly deletionPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly deletionPolicy: pulumi.Output<string | undefined>;
     /**
      * The ID of a host project to associate.
      */
-    public readonly hostProject!: pulumi.Output<string>;
+    declare public readonly hostProject: pulumi.Output<string>;
     /**
      * The ID of the project that will serve as a Shared VPC service project.
      */
-    public readonly serviceProject!: pulumi.Output<string>;
+    declare public readonly serviceProject: pulumi.Output<string>;
 
     /**
      * Create a SharedVPCServiceProject resource with the given unique name, arguments, and options.
@@ -95,20 +95,20 @@ export class SharedVPCServiceProject extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SharedVPCServiceProjectState | undefined;
-            resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
-            resourceInputs["hostProject"] = state ? state.hostProject : undefined;
-            resourceInputs["serviceProject"] = state ? state.serviceProject : undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
+            resourceInputs["hostProject"] = state?.hostProject;
+            resourceInputs["serviceProject"] = state?.serviceProject;
         } else {
             const args = argsOrState as SharedVPCServiceProjectArgs | undefined;
-            if ((!args || args.hostProject === undefined) && !opts.urn) {
+            if (args?.hostProject === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hostProject'");
             }
-            if ((!args || args.serviceProject === undefined) && !opts.urn) {
+            if (args?.serviceProject === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceProject'");
             }
-            resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
-            resourceInputs["hostProject"] = args ? args.hostProject : undefined;
-            resourceInputs["serviceProject"] = args ? args.serviceProject : undefined;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
+            resourceInputs["hostProject"] = args?.hostProject;
+            resourceInputs["serviceProject"] = args?.serviceProject;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SharedVPCServiceProject.__pulumiType, name, resourceInputs, opts);

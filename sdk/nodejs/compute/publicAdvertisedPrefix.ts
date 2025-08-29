@@ -98,15 +98,15 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
     /**
      * An optional description of this resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The IPv4 address to be used for reverse DNS verification.
      */
-    public readonly dnsVerificationIp!: pulumi.Output<string>;
+    declare public readonly dnsVerificationIp: pulumi.Output<string>;
     /**
      * The address range, in CIDR format, represented by this public advertised prefix.
      */
-    public readonly ipCidrRange!: pulumi.Output<string>;
+    declare public readonly ipCidrRange: pulumi.Output<string>;
     /**
      * Name of the resource. The name must be 1-63 characters long, and
      * comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -115,7 +115,7 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
      * following characters must be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Specifies how child public delegated prefix will be scoped. pdpScope
      * must be one of: GLOBAL, REGIONAL
@@ -125,20 +125,20 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
      * will take ~4 weeks.
      * Possible values are: `GLOBAL`, `REGIONAL`.
      */
-    public readonly pdpScope!: pulumi.Output<string | undefined>;
+    declare public readonly pdpScope: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * Output Only. The shared secret to be used for reverse DNS verification.
      */
-    public /*out*/ readonly sharedSecret!: pulumi.Output<string>;
+    declare public /*out*/ readonly sharedSecret: pulumi.Output<string>;
 
     /**
      * Create a PublicAdvertisedPrefix resource with the given unique name, arguments, and options.
@@ -153,28 +153,28 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PublicAdvertisedPrefixState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["dnsVerificationIp"] = state ? state.dnsVerificationIp : undefined;
-            resourceInputs["ipCidrRange"] = state ? state.ipCidrRange : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["pdpScope"] = state ? state.pdpScope : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["sharedSecret"] = state ? state.sharedSecret : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["dnsVerificationIp"] = state?.dnsVerificationIp;
+            resourceInputs["ipCidrRange"] = state?.ipCidrRange;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["pdpScope"] = state?.pdpScope;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["sharedSecret"] = state?.sharedSecret;
         } else {
             const args = argsOrState as PublicAdvertisedPrefixArgs | undefined;
-            if ((!args || args.dnsVerificationIp === undefined) && !opts.urn) {
+            if (args?.dnsVerificationIp === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dnsVerificationIp'");
             }
-            if ((!args || args.ipCidrRange === undefined) && !opts.urn) {
+            if (args?.ipCidrRange === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ipCidrRange'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["dnsVerificationIp"] = args ? args.dnsVerificationIp : undefined;
-            resourceInputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["pdpScope"] = args ? args.pdpScope : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["dnsVerificationIp"] = args?.dnsVerificationIp;
+            resourceInputs["ipCidrRange"] = args?.ipCidrRange;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["pdpScope"] = args?.pdpScope;
+            resourceInputs["project"] = args?.project;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["sharedSecret"] = undefined /*out*/;
         }

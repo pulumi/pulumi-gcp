@@ -110,42 +110,42 @@ export class Database extends pulumi.CustomResource {
      * If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
      * Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
      */
-    public readonly databaseDialect!: pulumi.Output<string>;
-    public readonly ddls!: pulumi.Output<string[] | undefined>;
+    declare public readonly databaseDialect: pulumi.Output<string>;
+    declare public readonly ddls: pulumi.Output<string[] | undefined>;
     /**
      * The default time zone for the database. The default time zone must be a valid name
      * from the tz database. Default value is "America/Los_angeles".
      */
-    public readonly defaultTimeZone!: pulumi.Output<string | undefined>;
+    declare public readonly defaultTimeZone: pulumi.Output<string | undefined>;
     /**
      * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
      * in state, a `destroy` or `update` that would delete the instance will fail.
      */
-    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
-    public readonly enableDropProtection!: pulumi.Output<boolean | undefined>;
+    declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
+    declare public readonly enableDropProtection: pulumi.Output<boolean | undefined>;
     /**
      * Encryption configuration for the database
      * Structure is documented below.
      */
-    public readonly encryptionConfig!: pulumi.Output<outputs.spanner.DatabaseEncryptionConfig | undefined>;
+    declare public readonly encryptionConfig: pulumi.Output<outputs.spanner.DatabaseEncryptionConfig | undefined>;
     /**
      * The instance to create the database on.
      */
-    public readonly instance!: pulumi.Output<string>;
+    declare public readonly instance: pulumi.Output<string>;
     /**
      * A unique identifier for the database, which cannot be changed after the
      * instance is created. Values are of the form `[a-z][-_a-z0-9]*[a-z0-9]`.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * An explanation of the status of the database.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The retention period for the database. The retention period must be between 1 hour
      * and 7 days, and can be specified in days, hours, minutes, or seconds. For example,
@@ -153,7 +153,7 @@ export class Database extends pulumi.CustomResource {
      * If this property is used, you must avoid adding new DDL statements to `ddl` that
      * update the database's version_retention_period.
      */
-    public readonly versionRetentionPeriod!: pulumi.Output<string>;
+    declare public readonly versionRetentionPeriod: pulumi.Output<string>;
 
     /**
      * Create a Database resource with the given unique name, arguments, and options.
@@ -168,32 +168,32 @@ export class Database extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseState | undefined;
-            resourceInputs["databaseDialect"] = state ? state.databaseDialect : undefined;
-            resourceInputs["ddls"] = state ? state.ddls : undefined;
-            resourceInputs["defaultTimeZone"] = state ? state.defaultTimeZone : undefined;
-            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            resourceInputs["enableDropProtection"] = state ? state.enableDropProtection : undefined;
-            resourceInputs["encryptionConfig"] = state ? state.encryptionConfig : undefined;
-            resourceInputs["instance"] = state ? state.instance : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["versionRetentionPeriod"] = state ? state.versionRetentionPeriod : undefined;
+            resourceInputs["databaseDialect"] = state?.databaseDialect;
+            resourceInputs["ddls"] = state?.ddls;
+            resourceInputs["defaultTimeZone"] = state?.defaultTimeZone;
+            resourceInputs["deletionProtection"] = state?.deletionProtection;
+            resourceInputs["enableDropProtection"] = state?.enableDropProtection;
+            resourceInputs["encryptionConfig"] = state?.encryptionConfig;
+            resourceInputs["instance"] = state?.instance;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["versionRetentionPeriod"] = state?.versionRetentionPeriod;
         } else {
             const args = argsOrState as DatabaseArgs | undefined;
-            if ((!args || args.instance === undefined) && !opts.urn) {
+            if (args?.instance === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instance'");
             }
-            resourceInputs["databaseDialect"] = args ? args.databaseDialect : undefined;
-            resourceInputs["ddls"] = args ? args.ddls : undefined;
-            resourceInputs["defaultTimeZone"] = args ? args.defaultTimeZone : undefined;
-            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            resourceInputs["enableDropProtection"] = args ? args.enableDropProtection : undefined;
-            resourceInputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
-            resourceInputs["instance"] = args ? args.instance : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["versionRetentionPeriod"] = args ? args.versionRetentionPeriod : undefined;
+            resourceInputs["databaseDialect"] = args?.databaseDialect;
+            resourceInputs["ddls"] = args?.ddls;
+            resourceInputs["defaultTimeZone"] = args?.defaultTimeZone;
+            resourceInputs["deletionProtection"] = args?.deletionProtection;
+            resourceInputs["enableDropProtection"] = args?.enableDropProtection;
+            resourceInputs["encryptionConfig"] = args?.encryptionConfig;
+            resourceInputs["instance"] = args?.instance;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["versionRetentionPeriod"] = args?.versionRetentionPeriod;
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

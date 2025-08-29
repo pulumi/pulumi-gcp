@@ -108,11 +108,11 @@ export class HostingSite extends pulumi.CustomResource {
      * Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
      * associated with the Hosting site.
      */
-    public readonly appId!: pulumi.Output<string | undefined>;
+    declare public readonly appId: pulumi.Output<string | undefined>;
     /**
      * The default URL for the site in the form of https://{name}.web.app
      */
-    public /*out*/ readonly defaultUrl!: pulumi.Output<string>;
+    declare public /*out*/ readonly defaultUrl: pulumi.Output<string>;
     /**
      * Output only. The fully-qualified resource name of the Hosting site, in
      * the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
@@ -122,22 +122,22 @@ export class HostingSite extends pulumi.CustomResource {
      * Learn more about using project identifiers in Google's
      * [AIP 2510 standard](https://google.aip.dev/cloud/2510).
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Required. Immutable. A globally unique identifier for the Hosting site. This identifier is
      * used to construct the Firebase-provisioned subdomains for the site, so it must also be a valid
      * domain name label.
      */
-    public readonly siteId!: pulumi.Output<string | undefined>;
+    declare public readonly siteId: pulumi.Output<string | undefined>;
     /**
      * The type of Hosting site, either 'DEFAULT_SITE' or `USER_SITE`
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a HostingSite resource with the given unique name, arguments, and options.
@@ -152,17 +152,17 @@ export class HostingSite extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HostingSiteState | undefined;
-            resourceInputs["appId"] = state ? state.appId : undefined;
-            resourceInputs["defaultUrl"] = state ? state.defaultUrl : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["siteId"] = state ? state.siteId : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["appId"] = state?.appId;
+            resourceInputs["defaultUrl"] = state?.defaultUrl;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["siteId"] = state?.siteId;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as HostingSiteArgs | undefined;
-            resourceInputs["appId"] = args ? args.appId : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["siteId"] = args ? args.siteId : undefined;
+            resourceInputs["appId"] = args?.appId;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["siteId"] = args?.siteId;
             resourceInputs["defaultUrl"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;

@@ -122,80 +122,80 @@ export class ListingSubscription extends pulumi.CustomResource {
      * Commercial info metadata for this subscription. This is set if this is a commercial subscription i.e. if this subscription was created from subscribing to a commercial listing.
      * Structure is documented below.
      */
-    public /*out*/ readonly commercialInfos!: pulumi.Output<outputs.bigqueryanalyticshub.ListingSubscriptionCommercialInfo[]>;
+    declare public /*out*/ readonly commercialInfos: pulumi.Output<outputs.bigqueryanalyticshub.ListingSubscriptionCommercialInfo[]>;
     /**
      * Timestamp when the subscription was created.
      */
-    public /*out*/ readonly creationTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTime: pulumi.Output<string>;
     /**
      * The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
      */
-    public readonly dataExchangeId!: pulumi.Output<string>;
+    declare public readonly dataExchangeId: pulumi.Output<string>;
     /**
      * The destination dataset for this subscription.
      * Structure is documented below.
      */
-    public readonly destinationDataset!: pulumi.Output<outputs.bigqueryanalyticshub.ListingSubscriptionDestinationDataset>;
+    declare public readonly destinationDataset: pulumi.Output<outputs.bigqueryanalyticshub.ListingSubscriptionDestinationDataset>;
     /**
      * Timestamp when the subscription was last modified.
      */
-    public /*out*/ readonly lastModifyTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastModifyTime: pulumi.Output<string>;
     /**
      * Output only. Map of listing resource names to associated linked resource,
      * e.g. projects/123/locations/US/dataExchanges/456/listings/789 > projects/123/datasets/my_dataset
      * Structure is documented below.
      */
-    public /*out*/ readonly linkedDatasetMaps!: pulumi.Output<outputs.bigqueryanalyticshub.ListingSubscriptionLinkedDatasetMap[]>;
+    declare public /*out*/ readonly linkedDatasetMaps: pulumi.Output<outputs.bigqueryanalyticshub.ListingSubscriptionLinkedDatasetMap[]>;
     /**
      * Output only. Linked resources created in the subscription. Only contains values if state = STATE_ACTIVE.
      * Structure is documented below.
      */
-    public /*out*/ readonly linkedResources!: pulumi.Output<outputs.bigqueryanalyticshub.ListingSubscriptionLinkedResource[]>;
+    declare public /*out*/ readonly linkedResources: pulumi.Output<outputs.bigqueryanalyticshub.ListingSubscriptionLinkedResource[]>;
     /**
      * The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
      */
-    public readonly listingId!: pulumi.Output<string>;
+    declare public readonly listingId: pulumi.Output<string>;
     /**
      * The name of the location of the data exchange. Distinct from the location of the destination data set.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Output only. By default, false. If true, the Subscriber agreed to the email sharing mandate that is enabled for Listing.
      */
-    public /*out*/ readonly logLinkedDatasetQueryUserEmail!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly logLinkedDatasetQueryUserEmail: pulumi.Output<boolean>;
     /**
      * The resource name of the subscription. e.g. "projects/myproject/locations/US/subscriptions/123"
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Display name of the project of this subscription.
      */
-    public /*out*/ readonly organizationDisplayName!: pulumi.Output<string>;
+    declare public /*out*/ readonly organizationDisplayName: pulumi.Output<string>;
     /**
      * Organization of the project this subscription belongs to.
      */
-    public /*out*/ readonly organizationId!: pulumi.Output<string>;
+    declare public /*out*/ readonly organizationId: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Listing shared asset type.
      */
-    public /*out*/ readonly resourceType!: pulumi.Output<string>;
+    declare public /*out*/ readonly resourceType: pulumi.Output<string>;
     /**
      * Current state of the subscription.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Email of the subscriber.
      */
-    public /*out*/ readonly subscriberContact!: pulumi.Output<string>;
+    declare public /*out*/ readonly subscriberContact: pulumi.Output<string>;
     /**
      * The subscription id used to reference the subscription.
      */
-    public /*out*/ readonly subscriptionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly subscriptionId: pulumi.Output<string>;
 
     /**
      * Create a ListingSubscription resource with the given unique name, arguments, and options.
@@ -210,43 +210,43 @@ export class ListingSubscription extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ListingSubscriptionState | undefined;
-            resourceInputs["commercialInfos"] = state ? state.commercialInfos : undefined;
-            resourceInputs["creationTime"] = state ? state.creationTime : undefined;
-            resourceInputs["dataExchangeId"] = state ? state.dataExchangeId : undefined;
-            resourceInputs["destinationDataset"] = state ? state.destinationDataset : undefined;
-            resourceInputs["lastModifyTime"] = state ? state.lastModifyTime : undefined;
-            resourceInputs["linkedDatasetMaps"] = state ? state.linkedDatasetMaps : undefined;
-            resourceInputs["linkedResources"] = state ? state.linkedResources : undefined;
-            resourceInputs["listingId"] = state ? state.listingId : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["logLinkedDatasetQueryUserEmail"] = state ? state.logLinkedDatasetQueryUserEmail : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["organizationDisplayName"] = state ? state.organizationDisplayName : undefined;
-            resourceInputs["organizationId"] = state ? state.organizationId : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["resourceType"] = state ? state.resourceType : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["subscriberContact"] = state ? state.subscriberContact : undefined;
-            resourceInputs["subscriptionId"] = state ? state.subscriptionId : undefined;
+            resourceInputs["commercialInfos"] = state?.commercialInfos;
+            resourceInputs["creationTime"] = state?.creationTime;
+            resourceInputs["dataExchangeId"] = state?.dataExchangeId;
+            resourceInputs["destinationDataset"] = state?.destinationDataset;
+            resourceInputs["lastModifyTime"] = state?.lastModifyTime;
+            resourceInputs["linkedDatasetMaps"] = state?.linkedDatasetMaps;
+            resourceInputs["linkedResources"] = state?.linkedResources;
+            resourceInputs["listingId"] = state?.listingId;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["logLinkedDatasetQueryUserEmail"] = state?.logLinkedDatasetQueryUserEmail;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["organizationDisplayName"] = state?.organizationDisplayName;
+            resourceInputs["organizationId"] = state?.organizationId;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["resourceType"] = state?.resourceType;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["subscriberContact"] = state?.subscriberContact;
+            resourceInputs["subscriptionId"] = state?.subscriptionId;
         } else {
             const args = argsOrState as ListingSubscriptionArgs | undefined;
-            if ((!args || args.dataExchangeId === undefined) && !opts.urn) {
+            if (args?.dataExchangeId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataExchangeId'");
             }
-            if ((!args || args.destinationDataset === undefined) && !opts.urn) {
+            if (args?.destinationDataset === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destinationDataset'");
             }
-            if ((!args || args.listingId === undefined) && !opts.urn) {
+            if (args?.listingId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'listingId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["dataExchangeId"] = args ? args.dataExchangeId : undefined;
-            resourceInputs["destinationDataset"] = args ? args.destinationDataset : undefined;
-            resourceInputs["listingId"] = args ? args.listingId : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["dataExchangeId"] = args?.dataExchangeId;
+            resourceInputs["destinationDataset"] = args?.destinationDataset;
+            resourceInputs["listingId"] = args?.listingId;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
             resourceInputs["commercialInfos"] = undefined /*out*/;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["lastModifyTime"] = undefined /*out*/;

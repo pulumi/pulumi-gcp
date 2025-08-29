@@ -196,15 +196,15 @@ export class NetworkFirewallPolicyWithRules extends pulumi.CustomResource {
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * An optional description of this resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Fingerprint of the resource. This field is used internally during updates of this resource.
      */
-    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly fingerprint: pulumi.Output<string>;
     /**
      * User-provided name of the Network firewall policy.
      * The name should be unique in the project in which the firewall policy is created.
@@ -213,45 +213,45 @@ export class NetworkFirewallPolicyWithRules extends pulumi.CustomResource {
      * which means the first character must be a lowercase letter, and all following characters must be a dash,
      * lowercase letter, or digit, except the last character, which cannot be a dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The unique identifier for the resource. This identifier is defined by the server.
      */
-    public /*out*/ readonly networkFirewallPolicyId!: pulumi.Output<string>;
+    declare public /*out*/ readonly networkFirewallPolicyId: pulumi.Output<string>;
     /**
      * Policy type is used to determine which resources (networks) the policy can be associated with.
      * A policy can be associated with a network only if the network has the matching policyType in its network profile.
      * Different policy types may support some of the Firewall Rules features.
      * Possible values are: `VPC_POLICY`.
      */
-    public readonly policyType!: pulumi.Output<string>;
+    declare public readonly policyType: pulumi.Output<string>;
     /**
      * A list of firewall policy pre-defined rules.
      * Structure is documented below.
      */
-    public /*out*/ readonly predefinedRules!: pulumi.Output<outputs.compute.NetworkFirewallPolicyWithRulesPredefinedRule[]>;
+    declare public /*out*/ readonly predefinedRules: pulumi.Output<outputs.compute.NetworkFirewallPolicyWithRulesPredefinedRule[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
      */
-    public /*out*/ readonly ruleTupleCount!: pulumi.Output<number>;
+    declare public /*out*/ readonly ruleTupleCount: pulumi.Output<number>;
     /**
      * A list of firewall policy rules.
      * Structure is documented below.
      */
-    public readonly rules!: pulumi.Output<outputs.compute.NetworkFirewallPolicyWithRulesRule[]>;
+    declare public readonly rules: pulumi.Output<outputs.compute.NetworkFirewallPolicyWithRulesRule[]>;
     /**
      * Server-defined URL for the resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * Server-defined URL for this resource with the resource id.
      */
-    public /*out*/ readonly selfLinkWithId!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLinkWithId: pulumi.Output<string>;
 
     /**
      * Create a NetworkFirewallPolicyWithRules resource with the given unique name, arguments, and options.
@@ -266,28 +266,28 @@ export class NetworkFirewallPolicyWithRules extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkFirewallPolicyWithRulesState | undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networkFirewallPolicyId"] = state ? state.networkFirewallPolicyId : undefined;
-            resourceInputs["policyType"] = state ? state.policyType : undefined;
-            resourceInputs["predefinedRules"] = state ? state.predefinedRules : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["ruleTupleCount"] = state ? state.ruleTupleCount : undefined;
-            resourceInputs["rules"] = state ? state.rules : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["selfLinkWithId"] = state ? state.selfLinkWithId : undefined;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["fingerprint"] = state?.fingerprint;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networkFirewallPolicyId"] = state?.networkFirewallPolicyId;
+            resourceInputs["policyType"] = state?.policyType;
+            resourceInputs["predefinedRules"] = state?.predefinedRules;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["ruleTupleCount"] = state?.ruleTupleCount;
+            resourceInputs["rules"] = state?.rules;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["selfLinkWithId"] = state?.selfLinkWithId;
         } else {
             const args = argsOrState as NetworkFirewallPolicyWithRulesArgs | undefined;
-            if ((!args || args.rules === undefined) && !opts.urn) {
+            if (args?.rules === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rules'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["policyType"] = args ? args.policyType : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["rules"] = args ? args.rules : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["policyType"] = args?.policyType;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["rules"] = args?.rules;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["networkFirewallPolicyId"] = undefined /*out*/;

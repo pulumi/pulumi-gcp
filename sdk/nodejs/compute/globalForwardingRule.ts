@@ -447,20 +447,20 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
     /**
      * This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
      */
-    public readonly allowPscGlobalAccess!: pulumi.Output<boolean | undefined>;
+    declare public readonly allowPscGlobalAccess: pulumi.Output<boolean | undefined>;
     /**
      * [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
      */
-    public /*out*/ readonly baseForwardingRule!: pulumi.Output<string>;
+    declare public /*out*/ readonly baseForwardingRule: pulumi.Output<string>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Specifies the canary migration state for the backend buckets attached to this forwarding rule.
      * Possible values are PREPARE, TEST_BY_PERCENTAGE, and TEST_ALL_TRAFFIC.
@@ -475,7 +475,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      * back to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL.
      * Possible values are: `PREPARE`, `TEST_BY_PERCENTAGE`, `TEST_ALL_TRAFFIC`.
      */
-    public readonly externalManagedBackendBucketMigrationState!: pulumi.Output<string | undefined>;
+    declare public readonly externalManagedBackendBucketMigrationState: pulumi.Output<string | undefined>;
     /**
      * Determines the fraction of requests to backend buckets that should be processed by the Global
      * external Application Load Balancer.
@@ -483,11 +483,11 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      * This value can only be set if the loadBalancingScheme in the forwarding rule is set to
      * EXTERNAL (when using the Classic ALB) and the migration state is TEST_BY_PERCENTAGE.
      */
-    public readonly externalManagedBackendBucketMigrationTestingPercentage!: pulumi.Output<number | undefined>;
+    declare public readonly externalManagedBackendBucketMigrationTestingPercentage: pulumi.Output<number | undefined>;
     /**
      * The unique identifier number for the resource. This identifier is defined by the server.
      */
-    public /*out*/ readonly forwardingRuleId!: pulumi.Output<number>;
+    declare public /*out*/ readonly forwardingRuleId: pulumi.Output<number>;
     /**
      * IP address for which this forwarding rule accepts traffic. When a client
      * sends traffic to this IP address, the forwarding rule directs the traffic
@@ -521,7 +521,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      * When reading an `IPAddress`, the API always returns the IP
      * address number.
      */
-    public readonly ipAddress!: pulumi.Output<string>;
+    declare public readonly ipAddress: pulumi.Output<string>;
     /**
      * The IP protocol to which this rule applies.
      * For protocol forwarding, valid
@@ -533,24 +533,24 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      * features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
      * Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`.
      */
-    public readonly ipProtocol!: pulumi.Output<string>;
+    declare public readonly ipProtocol: pulumi.Output<string>;
     /**
      * The IP Version that will be used by this global forwarding rule.
      * Possible values are: `IPV4`, `IPV6`.
      */
-    public readonly ipVersion!: pulumi.Output<string | undefined>;
+    declare public readonly ipVersion: pulumi.Output<string | undefined>;
     /**
      * The fingerprint used for optimistic locking of this resource.  Used
      * internally during updates.
      */
-    public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly labelFingerprint: pulumi.Output<string>;
     /**
      * Labels to apply to this forwarding rule.  A list of key->value pairs.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Specifies the forwarding rule type.
      * For more information about forwarding rules, refer to
@@ -558,7 +558,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      * Default value is `EXTERNAL`.
      * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
      */
-    public readonly loadBalancingScheme!: pulumi.Output<string | undefined>;
+    declare public readonly loadBalancingScheme: pulumi.Output<string | undefined>;
     /**
      * Opaque filter criteria used by Loadbalancer to restrict routing
      * configuration to a limited set xDS compliant clients. In their xDS
@@ -576,7 +576,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      * loadBalancingScheme set to INTERNAL_SELF_MANAGED.
      * Structure is documented below.
      */
-    public readonly metadataFilters!: pulumi.Output<outputs.compute.GlobalForwardingRuleMetadataFilter[] | undefined>;
+    declare public readonly metadataFilters: pulumi.Output<outputs.compute.GlobalForwardingRuleMetadataFilter[] | undefined>;
     /**
      * Name of the resource; provided by the client when the resource is created.
      * The name must be 1-63 characters long, and comply with
@@ -590,7 +590,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      * APIs, the forwarding rule name must be a 1-20 characters string with
      * lowercase letters and numbers and must start with a letter.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * This field is not used for external load balancing.
      * For Internal TCP/UDP Load Balancing, this field identifies the network that
@@ -601,7 +601,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      * For Private Service Connect forwarding rules that forward traffic to Google
      * APIs, a network must be provided.
      */
-    public readonly network!: pulumi.Output<string>;
+    declare public readonly network: pulumi.Output<string>;
     /**
      * This signifies the networking tier used for configuring
      * this load balancer and can only take the following values:
@@ -614,11 +614,11 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      * networkTier of the Address.
      * Possible values are: `PREMIUM`, `STANDARD`.
      */
-    public readonly networkTier!: pulumi.Output<string>;
+    declare public readonly networkTier: pulumi.Output<string>;
     /**
      * This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
      */
-    public readonly noAutomateDnsZone!: pulumi.Output<boolean | undefined>;
+    declare public readonly noAutomateDnsZone: pulumi.Output<boolean | undefined>;
     /**
      * The `portRange` field has the following limitations:
      * * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
@@ -638,39 +638,39 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      * cannot have overlapping `portRange`s.
      * @pattern: \d+(?:-\d+)?
      */
-    public readonly portRange!: pulumi.Output<string | undefined>;
+    declare public readonly portRange: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The PSC connection id of the PSC Forwarding Rule.
      */
-    public /*out*/ readonly pscConnectionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly pscConnectionId: pulumi.Output<string>;
     /**
      * The PSC connection status of the PSC Forwarding Rule. Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`
      */
-    public /*out*/ readonly pscConnectionStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly pscConnectionStatus: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * Service Directory resources to register this forwarding rule with.
      * Currently, only supports a single Service Directory resource.
      * Structure is documented below.
      */
-    public readonly serviceDirectoryRegistrations!: pulumi.Output<outputs.compute.GlobalForwardingRuleServiceDirectoryRegistrations>;
+    declare public readonly serviceDirectoryRegistrations: pulumi.Output<outputs.compute.GlobalForwardingRuleServiceDirectoryRegistrations>;
     /**
      * If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
      */
-    public readonly sourceIpRanges!: pulumi.Output<string[] | undefined>;
+    declare public readonly sourceIpRanges: pulumi.Output<string[] | undefined>;
     /**
      * This field identifies the subnetwork that the load balanced IP should
      * belong to for this Forwarding Rule, used in internal load balancing and
@@ -679,7 +679,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      * However, a subnetwork must be specified if the network is in custom subnet
      * mode or when creating external forwarding rule with IPv6.
      */
-    public readonly subnetwork!: pulumi.Output<string>;
+    declare public readonly subnetwork: pulumi.Output<string>;
     /**
      * The URL of the target resource to receive the matched traffic.  For
      * regional forwarding rules, this target must be in the same region as the
@@ -692,7 +692,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      * *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
      * For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
      */
-    public readonly target!: pulumi.Output<string>;
+    declare public readonly target: pulumi.Output<string>;
 
     /**
      * Create a GlobalForwardingRule resource with the given unique name, arguments, and options.
@@ -707,59 +707,59 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GlobalForwardingRuleState | undefined;
-            resourceInputs["allowPscGlobalAccess"] = state ? state.allowPscGlobalAccess : undefined;
-            resourceInputs["baseForwardingRule"] = state ? state.baseForwardingRule : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["externalManagedBackendBucketMigrationState"] = state ? state.externalManagedBackendBucketMigrationState : undefined;
-            resourceInputs["externalManagedBackendBucketMigrationTestingPercentage"] = state ? state.externalManagedBackendBucketMigrationTestingPercentage : undefined;
-            resourceInputs["forwardingRuleId"] = state ? state.forwardingRuleId : undefined;
-            resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
-            resourceInputs["ipProtocol"] = state ? state.ipProtocol : undefined;
-            resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
-            resourceInputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["loadBalancingScheme"] = state ? state.loadBalancingScheme : undefined;
-            resourceInputs["metadataFilters"] = state ? state.metadataFilters : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["networkTier"] = state ? state.networkTier : undefined;
-            resourceInputs["noAutomateDnsZone"] = state ? state.noAutomateDnsZone : undefined;
-            resourceInputs["portRange"] = state ? state.portRange : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pscConnectionId"] = state ? state.pscConnectionId : undefined;
-            resourceInputs["pscConnectionStatus"] = state ? state.pscConnectionStatus : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["serviceDirectoryRegistrations"] = state ? state.serviceDirectoryRegistrations : undefined;
-            resourceInputs["sourceIpRanges"] = state ? state.sourceIpRanges : undefined;
-            resourceInputs["subnetwork"] = state ? state.subnetwork : undefined;
-            resourceInputs["target"] = state ? state.target : undefined;
+            resourceInputs["allowPscGlobalAccess"] = state?.allowPscGlobalAccess;
+            resourceInputs["baseForwardingRule"] = state?.baseForwardingRule;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["externalManagedBackendBucketMigrationState"] = state?.externalManagedBackendBucketMigrationState;
+            resourceInputs["externalManagedBackendBucketMigrationTestingPercentage"] = state?.externalManagedBackendBucketMigrationTestingPercentage;
+            resourceInputs["forwardingRuleId"] = state?.forwardingRuleId;
+            resourceInputs["ipAddress"] = state?.ipAddress;
+            resourceInputs["ipProtocol"] = state?.ipProtocol;
+            resourceInputs["ipVersion"] = state?.ipVersion;
+            resourceInputs["labelFingerprint"] = state?.labelFingerprint;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["loadBalancingScheme"] = state?.loadBalancingScheme;
+            resourceInputs["metadataFilters"] = state?.metadataFilters;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["networkTier"] = state?.networkTier;
+            resourceInputs["noAutomateDnsZone"] = state?.noAutomateDnsZone;
+            resourceInputs["portRange"] = state?.portRange;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pscConnectionId"] = state?.pscConnectionId;
+            resourceInputs["pscConnectionStatus"] = state?.pscConnectionStatus;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["serviceDirectoryRegistrations"] = state?.serviceDirectoryRegistrations;
+            resourceInputs["sourceIpRanges"] = state?.sourceIpRanges;
+            resourceInputs["subnetwork"] = state?.subnetwork;
+            resourceInputs["target"] = state?.target;
         } else {
             const args = argsOrState as GlobalForwardingRuleArgs | undefined;
-            if ((!args || args.target === undefined) && !opts.urn) {
+            if (args?.target === undefined && !opts.urn) {
                 throw new Error("Missing required property 'target'");
             }
-            resourceInputs["allowPscGlobalAccess"] = args ? args.allowPscGlobalAccess : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["externalManagedBackendBucketMigrationState"] = args ? args.externalManagedBackendBucketMigrationState : undefined;
-            resourceInputs["externalManagedBackendBucketMigrationTestingPercentage"] = args ? args.externalManagedBackendBucketMigrationTestingPercentage : undefined;
-            resourceInputs["ipAddress"] = args ? args.ipAddress : undefined;
-            resourceInputs["ipProtocol"] = args ? args.ipProtocol : undefined;
-            resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["loadBalancingScheme"] = args ? args.loadBalancingScheme : undefined;
-            resourceInputs["metadataFilters"] = args ? args.metadataFilters : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["networkTier"] = args ? args.networkTier : undefined;
-            resourceInputs["noAutomateDnsZone"] = args ? args.noAutomateDnsZone : undefined;
-            resourceInputs["portRange"] = args ? args.portRange : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["serviceDirectoryRegistrations"] = args ? args.serviceDirectoryRegistrations : undefined;
-            resourceInputs["sourceIpRanges"] = args ? args.sourceIpRanges : undefined;
-            resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
-            resourceInputs["target"] = args ? args.target : undefined;
+            resourceInputs["allowPscGlobalAccess"] = args?.allowPscGlobalAccess;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["externalManagedBackendBucketMigrationState"] = args?.externalManagedBackendBucketMigrationState;
+            resourceInputs["externalManagedBackendBucketMigrationTestingPercentage"] = args?.externalManagedBackendBucketMigrationTestingPercentage;
+            resourceInputs["ipAddress"] = args?.ipAddress;
+            resourceInputs["ipProtocol"] = args?.ipProtocol;
+            resourceInputs["ipVersion"] = args?.ipVersion;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["loadBalancingScheme"] = args?.loadBalancingScheme;
+            resourceInputs["metadataFilters"] = args?.metadataFilters;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["networkTier"] = args?.networkTier;
+            resourceInputs["noAutomateDnsZone"] = args?.noAutomateDnsZone;
+            resourceInputs["portRange"] = args?.portRange;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["serviceDirectoryRegistrations"] = args?.serviceDirectoryRegistrations;
+            resourceInputs["sourceIpRanges"] = args?.sourceIpRanges;
+            resourceInputs["subnetwork"] = args?.subnetwork;
+            resourceInputs["target"] = args?.target;
             resourceInputs["baseForwardingRule"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["forwardingRuleId"] = undefined /*out*/;

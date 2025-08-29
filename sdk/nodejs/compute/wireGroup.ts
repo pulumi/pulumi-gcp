@@ -92,24 +92,24 @@ export class WireGroup extends pulumi.CustomResource {
     /**
      * Indicates whether the wire group is administratively enabled.
      */
-    public readonly adminEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly adminEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * Required cross site network to which wire group belongs.
      */
-    public readonly crossSiteNetwork!: pulumi.Output<string>;
+    declare public readonly crossSiteNetwork: pulumi.Output<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Endpoints grouped by location, each mapping to interconnect configurations.
      * Structure is documented below.
      */
-    public readonly endpoints!: pulumi.Output<outputs.compute.WireGroupEndpoint[] | undefined>;
+    declare public readonly endpoints: pulumi.Output<outputs.compute.WireGroupEndpoint[] | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be
      * 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -117,32 +117,32 @@ export class WireGroup extends pulumi.CustomResource {
      * character must be a lowercase letter, and all following characters must be a dash,
      * lowercase letter, or digit, except the last character, which cannot be a dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Topology details for the wire group configuration.
      * Structure is documented below.
      */
-    public /*out*/ readonly topologies!: pulumi.Output<outputs.compute.WireGroupTopology[]>;
+    declare public /*out*/ readonly topologies: pulumi.Output<outputs.compute.WireGroupTopology[]>;
     /**
      * Properties specific to the wire group.
      * Structure is documented below.
      */
-    public readonly wireGroupProperties!: pulumi.Output<outputs.compute.WireGroupWireGroupProperties | undefined>;
+    declare public readonly wireGroupProperties: pulumi.Output<outputs.compute.WireGroupWireGroupProperties | undefined>;
     /**
      * Default properties for wires within the group.
      * Structure is documented below.
      */
-    public readonly wireProperties!: pulumi.Output<outputs.compute.WireGroupWireProperties | undefined>;
+    declare public readonly wireProperties: pulumi.Output<outputs.compute.WireGroupWireProperties | undefined>;
     /**
      * The single/redundant wire(s) managed by the wire group.
      * Structure is documented below.
      */
-    public /*out*/ readonly wires!: pulumi.Output<outputs.compute.WireGroupWire[]>;
+    declare public /*out*/ readonly wires: pulumi.Output<outputs.compute.WireGroupWire[]>;
 
     /**
      * Create a WireGroup resource with the given unique name, arguments, and options.
@@ -157,30 +157,30 @@ export class WireGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WireGroupState | undefined;
-            resourceInputs["adminEnabled"] = state ? state.adminEnabled : undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["crossSiteNetwork"] = state ? state.crossSiteNetwork : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["endpoints"] = state ? state.endpoints : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["topologies"] = state ? state.topologies : undefined;
-            resourceInputs["wireGroupProperties"] = state ? state.wireGroupProperties : undefined;
-            resourceInputs["wireProperties"] = state ? state.wireProperties : undefined;
-            resourceInputs["wires"] = state ? state.wires : undefined;
+            resourceInputs["adminEnabled"] = state?.adminEnabled;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["crossSiteNetwork"] = state?.crossSiteNetwork;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["endpoints"] = state?.endpoints;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["topologies"] = state?.topologies;
+            resourceInputs["wireGroupProperties"] = state?.wireGroupProperties;
+            resourceInputs["wireProperties"] = state?.wireProperties;
+            resourceInputs["wires"] = state?.wires;
         } else {
             const args = argsOrState as WireGroupArgs | undefined;
-            if ((!args || args.crossSiteNetwork === undefined) && !opts.urn) {
+            if (args?.crossSiteNetwork === undefined && !opts.urn) {
                 throw new Error("Missing required property 'crossSiteNetwork'");
             }
-            resourceInputs["adminEnabled"] = args ? args.adminEnabled : undefined;
-            resourceInputs["crossSiteNetwork"] = args ? args.crossSiteNetwork : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["endpoints"] = args ? args.endpoints : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["wireGroupProperties"] = args ? args.wireGroupProperties : undefined;
-            resourceInputs["wireProperties"] = args ? args.wireProperties : undefined;
+            resourceInputs["adminEnabled"] = args?.adminEnabled;
+            resourceInputs["crossSiteNetwork"] = args?.crossSiteNetwork;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["endpoints"] = args?.endpoints;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["wireGroupProperties"] = args?.wireGroupProperties;
+            resourceInputs["wireProperties"] = args?.wireProperties;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["topologies"] = undefined /*out*/;
             resourceInputs["wires"] = undefined /*out*/;

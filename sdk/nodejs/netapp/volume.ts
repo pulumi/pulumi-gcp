@@ -104,193 +104,193 @@ export class Volume extends pulumi.CustomResource {
     /**
      * Reports the resource name of the Active Directory policy being used. Inherited from storage pool.
      */
-    public /*out*/ readonly activeDirectory!: pulumi.Output<string>;
+    declare public /*out*/ readonly activeDirectory: pulumi.Output<string>;
     /**
      * Backup configuration for the volume.
      * Structure is documented below.
      */
-    public readonly backupConfig!: pulumi.Output<outputs.netapp.VolumeBackupConfig | undefined>;
+    declare public readonly backupConfig: pulumi.Output<outputs.netapp.VolumeBackupConfig | undefined>;
     /**
      * Capacity of the volume (in GiB).
      */
-    public readonly capacityGib!: pulumi.Output<string>;
+    declare public readonly capacityGib: pulumi.Output<string>;
     /**
      * Output only. Size of the volume cold tier data in GiB.
      */
-    public /*out*/ readonly coldTierSizeGib!: pulumi.Output<string>;
+    declare public /*out*/ readonly coldTierSizeGib: pulumi.Output<string>;
     /**
      * Create time of the volume. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Policy to determine if the volume should be deleted forcefully.
      * Volumes may have nested snapshot resources. Deleting such a volume will fail.
      * Setting this parameter to FORCE will delete volumes including nested snapshots.
      * Possible values: DEFAULT, FORCE.
      */
-    public readonly deletionPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly deletionPolicy: pulumi.Output<string | undefined>;
     /**
      * An optional description of this resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Reports the data-at-rest encryption type of the volume. Inherited from storage pool.
      */
-    public /*out*/ readonly encryptionType!: pulumi.Output<string>;
+    declare public /*out*/ readonly encryptionType: pulumi.Output<string>;
     /**
      * Export policy of the volume for NFSV3 and/or NFSV4.1 access.
      * Structure is documented below.
      */
-    public readonly exportPolicy!: pulumi.Output<outputs.netapp.VolumeExportPolicy | undefined>;
+    declare public readonly exportPolicy: pulumi.Output<outputs.netapp.VolumeExportPolicy | undefined>;
     /**
      * Indicates whether the volume is part of a volume replication relationship.
      */
-    public /*out*/ readonly hasReplication!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly hasReplication: pulumi.Output<boolean>;
     /**
      * The Hybrid Replication parameters for the volume.
      * Structure is documented below.
      */
-    public readonly hybridReplicationParameters!: pulumi.Output<outputs.netapp.VolumeHybridReplicationParameters | undefined>;
+    declare public readonly hybridReplicationParameters: pulumi.Output<outputs.netapp.VolumeHybridReplicationParameters | undefined>;
     /**
      * Flag indicating if the volume is a kerberos volume or not, export policy rules control kerberos security modes (krb5, krb5i, krb5p).
      */
-    public readonly kerberosEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly kerberosEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Reports the CMEK policy resurce name being used for volume encryption. Inherited from storage pool.
      */
-    public /*out*/ readonly kmsConfig!: pulumi.Output<string>;
+    declare public /*out*/ readonly kmsConfig: pulumi.Output<string>;
     /**
      * Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
      */
-    public readonly largeCapacity!: pulumi.Output<boolean | undefined>;
+    declare public readonly largeCapacity: pulumi.Output<boolean | undefined>;
     /**
      * Flag indicating if the volume is NFS LDAP enabled or not. Inherited from storage pool.
      */
-    public /*out*/ readonly ldapEnabled!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly ldapEnabled: pulumi.Output<boolean>;
     /**
      * Name of the pool location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Reports mount instructions for this volume.
      * Structure is documented below.
      */
-    public /*out*/ readonly mountOptions!: pulumi.Output<outputs.netapp.VolumeMountOption[]>;
+    declare public /*out*/ readonly mountOptions: pulumi.Output<outputs.netapp.VolumeMountOption[]>;
     /**
      * Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
      * Only the volume with largeCapacity will be allowed to have multiple endpoints.
      */
-    public readonly multipleEndpoints!: pulumi.Output<boolean | undefined>;
+    declare public readonly multipleEndpoints: pulumi.Output<boolean | undefined>;
     /**
      * The name of the volume. Needs to be unique per location.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * VPC network name with format: `projects/{{project}}/global/networks/{{network}}`. Inherited from storage pool.
      */
-    public /*out*/ readonly network!: pulumi.Output<string>;
+    declare public /*out*/ readonly network: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The protocol of the volume. Allowed combinations are `['NFSV3']`, `['NFSV4']`, `['SMB']`, `['NFSV3', 'NFSV4']`, `['SMB', 'NFSV3']` and `['SMB', 'NFSV4']`.
      * Each value may be one of: `NFSV3`, `NFSV4`, `SMB`.
      */
-    public readonly protocols!: pulumi.Output<string[]>;
+    declare public readonly protocols: pulumi.Output<string[]>;
     /**
      * Name of the Private Service Access allocated range. Inherited from storage pool.
      */
-    public /*out*/ readonly psaRange!: pulumi.Output<string>;
+    declare public /*out*/ readonly psaRange: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Specifies the replica zone for regional volume.
      */
-    public /*out*/ readonly replicaZone!: pulumi.Output<string>;
+    declare public /*out*/ readonly replicaZone: pulumi.Output<string>;
     /**
      * Used to create this volume from a snapshot (= cloning) or an backup.
      * Structure is documented below.
      */
-    public readonly restoreParameters!: pulumi.Output<outputs.netapp.VolumeRestoreParameters | undefined>;
+    declare public readonly restoreParameters: pulumi.Output<outputs.netapp.VolumeRestoreParameters | undefined>;
     /**
      * List of actions that are restricted on this volume.
      * Each value may be one of: `DELETE`.
      */
-    public readonly restrictedActions!: pulumi.Output<string[] | undefined>;
+    declare public readonly restrictedActions: pulumi.Output<string[] | undefined>;
     /**
      * Security Style of the Volume. Use UNIX to use UNIX or NFSV4 ACLs for file permissions.
      * Use NTFS to use NTFS ACLs for file permissions. Can only be set for volumes which use SMB together with NFS as protocol.
      * Possible values are: `NTFS`, `UNIX`.
      */
-    public readonly securityStyle!: pulumi.Output<string>;
+    declare public readonly securityStyle: pulumi.Output<string>;
     /**
      * Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTREME, STANDARD, FLEX.
      */
-    public /*out*/ readonly serviceLevel!: pulumi.Output<string>;
+    declare public /*out*/ readonly serviceLevel: pulumi.Output<string>;
     /**
      * Share name (SMB) or export path (NFS) of the volume. Needs to be unique per location.
      */
-    public readonly shareName!: pulumi.Output<string>;
+    declare public readonly shareName: pulumi.Output<string>;
     /**
      * Settings for volumes with SMB access.
      * Each value may be one of: `ENCRYPT_DATA`, `BROWSABLE`, `CHANGE_NOTIFY`, `NON_BROWSABLE`, `OPLOCKS`, `SHOW_SNAPSHOT`, `SHOW_PREVIOUS_VERSIONS`, `ACCESS_BASED_ENUMERATION`, `CONTINUOUSLY_AVAILABLE`.
      */
-    public readonly smbSettings!: pulumi.Output<string[]>;
+    declare public readonly smbSettings: pulumi.Output<string[]>;
     /**
      * If enabled, a NFS volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots. Will enable "Previous Versions" support for SMB.
      */
-    public readonly snapshotDirectory!: pulumi.Output<boolean | undefined>;
+    declare public readonly snapshotDirectory: pulumi.Output<boolean | undefined>;
     /**
      * Snapshot policy defines the schedule for automatic snapshot creation.
      * To disable automatic snapshot creation you have to remove the whole snapshotPolicy block.
      * Structure is documented below.
      */
-    public readonly snapshotPolicy!: pulumi.Output<outputs.netapp.VolumeSnapshotPolicy | undefined>;
+    declare public readonly snapshotPolicy: pulumi.Output<outputs.netapp.VolumeSnapshotPolicy | undefined>;
     /**
      * State of the volume.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * State details of the volume.
      */
-    public /*out*/ readonly stateDetails!: pulumi.Output<string>;
+    declare public /*out*/ readonly stateDetails: pulumi.Output<string>;
     /**
      * Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
      */
-    public readonly storagePool!: pulumi.Output<string>;
+    declare public readonly storagePool: pulumi.Output<string>;
     /**
      * Tiering policy for the volume.
      * Structure is documented below.
      */
-    public readonly tieringPolicy!: pulumi.Output<outputs.netapp.VolumeTieringPolicy | undefined>;
+    declare public readonly tieringPolicy: pulumi.Output<outputs.netapp.VolumeTieringPolicy | undefined>;
     /**
      * Unix permission the mount point will be created with. Default is 0770. Applicable for UNIX security style volumes only.
      */
-    public readonly unixPermissions!: pulumi.Output<string>;
+    declare public readonly unixPermissions: pulumi.Output<string>;
     /**
      * Used capacity of the volume (in GiB). This is computed periodically and it does not represent the realtime usage.
      */
-    public /*out*/ readonly usedGib!: pulumi.Output<string>;
+    declare public /*out*/ readonly usedGib: pulumi.Output<string>;
     /**
      * Specifies the active zone for regional volume.
      */
-    public /*out*/ readonly zone!: pulumi.Output<string>;
+    declare public /*out*/ readonly zone: pulumi.Output<string>;
 
     /**
      * Create a Volume resource with the given unique name, arguments, and options.
@@ -305,89 +305,89 @@ export class Volume extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VolumeState | undefined;
-            resourceInputs["activeDirectory"] = state ? state.activeDirectory : undefined;
-            resourceInputs["backupConfig"] = state ? state.backupConfig : undefined;
-            resourceInputs["capacityGib"] = state ? state.capacityGib : undefined;
-            resourceInputs["coldTierSizeGib"] = state ? state.coldTierSizeGib : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["encryptionType"] = state ? state.encryptionType : undefined;
-            resourceInputs["exportPolicy"] = state ? state.exportPolicy : undefined;
-            resourceInputs["hasReplication"] = state ? state.hasReplication : undefined;
-            resourceInputs["hybridReplicationParameters"] = state ? state.hybridReplicationParameters : undefined;
-            resourceInputs["kerberosEnabled"] = state ? state.kerberosEnabled : undefined;
-            resourceInputs["kmsConfig"] = state ? state.kmsConfig : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["largeCapacity"] = state ? state.largeCapacity : undefined;
-            resourceInputs["ldapEnabled"] = state ? state.ldapEnabled : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["mountOptions"] = state ? state.mountOptions : undefined;
-            resourceInputs["multipleEndpoints"] = state ? state.multipleEndpoints : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["protocols"] = state ? state.protocols : undefined;
-            resourceInputs["psaRange"] = state ? state.psaRange : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["replicaZone"] = state ? state.replicaZone : undefined;
-            resourceInputs["restoreParameters"] = state ? state.restoreParameters : undefined;
-            resourceInputs["restrictedActions"] = state ? state.restrictedActions : undefined;
-            resourceInputs["securityStyle"] = state ? state.securityStyle : undefined;
-            resourceInputs["serviceLevel"] = state ? state.serviceLevel : undefined;
-            resourceInputs["shareName"] = state ? state.shareName : undefined;
-            resourceInputs["smbSettings"] = state ? state.smbSettings : undefined;
-            resourceInputs["snapshotDirectory"] = state ? state.snapshotDirectory : undefined;
-            resourceInputs["snapshotPolicy"] = state ? state.snapshotPolicy : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["stateDetails"] = state ? state.stateDetails : undefined;
-            resourceInputs["storagePool"] = state ? state.storagePool : undefined;
-            resourceInputs["tieringPolicy"] = state ? state.tieringPolicy : undefined;
-            resourceInputs["unixPermissions"] = state ? state.unixPermissions : undefined;
-            resourceInputs["usedGib"] = state ? state.usedGib : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["activeDirectory"] = state?.activeDirectory;
+            resourceInputs["backupConfig"] = state?.backupConfig;
+            resourceInputs["capacityGib"] = state?.capacityGib;
+            resourceInputs["coldTierSizeGib"] = state?.coldTierSizeGib;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["encryptionType"] = state?.encryptionType;
+            resourceInputs["exportPolicy"] = state?.exportPolicy;
+            resourceInputs["hasReplication"] = state?.hasReplication;
+            resourceInputs["hybridReplicationParameters"] = state?.hybridReplicationParameters;
+            resourceInputs["kerberosEnabled"] = state?.kerberosEnabled;
+            resourceInputs["kmsConfig"] = state?.kmsConfig;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["largeCapacity"] = state?.largeCapacity;
+            resourceInputs["ldapEnabled"] = state?.ldapEnabled;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["mountOptions"] = state?.mountOptions;
+            resourceInputs["multipleEndpoints"] = state?.multipleEndpoints;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["protocols"] = state?.protocols;
+            resourceInputs["psaRange"] = state?.psaRange;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["replicaZone"] = state?.replicaZone;
+            resourceInputs["restoreParameters"] = state?.restoreParameters;
+            resourceInputs["restrictedActions"] = state?.restrictedActions;
+            resourceInputs["securityStyle"] = state?.securityStyle;
+            resourceInputs["serviceLevel"] = state?.serviceLevel;
+            resourceInputs["shareName"] = state?.shareName;
+            resourceInputs["smbSettings"] = state?.smbSettings;
+            resourceInputs["snapshotDirectory"] = state?.snapshotDirectory;
+            resourceInputs["snapshotPolicy"] = state?.snapshotPolicy;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["stateDetails"] = state?.stateDetails;
+            resourceInputs["storagePool"] = state?.storagePool;
+            resourceInputs["tieringPolicy"] = state?.tieringPolicy;
+            resourceInputs["unixPermissions"] = state?.unixPermissions;
+            resourceInputs["usedGib"] = state?.usedGib;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as VolumeArgs | undefined;
-            if ((!args || args.capacityGib === undefined) && !opts.urn) {
+            if (args?.capacityGib === undefined && !opts.urn) {
                 throw new Error("Missing required property 'capacityGib'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.protocols === undefined) && !opts.urn) {
+            if (args?.protocols === undefined && !opts.urn) {
                 throw new Error("Missing required property 'protocols'");
             }
-            if ((!args || args.shareName === undefined) && !opts.urn) {
+            if (args?.shareName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'shareName'");
             }
-            if ((!args || args.storagePool === undefined) && !opts.urn) {
+            if (args?.storagePool === undefined && !opts.urn) {
                 throw new Error("Missing required property 'storagePool'");
             }
-            resourceInputs["backupConfig"] = args ? args.backupConfig : undefined;
-            resourceInputs["capacityGib"] = args ? args.capacityGib : undefined;
-            resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["exportPolicy"] = args ? args.exportPolicy : undefined;
-            resourceInputs["hybridReplicationParameters"] = args ? args.hybridReplicationParameters : undefined;
-            resourceInputs["kerberosEnabled"] = args ? args.kerberosEnabled : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["largeCapacity"] = args ? args.largeCapacity : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["multipleEndpoints"] = args ? args.multipleEndpoints : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["protocols"] = args ? args.protocols : undefined;
-            resourceInputs["restoreParameters"] = args ? args.restoreParameters : undefined;
-            resourceInputs["restrictedActions"] = args ? args.restrictedActions : undefined;
-            resourceInputs["securityStyle"] = args ? args.securityStyle : undefined;
-            resourceInputs["shareName"] = args ? args.shareName : undefined;
-            resourceInputs["smbSettings"] = args ? args.smbSettings : undefined;
-            resourceInputs["snapshotDirectory"] = args ? args.snapshotDirectory : undefined;
-            resourceInputs["snapshotPolicy"] = args ? args.snapshotPolicy : undefined;
-            resourceInputs["storagePool"] = args ? args.storagePool : undefined;
-            resourceInputs["tieringPolicy"] = args ? args.tieringPolicy : undefined;
-            resourceInputs["unixPermissions"] = args ? args.unixPermissions : undefined;
+            resourceInputs["backupConfig"] = args?.backupConfig;
+            resourceInputs["capacityGib"] = args?.capacityGib;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["exportPolicy"] = args?.exportPolicy;
+            resourceInputs["hybridReplicationParameters"] = args?.hybridReplicationParameters;
+            resourceInputs["kerberosEnabled"] = args?.kerberosEnabled;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["largeCapacity"] = args?.largeCapacity;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["multipleEndpoints"] = args?.multipleEndpoints;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["protocols"] = args?.protocols;
+            resourceInputs["restoreParameters"] = args?.restoreParameters;
+            resourceInputs["restrictedActions"] = args?.restrictedActions;
+            resourceInputs["securityStyle"] = args?.securityStyle;
+            resourceInputs["shareName"] = args?.shareName;
+            resourceInputs["smbSettings"] = args?.smbSettings;
+            resourceInputs["snapshotDirectory"] = args?.snapshotDirectory;
+            resourceInputs["snapshotPolicy"] = args?.snapshotPolicy;
+            resourceInputs["storagePool"] = args?.storagePool;
+            resourceInputs["tieringPolicy"] = args?.tieringPolicy;
+            resourceInputs["unixPermissions"] = args?.unixPermissions;
             resourceInputs["activeDirectory"] = undefined /*out*/;
             resourceInputs["coldTierSizeGib"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;

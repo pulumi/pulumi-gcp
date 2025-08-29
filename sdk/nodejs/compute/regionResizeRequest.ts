@@ -149,46 +149,46 @@ export class RegionResizeRequest extends pulumi.CustomResource {
     /**
      * The creation timestamp for this resize request in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * An optional description of this resize-request.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The reference of the regional instance group manager this ResizeRequest is a part of.
      */
-    public readonly instanceGroupManager!: pulumi.Output<string>;
+    declare public readonly instanceGroupManager: pulumi.Output<string>;
     /**
      * The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The reference of the compute region scoping this request. If it is not provided, the provider region is used.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Requested run duration for instances that will be created by this request. At the end of the run duration instances will be deleted.
      * Structure is documented below.
      */
-    public readonly requestedRunDuration!: pulumi.Output<outputs.compute.RegionResizeRequestRequestedRunDuration | undefined>;
+    declare public readonly requestedRunDuration: pulumi.Output<outputs.compute.RegionResizeRequestRequestedRunDuration | undefined>;
     /**
      * The number of instances to be created by this resize request. The group's target size will be increased by this number.
      */
-    public readonly resizeBy!: pulumi.Output<number>;
+    declare public readonly resizeBy: pulumi.Output<number>;
     /**
      * Current state of the request.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Status of the request.
      * Structure is documented below.
      */
-    public /*out*/ readonly statuses!: pulumi.Output<outputs.compute.RegionResizeRequestStatus[]>;
+    declare public /*out*/ readonly statuses: pulumi.Output<outputs.compute.RegionResizeRequestStatus[]>;
 
     /**
      * Create a RegionResizeRequest resource with the given unique name, arguments, and options.
@@ -203,31 +203,31 @@ export class RegionResizeRequest extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegionResizeRequestState | undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["instanceGroupManager"] = state ? state.instanceGroupManager : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["requestedRunDuration"] = state ? state.requestedRunDuration : undefined;
-            resourceInputs["resizeBy"] = state ? state.resizeBy : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["statuses"] = state ? state.statuses : undefined;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["instanceGroupManager"] = state?.instanceGroupManager;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["requestedRunDuration"] = state?.requestedRunDuration;
+            resourceInputs["resizeBy"] = state?.resizeBy;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["statuses"] = state?.statuses;
         } else {
             const args = argsOrState as RegionResizeRequestArgs | undefined;
-            if ((!args || args.instanceGroupManager === undefined) && !opts.urn) {
+            if (args?.instanceGroupManager === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceGroupManager'");
             }
-            if ((!args || args.resizeBy === undefined) && !opts.urn) {
+            if (args?.resizeBy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resizeBy'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["instanceGroupManager"] = args ? args.instanceGroupManager : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["requestedRunDuration"] = args ? args.requestedRunDuration : undefined;
-            resourceInputs["resizeBy"] = args ? args.resizeBy : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["instanceGroupManager"] = args?.instanceGroupManager;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["requestedRunDuration"] = args?.requestedRunDuration;
+            resourceInputs["resizeBy"] = args?.resizeBy;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["statuses"] = undefined /*out*/;

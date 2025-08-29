@@ -70,45 +70,45 @@ export class KeyRingImportJob extends pulumi.CustomResource {
      * Only present if the chosen ImportMethod is one with a protection level of HSM.
      * Structure is documented below.
      */
-    public /*out*/ readonly attestations!: pulumi.Output<outputs.kms.KeyRingImportJobAttestation[]>;
+    declare public /*out*/ readonly attestations: pulumi.Output<outputs.kms.KeyRingImportJobAttestation[]>;
     /**
      * The time at which this resource is scheduled for expiration and can no longer be used.
      * This is in RFC3339 text format.
      */
-    public /*out*/ readonly expireTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly expireTime: pulumi.Output<string>;
     /**
      * It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
      */
-    public readonly importJobId!: pulumi.Output<string>;
+    declare public readonly importJobId: pulumi.Output<string>;
     /**
      * The wrapping method to be used for incoming key material.
      * Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`, `RSA_OAEP_3072_SHA256_AES_256`, `RSA_OAEP_4096_SHA256_AES_256`, `RSA_OAEP_3072_SHA256`, `RSA_OAEP_4096_SHA256`.
      */
-    public readonly importMethod!: pulumi.Output<string>;
+    declare public readonly importMethod: pulumi.Output<string>;
     /**
      * The KeyRing that this import job belongs to.
      * Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
      */
-    public readonly keyRing!: pulumi.Output<string>;
+    declare public readonly keyRing: pulumi.Output<string>;
     /**
      * The resource name for this ImportJob in the format projects/*&#47;locations/*&#47;keyRings/*&#47;importJobs/*.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The protection level of the ImportJob. This must match the protectionLevel of the
      * versionTemplate on the CryptoKey you attempt to import into.
      * Possible values are: `SOFTWARE`, `HSM`, `EXTERNAL`.
      */
-    public readonly protectionLevel!: pulumi.Output<string>;
+    declare public readonly protectionLevel: pulumi.Output<string>;
     /**
      * The public key with which to wrap key material prior to import. Only returned if state is `ACTIVE`.
      * Structure is documented below.
      */
-    public /*out*/ readonly publicKeys!: pulumi.Output<outputs.kms.KeyRingImportJobPublicKey[]>;
+    declare public /*out*/ readonly publicKeys: pulumi.Output<outputs.kms.KeyRingImportJobPublicKey[]>;
     /**
      * The current state of the ImportJob, indicating if it can be used.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
 
     /**
      * Create a KeyRingImportJob resource with the given unique name, arguments, and options.
@@ -123,33 +123,33 @@ export class KeyRingImportJob extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KeyRingImportJobState | undefined;
-            resourceInputs["attestations"] = state ? state.attestations : undefined;
-            resourceInputs["expireTime"] = state ? state.expireTime : undefined;
-            resourceInputs["importJobId"] = state ? state.importJobId : undefined;
-            resourceInputs["importMethod"] = state ? state.importMethod : undefined;
-            resourceInputs["keyRing"] = state ? state.keyRing : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["protectionLevel"] = state ? state.protectionLevel : undefined;
-            resourceInputs["publicKeys"] = state ? state.publicKeys : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["attestations"] = state?.attestations;
+            resourceInputs["expireTime"] = state?.expireTime;
+            resourceInputs["importJobId"] = state?.importJobId;
+            resourceInputs["importMethod"] = state?.importMethod;
+            resourceInputs["keyRing"] = state?.keyRing;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["protectionLevel"] = state?.protectionLevel;
+            resourceInputs["publicKeys"] = state?.publicKeys;
+            resourceInputs["state"] = state?.state;
         } else {
             const args = argsOrState as KeyRingImportJobArgs | undefined;
-            if ((!args || args.importJobId === undefined) && !opts.urn) {
+            if (args?.importJobId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'importJobId'");
             }
-            if ((!args || args.importMethod === undefined) && !opts.urn) {
+            if (args?.importMethod === undefined && !opts.urn) {
                 throw new Error("Missing required property 'importMethod'");
             }
-            if ((!args || args.keyRing === undefined) && !opts.urn) {
+            if (args?.keyRing === undefined && !opts.urn) {
                 throw new Error("Missing required property 'keyRing'");
             }
-            if ((!args || args.protectionLevel === undefined) && !opts.urn) {
+            if (args?.protectionLevel === undefined && !opts.urn) {
                 throw new Error("Missing required property 'protectionLevel'");
             }
-            resourceInputs["importJobId"] = args ? args.importJobId : undefined;
-            resourceInputs["importMethod"] = args ? args.importMethod : undefined;
-            resourceInputs["keyRing"] = args ? args.keyRing : undefined;
-            resourceInputs["protectionLevel"] = args ? args.protectionLevel : undefined;
+            resourceInputs["importJobId"] = args?.importJobId;
+            resourceInputs["importMethod"] = args?.importMethod;
+            resourceInputs["keyRing"] = args?.keyRing;
+            resourceInputs["protectionLevel"] = args?.protectionLevel;
             resourceInputs["attestations"] = undefined /*out*/;
             resourceInputs["expireTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

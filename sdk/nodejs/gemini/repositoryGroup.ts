@@ -90,52 +90,52 @@ export class RepositoryGroup extends pulumi.CustomResource {
     /**
      * Required. Id of the Code Repository Index.
      */
-    public readonly codeRepositoryIndex!: pulumi.Output<string>;
+    declare public readonly codeRepositoryIndex: pulumi.Output<string>;
     /**
      * Output only. Create time stamp.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Optional. Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location of the Code Repository Index, for example `us-central1`.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Immutable. Identifier. Name of Repository Group.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Required. List of repositories to group.
      * Structure is documented below.
      */
-    public readonly repositories!: pulumi.Output<outputs.gemini.RepositoryGroupRepository[]>;
+    declare public readonly repositories: pulumi.Output<outputs.gemini.RepositoryGroupRepository[]>;
     /**
      * Required. Id of the Repository Group.
      */
-    public readonly repositoryGroupId!: pulumi.Output<string>;
+    declare public readonly repositoryGroupId: pulumi.Output<string>;
     /**
      * Output only. Update time stamp.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a RepositoryGroup resource with the given unique name, arguments, and options.
@@ -150,37 +150,37 @@ export class RepositoryGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RepositoryGroupState | undefined;
-            resourceInputs["codeRepositoryIndex"] = state ? state.codeRepositoryIndex : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["repositories"] = state ? state.repositories : undefined;
-            resourceInputs["repositoryGroupId"] = state ? state.repositoryGroupId : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["codeRepositoryIndex"] = state?.codeRepositoryIndex;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["repositories"] = state?.repositories;
+            resourceInputs["repositoryGroupId"] = state?.repositoryGroupId;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as RepositoryGroupArgs | undefined;
-            if ((!args || args.codeRepositoryIndex === undefined) && !opts.urn) {
+            if (args?.codeRepositoryIndex === undefined && !opts.urn) {
                 throw new Error("Missing required property 'codeRepositoryIndex'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.repositories === undefined) && !opts.urn) {
+            if (args?.repositories === undefined && !opts.urn) {
                 throw new Error("Missing required property 'repositories'");
             }
-            if ((!args || args.repositoryGroupId === undefined) && !opts.urn) {
+            if (args?.repositoryGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'repositoryGroupId'");
             }
-            resourceInputs["codeRepositoryIndex"] = args ? args.codeRepositoryIndex : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["repositories"] = args ? args.repositories : undefined;
-            resourceInputs["repositoryGroupId"] = args ? args.repositoryGroupId : undefined;
+            resourceInputs["codeRepositoryIndex"] = args?.codeRepositoryIndex;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["repositories"] = args?.repositories;
+            resourceInputs["repositoryGroupId"] = args?.repositoryGroupId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

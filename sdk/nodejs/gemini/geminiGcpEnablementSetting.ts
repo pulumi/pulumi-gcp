@@ -81,7 +81,7 @@ export class GeminiGcpEnablementSetting extends pulumi.CustomResource {
     /**
      * Create time stamp.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * (Optional, Deprecated)
      * Whether web grounding should be disabled.
@@ -90,55 +90,55 @@ export class GeminiGcpEnablementSetting extends pulumi.CustomResource {
      *
      * @deprecated `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
      */
-    public readonly disableWebGrounding!: pulumi.Output<boolean | undefined>;
+    declare public readonly disableWebGrounding: pulumi.Output<boolean | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Whether customer data sharing should be enabled.
      */
-    public readonly enableCustomerDataSharing!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableCustomerDataSharing: pulumi.Output<boolean | undefined>;
     /**
      * Id of the Gemini Gcp Enablement setting.
      */
-    public readonly geminiGcpEnablementSettingId!: pulumi.Output<string>;
+    declare public readonly geminiGcpEnablementSettingId: pulumi.Output<string>;
     /**
      * Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Identifier. Name of the resource.
      * Format:projects/{project}/locations/{location}/geminiGcpEnablementSettings/{geminiGcpEnablementSetting}
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Update time stamp.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * Web grounding type.
      * Possible values:
      * GROUNDING_WITH_GOOGLE_SEARCH
      * WEB_GROUNDING_FOR_ENTERPRISE
      */
-    public readonly webGroundingType!: pulumi.Output<string | undefined>;
+    declare public readonly webGroundingType: pulumi.Output<string | undefined>;
 
     /**
      * Create a GeminiGcpEnablementSetting resource with the given unique name, arguments, and options.
@@ -153,33 +153,33 @@ export class GeminiGcpEnablementSetting extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GeminiGcpEnablementSettingState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["disableWebGrounding"] = state ? state.disableWebGrounding : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["enableCustomerDataSharing"] = state ? state.enableCustomerDataSharing : undefined;
-            resourceInputs["geminiGcpEnablementSettingId"] = state ? state.geminiGcpEnablementSettingId : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["webGroundingType"] = state ? state.webGroundingType : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["disableWebGrounding"] = state?.disableWebGrounding;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["enableCustomerDataSharing"] = state?.enableCustomerDataSharing;
+            resourceInputs["geminiGcpEnablementSettingId"] = state?.geminiGcpEnablementSettingId;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["webGroundingType"] = state?.webGroundingType;
         } else {
             const args = argsOrState as GeminiGcpEnablementSettingArgs | undefined;
-            if ((!args || args.geminiGcpEnablementSettingId === undefined) && !opts.urn) {
+            if (args?.geminiGcpEnablementSettingId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'geminiGcpEnablementSettingId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["disableWebGrounding"] = args ? args.disableWebGrounding : undefined;
-            resourceInputs["enableCustomerDataSharing"] = args ? args.enableCustomerDataSharing : undefined;
-            resourceInputs["geminiGcpEnablementSettingId"] = args ? args.geminiGcpEnablementSettingId : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["webGroundingType"] = args ? args.webGroundingType : undefined;
+            resourceInputs["disableWebGrounding"] = args?.disableWebGrounding;
+            resourceInputs["enableCustomerDataSharing"] = args?.enableCustomerDataSharing;
+            resourceInputs["geminiGcpEnablementSettingId"] = args?.geminiGcpEnablementSettingId;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["webGroundingType"] = args?.webGroundingType;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

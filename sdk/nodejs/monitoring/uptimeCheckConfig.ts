@@ -270,76 +270,76 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
      * The checker type to use for the check. If the monitored resource type is `servicedirectoryService`, `checkerType` must be set to `VPC_CHECKERS`.
      * Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
      */
-    public readonly checkerType!: pulumi.Output<string>;
+    declare public readonly checkerType: pulumi.Output<string>;
     /**
      * The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
      * Structure is documented below.
      */
-    public readonly contentMatchers!: pulumi.Output<outputs.monitoring.UptimeCheckConfigContentMatcher[] | undefined>;
+    declare public readonly contentMatchers: pulumi.Output<outputs.monitoring.UptimeCheckConfigContentMatcher[] | undefined>;
     /**
      * A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Contains information needed to make an HTTP or HTTPS check.
      * Structure is documented below.
      */
-    public readonly httpCheck!: pulumi.Output<outputs.monitoring.UptimeCheckConfigHttpCheck | undefined>;
+    declare public readonly httpCheck: pulumi.Output<outputs.monitoring.UptimeCheckConfigHttpCheck | undefined>;
     /**
      * Specifies whether to log the results of failed probes to Cloud Logging.
      */
-    public readonly logCheckFailures!: pulumi.Output<boolean | undefined>;
+    declare public readonly logCheckFailures: pulumi.Output<boolean | undefined>;
     /**
      * The [monitored resource]
      * (https://cloud.google.com/monitoring/api/resources) associated with the
      * configuration. The following monitored resource types are supported for
      * uptime checks:
      */
-    public readonly monitoredResource!: pulumi.Output<outputs.monitoring.UptimeCheckConfigMonitoredResource | undefined>;
+    declare public readonly monitoredResource: pulumi.Output<outputs.monitoring.UptimeCheckConfigMonitoredResource | undefined>;
     /**
      * A unique resource name for this UptimeCheckConfig. The format is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * How often, in seconds, the uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 300s.
      */
-    public readonly period!: pulumi.Output<string | undefined>;
+    declare public readonly period: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The group resource associated with the configuration.
      * Structure is documented below.
      */
-    public readonly resourceGroup!: pulumi.Output<outputs.monitoring.UptimeCheckConfigResourceGroup | undefined>;
+    declare public readonly resourceGroup: pulumi.Output<outputs.monitoring.UptimeCheckConfigResourceGroup | undefined>;
     /**
      * The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions to include a minimum of 3 locations must be provided, or an error message is returned. Not specifying this field will result in uptime checks running from all regions.
      */
-    public readonly selectedRegions!: pulumi.Output<string[] | undefined>;
+    declare public readonly selectedRegions: pulumi.Output<string[] | undefined>;
     /**
      * A Synthetic Monitor deployed to a Cloud Functions V2 instance.
      * Structure is documented below.
      */
-    public readonly syntheticMonitor!: pulumi.Output<outputs.monitoring.UptimeCheckConfigSyntheticMonitor | undefined>;
+    declare public readonly syntheticMonitor: pulumi.Output<outputs.monitoring.UptimeCheckConfigSyntheticMonitor | undefined>;
     /**
      * Contains information needed to make a TCP check.
      * Structure is documented below.
      */
-    public readonly tcpCheck!: pulumi.Output<outputs.monitoring.UptimeCheckConfigTcpCheck | undefined>;
+    declare public readonly tcpCheck: pulumi.Output<outputs.monitoring.UptimeCheckConfigTcpCheck | undefined>;
     /**
      * The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
      */
-    public readonly timeout!: pulumi.Output<string>;
+    declare public readonly timeout: pulumi.Output<string>;
     /**
      * The id of the uptime check
      */
-    public /*out*/ readonly uptimeCheckId!: pulumi.Output<string>;
+    declare public /*out*/ readonly uptimeCheckId: pulumi.Output<string>;
     /**
      * User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
      */
-    public readonly userLabels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly userLabels: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a UptimeCheckConfig resource with the given unique name, arguments, and options.
@@ -354,44 +354,44 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UptimeCheckConfigState | undefined;
-            resourceInputs["checkerType"] = state ? state.checkerType : undefined;
-            resourceInputs["contentMatchers"] = state ? state.contentMatchers : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["httpCheck"] = state ? state.httpCheck : undefined;
-            resourceInputs["logCheckFailures"] = state ? state.logCheckFailures : undefined;
-            resourceInputs["monitoredResource"] = state ? state.monitoredResource : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["resourceGroup"] = state ? state.resourceGroup : undefined;
-            resourceInputs["selectedRegions"] = state ? state.selectedRegions : undefined;
-            resourceInputs["syntheticMonitor"] = state ? state.syntheticMonitor : undefined;
-            resourceInputs["tcpCheck"] = state ? state.tcpCheck : undefined;
-            resourceInputs["timeout"] = state ? state.timeout : undefined;
-            resourceInputs["uptimeCheckId"] = state ? state.uptimeCheckId : undefined;
-            resourceInputs["userLabels"] = state ? state.userLabels : undefined;
+            resourceInputs["checkerType"] = state?.checkerType;
+            resourceInputs["contentMatchers"] = state?.contentMatchers;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["httpCheck"] = state?.httpCheck;
+            resourceInputs["logCheckFailures"] = state?.logCheckFailures;
+            resourceInputs["monitoredResource"] = state?.monitoredResource;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["resourceGroup"] = state?.resourceGroup;
+            resourceInputs["selectedRegions"] = state?.selectedRegions;
+            resourceInputs["syntheticMonitor"] = state?.syntheticMonitor;
+            resourceInputs["tcpCheck"] = state?.tcpCheck;
+            resourceInputs["timeout"] = state?.timeout;
+            resourceInputs["uptimeCheckId"] = state?.uptimeCheckId;
+            resourceInputs["userLabels"] = state?.userLabels;
         } else {
             const args = argsOrState as UptimeCheckConfigArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.timeout === undefined) && !opts.urn) {
+            if (args?.timeout === undefined && !opts.urn) {
                 throw new Error("Missing required property 'timeout'");
             }
-            resourceInputs["checkerType"] = args ? args.checkerType : undefined;
-            resourceInputs["contentMatchers"] = args ? args.contentMatchers : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["httpCheck"] = args ? args.httpCheck : undefined;
-            resourceInputs["logCheckFailures"] = args ? args.logCheckFailures : undefined;
-            resourceInputs["monitoredResource"] = args ? args.monitoredResource : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["resourceGroup"] = args ? args.resourceGroup : undefined;
-            resourceInputs["selectedRegions"] = args ? args.selectedRegions : undefined;
-            resourceInputs["syntheticMonitor"] = args ? args.syntheticMonitor : undefined;
-            resourceInputs["tcpCheck"] = args ? args.tcpCheck : undefined;
-            resourceInputs["timeout"] = args ? args.timeout : undefined;
-            resourceInputs["userLabels"] = args ? args.userLabels : undefined;
+            resourceInputs["checkerType"] = args?.checkerType;
+            resourceInputs["contentMatchers"] = args?.contentMatchers;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["httpCheck"] = args?.httpCheck;
+            resourceInputs["logCheckFailures"] = args?.logCheckFailures;
+            resourceInputs["monitoredResource"] = args?.monitoredResource;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["resourceGroup"] = args?.resourceGroup;
+            resourceInputs["selectedRegions"] = args?.selectedRegions;
+            resourceInputs["syntheticMonitor"] = args?.syntheticMonitor;
+            resourceInputs["tcpCheck"] = args?.tcpCheck;
+            resourceInputs["timeout"] = args?.timeout;
+            resourceInputs["userLabels"] = args?.userLabels;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["uptimeCheckId"] = undefined /*out*/;
         }

@@ -101,21 +101,21 @@ export class AttachedDisk extends pulumi.CustomResource {
      * to this disk, in the form persistent-disks-x, where x is a number
      * assigned by Google Compute Engine.
      */
-    public readonly deviceName!: pulumi.Output<string>;
+    declare public readonly deviceName: pulumi.Output<string>;
     /**
      * `name` or `selfLink` of the disk that will be attached.
      *
      *
      * - - -
      */
-    public readonly disk!: pulumi.Output<string>;
+    declare public readonly disk: pulumi.Output<string>;
     /**
      * `name` or `selfLink` of the compute instance that the disk will be attached to.
      * If the `selfLink` is provided then `zone` and `project` are extracted from the
      * self link. If only the name is used then `zone` and `project` must be defined
      * as properties on the resource or provider.
      */
-    public readonly instance!: pulumi.Output<string>;
+    declare public readonly instance: pulumi.Output<string>;
     /**
      * The disk interface used for attaching this disk.
      *
@@ -127,7 +127,7 @@ export class AttachedDisk extends pulumi.CustomResource {
      * "SCSI"
      * "NVME"
      */
-    public readonly interface!: pulumi.Output<string | undefined>;
+    declare public readonly interface: pulumi.Output<string | undefined>;
     /**
      * The mode in which to attach this disk, either READ_WRITE or
      * READ_ONLY. If not specified, the default is to attach the disk in
@@ -137,17 +137,17 @@ export class AttachedDisk extends pulumi.CustomResource {
      * "READ_ONLY"
      * "READ_WRITE"
      */
-    public readonly mode!: pulumi.Output<string | undefined>;
+    declare public readonly mode: pulumi.Output<string | undefined>;
     /**
      * The project that the referenced compute instance is a part of. If `instance` is referenced by its
      * `selfLink` the project defined in the link will take precedence.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The zone that the referenced compute instance is located within. If `instance` is referenced by its
      * `selfLink` the zone defined in the link will take precedence.
      */
-    public readonly zone!: pulumi.Output<string>;
+    declare public readonly zone: pulumi.Output<string>;
 
     /**
      * Create a AttachedDisk resource with the given unique name, arguments, and options.
@@ -162,28 +162,28 @@ export class AttachedDisk extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AttachedDiskState | undefined;
-            resourceInputs["deviceName"] = state ? state.deviceName : undefined;
-            resourceInputs["disk"] = state ? state.disk : undefined;
-            resourceInputs["instance"] = state ? state.instance : undefined;
-            resourceInputs["interface"] = state ? state.interface : undefined;
-            resourceInputs["mode"] = state ? state.mode : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["deviceName"] = state?.deviceName;
+            resourceInputs["disk"] = state?.disk;
+            resourceInputs["instance"] = state?.instance;
+            resourceInputs["interface"] = state?.interface;
+            resourceInputs["mode"] = state?.mode;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as AttachedDiskArgs | undefined;
-            if ((!args || args.disk === undefined) && !opts.urn) {
+            if (args?.disk === undefined && !opts.urn) {
                 throw new Error("Missing required property 'disk'");
             }
-            if ((!args || args.instance === undefined) && !opts.urn) {
+            if (args?.instance === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instance'");
             }
-            resourceInputs["deviceName"] = args ? args.deviceName : undefined;
-            resourceInputs["disk"] = args ? args.disk : undefined;
-            resourceInputs["instance"] = args ? args.instance : undefined;
-            resourceInputs["interface"] = args ? args.interface : undefined;
-            resourceInputs["mode"] = args ? args.mode : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["deviceName"] = args?.deviceName;
+            resourceInputs["disk"] = args?.disk;
+            resourceInputs["instance"] = args?.instance;
+            resourceInputs["interface"] = args?.interface;
+            resourceInputs["mode"] = args?.mode;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["zone"] = args?.zone;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AttachedDisk.__pulumiType, name, resourceInputs, opts);

@@ -103,81 +103,81 @@ export class Enrollment extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A CEL expression identifying which messages this enrollment applies to.
      */
-    public readonly celMatch!: pulumi.Output<string>;
+    declare public readonly celMatch: pulumi.Output<string>;
     /**
      * The creation time.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Destination is the Pipeline that the Enrollment is delivering to. It must
      * point to the full resource name of a Pipeline. Format:
      * "projects/{PROJECT_ID}/locations/{region}/pipelines/{PIPELINE_ID)"
      */
-    public readonly destination!: pulumi.Output<string>;
+    declare public readonly destination: pulumi.Output<string>;
     /**
      * Resource display name.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The user-provided ID to be assigned to the Enrollment. It should match the
      * format `^a-z?$`.
      */
-    public readonly enrollmentId!: pulumi.Output<string>;
+    declare public readonly enrollmentId: pulumi.Output<string>;
     /**
      * This checksum is computed by the server based on the value of other
      * fields, and might be sent only on update and delete requests to ensure that
      * the client has an up-to-date value before proceeding.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Resource labels.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Resource name of the message bus identifying the source of the messages. It
      * matches the form
      * projects/{project}/locations/{location}/messageBuses/{messageBus}.
      */
-    public readonly messageBus!: pulumi.Output<string>;
+    declare public readonly messageBus: pulumi.Output<string>;
     /**
      * Resource name of the form
      * projects/{project}/locations/{location}/enrollments/{enrollment}
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Server assigned unique identifier for the channel. The value is a UUID4
      * string and guaranteed to remain unchanged until the resource is deleted.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * The last-modified time.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Enrollment resource with the given unique name, arguments, and options.
@@ -192,49 +192,49 @@ export class Enrollment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EnrollmentState | undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["celMatch"] = state ? state.celMatch : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["destination"] = state ? state.destination : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["enrollmentId"] = state ? state.enrollmentId : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["messageBus"] = state ? state.messageBus : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["celMatch"] = state?.celMatch;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["destination"] = state?.destination;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["enrollmentId"] = state?.enrollmentId;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["messageBus"] = state?.messageBus;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as EnrollmentArgs | undefined;
-            if ((!args || args.celMatch === undefined) && !opts.urn) {
+            if (args?.celMatch === undefined && !opts.urn) {
                 throw new Error("Missing required property 'celMatch'");
             }
-            if ((!args || args.destination === undefined) && !opts.urn) {
+            if (args?.destination === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destination'");
             }
-            if ((!args || args.enrollmentId === undefined) && !opts.urn) {
+            if (args?.enrollmentId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enrollmentId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.messageBus === undefined) && !opts.urn) {
+            if (args?.messageBus === undefined && !opts.urn) {
                 throw new Error("Missing required property 'messageBus'");
             }
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["celMatch"] = args ? args.celMatch : undefined;
-            resourceInputs["destination"] = args ? args.destination : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["enrollmentId"] = args ? args.enrollmentId : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["messageBus"] = args ? args.messageBus : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["celMatch"] = args?.celMatch;
+            resourceInputs["destination"] = args?.destination;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["enrollmentId"] = args?.enrollmentId;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["messageBus"] = args?.messageBus;
+            resourceInputs["project"] = args?.project;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;

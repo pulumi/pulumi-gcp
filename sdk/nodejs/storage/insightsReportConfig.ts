@@ -131,39 +131,39 @@ export class InsightsReportConfig extends pulumi.CustomResource {
      * Options for configuring the format of the inventory report CSV file.
      * Structure is documented below.
      */
-    public readonly csvOptions!: pulumi.Output<outputs.storage.InsightsReportConfigCsvOptions | undefined>;
+    declare public readonly csvOptions: pulumi.Output<outputs.storage.InsightsReportConfigCsvOptions | undefined>;
     /**
      * The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * Options for configuring how inventory reports are generated.
      * Structure is documented below.
      */
-    public readonly frequencyOptions!: pulumi.Output<outputs.storage.InsightsReportConfigFrequencyOptions | undefined>;
+    declare public readonly frequencyOptions: pulumi.Output<outputs.storage.InsightsReportConfigFrequencyOptions | undefined>;
     /**
      * The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
      * must be in the same location.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The UUID of the inventory report configuration.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Options for including metadata in an inventory report.
      * Structure is documented below.
      */
-    public readonly objectMetadataReportOptions!: pulumi.Output<outputs.storage.InsightsReportConfigObjectMetadataReportOptions | undefined>;
+    declare public readonly objectMetadataReportOptions: pulumi.Output<outputs.storage.InsightsReportConfigObjectMetadataReportOptions | undefined>;
     /**
      * An option for outputting inventory reports as parquet files.
      */
-    public readonly parquetOptions!: pulumi.Output<outputs.storage.InsightsReportConfigParquetOptions | undefined>;
+    declare public readonly parquetOptions: pulumi.Output<outputs.storage.InsightsReportConfigParquetOptions | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
 
     /**
      * Create a InsightsReportConfig resource with the given unique name, arguments, and options.
@@ -178,26 +178,26 @@ export class InsightsReportConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InsightsReportConfigState | undefined;
-            resourceInputs["csvOptions"] = state ? state.csvOptions : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["frequencyOptions"] = state ? state.frequencyOptions : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["objectMetadataReportOptions"] = state ? state.objectMetadataReportOptions : undefined;
-            resourceInputs["parquetOptions"] = state ? state.parquetOptions : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["csvOptions"] = state?.csvOptions;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["frequencyOptions"] = state?.frequencyOptions;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["objectMetadataReportOptions"] = state?.objectMetadataReportOptions;
+            resourceInputs["parquetOptions"] = state?.parquetOptions;
+            resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as InsightsReportConfigArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["csvOptions"] = args ? args.csvOptions : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["frequencyOptions"] = args ? args.frequencyOptions : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["objectMetadataReportOptions"] = args ? args.objectMetadataReportOptions : undefined;
-            resourceInputs["parquetOptions"] = args ? args.parquetOptions : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["csvOptions"] = args?.csvOptions;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["frequencyOptions"] = args?.frequencyOptions;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["objectMetadataReportOptions"] = args?.objectMetadataReportOptions;
+            resourceInputs["parquetOptions"] = args?.parquetOptions;
+            resourceInputs["project"] = args?.project;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -87,73 +87,73 @@ export class ConversationProfile extends pulumi.CustomResource {
      * Configuration for an automated agent to use with this profile
      * Structure is documented below.
      */
-    public readonly automatedAgentConfig!: pulumi.Output<outputs.diagflow.ConversationProfileAutomatedAgentConfig | undefined>;
+    declare public readonly automatedAgentConfig: pulumi.Output<outputs.diagflow.ConversationProfileAutomatedAgentConfig | undefined>;
     /**
      * Required. Human readable name for this profile. Max length 1024 bytes.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Configuration for connecting to a live agent
      * Structure is documented below.
      */
-    public readonly humanAgentAssistantConfig!: pulumi.Output<outputs.diagflow.ConversationProfileHumanAgentAssistantConfig | undefined>;
+    declare public readonly humanAgentAssistantConfig: pulumi.Output<outputs.diagflow.ConversationProfileHumanAgentAssistantConfig | undefined>;
     /**
      * Defines the hand off to a live agent, typically on which external agent service provider to connect to a conversation.
      * Structure is documented below.
      */
-    public readonly humanAgentHandoffConfig!: pulumi.Output<outputs.diagflow.ConversationProfileHumanAgentHandoffConfig | undefined>;
+    declare public readonly humanAgentHandoffConfig: pulumi.Output<outputs.diagflow.ConversationProfileHumanAgentHandoffConfig | undefined>;
     /**
      * Language code for the conversation profile. This should be a BCP-47 language tag.
      */
-    public readonly languageCode!: pulumi.Output<string>;
+    declare public readonly languageCode: pulumi.Output<string>;
     /**
      * desc
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Defines logging behavior for conversation lifecycle events.
      * Structure is documented below.
      */
-    public readonly loggingConfig!: pulumi.Output<outputs.diagflow.ConversationProfileLoggingConfig | undefined>;
+    declare public readonly loggingConfig: pulumi.Output<outputs.diagflow.ConversationProfileLoggingConfig | undefined>;
     /**
      * name
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Pub/Sub topic on which to publish new agent assistant events.
      * Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
      * Structure is documented below.
      */
-    public readonly newMessageEventNotificationConfig!: pulumi.Output<outputs.diagflow.ConversationProfileNewMessageEventNotificationConfig | undefined>;
+    declare public readonly newMessageEventNotificationConfig: pulumi.Output<outputs.diagflow.ConversationProfileNewMessageEventNotificationConfig | undefined>;
     /**
      * Pub/Sub topic on which to publish new agent assistant events.
      * Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
      * Structure is documented below.
      */
-    public readonly notificationConfig!: pulumi.Output<outputs.diagflow.ConversationProfileNotificationConfig | undefined>;
+    declare public readonly notificationConfig: pulumi.Output<outputs.diagflow.ConversationProfileNotificationConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Name of the CX SecuritySettings reference for the agent.
      */
-    public readonly securitySettings!: pulumi.Output<string | undefined>;
+    declare public readonly securitySettings: pulumi.Output<string | undefined>;
     /**
      * Settings for speech transcription.
      * Structure is documented below.
      */
-    public readonly sttConfig!: pulumi.Output<outputs.diagflow.ConversationProfileSttConfig | undefined>;
+    declare public readonly sttConfig: pulumi.Output<outputs.diagflow.ConversationProfileSttConfig | undefined>;
     /**
      * The time zone of this conversational profile.
      */
-    public readonly timeZone!: pulumi.Output<string | undefined>;
+    declare public readonly timeZone: pulumi.Output<string | undefined>;
     /**
      * Configuration for Text-to-Speech synthesization. If agent defines synthesization options as well, agent settings overrides the option here.
      * Structure is documented below.
      */
-    public readonly ttsConfig!: pulumi.Output<outputs.diagflow.ConversationProfileTtsConfig | undefined>;
+    declare public readonly ttsConfig: pulumi.Output<outputs.diagflow.ConversationProfileTtsConfig | undefined>;
 
     /**
      * Create a ConversationProfile resource with the given unique name, arguments, and options.
@@ -168,43 +168,43 @@ export class ConversationProfile extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConversationProfileState | undefined;
-            resourceInputs["automatedAgentConfig"] = state ? state.automatedAgentConfig : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["humanAgentAssistantConfig"] = state ? state.humanAgentAssistantConfig : undefined;
-            resourceInputs["humanAgentHandoffConfig"] = state ? state.humanAgentHandoffConfig : undefined;
-            resourceInputs["languageCode"] = state ? state.languageCode : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["loggingConfig"] = state ? state.loggingConfig : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["newMessageEventNotificationConfig"] = state ? state.newMessageEventNotificationConfig : undefined;
-            resourceInputs["notificationConfig"] = state ? state.notificationConfig : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["securitySettings"] = state ? state.securitySettings : undefined;
-            resourceInputs["sttConfig"] = state ? state.sttConfig : undefined;
-            resourceInputs["timeZone"] = state ? state.timeZone : undefined;
-            resourceInputs["ttsConfig"] = state ? state.ttsConfig : undefined;
+            resourceInputs["automatedAgentConfig"] = state?.automatedAgentConfig;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["humanAgentAssistantConfig"] = state?.humanAgentAssistantConfig;
+            resourceInputs["humanAgentHandoffConfig"] = state?.humanAgentHandoffConfig;
+            resourceInputs["languageCode"] = state?.languageCode;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["loggingConfig"] = state?.loggingConfig;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["newMessageEventNotificationConfig"] = state?.newMessageEventNotificationConfig;
+            resourceInputs["notificationConfig"] = state?.notificationConfig;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["securitySettings"] = state?.securitySettings;
+            resourceInputs["sttConfig"] = state?.sttConfig;
+            resourceInputs["timeZone"] = state?.timeZone;
+            resourceInputs["ttsConfig"] = state?.ttsConfig;
         } else {
             const args = argsOrState as ConversationProfileArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["automatedAgentConfig"] = args ? args.automatedAgentConfig : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["humanAgentAssistantConfig"] = args ? args.humanAgentAssistantConfig : undefined;
-            resourceInputs["humanAgentHandoffConfig"] = args ? args.humanAgentHandoffConfig : undefined;
-            resourceInputs["languageCode"] = args ? args.languageCode : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["loggingConfig"] = args ? args.loggingConfig : undefined;
-            resourceInputs["newMessageEventNotificationConfig"] = args ? args.newMessageEventNotificationConfig : undefined;
-            resourceInputs["notificationConfig"] = args ? args.notificationConfig : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["securitySettings"] = args ? args.securitySettings : undefined;
-            resourceInputs["sttConfig"] = args ? args.sttConfig : undefined;
-            resourceInputs["timeZone"] = args ? args.timeZone : undefined;
-            resourceInputs["ttsConfig"] = args ? args.ttsConfig : undefined;
+            resourceInputs["automatedAgentConfig"] = args?.automatedAgentConfig;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["humanAgentAssistantConfig"] = args?.humanAgentAssistantConfig;
+            resourceInputs["humanAgentHandoffConfig"] = args?.humanAgentHandoffConfig;
+            resourceInputs["languageCode"] = args?.languageCode;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["loggingConfig"] = args?.loggingConfig;
+            resourceInputs["newMessageEventNotificationConfig"] = args?.newMessageEventNotificationConfig;
+            resourceInputs["notificationConfig"] = args?.notificationConfig;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["securitySettings"] = args?.securitySettings;
+            resourceInputs["sttConfig"] = args?.sttConfig;
+            resourceInputs["timeZone"] = args?.timeZone;
+            resourceInputs["ttsConfig"] = args?.ttsConfig;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

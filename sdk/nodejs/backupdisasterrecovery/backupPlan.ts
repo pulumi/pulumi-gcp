@@ -167,58 +167,58 @@ export class BackupPlan extends pulumi.CustomResource {
     /**
      * The ID of the backup plan
      */
-    public readonly backupPlanId!: pulumi.Output<string>;
+    declare public readonly backupPlanId: pulumi.Output<string>;
     /**
      * The backup rules for this `BackupPlan`. There must be at least one `BackupRule` message.
      * Structure is documented below.
      */
-    public readonly backupRules!: pulumi.Output<outputs.backupdisasterrecovery.BackupPlanBackupRule[]>;
+    declare public readonly backupRules: pulumi.Output<outputs.backupdisasterrecovery.BackupPlanBackupRule[]>;
     /**
      * Backup vault where the backups gets stored using this Backup plan.
      */
-    public readonly backupVault!: pulumi.Output<string>;
+    declare public readonly backupVault: pulumi.Output<string>;
     /**
      * The Google Cloud Platform Service Account to be used by the BackupVault for taking backups.
      */
-    public /*out*/ readonly backupVaultServiceAccount!: pulumi.Output<string>;
+    declare public /*out*/ readonly backupVaultServiceAccount: pulumi.Output<string>;
     /**
      * When the `BackupPlan` was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The description allows for additional details about `BackupPlan` and its use cases to be provided.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The location for the backup plan
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * This is only applicable for CloudSql resource. Days for which logs will be stored. This value should be greater than or equal to minimum enforced log retention duration of the backup vault.
      */
-    public readonly logRetentionDays!: pulumi.Output<number | undefined>;
+    declare public readonly logRetentionDays: pulumi.Output<number | undefined>;
     /**
      * The name of backup plan resource created
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The resource type to which the `BackupPlan` will be applied.
      * Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
      */
-    public readonly resourceType!: pulumi.Output<string>;
+    declare public readonly resourceType: pulumi.Output<string>;
     /**
      * The list of all resource types to which the 'BackupPlan' can be applied.
      */
-    public /*out*/ readonly supportedResourceTypes!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly supportedResourceTypes: pulumi.Output<string[]>;
     /**
      * When the `BackupPlan` was last updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a BackupPlan resource with the given unique name, arguments, and options.
@@ -233,44 +233,44 @@ export class BackupPlan extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BackupPlanState | undefined;
-            resourceInputs["backupPlanId"] = state ? state.backupPlanId : undefined;
-            resourceInputs["backupRules"] = state ? state.backupRules : undefined;
-            resourceInputs["backupVault"] = state ? state.backupVault : undefined;
-            resourceInputs["backupVaultServiceAccount"] = state ? state.backupVaultServiceAccount : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["logRetentionDays"] = state ? state.logRetentionDays : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["resourceType"] = state ? state.resourceType : undefined;
-            resourceInputs["supportedResourceTypes"] = state ? state.supportedResourceTypes : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["backupPlanId"] = state?.backupPlanId;
+            resourceInputs["backupRules"] = state?.backupRules;
+            resourceInputs["backupVault"] = state?.backupVault;
+            resourceInputs["backupVaultServiceAccount"] = state?.backupVaultServiceAccount;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["logRetentionDays"] = state?.logRetentionDays;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["resourceType"] = state?.resourceType;
+            resourceInputs["supportedResourceTypes"] = state?.supportedResourceTypes;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as BackupPlanArgs | undefined;
-            if ((!args || args.backupPlanId === undefined) && !opts.urn) {
+            if (args?.backupPlanId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'backupPlanId'");
             }
-            if ((!args || args.backupRules === undefined) && !opts.urn) {
+            if (args?.backupRules === undefined && !opts.urn) {
                 throw new Error("Missing required property 'backupRules'");
             }
-            if ((!args || args.backupVault === undefined) && !opts.urn) {
+            if (args?.backupVault === undefined && !opts.urn) {
                 throw new Error("Missing required property 'backupVault'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.resourceType === undefined) && !opts.urn) {
+            if (args?.resourceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceType'");
             }
-            resourceInputs["backupPlanId"] = args ? args.backupPlanId : undefined;
-            resourceInputs["backupRules"] = args ? args.backupRules : undefined;
-            resourceInputs["backupVault"] = args ? args.backupVault : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["logRetentionDays"] = args ? args.logRetentionDays : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["resourceType"] = args ? args.resourceType : undefined;
+            resourceInputs["backupPlanId"] = args?.backupPlanId;
+            resourceInputs["backupRules"] = args?.backupRules;
+            resourceInputs["backupVault"] = args?.backupVault;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["logRetentionDays"] = args?.logRetentionDays;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["resourceType"] = args?.resourceType;
             resourceInputs["backupVaultServiceAccount"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

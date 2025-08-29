@@ -701,16 +701,14 @@ public class Function extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.triggerHttp);
     }
     /**
-     * The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being
-     * created.
+     * The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being created.
      * 
      */
     @Export(name="versionId", refs={String.class}, tree="[0]")
     private Output<String> versionId;
 
     /**
-     * @return The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being
-     * created.
+     * @return The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being created.
      * 
      */
     public Output<String> versionId() {

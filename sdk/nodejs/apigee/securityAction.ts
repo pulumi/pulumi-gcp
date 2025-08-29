@@ -134,7 +134,7 @@ export class SecurityAction extends pulumi.CustomResource {
     /**
      * Allow a request through if it matches this SecurityAction.
      */
-    public readonly allow!: pulumi.Output<outputs.apigee.SecurityActionAllow | undefined>;
+    declare public readonly allow: pulumi.Output<outputs.apigee.SecurityActionAllow | undefined>;
     /**
      * If unset, this would apply to all proxies in the environment.
      * If set, this action is enforced only if at least one proxy in the repeated
@@ -142,68 +142,68 @@ export class SecurityAction extends pulumi.CustomResource {
      * There can be at most 100 enabled actions with proxies set in an env.
      * Several other restrictions apply on conditions and are detailed later.
      */
-    public readonly apiProxies!: pulumi.Output<string[] | undefined>;
+    declare public readonly apiProxies: pulumi.Output<string[] | undefined>;
     /**
      * A valid SecurityAction must contain at least one condition.
      * Structure is documented below.
      */
-    public readonly conditionConfig!: pulumi.Output<outputs.apigee.SecurityActionConditionConfig>;
+    declare public readonly conditionConfig: pulumi.Output<outputs.apigee.SecurityActionConditionConfig>;
     /**
      * The create time for this SecurityAction.
      * Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits.
      * Offsets other than "Z" are also accepted. Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Deny a request through if it matches this SecurityAction.
      * Structure is documented below.
      */
-    public readonly deny!: pulumi.Output<outputs.apigee.SecurityActionDeny | undefined>;
+    declare public readonly deny: pulumi.Output<outputs.apigee.SecurityActionDeny | undefined>;
     /**
      * An optional user provided description of the SecurityAction.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The Apigee environment that this security action applies to.
      */
-    public readonly envId!: pulumi.Output<string>;
+    declare public readonly envId: pulumi.Output<string>;
     /**
      * The expiration for this SecurityAction.
      * Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9
      * fractional digits. Offsets other than "Z" are also accepted.
      * Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
      */
-    public readonly expireTime!: pulumi.Output<string | undefined>;
+    declare public readonly expireTime: pulumi.Output<string | undefined>;
     /**
      * Flag a request through if it matches this SecurityAction.
      * Structure is documented below.
      */
-    public readonly flag!: pulumi.Output<outputs.apigee.SecurityActionFlag | undefined>;
+    declare public readonly flag: pulumi.Output<outputs.apigee.SecurityActionFlag | undefined>;
     /**
      * The organization that this security action applies to.
      */
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * The ID to use for the SecurityAction, which will become the final component of the action's resource name.
      * This value should be 0-61 characters, and valid format is (^a-z?$).
      */
-    public readonly securityActionId!: pulumi.Output<string>;
+    declare public readonly securityActionId: pulumi.Output<string>;
     /**
      * Only an ENABLED SecurityAction is enforced. An ENABLED SecurityAction past its expiration time will not be enforced.
      * Possible values are: `ENABLED`, `DISABLED`.
      */
-    public readonly state!: pulumi.Output<string>;
+    declare public readonly state: pulumi.Output<string>;
     /**
      * The TTL for this SecurityAction.
      * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
      */
-    public readonly ttl!: pulumi.Output<string | undefined>;
+    declare public readonly ttl: pulumi.Output<string | undefined>;
     /**
      * The update time for this SecurityAction. This reflects when this SecurityAction changed states.
      * Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits.
      * Offsets other than "Z" are also accepted. Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a SecurityAction resource with the given unique name, arguments, and options.
@@ -218,49 +218,49 @@ export class SecurityAction extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecurityActionState | undefined;
-            resourceInputs["allow"] = state ? state.allow : undefined;
-            resourceInputs["apiProxies"] = state ? state.apiProxies : undefined;
-            resourceInputs["conditionConfig"] = state ? state.conditionConfig : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["deny"] = state ? state.deny : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["envId"] = state ? state.envId : undefined;
-            resourceInputs["expireTime"] = state ? state.expireTime : undefined;
-            resourceInputs["flag"] = state ? state.flag : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["securityActionId"] = state ? state.securityActionId : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["ttl"] = state ? state.ttl : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["allow"] = state?.allow;
+            resourceInputs["apiProxies"] = state?.apiProxies;
+            resourceInputs["conditionConfig"] = state?.conditionConfig;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deny"] = state?.deny;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["envId"] = state?.envId;
+            resourceInputs["expireTime"] = state?.expireTime;
+            resourceInputs["flag"] = state?.flag;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["securityActionId"] = state?.securityActionId;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["ttl"] = state?.ttl;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as SecurityActionArgs | undefined;
-            if ((!args || args.conditionConfig === undefined) && !opts.urn) {
+            if (args?.conditionConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'conditionConfig'");
             }
-            if ((!args || args.envId === undefined) && !opts.urn) {
+            if (args?.envId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'envId'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if ((!args || args.securityActionId === undefined) && !opts.urn) {
+            if (args?.securityActionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'securityActionId'");
             }
-            if ((!args || args.state === undefined) && !opts.urn) {
+            if (args?.state === undefined && !opts.urn) {
                 throw new Error("Missing required property 'state'");
             }
-            resourceInputs["allow"] = args ? args.allow : undefined;
-            resourceInputs["apiProxies"] = args ? args.apiProxies : undefined;
-            resourceInputs["conditionConfig"] = args ? args.conditionConfig : undefined;
-            resourceInputs["deny"] = args ? args.deny : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["envId"] = args ? args.envId : undefined;
-            resourceInputs["expireTime"] = args ? args.expireTime : undefined;
-            resourceInputs["flag"] = args ? args.flag : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["securityActionId"] = args ? args.securityActionId : undefined;
-            resourceInputs["state"] = args ? args.state : undefined;
-            resourceInputs["ttl"] = args ? args.ttl : undefined;
+            resourceInputs["allow"] = args?.allow;
+            resourceInputs["apiProxies"] = args?.apiProxies;
+            resourceInputs["conditionConfig"] = args?.conditionConfig;
+            resourceInputs["deny"] = args?.deny;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["envId"] = args?.envId;
+            resourceInputs["expireTime"] = args?.expireTime;
+            resourceInputs["flag"] = args?.flag;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["securityActionId"] = args?.securityActionId;
+            resourceInputs["state"] = args?.state;
+            resourceInputs["ttl"] = args?.ttl;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }

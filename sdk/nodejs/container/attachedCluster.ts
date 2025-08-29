@@ -200,75 +200,75 @@ export class AttachedCluster extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Configuration related to the cluster RBAC settings.
      * Structure is documented below.
      */
-    public readonly authorization!: pulumi.Output<outputs.container.AttachedClusterAuthorization | undefined>;
+    declare public readonly authorization: pulumi.Output<outputs.container.AttachedClusterAuthorization | undefined>;
     /**
      * Binary Authorization configuration.
      * Structure is documented below.
      */
-    public readonly binaryAuthorization!: pulumi.Output<outputs.container.AttachedClusterBinaryAuthorization>;
+    declare public readonly binaryAuthorization: pulumi.Output<outputs.container.AttachedClusterBinaryAuthorization>;
     /**
      * Output only. The region where this cluster runs.
      * For EKS clusters, this is an AWS region. For AKS clusters,
      * this is an Azure region.
      */
-    public /*out*/ readonly clusterRegion!: pulumi.Output<string>;
+    declare public /*out*/ readonly clusterRegion: pulumi.Output<string>;
     /**
      * Output only. The time at which this cluster was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
      */
-    public readonly deletionPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly deletionPolicy: pulumi.Output<string | undefined>;
     /**
      * A human readable description of this attached cluster. Cannot be longer
      * than 255 UTF-8 encoded bytes.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The Kubernetes distribution of the underlying attached cluster. Supported values:
      * "eks", "aks", "generic". The generic distribution provides the ability to register
      * or migrate any CNCF conformant cluster.
      */
-    public readonly distribution!: pulumi.Output<string>;
-    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly distribution: pulumi.Output<string>;
+    declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * A set of errors found in the cluster.
      * Structure is documented below.
      */
-    public /*out*/ readonly errors!: pulumi.Output<outputs.container.AttachedClusterError[]>;
+    declare public /*out*/ readonly errors: pulumi.Output<outputs.container.AttachedClusterError[]>;
     /**
      * Fleet configuration.
      * Structure is documented below.
      */
-    public readonly fleet!: pulumi.Output<outputs.container.AttachedClusterFleet>;
+    declare public readonly fleet: pulumi.Output<outputs.container.AttachedClusterFleet>;
     /**
      * The Kubernetes version of the cluster.
      */
-    public /*out*/ readonly kubernetesVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly kubernetesVersion: pulumi.Output<string>;
     /**
      * The location for the resource
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Logging configuration.
      * Structure is documented below.
      */
-    public readonly loggingConfig!: pulumi.Output<outputs.container.AttachedClusterLoggingConfig | undefined>;
+    declare public readonly loggingConfig: pulumi.Output<outputs.container.AttachedClusterLoggingConfig | undefined>;
     /**
      * Monitoring configuration.
      * Structure is documented below.
      */
-    public readonly monitoringConfig!: pulumi.Output<outputs.container.AttachedClusterMonitoringConfig>;
+    declare public readonly monitoringConfig: pulumi.Output<outputs.container.AttachedClusterMonitoringConfig>;
     /**
      * The name of this resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * OIDC discovery information of the target cluster.
      * Kubernetes Service Account (KSA) tokens are JWT tokens signed by the cluster
@@ -281,25 +281,25 @@ export class AttachedCluster extends pulumi.CustomResource {
      * `issuerUrl` and `jwks`.
      * Structure is documented below.
      */
-    public readonly oidcConfig!: pulumi.Output<outputs.container.AttachedClusterOidcConfig>;
+    declare public readonly oidcConfig: pulumi.Output<outputs.container.AttachedClusterOidcConfig>;
     /**
      * The platform version for the cluster (e.g. `1.23.0-gke.1`).
      */
-    public readonly platformVersion!: pulumi.Output<string>;
+    declare public readonly platformVersion: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Support for proxy configuration.
      * Structure is documented below.
      */
-    public readonly proxyConfig!: pulumi.Output<outputs.container.AttachedClusterProxyConfig | undefined>;
+    declare public readonly proxyConfig: pulumi.Output<outputs.container.AttachedClusterProxyConfig | undefined>;
     /**
      * If set, there are currently changes in flight to the cluster.
      */
-    public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly reconciling: pulumi.Output<boolean>;
     /**
      * (Optional, Deprecated)
      * Enable/Disable Security Posture API features for the cluster.
@@ -309,26 +309,26 @@ export class AttachedCluster extends pulumi.CustomResource {
      *
      * @deprecated `securityPostureConfig` is deprecated and will be removed in a future major release.
      */
-    public readonly securityPostureConfig!: pulumi.Output<outputs.container.AttachedClusterSecurityPostureConfig>;
+    declare public readonly securityPostureConfig: pulumi.Output<outputs.container.AttachedClusterSecurityPostureConfig>;
     /**
      * The current state of the cluster. Possible values:
      * STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
      * DEGRADED
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * A globally unique identifier for the cluster.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * The time at which this cluster was last updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * Workload Identity settings.
      * Structure is documented below.
      */
-    public /*out*/ readonly workloadIdentityConfigs!: pulumi.Output<outputs.container.AttachedClusterWorkloadIdentityConfig[]>;
+    declare public /*out*/ readonly workloadIdentityConfigs: pulumi.Output<outputs.container.AttachedClusterWorkloadIdentityConfig[]>;
 
     /**
      * Create a AttachedCluster resource with the given unique name, arguments, and options.
@@ -343,65 +343,65 @@ export class AttachedCluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AttachedClusterState | undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["authorization"] = state ? state.authorization : undefined;
-            resourceInputs["binaryAuthorization"] = state ? state.binaryAuthorization : undefined;
-            resourceInputs["clusterRegion"] = state ? state.clusterRegion : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["distribution"] = state ? state.distribution : undefined;
-            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
-            resourceInputs["errors"] = state ? state.errors : undefined;
-            resourceInputs["fleet"] = state ? state.fleet : undefined;
-            resourceInputs["kubernetesVersion"] = state ? state.kubernetesVersion : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["loggingConfig"] = state ? state.loggingConfig : undefined;
-            resourceInputs["monitoringConfig"] = state ? state.monitoringConfig : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["oidcConfig"] = state ? state.oidcConfig : undefined;
-            resourceInputs["platformVersion"] = state ? state.platformVersion : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["proxyConfig"] = state ? state.proxyConfig : undefined;
-            resourceInputs["reconciling"] = state ? state.reconciling : undefined;
-            resourceInputs["securityPostureConfig"] = state ? state.securityPostureConfig : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["workloadIdentityConfigs"] = state ? state.workloadIdentityConfigs : undefined;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["authorization"] = state?.authorization;
+            resourceInputs["binaryAuthorization"] = state?.binaryAuthorization;
+            resourceInputs["clusterRegion"] = state?.clusterRegion;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["distribution"] = state?.distribution;
+            resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
+            resourceInputs["errors"] = state?.errors;
+            resourceInputs["fleet"] = state?.fleet;
+            resourceInputs["kubernetesVersion"] = state?.kubernetesVersion;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["loggingConfig"] = state?.loggingConfig;
+            resourceInputs["monitoringConfig"] = state?.monitoringConfig;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["oidcConfig"] = state?.oidcConfig;
+            resourceInputs["platformVersion"] = state?.platformVersion;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["proxyConfig"] = state?.proxyConfig;
+            resourceInputs["reconciling"] = state?.reconciling;
+            resourceInputs["securityPostureConfig"] = state?.securityPostureConfig;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["workloadIdentityConfigs"] = state?.workloadIdentityConfigs;
         } else {
             const args = argsOrState as AttachedClusterArgs | undefined;
-            if ((!args || args.distribution === undefined) && !opts.urn) {
+            if (args?.distribution === undefined && !opts.urn) {
                 throw new Error("Missing required property 'distribution'");
             }
-            if ((!args || args.fleet === undefined) && !opts.urn) {
+            if (args?.fleet === undefined && !opts.urn) {
                 throw new Error("Missing required property 'fleet'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.oidcConfig === undefined) && !opts.urn) {
+            if (args?.oidcConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'oidcConfig'");
             }
-            if ((!args || args.platformVersion === undefined) && !opts.urn) {
+            if (args?.platformVersion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'platformVersion'");
             }
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["authorization"] = args ? args.authorization : undefined;
-            resourceInputs["binaryAuthorization"] = args ? args.binaryAuthorization : undefined;
-            resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["distribution"] = args ? args.distribution : undefined;
-            resourceInputs["fleet"] = args ? args.fleet : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["loggingConfig"] = args ? args.loggingConfig : undefined;
-            resourceInputs["monitoringConfig"] = args ? args.monitoringConfig : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["oidcConfig"] = args ? args.oidcConfig : undefined;
-            resourceInputs["platformVersion"] = args ? args.platformVersion : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["proxyConfig"] = args ? args.proxyConfig : undefined;
-            resourceInputs["securityPostureConfig"] = args ? args.securityPostureConfig : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["authorization"] = args?.authorization;
+            resourceInputs["binaryAuthorization"] = args?.binaryAuthorization;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["distribution"] = args?.distribution;
+            resourceInputs["fleet"] = args?.fleet;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["loggingConfig"] = args?.loggingConfig;
+            resourceInputs["monitoringConfig"] = args?.monitoringConfig;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["oidcConfig"] = args?.oidcConfig;
+            resourceInputs["platformVersion"] = args?.platformVersion;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["proxyConfig"] = args?.proxyConfig;
+            resourceInputs["securityPostureConfig"] = args?.securityPostureConfig;
             resourceInputs["clusterRegion"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;

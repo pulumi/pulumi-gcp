@@ -103,72 +103,72 @@ export class MirroringEndpointGroup extends pulumi.CustomResource {
      * List of associations to this endpoint group.
      * Structure is documented below.
      */
-    public /*out*/ readonly associations!: pulumi.Output<outputs.networksecurity.MirroringEndpointGroupAssociation[]>;
+    declare public /*out*/ readonly associations: pulumi.Output<outputs.networksecurity.MirroringEndpointGroupAssociation[]>;
     /**
      * List of details about the connected deployment groups to this endpoint
      * group.
      * Structure is documented below.
      */
-    public /*out*/ readonly connectedDeploymentGroups!: pulumi.Output<outputs.networksecurity.MirroringEndpointGroupConnectedDeploymentGroup[]>;
+    declare public /*out*/ readonly connectedDeploymentGroups: pulumi.Output<outputs.networksecurity.MirroringEndpointGroupConnectedDeploymentGroup[]>;
     /**
      * The timestamp when the resource was created.
      * See https://google.aip.dev/148#timestamps.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * User-provided description of the endpoint group.
      * Used as additional context for the endpoint group.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The cloud location of the endpoint group, currently restricted to `global`.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The deployment group that this DIRECT endpoint group is connected to, for example:
      * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
      * See https://google.aip.dev/124.
      */
-    public readonly mirroringDeploymentGroup!: pulumi.Output<string>;
+    declare public readonly mirroringDeploymentGroup: pulumi.Output<string>;
     /**
      * The ID to use for the endpoint group, which will become the final component
      * of the endpoint group's resource name.
      */
-    public readonly mirroringEndpointGroupId!: pulumi.Output<string>;
+    declare public readonly mirroringEndpointGroupId: pulumi.Output<string>;
     /**
      * (Output)
      * The connected deployment group's resource name, for example:
      * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
      * See https://google.aip.dev/124.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The current state of the resource does not match the user's intended state,
      * and the system is working to reconcile them. This is part of the normal
      * operation (e.g. adding a new association to the group).
      * See https://google.aip.dev/128.
      */
-    public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly reconciling: pulumi.Output<boolean>;
     /**
      * (Output)
      * The current state of the association in this location.
@@ -177,12 +177,12 @@ export class MirroringEndpointGroup extends pulumi.CustomResource {
      * ACTIVE
      * OUT_OF_SYNC
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The timestamp when the resource was most recently updated.
      * See https://google.aip.dev/148#timestamps.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a MirroringEndpointGroup resource with the given unique name, arguments, and options.
@@ -197,38 +197,38 @@ export class MirroringEndpointGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MirroringEndpointGroupState | undefined;
-            resourceInputs["associations"] = state ? state.associations : undefined;
-            resourceInputs["connectedDeploymentGroups"] = state ? state.connectedDeploymentGroups : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["mirroringDeploymentGroup"] = state ? state.mirroringDeploymentGroup : undefined;
-            resourceInputs["mirroringEndpointGroupId"] = state ? state.mirroringEndpointGroupId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["reconciling"] = state ? state.reconciling : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["associations"] = state?.associations;
+            resourceInputs["connectedDeploymentGroups"] = state?.connectedDeploymentGroups;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["mirroringDeploymentGroup"] = state?.mirroringDeploymentGroup;
+            resourceInputs["mirroringEndpointGroupId"] = state?.mirroringEndpointGroupId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["reconciling"] = state?.reconciling;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as MirroringEndpointGroupArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.mirroringDeploymentGroup === undefined) && !opts.urn) {
+            if (args?.mirroringDeploymentGroup === undefined && !opts.urn) {
                 throw new Error("Missing required property 'mirroringDeploymentGroup'");
             }
-            if ((!args || args.mirroringEndpointGroupId === undefined) && !opts.urn) {
+            if (args?.mirroringEndpointGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'mirroringEndpointGroupId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["mirroringDeploymentGroup"] = args ? args.mirroringDeploymentGroup : undefined;
-            resourceInputs["mirroringEndpointGroupId"] = args ? args.mirroringEndpointGroupId : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["mirroringDeploymentGroup"] = args?.mirroringDeploymentGroup;
+            resourceInputs["mirroringEndpointGroupId"] = args?.mirroringEndpointGroupId;
+            resourceInputs["project"] = args?.project;
             resourceInputs["associations"] = undefined /*out*/;
             resourceInputs["connectedDeploymentGroups"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;

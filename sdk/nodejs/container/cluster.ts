@@ -166,28 +166,28 @@ export class Cluster extends pulumi.CustomResource {
      * The configuration for addons supported by GKE.
      * Structure is documented below.
      */
-    public readonly addonsConfig!: pulumi.Output<outputs.container.ClusterAddonsConfig>;
+    declare public readonly addonsConfig: pulumi.Output<outputs.container.ClusterAddonsConfig>;
     /**
      * Enable NET_ADMIN for the cluster. Defaults to
      * `false`. This field should only be enabled for Autopilot clusters (`enableAutopilot`
      * set to `true`).
      */
-    public readonly allowNetAdmin!: pulumi.Output<boolean | undefined>;
+    declare public readonly allowNetAdmin: pulumi.Output<boolean | undefined>;
     /**
      * Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
      */
-    public readonly anonymousAuthenticationConfig!: pulumi.Output<outputs.container.ClusterAnonymousAuthenticationConfig>;
+    declare public readonly anonymousAuthenticationConfig: pulumi.Output<outputs.container.ClusterAnonymousAuthenticationConfig>;
     /**
      * Configuration for the
      * [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
      * Structure is documented below.
      */
-    public readonly authenticatorGroupsConfig!: pulumi.Output<outputs.container.ClusterAuthenticatorGroupsConfig>;
+    declare public readonly authenticatorGroupsConfig: pulumi.Output<outputs.container.ClusterAuthenticatorGroupsConfig>;
     /**
      * Configuration options for the Binary
      * Authorization feature. Structure is documented below.
      */
-    public readonly binaryAuthorization!: pulumi.Output<outputs.container.ClusterBinaryAuthorization | undefined>;
+    declare public readonly binaryAuthorization: pulumi.Output<outputs.container.ClusterBinaryAuthorization | undefined>;
     /**
      * Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
      * automatically adjust the size of the cluster and create/delete node pools based
@@ -195,154 +195,154 @@ export class Cluster extends pulumi.CustomResource {
      * [guide to using Node Auto-Provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)
      * for more details. Structure is documented below.
      */
-    public readonly clusterAutoscaling!: pulumi.Output<outputs.container.ClusterClusterAutoscaling>;
+    declare public readonly clusterAutoscaling: pulumi.Output<outputs.container.ClusterClusterAutoscaling>;
     /**
      * The IP address range of the Kubernetes pods
      * in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
      * automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
      * default a new cluster to routes-based, where `ipAllocationPolicy` is not defined.
      */
-    public readonly clusterIpv4Cidr!: pulumi.Output<string>;
+    declare public readonly clusterIpv4Cidr: pulumi.Output<string>;
     /**
      * Configuration for
      * [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
      * Structure is documented below.
      */
-    public readonly clusterTelemetry!: pulumi.Output<outputs.container.ClusterClusterTelemetry>;
+    declare public readonly clusterTelemetry: pulumi.Output<outputs.container.ClusterClusterTelemetry>;
     /**
      * Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
      */
-    public readonly confidentialNodes!: pulumi.Output<outputs.container.ClusterConfidentialNodes>;
+    declare public readonly confidentialNodes: pulumi.Output<outputs.container.ClusterConfidentialNodes>;
     /**
      * Configuration for all of the cluster's control plane endpoints.
      * Structure is documented below.
      */
-    public readonly controlPlaneEndpointsConfig!: pulumi.Output<outputs.container.ClusterControlPlaneEndpointsConfig>;
+    declare public readonly controlPlaneEndpointsConfig: pulumi.Output<outputs.container.ClusterControlPlaneEndpointsConfig>;
     /**
      * Configuration for the
      * [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
      * Structure is documented below.
      */
-    public readonly costManagementConfig!: pulumi.Output<outputs.container.ClusterCostManagementConfig>;
+    declare public readonly costManagementConfig: pulumi.Output<outputs.container.ClusterCostManagementConfig>;
     /**
      * Structure is documented below.
      */
-    public readonly databaseEncryption!: pulumi.Output<outputs.container.ClusterDatabaseEncryption>;
+    declare public readonly databaseEncryption: pulumi.Output<outputs.container.ClusterDatabaseEncryption>;
     /**
      * The desired datapath provider for this cluster. This is set to `LEGACY_DATAPATH` by default, which uses the IPTables-based kube-proxy implementation. Set to `ADVANCED_DATAPATH` to enable Dataplane v2.
      */
-    public readonly datapathProvider!: pulumi.Output<string>;
+    declare public readonly datapathProvider: pulumi.Output<string>;
     /**
      * The default maximum number of pods
      * per node in this cluster. This doesn't work on "routes-based" clusters, clusters
      * that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
      * for more information.
      */
-    public readonly defaultMaxPodsPerNode!: pulumi.Output<number>;
+    declare public readonly defaultMaxPodsPerNode: pulumi.Output<number>;
     /**
      * [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
      */
-    public readonly defaultSnatStatus!: pulumi.Output<outputs.container.ClusterDefaultSnatStatus>;
-    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
+    declare public readonly defaultSnatStatus: pulumi.Output<outputs.container.ClusterDefaultSnatStatus>;
+    declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
      * Description of the cluster.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Disable L4 load balancer VPC firewalls to enable firewall policies.
      */
-    public readonly disableL4LbFirewallReconciliation!: pulumi.Output<boolean | undefined>;
+    declare public readonly disableL4LbFirewallReconciliation: pulumi.Output<boolean | undefined>;
     /**
      * Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
      */
-    public readonly dnsConfig!: pulumi.Output<outputs.container.ClusterDnsConfig | undefined>;
+    declare public readonly dnsConfig: pulumi.Output<outputs.container.ClusterDnsConfig | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Enable Autopilot for this cluster. Defaults to `false`.
      * Note that when this option is enabled, certain features of Standard GKE are not available.
      * See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
      * for available features.
      */
-    public readonly enableAutopilot!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableAutopilot: pulumi.Output<boolean | undefined>;
     /**
      * Whether CiliumClusterWideNetworkPolicy is enabled on this cluster. Defaults to false.
      */
-    public readonly enableCiliumClusterwideNetworkPolicy!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableCiliumClusterwideNetworkPolicy: pulumi.Output<boolean | undefined>;
     /**
      * Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
      */
-    public readonly enableFqdnNetworkPolicy!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableFqdnNetworkPolicy: pulumi.Output<boolean | undefined>;
     /**
      * Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
      */
-    public readonly enableIntranodeVisibility!: pulumi.Output<boolean>;
+    declare public readonly enableIntranodeVisibility: pulumi.Output<boolean>;
     /**
      * Configuration for Kubernetes Beta APIs.
      * Structure is documented below.
      */
-    public readonly enableK8sBetaApis!: pulumi.Output<outputs.container.ClusterEnableK8sBetaApis | undefined>;
+    declare public readonly enableK8sBetaApis: pulumi.Output<outputs.container.ClusterEnableK8sBetaApis | undefined>;
     /**
      * Whether to enable Kubernetes Alpha features for
      * this cluster. Note that when this option is enabled, the cluster cannot be upgraded
      * and will be automatically deleted after 30 days.
      */
-    public readonly enableKubernetesAlpha!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableKubernetesAlpha: pulumi.Output<boolean | undefined>;
     /**
      * Whether L4ILB Subsetting is enabled for this cluster.
      */
-    public readonly enableL4IlbSubsetting!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableL4IlbSubsetting: pulumi.Output<boolean | undefined>;
     /**
      * Whether the ABAC authorizer is enabled for this cluster.
      * When enabled, identities in the system, including service accounts, nodes, and controllers,
      * will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
      * Defaults to `false`
      */
-    public readonly enableLegacyAbac!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableLegacyAbac: pulumi.Output<boolean | undefined>;
     /**
      * Whether multi-networking is enabled for this cluster.
      */
-    public readonly enableMultiNetworking!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableMultiNetworking: pulumi.Output<boolean | undefined>;
     /**
      * Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
      */
-    public readonly enableShieldedNodes!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableShieldedNodes: pulumi.Output<boolean | undefined>;
     /**
      * Whether to enable Cloud TPU resources in this cluster.
      * See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
      */
-    public readonly enableTpu!: pulumi.Output<boolean>;
+    declare public readonly enableTpu: pulumi.Output<boolean>;
     /**
      * The IP address of this cluster's Kubernetes master.
      */
-    public /*out*/ readonly endpoint!: pulumi.Output<string>;
+    declare public /*out*/ readonly endpoint: pulumi.Output<string>;
     /**
      * Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
      */
-    public readonly enterpriseConfig!: pulumi.Output<outputs.container.ClusterEnterpriseConfig>;
+    declare public readonly enterpriseConfig: pulumi.Output<outputs.container.ClusterEnterpriseConfig>;
     /**
      * Fleet configuration for the cluster. Structure is documented below.
      */
-    public readonly fleet!: pulumi.Output<outputs.container.ClusterFleet | undefined>;
+    declare public readonly fleet: pulumi.Output<outputs.container.ClusterFleet | undefined>;
     /**
      * Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
      */
-    public readonly gatewayApiConfig!: pulumi.Output<outputs.container.ClusterGatewayApiConfig>;
+    declare public readonly gatewayApiConfig: pulumi.Output<outputs.container.ClusterGatewayApiConfig>;
     /**
      * Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
      * Structure is documented below.
      */
-    public readonly gkeAutoUpgradeConfig!: pulumi.Output<outputs.container.ClusterGkeAutoUpgradeConfig>;
+    declare public readonly gkeAutoUpgradeConfig: pulumi.Output<outputs.container.ClusterGkeAutoUpgradeConfig>;
     /**
      * . Structure is documented below.
      */
-    public readonly identityServiceConfig!: pulumi.Output<outputs.container.ClusterIdentityServiceConfig>;
+    declare public readonly identityServiceConfig: pulumi.Output<outputs.container.ClusterIdentityServiceConfig>;
     /**
      * Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
      */
-    public readonly inTransitEncryptionConfig!: pulumi.Output<string | undefined>;
+    declare public readonly inTransitEncryptionConfig: pulumi.Output<string | undefined>;
     /**
      * The number of nodes to create in this
      * cluster's default node pool. In regional or multi-zonal clusters, this is the
@@ -351,17 +351,17 @@ export class Cluster extends pulumi.CustomResource {
      * set this to a value of at least `1`, alongside setting
      * `removeDefaultNodePool` to `true`.
      */
-    public readonly initialNodeCount!: pulumi.Output<number | undefined>;
+    declare public readonly initialNodeCount: pulumi.Output<number | undefined>;
     /**
      * Configuration of cluster IP allocation for
      * VPC-native clusters. If this block is unset during creation, it will be set by the GKE backend.
      * Structure is documented below.
      */
-    public readonly ipAllocationPolicy!: pulumi.Output<outputs.container.ClusterIpAllocationPolicy>;
+    declare public readonly ipAllocationPolicy: pulumi.Output<outputs.container.ClusterIpAllocationPolicy>;
     /**
      * The fingerprint of the set of labels for this cluster.
      */
-    public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly labelFingerprint: pulumi.Output<string>;
     /**
      * The location (region or zone) in which the cluster
      * master will be created, as well as the default node location. If you specify a
@@ -370,23 +370,23 @@ export class Cluster extends pulumi.CustomResource {
      * cluster will be a regional cluster with multiple masters spread across zones in
      * the region, and with default node locations in those zones as well
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Logging configuration for the cluster.
      * Structure is documented below.
      */
-    public readonly loggingConfig!: pulumi.Output<outputs.container.ClusterLoggingConfig>;
+    declare public readonly loggingConfig: pulumi.Output<outputs.container.ClusterLoggingConfig>;
     /**
      * The logging service that the cluster should
      * write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
      * `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
      */
-    public readonly loggingService!: pulumi.Output<string>;
+    declare public readonly loggingService: pulumi.Output<string>;
     /**
      * The maintenance policy to use for the cluster. Structure is
      * documented below.
      */
-    public readonly maintenancePolicy!: pulumi.Output<outputs.container.ClusterMaintenancePolicy | undefined>;
+    declare public readonly maintenancePolicy: pulumi.Output<outputs.container.ClusterMaintenancePolicy | undefined>;
     /**
      * The authentication information for accessing the
      * Kubernetes master. Some values in this block are only returned by the API if
@@ -395,7 +395,7 @@ export class Cluster extends pulumi.CustomResource {
      * `container.clusters.getCredentials` permission.
      * Structure is documented below.
      */
-    public readonly masterAuth!: pulumi.Output<outputs.container.ClusterMasterAuth>;
+    declare public readonly masterAuth: pulumi.Output<outputs.container.ClusterMasterAuth>;
     /**
      * The desired
      * configuration options for master authorized networks. Omit the
@@ -403,17 +403,17 @@ export class Cluster extends pulumi.CustomResource {
      * the cluster node IPs, which GKE automatically whitelists).
      * Structure is documented below.
      */
-    public readonly masterAuthorizedNetworksConfig!: pulumi.Output<outputs.container.ClusterMasterAuthorizedNetworksConfig>;
+    declare public readonly masterAuthorizedNetworksConfig: pulumi.Output<outputs.container.ClusterMasterAuthorizedNetworksConfig>;
     /**
      * The current version of the master in the cluster. This may
      * be different than the `minMasterVersion` set in the config if the master
      * has been updated by GKE.
      */
-    public /*out*/ readonly masterVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly masterVersion: pulumi.Output<string>;
     /**
      * Structure is documented below.
      */
-    public readonly meshCertificates!: pulumi.Output<outputs.container.ClusterMeshCertificates>;
+    declare public readonly meshCertificates: pulumi.Output<outputs.container.ClusterMeshCertificates>;
     /**
      * The minimum version of the master. GKE
      * will auto-update the master to new versions, so this does not guarantee the
@@ -429,12 +429,12 @@ export class Cluster extends pulumi.CustomResource {
      * to the datasource. A region can have a different set of supported versions than its corresponding zones, and not all zones in a
      * region are guaranteed to support the same version.
      */
-    public readonly minMasterVersion!: pulumi.Output<string | undefined>;
+    declare public readonly minMasterVersion: pulumi.Output<string | undefined>;
     /**
      * Monitoring configuration for the cluster.
      * Structure is documented below.
      */
-    public readonly monitoringConfig!: pulumi.Output<outputs.container.ClusterMonitoringConfig>;
+    declare public readonly monitoringConfig: pulumi.Output<outputs.container.ClusterMonitoringConfig>;
     /**
      * The monitoring service that the cluster
      * should write metrics to.
@@ -444,35 +444,35 @@ export class Cluster extends pulumi.CustomResource {
      * `monitoring.googleapis.com`(Legacy Stackdriver), `monitoring.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Monitoring), and `none`.
      * Defaults to `monitoring.googleapis.com/kubernetes`
      */
-    public readonly monitoringService!: pulumi.Output<string>;
+    declare public readonly monitoringService: pulumi.Output<string>;
     /**
      * The name of the cluster, unique within the project and
      * location.
      *
      * - - -
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The name or selfLink of the Google Compute Engine
      * network to which the cluster is connected. For Shared VPC, set this to the self link of the
      * shared network.
      */
-    public readonly network!: pulumi.Output<string | undefined>;
+    declare public readonly network: pulumi.Output<string | undefined>;
     /**
      * Network bandwidth tier configuration.
      */
-    public readonly networkPerformanceConfig!: pulumi.Output<outputs.container.ClusterNetworkPerformanceConfig | undefined>;
+    declare public readonly networkPerformanceConfig: pulumi.Output<outputs.container.ClusterNetworkPerformanceConfig | undefined>;
     /**
      * Configuration options for the
      * [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
      * feature. Structure is documented below.
      */
-    public readonly networkPolicy!: pulumi.Output<outputs.container.ClusterNetworkPolicy | undefined>;
+    declare public readonly networkPolicy: pulumi.Output<outputs.container.ClusterNetworkPolicy | undefined>;
     /**
      * Determines whether alias IPs or routes will be used for pod IPs in the cluster.
      * Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases). Newly created clusters will default to `VPC_NATIVE`.
      */
-    public readonly networkingMode!: pulumi.Output<string>;
+    declare public readonly networkingMode: pulumi.Output<string>;
     /**
      * Parameters used in creating the default node pool.
      * Generally, this field should not be used at the same time as a
@@ -480,7 +480,7 @@ export class Cluster extends pulumi.CustomResource {
      * manages the default node pool, which isn't recommended to be used.
      * Structure is documented below.
      */
-    public readonly nodeConfig!: pulumi.Output<outputs.container.ClusterNodeConfig>;
+    declare public readonly nodeConfig: pulumi.Output<outputs.container.ClusterNodeConfig>;
     /**
      * The list of zones in which the cluster's nodes
      * are located. Nodes must be in the region of their regional cluster or in the
@@ -494,17 +494,17 @@ export class Cluster extends pulumi.CustomResource {
      * in multiple zones in the region. For that reason, regional clusters should be
      * preferred.
      */
-    public readonly nodeLocations!: pulumi.Output<string[]>;
+    declare public readonly nodeLocations: pulumi.Output<string[]>;
     /**
      * Node pool configs that apply to auto-provisioned node pools in
      * [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
      * [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
      */
-    public readonly nodePoolAutoConfig!: pulumi.Output<outputs.container.ClusterNodePoolAutoConfig>;
+    declare public readonly nodePoolAutoConfig: pulumi.Output<outputs.container.ClusterNodePoolAutoConfig>;
     /**
      * Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
      */
-    public readonly nodePoolDefaults!: pulumi.Output<outputs.container.ClusterNodePoolDefaults>;
+    declare public readonly nodePoolDefaults: pulumi.Output<outputs.container.ClusterNodePoolDefaults>;
     /**
      * List of node pools associated with this cluster.
      * See gcp.container.NodePool for schema.
@@ -513,7 +513,7 @@ export class Cluster extends pulumi.CustomResource {
      * to say "these are the _only_ node pools associated with this cluster", use the
      * gcp.container.NodePool resource instead of this property.
      */
-    public readonly nodePools!: pulumi.Output<outputs.container.ClusterNodePool[]>;
+    declare public readonly nodePools: pulumi.Output<outputs.container.ClusterNodePool[]>;
     /**
      * The Kubernetes version on the nodes. Must either be unset
      * or set to the same value as `minMasterVersion` on create. Defaults to the default
@@ -524,51 +524,51 @@ export class Cluster extends pulumi.CustomResource {
      * `versionPrefix` field to approximate fuzzy versions.
      * To update nodes in other node pools, use the `version` attribute on the node pool.
      */
-    public readonly nodeVersion!: pulumi.Output<string>;
+    declare public readonly nodeVersion: pulumi.Output<string>;
     /**
      * Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
      */
-    public readonly notificationConfig!: pulumi.Output<outputs.container.ClusterNotificationConfig>;
-    public /*out*/ readonly operation!: pulumi.Output<string>;
+    declare public readonly notificationConfig: pulumi.Output<outputs.container.ClusterNotificationConfig>;
+    declare public /*out*/ readonly operation: pulumi.Output<string>;
     /**
      * Configuration for the
      * Structure is documented below.
      */
-    public readonly podAutoscaling!: pulumi.Output<outputs.container.ClusterPodAutoscaling>;
+    declare public readonly podAutoscaling: pulumi.Output<outputs.container.ClusterPodAutoscaling>;
     /**
      * Configuration for the
      * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
      * Structure is documented below.
      */
-    public readonly podSecurityPolicyConfig!: pulumi.Output<outputs.container.ClusterPodSecurityPolicyConfig | undefined>;
+    declare public readonly podSecurityPolicyConfig: pulumi.Output<outputs.container.ClusterPodSecurityPolicyConfig | undefined>;
     /**
      * Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
      * clusters with private nodes. Structure is documented below.
      */
-    public readonly privateClusterConfig!: pulumi.Output<outputs.container.ClusterPrivateClusterConfig>;
+    declare public readonly privateClusterConfig: pulumi.Output<outputs.container.ClusterPrivateClusterConfig>;
     /**
      * The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4).
      */
-    public readonly privateIpv6GoogleAccess!: pulumi.Output<string>;
+    declare public readonly privateIpv6GoogleAccess: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Enable/Disable Protect API features for the cluster. Structure is documented below.
      */
-    public readonly protectConfig!: pulumi.Output<outputs.container.ClusterProtectConfig>;
+    declare public readonly protectConfig: pulumi.Output<outputs.container.ClusterProtectConfig>;
     /**
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
      *
      * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
      */
-    public readonly rbacBindingConfig!: pulumi.Output<outputs.container.ClusterRbacBindingConfig>;
+    declare public readonly rbacBindingConfig: pulumi.Output<outputs.container.ClusterRbacBindingConfig>;
     /**
      * Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
      * feature, which provide more control over automatic upgrades of your GKE clusters.
@@ -580,86 +580,86 @@ export class Cluster extends pulumi.CustomResource {
      * release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
      * channel. Structure is documented below.
      */
-    public readonly releaseChannel!: pulumi.Output<outputs.container.ClusterReleaseChannel>;
+    declare public readonly releaseChannel: pulumi.Output<outputs.container.ClusterReleaseChannel>;
     /**
      * If `true`, deletes the default node
      * pool upon cluster creation. If you're using `gcp.container.NodePool`
      * resources with no default node pool, this should be set to `true`, alongside
      * setting `initialNodeCount` to at least `1`.
      */
-    public readonly removeDefaultNodePool!: pulumi.Output<boolean | undefined>;
+    declare public readonly removeDefaultNodePool: pulumi.Output<boolean | undefined>;
     /**
      * The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
-    public readonly resourceLabels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly resourceLabels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Configuration for the
      * [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
      * Structure is documented below.
      */
-    public readonly resourceUsageExportConfig!: pulumi.Output<outputs.container.ClusterResourceUsageExportConfig | undefined>;
+    declare public readonly resourceUsageExportConfig: pulumi.Output<outputs.container.ClusterResourceUsageExportConfig | undefined>;
     /**
      * Configuration for the
      * [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
      * Structure is documented below.
      */
-    public readonly secretManagerConfig!: pulumi.Output<outputs.container.ClusterSecretManagerConfig | undefined>;
+    declare public readonly secretManagerConfig: pulumi.Output<outputs.container.ClusterSecretManagerConfig | undefined>;
     /**
      * Enable/Disable Security Posture API features for the cluster. Structure is documented below.
      */
-    public readonly securityPostureConfig!: pulumi.Output<outputs.container.ClusterSecurityPostureConfig>;
+    declare public readonly securityPostureConfig: pulumi.Output<outputs.container.ClusterSecurityPostureConfig>;
     /**
      * The server-defined URL for the resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * Structure is documented below.
      */
-    public readonly serviceExternalIpsConfig!: pulumi.Output<outputs.container.ClusterServiceExternalIpsConfig>;
+    declare public readonly serviceExternalIpsConfig: pulumi.Output<outputs.container.ClusterServiceExternalIpsConfig>;
     /**
      * The IP address range of the Kubernetes services in this
      * cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
      * notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
      * `/16` from the container CIDR.
      */
-    public /*out*/ readonly servicesIpv4Cidr!: pulumi.Output<string>;
+    declare public /*out*/ readonly servicesIpv4Cidr: pulumi.Output<string>;
     /**
      * The name or selfLink of the Google Compute Engine
      * subnetwork in which the cluster's instances are launched.
      */
-    public readonly subnetwork!: pulumi.Output<string>;
+    declare public readonly subnetwork: pulumi.Output<string>;
     /**
      * TPU configuration for the cluster.
      */
-    public readonly tpuConfig!: pulumi.Output<outputs.container.ClusterTpuConfig>;
+    declare public readonly tpuConfig: pulumi.Output<outputs.container.ClusterTpuConfig>;
     /**
      * The IP address range of the Cloud TPUs in this cluster, in
      * [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
      * notation (e.g. `1.2.3.4/29`).
      */
-    public /*out*/ readonly tpuIpv4CidrBlock!: pulumi.Output<string>;
+    declare public /*out*/ readonly tpuIpv4CidrBlock: pulumi.Output<string>;
     /**
      * The custom keys configuration of the cluster Structure is documented below.
      */
-    public readonly userManagedKeysConfig!: pulumi.Output<outputs.container.ClusterUserManagedKeysConfig | undefined>;
+    declare public readonly userManagedKeysConfig: pulumi.Output<outputs.container.ClusterUserManagedKeysConfig | undefined>;
     /**
      * Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
      * Structure is documented below.
      */
-    public readonly verticalPodAutoscaling!: pulumi.Output<outputs.container.ClusterVerticalPodAutoscaling>;
+    declare public readonly verticalPodAutoscaling: pulumi.Output<outputs.container.ClusterVerticalPodAutoscaling>;
     /**
      * Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
      */
-    public readonly workloadAltsConfig!: pulumi.Output<outputs.container.ClusterWorkloadAltsConfig>;
+    declare public readonly workloadAltsConfig: pulumi.Output<outputs.container.ClusterWorkloadAltsConfig>;
     /**
      * Workload Identity allows Kubernetes service accounts to act as a user-managed
      * [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
      * Structure is documented below.
      */
-    public readonly workloadIdentityConfig!: pulumi.Output<outputs.container.ClusterWorkloadIdentityConfig>;
+    declare public readonly workloadIdentityConfig: pulumi.Output<outputs.container.ClusterWorkloadIdentityConfig>;
 
     /**
      * Create a Cluster resource with the given unique name, arguments, and options.
@@ -674,177 +674,177 @@ export class Cluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
-            resourceInputs["addonsConfig"] = state ? state.addonsConfig : undefined;
-            resourceInputs["allowNetAdmin"] = state ? state.allowNetAdmin : undefined;
-            resourceInputs["anonymousAuthenticationConfig"] = state ? state.anonymousAuthenticationConfig : undefined;
-            resourceInputs["authenticatorGroupsConfig"] = state ? state.authenticatorGroupsConfig : undefined;
-            resourceInputs["binaryAuthorization"] = state ? state.binaryAuthorization : undefined;
-            resourceInputs["clusterAutoscaling"] = state ? state.clusterAutoscaling : undefined;
-            resourceInputs["clusterIpv4Cidr"] = state ? state.clusterIpv4Cidr : undefined;
-            resourceInputs["clusterTelemetry"] = state ? state.clusterTelemetry : undefined;
-            resourceInputs["confidentialNodes"] = state ? state.confidentialNodes : undefined;
-            resourceInputs["controlPlaneEndpointsConfig"] = state ? state.controlPlaneEndpointsConfig : undefined;
-            resourceInputs["costManagementConfig"] = state ? state.costManagementConfig : undefined;
-            resourceInputs["databaseEncryption"] = state ? state.databaseEncryption : undefined;
-            resourceInputs["datapathProvider"] = state ? state.datapathProvider : undefined;
-            resourceInputs["defaultMaxPodsPerNode"] = state ? state.defaultMaxPodsPerNode : undefined;
-            resourceInputs["defaultSnatStatus"] = state ? state.defaultSnatStatus : undefined;
-            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["disableL4LbFirewallReconciliation"] = state ? state.disableL4LbFirewallReconciliation : undefined;
-            resourceInputs["dnsConfig"] = state ? state.dnsConfig : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["enableAutopilot"] = state ? state.enableAutopilot : undefined;
-            resourceInputs["enableCiliumClusterwideNetworkPolicy"] = state ? state.enableCiliumClusterwideNetworkPolicy : undefined;
-            resourceInputs["enableFqdnNetworkPolicy"] = state ? state.enableFqdnNetworkPolicy : undefined;
-            resourceInputs["enableIntranodeVisibility"] = state ? state.enableIntranodeVisibility : undefined;
-            resourceInputs["enableK8sBetaApis"] = state ? state.enableK8sBetaApis : undefined;
-            resourceInputs["enableKubernetesAlpha"] = state ? state.enableKubernetesAlpha : undefined;
-            resourceInputs["enableL4IlbSubsetting"] = state ? state.enableL4IlbSubsetting : undefined;
-            resourceInputs["enableLegacyAbac"] = state ? state.enableLegacyAbac : undefined;
-            resourceInputs["enableMultiNetworking"] = state ? state.enableMultiNetworking : undefined;
-            resourceInputs["enableShieldedNodes"] = state ? state.enableShieldedNodes : undefined;
-            resourceInputs["enableTpu"] = state ? state.enableTpu : undefined;
-            resourceInputs["endpoint"] = state ? state.endpoint : undefined;
-            resourceInputs["enterpriseConfig"] = state ? state.enterpriseConfig : undefined;
-            resourceInputs["fleet"] = state ? state.fleet : undefined;
-            resourceInputs["gatewayApiConfig"] = state ? state.gatewayApiConfig : undefined;
-            resourceInputs["gkeAutoUpgradeConfig"] = state ? state.gkeAutoUpgradeConfig : undefined;
-            resourceInputs["identityServiceConfig"] = state ? state.identityServiceConfig : undefined;
-            resourceInputs["inTransitEncryptionConfig"] = state ? state.inTransitEncryptionConfig : undefined;
-            resourceInputs["initialNodeCount"] = state ? state.initialNodeCount : undefined;
-            resourceInputs["ipAllocationPolicy"] = state ? state.ipAllocationPolicy : undefined;
-            resourceInputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["loggingConfig"] = state ? state.loggingConfig : undefined;
-            resourceInputs["loggingService"] = state ? state.loggingService : undefined;
-            resourceInputs["maintenancePolicy"] = state ? state.maintenancePolicy : undefined;
-            resourceInputs["masterAuth"] = state ? state.masterAuth : undefined;
-            resourceInputs["masterAuthorizedNetworksConfig"] = state ? state.masterAuthorizedNetworksConfig : undefined;
-            resourceInputs["masterVersion"] = state ? state.masterVersion : undefined;
-            resourceInputs["meshCertificates"] = state ? state.meshCertificates : undefined;
-            resourceInputs["minMasterVersion"] = state ? state.minMasterVersion : undefined;
-            resourceInputs["monitoringConfig"] = state ? state.monitoringConfig : undefined;
-            resourceInputs["monitoringService"] = state ? state.monitoringService : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["networkPerformanceConfig"] = state ? state.networkPerformanceConfig : undefined;
-            resourceInputs["networkPolicy"] = state ? state.networkPolicy : undefined;
-            resourceInputs["networkingMode"] = state ? state.networkingMode : undefined;
-            resourceInputs["nodeConfig"] = state ? state.nodeConfig : undefined;
-            resourceInputs["nodeLocations"] = state ? state.nodeLocations : undefined;
-            resourceInputs["nodePoolAutoConfig"] = state ? state.nodePoolAutoConfig : undefined;
-            resourceInputs["nodePoolDefaults"] = state ? state.nodePoolDefaults : undefined;
-            resourceInputs["nodePools"] = state ? state.nodePools : undefined;
-            resourceInputs["nodeVersion"] = state ? state.nodeVersion : undefined;
-            resourceInputs["notificationConfig"] = state ? state.notificationConfig : undefined;
-            resourceInputs["operation"] = state ? state.operation : undefined;
-            resourceInputs["podAutoscaling"] = state ? state.podAutoscaling : undefined;
-            resourceInputs["podSecurityPolicyConfig"] = state ? state.podSecurityPolicyConfig : undefined;
-            resourceInputs["privateClusterConfig"] = state ? state.privateClusterConfig : undefined;
-            resourceInputs["privateIpv6GoogleAccess"] = state ? state.privateIpv6GoogleAccess : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["protectConfig"] = state ? state.protectConfig : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["rbacBindingConfig"] = state ? state.rbacBindingConfig : undefined;
-            resourceInputs["releaseChannel"] = state ? state.releaseChannel : undefined;
-            resourceInputs["removeDefaultNodePool"] = state ? state.removeDefaultNodePool : undefined;
-            resourceInputs["resourceLabels"] = state ? state.resourceLabels : undefined;
-            resourceInputs["resourceUsageExportConfig"] = state ? state.resourceUsageExportConfig : undefined;
-            resourceInputs["secretManagerConfig"] = state ? state.secretManagerConfig : undefined;
-            resourceInputs["securityPostureConfig"] = state ? state.securityPostureConfig : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["serviceExternalIpsConfig"] = state ? state.serviceExternalIpsConfig : undefined;
-            resourceInputs["servicesIpv4Cidr"] = state ? state.servicesIpv4Cidr : undefined;
-            resourceInputs["subnetwork"] = state ? state.subnetwork : undefined;
-            resourceInputs["tpuConfig"] = state ? state.tpuConfig : undefined;
-            resourceInputs["tpuIpv4CidrBlock"] = state ? state.tpuIpv4CidrBlock : undefined;
-            resourceInputs["userManagedKeysConfig"] = state ? state.userManagedKeysConfig : undefined;
-            resourceInputs["verticalPodAutoscaling"] = state ? state.verticalPodAutoscaling : undefined;
-            resourceInputs["workloadAltsConfig"] = state ? state.workloadAltsConfig : undefined;
-            resourceInputs["workloadIdentityConfig"] = state ? state.workloadIdentityConfig : undefined;
+            resourceInputs["addonsConfig"] = state?.addonsConfig;
+            resourceInputs["allowNetAdmin"] = state?.allowNetAdmin;
+            resourceInputs["anonymousAuthenticationConfig"] = state?.anonymousAuthenticationConfig;
+            resourceInputs["authenticatorGroupsConfig"] = state?.authenticatorGroupsConfig;
+            resourceInputs["binaryAuthorization"] = state?.binaryAuthorization;
+            resourceInputs["clusterAutoscaling"] = state?.clusterAutoscaling;
+            resourceInputs["clusterIpv4Cidr"] = state?.clusterIpv4Cidr;
+            resourceInputs["clusterTelemetry"] = state?.clusterTelemetry;
+            resourceInputs["confidentialNodes"] = state?.confidentialNodes;
+            resourceInputs["controlPlaneEndpointsConfig"] = state?.controlPlaneEndpointsConfig;
+            resourceInputs["costManagementConfig"] = state?.costManagementConfig;
+            resourceInputs["databaseEncryption"] = state?.databaseEncryption;
+            resourceInputs["datapathProvider"] = state?.datapathProvider;
+            resourceInputs["defaultMaxPodsPerNode"] = state?.defaultMaxPodsPerNode;
+            resourceInputs["defaultSnatStatus"] = state?.defaultSnatStatus;
+            resourceInputs["deletionProtection"] = state?.deletionProtection;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["disableL4LbFirewallReconciliation"] = state?.disableL4LbFirewallReconciliation;
+            resourceInputs["dnsConfig"] = state?.dnsConfig;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["enableAutopilot"] = state?.enableAutopilot;
+            resourceInputs["enableCiliumClusterwideNetworkPolicy"] = state?.enableCiliumClusterwideNetworkPolicy;
+            resourceInputs["enableFqdnNetworkPolicy"] = state?.enableFqdnNetworkPolicy;
+            resourceInputs["enableIntranodeVisibility"] = state?.enableIntranodeVisibility;
+            resourceInputs["enableK8sBetaApis"] = state?.enableK8sBetaApis;
+            resourceInputs["enableKubernetesAlpha"] = state?.enableKubernetesAlpha;
+            resourceInputs["enableL4IlbSubsetting"] = state?.enableL4IlbSubsetting;
+            resourceInputs["enableLegacyAbac"] = state?.enableLegacyAbac;
+            resourceInputs["enableMultiNetworking"] = state?.enableMultiNetworking;
+            resourceInputs["enableShieldedNodes"] = state?.enableShieldedNodes;
+            resourceInputs["enableTpu"] = state?.enableTpu;
+            resourceInputs["endpoint"] = state?.endpoint;
+            resourceInputs["enterpriseConfig"] = state?.enterpriseConfig;
+            resourceInputs["fleet"] = state?.fleet;
+            resourceInputs["gatewayApiConfig"] = state?.gatewayApiConfig;
+            resourceInputs["gkeAutoUpgradeConfig"] = state?.gkeAutoUpgradeConfig;
+            resourceInputs["identityServiceConfig"] = state?.identityServiceConfig;
+            resourceInputs["inTransitEncryptionConfig"] = state?.inTransitEncryptionConfig;
+            resourceInputs["initialNodeCount"] = state?.initialNodeCount;
+            resourceInputs["ipAllocationPolicy"] = state?.ipAllocationPolicy;
+            resourceInputs["labelFingerprint"] = state?.labelFingerprint;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["loggingConfig"] = state?.loggingConfig;
+            resourceInputs["loggingService"] = state?.loggingService;
+            resourceInputs["maintenancePolicy"] = state?.maintenancePolicy;
+            resourceInputs["masterAuth"] = state?.masterAuth;
+            resourceInputs["masterAuthorizedNetworksConfig"] = state?.masterAuthorizedNetworksConfig;
+            resourceInputs["masterVersion"] = state?.masterVersion;
+            resourceInputs["meshCertificates"] = state?.meshCertificates;
+            resourceInputs["minMasterVersion"] = state?.minMasterVersion;
+            resourceInputs["monitoringConfig"] = state?.monitoringConfig;
+            resourceInputs["monitoringService"] = state?.monitoringService;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["networkPerformanceConfig"] = state?.networkPerformanceConfig;
+            resourceInputs["networkPolicy"] = state?.networkPolicy;
+            resourceInputs["networkingMode"] = state?.networkingMode;
+            resourceInputs["nodeConfig"] = state?.nodeConfig;
+            resourceInputs["nodeLocations"] = state?.nodeLocations;
+            resourceInputs["nodePoolAutoConfig"] = state?.nodePoolAutoConfig;
+            resourceInputs["nodePoolDefaults"] = state?.nodePoolDefaults;
+            resourceInputs["nodePools"] = state?.nodePools;
+            resourceInputs["nodeVersion"] = state?.nodeVersion;
+            resourceInputs["notificationConfig"] = state?.notificationConfig;
+            resourceInputs["operation"] = state?.operation;
+            resourceInputs["podAutoscaling"] = state?.podAutoscaling;
+            resourceInputs["podSecurityPolicyConfig"] = state?.podSecurityPolicyConfig;
+            resourceInputs["privateClusterConfig"] = state?.privateClusterConfig;
+            resourceInputs["privateIpv6GoogleAccess"] = state?.privateIpv6GoogleAccess;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["protectConfig"] = state?.protectConfig;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["rbacBindingConfig"] = state?.rbacBindingConfig;
+            resourceInputs["releaseChannel"] = state?.releaseChannel;
+            resourceInputs["removeDefaultNodePool"] = state?.removeDefaultNodePool;
+            resourceInputs["resourceLabels"] = state?.resourceLabels;
+            resourceInputs["resourceUsageExportConfig"] = state?.resourceUsageExportConfig;
+            resourceInputs["secretManagerConfig"] = state?.secretManagerConfig;
+            resourceInputs["securityPostureConfig"] = state?.securityPostureConfig;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["serviceExternalIpsConfig"] = state?.serviceExternalIpsConfig;
+            resourceInputs["servicesIpv4Cidr"] = state?.servicesIpv4Cidr;
+            resourceInputs["subnetwork"] = state?.subnetwork;
+            resourceInputs["tpuConfig"] = state?.tpuConfig;
+            resourceInputs["tpuIpv4CidrBlock"] = state?.tpuIpv4CidrBlock;
+            resourceInputs["userManagedKeysConfig"] = state?.userManagedKeysConfig;
+            resourceInputs["verticalPodAutoscaling"] = state?.verticalPodAutoscaling;
+            resourceInputs["workloadAltsConfig"] = state?.workloadAltsConfig;
+            resourceInputs["workloadIdentityConfig"] = state?.workloadIdentityConfig;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
-            resourceInputs["addonsConfig"] = args ? args.addonsConfig : undefined;
-            resourceInputs["allowNetAdmin"] = args ? args.allowNetAdmin : undefined;
-            resourceInputs["anonymousAuthenticationConfig"] = args ? args.anonymousAuthenticationConfig : undefined;
-            resourceInputs["authenticatorGroupsConfig"] = args ? args.authenticatorGroupsConfig : undefined;
-            resourceInputs["binaryAuthorization"] = args ? args.binaryAuthorization : undefined;
-            resourceInputs["clusterAutoscaling"] = args ? args.clusterAutoscaling : undefined;
-            resourceInputs["clusterIpv4Cidr"] = args ? args.clusterIpv4Cidr : undefined;
-            resourceInputs["clusterTelemetry"] = args ? args.clusterTelemetry : undefined;
-            resourceInputs["confidentialNodes"] = args ? args.confidentialNodes : undefined;
-            resourceInputs["controlPlaneEndpointsConfig"] = args ? args.controlPlaneEndpointsConfig : undefined;
-            resourceInputs["costManagementConfig"] = args ? args.costManagementConfig : undefined;
-            resourceInputs["databaseEncryption"] = args ? args.databaseEncryption : undefined;
-            resourceInputs["datapathProvider"] = args ? args.datapathProvider : undefined;
-            resourceInputs["defaultMaxPodsPerNode"] = args ? args.defaultMaxPodsPerNode : undefined;
-            resourceInputs["defaultSnatStatus"] = args ? args.defaultSnatStatus : undefined;
-            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["disableL4LbFirewallReconciliation"] = args ? args.disableL4LbFirewallReconciliation : undefined;
-            resourceInputs["dnsConfig"] = args ? args.dnsConfig : undefined;
-            resourceInputs["enableAutopilot"] = args ? args.enableAutopilot : undefined;
-            resourceInputs["enableCiliumClusterwideNetworkPolicy"] = args ? args.enableCiliumClusterwideNetworkPolicy : undefined;
-            resourceInputs["enableFqdnNetworkPolicy"] = args ? args.enableFqdnNetworkPolicy : undefined;
-            resourceInputs["enableIntranodeVisibility"] = args ? args.enableIntranodeVisibility : undefined;
-            resourceInputs["enableK8sBetaApis"] = args ? args.enableK8sBetaApis : undefined;
-            resourceInputs["enableKubernetesAlpha"] = args ? args.enableKubernetesAlpha : undefined;
-            resourceInputs["enableL4IlbSubsetting"] = args ? args.enableL4IlbSubsetting : undefined;
-            resourceInputs["enableLegacyAbac"] = args ? args.enableLegacyAbac : undefined;
-            resourceInputs["enableMultiNetworking"] = args ? args.enableMultiNetworking : undefined;
-            resourceInputs["enableShieldedNodes"] = args ? args.enableShieldedNodes : undefined;
-            resourceInputs["enableTpu"] = args ? args.enableTpu : undefined;
-            resourceInputs["enterpriseConfig"] = args ? args.enterpriseConfig : undefined;
-            resourceInputs["fleet"] = args ? args.fleet : undefined;
-            resourceInputs["gatewayApiConfig"] = args ? args.gatewayApiConfig : undefined;
-            resourceInputs["gkeAutoUpgradeConfig"] = args ? args.gkeAutoUpgradeConfig : undefined;
-            resourceInputs["identityServiceConfig"] = args ? args.identityServiceConfig : undefined;
-            resourceInputs["inTransitEncryptionConfig"] = args ? args.inTransitEncryptionConfig : undefined;
-            resourceInputs["initialNodeCount"] = args ? args.initialNodeCount : undefined;
-            resourceInputs["ipAllocationPolicy"] = args ? args.ipAllocationPolicy : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["loggingConfig"] = args ? args.loggingConfig : undefined;
-            resourceInputs["loggingService"] = args ? args.loggingService : undefined;
-            resourceInputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
-            resourceInputs["masterAuth"] = args ? args.masterAuth : undefined;
-            resourceInputs["masterAuthorizedNetworksConfig"] = args ? args.masterAuthorizedNetworksConfig : undefined;
-            resourceInputs["meshCertificates"] = args ? args.meshCertificates : undefined;
-            resourceInputs["minMasterVersion"] = args ? args.minMasterVersion : undefined;
-            resourceInputs["monitoringConfig"] = args ? args.monitoringConfig : undefined;
-            resourceInputs["monitoringService"] = args ? args.monitoringService : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["networkPerformanceConfig"] = args ? args.networkPerformanceConfig : undefined;
-            resourceInputs["networkPolicy"] = args ? args.networkPolicy : undefined;
-            resourceInputs["networkingMode"] = args ? args.networkingMode : undefined;
-            resourceInputs["nodeConfig"] = args ? args.nodeConfig : undefined;
-            resourceInputs["nodeLocations"] = args ? args.nodeLocations : undefined;
-            resourceInputs["nodePoolAutoConfig"] = args ? args.nodePoolAutoConfig : undefined;
-            resourceInputs["nodePoolDefaults"] = args ? args.nodePoolDefaults : undefined;
-            resourceInputs["nodePools"] = args ? args.nodePools : undefined;
-            resourceInputs["nodeVersion"] = args ? args.nodeVersion : undefined;
-            resourceInputs["notificationConfig"] = args ? args.notificationConfig : undefined;
-            resourceInputs["podAutoscaling"] = args ? args.podAutoscaling : undefined;
-            resourceInputs["podSecurityPolicyConfig"] = args ? args.podSecurityPolicyConfig : undefined;
-            resourceInputs["privateClusterConfig"] = args ? args.privateClusterConfig : undefined;
-            resourceInputs["privateIpv6GoogleAccess"] = args ? args.privateIpv6GoogleAccess : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["protectConfig"] = args ? args.protectConfig : undefined;
-            resourceInputs["rbacBindingConfig"] = args ? args.rbacBindingConfig : undefined;
-            resourceInputs["releaseChannel"] = args ? args.releaseChannel : undefined;
-            resourceInputs["removeDefaultNodePool"] = args ? args.removeDefaultNodePool : undefined;
-            resourceInputs["resourceLabels"] = args ? args.resourceLabels : undefined;
-            resourceInputs["resourceUsageExportConfig"] = args ? args.resourceUsageExportConfig : undefined;
-            resourceInputs["secretManagerConfig"] = args ? args.secretManagerConfig : undefined;
-            resourceInputs["securityPostureConfig"] = args ? args.securityPostureConfig : undefined;
-            resourceInputs["serviceExternalIpsConfig"] = args ? args.serviceExternalIpsConfig : undefined;
-            resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
-            resourceInputs["tpuConfig"] = args ? args.tpuConfig : undefined;
-            resourceInputs["userManagedKeysConfig"] = args ? args.userManagedKeysConfig : undefined;
-            resourceInputs["verticalPodAutoscaling"] = args ? args.verticalPodAutoscaling : undefined;
-            resourceInputs["workloadAltsConfig"] = args ? args.workloadAltsConfig : undefined;
-            resourceInputs["workloadIdentityConfig"] = args ? args.workloadIdentityConfig : undefined;
+            resourceInputs["addonsConfig"] = args?.addonsConfig;
+            resourceInputs["allowNetAdmin"] = args?.allowNetAdmin;
+            resourceInputs["anonymousAuthenticationConfig"] = args?.anonymousAuthenticationConfig;
+            resourceInputs["authenticatorGroupsConfig"] = args?.authenticatorGroupsConfig;
+            resourceInputs["binaryAuthorization"] = args?.binaryAuthorization;
+            resourceInputs["clusterAutoscaling"] = args?.clusterAutoscaling;
+            resourceInputs["clusterIpv4Cidr"] = args?.clusterIpv4Cidr;
+            resourceInputs["clusterTelemetry"] = args?.clusterTelemetry;
+            resourceInputs["confidentialNodes"] = args?.confidentialNodes;
+            resourceInputs["controlPlaneEndpointsConfig"] = args?.controlPlaneEndpointsConfig;
+            resourceInputs["costManagementConfig"] = args?.costManagementConfig;
+            resourceInputs["databaseEncryption"] = args?.databaseEncryption;
+            resourceInputs["datapathProvider"] = args?.datapathProvider;
+            resourceInputs["defaultMaxPodsPerNode"] = args?.defaultMaxPodsPerNode;
+            resourceInputs["defaultSnatStatus"] = args?.defaultSnatStatus;
+            resourceInputs["deletionProtection"] = args?.deletionProtection;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["disableL4LbFirewallReconciliation"] = args?.disableL4LbFirewallReconciliation;
+            resourceInputs["dnsConfig"] = args?.dnsConfig;
+            resourceInputs["enableAutopilot"] = args?.enableAutopilot;
+            resourceInputs["enableCiliumClusterwideNetworkPolicy"] = args?.enableCiliumClusterwideNetworkPolicy;
+            resourceInputs["enableFqdnNetworkPolicy"] = args?.enableFqdnNetworkPolicy;
+            resourceInputs["enableIntranodeVisibility"] = args?.enableIntranodeVisibility;
+            resourceInputs["enableK8sBetaApis"] = args?.enableK8sBetaApis;
+            resourceInputs["enableKubernetesAlpha"] = args?.enableKubernetesAlpha;
+            resourceInputs["enableL4IlbSubsetting"] = args?.enableL4IlbSubsetting;
+            resourceInputs["enableLegacyAbac"] = args?.enableLegacyAbac;
+            resourceInputs["enableMultiNetworking"] = args?.enableMultiNetworking;
+            resourceInputs["enableShieldedNodes"] = args?.enableShieldedNodes;
+            resourceInputs["enableTpu"] = args?.enableTpu;
+            resourceInputs["enterpriseConfig"] = args?.enterpriseConfig;
+            resourceInputs["fleet"] = args?.fleet;
+            resourceInputs["gatewayApiConfig"] = args?.gatewayApiConfig;
+            resourceInputs["gkeAutoUpgradeConfig"] = args?.gkeAutoUpgradeConfig;
+            resourceInputs["identityServiceConfig"] = args?.identityServiceConfig;
+            resourceInputs["inTransitEncryptionConfig"] = args?.inTransitEncryptionConfig;
+            resourceInputs["initialNodeCount"] = args?.initialNodeCount;
+            resourceInputs["ipAllocationPolicy"] = args?.ipAllocationPolicy;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["loggingConfig"] = args?.loggingConfig;
+            resourceInputs["loggingService"] = args?.loggingService;
+            resourceInputs["maintenancePolicy"] = args?.maintenancePolicy;
+            resourceInputs["masterAuth"] = args?.masterAuth;
+            resourceInputs["masterAuthorizedNetworksConfig"] = args?.masterAuthorizedNetworksConfig;
+            resourceInputs["meshCertificates"] = args?.meshCertificates;
+            resourceInputs["minMasterVersion"] = args?.minMasterVersion;
+            resourceInputs["monitoringConfig"] = args?.monitoringConfig;
+            resourceInputs["monitoringService"] = args?.monitoringService;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["networkPerformanceConfig"] = args?.networkPerformanceConfig;
+            resourceInputs["networkPolicy"] = args?.networkPolicy;
+            resourceInputs["networkingMode"] = args?.networkingMode;
+            resourceInputs["nodeConfig"] = args?.nodeConfig;
+            resourceInputs["nodeLocations"] = args?.nodeLocations;
+            resourceInputs["nodePoolAutoConfig"] = args?.nodePoolAutoConfig;
+            resourceInputs["nodePoolDefaults"] = args?.nodePoolDefaults;
+            resourceInputs["nodePools"] = args?.nodePools;
+            resourceInputs["nodeVersion"] = args?.nodeVersion;
+            resourceInputs["notificationConfig"] = args?.notificationConfig;
+            resourceInputs["podAutoscaling"] = args?.podAutoscaling;
+            resourceInputs["podSecurityPolicyConfig"] = args?.podSecurityPolicyConfig;
+            resourceInputs["privateClusterConfig"] = args?.privateClusterConfig;
+            resourceInputs["privateIpv6GoogleAccess"] = args?.privateIpv6GoogleAccess;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["protectConfig"] = args?.protectConfig;
+            resourceInputs["rbacBindingConfig"] = args?.rbacBindingConfig;
+            resourceInputs["releaseChannel"] = args?.releaseChannel;
+            resourceInputs["removeDefaultNodePool"] = args?.removeDefaultNodePool;
+            resourceInputs["resourceLabels"] = args?.resourceLabels;
+            resourceInputs["resourceUsageExportConfig"] = args?.resourceUsageExportConfig;
+            resourceInputs["secretManagerConfig"] = args?.secretManagerConfig;
+            resourceInputs["securityPostureConfig"] = args?.securityPostureConfig;
+            resourceInputs["serviceExternalIpsConfig"] = args?.serviceExternalIpsConfig;
+            resourceInputs["subnetwork"] = args?.subnetwork;
+            resourceInputs["tpuConfig"] = args?.tpuConfig;
+            resourceInputs["userManagedKeysConfig"] = args?.userManagedKeysConfig;
+            resourceInputs["verticalPodAutoscaling"] = args?.verticalPodAutoscaling;
+            resourceInputs["workloadAltsConfig"] = args?.workloadAltsConfig;
+            resourceInputs["workloadIdentityConfig"] = args?.workloadIdentityConfig;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["endpoint"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;

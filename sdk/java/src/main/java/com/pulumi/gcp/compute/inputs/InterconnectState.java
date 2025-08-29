@@ -651,16 +651,14 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be
-     * deleted if this list is non-empty.
+     * A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be deleted if this list is non-empty.
      * 
      */
     @Import(name="wireGroups")
     private @Nullable Output<List<String>> wireGroups;
 
     /**
-     * @return A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be
-     * deleted if this list is non-empty.
+     * @return A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be deleted if this list is non-empty.
      * 
      */
     public Optional<Output<List<String>>> wireGroups() {
@@ -1621,8 +1619,7 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param wireGroups A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be
-         * deleted if this list is non-empty.
+         * @param wireGroups A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be deleted if this list is non-empty.
          * 
          * @return builder
          * 
@@ -1633,8 +1630,7 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param wireGroups A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be
-         * deleted if this list is non-empty.
+         * @param wireGroups A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be deleted if this list is non-empty.
          * 
          * @return builder
          * 
@@ -1644,8 +1640,7 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param wireGroups A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be
-         * deleted if this list is non-empty.
+         * @param wireGroups A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be deleted if this list is non-empty.
          * 
          * @return builder
          * 

@@ -120,11 +120,11 @@ export class EnvironmentKeyvaluemaps extends pulumi.CustomResource {
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
      */
-    public readonly envId!: pulumi.Output<string>;
+    declare public readonly envId: pulumi.Output<string>;
     /**
      * Required. ID of the key value map.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a EnvironmentKeyvaluemaps resource with the given unique name, arguments, and options.
@@ -139,15 +139,15 @@ export class EnvironmentKeyvaluemaps extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EnvironmentKeyvaluemapsState | undefined;
-            resourceInputs["envId"] = state ? state.envId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["envId"] = state?.envId;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as EnvironmentKeyvaluemapsArgs | undefined;
-            if ((!args || args.envId === undefined) && !opts.urn) {
+            if (args?.envId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'envId'");
             }
-            resourceInputs["envId"] = args ? args.envId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["envId"] = args?.envId;
+            resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EnvironmentKeyvaluemaps.__pulumiType, name, resourceInputs, opts);

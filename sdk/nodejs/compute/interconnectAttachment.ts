@@ -177,11 +177,11 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      * Whether the VLAN attachment is enabled or disabled.  When using
      * PARTNER type this will Pre-Activate the interconnect attachment
      */
-    public readonly adminEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly adminEnabled: pulumi.Output<boolean | undefined>;
     /**
      * URL of the AttachmentGroup that includes this Attachment.
      */
-    public /*out*/ readonly attachmentGroup!: pulumi.Output<string>;
+    declare public /*out*/ readonly attachmentGroup: pulumi.Output<string>;
     /**
      * Provisioned bandwidth capacity for the interconnect attachment.
      * For attachments of type DEDICATED, the user can set the bandwidth.
@@ -190,27 +190,27 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      * Defaults to BPS_10G
      * Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`, `BPS_100G`.
      */
-    public readonly bandwidth!: pulumi.Output<string>;
+    declare public readonly bandwidth: pulumi.Output<string>;
     /**
      * Single IPv4 address + prefix length to be configured on the cloud router interface for this
      * interconnect attachment. Example: 203.0.113.1/29
      */
-    public readonly candidateCloudRouterIpAddress!: pulumi.Output<string | undefined>;
+    declare public readonly candidateCloudRouterIpAddress: pulumi.Output<string | undefined>;
     /**
      * Single IPv6 address + prefix length to be configured on the cloud router interface for this
      * interconnect attachment. Example: 2001:db8::1/125
      */
-    public readonly candidateCloudRouterIpv6Address!: pulumi.Output<string | undefined>;
+    declare public readonly candidateCloudRouterIpv6Address: pulumi.Output<string | undefined>;
     /**
      * Single IPv4 address + prefix length to be configured on the customer router interface for this
      * interconnect attachment. Example: 203.0.113.2/29
      */
-    public readonly candidateCustomerRouterIpAddress!: pulumi.Output<string | undefined>;
+    declare public readonly candidateCustomerRouterIpAddress: pulumi.Output<string | undefined>;
     /**
      * Single IPv6 address + prefix length to be configured on the customer router interface for this
      * interconnect attachment. Example: 2001:db8::2/125
      */
-    public readonly candidateCustomerRouterIpv6Address!: pulumi.Output<string | undefined>;
+    declare public readonly candidateCustomerRouterIpv6Address: pulumi.Output<string | undefined>;
     /**
      * Up to 16 candidate prefixes that can be used to restrict the allocation
      * of cloudRouterIpAddress and customerRouterIpAddress for this attachment.
@@ -220,35 +220,35 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      * fail if all possible /29s are in use on Google's edge. If not supplied,
      * Google will randomly select an unused /29 from all of link-local space.
      */
-    public readonly candidateSubnets!: pulumi.Output<string[] | undefined>;
+    declare public readonly candidateSubnets: pulumi.Output<string[] | undefined>;
     /**
      * IPv4 address + prefix length to be configured on Cloud Router
      * Interface for this interconnect attachment.
      */
-    public /*out*/ readonly cloudRouterIpAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly cloudRouterIpAddress: pulumi.Output<string>;
     /**
      * IPv6 address + prefix length to be configured on Cloud Router
      * Interface for this interconnect attachment.
      */
-    public /*out*/ readonly cloudRouterIpv6Address!: pulumi.Output<string>;
+    declare public /*out*/ readonly cloudRouterIpv6Address: pulumi.Output<string>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * IPv4 address + prefix length to be configured on the customer
      * router subinterface for this interconnect attachment.
      */
-    public /*out*/ readonly customerRouterIpAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly customerRouterIpAddress: pulumi.Output<string>;
     /**
      * IPv6 address + prefix length to be configured on the customer
      * router subinterface for this interconnect attachment.
      */
-    public /*out*/ readonly customerRouterIpv6Address!: pulumi.Output<string>;
+    declare public /*out*/ readonly customerRouterIpv6Address: pulumi.Output<string>;
     /**
      * An optional description of this resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Desired availability domain for the attachment. Only available for type
      * PARTNER, at creation time. For improved reliability, customers should
@@ -257,11 +257,11 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      * pairing key so that the provisioned circuit will lie in the specified
      * domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
      */
-    public readonly edgeAvailabilityDomain!: pulumi.Output<string>;
+    declare public readonly edgeAvailabilityDomain: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Indicates the user-supplied encryption option of this interconnect
      * attachment. Can only be specified at attachment creation for PARTNER or
@@ -277,18 +277,18 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      * Default value is `NONE`.
      * Possible values are: `NONE`, `IPSEC`.
      */
-    public readonly encryption!: pulumi.Output<string | undefined>;
+    declare public readonly encryption: pulumi.Output<string | undefined>;
     /**
      * Google reference ID, to be used when raising support tickets with
      * Google or otherwise to debug backend connectivity issues.
      */
-    public /*out*/ readonly googleReferenceId!: pulumi.Output<string>;
+    declare public /*out*/ readonly googleReferenceId: pulumi.Output<string>;
     /**
      * URL of the underlying Interconnect object that this attachment's
      * traffic will traverse through. Required if type is DEDICATED, must not
      * be set if type is PARTNER.
      */
-    public readonly interconnect!: pulumi.Output<string | undefined>;
+    declare public readonly interconnect: pulumi.Output<string | undefined>;
     /**
      * URL of addresses that have been reserved for the interconnect attachment,
      * Used only for interconnect attachment that has the encryption option as
@@ -306,7 +306,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      * interconnect attachment, the HA VPN gateway's IP address will be
      * allocated from regional external IP address pool.
      */
-    public readonly ipsecInternalAddresses!: pulumi.Output<string[] | undefined>;
+    declare public readonly ipsecInternalAddresses: pulumi.Output<string[] | undefined>;
     /**
      * A fingerprint for the labels being applied to this Interconnect, which is essentially a hash
      * of the labels set used for optimistic locking. The fingerprint is initially generated by
@@ -314,7 +314,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      * You must always provide an up-to-date fingerprint hash in order to update or change labels,
      * otherwise the request will fail with error 412 conditionNotMet.
      */
-    public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly labelFingerprint: pulumi.Output<string>;
     /**
      * Labels for this resource. These can only be added or modified by the setLabels
      * method. Each label key/value pair must comply with RFC1035. Label values may be empty.
@@ -322,12 +322,12 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment.
      * Valid values are 1440, 1460, 1500, and 8896. If not specified, the value will default to 1440.
      */
-    public readonly mtu!: pulumi.Output<string>;
+    declare public readonly mtu: pulumi.Output<string>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The
      * name must be 1-63 characters long, and comply with RFC1035. Specifically, the
@@ -336,50 +336,50 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      * lowercase letter, and all following characters must be a dash, lowercase
      * letter, or digit, except the last character, which cannot be a dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * [Output only for type PARTNER. Not present for DEDICATED]. The opaque
      * identifier of an PARTNER attachment used to initiate provisioning with
      * a selected partner. Of the form "XXXXX/region/domain"
      */
-    public /*out*/ readonly pairingKey!: pulumi.Output<string>;
+    declare public /*out*/ readonly pairingKey: pulumi.Output<string>;
     /**
      * [Output only for type PARTNER. Not present for DEDICATED]. Optional
      * BGP ASN for the router that should be supplied by a layer 3 Partner if
      * they configured BGP on behalf of the customer.
      */
-    public /*out*/ readonly partnerAsn!: pulumi.Output<string>;
+    declare public /*out*/ readonly partnerAsn: pulumi.Output<string>;
     /**
      * Information specific to an InterconnectAttachment. This property
      * is populated if the interconnect that this is attached to is of type DEDICATED.
      * Structure is documented below.
      */
-    public /*out*/ readonly privateInterconnectInfos!: pulumi.Output<outputs.compute.InterconnectAttachmentPrivateInterconnectInfo[]>;
+    declare public /*out*/ readonly privateInterconnectInfos: pulumi.Output<outputs.compute.InterconnectAttachmentPrivateInterconnectInfo[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Region where the regional interconnect attachment resides.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * URL of the cloud router to be used for dynamic routing. This router must be in
      * the same region as this InterconnectAttachment. The InterconnectAttachment will
      * automatically connect the Interconnect to the network & region within which the
      * Cloud Router is configured.
      */
-    public readonly router!: pulumi.Output<string>;
+    declare public readonly router: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * The stack type for this interconnect attachment to identify whether the IPv6
      * feature is enabled or not. If not specified, IPV4_ONLY will be used.
@@ -387,11 +387,11 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      * interconnect attachment operations.
      * Possible values are: `IPV4_IPV6`, `IPV4_ONLY`.
      */
-    public readonly stackType!: pulumi.Output<string>;
+    declare public readonly stackType: pulumi.Output<string>;
     /**
      * [Output Only] The current state of this attachment's functionality.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Length of the IPv4 subnet mask. Allowed values: 29 (default), 30. The default value is 29,
      * except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a
@@ -400,18 +400,18 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      * requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it
      * gives Google Cloud Support more debugging visibility.
      */
-    public readonly subnetLength!: pulumi.Output<number | undefined>;
+    declare public readonly subnetLength: pulumi.Output<number | undefined>;
     /**
      * The type of InterconnectAttachment you wish to create. Defaults to
      * DEDICATED.
      * Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. When
      * using PARTNER type this will be managed upstream.
      */
-    public readonly vlanTag8021q!: pulumi.Output<number>;
+    declare public readonly vlanTag8021q: pulumi.Output<number>;
 
     /**
      * Create a InterconnectAttachment resource with the given unique name, arguments, and options.
@@ -426,70 +426,70 @@ export class InterconnectAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InterconnectAttachmentState | undefined;
-            resourceInputs["adminEnabled"] = state ? state.adminEnabled : undefined;
-            resourceInputs["attachmentGroup"] = state ? state.attachmentGroup : undefined;
-            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
-            resourceInputs["candidateCloudRouterIpAddress"] = state ? state.candidateCloudRouterIpAddress : undefined;
-            resourceInputs["candidateCloudRouterIpv6Address"] = state ? state.candidateCloudRouterIpv6Address : undefined;
-            resourceInputs["candidateCustomerRouterIpAddress"] = state ? state.candidateCustomerRouterIpAddress : undefined;
-            resourceInputs["candidateCustomerRouterIpv6Address"] = state ? state.candidateCustomerRouterIpv6Address : undefined;
-            resourceInputs["candidateSubnets"] = state ? state.candidateSubnets : undefined;
-            resourceInputs["cloudRouterIpAddress"] = state ? state.cloudRouterIpAddress : undefined;
-            resourceInputs["cloudRouterIpv6Address"] = state ? state.cloudRouterIpv6Address : undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["customerRouterIpAddress"] = state ? state.customerRouterIpAddress : undefined;
-            resourceInputs["customerRouterIpv6Address"] = state ? state.customerRouterIpv6Address : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["edgeAvailabilityDomain"] = state ? state.edgeAvailabilityDomain : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["encryption"] = state ? state.encryption : undefined;
-            resourceInputs["googleReferenceId"] = state ? state.googleReferenceId : undefined;
-            resourceInputs["interconnect"] = state ? state.interconnect : undefined;
-            resourceInputs["ipsecInternalAddresses"] = state ? state.ipsecInternalAddresses : undefined;
-            resourceInputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["mtu"] = state ? state.mtu : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["pairingKey"] = state ? state.pairingKey : undefined;
-            resourceInputs["partnerAsn"] = state ? state.partnerAsn : undefined;
-            resourceInputs["privateInterconnectInfos"] = state ? state.privateInterconnectInfos : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["router"] = state ? state.router : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["stackType"] = state ? state.stackType : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["subnetLength"] = state ? state.subnetLength : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["vlanTag8021q"] = state ? state.vlanTag8021q : undefined;
+            resourceInputs["adminEnabled"] = state?.adminEnabled;
+            resourceInputs["attachmentGroup"] = state?.attachmentGroup;
+            resourceInputs["bandwidth"] = state?.bandwidth;
+            resourceInputs["candidateCloudRouterIpAddress"] = state?.candidateCloudRouterIpAddress;
+            resourceInputs["candidateCloudRouterIpv6Address"] = state?.candidateCloudRouterIpv6Address;
+            resourceInputs["candidateCustomerRouterIpAddress"] = state?.candidateCustomerRouterIpAddress;
+            resourceInputs["candidateCustomerRouterIpv6Address"] = state?.candidateCustomerRouterIpv6Address;
+            resourceInputs["candidateSubnets"] = state?.candidateSubnets;
+            resourceInputs["cloudRouterIpAddress"] = state?.cloudRouterIpAddress;
+            resourceInputs["cloudRouterIpv6Address"] = state?.cloudRouterIpv6Address;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["customerRouterIpAddress"] = state?.customerRouterIpAddress;
+            resourceInputs["customerRouterIpv6Address"] = state?.customerRouterIpv6Address;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["edgeAvailabilityDomain"] = state?.edgeAvailabilityDomain;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["encryption"] = state?.encryption;
+            resourceInputs["googleReferenceId"] = state?.googleReferenceId;
+            resourceInputs["interconnect"] = state?.interconnect;
+            resourceInputs["ipsecInternalAddresses"] = state?.ipsecInternalAddresses;
+            resourceInputs["labelFingerprint"] = state?.labelFingerprint;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["mtu"] = state?.mtu;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["pairingKey"] = state?.pairingKey;
+            resourceInputs["partnerAsn"] = state?.partnerAsn;
+            resourceInputs["privateInterconnectInfos"] = state?.privateInterconnectInfos;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["router"] = state?.router;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["stackType"] = state?.stackType;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["subnetLength"] = state?.subnetLength;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["vlanTag8021q"] = state?.vlanTag8021q;
         } else {
             const args = argsOrState as InterconnectAttachmentArgs | undefined;
-            if ((!args || args.router === undefined) && !opts.urn) {
+            if (args?.router === undefined && !opts.urn) {
                 throw new Error("Missing required property 'router'");
             }
-            resourceInputs["adminEnabled"] = args ? args.adminEnabled : undefined;
-            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
-            resourceInputs["candidateCloudRouterIpAddress"] = args ? args.candidateCloudRouterIpAddress : undefined;
-            resourceInputs["candidateCloudRouterIpv6Address"] = args ? args.candidateCloudRouterIpv6Address : undefined;
-            resourceInputs["candidateCustomerRouterIpAddress"] = args ? args.candidateCustomerRouterIpAddress : undefined;
-            resourceInputs["candidateCustomerRouterIpv6Address"] = args ? args.candidateCustomerRouterIpv6Address : undefined;
-            resourceInputs["candidateSubnets"] = args ? args.candidateSubnets : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["edgeAvailabilityDomain"] = args ? args.edgeAvailabilityDomain : undefined;
-            resourceInputs["encryption"] = args ? args.encryption : undefined;
-            resourceInputs["interconnect"] = args ? args.interconnect : undefined;
-            resourceInputs["ipsecInternalAddresses"] = args ? args.ipsecInternalAddresses : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["mtu"] = args ? args.mtu : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["router"] = args ? args.router : undefined;
-            resourceInputs["stackType"] = args ? args.stackType : undefined;
-            resourceInputs["subnetLength"] = args ? args.subnetLength : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["vlanTag8021q"] = args ? args.vlanTag8021q : undefined;
+            resourceInputs["adminEnabled"] = args?.adminEnabled;
+            resourceInputs["bandwidth"] = args?.bandwidth;
+            resourceInputs["candidateCloudRouterIpAddress"] = args?.candidateCloudRouterIpAddress;
+            resourceInputs["candidateCloudRouterIpv6Address"] = args?.candidateCloudRouterIpv6Address;
+            resourceInputs["candidateCustomerRouterIpAddress"] = args?.candidateCustomerRouterIpAddress;
+            resourceInputs["candidateCustomerRouterIpv6Address"] = args?.candidateCustomerRouterIpv6Address;
+            resourceInputs["candidateSubnets"] = args?.candidateSubnets;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["edgeAvailabilityDomain"] = args?.edgeAvailabilityDomain;
+            resourceInputs["encryption"] = args?.encryption;
+            resourceInputs["interconnect"] = args?.interconnect;
+            resourceInputs["ipsecInternalAddresses"] = args?.ipsecInternalAddresses;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["mtu"] = args?.mtu;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["router"] = args?.router;
+            resourceInputs["stackType"] = args?.stackType;
+            resourceInputs["subnetLength"] = args?.subnetLength;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["vlanTag8021q"] = args?.vlanTag8021q;
             resourceInputs["attachmentGroup"] = undefined /*out*/;
             resourceInputs["cloudRouterIpAddress"] = undefined /*out*/;
             resourceInputs["cloudRouterIpv6Address"] = undefined /*out*/;

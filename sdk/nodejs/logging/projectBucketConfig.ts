@@ -158,47 +158,47 @@ export class ProjectBucketConfig extends pulumi.CustomResource {
     /**
      * The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
      */
-    public readonly bucketId!: pulumi.Output<string>;
+    declare public readonly bucketId: pulumi.Output<string>;
     /**
      * The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed. Structure is documented below.
      */
-    public readonly cmekSettings!: pulumi.Output<outputs.logging.ProjectBucketConfigCmekSettings | undefined>;
+    declare public readonly cmekSettings: pulumi.Output<outputs.logging.ProjectBucketConfigCmekSettings | undefined>;
     /**
      * Describes this bucket.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
      */
-    public readonly enableAnalytics!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableAnalytics: pulumi.Output<boolean | undefined>;
     /**
      * A list of indexed fields and related configuration data. Structure is documented below.
      */
-    public readonly indexConfigs!: pulumi.Output<outputs.logging.ProjectBucketConfigIndexConfig[] | undefined>;
+    declare public readonly indexConfigs: pulumi.Output<outputs.logging.ProjectBucketConfigIndexConfig[] | undefined>;
     /**
      * The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
      */
-    public /*out*/ readonly lifecycleState!: pulumi.Output<string>;
+    declare public /*out*/ readonly lifecycleState: pulumi.Output<string>;
     /**
      * The location of the bucket.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
      */
-    public readonly locked!: pulumi.Output<boolean | undefined>;
+    declare public readonly locked: pulumi.Output<boolean | undefined>;
     /**
      * The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The parent resource that contains the logging bucket.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
      */
-    public readonly retentionDays!: pulumi.Output<number | undefined>;
+    declare public readonly retentionDays: pulumi.Output<number | undefined>;
 
     /**
      * Create a ProjectBucketConfig resource with the given unique name, arguments, and options.
@@ -213,37 +213,37 @@ export class ProjectBucketConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectBucketConfigState | undefined;
-            resourceInputs["bucketId"] = state ? state.bucketId : undefined;
-            resourceInputs["cmekSettings"] = state ? state.cmekSettings : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enableAnalytics"] = state ? state.enableAnalytics : undefined;
-            resourceInputs["indexConfigs"] = state ? state.indexConfigs : undefined;
-            resourceInputs["lifecycleState"] = state ? state.lifecycleState : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["locked"] = state ? state.locked : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["retentionDays"] = state ? state.retentionDays : undefined;
+            resourceInputs["bucketId"] = state?.bucketId;
+            resourceInputs["cmekSettings"] = state?.cmekSettings;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["enableAnalytics"] = state?.enableAnalytics;
+            resourceInputs["indexConfigs"] = state?.indexConfigs;
+            resourceInputs["lifecycleState"] = state?.lifecycleState;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["locked"] = state?.locked;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["retentionDays"] = state?.retentionDays;
         } else {
             const args = argsOrState as ProjectBucketConfigArgs | undefined;
-            if ((!args || args.bucketId === undefined) && !opts.urn) {
+            if (args?.bucketId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucketId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            resourceInputs["bucketId"] = args ? args.bucketId : undefined;
-            resourceInputs["cmekSettings"] = args ? args.cmekSettings : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enableAnalytics"] = args ? args.enableAnalytics : undefined;
-            resourceInputs["indexConfigs"] = args ? args.indexConfigs : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["locked"] = args ? args.locked : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["retentionDays"] = args ? args.retentionDays : undefined;
+            resourceInputs["bucketId"] = args?.bucketId;
+            resourceInputs["cmekSettings"] = args?.cmekSettings;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["enableAnalytics"] = args?.enableAnalytics;
+            resourceInputs["indexConfigs"] = args?.indexConfigs;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["locked"] = args?.locked;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["retentionDays"] = args?.retentionDays;
             resourceInputs["lifecycleState"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         }

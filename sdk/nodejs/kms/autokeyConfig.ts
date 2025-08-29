@@ -128,17 +128,17 @@ export class AutokeyConfig extends pulumi.CustomResource {
     /**
      * The etag of the AutokeyConfig for optimistic concurrency control.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The folder for which to retrieve config.
      */
-    public readonly folder!: pulumi.Output<string>;
+    declare public readonly folder: pulumi.Output<string>;
     /**
      * The target key project for a given folder where KMS Autokey will provision a
      * CryptoKey for any new KeyHandle the Developer creates. Should have the form
      * `projects/<project_id_or_number>`.
      */
-    public readonly keyProject!: pulumi.Output<string | undefined>;
+    declare public readonly keyProject: pulumi.Output<string | undefined>;
 
     /**
      * Create a AutokeyConfig resource with the given unique name, arguments, and options.
@@ -153,16 +153,16 @@ export class AutokeyConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AutokeyConfigState | undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["folder"] = state ? state.folder : undefined;
-            resourceInputs["keyProject"] = state ? state.keyProject : undefined;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["folder"] = state?.folder;
+            resourceInputs["keyProject"] = state?.keyProject;
         } else {
             const args = argsOrState as AutokeyConfigArgs | undefined;
-            if ((!args || args.folder === undefined) && !opts.urn) {
+            if (args?.folder === undefined && !opts.urn) {
                 throw new Error("Missing required property 'folder'");
             }
-            resourceInputs["folder"] = args ? args.folder : undefined;
-            resourceInputs["keyProject"] = args ? args.keyProject : undefined;
+            resourceInputs["folder"] = args?.folder;
+            resourceInputs["keyProject"] = args?.keyProject;
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
