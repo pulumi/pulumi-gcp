@@ -13,38 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TriggerBitbucketServerTriggerConfigPush {
     /**
-     * @return Regex of branches to match.  Specify only one of branch or tag.
+     * @return Regex of branches to match.
      * 
      */
     private @Nullable String branch;
     /**
-     * @return When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+     * @return If true, only trigger a build if the revision regex does NOT match the git_ref regex.
      * 
      */
     private @Nullable Boolean invertRegex;
     /**
-     * @return Regex of tags to match.  Specify only one of branch or tag.
+     * @return Regex of tags to match.
      * 
      */
     private @Nullable String tag;
 
     private TriggerBitbucketServerTriggerConfigPush() {}
     /**
-     * @return Regex of branches to match.  Specify only one of branch or tag.
+     * @return Regex of branches to match.
      * 
      */
     public Optional<String> branch() {
         return Optional.ofNullable(this.branch);
     }
     /**
-     * @return When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+     * @return If true, only trigger a build if the revision regex does NOT match the git_ref regex.
      * 
      */
     public Optional<Boolean> invertRegex() {
         return Optional.ofNullable(this.invertRegex);
     }
     /**
-     * @return Regex of tags to match.  Specify only one of branch or tag.
+     * @return Regex of tags to match.
      * 
      */
     public Optional<String> tag() {

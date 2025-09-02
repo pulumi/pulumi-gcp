@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15869,7 +15869,7 @@ func (o AiIndexIndexStatArrayOutput) Index(i pulumi.IntInput) AiIndexIndexStatOu
 type AiIndexMetadata struct {
 	// The configuration of the Matching Engine Index.
 	// Structure is documented below.
-	Config *AiIndexMetadataConfig `pulumi:"config"`
+	Config AiIndexMetadataConfig `pulumi:"config"`
 	// Allows inserting, updating  or deleting the contents of the Matching Engine Index.
 	// The string must be a valid Cloud Storage directory path. If this
 	// field is set when calling IndexService.UpdateIndex, then no other
@@ -15896,7 +15896,7 @@ type AiIndexMetadataInput interface {
 type AiIndexMetadataArgs struct {
 	// The configuration of the Matching Engine Index.
 	// Structure is documented below.
-	Config AiIndexMetadataConfigPtrInput `pulumi:"config"`
+	Config AiIndexMetadataConfigInput `pulumi:"config"`
 	// Allows inserting, updating  or deleting the contents of the Matching Engine Index.
 	// The string must be a valid Cloud Storage directory path. If this
 	// field is set when calling IndexService.UpdateIndex, then no other
@@ -15988,8 +15988,8 @@ func (o AiIndexMetadataOutput) ToAiIndexMetadataPtrOutputWithContext(ctx context
 
 // The configuration of the Matching Engine Index.
 // Structure is documented below.
-func (o AiIndexMetadataOutput) Config() AiIndexMetadataConfigPtrOutput {
-	return o.ApplyT(func(v AiIndexMetadata) *AiIndexMetadataConfig { return v.Config }).(AiIndexMetadataConfigPtrOutput)
+func (o AiIndexMetadataOutput) Config() AiIndexMetadataConfigOutput {
+	return o.ApplyT(func(v AiIndexMetadata) AiIndexMetadataConfig { return v.Config }).(AiIndexMetadataConfigOutput)
 }
 
 // Allows inserting, updating  or deleting the contents of the Matching Engine Index.
@@ -16039,7 +16039,7 @@ func (o AiIndexMetadataPtrOutput) Config() AiIndexMetadataConfigPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return v.Config
+		return &v.Config
 	}).(AiIndexMetadataConfigPtrOutput)
 }
 
@@ -16070,7 +16070,7 @@ func (o AiIndexMetadataPtrOutput) IsCompleteOverwrite() pulumi.BoolPtrOutput {
 }
 
 type AiIndexMetadataConfig struct {
-	// The configuration with regard to the algorithms used for efficient search.
+	// The configuration with regard to the algorithms used for efficient search. This field may be required based on your configuration.
 	// Structure is documented below.
 	AlgorithmConfig *AiIndexMetadataConfigAlgorithmConfig `pulumi:"algorithmConfig"`
 	// The default number of neighbors to find via approximate search before exact reordering is
@@ -16110,7 +16110,7 @@ type AiIndexMetadataConfigInput interface {
 }
 
 type AiIndexMetadataConfigArgs struct {
-	// The configuration with regard to the algorithms used for efficient search.
+	// The configuration with regard to the algorithms used for efficient search. This field may be required based on your configuration.
 	// Structure is documented below.
 	AlgorithmConfig AiIndexMetadataConfigAlgorithmConfigPtrInput `pulumi:"algorithmConfig"`
 	// The default number of neighbors to find via approximate search before exact reordering is
@@ -16215,7 +16215,7 @@ func (o AiIndexMetadataConfigOutput) ToAiIndexMetadataConfigPtrOutputWithContext
 	}).(AiIndexMetadataConfigPtrOutput)
 }
 
-// The configuration with regard to the algorithms used for efficient search.
+// The configuration with regard to the algorithms used for efficient search. This field may be required based on your configuration.
 // Structure is documented below.
 func (o AiIndexMetadataConfigOutput) AlgorithmConfig() AiIndexMetadataConfigAlgorithmConfigPtrOutput {
 	return o.ApplyT(func(v AiIndexMetadataConfig) *AiIndexMetadataConfigAlgorithmConfig { return v.AlgorithmConfig }).(AiIndexMetadataConfigAlgorithmConfigPtrOutput)
@@ -16283,7 +16283,7 @@ func (o AiIndexMetadataConfigPtrOutput) Elem() AiIndexMetadataConfigOutput {
 	}).(AiIndexMetadataConfigOutput)
 }
 
-// The configuration with regard to the algorithms used for efficient search.
+// The configuration with regard to the algorithms used for efficient search. This field may be required based on your configuration.
 // Structure is documented below.
 func (o AiIndexMetadataConfigPtrOutput) AlgorithmConfig() AiIndexMetadataConfigAlgorithmConfigPtrOutput {
 	return o.ApplyT(func(v *AiIndexMetadataConfig) *AiIndexMetadataConfigAlgorithmConfig {
@@ -18076,7 +18076,7 @@ func (o GetAiIndexMetadataArrayOutput) Index(i pulumi.IntInput) GetAiIndexMetada
 }
 
 type GetAiIndexMetadataConfig struct {
-	// The configuration with regard to the algorithms used for efficient search.
+	// The configuration with regard to the algorithms used for efficient search. This field may be required based on your configuration.
 	AlgorithmConfigs []GetAiIndexMetadataConfigAlgorithmConfig `pulumi:"algorithmConfigs"`
 	// The default number of neighbors to find via approximate search before exact reordering is
 	// performed. Exact reordering is a procedure where results returned by an
@@ -18115,7 +18115,7 @@ type GetAiIndexMetadataConfigInput interface {
 }
 
 type GetAiIndexMetadataConfigArgs struct {
-	// The configuration with regard to the algorithms used for efficient search.
+	// The configuration with regard to the algorithms used for efficient search. This field may be required based on your configuration.
 	AlgorithmConfigs GetAiIndexMetadataConfigAlgorithmConfigArrayInput `pulumi:"algorithmConfigs"`
 	// The default number of neighbors to find via approximate search before exact reordering is
 	// performed. Exact reordering is a procedure where results returned by an
@@ -18193,7 +18193,7 @@ func (o GetAiIndexMetadataConfigOutput) ToGetAiIndexMetadataConfigOutputWithCont
 	return o
 }
 
-// The configuration with regard to the algorithms used for efficient search.
+// The configuration with regard to the algorithms used for efficient search. This field may be required based on your configuration.
 func (o GetAiIndexMetadataConfigOutput) AlgorithmConfigs() GetAiIndexMetadataConfigAlgorithmConfigArrayOutput {
 	return o.ApplyT(func(v GetAiIndexMetadataConfig) []GetAiIndexMetadataConfigAlgorithmConfig { return v.AlgorithmConfigs }).(GetAiIndexMetadataConfigAlgorithmConfigArrayOutput)
 }

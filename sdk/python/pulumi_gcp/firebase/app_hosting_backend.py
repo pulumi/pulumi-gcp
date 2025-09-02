@@ -676,8 +676,7 @@ class AppHostingBackend(pulumi.CustomResource):
             create_ignore_already_exists=True)
         fah = gcp.projects.Service("fah",
             project="my-project-name",
-            service="firebaseapphosting.googleapis.com",
-            disable_on_destroy=False)
+            service="firebaseapphosting.googleapis.com")
         example = gcp.firebase.AppHostingBackend("example",
             project="my-project-name",
             location="us-central1",
@@ -705,8 +704,7 @@ class AppHostingBackend(pulumi.CustomResource):
             create_ignore_already_exists=True)
         fah = gcp.projects.Service("fah",
             project="my-project-name",
-            service="firebaseapphosting.googleapis.com",
-            disable_on_destroy=False)
+            service="firebaseapphosting.googleapis.com")
         example = gcp.firebase.AppHostingBackend("example",
             project="my-project-name",
             location="us-central1",
@@ -870,8 +868,7 @@ class AppHostingBackend(pulumi.CustomResource):
             create_ignore_already_exists=True)
         fah = gcp.projects.Service("fah",
             project="my-project-name",
-            service="firebaseapphosting.googleapis.com",
-            disable_on_destroy=False)
+            service="firebaseapphosting.googleapis.com")
         example = gcp.firebase.AppHostingBackend("example",
             project="my-project-name",
             location="us-central1",
@@ -899,8 +896,7 @@ class AppHostingBackend(pulumi.CustomResource):
             create_ignore_already_exists=True)
         fah = gcp.projects.Service("fah",
             project="my-project-name",
-            service="firebaseapphosting.googleapis.com",
-            disable_on_destroy=False)
+            service="firebaseapphosting.googleapis.com")
         example = gcp.firebase.AppHostingBackend("example",
             project="my-project-name",
             location="us-central1",

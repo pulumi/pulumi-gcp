@@ -427,6 +427,7 @@ import javax.annotation.Nullable;
  *                 .user("destination-alloydb")
  *                 .password("destination-alloydb")
  *                 .build())
+ *             .deletionProtection(false)
  *             .build());
  * 
  *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()

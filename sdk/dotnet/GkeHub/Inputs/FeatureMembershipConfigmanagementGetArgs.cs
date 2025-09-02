@@ -13,14 +13,6 @@ namespace Pulumi.Gcp.GkeHub.Inputs
     public sealed class FeatureMembershipConfigmanagementGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Optional, Deprecated)
-        /// Binauthz configuration for the cluster. Structure is documented below.
-        /// This field will be ignored and should not be set.
-        /// </summary>
-        [Input("binauthz")]
-        public Input<Inputs.FeatureMembershipConfigmanagementBinauthzGetArgs>? Binauthz { get; set; }
-
-        /// <summary>
         /// Config Sync configuration for the cluster. Structure is documented below.
         /// </summary>
         [Input("configSync")]

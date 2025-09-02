@@ -32,7 +32,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 
-	"github.com/pulumi/pulumi-gcp/provider/v8/pkg/version"
+	"github.com/pulumi/pulumi-gcp/provider/v9/pkg/version"
 )
 
 // all of the Google Cloud Platform token components used below.
@@ -147,6 +147,7 @@ const (
 	gcpResourceManager          = "ResourceManager"          // Resource Manager resources
 	gcpRuntimeConfig            = "RuntimeConfig"            // Runtime Config resources
 	gcpSQL                      = "Sql"                      // SQL resources
+	gcpSaaSRuntime              = "SaaSRuntime"              // SaaS Runtime resources
 	gcpSecretManager            = "SecretManager"            // Secret Manager resources
 	gcpSecureSourceManager      = "SecureSourceManager"      // Secure Source Manager
 	gcpSecurityCenter           = "SecurityCenter"           // Security Center
@@ -287,6 +288,7 @@ var moduleMapping = map[string]string{
 	"resource_manager":           gcpResourceManager,
 	"runtimeconfig":              gcpRuntimeConfig,
 	"scc":                        gcpSecurityCenter,
+	"saas_runtime":               gcpSaaSRuntime,
 	"secret_manager":             gcpSecretManager,
 	"secure_source_manager":      gcpSecureSourceManager,
 	"securityposture":            gcpSecurityPosture,
@@ -1475,6 +1477,9 @@ func Provider() tfbridge.ProviderInfo {
 			"google_service_networking_connection":        {Tok: gcpResource(gcpServiceNetworking, "Connection")},
 			"google_service_networking_peered_dns_domain": {Tok: gcpResource(gcpServiceNetworking, "PeeredDnsDomain")},
 
+			// SaaS Runtime resources
+			"google_saas_runtime_saas": {Tok: gcpResource(gcpSaaSRuntime, "SaaS")},
+
 			// Source Repository resources
 			"google_sourcerepo_repository": {
 				Tok: gcpResource(gcpSourceRepo, "Repository"),
@@ -1616,9 +1621,6 @@ func Provider() tfbridge.ProviderInfo {
 			"google_storage_transfer_job":                  {Tok: gcpResource(gcpStorage, "TransferJob")},
 			"google_storage_bucket_access_control":         {Tok: gcpResource(gcpStorage, "BucketAccessControl")},
 			"google_storage_hmac_key":                      {Tok: gcpResource(gcpStorage, "HmacKey")},
-
-			// TPU resources
-			"google_tpu_node": {Tok: gcpResource(gcpTPU, "Node")},
 
 			// Vertex
 			"google_vertex_ai_dataset":                         {Tok: gcpResource(gcpVertex, "AiDataset")},
@@ -2044,7 +2046,6 @@ func Provider() tfbridge.ProviderInfo {
 			// Notebook
 			"google_notebooks_environment": {Tok: gcpResource(gcpNotebooks, "Environment")},
 			"google_notebooks_instance":    {Tok: gcpResource(gcpNotebooks, "Instance")},
-			"google_notebooks_location":    {Tok: gcpResource(gcpNotebooks, "Location")},
 
 			// CloudIdentity
 			"google_cloud_identity_group_membership": {Tok: gcpResource(gcpCloudIdentity, "GroupMembership")},
@@ -2657,12 +2658,6 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpDataSource(gcpServiceAccount, "getAccountKey"),
 				Docs: &tfbridge.DocInfo{
 					Source: "datasource_google_service_account_key.html.markdown",
-				},
-			},
-			"google_tpu_tensorflow_versions": {
-				Tok: gcpDataSource(gcpTPU, "getTensorflowVersions"),
-				Docs: &tfbridge.DocInfo{
-					Source: "datasource_tpu_tensorflow_versions.html.markdown",
 				},
 			},
 			"google_compute_region_ssl_policy": {

@@ -928,7 +928,6 @@ if not MYPY:
         public_repository: NotRequired[pulumi.Input[_builtins.str]]
         """
         Address of the remote repository.
-        Default value is `DOCKER_HUB`.
         Possible values are: `DOCKER_HUB`.
         """
 elif False:
@@ -943,7 +942,6 @@ class RepositoryRemoteRepositoryConfigDockerRepositoryArgs:
         :param pulumi.Input['RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs'] custom_repository: [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] public_repository: Address of the remote repository.
-               Default value is `DOCKER_HUB`.
                Possible values are: `DOCKER_HUB`.
         """
         if custom_repository is not None:
@@ -969,7 +967,6 @@ class RepositoryRemoteRepositoryConfigDockerRepositoryArgs:
     def public_repository(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Address of the remote repository.
-        Default value is `DOCKER_HUB`.
         Possible values are: `DOCKER_HUB`.
         """
         return pulumi.get(self, "public_repository")
@@ -1021,7 +1018,6 @@ if not MYPY:
         public_repository: NotRequired[pulumi.Input[_builtins.str]]
         """
         Address of the remote repository.
-        Default value is `MAVEN_CENTRAL`.
         Possible values are: `MAVEN_CENTRAL`.
         """
 elif False:
@@ -1036,7 +1032,6 @@ class RepositoryRemoteRepositoryConfigMavenRepositoryArgs:
         :param pulumi.Input['RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs'] custom_repository: [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] public_repository: Address of the remote repository.
-               Default value is `MAVEN_CENTRAL`.
                Possible values are: `MAVEN_CENTRAL`.
         """
         if custom_repository is not None:
@@ -1062,7 +1057,6 @@ class RepositoryRemoteRepositoryConfigMavenRepositoryArgs:
     def public_repository(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Address of the remote repository.
-        Default value is `MAVEN_CENTRAL`.
         Possible values are: `MAVEN_CENTRAL`.
         """
         return pulumi.get(self, "public_repository")
@@ -1114,7 +1108,6 @@ if not MYPY:
         public_repository: NotRequired[pulumi.Input[_builtins.str]]
         """
         Address of the remote repository.
-        Default value is `NPMJS`.
         Possible values are: `NPMJS`.
         """
 elif False:
@@ -1129,7 +1122,6 @@ class RepositoryRemoteRepositoryConfigNpmRepositoryArgs:
         :param pulumi.Input['RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs'] custom_repository: [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] public_repository: Address of the remote repository.
-               Default value is `NPMJS`.
                Possible values are: `NPMJS`.
         """
         if custom_repository is not None:
@@ -1155,7 +1147,6 @@ class RepositoryRemoteRepositoryConfigNpmRepositoryArgs:
     def public_repository(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Address of the remote repository.
-        Default value is `NPMJS`.
         Possible values are: `NPMJS`.
         """
         return pulumi.get(self, "public_repository")
@@ -1207,7 +1198,6 @@ if not MYPY:
         public_repository: NotRequired[pulumi.Input[_builtins.str]]
         """
         Address of the remote repository.
-        Default value is `PYPI`.
         Possible values are: `PYPI`.
         """
 elif False:
@@ -1222,7 +1212,6 @@ class RepositoryRemoteRepositoryConfigPythonRepositoryArgs:
         :param pulumi.Input['RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs'] custom_repository: [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] public_repository: Address of the remote repository.
-               Default value is `PYPI`.
                Possible values are: `PYPI`.
         """
         if custom_repository is not None:
@@ -1248,7 +1237,6 @@ class RepositoryRemoteRepositoryConfigPythonRepositoryArgs:
     def public_repository(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Address of the remote repository.
-        Default value is `PYPI`.
         Possible values are: `PYPI`.
         """
         return pulumi.get(self, "public_repository")

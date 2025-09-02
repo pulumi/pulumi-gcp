@@ -83,8 +83,8 @@ __all__ = [
     'InstanceAccessLoggingConfigArgsDict',
     'KeystoresAliasesKeyCertFileCertsInfoArgs',
     'KeystoresAliasesKeyCertFileCertsInfoArgsDict',
-    'KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs',
-    'KeystoresAliasesKeyCertFileCertsInfoCertInfoArgsDict',
+    'KeystoresAliasesKeyCertFileTimeoutsArgs',
+    'KeystoresAliasesKeyCertFileTimeoutsArgsDict',
     'KeystoresAliasesPkcs12CertsInfoArgs',
     'KeystoresAliasesPkcs12CertsInfoArgsDict',
     'KeystoresAliasesPkcs12CertsInfoCertInfoArgs',
@@ -2116,11 +2116,61 @@ class InstanceAccessLoggingConfigArgs:
 
 if not MYPY:
     class KeystoresAliasesKeyCertFileCertsInfoArgsDict(TypedDict):
-        cert_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoCertInfoArgsDict']]]]
+        basic_constraints: pulumi.Input[_builtins.str]
         """
         (Output)
-        List of all properties in the object.
-        Structure is documented below.
+        X.509 basic constraints extension.
+        """
+        expiry_date: pulumi.Input[_builtins.str]
+        """
+        (Output)
+        X.509 notAfter validity period in milliseconds since epoch.
+        """
+        is_valid: pulumi.Input[_builtins.str]
+        """
+        (Output)
+        Flag that specifies whether the certificate is valid.
+        Flag is set to Yes if the certificate is valid, No if expired, or Not yet if not yet valid.
+        """
+        issuer: pulumi.Input[_builtins.str]
+        """
+        (Output)
+        X.509 issuer.
+        """
+        public_key: pulumi.Input[_builtins.str]
+        """
+        (Output)
+        Public key component of the X.509 subject public key info.
+        """
+        serial_number: pulumi.Input[_builtins.str]
+        """
+        (Output)
+        X.509 serial number.
+        """
+        sig_alg_name: pulumi.Input[_builtins.str]
+        """
+        (Output)
+        X.509 signatureAlgorithm.
+        """
+        subject: pulumi.Input[_builtins.str]
+        """
+        (Output)
+        X.509 subject.
+        """
+        subject_alternative_names: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+        """
+        (Output)
+        X.509 subject alternative names (SANs) extension.
+        """
+        valid_from: pulumi.Input[_builtins.str]
+        """
+        (Output)
+        X.509 notBefore validity period in milliseconds since epoch.
+        """
+        version: pulumi.Input[_builtins.int]
+        """
+        (Output)
+        X.509 version.
         """
 elif False:
     KeystoresAliasesKeyCertFileCertsInfoArgsDict: TypeAlias = Mapping[str, Any]
@@ -2128,105 +2178,17 @@ elif False:
 @pulumi.input_type
 class KeystoresAliasesKeyCertFileCertsInfoArgs:
     def __init__(__self__, *,
-                 cert_infos: Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs']]]] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs']]] cert_infos: (Output)
-               List of all properties in the object.
-               Structure is documented below.
-        """
-        if cert_infos is not None:
-            pulumi.set(__self__, "cert_infos", cert_infos)
-
-    @_builtins.property
-    @pulumi.getter(name="certInfos")
-    def cert_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs']]]]:
-        """
-        (Output)
-        List of all properties in the object.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "cert_infos")
-
-    @cert_infos.setter
-    def cert_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs']]]]):
-        pulumi.set(self, "cert_infos", value)
-
-
-if not MYPY:
-    class KeystoresAliasesKeyCertFileCertsInfoCertInfoArgsDict(TypedDict):
-        basic_constraints: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        X.509 basic constraints extension.
-        """
-        expiry_date: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        X.509 notAfter validity period in milliseconds since epoch.
-        """
-        is_valid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Flag that specifies whether the certificate is valid.
-        Flag is set to Yes if the certificate is valid, No if expired, or Not yet if not yet valid.
-        """
-        issuer: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        X.509 issuer.
-        """
-        public_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        Public key component of the X.509 subject public key info.
-        """
-        serial_number: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        X.509 serial number.
-        """
-        sig_alg_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        X.509 signatureAlgorithm.
-        """
-        subject: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        X.509 subject.
-        """
-        subject_alternative_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        (Output)
-        X.509 subject alternative names (SANs) extension.
-        """
-        valid_from: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        X.509 notBefore validity period in milliseconds since epoch.
-        """
-        version: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        X.509 version.
-        """
-elif False:
-    KeystoresAliasesKeyCertFileCertsInfoCertInfoArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs:
-    def __init__(__self__, *,
-                 basic_constraints: Optional[pulumi.Input[_builtins.str]] = None,
-                 expiry_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_valid: Optional[pulumi.Input[_builtins.str]] = None,
-                 issuer: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 serial_number: Optional[pulumi.Input[_builtins.str]] = None,
-                 sig_alg_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 subject: Optional[pulumi.Input[_builtins.str]] = None,
-                 subject_alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 valid_from: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.int]] = None):
+                 basic_constraints: pulumi.Input[_builtins.str],
+                 expiry_date: pulumi.Input[_builtins.str],
+                 is_valid: pulumi.Input[_builtins.str],
+                 issuer: pulumi.Input[_builtins.str],
+                 public_key: pulumi.Input[_builtins.str],
+                 serial_number: pulumi.Input[_builtins.str],
+                 sig_alg_name: pulumi.Input[_builtins.str],
+                 subject: pulumi.Input[_builtins.str],
+                 subject_alternative_names: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 valid_from: pulumi.Input[_builtins.str],
+                 version: pulumi.Input[_builtins.int]):
         """
         :param pulumi.Input[_builtins.str] basic_constraints: (Output)
                X.509 basic constraints extension.
@@ -2252,32 +2214,21 @@ class KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs:
         :param pulumi.Input[_builtins.int] version: (Output)
                X.509 version.
         """
-        if basic_constraints is not None:
-            pulumi.set(__self__, "basic_constraints", basic_constraints)
-        if expiry_date is not None:
-            pulumi.set(__self__, "expiry_date", expiry_date)
-        if is_valid is not None:
-            pulumi.set(__self__, "is_valid", is_valid)
-        if issuer is not None:
-            pulumi.set(__self__, "issuer", issuer)
-        if public_key is not None:
-            pulumi.set(__self__, "public_key", public_key)
-        if serial_number is not None:
-            pulumi.set(__self__, "serial_number", serial_number)
-        if sig_alg_name is not None:
-            pulumi.set(__self__, "sig_alg_name", sig_alg_name)
-        if subject is not None:
-            pulumi.set(__self__, "subject", subject)
-        if subject_alternative_names is not None:
-            pulumi.set(__self__, "subject_alternative_names", subject_alternative_names)
-        if valid_from is not None:
-            pulumi.set(__self__, "valid_from", valid_from)
-        if version is not None:
-            pulumi.set(__self__, "version", version)
+        pulumi.set(__self__, "basic_constraints", basic_constraints)
+        pulumi.set(__self__, "expiry_date", expiry_date)
+        pulumi.set(__self__, "is_valid", is_valid)
+        pulumi.set(__self__, "issuer", issuer)
+        pulumi.set(__self__, "public_key", public_key)
+        pulumi.set(__self__, "serial_number", serial_number)
+        pulumi.set(__self__, "sig_alg_name", sig_alg_name)
+        pulumi.set(__self__, "subject", subject)
+        pulumi.set(__self__, "subject_alternative_names", subject_alternative_names)
+        pulumi.set(__self__, "valid_from", valid_from)
+        pulumi.set(__self__, "version", version)
 
     @_builtins.property
     @pulumi.getter(name="basicConstraints")
-    def basic_constraints(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def basic_constraints(self) -> pulumi.Input[_builtins.str]:
         """
         (Output)
         X.509 basic constraints extension.
@@ -2285,12 +2236,12 @@ class KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs:
         return pulumi.get(self, "basic_constraints")
 
     @basic_constraints.setter
-    def basic_constraints(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def basic_constraints(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "basic_constraints", value)
 
     @_builtins.property
     @pulumi.getter(name="expiryDate")
-    def expiry_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expiry_date(self) -> pulumi.Input[_builtins.str]:
         """
         (Output)
         X.509 notAfter validity period in milliseconds since epoch.
@@ -2298,12 +2249,12 @@ class KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs:
         return pulumi.get(self, "expiry_date")
 
     @expiry_date.setter
-    def expiry_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expiry_date(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "expiry_date", value)
 
     @_builtins.property
     @pulumi.getter(name="isValid")
-    def is_valid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def is_valid(self) -> pulumi.Input[_builtins.str]:
         """
         (Output)
         Flag that specifies whether the certificate is valid.
@@ -2312,12 +2263,12 @@ class KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs:
         return pulumi.get(self, "is_valid")
 
     @is_valid.setter
-    def is_valid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def is_valid(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "is_valid", value)
 
     @_builtins.property
     @pulumi.getter
-    def issuer(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def issuer(self) -> pulumi.Input[_builtins.str]:
         """
         (Output)
         X.509 issuer.
@@ -2325,12 +2276,12 @@ class KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs:
         return pulumi.get(self, "issuer")
 
     @issuer.setter
-    def issuer(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def issuer(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "issuer", value)
 
     @_builtins.property
     @pulumi.getter(name="publicKey")
-    def public_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_key(self) -> pulumi.Input[_builtins.str]:
         """
         (Output)
         Public key component of the X.509 subject public key info.
@@ -2338,12 +2289,12 @@ class KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs:
         return pulumi.get(self, "public_key")
 
     @public_key.setter
-    def public_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_key(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "public_key", value)
 
     @_builtins.property
     @pulumi.getter(name="serialNumber")
-    def serial_number(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def serial_number(self) -> pulumi.Input[_builtins.str]:
         """
         (Output)
         X.509 serial number.
@@ -2351,12 +2302,12 @@ class KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs:
         return pulumi.get(self, "serial_number")
 
     @serial_number.setter
-    def serial_number(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def serial_number(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "serial_number", value)
 
     @_builtins.property
     @pulumi.getter(name="sigAlgName")
-    def sig_alg_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sig_alg_name(self) -> pulumi.Input[_builtins.str]:
         """
         (Output)
         X.509 signatureAlgorithm.
@@ -2364,12 +2315,12 @@ class KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs:
         return pulumi.get(self, "sig_alg_name")
 
     @sig_alg_name.setter
-    def sig_alg_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sig_alg_name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "sig_alg_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def subject(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subject(self) -> pulumi.Input[_builtins.str]:
         """
         (Output)
         X.509 subject.
@@ -2377,12 +2328,12 @@ class KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs:
         return pulumi.get(self, "subject")
 
     @subject.setter
-    def subject(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subject(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "subject", value)
 
     @_builtins.property
     @pulumi.getter(name="subjectAlternativeNames")
-    def subject_alternative_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def subject_alternative_names(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
         (Output)
         X.509 subject alternative names (SANs) extension.
@@ -2390,12 +2341,12 @@ class KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs:
         return pulumi.get(self, "subject_alternative_names")
 
     @subject_alternative_names.setter
-    def subject_alternative_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def subject_alternative_names(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
         pulumi.set(self, "subject_alternative_names", value)
 
     @_builtins.property
     @pulumi.getter(name="validFrom")
-    def valid_from(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def valid_from(self) -> pulumi.Input[_builtins.str]:
         """
         (Output)
         X.509 notBefore validity period in milliseconds since epoch.
@@ -2403,12 +2354,12 @@ class KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs:
         return pulumi.get(self, "valid_from")
 
     @valid_from.setter
-    def valid_from(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def valid_from(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "valid_from", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def version(self) -> pulumi.Input[_builtins.int]:
         """
         (Output)
         X.509 version.
@@ -2416,8 +2367,100 @@ class KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs:
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def version(self, value: pulumi.Input[_builtins.int]):
         pulumi.set(self, "version", value)
+
+
+if not MYPY:
+    class KeystoresAliasesKeyCertFileTimeoutsArgsDict(TypedDict):
+        create: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        delete: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        read: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        update: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+elif False:
+    KeystoresAliasesKeyCertFileTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class KeystoresAliasesKeyCertFileTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete: Optional[pulumi.Input[_builtins.str]] = None,
+                 read: Optional[pulumi.Input[_builtins.str]] = None,
+                 update: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[_builtins.str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[_builtins.str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[_builtins.str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "delete", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "read", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "update", value)
 
 
 if not MYPY:

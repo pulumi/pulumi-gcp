@@ -155,7 +155,6 @@ class AutokeyConfig(pulumi.CustomResource):
         kms_api_service = gcp.projects.Service("kms_api_service",
             service="cloudkms.googleapis.com",
             project=key_project.project_id,
-            disable_on_destroy=False,
             disable_dependent_services=True,
             opts = pulumi.ResourceOptions(depends_on=[key_project]))
         # Wait delay after enabling APIs
@@ -246,7 +245,6 @@ class AutokeyConfig(pulumi.CustomResource):
         kms_api_service = gcp.projects.Service("kms_api_service",
             service="cloudkms.googleapis.com",
             project=key_project.project_id,
-            disable_on_destroy=False,
             disable_dependent_services=True,
             opts = pulumi.ResourceOptions(depends_on=[key_project]))
         # Wait delay after enabling APIs

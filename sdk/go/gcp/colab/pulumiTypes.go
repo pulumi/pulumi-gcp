@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -1983,14 +1983,6 @@ type RuntimeTemplateSoftwareConfig struct {
 	// Environment variables to be passed to the container.
 	// Structure is documented below.
 	Envs []RuntimeTemplateSoftwareConfigEnv `pulumi:"envs"`
-	// (Optional, Deprecated)
-	// Post startup script config.
-	// Structure is documented below.
-	//
-	// > **Warning:** `postStartupScriptConfig` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
-	//
-	// Deprecated: `postStartupScriptConfig` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
-	PostStartupScriptConfig *RuntimeTemplateSoftwareConfigPostStartupScriptConfig `pulumi:"postStartupScriptConfig"`
 }
 
 // RuntimeTemplateSoftwareConfigInput is an input type that accepts RuntimeTemplateSoftwareConfigArgs and RuntimeTemplateSoftwareConfigOutput values.
@@ -2008,14 +2000,6 @@ type RuntimeTemplateSoftwareConfigArgs struct {
 	// Environment variables to be passed to the container.
 	// Structure is documented below.
 	Envs RuntimeTemplateSoftwareConfigEnvArrayInput `pulumi:"envs"`
-	// (Optional, Deprecated)
-	// Post startup script config.
-	// Structure is documented below.
-	//
-	// > **Warning:** `postStartupScriptConfig` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
-	//
-	// Deprecated: `postStartupScriptConfig` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
-	PostStartupScriptConfig RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrInput `pulumi:"postStartupScriptConfig"`
 }
 
 func (RuntimeTemplateSoftwareConfigArgs) ElementType() reflect.Type {
@@ -2101,19 +2085,6 @@ func (o RuntimeTemplateSoftwareConfigOutput) Envs() RuntimeTemplateSoftwareConfi
 	return o.ApplyT(func(v RuntimeTemplateSoftwareConfig) []RuntimeTemplateSoftwareConfigEnv { return v.Envs }).(RuntimeTemplateSoftwareConfigEnvArrayOutput)
 }
 
-// (Optional, Deprecated)
-// Post startup script config.
-// Structure is documented below.
-//
-// > **Warning:** `postStartupScriptConfig` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
-//
-// Deprecated: `postStartupScriptConfig` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
-func (o RuntimeTemplateSoftwareConfigOutput) PostStartupScriptConfig() RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput {
-	return o.ApplyT(func(v RuntimeTemplateSoftwareConfig) *RuntimeTemplateSoftwareConfigPostStartupScriptConfig {
-		return v.PostStartupScriptConfig
-	}).(RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput)
-}
-
 type RuntimeTemplateSoftwareConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (RuntimeTemplateSoftwareConfigPtrOutput) ElementType() reflect.Type {
@@ -2147,22 +2118,6 @@ func (o RuntimeTemplateSoftwareConfigPtrOutput) Envs() RuntimeTemplateSoftwareCo
 		}
 		return v.Envs
 	}).(RuntimeTemplateSoftwareConfigEnvArrayOutput)
-}
-
-// (Optional, Deprecated)
-// Post startup script config.
-// Structure is documented below.
-//
-// > **Warning:** `postStartupScriptConfig` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
-//
-// Deprecated: `postStartupScriptConfig` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
-func (o RuntimeTemplateSoftwareConfigPtrOutput) PostStartupScriptConfig() RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput {
-	return o.ApplyT(func(v *RuntimeTemplateSoftwareConfig) *RuntimeTemplateSoftwareConfigPostStartupScriptConfig {
-		if v == nil {
-			return nil
-		}
-		return v.PostStartupScriptConfig
-	}).(RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput)
 }
 
 type RuntimeTemplateSoftwareConfigEnv struct {
@@ -2269,187 +2224,6 @@ func (o RuntimeTemplateSoftwareConfigEnvArrayOutput) Index(i pulumi.IntInput) Ru
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RuntimeTemplateSoftwareConfigEnv {
 		return vs[0].([]RuntimeTemplateSoftwareConfigEnv)[vs[1].(int)]
 	}).(RuntimeTemplateSoftwareConfigEnvOutput)
-}
-
-type RuntimeTemplateSoftwareConfigPostStartupScriptConfig struct {
-	// Post startup script to run after runtime is started.
-	PostStartupScript *string `pulumi:"postStartupScript"`
-	// Post startup script behavior that defines download and execution behavior.
-	// Possible values are: `RUN_ONCE`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
-	PostStartupScriptBehavior *string `pulumi:"postStartupScriptBehavior"`
-	// Post startup script url to download. Example: https://bucket/script.sh.
-	PostStartupScriptUrl *string `pulumi:"postStartupScriptUrl"`
-}
-
-// RuntimeTemplateSoftwareConfigPostStartupScriptConfigInput is an input type that accepts RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs and RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput values.
-// You can construct a concrete instance of `RuntimeTemplateSoftwareConfigPostStartupScriptConfigInput` via:
-//
-//	RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs{...}
-type RuntimeTemplateSoftwareConfigPostStartupScriptConfigInput interface {
-	pulumi.Input
-
-	ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput() RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput
-	ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigOutputWithContext(context.Context) RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput
-}
-
-type RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs struct {
-	// Post startup script to run after runtime is started.
-	PostStartupScript pulumi.StringPtrInput `pulumi:"postStartupScript"`
-	// Post startup script behavior that defines download and execution behavior.
-	// Possible values are: `RUN_ONCE`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
-	PostStartupScriptBehavior pulumi.StringPtrInput `pulumi:"postStartupScriptBehavior"`
-	// Post startup script url to download. Example: https://bucket/script.sh.
-	PostStartupScriptUrl pulumi.StringPtrInput `pulumi:"postStartupScriptUrl"`
-}
-
-func (RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RuntimeTemplateSoftwareConfigPostStartupScriptConfig)(nil)).Elem()
-}
-
-func (i RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs) ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput() RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput {
-	return i.ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigOutputWithContext(context.Background())
-}
-
-func (i RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs) ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigOutputWithContext(ctx context.Context) RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput)
-}
-
-func (i RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs) ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput() RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput {
-	return i.ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutputWithContext(context.Background())
-}
-
-func (i RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs) ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutputWithContext(ctx context.Context) RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput).ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutputWithContext(ctx)
-}
-
-// RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrInput is an input type that accepts RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs, RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtr and RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput values.
-// You can construct a concrete instance of `RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrInput` via:
-//
-//	        RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrInput interface {
-	pulumi.Input
-
-	ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput() RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput
-	ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutputWithContext(context.Context) RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput
-}
-
-type runtimeTemplateSoftwareConfigPostStartupScriptConfigPtrType RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs
-
-func RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtr(v *RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs) RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrInput {
-	return (*runtimeTemplateSoftwareConfigPostStartupScriptConfigPtrType)(v)
-}
-
-func (*runtimeTemplateSoftwareConfigPostStartupScriptConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RuntimeTemplateSoftwareConfigPostStartupScriptConfig)(nil)).Elem()
-}
-
-func (i *runtimeTemplateSoftwareConfigPostStartupScriptConfigPtrType) ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput() RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput {
-	return i.ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *runtimeTemplateSoftwareConfigPostStartupScriptConfigPtrType) ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutputWithContext(ctx context.Context) RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput)
-}
-
-type RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput struct{ *pulumi.OutputState }
-
-func (RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RuntimeTemplateSoftwareConfigPostStartupScriptConfig)(nil)).Elem()
-}
-
-func (o RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput) ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput() RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput {
-	return o
-}
-
-func (o RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput) ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigOutputWithContext(ctx context.Context) RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput {
-	return o
-}
-
-func (o RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput) ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput() RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput {
-	return o.ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutputWithContext(context.Background())
-}
-
-func (o RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput) ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutputWithContext(ctx context.Context) RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeTemplateSoftwareConfigPostStartupScriptConfig) *RuntimeTemplateSoftwareConfigPostStartupScriptConfig {
-		return &v
-	}).(RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput)
-}
-
-// Post startup script to run after runtime is started.
-func (o RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput) PostStartupScript() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RuntimeTemplateSoftwareConfigPostStartupScriptConfig) *string { return v.PostStartupScript }).(pulumi.StringPtrOutput)
-}
-
-// Post startup script behavior that defines download and execution behavior.
-// Possible values are: `RUN_ONCE`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
-func (o RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput) PostStartupScriptBehavior() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RuntimeTemplateSoftwareConfigPostStartupScriptConfig) *string {
-		return v.PostStartupScriptBehavior
-	}).(pulumi.StringPtrOutput)
-}
-
-// Post startup script url to download. Example: https://bucket/script.sh.
-func (o RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput) PostStartupScriptUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RuntimeTemplateSoftwareConfigPostStartupScriptConfig) *string { return v.PostStartupScriptUrl }).(pulumi.StringPtrOutput)
-}
-
-type RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RuntimeTemplateSoftwareConfigPostStartupScriptConfig)(nil)).Elem()
-}
-
-func (o RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput) ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput() RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput {
-	return o
-}
-
-func (o RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput) ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutputWithContext(ctx context.Context) RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput {
-	return o
-}
-
-func (o RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput) Elem() RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput {
-	return o.ApplyT(func(v *RuntimeTemplateSoftwareConfigPostStartupScriptConfig) RuntimeTemplateSoftwareConfigPostStartupScriptConfig {
-		if v != nil {
-			return *v
-		}
-		var ret RuntimeTemplateSoftwareConfigPostStartupScriptConfig
-		return ret
-	}).(RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput)
-}
-
-// Post startup script to run after runtime is started.
-func (o RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput) PostStartupScript() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RuntimeTemplateSoftwareConfigPostStartupScriptConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PostStartupScript
-	}).(pulumi.StringPtrOutput)
-}
-
-// Post startup script behavior that defines download and execution behavior.
-// Possible values are: `RUN_ONCE`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
-func (o RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput) PostStartupScriptBehavior() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RuntimeTemplateSoftwareConfigPostStartupScriptConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PostStartupScriptBehavior
-	}).(pulumi.StringPtrOutput)
-}
-
-// Post startup script url to download. Example: https://bucket/script.sh.
-func (o RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput) PostStartupScriptUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RuntimeTemplateSoftwareConfigPostStartupScriptConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PostStartupScriptUrl
-	}).(pulumi.StringPtrOutput)
 }
 
 type ScheduleCreateNotebookExecutionJobRequest struct {
@@ -3232,8 +3006,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeTemplateSoftwareConfigPtrInput)(nil)).Elem(), RuntimeTemplateSoftwareConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeTemplateSoftwareConfigEnvInput)(nil)).Elem(), RuntimeTemplateSoftwareConfigEnvArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeTemplateSoftwareConfigEnvArrayInput)(nil)).Elem(), RuntimeTemplateSoftwareConfigEnvArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeTemplateSoftwareConfigPostStartupScriptConfigInput)(nil)).Elem(), RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrInput)(nil)).Elem(), RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleCreateNotebookExecutionJobRequestInput)(nil)).Elem(), ScheduleCreateNotebookExecutionJobRequestArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleCreateNotebookExecutionJobRequestPtrInput)(nil)).Elem(), ScheduleCreateNotebookExecutionJobRequestArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobInput)(nil)).Elem(), ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs{})
@@ -3272,8 +3044,6 @@ func init() {
 	pulumi.RegisterOutputType(RuntimeTemplateSoftwareConfigPtrOutput{})
 	pulumi.RegisterOutputType(RuntimeTemplateSoftwareConfigEnvOutput{})
 	pulumi.RegisterOutputType(RuntimeTemplateSoftwareConfigEnvArrayOutput{})
-	pulumi.RegisterOutputType(RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput{})
-	pulumi.RegisterOutputType(RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput{})
 	pulumi.RegisterOutputType(ScheduleCreateNotebookExecutionJobRequestOutput{})
 	pulumi.RegisterOutputType(ScheduleCreateNotebookExecutionJobRequestPtrOutput{})
 	pulumi.RegisterOutputType(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput{})

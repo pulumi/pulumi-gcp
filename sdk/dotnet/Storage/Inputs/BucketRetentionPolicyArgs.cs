@@ -19,10 +19,10 @@ namespace Pulumi.Gcp.Storage.Inputs
         public Input<bool>? IsLocked { get; set; }
 
         /// <summary>
-        /// The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 2,147,483,647 seconds.
+        /// The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
         /// </summary>
         [Input("retentionPeriod", required: true)]
-        public Input<int> RetentionPeriod { get; set; } = null!;
+        public Input<string> RetentionPeriod { get; set; } = null!;
 
         public BucketRetentionPolicyArgs()
         {

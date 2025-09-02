@@ -322,6 +322,26 @@ public class Queue extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.appEngineRoutingOverride);
     }
     /**
+     * The desired state of the queue. Use this to pause and resume the queue.
+     * 
+     * * RUNNING: The queue is running. Tasks can be dispatched.
+     * * PAUSED: The queue is paused. Tasks are not dispatched but can be added to the queue.
+     * 
+     */
+    @Export(name="desiredState", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> desiredState;
+
+    /**
+     * @return The desired state of the queue. Use this to pause and resume the queue.
+     * 
+     * * RUNNING: The queue is running. Tasks can be dispatched.
+     * * PAUSED: The queue is paused. Tasks are not dispatched but can be added to the queue.
+     * 
+     */
+    public Output<Optional<String>> desiredState() {
+        return Codegen.optional(this.desiredState);
+    }
+    /**
      * Modifies HTTP target for HTTP tasks.
      * Structure is documented below.
      * 
@@ -440,6 +460,20 @@ public class Queue extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<QueueStackdriverLoggingConfig>> stackdriverLoggingConfig() {
         return Codegen.optional(this.stackdriverLoggingConfig);
+    }
+    /**
+     * The current state of the queue.
+     * 
+     */
+    @Export(name="state", refs={String.class}, tree="[0]")
+    private Output<String> state;
+
+    /**
+     * @return The current state of the queue.
+     * 
+     */
+    public Output<String> state() {
+        return this.state;
     }
 
     /**

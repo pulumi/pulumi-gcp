@@ -35,7 +35,6 @@ public final class RepositoryRemoteRepositoryConfigPythonRepositoryArgs extends 
 
     /**
      * Address of the remote repository.
-     * Default value is `PYPI`.
      * Possible values are: `PYPI`.
      * 
      */
@@ -44,7 +43,6 @@ public final class RepositoryRemoteRepositoryConfigPythonRepositoryArgs extends 
 
     /**
      * @return Address of the remote repository.
-     * Default value is `PYPI`.
      * Possible values are: `PYPI`.
      * 
      */
@@ -102,7 +100,6 @@ public final class RepositoryRemoteRepositoryConfigPythonRepositoryArgs extends 
 
         /**
          * @param publicRepository Address of the remote repository.
-         * Default value is `PYPI`.
          * Possible values are: `PYPI`.
          * 
          * @return builder
@@ -115,7 +112,6 @@ public final class RepositoryRemoteRepositoryConfigPythonRepositoryArgs extends 
 
         /**
          * @param publicRepository Address of the remote repository.
-         * Default value is `PYPI`.
          * Possible values are: `PYPI`.
          * 
          * @return builder

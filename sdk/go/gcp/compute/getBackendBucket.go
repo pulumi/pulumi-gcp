@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -70,11 +70,12 @@ type LookupBackendBucketResult struct {
 	EdgeSecurityPolicy    string                      `pulumi:"edgeSecurityPolicy"`
 	EnableCdn             bool                        `pulumi:"enableCdn"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                  string  `pulumi:"id"`
-	LoadBalancingScheme string  `pulumi:"loadBalancingScheme"`
-	Name                string  `pulumi:"name"`
-	Project             *string `pulumi:"project"`
-	SelfLink            string  `pulumi:"selfLink"`
+	Id                  string                  `pulumi:"id"`
+	LoadBalancingScheme string                  `pulumi:"loadBalancingScheme"`
+	Name                string                  `pulumi:"name"`
+	Params              []GetBackendBucketParam `pulumi:"params"`
+	Project             *string                 `pulumi:"project"`
+	SelfLink            string                  `pulumi:"selfLink"`
 }
 
 func LookupBackendBucketOutput(ctx *pulumi.Context, args LookupBackendBucketOutputArgs, opts ...pulumi.InvokeOption) LookupBackendBucketResultOutput {
@@ -159,6 +160,10 @@ func (o LookupBackendBucketResultOutput) LoadBalancingScheme() pulumi.StringOutp
 
 func (o LookupBackendBucketResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackendBucketResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupBackendBucketResultOutput) Params() GetBackendBucketParamArrayOutput {
+	return o.ApplyT(func(v LookupBackendBucketResult) []GetBackendBucketParam { return v.Params }).(GetBackendBucketParamArrayOutput)
 }
 
 func (o LookupBackendBucketResultOutput) Project() pulumi.StringPtrOutput {

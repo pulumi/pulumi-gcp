@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,7 +33,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/sql"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -67,9 +67,9 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/servicenetworking"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/sql"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -142,7 +142,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/sql"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -176,7 +176,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/sql"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -222,7 +222,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/sql"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -274,7 +274,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/sql"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -386,6 +386,8 @@ type DatabaseInstance struct {
 
 	// The list of all maintenance versions applicable on the instance.
 	AvailableMaintenanceVersions pulumi.StringArrayOutput `pulumi:"availableMaintenanceVersions"`
+	// The name of the BackupDR backup to restore from.
+	BackupdrBackup pulumi.StringPtrOutput `pulumi:"backupdrBackup"`
 	// The context needed to create this instance as a clone of another instance. When this field is set during
 	// resource creation, this provider will attempt to clone another instance as indicated in the context. The
 	// configuration is detailed below.
@@ -524,6 +526,8 @@ func GetDatabaseInstance(ctx *pulumi.Context,
 type databaseInstanceState struct {
 	// The list of all maintenance versions applicable on the instance.
 	AvailableMaintenanceVersions []string `pulumi:"availableMaintenanceVersions"`
+	// The name of the BackupDR backup to restore from.
+	BackupdrBackup *string `pulumi:"backupdrBackup"`
 	// The context needed to create this instance as a clone of another instance. When this field is set during
 	// resource creation, this provider will attempt to clone another instance as indicated in the context. The
 	// configuration is detailed below.
@@ -618,6 +622,8 @@ type databaseInstanceState struct {
 type DatabaseInstanceState struct {
 	// The list of all maintenance versions applicable on the instance.
 	AvailableMaintenanceVersions pulumi.StringArrayInput
+	// The name of the BackupDR backup to restore from.
+	BackupdrBackup pulumi.StringPtrInput
 	// The context needed to create this instance as a clone of another instance. When this field is set during
 	// resource creation, this provider will attempt to clone another instance as indicated in the context. The
 	// configuration is detailed below.
@@ -714,6 +720,8 @@ func (DatabaseInstanceState) ElementType() reflect.Type {
 }
 
 type databaseInstanceArgs struct {
+	// The name of the BackupDR backup to restore from.
+	BackupdrBackup *string `pulumi:"backupdrBackup"`
 	// The context needed to create this instance as a clone of another instance. When this field is set during
 	// resource creation, this provider will attempt to clone another instance as indicated in the context. The
 	// configuration is detailed below.
@@ -785,6 +793,8 @@ type databaseInstanceArgs struct {
 
 // The set of arguments for constructing a DatabaseInstance resource.
 type DatabaseInstanceArgs struct {
+	// The name of the BackupDR backup to restore from.
+	BackupdrBackup pulumi.StringPtrInput
 	// The context needed to create this instance as a clone of another instance. When this field is set during
 	// resource creation, this provider will attempt to clone another instance as indicated in the context. The
 	// configuration is detailed below.
@@ -944,6 +954,11 @@ func (o DatabaseInstanceOutput) ToDatabaseInstanceOutputWithContext(ctx context.
 // The list of all maintenance versions applicable on the instance.
 func (o DatabaseInstanceOutput) AvailableMaintenanceVersions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringArrayOutput { return v.AvailableMaintenanceVersions }).(pulumi.StringArrayOutput)
+}
+
+// The name of the BackupDR backup to restore from.
+func (o DatabaseInstanceOutput) BackupdrBackup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringPtrOutput { return v.BackupdrBackup }).(pulumi.StringPtrOutput)
 }
 
 // The context needed to create this instance as a clone of another instance. When this field is set during

@@ -17,7 +17,7 @@ public final class InstancePrivateConfig {
      * @return CA pool resource, resource must in the format of `projects/{project}/locations/{location}/caPools/{ca_pool}`.
      * 
      */
-    private String caPool;
+    private @Nullable String caPool;
     /**
      * @return (Output)
      * Service Attachment for HTTP, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
@@ -41,8 +41,8 @@ public final class InstancePrivateConfig {
      * @return CA pool resource, resource must in the format of `projects/{project}/locations/{location}/caPools/{ca_pool}`.
      * 
      */
-    public String caPool() {
-        return this.caPool;
+    public Optional<String> caPool() {
+        return Optional.ofNullable(this.caPool);
     }
     /**
      * @return (Output)
@@ -77,7 +77,7 @@ public final class InstancePrivateConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String caPool;
+        private @Nullable String caPool;
         private @Nullable String httpServiceAttachment;
         private Boolean isPrivate;
         private @Nullable String sshServiceAttachment;
@@ -91,10 +91,8 @@ public final class InstancePrivateConfig {
         }
 
         @CustomType.Setter
-        public Builder caPool(String caPool) {
-            if (caPool == null) {
-              throw new MissingRequiredPropertyException("InstancePrivateConfig", "caPool");
-            }
+        public Builder caPool(@Nullable String caPool) {
+
             this.caPool = caPool;
             return this;
         }

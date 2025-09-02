@@ -17,6 +17,7 @@ import com.pulumi.gcp.compute.inputs.BackendServiceLogConfigArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceMaxStreamDurationArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceNetworkPassThroughLbTrafficPolicyArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceOutlierDetectionArgs;
+import com.pulumi.gcp.compute.inputs.BackendServiceParamsArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceSecuritySettingsArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceStrongSessionAffinityCookieArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceTlsSettingsArgs;
@@ -694,6 +695,23 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="params")
+    private @Nullable Output<BackendServiceParamsArgs> params;
+
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<BackendServiceParamsArgs>> params() {
+        return Optional.ofNullable(this.params);
+    }
+
+    /**
      * Name of backend port. The same name should appear in the instance
      * groups referenced by this service. Required when the load balancing
      * scheme is EXTERNAL.
@@ -913,6 +931,7 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
         this.name = $.name;
         this.networkPassThroughLbTrafficPolicy = $.networkPassThroughLbTrafficPolicy;
         this.outlierDetection = $.outlierDetection;
+        this.params = $.params;
         this.portName = $.portName;
         this.project = $.project;
         this.protocol = $.protocol;
@@ -1822,6 +1841,29 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder outlierDetection(BackendServiceOutlierDetectionArgs outlierDetection) {
             return outlierDetection(Output.of(outlierDetection));
+        }
+
+        /**
+         * @param params Additional params passed with the request, but not persisted as part of resource payload
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(@Nullable Output<BackendServiceParamsArgs> params) {
+            $.params = params;
+            return this;
+        }
+
+        /**
+         * @param params Additional params passed with the request, but not persisted as part of resource payload
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(BackendServiceParamsArgs params) {
+            return params(Output.of(params));
         }
 
         /**

@@ -146,7 +146,6 @@ namespace Pulumi.Gcp.Redis
     [OutputType]
     public sealed class GetClusterResult
     {
-        public readonly bool AllowFewerZonesDeployment;
         public readonly string AuthorizationMode;
         public readonly ImmutableArray<Outputs.GetClusterAutomatedBackupConfigResult> AutomatedBackupConfigs;
         public readonly string BackupCollection;
@@ -185,8 +184,6 @@ namespace Pulumi.Gcp.Redis
 
         [OutputConstructor]
         private GetClusterResult(
-            bool allowFewerZonesDeployment,
-
             string authorizationMode,
 
             ImmutableArray<Outputs.GetClusterAutomatedBackupConfigResult> automatedBackupConfigs,
@@ -251,7 +248,6 @@ namespace Pulumi.Gcp.Redis
 
             ImmutableArray<Outputs.GetClusterZoneDistributionConfigResult> zoneDistributionConfigs)
         {
-            AllowFewerZonesDeployment = allowFewerZonesDeployment;
             AuthorizationMode = authorizationMode;
             AutomatedBackupConfigs = automatedBackupConfigs;
             BackupCollection = backupCollection;

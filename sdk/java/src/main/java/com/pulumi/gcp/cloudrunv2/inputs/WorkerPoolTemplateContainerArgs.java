@@ -51,21 +51,6 @@ public final class WorkerPoolTemplateContainerArgs extends com.pulumi.resources.
     }
 
     /**
-     * Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
-     * 
-     */
-    @Import(name="dependsOns")
-    private @Nullable Output<List<String>> dependsOns;
-
-    /**
-     * @return Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
-     * 
-     */
-    public Optional<Output<List<String>>> dependsOns() {
-        return Optional.ofNullable(this.dependsOns);
-    }
-
-    /**
      * List of environment variables to set in the container.
      * Structure is documented below.
      * 
@@ -166,7 +151,6 @@ public final class WorkerPoolTemplateContainerArgs extends com.pulumi.resources.
     private WorkerPoolTemplateContainerArgs(WorkerPoolTemplateContainerArgs $) {
         this.args = $.args;
         this.commands = $.commands;
-        this.dependsOns = $.dependsOns;
         this.envs = $.envs;
         this.image = $.image;
         this.name = $.name;
@@ -253,37 +237,6 @@ public final class WorkerPoolTemplateContainerArgs extends com.pulumi.resources.
          */
         public Builder commands(String... commands) {
             return commands(List.of(commands));
-        }
-
-        /**
-         * @param dependsOns Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder dependsOns(@Nullable Output<List<String>> dependsOns) {
-            $.dependsOns = dependsOns;
-            return this;
-        }
-
-        /**
-         * @param dependsOns Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder dependsOns(List<String> dependsOns) {
-            return dependsOns(Output.of(dependsOns));
-        }
-
-        /**
-         * @param dependsOns Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder dependsOns(String... dependsOns) {
-            return dependsOns(List.of(dependsOns));
         }
 
         /**

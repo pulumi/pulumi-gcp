@@ -5,7 +5,7 @@
   keywords = ["pulumi", "gcp"]
   readme = "README.md"
   requires-python = ">=3.9"
-  version = "8.0.0a0+dev"
+  version = "9.0.0a0+dev"
   [project.license]
     text = "Apache-2.0"
   [project.urls]

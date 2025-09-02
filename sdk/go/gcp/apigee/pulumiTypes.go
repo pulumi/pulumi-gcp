@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -4781,9 +4781,39 @@ func (o InstanceAccessLoggingConfigPtrOutput) Filter() pulumi.StringPtrOutput {
 
 type KeystoresAliasesKeyCertFileCertsInfo struct {
 	// (Output)
-	// List of all properties in the object.
-	// Structure is documented below.
-	CertInfos []KeystoresAliasesKeyCertFileCertsInfoCertInfo `pulumi:"certInfos"`
+	// X.509 basic constraints extension.
+	BasicConstraints string `pulumi:"basicConstraints"`
+	// (Output)
+	// X.509 notAfter validity period in milliseconds since epoch.
+	ExpiryDate string `pulumi:"expiryDate"`
+	// (Output)
+	// Flag that specifies whether the certificate is valid.
+	// Flag is set to Yes if the certificate is valid, No if expired, or Not yet if not yet valid.
+	IsValid string `pulumi:"isValid"`
+	// (Output)
+	// X.509 issuer.
+	Issuer string `pulumi:"issuer"`
+	// (Output)
+	// Public key component of the X.509 subject public key info.
+	PublicKey string `pulumi:"publicKey"`
+	// (Output)
+	// X.509 serial number.
+	SerialNumber string `pulumi:"serialNumber"`
+	// (Output)
+	// X.509 signatureAlgorithm.
+	SigAlgName string `pulumi:"sigAlgName"`
+	// (Output)
+	// X.509 subject.
+	Subject string `pulumi:"subject"`
+	// (Output)
+	// X.509 subject alternative names (SANs) extension.
+	SubjectAlternativeNames []string `pulumi:"subjectAlternativeNames"`
+	// (Output)
+	// X.509 notBefore validity period in milliseconds since epoch.
+	ValidFrom string `pulumi:"validFrom"`
+	// (Output)
+	// X.509 version.
+	Version int `pulumi:"version"`
 }
 
 // KeystoresAliasesKeyCertFileCertsInfoInput is an input type that accepts KeystoresAliasesKeyCertFileCertsInfoArgs and KeystoresAliasesKeyCertFileCertsInfoOutput values.
@@ -4799,9 +4829,39 @@ type KeystoresAliasesKeyCertFileCertsInfoInput interface {
 
 type KeystoresAliasesKeyCertFileCertsInfoArgs struct {
 	// (Output)
-	// List of all properties in the object.
-	// Structure is documented below.
-	CertInfos KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayInput `pulumi:"certInfos"`
+	// X.509 basic constraints extension.
+	BasicConstraints pulumi.StringInput `pulumi:"basicConstraints"`
+	// (Output)
+	// X.509 notAfter validity period in milliseconds since epoch.
+	ExpiryDate pulumi.StringInput `pulumi:"expiryDate"`
+	// (Output)
+	// Flag that specifies whether the certificate is valid.
+	// Flag is set to Yes if the certificate is valid, No if expired, or Not yet if not yet valid.
+	IsValid pulumi.StringInput `pulumi:"isValid"`
+	// (Output)
+	// X.509 issuer.
+	Issuer pulumi.StringInput `pulumi:"issuer"`
+	// (Output)
+	// Public key component of the X.509 subject public key info.
+	PublicKey pulumi.StringInput `pulumi:"publicKey"`
+	// (Output)
+	// X.509 serial number.
+	SerialNumber pulumi.StringInput `pulumi:"serialNumber"`
+	// (Output)
+	// X.509 signatureAlgorithm.
+	SigAlgName pulumi.StringInput `pulumi:"sigAlgName"`
+	// (Output)
+	// X.509 subject.
+	Subject pulumi.StringInput `pulumi:"subject"`
+	// (Output)
+	// X.509 subject alternative names (SANs) extension.
+	SubjectAlternativeNames pulumi.StringArrayInput `pulumi:"subjectAlternativeNames"`
+	// (Output)
+	// X.509 notBefore validity period in milliseconds since epoch.
+	ValidFrom pulumi.StringInput `pulumi:"validFrom"`
+	// (Output)
+	// X.509 version.
+	Version pulumi.IntInput `pulumi:"version"`
 }
 
 func (KeystoresAliasesKeyCertFileCertsInfoArgs) ElementType() reflect.Type {
@@ -4816,45 +4876,29 @@ func (i KeystoresAliasesKeyCertFileCertsInfoArgs) ToKeystoresAliasesKeyCertFileC
 	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesKeyCertFileCertsInfoOutput)
 }
 
-func (i KeystoresAliasesKeyCertFileCertsInfoArgs) ToKeystoresAliasesKeyCertFileCertsInfoPtrOutput() KeystoresAliasesKeyCertFileCertsInfoPtrOutput {
-	return i.ToKeystoresAliasesKeyCertFileCertsInfoPtrOutputWithContext(context.Background())
-}
-
-func (i KeystoresAliasesKeyCertFileCertsInfoArgs) ToKeystoresAliasesKeyCertFileCertsInfoPtrOutputWithContext(ctx context.Context) KeystoresAliasesKeyCertFileCertsInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesKeyCertFileCertsInfoOutput).ToKeystoresAliasesKeyCertFileCertsInfoPtrOutputWithContext(ctx)
-}
-
-// KeystoresAliasesKeyCertFileCertsInfoPtrInput is an input type that accepts KeystoresAliasesKeyCertFileCertsInfoArgs, KeystoresAliasesKeyCertFileCertsInfoPtr and KeystoresAliasesKeyCertFileCertsInfoPtrOutput values.
-// You can construct a concrete instance of `KeystoresAliasesKeyCertFileCertsInfoPtrInput` via:
+// KeystoresAliasesKeyCertFileCertsInfoArrayInput is an input type that accepts KeystoresAliasesKeyCertFileCertsInfoArray and KeystoresAliasesKeyCertFileCertsInfoArrayOutput values.
+// You can construct a concrete instance of `KeystoresAliasesKeyCertFileCertsInfoArrayInput` via:
 //
-//	        KeystoresAliasesKeyCertFileCertsInfoArgs{...}
-//
-//	or:
-//
-//	        nil
-type KeystoresAliasesKeyCertFileCertsInfoPtrInput interface {
+//	KeystoresAliasesKeyCertFileCertsInfoArray{ KeystoresAliasesKeyCertFileCertsInfoArgs{...} }
+type KeystoresAliasesKeyCertFileCertsInfoArrayInput interface {
 	pulumi.Input
 
-	ToKeystoresAliasesKeyCertFileCertsInfoPtrOutput() KeystoresAliasesKeyCertFileCertsInfoPtrOutput
-	ToKeystoresAliasesKeyCertFileCertsInfoPtrOutputWithContext(context.Context) KeystoresAliasesKeyCertFileCertsInfoPtrOutput
+	ToKeystoresAliasesKeyCertFileCertsInfoArrayOutput() KeystoresAliasesKeyCertFileCertsInfoArrayOutput
+	ToKeystoresAliasesKeyCertFileCertsInfoArrayOutputWithContext(context.Context) KeystoresAliasesKeyCertFileCertsInfoArrayOutput
 }
 
-type keystoresAliasesKeyCertFileCertsInfoPtrType KeystoresAliasesKeyCertFileCertsInfoArgs
+type KeystoresAliasesKeyCertFileCertsInfoArray []KeystoresAliasesKeyCertFileCertsInfoInput
 
-func KeystoresAliasesKeyCertFileCertsInfoPtr(v *KeystoresAliasesKeyCertFileCertsInfoArgs) KeystoresAliasesKeyCertFileCertsInfoPtrInput {
-	return (*keystoresAliasesKeyCertFileCertsInfoPtrType)(v)
+func (KeystoresAliasesKeyCertFileCertsInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KeystoresAliasesKeyCertFileCertsInfo)(nil)).Elem()
 }
 
-func (*keystoresAliasesKeyCertFileCertsInfoPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**KeystoresAliasesKeyCertFileCertsInfo)(nil)).Elem()
+func (i KeystoresAliasesKeyCertFileCertsInfoArray) ToKeystoresAliasesKeyCertFileCertsInfoArrayOutput() KeystoresAliasesKeyCertFileCertsInfoArrayOutput {
+	return i.ToKeystoresAliasesKeyCertFileCertsInfoArrayOutputWithContext(context.Background())
 }
 
-func (i *keystoresAliasesKeyCertFileCertsInfoPtrType) ToKeystoresAliasesKeyCertFileCertsInfoPtrOutput() KeystoresAliasesKeyCertFileCertsInfoPtrOutput {
-	return i.ToKeystoresAliasesKeyCertFileCertsInfoPtrOutputWithContext(context.Background())
-}
-
-func (i *keystoresAliasesKeyCertFileCertsInfoPtrType) ToKeystoresAliasesKeyCertFileCertsInfoPtrOutputWithContext(ctx context.Context) KeystoresAliasesKeyCertFileCertsInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesKeyCertFileCertsInfoPtrOutput)
+func (i KeystoresAliasesKeyCertFileCertsInfoArray) ToKeystoresAliasesKeyCertFileCertsInfoArrayOutputWithContext(ctx context.Context) KeystoresAliasesKeyCertFileCertsInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesKeyCertFileCertsInfoArrayOutput)
 }
 
 type KeystoresAliasesKeyCertFileCertsInfoOutput struct{ *pulumi.OutputState }
@@ -4871,282 +4915,285 @@ func (o KeystoresAliasesKeyCertFileCertsInfoOutput) ToKeystoresAliasesKeyCertFil
 	return o
 }
 
-func (o KeystoresAliasesKeyCertFileCertsInfoOutput) ToKeystoresAliasesKeyCertFileCertsInfoPtrOutput() KeystoresAliasesKeyCertFileCertsInfoPtrOutput {
-	return o.ToKeystoresAliasesKeyCertFileCertsInfoPtrOutputWithContext(context.Background())
-}
-
-func (o KeystoresAliasesKeyCertFileCertsInfoOutput) ToKeystoresAliasesKeyCertFileCertsInfoPtrOutputWithContext(ctx context.Context) KeystoresAliasesKeyCertFileCertsInfoPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeystoresAliasesKeyCertFileCertsInfo) *KeystoresAliasesKeyCertFileCertsInfo {
-		return &v
-	}).(KeystoresAliasesKeyCertFileCertsInfoPtrOutput)
-}
-
-// (Output)
-// List of all properties in the object.
-// Structure is documented below.
-func (o KeystoresAliasesKeyCertFileCertsInfoOutput) CertInfos() KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput {
-	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfo) []KeystoresAliasesKeyCertFileCertsInfoCertInfo {
-		return v.CertInfos
-	}).(KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput)
-}
-
-type KeystoresAliasesKeyCertFileCertsInfoPtrOutput struct{ *pulumi.OutputState }
-
-func (KeystoresAliasesKeyCertFileCertsInfoPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**KeystoresAliasesKeyCertFileCertsInfo)(nil)).Elem()
-}
-
-func (o KeystoresAliasesKeyCertFileCertsInfoPtrOutput) ToKeystoresAliasesKeyCertFileCertsInfoPtrOutput() KeystoresAliasesKeyCertFileCertsInfoPtrOutput {
-	return o
-}
-
-func (o KeystoresAliasesKeyCertFileCertsInfoPtrOutput) ToKeystoresAliasesKeyCertFileCertsInfoPtrOutputWithContext(ctx context.Context) KeystoresAliasesKeyCertFileCertsInfoPtrOutput {
-	return o
-}
-
-func (o KeystoresAliasesKeyCertFileCertsInfoPtrOutput) Elem() KeystoresAliasesKeyCertFileCertsInfoOutput {
-	return o.ApplyT(func(v *KeystoresAliasesKeyCertFileCertsInfo) KeystoresAliasesKeyCertFileCertsInfo {
-		if v != nil {
-			return *v
-		}
-		var ret KeystoresAliasesKeyCertFileCertsInfo
-		return ret
-	}).(KeystoresAliasesKeyCertFileCertsInfoOutput)
-}
-
-// (Output)
-// List of all properties in the object.
-// Structure is documented below.
-func (o KeystoresAliasesKeyCertFileCertsInfoPtrOutput) CertInfos() KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput {
-	return o.ApplyT(func(v *KeystoresAliasesKeyCertFileCertsInfo) []KeystoresAliasesKeyCertFileCertsInfoCertInfo {
-		if v == nil {
-			return nil
-		}
-		return v.CertInfos
-	}).(KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput)
-}
-
-type KeystoresAliasesKeyCertFileCertsInfoCertInfo struct {
-	// (Output)
-	// X.509 basic constraints extension.
-	BasicConstraints *string `pulumi:"basicConstraints"`
-	// (Output)
-	// X.509 notAfter validity period in milliseconds since epoch.
-	ExpiryDate *string `pulumi:"expiryDate"`
-	// (Output)
-	// Flag that specifies whether the certificate is valid.
-	// Flag is set to Yes if the certificate is valid, No if expired, or Not yet if not yet valid.
-	IsValid *string `pulumi:"isValid"`
-	// (Output)
-	// X.509 issuer.
-	Issuer *string `pulumi:"issuer"`
-	// (Output)
-	// Public key component of the X.509 subject public key info.
-	PublicKey *string `pulumi:"publicKey"`
-	// (Output)
-	// X.509 serial number.
-	SerialNumber *string `pulumi:"serialNumber"`
-	// (Output)
-	// X.509 signatureAlgorithm.
-	SigAlgName *string `pulumi:"sigAlgName"`
-	// (Output)
-	// X.509 subject.
-	Subject *string `pulumi:"subject"`
-	// (Output)
-	// X.509 subject alternative names (SANs) extension.
-	SubjectAlternativeNames []string `pulumi:"subjectAlternativeNames"`
-	// (Output)
-	// X.509 notBefore validity period in milliseconds since epoch.
-	ValidFrom *string `pulumi:"validFrom"`
-	// (Output)
-	// X.509 version.
-	Version *int `pulumi:"version"`
-}
-
-// KeystoresAliasesKeyCertFileCertsInfoCertInfoInput is an input type that accepts KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs and KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput values.
-// You can construct a concrete instance of `KeystoresAliasesKeyCertFileCertsInfoCertInfoInput` via:
-//
-//	KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs{...}
-type KeystoresAliasesKeyCertFileCertsInfoCertInfoInput interface {
-	pulumi.Input
-
-	ToKeystoresAliasesKeyCertFileCertsInfoCertInfoOutput() KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput
-	ToKeystoresAliasesKeyCertFileCertsInfoCertInfoOutputWithContext(context.Context) KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput
-}
-
-type KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs struct {
-	// (Output)
-	// X.509 basic constraints extension.
-	BasicConstraints pulumi.StringPtrInput `pulumi:"basicConstraints"`
-	// (Output)
-	// X.509 notAfter validity period in milliseconds since epoch.
-	ExpiryDate pulumi.StringPtrInput `pulumi:"expiryDate"`
-	// (Output)
-	// Flag that specifies whether the certificate is valid.
-	// Flag is set to Yes if the certificate is valid, No if expired, or Not yet if not yet valid.
-	IsValid pulumi.StringPtrInput `pulumi:"isValid"`
-	// (Output)
-	// X.509 issuer.
-	Issuer pulumi.StringPtrInput `pulumi:"issuer"`
-	// (Output)
-	// Public key component of the X.509 subject public key info.
-	PublicKey pulumi.StringPtrInput `pulumi:"publicKey"`
-	// (Output)
-	// X.509 serial number.
-	SerialNumber pulumi.StringPtrInput `pulumi:"serialNumber"`
-	// (Output)
-	// X.509 signatureAlgorithm.
-	SigAlgName pulumi.StringPtrInput `pulumi:"sigAlgName"`
-	// (Output)
-	// X.509 subject.
-	Subject pulumi.StringPtrInput `pulumi:"subject"`
-	// (Output)
-	// X.509 subject alternative names (SANs) extension.
-	SubjectAlternativeNames pulumi.StringArrayInput `pulumi:"subjectAlternativeNames"`
-	// (Output)
-	// X.509 notBefore validity period in milliseconds since epoch.
-	ValidFrom pulumi.StringPtrInput `pulumi:"validFrom"`
-	// (Output)
-	// X.509 version.
-	Version pulumi.IntPtrInput `pulumi:"version"`
-}
-
-func (KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeystoresAliasesKeyCertFileCertsInfoCertInfo)(nil)).Elem()
-}
-
-func (i KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs) ToKeystoresAliasesKeyCertFileCertsInfoCertInfoOutput() KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput {
-	return i.ToKeystoresAliasesKeyCertFileCertsInfoCertInfoOutputWithContext(context.Background())
-}
-
-func (i KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs) ToKeystoresAliasesKeyCertFileCertsInfoCertInfoOutputWithContext(ctx context.Context) KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput)
-}
-
-// KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayInput is an input type that accepts KeystoresAliasesKeyCertFileCertsInfoCertInfoArray and KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput values.
-// You can construct a concrete instance of `KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayInput` via:
-//
-//	KeystoresAliasesKeyCertFileCertsInfoCertInfoArray{ KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs{...} }
-type KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayInput interface {
-	pulumi.Input
-
-	ToKeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput() KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput
-	ToKeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutputWithContext(context.Context) KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput
-}
-
-type KeystoresAliasesKeyCertFileCertsInfoCertInfoArray []KeystoresAliasesKeyCertFileCertsInfoCertInfoInput
-
-func (KeystoresAliasesKeyCertFileCertsInfoCertInfoArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]KeystoresAliasesKeyCertFileCertsInfoCertInfo)(nil)).Elem()
-}
-
-func (i KeystoresAliasesKeyCertFileCertsInfoCertInfoArray) ToKeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput() KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput {
-	return i.ToKeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutputWithContext(context.Background())
-}
-
-func (i KeystoresAliasesKeyCertFileCertsInfoCertInfoArray) ToKeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutputWithContext(ctx context.Context) KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput)
-}
-
-type KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput struct{ *pulumi.OutputState }
-
-func (KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeystoresAliasesKeyCertFileCertsInfoCertInfo)(nil)).Elem()
-}
-
-func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) ToKeystoresAliasesKeyCertFileCertsInfoCertInfoOutput() KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput {
-	return o
-}
-
-func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) ToKeystoresAliasesKeyCertFileCertsInfoCertInfoOutputWithContext(ctx context.Context) KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput {
-	return o
-}
-
 // (Output)
 // X.509 basic constraints extension.
-func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) BasicConstraints() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfoCertInfo) *string { return v.BasicConstraints }).(pulumi.StringPtrOutput)
+func (o KeystoresAliasesKeyCertFileCertsInfoOutput) BasicConstraints() pulumi.StringOutput {
+	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfo) string { return v.BasicConstraints }).(pulumi.StringOutput)
 }
 
 // (Output)
 // X.509 notAfter validity period in milliseconds since epoch.
-func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) ExpiryDate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfoCertInfo) *string { return v.ExpiryDate }).(pulumi.StringPtrOutput)
+func (o KeystoresAliasesKeyCertFileCertsInfoOutput) ExpiryDate() pulumi.StringOutput {
+	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfo) string { return v.ExpiryDate }).(pulumi.StringOutput)
 }
 
 // (Output)
 // Flag that specifies whether the certificate is valid.
 // Flag is set to Yes if the certificate is valid, No if expired, or Not yet if not yet valid.
-func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) IsValid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfoCertInfo) *string { return v.IsValid }).(pulumi.StringPtrOutput)
+func (o KeystoresAliasesKeyCertFileCertsInfoOutput) IsValid() pulumi.StringOutput {
+	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfo) string { return v.IsValid }).(pulumi.StringOutput)
 }
 
 // (Output)
 // X.509 issuer.
-func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) Issuer() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfoCertInfo) *string { return v.Issuer }).(pulumi.StringPtrOutput)
+func (o KeystoresAliasesKeyCertFileCertsInfoOutput) Issuer() pulumi.StringOutput {
+	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfo) string { return v.Issuer }).(pulumi.StringOutput)
 }
 
 // (Output)
 // Public key component of the X.509 subject public key info.
-func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) PublicKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfoCertInfo) *string { return v.PublicKey }).(pulumi.StringPtrOutput)
+func (o KeystoresAliasesKeyCertFileCertsInfoOutput) PublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfo) string { return v.PublicKey }).(pulumi.StringOutput)
 }
 
 // (Output)
 // X.509 serial number.
-func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) SerialNumber() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfoCertInfo) *string { return v.SerialNumber }).(pulumi.StringPtrOutput)
+func (o KeystoresAliasesKeyCertFileCertsInfoOutput) SerialNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfo) string { return v.SerialNumber }).(pulumi.StringOutput)
 }
 
 // (Output)
 // X.509 signatureAlgorithm.
-func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) SigAlgName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfoCertInfo) *string { return v.SigAlgName }).(pulumi.StringPtrOutput)
+func (o KeystoresAliasesKeyCertFileCertsInfoOutput) SigAlgName() pulumi.StringOutput {
+	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfo) string { return v.SigAlgName }).(pulumi.StringOutput)
 }
 
 // (Output)
 // X.509 subject.
-func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) Subject() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfoCertInfo) *string { return v.Subject }).(pulumi.StringPtrOutput)
+func (o KeystoresAliasesKeyCertFileCertsInfoOutput) Subject() pulumi.StringOutput {
+	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfo) string { return v.Subject }).(pulumi.StringOutput)
 }
 
 // (Output)
 // X.509 subject alternative names (SANs) extension.
-func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) SubjectAlternativeNames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfoCertInfo) []string { return v.SubjectAlternativeNames }).(pulumi.StringArrayOutput)
+func (o KeystoresAliasesKeyCertFileCertsInfoOutput) SubjectAlternativeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfo) []string { return v.SubjectAlternativeNames }).(pulumi.StringArrayOutput)
 }
 
 // (Output)
 // X.509 notBefore validity period in milliseconds since epoch.
-func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) ValidFrom() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfoCertInfo) *string { return v.ValidFrom }).(pulumi.StringPtrOutput)
+func (o KeystoresAliasesKeyCertFileCertsInfoOutput) ValidFrom() pulumi.StringOutput {
+	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfo) string { return v.ValidFrom }).(pulumi.StringOutput)
 }
 
 // (Output)
 // X.509 version.
-func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) Version() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfoCertInfo) *int { return v.Version }).(pulumi.IntPtrOutput)
+func (o KeystoresAliasesKeyCertFileCertsInfoOutput) Version() pulumi.IntOutput {
+	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfo) int { return v.Version }).(pulumi.IntOutput)
 }
 
-type KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput struct{ *pulumi.OutputState }
+type KeystoresAliasesKeyCertFileCertsInfoArrayOutput struct{ *pulumi.OutputState }
 
-func (KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]KeystoresAliasesKeyCertFileCertsInfoCertInfo)(nil)).Elem()
+func (KeystoresAliasesKeyCertFileCertsInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KeystoresAliasesKeyCertFileCertsInfo)(nil)).Elem()
 }
 
-func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput) ToKeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput() KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput {
+func (o KeystoresAliasesKeyCertFileCertsInfoArrayOutput) ToKeystoresAliasesKeyCertFileCertsInfoArrayOutput() KeystoresAliasesKeyCertFileCertsInfoArrayOutput {
 	return o
 }
 
-func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput) ToKeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutputWithContext(ctx context.Context) KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput {
+func (o KeystoresAliasesKeyCertFileCertsInfoArrayOutput) ToKeystoresAliasesKeyCertFileCertsInfoArrayOutputWithContext(ctx context.Context) KeystoresAliasesKeyCertFileCertsInfoArrayOutput {
 	return o
 }
 
-func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput) Index(i pulumi.IntInput) KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KeystoresAliasesKeyCertFileCertsInfoCertInfo {
-		return vs[0].([]KeystoresAliasesKeyCertFileCertsInfoCertInfo)[vs[1].(int)]
-	}).(KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput)
+func (o KeystoresAliasesKeyCertFileCertsInfoArrayOutput) Index(i pulumi.IntInput) KeystoresAliasesKeyCertFileCertsInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KeystoresAliasesKeyCertFileCertsInfo {
+		return vs[0].([]KeystoresAliasesKeyCertFileCertsInfo)[vs[1].(int)]
+	}).(KeystoresAliasesKeyCertFileCertsInfoOutput)
+}
+
+type KeystoresAliasesKeyCertFileTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// KeystoresAliasesKeyCertFileTimeoutsInput is an input type that accepts KeystoresAliasesKeyCertFileTimeoutsArgs and KeystoresAliasesKeyCertFileTimeoutsOutput values.
+// You can construct a concrete instance of `KeystoresAliasesKeyCertFileTimeoutsInput` via:
+//
+//	KeystoresAliasesKeyCertFileTimeoutsArgs{...}
+type KeystoresAliasesKeyCertFileTimeoutsInput interface {
+	pulumi.Input
+
+	ToKeystoresAliasesKeyCertFileTimeoutsOutput() KeystoresAliasesKeyCertFileTimeoutsOutput
+	ToKeystoresAliasesKeyCertFileTimeoutsOutputWithContext(context.Context) KeystoresAliasesKeyCertFileTimeoutsOutput
+}
+
+type KeystoresAliasesKeyCertFileTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (KeystoresAliasesKeyCertFileTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeystoresAliasesKeyCertFileTimeouts)(nil)).Elem()
+}
+
+func (i KeystoresAliasesKeyCertFileTimeoutsArgs) ToKeystoresAliasesKeyCertFileTimeoutsOutput() KeystoresAliasesKeyCertFileTimeoutsOutput {
+	return i.ToKeystoresAliasesKeyCertFileTimeoutsOutputWithContext(context.Background())
+}
+
+func (i KeystoresAliasesKeyCertFileTimeoutsArgs) ToKeystoresAliasesKeyCertFileTimeoutsOutputWithContext(ctx context.Context) KeystoresAliasesKeyCertFileTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesKeyCertFileTimeoutsOutput)
+}
+
+func (i KeystoresAliasesKeyCertFileTimeoutsArgs) ToKeystoresAliasesKeyCertFileTimeoutsPtrOutput() KeystoresAliasesKeyCertFileTimeoutsPtrOutput {
+	return i.ToKeystoresAliasesKeyCertFileTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i KeystoresAliasesKeyCertFileTimeoutsArgs) ToKeystoresAliasesKeyCertFileTimeoutsPtrOutputWithContext(ctx context.Context) KeystoresAliasesKeyCertFileTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesKeyCertFileTimeoutsOutput).ToKeystoresAliasesKeyCertFileTimeoutsPtrOutputWithContext(ctx)
+}
+
+// KeystoresAliasesKeyCertFileTimeoutsPtrInput is an input type that accepts KeystoresAliasesKeyCertFileTimeoutsArgs, KeystoresAliasesKeyCertFileTimeoutsPtr and KeystoresAliasesKeyCertFileTimeoutsPtrOutput values.
+// You can construct a concrete instance of `KeystoresAliasesKeyCertFileTimeoutsPtrInput` via:
+//
+//	        KeystoresAliasesKeyCertFileTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type KeystoresAliasesKeyCertFileTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToKeystoresAliasesKeyCertFileTimeoutsPtrOutput() KeystoresAliasesKeyCertFileTimeoutsPtrOutput
+	ToKeystoresAliasesKeyCertFileTimeoutsPtrOutputWithContext(context.Context) KeystoresAliasesKeyCertFileTimeoutsPtrOutput
+}
+
+type keystoresAliasesKeyCertFileTimeoutsPtrType KeystoresAliasesKeyCertFileTimeoutsArgs
+
+func KeystoresAliasesKeyCertFileTimeoutsPtr(v *KeystoresAliasesKeyCertFileTimeoutsArgs) KeystoresAliasesKeyCertFileTimeoutsPtrInput {
+	return (*keystoresAliasesKeyCertFileTimeoutsPtrType)(v)
+}
+
+func (*keystoresAliasesKeyCertFileTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeystoresAliasesKeyCertFileTimeouts)(nil)).Elem()
+}
+
+func (i *keystoresAliasesKeyCertFileTimeoutsPtrType) ToKeystoresAliasesKeyCertFileTimeoutsPtrOutput() KeystoresAliasesKeyCertFileTimeoutsPtrOutput {
+	return i.ToKeystoresAliasesKeyCertFileTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *keystoresAliasesKeyCertFileTimeoutsPtrType) ToKeystoresAliasesKeyCertFileTimeoutsPtrOutputWithContext(ctx context.Context) KeystoresAliasesKeyCertFileTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesKeyCertFileTimeoutsPtrOutput)
+}
+
+type KeystoresAliasesKeyCertFileTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (KeystoresAliasesKeyCertFileTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeystoresAliasesKeyCertFileTimeouts)(nil)).Elem()
+}
+
+func (o KeystoresAliasesKeyCertFileTimeoutsOutput) ToKeystoresAliasesKeyCertFileTimeoutsOutput() KeystoresAliasesKeyCertFileTimeoutsOutput {
+	return o
+}
+
+func (o KeystoresAliasesKeyCertFileTimeoutsOutput) ToKeystoresAliasesKeyCertFileTimeoutsOutputWithContext(ctx context.Context) KeystoresAliasesKeyCertFileTimeoutsOutput {
+	return o
+}
+
+func (o KeystoresAliasesKeyCertFileTimeoutsOutput) ToKeystoresAliasesKeyCertFileTimeoutsPtrOutput() KeystoresAliasesKeyCertFileTimeoutsPtrOutput {
+	return o.ToKeystoresAliasesKeyCertFileTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o KeystoresAliasesKeyCertFileTimeoutsOutput) ToKeystoresAliasesKeyCertFileTimeoutsPtrOutputWithContext(ctx context.Context) KeystoresAliasesKeyCertFileTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeystoresAliasesKeyCertFileTimeouts) *KeystoresAliasesKeyCertFileTimeouts {
+		return &v
+	}).(KeystoresAliasesKeyCertFileTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o KeystoresAliasesKeyCertFileTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeystoresAliasesKeyCertFileTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o KeystoresAliasesKeyCertFileTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeystoresAliasesKeyCertFileTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o KeystoresAliasesKeyCertFileTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeystoresAliasesKeyCertFileTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o KeystoresAliasesKeyCertFileTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeystoresAliasesKeyCertFileTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type KeystoresAliasesKeyCertFileTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (KeystoresAliasesKeyCertFileTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeystoresAliasesKeyCertFileTimeouts)(nil)).Elem()
+}
+
+func (o KeystoresAliasesKeyCertFileTimeoutsPtrOutput) ToKeystoresAliasesKeyCertFileTimeoutsPtrOutput() KeystoresAliasesKeyCertFileTimeoutsPtrOutput {
+	return o
+}
+
+func (o KeystoresAliasesKeyCertFileTimeoutsPtrOutput) ToKeystoresAliasesKeyCertFileTimeoutsPtrOutputWithContext(ctx context.Context) KeystoresAliasesKeyCertFileTimeoutsPtrOutput {
+	return o
+}
+
+func (o KeystoresAliasesKeyCertFileTimeoutsPtrOutput) Elem() KeystoresAliasesKeyCertFileTimeoutsOutput {
+	return o.ApplyT(func(v *KeystoresAliasesKeyCertFileTimeouts) KeystoresAliasesKeyCertFileTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret KeystoresAliasesKeyCertFileTimeouts
+		return ret
+	}).(KeystoresAliasesKeyCertFileTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o KeystoresAliasesKeyCertFileTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeystoresAliasesKeyCertFileTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o KeystoresAliasesKeyCertFileTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeystoresAliasesKeyCertFileTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o KeystoresAliasesKeyCertFileTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeystoresAliasesKeyCertFileTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o KeystoresAliasesKeyCertFileTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeystoresAliasesKeyCertFileTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
 }
 
 type KeystoresAliasesPkcs12CertsInfo struct {
@@ -8171,9 +8218,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAccessLoggingConfigInput)(nil)).Elem(), InstanceAccessLoggingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAccessLoggingConfigPtrInput)(nil)).Elem(), InstanceAccessLoggingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeystoresAliasesKeyCertFileCertsInfoInput)(nil)).Elem(), KeystoresAliasesKeyCertFileCertsInfoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KeystoresAliasesKeyCertFileCertsInfoPtrInput)(nil)).Elem(), KeystoresAliasesKeyCertFileCertsInfoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KeystoresAliasesKeyCertFileCertsInfoCertInfoInput)(nil)).Elem(), KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayInput)(nil)).Elem(), KeystoresAliasesKeyCertFileCertsInfoCertInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeystoresAliasesKeyCertFileCertsInfoArrayInput)(nil)).Elem(), KeystoresAliasesKeyCertFileCertsInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeystoresAliasesKeyCertFileTimeoutsInput)(nil)).Elem(), KeystoresAliasesKeyCertFileTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeystoresAliasesKeyCertFileTimeoutsPtrInput)(nil)).Elem(), KeystoresAliasesKeyCertFileTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeystoresAliasesPkcs12CertsInfoInput)(nil)).Elem(), KeystoresAliasesPkcs12CertsInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeystoresAliasesPkcs12CertsInfoArrayInput)(nil)).Elem(), KeystoresAliasesPkcs12CertsInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeystoresAliasesPkcs12CertsInfoCertInfoInput)(nil)).Elem(), KeystoresAliasesPkcs12CertsInfoCertInfoArgs{})
@@ -8277,9 +8324,9 @@ func init() {
 	pulumi.RegisterOutputType(InstanceAccessLoggingConfigOutput{})
 	pulumi.RegisterOutputType(InstanceAccessLoggingConfigPtrOutput{})
 	pulumi.RegisterOutputType(KeystoresAliasesKeyCertFileCertsInfoOutput{})
-	pulumi.RegisterOutputType(KeystoresAliasesKeyCertFileCertsInfoPtrOutput{})
-	pulumi.RegisterOutputType(KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput{})
-	pulumi.RegisterOutputType(KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput{})
+	pulumi.RegisterOutputType(KeystoresAliasesKeyCertFileCertsInfoArrayOutput{})
+	pulumi.RegisterOutputType(KeystoresAliasesKeyCertFileTimeoutsOutput{})
+	pulumi.RegisterOutputType(KeystoresAliasesKeyCertFileTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(KeystoresAliasesPkcs12CertsInfoOutput{})
 	pulumi.RegisterOutputType(KeystoresAliasesPkcs12CertsInfoArrayOutput{})
 	pulumi.RegisterOutputType(KeystoresAliasesPkcs12CertsInfoCertInfoOutput{})

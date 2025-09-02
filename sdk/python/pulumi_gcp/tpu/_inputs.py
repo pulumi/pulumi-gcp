@@ -15,10 +15,6 @@ else:
 from .. import _utilities
 
 __all__ = [
-    'NodeNetworkEndpointArgs',
-    'NodeNetworkEndpointArgsDict',
-    'NodeSchedulingConfigArgs',
-    'NodeSchedulingConfigArgsDict',
     'V2QueuedResourceTpuArgs',
     'V2QueuedResourceTpuArgsDict',
     'V2QueuedResourceTpuNodeSpecArgs',
@@ -48,95 +44,6 @@ __all__ = [
 ]
 
 MYPY = False
-
-if not MYPY:
-    class NodeNetworkEndpointArgsDict(TypedDict):
-        ip_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Output)
-        The IP address of this network endpoint.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Output)
-        The port of this network endpoint.
-        """
-elif False:
-    NodeNetworkEndpointArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class NodeNetworkEndpointArgs:
-    def __init__(__self__, *,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None):
-        """
-        :param pulumi.Input[_builtins.str] ip_address: (Output)
-               The IP address of this network endpoint.
-        :param pulumi.Input[_builtins.int] port: (Output)
-               The port of this network endpoint.
-        """
-        if ip_address is not None:
-            pulumi.set(__self__, "ip_address", ip_address)
-        if port is not None:
-            pulumi.set(__self__, "port", port)
-
-    @_builtins.property
-    @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        (Output)
-        The IP address of this network endpoint.
-        """
-        return pulumi.get(self, "ip_address")
-
-    @ip_address.setter
-    def ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "ip_address", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        (Output)
-        The port of this network endpoint.
-        """
-        return pulumi.get(self, "port")
-
-    @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "port", value)
-
-
-if not MYPY:
-    class NodeSchedulingConfigArgsDict(TypedDict):
-        preemptible: pulumi.Input[_builtins.bool]
-        """
-        Defines whether the TPU instance is preemptible.
-        """
-elif False:
-    NodeSchedulingConfigArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class NodeSchedulingConfigArgs:
-    def __init__(__self__, *,
-                 preemptible: pulumi.Input[_builtins.bool]):
-        """
-        :param pulumi.Input[_builtins.bool] preemptible: Defines whether the TPU instance is preemptible.
-        """
-        pulumi.set(__self__, "preemptible", preemptible)
-
-    @_builtins.property
-    @pulumi.getter
-    def preemptible(self) -> pulumi.Input[_builtins.bool]:
-        """
-        Defines whether the TPU instance is preemptible.
-        """
-        return pulumi.get(self, "preemptible")
-
-    @preemptible.setter
-    def preemptible(self, value: pulumi.Input[_builtins.bool]):
-        pulumi.set(self, "preemptible", value)
-
 
 if not MYPY:
     class V2QueuedResourceTpuArgsDict(TypedDict):

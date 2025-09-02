@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.BigTable
         /// {
         ///     var policy = Gcp.BigTable.GetTableIamPolicy.Invoke(new()
         ///     {
-        ///         Instance = instance.Name,
+        ///         InstanceName = instance.Name,
         ///         Table = table.Name,
         ///     });
         /// 
@@ -51,7 +51,7 @@ namespace Pulumi.Gcp.BigTable
         /// {
         ///     var policy = Gcp.BigTable.GetTableIamPolicy.Invoke(new()
         ///     {
-        ///         Instance = instance.Name,
+        ///         InstanceName = instance.Name,
         ///         Table = table.Name,
         ///     });
         /// 
@@ -76,7 +76,7 @@ namespace Pulumi.Gcp.BigTable
         /// {
         ///     var policy = Gcp.BigTable.GetTableIamPolicy.Invoke(new()
         ///     {
-        ///         Instance = instance.Name,
+        ///         InstanceName = instance.Name,
         ///         Table = table.Name,
         ///     });
         /// 
@@ -90,11 +90,8 @@ namespace Pulumi.Gcp.BigTable
 
     public sealed class GetTableIamPolicyArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name or relative resource id of the instance that owns the table.
-        /// </summary>
-        [Input("instance", required: true)]
-        public string Instance { get; set; } = null!;
+        [Input("instanceName", required: true)]
+        public string InstanceName { get; set; } = null!;
 
         [Input("project")]
         public string? Project { get; set; }
@@ -113,11 +110,8 @@ namespace Pulumi.Gcp.BigTable
 
     public sealed class GetTableIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name or relative resource id of the instance that owns the table.
-        /// </summary>
-        [Input("instance", required: true)]
-        public Input<string> Instance { get; set; } = null!;
+        [Input("instanceName", required: true)]
+        public Input<string> InstanceName { get; set; } = null!;
 
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -146,7 +140,7 @@ namespace Pulumi.Gcp.BigTable
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        public readonly string Instance;
+        public readonly string InstanceName;
         /// <summary>
         /// (Computed) The policy data
         /// </summary>
@@ -160,7 +154,7 @@ namespace Pulumi.Gcp.BigTable
 
             string id,
 
-            string instance,
+            string instanceName,
 
             string policyData,
 
@@ -170,7 +164,7 @@ namespace Pulumi.Gcp.BigTable
         {
             Etag = etag;
             Id = id;
-            Instance = instance;
+            InstanceName = instanceName;
             PolicyData = policyData;
             Project = project;
             Table = table;

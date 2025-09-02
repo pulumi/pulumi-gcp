@@ -4199,6 +4199,7 @@ class GetDatabaseInstanceSettingSqlServerAuditConfigResult(dict):
 class GetDatabaseInstancesInstanceResult(dict):
     def __init__(__self__, *,
                  available_maintenance_versions: Sequence[_builtins.str],
+                 backupdr_backup: _builtins.str,
                  clones: Sequence['outputs.GetDatabaseInstancesInstanceCloneResult'],
                  connection_name: _builtins.str,
                  database_version: _builtins.str,
@@ -4229,6 +4230,7 @@ class GetDatabaseInstancesInstanceResult(dict):
                  settings: Sequence['outputs.GetDatabaseInstancesInstanceSettingResult']):
         """
         :param Sequence[_builtins.str] available_maintenance_versions: Available Maintenance versions.
+        :param _builtins.str backupdr_backup: The name of the BackupDR backup to restore from.
         :param Sequence['GetDatabaseInstancesInstanceCloneArgs'] clones: Configuration for creating a new instance as a clone of another instance.
         :param _builtins.str connection_name: The connection name of the instance to be used in connection strings. For example, when connecting with Cloud SQL Proxy.
         :param _builtins.str database_version: To filter out the Cloud SQL instances which are of the specified database version.
@@ -4250,6 +4252,7 @@ class GetDatabaseInstancesInstanceResult(dict):
         :param Sequence['GetDatabaseInstancesInstanceSettingArgs'] settings: The settings to use for the database. The configuration is detailed below.
         """
         pulumi.set(__self__, "available_maintenance_versions", available_maintenance_versions)
+        pulumi.set(__self__, "backupdr_backup", backupdr_backup)
         pulumi.set(__self__, "clones", clones)
         pulumi.set(__self__, "connection_name", connection_name)
         pulumi.set(__self__, "database_version", database_version)
@@ -4286,6 +4289,14 @@ class GetDatabaseInstancesInstanceResult(dict):
         Available Maintenance versions.
         """
         return pulumi.get(self, "available_maintenance_versions")
+
+    @_builtins.property
+    @pulumi.getter(name="backupdrBackup")
+    def backupdr_backup(self) -> _builtins.str:
+        """
+        The name of the BackupDR backup to restore from.
+        """
+        return pulumi.get(self, "backupdr_backup")
 
     @_builtins.property
     @pulumi.getter

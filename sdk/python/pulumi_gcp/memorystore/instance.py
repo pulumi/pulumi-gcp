@@ -24,7 +24,6 @@ class InstanceArgs:
                  instance_id: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  shard_count: pulumi.Input[_builtins.int],
-                 allow_fewer_zones_deployment: Optional[pulumi.Input[_builtins.bool]] = None,
                  authorization_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  automated_backup_config: Optional[pulumi.Input['InstanceAutomatedBackupConfigArgs']] = None,
                  cross_instance_replication_config: Optional[pulumi.Input['InstanceCrossInstanceReplicationConfigArgs']] = None,
@@ -57,10 +56,6 @@ class InstanceArgs:
                * Must be unique within a location
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `memorystore.googleapis.com/CertificateAuthority`.
         :param pulumi.Input[_builtins.int] shard_count: Required. Number of shards for the instance.
-        :param pulumi.Input[_builtins.bool] allow_fewer_zones_deployment: Allows customers to specify if they are okay with deploying a multi-zone
-               instance in less than 3 zones. Once set, if there is a zonal outage during
-               the instance creation, the instance will only be deployed in 2 zones, and
-               stay within the 2 zones for its lifecycle.
         :param pulumi.Input[_builtins.str] authorization_mode: Optional. Immutable. Authorization mode of the instance. Possible values:
                AUTH_DISABLED
                IAM_AUTH
@@ -109,8 +104,6 @@ class InstanceArgs:
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "shard_count", shard_count)
-        if allow_fewer_zones_deployment is not None:
-            pulumi.set(__self__, "allow_fewer_zones_deployment", allow_fewer_zones_deployment)
         if authorization_mode is not None:
             pulumi.set(__self__, "authorization_mode", authorization_mode)
         if automated_backup_config is not None:
@@ -197,21 +190,6 @@ class InstanceArgs:
     @shard_count.setter
     def shard_count(self, value: pulumi.Input[_builtins.int]):
         pulumi.set(self, "shard_count", value)
-
-    @_builtins.property
-    @pulumi.getter(name="allowFewerZonesDeployment")
-    def allow_fewer_zones_deployment(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Allows customers to specify if they are okay with deploying a multi-zone
-        instance in less than 3 zones. Once set, if there is a zonal outage during
-        the instance creation, the instance will only be deployed in 2 zones, and
-        stay within the 2 zones for its lifecycle.
-        """
-        return pulumi.get(self, "allow_fewer_zones_deployment")
-
-    @allow_fewer_zones_deployment.setter
-    def allow_fewer_zones_deployment(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "allow_fewer_zones_deployment", value)
 
     @_builtins.property
     @pulumi.getter(name="authorizationMode")
@@ -482,7 +460,6 @@ class InstanceArgs:
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
-                 allow_fewer_zones_deployment: Optional[pulumi.Input[_builtins.bool]] = None,
                  authorization_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  automated_backup_config: Optional[pulumi.Input['InstanceAutomatedBackupConfigArgs']] = None,
                  backup_collection: Optional[pulumi.Input[_builtins.str]] = None,
@@ -524,10 +501,6 @@ class _InstanceState:
                  zone_distribution_config: Optional[pulumi.Input['InstanceZoneDistributionConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Instance resources.
-        :param pulumi.Input[_builtins.bool] allow_fewer_zones_deployment: Allows customers to specify if they are okay with deploying a multi-zone
-               instance in less than 3 zones. Once set, if there is a zonal outage during
-               the instance creation, the instance will only be deployed in 2 zones, and
-               stay within the 2 zones for its lifecycle.
         :param pulumi.Input[_builtins.str] authorization_mode: Optional. Immutable. Authorization mode of the instance. Possible values:
                AUTH_DISABLED
                IAM_AUTH
@@ -617,8 +590,6 @@ class _InstanceState:
         :param pulumi.Input['InstanceZoneDistributionConfigArgs'] zone_distribution_config: Zone distribution configuration for allocation of instance resources.
                Structure is documented below.
         """
-        if allow_fewer_zones_deployment is not None:
-            pulumi.set(__self__, "allow_fewer_zones_deployment", allow_fewer_zones_deployment)
         if authorization_mode is not None:
             pulumi.set(__self__, "authorization_mode", authorization_mode)
         if automated_backup_config is not None:
@@ -706,21 +677,6 @@ class _InstanceState:
             pulumi.set(__self__, "update_time", update_time)
         if zone_distribution_config is not None:
             pulumi.set(__self__, "zone_distribution_config", zone_distribution_config)
-
-    @_builtins.property
-    @pulumi.getter(name="allowFewerZonesDeployment")
-    def allow_fewer_zones_deployment(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Allows customers to specify if they are okay with deploying a multi-zone
-        instance in less than 3 zones. Once set, if there is a zonal outage during
-        the instance creation, the instance will only be deployed in 2 zones, and
-        stay within the 2 zones for its lifecycle.
-        """
-        return pulumi.get(self, "allow_fewer_zones_deployment")
-
-    @allow_fewer_zones_deployment.setter
-    def allow_fewer_zones_deployment(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "allow_fewer_zones_deployment", value)
 
     @_builtins.property
     @pulumi.getter(name="authorizationMode")
@@ -1249,7 +1205,6 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_fewer_zones_deployment: Optional[pulumi.Input[_builtins.bool]] = None,
                  authorization_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  automated_backup_config: Optional[pulumi.Input[Union['InstanceAutomatedBackupConfigArgs', 'InstanceAutomatedBackupConfigArgsDict']]] = None,
                  cross_instance_replication_config: Optional[pulumi.Input[Union['InstanceCrossInstanceReplicationConfigArgs', 'InstanceCrossInstanceReplicationConfigArgsDict']]] = None,
@@ -1371,7 +1326,6 @@ class Instance(pulumi.CustomResource):
             engine_configs={
                 "maxmemory-policy": "volatile-ttl",
             },
-            allow_fewer_zones_deployment=True,
             zone_distribution_config={
                 "mode": "SINGLE_ZONE",
                 "zone": "us-central1-b",
@@ -1582,10 +1536,6 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] allow_fewer_zones_deployment: Allows customers to specify if they are okay with deploying a multi-zone
-               instance in less than 3 zones. Once set, if there is a zonal outage during
-               the instance creation, the instance will only be deployed in 2 zones, and
-               stay within the 2 zones for its lifecycle.
         :param pulumi.Input[_builtins.str] authorization_mode: Optional. Immutable. Authorization mode of the instance. Possible values:
                AUTH_DISABLED
                IAM_AUTH
@@ -1744,7 +1694,6 @@ class Instance(pulumi.CustomResource):
             engine_configs={
                 "maxmemory-policy": "volatile-ttl",
             },
-            allow_fewer_zones_deployment=True,
             zone_distribution_config={
                 "mode": "SINGLE_ZONE",
                 "zone": "us-central1-b",
@@ -1968,7 +1917,6 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_fewer_zones_deployment: Optional[pulumi.Input[_builtins.bool]] = None,
                  authorization_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  automated_backup_config: Optional[pulumi.Input[Union['InstanceAutomatedBackupConfigArgs', 'InstanceAutomatedBackupConfigArgsDict']]] = None,
                  cross_instance_replication_config: Optional[pulumi.Input[Union['InstanceCrossInstanceReplicationConfigArgs', 'InstanceCrossInstanceReplicationConfigArgsDict']]] = None,
@@ -2001,7 +1949,6 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
-            __props__.__dict__["allow_fewer_zones_deployment"] = allow_fewer_zones_deployment
             __props__.__dict__["authorization_mode"] = authorization_mode
             __props__.__dict__["automated_backup_config"] = automated_backup_config
             __props__.__dict__["cross_instance_replication_config"] = cross_instance_replication_config
@@ -2059,7 +2006,6 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allow_fewer_zones_deployment: Optional[pulumi.Input[_builtins.bool]] = None,
             authorization_mode: Optional[pulumi.Input[_builtins.str]] = None,
             automated_backup_config: Optional[pulumi.Input[Union['InstanceAutomatedBackupConfigArgs', 'InstanceAutomatedBackupConfigArgsDict']]] = None,
             backup_collection: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2106,10 +2052,6 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] allow_fewer_zones_deployment: Allows customers to specify if they are okay with deploying a multi-zone
-               instance in less than 3 zones. Once set, if there is a zonal outage during
-               the instance creation, the instance will only be deployed in 2 zones, and
-               stay within the 2 zones for its lifecycle.
         :param pulumi.Input[_builtins.str] authorization_mode: Optional. Immutable. Authorization mode of the instance. Possible values:
                AUTH_DISABLED
                IAM_AUTH
@@ -2203,7 +2145,6 @@ class Instance(pulumi.CustomResource):
 
         __props__ = _InstanceState.__new__(_InstanceState)
 
-        __props__.__dict__["allow_fewer_zones_deployment"] = allow_fewer_zones_deployment
         __props__.__dict__["authorization_mode"] = authorization_mode
         __props__.__dict__["automated_backup_config"] = automated_backup_config
         __props__.__dict__["backup_collection"] = backup_collection
@@ -2244,17 +2185,6 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         __props__.__dict__["zone_distribution_config"] = zone_distribution_config
         return Instance(resource_name, opts=opts, __props__=__props__)
-
-    @_builtins.property
-    @pulumi.getter(name="allowFewerZonesDeployment")
-    def allow_fewer_zones_deployment(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Allows customers to specify if they are okay with deploying a multi-zone
-        instance in less than 3 zones. Once set, if there is a zonal outage during
-        the instance creation, the instance will only be deployed in 2 zones, and
-        stay within the 2 zones for its lifecycle.
-        """
-        return pulumi.get(self, "allow_fewer_zones_deployment")
 
     @_builtins.property
     @pulumi.getter(name="authorizationMode")

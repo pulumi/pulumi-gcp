@@ -28,15 +28,15 @@ public final class TableIamMemberArgs extends com.pulumi.resources.ResourceArgs 
      * The name or relative resource id of the instance that owns the table.
      * 
      */
-    @Import(name="instance", required=true)
-    private Output<String> instance;
+    @Import(name="instanceName", required=true)
+    private Output<String> instanceName;
 
     /**
      * @return The name or relative resource id of the instance that owns the table.
      * 
      */
-    public Output<String> instance() {
-        return this.instance;
+    public Output<String> instanceName() {
+        return this.instanceName;
     }
 
     /**
@@ -131,7 +131,7 @@ public final class TableIamMemberArgs extends com.pulumi.resources.ResourceArgs 
 
     private TableIamMemberArgs(TableIamMemberArgs $) {
         this.condition = $.condition;
-        this.instance = $.instance;
+        this.instanceName = $.instanceName;
         this.member = $.member;
         this.project = $.project;
         this.role = $.role;
@@ -166,24 +166,24 @@ public final class TableIamMemberArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param instance The name or relative resource id of the instance that owns the table.
+         * @param instanceName The name or relative resource id of the instance that owns the table.
          * 
          * @return builder
          * 
          */
-        public Builder instance(Output<String> instance) {
-            $.instance = instance;
+        public Builder instanceName(Output<String> instanceName) {
+            $.instanceName = instanceName;
             return this;
         }
 
         /**
-         * @param instance The name or relative resource id of the instance that owns the table.
+         * @param instanceName The name or relative resource id of the instance that owns the table.
          * 
          * @return builder
          * 
          */
-        public Builder instance(String instance) {
-            return instance(Output.of(instance));
+        public Builder instanceName(String instanceName) {
+            return instanceName(Output.of(instanceName));
         }
 
         /**
@@ -299,8 +299,8 @@ public final class TableIamMemberArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public TableIamMemberArgs build() {
-            if ($.instance == null) {
-                throw new MissingRequiredPropertyException("TableIamMemberArgs", "instance");
+            if ($.instanceName == null) {
+                throw new MissingRequiredPropertyException("TableIamMemberArgs", "instanceName");
             }
             if ($.member == null) {
                 throw new MissingRequiredPropertyException("TableIamMemberArgs", "member");

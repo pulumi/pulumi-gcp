@@ -1145,6 +1145,9 @@ class Service(pulumi.CustomResource):
             location="us-central1",
             deletion_protection=False,
             ingress="INGRESS_TRAFFIC_ALL",
+            scaling={
+                "max_instance_count": 100,
+            },
             template={
                 "containers": [{
                     "image": "us-docker.pkg.dev/cloudrun/container/hello",
@@ -1201,10 +1204,10 @@ class Service(pulumi.CustomResource):
             location="us-central1",
             deletion_protection=False,
             ingress="INGRESS_TRAFFIC_ALL",
+            scaling={
+                "max_instance_count": 2,
+            },
             template={
-                "scaling": {
-                    "max_instance_count": 2,
-                },
                 "volumes": [{
                     "name": "cloudsql",
                     "cloud_sql_instance": {
@@ -1322,6 +1325,9 @@ class Service(pulumi.CustomResource):
             location="us-central1",
             deletion_protection=False,
             ingress="INGRESS_TRAFFIC_ALL",
+            scaling={
+                "max_instance_count": 1,
+            },
             template={
                 "containers": [{
                     "image": "us-docker.pkg.dev/cloudrun/container/hello",
@@ -1338,9 +1344,6 @@ class Service(pulumi.CustomResource):
                     "accelerator": "nvidia-l4",
                 },
                 "gpu_zonal_redundancy_disabled": True,
-                "scaling": {
-                    "max_instance_count": 1,
-                },
             })
         ```
         ### Cloudrunv2 Service Probes
@@ -1762,6 +1765,9 @@ class Service(pulumi.CustomResource):
             location="us-central1",
             deletion_protection=False,
             ingress="INGRESS_TRAFFIC_ALL",
+            scaling={
+                "max_instance_count": 100,
+            },
             template={
                 "containers": [{
                     "image": "us-docker.pkg.dev/cloudrun/container/hello",
@@ -1818,10 +1824,10 @@ class Service(pulumi.CustomResource):
             location="us-central1",
             deletion_protection=False,
             ingress="INGRESS_TRAFFIC_ALL",
+            scaling={
+                "max_instance_count": 2,
+            },
             template={
-                "scaling": {
-                    "max_instance_count": 2,
-                },
                 "volumes": [{
                     "name": "cloudsql",
                     "cloud_sql_instance": {
@@ -1939,6 +1945,9 @@ class Service(pulumi.CustomResource):
             location="us-central1",
             deletion_protection=False,
             ingress="INGRESS_TRAFFIC_ALL",
+            scaling={
+                "max_instance_count": 1,
+            },
             template={
                 "containers": [{
                     "image": "us-docker.pkg.dev/cloudrun/container/hello",
@@ -1955,9 +1964,6 @@ class Service(pulumi.CustomResource):
                     "accelerator": "nvidia-l4",
                 },
                 "gpu_zonal_redundancy_disabled": True,
-                "scaling": {
-                    "max_instance_count": 1,
-                },
             })
         ```
         ### Cloudrunv2 Service Probes

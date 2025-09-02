@@ -622,6 +622,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///             User = "destination-alloydb",
     ///             Password = "destination-alloydb",
     ///         },
+    ///         DeletionProtection = false,
     ///     });
     /// 
     ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("private_ip_alloc", new()

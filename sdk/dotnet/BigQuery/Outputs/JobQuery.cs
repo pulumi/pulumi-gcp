@@ -20,6 +20,13 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// </summary>
         public readonly bool? AllowLargeResults;
         /// <summary>
+        /// Connection properties to customize query behavior. Under JDBC, these correspond
+        /// directly to connection properties passed to the DriverManager. Under ODBC, these
+        /// correspond to properties in the connection string.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.JobQueryConnectionProperty> ConnectionProperties;
+        /// <summary>
         /// Whether to run the query as continuous or a regular query.
         /// </summary>
         public readonly bool? Continuous;
@@ -127,6 +134,8 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         private JobQuery(
             bool? allowLargeResults,
 
+            ImmutableArray<Outputs.JobQueryConnectionProperty> connectionProperties,
+
             bool? continuous,
 
             string? createDisposition,
@@ -162,6 +171,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
             string? writeDisposition)
         {
             AllowLargeResults = allowLargeResults;
+            ConnectionProperties = connectionProperties;
             Continuous = continuous;
             CreateDisposition = createDisposition;
             DefaultDataset = defaultDataset;

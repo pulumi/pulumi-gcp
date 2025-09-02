@@ -361,6 +361,12 @@ namespace Pulumi.Gcp.Sql
         public Output<ImmutableArray<string>> AvailableMaintenanceVersions { get; private set; } = null!;
 
         /// <summary>
+        /// The name of the BackupDR backup to restore from.
+        /// </summary>
+        [Output("backupdrBackup")]
+        public Output<string?> BackupdrBackup { get; private set; } = null!;
+
+        /// <summary>
         /// The context needed to create this instance as a clone of another instance. When this field is set during
         /// resource creation, this provider will attempt to clone another instance as indicated in the context. The
         /// configuration is detailed below.
@@ -610,6 +616,12 @@ namespace Pulumi.Gcp.Sql
     public sealed class DatabaseInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The name of the BackupDR backup to restore from.
+        /// </summary>
+        [Input("backupdrBackup")]
+        public Input<string>? BackupdrBackup { get; set; }
+
+        /// <summary>
         /// The context needed to create this instance as a clone of another instance. When this field is set during
         /// resource creation, this provider will attempt to clone another instance as indicated in the context. The
         /// configuration is detailed below.
@@ -789,6 +801,12 @@ namespace Pulumi.Gcp.Sql
             get => _availableMaintenanceVersions ?? (_availableMaintenanceVersions = new InputList<string>());
             set => _availableMaintenanceVersions = value;
         }
+
+        /// <summary>
+        /// The name of the BackupDR backup to restore from.
+        /// </summary>
+        [Input("backupdrBackup")]
+        public Input<string>? BackupdrBackup { get; set; }
 
         /// <summary>
         /// The context needed to create this instance as a clone of another instance. When this field is set during

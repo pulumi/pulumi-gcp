@@ -179,6 +179,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly resourceManagerV3CustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly runtimeConfigCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly runtimeconfigCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly saasRuntimeCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly secretManagerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly secretManagerRegionalCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly secureSourceManagerCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -202,7 +203,6 @@ export class Provider extends pulumi.ProviderResource {
     public readonly storageTransferCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly tagsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly tagsLocationCustomEndpoint!: pulumi.Output<string | undefined>;
-    public readonly tpuCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly tpuV2CustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly transcoderCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly universeDomain!: pulumi.Output<string | undefined>;
@@ -383,6 +383,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["resourceManagerV3CustomEndpoint"] = args ? args.resourceManagerV3CustomEndpoint : undefined;
             resourceInputs["runtimeConfigCustomEndpoint"] = args ? args.runtimeConfigCustomEndpoint : undefined;
             resourceInputs["runtimeconfigCustomEndpoint"] = args ? args.runtimeconfigCustomEndpoint : undefined;
+            resourceInputs["saasRuntimeCustomEndpoint"] = args ? args.saasRuntimeCustomEndpoint : undefined;
             resourceInputs["scopes"] = pulumi.output(args ? args.scopes : undefined).apply(JSON.stringify);
             resourceInputs["secretManagerCustomEndpoint"] = args ? args.secretManagerCustomEndpoint : undefined;
             resourceInputs["secretManagerRegionalCustomEndpoint"] = args ? args.secretManagerRegionalCustomEndpoint : undefined;
@@ -407,7 +408,6 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["storageTransferCustomEndpoint"] = args ? args.storageTransferCustomEndpoint : undefined;
             resourceInputs["tagsCustomEndpoint"] = args ? args.tagsCustomEndpoint : undefined;
             resourceInputs["tagsLocationCustomEndpoint"] = args ? args.tagsLocationCustomEndpoint : undefined;
-            resourceInputs["tpuCustomEndpoint"] = args ? args.tpuCustomEndpoint : undefined;
             resourceInputs["tpuV2CustomEndpoint"] = args ? args.tpuV2CustomEndpoint : undefined;
             resourceInputs["transcoderCustomEndpoint"] = args ? args.transcoderCustomEndpoint : undefined;
             resourceInputs["universeDomain"] = args ? args.universeDomain : undefined;
@@ -598,6 +598,7 @@ export interface ProviderArgs {
     resourceManagerV3CustomEndpoint?: pulumi.Input<string>;
     runtimeConfigCustomEndpoint?: pulumi.Input<string>;
     runtimeconfigCustomEndpoint?: pulumi.Input<string>;
+    saasRuntimeCustomEndpoint?: pulumi.Input<string>;
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
     secretManagerCustomEndpoint?: pulumi.Input<string>;
     secretManagerRegionalCustomEndpoint?: pulumi.Input<string>;
@@ -622,7 +623,6 @@ export interface ProviderArgs {
     storageTransferCustomEndpoint?: pulumi.Input<string>;
     tagsCustomEndpoint?: pulumi.Input<string>;
     tagsLocationCustomEndpoint?: pulumi.Input<string>;
-    tpuCustomEndpoint?: pulumi.Input<string>;
     tpuV2CustomEndpoint?: pulumi.Input<string>;
     transcoderCustomEndpoint?: pulumi.Input<string>;
     universeDomain?: pulumi.Input<string>;

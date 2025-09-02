@@ -14,12 +14,6 @@ namespace Pulumi.Gcp.GkeHub.Outputs
     public sealed class FeatureMembershipConfigmanagement
     {
         /// <summary>
-        /// (Optional, Deprecated)
-        /// Binauthz configuration for the cluster. Structure is documented below.
-        /// This field will be ignored and should not be set.
-        /// </summary>
-        public readonly Outputs.FeatureMembershipConfigmanagementBinauthz? Binauthz;
-        /// <summary>
         /// Config Sync configuration for the cluster. Structure is documented below.
         /// </summary>
         public readonly Outputs.FeatureMembershipConfigmanagementConfigSync? ConfigSync;
@@ -48,8 +42,6 @@ namespace Pulumi.Gcp.GkeHub.Outputs
 
         [OutputConstructor]
         private FeatureMembershipConfigmanagement(
-            Outputs.FeatureMembershipConfigmanagementBinauthz? binauthz,
-
             Outputs.FeatureMembershipConfigmanagementConfigSync? configSync,
 
             Outputs.FeatureMembershipConfigmanagementHierarchyController? hierarchyController,
@@ -60,7 +52,6 @@ namespace Pulumi.Gcp.GkeHub.Outputs
 
             string? version)
         {
-            Binauthz = binauthz;
             ConfigSync = configSync;
             HierarchyController = hierarchyController;
             Management = management;

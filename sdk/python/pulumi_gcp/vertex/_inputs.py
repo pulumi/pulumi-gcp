@@ -7367,7 +7367,7 @@ class AiIndexIndexStatArgs:
 
 if not MYPY:
     class AiIndexMetadataArgsDict(TypedDict):
-        config: NotRequired[pulumi.Input['AiIndexMetadataConfigArgsDict']]
+        config: pulumi.Input['AiIndexMetadataConfigArgsDict']
         """
         The configuration of the Matching Engine Index.
         Structure is documented below.
@@ -7392,7 +7392,7 @@ elif False:
 @pulumi.input_type
 class AiIndexMetadataArgs:
     def __init__(__self__, *,
-                 config: Optional[pulumi.Input['AiIndexMetadataConfigArgs']] = None,
+                 config: pulumi.Input['AiIndexMetadataConfigArgs'],
                  contents_delta_uri: Optional[pulumi.Input[_builtins.str]] = None,
                  is_complete_overwrite: Optional[pulumi.Input[_builtins.bool]] = None):
         """
@@ -7407,8 +7407,7 @@ class AiIndexMetadataArgs:
         :param pulumi.Input[_builtins.bool] is_complete_overwrite: If this field is set together with contentsDeltaUri when calling IndexService.UpdateIndex,
                then existing content of the Index will be replaced by the data from the contentsDeltaUri.
         """
-        if config is not None:
-            pulumi.set(__self__, "config", config)
+        pulumi.set(__self__, "config", config)
         if contents_delta_uri is not None:
             pulumi.set(__self__, "contents_delta_uri", contents_delta_uri)
         if is_complete_overwrite is not None:
@@ -7416,7 +7415,7 @@ class AiIndexMetadataArgs:
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['AiIndexMetadataConfigArgs']]:
+    def config(self) -> pulumi.Input['AiIndexMetadataConfigArgs']:
         """
         The configuration of the Matching Engine Index.
         Structure is documented below.
@@ -7424,7 +7423,7 @@ class AiIndexMetadataArgs:
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['AiIndexMetadataConfigArgs']]):
+    def config(self, value: pulumi.Input['AiIndexMetadataConfigArgs']):
         pulumi.set(self, "config", value)
 
     @_builtins.property
@@ -7466,7 +7465,7 @@ if not MYPY:
         """
         algorithm_config: NotRequired[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigArgsDict']]
         """
-        The configuration with regard to the algorithms used for efficient search.
+        The configuration with regard to the algorithms used for efficient search. This field may be required based on your configuration.
         Structure is documented below.
         """
         approximate_neighbors_count: NotRequired[pulumi.Input[_builtins.int]]
@@ -7512,7 +7511,7 @@ class AiIndexMetadataConfigArgs:
                  shard_size: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] dimensions: The number of dimensions of the input vectors.
-        :param pulumi.Input['AiIndexMetadataConfigAlgorithmConfigArgs'] algorithm_config: The configuration with regard to the algorithms used for efficient search.
+        :param pulumi.Input['AiIndexMetadataConfigAlgorithmConfigArgs'] algorithm_config: The configuration with regard to the algorithms used for efficient search. This field may be required based on your configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] approximate_neighbors_count: The default number of neighbors to find via approximate search before exact reordering is
                performed. Exact reordering is a procedure where results returned by an
@@ -7560,7 +7559,7 @@ class AiIndexMetadataConfigArgs:
     @pulumi.getter(name="algorithmConfig")
     def algorithm_config(self) -> Optional[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigArgs']]:
         """
-        The configuration with regard to the algorithms used for efficient search.
+        The configuration with regard to the algorithms used for efficient search. This field may be required based on your configuration.
         Structure is documented below.
         """
         return pulumi.get(self, "algorithm_config")

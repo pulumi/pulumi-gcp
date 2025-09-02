@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  *     networkConfig: {
  *         network: defaultNetwork.id,
  *     },
+ *     deletionProtection: false,
  * });
  * const project = gcp.organizations.getProject({});
  * ```
@@ -44,6 +45,7 @@ import * as utilities from "../utilities";
  *     initialUser: {
  *         password: "alloydb-cluster",
  *     },
+ *     deletionProtection: false,
  * });
  * const defaultInstance = new gcp.alloydb.Instance("default", {
  *     cluster: defaultCluster.name,
@@ -73,6 +75,7 @@ import * as utilities from "../utilities";
  *     initialUser: {
  *         password: "alloydb-cluster",
  *     },
+ *     deletionProtection: false,
  * });
  * const defaultInstance = new gcp.alloydb.Instance("default", {
  *     cluster: defaultCluster.name,
@@ -128,6 +131,7 @@ import * as utilities from "../utilities";
  *     labels: {
  *         test: "alloydb-cluster-full",
  *     },
+ *     deletionProtection: false,
  * });
  * const project = gcp.organizations.getProject({});
  * ```
@@ -144,6 +148,7 @@ import * as utilities from "../utilities";
  *     networkConfig: {
  *         network: _default.id,
  *     },
+ *     deletionProtection: false,
  * });
  * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
  *     name: "alloydb-secondary-cluster",
@@ -180,6 +185,7 @@ import * as utilities from "../utilities";
  *     secondaryConfig: {
  *         primaryClusterName: primary.name,
  *     },
+ *     deletionProtection: false,
  * }, {
  *     dependsOn: [primaryInstance],
  * });
@@ -295,6 +301,7 @@ export class Cluster extends pulumi.CustomResource {
      * Possible values: DEFAULT, FORCE
      */
     public readonly deletionPolicy!: pulumi.Output<string | undefined>;
+    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
      * User-settable and human-readable display name for the Cluster.
      */
@@ -436,6 +443,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["continuousBackupInfos"] = state ? state.continuousBackupInfos : undefined;
             resourceInputs["databaseVersion"] = state ? state.databaseVersion : undefined;
             resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
+            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
@@ -476,6 +484,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["continuousBackupConfig"] = args ? args.continuousBackupConfig : undefined;
             resourceInputs["databaseVersion"] = args ? args.databaseVersion : undefined;
             resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
+            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
@@ -566,6 +575,7 @@ export interface ClusterState {
      * Possible values: DEFAULT, FORCE
      */
     deletionPolicy?: pulumi.Input<string>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * User-settable and human-readable display name for the Cluster.
      */
@@ -731,6 +741,7 @@ export interface ClusterArgs {
      * Possible values: DEFAULT, FORCE
      */
     deletionPolicy?: pulumi.Input<string>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * User-settable and human-readable display name for the Cluster.
      */

@@ -43,6 +43,7 @@ namespace Pulumi.Gcp.Alloydb
     ///         {
     ///             Network = defaultNetwork.Id,
     ///         },
+    ///         DeletionProtection = false,
     ///     });
     /// 
     ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("private_ip_alloc", new()
@@ -115,6 +116,7 @@ namespace Pulumi.Gcp.Alloydb
     ///         {
     ///             Network = defaultNetwork.Id,
     ///         },
+    ///         DeletionProtection = false,
     ///     });
     /// 
     ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("private_ip_alloc", new()

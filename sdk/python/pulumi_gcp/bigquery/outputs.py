@@ -64,6 +64,7 @@ __all__ = [
     'JobLoadParquetOptions',
     'JobLoadTimePartitioning',
     'JobQuery',
+    'JobQueryConnectionProperty',
     'JobQueryDefaultDataset',
     'JobQueryDestinationEncryptionConfiguration',
     'JobQueryDestinationTable',
@@ -1154,6 +1155,8 @@ class DataTransferConfigSensitiveParams(dict):
         suggest = None
         if key == "secretAccessKey":
             suggest = "secret_access_key"
+        elif key == "secretAccessKeyWoVersion":
+            suggest = "secret_access_key_wo_version"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DataTransferConfigSensitiveParams. Access the value via the '{suggest}' property getter instead.")
@@ -1167,12 +1170,16 @@ class DataTransferConfigSensitiveParams(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 secret_access_key: Optional[_builtins.str] = None):
+                 secret_access_key: Optional[_builtins.str] = None,
+                 secret_access_key_wo_version: Optional[_builtins.int] = None):
         """
         :param _builtins.str secret_access_key: The Secret Access Key of the AWS account transferring data from.
+        :param _builtins.int secret_access_key_wo_version: The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
         """
         if secret_access_key is not None:
             pulumi.set(__self__, "secret_access_key", secret_access_key)
+        if secret_access_key_wo_version is not None:
+            pulumi.set(__self__, "secret_access_key_wo_version", secret_access_key_wo_version)
 
     @_builtins.property
     @pulumi.getter(name="secretAccessKey")
@@ -1181,6 +1188,14 @@ class DataTransferConfigSensitiveParams(dict):
         The Secret Access Key of the AWS account transferring data from.
         """
         return pulumi.get(self, "secret_access_key")
+
+    @_builtins.property
+    @pulumi.getter(name="secretAccessKeyWoVersion")
+    def secret_access_key_wo_version(self) -> Optional[_builtins.int]:
+        """
+        The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+        """
+        return pulumi.get(self, "secret_access_key_wo_version")
 
 
 @pulumi.output_type
@@ -3257,6 +3272,8 @@ class JobQuery(dict):
         suggest = None
         if key == "allowLargeResults":
             suggest = "allow_large_results"
+        elif key == "connectionProperties":
+            suggest = "connection_properties"
         elif key == "createDisposition":
             suggest = "create_disposition"
         elif key == "defaultDataset":
@@ -3300,6 +3317,7 @@ class JobQuery(dict):
     def __init__(__self__, *,
                  query: _builtins.str,
                  allow_large_results: Optional[_builtins.bool] = None,
+                 connection_properties: Optional[Sequence['outputs.JobQueryConnectionProperty']] = None,
                  continuous: Optional[_builtins.bool] = None,
                  create_disposition: Optional[_builtins.str] = None,
                  default_dataset: Optional['outputs.JobQueryDefaultDataset'] = None,
@@ -3323,6 +3341,10 @@ class JobQuery(dict):
         :param _builtins.bool allow_large_results: If true and query uses legacy SQL dialect, allows the query to produce arbitrarily large result tables at a slight cost in performance.
                Requires destinationTable to be set. For standard SQL queries, this flag is ignored and large results are always allowed.
                However, you must still set destinationTable when result size exceeds the allowed maximum response size.
+        :param Sequence['JobQueryConnectionPropertyArgs'] connection_properties: Connection properties to customize query behavior. Under JDBC, these correspond
+               directly to connection properties passed to the DriverManager. Under ODBC, these
+               correspond to properties in the connection string.
+               Structure is documented below.
         :param _builtins.bool continuous: Whether to run the query as continuous or a regular query.
         :param _builtins.str create_disposition: Specifies whether the job is allowed to create new tables. The following values are supported:
                CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
@@ -3376,6 +3398,8 @@ class JobQuery(dict):
         pulumi.set(__self__, "query", query)
         if allow_large_results is not None:
             pulumi.set(__self__, "allow_large_results", allow_large_results)
+        if connection_properties is not None:
+            pulumi.set(__self__, "connection_properties", connection_properties)
         if continuous is not None:
             pulumi.set(__self__, "continuous", continuous)
         if create_disposition is not None:
@@ -3428,6 +3452,17 @@ class JobQuery(dict):
         However, you must still set destinationTable when result size exceeds the allowed maximum response size.
         """
         return pulumi.get(self, "allow_large_results")
+
+    @_builtins.property
+    @pulumi.getter(name="connectionProperties")
+    def connection_properties(self) -> Optional[Sequence['outputs.JobQueryConnectionProperty']]:
+        """
+        Connection properties to customize query behavior. Under JDBC, these correspond
+        directly to connection properties passed to the DriverManager. Under ODBC, these
+        correspond to properties in the connection string.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "connection_properties")
 
     @_builtins.property
     @pulumi.getter
@@ -3589,6 +3624,35 @@ class JobQuery(dict):
         Possible values are: `WRITE_TRUNCATE`, `WRITE_APPEND`, `WRITE_EMPTY`.
         """
         return pulumi.get(self, "write_disposition")
+
+
+@pulumi.output_type
+class JobQueryConnectionProperty(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str key: The key of the property to set. Currently supported connection properties:
+        :param _builtins.str value: The value of the property to set.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        The key of the property to set. Currently supported connection properties:
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        The value of the property to set.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -6608,7 +6672,10 @@ class TableView(dict):
         """
         :param _builtins.str query: A query that BigQuery executes when the view is referenced.
         :param _builtins.bool use_legacy_sql: Specifies whether to use BigQuery's legacy SQL for this view.
-               The default value is true. If set to false, the view will use BigQuery's standard SQL.
+               If set to `false`, the view will use BigQuery's standard SQL. If set to
+               `true`, the view will use BigQuery's legacy SQL. If unset, the API will
+               interpret it as a `true` and assumes the legacy SQL dialect for its query
+               according to the [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#ViewDefinition).
                > **Note**: Starting in provider version `7.0.0`, no default value is
                provided for this field unless explicitly set in the configuration.
         """
@@ -6629,7 +6696,10 @@ class TableView(dict):
     def use_legacy_sql(self) -> Optional[_builtins.bool]:
         """
         Specifies whether to use BigQuery's legacy SQL for this view.
-        The default value is true. If set to false, the view will use BigQuery's standard SQL.
+        If set to `false`, the view will use BigQuery's standard SQL. If set to
+        `true`, the view will use BigQuery's legacy SQL. If unset, the API will
+        interpret it as a `true` and assumes the legacy SQL dialect for its query
+        according to the [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#ViewDefinition).
         > **Note**: Starting in provider version `7.0.0`, no default value is
         provided for this field unless explicitly set in the configuration.
         """
@@ -8365,7 +8435,7 @@ class GetTableViewResult(dict):
                  use_legacy_sql: _builtins.bool):
         """
         :param _builtins.str query: A query that BigQuery executes when the view is referenced.
-        :param _builtins.bool use_legacy_sql: Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to false, the view will use BigQuery's standard SQL
+        :param _builtins.bool use_legacy_sql: Specifies whether to use BigQuery's legacy SQL for this view. If set to false, the view will use BigQuery's standard SQL
         """
         pulumi.set(__self__, "query", query)
         pulumi.set(__self__, "use_legacy_sql", use_legacy_sql)
@@ -8382,7 +8452,7 @@ class GetTableViewResult(dict):
     @pulumi.getter(name="useLegacySql")
     def use_legacy_sql(self) -> _builtins.bool:
         """
-        Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to false, the view will use BigQuery's standard SQL
+        Specifies whether to use BigQuery's legacy SQL for this view. If set to false, the view will use BigQuery's standard SQL
         """
         return pulumi.get(self, "use_legacy_sql")
 

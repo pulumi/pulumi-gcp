@@ -21,7 +21,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
         /// <summary>
         /// Required. The type of event to observe.
         /// </summary>
-        public readonly string? EventType;
+        public readonly string EventType;
         /// <summary>
         /// The name of a Pub/Sub topic in the same project that will be used
         /// as the transport topic for the event delivery.
@@ -56,7 +56,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
         private FunctionEventTrigger(
             ImmutableArray<Outputs.FunctionEventTriggerEventFilter> eventFilters,
 
-            string? eventType,
+            string eventType,
 
             string? pubsubTopic,
 

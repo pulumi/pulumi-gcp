@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Vertex.Outputs
     public sealed class AiIndexMetadataConfig
     {
         /// <summary>
-        /// The configuration with regard to the algorithms used for efficient search.
+        /// The configuration with regard to the algorithms used for efficient search. This field may be required based on your configuration.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.AiIndexMetadataConfigAlgorithmConfig? AlgorithmConfig;
