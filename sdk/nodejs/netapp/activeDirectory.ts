@@ -111,114 +111,114 @@ export class ActiveDirectory extends pulumi.CustomResource {
     /**
      * Domain user accounts to be added to the local Administrators group of the SMB service. Comma-separated list of domain users or groups. The Domain Admin group is automatically added when the service joins your domain as a hidden group.
      */
-    public readonly administrators!: pulumi.Output<string[] | undefined>;
+    declare public readonly administrators: pulumi.Output<string[] | undefined>;
     /**
      * Enables AES-128 and AES-256 encryption for Kerberos-based communication with Active Directory.
      */
-    public readonly aesEncryption!: pulumi.Output<boolean | undefined>;
+    declare public readonly aesEncryption: pulumi.Output<boolean | undefined>;
     /**
      * Domain user/group accounts to be added to the Backup Operators group of the SMB service. The Backup Operators group allows members to backup and restore files regardless of whether they have read or write access to the files. Comma-separated list.
      */
-    public readonly backupOperators!: pulumi.Output<string[] | undefined>;
+    declare public readonly backupOperators: pulumi.Output<string[] | undefined>;
     /**
      * Create time of the active directory. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * An optional description of this resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Comma separated list of DNS server IP addresses for the Active Directory domain.
      */
-    public readonly dns!: pulumi.Output<string>;
+    declare public readonly dns: pulumi.Output<string>;
     /**
      * Fully qualified domain name for the Active Directory domain.
      */
-    public readonly domain!: pulumi.Output<string>;
+    declare public readonly domain: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * If enabled, traffic between the SMB server to Domain Controller (DC) will be encrypted.
      */
-    public readonly encryptDcConnections!: pulumi.Output<boolean | undefined>;
+    declare public readonly encryptDcConnections: pulumi.Output<boolean | undefined>;
     /**
      * Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only required for volumes using kerberized NFSv4.1
      */
-    public readonly kdcHostname!: pulumi.Output<string | undefined>;
+    declare public readonly kdcHostname: pulumi.Output<string | undefined>;
     /**
      * IP address of the Active Directory server used as Kerberos Key Distribution Center.
      */
-    public readonly kdcIp!: pulumi.Output<string | undefined>;
+    declare public readonly kdcIp: pulumi.Output<string | undefined>;
     /**
      * Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Specifies whether or not the LDAP traffic needs to be signed.
      */
-    public readonly ldapSigning!: pulumi.Output<boolean | undefined>;
+    declare public readonly ldapSigning: pulumi.Output<boolean | undefined>;
     /**
      * Name of the region for the policy to apply to.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The resource name of the Active Directory pool. Needs to be unique per location.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * NetBIOS name prefix of the server to be created.
      * A five-character random ID is generated automatically, for example, -6f9a, and appended to the prefix. The full UNC share path will have the following format:
      * `\\NetBIOS_PREFIX-ABCD.DOMAIN_NAME\SHARE_NAME`
      */
-    public readonly netBiosPrefix!: pulumi.Output<string>;
+    declare public readonly netBiosPrefix: pulumi.Output<string>;
     /**
      * Local UNIX users on clients without valid user information in Active Directory are blocked from access to LDAP enabled volumes.
      * This option can be used to temporarily switch such volumes to AUTH_SYS authentication (user ID + 1-16 groups).
      */
-    public readonly nfsUsersWithLdap!: pulumi.Output<boolean | undefined>;
+    declare public readonly nfsUsersWithLdap: pulumi.Output<boolean | undefined>;
     /**
      * Name of the Organizational Unit where you intend to create the computer account for NetApp Volumes.
      * Defaults to `CN=Computers` if left empty.
      */
-    public readonly organizationalUnit!: pulumi.Output<string>;
-    public readonly password!: pulumi.Output<string>;
+    declare public readonly organizationalUnit: pulumi.Output<string>;
+    declare public readonly password: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Domain accounts that require elevated privileges such as `SeSecurityPrivilege` to manage security logs. Comma-separated list.
      */
-    public readonly securityOperators!: pulumi.Output<string[] | undefined>;
+    declare public readonly securityOperators: pulumi.Output<string[] | undefined>;
     /**
      * Specifies an Active Directory site to manage domain controller selection.
      * Use when Active Directory domain controllers in multiple regions are configured. Defaults to `Default-First-Site-Name` if left empty.
      */
-    public readonly site!: pulumi.Output<string | undefined>;
+    declare public readonly site: pulumi.Output<string | undefined>;
     /**
      * The state of the Active Directory policy (not the Active Directory itself).
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The state details of the Active Directory.
      */
-    public /*out*/ readonly stateDetails!: pulumi.Output<string>;
+    declare public /*out*/ readonly stateDetails: pulumi.Output<string>;
     /**
      * Username for the Active Directory account with permissions to create the compute account within the specified organizational unit.
      */
-    public readonly username!: pulumi.Output<string>;
+    declare public readonly username: pulumi.Output<string>;
 
     /**
      * Create a ActiveDirectory resource with the given unique name, arguments, and options.
@@ -233,73 +233,73 @@ export class ActiveDirectory extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ActiveDirectoryState | undefined;
-            resourceInputs["administrators"] = state ? state.administrators : undefined;
-            resourceInputs["aesEncryption"] = state ? state.aesEncryption : undefined;
-            resourceInputs["backupOperators"] = state ? state.backupOperators : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["dns"] = state ? state.dns : undefined;
-            resourceInputs["domain"] = state ? state.domain : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["encryptDcConnections"] = state ? state.encryptDcConnections : undefined;
-            resourceInputs["kdcHostname"] = state ? state.kdcHostname : undefined;
-            resourceInputs["kdcIp"] = state ? state.kdcIp : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["ldapSigning"] = state ? state.ldapSigning : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["netBiosPrefix"] = state ? state.netBiosPrefix : undefined;
-            resourceInputs["nfsUsersWithLdap"] = state ? state.nfsUsersWithLdap : undefined;
-            resourceInputs["organizationalUnit"] = state ? state.organizationalUnit : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["securityOperators"] = state ? state.securityOperators : undefined;
-            resourceInputs["site"] = state ? state.site : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["stateDetails"] = state ? state.stateDetails : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["administrators"] = state?.administrators;
+            resourceInputs["aesEncryption"] = state?.aesEncryption;
+            resourceInputs["backupOperators"] = state?.backupOperators;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["dns"] = state?.dns;
+            resourceInputs["domain"] = state?.domain;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["encryptDcConnections"] = state?.encryptDcConnections;
+            resourceInputs["kdcHostname"] = state?.kdcHostname;
+            resourceInputs["kdcIp"] = state?.kdcIp;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["ldapSigning"] = state?.ldapSigning;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["netBiosPrefix"] = state?.netBiosPrefix;
+            resourceInputs["nfsUsersWithLdap"] = state?.nfsUsersWithLdap;
+            resourceInputs["organizationalUnit"] = state?.organizationalUnit;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["securityOperators"] = state?.securityOperators;
+            resourceInputs["site"] = state?.site;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["stateDetails"] = state?.stateDetails;
+            resourceInputs["username"] = state?.username;
         } else {
             const args = argsOrState as ActiveDirectoryArgs | undefined;
-            if ((!args || args.dns === undefined) && !opts.urn) {
+            if (args?.dns === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dns'");
             }
-            if ((!args || args.domain === undefined) && !opts.urn) {
+            if (args?.domain === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domain'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.netBiosPrefix === undefined) && !opts.urn) {
+            if (args?.netBiosPrefix === undefined && !opts.urn) {
                 throw new Error("Missing required property 'netBiosPrefix'");
             }
-            if ((!args || args.password === undefined) && !opts.urn) {
+            if (args?.password === undefined && !opts.urn) {
                 throw new Error("Missing required property 'password'");
             }
-            if ((!args || args.username === undefined) && !opts.urn) {
+            if (args?.username === undefined && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
-            resourceInputs["administrators"] = args ? args.administrators : undefined;
-            resourceInputs["aesEncryption"] = args ? args.aesEncryption : undefined;
-            resourceInputs["backupOperators"] = args ? args.backupOperators : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["dns"] = args ? args.dns : undefined;
-            resourceInputs["domain"] = args ? args.domain : undefined;
-            resourceInputs["encryptDcConnections"] = args ? args.encryptDcConnections : undefined;
-            resourceInputs["kdcHostname"] = args ? args.kdcHostname : undefined;
-            resourceInputs["kdcIp"] = args ? args.kdcIp : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["ldapSigning"] = args ? args.ldapSigning : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["netBiosPrefix"] = args ? args.netBiosPrefix : undefined;
-            resourceInputs["nfsUsersWithLdap"] = args ? args.nfsUsersWithLdap : undefined;
-            resourceInputs["organizationalUnit"] = args ? args.organizationalUnit : undefined;
+            resourceInputs["administrators"] = args?.administrators;
+            resourceInputs["aesEncryption"] = args?.aesEncryption;
+            resourceInputs["backupOperators"] = args?.backupOperators;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["dns"] = args?.dns;
+            resourceInputs["domain"] = args?.domain;
+            resourceInputs["encryptDcConnections"] = args?.encryptDcConnections;
+            resourceInputs["kdcHostname"] = args?.kdcHostname;
+            resourceInputs["kdcIp"] = args?.kdcIp;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["ldapSigning"] = args?.ldapSigning;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["netBiosPrefix"] = args?.netBiosPrefix;
+            resourceInputs["nfsUsersWithLdap"] = args?.nfsUsersWithLdap;
+            resourceInputs["organizationalUnit"] = args?.organizationalUnit;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["securityOperators"] = args ? args.securityOperators : undefined;
-            resourceInputs["site"] = args ? args.site : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["securityOperators"] = args?.securityOperators;
+            resourceInputs["site"] = args?.site;
+            resourceInputs["username"] = args?.username;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;

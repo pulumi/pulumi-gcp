@@ -40,9 +40,10 @@ class AssetArgs:
         :param pulumi.Input['AssetResourceSpecArgs'] resource_spec: Required. Immutable. Specification of the resource that is referenced by this asset.
         :param pulumi.Input[_builtins.str] description: Optional. Description of the asset.
         :param pulumi.Input[_builtins.str] display_name: Optional. User friendly display name.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. User defined labels for the asset. **Note**: This field is non-authoritative, and will only manage the labels
-               present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. User defined labels for the asset.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: The name of the asset.
         :param pulumi.Input[_builtins.str] project: The project for the resource
         """
@@ -150,9 +151,10 @@ class AssetArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Optional. User defined labels for the asset. **Note**: This field is non-authoritative, and will only manage the labels
-        present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
-        resource.
+        Optional. User defined labels for the asset.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -216,9 +218,10 @@ class _AssetState:
         :param pulumi.Input[Sequence[pulumi.Input['AssetDiscoveryStatusArgs']]] discovery_statuses: Output only. Status of the discovery feature applied to data referenced by this asset.
         :param pulumi.Input[_builtins.str] display_name: Optional. User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. User defined labels for the asset. **Note**: This field is non-authoritative, and will only manage the labels
-               present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. User defined labels for the asset.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] lake: The lake for the resource
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] name: The name of the asset.
@@ -358,9 +361,10 @@ class _AssetState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Optional. User defined labels for the asset. **Note**: This field is non-authoritative, and will only manage the labels
-        present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
-        resource.
+        Optional. User defined labels for the asset.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -599,9 +603,10 @@ class Asset(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Optional. Description of the asset.
         :param pulumi.Input[Union['AssetDiscoverySpecArgs', 'AssetDiscoverySpecArgsDict']] discovery_spec: Required. Specification of the discovery feature applied to data referenced by this asset. When this spec is left unset, the asset will use the spec set on the parent zone.
         :param pulumi.Input[_builtins.str] display_name: Optional. User friendly display name.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. User defined labels for the asset. **Note**: This field is non-authoritative, and will only manage the labels
-               present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. User defined labels for the asset.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] lake: The lake for the resource
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] name: The name of the asset.
@@ -797,9 +802,10 @@ class Asset(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['AssetDiscoveryStatusArgs', 'AssetDiscoveryStatusArgsDict']]]] discovery_statuses: Output only. Status of the discovery feature applied to data referenced by this asset.
         :param pulumi.Input[_builtins.str] display_name: Optional. User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. User defined labels for the asset. **Note**: This field is non-authoritative, and will only manage the labels
-               present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. User defined labels for the asset.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] lake: The lake for the resource
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] name: The name of the asset.
@@ -897,9 +903,10 @@ class Asset(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
-        Optional. User defined labels for the asset. **Note**: This field is non-authoritative, and will only manage the labels
-        present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
-        resource.
+        Optional. User defined labels for the asset.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 

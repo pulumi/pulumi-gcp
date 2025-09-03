@@ -267,8 +267,7 @@ namespace Pulumi.Gcp.BigTable
         public Output<string?> Instance { get; private set; } = null!;
 
         /// <summary>
-        /// The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all
-        /// clusters are eligible.
+        /// The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all clusters are eligible.
         /// </summary>
         [Output("multiClusterRoutingClusterIds")]
         public Output<ImmutableArray<string>> MultiClusterRoutingClusterIds { get; private set; } = null!;
@@ -295,11 +294,7 @@ namespace Pulumi.Gcp.BigTable
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Must be used with multi-cluster routing. If true, then this app profile will use row affinity sticky routing. With row
-        /// affinity, Bigtable will route single row key requests based on the row key, rather than randomly. Instead, each row key
-        /// will be assigned to a cluster by Cloud Bigtable, and will stick to that cluster. Choosing this option improves
-        /// read-your-writes consistency for most requests under most circumstances, without sacrificing availability. Consistency
-        /// is not guaranteed, as requests may still fail over between clusters in the event of errors or latency.
+        /// Must be used with multi-cluster routing. If true, then this app profile will use row affinity sticky routing. With row affinity, Bigtable will route single row key requests based on the row key, rather than randomly. Instead, each row key will be assigned to a cluster by Cloud Bigtable, and will stick to that cluster. Choosing this option improves read-your-writes consistency for most requests under most circumstances, without sacrificing availability. Consistency is not guaranteed, as requests may still fail over between clusters in the event of errors or latency.
         /// </summary>
         [Output("rowAffinity")]
         public Output<bool?> RowAffinity { get; private set; } = null!;
@@ -403,8 +398,7 @@ namespace Pulumi.Gcp.BigTable
         private InputList<string>? _multiClusterRoutingClusterIds;
 
         /// <summary>
-        /// The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all
-        /// clusters are eligible.
+        /// The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all clusters are eligible.
         /// </summary>
         public InputList<string> MultiClusterRoutingClusterIds
         {
@@ -428,11 +422,7 @@ namespace Pulumi.Gcp.BigTable
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Must be used with multi-cluster routing. If true, then this app profile will use row affinity sticky routing. With row
-        /// affinity, Bigtable will route single row key requests based on the row key, rather than randomly. Instead, each row key
-        /// will be assigned to a cluster by Cloud Bigtable, and will stick to that cluster. Choosing this option improves
-        /// read-your-writes consistency for most requests under most circumstances, without sacrificing availability. Consistency
-        /// is not guaranteed, as requests may still fail over between clusters in the event of errors or latency.
+        /// Must be used with multi-cluster routing. If true, then this app profile will use row affinity sticky routing. With row affinity, Bigtable will route single row key requests based on the row key, rather than randomly. Instead, each row key will be assigned to a cluster by Cloud Bigtable, and will stick to that cluster. Choosing this option improves read-your-writes consistency for most requests under most circumstances, without sacrificing availability. Consistency is not guaranteed, as requests may still fail over between clusters in the event of errors or latency.
         /// </summary>
         [Input("rowAffinity")]
         public Input<bool>? RowAffinity { get; set; }
@@ -494,8 +484,7 @@ namespace Pulumi.Gcp.BigTable
         private InputList<string>? _multiClusterRoutingClusterIds;
 
         /// <summary>
-        /// The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all
-        /// clusters are eligible.
+        /// The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all clusters are eligible.
         /// </summary>
         public InputList<string> MultiClusterRoutingClusterIds
         {
@@ -525,11 +514,7 @@ namespace Pulumi.Gcp.BigTable
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Must be used with multi-cluster routing. If true, then this app profile will use row affinity sticky routing. With row
-        /// affinity, Bigtable will route single row key requests based on the row key, rather than randomly. Instead, each row key
-        /// will be assigned to a cluster by Cloud Bigtable, and will stick to that cluster. Choosing this option improves
-        /// read-your-writes consistency for most requests under most circumstances, without sacrificing availability. Consistency
-        /// is not guaranteed, as requests may still fail over between clusters in the event of errors or latency.
+        /// Must be used with multi-cluster routing. If true, then this app profile will use row affinity sticky routing. With row affinity, Bigtable will route single row key requests based on the row key, rather than randomly. Instead, each row key will be assigned to a cluster by Cloud Bigtable, and will stick to that cluster. Choosing this option improves read-your-writes consistency for most requests under most circumstances, without sacrificing availability. Consistency is not guaranteed, as requests may still fail over between clusters in the event of errors or latency.
         /// </summary>
         [Input("rowAffinity")]
         public Input<bool>? RowAffinity { get; set; }

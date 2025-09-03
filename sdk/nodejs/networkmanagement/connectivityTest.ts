@@ -204,12 +204,12 @@ export class ConnectivityTest extends pulumi.CustomResource {
     /**
      * Whether the analysis should skip firewall checking. Default value is false.
      */
-    public readonly bypassFirewallChecks!: pulumi.Output<boolean | undefined>;
+    declare public readonly bypassFirewallChecks: pulumi.Output<boolean | undefined>;
     /**
      * The user-supplied description of the Connectivity Test.
      * Maximum of 512 characters.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Required. Destination specification of the Connectivity Test.
      * You can use a combination of destination IP address, URI of a supported
@@ -219,47 +219,47 @@ export class ConnectivityTest extends pulumi.CustomResource {
      * destination that you don't intend to test.
      * Structure is documented below.
      */
-    public readonly destination!: pulumi.Output<outputs.networkmanagement.ConnectivityTestDestination>;
+    declare public readonly destination: pulumi.Output<outputs.networkmanagement.ConnectivityTestDestination>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Resource labels to represent user-provided metadata.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Unique name for the connectivity test.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * IP Protocol of the test. When not provided, "TCP" is assumed.
      */
-    public readonly protocol!: pulumi.Output<string | undefined>;
+    declare public readonly protocol: pulumi.Output<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Other projects that may be relevant for reachability analysis.
      * This is applicable to scenarios where a test can cross project
      * boundaries.
      */
-    public readonly relatedProjects!: pulumi.Output<string[] | undefined>;
+    declare public readonly relatedProjects: pulumi.Output<string[] | undefined>;
     /**
      * Whether run analysis for the return path from destination to source.
      * Default value is false.
      */
-    public readonly roundTrip!: pulumi.Output<boolean | undefined>;
+    declare public readonly roundTrip: pulumi.Output<boolean | undefined>;
     /**
      * Required. Source specification of the Connectivity Test.
      * You can use a combination of source IP address, URI of a supported
@@ -269,7 +269,7 @@ export class ConnectivityTest extends pulumi.CustomResource {
      * that you don't intend to test.
      * Structure is documented below.
      */
-    public readonly source!: pulumi.Output<outputs.networkmanagement.ConnectivityTestSource>;
+    declare public readonly source: pulumi.Output<outputs.networkmanagement.ConnectivityTestSource>;
 
     /**
      * Create a ConnectivityTest resource with the given unique name, arguments, and options.
@@ -284,36 +284,36 @@ export class ConnectivityTest extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectivityTestState | undefined;
-            resourceInputs["bypassFirewallChecks"] = state ? state.bypassFirewallChecks : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["destination"] = state ? state.destination : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["protocol"] = state ? state.protocol : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["relatedProjects"] = state ? state.relatedProjects : undefined;
-            resourceInputs["roundTrip"] = state ? state.roundTrip : undefined;
-            resourceInputs["source"] = state ? state.source : undefined;
+            resourceInputs["bypassFirewallChecks"] = state?.bypassFirewallChecks;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["destination"] = state?.destination;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["protocol"] = state?.protocol;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["relatedProjects"] = state?.relatedProjects;
+            resourceInputs["roundTrip"] = state?.roundTrip;
+            resourceInputs["source"] = state?.source;
         } else {
             const args = argsOrState as ConnectivityTestArgs | undefined;
-            if ((!args || args.destination === undefined) && !opts.urn) {
+            if (args?.destination === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destination'");
             }
-            if ((!args || args.source === undefined) && !opts.urn) {
+            if (args?.source === undefined && !opts.urn) {
                 throw new Error("Missing required property 'source'");
             }
-            resourceInputs["bypassFirewallChecks"] = args ? args.bypassFirewallChecks : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["destination"] = args ? args.destination : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["protocol"] = args ? args.protocol : undefined;
-            resourceInputs["relatedProjects"] = args ? args.relatedProjects : undefined;
-            resourceInputs["roundTrip"] = args ? args.roundTrip : undefined;
-            resourceInputs["source"] = args ? args.source : undefined;
+            resourceInputs["bypassFirewallChecks"] = args?.bypassFirewallChecks;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["destination"] = args?.destination;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["protocol"] = args?.protocol;
+            resourceInputs["relatedProjects"] = args?.relatedProjects;
+            resourceInputs["roundTrip"] = args?.roundTrip;
+            resourceInputs["source"] = args?.source;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
         }

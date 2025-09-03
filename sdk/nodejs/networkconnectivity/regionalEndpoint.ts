@@ -128,69 +128,69 @@ export class RegionalEndpoint extends pulumi.CustomResource {
      * The access type of this regional endpoint. This field is reflected in the PSC Forwarding Rule configuration to enable global access.
      * Possible values are: `GLOBAL`, `REGIONAL`.
      */
-    public readonly accessType!: pulumi.Output<string>;
+    declare public readonly accessType: pulumi.Output<string>;
     /**
      * The IP Address of the Regional Endpoint. When no address is provided, an IP from the subnetwork is allocated. Use one of the following formats: * IPv4 address as in `10.0.0.1` * Address resource URI as in `projects/{project}/regions/{region}/addresses/{address_name}`
      * > **Note:** This field accepts both a reference to a Compute Address resource, which is the resource name of which format is given in the description, and IP literal value. If the user chooses to input a reserved address value; they need to make sure that the reserved address is in IPv4 version, its purpose is GCE_ENDPOINT, its type is INTERNAL and its status is RESERVED. If the user chooses to input an IP literal, they need to make sure that it's a valid IPv4 address (x.x.x.x) within the subnetwork.
      */
-    public readonly address!: pulumi.Output<string>;
+    declare public readonly address: pulumi.Output<string>;
     /**
      * Time when the RegionalEndpoint was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * A description of this resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * User-defined labels.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location of the RegionalEndpoint.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The name of the RegionalEndpoint.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The name of the VPC network for this private regional endpoint. Format: `projects/{project}/global/networks/{network}`
      */
-    public readonly network!: pulumi.Output<string>;
+    declare public readonly network: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The resource reference of the PSC Forwarding Rule created on behalf of the customer. Format: `//compute.googleapis.com/projects/{project}/regions/{region}/forwardingRules/{forwarding_rule_name}`
      */
-    public /*out*/ readonly pscForwardingRule!: pulumi.Output<string>;
+    declare public /*out*/ readonly pscForwardingRule: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of the subnetwork from which the IP address will be allocated. Format: `projects/{project}/regions/{region}/subnetworks/{subnetwork}`
      */
-    public readonly subnetwork!: pulumi.Output<string>;
+    declare public readonly subnetwork: pulumi.Output<string>;
     /**
      * The service endpoint this private regional endpoint connects to. Format: `{apiname}.{region}.rep.googleapis.com` Example: \"cloudkms.us-central1.rep.googleapis.com\".
      */
-    public readonly targetGoogleApi!: pulumi.Output<string>;
+    declare public readonly targetGoogleApi: pulumi.Output<string>;
     /**
      * Time when the RegionalEndpoint was updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a RegionalEndpoint resource with the given unique name, arguments, and options.
@@ -205,42 +205,42 @@ export class RegionalEndpoint extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegionalEndpointState | undefined;
-            resourceInputs["accessType"] = state ? state.accessType : undefined;
-            resourceInputs["address"] = state ? state.address : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pscForwardingRule"] = state ? state.pscForwardingRule : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["subnetwork"] = state ? state.subnetwork : undefined;
-            resourceInputs["targetGoogleApi"] = state ? state.targetGoogleApi : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["accessType"] = state?.accessType;
+            resourceInputs["address"] = state?.address;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pscForwardingRule"] = state?.pscForwardingRule;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["subnetwork"] = state?.subnetwork;
+            resourceInputs["targetGoogleApi"] = state?.targetGoogleApi;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as RegionalEndpointArgs | undefined;
-            if ((!args || args.accessType === undefined) && !opts.urn) {
+            if (args?.accessType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accessType'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.targetGoogleApi === undefined) && !opts.urn) {
+            if (args?.targetGoogleApi === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetGoogleApi'");
             }
-            resourceInputs["accessType"] = args ? args.accessType : undefined;
-            resourceInputs["address"] = args ? args.address : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
-            resourceInputs["targetGoogleApi"] = args ? args.targetGoogleApi : undefined;
+            resourceInputs["accessType"] = args?.accessType;
+            resourceInputs["address"] = args?.address;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["subnetwork"] = args?.subnetwork;
+            resourceInputs["targetGoogleApi"] = args?.targetGoogleApi;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pscForwardingRule"] = undefined /*out*/;

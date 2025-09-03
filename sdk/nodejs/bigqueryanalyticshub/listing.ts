@@ -377,103 +377,103 @@ export class Listing extends pulumi.CustomResource {
     /**
      * If true, the listing is only available to get the resource metadata. Listing is non subscribable.
      */
-    public readonly allowOnlyMetadataSharing!: pulumi.Output<boolean | undefined>;
+    declare public readonly allowOnlyMetadataSharing: pulumi.Output<boolean | undefined>;
     /**
      * Shared dataset i.e. BigQuery dataset source.
      * Structure is documented below.
      */
-    public readonly bigqueryDataset!: pulumi.Output<outputs.bigqueryanalyticshub.ListingBigqueryDataset | undefined>;
+    declare public readonly bigqueryDataset: pulumi.Output<outputs.bigqueryanalyticshub.ListingBigqueryDataset | undefined>;
     /**
      * Categories of the listing. Up to two categories are allowed.
      */
-    public readonly categories!: pulumi.Output<string[] | undefined>;
+    declare public readonly categories: pulumi.Output<string[] | undefined>;
     /**
      * Commercial info contains the information about the commercial data products associated with the listing.
      * Structure is documented below.
      */
-    public /*out*/ readonly commercialInfos!: pulumi.Output<outputs.bigqueryanalyticshub.ListingCommercialInfo[]>;
+    declare public /*out*/ readonly commercialInfos: pulumi.Output<outputs.bigqueryanalyticshub.ListingCommercialInfo[]>;
     /**
      * The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
      */
-    public readonly dataExchangeId!: pulumi.Output<string>;
+    declare public readonly dataExchangeId: pulumi.Output<string>;
     /**
      * Details of the data provider who owns the source data.
      * Structure is documented below.
      */
-    public readonly dataProvider!: pulumi.Output<outputs.bigqueryanalyticshub.ListingDataProvider | undefined>;
+    declare public readonly dataProvider: pulumi.Output<outputs.bigqueryanalyticshub.ListingDataProvider | undefined>;
     /**
      * If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally.
      */
-    public readonly deleteCommercial!: pulumi.Output<boolean | undefined>;
+    declare public readonly deleteCommercial: pulumi.Output<boolean | undefined>;
     /**
      * Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Specifies the type of discovery on the discovery page. Cannot be set for a restricted listing. Note that this does not control the visibility of the exchange/listing which is defined by IAM permission.
      * Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
      */
-    public readonly discoveryType!: pulumi.Output<string>;
+    declare public readonly discoveryType: pulumi.Output<string>;
     /**
      * Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Documentation describing the listing.
      */
-    public readonly documentation!: pulumi.Output<string | undefined>;
+    declare public readonly documentation: pulumi.Output<string | undefined>;
     /**
      * Base64 encoded image representing the listing.
      */
-    public readonly icon!: pulumi.Output<string | undefined>;
+    declare public readonly icon: pulumi.Output<string | undefined>;
     /**
      * The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
      */
-    public readonly listingId!: pulumi.Output<string>;
+    declare public readonly listingId: pulumi.Output<string>;
     /**
      * The name of the location this data exchange listing.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user. Once enabled, this setting cannot be turned off.
      */
-    public readonly logLinkedDatasetQueryUserEmail!: pulumi.Output<boolean | undefined>;
+    declare public readonly logLinkedDatasetQueryUserEmail: pulumi.Output<boolean | undefined>;
     /**
      * The resource name of the listing. e.g. "projects/myproject/locations/US/dataExchanges/123/listings/456"
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Email or URL of the primary point of contact of the listing.
      */
-    public readonly primaryContact!: pulumi.Output<string | undefined>;
+    declare public readonly primaryContact: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Details of the publisher who owns the listing and who can share the source data.
      * Structure is documented below.
      */
-    public readonly publisher!: pulumi.Output<outputs.bigqueryanalyticshub.ListingPublisher | undefined>;
+    declare public readonly publisher: pulumi.Output<outputs.bigqueryanalyticshub.ListingPublisher | undefined>;
     /**
      * Pub/Sub topic source.
      * Structure is documented below.
      */
-    public readonly pubsubTopic!: pulumi.Output<outputs.bigqueryanalyticshub.ListingPubsubTopic | undefined>;
+    declare public readonly pubsubTopic: pulumi.Output<outputs.bigqueryanalyticshub.ListingPubsubTopic | undefined>;
     /**
      * Email or URL of the request access of the listing. Subscribers can use this reference to request access.
      */
-    public readonly requestAccess!: pulumi.Output<string | undefined>;
+    declare public readonly requestAccess: pulumi.Output<string | undefined>;
     /**
      * If set, restricted export configuration will be propagated and enforced on the linked dataset.
      * Structure is documented below.
      */
-    public readonly restrictedExportConfig!: pulumi.Output<outputs.bigqueryanalyticshub.ListingRestrictedExportConfig | undefined>;
+    declare public readonly restrictedExportConfig: pulumi.Output<outputs.bigqueryanalyticshub.ListingRestrictedExportConfig | undefined>;
     /**
      * Current state of the listing.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
 
     /**
      * Create a Listing resource with the given unique name, arguments, and options.
@@ -488,63 +488,63 @@ export class Listing extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ListingState | undefined;
-            resourceInputs["allowOnlyMetadataSharing"] = state ? state.allowOnlyMetadataSharing : undefined;
-            resourceInputs["bigqueryDataset"] = state ? state.bigqueryDataset : undefined;
-            resourceInputs["categories"] = state ? state.categories : undefined;
-            resourceInputs["commercialInfos"] = state ? state.commercialInfos : undefined;
-            resourceInputs["dataExchangeId"] = state ? state.dataExchangeId : undefined;
-            resourceInputs["dataProvider"] = state ? state.dataProvider : undefined;
-            resourceInputs["deleteCommercial"] = state ? state.deleteCommercial : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["discoveryType"] = state ? state.discoveryType : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["documentation"] = state ? state.documentation : undefined;
-            resourceInputs["icon"] = state ? state.icon : undefined;
-            resourceInputs["listingId"] = state ? state.listingId : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["logLinkedDatasetQueryUserEmail"] = state ? state.logLinkedDatasetQueryUserEmail : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["primaryContact"] = state ? state.primaryContact : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["publisher"] = state ? state.publisher : undefined;
-            resourceInputs["pubsubTopic"] = state ? state.pubsubTopic : undefined;
-            resourceInputs["requestAccess"] = state ? state.requestAccess : undefined;
-            resourceInputs["restrictedExportConfig"] = state ? state.restrictedExportConfig : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["allowOnlyMetadataSharing"] = state?.allowOnlyMetadataSharing;
+            resourceInputs["bigqueryDataset"] = state?.bigqueryDataset;
+            resourceInputs["categories"] = state?.categories;
+            resourceInputs["commercialInfos"] = state?.commercialInfos;
+            resourceInputs["dataExchangeId"] = state?.dataExchangeId;
+            resourceInputs["dataProvider"] = state?.dataProvider;
+            resourceInputs["deleteCommercial"] = state?.deleteCommercial;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["discoveryType"] = state?.discoveryType;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["documentation"] = state?.documentation;
+            resourceInputs["icon"] = state?.icon;
+            resourceInputs["listingId"] = state?.listingId;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["logLinkedDatasetQueryUserEmail"] = state?.logLinkedDatasetQueryUserEmail;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["primaryContact"] = state?.primaryContact;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["publisher"] = state?.publisher;
+            resourceInputs["pubsubTopic"] = state?.pubsubTopic;
+            resourceInputs["requestAccess"] = state?.requestAccess;
+            resourceInputs["restrictedExportConfig"] = state?.restrictedExportConfig;
+            resourceInputs["state"] = state?.state;
         } else {
             const args = argsOrState as ListingArgs | undefined;
-            if ((!args || args.dataExchangeId === undefined) && !opts.urn) {
+            if (args?.dataExchangeId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataExchangeId'");
             }
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.listingId === undefined) && !opts.urn) {
+            if (args?.listingId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'listingId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["allowOnlyMetadataSharing"] = args ? args.allowOnlyMetadataSharing : undefined;
-            resourceInputs["bigqueryDataset"] = args ? args.bigqueryDataset : undefined;
-            resourceInputs["categories"] = args ? args.categories : undefined;
-            resourceInputs["dataExchangeId"] = args ? args.dataExchangeId : undefined;
-            resourceInputs["dataProvider"] = args ? args.dataProvider : undefined;
-            resourceInputs["deleteCommercial"] = args ? args.deleteCommercial : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["discoveryType"] = args ? args.discoveryType : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["documentation"] = args ? args.documentation : undefined;
-            resourceInputs["icon"] = args ? args.icon : undefined;
-            resourceInputs["listingId"] = args ? args.listingId : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["logLinkedDatasetQueryUserEmail"] = args ? args.logLinkedDatasetQueryUserEmail : undefined;
-            resourceInputs["primaryContact"] = args ? args.primaryContact : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["publisher"] = args ? args.publisher : undefined;
-            resourceInputs["pubsubTopic"] = args ? args.pubsubTopic : undefined;
-            resourceInputs["requestAccess"] = args ? args.requestAccess : undefined;
-            resourceInputs["restrictedExportConfig"] = args ? args.restrictedExportConfig : undefined;
+            resourceInputs["allowOnlyMetadataSharing"] = args?.allowOnlyMetadataSharing;
+            resourceInputs["bigqueryDataset"] = args?.bigqueryDataset;
+            resourceInputs["categories"] = args?.categories;
+            resourceInputs["dataExchangeId"] = args?.dataExchangeId;
+            resourceInputs["dataProvider"] = args?.dataProvider;
+            resourceInputs["deleteCommercial"] = args?.deleteCommercial;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["discoveryType"] = args?.discoveryType;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["documentation"] = args?.documentation;
+            resourceInputs["icon"] = args?.icon;
+            resourceInputs["listingId"] = args?.listingId;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["logLinkedDatasetQueryUserEmail"] = args?.logLinkedDatasetQueryUserEmail;
+            resourceInputs["primaryContact"] = args?.primaryContact;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["publisher"] = args?.publisher;
+            resourceInputs["pubsubTopic"] = args?.pubsubTopic;
+            resourceInputs["requestAccess"] = args?.requestAccess;
+            resourceInputs["restrictedExportConfig"] = args?.restrictedExportConfig;
             resourceInputs["commercialInfos"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;

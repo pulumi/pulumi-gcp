@@ -214,29 +214,29 @@ export class RegionalSecret extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The time at which the regional secret was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The customer-managed encryption configuration of the regional secret.
      * Structure is documented below.
      */
-    public readonly customerManagedEncryption!: pulumi.Output<outputs.secretmanager.RegionalSecretCustomerManagedEncryption | undefined>;
-    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
-    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly customerManagedEncryption: pulumi.Output<outputs.secretmanager.RegionalSecretCustomerManagedEncryption | undefined>;
+    declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
+    declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Timestamp in UTC when the regional secret is scheduled to expire. This is always provided on
      * output, regardless of what was sent on input. A timestamp in RFC3339 UTC "Zulu" format, with
      * nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
      * "2014-10-02T15:01:23.045123456Z". Only one of `expireTime` or `ttl` can be provided.
      */
-    public readonly expireTime!: pulumi.Output<string>;
+    declare public readonly expireTime: pulumi.Output<string>;
     /**
      * The labels assigned to this regional secret.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
@@ -250,54 +250,54 @@ export class RegionalSecret extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location of the regional secret. eg us-central1
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The resource name of the regional secret. Format:
      * `projects/{{project}}/locations/{{location}}/secrets/{{secret_id}}`
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The rotation time and period for a regional secret. At `nextRotationTime`, Secret Manager
      * will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be
      * set to configure rotation.
      * Structure is documented below.
      */
-    public readonly rotation!: pulumi.Output<outputs.secretmanager.RegionalSecretRotation | undefined>;
+    declare public readonly rotation: pulumi.Output<outputs.secretmanager.RegionalSecretRotation | undefined>;
     /**
      * This must be unique within the project.
      */
-    public readonly secretId!: pulumi.Output<string>;
+    declare public readonly secretId: pulumi.Output<string>;
     /**
      * A map of resource manager tags.
      * Resource manager tag keys and values have the same definition as resource manager tags.
      * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A list of up to 10 Pub/Sub topics to which messages are published when control plane
      * operations are called on the regional secret or its versions.
      * Structure is documented below.
      */
-    public readonly topics!: pulumi.Output<outputs.secretmanager.RegionalSecretTopic[] | undefined>;
+    declare public readonly topics: pulumi.Output<outputs.secretmanager.RegionalSecretTopic[] | undefined>;
     /**
      * The TTL for the regional secret. A duration in seconds with up to nine fractional digits,
      * terminated by 's'. Example: "3.5s". Only one of `ttl` or `expireTime` can be provided.
      */
-    public readonly ttl!: pulumi.Output<string | undefined>;
+    declare public readonly ttl: pulumi.Output<string | undefined>;
     /**
      * Mapping from version alias to version name.
      * A version alias is a string with a maximum length of 63 characters and can contain
@@ -307,7 +307,7 @@ export class RegionalSecret extends pulumi.CustomResource {
      * An object containing a list of "key": value pairs. Example:
      * { "name": "wrench", "mass": "1.3kg", "count": "3" }.
      */
-    public readonly versionAliases!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly versionAliases: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Secret Version TTL after destruction request.
      * This is a part of the delayed delete feature on Secret Version.
@@ -315,7 +315,7 @@ export class RegionalSecret extends pulumi.CustomResource {
      * on calling destroy instead the version goes to a disabled state and
      * the actual destruction happens after this TTL expires. It must be atleast 24h.
      */
-    public readonly versionDestroyTtl!: pulumi.Output<string | undefined>;
+    declare public readonly versionDestroyTtl: pulumi.Output<string | undefined>;
 
     /**
      * Create a RegionalSecret resource with the given unique name, arguments, and options.
@@ -330,47 +330,47 @@ export class RegionalSecret extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegionalSecretState | undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["customerManagedEncryption"] = state ? state.customerManagedEncryption : undefined;
-            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["expireTime"] = state ? state.expireTime : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["rotation"] = state ? state.rotation : undefined;
-            resourceInputs["secretId"] = state ? state.secretId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["topics"] = state ? state.topics : undefined;
-            resourceInputs["ttl"] = state ? state.ttl : undefined;
-            resourceInputs["versionAliases"] = state ? state.versionAliases : undefined;
-            resourceInputs["versionDestroyTtl"] = state ? state.versionDestroyTtl : undefined;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["customerManagedEncryption"] = state?.customerManagedEncryption;
+            resourceInputs["deletionProtection"] = state?.deletionProtection;
+            resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["expireTime"] = state?.expireTime;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["rotation"] = state?.rotation;
+            resourceInputs["secretId"] = state?.secretId;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["topics"] = state?.topics;
+            resourceInputs["ttl"] = state?.ttl;
+            resourceInputs["versionAliases"] = state?.versionAliases;
+            resourceInputs["versionDestroyTtl"] = state?.versionDestroyTtl;
         } else {
             const args = argsOrState as RegionalSecretArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.secretId === undefined) && !opts.urn) {
+            if (args?.secretId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'secretId'");
             }
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["customerManagedEncryption"] = args ? args.customerManagedEncryption : undefined;
-            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            resourceInputs["expireTime"] = args ? args.expireTime : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["rotation"] = args ? args.rotation : undefined;
-            resourceInputs["secretId"] = args ? args.secretId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["topics"] = args ? args.topics : undefined;
-            resourceInputs["ttl"] = args ? args.ttl : undefined;
-            resourceInputs["versionAliases"] = args ? args.versionAliases : undefined;
-            resourceInputs["versionDestroyTtl"] = args ? args.versionDestroyTtl : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["customerManagedEncryption"] = args?.customerManagedEncryption;
+            resourceInputs["deletionProtection"] = args?.deletionProtection;
+            resourceInputs["expireTime"] = args?.expireTime;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["rotation"] = args?.rotation;
+            resourceInputs["secretId"] = args?.secretId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["topics"] = args?.topics;
+            resourceInputs["ttl"] = args?.ttl;
+            resourceInputs["versionAliases"] = args?.versionAliases;
+            resourceInputs["versionDestroyTtl"] = args?.versionDestroyTtl;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;

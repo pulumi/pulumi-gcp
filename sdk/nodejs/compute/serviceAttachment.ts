@@ -452,45 +452,45 @@ export class ServiceAttachment extends pulumi.CustomResource {
      * attachment.
      * Structure is documented below.
      */
-    public /*out*/ readonly connectedEndpoints!: pulumi.Output<outputs.compute.ServiceAttachmentConnectedEndpoint[]>;
+    declare public /*out*/ readonly connectedEndpoints: pulumi.Output<outputs.compute.ServiceAttachmentConnectedEndpoint[]>;
     /**
      * The connection preference to use for this service attachment. Valid
      * values include "ACCEPT_AUTOMATIC", "ACCEPT_MANUAL".
      */
-    public readonly connectionPreference!: pulumi.Output<string>;
+    declare public readonly connectionPreference: pulumi.Output<string>;
     /**
      * An array of projects that are allowed to connect to this service
      * attachment.
      * Structure is documented below.
      */
-    public readonly consumerAcceptLists!: pulumi.Output<outputs.compute.ServiceAttachmentConsumerAcceptList[] | undefined>;
+    declare public readonly consumerAcceptLists: pulumi.Output<outputs.compute.ServiceAttachmentConsumerAcceptList[] | undefined>;
     /**
      * An array of projects that are not allowed to connect to this service
      * attachment.
      */
-    public readonly consumerRejectLists!: pulumi.Output<string[] | undefined>;
+    declare public readonly consumerRejectLists: pulumi.Output<string[] | undefined>;
     /**
      * An optional description of this resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * If specified, the domain name will be used during the integration between
      * the PSC connected endpoints and the Cloud DNS. For example, this is a
      * valid domain name: "p.mycompany.com.". Current max number of domain names
      * supported is 1.
      */
-    public readonly domainNames!: pulumi.Output<string[] | undefined>;
+    declare public readonly domainNames: pulumi.Output<string[] | undefined>;
     /**
      * If true, enable the proxy protocol which is for supplying client TCP/IP
      * address data in TCP connections that traverse proxies on their way to
      * destination servers.
      */
-    public readonly enableProxyProtocol!: pulumi.Output<boolean>;
+    declare public readonly enableProxyProtocol: pulumi.Output<boolean>;
     /**
      * Fingerprint of this resource. This field is used internally during
      * updates of this resource.
      */
-    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly fingerprint: pulumi.Output<string>;
     /**
      * Name of the resource. The name must be 1-63 characters long, and
      * comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -499,16 +499,16 @@ export class ServiceAttachment extends pulumi.CustomResource {
      * following characters must be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * An array of subnets that is provided for NAT in this service attachment.
      */
-    public readonly natSubnets!: pulumi.Output<string[]>;
+    declare public readonly natSubnets: pulumi.Output<string[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The number of consumer spokes that connected Private Service Connect endpoints can be propagated to through Network Connectivity Center.
      * This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
@@ -516,32 +516,32 @@ export class ServiceAttachment extends pulumi.CustomResource {
      * If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
      * If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set `sendPropagatedConnectionLimitIfZero = true`.
      */
-    public readonly propagatedConnectionLimit!: pulumi.Output<number>;
+    declare public readonly propagatedConnectionLimit: pulumi.Output<number>;
     /**
      * This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
      * If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
      * If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
      */
-    public readonly reconcileConnections!: pulumi.Output<boolean>;
+    declare public readonly reconcileConnections: pulumi.Output<boolean>;
     /**
      * URL of the region where the resource resides.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * Controls the behavior of propagated_connection_limit.
      * When false, setting propagatedConnectionLimit to zero causes the provider to use to the API's default value.
      * When true, the provider will set propagatedConnectionLimit to zero.
      * Defaults to false.
      */
-    public readonly sendPropagatedConnectionLimitIfZero!: pulumi.Output<boolean | undefined>;
+    declare public readonly sendPropagatedConnectionLimitIfZero: pulumi.Output<boolean | undefined>;
     /**
      * The URL of a service serving the endpoint identified by this service attachment.
      */
-    public readonly targetService!: pulumi.Output<string>;
+    declare public readonly targetService: pulumi.Output<string>;
 
     /**
      * Create a ServiceAttachment resource with the given unique name, arguments, and options.
@@ -556,51 +556,51 @@ export class ServiceAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceAttachmentState | undefined;
-            resourceInputs["connectedEndpoints"] = state ? state.connectedEndpoints : undefined;
-            resourceInputs["connectionPreference"] = state ? state.connectionPreference : undefined;
-            resourceInputs["consumerAcceptLists"] = state ? state.consumerAcceptLists : undefined;
-            resourceInputs["consumerRejectLists"] = state ? state.consumerRejectLists : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["domainNames"] = state ? state.domainNames : undefined;
-            resourceInputs["enableProxyProtocol"] = state ? state.enableProxyProtocol : undefined;
-            resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["natSubnets"] = state ? state.natSubnets : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["propagatedConnectionLimit"] = state ? state.propagatedConnectionLimit : undefined;
-            resourceInputs["reconcileConnections"] = state ? state.reconcileConnections : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["sendPropagatedConnectionLimitIfZero"] = state ? state.sendPropagatedConnectionLimitIfZero : undefined;
-            resourceInputs["targetService"] = state ? state.targetService : undefined;
+            resourceInputs["connectedEndpoints"] = state?.connectedEndpoints;
+            resourceInputs["connectionPreference"] = state?.connectionPreference;
+            resourceInputs["consumerAcceptLists"] = state?.consumerAcceptLists;
+            resourceInputs["consumerRejectLists"] = state?.consumerRejectLists;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["domainNames"] = state?.domainNames;
+            resourceInputs["enableProxyProtocol"] = state?.enableProxyProtocol;
+            resourceInputs["fingerprint"] = state?.fingerprint;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["natSubnets"] = state?.natSubnets;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["propagatedConnectionLimit"] = state?.propagatedConnectionLimit;
+            resourceInputs["reconcileConnections"] = state?.reconcileConnections;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["sendPropagatedConnectionLimitIfZero"] = state?.sendPropagatedConnectionLimitIfZero;
+            resourceInputs["targetService"] = state?.targetService;
         } else {
             const args = argsOrState as ServiceAttachmentArgs | undefined;
-            if ((!args || args.connectionPreference === undefined) && !opts.urn) {
+            if (args?.connectionPreference === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectionPreference'");
             }
-            if ((!args || args.enableProxyProtocol === undefined) && !opts.urn) {
+            if (args?.enableProxyProtocol === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enableProxyProtocol'");
             }
-            if ((!args || args.natSubnets === undefined) && !opts.urn) {
+            if (args?.natSubnets === undefined && !opts.urn) {
                 throw new Error("Missing required property 'natSubnets'");
             }
-            if ((!args || args.targetService === undefined) && !opts.urn) {
+            if (args?.targetService === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetService'");
             }
-            resourceInputs["connectionPreference"] = args ? args.connectionPreference : undefined;
-            resourceInputs["consumerAcceptLists"] = args ? args.consumerAcceptLists : undefined;
-            resourceInputs["consumerRejectLists"] = args ? args.consumerRejectLists : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["domainNames"] = args ? args.domainNames : undefined;
-            resourceInputs["enableProxyProtocol"] = args ? args.enableProxyProtocol : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["natSubnets"] = args ? args.natSubnets : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["propagatedConnectionLimit"] = args ? args.propagatedConnectionLimit : undefined;
-            resourceInputs["reconcileConnections"] = args ? args.reconcileConnections : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["sendPropagatedConnectionLimitIfZero"] = args ? args.sendPropagatedConnectionLimitIfZero : undefined;
-            resourceInputs["targetService"] = args ? args.targetService : undefined;
+            resourceInputs["connectionPreference"] = args?.connectionPreference;
+            resourceInputs["consumerAcceptLists"] = args?.consumerAcceptLists;
+            resourceInputs["consumerRejectLists"] = args?.consumerRejectLists;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["domainNames"] = args?.domainNames;
+            resourceInputs["enableProxyProtocol"] = args?.enableProxyProtocol;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["natSubnets"] = args?.natSubnets;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["propagatedConnectionLimit"] = args?.propagatedConnectionLimit;
+            resourceInputs["reconcileConnections"] = args?.reconcileConnections;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["sendPropagatedConnectionLimitIfZero"] = args?.sendPropagatedConnectionLimitIfZero;
+            resourceInputs["targetService"] = args?.targetService;
             resourceInputs["connectedEndpoints"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;

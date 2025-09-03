@@ -200,17 +200,17 @@ export class WorkforcePoolIamMember extends pulumi.CustomResource {
         return obj['__pulumiType'] === WorkforcePoolIamMember.__pulumiType;
     }
 
-    public readonly condition!: pulumi.Output<outputs.iam.WorkforcePoolIamMemberCondition | undefined>;
+    declare public readonly condition: pulumi.Output<outputs.iam.WorkforcePoolIamMemberCondition | undefined>;
     /**
      * (Computed) The etag of the IAM policy.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The location for the resource. Used to find the parent resource to bind the IAM policy to. If not specified,
      * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
      * location is specified, it is taken from the provider configuration.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -224,17 +224,17 @@ export class WorkforcePoolIamMember extends pulumi.CustomResource {
      * * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
      */
-    public readonly member!: pulumi.Output<string>;
+    declare public readonly member: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.iam.WorkforcePoolIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    public readonly role!: pulumi.Output<string>;
+    declare public readonly role: pulumi.Output<string>;
     /**
      * Used to find the parent resource to bind the IAM policy to
      */
-    public readonly workforcePoolId!: pulumi.Output<string>;
+    declare public readonly workforcePoolId: pulumi.Output<string>;
 
     /**
      * Create a WorkforcePoolIamMember resource with the given unique name, arguments, and options.
@@ -249,28 +249,28 @@ export class WorkforcePoolIamMember extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkforcePoolIamMemberState | undefined;
-            resourceInputs["condition"] = state ? state.condition : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["member"] = state ? state.member : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
-            resourceInputs["workforcePoolId"] = state ? state.workforcePoolId : undefined;
+            resourceInputs["condition"] = state?.condition;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["member"] = state?.member;
+            resourceInputs["role"] = state?.role;
+            resourceInputs["workforcePoolId"] = state?.workforcePoolId;
         } else {
             const args = argsOrState as WorkforcePoolIamMemberArgs | undefined;
-            if ((!args || args.member === undefined) && !opts.urn) {
+            if (args?.member === undefined && !opts.urn) {
                 throw new Error("Missing required property 'member'");
             }
-            if ((!args || args.role === undefined) && !opts.urn) {
+            if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            if ((!args || args.workforcePoolId === undefined) && !opts.urn) {
+            if (args?.workforcePoolId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workforcePoolId'");
             }
-            resourceInputs["condition"] = args ? args.condition : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["member"] = args ? args.member : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
-            resourceInputs["workforcePoolId"] = args ? args.workforcePoolId : undefined;
+            resourceInputs["condition"] = args?.condition;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["member"] = args?.member;
+            resourceInputs["role"] = args?.role;
+            resourceInputs["workforcePoolId"] = args?.workforcePoolId;
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

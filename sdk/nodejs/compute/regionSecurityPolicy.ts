@@ -169,53 +169,53 @@ export class RegionSecurityPolicy extends pulumi.CustomResource {
      * Advanced Options Config of this security policy.
      * Structure is documented below.
      */
-    public readonly advancedOptionsConfig!: pulumi.Output<outputs.compute.RegionSecurityPolicyAdvancedOptionsConfig | undefined>;
+    declare public readonly advancedOptionsConfig: pulumi.Output<outputs.compute.RegionSecurityPolicyAdvancedOptionsConfig | undefined>;
     /**
      * Configuration for Google Cloud Armor DDOS Proctection Config.
      * Structure is documented below.
      */
-    public readonly ddosProtectionConfig!: pulumi.Output<outputs.compute.RegionSecurityPolicyDdosProtectionConfig | undefined>;
+    declare public readonly ddosProtectionConfig: pulumi.Output<outputs.compute.RegionSecurityPolicyDdosProtectionConfig | undefined>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Fingerprint of this resource. This field is used internally during
      * updates of this resource.
      */
-    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly fingerprint: pulumi.Output<string>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.
      * Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The unique identifier for the resource. This identifier is defined by the server.
      */
-    public /*out*/ readonly policyId!: pulumi.Output<string>;
+    declare public /*out*/ readonly policyId: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The Region in which the created Region Security Policy should reside.
      * If it is not provided, the provider region is used.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The set of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
      * Structure is documented below.
      */
-    public readonly rules!: pulumi.Output<outputs.compute.RegionSecurityPolicyRule[]>;
+    declare public readonly rules: pulumi.Output<outputs.compute.RegionSecurityPolicyRule[]>;
     /**
      * Server-defined URL for the resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * Server-defined URL for this resource with the resource id.
      */
-    public /*out*/ readonly selfLinkWithPolicyId!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLinkWithPolicyId: pulumi.Output<string>;
     /**
      * The type indicates the intended use of the security policy.
      * - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers.
@@ -224,14 +224,14 @@ export class RegionSecurityPolicy extends pulumi.CustomResource {
      * This field can be set only at resource creation time.
      * Possible values are: `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_NETWORK`.
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string | undefined>;
     /**
      * Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
      * A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits.
      * Rules may then specify matching values for these fields.
      * Structure is documented below.
      */
-    public readonly userDefinedFields!: pulumi.Output<outputs.compute.RegionSecurityPolicyUserDefinedField[] | undefined>;
+    declare public readonly userDefinedFields: pulumi.Output<outputs.compute.RegionSecurityPolicyUserDefinedField[] | undefined>;
 
     /**
      * Create a RegionSecurityPolicy resource with the given unique name, arguments, and options.
@@ -246,30 +246,30 @@ export class RegionSecurityPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegionSecurityPolicyState | undefined;
-            resourceInputs["advancedOptionsConfig"] = state ? state.advancedOptionsConfig : undefined;
-            resourceInputs["ddosProtectionConfig"] = state ? state.ddosProtectionConfig : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["policyId"] = state ? state.policyId : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["rules"] = state ? state.rules : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["selfLinkWithPolicyId"] = state ? state.selfLinkWithPolicyId : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["userDefinedFields"] = state ? state.userDefinedFields : undefined;
+            resourceInputs["advancedOptionsConfig"] = state?.advancedOptionsConfig;
+            resourceInputs["ddosProtectionConfig"] = state?.ddosProtectionConfig;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["fingerprint"] = state?.fingerprint;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["policyId"] = state?.policyId;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["rules"] = state?.rules;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["selfLinkWithPolicyId"] = state?.selfLinkWithPolicyId;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["userDefinedFields"] = state?.userDefinedFields;
         } else {
             const args = argsOrState as RegionSecurityPolicyArgs | undefined;
-            resourceInputs["advancedOptionsConfig"] = args ? args.advancedOptionsConfig : undefined;
-            resourceInputs["ddosProtectionConfig"] = args ? args.ddosProtectionConfig : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["rules"] = args ? args.rules : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["userDefinedFields"] = args ? args.userDefinedFields : undefined;
+            resourceInputs["advancedOptionsConfig"] = args?.advancedOptionsConfig;
+            resourceInputs["ddosProtectionConfig"] = args?.ddosProtectionConfig;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["rules"] = args?.rules;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["userDefinedFields"] = args?.userDefinedFields;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["policyId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;

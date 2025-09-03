@@ -81,29 +81,29 @@ export class RouterNatAddress extends pulumi.CustomResource {
      * A list of URLs of the IP resources to be drained. These IPs must be
      * valid static external IPs that have been assigned to the NAT.
      */
-    public readonly drainNatIps!: pulumi.Output<string[] | undefined>;
+    declare public readonly drainNatIps: pulumi.Output<string[] | undefined>;
     /**
      * Self-links of NAT IPs to be used in a Nat service. Only valid if the referenced RouterNat
      * natIpAllocateOption is set to MANUAL_ONLY.
      */
-    public readonly natIps!: pulumi.Output<string[]>;
+    declare public readonly natIps: pulumi.Output<string[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Region where the NAT service reside.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The name of the Cloud Router in which the referenced NAT service is configured.
      */
-    public readonly router!: pulumi.Output<string>;
+    declare public readonly router: pulumi.Output<string>;
     /**
      * The name of the Nat service in which this address will be configured.
      */
-    public readonly routerNat!: pulumi.Output<string>;
+    declare public readonly routerNat: pulumi.Output<string>;
 
     /**
      * Create a RouterNatAddress resource with the given unique name, arguments, and options.
@@ -118,29 +118,29 @@ export class RouterNatAddress extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouterNatAddressState | undefined;
-            resourceInputs["drainNatIps"] = state ? state.drainNatIps : undefined;
-            resourceInputs["natIps"] = state ? state.natIps : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["router"] = state ? state.router : undefined;
-            resourceInputs["routerNat"] = state ? state.routerNat : undefined;
+            resourceInputs["drainNatIps"] = state?.drainNatIps;
+            resourceInputs["natIps"] = state?.natIps;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["router"] = state?.router;
+            resourceInputs["routerNat"] = state?.routerNat;
         } else {
             const args = argsOrState as RouterNatAddressArgs | undefined;
-            if ((!args || args.natIps === undefined) && !opts.urn) {
+            if (args?.natIps === undefined && !opts.urn) {
                 throw new Error("Missing required property 'natIps'");
             }
-            if ((!args || args.router === undefined) && !opts.urn) {
+            if (args?.router === undefined && !opts.urn) {
                 throw new Error("Missing required property 'router'");
             }
-            if ((!args || args.routerNat === undefined) && !opts.urn) {
+            if (args?.routerNat === undefined && !opts.urn) {
                 throw new Error("Missing required property 'routerNat'");
             }
-            resourceInputs["drainNatIps"] = args ? args.drainNatIps : undefined;
-            resourceInputs["natIps"] = args ? args.natIps : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["router"] = args ? args.router : undefined;
-            resourceInputs["routerNat"] = args ? args.routerNat : undefined;
+            resourceInputs["drainNatIps"] = args?.drainNatIps;
+            resourceInputs["natIps"] = args?.natIps;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["router"] = args?.router;
+            resourceInputs["routerNat"] = args?.routerNat;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RouterNatAddress.__pulumiType, name, resourceInputs, opts);

@@ -166,11 +166,11 @@ export class TargetGrpcProxy extends pulumi.CustomResource {
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * An optional description of this resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Fingerprint of this resource. A hash of the contents stored in
      * this object. This field is used in optimistic locking. This field
@@ -180,7 +180,7 @@ export class TargetGrpcProxy extends pulumi.CustomResource {
      * 412 conditionNotMet. To see the latest fingerprint, make a get()
      * request to retrieve the TargetGrpcProxy. A base64-encoded string.
      */
-    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly fingerprint: pulumi.Output<string>;
     /**
      * Name of the resource. Provided by the client when the resource
      * is created. The name must be 1-63 characters long, and comply
@@ -190,26 +190,26 @@ export class TargetGrpcProxy extends pulumi.CustomResource {
      * following characters must be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * Server-defined URL with id for the resource.
      */
-    public /*out*/ readonly selfLinkWithId!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLinkWithId: pulumi.Output<string>;
     /**
      * URL to the UrlMap resource that defines the mapping from URL to
      * the BackendService. The protocol field in the BackendService
      * must be set to GRPC.
      */
-    public readonly urlMap!: pulumi.Output<string | undefined>;
+    declare public readonly urlMap: pulumi.Output<string | undefined>;
     /**
      * If true, indicates that the BackendServices referenced by
      * the urlMap may be accessed by gRPC applications without using
@@ -222,7 +222,7 @@ export class TargetGrpcProxy extends pulumi.CustomResource {
      * must not use "xds:///" scheme in the target URI of the service
      * it is connecting to
      */
-    public readonly validateForProxyless!: pulumi.Output<boolean | undefined>;
+    declare public readonly validateForProxyless: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a TargetGrpcProxy resource with the given unique name, arguments, and options.
@@ -237,22 +237,22 @@ export class TargetGrpcProxy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TargetGrpcProxyState | undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["selfLinkWithId"] = state ? state.selfLinkWithId : undefined;
-            resourceInputs["urlMap"] = state ? state.urlMap : undefined;
-            resourceInputs["validateForProxyless"] = state ? state.validateForProxyless : undefined;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["fingerprint"] = state?.fingerprint;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["selfLinkWithId"] = state?.selfLinkWithId;
+            resourceInputs["urlMap"] = state?.urlMap;
+            resourceInputs["validateForProxyless"] = state?.validateForProxyless;
         } else {
             const args = argsOrState as TargetGrpcProxyArgs | undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["urlMap"] = args ? args.urlMap : undefined;
-            resourceInputs["validateForProxyless"] = args ? args.validateForProxyless : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["urlMap"] = args?.urlMap;
+            resourceInputs["validateForProxyless"] = args?.validateForProxyless;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;

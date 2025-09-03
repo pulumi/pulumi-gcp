@@ -213,23 +213,23 @@ export class TaskIamBinding extends pulumi.CustomResource {
         return obj['__pulumiType'] === TaskIamBinding.__pulumiType;
     }
 
-    public readonly condition!: pulumi.Output<outputs.dataplex.TaskIamBindingCondition | undefined>;
+    declare public readonly condition: pulumi.Output<outputs.dataplex.TaskIamBindingCondition | undefined>;
     /**
      * (Computed) The etag of the IAM policy.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The lake in which the task will be created in.
      * Used to find the parent resource to bind the IAM policy to
      */
-    public readonly lake!: pulumi.Output<string>;
+    declare public readonly lake: pulumi.Output<string>;
     /**
      * The location in which the task will be created in.
      * Used to find the parent resource to bind the IAM policy to. If not specified,
      * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
      * location is specified, it is taken from the provider configuration.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -243,22 +243,22 @@ export class TaskIamBinding extends pulumi.CustomResource {
      * * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
      */
-    public readonly members!: pulumi.Output<string[]>;
+    declare public readonly members: pulumi.Output<string[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.dataplex.TaskIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    public readonly role!: pulumi.Output<string>;
+    declare public readonly role: pulumi.Output<string>;
     /**
      * Used to find the parent resource to bind the IAM policy to
      */
-    public readonly taskId!: pulumi.Output<string>;
+    declare public readonly taskId: pulumi.Output<string>;
 
     /**
      * Create a TaskIamBinding resource with the given unique name, arguments, and options.
@@ -273,35 +273,35 @@ export class TaskIamBinding extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TaskIamBindingState | undefined;
-            resourceInputs["condition"] = state ? state.condition : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["lake"] = state ? state.lake : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["members"] = state ? state.members : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
-            resourceInputs["taskId"] = state ? state.taskId : undefined;
+            resourceInputs["condition"] = state?.condition;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["lake"] = state?.lake;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["members"] = state?.members;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["role"] = state?.role;
+            resourceInputs["taskId"] = state?.taskId;
         } else {
             const args = argsOrState as TaskIamBindingArgs | undefined;
-            if ((!args || args.lake === undefined) && !opts.urn) {
+            if (args?.lake === undefined && !opts.urn) {
                 throw new Error("Missing required property 'lake'");
             }
-            if ((!args || args.members === undefined) && !opts.urn) {
+            if (args?.members === undefined && !opts.urn) {
                 throw new Error("Missing required property 'members'");
             }
-            if ((!args || args.role === undefined) && !opts.urn) {
+            if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            if ((!args || args.taskId === undefined) && !opts.urn) {
+            if (args?.taskId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'taskId'");
             }
-            resourceInputs["condition"] = args ? args.condition : undefined;
-            resourceInputs["lake"] = args ? args.lake : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["members"] = args ? args.members : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
-            resourceInputs["taskId"] = args ? args.taskId : undefined;
+            resourceInputs["condition"] = args?.condition;
+            resourceInputs["lake"] = args?.lake;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["members"] = args?.members;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["role"] = args?.role;
+            resourceInputs["taskId"] = args?.taskId;
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

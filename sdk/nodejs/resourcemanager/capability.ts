@@ -80,15 +80,15 @@ export class Capability extends pulumi.CustomResource {
     /**
      * Capability name that should be updated on the folder.
      */
-    public readonly capabilityName!: pulumi.Output<string>;
+    declare public readonly capabilityName: pulumi.Output<string>;
     /**
      * Folder on which Capability needs to be updated in the format folders/folder_id.
      */
-    public readonly parent!: pulumi.Output<string>;
+    declare public readonly parent: pulumi.Output<string>;
     /**
      * Capability Value.
      */
-    public readonly value!: pulumi.Output<boolean>;
+    declare public readonly value: pulumi.Output<boolean>;
 
     /**
      * Create a Capability resource with the given unique name, arguments, and options.
@@ -103,23 +103,23 @@ export class Capability extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CapabilityState | undefined;
-            resourceInputs["capabilityName"] = state ? state.capabilityName : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["capabilityName"] = state?.capabilityName;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["value"] = state?.value;
         } else {
             const args = argsOrState as CapabilityArgs | undefined;
-            if ((!args || args.capabilityName === undefined) && !opts.urn) {
+            if (args?.capabilityName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'capabilityName'");
             }
-            if ((!args || args.parent === undefined) && !opts.urn) {
+            if (args?.parent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            if ((!args || args.value === undefined) && !opts.urn) {
+            if (args?.value === undefined && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            resourceInputs["capabilityName"] = args ? args.capabilityName : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["capabilityName"] = args?.capabilityName;
+            resourceInputs["parent"] = args?.parent;
+            resourceInputs["value"] = args?.value;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Capability.__pulumiType, name, resourceInputs, opts);

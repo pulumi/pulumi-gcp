@@ -103,55 +103,55 @@ export class SourceRepresentationInstance extends pulumi.CustomResource {
     /**
      * The CA certificate on the external server. Include only if SSL/TLS is used on the external server.
      */
-    public readonly caCertificate!: pulumi.Output<string | undefined>;
+    declare public readonly caCertificate: pulumi.Output<string | undefined>;
     /**
      * The client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
      */
-    public readonly clientCertificate!: pulumi.Output<string | undefined>;
+    declare public readonly clientCertificate: pulumi.Output<string | undefined>;
     /**
      * The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
      */
-    public readonly clientKey!: pulumi.Output<string | undefined>;
+    declare public readonly clientKey: pulumi.Output<string | undefined>;
     /**
      * The MySQL, PostgreSQL or SQL Server (beta) version to use. Supported values include MYSQL_5_6, MYSQL_5_7, MYSQL_8_0, MYSQL_8_4, POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13, POSTGRES_14, POSTGRES_15, POSTGRES_16, POSTGRES_17. Database Version Policies includes an up-to-date reference of supported versions.
      */
-    public readonly databaseVersion!: pulumi.Output<string>;
+    declare public readonly databaseVersion: pulumi.Output<string>;
     /**
      * A file in the bucket that contains the data from the external server.
      */
-    public readonly dumpFilePath!: pulumi.Output<string | undefined>;
+    declare public readonly dumpFilePath: pulumi.Output<string | undefined>;
     /**
      * The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
      */
-    public readonly host!: pulumi.Output<string>;
+    declare public readonly host: pulumi.Output<string>;
     /**
      * The name of the source representation instance. Use any valid Cloud SQL instance name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The password for the replication user account.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * The externally accessible port for the source database server.
      * Defaults to 3306.
      */
-    public readonly port!: pulumi.Output<number | undefined>;
+    declare public readonly port: pulumi.Output<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The Region in which the created instance should reside.
      * If it is not provided, the provider region is used.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The replication user account on the external server.
      */
-    public readonly username!: pulumi.Output<string | undefined>;
+    declare public readonly username: pulumi.Output<string | undefined>;
 
     /**
      * Create a SourceRepresentationInstance resource with the given unique name, arguments, and options.
@@ -166,38 +166,38 @@ export class SourceRepresentationInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SourceRepresentationInstanceState | undefined;
-            resourceInputs["caCertificate"] = state ? state.caCertificate : undefined;
-            resourceInputs["clientCertificate"] = state ? state.clientCertificate : undefined;
-            resourceInputs["clientKey"] = state ? state.clientKey : undefined;
-            resourceInputs["databaseVersion"] = state ? state.databaseVersion : undefined;
-            resourceInputs["dumpFilePath"] = state ? state.dumpFilePath : undefined;
-            resourceInputs["host"] = state ? state.host : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["caCertificate"] = state?.caCertificate;
+            resourceInputs["clientCertificate"] = state?.clientCertificate;
+            resourceInputs["clientKey"] = state?.clientKey;
+            resourceInputs["databaseVersion"] = state?.databaseVersion;
+            resourceInputs["dumpFilePath"] = state?.dumpFilePath;
+            resourceInputs["host"] = state?.host;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["username"] = state?.username;
         } else {
             const args = argsOrState as SourceRepresentationInstanceArgs | undefined;
-            if ((!args || args.databaseVersion === undefined) && !opts.urn) {
+            if (args?.databaseVersion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'databaseVersion'");
             }
-            if ((!args || args.host === undefined) && !opts.urn) {
+            if (args?.host === undefined && !opts.urn) {
                 throw new Error("Missing required property 'host'");
             }
-            resourceInputs["caCertificate"] = args ? args.caCertificate : undefined;
-            resourceInputs["clientCertificate"] = args ? args.clientCertificate : undefined;
-            resourceInputs["clientKey"] = args ? args.clientKey : undefined;
-            resourceInputs["databaseVersion"] = args ? args.databaseVersion : undefined;
-            resourceInputs["dumpFilePath"] = args ? args.dumpFilePath : undefined;
-            resourceInputs["host"] = args ? args.host : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["caCertificate"] = args?.caCertificate;
+            resourceInputs["clientCertificate"] = args?.clientCertificate;
+            resourceInputs["clientKey"] = args?.clientKey;
+            resourceInputs["databaseVersion"] = args?.databaseVersion;
+            resourceInputs["dumpFilePath"] = args?.dumpFilePath;
+            resourceInputs["host"] = args?.host;
+            resourceInputs["name"] = args?.name;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["port"] = args?.port;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["username"] = args?.username;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["password"] };

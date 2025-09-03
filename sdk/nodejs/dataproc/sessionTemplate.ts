@@ -229,68 +229,68 @@ export class SessionTemplate extends pulumi.CustomResource {
     /**
      * The time when the session template was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The email address of the user who created the session template.
      */
-    public /*out*/ readonly creator!: pulumi.Output<string>;
+    declare public /*out*/ readonly creator: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Environment configuration for the session execution.
      * Structure is documented below.
      */
-    public readonly environmentConfig!: pulumi.Output<outputs.dataproc.SessionTemplateEnvironmentConfig | undefined>;
+    declare public readonly environmentConfig: pulumi.Output<outputs.dataproc.SessionTemplateEnvironmentConfig | undefined>;
     /**
      * Jupyter configuration for an interactive session.
      * Structure is documented below.
      */
-    public readonly jupyterSession!: pulumi.Output<outputs.dataproc.SessionTemplateJupyterSession | undefined>;
+    declare public readonly jupyterSession: pulumi.Output<outputs.dataproc.SessionTemplateJupyterSession | undefined>;
     /**
      * The labels to associate with this session template.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location in which the session template will be created in.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * The resource name of the session template in the following format:
      * projects/{project}/locations/{location}/sessionTemplates/{template_id}
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Runtime configuration for the session template.
      * Structure is documented below.
      */
-    public readonly runtimeConfig!: pulumi.Output<outputs.dataproc.SessionTemplateRuntimeConfig | undefined>;
+    declare public readonly runtimeConfig: pulumi.Output<outputs.dataproc.SessionTemplateRuntimeConfig | undefined>;
     /**
      * Spark connect configuration for an interactive session.
      */
-    public readonly sparkConnectSession!: pulumi.Output<outputs.dataproc.SessionTemplateSparkConnectSession | undefined>;
+    declare public readonly sparkConnectSession: pulumi.Output<outputs.dataproc.SessionTemplateSparkConnectSession | undefined>;
     /**
      * The time when the session template was updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * A session template UUID (Unique Universal Identifier). The service generates this value when it creates the session template.
      */
-    public /*out*/ readonly uuid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uuid: pulumi.Output<string>;
 
     /**
      * Create a SessionTemplate resource with the given unique name, arguments, and options.
@@ -305,30 +305,30 @@ export class SessionTemplate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SessionTemplateState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["creator"] = state ? state.creator : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["environmentConfig"] = state ? state.environmentConfig : undefined;
-            resourceInputs["jupyterSession"] = state ? state.jupyterSession : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["runtimeConfig"] = state ? state.runtimeConfig : undefined;
-            resourceInputs["sparkConnectSession"] = state ? state.sparkConnectSession : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["uuid"] = state ? state.uuid : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["creator"] = state?.creator;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["environmentConfig"] = state?.environmentConfig;
+            resourceInputs["jupyterSession"] = state?.jupyterSession;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["runtimeConfig"] = state?.runtimeConfig;
+            resourceInputs["sparkConnectSession"] = state?.sparkConnectSession;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["uuid"] = state?.uuid;
         } else {
             const args = argsOrState as SessionTemplateArgs | undefined;
-            resourceInputs["environmentConfig"] = args ? args.environmentConfig : undefined;
-            resourceInputs["jupyterSession"] = args ? args.jupyterSession : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["runtimeConfig"] = args ? args.runtimeConfig : undefined;
-            resourceInputs["sparkConnectSession"] = args ? args.sparkConnectSession : undefined;
+            resourceInputs["environmentConfig"] = args?.environmentConfig;
+            resourceInputs["jupyterSession"] = args?.jupyterSession;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["runtimeConfig"] = args?.runtimeConfig;
+            resourceInputs["sparkConnectSession"] = args?.sparkConnectSession;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["creator"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;

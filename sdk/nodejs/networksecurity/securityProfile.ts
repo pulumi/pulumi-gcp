@@ -170,77 +170,77 @@ export class SecurityProfile extends pulumi.CustomResource {
     /**
      * Time the security profile was created in UTC.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The configuration for defining the Intercept Endpoint Group used to
      * intercept traffic to third-party firewall appliances.
      * Structure is documented below.
      */
-    public readonly customInterceptProfile!: pulumi.Output<outputs.networksecurity.SecurityProfileCustomInterceptProfile | undefined>;
+    declare public readonly customInterceptProfile: pulumi.Output<outputs.networksecurity.SecurityProfileCustomInterceptProfile | undefined>;
     /**
      * The configuration for defining the Mirroring Endpoint Group used to
      * mirror traffic to third-party collectors.
      * Structure is documented below.
      */
-    public readonly customMirroringProfile!: pulumi.Output<outputs.networksecurity.SecurityProfileCustomMirroringProfile | undefined>;
+    declare public readonly customMirroringProfile: pulumi.Output<outputs.networksecurity.SecurityProfileCustomMirroringProfile | undefined>;
     /**
      * An optional description of the security profile. The Max length is 512 characters.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * This checksum is computed by the server based on the value of other fields,
      * and may be sent on update and delete requests to ensure the client has an up-to-date
      * value before proceeding.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * A map of key/value label pairs to assign to the resource.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location of the security profile.
      * The default value is `global`.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * The name of the security profile resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The name of the parent this security profile belongs to.
      * Format: organizations/{organization_id}.
      */
-    public readonly parent!: pulumi.Output<string | undefined>;
+    declare public readonly parent: pulumi.Output<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Server-defined URL of this resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * The threat prevention configuration for the security profile.
      * Structure is documented below.
      */
-    public readonly threatPreventionProfile!: pulumi.Output<outputs.networksecurity.SecurityProfileThreatPreventionProfile | undefined>;
+    declare public readonly threatPreventionProfile: pulumi.Output<outputs.networksecurity.SecurityProfileThreatPreventionProfile | undefined>;
     /**
      * The type of security profile.
      * Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * Time the security profile was updated in UTC.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a SecurityProfile resource with the given unique name, arguments, and options.
@@ -255,35 +255,35 @@ export class SecurityProfile extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecurityProfileState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["customInterceptProfile"] = state ? state.customInterceptProfile : undefined;
-            resourceInputs["customMirroringProfile"] = state ? state.customMirroringProfile : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["threatPreventionProfile"] = state ? state.threatPreventionProfile : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["customInterceptProfile"] = state?.customInterceptProfile;
+            resourceInputs["customMirroringProfile"] = state?.customMirroringProfile;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["threatPreventionProfile"] = state?.threatPreventionProfile;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as SecurityProfileArgs | undefined;
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["customInterceptProfile"] = args ? args.customInterceptProfile : undefined;
-            resourceInputs["customMirroringProfile"] = args ? args.customMirroringProfile : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
-            resourceInputs["threatPreventionProfile"] = args ? args.threatPreventionProfile : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["customInterceptProfile"] = args?.customInterceptProfile;
+            resourceInputs["customMirroringProfile"] = args?.customMirroringProfile;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["parent"] = args?.parent;
+            resourceInputs["threatPreventionProfile"] = args?.threatPreventionProfile;
+            resourceInputs["type"] = args?.type;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;

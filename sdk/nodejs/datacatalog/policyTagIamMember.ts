@@ -190,11 +190,11 @@ export class PolicyTagIamMember extends pulumi.CustomResource {
         return obj['__pulumiType'] === PolicyTagIamMember.__pulumiType;
     }
 
-    public readonly condition!: pulumi.Output<outputs.datacatalog.PolicyTagIamMemberCondition | undefined>;
+    declare public readonly condition: pulumi.Output<outputs.datacatalog.PolicyTagIamMemberCondition | undefined>;
     /**
      * (Computed) The etag of the IAM policy.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -208,17 +208,17 @@ export class PolicyTagIamMember extends pulumi.CustomResource {
      * * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
      */
-    public readonly member!: pulumi.Output<string>;
+    declare public readonly member: pulumi.Output<string>;
     /**
      * Used to find the parent resource to bind the IAM policy to
      */
-    public readonly policyTag!: pulumi.Output<string>;
+    declare public readonly policyTag: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.datacatalog.PolicyTagIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    public readonly role!: pulumi.Output<string>;
+    declare public readonly role: pulumi.Output<string>;
 
     /**
      * Create a PolicyTagIamMember resource with the given unique name, arguments, and options.
@@ -233,26 +233,26 @@ export class PolicyTagIamMember extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyTagIamMemberState | undefined;
-            resourceInputs["condition"] = state ? state.condition : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["member"] = state ? state.member : undefined;
-            resourceInputs["policyTag"] = state ? state.policyTag : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["condition"] = state?.condition;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["member"] = state?.member;
+            resourceInputs["policyTag"] = state?.policyTag;
+            resourceInputs["role"] = state?.role;
         } else {
             const args = argsOrState as PolicyTagIamMemberArgs | undefined;
-            if ((!args || args.member === undefined) && !opts.urn) {
+            if (args?.member === undefined && !opts.urn) {
                 throw new Error("Missing required property 'member'");
             }
-            if ((!args || args.policyTag === undefined) && !opts.urn) {
+            if (args?.policyTag === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyTag'");
             }
-            if ((!args || args.role === undefined) && !opts.urn) {
+            if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            resourceInputs["condition"] = args ? args.condition : undefined;
-            resourceInputs["member"] = args ? args.member : undefined;
-            resourceInputs["policyTag"] = args ? args.policyTag : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["condition"] = args?.condition;
+            resourceInputs["member"] = args?.member;
+            resourceInputs["policyTag"] = args?.policyTag;
+            resourceInputs["role"] = args?.role;
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

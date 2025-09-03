@@ -204,62 +204,57 @@ export class AppProfile extends pulumi.CustomResource {
     /**
      * The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
      */
-    public readonly appProfileId!: pulumi.Output<string>;
+    declare public readonly appProfileId: pulumi.Output<string>;
     /**
      * Specifies that this app profile is intended for read-only usage via the Data Boost feature.
      * Structure is documented below.
      */
-    public readonly dataBoostIsolationReadOnly!: pulumi.Output<outputs.bigtable.AppProfileDataBoostIsolationReadOnly | undefined>;
+    declare public readonly dataBoostIsolationReadOnly: pulumi.Output<outputs.bigtable.AppProfileDataBoostIsolationReadOnly | undefined>;
     /**
      * Long form description of the use case for this app profile.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * If true, ignore safety checks when deleting/updating the app profile.
      */
-    public readonly ignoreWarnings!: pulumi.Output<boolean | undefined>;
+    declare public readonly ignoreWarnings: pulumi.Output<boolean | undefined>;
     /**
      * The name of the instance to create the app profile within.
      */
-    public readonly instance!: pulumi.Output<string | undefined>;
+    declare public readonly instance: pulumi.Output<string | undefined>;
     /**
-     * The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all
-     * clusters are eligible.
+     * The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all clusters are eligible.
      */
-    public readonly multiClusterRoutingClusterIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly multiClusterRoutingClusterIds: pulumi.Output<string[] | undefined>;
     /**
      * If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available
      * in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes
      * consistency to improve availability.
      */
-    public readonly multiClusterRoutingUseAny!: pulumi.Output<boolean | undefined>;
+    declare public readonly multiClusterRoutingUseAny: pulumi.Output<boolean | undefined>;
     /**
      * The unique name of the requested app profile. Values are of the form `projects/<project>/instances/<instance>/appProfiles/<appProfileId>`.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
-     * Must be used with multi-cluster routing. If true, then this app profile will use row affinity sticky routing. With row
-     * affinity, Bigtable will route single row key requests based on the row key, rather than randomly. Instead, each row key
-     * will be assigned to a cluster by Cloud Bigtable, and will stick to that cluster. Choosing this option improves
-     * read-your-writes consistency for most requests under most circumstances, without sacrificing availability. Consistency
-     * is not guaranteed, as requests may still fail over between clusters in the event of errors or latency.
+     * Must be used with multi-cluster routing. If true, then this app profile will use row affinity sticky routing. With row affinity, Bigtable will route single row key requests based on the row key, rather than randomly. Instead, each row key will be assigned to a cluster by Cloud Bigtable, and will stick to that cluster. Choosing this option improves read-your-writes consistency for most requests under most circumstances, without sacrificing availability. Consistency is not guaranteed, as requests may still fail over between clusters in the event of errors or latency.
      */
-    public readonly rowAffinity!: pulumi.Output<boolean | undefined>;
+    declare public readonly rowAffinity: pulumi.Output<boolean | undefined>;
     /**
      * Use a single-cluster routing policy.
      * Structure is documented below.
      */
-    public readonly singleClusterRouting!: pulumi.Output<outputs.bigtable.AppProfileSingleClusterRouting | undefined>;
+    declare public readonly singleClusterRouting: pulumi.Output<outputs.bigtable.AppProfileSingleClusterRouting | undefined>;
     /**
      * The standard options used for isolating this app profile's traffic from other use cases.
      * Structure is documented below.
      */
-    public readonly standardIsolation!: pulumi.Output<outputs.bigtable.AppProfileStandardIsolation>;
+    declare public readonly standardIsolation: pulumi.Output<outputs.bigtable.AppProfileStandardIsolation>;
 
     /**
      * Create a AppProfile resource with the given unique name, arguments, and options.
@@ -274,34 +269,34 @@ export class AppProfile extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AppProfileState | undefined;
-            resourceInputs["appProfileId"] = state ? state.appProfileId : undefined;
-            resourceInputs["dataBoostIsolationReadOnly"] = state ? state.dataBoostIsolationReadOnly : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["ignoreWarnings"] = state ? state.ignoreWarnings : undefined;
-            resourceInputs["instance"] = state ? state.instance : undefined;
-            resourceInputs["multiClusterRoutingClusterIds"] = state ? state.multiClusterRoutingClusterIds : undefined;
-            resourceInputs["multiClusterRoutingUseAny"] = state ? state.multiClusterRoutingUseAny : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["rowAffinity"] = state ? state.rowAffinity : undefined;
-            resourceInputs["singleClusterRouting"] = state ? state.singleClusterRouting : undefined;
-            resourceInputs["standardIsolation"] = state ? state.standardIsolation : undefined;
+            resourceInputs["appProfileId"] = state?.appProfileId;
+            resourceInputs["dataBoostIsolationReadOnly"] = state?.dataBoostIsolationReadOnly;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["ignoreWarnings"] = state?.ignoreWarnings;
+            resourceInputs["instance"] = state?.instance;
+            resourceInputs["multiClusterRoutingClusterIds"] = state?.multiClusterRoutingClusterIds;
+            resourceInputs["multiClusterRoutingUseAny"] = state?.multiClusterRoutingUseAny;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["rowAffinity"] = state?.rowAffinity;
+            resourceInputs["singleClusterRouting"] = state?.singleClusterRouting;
+            resourceInputs["standardIsolation"] = state?.standardIsolation;
         } else {
             const args = argsOrState as AppProfileArgs | undefined;
-            if ((!args || args.appProfileId === undefined) && !opts.urn) {
+            if (args?.appProfileId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'appProfileId'");
             }
-            resourceInputs["appProfileId"] = args ? args.appProfileId : undefined;
-            resourceInputs["dataBoostIsolationReadOnly"] = args ? args.dataBoostIsolationReadOnly : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["ignoreWarnings"] = args ? args.ignoreWarnings : undefined;
-            resourceInputs["instance"] = args ? args.instance : undefined;
-            resourceInputs["multiClusterRoutingClusterIds"] = args ? args.multiClusterRoutingClusterIds : undefined;
-            resourceInputs["multiClusterRoutingUseAny"] = args ? args.multiClusterRoutingUseAny : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["rowAffinity"] = args ? args.rowAffinity : undefined;
-            resourceInputs["singleClusterRouting"] = args ? args.singleClusterRouting : undefined;
-            resourceInputs["standardIsolation"] = args ? args.standardIsolation : undefined;
+            resourceInputs["appProfileId"] = args?.appProfileId;
+            resourceInputs["dataBoostIsolationReadOnly"] = args?.dataBoostIsolationReadOnly;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["ignoreWarnings"] = args?.ignoreWarnings;
+            resourceInputs["instance"] = args?.instance;
+            resourceInputs["multiClusterRoutingClusterIds"] = args?.multiClusterRoutingClusterIds;
+            resourceInputs["multiClusterRoutingUseAny"] = args?.multiClusterRoutingUseAny;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["rowAffinity"] = args?.rowAffinity;
+            resourceInputs["singleClusterRouting"] = args?.singleClusterRouting;
+            resourceInputs["standardIsolation"] = args?.standardIsolation;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -337,8 +332,7 @@ export interface AppProfileState {
      */
     instance?: pulumi.Input<string>;
     /**
-     * The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all
-     * clusters are eligible.
+     * The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all clusters are eligible.
      */
     multiClusterRoutingClusterIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -357,11 +351,7 @@ export interface AppProfileState {
      */
     project?: pulumi.Input<string>;
     /**
-     * Must be used with multi-cluster routing. If true, then this app profile will use row affinity sticky routing. With row
-     * affinity, Bigtable will route single row key requests based on the row key, rather than randomly. Instead, each row key
-     * will be assigned to a cluster by Cloud Bigtable, and will stick to that cluster. Choosing this option improves
-     * read-your-writes consistency for most requests under most circumstances, without sacrificing availability. Consistency
-     * is not guaranteed, as requests may still fail over between clusters in the event of errors or latency.
+     * Must be used with multi-cluster routing. If true, then this app profile will use row affinity sticky routing. With row affinity, Bigtable will route single row key requests based on the row key, rather than randomly. Instead, each row key will be assigned to a cluster by Cloud Bigtable, and will stick to that cluster. Choosing this option improves read-your-writes consistency for most requests under most circumstances, without sacrificing availability. Consistency is not guaranteed, as requests may still fail over between clusters in the event of errors or latency.
      */
     rowAffinity?: pulumi.Input<boolean>;
     /**
@@ -402,8 +392,7 @@ export interface AppProfileArgs {
      */
     instance?: pulumi.Input<string>;
     /**
-     * The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all
-     * clusters are eligible.
+     * The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all clusters are eligible.
      */
     multiClusterRoutingClusterIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -418,11 +407,7 @@ export interface AppProfileArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * Must be used with multi-cluster routing. If true, then this app profile will use row affinity sticky routing. With row
-     * affinity, Bigtable will route single row key requests based on the row key, rather than randomly. Instead, each row key
-     * will be assigned to a cluster by Cloud Bigtable, and will stick to that cluster. Choosing this option improves
-     * read-your-writes consistency for most requests under most circumstances, without sacrificing availability. Consistency
-     * is not guaranteed, as requests may still fail over between clusters in the event of errors or latency.
+     * Must be used with multi-cluster routing. If true, then this app profile will use row affinity sticky routing. With row affinity, Bigtable will route single row key requests based on the row key, rather than randomly. Instead, each row key will be assigned to a cluster by Cloud Bigtable, and will stick to that cluster. Choosing this option improves read-your-writes consistency for most requests under most circumstances, without sacrificing availability. Consistency is not guaranteed, as requests may still fail over between clusters in the event of errors or latency.
      */
     rowAffinity?: pulumi.Input<boolean>;
     /**

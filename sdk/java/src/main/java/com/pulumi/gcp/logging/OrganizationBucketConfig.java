@@ -104,18 +104,14 @@ public class OrganizationBucketConfig extends com.pulumi.resources.CustomResourc
         return this.bucketId;
     }
     /**
-     * The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
-     * key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
-     * updating the log bucket. Changing the KMS key is allowed.
+     * The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
      * 
      */
     @Export(name="cmekSettings", refs={OrganizationBucketConfigCmekSettings.class}, tree="[0]")
     private Output</* @Nullable */ OrganizationBucketConfigCmekSettings> cmekSettings;
 
     /**
-     * @return The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
-     * key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
-     * updating the log bucket. Changing the KMS key is allowed.
+     * @return The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
      * 
      */
     public Output<Optional<OrganizationBucketConfigCmekSettings>> cmekSettings() {

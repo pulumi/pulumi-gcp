@@ -89,21 +89,21 @@ export class InstanceSettings extends pulumi.CustomResource {
      * The fingerprint used for optimistic locking of this resource.  Used
      * internally during updates.
      */
-    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly fingerprint: pulumi.Output<string>;
     /**
      * The metadata key/value pairs assigned to all the instances in the corresponding scope.
      * Structure is documented below.
      */
-    public readonly metadata!: pulumi.Output<outputs.compute.InstanceSettingsMetadata | undefined>;
+    declare public readonly metadata: pulumi.Output<outputs.compute.InstanceSettingsMetadata | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * A reference to the zone where the machine resides.
      */
-    public readonly zone!: pulumi.Output<string>;
+    declare public readonly zone: pulumi.Output<string>;
 
     /**
      * Create a InstanceSettings resource with the given unique name, arguments, and options.
@@ -118,18 +118,18 @@ export class InstanceSettings extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceSettingsState | undefined;
-            resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
-            resourceInputs["metadata"] = state ? state.metadata : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["fingerprint"] = state?.fingerprint;
+            resourceInputs["metadata"] = state?.metadata;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as InstanceSettingsArgs | undefined;
-            if ((!args || args.zone === undefined) && !opts.urn) {
+            if (args?.zone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
-            resourceInputs["metadata"] = args ? args.metadata : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["metadata"] = args?.metadata;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["zone"] = args?.zone;
             resourceInputs["fingerprint"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

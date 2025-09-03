@@ -188,16 +188,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:monitoring/dashboard:Dashboard")
 public class Dashboard extends com.pulumi.resources.CustomResource {
     /**
-     * The JSON representation of a dashboard, following the format at
-     * https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
+     * The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
      * 
      */
     @Export(name="dashboardJson", refs={String.class}, tree="[0]")
     private Output<String> dashboardJson;
 
     /**
-     * @return The JSON representation of a dashboard, following the format at
-     * https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
+     * @return The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
      * 
      */
     public Output<String> dashboardJson() {

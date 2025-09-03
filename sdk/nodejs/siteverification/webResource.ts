@@ -104,22 +104,22 @@ export class WebResource extends pulumi.CustomResource {
      * The email addresses of all direct, verified owners of this exact property. Indirect owners —
      * for example verified owners of the containing domain—are not included in this list.
      */
-    public /*out*/ readonly owners!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly owners: pulumi.Output<string[]>;
     /**
      * Container for the address and type of a site for which a verification token will be verified.
      * Structure is documented below.
      */
-    public readonly site!: pulumi.Output<outputs.siteverification.WebResourceSite>;
+    declare public readonly site: pulumi.Output<outputs.siteverification.WebResourceSite>;
     /**
      * The verification method for the Site Verification system to use to verify
      * this site or domain.
      * Possible values are: `ANALYTICS`, `DNS_CNAME`, `DNS_TXT`, `FILE`, `META`, `TAG_MANAGER`.
      */
-    public readonly verificationMethod!: pulumi.Output<string>;
+    declare public readonly verificationMethod: pulumi.Output<string>;
     /**
      * The string used to identify this web resource.
      */
-    public /*out*/ readonly webResourceId!: pulumi.Output<string>;
+    declare public /*out*/ readonly webResourceId: pulumi.Output<string>;
 
     /**
      * Create a WebResource resource with the given unique name, arguments, and options.
@@ -134,20 +134,20 @@ export class WebResource extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WebResourceState | undefined;
-            resourceInputs["owners"] = state ? state.owners : undefined;
-            resourceInputs["site"] = state ? state.site : undefined;
-            resourceInputs["verificationMethod"] = state ? state.verificationMethod : undefined;
-            resourceInputs["webResourceId"] = state ? state.webResourceId : undefined;
+            resourceInputs["owners"] = state?.owners;
+            resourceInputs["site"] = state?.site;
+            resourceInputs["verificationMethod"] = state?.verificationMethod;
+            resourceInputs["webResourceId"] = state?.webResourceId;
         } else {
             const args = argsOrState as WebResourceArgs | undefined;
-            if ((!args || args.site === undefined) && !opts.urn) {
+            if (args?.site === undefined && !opts.urn) {
                 throw new Error("Missing required property 'site'");
             }
-            if ((!args || args.verificationMethod === undefined) && !opts.urn) {
+            if (args?.verificationMethod === undefined && !opts.urn) {
                 throw new Error("Missing required property 'verificationMethod'");
             }
-            resourceInputs["site"] = args ? args.site : undefined;
-            resourceInputs["verificationMethod"] = args ? args.verificationMethod : undefined;
+            resourceInputs["site"] = args?.site;
+            resourceInputs["verificationMethod"] = args?.verificationMethod;
             resourceInputs["owners"] = undefined /*out*/;
             resourceInputs["webResourceId"] = undefined /*out*/;
         }

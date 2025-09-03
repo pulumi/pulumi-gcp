@@ -151,60 +151,60 @@ export class Config extends pulumi.CustomResource {
     /**
      * List of domains authorized for OAuth redirects.
      */
-    public readonly authorizedDomains!: pulumi.Output<string[]>;
+    declare public readonly authorizedDomains: pulumi.Output<string[]>;
     /**
      * Whether anonymous users will be auto-deleted after a period of 30 days
      */
-    public readonly autodeleteAnonymousUsers!: pulumi.Output<boolean | undefined>;
+    declare public readonly autodeleteAnonymousUsers: pulumi.Output<boolean | undefined>;
     /**
      * Configuration related to blocking functions.
      * Structure is documented below.
      */
-    public readonly blockingFunctions!: pulumi.Output<outputs.identityplatform.ConfigBlockingFunctions | undefined>;
+    declare public readonly blockingFunctions: pulumi.Output<outputs.identityplatform.ConfigBlockingFunctions | undefined>;
     /**
      * Options related to how clients making requests on behalf of a project should be configured.
      * Structure is documented below.
      */
-    public readonly client!: pulumi.Output<outputs.identityplatform.ConfigClient>;
+    declare public readonly client: pulumi.Output<outputs.identityplatform.ConfigClient>;
     /**
      * Options related to how clients making requests on behalf of a project should be configured.
      * Structure is documented below.
      */
-    public readonly mfa!: pulumi.Output<outputs.identityplatform.ConfigMfa>;
+    declare public readonly mfa: pulumi.Output<outputs.identityplatform.ConfigMfa>;
     /**
      * Configuration related to monitoring project activity.
      * Structure is documented below.
      */
-    public readonly monitoring!: pulumi.Output<outputs.identityplatform.ConfigMonitoring>;
+    declare public readonly monitoring: pulumi.Output<outputs.identityplatform.ConfigMonitoring>;
     /**
      * Configuration related to multi-tenant functionality.
      * Structure is documented below.
      */
-    public readonly multiTenant!: pulumi.Output<outputs.identityplatform.ConfigMultiTenant | undefined>;
+    declare public readonly multiTenant: pulumi.Output<outputs.identityplatform.ConfigMultiTenant | undefined>;
     /**
      * The name of the Config resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Configuration related to quotas.
      * Structure is documented below.
      */
-    public readonly quota!: pulumi.Output<outputs.identityplatform.ConfigQuota | undefined>;
+    declare public readonly quota: pulumi.Output<outputs.identityplatform.ConfigQuota | undefined>;
     /**
      * Configuration related to local sign in methods.
      * Structure is documented below.
      */
-    public readonly signIn!: pulumi.Output<outputs.identityplatform.ConfigSignIn>;
+    declare public readonly signIn: pulumi.Output<outputs.identityplatform.ConfigSignIn>;
     /**
      * Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
      * Structure is documented below.
      */
-    public readonly smsRegionConfig!: pulumi.Output<outputs.identityplatform.ConfigSmsRegionConfig>;
+    declare public readonly smsRegionConfig: pulumi.Output<outputs.identityplatform.ConfigSmsRegionConfig>;
 
     /**
      * Create a Config resource with the given unique name, arguments, and options.
@@ -219,31 +219,31 @@ export class Config extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConfigState | undefined;
-            resourceInputs["authorizedDomains"] = state ? state.authorizedDomains : undefined;
-            resourceInputs["autodeleteAnonymousUsers"] = state ? state.autodeleteAnonymousUsers : undefined;
-            resourceInputs["blockingFunctions"] = state ? state.blockingFunctions : undefined;
-            resourceInputs["client"] = state ? state.client : undefined;
-            resourceInputs["mfa"] = state ? state.mfa : undefined;
-            resourceInputs["monitoring"] = state ? state.monitoring : undefined;
-            resourceInputs["multiTenant"] = state ? state.multiTenant : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["quota"] = state ? state.quota : undefined;
-            resourceInputs["signIn"] = state ? state.signIn : undefined;
-            resourceInputs["smsRegionConfig"] = state ? state.smsRegionConfig : undefined;
+            resourceInputs["authorizedDomains"] = state?.authorizedDomains;
+            resourceInputs["autodeleteAnonymousUsers"] = state?.autodeleteAnonymousUsers;
+            resourceInputs["blockingFunctions"] = state?.blockingFunctions;
+            resourceInputs["client"] = state?.client;
+            resourceInputs["mfa"] = state?.mfa;
+            resourceInputs["monitoring"] = state?.monitoring;
+            resourceInputs["multiTenant"] = state?.multiTenant;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["quota"] = state?.quota;
+            resourceInputs["signIn"] = state?.signIn;
+            resourceInputs["smsRegionConfig"] = state?.smsRegionConfig;
         } else {
             const args = argsOrState as ConfigArgs | undefined;
-            resourceInputs["authorizedDomains"] = args ? args.authorizedDomains : undefined;
-            resourceInputs["autodeleteAnonymousUsers"] = args ? args.autodeleteAnonymousUsers : undefined;
-            resourceInputs["blockingFunctions"] = args ? args.blockingFunctions : undefined;
-            resourceInputs["client"] = args ? args.client : undefined;
-            resourceInputs["mfa"] = args ? args.mfa : undefined;
-            resourceInputs["monitoring"] = args ? args.monitoring : undefined;
-            resourceInputs["multiTenant"] = args ? args.multiTenant : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["quota"] = args ? args.quota : undefined;
-            resourceInputs["signIn"] = args ? args.signIn : undefined;
-            resourceInputs["smsRegionConfig"] = args ? args.smsRegionConfig : undefined;
+            resourceInputs["authorizedDomains"] = args?.authorizedDomains;
+            resourceInputs["autodeleteAnonymousUsers"] = args?.autodeleteAnonymousUsers;
+            resourceInputs["blockingFunctions"] = args?.blockingFunctions;
+            resourceInputs["client"] = args?.client;
+            resourceInputs["mfa"] = args?.mfa;
+            resourceInputs["monitoring"] = args?.monitoring;
+            resourceInputs["multiTenant"] = args?.multiTenant;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["quota"] = args?.quota;
+            resourceInputs["signIn"] = args?.signIn;
+            resourceInputs["smsRegionConfig"] = args?.smsRegionConfig;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

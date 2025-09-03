@@ -130,48 +130,48 @@ export class Floorsetting extends pulumi.CustomResource {
      * AI Platform floor setting.
      * Structure is documented below.
      */
-    public readonly aiPlatformFloorSetting!: pulumi.Output<outputs.modelarmor.FloorsettingAiPlatformFloorSetting | undefined>;
+    declare public readonly aiPlatformFloorSetting: pulumi.Output<outputs.modelarmor.FloorsettingAiPlatformFloorSetting | undefined>;
     /**
      * [Output only] Create timestamp
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Floor Settings enforcement status.
      */
-    public readonly enableFloorSettingEnforcement!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableFloorSettingEnforcement: pulumi.Output<boolean | undefined>;
     /**
      * Filters configuration.
      * Structure is documented below.
      */
-    public readonly filterConfig!: pulumi.Output<outputs.modelarmor.FloorsettingFilterConfig>;
+    declare public readonly filterConfig: pulumi.Output<outputs.modelarmor.FloorsettingFilterConfig>;
     /**
      * Metadata to enable multi language detection via floor setting.
      * Structure is documented below.
      */
-    public readonly floorSettingMetadata!: pulumi.Output<outputs.modelarmor.FloorsettingFloorSettingMetadata | undefined>;
+    declare public readonly floorSettingMetadata: pulumi.Output<outputs.modelarmor.FloorsettingFloorSettingMetadata | undefined>;
     /**
      * List of integrated services for which the floor setting is applicable.
      */
-    public readonly integratedServices!: pulumi.Output<string[] | undefined>;
+    declare public readonly integratedServices: pulumi.Output<string[] | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Identifier. The resource name.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Will be any one of these:
      * * `projects/{project}`
      * * `folders/{folder}`
      * * `organizations/{organizationId}`
      */
-    public readonly parent!: pulumi.Output<string>;
+    declare public readonly parent: pulumi.Output<string>;
     /**
      * [Output only] Update timestamp
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Floorsetting resource with the given unique name, arguments, and options.
@@ -186,34 +186,34 @@ export class Floorsetting extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FloorsettingState | undefined;
-            resourceInputs["aiPlatformFloorSetting"] = state ? state.aiPlatformFloorSetting : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["enableFloorSettingEnforcement"] = state ? state.enableFloorSettingEnforcement : undefined;
-            resourceInputs["filterConfig"] = state ? state.filterConfig : undefined;
-            resourceInputs["floorSettingMetadata"] = state ? state.floorSettingMetadata : undefined;
-            resourceInputs["integratedServices"] = state ? state.integratedServices : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["aiPlatformFloorSetting"] = state?.aiPlatformFloorSetting;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["enableFloorSettingEnforcement"] = state?.enableFloorSettingEnforcement;
+            resourceInputs["filterConfig"] = state?.filterConfig;
+            resourceInputs["floorSettingMetadata"] = state?.floorSettingMetadata;
+            resourceInputs["integratedServices"] = state?.integratedServices;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as FloorsettingArgs | undefined;
-            if ((!args || args.filterConfig === undefined) && !opts.urn) {
+            if (args?.filterConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'filterConfig'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.parent === undefined) && !opts.urn) {
+            if (args?.parent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            resourceInputs["aiPlatformFloorSetting"] = args ? args.aiPlatformFloorSetting : undefined;
-            resourceInputs["enableFloorSettingEnforcement"] = args ? args.enableFloorSettingEnforcement : undefined;
-            resourceInputs["filterConfig"] = args ? args.filterConfig : undefined;
-            resourceInputs["floorSettingMetadata"] = args ? args.floorSettingMetadata : undefined;
-            resourceInputs["integratedServices"] = args ? args.integratedServices : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["aiPlatformFloorSetting"] = args?.aiPlatformFloorSetting;
+            resourceInputs["enableFloorSettingEnforcement"] = args?.enableFloorSettingEnforcement;
+            resourceInputs["filterConfig"] = args?.filterConfig;
+            resourceInputs["floorSettingMetadata"] = args?.floorSettingMetadata;
+            resourceInputs["integratedServices"] = args?.integratedServices;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["parent"] = args?.parent;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;

@@ -324,20 +324,20 @@ export class ManagedFolderIamMember extends pulumi.CustomResource {
     /**
      * The name of the bucket that contains the managed folder. Used to find the parent resource to bind the IAM policy to
      */
-    public readonly bucket!: pulumi.Output<string>;
+    declare public readonly bucket: pulumi.Output<string>;
     /**
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    public readonly condition!: pulumi.Output<outputs.storage.ManagedFolderIamMemberCondition | undefined>;
+    declare public readonly condition: pulumi.Output<outputs.storage.ManagedFolderIamMemberCondition | undefined>;
     /**
      * (Computed) The etag of the IAM policy.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Used to find the parent resource to bind the IAM policy to
      */
-    public readonly managedFolder!: pulumi.Output<string>;
+    declare public readonly managedFolder: pulumi.Output<string>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -351,13 +351,13 @@ export class ManagedFolderIamMember extends pulumi.CustomResource {
      * * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
      */
-    public readonly member!: pulumi.Output<string>;
+    declare public readonly member: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.storage.ManagedFolderIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    public readonly role!: pulumi.Output<string>;
+    declare public readonly role: pulumi.Output<string>;
 
     /**
      * Create a ManagedFolderIamMember resource with the given unique name, arguments, and options.
@@ -372,31 +372,31 @@ export class ManagedFolderIamMember extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ManagedFolderIamMemberState | undefined;
-            resourceInputs["bucket"] = state ? state.bucket : undefined;
-            resourceInputs["condition"] = state ? state.condition : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["managedFolder"] = state ? state.managedFolder : undefined;
-            resourceInputs["member"] = state ? state.member : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["bucket"] = state?.bucket;
+            resourceInputs["condition"] = state?.condition;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["managedFolder"] = state?.managedFolder;
+            resourceInputs["member"] = state?.member;
+            resourceInputs["role"] = state?.role;
         } else {
             const args = argsOrState as ManagedFolderIamMemberArgs | undefined;
-            if ((!args || args.bucket === undefined) && !opts.urn) {
+            if (args?.bucket === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            if ((!args || args.managedFolder === undefined) && !opts.urn) {
+            if (args?.managedFolder === undefined && !opts.urn) {
                 throw new Error("Missing required property 'managedFolder'");
             }
-            if ((!args || args.member === undefined) && !opts.urn) {
+            if (args?.member === undefined && !opts.urn) {
                 throw new Error("Missing required property 'member'");
             }
-            if ((!args || args.role === undefined) && !opts.urn) {
+            if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            resourceInputs["bucket"] = args ? args.bucket : undefined;
-            resourceInputs["condition"] = args ? args.condition : undefined;
-            resourceInputs["managedFolder"] = args ? args.managedFolder : undefined;
-            resourceInputs["member"] = args ? args.member : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["condition"] = args?.condition;
+            resourceInputs["managedFolder"] = args?.managedFolder;
+            resourceInputs["member"] = args?.member;
+            resourceInputs["role"] = args?.role;
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

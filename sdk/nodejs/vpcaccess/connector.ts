@@ -115,67 +115,67 @@ export class Connector extends pulumi.CustomResource {
     /**
      * List of projects using the connector.
      */
-    public /*out*/ readonly connectedProjects!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly connectedProjects: pulumi.Output<string[]>;
     /**
      * The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
      */
-    public readonly ipCidrRange!: pulumi.Output<string | undefined>;
+    declare public readonly ipCidrRange: pulumi.Output<string | undefined>;
     /**
      * Machine type of VM Instance underlying connector. Default is e2-micro
      */
-    public readonly machineType!: pulumi.Output<string | undefined>;
+    declare public readonly machineType: pulumi.Output<string | undefined>;
     /**
      * Maximum value of instances in autoscaling group underlying the connector. Value must be between 3 and 10, inclusive. Must be
      * higher than the value specified by min_instances. Required alongside `minInstances` if not using `minThroughput`/`maxThroughput`.
      */
-    public readonly maxInstances!: pulumi.Output<number>;
+    declare public readonly maxInstances: pulumi.Output<number>;
     /**
      * Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 300. Refers to the expected throughput
      * when using an e2-micro machine type. Value must be a multiple of 100 from 300 through 1000. Must be higher than the value specified by
      * min_throughput. Only one of `maxThroughput` and `maxInstances` can be specified. The use of maxThroughput is discouraged in favor of max_instances.
      */
-    public readonly maxThroughput!: pulumi.Output<number>;
+    declare public readonly maxThroughput: pulumi.Output<number>;
     /**
      * Minimum value of instances in autoscaling group underlying the connector. Value must be between 2 and 9, inclusive. Must be
      * lower than the value specified by max_instances. Required alongside `maxInstances` if not using `minThroughput`/`maxThroughput`.
      */
-    public readonly minInstances!: pulumi.Output<number>;
+    declare public readonly minInstances: pulumi.Output<number>;
     /**
      * Minimum throughput of the connector in Mbps. Default and min is 200. Refers to the expected throughput when using an e2-micro machine type.
      * Value must be a multiple of 100 from 200 through 900. Must be lower than the value specified by max_throughput.
      * Only one of `minThroughput` and `minInstances` can be specified. The use of minThroughput is discouraged in favor of min_instances.
      */
-    public readonly minThroughput!: pulumi.Output<number>;
+    declare public readonly minThroughput: pulumi.Output<number>;
     /**
      * The name of the resource (Max 25 characters).
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Name or selfLink of the VPC network. Required if `ipCidrRange` is set.
      */
-    public readonly network!: pulumi.Output<string>;
+    declare public readonly network: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Region where the VPC Access connector resides. If it is not provided, the provider region is used.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The fully qualified name of this VPC connector
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * State of the VPC access connector.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The subnet in which to house the connector
      * Structure is documented below.
      */
-    public readonly subnet!: pulumi.Output<outputs.vpcaccess.ConnectorSubnet | undefined>;
+    declare public readonly subnet: pulumi.Output<outputs.vpcaccess.ConnectorSubnet | undefined>;
 
     /**
      * Create a Connector resource with the given unique name, arguments, and options.
@@ -190,33 +190,33 @@ export class Connector extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectorState | undefined;
-            resourceInputs["connectedProjects"] = state ? state.connectedProjects : undefined;
-            resourceInputs["ipCidrRange"] = state ? state.ipCidrRange : undefined;
-            resourceInputs["machineType"] = state ? state.machineType : undefined;
-            resourceInputs["maxInstances"] = state ? state.maxInstances : undefined;
-            resourceInputs["maxThroughput"] = state ? state.maxThroughput : undefined;
-            resourceInputs["minInstances"] = state ? state.minInstances : undefined;
-            resourceInputs["minThroughput"] = state ? state.minThroughput : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["subnet"] = state ? state.subnet : undefined;
+            resourceInputs["connectedProjects"] = state?.connectedProjects;
+            resourceInputs["ipCidrRange"] = state?.ipCidrRange;
+            resourceInputs["machineType"] = state?.machineType;
+            resourceInputs["maxInstances"] = state?.maxInstances;
+            resourceInputs["maxThroughput"] = state?.maxThroughput;
+            resourceInputs["minInstances"] = state?.minInstances;
+            resourceInputs["minThroughput"] = state?.minThroughput;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["subnet"] = state?.subnet;
         } else {
             const args = argsOrState as ConnectorArgs | undefined;
-            resourceInputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
-            resourceInputs["machineType"] = args ? args.machineType : undefined;
-            resourceInputs["maxInstances"] = args ? args.maxInstances : undefined;
-            resourceInputs["maxThroughput"] = args ? args.maxThroughput : undefined;
-            resourceInputs["minInstances"] = args ? args.minInstances : undefined;
-            resourceInputs["minThroughput"] = args ? args.minThroughput : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["subnet"] = args ? args.subnet : undefined;
+            resourceInputs["ipCidrRange"] = args?.ipCidrRange;
+            resourceInputs["machineType"] = args?.machineType;
+            resourceInputs["maxInstances"] = args?.maxInstances;
+            resourceInputs["maxThroughput"] = args?.maxThroughput;
+            resourceInputs["minInstances"] = args?.minInstances;
+            resourceInputs["minThroughput"] = args?.minThroughput;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["subnet"] = args?.subnet;
             resourceInputs["connectedProjects"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;

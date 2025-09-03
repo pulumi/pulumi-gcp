@@ -75,41 +75,39 @@ export class BillingAccountBucketConfig extends pulumi.CustomResource {
     /**
      * The parent resource that contains the logging bucket.
      */
-    public readonly billingAccount!: pulumi.Output<string>;
+    declare public readonly billingAccount: pulumi.Output<string>;
     /**
      * The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
      */
-    public readonly bucketId!: pulumi.Output<string>;
+    declare public readonly bucketId: pulumi.Output<string>;
     /**
-     * The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
-     * key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
-     * updating the log bucket. Changing the KMS key is allowed.
+     * The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
      */
-    public readonly cmekSettings!: pulumi.Output<outputs.logging.BillingAccountBucketConfigCmekSettings | undefined>;
+    declare public readonly cmekSettings: pulumi.Output<outputs.logging.BillingAccountBucketConfigCmekSettings | undefined>;
     /**
      * Describes this bucket.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * A list of indexed fields and related configuration data. Structure is documented below.
      */
-    public readonly indexConfigs!: pulumi.Output<outputs.logging.BillingAccountBucketConfigIndexConfig[]>;
+    declare public readonly indexConfigs: pulumi.Output<outputs.logging.BillingAccountBucketConfigIndexConfig[]>;
     /**
      * The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
      */
-    public /*out*/ readonly lifecycleState!: pulumi.Output<string>;
+    declare public /*out*/ readonly lifecycleState: pulumi.Output<string>;
     /**
      * The location of the bucket.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
      */
-    public readonly retentionDays!: pulumi.Output<number | undefined>;
+    declare public readonly retentionDays: pulumi.Output<number | undefined>;
 
     /**
      * Create a BillingAccountBucketConfig resource with the given unique name, arguments, and options.
@@ -124,33 +122,33 @@ export class BillingAccountBucketConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BillingAccountBucketConfigState | undefined;
-            resourceInputs["billingAccount"] = state ? state.billingAccount : undefined;
-            resourceInputs["bucketId"] = state ? state.bucketId : undefined;
-            resourceInputs["cmekSettings"] = state ? state.cmekSettings : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["indexConfigs"] = state ? state.indexConfigs : undefined;
-            resourceInputs["lifecycleState"] = state ? state.lifecycleState : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["retentionDays"] = state ? state.retentionDays : undefined;
+            resourceInputs["billingAccount"] = state?.billingAccount;
+            resourceInputs["bucketId"] = state?.bucketId;
+            resourceInputs["cmekSettings"] = state?.cmekSettings;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["indexConfigs"] = state?.indexConfigs;
+            resourceInputs["lifecycleState"] = state?.lifecycleState;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["retentionDays"] = state?.retentionDays;
         } else {
             const args = argsOrState as BillingAccountBucketConfigArgs | undefined;
-            if ((!args || args.billingAccount === undefined) && !opts.urn) {
+            if (args?.billingAccount === undefined && !opts.urn) {
                 throw new Error("Missing required property 'billingAccount'");
             }
-            if ((!args || args.bucketId === undefined) && !opts.urn) {
+            if (args?.bucketId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucketId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["billingAccount"] = args ? args.billingAccount : undefined;
-            resourceInputs["bucketId"] = args ? args.bucketId : undefined;
-            resourceInputs["cmekSettings"] = args ? args.cmekSettings : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["indexConfigs"] = args ? args.indexConfigs : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["retentionDays"] = args ? args.retentionDays : undefined;
+            resourceInputs["billingAccount"] = args?.billingAccount;
+            resourceInputs["bucketId"] = args?.bucketId;
+            resourceInputs["cmekSettings"] = args?.cmekSettings;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["indexConfigs"] = args?.indexConfigs;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["retentionDays"] = args?.retentionDays;
             resourceInputs["lifecycleState"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         }
@@ -172,9 +170,7 @@ export interface BillingAccountBucketConfigState {
      */
     bucketId?: pulumi.Input<string>;
     /**
-     * The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
-     * key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
-     * updating the log bucket. Changing the KMS key is allowed.
+     * The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
      */
     cmekSettings?: pulumi.Input<inputs.logging.BillingAccountBucketConfigCmekSettings>;
     /**
@@ -216,9 +212,7 @@ export interface BillingAccountBucketConfigArgs {
      */
     bucketId: pulumi.Input<string>;
     /**
-     * The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
-     * key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
-     * updating the log bucket. Changing the KMS key is allowed.
+     * The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
      */
     cmekSettings?: pulumi.Input<inputs.logging.BillingAccountBucketConfigCmekSettings>;
     /**

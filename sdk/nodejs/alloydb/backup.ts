@@ -164,119 +164,119 @@ export class Backup extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the alloydb backup.
      */
-    public readonly backupId!: pulumi.Output<string>;
+    declare public readonly backupId: pulumi.Output<string>;
     /**
      * The full resource name of the backup source cluster (e.g., projects/{project}/locations/{location}/clusters/{clusterId}).
      */
-    public readonly clusterName!: pulumi.Output<string>;
+    declare public readonly clusterName: pulumi.Output<string>;
     /**
      * Output only. The system-generated UID of the cluster which was used to create this resource.
      */
-    public /*out*/ readonly clusterUid!: pulumi.Output<string>;
+    declare public /*out*/ readonly clusterUid: pulumi.Output<string>;
     /**
      * Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Output only. Delete time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly deleteTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly deleteTime: pulumi.Output<string>;
     /**
      * User-provided description of the backup.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * User-settable and human-readable display name for the Backup.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
      * Structure is documented below.
      */
-    public readonly encryptionConfig!: pulumi.Output<outputs.alloydb.BackupEncryptionConfig | undefined>;
+    declare public readonly encryptionConfig: pulumi.Output<outputs.alloydb.BackupEncryptionConfig | undefined>;
     /**
      * EncryptionInfo describes the encryption information of a cluster or a backup.
      * Structure is documented below.
      */
-    public /*out*/ readonly encryptionInfos!: pulumi.Output<outputs.alloydb.BackupEncryptionInfo[]>;
+    declare public /*out*/ readonly encryptionInfos: pulumi.Output<outputs.alloydb.BackupEncryptionInfo[]>;
     /**
      * For Resource freshness validation (https://google.aip.dev/154)
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Output only. The QuantityBasedExpiry of the backup, specified by the backup's retention policy.
      * Once the expiry quantity is over retention, the backup is eligible to be garbage collected.
      * Structure is documented below.
      */
-    public /*out*/ readonly expiryQuantities!: pulumi.Output<outputs.alloydb.BackupExpiryQuantity[]>;
+    declare public /*out*/ readonly expiryQuantities: pulumi.Output<outputs.alloydb.BackupExpiryQuantity[]>;
     /**
      * Output only. The time at which after the backup is eligible to be garbage collected.
      * It is the duration specified by the backup's retention policy, added to the backup's createTime.
      */
-    public /*out*/ readonly expiryTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly expiryTime: pulumi.Output<string>;
     /**
      * User-defined labels for the alloydb backup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location where the alloydb backup should reside.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Output only. The name of the backup resource with the format: * projects/{project}/locations/{region}/backups/{backupId}
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Output only. Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource.
      * This can happen due to user-triggered updates or system actions like failover or maintenance.
      */
-    public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly reconciling: pulumi.Output<boolean>;
     /**
      * Output only. The size of the backup in bytes.
      */
-    public /*out*/ readonly sizeBytes!: pulumi.Output<string>;
+    declare public /*out*/ readonly sizeBytes: pulumi.Output<string>;
     /**
      * Output only. The current state of the backup.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The backup type, which suggests the trigger for the backup.
      * Possible values are: `TYPE_UNSPECIFIED`, `ON_DEMAND`, `AUTOMATED`, `CONTINUOUS`.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Backup resource with the given unique name, arguments, and options.
@@ -291,53 +291,53 @@ export class Backup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BackupState | undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["backupId"] = state ? state.backupId : undefined;
-            resourceInputs["clusterName"] = state ? state.clusterName : undefined;
-            resourceInputs["clusterUid"] = state ? state.clusterUid : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["deleteTime"] = state ? state.deleteTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["encryptionConfig"] = state ? state.encryptionConfig : undefined;
-            resourceInputs["encryptionInfos"] = state ? state.encryptionInfos : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["expiryQuantities"] = state ? state.expiryQuantities : undefined;
-            resourceInputs["expiryTime"] = state ? state.expiryTime : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["reconciling"] = state ? state.reconciling : undefined;
-            resourceInputs["sizeBytes"] = state ? state.sizeBytes : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["backupId"] = state?.backupId;
+            resourceInputs["clusterName"] = state?.clusterName;
+            resourceInputs["clusterUid"] = state?.clusterUid;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deleteTime"] = state?.deleteTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["encryptionConfig"] = state?.encryptionConfig;
+            resourceInputs["encryptionInfos"] = state?.encryptionInfos;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["expiryQuantities"] = state?.expiryQuantities;
+            resourceInputs["expiryTime"] = state?.expiryTime;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["reconciling"] = state?.reconciling;
+            resourceInputs["sizeBytes"] = state?.sizeBytes;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as BackupArgs | undefined;
-            if ((!args || args.backupId === undefined) && !opts.urn) {
+            if (args?.backupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'backupId'");
             }
-            if ((!args || args.clusterName === undefined) && !opts.urn) {
+            if (args?.clusterName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterName'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["backupId"] = args ? args.backupId : undefined;
-            resourceInputs["clusterName"] = args ? args.clusterName : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["backupId"] = args?.backupId;
+            resourceInputs["clusterName"] = args?.clusterName;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["encryptionConfig"] = args?.encryptionConfig;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["type"] = args?.type;
             resourceInputs["clusterUid"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;

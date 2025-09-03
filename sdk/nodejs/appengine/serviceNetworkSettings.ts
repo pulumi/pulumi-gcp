@@ -111,16 +111,16 @@ export class ServiceNetworkSettings extends pulumi.CustomResource {
      * Ingress settings for this service. Will apply to all versions.
      * Structure is documented below.
      */
-    public readonly networkSettings!: pulumi.Output<outputs.appengine.ServiceNetworkSettingsNetworkSettings>;
+    declare public readonly networkSettings: pulumi.Output<outputs.appengine.ServiceNetworkSettingsNetworkSettings>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The name of the service these settings apply to.
      */
-    public readonly service!: pulumi.Output<string>;
+    declare public readonly service: pulumi.Output<string>;
 
     /**
      * Create a ServiceNetworkSettings resource with the given unique name, arguments, and options.
@@ -135,20 +135,20 @@ export class ServiceNetworkSettings extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceNetworkSettingsState | undefined;
-            resourceInputs["networkSettings"] = state ? state.networkSettings : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["service"] = state ? state.service : undefined;
+            resourceInputs["networkSettings"] = state?.networkSettings;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["service"] = state?.service;
         } else {
             const args = argsOrState as ServiceNetworkSettingsArgs | undefined;
-            if ((!args || args.networkSettings === undefined) && !opts.urn) {
+            if (args?.networkSettings === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkSettings'");
             }
-            if ((!args || args.service === undefined) && !opts.urn) {
+            if (args?.service === undefined && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
-            resourceInputs["networkSettings"] = args ? args.networkSettings : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["service"] = args ? args.service : undefined;
+            resourceInputs["networkSettings"] = args?.networkSettings;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["service"] = args?.service;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServiceNetworkSettings.__pulumiType, name, resourceInputs, opts);

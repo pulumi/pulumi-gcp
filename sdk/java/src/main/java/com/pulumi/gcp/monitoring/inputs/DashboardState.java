@@ -16,16 +16,14 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
     public static final DashboardState Empty = new DashboardState();
 
     /**
-     * The JSON representation of a dashboard, following the format at
-     * https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
+     * The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
      * 
      */
     @Import(name="dashboardJson")
     private @Nullable Output<String> dashboardJson;
 
     /**
-     * @return The JSON representation of a dashboard, following the format at
-     * https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
+     * @return The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
      * 
      */
     public Optional<Output<String>> dashboardJson() {
@@ -75,8 +73,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dashboardJson The JSON representation of a dashboard, following the format at
-         * https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
+         * @param dashboardJson The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
          * 
          * @return builder
          * 
@@ -87,8 +84,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dashboardJson The JSON representation of a dashboard, following the format at
-         * https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
+         * @param dashboardJson The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
          * 
          * @return builder
          * 

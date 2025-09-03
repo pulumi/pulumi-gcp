@@ -228,53 +228,53 @@ export class AiEndpointWithModelGardenDeployment extends pulumi.CustomResource {
      * The deploy config to use for the deployment.
      * Structure is documented below.
      */
-    public readonly deployConfig!: pulumi.Output<outputs.vertex.AiEndpointWithModelGardenDeploymentDeployConfig | undefined>;
+    declare public readonly deployConfig: pulumi.Output<outputs.vertex.AiEndpointWithModelGardenDeploymentDeployConfig | undefined>;
     /**
      * Output only. The display name assigned to the model deployed to the endpoint.
      * This is not required to delete the resource but is used for debug logging.
      */
-    public /*out*/ readonly deployedModelDisplayName!: pulumi.Output<string>;
+    declare public /*out*/ readonly deployedModelDisplayName: pulumi.Output<string>;
     /**
      * Output only. The unique numeric ID that Vertex AI assigns to the model at the time it is deployed to the endpoint.
      * It is required to undeploy the model from the endpoint during resource deletion as described in
      * https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.endpoints/undeployModel.
      */
-    public /*out*/ readonly deployedModelId!: pulumi.Output<string>;
+    declare public /*out*/ readonly deployedModelId: pulumi.Output<string>;
     /**
      * Resource ID segment making up resource `endpoint`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    public /*out*/ readonly endpoint!: pulumi.Output<string>;
+    declare public /*out*/ readonly endpoint: pulumi.Output<string>;
     /**
      * The endpoint config to use for the deployment.
      * Structure is documented below.
      */
-    public readonly endpointConfig!: pulumi.Output<outputs.vertex.AiEndpointWithModelGardenDeploymentEndpointConfig | undefined>;
+    declare public readonly endpointConfig: pulumi.Output<outputs.vertex.AiEndpointWithModelGardenDeploymentEndpointConfig | undefined>;
     /**
      * The Hugging Face model to deploy.
      * Format: Hugging Face model ID like `google/gemma-2-2b-it`.
      */
-    public readonly huggingFaceModelId!: pulumi.Output<string | undefined>;
+    declare public readonly huggingFaceModelId: pulumi.Output<string | undefined>;
     /**
      * Resource ID segment making up resource `location`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The model config to use for the deployment.
      * Structure is documented below.
      */
-    public readonly modelConfig!: pulumi.Output<outputs.vertex.AiEndpointWithModelGardenDeploymentModelConfig | undefined>;
+    declare public readonly modelConfig: pulumi.Output<outputs.vertex.AiEndpointWithModelGardenDeploymentModelConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The Model Garden model to deploy.
      * Format:
      * `publishers/{publisher}/models/{publisher_model}@{version_id}`, or
      * `publishers/hf-{hugging-face-author}/models/{hugging-face-model-name}@001`.
      */
-    public readonly publisherModelName!: pulumi.Output<string | undefined>;
+    declare public readonly publisherModelName: pulumi.Output<string | undefined>;
 
     /**
      * Create a AiEndpointWithModelGardenDeployment resource with the given unique name, arguments, and options.
@@ -289,28 +289,28 @@ export class AiEndpointWithModelGardenDeployment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AiEndpointWithModelGardenDeploymentState | undefined;
-            resourceInputs["deployConfig"] = state ? state.deployConfig : undefined;
-            resourceInputs["deployedModelDisplayName"] = state ? state.deployedModelDisplayName : undefined;
-            resourceInputs["deployedModelId"] = state ? state.deployedModelId : undefined;
-            resourceInputs["endpoint"] = state ? state.endpoint : undefined;
-            resourceInputs["endpointConfig"] = state ? state.endpointConfig : undefined;
-            resourceInputs["huggingFaceModelId"] = state ? state.huggingFaceModelId : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["modelConfig"] = state ? state.modelConfig : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["publisherModelName"] = state ? state.publisherModelName : undefined;
+            resourceInputs["deployConfig"] = state?.deployConfig;
+            resourceInputs["deployedModelDisplayName"] = state?.deployedModelDisplayName;
+            resourceInputs["deployedModelId"] = state?.deployedModelId;
+            resourceInputs["endpoint"] = state?.endpoint;
+            resourceInputs["endpointConfig"] = state?.endpointConfig;
+            resourceInputs["huggingFaceModelId"] = state?.huggingFaceModelId;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["modelConfig"] = state?.modelConfig;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["publisherModelName"] = state?.publisherModelName;
         } else {
             const args = argsOrState as AiEndpointWithModelGardenDeploymentArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["deployConfig"] = args ? args.deployConfig : undefined;
-            resourceInputs["endpointConfig"] = args ? args.endpointConfig : undefined;
-            resourceInputs["huggingFaceModelId"] = args ? args.huggingFaceModelId : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["modelConfig"] = args ? args.modelConfig : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["publisherModelName"] = args ? args.publisherModelName : undefined;
+            resourceInputs["deployConfig"] = args?.deployConfig;
+            resourceInputs["endpointConfig"] = args?.endpointConfig;
+            resourceInputs["huggingFaceModelId"] = args?.huggingFaceModelId;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["modelConfig"] = args?.modelConfig;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["publisherModelName"] = args?.publisherModelName;
             resourceInputs["deployedModelDisplayName"] = undefined /*out*/;
             resourceInputs["deployedModelId"] = undefined /*out*/;
             resourceInputs["endpoint"] = undefined /*out*/;

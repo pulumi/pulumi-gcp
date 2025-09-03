@@ -120,20 +120,20 @@ export class ConsentStore extends pulumi.CustomResource {
      * Identifies the dataset addressed by this request. Must be in the format
      * 'projects/{project}/locations/{location}/datasets/{dataset}'
      */
-    public readonly dataset!: pulumi.Output<string>;
+    declare public readonly dataset: pulumi.Output<string>;
     /**
      * Default time to live for consents in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
      * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
      */
-    public readonly defaultConsentTtl!: pulumi.Output<string | undefined>;
+    declare public readonly defaultConsentTtl: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist.
      */
-    public readonly enableConsentCreateOnUpdate!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableConsentCreateOnUpdate: pulumi.Output<boolean | undefined>;
     /**
      * User-supplied key-value pairs used to organize Consent stores.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
@@ -147,17 +147,17 @@ export class ConsentStore extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of this ConsentStore, for example:
      * "consent1"
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a ConsentStore resource with the given unique name, arguments, and options.
@@ -172,23 +172,23 @@ export class ConsentStore extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConsentStoreState | undefined;
-            resourceInputs["dataset"] = state ? state.dataset : undefined;
-            resourceInputs["defaultConsentTtl"] = state ? state.defaultConsentTtl : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["enableConsentCreateOnUpdate"] = state ? state.enableConsentCreateOnUpdate : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
+            resourceInputs["dataset"] = state?.dataset;
+            resourceInputs["defaultConsentTtl"] = state?.defaultConsentTtl;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["enableConsentCreateOnUpdate"] = state?.enableConsentCreateOnUpdate;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
         } else {
             const args = argsOrState as ConsentStoreArgs | undefined;
-            if ((!args || args.dataset === undefined) && !opts.urn) {
+            if (args?.dataset === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataset'");
             }
-            resourceInputs["dataset"] = args ? args.dataset : undefined;
-            resourceInputs["defaultConsentTtl"] = args ? args.defaultConsentTtl : undefined;
-            resourceInputs["enableConsentCreateOnUpdate"] = args ? args.enableConsentCreateOnUpdate : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["dataset"] = args?.dataset;
+            resourceInputs["defaultConsentTtl"] = args?.defaultConsentTtl;
+            resourceInputs["enableConsentCreateOnUpdate"] = args?.enableConsentCreateOnUpdate;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
         }

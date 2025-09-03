@@ -558,16 +558,14 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being
-     * created.
+     * The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being created.
      * 
      */
     @Import(name="versionId")
     private @Nullable Output<String> versionId;
 
     /**
-     * @return The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being
-     * created.
+     * @return The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being created.
      * 
      */
     public Optional<Output<String>> versionId() {
@@ -1421,8 +1419,7 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param versionId The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being
-         * created.
+         * @param versionId The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being created.
          * 
          * @return builder
          * 
@@ -1433,8 +1430,7 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param versionId The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being
-         * created.
+         * @param versionId The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being created.
          * 
          * @return builder
          * 

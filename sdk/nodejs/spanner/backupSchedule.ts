@@ -157,45 +157,45 @@ export class BackupSchedule extends pulumi.CustomResource {
     /**
      * The database to create the backup schedule on.
      */
-    public readonly database!: pulumi.Output<string>;
+    declare public readonly database: pulumi.Output<string>;
     /**
      * Configuration for the encryption of the backup schedule.
      * Structure is documented below.
      */
-    public readonly encryptionConfig!: pulumi.Output<outputs.spanner.BackupScheduleEncryptionConfig>;
+    declare public readonly encryptionConfig: pulumi.Output<outputs.spanner.BackupScheduleEncryptionConfig>;
     /**
      * The schedule creates only full backups..
      */
-    public readonly fullBackupSpec!: pulumi.Output<outputs.spanner.BackupScheduleFullBackupSpec | undefined>;
+    declare public readonly fullBackupSpec: pulumi.Output<outputs.spanner.BackupScheduleFullBackupSpec | undefined>;
     /**
      * The schedule creates incremental backup chains.
      */
-    public readonly incrementalBackupSpec!: pulumi.Output<outputs.spanner.BackupScheduleIncrementalBackupSpec | undefined>;
+    declare public readonly incrementalBackupSpec: pulumi.Output<outputs.spanner.BackupScheduleIncrementalBackupSpec | undefined>;
     /**
      * The instance to create the database on.
      */
-    public readonly instance!: pulumi.Output<string>;
+    declare public readonly instance: pulumi.Output<string>;
     /**
      * A unique identifier for the backup schedule, which cannot be changed after
      * the backup schedule is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
      * A duration in seconds with up to nine fractional digits, ending with 's'. Example: '3.5s'.
      * You can set this to a value up to 366 days.
      */
-    public readonly retentionDuration!: pulumi.Output<string>;
+    declare public readonly retentionDuration: pulumi.Output<string>;
     /**
      * Defines specifications of the backup schedule.
      * Structure is documented below.
      */
-    public readonly spec!: pulumi.Output<outputs.spanner.BackupScheduleSpec | undefined>;
+    declare public readonly spec: pulumi.Output<outputs.spanner.BackupScheduleSpec | undefined>;
 
     /**
      * Create a BackupSchedule resource with the given unique name, arguments, and options.
@@ -210,35 +210,35 @@ export class BackupSchedule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BackupScheduleState | undefined;
-            resourceInputs["database"] = state ? state.database : undefined;
-            resourceInputs["encryptionConfig"] = state ? state.encryptionConfig : undefined;
-            resourceInputs["fullBackupSpec"] = state ? state.fullBackupSpec : undefined;
-            resourceInputs["incrementalBackupSpec"] = state ? state.incrementalBackupSpec : undefined;
-            resourceInputs["instance"] = state ? state.instance : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["retentionDuration"] = state ? state.retentionDuration : undefined;
-            resourceInputs["spec"] = state ? state.spec : undefined;
+            resourceInputs["database"] = state?.database;
+            resourceInputs["encryptionConfig"] = state?.encryptionConfig;
+            resourceInputs["fullBackupSpec"] = state?.fullBackupSpec;
+            resourceInputs["incrementalBackupSpec"] = state?.incrementalBackupSpec;
+            resourceInputs["instance"] = state?.instance;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["retentionDuration"] = state?.retentionDuration;
+            resourceInputs["spec"] = state?.spec;
         } else {
             const args = argsOrState as BackupScheduleArgs | undefined;
-            if ((!args || args.database === undefined) && !opts.urn) {
+            if (args?.database === undefined && !opts.urn) {
                 throw new Error("Missing required property 'database'");
             }
-            if ((!args || args.instance === undefined) && !opts.urn) {
+            if (args?.instance === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instance'");
             }
-            if ((!args || args.retentionDuration === undefined) && !opts.urn) {
+            if (args?.retentionDuration === undefined && !opts.urn) {
                 throw new Error("Missing required property 'retentionDuration'");
             }
-            resourceInputs["database"] = args ? args.database : undefined;
-            resourceInputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
-            resourceInputs["fullBackupSpec"] = args ? args.fullBackupSpec : undefined;
-            resourceInputs["incrementalBackupSpec"] = args ? args.incrementalBackupSpec : undefined;
-            resourceInputs["instance"] = args ? args.instance : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["retentionDuration"] = args ? args.retentionDuration : undefined;
-            resourceInputs["spec"] = args ? args.spec : undefined;
+            resourceInputs["database"] = args?.database;
+            resourceInputs["encryptionConfig"] = args?.encryptionConfig;
+            resourceInputs["fullBackupSpec"] = args?.fullBackupSpec;
+            resourceInputs["incrementalBackupSpec"] = args?.incrementalBackupSpec;
+            resourceInputs["instance"] = args?.instance;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["retentionDuration"] = args?.retentionDuration;
+            resourceInputs["spec"] = args?.spec;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(BackupSchedule.__pulumiType, name, resourceInputs, opts);

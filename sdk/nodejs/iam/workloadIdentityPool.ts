@@ -156,24 +156,24 @@ export class WorkloadIdentityPool extends pulumi.CustomResource {
     /**
      * A description of the pool. Cannot exceed 256 characters.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use
      * existing tokens to access resources. If the pool is re-enabled, existing tokens grant
      * access again.
      */
-    public readonly disabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly disabled: pulumi.Output<boolean | undefined>;
     /**
      * A display name for the pool. Cannot exceed 32 characters.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * Represents configuration for generating mutual TLS (mTLS) certificates for the identities
      * within this pool. Defines the Certificate Authority (CA) pool resources and configurations
      * required for issuance and rotation of mTLS workload certificates.
      * Structure is documented below.
      */
-    public readonly inlineCertificateIssuanceConfig!: pulumi.Output<outputs.iam.WorkloadIdentityPoolInlineCertificateIssuanceConfig | undefined>;
+    declare public readonly inlineCertificateIssuanceConfig: pulumi.Output<outputs.iam.WorkloadIdentityPoolInlineCertificateIssuanceConfig | undefined>;
     /**
      * Represents config to add additional trusted trust domains. Defines configuration for extending
      * trust to additional trust domains. By establishing trust with another domain, the current
@@ -182,7 +182,7 @@ export class WorkloadIdentityPool extends pulumi.CustomResource {
      * configuration.
      * Structure is documented below.
      */
-    public readonly inlineTrustConfig!: pulumi.Output<outputs.iam.WorkloadIdentityPoolInlineTrustConfig | undefined>;
+    declare public readonly inlineTrustConfig: pulumi.Output<outputs.iam.WorkloadIdentityPoolInlineTrustConfig | undefined>;
     /**
      * The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
      * are in `FEDERATION_ONLY` mode.
@@ -203,17 +203,17 @@ export class WorkloadIdentityPool extends pulumi.CustomResource {
      * mode pools.
      * Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`.
      */
-    public readonly mode!: pulumi.Output<string | undefined>;
+    declare public readonly mode: pulumi.Output<string | undefined>;
     /**
      * The resource name of the pool as
      * `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}`.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The state of the pool.
      * * `STATE_UNSPECIFIED`: State unspecified.
@@ -225,13 +225,13 @@ export class WorkloadIdentityPool extends pulumi.CustomResource {
      * use existing tokens to access resources. If the pool is undeleted, existing tokens grant
      * access again.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The ID to use for the pool, which becomes the final component of the resource name. This
      * value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
      * `gcp-` is reserved for use by Google, and may not be specified.
      */
-    public readonly workloadIdentityPoolId!: pulumi.Output<string>;
+    declare public readonly workloadIdentityPoolId: pulumi.Output<string>;
 
     /**
      * Create a WorkloadIdentityPool resource with the given unique name, arguments, and options.
@@ -246,29 +246,29 @@ export class WorkloadIdentityPool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkloadIdentityPoolState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["disabled"] = state ? state.disabled : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["inlineCertificateIssuanceConfig"] = state ? state.inlineCertificateIssuanceConfig : undefined;
-            resourceInputs["inlineTrustConfig"] = state ? state.inlineTrustConfig : undefined;
-            resourceInputs["mode"] = state ? state.mode : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["workloadIdentityPoolId"] = state ? state.workloadIdentityPoolId : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["disabled"] = state?.disabled;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["inlineCertificateIssuanceConfig"] = state?.inlineCertificateIssuanceConfig;
+            resourceInputs["inlineTrustConfig"] = state?.inlineTrustConfig;
+            resourceInputs["mode"] = state?.mode;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["workloadIdentityPoolId"] = state?.workloadIdentityPoolId;
         } else {
             const args = argsOrState as WorkloadIdentityPoolArgs | undefined;
-            if ((!args || args.workloadIdentityPoolId === undefined) && !opts.urn) {
+            if (args?.workloadIdentityPoolId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workloadIdentityPoolId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["disabled"] = args ? args.disabled : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["inlineCertificateIssuanceConfig"] = args ? args.inlineCertificateIssuanceConfig : undefined;
-            resourceInputs["inlineTrustConfig"] = args ? args.inlineTrustConfig : undefined;
-            resourceInputs["mode"] = args ? args.mode : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["workloadIdentityPoolId"] = args ? args.workloadIdentityPoolId : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["disabled"] = args?.disabled;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["inlineCertificateIssuanceConfig"] = args?.inlineCertificateIssuanceConfig;
+            resourceInputs["inlineTrustConfig"] = args?.inlineTrustConfig;
+            resourceInputs["mode"] = args?.mode;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["workloadIdentityPoolId"] = args?.workloadIdentityPoolId;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }

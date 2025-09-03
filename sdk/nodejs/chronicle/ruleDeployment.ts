@@ -71,11 +71,11 @@ export class RuleDeployment extends pulumi.CustomResource {
      * Whether detections resulting from this deployment should be considered
      * alerts.
      */
-    public readonly alerting!: pulumi.Output<boolean | undefined>;
+    declare public readonly alerting: pulumi.Output<boolean | undefined>;
     /**
      * Output only. The timestamp when the rule deployment archive state was last set to true. If the rule deployment's current archive state is not set to true, the field will be empty.
      */
-    public /*out*/ readonly archiveTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly archiveTime: pulumi.Output<string>;
     /**
      * The archive state of the rule deployment.
      * Cannot be set to true unless enabled is set to false i.e.
@@ -85,18 +85,18 @@ export class RuleDeployment extends pulumi.CustomResource {
      * If currently set to true, enabled, alerting, and runFrequency cannot be
      * updated.
      */
-    public readonly archived!: pulumi.Output<boolean | undefined>;
+    declare public readonly archived: pulumi.Output<boolean | undefined>;
     /**
      * Output only. The names of the associated/chained consumer rules. Rules are considered
      * consumers of this rule if their rule text explicitly filters on this rule's ruleid.
      * Format:
      * projects/{project}/locations/{location}/instances/{instance}/rules/{rule}
      */
-    public /*out*/ readonly consumerRules!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly consumerRules: pulumi.Output<string[]>;
     /**
      * Whether the rule is currently deployed continuously against incoming data.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * The execution state of the rule deployment.
      * Possible values:
@@ -104,19 +104,19 @@ export class RuleDeployment extends pulumi.CustomResource {
      * LIMITED
      * PAUSED
      */
-    public /*out*/ readonly executionState!: pulumi.Output<string>;
+    declare public /*out*/ readonly executionState: pulumi.Output<string>;
     /**
      * The unique identifier for the Chronicle instance, which is the same as the customer ID.
      */
-    public readonly instance!: pulumi.Output<string>;
+    declare public readonly instance: pulumi.Output<string>;
     /**
      * Output only. The timestamp when the rule deployment alert state was lastly changed. This is filled regardless of the current alert state.E.g. if the current alert status is false, this timestamp will be the timestamp when the alert status was changed to false.
      */
-    public /*out*/ readonly lastAlertStatusChangeTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastAlertStatusChangeTime: pulumi.Output<string>;
     /**
      * The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The resource name of the rule deployment.
      * Note that RuleDeployment is a child of the overall Rule, not any individual
@@ -125,23 +125,23 @@ export class RuleDeployment extends pulumi.CustomResource {
      * Format:
      * projects/{project}/locations/{location}/instances/{instance}/rules/{rule}/deployment
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Output only. The names of the associated/chained producer rules. Rules are considered
      * producers for this rule if this rule explicitly filters on their ruleid.
      * Format:
      * projects/{project}/locations/{location}/instances/{instance}/rules/{rule}
      */
-    public /*out*/ readonly producerRules!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly producerRules: pulumi.Output<string[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The Rule ID of the rule.
      */
-    public readonly rule!: pulumi.Output<string>;
+    declare public readonly rule: pulumi.Output<string>;
     /**
      * The run frequency of the rule deployment.
      * Possible values:
@@ -149,7 +149,7 @@ export class RuleDeployment extends pulumi.CustomResource {
      * HOURLY
      * DAILY
      */
-    public readonly runFrequency!: pulumi.Output<string | undefined>;
+    declare public readonly runFrequency: pulumi.Output<string | undefined>;
 
     /**
      * Create a RuleDeployment resource with the given unique name, arguments, and options.
@@ -164,39 +164,39 @@ export class RuleDeployment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RuleDeploymentState | undefined;
-            resourceInputs["alerting"] = state ? state.alerting : undefined;
-            resourceInputs["archiveTime"] = state ? state.archiveTime : undefined;
-            resourceInputs["archived"] = state ? state.archived : undefined;
-            resourceInputs["consumerRules"] = state ? state.consumerRules : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["executionState"] = state ? state.executionState : undefined;
-            resourceInputs["instance"] = state ? state.instance : undefined;
-            resourceInputs["lastAlertStatusChangeTime"] = state ? state.lastAlertStatusChangeTime : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["producerRules"] = state ? state.producerRules : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["rule"] = state ? state.rule : undefined;
-            resourceInputs["runFrequency"] = state ? state.runFrequency : undefined;
+            resourceInputs["alerting"] = state?.alerting;
+            resourceInputs["archiveTime"] = state?.archiveTime;
+            resourceInputs["archived"] = state?.archived;
+            resourceInputs["consumerRules"] = state?.consumerRules;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["executionState"] = state?.executionState;
+            resourceInputs["instance"] = state?.instance;
+            resourceInputs["lastAlertStatusChangeTime"] = state?.lastAlertStatusChangeTime;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["producerRules"] = state?.producerRules;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["rule"] = state?.rule;
+            resourceInputs["runFrequency"] = state?.runFrequency;
         } else {
             const args = argsOrState as RuleDeploymentArgs | undefined;
-            if ((!args || args.instance === undefined) && !opts.urn) {
+            if (args?.instance === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instance'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.rule === undefined) && !opts.urn) {
+            if (args?.rule === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rule'");
             }
-            resourceInputs["alerting"] = args ? args.alerting : undefined;
-            resourceInputs["archived"] = args ? args.archived : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["instance"] = args ? args.instance : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["rule"] = args ? args.rule : undefined;
-            resourceInputs["runFrequency"] = args ? args.runFrequency : undefined;
+            resourceInputs["alerting"] = args?.alerting;
+            resourceInputs["archived"] = args?.archived;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["instance"] = args?.instance;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["rule"] = args?.rule;
+            resourceInputs["runFrequency"] = args?.runFrequency;
             resourceInputs["archiveTime"] = undefined /*out*/;
             resourceInputs["consumerRules"] = undefined /*out*/;
             resourceInputs["executionState"] = undefined /*out*/;

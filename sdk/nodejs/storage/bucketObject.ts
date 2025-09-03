@@ -81,118 +81,118 @@ export class BucketObject extends pulumi.CustomResource {
     /**
      * The name of the containing bucket.
      */
-    public readonly bucket!: pulumi.Output<string>;
+    declare public readonly bucket: pulumi.Output<string>;
     /**
      * [Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2)
      * directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
      */
-    public readonly cacheControl!: pulumi.Output<string | undefined>;
+    declare public readonly cacheControl: pulumi.Output<string | undefined>;
     /**
      * Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
      */
-    public readonly content!: pulumi.Output<string>;
+    declare public readonly content: pulumi.Output<string>;
     /**
      * [Content-Disposition](https://tools.ietf.org/html/rfc6266) of the object data.
      */
-    public readonly contentDisposition!: pulumi.Output<string | undefined>;
+    declare public readonly contentDisposition: pulumi.Output<string | undefined>;
     /**
      * [Content-Encoding](https://tools.ietf.org/html/rfc7231#section-3.1.2.2) of the object data.
      */
-    public readonly contentEncoding!: pulumi.Output<string | undefined>;
+    declare public readonly contentEncoding: pulumi.Output<string | undefined>;
     /**
      * [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object data.
      */
-    public readonly contentLanguage!: pulumi.Output<string | undefined>;
+    declare public readonly contentLanguage: pulumi.Output<string | undefined>;
     /**
      * [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
      */
-    public readonly contentType!: pulumi.Output<string>;
+    declare public readonly contentType: pulumi.Output<string>;
     /**
      * (Computed) Base 64 CRC32 hash of the uploaded data.
      */
-    public /*out*/ readonly crc32c!: pulumi.Output<string>;
+    declare public /*out*/ readonly crc32c: pulumi.Output<string>;
     /**
      * Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
      * Structure is documented below.
      */
-    public readonly customerEncryption!: pulumi.Output<outputs.storage.BucketObjectCustomerEncryption | undefined>;
-    public readonly deletionPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly customerEncryption: pulumi.Output<outputs.storage.BucketObjectCustomerEncryption | undefined>;
+    declare public readonly deletionPolicy: pulumi.Output<string | undefined>;
     /**
      * @deprecated `detectMd5hash` is deprecated and will be removed in future release. Start using `sourceMd5hash` instead
      */
-    public readonly detectMd5hash!: pulumi.Output<string | undefined>;
+    declare public readonly detectMd5hash: pulumi.Output<string | undefined>;
     /**
      * Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
      */
-    public readonly eventBasedHold!: pulumi.Output<boolean | undefined>;
+    declare public readonly eventBasedHold: pulumi.Output<boolean | undefined>;
     /**
      * When set to true, it ensure the object's Content-Type is empty.
      */
-    public readonly forceEmptyContentType!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceEmptyContentType: pulumi.Output<boolean | undefined>;
     /**
      * (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).
      */
-    public /*out*/ readonly generation!: pulumi.Output<number>;
+    declare public /*out*/ readonly generation: pulumi.Output<number>;
     /**
      * The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
      */
-    public readonly kmsKeyName!: pulumi.Output<string>;
+    declare public readonly kmsKeyName: pulumi.Output<string>;
     /**
      * (Computed) Base 64 MD5 hash of the uploaded data.
      */
-    public /*out*/ readonly md5hash!: pulumi.Output<string>;
+    declare public /*out*/ readonly md5hash: pulumi.Output<string>;
     /**
      * (Computed) Hex value of md5hash`
      */
-    public /*out*/ readonly md5hexhash!: pulumi.Output<string>;
+    declare public /*out*/ readonly md5hexhash: pulumi.Output<string>;
     /**
      * (Computed) A url reference to download this object.
      */
-    public /*out*/ readonly mediaLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly mediaLink: pulumi.Output<string>;
     /**
      * User-provided metadata, in key/value pairs.
      *
      * One of the following is required:
      */
-    public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly metadata: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the object. If you're interpolating the name of this object, see `outputName` instead.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * (Computed) The name of the object. Use this field in interpolations with `gcp.storage.ObjectACL` to recreate
      * `gcp.storage.ObjectACL` resources when your `gcp.storage.BucketObject` is recreated.
      */
-    public /*out*/ readonly outputName!: pulumi.Output<string>;
+    declare public /*out*/ readonly outputName: pulumi.Output<string>;
     /**
      * The [object retention](http://cloud.google.com/storage/docs/object-lock) settings for the object. The retention settings allow an object to be retained until a provided date. Structure is documented below.
      */
-    public readonly retention!: pulumi.Output<outputs.storage.BucketObjectRetention | undefined>;
+    declare public readonly retention: pulumi.Output<outputs.storage.BucketObjectRetention | undefined>;
     /**
      * (Computed) A url reference to this object.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * A path to the data you want to upload. Must be defined
      * if `content` is not.
      *
      * - - -
      */
-    public readonly source!: pulumi.Output<pulumi.asset.Asset | pulumi.asset.Archive | undefined>;
+    declare public readonly source: pulumi.Output<pulumi.asset.Asset | pulumi.asset.Archive | undefined>;
     /**
      * User-provided md5hash to trigger replacement of object in storage bucket, Must be Base 64 MD5 hash of the object data. The usual way to set this is filemd5("file.zip"), where "file.zip" is the local filename
      */
-    public readonly sourceMd5hash!: pulumi.Output<string | undefined>;
+    declare public readonly sourceMd5hash: pulumi.Output<string | undefined>;
     /**
      * The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
      * Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
      * storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
      */
-    public readonly storageClass!: pulumi.Output<string>;
+    declare public readonly storageClass: pulumi.Output<string>;
     /**
      * Whether an object is under [temporary hold](https://cloud.google.com/storage/docs/object-holds#hold-types). While this flag is set to true, the object is protected against deletion and overwrites.
      */
-    public readonly temporaryHold!: pulumi.Output<boolean | undefined>;
+    declare public readonly temporaryHold: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a BucketObject resource with the given unique name, arguments, and options.
@@ -207,58 +207,58 @@ export class BucketObject extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BucketObjectState | undefined;
-            resourceInputs["bucket"] = state ? state.bucket : undefined;
-            resourceInputs["cacheControl"] = state ? state.cacheControl : undefined;
-            resourceInputs["content"] = state ? state.content : undefined;
-            resourceInputs["contentDisposition"] = state ? state.contentDisposition : undefined;
-            resourceInputs["contentEncoding"] = state ? state.contentEncoding : undefined;
-            resourceInputs["contentLanguage"] = state ? state.contentLanguage : undefined;
-            resourceInputs["contentType"] = state ? state.contentType : undefined;
-            resourceInputs["crc32c"] = state ? state.crc32c : undefined;
-            resourceInputs["customerEncryption"] = state ? state.customerEncryption : undefined;
-            resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
-            resourceInputs["detectMd5hash"] = state ? state.detectMd5hash : undefined;
-            resourceInputs["eventBasedHold"] = state ? state.eventBasedHold : undefined;
-            resourceInputs["forceEmptyContentType"] = state ? state.forceEmptyContentType : undefined;
-            resourceInputs["generation"] = state ? state.generation : undefined;
-            resourceInputs["kmsKeyName"] = state ? state.kmsKeyName : undefined;
-            resourceInputs["md5hash"] = state ? state.md5hash : undefined;
-            resourceInputs["md5hexhash"] = state ? state.md5hexhash : undefined;
-            resourceInputs["mediaLink"] = state ? state.mediaLink : undefined;
-            resourceInputs["metadata"] = state ? state.metadata : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["outputName"] = state ? state.outputName : undefined;
-            resourceInputs["retention"] = state ? state.retention : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["source"] = state ? state.source : undefined;
-            resourceInputs["sourceMd5hash"] = state ? state.sourceMd5hash : undefined;
-            resourceInputs["storageClass"] = state ? state.storageClass : undefined;
-            resourceInputs["temporaryHold"] = state ? state.temporaryHold : undefined;
+            resourceInputs["bucket"] = state?.bucket;
+            resourceInputs["cacheControl"] = state?.cacheControl;
+            resourceInputs["content"] = state?.content;
+            resourceInputs["contentDisposition"] = state?.contentDisposition;
+            resourceInputs["contentEncoding"] = state?.contentEncoding;
+            resourceInputs["contentLanguage"] = state?.contentLanguage;
+            resourceInputs["contentType"] = state?.contentType;
+            resourceInputs["crc32c"] = state?.crc32c;
+            resourceInputs["customerEncryption"] = state?.customerEncryption;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
+            resourceInputs["detectMd5hash"] = state?.detectMd5hash;
+            resourceInputs["eventBasedHold"] = state?.eventBasedHold;
+            resourceInputs["forceEmptyContentType"] = state?.forceEmptyContentType;
+            resourceInputs["generation"] = state?.generation;
+            resourceInputs["kmsKeyName"] = state?.kmsKeyName;
+            resourceInputs["md5hash"] = state?.md5hash;
+            resourceInputs["md5hexhash"] = state?.md5hexhash;
+            resourceInputs["mediaLink"] = state?.mediaLink;
+            resourceInputs["metadata"] = state?.metadata;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["outputName"] = state?.outputName;
+            resourceInputs["retention"] = state?.retention;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["source"] = state?.source;
+            resourceInputs["sourceMd5hash"] = state?.sourceMd5hash;
+            resourceInputs["storageClass"] = state?.storageClass;
+            resourceInputs["temporaryHold"] = state?.temporaryHold;
         } else {
             const args = argsOrState as BucketObjectArgs | undefined;
-            if ((!args || args.bucket === undefined) && !opts.urn) {
+            if (args?.bucket === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            resourceInputs["bucket"] = args ? args.bucket : undefined;
-            resourceInputs["cacheControl"] = args ? args.cacheControl : undefined;
+            resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["cacheControl"] = args?.cacheControl;
             resourceInputs["content"] = args?.content ? pulumi.secret(args.content) : undefined;
-            resourceInputs["contentDisposition"] = args ? args.contentDisposition : undefined;
-            resourceInputs["contentEncoding"] = args ? args.contentEncoding : undefined;
-            resourceInputs["contentLanguage"] = args ? args.contentLanguage : undefined;
-            resourceInputs["contentType"] = args ? args.contentType : undefined;
+            resourceInputs["contentDisposition"] = args?.contentDisposition;
+            resourceInputs["contentEncoding"] = args?.contentEncoding;
+            resourceInputs["contentLanguage"] = args?.contentLanguage;
+            resourceInputs["contentType"] = args?.contentType;
             resourceInputs["customerEncryption"] = args?.customerEncryption ? pulumi.secret(args.customerEncryption) : undefined;
-            resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
-            resourceInputs["detectMd5hash"] = args ? args.detectMd5hash : undefined;
-            resourceInputs["eventBasedHold"] = args ? args.eventBasedHold : undefined;
-            resourceInputs["forceEmptyContentType"] = args ? args.forceEmptyContentType : undefined;
-            resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
-            resourceInputs["metadata"] = args ? args.metadata : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["retention"] = args ? args.retention : undefined;
-            resourceInputs["source"] = args ? args.source : undefined;
-            resourceInputs["sourceMd5hash"] = args ? args.sourceMd5hash : undefined;
-            resourceInputs["storageClass"] = args ? args.storageClass : undefined;
-            resourceInputs["temporaryHold"] = args ? args.temporaryHold : undefined;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
+            resourceInputs["detectMd5hash"] = args?.detectMd5hash;
+            resourceInputs["eventBasedHold"] = args?.eventBasedHold;
+            resourceInputs["forceEmptyContentType"] = args?.forceEmptyContentType;
+            resourceInputs["kmsKeyName"] = args?.kmsKeyName;
+            resourceInputs["metadata"] = args?.metadata;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["retention"] = args?.retention;
+            resourceInputs["source"] = args?.source;
+            resourceInputs["sourceMd5hash"] = args?.sourceMd5hash;
+            resourceInputs["storageClass"] = args?.storageClass;
+            resourceInputs["temporaryHold"] = args?.temporaryHold;
             resourceInputs["crc32c"] = undefined /*out*/;
             resourceInputs["generation"] = undefined /*out*/;
             resourceInputs["md5hash"] = undefined /*out*/;

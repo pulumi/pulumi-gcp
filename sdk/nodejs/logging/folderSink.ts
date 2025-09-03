@@ -83,11 +83,11 @@ export class FolderSink extends pulumi.CustomResource {
     /**
      * Options that affect sinks exporting data to BigQuery. Structure documented below.
      */
-    public readonly bigqueryOptions!: pulumi.Output<outputs.logging.FolderSinkBigqueryOptions>;
+    declare public readonly bigqueryOptions: pulumi.Output<outputs.logging.FolderSinkBigqueryOptions>;
     /**
      * A description of this sink. The maximum length of the description is 8000 characters.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
      *
@@ -99,45 +99,45 @@ export class FolderSink extends pulumi.CustomResource {
      *
      * The writer associated with the sink must have access to write to the above resource.
      */
-    public readonly destination!: pulumi.Output<string>;
+    declare public readonly destination: pulumi.Output<string>;
     /**
      * If set to True, then this sink is disabled and it does not export any log entries.
      */
-    public readonly disabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly disabled: pulumi.Output<boolean | undefined>;
     /**
      * Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
      */
-    public readonly exclusions!: pulumi.Output<outputs.logging.FolderSinkExclusion[] | undefined>;
+    declare public readonly exclusions: pulumi.Output<outputs.logging.FolderSinkExclusion[] | undefined>;
     /**
      * The filter to apply when exporting logs. Only log entries that match the filter are exported.
      * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
      * write a filter.
      */
-    public readonly filter!: pulumi.Output<string | undefined>;
+    declare public readonly filter: pulumi.Output<string | undefined>;
     /**
      * The folder to be exported to the sink. Note that either `[FOLDER_ID]` or `folders/[FOLDER_ID]` is
      * accepted.
      */
-    public readonly folder!: pulumi.Output<string>;
+    declare public readonly folder: pulumi.Output<string>;
     /**
      * Whether or not to include children folders in the sink export. If true, logs
      * associated with child projects are also exported; otherwise only logs relating to the provided folder are included.
      */
-    public readonly includeChildren!: pulumi.Output<boolean | undefined>;
+    declare public readonly includeChildren: pulumi.Output<boolean | undefined>;
     /**
      * Whether or not to intercept logs from child projects. If true, matching logs will not
      * match with sinks in child resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
      */
-    public readonly interceptChildren!: pulumi.Output<boolean | undefined>;
+    declare public readonly interceptChildren: pulumi.Output<boolean | undefined>;
     /**
      * The name of the logging sink.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The identity associated with this sink. This identity must be granted write access to the
      * configured `destination`.
      */
-    public /*out*/ readonly writerIdentity!: pulumi.Output<string>;
+    declare public /*out*/ readonly writerIdentity: pulumi.Output<string>;
 
     /**
      * Create a FolderSink resource with the given unique name, arguments, and options.
@@ -152,35 +152,35 @@ export class FolderSink extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FolderSinkState | undefined;
-            resourceInputs["bigqueryOptions"] = state ? state.bigqueryOptions : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["destination"] = state ? state.destination : undefined;
-            resourceInputs["disabled"] = state ? state.disabled : undefined;
-            resourceInputs["exclusions"] = state ? state.exclusions : undefined;
-            resourceInputs["filter"] = state ? state.filter : undefined;
-            resourceInputs["folder"] = state ? state.folder : undefined;
-            resourceInputs["includeChildren"] = state ? state.includeChildren : undefined;
-            resourceInputs["interceptChildren"] = state ? state.interceptChildren : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["writerIdentity"] = state ? state.writerIdentity : undefined;
+            resourceInputs["bigqueryOptions"] = state?.bigqueryOptions;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["destination"] = state?.destination;
+            resourceInputs["disabled"] = state?.disabled;
+            resourceInputs["exclusions"] = state?.exclusions;
+            resourceInputs["filter"] = state?.filter;
+            resourceInputs["folder"] = state?.folder;
+            resourceInputs["includeChildren"] = state?.includeChildren;
+            resourceInputs["interceptChildren"] = state?.interceptChildren;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["writerIdentity"] = state?.writerIdentity;
         } else {
             const args = argsOrState as FolderSinkArgs | undefined;
-            if ((!args || args.destination === undefined) && !opts.urn) {
+            if (args?.destination === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destination'");
             }
-            if ((!args || args.folder === undefined) && !opts.urn) {
+            if (args?.folder === undefined && !opts.urn) {
                 throw new Error("Missing required property 'folder'");
             }
-            resourceInputs["bigqueryOptions"] = args ? args.bigqueryOptions : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["destination"] = args ? args.destination : undefined;
-            resourceInputs["disabled"] = args ? args.disabled : undefined;
-            resourceInputs["exclusions"] = args ? args.exclusions : undefined;
-            resourceInputs["filter"] = args ? args.filter : undefined;
-            resourceInputs["folder"] = args ? args.folder : undefined;
-            resourceInputs["includeChildren"] = args ? args.includeChildren : undefined;
-            resourceInputs["interceptChildren"] = args ? args.interceptChildren : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["bigqueryOptions"] = args?.bigqueryOptions;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["destination"] = args?.destination;
+            resourceInputs["disabled"] = args?.disabled;
+            resourceInputs["exclusions"] = args?.exclusions;
+            resourceInputs["filter"] = args?.filter;
+            resourceInputs["folder"] = args?.folder;
+            resourceInputs["includeChildren"] = args?.includeChildren;
+            resourceInputs["interceptChildren"] = args?.interceptChildren;
+            resourceInputs["name"] = args?.name;
             resourceInputs["writerIdentity"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

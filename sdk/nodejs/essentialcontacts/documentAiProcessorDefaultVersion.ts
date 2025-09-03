@@ -69,12 +69,12 @@ export class DocumentAiProcessorDefaultVersion extends pulumi.CustomResource {
     /**
      * The processor to set the version on.
      */
-    public readonly processor!: pulumi.Output<string>;
+    declare public readonly processor: pulumi.Output<string>;
     /**
      * The version to set. Using `stable` or `rc` will cause the API to return the latest version in that release channel.
      * Apply `lifecycle.ignore_changes` to the `version` field to suppress this diff.
      */
-    public readonly version!: pulumi.Output<string>;
+    declare public readonly version: pulumi.Output<string>;
 
     /**
      * Create a DocumentAiProcessorDefaultVersion resource with the given unique name, arguments, and options.
@@ -89,18 +89,18 @@ export class DocumentAiProcessorDefaultVersion extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DocumentAiProcessorDefaultVersionState | undefined;
-            resourceInputs["processor"] = state ? state.processor : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["processor"] = state?.processor;
+            resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as DocumentAiProcessorDefaultVersionArgs | undefined;
-            if ((!args || args.processor === undefined) && !opts.urn) {
+            if (args?.processor === undefined && !opts.urn) {
                 throw new Error("Missing required property 'processor'");
             }
-            if ((!args || args.version === undefined) && !opts.urn) {
+            if (args?.version === undefined && !opts.urn) {
                 throw new Error("Missing required property 'version'");
             }
-            resourceInputs["processor"] = args ? args.processor : undefined;
-            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["processor"] = args?.processor;
+            resourceInputs["version"] = args?.version;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DocumentAiProcessorDefaultVersion.__pulumiType, name, resourceInputs, opts);

@@ -75,8 +75,7 @@ namespace Pulumi.Gcp.Compute
         public Output<bool> CanIpForward { get; private set; } = null!;
 
         /// <summary>
-        /// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-        /// to create.
+        /// The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
         /// </summary>
         [Output("confidentialInstanceConfig")]
         public Output<Outputs.InstanceFromMachineImageConfidentialInstanceConfig> ConfidentialInstanceConfig { get; private set; } = null!;
@@ -94,9 +93,9 @@ namespace Pulumi.Gcp.Compute
         public Output<string> CreationTimestamp { get; private set; } = null!;
 
         /// <summary>
-        /// Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
-        /// SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance
-        /// life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
+        /// Current status of the instance.
+        /// 					This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED.
+        /// 					For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
         /// </summary>
         [Output("currentStatus")]
         public Output<string> CurrentStatus { get; private set; } = null!;
@@ -135,9 +134,7 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<Outputs.InstanceFromMachineImageGuestAccelerator>> GuestAccelerators { get; private set; } = null!;
 
         /// <summary>
-        /// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-        /// labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
-        /// exceed 253 characters. Changing this forces a new resource to be created.
+        /// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
         /// </summary>
         [Output("hostname")]
         public Output<string> Hostname { get; private set; } = null!;
@@ -155,8 +152,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
-        /// default.
+        /// Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the default.
         /// </summary>
         [Output("keyRevocationActionType")]
         public Output<string> KeyRevocationActionType { get; private set; } = null!;
@@ -168,9 +164,10 @@ namespace Pulumi.Gcp.Compute
         public Output<string> LabelFingerprint { get; private set; } = null!;
 
         /// <summary>
-        /// A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
-        /// the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-        /// the resource.
+        /// A set of key/value label pairs assigned to the instance.
+        /// 
+        /// 				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// 				Please refer to the field 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
@@ -219,8 +216,7 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<Outputs.InstanceFromMachineImageNetworkInterface>> NetworkInterfaces { get; private set; } = null!;
 
         /// <summary>
-        /// Configures network performance settings for the instance. If not specified, the instance will be created with its
-        /// default network performance configuration.
+        /// Configures network performance settings for the instance. If not specified, the instance will be created with its default network performance configuration.
         /// </summary>
         [Output("networkPerformanceConfig")]
         public Output<Outputs.InstanceFromMachineImageNetworkPerformanceConfig> NetworkPerformanceConfig { get; private set; } = null!;
@@ -238,8 +234,7 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableDictionary<string, string>> PartnerMetadata { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
-        /// self_link nor project are provided, the provider project is used.
+        /// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -399,8 +394,7 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? CanIpForward { get; set; }
 
         /// <summary>
-        /// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-        /// to create.
+        /// The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
         /// </summary>
         [Input("confidentialInstanceConfig")]
         public Input<Inputs.InstanceFromMachineImageConfidentialInstanceConfigArgs>? ConfidentialInstanceConfig { get; set; }
@@ -442,9 +436,7 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-        /// labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
-        /// exceed 253 characters. Changing this forces a new resource to be created.
+        /// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
         /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
@@ -456,8 +448,7 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.InstanceFromMachineImageInstanceEncryptionKeyArgs>? InstanceEncryptionKey { get; set; }
 
         /// <summary>
-        /// Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
-        /// default.
+        /// Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the default.
         /// </summary>
         [Input("keyRevocationActionType")]
         public Input<string>? KeyRevocationActionType { get; set; }
@@ -466,9 +457,10 @@ namespace Pulumi.Gcp.Compute
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
-        /// the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-        /// the resource.
+        /// A set of key/value label pairs assigned to the instance.
+        /// 
+        /// 				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// 				Please refer to the field 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -526,8 +518,7 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// Configures network performance settings for the instance. If not specified, the instance will be created with its
-        /// default network performance configuration.
+        /// Configures network performance settings for the instance. If not specified, the instance will be created with its default network performance configuration.
         /// </summary>
         [Input("networkPerformanceConfig")]
         public Input<Inputs.InstanceFromMachineImageNetworkPerformanceConfigArgs>? NetworkPerformanceConfig { get; set; }
@@ -551,8 +542,7 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
-        /// self_link nor project are provided, the provider project is used.
+        /// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -675,8 +665,7 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? CanIpForward { get; set; }
 
         /// <summary>
-        /// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-        /// to create.
+        /// The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
         /// </summary>
         [Input("confidentialInstanceConfig")]
         public Input<Inputs.InstanceFromMachineImageConfidentialInstanceConfigGetArgs>? ConfidentialInstanceConfig { get; set; }
@@ -694,9 +683,9 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? CreationTimestamp { get; set; }
 
         /// <summary>
-        /// Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
-        /// SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance
-        /// life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
+        /// Current status of the instance.
+        /// 					This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED.
+        /// 					For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
         /// </summary>
         [Input("currentStatus")]
         public Input<string>? CurrentStatus { get; set; }
@@ -750,9 +739,7 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-        /// labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
-        /// exceed 253 characters. Changing this forces a new resource to be created.
+        /// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
         /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
@@ -770,8 +757,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
-        /// default.
+        /// Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the default.
         /// </summary>
         [Input("keyRevocationActionType")]
         public Input<string>? KeyRevocationActionType { get; set; }
@@ -786,9 +772,10 @@ namespace Pulumi.Gcp.Compute
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
-        /// the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-        /// the resource.
+        /// A set of key/value label pairs assigned to the instance.
+        /// 
+        /// 				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// 				Please refer to the field 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -852,8 +839,7 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// Configures network performance settings for the instance. If not specified, the instance will be created with its
-        /// default network performance configuration.
+        /// Configures network performance settings for the instance. If not specified, the instance will be created with its default network performance configuration.
         /// </summary>
         [Input("networkPerformanceConfig")]
         public Input<Inputs.InstanceFromMachineImageNetworkPerformanceConfigGetArgs>? NetworkPerformanceConfig { get; set; }
@@ -877,8 +863,7 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
-        /// self_link nor project are provided, the provider project is used.
+        /// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }

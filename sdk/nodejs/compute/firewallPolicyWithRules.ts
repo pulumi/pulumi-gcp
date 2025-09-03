@@ -212,50 +212,50 @@ export class FirewallPolicyWithRules extends pulumi.CustomResource {
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * An optional description of this resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Fingerprint of the resource. This field is used internally during updates of this resource.
      */
-    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly fingerprint: pulumi.Output<string>;
     /**
      * The parent of this FirewallPolicy in the Cloud Resource Hierarchy.
      * Format: organizations/{organization_id} or folders/{folder_id}
      */
-    public readonly parent!: pulumi.Output<string>;
+    declare public readonly parent: pulumi.Output<string>;
     /**
      * The unique identifier for the resource. This identifier is defined by the server.
      */
-    public /*out*/ readonly policyId!: pulumi.Output<string>;
+    declare public /*out*/ readonly policyId: pulumi.Output<string>;
     /**
      * A list of pre-define firewall policy rules.
      * Structure is documented below.
      */
-    public /*out*/ readonly predefinedRules!: pulumi.Output<outputs.compute.FirewallPolicyWithRulesPredefinedRule[]>;
+    declare public /*out*/ readonly predefinedRules: pulumi.Output<outputs.compute.FirewallPolicyWithRulesPredefinedRule[]>;
     /**
      * Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
      */
-    public /*out*/ readonly ruleTupleCount!: pulumi.Output<number>;
+    declare public /*out*/ readonly ruleTupleCount: pulumi.Output<number>;
     /**
      * A list of firewall policy rules.
      * Structure is documented below.
      */
-    public readonly rules!: pulumi.Output<outputs.compute.FirewallPolicyWithRulesRule[]>;
+    declare public readonly rules: pulumi.Output<outputs.compute.FirewallPolicyWithRulesRule[]>;
     /**
      * Server-defined URL for the resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * Server-defined URL for this resource with the resource id.
      */
-    public /*out*/ readonly selfLinkWithId!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLinkWithId: pulumi.Output<string>;
     /**
      * A textual name of the security policy.
      */
-    public readonly shortName!: pulumi.Output<string>;
+    declare public readonly shortName: pulumi.Output<string>;
 
     /**
      * Create a FirewallPolicyWithRules resource with the given unique name, arguments, and options.
@@ -270,32 +270,32 @@ export class FirewallPolicyWithRules extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FirewallPolicyWithRulesState | undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["policyId"] = state ? state.policyId : undefined;
-            resourceInputs["predefinedRules"] = state ? state.predefinedRules : undefined;
-            resourceInputs["ruleTupleCount"] = state ? state.ruleTupleCount : undefined;
-            resourceInputs["rules"] = state ? state.rules : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["selfLinkWithId"] = state ? state.selfLinkWithId : undefined;
-            resourceInputs["shortName"] = state ? state.shortName : undefined;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["fingerprint"] = state?.fingerprint;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["policyId"] = state?.policyId;
+            resourceInputs["predefinedRules"] = state?.predefinedRules;
+            resourceInputs["ruleTupleCount"] = state?.ruleTupleCount;
+            resourceInputs["rules"] = state?.rules;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["selfLinkWithId"] = state?.selfLinkWithId;
+            resourceInputs["shortName"] = state?.shortName;
         } else {
             const args = argsOrState as FirewallPolicyWithRulesArgs | undefined;
-            if ((!args || args.parent === undefined) && !opts.urn) {
+            if (args?.parent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            if ((!args || args.rules === undefined) && !opts.urn) {
+            if (args?.rules === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rules'");
             }
-            if ((!args || args.shortName === undefined) && !opts.urn) {
+            if (args?.shortName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'shortName'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
-            resourceInputs["rules"] = args ? args.rules : undefined;
-            resourceInputs["shortName"] = args ? args.shortName : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["parent"] = args?.parent;
+            resourceInputs["rules"] = args?.rules;
+            resourceInputs["shortName"] = args?.shortName;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["policyId"] = undefined /*out*/;

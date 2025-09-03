@@ -85,44 +85,44 @@ export class PluginInstance extends pulumi.CustomResource {
      * The action status for the plugin instance.
      * Structure is documented below.
      */
-    public readonly actions!: pulumi.Output<outputs.apihub.PluginInstanceAction[]>;
+    declare public readonly actions: pulumi.Output<outputs.apihub.PluginInstanceAction[]>;
     /**
      * AuthConfig represents the authentication information.
      * Structure is documented below.
      */
-    public readonly authConfig!: pulumi.Output<outputs.apihub.PluginInstanceAuthConfig | undefined>;
+    declare public readonly authConfig: pulumi.Output<outputs.apihub.PluginInstanceAuthConfig | undefined>;
     /**
      * Timestamp indicating when the plugin instance was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The display name for this plugin instance. Max length is 255 characters.
      */
-    public readonly disable!: pulumi.Output<boolean | undefined>;
+    declare public readonly disable: pulumi.Output<boolean | undefined>;
     /**
      * The display name for this plugin instance. Max length is 255 characters.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Error message describing the failure, if any, during Create, Delete or
      * ApplyConfig operation corresponding to the plugin instance.This field will
      * only be populated if the plugin instance is in the ERROR or FAILED state.
      */
-    public /*out*/ readonly errorMessage!: pulumi.Output<string>;
+    declare public /*out*/ readonly errorMessage: pulumi.Output<string>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Identifier. The unique name of the plugin instance resource.
      * Format:
      * `projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}`
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    public readonly plugin!: pulumi.Output<string>;
+    declare public readonly plugin: pulumi.Output<string>;
     /**
      * The ID to use for the plugin instance, which will become the final
      * component of the plugin instance's resource name. This field is optional.
@@ -133,12 +133,12 @@ export class PluginInstance extends pulumi.CustomResource {
      * This value should be 4-63 characters, and valid characters
      * are /a-z[0-9]-_/.
      */
-    public readonly pluginInstanceId!: pulumi.Output<string>;
+    declare public readonly pluginInstanceId: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The current state of the plugin instance (e.g., enabled, disabled,
      * provisioning).
@@ -151,11 +151,11 @@ export class PluginInstance extends pulumi.CustomResource {
      * FAILED
      * DELETING
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Timestamp indicating when the plugin instance was last updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a PluginInstance resource with the given unique name, arguments, and options.
@@ -170,41 +170,41 @@ export class PluginInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PluginInstanceState | undefined;
-            resourceInputs["actions"] = state ? state.actions : undefined;
-            resourceInputs["authConfig"] = state ? state.authConfig : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["disable"] = state ? state.disable : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["errorMessage"] = state ? state.errorMessage : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["plugin"] = state ? state.plugin : undefined;
-            resourceInputs["pluginInstanceId"] = state ? state.pluginInstanceId : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["actions"] = state?.actions;
+            resourceInputs["authConfig"] = state?.authConfig;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["disable"] = state?.disable;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["errorMessage"] = state?.errorMessage;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["plugin"] = state?.plugin;
+            resourceInputs["pluginInstanceId"] = state?.pluginInstanceId;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as PluginInstanceArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.plugin === undefined) && !opts.urn) {
+            if (args?.plugin === undefined && !opts.urn) {
                 throw new Error("Missing required property 'plugin'");
             }
-            if ((!args || args.pluginInstanceId === undefined) && !opts.urn) {
+            if (args?.pluginInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pluginInstanceId'");
             }
-            resourceInputs["actions"] = args ? args.actions : undefined;
-            resourceInputs["authConfig"] = args ? args.authConfig : undefined;
-            resourceInputs["disable"] = args ? args.disable : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["plugin"] = args ? args.plugin : undefined;
-            resourceInputs["pluginInstanceId"] = args ? args.pluginInstanceId : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["actions"] = args?.actions;
+            resourceInputs["authConfig"] = args?.authConfig;
+            resourceInputs["disable"] = args?.disable;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["plugin"] = args?.plugin;
+            resourceInputs["pluginInstanceId"] = args?.pluginInstanceId;
+            resourceInputs["project"] = args?.project;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["errorMessage"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

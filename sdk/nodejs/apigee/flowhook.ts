@@ -62,27 +62,27 @@ export class Flowhook extends pulumi.CustomResource {
     /**
      * Flag that specifies whether execution should continue if the flow hook throws an exception. Set to true to continue execution. Set to false to stop execution if the flow hook throws an exception. Defaults to true.
      */
-    public readonly continueOnError!: pulumi.Output<boolean | undefined>;
+    declare public readonly continueOnError: pulumi.Output<boolean | undefined>;
     /**
      * Description of the flow hook.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The resource ID of the environment.
      */
-    public readonly environment!: pulumi.Output<string>;
+    declare public readonly environment: pulumi.Output<string>;
     /**
      * Where in the API call flow the flow hook is invoked. Must be one of PreProxyFlowHook, PostProxyFlowHook, PreTargetFlowHook, or PostTargetFlowHook.
      */
-    public readonly flowHookPoint!: pulumi.Output<string>;
+    declare public readonly flowHookPoint: pulumi.Output<string>;
     /**
      * The Apigee Organization associated with the environment
      */
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * Id of the Sharedflow attaching to a flowhook point.
      */
-    public readonly sharedflow!: pulumi.Output<string>;
+    declare public readonly sharedflow: pulumi.Output<string>;
 
     /**
      * Create a Flowhook resource with the given unique name, arguments, and options.
@@ -97,32 +97,32 @@ export class Flowhook extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FlowhookState | undefined;
-            resourceInputs["continueOnError"] = state ? state.continueOnError : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["environment"] = state ? state.environment : undefined;
-            resourceInputs["flowHookPoint"] = state ? state.flowHookPoint : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["sharedflow"] = state ? state.sharedflow : undefined;
+            resourceInputs["continueOnError"] = state?.continueOnError;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["environment"] = state?.environment;
+            resourceInputs["flowHookPoint"] = state?.flowHookPoint;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["sharedflow"] = state?.sharedflow;
         } else {
             const args = argsOrState as FlowhookArgs | undefined;
-            if ((!args || args.environment === undefined) && !opts.urn) {
+            if (args?.environment === undefined && !opts.urn) {
                 throw new Error("Missing required property 'environment'");
             }
-            if ((!args || args.flowHookPoint === undefined) && !opts.urn) {
+            if (args?.flowHookPoint === undefined && !opts.urn) {
                 throw new Error("Missing required property 'flowHookPoint'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if ((!args || args.sharedflow === undefined) && !opts.urn) {
+            if (args?.sharedflow === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sharedflow'");
             }
-            resourceInputs["continueOnError"] = args ? args.continueOnError : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["environment"] = args ? args.environment : undefined;
-            resourceInputs["flowHookPoint"] = args ? args.flowHookPoint : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["sharedflow"] = args ? args.sharedflow : undefined;
+            resourceInputs["continueOnError"] = args?.continueOnError;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["environment"] = args?.environment;
+            resourceInputs["flowHookPoint"] = args?.flowHookPoint;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["sharedflow"] = args?.sharedflow;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Flowhook.__pulumiType, name, resourceInputs, opts);

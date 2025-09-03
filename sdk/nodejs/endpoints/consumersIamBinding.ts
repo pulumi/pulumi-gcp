@@ -85,15 +85,15 @@ export class ConsumersIamBinding extends pulumi.CustomResource {
         return obj['__pulumiType'] === ConsumersIamBinding.__pulumiType;
     }
 
-    public readonly condition!: pulumi.Output<outputs.endpoints.ConsumersIamBindingCondition | undefined>;
+    declare public readonly condition: pulumi.Output<outputs.endpoints.ConsumersIamBindingCondition | undefined>;
     /**
      * Used to find the parent resource to bind the IAM policy to
      */
-    public readonly consumerProject!: pulumi.Output<string>;
+    declare public readonly consumerProject: pulumi.Output<string>;
     /**
      * (Computed) The etag of the IAM policy.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -107,17 +107,17 @@ export class ConsumersIamBinding extends pulumi.CustomResource {
      * * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
      */
-    public readonly members!: pulumi.Output<string[]>;
+    declare public readonly members: pulumi.Output<string[]>;
     /**
      * The role that should be applied. Only one
      * `gcp.endpoints.ConsumersIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    public readonly role!: pulumi.Output<string>;
+    declare public readonly role: pulumi.Output<string>;
     /**
      * The name of the service. Used to find the parent resource to bind the IAM policy to
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    declare public readonly serviceName: pulumi.Output<string>;
 
     /**
      * Create a ConsumersIamBinding resource with the given unique name, arguments, and options.
@@ -132,31 +132,31 @@ export class ConsumersIamBinding extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConsumersIamBindingState | undefined;
-            resourceInputs["condition"] = state ? state.condition : undefined;
-            resourceInputs["consumerProject"] = state ? state.consumerProject : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["members"] = state ? state.members : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
-            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
+            resourceInputs["condition"] = state?.condition;
+            resourceInputs["consumerProject"] = state?.consumerProject;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["members"] = state?.members;
+            resourceInputs["role"] = state?.role;
+            resourceInputs["serviceName"] = state?.serviceName;
         } else {
             const args = argsOrState as ConsumersIamBindingArgs | undefined;
-            if ((!args || args.consumerProject === undefined) && !opts.urn) {
+            if (args?.consumerProject === undefined && !opts.urn) {
                 throw new Error("Missing required property 'consumerProject'");
             }
-            if ((!args || args.members === undefined) && !opts.urn) {
+            if (args?.members === undefined && !opts.urn) {
                 throw new Error("Missing required property 'members'");
             }
-            if ((!args || args.role === undefined) && !opts.urn) {
+            if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
+            if (args?.serviceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            resourceInputs["condition"] = args ? args.condition : undefined;
-            resourceInputs["consumerProject"] = args ? args.consumerProject : undefined;
-            resourceInputs["members"] = args ? args.members : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
-            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["condition"] = args?.condition;
+            resourceInputs["consumerProject"] = args?.consumerProject;
+            resourceInputs["members"] = args?.members;
+            resourceInputs["role"] = args?.role;
+            resourceInputs["serviceName"] = args?.serviceName;
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -125,54 +125,54 @@ export class Table extends pulumi.CustomResource {
      * digits. Examples: "2014-10-02T15:01:23Z" and
      * "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The id of the parent database.
      */
-    public readonly database!: pulumi.Output<string | undefined>;
+    declare public readonly database: pulumi.Output<string | undefined>;
     /**
      * Output only. The deletion time of the table. Only set after the
      * table is deleted. A timestamp in RFC3339 UTC "Zulu" format, with
      * nanosecond resolution and up to nine fractional digits. Examples:
      * "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly deleteTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly deleteTime: pulumi.Output<string>;
     /**
      * The checksum of a table object computed by the server based on the value
      * of other fields. It may be sent on update requests to ensure the client
      * has an up-to-date value before proceeding. It is only checked for update
      * table operations.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Output only. The time when this table is considered expired. Only set
      * after the table is deleted. A timestamp in RFC3339 UTC "Zulu" format,
      * with nanosecond resolution and up to nine fractional digits. Examples:
      * "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly expireTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly expireTime: pulumi.Output<string>;
     /**
      * Options of a Hive table.
      * Structure is documented below.
      */
-    public readonly hiveOptions!: pulumi.Output<outputs.biglake.TableHiveOptions | undefined>;
+    declare public readonly hiveOptions: pulumi.Output<outputs.biglake.TableHiveOptions | undefined>;
     /**
      * Output only. The name of the Table. Format:
      * projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}/databases/{databaseId}/tables/{tableId}
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The database type.
      * Possible values are: `HIVE`.
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string | undefined>;
     /**
      * Output only. The last modification time of the table. A timestamp in
      * RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
      * fractional digits. Examples: "2014-10-02T15:01:23Z" and
      * "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Table resource with the given unique name, arguments, and options.
@@ -187,21 +187,21 @@ export class Table extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TableState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["database"] = state ? state.database : undefined;
-            resourceInputs["deleteTime"] = state ? state.deleteTime : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["expireTime"] = state ? state.expireTime : undefined;
-            resourceInputs["hiveOptions"] = state ? state.hiveOptions : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["database"] = state?.database;
+            resourceInputs["deleteTime"] = state?.deleteTime;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["expireTime"] = state?.expireTime;
+            resourceInputs["hiveOptions"] = state?.hiveOptions;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as TableArgs | undefined;
-            resourceInputs["database"] = args ? args.database : undefined;
-            resourceInputs["hiveOptions"] = args ? args.hiveOptions : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["database"] = args?.database;
+            resourceInputs["hiveOptions"] = args?.hiveOptions;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["type"] = args?.type;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;

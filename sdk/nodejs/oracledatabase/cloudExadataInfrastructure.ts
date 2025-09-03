@@ -138,59 +138,59 @@ export class CloudExadataInfrastructure extends pulumi.CustomResource {
      * characters in length. The value must start with a letter and end with
      * a letter or a number.
      */
-    public readonly cloudExadataInfrastructureId!: pulumi.Output<string>;
+    declare public readonly cloudExadataInfrastructureId: pulumi.Output<string>;
     /**
      * The date and time that the Exadata Infrastructure was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
-    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
      * User friendly name for this resource.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Entitlement ID of the private offer against which this infrastructure
      * resource is provisioned.
      */
-    public /*out*/ readonly entitlementId!: pulumi.Output<string>;
+    declare public /*out*/ readonly entitlementId: pulumi.Output<string>;
     /**
      * GCP location where Oracle Exadata is hosted.
      */
-    public readonly gcpOracleZone!: pulumi.Output<string>;
+    declare public readonly gcpOracleZone: pulumi.Output<string>;
     /**
      * Labels or tags associated with the resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/DbServer`.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Identifier. The name of the Exadata Infrastructure resource with the following format:
      * projects/{project}/locations/{region}/cloudExadataInfrastructures/{cloud_exadata_infrastructure}
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Various properties of Exadata Infrastructure.
      * Structure is documented below.
      */
-    public readonly properties!: pulumi.Output<outputs.oracledatabase.CloudExadataInfrastructureProperties | undefined>;
+    declare public readonly properties: pulumi.Output<outputs.oracledatabase.CloudExadataInfrastructureProperties | undefined>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a CloudExadataInfrastructure resource with the given unique name, arguments, and options.
@@ -205,35 +205,35 @@ export class CloudExadataInfrastructure extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CloudExadataInfrastructureState | undefined;
-            resourceInputs["cloudExadataInfrastructureId"] = state ? state.cloudExadataInfrastructureId : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["entitlementId"] = state ? state.entitlementId : undefined;
-            resourceInputs["gcpOracleZone"] = state ? state.gcpOracleZone : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["properties"] = state ? state.properties : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
+            resourceInputs["cloudExadataInfrastructureId"] = state?.cloudExadataInfrastructureId;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionProtection"] = state?.deletionProtection;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["entitlementId"] = state?.entitlementId;
+            resourceInputs["gcpOracleZone"] = state?.gcpOracleZone;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["properties"] = state?.properties;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
         } else {
             const args = argsOrState as CloudExadataInfrastructureArgs | undefined;
-            if ((!args || args.cloudExadataInfrastructureId === undefined) && !opts.urn) {
+            if (args?.cloudExadataInfrastructureId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cloudExadataInfrastructureId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["cloudExadataInfrastructureId"] = args ? args.cloudExadataInfrastructureId : undefined;
-            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["gcpOracleZone"] = args ? args.gcpOracleZone : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["properties"] = args ? args.properties : undefined;
+            resourceInputs["cloudExadataInfrastructureId"] = args?.cloudExadataInfrastructureId;
+            resourceInputs["deletionProtection"] = args?.deletionProtection;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["gcpOracleZone"] = args?.gcpOracleZone;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["properties"] = args?.properties;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["entitlementId"] = undefined /*out*/;

@@ -170,45 +170,45 @@ export class AppHostingBuild extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the Backend that this Build applies to
      */
-    public readonly backend!: pulumi.Output<string>;
+    declare public readonly backend: pulumi.Output<string>;
     /**
      * The user-specified ID of the build being created.
      */
-    public readonly buildId!: pulumi.Output<string>;
+    declare public readonly buildId: pulumi.Output<string>;
     /**
      * The location of the [Cloud Build
      * logs](https://cloud.google.com/build/docs/view-build-results) for the build
      * process.
      */
-    public /*out*/ readonly buildLogsUri!: pulumi.Output<string>;
+    declare public /*out*/ readonly buildLogsUri: pulumi.Output<string>;
     /**
      * Time at which the build was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Human-readable name. 63 character limit.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The environment name of the backend when this build was created.
      */
-    public /*out*/ readonly environment!: pulumi.Output<string>;
+    declare public /*out*/ readonly environment: pulumi.Output<string>;
     /**
      * The source of the error for the build, if in a `FAILED` state.
      * Possible values:
      * CLOUD_BUILD
      * CLOUD_RUN
      */
-    public /*out*/ readonly errorSource!: pulumi.Output<string>;
+    declare public /*out*/ readonly errorSource: pulumi.Output<string>;
     /**
      * The `Status` type defines a logical error model that is suitable for
      * different programming environments, including REST APIs and RPC APIs. It is
@@ -218,12 +218,12 @@ export class AppHostingBuild extends pulumi.CustomResource {
      * [API Design Guide](https://cloud.google.com/apis/design/errors).
      * Structure is documented below.
      */
-    public /*out*/ readonly errors!: pulumi.Output<outputs.firebase.AppHostingBuildError[]>;
+    declare public /*out*/ readonly errors: pulumi.Output<outputs.firebase.AppHostingBuildError[]>;
     /**
      * Server-computed checksum based on other values; may be sent
      * on update or delete to ensure operation is done on expected resource.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The Artifact Registry
      * [container
@@ -232,39 +232,39 @@ export class AppHostingBuild extends pulumi.CustomResource {
      * [`revision`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services.revisions)
      * for this build.
      */
-    public /*out*/ readonly image!: pulumi.Output<string>;
+    declare public /*out*/ readonly image: pulumi.Output<string>;
     /**
      * Unstructured key value map that can be used to organize and categorize
      * objects.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location of the Backend that this Build applies to
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Identifier. The resource name of the build.
      * Format:
      * `projects/{project}/locations/{locationId}/backends/{backendId}/builds/{buildId}`.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The source for the build.
      * Structure is documented below.
      */
-    public readonly source!: pulumi.Output<outputs.firebase.AppHostingBuildSource>;
+    declare public readonly source: pulumi.Output<outputs.firebase.AppHostingBuildSource>;
     /**
      * The state of the build.
      * Possible values:
@@ -274,15 +274,15 @@ export class AppHostingBuild extends pulumi.CustomResource {
      * READY
      * FAILED
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * System-assigned, unique identifier.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * Time at which the build was last updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a AppHostingBuild resource with the given unique name, arguments, and options.
@@ -297,50 +297,50 @@ export class AppHostingBuild extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AppHostingBuildState | undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["backend"] = state ? state.backend : undefined;
-            resourceInputs["buildId"] = state ? state.buildId : undefined;
-            resourceInputs["buildLogsUri"] = state ? state.buildLogsUri : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["environment"] = state ? state.environment : undefined;
-            resourceInputs["errorSource"] = state ? state.errorSource : undefined;
-            resourceInputs["errors"] = state ? state.errors : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["image"] = state ? state.image : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["source"] = state ? state.source : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["backend"] = state?.backend;
+            resourceInputs["buildId"] = state?.buildId;
+            resourceInputs["buildLogsUri"] = state?.buildLogsUri;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["environment"] = state?.environment;
+            resourceInputs["errorSource"] = state?.errorSource;
+            resourceInputs["errors"] = state?.errors;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["image"] = state?.image;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["source"] = state?.source;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as AppHostingBuildArgs | undefined;
-            if ((!args || args.backend === undefined) && !opts.urn) {
+            if (args?.backend === undefined && !opts.urn) {
                 throw new Error("Missing required property 'backend'");
             }
-            if ((!args || args.buildId === undefined) && !opts.urn) {
+            if (args?.buildId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'buildId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.source === undefined) && !opts.urn) {
+            if (args?.source === undefined && !opts.urn) {
                 throw new Error("Missing required property 'source'");
             }
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["backend"] = args ? args.backend : undefined;
-            resourceInputs["buildId"] = args ? args.buildId : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["source"] = args ? args.source : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["backend"] = args?.backend;
+            resourceInputs["buildId"] = args?.buildId;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["source"] = args?.source;
             resourceInputs["buildLogsUri"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;

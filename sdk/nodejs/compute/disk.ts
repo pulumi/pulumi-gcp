@@ -165,35 +165,35 @@ export class Disk extends pulumi.CustomResource {
      * * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
      * The AccessMode is only valid for Hyperdisk disk types.
      */
-    public readonly accessMode!: pulumi.Output<string>;
+    declare public readonly accessMode: pulumi.Output<string>;
     /**
      * The architecture of the disk. Values include `X86_64`, `ARM64`.
      */
-    public readonly architecture!: pulumi.Output<string | undefined>;
+    declare public readonly architecture: pulumi.Output<string | undefined>;
     /**
      * A nested object resource.
      * Structure is documented below.
      */
-    public readonly asyncPrimaryDisk!: pulumi.Output<outputs.compute.DiskAsyncPrimaryDisk | undefined>;
+    declare public readonly asyncPrimaryDisk: pulumi.Output<outputs.compute.DiskAsyncPrimaryDisk | undefined>;
     /**
      * If set to true, a snapshot of the disk will be created before it is destroyed.
      * If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
      * The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
      */
-    public readonly createSnapshotBeforeDestroy!: pulumi.Output<boolean | undefined>;
+    declare public readonly createSnapshotBeforeDestroy: pulumi.Output<boolean | undefined>;
     /**
      * This will set a custom name prefix for the snapshot that's created when the disk is deleted.
      */
-    public readonly createSnapshotBeforeDestroyPrefix!: pulumi.Output<string | undefined>;
+    declare public readonly createSnapshotBeforeDestroyPrefix: pulumi.Output<string | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Encrypts the disk using a customer-supplied encryption key.
      * After you encrypt a disk with a customer-supplied key, you must
@@ -206,26 +206,26 @@ export class Disk extends pulumi.CustomResource {
      * you do not need to provide a key to use the disk later.
      * Structure is documented below.
      */
-    public readonly diskEncryptionKey!: pulumi.Output<outputs.compute.DiskDiskEncryptionKey | undefined>;
+    declare public readonly diskEncryptionKey: pulumi.Output<outputs.compute.DiskDiskEncryptionKey | undefined>;
     /**
      * The unique identifier for the resource. This identifier is defined by the server.
      */
-    public /*out*/ readonly diskId!: pulumi.Output<string>;
+    declare public /*out*/ readonly diskId: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Whether this disk is using confidential compute mode.
      * Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true
      */
-    public readonly enableConfidentialCompute!: pulumi.Output<boolean>;
+    declare public readonly enableConfidentialCompute: pulumi.Output<boolean>;
     /**
      * A list of features to enable on the guest operating system.
      * Applicable only for bootable disks.
      * Structure is documented below.
      */
-    public readonly guestOsFeatures!: pulumi.Output<outputs.compute.DiskGuestOsFeature[]>;
+    declare public readonly guestOsFeatures: pulumi.Output<outputs.compute.DiskGuestOsFeature[]>;
     /**
      * The image from which to initialize this disk. This can be
      * one of: the image's `selfLink`, `projects/{project}/global/images/{image}`,
@@ -237,7 +237,7 @@ export class Disk extends pulumi.CustomResource {
      * For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
      * These images can be referred by family name here.
      */
-    public readonly image!: pulumi.Output<string | undefined>;
+    declare public readonly image: pulumi.Output<string | undefined>;
     /**
      * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
      *
@@ -245,35 +245,35 @@ export class Disk extends pulumi.CustomResource {
      *
      * @deprecated `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
      */
-    public readonly interface!: pulumi.Output<string | undefined>;
+    declare public readonly interface: pulumi.Output<string | undefined>;
     /**
      * The fingerprint used for optimistic locking of this resource.  Used
      * internally during updates.
      */
-    public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly labelFingerprint: pulumi.Output<string>;
     /**
      * Labels to apply to this disk.  A list of key->value pairs.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Last attach timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly lastAttachTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastAttachTimestamp: pulumi.Output<string>;
     /**
      * Last detach timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly lastDetachTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastDetachTimestamp: pulumi.Output<string>;
     /**
      * Any applicable license URI.
      */
-    public readonly licenses!: pulumi.Output<string[]>;
+    declare public readonly licenses: pulumi.Output<string[]>;
     /**
      * Indicates whether or not the disk can be read/write attached to more than one instance.
      */
-    public readonly multiWriter!: pulumi.Output<boolean | undefined>;
+    declare public readonly multiWriter: pulumi.Output<boolean | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -283,12 +283,12 @@ export class Disk extends pulumi.CustomResource {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      */
-    public readonly params!: pulumi.Output<outputs.compute.DiskParams | undefined>;
+    declare public readonly params: pulumi.Output<outputs.compute.DiskParams | undefined>;
     /**
      * Physical block size of the persistent disk, in bytes. If not present
      * in a request, a default value is used. Currently supported sizes
@@ -296,29 +296,29 @@ export class Disk extends pulumi.CustomResource {
      * If an unsupported value is requested, the error message will list
      * the supported values for the caller's project.
      */
-    public readonly physicalBlockSizeBytes!: pulumi.Output<number>;
+    declare public readonly physicalBlockSizeBytes: pulumi.Output<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Indicates how many IOPS must be provisioned for the disk.
      * Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
      * allows for an update of IOPS every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
      */
-    public readonly provisionedIops!: pulumi.Output<number>;
+    declare public readonly provisionedIops: pulumi.Output<number>;
     /**
      * Indicates how much Throughput must be provisioned for the disk.
      * Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
      * allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
      */
-    public readonly provisionedThroughput!: pulumi.Output<number>;
+    declare public readonly provisionedThroughput: pulumi.Output<number>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Resource policies applied to this disk for automatic snapshot creations.
      * ~>**NOTE** This value does not support updating the
@@ -327,11 +327,11 @@ export class Disk extends pulumi.CustomResource {
      * `gcp.compute.DiskResourcePolicyAttachment`
      * to allow for updating the resource policy attached to the disk.
      */
-    public readonly resourcePolicies!: pulumi.Output<string[]>;
+    declare public readonly resourcePolicies: pulumi.Output<string[]>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * Size of the persistent disk, specified in GB. You can specify this
      * field when creating a persistent disk using the `image` or
@@ -345,7 +345,7 @@ export class Disk extends pulumi.CustomResource {
      * You can add `lifecycle.prevent_destroy` in the config to prevent destroying
      * and recreating.
      */
-    public readonly size!: pulumi.Output<number>;
+    declare public readonly size: pulumi.Output<number>;
     /**
      * The source snapshot used to create this disk. You can provide this as
      * a partial or full URL to the resource. If the snapshot is in another
@@ -355,7 +355,7 @@ export class Disk extends pulumi.CustomResource {
      * * `projects/project/global/snapshots/snapshot`
      * * `global/snapshots/snapshot`
      */
-    public readonly snapshot!: pulumi.Output<string | undefined>;
+    declare public readonly snapshot: pulumi.Output<string | undefined>;
     /**
      * The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
      * For example, the following are valid values:
@@ -366,19 +366,19 @@ export class Disk extends pulumi.CustomResource {
      * * zones/{zone}/disks/{disk}
      * * regions/{region}/disks/{disk}
      */
-    public readonly sourceDisk!: pulumi.Output<string | undefined>;
+    declare public readonly sourceDisk: pulumi.Output<string | undefined>;
     /**
      * The ID value of the disk used to create this image. This value may
      * be used to determine whether the image was taken from the current
      * or a previous instance of a given disk name.
      */
-    public /*out*/ readonly sourceDiskId!: pulumi.Output<string>;
+    declare public /*out*/ readonly sourceDiskId: pulumi.Output<string>;
     /**
      * The customer-supplied encryption key of the source image. Required if
      * the source image is protected by a customer-supplied encryption key.
      * Structure is documented below.
      */
-    public readonly sourceImageEncryptionKey!: pulumi.Output<outputs.compute.DiskSourceImageEncryptionKey | undefined>;
+    declare public readonly sourceImageEncryptionKey: pulumi.Output<outputs.compute.DiskSourceImageEncryptionKey | undefined>;
     /**
      * The ID value of the image used to create this disk. This value
      * identifies the exact image that was used to create this persistent
@@ -386,7 +386,7 @@ export class Disk extends pulumi.CustomResource {
      * that was later deleted and recreated under the same name, the source
      * image ID would identify the exact version of the image that was used.
      */
-    public /*out*/ readonly sourceImageId!: pulumi.Output<string>;
+    declare public /*out*/ readonly sourceImageId: pulumi.Output<string>;
     /**
      * The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource.
      * For example, the following are valid values:
@@ -394,7 +394,7 @@ export class Disk extends pulumi.CustomResource {
      * * `projects/project/zones/zone/instantSnapshots/instantSnapshot`
      * * `zones/zone/instantSnapshots/instantSnapshot`
      */
-    public readonly sourceInstantSnapshot!: pulumi.Output<string | undefined>;
+    declare public readonly sourceInstantSnapshot: pulumi.Output<string | undefined>;
     /**
      * The unique ID of the instant snapshot used to create this disk. This value identifies
      * the exact instant snapshot that was used to create this persistent disk.
@@ -402,14 +402,14 @@ export class Disk extends pulumi.CustomResource {
      * deleted and recreated under the same name, the source instant snapshot ID would identify
      * the exact version of the instant snapshot that was used.
      */
-    public /*out*/ readonly sourceInstantSnapshotId!: pulumi.Output<string>;
+    declare public /*out*/ readonly sourceInstantSnapshotId: pulumi.Output<string>;
     /**
      * The customer-supplied encryption key of the source snapshot. Required
      * if the source snapshot is protected by a customer-supplied encryption
      * key.
      * Structure is documented below.
      */
-    public readonly sourceSnapshotEncryptionKey!: pulumi.Output<outputs.compute.DiskSourceSnapshotEncryptionKey | undefined>;
+    declare public readonly sourceSnapshotEncryptionKey: pulumi.Output<outputs.compute.DiskSourceSnapshotEncryptionKey | undefined>;
     /**
      * The unique ID of the snapshot used to create this disk. This value
      * identifies the exact snapshot that was used to create this persistent
@@ -418,7 +418,7 @@ export class Disk extends pulumi.CustomResource {
      * snapshot ID would identify the exact version of the snapshot that was
      * used.
      */
-    public /*out*/ readonly sourceSnapshotId!: pulumi.Output<string>;
+    declare public /*out*/ readonly sourceSnapshotId: pulumi.Output<string>;
     /**
      * The full Google Cloud Storage URI where the disk image is stored.
      * This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk.
@@ -426,7 +426,7 @@ export class Disk extends pulumi.CustomResource {
      * This flag is not optimized for creating multiple disks from a source storage object.
      * To create many disks from a source storage object, use gcloud compute images import instead.
      */
-    public readonly sourceStorageObject!: pulumi.Output<string | undefined>;
+    declare public readonly sourceStorageObject: pulumi.Output<string | undefined>;
     /**
      * The URL or the name of the storage pool in which the new disk is created.
      * For example:
@@ -435,21 +435,21 @@ export class Disk extends pulumi.CustomResource {
      * * /zones/{zone}/storagePools/{storagePool}
      * * /{storagePool}
      */
-    public readonly storagePool!: pulumi.Output<string | undefined>;
+    declare public readonly storagePool: pulumi.Output<string | undefined>;
     /**
      * URL of the disk type resource describing which disk type to use to
      * create the disk. Provide this when creating the disk.
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string | undefined>;
     /**
      * Links to the users of the disk (attached instances) in form:
      * project/zones/zone/instances/instance
      */
-    public /*out*/ readonly users!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly users: pulumi.Output<string[]>;
     /**
      * A reference to the zone where the disk resides.
      */
-    public readonly zone!: pulumi.Output<string>;
+    declare public readonly zone: pulumi.Output<string>;
 
     /**
      * Create a Disk resource with the given unique name, arguments, and options.
@@ -464,83 +464,83 @@ export class Disk extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DiskState | undefined;
-            resourceInputs["accessMode"] = state ? state.accessMode : undefined;
-            resourceInputs["architecture"] = state ? state.architecture : undefined;
-            resourceInputs["asyncPrimaryDisk"] = state ? state.asyncPrimaryDisk : undefined;
-            resourceInputs["createSnapshotBeforeDestroy"] = state ? state.createSnapshotBeforeDestroy : undefined;
-            resourceInputs["createSnapshotBeforeDestroyPrefix"] = state ? state.createSnapshotBeforeDestroyPrefix : undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["diskEncryptionKey"] = state ? state.diskEncryptionKey : undefined;
-            resourceInputs["diskId"] = state ? state.diskId : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["enableConfidentialCompute"] = state ? state.enableConfidentialCompute : undefined;
-            resourceInputs["guestOsFeatures"] = state ? state.guestOsFeatures : undefined;
-            resourceInputs["image"] = state ? state.image : undefined;
-            resourceInputs["interface"] = state ? state.interface : undefined;
-            resourceInputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["lastAttachTimestamp"] = state ? state.lastAttachTimestamp : undefined;
-            resourceInputs["lastDetachTimestamp"] = state ? state.lastDetachTimestamp : undefined;
-            resourceInputs["licenses"] = state ? state.licenses : undefined;
-            resourceInputs["multiWriter"] = state ? state.multiWriter : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["params"] = state ? state.params : undefined;
-            resourceInputs["physicalBlockSizeBytes"] = state ? state.physicalBlockSizeBytes : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["provisionedIops"] = state ? state.provisionedIops : undefined;
-            resourceInputs["provisionedThroughput"] = state ? state.provisionedThroughput : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["resourcePolicies"] = state ? state.resourcePolicies : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["snapshot"] = state ? state.snapshot : undefined;
-            resourceInputs["sourceDisk"] = state ? state.sourceDisk : undefined;
-            resourceInputs["sourceDiskId"] = state ? state.sourceDiskId : undefined;
-            resourceInputs["sourceImageEncryptionKey"] = state ? state.sourceImageEncryptionKey : undefined;
-            resourceInputs["sourceImageId"] = state ? state.sourceImageId : undefined;
-            resourceInputs["sourceInstantSnapshot"] = state ? state.sourceInstantSnapshot : undefined;
-            resourceInputs["sourceInstantSnapshotId"] = state ? state.sourceInstantSnapshotId : undefined;
-            resourceInputs["sourceSnapshotEncryptionKey"] = state ? state.sourceSnapshotEncryptionKey : undefined;
-            resourceInputs["sourceSnapshotId"] = state ? state.sourceSnapshotId : undefined;
-            resourceInputs["sourceStorageObject"] = state ? state.sourceStorageObject : undefined;
-            resourceInputs["storagePool"] = state ? state.storagePool : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["users"] = state ? state.users : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["accessMode"] = state?.accessMode;
+            resourceInputs["architecture"] = state?.architecture;
+            resourceInputs["asyncPrimaryDisk"] = state?.asyncPrimaryDisk;
+            resourceInputs["createSnapshotBeforeDestroy"] = state?.createSnapshotBeforeDestroy;
+            resourceInputs["createSnapshotBeforeDestroyPrefix"] = state?.createSnapshotBeforeDestroyPrefix;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["diskEncryptionKey"] = state?.diskEncryptionKey;
+            resourceInputs["diskId"] = state?.diskId;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["enableConfidentialCompute"] = state?.enableConfidentialCompute;
+            resourceInputs["guestOsFeatures"] = state?.guestOsFeatures;
+            resourceInputs["image"] = state?.image;
+            resourceInputs["interface"] = state?.interface;
+            resourceInputs["labelFingerprint"] = state?.labelFingerprint;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["lastAttachTimestamp"] = state?.lastAttachTimestamp;
+            resourceInputs["lastDetachTimestamp"] = state?.lastDetachTimestamp;
+            resourceInputs["licenses"] = state?.licenses;
+            resourceInputs["multiWriter"] = state?.multiWriter;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["params"] = state?.params;
+            resourceInputs["physicalBlockSizeBytes"] = state?.physicalBlockSizeBytes;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["provisionedIops"] = state?.provisionedIops;
+            resourceInputs["provisionedThroughput"] = state?.provisionedThroughput;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["resourcePolicies"] = state?.resourcePolicies;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["snapshot"] = state?.snapshot;
+            resourceInputs["sourceDisk"] = state?.sourceDisk;
+            resourceInputs["sourceDiskId"] = state?.sourceDiskId;
+            resourceInputs["sourceImageEncryptionKey"] = state?.sourceImageEncryptionKey;
+            resourceInputs["sourceImageId"] = state?.sourceImageId;
+            resourceInputs["sourceInstantSnapshot"] = state?.sourceInstantSnapshot;
+            resourceInputs["sourceInstantSnapshotId"] = state?.sourceInstantSnapshotId;
+            resourceInputs["sourceSnapshotEncryptionKey"] = state?.sourceSnapshotEncryptionKey;
+            resourceInputs["sourceSnapshotId"] = state?.sourceSnapshotId;
+            resourceInputs["sourceStorageObject"] = state?.sourceStorageObject;
+            resourceInputs["storagePool"] = state?.storagePool;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["users"] = state?.users;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as DiskArgs | undefined;
-            resourceInputs["accessMode"] = args ? args.accessMode : undefined;
-            resourceInputs["architecture"] = args ? args.architecture : undefined;
-            resourceInputs["asyncPrimaryDisk"] = args ? args.asyncPrimaryDisk : undefined;
-            resourceInputs["createSnapshotBeforeDestroy"] = args ? args.createSnapshotBeforeDestroy : undefined;
-            resourceInputs["createSnapshotBeforeDestroyPrefix"] = args ? args.createSnapshotBeforeDestroyPrefix : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["diskEncryptionKey"] = args ? args.diskEncryptionKey : undefined;
-            resourceInputs["enableConfidentialCompute"] = args ? args.enableConfidentialCompute : undefined;
-            resourceInputs["guestOsFeatures"] = args ? args.guestOsFeatures : undefined;
-            resourceInputs["image"] = args ? args.image : undefined;
-            resourceInputs["interface"] = args ? args.interface : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["licenses"] = args ? args.licenses : undefined;
-            resourceInputs["multiWriter"] = args ? args.multiWriter : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["params"] = args ? args.params : undefined;
-            resourceInputs["physicalBlockSizeBytes"] = args ? args.physicalBlockSizeBytes : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["provisionedIops"] = args ? args.provisionedIops : undefined;
-            resourceInputs["provisionedThroughput"] = args ? args.provisionedThroughput : undefined;
-            resourceInputs["resourcePolicies"] = args ? args.resourcePolicies : undefined;
-            resourceInputs["size"] = args ? args.size : undefined;
-            resourceInputs["snapshot"] = args ? args.snapshot : undefined;
-            resourceInputs["sourceDisk"] = args ? args.sourceDisk : undefined;
-            resourceInputs["sourceImageEncryptionKey"] = args ? args.sourceImageEncryptionKey : undefined;
-            resourceInputs["sourceInstantSnapshot"] = args ? args.sourceInstantSnapshot : undefined;
-            resourceInputs["sourceSnapshotEncryptionKey"] = args ? args.sourceSnapshotEncryptionKey : undefined;
-            resourceInputs["sourceStorageObject"] = args ? args.sourceStorageObject : undefined;
-            resourceInputs["storagePool"] = args ? args.storagePool : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["accessMode"] = args?.accessMode;
+            resourceInputs["architecture"] = args?.architecture;
+            resourceInputs["asyncPrimaryDisk"] = args?.asyncPrimaryDisk;
+            resourceInputs["createSnapshotBeforeDestroy"] = args?.createSnapshotBeforeDestroy;
+            resourceInputs["createSnapshotBeforeDestroyPrefix"] = args?.createSnapshotBeforeDestroyPrefix;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["diskEncryptionKey"] = args?.diskEncryptionKey;
+            resourceInputs["enableConfidentialCompute"] = args?.enableConfidentialCompute;
+            resourceInputs["guestOsFeatures"] = args?.guestOsFeatures;
+            resourceInputs["image"] = args?.image;
+            resourceInputs["interface"] = args?.interface;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["licenses"] = args?.licenses;
+            resourceInputs["multiWriter"] = args?.multiWriter;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["params"] = args?.params;
+            resourceInputs["physicalBlockSizeBytes"] = args?.physicalBlockSizeBytes;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["provisionedIops"] = args?.provisionedIops;
+            resourceInputs["provisionedThroughput"] = args?.provisionedThroughput;
+            resourceInputs["resourcePolicies"] = args?.resourcePolicies;
+            resourceInputs["size"] = args?.size;
+            resourceInputs["snapshot"] = args?.snapshot;
+            resourceInputs["sourceDisk"] = args?.sourceDisk;
+            resourceInputs["sourceImageEncryptionKey"] = args?.sourceImageEncryptionKey;
+            resourceInputs["sourceInstantSnapshot"] = args?.sourceInstantSnapshot;
+            resourceInputs["sourceSnapshotEncryptionKey"] = args?.sourceSnapshotEncryptionKey;
+            resourceInputs["sourceStorageObject"] = args?.sourceStorageObject;
+            resourceInputs["storagePool"] = args?.storagePool;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["zone"] = args?.zone;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["diskId"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;

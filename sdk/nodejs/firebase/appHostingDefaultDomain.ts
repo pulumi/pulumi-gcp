@@ -148,46 +148,46 @@ export class AppHostingDefaultDomain extends pulumi.CustomResource {
     /**
      * The ID of the Backend that this Domain is associated with
      */
-    public readonly backend!: pulumi.Output<string>;
+    declare public readonly backend: pulumi.Output<string>;
     /**
      * Time at which the domain was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Whether the domain is disabled. Defaults to false.
      */
-    public readonly disabled!: pulumi.Output<boolean>;
+    declare public readonly disabled: pulumi.Output<boolean>;
     /**
      * Id of the domain. For default domain, it should be {{backend}}--{{project_id}}.{{location}}.hosted.app
      */
-    public readonly domainId!: pulumi.Output<string>;
+    declare public readonly domainId: pulumi.Output<string>;
     /**
      * Server-computed checksum based on other values; may be sent
      * on update or delete to ensure operation is done on expected resource.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The location of the Backend that this Domain is associated with
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Identifier. The resource name of the domain, e.g.
      * `projects/{project}/locations/{locationId}/backends/{backendId}/domains/{domainId}`
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * System-assigned, unique identifier.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * Time at which the domain was last updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a AppHostingDefaultDomain resource with the given unique name, arguments, and options.
@@ -202,32 +202,32 @@ export class AppHostingDefaultDomain extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AppHostingDefaultDomainState | undefined;
-            resourceInputs["backend"] = state ? state.backend : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["disabled"] = state ? state.disabled : undefined;
-            resourceInputs["domainId"] = state ? state.domainId : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["backend"] = state?.backend;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["disabled"] = state?.disabled;
+            resourceInputs["domainId"] = state?.domainId;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as AppHostingDefaultDomainArgs | undefined;
-            if ((!args || args.backend === undefined) && !opts.urn) {
+            if (args?.backend === undefined && !opts.urn) {
                 throw new Error("Missing required property 'backend'");
             }
-            if ((!args || args.domainId === undefined) && !opts.urn) {
+            if (args?.domainId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domainId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["backend"] = args ? args.backend : undefined;
-            resourceInputs["disabled"] = args ? args.disabled : undefined;
-            resourceInputs["domainId"] = args ? args.domainId : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["backend"] = args?.backend;
+            resourceInputs["disabled"] = args?.disabled;
+            resourceInputs["domainId"] = args?.domainId;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

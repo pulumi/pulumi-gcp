@@ -97,7 +97,7 @@ export class SSLPolicy extends pulumi.CustomResource {
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * Profile specifies the set of SSL features that can be used by the
      * load balancer when negotiating SSL with clients. This can be one of
@@ -109,27 +109,27 @@ export class SSLPolicy extends pulumi.CustomResource {
      * *must* be present when using the `CUSTOM` profile. This argument
      * *must not* be present when using any other profile.
      */
-    public readonly customFeatures!: pulumi.Output<string[] | undefined>;
+    declare public readonly customFeatures: pulumi.Output<string[] | undefined>;
     /**
      * An optional description of this resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The list of features enabled in the SSL policy.
      */
-    public /*out*/ readonly enabledFeatures!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly enabledFeatures: pulumi.Output<string[]>;
     /**
      * Fingerprint of this resource. A hash of the contents stored in this
      * object. This field is used in optimistic locking.
      */
-    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly fingerprint: pulumi.Output<string>;
     /**
      * The minimum version of SSL protocol that can be used by the clients
      * to establish a connection with the load balancer.
      * Default value is `TLS_1_0`.
      * Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
      */
-    public readonly minTlsVersion!: pulumi.Output<string | undefined>;
+    declare public readonly minTlsVersion: pulumi.Output<string | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -139,7 +139,7 @@ export class SSLPolicy extends pulumi.CustomResource {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Profile specifies the set of SSL features that can be used by the
      * load balancer when negotiating SSL with clients. If using `CUSTOM`,
@@ -151,16 +151,16 @@ export class SSLPolicy extends pulumi.CustomResource {
      * Default value is `COMPATIBLE`.
      * Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
      */
-    public readonly profile!: pulumi.Output<string | undefined>;
+    declare public readonly profile: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
 
     /**
      * Create a SSLPolicy resource with the given unique name, arguments, and options.
@@ -175,24 +175,24 @@ export class SSLPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SSLPolicyState | undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["customFeatures"] = state ? state.customFeatures : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enabledFeatures"] = state ? state.enabledFeatures : undefined;
-            resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
-            resourceInputs["minTlsVersion"] = state ? state.minTlsVersion : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["profile"] = state ? state.profile : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["customFeatures"] = state?.customFeatures;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["enabledFeatures"] = state?.enabledFeatures;
+            resourceInputs["fingerprint"] = state?.fingerprint;
+            resourceInputs["minTlsVersion"] = state?.minTlsVersion;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["profile"] = state?.profile;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["selfLink"] = state?.selfLink;
         } else {
             const args = argsOrState as SSLPolicyArgs | undefined;
-            resourceInputs["customFeatures"] = args ? args.customFeatures : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["minTlsVersion"] = args ? args.minTlsVersion : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["profile"] = args ? args.profile : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["customFeatures"] = args?.customFeatures;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["minTlsVersion"] = args?.minTlsVersion;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["profile"] = args?.profile;
+            resourceInputs["project"] = args?.project;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["enabledFeatures"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;

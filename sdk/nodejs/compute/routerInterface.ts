@@ -76,41 +76,41 @@ export class RouterInterface extends pulumi.CustomResource {
      * VLAN interconnect for this interface. Changing this forces a new interface to
      * be created. Only one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
      */
-    public readonly interconnectAttachment!: pulumi.Output<string | undefined>;
+    declare public readonly interconnectAttachment: pulumi.Output<string | undefined>;
     /**
      * IP address and range of the interface. The IP range must be
      * in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
      */
-    public readonly ipRange!: pulumi.Output<string>;
+    declare public readonly ipRange: pulumi.Output<string>;
     /**
      * IP version of this interface. Can be either IPV4 or IPV6.
      */
-    public readonly ipVersion!: pulumi.Output<string>;
+    declare public readonly ipVersion: pulumi.Output<string>;
     /**
      * A unique name for the interface, required by GCE. Changing
      * this forces a new interface to be created.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The regional private internal IP address that is used
      * to establish BGP sessions to a VM instance acting as a third-party Router Appliance. Changing this forces a new interface to be created.
      */
-    public readonly privateIpAddress!: pulumi.Output<string | undefined>;
+    declare public readonly privateIpAddress: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which this interface's routerbelongs.
      * If it is not provided, the provider project is used. Changing this forces a new interface to be created.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The name of the interface that is redundant to
      * this interface. Changing this forces a new interface to be created.
      */
-    public readonly redundantInterface!: pulumi.Output<string>;
+    declare public readonly redundantInterface: pulumi.Output<string>;
     /**
      * The region this interface's router sits in.
      * If not specified, the project region will be used. Changing this forces a new interface to be created.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The name of the router this interface will be attached to.
      * Changing this forces a new interface to be created.
@@ -119,18 +119,18 @@ export class RouterInterface extends pulumi.CustomResource {
      *
      * - - -
      */
-    public readonly router!: pulumi.Output<string>;
+    declare public readonly router: pulumi.Output<string>;
     /**
      * The URI of the subnetwork resource that this interface
      * belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
      */
-    public readonly subnetwork!: pulumi.Output<string | undefined>;
+    declare public readonly subnetwork: pulumi.Output<string | undefined>;
     /**
      * The name or resource link to the VPN tunnel this
      * interface will be linked to. Changing this forces a new interface to be created. Only
      * one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
      */
-    public readonly vpnTunnel!: pulumi.Output<string | undefined>;
+    declare public readonly vpnTunnel: pulumi.Output<string | undefined>;
 
     /**
      * Create a RouterInterface resource with the given unique name, arguments, and options.
@@ -145,33 +145,33 @@ export class RouterInterface extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouterInterfaceState | undefined;
-            resourceInputs["interconnectAttachment"] = state ? state.interconnectAttachment : undefined;
-            resourceInputs["ipRange"] = state ? state.ipRange : undefined;
-            resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["privateIpAddress"] = state ? state.privateIpAddress : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["redundantInterface"] = state ? state.redundantInterface : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["router"] = state ? state.router : undefined;
-            resourceInputs["subnetwork"] = state ? state.subnetwork : undefined;
-            resourceInputs["vpnTunnel"] = state ? state.vpnTunnel : undefined;
+            resourceInputs["interconnectAttachment"] = state?.interconnectAttachment;
+            resourceInputs["ipRange"] = state?.ipRange;
+            resourceInputs["ipVersion"] = state?.ipVersion;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["privateIpAddress"] = state?.privateIpAddress;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["redundantInterface"] = state?.redundantInterface;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["router"] = state?.router;
+            resourceInputs["subnetwork"] = state?.subnetwork;
+            resourceInputs["vpnTunnel"] = state?.vpnTunnel;
         } else {
             const args = argsOrState as RouterInterfaceArgs | undefined;
-            if ((!args || args.router === undefined) && !opts.urn) {
+            if (args?.router === undefined && !opts.urn) {
                 throw new Error("Missing required property 'router'");
             }
-            resourceInputs["interconnectAttachment"] = args ? args.interconnectAttachment : undefined;
-            resourceInputs["ipRange"] = args ? args.ipRange : undefined;
-            resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["privateIpAddress"] = args ? args.privateIpAddress : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["redundantInterface"] = args ? args.redundantInterface : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["router"] = args ? args.router : undefined;
-            resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
-            resourceInputs["vpnTunnel"] = args ? args.vpnTunnel : undefined;
+            resourceInputs["interconnectAttachment"] = args?.interconnectAttachment;
+            resourceInputs["ipRange"] = args?.ipRange;
+            resourceInputs["ipVersion"] = args?.ipVersion;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["privateIpAddress"] = args?.privateIpAddress;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["redundantInterface"] = args?.redundantInterface;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["router"] = args?.router;
+            resourceInputs["subnetwork"] = args?.subnetwork;
+            resourceInputs["vpnTunnel"] = args?.vpnTunnel;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RouterInterface.__pulumiType, name, resourceInputs, opts);

@@ -108,15 +108,15 @@ export class RegionTargetTcpProxy extends pulumi.CustomResource {
     /**
      * A reference to the BackendService resource.
      */
-    public readonly backendService!: pulumi.Output<string>;
+    declare public readonly backendService: pulumi.Output<string>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * An optional description of this resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -126,37 +126,37 @@ export class RegionTargetTcpProxy extends pulumi.CustomResource {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * This field only applies when the forwarding rule that references
      * this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
      */
-    public readonly proxyBind!: pulumi.Output<boolean>;
+    declare public readonly proxyBind: pulumi.Output<boolean>;
     /**
      * Specifies the type of proxy header to append before sending data to
      * the backend.
      * Default value is `NONE`.
      * Possible values are: `NONE`, `PROXY_V1`.
      */
-    public readonly proxyHeader!: pulumi.Output<string | undefined>;
+    declare public readonly proxyHeader: pulumi.Output<string | undefined>;
     /**
      * The unique identifier for the resource.
      */
-    public /*out*/ readonly proxyId!: pulumi.Output<number>;
+    declare public /*out*/ readonly proxyId: pulumi.Output<number>;
     /**
      * The Region in which the created target TCP proxy should reside.
      * If it is not provided, the provider region is used.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
 
     /**
      * Create a RegionTargetTcpProxy resource with the given unique name, arguments, and options.
@@ -171,28 +171,28 @@ export class RegionTargetTcpProxy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegionTargetTcpProxyState | undefined;
-            resourceInputs["backendService"] = state ? state.backendService : undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["proxyBind"] = state ? state.proxyBind : undefined;
-            resourceInputs["proxyHeader"] = state ? state.proxyHeader : undefined;
-            resourceInputs["proxyId"] = state ? state.proxyId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["backendService"] = state?.backendService;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["proxyBind"] = state?.proxyBind;
+            resourceInputs["proxyHeader"] = state?.proxyHeader;
+            resourceInputs["proxyId"] = state?.proxyId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["selfLink"] = state?.selfLink;
         } else {
             const args = argsOrState as RegionTargetTcpProxyArgs | undefined;
-            if ((!args || args.backendService === undefined) && !opts.urn) {
+            if (args?.backendService === undefined && !opts.urn) {
                 throw new Error("Missing required property 'backendService'");
             }
-            resourceInputs["backendService"] = args ? args.backendService : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["proxyBind"] = args ? args.proxyBind : undefined;
-            resourceInputs["proxyHeader"] = args ? args.proxyHeader : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["backendService"] = args?.backendService;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["proxyBind"] = args?.proxyBind;
+            resourceInputs["proxyHeader"] = args?.proxyHeader;
+            resourceInputs["region"] = args?.region;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["proxyId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;

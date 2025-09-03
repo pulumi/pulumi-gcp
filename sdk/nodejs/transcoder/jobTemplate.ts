@@ -565,40 +565,40 @@ export class JobTemplate extends pulumi.CustomResource {
      * The configuration for this template.
      * Structure is documented below.
      */
-    public readonly config!: pulumi.Output<outputs.transcoder.JobTemplateConfig>;
+    declare public readonly config: pulumi.Output<outputs.transcoder.JobTemplateConfig>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * ID to use for the Transcoding job template.
      */
-    public readonly jobTemplateId!: pulumi.Output<string>;
+    declare public readonly jobTemplateId: pulumi.Output<string>;
     /**
      * The labels associated with this job template. You can use these to organize and group your job templates.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location of the transcoding job template resource.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The resource name of the job template.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a JobTemplate resource with the given unique name, arguments, and options.
@@ -613,27 +613,27 @@ export class JobTemplate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as JobTemplateState | undefined;
-            resourceInputs["config"] = state ? state.config : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["jobTemplateId"] = state ? state.jobTemplateId : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
+            resourceInputs["config"] = state?.config;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["jobTemplateId"] = state?.jobTemplateId;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
         } else {
             const args = argsOrState as JobTemplateArgs | undefined;
-            if ((!args || args.jobTemplateId === undefined) && !opts.urn) {
+            if (args?.jobTemplateId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'jobTemplateId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["config"] = args ? args.config : undefined;
-            resourceInputs["jobTemplateId"] = args ? args.jobTemplateId : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["config"] = args?.config;
+            resourceInputs["jobTemplateId"] = args?.jobTemplateId;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;

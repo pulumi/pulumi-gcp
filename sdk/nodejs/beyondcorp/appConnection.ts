@@ -151,55 +151,55 @@ export class AppConnection extends pulumi.CustomResource {
      * Address of the remote application endpoint for the BeyondCorp AppConnection.
      * Structure is documented below.
      */
-    public readonly applicationEndpoint!: pulumi.Output<outputs.beyondcorp.AppConnectionApplicationEndpoint>;
+    declare public readonly applicationEndpoint: pulumi.Output<outputs.beyondcorp.AppConnectionApplicationEndpoint>;
     /**
      * List of AppConnectors that are authorised to be associated with this AppConnection
      */
-    public readonly connectors!: pulumi.Output<string[] | undefined>;
+    declare public readonly connectors: pulumi.Output<string[] | undefined>;
     /**
      * An arbitrary user-provided name for the AppConnection.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Gateway used by the AppConnection.
      * Structure is documented below.
      */
-    public readonly gateway!: pulumi.Output<outputs.beyondcorp.AppConnectionGateway>;
+    declare public readonly gateway: pulumi.Output<outputs.beyondcorp.AppConnectionGateway>;
     /**
      * Resource labels to represent user provided metadata.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * ID of the AppConnection.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The region of the AppConnection.
      */
-    public readonly region!: pulumi.Output<string | undefined>;
+    declare public readonly region: pulumi.Output<string | undefined>;
     /**
      * The type of network connectivity used by the AppConnection. Refer
      * to https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
      * for a list of possible values.
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string | undefined>;
 
     /**
      * Create a AppConnection resource with the given unique name, arguments, and options.
@@ -214,31 +214,31 @@ export class AppConnection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AppConnectionState | undefined;
-            resourceInputs["applicationEndpoint"] = state ? state.applicationEndpoint : undefined;
-            resourceInputs["connectors"] = state ? state.connectors : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["gateway"] = state ? state.gateway : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["applicationEndpoint"] = state?.applicationEndpoint;
+            resourceInputs["connectors"] = state?.connectors;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["gateway"] = state?.gateway;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as AppConnectionArgs | undefined;
-            if ((!args || args.applicationEndpoint === undefined) && !opts.urn) {
+            if (args?.applicationEndpoint === undefined && !opts.urn) {
                 throw new Error("Missing required property 'applicationEndpoint'");
             }
-            resourceInputs["applicationEndpoint"] = args ? args.applicationEndpoint : undefined;
-            resourceInputs["connectors"] = args ? args.connectors : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["gateway"] = args ? args.gateway : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["applicationEndpoint"] = args?.applicationEndpoint;
+            resourceInputs["connectors"] = args?.connectors;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["gateway"] = args?.gateway;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["type"] = args?.type;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
         }

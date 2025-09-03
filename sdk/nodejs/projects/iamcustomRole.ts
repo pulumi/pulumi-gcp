@@ -92,38 +92,38 @@ export class IAMCustomRole extends pulumi.CustomResource {
     /**
      * (Optional) The current deleted state of the role.
      */
-    public /*out*/ readonly deleted!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly deleted: pulumi.Output<boolean>;
     /**
      * A human-readable description for the role.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The name of the role in the format `projects/{{project}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
      */
-    public readonly permissions!: pulumi.Output<string[]>;
+    declare public readonly permissions: pulumi.Output<string[]>;
     /**
      * The project that the custom role will be created in.
      * Defaults to the provider project configuration.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The camel case role id to use for this role. Cannot contain `-` characters.
      */
-    public readonly roleId!: pulumi.Output<string>;
+    declare public readonly roleId: pulumi.Output<string>;
     /**
      * The current launch stage of the role.
      * Defaults to `GA`.
      * List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
      */
-    public readonly stage!: pulumi.Output<string | undefined>;
+    declare public readonly stage: pulumi.Output<string | undefined>;
     /**
      * A human-readable title for the role.
      */
-    public readonly title!: pulumi.Output<string>;
+    declare public readonly title: pulumi.Output<string>;
 
     /**
      * Create a IAMCustomRole resource with the given unique name, arguments, and options.
@@ -138,28 +138,28 @@ export class IAMCustomRole extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IAMCustomRoleState | undefined;
-            resourceInputs["deleted"] = state ? state.deleted : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["permissions"] = state ? state.permissions : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["roleId"] = state ? state.roleId : undefined;
-            resourceInputs["stage"] = state ? state.stage : undefined;
-            resourceInputs["title"] = state ? state.title : undefined;
+            resourceInputs["deleted"] = state?.deleted;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["permissions"] = state?.permissions;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["roleId"] = state?.roleId;
+            resourceInputs["stage"] = state?.stage;
+            resourceInputs["title"] = state?.title;
         } else {
             const args = argsOrState as IAMCustomRoleArgs | undefined;
-            if ((!args || args.permissions === undefined) && !opts.urn) {
+            if (args?.permissions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'permissions'");
             }
-            if ((!args || args.title === undefined) && !opts.urn) {
+            if (args?.title === undefined && !opts.urn) {
                 throw new Error("Missing required property 'title'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["permissions"] = args ? args.permissions : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["roleId"] = args ? args.roleId : undefined;
-            resourceInputs["stage"] = args ? args.stage : undefined;
-            resourceInputs["title"] = args ? args.title : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["permissions"] = args?.permissions;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["roleId"] = args?.roleId;
+            resourceInputs["stage"] = args?.stage;
+            resourceInputs["title"] = args?.title;
             resourceInputs["deleted"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         }

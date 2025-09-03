@@ -150,15 +150,14 @@ export class Dashboard extends pulumi.CustomResource {
     }
 
     /**
-     * The JSON representation of a dashboard, following the format at
-     * https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
+     * The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
      */
-    public readonly dashboardJson!: pulumi.Output<string>;
+    declare public readonly dashboardJson: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
 
     /**
      * Create a Dashboard resource with the given unique name, arguments, and options.
@@ -173,15 +172,15 @@ export class Dashboard extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DashboardState | undefined;
-            resourceInputs["dashboardJson"] = state ? state.dashboardJson : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["dashboardJson"] = state?.dashboardJson;
+            resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as DashboardArgs | undefined;
-            if ((!args || args.dashboardJson === undefined) && !opts.urn) {
+            if (args?.dashboardJson === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dashboardJson'");
             }
-            resourceInputs["dashboardJson"] = args ? args.dashboardJson : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["dashboardJson"] = args?.dashboardJson;
+            resourceInputs["project"] = args?.project;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Dashboard.__pulumiType, name, resourceInputs, opts);
@@ -193,8 +192,7 @@ export class Dashboard extends pulumi.CustomResource {
  */
 export interface DashboardState {
     /**
-     * The JSON representation of a dashboard, following the format at
-     * https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
+     * The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
      */
     dashboardJson?: pulumi.Input<string>;
     /**
@@ -209,8 +207,7 @@ export interface DashboardState {
  */
 export interface DashboardArgs {
     /**
-     * The JSON representation of a dashboard, following the format at
-     * https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
+     * The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
      */
     dashboardJson: pulumi.Input<string>;
     /**

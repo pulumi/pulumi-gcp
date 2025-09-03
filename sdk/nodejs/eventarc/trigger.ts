@@ -123,78 +123,78 @@ export class Trigger extends pulumi.CustomResource {
     /**
      * Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
      */
-    public readonly channel!: pulumi.Output<string | undefined>;
+    declare public readonly channel: pulumi.Output<string | undefined>;
     /**
      * Output only. The reason(s) why a trigger is in FAILED state.
      */
-    public /*out*/ readonly conditions!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly conditions: pulumi.Output<{[key: string]: string}>;
     /**
      * Output only. The creation time.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Required. Destination specifies where the events should be sent to.
      * Structure is documented below.
      */
-    public readonly destination!: pulumi.Output<outputs.eventarc.TriggerDestination>;
+    declare public readonly destination: pulumi.Output<outputs.eventarc.TriggerDestination>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
      */
-    public readonly eventDataContentType!: pulumi.Output<string>;
+    declare public readonly eventDataContentType: pulumi.Output<string>;
     /**
      * Optional. User labels attached to the triggers that can be used to group resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location for the resource
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
      * Structure is documented below.
      */
-    public readonly matchingCriterias!: pulumi.Output<outputs.eventarc.TriggerMatchingCriteria[]>;
+    declare public readonly matchingCriterias: pulumi.Output<outputs.eventarc.TriggerMatchingCriteria[]>;
     /**
      * Required. The resource name of the trigger. Must be unique within the location on the project.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
      */
-    public readonly serviceAccount!: pulumi.Output<string | undefined>;
+    declare public readonly serviceAccount: pulumi.Output<string | undefined>;
     /**
      * Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
      * Structure is documented below.
      */
-    public readonly transport!: pulumi.Output<outputs.eventarc.TriggerTransport>;
+    declare public readonly transport: pulumi.Output<outputs.eventarc.TriggerTransport>;
     /**
      * Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * Output only. The last-modified time.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Trigger resource with the given unique name, arguments, and options.
@@ -209,44 +209,44 @@ export class Trigger extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TriggerState | undefined;
-            resourceInputs["channel"] = state ? state.channel : undefined;
-            resourceInputs["conditions"] = state ? state.conditions : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["destination"] = state ? state.destination : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["eventDataContentType"] = state ? state.eventDataContentType : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["matchingCriterias"] = state ? state.matchingCriterias : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
-            resourceInputs["transport"] = state ? state.transport : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["channel"] = state?.channel;
+            resourceInputs["conditions"] = state?.conditions;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["destination"] = state?.destination;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["eventDataContentType"] = state?.eventDataContentType;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["matchingCriterias"] = state?.matchingCriterias;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["serviceAccount"] = state?.serviceAccount;
+            resourceInputs["transport"] = state?.transport;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as TriggerArgs | undefined;
-            if ((!args || args.destination === undefined) && !opts.urn) {
+            if (args?.destination === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destination'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.matchingCriterias === undefined) && !opts.urn) {
+            if (args?.matchingCriterias === undefined && !opts.urn) {
                 throw new Error("Missing required property 'matchingCriterias'");
             }
-            resourceInputs["channel"] = args ? args.channel : undefined;
-            resourceInputs["destination"] = args ? args.destination : undefined;
-            resourceInputs["eventDataContentType"] = args ? args.eventDataContentType : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["matchingCriterias"] = args ? args.matchingCriterias : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
-            resourceInputs["transport"] = args ? args.transport : undefined;
+            resourceInputs["channel"] = args?.channel;
+            resourceInputs["destination"] = args?.destination;
+            resourceInputs["eventDataContentType"] = args?.eventDataContentType;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["matchingCriterias"] = args?.matchingCriterias;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["serviceAccount"] = args?.serviceAccount;
+            resourceInputs["transport"] = args?.transport;
             resourceInputs["conditions"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;

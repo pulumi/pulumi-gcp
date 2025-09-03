@@ -119,22 +119,22 @@ export class Parameter extends pulumi.CustomResource {
     /**
      * The time at which the Parameter was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The format type of the parameter resource.
      * Default value is `UNFORMATTED`.
      * Possible values are: `UNFORMATTED`, `YAML`, `JSON`.
      */
-    public readonly format!: pulumi.Output<string | undefined>;
+    declare public readonly format: pulumi.Output<string | undefined>;
     /**
      * The resource name of the Cloud KMS CryptoKey used to encrypt parameter version payload. Format
      * `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
      */
-    public readonly kmsKey!: pulumi.Output<string | undefined>;
+    declare public readonly kmsKey: pulumi.Output<string | undefined>;
     /**
      * The labels assigned to this Parameter.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
@@ -148,35 +148,35 @@ export class Parameter extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The resource name of the Parameter. Format:
      * `projects/{{project}}/locations/global/parameters/{{parameter_id}}`
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * This must be unique within the project.
      */
-    public readonly parameterId!: pulumi.Output<string>;
+    declare public readonly parameterId: pulumi.Output<string>;
     /**
      * Policy member strings of a Google Cloud resource.
      * Structure is documented below.
      */
-    public /*out*/ readonly policyMembers!: pulumi.Output<outputs.parametermanager.ParameterPolicyMember[]>;
+    declare public /*out*/ readonly policyMembers: pulumi.Output<outputs.parametermanager.ParameterPolicyMember[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The time at which the Parameter was updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Parameter resource with the given unique name, arguments, and options.
@@ -191,27 +191,27 @@ export class Parameter extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ParameterState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["format"] = state ? state.format : undefined;
-            resourceInputs["kmsKey"] = state ? state.kmsKey : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parameterId"] = state ? state.parameterId : undefined;
-            resourceInputs["policyMembers"] = state ? state.policyMembers : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["format"] = state?.format;
+            resourceInputs["kmsKey"] = state?.kmsKey;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parameterId"] = state?.parameterId;
+            resourceInputs["policyMembers"] = state?.policyMembers;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as ParameterArgs | undefined;
-            if ((!args || args.parameterId === undefined) && !opts.urn) {
+            if (args?.parameterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parameterId'");
             }
-            resourceInputs["format"] = args ? args.format : undefined;
-            resourceInputs["kmsKey"] = args ? args.kmsKey : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["parameterId"] = args ? args.parameterId : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["format"] = args?.format;
+            resourceInputs["kmsKey"] = args?.kmsKey;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["parameterId"] = args?.parameterId;
+            resourceInputs["project"] = args?.project;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

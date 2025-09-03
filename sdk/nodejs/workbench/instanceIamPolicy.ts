@@ -32,11 +32,11 @@ export class InstanceIamPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === InstanceIamPolicy.__pulumiType;
     }
 
-    public /*out*/ readonly etag!: pulumi.Output<string>;
-    public readonly location!: pulumi.Output<string>;
-    public readonly name!: pulumi.Output<string>;
-    public readonly policyData!: pulumi.Output<string>;
-    public readonly project!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly policyData: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
 
     /**
      * Create a InstanceIamPolicy resource with the given unique name, arguments, and options.
@@ -51,20 +51,20 @@ export class InstanceIamPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceIamPolicyState | undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["policyData"] = state ? state.policyData : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["policyData"] = state?.policyData;
+            resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as InstanceIamPolicyArgs | undefined;
-            if ((!args || args.policyData === undefined) && !opts.urn) {
+            if (args?.policyData === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyData'");
             }
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["policyData"] = args ? args.policyData : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["policyData"] = args?.policyData;
+            resourceInputs["project"] = args?.project;
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

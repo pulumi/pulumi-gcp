@@ -367,8 +367,7 @@ namespace Pulumi.Gcp.CloudFunctions
         public Output<bool?> TriggerHttp { get; private set; } = null!;
 
         /// <summary>
-        /// The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being
-        /// created.
+        /// The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being created.
         /// </summary>
         [Output("versionId")]
         public Output<string> VersionId { get; private set; } = null!;
@@ -949,8 +948,7 @@ namespace Pulumi.Gcp.CloudFunctions
         public Input<bool>? TriggerHttp { get; set; }
 
         /// <summary>
-        /// The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being
-        /// created.
+        /// The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being created.
         /// </summary>
         [Input("versionId")]
         public Input<string>? VersionId { get; set; }

@@ -330,57 +330,57 @@ export class Schedule extends pulumi.CustomResource {
     /**
      * Whether new scheduled runs can be queued when maxConcurrentRuns limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
      */
-    public readonly allowQueueing!: pulumi.Output<boolean | undefined>;
+    declare public readonly allowQueueing: pulumi.Output<boolean | undefined>;
     /**
      * Request for google_colab_notebook_execution.
      * Structure is documented below.
      */
-    public readonly createNotebookExecutionJobRequest!: pulumi.Output<outputs.colab.ScheduleCreateNotebookExecutionJobRequest>;
+    declare public readonly createNotebookExecutionJobRequest: pulumi.Output<outputs.colab.ScheduleCreateNotebookExecutionJobRequest>;
     /**
      * Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
      */
-    public readonly cron!: pulumi.Output<string>;
+    declare public readonly cron: pulumi.Output<string>;
     /**
      * Desired state of the Colab Schedule. Set this field to `ACTIVE` to start/resume the schedule, and `PAUSED` to pause the schedule.
      */
-    public readonly desiredState!: pulumi.Output<string | undefined>;
+    declare public readonly desiredState: pulumi.Output<string | undefined>;
     /**
      * Required. The display name of the Schedule.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either endTime is reached or when scheduledRunCount >= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
      */
-    public readonly endTime!: pulumi.Output<string | undefined>;
+    declare public readonly endTime: pulumi.Output<string | undefined>;
     /**
      * The location for the resource: https://cloud.google.com/colab/docs/locations
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Maximum number of runs that can be started concurrently for this Schedule. This is the limit for starting the scheduled requests and not the execution of the notebook execution jobs created by the requests.
      */
-    public readonly maxConcurrentRunCount!: pulumi.Output<string>;
+    declare public readonly maxConcurrentRunCount: pulumi.Output<string>;
     /**
      * Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount >= maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
      */
-    public readonly maxRunCount!: pulumi.Output<string | undefined>;
+    declare public readonly maxRunCount: pulumi.Output<string | undefined>;
     /**
      * The resource name of the Schedule
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
      */
-    public readonly startTime!: pulumi.Output<string>;
+    declare public readonly startTime: pulumi.Output<string>;
     /**
      * Output only. The state of the schedule.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
 
     /**
      * Create a Schedule resource with the given unique name, arguments, and options.
@@ -395,47 +395,47 @@ export class Schedule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ScheduleState | undefined;
-            resourceInputs["allowQueueing"] = state ? state.allowQueueing : undefined;
-            resourceInputs["createNotebookExecutionJobRequest"] = state ? state.createNotebookExecutionJobRequest : undefined;
-            resourceInputs["cron"] = state ? state.cron : undefined;
-            resourceInputs["desiredState"] = state ? state.desiredState : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["endTime"] = state ? state.endTime : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["maxConcurrentRunCount"] = state ? state.maxConcurrentRunCount : undefined;
-            resourceInputs["maxRunCount"] = state ? state.maxRunCount : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["startTime"] = state ? state.startTime : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["allowQueueing"] = state?.allowQueueing;
+            resourceInputs["createNotebookExecutionJobRequest"] = state?.createNotebookExecutionJobRequest;
+            resourceInputs["cron"] = state?.cron;
+            resourceInputs["desiredState"] = state?.desiredState;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["endTime"] = state?.endTime;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["maxConcurrentRunCount"] = state?.maxConcurrentRunCount;
+            resourceInputs["maxRunCount"] = state?.maxRunCount;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["startTime"] = state?.startTime;
+            resourceInputs["state"] = state?.state;
         } else {
             const args = argsOrState as ScheduleArgs | undefined;
-            if ((!args || args.createNotebookExecutionJobRequest === undefined) && !opts.urn) {
+            if (args?.createNotebookExecutionJobRequest === undefined && !opts.urn) {
                 throw new Error("Missing required property 'createNotebookExecutionJobRequest'");
             }
-            if ((!args || args.cron === undefined) && !opts.urn) {
+            if (args?.cron === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cron'");
             }
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.maxConcurrentRunCount === undefined) && !opts.urn) {
+            if (args?.maxConcurrentRunCount === undefined && !opts.urn) {
                 throw new Error("Missing required property 'maxConcurrentRunCount'");
             }
-            resourceInputs["allowQueueing"] = args ? args.allowQueueing : undefined;
-            resourceInputs["createNotebookExecutionJobRequest"] = args ? args.createNotebookExecutionJobRequest : undefined;
-            resourceInputs["cron"] = args ? args.cron : undefined;
-            resourceInputs["desiredState"] = args ? args.desiredState : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["endTime"] = args ? args.endTime : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["maxConcurrentRunCount"] = args ? args.maxConcurrentRunCount : undefined;
-            resourceInputs["maxRunCount"] = args ? args.maxRunCount : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["startTime"] = args ? args.startTime : undefined;
+            resourceInputs["allowQueueing"] = args?.allowQueueing;
+            resourceInputs["createNotebookExecutionJobRequest"] = args?.createNotebookExecutionJobRequest;
+            resourceInputs["cron"] = args?.cron;
+            resourceInputs["desiredState"] = args?.desiredState;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["endTime"] = args?.endTime;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["maxConcurrentRunCount"] = args?.maxConcurrentRunCount;
+            resourceInputs["maxRunCount"] = args?.maxRunCount;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["startTime"] = args?.startTime;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }

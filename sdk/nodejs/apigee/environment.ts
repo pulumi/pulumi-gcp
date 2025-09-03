@@ -109,12 +109,12 @@ export class Environment extends pulumi.CustomResource {
      * the Environment and cannot be changed.
      * Possible values are: `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, `CONFIGURABLE`.
      */
-    public readonly apiProxyType!: pulumi.Output<string>;
+    declare public readonly apiProxyType: pulumi.Output<string>;
     /**
      * The algorithm to resolve IP. This will affect Analytics, API Security, and other features that use the client ip. To remove a client ip resolution config, update the field to an empty value. Example: '{ "clientIpResolutionConfig" = {} }' For more information, see: https://cloud.google.com/apigee/docs/api-platform/system-administration/client-ip-resolution
      * Structure is documented below.
      */
-    public readonly clientIpResolutionConfig!: pulumi.Output<outputs.apigee.EnvironmentClientIpResolutionConfig | undefined>;
+    declare public readonly clientIpResolutionConfig: pulumi.Output<outputs.apigee.EnvironmentClientIpResolutionConfig | undefined>;
     /**
      * Optional. Deployment type supported by the environment. The deployment type can be
      * set when creating the environment and cannot be changed. When you enable archive
@@ -125,38 +125,38 @@ export class Environment extends pulumi.CustomResource {
      * Creating, updating, or deleting target servers.
      * Possible values are: `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, `ARCHIVE`.
      */
-    public readonly deploymentType!: pulumi.Output<string>;
+    declare public readonly deploymentType: pulumi.Output<string>;
     /**
      * Description of the environment.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Display name of the environment.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of "http" or "https", and the port must be supplied.
      */
-    public readonly forwardProxyUri!: pulumi.Output<string | undefined>;
+    declare public readonly forwardProxyUri: pulumi.Output<string | undefined>;
     /**
      * The resource ID of the environment.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * NodeConfig for setting the min/max number of nodes associated with the environment.
      * Structure is documented below.
      */
-    public readonly nodeConfig!: pulumi.Output<outputs.apigee.EnvironmentNodeConfig>;
+    declare public readonly nodeConfig: pulumi.Output<outputs.apigee.EnvironmentNodeConfig>;
     /**
      * The Apigee Organization associated with the Apigee environment,
      * in the format `organizations/{{org_name}}`.
      */
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * Key-value pairs that may be used for customizing the environment.
      * Structure is documented below.
      */
-    public readonly properties!: pulumi.Output<outputs.apigee.EnvironmentProperties | undefined>;
+    declare public readonly properties: pulumi.Output<outputs.apigee.EnvironmentProperties | undefined>;
     /**
      * Types that can be selected for an Environment. Each of the types are
      * limited by capability and capacity. Refer to Apigee's public documentation
@@ -164,7 +164,7 @@ export class Environment extends pulumi.CustomResource {
      * An Apigee org can support heterogeneous Environments.
      * Possible values are: `ENVIRONMENT_TYPE_UNSPECIFIED`, `BASE`, `INTERMEDIATE`, `COMPREHENSIVE`.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a Environment resource with the given unique name, arguments, and options.
@@ -179,33 +179,33 @@ export class Environment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EnvironmentState | undefined;
-            resourceInputs["apiProxyType"] = state ? state.apiProxyType : undefined;
-            resourceInputs["clientIpResolutionConfig"] = state ? state.clientIpResolutionConfig : undefined;
-            resourceInputs["deploymentType"] = state ? state.deploymentType : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["forwardProxyUri"] = state ? state.forwardProxyUri : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nodeConfig"] = state ? state.nodeConfig : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["properties"] = state ? state.properties : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["apiProxyType"] = state?.apiProxyType;
+            resourceInputs["clientIpResolutionConfig"] = state?.clientIpResolutionConfig;
+            resourceInputs["deploymentType"] = state?.deploymentType;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["forwardProxyUri"] = state?.forwardProxyUri;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nodeConfig"] = state?.nodeConfig;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["properties"] = state?.properties;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as EnvironmentArgs | undefined;
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            resourceInputs["apiProxyType"] = args ? args.apiProxyType : undefined;
-            resourceInputs["clientIpResolutionConfig"] = args ? args.clientIpResolutionConfig : undefined;
-            resourceInputs["deploymentType"] = args ? args.deploymentType : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["forwardProxyUri"] = args ? args.forwardProxyUri : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["nodeConfig"] = args ? args.nodeConfig : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["properties"] = args ? args.properties : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["apiProxyType"] = args?.apiProxyType;
+            resourceInputs["clientIpResolutionConfig"] = args?.clientIpResolutionConfig;
+            resourceInputs["deploymentType"] = args?.deploymentType;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["forwardProxyUri"] = args?.forwardProxyUri;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["nodeConfig"] = args?.nodeConfig;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["properties"] = args?.properties;
+            resourceInputs["type"] = args?.type;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Environment.__pulumiType, name, resourceInputs, opts);

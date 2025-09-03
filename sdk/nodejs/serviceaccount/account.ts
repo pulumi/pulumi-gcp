@@ -77,49 +77,49 @@ export class Account extends pulumi.CustomResource {
      * must be 6-30 characters long, and match the regular expression `a-z`
      * to comply with RFC1035. Changing this forces a new service account to be created.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * If set to true, skip service account creation if a service account with the same email already exists.
      */
-    public readonly createIgnoreAlreadyExists!: pulumi.Output<boolean | undefined>;
+    declare public readonly createIgnoreAlreadyExists: pulumi.Output<boolean | undefined>;
     /**
      * A text description of the service account.
      * Must be less than or equal to 256 UTF-8 bytes.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Whether a service account is disabled or not. Defaults to `false`. This field has no effect during creation.
      * Must be set after creation to disable a service account.
      */
-    public readonly disabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly disabled: pulumi.Output<boolean | undefined>;
     /**
      * The display name for the service account.
      * Can be updated without creating a new resource.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * The e-mail address of the service account. This value
      * should be referenced from any `gcp.organizations.getIAMPolicy` data sources
      * that would grant the service account privileges.
      */
-    public /*out*/ readonly email!: pulumi.Output<string>;
+    declare public /*out*/ readonly email: pulumi.Output<string>;
     /**
      * The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
      */
-    public /*out*/ readonly member!: pulumi.Output<string>;
+    declare public /*out*/ readonly member: pulumi.Output<string>;
     /**
      * The fully-qualified name of the service account.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project that the service account will be created in.
      * Defaults to the provider project configuration.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The unique id of the service account.
      */
-    public /*out*/ readonly uniqueId!: pulumi.Output<string>;
+    declare public /*out*/ readonly uniqueId: pulumi.Output<string>;
 
     /**
      * Create a Account resource with the given unique name, arguments, and options.
@@ -134,24 +134,24 @@ export class Account extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["createIgnoreAlreadyExists"] = state ? state.createIgnoreAlreadyExists : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["disabled"] = state ? state.disabled : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["member"] = state ? state.member : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["uniqueId"] = state ? state.uniqueId : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["createIgnoreAlreadyExists"] = state?.createIgnoreAlreadyExists;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["disabled"] = state?.disabled;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["member"] = state?.member;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["uniqueId"] = state?.uniqueId;
         } else {
             const args = argsOrState as AccountArgs | undefined;
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["createIgnoreAlreadyExists"] = args ? args.createIgnoreAlreadyExists : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["disabled"] = args ? args.disabled : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["createIgnoreAlreadyExists"] = args?.createIgnoreAlreadyExists;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["disabled"] = args?.disabled;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["project"] = args?.project;
             resourceInputs["email"] = undefined /*out*/;
             resourceInputs["member"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

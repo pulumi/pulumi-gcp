@@ -79,22 +79,22 @@ export class ObjectACL extends pulumi.CustomResource {
     /**
      * The name of the bucket the object is stored in.
      */
-    public readonly bucket!: pulumi.Output<string>;
+    declare public readonly bucket: pulumi.Output<string>;
     /**
      * The name of the object to apply the acl to.
      *
      * - - -
      */
-    public readonly object!: pulumi.Output<string>;
+    declare public readonly object: pulumi.Output<string>;
     /**
      * The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `roleEntity` is not.
      */
-    public readonly predefinedAcl!: pulumi.Output<string | undefined>;
+    declare public readonly predefinedAcl: pulumi.Output<string | undefined>;
     /**
      * List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
      * Must be set if `predefinedAcl` is not.
      */
-    public readonly roleEntities!: pulumi.Output<string[]>;
+    declare public readonly roleEntities: pulumi.Output<string[]>;
 
     /**
      * Create a ObjectACL resource with the given unique name, arguments, and options.
@@ -109,22 +109,22 @@ export class ObjectACL extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ObjectACLState | undefined;
-            resourceInputs["bucket"] = state ? state.bucket : undefined;
-            resourceInputs["object"] = state ? state.object : undefined;
-            resourceInputs["predefinedAcl"] = state ? state.predefinedAcl : undefined;
-            resourceInputs["roleEntities"] = state ? state.roleEntities : undefined;
+            resourceInputs["bucket"] = state?.bucket;
+            resourceInputs["object"] = state?.object;
+            resourceInputs["predefinedAcl"] = state?.predefinedAcl;
+            resourceInputs["roleEntities"] = state?.roleEntities;
         } else {
             const args = argsOrState as ObjectACLArgs | undefined;
-            if ((!args || args.bucket === undefined) && !opts.urn) {
+            if (args?.bucket === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            if ((!args || args.object === undefined) && !opts.urn) {
+            if (args?.object === undefined && !opts.urn) {
                 throw new Error("Missing required property 'object'");
             }
-            resourceInputs["bucket"] = args ? args.bucket : undefined;
-            resourceInputs["object"] = args ? args.object : undefined;
-            resourceInputs["predefinedAcl"] = args ? args.predefinedAcl : undefined;
-            resourceInputs["roleEntities"] = args ? args.roleEntities : undefined;
+            resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["object"] = args?.object;
+            resourceInputs["predefinedAcl"] = args?.predefinedAcl;
+            resourceInputs["roleEntities"] = args?.roleEntities;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ObjectACL.__pulumiType, name, resourceInputs, opts);

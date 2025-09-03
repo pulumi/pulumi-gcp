@@ -139,25 +139,25 @@ export class OrganizationPolicy extends pulumi.CustomResource {
     /**
      * A boolean policy is a constraint that is either enforced or not. Structure is documented below.
      */
-    public readonly booleanPolicy!: pulumi.Output<outputs.projects.OrganizationPolicyBooleanPolicy | undefined>;
+    declare public readonly booleanPolicy: pulumi.Output<outputs.projects.OrganizationPolicyBooleanPolicy | undefined>;
     /**
      * The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
      *
      * - - -
      */
-    public readonly constraint!: pulumi.Output<string>;
+    declare public readonly constraint: pulumi.Output<string>;
     /**
      * (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
      */
-    public readonly listPolicy!: pulumi.Output<outputs.projects.OrganizationPolicyListPolicy | undefined>;
+    declare public readonly listPolicy: pulumi.Output<outputs.projects.OrganizationPolicyListPolicy | undefined>;
     /**
      * The project id of the project to set the policy for.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * A restore policy is a constraint to restore the default policy. Structure is documented below.
      *
@@ -166,15 +166,15 @@ export class OrganizationPolicy extends pulumi.CustomResource {
      *
      * - - -
      */
-    public readonly restorePolicy!: pulumi.Output<outputs.projects.OrganizationPolicyRestorePolicy | undefined>;
+    declare public readonly restorePolicy: pulumi.Output<outputs.projects.OrganizationPolicyRestorePolicy | undefined>;
     /**
      * (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * Version of the Policy. Default version is 0.
      */
-    public readonly version!: pulumi.Output<number>;
+    declare public readonly version: pulumi.Output<number>;
 
     /**
      * Create a OrganizationPolicy resource with the given unique name, arguments, and options.
@@ -189,28 +189,28 @@ export class OrganizationPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrganizationPolicyState | undefined;
-            resourceInputs["booleanPolicy"] = state ? state.booleanPolicy : undefined;
-            resourceInputs["constraint"] = state ? state.constraint : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["listPolicy"] = state ? state.listPolicy : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["restorePolicy"] = state ? state.restorePolicy : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["booleanPolicy"] = state?.booleanPolicy;
+            resourceInputs["constraint"] = state?.constraint;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["listPolicy"] = state?.listPolicy;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["restorePolicy"] = state?.restorePolicy;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as OrganizationPolicyArgs | undefined;
-            if ((!args || args.constraint === undefined) && !opts.urn) {
+            if (args?.constraint === undefined && !opts.urn) {
                 throw new Error("Missing required property 'constraint'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            resourceInputs["booleanPolicy"] = args ? args.booleanPolicy : undefined;
-            resourceInputs["constraint"] = args ? args.constraint : undefined;
-            resourceInputs["listPolicy"] = args ? args.listPolicy : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["restorePolicy"] = args ? args.restorePolicy : undefined;
-            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["booleanPolicy"] = args?.booleanPolicy;
+            resourceInputs["constraint"] = args?.constraint;
+            resourceInputs["listPolicy"] = args?.listPolicy;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["restorePolicy"] = args?.restorePolicy;
+            resourceInputs["version"] = args?.version;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }

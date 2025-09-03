@@ -123,16 +123,16 @@ export class Application extends pulumi.CustomResource {
      * * Must contain between 4-63 characters from `/a-z-/`.
      * * Must end with a number or letter.
      */
-    public readonly applicationId!: pulumi.Output<string>;
+    declare public readonly applicationId: pulumi.Output<string>;
     /**
      * Output only. Timestamp when the resource was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Optional. An arbitrary user-provided name for the Application resource.
      * Cannot exceed 64 characters.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * Required. Endpoint matchers associated with an application.
      * A combination of hostname and ports as endpoint matcher is used to match
@@ -147,29 +147,29 @@ export class Application extends pulumi.CustomResource {
      * Hostname and Ports - ("abc.com" and "22"), ("abc.com" and "22,33") etc
      * Structure is documented below.
      */
-    public readonly endpointMatchers!: pulumi.Output<outputs.beyondcorp.ApplicationEndpointMatcher[]>;
+    declare public readonly endpointMatchers: pulumi.Output<outputs.beyondcorp.ApplicationEndpointMatcher[]>;
     /**
      * Identifier. Name of the resource.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Part of `parent`. See documentation of `projectsId`.
      */
-    public readonly securityGatewaysId!: pulumi.Output<string>;
+    declare public readonly securityGatewaysId: pulumi.Output<string>;
     /**
      * Output only. Timestamp when the resource was last modified.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * Optional. List of which upstream resource(s) to forward traffic to.
      * Structure is documented below.
      */
-    public readonly upstreams!: pulumi.Output<outputs.beyondcorp.ApplicationUpstream[] | undefined>;
+    declare public readonly upstreams: pulumi.Output<outputs.beyondcorp.ApplicationUpstream[] | undefined>;
 
     /**
      * Create a Application resource with the given unique name, arguments, and options.
@@ -184,32 +184,32 @@ export class Application extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationState | undefined;
-            resourceInputs["applicationId"] = state ? state.applicationId : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["endpointMatchers"] = state ? state.endpointMatchers : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["securityGatewaysId"] = state ? state.securityGatewaysId : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["upstreams"] = state ? state.upstreams : undefined;
+            resourceInputs["applicationId"] = state?.applicationId;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["endpointMatchers"] = state?.endpointMatchers;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["securityGatewaysId"] = state?.securityGatewaysId;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["upstreams"] = state?.upstreams;
         } else {
             const args = argsOrState as ApplicationArgs | undefined;
-            if ((!args || args.applicationId === undefined) && !opts.urn) {
+            if (args?.applicationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'applicationId'");
             }
-            if ((!args || args.endpointMatchers === undefined) && !opts.urn) {
+            if (args?.endpointMatchers === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpointMatchers'");
             }
-            if ((!args || args.securityGatewaysId === undefined) && !opts.urn) {
+            if (args?.securityGatewaysId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'securityGatewaysId'");
             }
-            resourceInputs["applicationId"] = args ? args.applicationId : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["endpointMatchers"] = args ? args.endpointMatchers : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["securityGatewaysId"] = args ? args.securityGatewaysId : undefined;
-            resourceInputs["upstreams"] = args ? args.upstreams : undefined;
+            resourceInputs["applicationId"] = args?.applicationId;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["endpointMatchers"] = args?.endpointMatchers;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["securityGatewaysId"] = args?.securityGatewaysId;
+            resourceInputs["upstreams"] = args?.upstreams;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;

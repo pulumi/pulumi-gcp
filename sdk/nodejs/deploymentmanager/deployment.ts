@@ -106,7 +106,7 @@ export class Deployment extends pulumi.CustomResource {
      * Default value is `CREATE_OR_ACQUIRE`.
      * Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
      */
-    public readonly createPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly createPolicy: pulumi.Output<string | undefined>;
     /**
      * Set the policy to use for deleting new resources on update/delete.
      * Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
@@ -117,29 +117,29 @@ export class Deployment extends pulumi.CustomResource {
      * Default value is `DELETE`.
      * Possible values are: `ABANDON`, `DELETE`.
      */
-    public readonly deletePolicy!: pulumi.Output<string | undefined>;
+    declare public readonly deletePolicy: pulumi.Output<string | undefined>;
     /**
      * Unique identifier for deployment. Output only.
      */
-    public /*out*/ readonly deploymentId!: pulumi.Output<string>;
+    declare public /*out*/ readonly deploymentId: pulumi.Output<string>;
     /**
      * Optional user-provided description of deployment.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Key-value pairs to apply to this labels.
      * Structure is documented below.
      */
-    public readonly labels!: pulumi.Output<outputs.deploymentmanager.DeploymentLabel[] | undefined>;
+    declare public readonly labels: pulumi.Output<outputs.deploymentmanager.DeploymentLabel[] | undefined>;
     /**
      * Output only. URL of the manifest representing the last manifest that
      * was successfully deployed.
      */
-    public /*out*/ readonly manifest!: pulumi.Output<string>;
+    declare public /*out*/ readonly manifest: pulumi.Output<string>;
     /**
      * Unique name for the deployment
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * If set to true, a deployment is created with "shell" resources
      * that are not actually instantiated. This allows you to preview a
@@ -150,22 +150,22 @@ export class Deployment extends pulumi.CustomResource {
      * the provider will force-recreate deployments if either preview is updated
      * to true or if other fields are updated while preview is true.
      */
-    public readonly preview!: pulumi.Output<boolean | undefined>;
+    declare public readonly preview: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Output only. Server defined URL for the resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * Parameters that define your deployment, including the deployment
      * configuration and relevant templates.
      * Structure is documented below.
      */
-    public readonly target!: pulumi.Output<outputs.deploymentmanager.DeploymentTarget>;
+    declare public readonly target: pulumi.Output<outputs.deploymentmanager.DeploymentTarget>;
 
     /**
      * Create a Deployment resource with the given unique name, arguments, and options.
@@ -180,30 +180,30 @@ export class Deployment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DeploymentState | undefined;
-            resourceInputs["createPolicy"] = state ? state.createPolicy : undefined;
-            resourceInputs["deletePolicy"] = state ? state.deletePolicy : undefined;
-            resourceInputs["deploymentId"] = state ? state.deploymentId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["manifest"] = state ? state.manifest : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["preview"] = state ? state.preview : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["target"] = state ? state.target : undefined;
+            resourceInputs["createPolicy"] = state?.createPolicy;
+            resourceInputs["deletePolicy"] = state?.deletePolicy;
+            resourceInputs["deploymentId"] = state?.deploymentId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["manifest"] = state?.manifest;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["preview"] = state?.preview;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["target"] = state?.target;
         } else {
             const args = argsOrState as DeploymentArgs | undefined;
-            if ((!args || args.target === undefined) && !opts.urn) {
+            if (args?.target === undefined && !opts.urn) {
                 throw new Error("Missing required property 'target'");
             }
-            resourceInputs["createPolicy"] = args ? args.createPolicy : undefined;
-            resourceInputs["deletePolicy"] = args ? args.deletePolicy : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["preview"] = args ? args.preview : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["target"] = args ? args.target : undefined;
+            resourceInputs["createPolicy"] = args?.createPolicy;
+            resourceInputs["deletePolicy"] = args?.deletePolicy;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["preview"] = args?.preview;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["target"] = args?.target;
             resourceInputs["deploymentId"] = undefined /*out*/;
             resourceInputs["manifest"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;

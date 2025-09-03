@@ -129,70 +129,70 @@ export class MetastoreFederation extends pulumi.CustomResource {
      * A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
      * Structure is documented below.
      */
-    public readonly backendMetastores!: pulumi.Output<outputs.dataproc.MetastoreFederationBackendMetastore[]>;
+    declare public readonly backendMetastores: pulumi.Output<outputs.dataproc.MetastoreFederationBackendMetastore[]>;
     /**
      * Output only. The time when the metastore federation was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
-    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The URI of the endpoint used to access the metastore federation.
      */
-    public /*out*/ readonly endpointUri!: pulumi.Output<string>;
+    declare public /*out*/ readonly endpointUri: pulumi.Output<string>;
     /**
      * The ID of the metastore federation. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
      * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
      * 3 and 63 characters.
      */
-    public readonly federationId!: pulumi.Output<string>;
+    declare public readonly federationId: pulumi.Output<string>;
     /**
      * User-defined labels for the metastore federation.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location where the metastore federation should reside.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * The relative resource name of the metastore federation.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The current state of the metastore federation.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Additional information about the current state of the metastore federation, if available.
      */
-    public /*out*/ readonly stateMessage!: pulumi.Output<string>;
+    declare public /*out*/ readonly stateMessage: pulumi.Output<string>;
     /**
      * The globally unique resource identifier of the metastore federation.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * Output only. The time when the metastore federation was last updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * The Apache Hive metastore version of the federation. All backend metastore versions must be compatible with the federation version.
      */
-    public readonly version!: pulumi.Output<string>;
+    declare public readonly version: pulumi.Output<string>;
 
     /**
      * Create a MetastoreFederation resource with the given unique name, arguments, and options.
@@ -207,40 +207,40 @@ export class MetastoreFederation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MetastoreFederationState | undefined;
-            resourceInputs["backendMetastores"] = state ? state.backendMetastores : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["endpointUri"] = state ? state.endpointUri : undefined;
-            resourceInputs["federationId"] = state ? state.federationId : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["stateMessage"] = state ? state.stateMessage : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["backendMetastores"] = state?.backendMetastores;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionProtection"] = state?.deletionProtection;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["endpointUri"] = state?.endpointUri;
+            resourceInputs["federationId"] = state?.federationId;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["stateMessage"] = state?.stateMessage;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as MetastoreFederationArgs | undefined;
-            if ((!args || args.backendMetastores === undefined) && !opts.urn) {
+            if (args?.backendMetastores === undefined && !opts.urn) {
                 throw new Error("Missing required property 'backendMetastores'");
             }
-            if ((!args || args.federationId === undefined) && !opts.urn) {
+            if (args?.federationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'federationId'");
             }
-            if ((!args || args.version === undefined) && !opts.urn) {
+            if (args?.version === undefined && !opts.urn) {
                 throw new Error("Missing required property 'version'");
             }
-            resourceInputs["backendMetastores"] = args ? args.backendMetastores : undefined;
-            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            resourceInputs["federationId"] = args ? args.federationId : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["backendMetastores"] = args?.backendMetastores;
+            resourceInputs["deletionProtection"] = args?.deletionProtection;
+            resourceInputs["federationId"] = args?.federationId;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["version"] = args?.version;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["endpointUri"] = undefined /*out*/;

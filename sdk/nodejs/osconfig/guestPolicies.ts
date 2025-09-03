@@ -219,20 +219,20 @@ export class GuestPolicies extends pulumi.CustomResource {
      * [handles assignment conflicts](https://cloud.google.com/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
      * Structure is documented below.
      */
-    public readonly assignment!: pulumi.Output<outputs.osconfig.GuestPoliciesAssignment>;
+    declare public readonly assignment: pulumi.Output<outputs.osconfig.GuestPoliciesAssignment>;
     /**
      * Time this guest policy was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
      * Example: "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Description of the guest policy. Length of the description is limited to 1024 characters.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The etag for this guest policy. If this is provided on update, it must match the server's etag.
      */
-    public readonly etag!: pulumi.Output<string>;
+    declare public readonly etag: pulumi.Output<string>;
     /**
      * The logical name of the guest policy in the project with the following restrictions:
      * * Must contain only lowercase letters, numbers, and hyphens.
@@ -241,38 +241,38 @@ export class GuestPolicies extends pulumi.CustomResource {
      * * Must end with a number or a letter.
      * * Must be unique within the project.
      */
-    public readonly guestPolicyId!: pulumi.Output<string>;
+    declare public readonly guestPolicyId: pulumi.Output<string>;
     /**
      * Unique name of the resource in this project using one of the following forms: projects/{project_number}/guestPolicies/{guestPolicyId}.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * A list of package repositories to configure on the VM instance.
      * This is done before any other configs are applied so they can use these repos.
      * Package repositories are only configured if the corresponding package manager(s) are available.
      * Structure is documented below.
      */
-    public readonly packageRepositories!: pulumi.Output<outputs.osconfig.GuestPoliciesPackageRepository[] | undefined>;
+    declare public readonly packageRepositories: pulumi.Output<outputs.osconfig.GuestPoliciesPackageRepository[] | undefined>;
     /**
      * The software packages to be managed by this policy.
      * Structure is documented below.
      */
-    public readonly packages!: pulumi.Output<outputs.osconfig.GuestPoliciesPackage[] | undefined>;
+    declare public readonly packages: pulumi.Output<outputs.osconfig.GuestPoliciesPackage[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * A list of Recipes to install on the VM instance.
      * Structure is documented below.
      */
-    public readonly recipes!: pulumi.Output<outputs.osconfig.GuestPoliciesRecipe[] | undefined>;
+    declare public readonly recipes: pulumi.Output<outputs.osconfig.GuestPoliciesRecipe[] | undefined>;
     /**
      * Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
      * Example: "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a GuestPolicies resource with the given unique name, arguments, and options.
@@ -287,33 +287,33 @@ export class GuestPolicies extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GuestPoliciesState | undefined;
-            resourceInputs["assignment"] = state ? state.assignment : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["guestPolicyId"] = state ? state.guestPolicyId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["packageRepositories"] = state ? state.packageRepositories : undefined;
-            resourceInputs["packages"] = state ? state.packages : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["recipes"] = state ? state.recipes : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["assignment"] = state?.assignment;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["guestPolicyId"] = state?.guestPolicyId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["packageRepositories"] = state?.packageRepositories;
+            resourceInputs["packages"] = state?.packages;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["recipes"] = state?.recipes;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as GuestPoliciesArgs | undefined;
-            if ((!args || args.assignment === undefined) && !opts.urn) {
+            if (args?.assignment === undefined && !opts.urn) {
                 throw new Error("Missing required property 'assignment'");
             }
-            if ((!args || args.guestPolicyId === undefined) && !opts.urn) {
+            if (args?.guestPolicyId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'guestPolicyId'");
             }
-            resourceInputs["assignment"] = args ? args.assignment : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["etag"] = args ? args.etag : undefined;
-            resourceInputs["guestPolicyId"] = args ? args.guestPolicyId : undefined;
-            resourceInputs["packageRepositories"] = args ? args.packageRepositories : undefined;
-            resourceInputs["packages"] = args ? args.packages : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["recipes"] = args ? args.recipes : undefined;
+            resourceInputs["assignment"] = args?.assignment;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["etag"] = args?.etag;
+            resourceInputs["guestPolicyId"] = args?.guestPolicyId;
+            resourceInputs["packageRepositories"] = args?.packageRepositories;
+            resourceInputs["packages"] = args?.packages;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["recipes"] = args?.recipes;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;

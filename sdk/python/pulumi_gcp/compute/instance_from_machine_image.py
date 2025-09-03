@@ -61,22 +61,19 @@ class InstanceFromMachineImageArgs:
                - - -
         :param pulumi.Input['InstanceFromMachineImageAdvancedMachineFeaturesArgs'] advanced_machine_features: Controls for advanced machine-related behavior features.
         :param pulumi.Input[_builtins.bool] can_ip_forward: Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
-        :param pulumi.Input['InstanceFromMachineImageConfidentialInstanceConfigArgs'] confidential_instance_config: The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-               to create.
+        :param pulumi.Input['InstanceFromMachineImageConfidentialInstanceConfigArgs'] confidential_instance_config: The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether deletion protection is enabled on this instance.
         :param pulumi.Input[_builtins.str] description: A brief description of the resource.
         :param pulumi.Input[_builtins.str] desired_status: Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
         :param pulumi.Input[_builtins.bool] enable_display: Whether the instance has virtual displays enabled.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
-        :param pulumi.Input[_builtins.str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-               labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
-               exceed 253 characters. Changing this forces a new resource to be created.
+        :param pulumi.Input[_builtins.str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
         :param pulumi.Input['InstanceFromMachineImageInstanceEncryptionKeyArgs'] instance_encryption_key: Encryption key used to provide data encryption on the given instance.
-        :param pulumi.Input[_builtins.str] key_revocation_action_type: Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
-               default.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
-               the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-               the resource.
+        :param pulumi.Input[_builtins.str] key_revocation_action_type: Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the default.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A set of key/value label pairs assigned to the instance.
+               
+               				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               				Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] machine_type: The machine type to create.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata key/value pairs made available within the instance.
         :param pulumi.Input[_builtins.str] metadata_startup_script: Metadata startup scripts made available within the instance.
@@ -84,12 +81,10 @@ class InstanceFromMachineImageArgs:
         :param pulumi.Input[_builtins.str] name: A unique name for the resource, required by GCE.
                Changing this forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceArgs']]] network_interfaces: The networks attached to the instance.
-        :param pulumi.Input['InstanceFromMachineImageNetworkPerformanceConfigArgs'] network_performance_config: Configures network performance settings for the instance. If not specified, the instance will be created with its
-               default network performance configuration.
+        :param pulumi.Input['InstanceFromMachineImageNetworkPerformanceConfigArgs'] network_performance_config: Configures network performance settings for the instance. If not specified, the instance will be created with its default network performance configuration.
         :param pulumi.Input['InstanceFromMachineImageParamsArgs'] params: Stores additional params passed with the request, but not persisted as part of resource payload.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] partner_metadata: Partner Metadata Map made available within the instance.
-        :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
-               self_link nor project are provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
         :param pulumi.Input['InstanceFromMachineImageReservationAffinityArgs'] reservation_affinity: Specifies the reservations that this instance can consume from.
         :param pulumi.Input[_builtins.str] resource_policies: A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
         :param pulumi.Input['InstanceFromMachineImageSchedulingArgs'] scheduling: The scheduling strategy being used by the instance.
@@ -222,8 +217,7 @@ class InstanceFromMachineImageArgs:
     @pulumi.getter(name="confidentialInstanceConfig")
     def confidential_instance_config(self) -> Optional[pulumi.Input['InstanceFromMachineImageConfidentialInstanceConfigArgs']]:
         """
-        The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-        to create.
+        The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
         """
         return pulumi.get(self, "confidential_instance_config")
 
@@ -295,9 +289,7 @@ class InstanceFromMachineImageArgs:
     @pulumi.getter
     def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-        labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
-        exceed 253 characters. Changing this forces a new resource to be created.
+        A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "hostname")
 
@@ -321,8 +313,7 @@ class InstanceFromMachineImageArgs:
     @pulumi.getter(name="keyRevocationActionType")
     def key_revocation_action_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
-        default.
+        Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the default.
         """
         return pulumi.get(self, "key_revocation_action_type")
 
@@ -334,9 +325,10 @@ class InstanceFromMachineImageArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
-        the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-        the resource.
+        A set of key/value label pairs assigned to the instance.
+
+        				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        				Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -421,8 +413,7 @@ class InstanceFromMachineImageArgs:
     @pulumi.getter(name="networkPerformanceConfig")
     def network_performance_config(self) -> Optional[pulumi.Input['InstanceFromMachineImageNetworkPerformanceConfigArgs']]:
         """
-        Configures network performance settings for the instance. If not specified, the instance will be created with its
-        default network performance configuration.
+        Configures network performance settings for the instance. If not specified, the instance will be created with its default network performance configuration.
         """
         return pulumi.get(self, "network_performance_config")
 
@@ -458,8 +449,7 @@ class InstanceFromMachineImageArgs:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
-        self_link nor project are provided, the provider project is used.
+        The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
@@ -625,29 +615,26 @@ class _InstanceFromMachineImageState:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageAttachedDiskArgs']]] attached_disks: List of disks attached to the instance
         :param pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageBootDiskArgs']]] boot_disks: The boot disk for the instance.
         :param pulumi.Input[_builtins.bool] can_ip_forward: Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
-        :param pulumi.Input['InstanceFromMachineImageConfidentialInstanceConfigArgs'] confidential_instance_config: The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-               to create.
+        :param pulumi.Input['InstanceFromMachineImageConfidentialInstanceConfigArgs'] confidential_instance_config: The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
         :param pulumi.Input[_builtins.str] cpu_platform: The CPU platform used by this instance.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
-        :param pulumi.Input[_builtins.str] current_status: Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
-               SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance
-               life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
+        :param pulumi.Input[_builtins.str] current_status: Current status of the instance.
+               					This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED.
+               					For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether deletion protection is enabled on this instance.
         :param pulumi.Input[_builtins.str] description: A brief description of the resource.
         :param pulumi.Input[_builtins.str] desired_status: Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
         :param pulumi.Input[_builtins.bool] enable_display: Whether the instance has virtual displays enabled.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
-        :param pulumi.Input[_builtins.str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-               labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
-               exceed 253 characters. Changing this forces a new resource to be created.
+        :param pulumi.Input[_builtins.str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
         :param pulumi.Input['InstanceFromMachineImageInstanceEncryptionKeyArgs'] instance_encryption_key: Encryption key used to provide data encryption on the given instance.
         :param pulumi.Input[_builtins.str] instance_id: The server-assigned unique identifier of this instance.
-        :param pulumi.Input[_builtins.str] key_revocation_action_type: Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
-               default.
+        :param pulumi.Input[_builtins.str] key_revocation_action_type: Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the default.
         :param pulumi.Input[_builtins.str] label_fingerprint: The unique fingerprint of the labels.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
-               the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-               the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A set of key/value label pairs assigned to the instance.
+               
+               				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               				Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] machine_type: The machine type to create.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata key/value pairs made available within the instance.
         :param pulumi.Input[_builtins.str] metadata_fingerprint: The unique fingerprint of the metadata.
@@ -656,12 +643,10 @@ class _InstanceFromMachineImageState:
         :param pulumi.Input[_builtins.str] name: A unique name for the resource, required by GCE.
                Changing this forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceArgs']]] network_interfaces: The networks attached to the instance.
-        :param pulumi.Input['InstanceFromMachineImageNetworkPerformanceConfigArgs'] network_performance_config: Configures network performance settings for the instance. If not specified, the instance will be created with its
-               default network performance configuration.
+        :param pulumi.Input['InstanceFromMachineImageNetworkPerformanceConfigArgs'] network_performance_config: Configures network performance settings for the instance. If not specified, the instance will be created with its default network performance configuration.
         :param pulumi.Input['InstanceFromMachineImageParamsArgs'] params: Stores additional params passed with the request, but not persisted as part of resource payload.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] partner_metadata: Partner Metadata Map made available within the instance.
-        :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
-               self_link nor project are provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input['InstanceFromMachineImageReservationAffinityArgs'] reservation_affinity: Specifies the reservations that this instance can consume from.
         :param pulumi.Input[_builtins.str] resource_policies: A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
@@ -838,8 +823,7 @@ class _InstanceFromMachineImageState:
     @pulumi.getter(name="confidentialInstanceConfig")
     def confidential_instance_config(self) -> Optional[pulumi.Input['InstanceFromMachineImageConfidentialInstanceConfigArgs']]:
         """
-        The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-        to create.
+        The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
         """
         return pulumi.get(self, "confidential_instance_config")
 
@@ -875,9 +859,9 @@ class _InstanceFromMachineImageState:
     @pulumi.getter(name="currentStatus")
     def current_status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
-        SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance
-        life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
+        Current status of the instance.
+        					This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED.
+        					For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
         """
         return pulumi.get(self, "current_status")
 
@@ -958,9 +942,7 @@ class _InstanceFromMachineImageState:
     @pulumi.getter
     def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-        labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
-        exceed 253 characters. Changing this forces a new resource to be created.
+        A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "hostname")
 
@@ -996,8 +978,7 @@ class _InstanceFromMachineImageState:
     @pulumi.getter(name="keyRevocationActionType")
     def key_revocation_action_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
-        default.
+        Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the default.
         """
         return pulumi.get(self, "key_revocation_action_type")
 
@@ -1021,9 +1002,10 @@ class _InstanceFromMachineImageState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
-        the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-        the resource.
+        A set of key/value label pairs assigned to the instance.
+
+        				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        				Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1120,8 +1102,7 @@ class _InstanceFromMachineImageState:
     @pulumi.getter(name="networkPerformanceConfig")
     def network_performance_config(self) -> Optional[pulumi.Input['InstanceFromMachineImageNetworkPerformanceConfigArgs']]:
         """
-        Configures network performance settings for the instance. If not specified, the instance will be created with its
-        default network performance configuration.
+        Configures network performance settings for the instance. If not specified, the instance will be created with its default network performance configuration.
         """
         return pulumi.get(self, "network_performance_config")
 
@@ -1157,8 +1138,7 @@ class _InstanceFromMachineImageState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
-        self_link nor project are provided, the provider project is used.
+        The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
@@ -1402,22 +1382,19 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['InstanceFromMachineImageAdvancedMachineFeaturesArgs', 'InstanceFromMachineImageAdvancedMachineFeaturesArgsDict']] advanced_machine_features: Controls for advanced machine-related behavior features.
         :param pulumi.Input[_builtins.bool] can_ip_forward: Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
-        :param pulumi.Input[Union['InstanceFromMachineImageConfidentialInstanceConfigArgs', 'InstanceFromMachineImageConfidentialInstanceConfigArgsDict']] confidential_instance_config: The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-               to create.
+        :param pulumi.Input[Union['InstanceFromMachineImageConfidentialInstanceConfigArgs', 'InstanceFromMachineImageConfidentialInstanceConfigArgsDict']] confidential_instance_config: The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether deletion protection is enabled on this instance.
         :param pulumi.Input[_builtins.str] description: A brief description of the resource.
         :param pulumi.Input[_builtins.str] desired_status: Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
         :param pulumi.Input[_builtins.bool] enable_display: Whether the instance has virtual displays enabled.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromMachineImageGuestAcceleratorArgs', 'InstanceFromMachineImageGuestAcceleratorArgsDict']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
-        :param pulumi.Input[_builtins.str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-               labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
-               exceed 253 characters. Changing this forces a new resource to be created.
+        :param pulumi.Input[_builtins.str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
         :param pulumi.Input[Union['InstanceFromMachineImageInstanceEncryptionKeyArgs', 'InstanceFromMachineImageInstanceEncryptionKeyArgsDict']] instance_encryption_key: Encryption key used to provide data encryption on the given instance.
-        :param pulumi.Input[_builtins.str] key_revocation_action_type: Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
-               default.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
-               the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-               the resource.
+        :param pulumi.Input[_builtins.str] key_revocation_action_type: Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the default.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A set of key/value label pairs assigned to the instance.
+               
+               				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               				Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] machine_type: The machine type to create.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata key/value pairs made available within the instance.
         :param pulumi.Input[_builtins.str] metadata_startup_script: Metadata startup scripts made available within the instance.
@@ -1425,12 +1402,10 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: A unique name for the resource, required by GCE.
                Changing this forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromMachineImageNetworkInterfaceArgs', 'InstanceFromMachineImageNetworkInterfaceArgsDict']]]] network_interfaces: The networks attached to the instance.
-        :param pulumi.Input[Union['InstanceFromMachineImageNetworkPerformanceConfigArgs', 'InstanceFromMachineImageNetworkPerformanceConfigArgsDict']] network_performance_config: Configures network performance settings for the instance. If not specified, the instance will be created with its
-               default network performance configuration.
+        :param pulumi.Input[Union['InstanceFromMachineImageNetworkPerformanceConfigArgs', 'InstanceFromMachineImageNetworkPerformanceConfigArgsDict']] network_performance_config: Configures network performance settings for the instance. If not specified, the instance will be created with its default network performance configuration.
         :param pulumi.Input[Union['InstanceFromMachineImageParamsArgs', 'InstanceFromMachineImageParamsArgsDict']] params: Stores additional params passed with the request, but not persisted as part of resource payload.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] partner_metadata: Partner Metadata Map made available within the instance.
-        :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
-               self_link nor project are provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
         :param pulumi.Input[Union['InstanceFromMachineImageReservationAffinityArgs', 'InstanceFromMachineImageReservationAffinityArgsDict']] reservation_affinity: Specifies the reservations that this instance can consume from.
         :param pulumi.Input[_builtins.str] resource_policies: A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
         :param pulumi.Input[Union['InstanceFromMachineImageSchedulingArgs', 'InstanceFromMachineImageSchedulingArgsDict']] scheduling: The scheduling strategy being used by the instance.
@@ -1654,29 +1629,26 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromMachineImageAttachedDiskArgs', 'InstanceFromMachineImageAttachedDiskArgsDict']]]] attached_disks: List of disks attached to the instance
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromMachineImageBootDiskArgs', 'InstanceFromMachineImageBootDiskArgsDict']]]] boot_disks: The boot disk for the instance.
         :param pulumi.Input[_builtins.bool] can_ip_forward: Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
-        :param pulumi.Input[Union['InstanceFromMachineImageConfidentialInstanceConfigArgs', 'InstanceFromMachineImageConfidentialInstanceConfigArgsDict']] confidential_instance_config: The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-               to create.
+        :param pulumi.Input[Union['InstanceFromMachineImageConfidentialInstanceConfigArgs', 'InstanceFromMachineImageConfidentialInstanceConfigArgsDict']] confidential_instance_config: The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
         :param pulumi.Input[_builtins.str] cpu_platform: The CPU platform used by this instance.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
-        :param pulumi.Input[_builtins.str] current_status: Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
-               SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance
-               life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
+        :param pulumi.Input[_builtins.str] current_status: Current status of the instance.
+               					This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED.
+               					For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether deletion protection is enabled on this instance.
         :param pulumi.Input[_builtins.str] description: A brief description of the resource.
         :param pulumi.Input[_builtins.str] desired_status: Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
         :param pulumi.Input[_builtins.bool] enable_display: Whether the instance has virtual displays enabled.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromMachineImageGuestAcceleratorArgs', 'InstanceFromMachineImageGuestAcceleratorArgsDict']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
-        :param pulumi.Input[_builtins.str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-               labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
-               exceed 253 characters. Changing this forces a new resource to be created.
+        :param pulumi.Input[_builtins.str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
         :param pulumi.Input[Union['InstanceFromMachineImageInstanceEncryptionKeyArgs', 'InstanceFromMachineImageInstanceEncryptionKeyArgsDict']] instance_encryption_key: Encryption key used to provide data encryption on the given instance.
         :param pulumi.Input[_builtins.str] instance_id: The server-assigned unique identifier of this instance.
-        :param pulumi.Input[_builtins.str] key_revocation_action_type: Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
-               default.
+        :param pulumi.Input[_builtins.str] key_revocation_action_type: Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the default.
         :param pulumi.Input[_builtins.str] label_fingerprint: The unique fingerprint of the labels.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
-               the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-               the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A set of key/value label pairs assigned to the instance.
+               
+               				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               				Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] machine_type: The machine type to create.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata key/value pairs made available within the instance.
         :param pulumi.Input[_builtins.str] metadata_fingerprint: The unique fingerprint of the metadata.
@@ -1685,12 +1657,10 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: A unique name for the resource, required by GCE.
                Changing this forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromMachineImageNetworkInterfaceArgs', 'InstanceFromMachineImageNetworkInterfaceArgsDict']]]] network_interfaces: The networks attached to the instance.
-        :param pulumi.Input[Union['InstanceFromMachineImageNetworkPerformanceConfigArgs', 'InstanceFromMachineImageNetworkPerformanceConfigArgsDict']] network_performance_config: Configures network performance settings for the instance. If not specified, the instance will be created with its
-               default network performance configuration.
+        :param pulumi.Input[Union['InstanceFromMachineImageNetworkPerformanceConfigArgs', 'InstanceFromMachineImageNetworkPerformanceConfigArgsDict']] network_performance_config: Configures network performance settings for the instance. If not specified, the instance will be created with its default network performance configuration.
         :param pulumi.Input[Union['InstanceFromMachineImageParamsArgs', 'InstanceFromMachineImageParamsArgsDict']] params: Stores additional params passed with the request, but not persisted as part of resource payload.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] partner_metadata: Partner Metadata Map made available within the instance.
-        :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
-               self_link nor project are provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[Union['InstanceFromMachineImageReservationAffinityArgs', 'InstanceFromMachineImageReservationAffinityArgsDict']] reservation_affinity: Specifies the reservations that this instance can consume from.
         :param pulumi.Input[_builtins.str] resource_policies: A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
@@ -1807,8 +1777,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
     @pulumi.getter(name="confidentialInstanceConfig")
     def confidential_instance_config(self) -> pulumi.Output['outputs.InstanceFromMachineImageConfidentialInstanceConfig']:
         """
-        The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-        to create.
+        The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
         """
         return pulumi.get(self, "confidential_instance_config")
 
@@ -1832,9 +1801,9 @@ class InstanceFromMachineImage(pulumi.CustomResource):
     @pulumi.getter(name="currentStatus")
     def current_status(self) -> pulumi.Output[_builtins.str]:
         """
-        Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
-        SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance
-        life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
+        Current status of the instance.
+        					This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED.
+        					For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
         """
         return pulumi.get(self, "current_status")
 
@@ -1887,9 +1856,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
     @pulumi.getter
     def hostname(self) -> pulumi.Output[_builtins.str]:
         """
-        A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-        labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
-        exceed 253 characters. Changing this forces a new resource to be created.
+        A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "hostname")
 
@@ -1913,8 +1880,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
     @pulumi.getter(name="keyRevocationActionType")
     def key_revocation_action_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
-        default.
+        Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the default.
         """
         return pulumi.get(self, "key_revocation_action_type")
 
@@ -1930,9 +1896,10 @@ class InstanceFromMachineImage(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
-        A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
-        the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-        the resource.
+        A set of key/value label pairs assigned to the instance.
+
+        				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        				Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1997,8 +1964,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
     @pulumi.getter(name="networkPerformanceConfig")
     def network_performance_config(self) -> pulumi.Output['outputs.InstanceFromMachineImageNetworkPerformanceConfig']:
         """
-        Configures network performance settings for the instance. If not specified, the instance will be created with its
-        default network performance configuration.
+        Configures network performance settings for the instance. If not specified, the instance will be created with its default network performance configuration.
         """
         return pulumi.get(self, "network_performance_config")
 
@@ -2022,8 +1988,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
-        self_link nor project are provided, the provider project is used.
+        The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 

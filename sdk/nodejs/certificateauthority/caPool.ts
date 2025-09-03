@@ -229,12 +229,12 @@ export class CaPool extends pulumi.CustomResource {
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The IssuancePolicy to control how Certificates will be issued from this CaPool.
      * Structure is documented below.
      */
-    public readonly issuancePolicy!: pulumi.Output<outputs.certificateauthority.CaPoolIssuancePolicy | undefined>;
+    declare public readonly issuancePolicy: pulumi.Output<outputs.certificateauthority.CaPoolIssuancePolicy | undefined>;
     /**
      * Labels with user-defined metadata.
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
@@ -243,36 +243,36 @@ export class CaPool extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Location of the CaPool. A full list of valid locations can be found by
      * running `gcloud privateca locations list`.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The name for this CaPool.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
      * Structure is documented below.
      */
-    public readonly publishingOptions!: pulumi.Output<outputs.certificateauthority.CaPoolPublishingOptions | undefined>;
+    declare public readonly publishingOptions: pulumi.Output<outputs.certificateauthority.CaPoolPublishingOptions | undefined>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The Tier of this CaPool.
      * Possible values are: `ENTERPRISE`, `DEVOPS`.
      */
-    public readonly tier!: pulumi.Output<string>;
+    declare public readonly tier: pulumi.Output<string>;
 
     /**
      * Create a CaPool resource with the given unique name, arguments, and options.
@@ -287,30 +287,30 @@ export class CaPool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CaPoolState | undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["issuancePolicy"] = state ? state.issuancePolicy : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["publishingOptions"] = state ? state.publishingOptions : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["tier"] = state ? state.tier : undefined;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["issuancePolicy"] = state?.issuancePolicy;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["publishingOptions"] = state?.publishingOptions;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["tier"] = state?.tier;
         } else {
             const args = argsOrState as CaPoolArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.tier === undefined) && !opts.urn) {
+            if (args?.tier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tier'");
             }
-            resourceInputs["issuancePolicy"] = args ? args.issuancePolicy : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["publishingOptions"] = args ? args.publishingOptions : undefined;
-            resourceInputs["tier"] = args ? args.tier : undefined;
+            resourceInputs["issuancePolicy"] = args?.issuancePolicy;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["publishingOptions"] = args?.publishingOptions;
+            resourceInputs["tier"] = args?.tier;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
         }

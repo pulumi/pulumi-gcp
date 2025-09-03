@@ -700,50 +700,50 @@ export class Trigger extends pulumi.CustomResource {
      * Any user with a Cloud Build Approver role for the project can approve a build.
      * Structure is documented below.
      */
-    public readonly approvalConfig!: pulumi.Output<outputs.cloudbuild.TriggerApprovalConfig>;
+    declare public readonly approvalConfig: pulumi.Output<outputs.cloudbuild.TriggerApprovalConfig>;
     /**
      * BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
      * Structure is documented below.
      */
-    public readonly bitbucketServerTriggerConfig!: pulumi.Output<outputs.cloudbuild.TriggerBitbucketServerTriggerConfig | undefined>;
+    declare public readonly bitbucketServerTriggerConfig: pulumi.Output<outputs.cloudbuild.TriggerBitbucketServerTriggerConfig | undefined>;
     /**
      * Contents of the build template. Either a filename or build template must be provided.
      * Structure is documented below.
      */
-    public readonly build!: pulumi.Output<outputs.cloudbuild.TriggerBuild | undefined>;
+    declare public readonly build: pulumi.Output<outputs.cloudbuild.TriggerBuild | undefined>;
     /**
      * Time when the trigger was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Human-readable description of the trigger.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Whether the trigger is disabled or not. If true, the trigger will never result in a build.
      */
-    public readonly disabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly disabled: pulumi.Output<boolean | undefined>;
     /**
      * Path, from the source root, to a file whose contents is used for the template.
      * Either a filename or build template must be provided. Set this only when using triggerTemplate or github.
      * When using Pub/Sub, Webhook or Manual set the file name using gitFileSource instead.
      */
-    public readonly filename!: pulumi.Output<string | undefined>;
+    declare public readonly filename: pulumi.Output<string | undefined>;
     /**
      * A Common Expression Language string. Used only with Pub/Sub and Webhook.
      */
-    public readonly filter!: pulumi.Output<string | undefined>;
+    declare public readonly filter: pulumi.Output<string | undefined>;
     /**
      * The file source describing the local or remote Build template.
      * Structure is documented below.
      */
-    public readonly gitFileSource!: pulumi.Output<outputs.cloudbuild.TriggerGitFileSource | undefined>;
+    declare public readonly gitFileSource: pulumi.Output<outputs.cloudbuild.TriggerGitFileSource | undefined>;
     /**
      * Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
      * One of `triggerTemplate`, `github`, `pubsubConfig` or `webhookConfig` must be provided.
      * Structure is documented below.
      */
-    public readonly github!: pulumi.Output<outputs.cloudbuild.TriggerGithub | undefined>;
+    declare public readonly github: pulumi.Output<outputs.cloudbuild.TriggerGithub | undefined>;
     /**
      * ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
      * extended with support for `**`.
@@ -753,14 +753,14 @@ export class Trigger extends pulumi.CustomResource {
      * of the ignoredFile globs. If the change has no files that are outside
      * of the ignoredFiles globs, then we do not trigger a build.
      */
-    public readonly ignoredFiles!: pulumi.Output<string[] | undefined>;
+    declare public readonly ignoredFiles: pulumi.Output<string[] | undefined>;
     /**
      * Build logs will be sent back to GitHub as part of the checkrun
      * result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
      * INCLUDE_BUILD_LOGS_WITH_STATUS
      * Possible values are: `INCLUDE_BUILD_LOGS_UNSPECIFIED`, `INCLUDE_BUILD_LOGS_WITH_STATUS`.
      */
-    public readonly includeBuildLogs!: pulumi.Output<string | undefined>;
+    declare public readonly includeBuildLogs: pulumi.Output<string | undefined>;
     /**
      * ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
      * extended with support for `**`.
@@ -772,33 +772,33 @@ export class Trigger extends pulumi.CustomResource {
      * those files matches a includedFiles glob. If not, then we do not trigger
      * a build.
      */
-    public readonly includedFiles!: pulumi.Output<string[] | undefined>;
+    declare public readonly includedFiles: pulumi.Output<string[] | undefined>;
     /**
      * The [Cloud Build location](https://cloud.google.com/build/docs/locations) for the trigger.
      * If not specified, "global" is used.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * Name of the trigger. Must be unique within the project.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * PubsubConfig describes the configuration of a trigger that creates
      * a build whenever a Pub/Sub message is published.
      * One of `triggerTemplate`, `github`, `pubsubConfig` `webhookConfig` or `sourceToBuild` must be provided.
      * Structure is documented below.
      */
-    public readonly pubsubConfig!: pulumi.Output<outputs.cloudbuild.TriggerPubsubConfig | undefined>;
+    declare public readonly pubsubConfig: pulumi.Output<outputs.cloudbuild.TriggerPubsubConfig | undefined>;
     /**
      * The configuration of a trigger that creates a build whenever an event from Repo API is received.
      * Structure is documented below.
      */
-    public readonly repositoryEventConfig!: pulumi.Output<outputs.cloudbuild.TriggerRepositoryEventConfig | undefined>;
+    declare public readonly repositoryEventConfig: pulumi.Output<outputs.cloudbuild.TriggerRepositoryEventConfig | undefined>;
     /**
      * The service account used for all user-controlled operations including
      * triggers.patch, triggers.run, builds.create, and builds.cancel.
@@ -806,7 +806,7 @@ export class Trigger extends pulumi.CustomResource {
      * ([PROJECT_NUM]@system.gserviceaccount.com) will be used instead.
      * Format: projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}
      */
-    public readonly serviceAccount!: pulumi.Output<string | undefined>;
+    declare public readonly serviceAccount: pulumi.Output<string | undefined>;
     /**
      * The repo and ref of the repository from which to build.
      * This field is used only for those triggers that do not respond to SCM events.
@@ -815,19 +815,19 @@ export class Trigger extends pulumi.CustomResource {
      * One of `triggerTemplate`, `github`, `pubsubConfig` `webhookConfig` or `sourceToBuild` must be provided.
      * Structure is documented below.
      */
-    public readonly sourceToBuild!: pulumi.Output<outputs.cloudbuild.TriggerSourceToBuild | undefined>;
+    declare public readonly sourceToBuild: pulumi.Output<outputs.cloudbuild.TriggerSourceToBuild | undefined>;
     /**
      * Substitutions data for Build resource.
      */
-    public readonly substitutions!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly substitutions: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Tags for annotation of a BuildTrigger
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * The unique identifier for the trigger.
      */
-    public /*out*/ readonly triggerId!: pulumi.Output<string>;
+    declare public /*out*/ readonly triggerId: pulumi.Output<string>;
     /**
      * Template describing the types of source changes to trigger a build.
      * Branch and tag names in trigger templates are interpreted as regular
@@ -836,14 +836,14 @@ export class Trigger extends pulumi.CustomResource {
      * One of `triggerTemplate`, `github`, `pubsubConfig`, `webhookConfig` or `sourceToBuild` must be provided.
      * Structure is documented below.
      */
-    public readonly triggerTemplate!: pulumi.Output<outputs.cloudbuild.TriggerTriggerTemplate | undefined>;
+    declare public readonly triggerTemplate: pulumi.Output<outputs.cloudbuild.TriggerTriggerTemplate | undefined>;
     /**
      * WebhookConfig describes the configuration of a trigger that creates
      * a build whenever a webhook is sent to a trigger's webhook URL.
      * One of `triggerTemplate`, `github`, `pubsubConfig` `webhookConfig` or `sourceToBuild` must be provided.
      * Structure is documented below.
      */
-    public readonly webhookConfig!: pulumi.Output<outputs.cloudbuild.TriggerWebhookConfig | undefined>;
+    declare public readonly webhookConfig: pulumi.Output<outputs.cloudbuild.TriggerWebhookConfig | undefined>;
 
     /**
      * Create a Trigger resource with the given unique name, arguments, and options.
@@ -858,56 +858,56 @@ export class Trigger extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TriggerState | undefined;
-            resourceInputs["approvalConfig"] = state ? state.approvalConfig : undefined;
-            resourceInputs["bitbucketServerTriggerConfig"] = state ? state.bitbucketServerTriggerConfig : undefined;
-            resourceInputs["build"] = state ? state.build : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["disabled"] = state ? state.disabled : undefined;
-            resourceInputs["filename"] = state ? state.filename : undefined;
-            resourceInputs["filter"] = state ? state.filter : undefined;
-            resourceInputs["gitFileSource"] = state ? state.gitFileSource : undefined;
-            resourceInputs["github"] = state ? state.github : undefined;
-            resourceInputs["ignoredFiles"] = state ? state.ignoredFiles : undefined;
-            resourceInputs["includeBuildLogs"] = state ? state.includeBuildLogs : undefined;
-            resourceInputs["includedFiles"] = state ? state.includedFiles : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pubsubConfig"] = state ? state.pubsubConfig : undefined;
-            resourceInputs["repositoryEventConfig"] = state ? state.repositoryEventConfig : undefined;
-            resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
-            resourceInputs["sourceToBuild"] = state ? state.sourceToBuild : undefined;
-            resourceInputs["substitutions"] = state ? state.substitutions : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["triggerId"] = state ? state.triggerId : undefined;
-            resourceInputs["triggerTemplate"] = state ? state.triggerTemplate : undefined;
-            resourceInputs["webhookConfig"] = state ? state.webhookConfig : undefined;
+            resourceInputs["approvalConfig"] = state?.approvalConfig;
+            resourceInputs["bitbucketServerTriggerConfig"] = state?.bitbucketServerTriggerConfig;
+            resourceInputs["build"] = state?.build;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["disabled"] = state?.disabled;
+            resourceInputs["filename"] = state?.filename;
+            resourceInputs["filter"] = state?.filter;
+            resourceInputs["gitFileSource"] = state?.gitFileSource;
+            resourceInputs["github"] = state?.github;
+            resourceInputs["ignoredFiles"] = state?.ignoredFiles;
+            resourceInputs["includeBuildLogs"] = state?.includeBuildLogs;
+            resourceInputs["includedFiles"] = state?.includedFiles;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pubsubConfig"] = state?.pubsubConfig;
+            resourceInputs["repositoryEventConfig"] = state?.repositoryEventConfig;
+            resourceInputs["serviceAccount"] = state?.serviceAccount;
+            resourceInputs["sourceToBuild"] = state?.sourceToBuild;
+            resourceInputs["substitutions"] = state?.substitutions;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["triggerId"] = state?.triggerId;
+            resourceInputs["triggerTemplate"] = state?.triggerTemplate;
+            resourceInputs["webhookConfig"] = state?.webhookConfig;
         } else {
             const args = argsOrState as TriggerArgs | undefined;
-            resourceInputs["approvalConfig"] = args ? args.approvalConfig : undefined;
-            resourceInputs["bitbucketServerTriggerConfig"] = args ? args.bitbucketServerTriggerConfig : undefined;
-            resourceInputs["build"] = args ? args.build : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["disabled"] = args ? args.disabled : undefined;
-            resourceInputs["filename"] = args ? args.filename : undefined;
-            resourceInputs["filter"] = args ? args.filter : undefined;
-            resourceInputs["gitFileSource"] = args ? args.gitFileSource : undefined;
-            resourceInputs["github"] = args ? args.github : undefined;
-            resourceInputs["ignoredFiles"] = args ? args.ignoredFiles : undefined;
-            resourceInputs["includeBuildLogs"] = args ? args.includeBuildLogs : undefined;
-            resourceInputs["includedFiles"] = args ? args.includedFiles : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["pubsubConfig"] = args ? args.pubsubConfig : undefined;
-            resourceInputs["repositoryEventConfig"] = args ? args.repositoryEventConfig : undefined;
-            resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
-            resourceInputs["sourceToBuild"] = args ? args.sourceToBuild : undefined;
-            resourceInputs["substitutions"] = args ? args.substitutions : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["triggerTemplate"] = args ? args.triggerTemplate : undefined;
-            resourceInputs["webhookConfig"] = args ? args.webhookConfig : undefined;
+            resourceInputs["approvalConfig"] = args?.approvalConfig;
+            resourceInputs["bitbucketServerTriggerConfig"] = args?.bitbucketServerTriggerConfig;
+            resourceInputs["build"] = args?.build;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["disabled"] = args?.disabled;
+            resourceInputs["filename"] = args?.filename;
+            resourceInputs["filter"] = args?.filter;
+            resourceInputs["gitFileSource"] = args?.gitFileSource;
+            resourceInputs["github"] = args?.github;
+            resourceInputs["ignoredFiles"] = args?.ignoredFiles;
+            resourceInputs["includeBuildLogs"] = args?.includeBuildLogs;
+            resourceInputs["includedFiles"] = args?.includedFiles;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["pubsubConfig"] = args?.pubsubConfig;
+            resourceInputs["repositoryEventConfig"] = args?.repositoryEventConfig;
+            resourceInputs["serviceAccount"] = args?.serviceAccount;
+            resourceInputs["sourceToBuild"] = args?.sourceToBuild;
+            resourceInputs["substitutions"] = args?.substitutions;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["triggerTemplate"] = args?.triggerTemplate;
+            resourceInputs["webhookConfig"] = args?.webhookConfig;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["triggerId"] = undefined /*out*/;
         }

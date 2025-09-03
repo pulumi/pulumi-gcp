@@ -229,11 +229,11 @@ export class AiIndexEndpointDeployedIndex extends pulumi.CustomResource {
      * A description of resources that the DeployedIndex uses, which to large degree are decided by Vertex AI, and optionally allows only a modest additional configuration.
      * Structure is documented below.
      */
-    public readonly automaticResources!: pulumi.Output<outputs.vertex.AiIndexEndpointDeployedIndexAutomaticResources>;
+    declare public readonly automaticResources: pulumi.Output<outputs.vertex.AiIndexEndpointDeployedIndexAutomaticResources>;
     /**
      * The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * A description of resources that are dedicated to the DeployedIndex, and that need a higher degree of manual configuration. The field minReplicaCount must be set to a value strictly greater than 0, or else validation will fail. We don't provide SLA when minReplicaCount=1. If maxReplicaCount is not set, the default value is minReplicaCount. The max allowed replica count is 1000.
      * Available machine types for SMALL shard: e2-standard-2 and all machine types available for MEDIUM and LARGE shard.
@@ -242,64 +242,64 @@ export class AiIndexEndpointDeployedIndex extends pulumi.CustomResource {
      * n1-standard-16 and n1-standard-32 are still available, but we recommend e2-standard-16 and e2-highmem-16 for cost efficiency.
      * Structure is documented below.
      */
-    public readonly dedicatedResources!: pulumi.Output<outputs.vertex.AiIndexEndpointDeployedIndexDedicatedResources | undefined>;
+    declare public readonly dedicatedResources: pulumi.Output<outputs.vertex.AiIndexEndpointDeployedIndexDedicatedResources | undefined>;
     /**
      * If set, the authentication is enabled for the private endpoint.
      * Structure is documented below.
      */
-    public readonly deployedIndexAuthConfig!: pulumi.Output<outputs.vertex.AiIndexEndpointDeployedIndexDeployedIndexAuthConfig | undefined>;
+    declare public readonly deployedIndexAuthConfig: pulumi.Output<outputs.vertex.AiIndexEndpointDeployedIndexDeployedIndexAuthConfig | undefined>;
     /**
      * The user specified ID of the DeployedIndex. The ID can be up to 128 characters long and must start with a letter and only contain letters, numbers, and underscores. The ID must be unique within the project it is created in.
      */
-    public readonly deployedIndexId!: pulumi.Output<string>;
+    declare public readonly deployedIndexId: pulumi.Output<string>;
     /**
      * The deployment group can be no longer than 64 characters (eg: 'test', 'prod'). If not set, we will use the 'default' deployment group.
      * Creating deploymentGroups with reservedIpRanges is a recommended practice when the peered network has multiple peering ranges. This creates your deployments from predictable IP spaces for easier traffic administration. Also, one deploymentGroup (except 'default') can only be used with the same reservedIpRanges which means if the deploymentGroup has been used with reserved_ip_ranges: [a, b, c], using it with [a, b] or [d, e] is disallowed. [See the official documentation here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexEndpoints#DeployedIndex.FIELDS.deployment_group).
      * Note: we only support up to 5 deployment groups (not including 'default').
      */
-    public readonly deploymentGroup!: pulumi.Output<string | undefined>;
+    declare public readonly deploymentGroup: pulumi.Output<string | undefined>;
     /**
      * The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * If true, private endpoint's access logs are sent to Cloud Logging.
      */
-    public readonly enableAccessLogging!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableAccessLogging: pulumi.Output<boolean | undefined>;
     /**
      * The name of the Index this is the deployment of.
      */
-    public readonly index!: pulumi.Output<string>;
+    declare public readonly index: pulumi.Output<string>;
     /**
      * Identifies the index endpoint. Must be in the format
      * 'projects/{{project}}/locations/{{region}}/indexEndpoints/{{indexEndpoint}}'
      */
-    public readonly indexEndpoint!: pulumi.Output<string>;
+    declare public readonly indexEndpoint: pulumi.Output<string>;
     /**
      * The DeployedIndex may depend on various data on its original Index. Additionally when certain changes to the original Index are being done (e.g. when what the Index contains is being changed) the DeployedIndex may be asynchronously updated in the background to reflect these changes. If this timestamp's value is at least the [Index.update_time](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexes#Index.FIELDS.update_time) of the original Index, it means that this DeployedIndex and the original Index are in sync. If this timestamp is older, then to see which updates this DeployedIndex already contains (and which it does not), one must [list](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.operations/list#google.longrunning.Operations.ListOperations) the operations that are running on the original Index. Only the successfully completed Operations with updateTime equal or before this sync time are contained in this DeployedIndex.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly indexSyncTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly indexSyncTime: pulumi.Output<string>;
     /**
      * The name of the DeployedIndex resource.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Provides paths for users to send requests directly to the deployed index services running on Cloud via private services access. This field is populated if [network](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexEndpoints#IndexEndpoint.FIELDS.network) is configured.
      * Structure is documented below.
      */
-    public /*out*/ readonly privateEndpoints!: pulumi.Output<outputs.vertex.AiIndexEndpointDeployedIndexPrivateEndpoint[]>;
+    declare public /*out*/ readonly privateEndpoints: pulumi.Output<outputs.vertex.AiIndexEndpointDeployedIndexPrivateEndpoint[]>;
     /**
      * The region of the index endpoint deployment. eg us-central1
      */
-    public readonly region!: pulumi.Output<string | undefined>;
+    declare public readonly region: pulumi.Output<string | undefined>;
     /**
      * A list of reserved ip ranges under the VPC network that can be used for this DeployedIndex.
      * If set, we will deploy the index within the provided ip ranges. Otherwise, the index might be deployed to any ip ranges under the provided VPC network.
      * The value should be the name of the address (https://cloud.google.com/compute/docs/reference/rest/v1/addresses) Example: ['vertex-ai-ip-range'].
      * For more information about subnets and network IP ranges, please see https://cloud.google.com/vpc/docs/subnets#manually_created_subnet_ip_ranges.
      */
-    public readonly reservedIpRanges!: pulumi.Output<string[] | undefined>;
+    declare public readonly reservedIpRanges: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a AiIndexEndpointDeployedIndex resource with the given unique name, arguments, and options.
@@ -314,43 +314,43 @@ export class AiIndexEndpointDeployedIndex extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AiIndexEndpointDeployedIndexState | undefined;
-            resourceInputs["automaticResources"] = state ? state.automaticResources : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dedicatedResources"] = state ? state.dedicatedResources : undefined;
-            resourceInputs["deployedIndexAuthConfig"] = state ? state.deployedIndexAuthConfig : undefined;
-            resourceInputs["deployedIndexId"] = state ? state.deployedIndexId : undefined;
-            resourceInputs["deploymentGroup"] = state ? state.deploymentGroup : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["enableAccessLogging"] = state ? state.enableAccessLogging : undefined;
-            resourceInputs["index"] = state ? state.index : undefined;
-            resourceInputs["indexEndpoint"] = state ? state.indexEndpoint : undefined;
-            resourceInputs["indexSyncTime"] = state ? state.indexSyncTime : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["privateEndpoints"] = state ? state.privateEndpoints : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["reservedIpRanges"] = state ? state.reservedIpRanges : undefined;
+            resourceInputs["automaticResources"] = state?.automaticResources;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dedicatedResources"] = state?.dedicatedResources;
+            resourceInputs["deployedIndexAuthConfig"] = state?.deployedIndexAuthConfig;
+            resourceInputs["deployedIndexId"] = state?.deployedIndexId;
+            resourceInputs["deploymentGroup"] = state?.deploymentGroup;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["enableAccessLogging"] = state?.enableAccessLogging;
+            resourceInputs["index"] = state?.index;
+            resourceInputs["indexEndpoint"] = state?.indexEndpoint;
+            resourceInputs["indexSyncTime"] = state?.indexSyncTime;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["privateEndpoints"] = state?.privateEndpoints;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["reservedIpRanges"] = state?.reservedIpRanges;
         } else {
             const args = argsOrState as AiIndexEndpointDeployedIndexArgs | undefined;
-            if ((!args || args.deployedIndexId === undefined) && !opts.urn) {
+            if (args?.deployedIndexId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'deployedIndexId'");
             }
-            if ((!args || args.index === undefined) && !opts.urn) {
+            if (args?.index === undefined && !opts.urn) {
                 throw new Error("Missing required property 'index'");
             }
-            if ((!args || args.indexEndpoint === undefined) && !opts.urn) {
+            if (args?.indexEndpoint === undefined && !opts.urn) {
                 throw new Error("Missing required property 'indexEndpoint'");
             }
-            resourceInputs["automaticResources"] = args ? args.automaticResources : undefined;
-            resourceInputs["dedicatedResources"] = args ? args.dedicatedResources : undefined;
-            resourceInputs["deployedIndexAuthConfig"] = args ? args.deployedIndexAuthConfig : undefined;
-            resourceInputs["deployedIndexId"] = args ? args.deployedIndexId : undefined;
-            resourceInputs["deploymentGroup"] = args ? args.deploymentGroup : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["enableAccessLogging"] = args ? args.enableAccessLogging : undefined;
-            resourceInputs["index"] = args ? args.index : undefined;
-            resourceInputs["indexEndpoint"] = args ? args.indexEndpoint : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["reservedIpRanges"] = args ? args.reservedIpRanges : undefined;
+            resourceInputs["automaticResources"] = args?.automaticResources;
+            resourceInputs["dedicatedResources"] = args?.dedicatedResources;
+            resourceInputs["deployedIndexAuthConfig"] = args?.deployedIndexAuthConfig;
+            resourceInputs["deployedIndexId"] = args?.deployedIndexId;
+            resourceInputs["deploymentGroup"] = args?.deploymentGroup;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["enableAccessLogging"] = args?.enableAccessLogging;
+            resourceInputs["index"] = args?.index;
+            resourceInputs["indexEndpoint"] = args?.indexEndpoint;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["reservedIpRanges"] = args?.reservedIpRanges;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["indexSyncTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

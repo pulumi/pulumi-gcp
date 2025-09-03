@@ -81,52 +81,52 @@ export class DataSharingWithGoogleSetting extends pulumi.CustomResource {
     /**
      * Create time stamp.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Id of the Data Sharing With Google Setting.
      */
-    public readonly dataSharingWithGoogleSettingId!: pulumi.Output<string>;
+    declare public readonly dataSharingWithGoogleSettingId: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Whether data sharing should be enabled in GA products.
      */
-    public readonly enableDataSharing!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableDataSharing: pulumi.Output<boolean | undefined>;
     /**
      * Whether data sharing should be enabled in Preview products.
      */
-    public readonly enablePreviewDataSharing!: pulumi.Output<boolean | undefined>;
+    declare public readonly enablePreviewDataSharing: pulumi.Output<boolean | undefined>;
     /**
      * Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * Identifier. Name of the resource.
      * Format:projects/{project}/locations/{location}/dataSharingWithGoogleSettings/{dataSharingWithGoogleSetting}
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Update time stamp.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a DataSharingWithGoogleSetting resource with the given unique name, arguments, and options.
@@ -141,28 +141,28 @@ export class DataSharingWithGoogleSetting extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DataSharingWithGoogleSettingState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dataSharingWithGoogleSettingId"] = state ? state.dataSharingWithGoogleSettingId : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["enableDataSharing"] = state ? state.enableDataSharing : undefined;
-            resourceInputs["enablePreviewDataSharing"] = state ? state.enablePreviewDataSharing : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dataSharingWithGoogleSettingId"] = state?.dataSharingWithGoogleSettingId;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["enableDataSharing"] = state?.enableDataSharing;
+            resourceInputs["enablePreviewDataSharing"] = state?.enablePreviewDataSharing;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as DataSharingWithGoogleSettingArgs | undefined;
-            if ((!args || args.dataSharingWithGoogleSettingId === undefined) && !opts.urn) {
+            if (args?.dataSharingWithGoogleSettingId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataSharingWithGoogleSettingId'");
             }
-            resourceInputs["dataSharingWithGoogleSettingId"] = args ? args.dataSharingWithGoogleSettingId : undefined;
-            resourceInputs["enableDataSharing"] = args ? args.enableDataSharing : undefined;
-            resourceInputs["enablePreviewDataSharing"] = args ? args.enablePreviewDataSharing : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["dataSharingWithGoogleSettingId"] = args?.dataSharingWithGoogleSettingId;
+            resourceInputs["enableDataSharing"] = args?.enableDataSharing;
+            resourceInputs["enablePreviewDataSharing"] = args?.enablePreviewDataSharing;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

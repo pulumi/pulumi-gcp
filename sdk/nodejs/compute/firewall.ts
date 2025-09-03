@@ -136,55 +136,55 @@ export class Firewall extends pulumi.CustomResource {
      * connection.
      * Structure is documented below.
      */
-    public readonly allows!: pulumi.Output<outputs.compute.FirewallAllow[] | undefined>;
+    declare public readonly allows: pulumi.Output<outputs.compute.FirewallAllow[] | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * The list of DENY rules specified by this firewall. Each rule specifies
      * a protocol and port-range tuple that describes a denied connection.
      * Structure is documented below.
      */
-    public readonly denies!: pulumi.Output<outputs.compute.FirewallDeny[] | undefined>;
+    declare public readonly denies: pulumi.Output<outputs.compute.FirewallDeny[] | undefined>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * If destination ranges are specified, the firewall will apply only to
      * traffic that has destination IP address in these ranges. These ranges
      * must be expressed in CIDR format. IPv4 or IPv6 ranges are supported.
      */
-    public readonly destinationRanges!: pulumi.Output<string[]>;
+    declare public readonly destinationRanges: pulumi.Output<string[]>;
     /**
      * Direction of traffic to which this firewall applies; default is
      * INGRESS. Note: For INGRESS traffic, one of `sourceRanges`,
      * `sourceTags` or `sourceServiceAccounts` is required.
      * Possible values are: `INGRESS`, `EGRESS`.
      */
-    public readonly direction!: pulumi.Output<string>;
+    declare public readonly direction: pulumi.Output<string>;
     /**
      * Denotes whether the firewall rule is disabled, i.e not applied to the
      * network it is associated with. When set to true, the firewall rule is
      * not enforced and the network behaves as if it did not exist. If this
      * is unspecified, the firewall rule will be enabled.
      */
-    public readonly disabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly disabled: pulumi.Output<boolean | undefined>;
     /**
      * This field denotes whether to enable logging for a particular firewall rule.
      * If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `logConfig`
      *
      * @deprecated Deprecated in favor of log_config
      */
-    public readonly enableLogging!: pulumi.Output<boolean>;
+    declare public readonly enableLogging: pulumi.Output<boolean>;
     /**
      * This field denotes the logging options for a particular firewall rule.
      * If defined, logging is enabled, and logs will be exported to Cloud Logging.
      * Structure is documented below.
      */
-    public readonly logConfig!: pulumi.Output<outputs.compute.FirewallLogConfig | undefined>;
+    declare public readonly logConfig: pulumi.Output<outputs.compute.FirewallLogConfig | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -194,16 +194,16 @@ export class Firewall extends pulumi.CustomResource {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The name or selfLink of the network to attach this firewall to.
      */
-    public readonly network!: pulumi.Output<string>;
+    declare public readonly network: pulumi.Output<string>;
     /**
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      */
-    public readonly params!: pulumi.Output<outputs.compute.FirewallParams | undefined>;
+    declare public readonly params: pulumi.Output<outputs.compute.FirewallParams | undefined>;
     /**
      * Priority for this rule. This is an integer between 0 and 65535, both
      * inclusive. When not specified, the value assumed is 1000. Relative
@@ -212,16 +212,16 @@ export class Firewall extends pulumi.CustomResource {
      * higher precedence than a rule with priority 1). DENY rules take
      * precedence over ALLOW rules having equal priority.
      */
-    public readonly priority!: pulumi.Output<number | undefined>;
+    declare public readonly priority: pulumi.Output<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * If source ranges are specified, the firewall will apply only to
      * traffic that has source IP address in these ranges. These ranges must
@@ -233,7 +233,7 @@ export class Firewall extends pulumi.CustomResource {
      * apply. IPv4 or IPv6 ranges are supported. For INGRESS traffic, one of
      * `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
      */
-    public readonly sourceRanges!: pulumi.Output<string[] | undefined>;
+    declare public readonly sourceRanges: pulumi.Output<string[] | undefined>;
     /**
      * If source service accounts are specified, the firewall will apply only
      * to traffic originating from an instance with a service account in this
@@ -248,7 +248,7 @@ export class Firewall extends pulumi.CustomResource {
      * used at the same time as sourceTags or targetTags. For INGRESS traffic,
      * one of `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
      */
-    public readonly sourceServiceAccounts!: pulumi.Output<string[] | undefined>;
+    declare public readonly sourceServiceAccounts: pulumi.Output<string[] | undefined>;
     /**
      * If source tags are specified, the firewall will apply only to traffic
      * with source IP that belongs to a tag listed in source tags. Source
@@ -261,7 +261,7 @@ export class Firewall extends pulumi.CustomResource {
      * to match both properties for the firewall to apply. For INGRESS traffic,
      * one of `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
      */
-    public readonly sourceTags!: pulumi.Output<string[] | undefined>;
+    declare public readonly sourceTags: pulumi.Output<string[] | undefined>;
     /**
      * A list of service accounts indicating sets of instances located in the
      * network that may make network connections as specified in allowed[].
@@ -270,14 +270,14 @@ export class Firewall extends pulumi.CustomResource {
      * specified, the firewall rule applies to all instances on the specified
      * network.
      */
-    public readonly targetServiceAccounts!: pulumi.Output<string[] | undefined>;
+    declare public readonly targetServiceAccounts: pulumi.Output<string[] | undefined>;
     /**
      * A list of instance tags indicating sets of instances located in the
      * network that may make network connections as specified in allowed[].
      * If no targetTags are specified, the firewall rule applies to all
      * instances on the specified network.
      */
-    public readonly targetTags!: pulumi.Output<string[] | undefined>;
+    declare public readonly targetTags: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a Firewall resource with the given unique name, arguments, and options.
@@ -292,49 +292,49 @@ export class Firewall extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FirewallState | undefined;
-            resourceInputs["allows"] = state ? state.allows : undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["denies"] = state ? state.denies : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["destinationRanges"] = state ? state.destinationRanges : undefined;
-            resourceInputs["direction"] = state ? state.direction : undefined;
-            resourceInputs["disabled"] = state ? state.disabled : undefined;
-            resourceInputs["enableLogging"] = state ? state.enableLogging : undefined;
-            resourceInputs["logConfig"] = state ? state.logConfig : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["params"] = state ? state.params : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["sourceRanges"] = state ? state.sourceRanges : undefined;
-            resourceInputs["sourceServiceAccounts"] = state ? state.sourceServiceAccounts : undefined;
-            resourceInputs["sourceTags"] = state ? state.sourceTags : undefined;
-            resourceInputs["targetServiceAccounts"] = state ? state.targetServiceAccounts : undefined;
-            resourceInputs["targetTags"] = state ? state.targetTags : undefined;
+            resourceInputs["allows"] = state?.allows;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["denies"] = state?.denies;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["destinationRanges"] = state?.destinationRanges;
+            resourceInputs["direction"] = state?.direction;
+            resourceInputs["disabled"] = state?.disabled;
+            resourceInputs["enableLogging"] = state?.enableLogging;
+            resourceInputs["logConfig"] = state?.logConfig;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["params"] = state?.params;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["sourceRanges"] = state?.sourceRanges;
+            resourceInputs["sourceServiceAccounts"] = state?.sourceServiceAccounts;
+            resourceInputs["sourceTags"] = state?.sourceTags;
+            resourceInputs["targetServiceAccounts"] = state?.targetServiceAccounts;
+            resourceInputs["targetTags"] = state?.targetTags;
         } else {
             const args = argsOrState as FirewallArgs | undefined;
-            if ((!args || args.network === undefined) && !opts.urn) {
+            if (args?.network === undefined && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
-            resourceInputs["allows"] = args ? args.allows : undefined;
-            resourceInputs["denies"] = args ? args.denies : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["destinationRanges"] = args ? args.destinationRanges : undefined;
-            resourceInputs["direction"] = args ? args.direction : undefined;
-            resourceInputs["disabled"] = args ? args.disabled : undefined;
-            resourceInputs["enableLogging"] = args ? args.enableLogging : undefined;
-            resourceInputs["logConfig"] = args ? args.logConfig : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["params"] = args ? args.params : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["sourceRanges"] = args ? args.sourceRanges : undefined;
-            resourceInputs["sourceServiceAccounts"] = args ? args.sourceServiceAccounts : undefined;
-            resourceInputs["sourceTags"] = args ? args.sourceTags : undefined;
-            resourceInputs["targetServiceAccounts"] = args ? args.targetServiceAccounts : undefined;
-            resourceInputs["targetTags"] = args ? args.targetTags : undefined;
+            resourceInputs["allows"] = args?.allows;
+            resourceInputs["denies"] = args?.denies;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["destinationRanges"] = args?.destinationRanges;
+            resourceInputs["direction"] = args?.direction;
+            resourceInputs["disabled"] = args?.disabled;
+            resourceInputs["enableLogging"] = args?.enableLogging;
+            resourceInputs["logConfig"] = args?.logConfig;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["params"] = args?.params;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["sourceRanges"] = args?.sourceRanges;
+            resourceInputs["sourceServiceAccounts"] = args?.sourceServiceAccounts;
+            resourceInputs["sourceTags"] = args?.sourceTags;
+            resourceInputs["targetServiceAccounts"] = args?.targetServiceAccounts;
+            resourceInputs["targetTags"] = args?.targetTags;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         }

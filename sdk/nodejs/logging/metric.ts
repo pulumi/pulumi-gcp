@@ -182,34 +182,34 @@ export class Metric extends pulumi.CustomResource {
      * The resource name of the Log Bucket that owns the Log Metric. Only Log Buckets in projects
      * are supported. The bucket has to be in the same project as the metric.
      */
-    public readonly bucketName!: pulumi.Output<string | undefined>;
+    declare public readonly bucketName: pulumi.Output<string | undefined>;
     /**
      * The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
      * describes the bucket boundaries used to create a histogram of the extracted values.
      * Structure is documented below.
      */
-    public readonly bucketOptions!: pulumi.Output<outputs.logging.MetricBucketOptions | undefined>;
+    declare public readonly bucketOptions: pulumi.Output<outputs.logging.MetricBucketOptions | undefined>;
     /**
      * A description of this metric, which is used in documentation. The maximum length of the
      * description is 8000 characters.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * If set to True, then this metric is disabled and it does not generate any points.
      */
-    public readonly disabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly disabled: pulumi.Output<boolean | undefined>;
     /**
      * An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
      * is used to match log entries.
      */
-    public readonly filter!: pulumi.Output<string>;
+    declare public readonly filter: pulumi.Output<string>;
     /**
      * A map from a label key string to an extractor expression which is used to extract data from a log
      * entry field and assign as the label value. Each label key specified in the LabelDescriptor must
      * have an associated extractor expression in this map. The syntax of the extractor expression is
      * the same as for the valueExtractor field.
      */
-    public readonly labelExtractors!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labelExtractors: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The optional metric descriptor associated with the logs-based metric.
      * If unspecified, it uses a default metric descriptor with a DELTA metric kind,
@@ -217,7 +217,7 @@ export class Metric extends pulumi.CustomResource {
      * number of log entries matching the filter expression.
      * Structure is documented below.
      */
-    public readonly metricDescriptor!: pulumi.Output<outputs.logging.MetricMetricDescriptor>;
+    declare public readonly metricDescriptor: pulumi.Output<outputs.logging.MetricMetricDescriptor>;
     /**
      * The client-assigned metric identifier. Examples - "errorCount", "nginx/requests".
      * Metric identifiers are limited to 100 characters and can include only the following
@@ -225,12 +225,12 @@ export class Metric extends pulumi.CustomResource {
      * character (/) denotes a hierarchy of name pieces, and it cannot be the first character
      * of the name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * A valueExtractor is required when using a distribution logs-based metric to extract the values to
      * record from a log entry. Two functions are supported for value extraction - EXTRACT(field) or
@@ -240,7 +240,7 @@ export class Metric extends pulumi.CustomResource {
      * log entry field. The value of the field is converted to a string before applying the regex. It is an
      * error to specify a regex that does not include exactly one capture group.
      */
-    public readonly valueExtractor!: pulumi.Output<string | undefined>;
+    declare public readonly valueExtractor: pulumi.Output<string | undefined>;
 
     /**
      * Create a Metric resource with the given unique name, arguments, and options.
@@ -255,31 +255,31 @@ export class Metric extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MetricState | undefined;
-            resourceInputs["bucketName"] = state ? state.bucketName : undefined;
-            resourceInputs["bucketOptions"] = state ? state.bucketOptions : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["disabled"] = state ? state.disabled : undefined;
-            resourceInputs["filter"] = state ? state.filter : undefined;
-            resourceInputs["labelExtractors"] = state ? state.labelExtractors : undefined;
-            resourceInputs["metricDescriptor"] = state ? state.metricDescriptor : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["valueExtractor"] = state ? state.valueExtractor : undefined;
+            resourceInputs["bucketName"] = state?.bucketName;
+            resourceInputs["bucketOptions"] = state?.bucketOptions;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["disabled"] = state?.disabled;
+            resourceInputs["filter"] = state?.filter;
+            resourceInputs["labelExtractors"] = state?.labelExtractors;
+            resourceInputs["metricDescriptor"] = state?.metricDescriptor;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["valueExtractor"] = state?.valueExtractor;
         } else {
             const args = argsOrState as MetricArgs | undefined;
-            if ((!args || args.filter === undefined) && !opts.urn) {
+            if (args?.filter === undefined && !opts.urn) {
                 throw new Error("Missing required property 'filter'");
             }
-            resourceInputs["bucketName"] = args ? args.bucketName : undefined;
-            resourceInputs["bucketOptions"] = args ? args.bucketOptions : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["disabled"] = args ? args.disabled : undefined;
-            resourceInputs["filter"] = args ? args.filter : undefined;
-            resourceInputs["labelExtractors"] = args ? args.labelExtractors : undefined;
-            resourceInputs["metricDescriptor"] = args ? args.metricDescriptor : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["valueExtractor"] = args ? args.valueExtractor : undefined;
+            resourceInputs["bucketName"] = args?.bucketName;
+            resourceInputs["bucketOptions"] = args?.bucketOptions;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["disabled"] = args?.disabled;
+            resourceInputs["filter"] = args?.filter;
+            resourceInputs["labelExtractors"] = args?.labelExtractors;
+            resourceInputs["metricDescriptor"] = args?.metricDescriptor;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["valueExtractor"] = args?.valueExtractor;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Metric.__pulumiType, name, resourceInputs, opts);

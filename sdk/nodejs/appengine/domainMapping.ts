@@ -86,34 +86,34 @@ export class DomainMapping extends pulumi.CustomResource {
     /**
      * Relative name of the domain serving the application. Example: example.com.
      */
-    public readonly domainName!: pulumi.Output<string>;
+    declare public readonly domainName: pulumi.Output<string>;
     /**
      * Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Whether the domain creation should override any existing mappings for this domain.
      * By default, overrides are rejected.
      * Default value is `STRICT`.
      * Possible values are: `STRICT`, `OVERRIDE`.
      */
-    public readonly overrideStrategy!: pulumi.Output<string | undefined>;
+    declare public readonly overrideStrategy: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The resource records required to configure this domain mapping. These records must be added to the domain's DNS
      * configuration in order to serve the application via this domain mapping.
      * Structure is documented below.
      */
-    public /*out*/ readonly resourceRecords!: pulumi.Output<outputs.appengine.DomainMappingResourceRecord[]>;
+    declare public /*out*/ readonly resourceRecords: pulumi.Output<outputs.appengine.DomainMappingResourceRecord[]>;
     /**
      * SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
      * Structure is documented below.
      */
-    public readonly sslSettings!: pulumi.Output<outputs.appengine.DomainMappingSslSettings>;
+    declare public readonly sslSettings: pulumi.Output<outputs.appengine.DomainMappingSslSettings>;
 
     /**
      * Create a DomainMapping resource with the given unique name, arguments, and options.
@@ -128,21 +128,21 @@ export class DomainMapping extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainMappingState | undefined;
-            resourceInputs["domainName"] = state ? state.domainName : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["overrideStrategy"] = state ? state.overrideStrategy : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["resourceRecords"] = state ? state.resourceRecords : undefined;
-            resourceInputs["sslSettings"] = state ? state.sslSettings : undefined;
+            resourceInputs["domainName"] = state?.domainName;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["overrideStrategy"] = state?.overrideStrategy;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["resourceRecords"] = state?.resourceRecords;
+            resourceInputs["sslSettings"] = state?.sslSettings;
         } else {
             const args = argsOrState as DomainMappingArgs | undefined;
-            if ((!args || args.domainName === undefined) && !opts.urn) {
+            if (args?.domainName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domainName'");
             }
-            resourceInputs["domainName"] = args ? args.domainName : undefined;
-            resourceInputs["overrideStrategy"] = args ? args.overrideStrategy : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["sslSettings"] = args ? args.sslSettings : undefined;
+            resourceInputs["domainName"] = args?.domainName;
+            resourceInputs["overrideStrategy"] = args?.overrideStrategy;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["sslSettings"] = args?.sslSettings;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["resourceRecords"] = undefined /*out*/;
         }

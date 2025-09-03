@@ -173,23 +173,23 @@ export class Secret extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The time at which the Secret was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
-    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
-    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
+    declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      * Only one of `expireTime` or `ttl` can be provided.
      */
-    public readonly expireTime!: pulumi.Output<string>;
+    declare public readonly expireTime: pulumi.Output<string>;
     /**
      * The labels assigned to this Secret.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
@@ -203,54 +203,54 @@ export class Secret extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The resource name of the Secret. Format:
      * `projects/{{project}}/secrets/{{secret_id}}`
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The replication policy of the secret data attached to the Secret. It cannot be changed
      * after the Secret has been created.
      * Structure is documented below.
      */
-    public readonly replication!: pulumi.Output<outputs.secretmanager.SecretReplication>;
+    declare public readonly replication: pulumi.Output<outputs.secretmanager.SecretReplication>;
     /**
      * The rotation time and period for a Secret. At `nextRotationTime`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
      * Structure is documented below.
      */
-    public readonly rotation!: pulumi.Output<outputs.secretmanager.SecretRotation | undefined>;
+    declare public readonly rotation: pulumi.Output<outputs.secretmanager.SecretRotation | undefined>;
     /**
      * This must be unique within the project.
      */
-    public readonly secretId!: pulumi.Output<string>;
+    declare public readonly secretId: pulumi.Output<string>;
     /**
      * A map of resource manager tags.
      * Resource manager tag keys and values have the same definition as resource manager tags.
      * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
      * Structure is documented below.
      */
-    public readonly topics!: pulumi.Output<outputs.secretmanager.SecretTopic[] | undefined>;
+    declare public readonly topics: pulumi.Output<outputs.secretmanager.SecretTopic[] | undefined>;
     /**
      * The TTL for the Secret.
      * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
      * Only one of `ttl` or `expireTime` can be provided.
      */
-    public readonly ttl!: pulumi.Output<string | undefined>;
+    declare public readonly ttl: pulumi.Output<string | undefined>;
     /**
      * Mapping from version alias to version name.
      * A version alias is a string with a maximum length of 63 characters and can contain
@@ -260,7 +260,7 @@ export class Secret extends pulumi.CustomResource {
      * An object containing a list of "key": value pairs. Example:
      * { "name": "wrench", "mass": "1.3kg", "count": "3" }.
      */
-    public readonly versionAliases!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly versionAliases: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Secret Version TTL after destruction request.
      * This is a part of the delayed delete feature on Secret Version.
@@ -268,7 +268,7 @@ export class Secret extends pulumi.CustomResource {
      * on calling destroy instead the version goes to a disabled state and
      * the actual destruction happens after this TTL expires.
      */
-    public readonly versionDestroyTtl!: pulumi.Output<string | undefined>;
+    declare public readonly versionDestroyTtl: pulumi.Output<string | undefined>;
 
     /**
      * Create a Secret resource with the given unique name, arguments, and options.
@@ -283,42 +283,42 @@ export class Secret extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecretState | undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["expireTime"] = state ? state.expireTime : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["replication"] = state ? state.replication : undefined;
-            resourceInputs["rotation"] = state ? state.rotation : undefined;
-            resourceInputs["secretId"] = state ? state.secretId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["topics"] = state ? state.topics : undefined;
-            resourceInputs["ttl"] = state ? state.ttl : undefined;
-            resourceInputs["versionAliases"] = state ? state.versionAliases : undefined;
-            resourceInputs["versionDestroyTtl"] = state ? state.versionDestroyTtl : undefined;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionProtection"] = state?.deletionProtection;
+            resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["expireTime"] = state?.expireTime;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["replication"] = state?.replication;
+            resourceInputs["rotation"] = state?.rotation;
+            resourceInputs["secretId"] = state?.secretId;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["topics"] = state?.topics;
+            resourceInputs["ttl"] = state?.ttl;
+            resourceInputs["versionAliases"] = state?.versionAliases;
+            resourceInputs["versionDestroyTtl"] = state?.versionDestroyTtl;
         } else {
             const args = argsOrState as SecretArgs | undefined;
-            if ((!args || args.replication === undefined) && !opts.urn) {
+            if (args?.replication === undefined && !opts.urn) {
                 throw new Error("Missing required property 'replication'");
             }
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            resourceInputs["expireTime"] = args ? args.expireTime : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["replication"] = args ? args.replication : undefined;
-            resourceInputs["rotation"] = args ? args.rotation : undefined;
-            resourceInputs["secretId"] = args ? args.secretId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["topics"] = args ? args.topics : undefined;
-            resourceInputs["ttl"] = args ? args.ttl : undefined;
-            resourceInputs["versionAliases"] = args ? args.versionAliases : undefined;
-            resourceInputs["versionDestroyTtl"] = args ? args.versionDestroyTtl : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["deletionProtection"] = args?.deletionProtection;
+            resourceInputs["expireTime"] = args?.expireTime;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["replication"] = args?.replication;
+            resourceInputs["rotation"] = args?.rotation;
+            resourceInputs["secretId"] = args?.secretId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["topics"] = args?.topics;
+            resourceInputs["ttl"] = args?.ttl;
+            resourceInputs["versionAliases"] = args?.versionAliases;
+            resourceInputs["versionDestroyTtl"] = args?.versionDestroyTtl;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;

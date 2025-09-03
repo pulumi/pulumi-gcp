@@ -167,82 +167,82 @@ export class RuntimeTemplate extends pulumi.CustomResource {
      * The configuration for the data disk of the runtime.
      * Structure is documented below.
      */
-    public readonly dataPersistentDiskSpec!: pulumi.Output<outputs.colab.RuntimeTemplateDataPersistentDiskSpec>;
+    declare public readonly dataPersistentDiskSpec: pulumi.Output<outputs.colab.RuntimeTemplateDataPersistentDiskSpec>;
     /**
      * The description of the Runtime Template.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Required. The display name of the Runtime Template.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Customer-managed encryption key spec for the notebook runtime.
      * Structure is documented below.
      */
-    public readonly encryptionSpec!: pulumi.Output<outputs.colab.RuntimeTemplateEncryptionSpec | undefined>;
+    declare public readonly encryptionSpec: pulumi.Output<outputs.colab.RuntimeTemplateEncryptionSpec | undefined>;
     /**
      * EUC configuration of the NotebookRuntimeTemplate.
      * Structure is documented below.
      */
-    public readonly eucConfig!: pulumi.Output<outputs.colab.RuntimeTemplateEucConfig>;
+    declare public readonly eucConfig: pulumi.Output<outputs.colab.RuntimeTemplateEucConfig>;
     /**
      * Notebook Idle Shutdown configuration for the runtime.
      * Structure is documented below.
      */
-    public readonly idleShutdownConfig!: pulumi.Output<outputs.colab.RuntimeTemplateIdleShutdownConfig>;
+    declare public readonly idleShutdownConfig: pulumi.Output<outputs.colab.RuntimeTemplateIdleShutdownConfig>;
     /**
      * Labels to identify and group the runtime template.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string}>;
     /**
      * The location for the resource: https://cloud.google.com/colab/docs/locations
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * 'The machine configuration of the runtime.'
      * Structure is documented below.
      */
-    public readonly machineSpec!: pulumi.Output<outputs.colab.RuntimeTemplateMachineSpec>;
+    declare public readonly machineSpec: pulumi.Output<outputs.colab.RuntimeTemplateMachineSpec>;
     /**
      * The resource name of the Runtime Template
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The network configuration for the runtime.
      * Structure is documented below.
      */
-    public readonly networkSpec!: pulumi.Output<outputs.colab.RuntimeTemplateNetworkSpec>;
+    declare public readonly networkSpec: pulumi.Output<outputs.colab.RuntimeTemplateNetworkSpec>;
     /**
      * Applies the given Compute Engine tags to the runtime.
      */
-    public readonly networkTags!: pulumi.Output<string[] | undefined>;
+    declare public readonly networkTags: pulumi.Output<string[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Runtime Shielded VM spec.
      * Structure is documented below.
      */
-    public readonly shieldedVmConfig!: pulumi.Output<outputs.colab.RuntimeTemplateShieldedVmConfig>;
+    declare public readonly shieldedVmConfig: pulumi.Output<outputs.colab.RuntimeTemplateShieldedVmConfig>;
     /**
      * The notebook software configuration of the notebook runtime.
      * Structure is documented below.
      */
-    public readonly softwareConfig!: pulumi.Output<outputs.colab.RuntimeTemplateSoftwareConfig>;
+    declare public readonly softwareConfig: pulumi.Output<outputs.colab.RuntimeTemplateSoftwareConfig>;
 
     /**
      * Create a RuntimeTemplate resource with the given unique name, arguments, and options.
@@ -257,46 +257,46 @@ export class RuntimeTemplate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RuntimeTemplateState | undefined;
-            resourceInputs["dataPersistentDiskSpec"] = state ? state.dataPersistentDiskSpec : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["encryptionSpec"] = state ? state.encryptionSpec : undefined;
-            resourceInputs["eucConfig"] = state ? state.eucConfig : undefined;
-            resourceInputs["idleShutdownConfig"] = state ? state.idleShutdownConfig : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["machineSpec"] = state ? state.machineSpec : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networkSpec"] = state ? state.networkSpec : undefined;
-            resourceInputs["networkTags"] = state ? state.networkTags : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["shieldedVmConfig"] = state ? state.shieldedVmConfig : undefined;
-            resourceInputs["softwareConfig"] = state ? state.softwareConfig : undefined;
+            resourceInputs["dataPersistentDiskSpec"] = state?.dataPersistentDiskSpec;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["encryptionSpec"] = state?.encryptionSpec;
+            resourceInputs["eucConfig"] = state?.eucConfig;
+            resourceInputs["idleShutdownConfig"] = state?.idleShutdownConfig;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["machineSpec"] = state?.machineSpec;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networkSpec"] = state?.networkSpec;
+            resourceInputs["networkTags"] = state?.networkTags;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["shieldedVmConfig"] = state?.shieldedVmConfig;
+            resourceInputs["softwareConfig"] = state?.softwareConfig;
         } else {
             const args = argsOrState as RuntimeTemplateArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["dataPersistentDiskSpec"] = args ? args.dataPersistentDiskSpec : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["encryptionSpec"] = args ? args.encryptionSpec : undefined;
-            resourceInputs["eucConfig"] = args ? args.eucConfig : undefined;
-            resourceInputs["idleShutdownConfig"] = args ? args.idleShutdownConfig : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["machineSpec"] = args ? args.machineSpec : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networkSpec"] = args ? args.networkSpec : undefined;
-            resourceInputs["networkTags"] = args ? args.networkTags : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["shieldedVmConfig"] = args ? args.shieldedVmConfig : undefined;
-            resourceInputs["softwareConfig"] = args ? args.softwareConfig : undefined;
+            resourceInputs["dataPersistentDiskSpec"] = args?.dataPersistentDiskSpec;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["encryptionSpec"] = args?.encryptionSpec;
+            resourceInputs["eucConfig"] = args?.eucConfig;
+            resourceInputs["idleShutdownConfig"] = args?.idleShutdownConfig;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["machineSpec"] = args?.machineSpec;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networkSpec"] = args?.networkSpec;
+            resourceInputs["networkTags"] = args?.networkTags;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["shieldedVmConfig"] = args?.shieldedVmConfig;
+            resourceInputs["softwareConfig"] = args?.softwareConfig;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
         }

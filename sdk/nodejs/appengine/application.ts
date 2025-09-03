@@ -74,15 +74,15 @@ export class Application extends pulumi.CustomResource {
     /**
      * Identifier of the app, usually `{PROJECT_ID}`
      */
-    public /*out*/ readonly appId!: pulumi.Output<string>;
+    declare public /*out*/ readonly appId: pulumi.Output<string>;
     /**
      * The domain to authenticate users with when using App Engine's User API.
      */
-    public readonly authDomain!: pulumi.Output<string>;
+    declare public readonly authDomain: pulumi.Output<string>;
     /**
      * The GCS bucket code is being stored in for this app.
      */
-    public /*out*/ readonly codeBucket!: pulumi.Output<string>;
+    declare public /*out*/ readonly codeBucket: pulumi.Output<string>;
     /**
      * The type of the Cloud Firestore or Cloud Datastore database associated with this application.
      * Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
@@ -91,50 +91,50 @@ export class Application extends pulumi.CustomResource {
      * `gcp.firestore.Database`
      * resource instead.
      */
-    public readonly databaseType!: pulumi.Output<string>;
+    declare public readonly databaseType: pulumi.Output<string>;
     /**
      * The GCS bucket content is being stored in for this app.
      */
-    public /*out*/ readonly defaultBucket!: pulumi.Output<string>;
+    declare public /*out*/ readonly defaultBucket: pulumi.Output<string>;
     /**
      * The default hostname for this app.
      */
-    public /*out*/ readonly defaultHostname!: pulumi.Output<string>;
+    declare public /*out*/ readonly defaultHostname: pulumi.Output<string>;
     /**
      * A block of optional settings to configure specific App Engine features:
      */
-    public readonly featureSettings!: pulumi.Output<outputs.appengine.ApplicationFeatureSettings>;
+    declare public readonly featureSettings: pulumi.Output<outputs.appengine.ApplicationFeatureSettings>;
     /**
      * The GCR domain used for storing managed Docker images for this app.
      */
-    public /*out*/ readonly gcrDomain!: pulumi.Output<string>;
+    declare public /*out*/ readonly gcrDomain: pulumi.Output<string>;
     /**
      * Settings for enabling Cloud Identity Aware Proxy
      */
-    public readonly iap!: pulumi.Output<outputs.appengine.ApplicationIap>;
+    declare public readonly iap: pulumi.Output<outputs.appengine.ApplicationIap>;
     /**
      * The [location](https://cloud.google.com/appengine/docs/locations)
      * to serve the app from.
      */
-    public readonly locationId!: pulumi.Output<string>;
+    declare public readonly locationId: pulumi.Output<string>;
     /**
      * Unique name of the app, usually `apps/{PROJECT_ID}`
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The project ID to create the application under.
      * ~>**NOTE:** GCP only accepts project ID, not project number. If you are using number,
      * you may get a "Permission denied" error.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The serving status of the app.
      */
-    public readonly servingStatus!: pulumi.Output<string>;
+    declare public readonly servingStatus: pulumi.Output<string>;
     /**
      * A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
      */
-    public /*out*/ readonly urlDispatchRules!: pulumi.Output<outputs.appengine.ApplicationUrlDispatchRule[]>;
+    declare public /*out*/ readonly urlDispatchRules: pulumi.Output<outputs.appengine.ApplicationUrlDispatchRule[]>;
 
     /**
      * Create a Application resource with the given unique name, arguments, and options.
@@ -149,32 +149,32 @@ export class Application extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationState | undefined;
-            resourceInputs["appId"] = state ? state.appId : undefined;
-            resourceInputs["authDomain"] = state ? state.authDomain : undefined;
-            resourceInputs["codeBucket"] = state ? state.codeBucket : undefined;
-            resourceInputs["databaseType"] = state ? state.databaseType : undefined;
-            resourceInputs["defaultBucket"] = state ? state.defaultBucket : undefined;
-            resourceInputs["defaultHostname"] = state ? state.defaultHostname : undefined;
-            resourceInputs["featureSettings"] = state ? state.featureSettings : undefined;
-            resourceInputs["gcrDomain"] = state ? state.gcrDomain : undefined;
-            resourceInputs["iap"] = state ? state.iap : undefined;
-            resourceInputs["locationId"] = state ? state.locationId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["servingStatus"] = state ? state.servingStatus : undefined;
-            resourceInputs["urlDispatchRules"] = state ? state.urlDispatchRules : undefined;
+            resourceInputs["appId"] = state?.appId;
+            resourceInputs["authDomain"] = state?.authDomain;
+            resourceInputs["codeBucket"] = state?.codeBucket;
+            resourceInputs["databaseType"] = state?.databaseType;
+            resourceInputs["defaultBucket"] = state?.defaultBucket;
+            resourceInputs["defaultHostname"] = state?.defaultHostname;
+            resourceInputs["featureSettings"] = state?.featureSettings;
+            resourceInputs["gcrDomain"] = state?.gcrDomain;
+            resourceInputs["iap"] = state?.iap;
+            resourceInputs["locationId"] = state?.locationId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["servingStatus"] = state?.servingStatus;
+            resourceInputs["urlDispatchRules"] = state?.urlDispatchRules;
         } else {
             const args = argsOrState as ApplicationArgs | undefined;
-            if ((!args || args.locationId === undefined) && !opts.urn) {
+            if (args?.locationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'locationId'");
             }
-            resourceInputs["authDomain"] = args ? args.authDomain : undefined;
-            resourceInputs["databaseType"] = args ? args.databaseType : undefined;
-            resourceInputs["featureSettings"] = args ? args.featureSettings : undefined;
-            resourceInputs["iap"] = args ? args.iap : undefined;
-            resourceInputs["locationId"] = args ? args.locationId : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["servingStatus"] = args ? args.servingStatus : undefined;
+            resourceInputs["authDomain"] = args?.authDomain;
+            resourceInputs["databaseType"] = args?.databaseType;
+            resourceInputs["featureSettings"] = args?.featureSettings;
+            resourceInputs["iap"] = args?.iap;
+            resourceInputs["locationId"] = args?.locationId;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["servingStatus"] = args?.servingStatus;
             resourceInputs["appId"] = undefined /*out*/;
             resourceInputs["codeBucket"] = undefined /*out*/;
             resourceInputs["defaultBucket"] = undefined /*out*/;

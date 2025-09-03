@@ -158,36 +158,36 @@ export class Cluster extends pulumi.CustomResource {
      * Configuration of the autoscaling applied to this cluster
      * Structure is documented below.
      */
-    public readonly autoscalingSettings!: pulumi.Output<outputs.vmwareengine.ClusterAutoscalingSettings | undefined>;
+    declare public readonly autoscalingSettings: pulumi.Output<outputs.vmwareengine.ClusterAutoscalingSettings | undefined>;
     /**
      * True if the cluster is a management cluster; false otherwise.
      * There can only be one management cluster in a private cloud and it has to be the first one.
      */
-    public /*out*/ readonly management!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly management: pulumi.Output<boolean>;
     /**
      * The ID of the Cluster.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The map of cluster node types in this cluster,
      * where the key is canonical identifier of the node type (corresponds to the NodeType).
      * Structure is documented below.
      */
-    public readonly nodeTypeConfigs!: pulumi.Output<outputs.vmwareengine.ClusterNodeTypeConfig[] | undefined>;
+    declare public readonly nodeTypeConfigs: pulumi.Output<outputs.vmwareengine.ClusterNodeTypeConfig[] | undefined>;
     /**
      * The resource name of the private cloud to create a new cluster in.
      * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
      * For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
      */
-    public readonly parent!: pulumi.Output<string>;
+    declare public readonly parent: pulumi.Output<string>;
     /**
      * State of the Cluster.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * System-generated unique identifier for the resource.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
 
     /**
      * Create a Cluster resource with the given unique name, arguments, and options.
@@ -202,22 +202,22 @@ export class Cluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
-            resourceInputs["autoscalingSettings"] = state ? state.autoscalingSettings : undefined;
-            resourceInputs["management"] = state ? state.management : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nodeTypeConfigs"] = state ? state.nodeTypeConfigs : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
+            resourceInputs["autoscalingSettings"] = state?.autoscalingSettings;
+            resourceInputs["management"] = state?.management;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nodeTypeConfigs"] = state?.nodeTypeConfigs;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["uid"] = state?.uid;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
-            if ((!args || args.parent === undefined) && !opts.urn) {
+            if (args?.parent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            resourceInputs["autoscalingSettings"] = args ? args.autoscalingSettings : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["nodeTypeConfigs"] = args ? args.nodeTypeConfigs : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["autoscalingSettings"] = args?.autoscalingSettings;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["nodeTypeConfigs"] = args?.nodeTypeConfigs;
+            resourceInputs["parent"] = args?.parent;
             resourceInputs["management"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;

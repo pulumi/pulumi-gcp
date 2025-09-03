@@ -180,50 +180,50 @@ export class Address extends pulumi.CustomResource {
      * The IP address must be inside the specified subnetwork,
      * if any. Set by the API if undefined.
      */
-    public readonly address!: pulumi.Output<string>;
+    declare public readonly address: pulumi.Output<string>;
     /**
      * The type of address to reserve.
      * Note: if you set this argument's value as `INTERNAL` you need to leave the `networkTier` argument unset in that resource block.
      * Default value is `EXTERNAL`.
      * Possible values are: `INTERNAL`, `EXTERNAL`.
      */
-    public readonly addressType!: pulumi.Output<string | undefined>;
+    declare public readonly addressType: pulumi.Output<string | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * An optional description of this resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The IP Version that will be used by this address. The default value is `IPV4`.
      * Possible values are: `IPV4`, `IPV6`.
      */
-    public readonly ipVersion!: pulumi.Output<string | undefined>;
+    declare public readonly ipVersion: pulumi.Output<string | undefined>;
     /**
      * The endpoint type of this address, which should be VM or NETLB. This is
      * used for deciding which type of endpoint this address can be used after
      * the external IPv6 address reservation.
      * Possible values are: `VM`, `NETLB`.
      */
-    public readonly ipv6EndpointType!: pulumi.Output<string | undefined>;
+    declare public readonly ipv6EndpointType: pulumi.Output<string | undefined>;
     /**
      * The fingerprint used for optimistic locking of this resource.  Used
      * internally during updates.
      */
-    public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly labelFingerprint: pulumi.Output<string>;
     /**
      * Labels to apply to this address.  A list of key->value pairs.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Name of the resource. The name must be 1-63 characters long, and
      * comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -232,34 +232,34 @@ export class Address extends pulumi.CustomResource {
      * following characters must be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The URL of the network in which to reserve the address. This field
      * can only be used with INTERNAL type with the VPC_PEERING and
      * IPSEC_INTERCONNECT purposes.
      */
-    public readonly network!: pulumi.Output<string | undefined>;
+    declare public readonly network: pulumi.Output<string | undefined>;
     /**
      * The networking tier used for configuring this address. If this field is not
      * specified, it is assumed to be PREMIUM.
      * This argument should not be used when configuring Internal addresses, because [network tier cannot be set for internal traffic; it's always Premium](https://cloud.google.com/network-tiers/docs/overview).
      * Possible values are: `PREMIUM`, `STANDARD`.
      */
-    public readonly networkTier!: pulumi.Output<string>;
+    declare public readonly networkTier: pulumi.Output<string>;
     /**
      * The prefix length if the resource represents an IP range.
      */
-    public readonly prefixLength!: pulumi.Output<number>;
+    declare public readonly prefixLength: pulumi.Output<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The purpose of this resource, which can be one of the following values.
      * * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
@@ -275,27 +275,27 @@ export class Address extends pulumi.CustomResource {
      * this purpose.
      * This should only be set when using an Internal address.
      */
-    public readonly purpose!: pulumi.Output<string>;
+    declare public readonly purpose: pulumi.Output<string>;
     /**
      * The Region in which the created address should reside.
      * If it is not provided, the provider region is used.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * The URL of the subnetwork in which to reserve the address. If an IP
      * address is specified, it must be within the subnetwork's IP range.
      * This field can only be used with INTERNAL type with
      * GCE_ENDPOINT/DNS_RESOLVER purposes.
      */
-    public readonly subnetwork!: pulumi.Output<string>;
+    declare public readonly subnetwork: pulumi.Output<string>;
     /**
      * The URLs of the resources that are using this address.
      */
-    public /*out*/ readonly users!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly users: pulumi.Output<string[]>;
 
     /**
      * Create a Address resource with the given unique name, arguments, and options.
@@ -310,42 +310,42 @@ export class Address extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AddressState | undefined;
-            resourceInputs["address"] = state ? state.address : undefined;
-            resourceInputs["addressType"] = state ? state.addressType : undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
-            resourceInputs["ipv6EndpointType"] = state ? state.ipv6EndpointType : undefined;
-            resourceInputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["networkTier"] = state ? state.networkTier : undefined;
-            resourceInputs["prefixLength"] = state ? state.prefixLength : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["purpose"] = state ? state.purpose : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["subnetwork"] = state ? state.subnetwork : undefined;
-            resourceInputs["users"] = state ? state.users : undefined;
+            resourceInputs["address"] = state?.address;
+            resourceInputs["addressType"] = state?.addressType;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["ipVersion"] = state?.ipVersion;
+            resourceInputs["ipv6EndpointType"] = state?.ipv6EndpointType;
+            resourceInputs["labelFingerprint"] = state?.labelFingerprint;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["networkTier"] = state?.networkTier;
+            resourceInputs["prefixLength"] = state?.prefixLength;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["purpose"] = state?.purpose;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["subnetwork"] = state?.subnetwork;
+            resourceInputs["users"] = state?.users;
         } else {
             const args = argsOrState as AddressArgs | undefined;
-            resourceInputs["address"] = args ? args.address : undefined;
-            resourceInputs["addressType"] = args ? args.addressType : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
-            resourceInputs["ipv6EndpointType"] = args ? args.ipv6EndpointType : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["networkTier"] = args ? args.networkTier : undefined;
-            resourceInputs["prefixLength"] = args ? args.prefixLength : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["purpose"] = args ? args.purpose : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
+            resourceInputs["address"] = args?.address;
+            resourceInputs["addressType"] = args?.addressType;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["ipVersion"] = args?.ipVersion;
+            resourceInputs["ipv6EndpointType"] = args?.ipv6EndpointType;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["networkTier"] = args?.networkTier;
+            resourceInputs["prefixLength"] = args?.prefixLength;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["purpose"] = args?.purpose;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["subnetwork"] = args?.subnetwork;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;

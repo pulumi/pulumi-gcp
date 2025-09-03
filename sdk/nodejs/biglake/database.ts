@@ -94,48 +94,48 @@ export class Database extends pulumi.CustomResource {
     /**
      * The parent catalog.
      */
-    public readonly catalog!: pulumi.Output<string>;
+    declare public readonly catalog: pulumi.Output<string>;
     /**
      * Output only. The creation time of the database. A timestamp in RFC3339
      * UTC "Zulu" format, with nanosecond resolution and up to nine fractional
      * digits. Examples: "2014-10-02T15:01:23Z" and
      * "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Output only. The deletion time of the database. Only set after the
      * database is deleted. A timestamp in RFC3339 UTC "Zulu" format, with
      * nanosecond resolution and up to nine fractional digits. Examples:
      * "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly deleteTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly deleteTime: pulumi.Output<string>;
     /**
      * Output only. The time when this database is considered expired. Only set
      * after the database is deleted. A timestamp in RFC3339 UTC "Zulu" format,
      * with nanosecond resolution and up to nine fractional digits. Examples:
      * "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly expireTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly expireTime: pulumi.Output<string>;
     /**
      * Options of a Hive database.
      * Structure is documented below.
      */
-    public readonly hiveOptions!: pulumi.Output<outputs.biglake.DatabaseHiveOptions>;
+    declare public readonly hiveOptions: pulumi.Output<outputs.biglake.DatabaseHiveOptions>;
     /**
      * The name of the database.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The database type.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * Output only. The last modification time of the database. A timestamp in
      * RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
      * fractional digits. Examples: "2014-10-02T15:01:23Z" and
      * "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Database resource with the given unique name, arguments, and options.
@@ -150,29 +150,29 @@ export class Database extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseState | undefined;
-            resourceInputs["catalog"] = state ? state.catalog : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["deleteTime"] = state ? state.deleteTime : undefined;
-            resourceInputs["expireTime"] = state ? state.expireTime : undefined;
-            resourceInputs["hiveOptions"] = state ? state.hiveOptions : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["catalog"] = state?.catalog;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deleteTime"] = state?.deleteTime;
+            resourceInputs["expireTime"] = state?.expireTime;
+            resourceInputs["hiveOptions"] = state?.hiveOptions;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as DatabaseArgs | undefined;
-            if ((!args || args.catalog === undefined) && !opts.urn) {
+            if (args?.catalog === undefined && !opts.urn) {
                 throw new Error("Missing required property 'catalog'");
             }
-            if ((!args || args.hiveOptions === undefined) && !opts.urn) {
+            if (args?.hiveOptions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hiveOptions'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["catalog"] = args ? args.catalog : undefined;
-            resourceInputs["hiveOptions"] = args ? args.hiveOptions : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["catalog"] = args?.catalog;
+            resourceInputs["hiveOptions"] = args?.hiveOptions;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["type"] = args?.type;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
             resourceInputs["expireTime"] = undefined /*out*/;

@@ -234,24 +234,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:container/azureCluster:AzureCluster")
 public class AzureCluster extends com.pulumi.resources.CustomResource {
     /**
-     * Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
-     * all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required),
-     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-     * `effective_annotations` for all of the annotations present on the resource.
+     * Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> annotations;
 
     /**
-     * @return Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
-     * all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required),
-     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-     * `effective_annotations` for all of the annotations present on the resource.
+     * @return Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> annotations() {
@@ -300,20 +296,14 @@ public class AzureCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.azureServicesAuthentication);
     }
     /**
-     * Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the
-     * `AzureCluster`. `AzureClient` names are formatted as
-     * `projects/&lt;project-number&gt;/locations/&lt;region&gt;/azureClients/&lt;client-id&gt;`. See Resource Names
-     * (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
+     * Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/&lt;project-number&gt;/locations/&lt;region&gt;/azureClients/&lt;client-id&gt;`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
      * 
      */
     @Export(name="client", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> client;
 
     /**
-     * @return Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the
-     * `AzureCluster`. `AzureClient` names are formatted as
-     * `projects/&lt;project-number&gt;/locations/&lt;region&gt;/azureClients/&lt;client-id&gt;`. See Resource Names
-     * (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
+     * @return Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/&lt;project-number&gt;/locations/&lt;region&gt;/azureClients/&lt;client-id&gt;`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
      * 
      */
     public Output<Optional<String>> client() {

@@ -108,21 +108,21 @@ export class TargetSSLProxy extends pulumi.CustomResource {
     /**
      * A reference to the BackendService resource.
      */
-    public readonly backendService!: pulumi.Output<string>;
+    declare public readonly backendService: pulumi.Output<string>;
     /**
      * A reference to the CertificateMap resource uri that identifies a certificate map
      * associated with the given target proxy. This field can only be set for global target proxies.
      * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
      */
-    public readonly certificateMap!: pulumi.Output<string | undefined>;
+    declare public readonly certificateMap: pulumi.Output<string | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * An optional description of this resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -132,39 +132,39 @@ export class TargetSSLProxy extends pulumi.CustomResource {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Specifies the type of proxy header to append before sending data to
      * the backend.
      * Default value is `NONE`.
      * Possible values are: `NONE`, `PROXY_V1`.
      */
-    public readonly proxyHeader!: pulumi.Output<string | undefined>;
+    declare public readonly proxyHeader: pulumi.Output<string | undefined>;
     /**
      * The unique identifier for the resource.
      */
-    public /*out*/ readonly proxyId!: pulumi.Output<number>;
+    declare public /*out*/ readonly proxyId: pulumi.Output<number>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * A list of SslCertificate resources that are used to authenticate
      * connections between users and the load balancer. At least one
      * SSL certificate must be specified.
      */
-    public readonly sslCertificates!: pulumi.Output<string[] | undefined>;
+    declare public readonly sslCertificates: pulumi.Output<string[] | undefined>;
     /**
      * A reference to the SslPolicy resource that will be associated with
      * the TargetSslProxy resource. If not set, the TargetSslProxy
      * resource will not have any SSL policy configured.
      */
-    public readonly sslPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly sslPolicy: pulumi.Output<string | undefined>;
 
     /**
      * Create a TargetSSLProxy resource with the given unique name, arguments, and options.
@@ -179,30 +179,30 @@ export class TargetSSLProxy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TargetSSLProxyState | undefined;
-            resourceInputs["backendService"] = state ? state.backendService : undefined;
-            resourceInputs["certificateMap"] = state ? state.certificateMap : undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["proxyHeader"] = state ? state.proxyHeader : undefined;
-            resourceInputs["proxyId"] = state ? state.proxyId : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["sslCertificates"] = state ? state.sslCertificates : undefined;
-            resourceInputs["sslPolicy"] = state ? state.sslPolicy : undefined;
+            resourceInputs["backendService"] = state?.backendService;
+            resourceInputs["certificateMap"] = state?.certificateMap;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["proxyHeader"] = state?.proxyHeader;
+            resourceInputs["proxyId"] = state?.proxyId;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["sslCertificates"] = state?.sslCertificates;
+            resourceInputs["sslPolicy"] = state?.sslPolicy;
         } else {
             const args = argsOrState as TargetSSLProxyArgs | undefined;
-            if ((!args || args.backendService === undefined) && !opts.urn) {
+            if (args?.backendService === undefined && !opts.urn) {
                 throw new Error("Missing required property 'backendService'");
             }
-            resourceInputs["backendService"] = args ? args.backendService : undefined;
-            resourceInputs["certificateMap"] = args ? args.certificateMap : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["proxyHeader"] = args ? args.proxyHeader : undefined;
-            resourceInputs["sslCertificates"] = args ? args.sslCertificates : undefined;
-            resourceInputs["sslPolicy"] = args ? args.sslPolicy : undefined;
+            resourceInputs["backendService"] = args?.backendService;
+            resourceInputs["certificateMap"] = args?.certificateMap;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["proxyHeader"] = args?.proxyHeader;
+            resourceInputs["sslCertificates"] = args?.sslCertificates;
+            resourceInputs["sslPolicy"] = args?.sslPolicy;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["proxyId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;

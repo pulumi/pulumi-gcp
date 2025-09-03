@@ -80,7 +80,7 @@ export class V2OrganizationSource extends pulumi.CustomResource {
     /**
      * The description of the source (max of 1024 characters).
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The source’s display name. A source’s display name must be unique
      * amongst its siblings, for example, two sources with the same parent
@@ -88,17 +88,17 @@ export class V2OrganizationSource extends pulumi.CustomResource {
      * with a letter or digit, may contain letters, digits, spaces, hyphens,
      * and underscores, and can be no longer than 32 characters.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * The resource name of this source, in the format
      * `organizations/{{organization}}/sources/{{source}}`.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The organization whose Cloud Security Command Center the Source
      * lives in.
      */
-    public readonly organization!: pulumi.Output<string>;
+    declare public readonly organization: pulumi.Output<string>;
 
     /**
      * Create a V2OrganizationSource resource with the given unique name, arguments, and options.
@@ -113,21 +113,21 @@ export class V2OrganizationSource extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as V2OrganizationSourceState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["organization"] = state ? state.organization : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["organization"] = state?.organization;
         } else {
             const args = argsOrState as V2OrganizationSourceArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.organization === undefined) && !opts.urn) {
+            if (args?.organization === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organization'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["organization"] = args ? args.organization : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["organization"] = args?.organization;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

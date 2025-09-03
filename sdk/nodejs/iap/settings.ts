@@ -138,12 +138,12 @@ export class Settings extends pulumi.CustomResource {
      * Top level wrapper for all access related setting in IAP.
      * Structure is documented below.
      */
-    public readonly accessSettings!: pulumi.Output<outputs.iap.SettingsAccessSettings | undefined>;
+    declare public readonly accessSettings: pulumi.Output<outputs.iap.SettingsAccessSettings | undefined>;
     /**
      * Top level wrapper for all application related settings in IAP.
      * Structure is documented below.
      */
-    public readonly applicationSettings!: pulumi.Output<outputs.iap.SettingsApplicationSettings | undefined>;
+    declare public readonly applicationSettings: pulumi.Output<outputs.iap.SettingsApplicationSettings | undefined>;
     /**
      * The resource name of the IAP protected resource. Name can have below resources:
      * * organizations/{organization_id}
@@ -158,7 +158,7 @@ export class Settings extends pulumi.CustomResource {
      * * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}
      * * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}/version/{version_id}
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a Settings resource with the given unique name, arguments, and options.
@@ -173,14 +173,14 @@ export class Settings extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SettingsState | undefined;
-            resourceInputs["accessSettings"] = state ? state.accessSettings : undefined;
-            resourceInputs["applicationSettings"] = state ? state.applicationSettings : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["accessSettings"] = state?.accessSettings;
+            resourceInputs["applicationSettings"] = state?.applicationSettings;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as SettingsArgs | undefined;
-            resourceInputs["accessSettings"] = args ? args.accessSettings : undefined;
-            resourceInputs["applicationSettings"] = args ? args.applicationSettings : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["accessSettings"] = args?.accessSettings;
+            resourceInputs["applicationSettings"] = args?.applicationSettings;
+            resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Settings.__pulumiType, name, resourceInputs, opts);

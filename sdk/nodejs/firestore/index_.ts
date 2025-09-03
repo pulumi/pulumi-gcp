@@ -267,20 +267,20 @@ export class Index extends pulumi.CustomResource {
      * Default value is `ANY_API`.
      * Possible values are: `ANY_API`, `DATASTORE_MODE_API`, `MONGODB_COMPATIBLE_API`.
      */
-    public readonly apiScope!: pulumi.Output<string | undefined>;
+    declare public readonly apiScope: pulumi.Output<string | undefined>;
     /**
      * The collection being indexed.
      */
-    public readonly collection!: pulumi.Output<string>;
+    declare public readonly collection: pulumi.Output<string>;
     /**
      * The Firestore database id. Defaults to `"(default)"`.
      */
-    public readonly database!: pulumi.Output<string | undefined>;
+    declare public readonly database: pulumi.Output<string | undefined>;
     /**
      * The density configuration for this index.
      * Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
      */
-    public readonly density!: pulumi.Output<string>;
+    declare public readonly density: pulumi.Output<string>;
     /**
      * The fields supported by this index. The last non-stored field entry is
      * always for the field path `__name__`. If, on creation, `__name__` was not
@@ -290,27 +290,27 @@ export class Index extends pulumi.CustomResource {
      * `"ASCENDING"` (unless explicitly specified otherwise).
      * Structure is documented below.
      */
-    public readonly fields!: pulumi.Output<outputs.firestore.IndexField[]>;
+    declare public readonly fields: pulumi.Output<outputs.firestore.IndexField[]>;
     /**
      * Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
      */
-    public readonly multikey!: pulumi.Output<boolean | undefined>;
+    declare public readonly multikey: pulumi.Output<boolean | undefined>;
     /**
      * A server defined name for this index. Format:
      * `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}`
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The scope at which a query is run.
      * Default value is `COLLECTION`.
      * Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
      */
-    public readonly queryScope!: pulumi.Output<string | undefined>;
+    declare public readonly queryScope: pulumi.Output<string | undefined>;
 
     /**
      * Create a Index resource with the given unique name, arguments, and options.
@@ -325,31 +325,31 @@ export class Index extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IndexState | undefined;
-            resourceInputs["apiScope"] = state ? state.apiScope : undefined;
-            resourceInputs["collection"] = state ? state.collection : undefined;
-            resourceInputs["database"] = state ? state.database : undefined;
-            resourceInputs["density"] = state ? state.density : undefined;
-            resourceInputs["fields"] = state ? state.fields : undefined;
-            resourceInputs["multikey"] = state ? state.multikey : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["queryScope"] = state ? state.queryScope : undefined;
+            resourceInputs["apiScope"] = state?.apiScope;
+            resourceInputs["collection"] = state?.collection;
+            resourceInputs["database"] = state?.database;
+            resourceInputs["density"] = state?.density;
+            resourceInputs["fields"] = state?.fields;
+            resourceInputs["multikey"] = state?.multikey;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["queryScope"] = state?.queryScope;
         } else {
             const args = argsOrState as IndexArgs | undefined;
-            if ((!args || args.collection === undefined) && !opts.urn) {
+            if (args?.collection === undefined && !opts.urn) {
                 throw new Error("Missing required property 'collection'");
             }
-            if ((!args || args.fields === undefined) && !opts.urn) {
+            if (args?.fields === undefined && !opts.urn) {
                 throw new Error("Missing required property 'fields'");
             }
-            resourceInputs["apiScope"] = args ? args.apiScope : undefined;
-            resourceInputs["collection"] = args ? args.collection : undefined;
-            resourceInputs["database"] = args ? args.database : undefined;
-            resourceInputs["density"] = args ? args.density : undefined;
-            resourceInputs["fields"] = args ? args.fields : undefined;
-            resourceInputs["multikey"] = args ? args.multikey : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["queryScope"] = args ? args.queryScope : undefined;
+            resourceInputs["apiScope"] = args?.apiScope;
+            resourceInputs["collection"] = args?.collection;
+            resourceInputs["database"] = args?.database;
+            resourceInputs["density"] = args?.density;
+            resourceInputs["fields"] = args?.fields;
+            resourceInputs["multikey"] = args?.multikey;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["queryScope"] = args?.queryScope;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

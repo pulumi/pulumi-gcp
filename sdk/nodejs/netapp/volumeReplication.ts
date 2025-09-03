@@ -120,119 +120,119 @@ export class VolumeReplication extends pulumi.CustomResource {
     /**
      * Create time of the active directory. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
-    public readonly deleteDestinationVolume!: pulumi.Output<boolean | undefined>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    declare public readonly deleteDestinationVolume: pulumi.Output<boolean | undefined>;
     /**
      * An description of this resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Full resource name of destination volume with format: `projects/{{project}}/locations/{{location}}/volumes/{{volumeId}}`
      */
-    public /*out*/ readonly destinationVolume!: pulumi.Output<string>;
+    declare public /*out*/ readonly destinationVolume: pulumi.Output<string>;
     /**
      * Destination volume parameters.
      * Structure is documented below.
      */
-    public readonly destinationVolumeParameters!: pulumi.Output<outputs.netapp.VolumeReplicationDestinationVolumeParameters | undefined>;
+    declare public readonly destinationVolumeParameters: pulumi.Output<outputs.netapp.VolumeReplicationDestinationVolumeParameters | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Only replications with mirror_state=MIRRORED can be stopped. A replication in mirror_state=TRANSFERRING
      * currently receives an update and stopping the update might be undesirable. Set this parameter to true
      * to stop anyway. All data transferred to the destination will be discarded and content of destination
      * volume will remain at the state of the last successful update. Default is false.
      */
-    public readonly forceStopping!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceStopping: pulumi.Output<boolean | undefined>;
     /**
      * Condition of the relationship. Can be one of the following:
      * - true: The replication relationship is healthy. It has not missed the most recent scheduled transfer.
      * - false: The replication relationship is not healthy. It has missed the most recent scheduled transfer.
      */
-    public /*out*/ readonly healthy!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly healthy: pulumi.Output<boolean>;
     /**
      * HybridPeeringDetails contains details about the hybrid peering.
      * Structure is documented below.
      */
-    public /*out*/ readonly hybridPeeringDetails!: pulumi.Output<outputs.netapp.VolumeReplicationHybridPeeringDetail[]>;
+    declare public /*out*/ readonly hybridPeeringDetails: pulumi.Output<outputs.netapp.VolumeReplicationHybridPeeringDetail[]>;
     /**
      * Hybrid replication type.
      */
-    public /*out*/ readonly hybridReplicationType!: pulumi.Output<string>;
+    declare public /*out*/ readonly hybridReplicationType: pulumi.Output<string>;
     /**
      * Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Name of region for this resource. The resource needs to be created in the region of the destination volume.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Indicates the state of the mirror between source and destination volumes. Depending on the amount of data
      * in your source volume, PREPARING phase can take hours or days. mirrorState = MIRRORED indicates your baseline
      * transfer ended and destination volume became accessible read-only. TRANSFERRING means a MIRRORED volume
      * currently receives an update. Updated every 5 minutes.
      */
-    public /*out*/ readonly mirrorState!: pulumi.Output<string>;
+    declare public /*out*/ readonly mirrorState: pulumi.Output<string>;
     /**
      * The name of the replication. Needs to be unique per location.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Set to false to stop/break the mirror. Stopping the mirror makes the destination volume read-write
      * and act independently from the source volume.
      * Set to true to enable/resume the mirror. WARNING: Resuming a mirror overwrites any changes
      * done to the destination volume with the content of the source volume.
      */
-    public readonly replicationEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly replicationEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the replication interval.
      * Possible values are: `EVERY_10_MINUTES`, `HOURLY`, `DAILY`.
      */
-    public readonly replicationSchedule!: pulumi.Output<string>;
+    declare public readonly replicationSchedule: pulumi.Output<string>;
     /**
      * Reverting a replication can swap source and destination volume roles. This field indicates if the `location` hosts
      * the source or destination volume. For resume and revert and resume operations it is critical to understand
      * which volume is the source volume, since it will overwrite changes done to the destination volume.
      */
-    public /*out*/ readonly role!: pulumi.Output<string>;
+    declare public /*out*/ readonly role: pulumi.Output<string>;
     /**
      * Full resource name of source volume with format: `projects/{{project}}/locations/{{location}}/volumes/{{volumeId}}`
      */
-    public /*out*/ readonly sourceVolume!: pulumi.Output<string>;
+    declare public /*out*/ readonly sourceVolume: pulumi.Output<string>;
     /**
      * Indicates the state of replication resource. State of the mirror itself is indicated in mirrorState.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * State details of the replication resource.
      */
-    public /*out*/ readonly stateDetails!: pulumi.Output<string>;
+    declare public /*out*/ readonly stateDetails: pulumi.Output<string>;
     /**
      * Replication transfer statistics. All statistics are updated every 5 minutes.
      * Structure is documented below.
      */
-    public /*out*/ readonly transferStats!: pulumi.Output<outputs.netapp.VolumeReplicationTransferStat[]>;
+    declare public /*out*/ readonly transferStats: pulumi.Output<outputs.netapp.VolumeReplicationTransferStat[]>;
     /**
      * The name of the existing source volume.
      */
-    public readonly volumeName!: pulumi.Output<string>;
-    public readonly waitForMirror!: pulumi.Output<boolean | undefined>;
+    declare public readonly volumeName: pulumi.Output<string>;
+    declare public readonly waitForMirror: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a VolumeReplication resource with the given unique name, arguments, and options.
@@ -247,54 +247,54 @@ export class VolumeReplication extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VolumeReplicationState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["deleteDestinationVolume"] = state ? state.deleteDestinationVolume : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["destinationVolume"] = state ? state.destinationVolume : undefined;
-            resourceInputs["destinationVolumeParameters"] = state ? state.destinationVolumeParameters : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["forceStopping"] = state ? state.forceStopping : undefined;
-            resourceInputs["healthy"] = state ? state.healthy : undefined;
-            resourceInputs["hybridPeeringDetails"] = state ? state.hybridPeeringDetails : undefined;
-            resourceInputs["hybridReplicationType"] = state ? state.hybridReplicationType : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["mirrorState"] = state ? state.mirrorState : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["replicationEnabled"] = state ? state.replicationEnabled : undefined;
-            resourceInputs["replicationSchedule"] = state ? state.replicationSchedule : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
-            resourceInputs["sourceVolume"] = state ? state.sourceVolume : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["stateDetails"] = state ? state.stateDetails : undefined;
-            resourceInputs["transferStats"] = state ? state.transferStats : undefined;
-            resourceInputs["volumeName"] = state ? state.volumeName : undefined;
-            resourceInputs["waitForMirror"] = state ? state.waitForMirror : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deleteDestinationVolume"] = state?.deleteDestinationVolume;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["destinationVolume"] = state?.destinationVolume;
+            resourceInputs["destinationVolumeParameters"] = state?.destinationVolumeParameters;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["forceStopping"] = state?.forceStopping;
+            resourceInputs["healthy"] = state?.healthy;
+            resourceInputs["hybridPeeringDetails"] = state?.hybridPeeringDetails;
+            resourceInputs["hybridReplicationType"] = state?.hybridReplicationType;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["mirrorState"] = state?.mirrorState;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["replicationEnabled"] = state?.replicationEnabled;
+            resourceInputs["replicationSchedule"] = state?.replicationSchedule;
+            resourceInputs["role"] = state?.role;
+            resourceInputs["sourceVolume"] = state?.sourceVolume;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["stateDetails"] = state?.stateDetails;
+            resourceInputs["transferStats"] = state?.transferStats;
+            resourceInputs["volumeName"] = state?.volumeName;
+            resourceInputs["waitForMirror"] = state?.waitForMirror;
         } else {
             const args = argsOrState as VolumeReplicationArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.replicationSchedule === undefined) && !opts.urn) {
+            if (args?.replicationSchedule === undefined && !opts.urn) {
                 throw new Error("Missing required property 'replicationSchedule'");
             }
-            if ((!args || args.volumeName === undefined) && !opts.urn) {
+            if (args?.volumeName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'volumeName'");
             }
-            resourceInputs["deleteDestinationVolume"] = args ? args.deleteDestinationVolume : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["destinationVolumeParameters"] = args ? args.destinationVolumeParameters : undefined;
-            resourceInputs["forceStopping"] = args ? args.forceStopping : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["replicationEnabled"] = args ? args.replicationEnabled : undefined;
-            resourceInputs["replicationSchedule"] = args ? args.replicationSchedule : undefined;
-            resourceInputs["volumeName"] = args ? args.volumeName : undefined;
-            resourceInputs["waitForMirror"] = args ? args.waitForMirror : undefined;
+            resourceInputs["deleteDestinationVolume"] = args?.deleteDestinationVolume;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["destinationVolumeParameters"] = args?.destinationVolumeParameters;
+            resourceInputs["forceStopping"] = args?.forceStopping;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["replicationEnabled"] = args?.replicationEnabled;
+            resourceInputs["replicationSchedule"] = args?.replicationSchedule;
+            resourceInputs["volumeName"] = args?.volumeName;
+            resourceInputs["waitForMirror"] = args?.waitForMirror;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["destinationVolume"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
