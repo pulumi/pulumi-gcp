@@ -17,6 +17,7 @@ func editRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
 		removeBetaFromDescriptionField,
 		substituteRandomSuffix,
 		rewritemembersField,
+		apiConfigAPIID,
 	)
 }
 
@@ -145,3 +146,13 @@ var fixUpKmsCryptoKey = targetedSimpleReplace(
 		"to the resource to prevent accidental destruction.",
 	"For this reason, it is strongly recommended that you use "+
 		"Pulumi's [protect resource option](https://www.pulumi.com/docs/concepts/options/protect/).")
+
+var apiConfigAPIIDStr = "Identifier to assign to the API Config. Must be unique within scope of the parent resource(api)."
+var apiConfigAPIIDRegexp = regexp.MustCompile(regexp.QuoteMeta(apiConfigAPIIDStr))
+var apiConfigAPIID = tfbridge.DocsEdit{
+	Path: "*api_gateway_api_config.html.markdown",
+	Edit: func(_ string, content []byte) ([]byte, error) {
+		content = apiConfigAPIIDRegexp.ReplaceAllLiteral(content, []byte(apiConfigAPIIDStr+" **Note: use apiId if calling a resource**"))
+		return content, nil
+	},
+}
