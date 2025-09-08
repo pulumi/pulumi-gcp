@@ -1,26 +1,37 @@
-From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
-From: Aaron Friel <mayreply@aaronfriel.com>
-Date: Thu, 7 Sep 2023 16:28:00 -0700
-Subject: [PATCH] Fix #794 with an unconditional read.
+From c7fb0095975a57da18e825e6a96ebcf889c44492 Mon Sep 17 00:00:00 2001
+From: Sam Eiderman <sameid@gmail.com>
+Date: Mon, 8 Sep 2025 15:40:35 +0300
+Subject: [PATCH] Fix placement of SQL Database instance unconditional read on
+ update
 
+---
+ .../sql/resource_sql_database_instance.go         | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
 diff --git a/google-beta/services/sql/resource_sql_database_instance.go b/google-beta/services/sql/resource_sql_database_instance.go
-index 22eca909c..f3a557250 100644
+index 2aaecce83..79b99a2bf 100644
 --- a/google-beta/services/sql/resource_sql_database_instance.go
 +++ b/google-beta/services/sql/resource_sql_database_instance.go
-@@ -2205,10 +2205,11 @@ func resourceSqlDatabaseInstanceUpdate(d *schema.ResourceData, meta interface{})
- 		if err != nil {
- 			return err
- 		}
--		err = resourceSqlDatabaseInstanceRead(d, meta)
--		if err != nil {
--			return err
--		}
-+	}
-+
+@@ -2010,6 +2010,21 @@ func resourceSqlDatabaseInstanceUpdate(d *schema.ResourceData, meta interface{})
+ 
+ 	databaseVersion := d.Get("database_version").(string)
+ 
++	// Always read the instance before updating it.
++	// Terraform always applies a refresh before apply by default, while Pulumi does not.
++	// This causes many hardships for bridged tf providers in Pulumi which rely on the state being up-to-date.
++	// In the SQL Database Instance resource this surfaces in:
++	// * The settingsVersion not being up to date and failing with precondition errors.
++	// * DB size on autoresize being out of date and causing unintentional size reductions.
++	//
++	// This preconditional read ensures that we have the latest instance state before making changes.
++	//
++	// See: https://github.com/GoogleCloudPlatform/magic-modules/pull/14952#discussion_r2312435872
 +	err = resourceSqlDatabaseInstanceRead(d, meta)
 +	if err != nil {
 +		return err
- 	}
- 
- 	s := d.Get("settings")
++	}
++
+ 	// Check if the activation policy is being updated. If it is being changed to ALWAYS this should be done first.
+ 	if d.HasChange("settings.0.activation_policy") && d.Get("settings.0.activation_policy").(string) == "ALWAYS" {
+ 		instance = &sqladmin.DatabaseInstance{Settings: &sqladmin.Settings{ActivationPolicy: "ALWAYS"}}
+
