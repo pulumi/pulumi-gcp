@@ -4,3 +4,6 @@
 upstream-provider-name: terraform-provider-google-beta
 pulumi-infer-version: true
 remove-plugins: true
+upstream-provider-org: hashicorp
+current-upstream-version: 6.41.0
+current-bridge-version: 3.110.0
