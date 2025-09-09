@@ -4,20 +4,6 @@ Date: Wed, 15 Jan 2025 15:45:41 +0200
 Subject: [PATCH] docs patching
 
 
-diff --git a/website/docs/r/api_gateway_api.html.markdown b/website/docs/r/api_gateway_api.html.markdown
-index 336cd2f5f..6f79b8729 100644
---- a/website/docs/r/api_gateway_api.html.markdown
-+++ b/website/docs/r/api_gateway_api.html.markdown
-@@ -23,9 +23,6 @@ description: |-
- 
- A consumable API that can be used by multiple Gateways.
- 
--~> **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
--See [Provider Versions](https://terraform.io/docs/providers/google/guides/provider_versions.html) for more details on beta resources.
--
- To get more information about Api, see:
- 
- * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis)
 diff --git a/website/docs/r/api_gateway_api_config.html.markdown b/website/docs/r/api_gateway_api_config.html.markdown
 index dc4f93b07..9eb8f47d8 100644
 --- a/website/docs/r/api_gateway_api_config.html.markdown
