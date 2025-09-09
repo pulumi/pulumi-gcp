@@ -147,7 +147,7 @@ var fixUpKmsCryptoKey = targetedSimpleReplace(
 		"Pulumi's [protect resource option](https://www.pulumi.com/docs/concepts/options/protect/).")
 
 var skipBetaWarning = tfbridge.DocsEdit{
-	Path: "api_gateway_api.html.markdown",
+	Path: "*",
 	Edit: func(_ string, content []byte) ([]byte, error) {
 		betaWarning := "~> **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.\nSee Provider Versions for more details on beta resources.\n\n"
 		content = bytes.Replace(content, []byte(betaWarning), []byte(""), -1)
