@@ -3,9 +3,10 @@ package gcp
 import (
 	"bytes"
 	"fmt"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"math/rand"
 	"regexp"
+
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 )
 
 func editRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
@@ -149,6 +150,7 @@ var fixUpKmsCryptoKey = targetedSimpleReplace(
 var skipBetaWarning = tfbridge.DocsEdit{
 	Path: "*",
 	Edit: func(_ string, content []byte) ([]byte, error) {
+		//nolint:lll
 		betaWarning := "~> **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.\nSee Provider Versions for more details on beta resources.\n\n"
 		content = bytes.Replace(content, []byte(betaWarning), []byte(""), -1)
 		return content, nil
