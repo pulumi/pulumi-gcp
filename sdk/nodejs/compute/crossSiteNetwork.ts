@@ -5,6 +5,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Represents a cross-site-network resource. A CrossSiteNetwork is used to establish L2 connectivity between groups of Interconnects.
+ *
+ * To get more information about CrossSiteNetwork, see:
+ *
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/crossSiteNetworks)
+ * * How-to Guides
+ *     * [Create a Cross-Site Interconnect](https://cloud.google.com/network-connectivity/docs/interconnect/how-to/cross-site/create-network)
+ *
  * ## Example Usage
  *
  * ### Compute Cross Site Network Basic

@@ -12,6 +12,8 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     public static class GetBackupPlanAssociation
     {
         /// <summary>
+        /// A Backup and DR BackupPlanAssociation.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +37,8 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBackupPlanAssociationResult>("gcp:backupdisasterrecovery/getBackupPlanAssociation:getBackupPlanAssociation", args ?? new GetBackupPlanAssociationArgs(), options.WithDefaults());
 
         /// <summary>
+        /// A Backup and DR BackupPlanAssociation.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +62,8 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
             => global::Pulumi.Deployment.Instance.Invoke<GetBackupPlanAssociationResult>("gcp:backupdisasterrecovery/getBackupPlanAssociation:getBackupPlanAssociation", args ?? new GetBackupPlanAssociationInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// A Backup and DR BackupPlanAssociation.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

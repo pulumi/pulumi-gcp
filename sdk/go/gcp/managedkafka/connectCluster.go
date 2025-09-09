@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A Managed Service for Kafka Connect cluster.
+//
 // ## Example Usage
 //
 // ### Managedkafka Connect Cluster Basic

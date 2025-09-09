@@ -271,6 +271,8 @@ public final class BackupdisasterrecoveryFunctions {
         return Deployment.getInstance().invokeAsync("gcp:backupdisasterrecovery/getBackupPlan:getBackupPlan", TypeShape.of(GetBackupPlanResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * A Backup and DR BackupPlanAssociation.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -312,6 +314,8 @@ public final class BackupdisasterrecoveryFunctions {
         return getBackupPlanAssociation(args, InvokeOptions.Empty);
     }
     /**
+     * A Backup and DR BackupPlanAssociation.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -353,6 +357,8 @@ public final class BackupdisasterrecoveryFunctions {
         return getBackupPlanAssociationPlain(args, InvokeOptions.Empty);
     }
     /**
+     * A Backup and DR BackupPlanAssociation.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -394,6 +400,8 @@ public final class BackupdisasterrecoveryFunctions {
         return Deployment.getInstance().invoke("gcp:backupdisasterrecovery/getBackupPlanAssociation:getBackupPlanAssociation", TypeShape.of(GetBackupPlanAssociationResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * A Backup and DR BackupPlanAssociation.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -435,6 +443,8 @@ public final class BackupdisasterrecoveryFunctions {
         return Deployment.getInstance().invoke("gcp:backupdisasterrecovery/getBackupPlanAssociation:getBackupPlanAssociation", TypeShape.of(GetBackupPlanAssociationResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * A Backup and DR BackupPlanAssociation.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -916,6 +926,8 @@ public final class BackupdisasterrecoveryFunctions {
         return Deployment.getInstance().invokeAsync("gcp:backupdisasterrecovery/getDataSource:getDataSource", TypeShape.of(GetDataSourceResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Get information about a Google Backup DR Management server.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -956,6 +968,8 @@ public final class BackupdisasterrecoveryFunctions {
         return getManagementServer(args, InvokeOptions.Empty);
     }
     /**
+     * Get information about a Google Backup DR Management server.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -996,6 +1010,8 @@ public final class BackupdisasterrecoveryFunctions {
         return getManagementServerPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Get information about a Google Backup DR Management server.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1036,6 +1052,8 @@ public final class BackupdisasterrecoveryFunctions {
         return Deployment.getInstance().invoke("gcp:backupdisasterrecovery/getManagementServer:getManagementServer", TypeShape.of(GetManagementServerResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Get information about a Google Backup DR Management server.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1076,6 +1094,8 @@ public final class BackupdisasterrecoveryFunctions {
         return Deployment.getInstance().invoke("gcp:backupdisasterrecovery/getManagementServer:getManagementServer", TypeShape.of(GetManagementServerResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Get information about a Google Backup DR Management server.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;

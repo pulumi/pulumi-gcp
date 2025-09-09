@@ -12,6 +12,262 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Three different resources help you manage your IAM policy for Cloud Workstations Workstation. Each of these resources serves a different use case:
+//
+// * `workstations.WorkstationIamPolicy`: Authoritative. Sets the IAM policy for the workstation and replaces any existing policy already attached.
+// * `workstations.WorkstationIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the workstation are preserved.
+// * `workstations.WorkstationIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the workstation are preserved.
+//
+// # A data source can be used to retrieve policy data in advent you do not need creation
+//
+// * `workstations.WorkstationIamPolicy`: Retrieves the IAM policy for the workstation
+//
+// > **Note:** `workstations.WorkstationIamPolicy` **cannot** be used in conjunction with `workstations.WorkstationIamBinding` and `workstations.WorkstationIamMember` or they will fight over what your policy should be.
+//
+// > **Note:** `workstations.WorkstationIamBinding` resources **can be** used in conjunction with `workstations.WorkstationIamMember` resources **only if** they do not grant privilege to the same role.
+//
+// ## workstations.WorkstationIamPolicy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workstations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/viewer",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = workstations.NewWorkstationIamPolicy(ctx, "policy", &workstations.WorkstationIamPolicyArgs{
+//				Project:              pulumi.Any(_default.Project),
+//				Location:             pulumi.Any(_default.Location),
+//				WorkstationClusterId: pulumi.Any(_default.WorkstationClusterId),
+//				WorkstationConfigId:  pulumi.Any(_default.WorkstationConfigId),
+//				WorkstationId:        pulumi.Any(_default.WorkstationId),
+//				PolicyData:           pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## workstations.WorkstationIamBinding
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workstations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := workstations.NewWorkstationIamBinding(ctx, "binding", &workstations.WorkstationIamBindingArgs{
+//				Project:              pulumi.Any(_default.Project),
+//				Location:             pulumi.Any(_default.Location),
+//				WorkstationClusterId: pulumi.Any(_default.WorkstationClusterId),
+//				WorkstationConfigId:  pulumi.Any(_default.WorkstationConfigId),
+//				WorkstationId:        pulumi.Any(_default.WorkstationId),
+//				Role:                 pulumi.String("roles/viewer"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## workstations.WorkstationIamMember
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workstations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := workstations.NewWorkstationIamMember(ctx, "member", &workstations.WorkstationIamMemberArgs{
+//				Project:              pulumi.Any(_default.Project),
+//				Location:             pulumi.Any(_default.Location),
+//				WorkstationClusterId: pulumi.Any(_default.WorkstationClusterId),
+//				WorkstationConfigId:  pulumi.Any(_default.WorkstationConfigId),
+//				WorkstationId:        pulumi.Any(_default.WorkstationId),
+//				Role:                 pulumi.String("roles/viewer"),
+//				Member:               pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## This resource supports User Project Overrides.
+//
+// -
+//
+// # IAM policy for Cloud Workstations Workstation
+//
+// Three different resources help you manage your IAM policy for Cloud Workstations Workstation. Each of these resources serves a different use case:
+//
+// * `workstations.WorkstationIamPolicy`: Authoritative. Sets the IAM policy for the workstation and replaces any existing policy already attached.
+// * `workstations.WorkstationIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the workstation are preserved.
+// * `workstations.WorkstationIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the workstation are preserved.
+//
+// # A data source can be used to retrieve policy data in advent you do not need creation
+//
+// * `workstations.WorkstationIamPolicy`: Retrieves the IAM policy for the workstation
+//
+// > **Note:** `workstations.WorkstationIamPolicy` **cannot** be used in conjunction with `workstations.WorkstationIamBinding` and `workstations.WorkstationIamMember` or they will fight over what your policy should be.
+//
+// > **Note:** `workstations.WorkstationIamBinding` resources **can be** used in conjunction with `workstations.WorkstationIamMember` resources **only if** they do not grant privilege to the same role.
+//
+// ## workstations.WorkstationIamPolicy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workstations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/viewer",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = workstations.NewWorkstationIamPolicy(ctx, "policy", &workstations.WorkstationIamPolicyArgs{
+//				Project:              pulumi.Any(_default.Project),
+//				Location:             pulumi.Any(_default.Location),
+//				WorkstationClusterId: pulumi.Any(_default.WorkstationClusterId),
+//				WorkstationConfigId:  pulumi.Any(_default.WorkstationConfigId),
+//				WorkstationId:        pulumi.Any(_default.WorkstationId),
+//				PolicyData:           pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## workstations.WorkstationIamBinding
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workstations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := workstations.NewWorkstationIamBinding(ctx, "binding", &workstations.WorkstationIamBindingArgs{
+//				Project:              pulumi.Any(_default.Project),
+//				Location:             pulumi.Any(_default.Location),
+//				WorkstationClusterId: pulumi.Any(_default.WorkstationClusterId),
+//				WorkstationConfigId:  pulumi.Any(_default.WorkstationConfigId),
+//				WorkstationId:        pulumi.Any(_default.WorkstationId),
+//				Role:                 pulumi.String("roles/viewer"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## workstations.WorkstationIamMember
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workstations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := workstations.NewWorkstationIamMember(ctx, "member", &workstations.WorkstationIamMemberArgs{
+//				Project:              pulumi.Any(_default.Project),
+//				Location:             pulumi.Any(_default.Location),
+//				WorkstationClusterId: pulumi.Any(_default.WorkstationClusterId),
+//				WorkstationConfigId:  pulumi.Any(_default.WorkstationConfigId),
+//				WorkstationId:        pulumi.Any(_default.WorkstationId),
+//				Role:                 pulumi.String("roles/viewer"),
+//				Member:               pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // For all import syntaxes, the "resource in question" can take any of the following forms:

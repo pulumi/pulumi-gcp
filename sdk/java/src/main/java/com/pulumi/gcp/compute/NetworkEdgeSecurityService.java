@@ -15,6 +15,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Google Cloud Armor network edge security service resource.
+ * 
+ * To get more information about NetworkEdgeSecurityService, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networkEdgeSecurityServices)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/armor/docs/advanced-network-ddos)
+ * 
  * ## Example Usage
  * 
  * ### Compute Network Edge Security Service Basic

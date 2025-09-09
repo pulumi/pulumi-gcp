@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A Google Cloud Firebase Android application instance
 func LookupAndroidApp(ctx *pulumi.Context, args *LookupAndroidAppArgs, opts ...pulumi.InvokeOption) (*LookupAndroidAppResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAndroidAppResult

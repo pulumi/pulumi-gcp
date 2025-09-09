@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A Backup and DR BackupPlanAssociation.
+//
 // ## Example Usage
 //
 // ```go

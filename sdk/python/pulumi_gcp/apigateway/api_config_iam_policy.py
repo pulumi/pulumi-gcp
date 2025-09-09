@@ -211,7 +211,7 @@ class ApiConfigIamPolicy(pulumi.CustomResource):
 
         > **Note:** `apigateway.ApiConfigIamBinding` resources **can be** used in conjunction with `apigateway.ApiConfigIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_api\\_gateway\\_api\\_config\\_iam\\_policy
+        ## apigateway.ApiConfigIamPolicy
 
         ```python
         import pulumi
@@ -273,7 +273,7 @@ class ApiConfigIamPolicy(pulumi.CustomResource):
 
         > **Note:** `apigateway.ApiConfigIamBinding` resources **can be** used in conjunction with `apigateway.ApiConfigIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_api\\_gateway\\_api\\_config\\_iam\\_policy
+        ## apigateway.ApiConfigIamPolicy
 
         ```python
         import pulumi
@@ -384,7 +384,7 @@ class ApiConfigIamPolicy(pulumi.CustomResource):
 
         > **Note:** `apigateway.ApiConfigIamBinding` resources **can be** used in conjunction with `apigateway.ApiConfigIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_api\\_gateway\\_api\\_config\\_iam\\_policy
+        ## apigateway.ApiConfigIamPolicy
 
         ```python
         import pulumi
@@ -446,7 +446,7 @@ class ApiConfigIamPolicy(pulumi.CustomResource):
 
         > **Note:** `apigateway.ApiConfigIamBinding` resources **can be** used in conjunction with `apigateway.ApiConfigIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_api\\_gateway\\_api\\_config\\_iam\\_policy
+        ## apigateway.ApiConfigIamPolicy
 
         ```python
         import pulumi

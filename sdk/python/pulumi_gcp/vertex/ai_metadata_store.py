@@ -265,6 +265,14 @@ class AiMetadataStore(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Instance of a metadata store. Contains a set of metadata that can be queried.
+
+        To get more information about MetadataStore, see:
+
+        * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.metadataStores)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
+
         ## Example Usage
 
         ### Vertex Ai Metadata Store
@@ -326,6 +334,14 @@ class AiMetadataStore(pulumi.CustomResource):
                  args: Optional[AiMetadataStoreArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Instance of a metadata store. Contains a set of metadata that can be queried.
+
+        To get more information about MetadataStore, see:
+
+        * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.metadataStores)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
+
         ## Example Usage
 
         ### Vertex Ai Metadata Store

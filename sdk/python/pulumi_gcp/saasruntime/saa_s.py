@@ -428,6 +428,8 @@ class SaaS(pulumi.CustomResource):
                  saas_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A Saas resource is the top-level representation of a SaaS service managed by a producer. It contains a list of locations where the service is available, which is used by the Rollout system to generate a rollout plan.
+
         ## Example Usage
 
         ### Saas Runtime Saas Basic
@@ -500,6 +502,8 @@ class SaaS(pulumi.CustomResource):
                  args: SaaSArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A Saas resource is the top-level representation of a SaaS service managed by a producer. It contains a list of locations where the service is available, which is used by the Rollout system to generate a rollout plan.
+
         ## Example Usage
 
         ### Saas Runtime Saas Basic

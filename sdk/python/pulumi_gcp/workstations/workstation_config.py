@@ -917,6 +917,14 @@ class WorkstationConfig(pulumi.CustomResource):
                  workstation_config_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A set of configuration options describing how a workstation will be run. Workstation configurations are intended to be shared across multiple workstations.
+
+        To get more information about WorkstationConfig, see:
+
+        * [API documentation](https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs/create)
+        * How-to Guides
+            * [Workstations](https://cloud.google.com/workstations/docs/)
+
         ## Example Usage
 
         ### Workstation Config Basic
@@ -1432,6 +1440,14 @@ class WorkstationConfig(pulumi.CustomResource):
                  args: WorkstationConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A set of configuration options describing how a workstation will be run. Workstation configurations are intended to be shared across multiple workstations.
+
+        To get more information about WorkstationConfig, see:
+
+        * [API documentation](https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs/create)
+        * How-to Guides
+            * [Workstations](https://cloud.google.com/workstations/docs/)
+
         ## Example Usage
 
         ### Workstation Config Basic

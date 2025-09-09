@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A Google Cloud Firebase Hosting Channel instance
 func LookupHostingChannel(ctx *pulumi.Context, args *LookupHostingChannelArgs, opts ...pulumi.InvokeOption) (*LookupHostingChannelResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupHostingChannelResult

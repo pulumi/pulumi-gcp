@@ -846,6 +846,14 @@ class V2Vm(pulumi.CustomResource):
                  zone: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A Cloud TPU VM instance.
+
+        To get more information about Vm, see:
+
+        * [API documentation](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.nodes)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/tpu/docs/)
+
         ## Example Usage
 
         ### Tpu V2 Vm Basic
@@ -1007,6 +1015,14 @@ class V2Vm(pulumi.CustomResource):
                  args: V2VmArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A Cloud TPU VM instance.
+
+        To get more information about Vm, see:
+
+        * [API documentation](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.nodes)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/tpu/docs/)
+
         ## Example Usage
 
         ### Tpu V2 Vm Basic

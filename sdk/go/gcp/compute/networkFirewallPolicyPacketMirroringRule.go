@@ -12,6 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Represents a packet mirroring rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (mirror or do_not_mirror).
+//
+// To get more information about NetworkFirewallPolicyPacketMirroringRule, see:
+//
+// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/networkFirewallPolicies/addPacketMirroringRule)
+//
 // ## Example Usage
 //
 // ### Compute Network Firewall Policy Packet Mirroring Rule

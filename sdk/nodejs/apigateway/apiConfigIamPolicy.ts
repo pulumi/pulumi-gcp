@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.apigateway.ApiConfigIamBinding` resources **can be** used in conjunction with `gcp.apigateway.ApiConfigIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_api\_gateway\_api\_config\_iam\_policy
+ * ## gcp.apigateway.ApiConfigIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -86,7 +86,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.apigateway.ApiConfigIamBinding` resources **can be** used in conjunction with `gcp.apigateway.ApiConfigIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_api\_gateway\_api\_config\_iam\_policy
+ * ## gcp.apigateway.ApiConfigIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
