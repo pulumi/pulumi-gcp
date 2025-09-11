@@ -168,58 +168,58 @@ export class OsPolicyAssignment extends pulumi.CustomResource {
      * revision. For a given OS policy assignment, there is only one revision with
      * a value of `true` for this field.
      */
-    public /*out*/ readonly baseline!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly baseline: pulumi.Output<boolean>;
     /**
      * Output only. Indicates that this revision deletes the OS policy
      * assignment.
      */
-    public /*out*/ readonly deleted!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly deleted: pulumi.Output<boolean>;
     /**
      * OS policy assignment description. Length of the description is limited to 1024 characters.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The etag for this OS policy assignment. If this is provided on
      * update, it must match the server's etag.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Filter to select VMs. Structure is
      * documented below.
      */
-    public readonly instanceFilter!: pulumi.Output<outputs.osconfig.OsPolicyAssignmentInstanceFilter>;
+    declare public readonly instanceFilter: pulumi.Output<outputs.osconfig.OsPolicyAssignmentInstanceFilter>;
     /**
      * The location for the resource
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Resource name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * List of OS policies to be applied to the VMs.
      * Structure is documented below.
      */
-    public readonly osPolicies!: pulumi.Output<outputs.osconfig.OsPolicyAssignmentOsPolicy[]>;
+    declare public readonly osPolicies: pulumi.Output<outputs.osconfig.OsPolicyAssignmentOsPolicy[]>;
     /**
      * The project for the resource
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Output only. Indicates that reconciliation is in progress
      * for the revision. This value is `true` when the `rolloutState` is one of:
      */
-    public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly reconciling: pulumi.Output<boolean>;
     /**
      * Output only. The timestamp that the revision was
      * created.
      */
-    public /*out*/ readonly revisionCreateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly revisionCreateTime: pulumi.Output<string>;
     /**
      * Output only. The assignment revision ID A new revision is
      * committed whenever a rollout is triggered for a OS policy assignment
      */
-    public /*out*/ readonly revisionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly revisionId: pulumi.Output<string>;
     /**
      * Rollout to deploy the OS policy assignment. A rollout
      * is triggered in the following situations: 1) OSPolicyAssignment is created.
@@ -227,20 +227,20 @@ export class OsPolicyAssignment extends pulumi.CustomResource {
      * the following fields: - instanceFilter - osPolicies 3) OSPolicyAssignment
      * is deleted. Structure is documented below.
      */
-    public readonly rollout!: pulumi.Output<outputs.osconfig.OsPolicyAssignmentRollout>;
+    declare public readonly rollout: pulumi.Output<outputs.osconfig.OsPolicyAssignmentRollout>;
     /**
      * Output only. OS policy assignment rollout state
      */
-    public /*out*/ readonly rolloutState!: pulumi.Output<string>;
+    declare public /*out*/ readonly rolloutState: pulumi.Output<string>;
     /**
      * Set to true to skip awaiting rollout during resource creation and update.
      */
-    public readonly skipAwaitRollout!: pulumi.Output<boolean | undefined>;
+    declare public readonly skipAwaitRollout: pulumi.Output<boolean | undefined>;
     /**
      * Output only. Server generated unique id for the OS policy assignment
      * resource.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
 
     /**
      * Create a OsPolicyAssignment resource with the given unique name, arguments, and options.
@@ -255,44 +255,44 @@ export class OsPolicyAssignment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OsPolicyAssignmentState | undefined;
-            resourceInputs["baseline"] = state ? state.baseline : undefined;
-            resourceInputs["deleted"] = state ? state.deleted : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["instanceFilter"] = state ? state.instanceFilter : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["osPolicies"] = state ? state.osPolicies : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["reconciling"] = state ? state.reconciling : undefined;
-            resourceInputs["revisionCreateTime"] = state ? state.revisionCreateTime : undefined;
-            resourceInputs["revisionId"] = state ? state.revisionId : undefined;
-            resourceInputs["rollout"] = state ? state.rollout : undefined;
-            resourceInputs["rolloutState"] = state ? state.rolloutState : undefined;
-            resourceInputs["skipAwaitRollout"] = state ? state.skipAwaitRollout : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
+            resourceInputs["baseline"] = state?.baseline;
+            resourceInputs["deleted"] = state?.deleted;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["instanceFilter"] = state?.instanceFilter;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["osPolicies"] = state?.osPolicies;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["reconciling"] = state?.reconciling;
+            resourceInputs["revisionCreateTime"] = state?.revisionCreateTime;
+            resourceInputs["revisionId"] = state?.revisionId;
+            resourceInputs["rollout"] = state?.rollout;
+            resourceInputs["rolloutState"] = state?.rolloutState;
+            resourceInputs["skipAwaitRollout"] = state?.skipAwaitRollout;
+            resourceInputs["uid"] = state?.uid;
         } else {
             const args = argsOrState as OsPolicyAssignmentArgs | undefined;
-            if ((!args || args.instanceFilter === undefined) && !opts.urn) {
+            if (args?.instanceFilter === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceFilter'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.osPolicies === undefined) && !opts.urn) {
+            if (args?.osPolicies === undefined && !opts.urn) {
                 throw new Error("Missing required property 'osPolicies'");
             }
-            if ((!args || args.rollout === undefined) && !opts.urn) {
+            if (args?.rollout === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rollout'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["instanceFilter"] = args ? args.instanceFilter : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["osPolicies"] = args ? args.osPolicies : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["rollout"] = args ? args.rollout : undefined;
-            resourceInputs["skipAwaitRollout"] = args ? args.skipAwaitRollout : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["instanceFilter"] = args?.instanceFilter;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["osPolicies"] = args?.osPolicies;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["rollout"] = args?.rollout;
+            resourceInputs["skipAwaitRollout"] = args?.skipAwaitRollout;
             resourceInputs["baseline"] = undefined /*out*/;
             resourceInputs["deleted"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;

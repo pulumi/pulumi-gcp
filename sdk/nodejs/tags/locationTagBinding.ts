@@ -118,19 +118,19 @@ export class LocationTagBinding extends pulumi.CustomResource {
      *
      * - - -
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * The generated id for the TagBinding. This is a string of the form: `tagBindings/{parent}/{tag-value-name}`
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
      */
-    public readonly parent!: pulumi.Output<string>;
+    declare public readonly parent: pulumi.Output<string>;
     /**
      * The TagValue of the TagBinding. Must be of the form tagValues/456.
      */
-    public readonly tagValue!: pulumi.Output<string>;
+    declare public readonly tagValue: pulumi.Output<string>;
 
     /**
      * Create a LocationTagBinding resource with the given unique name, arguments, and options.
@@ -145,21 +145,21 @@ export class LocationTagBinding extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LocationTagBindingState | undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["tagValue"] = state ? state.tagValue : undefined;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["tagValue"] = state?.tagValue;
         } else {
             const args = argsOrState as LocationTagBindingArgs | undefined;
-            if ((!args || args.parent === undefined) && !opts.urn) {
+            if (args?.parent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            if ((!args || args.tagValue === undefined) && !opts.urn) {
+            if (args?.tagValue === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tagValue'");
             }
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
-            resourceInputs["tagValue"] = args ? args.tagValue : undefined;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["parent"] = args?.parent;
+            resourceInputs["tagValue"] = args?.tagValue;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

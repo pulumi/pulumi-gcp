@@ -325,15 +325,15 @@ export class RegionTargetHttpsProxy extends pulumi.CustomResource {
      * sslCertificates and certificateManagerCertificates can't be defined together.
      * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
      */
-    public readonly certificateManagerCertificates!: pulumi.Output<string[] | undefined>;
+    declare public readonly certificateManagerCertificates: pulumi.Output<string[] | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * An optional description of this resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Specifies how long to keep a connection open, after completing a response,
      * while there is no matching traffic (in seconds). If an HTTP keepalive is
@@ -341,7 +341,7 @@ export class RegionTargetHttpsProxy extends pulumi.CustomResource {
      * HTTP(S) load balancer, the minimum allowed value is 5 seconds and the
      * maximum allowed value is 600 seconds.
      */
-    public readonly httpKeepAliveTimeoutSec!: pulumi.Output<number | undefined>;
+    declare public readonly httpKeepAliveTimeoutSec: pulumi.Output<number | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -351,25 +351,25 @@ export class RegionTargetHttpsProxy extends pulumi.CustomResource {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The unique identifier for the resource.
      */
-    public /*out*/ readonly proxyId!: pulumi.Output<number>;
+    declare public /*out*/ readonly proxyId: pulumi.Output<number>;
     /**
      * The Region in which the created target https proxy should reside.
      * If it is not provided, the provider region is used.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * A URL referring to a networksecurity.ServerTlsPolicy
      * resource that describes how the proxy should authenticate inbound
@@ -385,24 +385,24 @@ export class RegionTargetHttpsProxy extends pulumi.CustomResource {
      * receive a resourceInUseByAnotherResource error. Use lifecycle.create_before_destroy
      * within the ServerTlsPolicy resource to avoid this.
      */
-    public readonly serverTlsPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly serverTlsPolicy: pulumi.Output<string | undefined>;
     /**
      * URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
      * At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
      * sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
      */
-    public readonly sslCertificates!: pulumi.Output<string[] | undefined>;
+    declare public readonly sslCertificates: pulumi.Output<string[] | undefined>;
     /**
      * A reference to the Region SslPolicy resource that will be associated with
      * the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
      * resource will not have any SSL policy configured.
      */
-    public readonly sslPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly sslPolicy: pulumi.Output<string | undefined>;
     /**
      * A reference to the RegionUrlMap resource that defines the mapping from URL
      * to the RegionBackendService.
      */
-    public readonly urlMap!: pulumi.Output<string>;
+    declare public readonly urlMap: pulumi.Output<string>;
 
     /**
      * Create a RegionTargetHttpsProxy resource with the given unique name, arguments, and options.
@@ -417,34 +417,34 @@ export class RegionTargetHttpsProxy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegionTargetHttpsProxyState | undefined;
-            resourceInputs["certificateManagerCertificates"] = state ? state.certificateManagerCertificates : undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["httpKeepAliveTimeoutSec"] = state ? state.httpKeepAliveTimeoutSec : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["proxyId"] = state ? state.proxyId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["serverTlsPolicy"] = state ? state.serverTlsPolicy : undefined;
-            resourceInputs["sslCertificates"] = state ? state.sslCertificates : undefined;
-            resourceInputs["sslPolicy"] = state ? state.sslPolicy : undefined;
-            resourceInputs["urlMap"] = state ? state.urlMap : undefined;
+            resourceInputs["certificateManagerCertificates"] = state?.certificateManagerCertificates;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["httpKeepAliveTimeoutSec"] = state?.httpKeepAliveTimeoutSec;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["proxyId"] = state?.proxyId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["serverTlsPolicy"] = state?.serverTlsPolicy;
+            resourceInputs["sslCertificates"] = state?.sslCertificates;
+            resourceInputs["sslPolicy"] = state?.sslPolicy;
+            resourceInputs["urlMap"] = state?.urlMap;
         } else {
             const args = argsOrState as RegionTargetHttpsProxyArgs | undefined;
-            if ((!args || args.urlMap === undefined) && !opts.urn) {
+            if (args?.urlMap === undefined && !opts.urn) {
                 throw new Error("Missing required property 'urlMap'");
             }
-            resourceInputs["certificateManagerCertificates"] = args ? args.certificateManagerCertificates : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["httpKeepAliveTimeoutSec"] = args ? args.httpKeepAliveTimeoutSec : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["serverTlsPolicy"] = args ? args.serverTlsPolicy : undefined;
-            resourceInputs["sslCertificates"] = args ? args.sslCertificates : undefined;
-            resourceInputs["sslPolicy"] = args ? args.sslPolicy : undefined;
-            resourceInputs["urlMap"] = args ? args.urlMap : undefined;
+            resourceInputs["certificateManagerCertificates"] = args?.certificateManagerCertificates;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["httpKeepAliveTimeoutSec"] = args?.httpKeepAliveTimeoutSec;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["serverTlsPolicy"] = args?.serverTlsPolicy;
+            resourceInputs["sslCertificates"] = args?.sslCertificates;
+            resourceInputs["sslPolicy"] = args?.sslPolicy;
+            resourceInputs["urlMap"] = args?.urlMap;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["proxyId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;

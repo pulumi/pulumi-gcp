@@ -508,8 +508,7 @@ class _InterconnectState:
                - CANCELLED: The outage associated with this notification was cancelled before the
                outage was due to start.
                - COMPLETED: The outage associated with this notification is complete.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] wire_groups: A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be
-               deleted if this list is non-empty.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] wire_groups: A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be deleted if this list is non-empty.
         """
         if aai_enabled is not None:
             pulumi.set(__self__, "aai_enabled", aai_enabled)
@@ -1046,8 +1045,7 @@ class _InterconnectState:
     @pulumi.getter(name="wireGroups")
     def wire_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be
-        deleted if this list is non-empty.
+        A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be deleted if this list is non-empty.
         """
         return pulumi.get(self, "wire_groups")
 
@@ -1483,8 +1481,7 @@ class Interconnect(pulumi.CustomResource):
                - CANCELLED: The outage associated with this notification was cancelled before the
                outage was due to start.
                - COMPLETED: The outage associated with this notification is complete.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] wire_groups: A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be
-               deleted if this list is non-empty.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] wire_groups: A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be deleted if this list is non-empty.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1860,8 +1857,7 @@ class Interconnect(pulumi.CustomResource):
     @pulumi.getter(name="wireGroups")
     def wire_groups(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be
-        deleted if this list is non-empty.
+        A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be deleted if this list is non-empty.
         """
         return pulumi.get(self, "wire_groups")
 

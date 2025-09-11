@@ -176,18 +176,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:cloudbuild/workerPool:WorkerPool")
 public class WorkerPool extends com.pulumi.resources.CustomResource {
     /**
-     * User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
-     * limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
-     * configuration. Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> annotations;
 
     /**
-     * @return User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
-     * limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
-     * configuration. Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * @return User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> annotations() {

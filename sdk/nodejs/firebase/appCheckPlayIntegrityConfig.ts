@@ -136,22 +136,22 @@ export class AppCheckPlayIntegrityConfig extends pulumi.CustomResource {
      * The ID of an
      * [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id).
      */
-    public readonly appId!: pulumi.Output<string>;
+    declare public readonly appId: pulumi.Output<string>;
     /**
      * The relative resource name of the Play Integrity configuration object
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Specifies the duration for which App Check tokens exchanged from Play Integrity artifacts will be valid.
      * If unset, a default value of 1 hour is assumed. Must be between 30 minutes and 7 days, inclusive.
      * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
      */
-    public readonly tokenTtl!: pulumi.Output<string>;
+    declare public readonly tokenTtl: pulumi.Output<string>;
 
     /**
      * Create a AppCheckPlayIntegrityConfig resource with the given unique name, arguments, and options.
@@ -166,18 +166,18 @@ export class AppCheckPlayIntegrityConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AppCheckPlayIntegrityConfigState | undefined;
-            resourceInputs["appId"] = state ? state.appId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["tokenTtl"] = state ? state.tokenTtl : undefined;
+            resourceInputs["appId"] = state?.appId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["tokenTtl"] = state?.tokenTtl;
         } else {
             const args = argsOrState as AppCheckPlayIntegrityConfigArgs | undefined;
-            if ((!args || args.appId === undefined) && !opts.urn) {
+            if (args?.appId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'appId'");
             }
-            resourceInputs["appId"] = args ? args.appId : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["tokenTtl"] = args ? args.tokenTtl : undefined;
+            resourceInputs["appId"] = args?.appId;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["tokenTtl"] = args?.tokenTtl;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

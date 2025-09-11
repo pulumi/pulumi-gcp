@@ -135,16 +135,16 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
      * The default port used if the port number is not specified in the
      * network endpoint.
      */
-    public readonly defaultPort!: pulumi.Output<number | undefined>;
+    declare public readonly defaultPort: pulumi.Output<number | undefined>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The uniquely generated identifier for the resource. This identifier is defined by the server.
      */
-    public /*out*/ readonly generatedId!: pulumi.Output<number>;
+    declare public /*out*/ readonly generatedId: pulumi.Output<number>;
     /**
      * Name of the resource; provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -154,12 +154,12 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The network to which all network endpoints in the NEG belong.
      * Uses "default" project network if unspecified.
      */
-    public readonly network!: pulumi.Output<string>;
+    declare public readonly network: pulumi.Output<string>;
     /**
      * Type of network endpoints in this network endpoint group.
      * NON_GCP_PRIVATE_IP_PORT is used for hybrid connectivity network
@@ -172,28 +172,28 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
      * Default value is `GCE_VM_IP_PORT`.
      * Possible values are: `GCE_VM_IP`, `GCE_VM_IP_PORT`, `NON_GCP_PRIVATE_IP_PORT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
      */
-    public readonly networkEndpointType!: pulumi.Output<string | undefined>;
+    declare public readonly networkEndpointType: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * Number of network endpoints in the network endpoint group.
      */
-    public /*out*/ readonly size!: pulumi.Output<number>;
+    declare public /*out*/ readonly size: pulumi.Output<number>;
     /**
      * Optional subnetwork to which all network endpoints in the NEG belong.
      */
-    public readonly subnetwork!: pulumi.Output<string | undefined>;
+    declare public readonly subnetwork: pulumi.Output<string | undefined>;
     /**
      * Zone where the network endpoint group is located.
      */
-    public readonly zone!: pulumi.Output<string>;
+    declare public readonly zone: pulumi.Output<string>;
 
     /**
      * Create a NetworkEndpointGroup resource with the given unique name, arguments, and options.
@@ -208,30 +208,30 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkEndpointGroupState | undefined;
-            resourceInputs["defaultPort"] = state ? state.defaultPort : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["generatedId"] = state ? state.generatedId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["networkEndpointType"] = state ? state.networkEndpointType : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["subnetwork"] = state ? state.subnetwork : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["defaultPort"] = state?.defaultPort;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["generatedId"] = state?.generatedId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["networkEndpointType"] = state?.networkEndpointType;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["subnetwork"] = state?.subnetwork;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as NetworkEndpointGroupArgs | undefined;
-            if ((!args || args.network === undefined) && !opts.urn) {
+            if (args?.network === undefined && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
-            resourceInputs["defaultPort"] = args ? args.defaultPort : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["networkEndpointType"] = args ? args.networkEndpointType : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["defaultPort"] = args?.defaultPort;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["networkEndpointType"] = args?.networkEndpointType;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["subnetwork"] = args?.subnetwork;
+            resourceInputs["zone"] = args?.zone;
             resourceInputs["generatedId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["size"] = undefined /*out*/;

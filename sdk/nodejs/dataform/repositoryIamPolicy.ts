@@ -32,11 +32,11 @@ export class RepositoryIamPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === RepositoryIamPolicy.__pulumiType;
     }
 
-    public /*out*/ readonly etag!: pulumi.Output<string>;
-    public readonly policyData!: pulumi.Output<string>;
-    public readonly project!: pulumi.Output<string>;
-    public readonly region!: pulumi.Output<string>;
-    public readonly repository!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
+    declare public readonly policyData: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
+    declare public readonly repository: pulumi.Output<string>;
 
     /**
      * Create a RepositoryIamPolicy resource with the given unique name, arguments, and options.
@@ -51,23 +51,23 @@ export class RepositoryIamPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RepositoryIamPolicyState | undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["policyData"] = state ? state.policyData : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["repository"] = state ? state.repository : undefined;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["policyData"] = state?.policyData;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["repository"] = state?.repository;
         } else {
             const args = argsOrState as RepositoryIamPolicyArgs | undefined;
-            if ((!args || args.policyData === undefined) && !opts.urn) {
+            if (args?.policyData === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyData'");
             }
-            if ((!args || args.repository === undefined) && !opts.urn) {
+            if (args?.repository === undefined && !opts.urn) {
                 throw new Error("Missing required property 'repository'");
             }
-            resourceInputs["policyData"] = args ? args.policyData : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["repository"] = args ? args.repository : undefined;
+            resourceInputs["policyData"] = args?.policyData;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["repository"] = args?.repository;
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

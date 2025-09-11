@@ -715,18 +715,14 @@ public class Table extends com.pulumi.resources.CustomResource {
         return this.tableId;
     }
     /**
-     * View sets the optional parameter &#34;view&#34;: Specifies the view that determines which table information is returned. By
-     * default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values:
-     * TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
+     * View sets the optional parameter &#34;view&#34;: Specifies the view that determines which table information is returned. By default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values: TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
      * 
      */
     @Export(name="tableMetadataView", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tableMetadataView;
 
     /**
-     * @return View sets the optional parameter &#34;view&#34;: Specifies the view that determines which table information is returned. By
-     * default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values:
-     * TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
+     * @return View sets the optional parameter &#34;view&#34;: Specifies the view that determines which table information is returned. By default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values: TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
      * 
      */
     public Output<Optional<String>> tableMetadataView() {

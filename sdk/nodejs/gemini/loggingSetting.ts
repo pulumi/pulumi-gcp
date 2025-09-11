@@ -81,52 +81,52 @@ export class LoggingSetting extends pulumi.CustomResource {
     /**
      * Create time stamp.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Whether to log metadata.
      */
-    public readonly logMetadata!: pulumi.Output<boolean | undefined>;
+    declare public readonly logMetadata: pulumi.Output<boolean | undefined>;
     /**
      * Whether to log prompts and responses.
      */
-    public readonly logPromptsAndResponses!: pulumi.Output<boolean | undefined>;
+    declare public readonly logPromptsAndResponses: pulumi.Output<boolean | undefined>;
     /**
      * Id of the Logging Setting.
      */
-    public readonly loggingSettingId!: pulumi.Output<string>;
+    declare public readonly loggingSettingId: pulumi.Output<string>;
     /**
      * Identifier. Name of the resource.
      * Format:projects/{project}/locations/{location}/loggingsettings/{loggingsetting}
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Update time stamp.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a LoggingSetting resource with the given unique name, arguments, and options.
@@ -141,31 +141,31 @@ export class LoggingSetting extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LoggingSettingState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["logMetadata"] = state ? state.logMetadata : undefined;
-            resourceInputs["logPromptsAndResponses"] = state ? state.logPromptsAndResponses : undefined;
-            resourceInputs["loggingSettingId"] = state ? state.loggingSettingId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["logMetadata"] = state?.logMetadata;
+            resourceInputs["logPromptsAndResponses"] = state?.logPromptsAndResponses;
+            resourceInputs["loggingSettingId"] = state?.loggingSettingId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as LoggingSettingArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.loggingSettingId === undefined) && !opts.urn) {
+            if (args?.loggingSettingId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'loggingSettingId'");
             }
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["logMetadata"] = args ? args.logMetadata : undefined;
-            resourceInputs["logPromptsAndResponses"] = args ? args.logPromptsAndResponses : undefined;
-            resourceInputs["loggingSettingId"] = args ? args.loggingSettingId : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["logMetadata"] = args?.logMetadata;
+            resourceInputs["logPromptsAndResponses"] = args?.logPromptsAndResponses;
+            resourceInputs["loggingSettingId"] = args?.loggingSettingId;
+            resourceInputs["project"] = args?.project;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

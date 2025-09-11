@@ -213,26 +213,26 @@ export class ListingIamBinding extends pulumi.CustomResource {
         return obj['__pulumiType'] === ListingIamBinding.__pulumiType;
     }
 
-    public readonly condition!: pulumi.Output<outputs.bigqueryanalyticshub.ListingIamBindingCondition | undefined>;
+    declare public readonly condition: pulumi.Output<outputs.bigqueryanalyticshub.ListingIamBindingCondition | undefined>;
     /**
      * The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
      */
-    public readonly dataExchangeId!: pulumi.Output<string>;
+    declare public readonly dataExchangeId: pulumi.Output<string>;
     /**
      * (Computed) The etag of the IAM policy.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Used to find the parent resource to bind the IAM policy to
      */
-    public readonly listingId!: pulumi.Output<string>;
+    declare public readonly listingId: pulumi.Output<string>;
     /**
      * The name of the location this data exchange listing.
      * Used to find the parent resource to bind the IAM policy to. If not specified,
      * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
      * location is specified, it is taken from the provider configuration.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -246,18 +246,18 @@ export class ListingIamBinding extends pulumi.CustomResource {
      * * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
      */
-    public readonly members!: pulumi.Output<string[]>;
+    declare public readonly members: pulumi.Output<string[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.bigqueryanalyticshub.ListingIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    public readonly role!: pulumi.Output<string>;
+    declare public readonly role: pulumi.Output<string>;
 
     /**
      * Create a ListingIamBinding resource with the given unique name, arguments, and options.
@@ -272,35 +272,35 @@ export class ListingIamBinding extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ListingIamBindingState | undefined;
-            resourceInputs["condition"] = state ? state.condition : undefined;
-            resourceInputs["dataExchangeId"] = state ? state.dataExchangeId : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["listingId"] = state ? state.listingId : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["members"] = state ? state.members : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["condition"] = state?.condition;
+            resourceInputs["dataExchangeId"] = state?.dataExchangeId;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["listingId"] = state?.listingId;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["members"] = state?.members;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["role"] = state?.role;
         } else {
             const args = argsOrState as ListingIamBindingArgs | undefined;
-            if ((!args || args.dataExchangeId === undefined) && !opts.urn) {
+            if (args?.dataExchangeId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataExchangeId'");
             }
-            if ((!args || args.listingId === undefined) && !opts.urn) {
+            if (args?.listingId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'listingId'");
             }
-            if ((!args || args.members === undefined) && !opts.urn) {
+            if (args?.members === undefined && !opts.urn) {
                 throw new Error("Missing required property 'members'");
             }
-            if ((!args || args.role === undefined) && !opts.urn) {
+            if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            resourceInputs["condition"] = args ? args.condition : undefined;
-            resourceInputs["dataExchangeId"] = args ? args.dataExchangeId : undefined;
-            resourceInputs["listingId"] = args ? args.listingId : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["members"] = args ? args.members : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["condition"] = args?.condition;
+            resourceInputs["dataExchangeId"] = args?.dataExchangeId;
+            resourceInputs["listingId"] = args?.listingId;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["members"] = args?.members;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["role"] = args?.role;
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -76,7 +76,7 @@ export class SharedVPCHostProject extends pulumi.CustomResource {
     /**
      * The ID of the project that will serve as a Shared VPC host project
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
 
     /**
      * Create a SharedVPCHostProject resource with the given unique name, arguments, and options.
@@ -91,13 +91,13 @@ export class SharedVPCHostProject extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SharedVPCHostProjectState | undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as SharedVPCHostProjectArgs | undefined;
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["project"] = args?.project;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SharedVPCHostProject.__pulumiType, name, resourceInputs, opts);

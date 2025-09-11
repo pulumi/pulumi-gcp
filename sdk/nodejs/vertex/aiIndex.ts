@@ -164,78 +164,78 @@ export class AiIndex extends pulumi.CustomResource {
     /**
      * The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had been undeployed first.
      * Structure is documented below.
      */
-    public /*out*/ readonly deployedIndexes!: pulumi.Output<outputs.vertex.AiIndexDeployedIndex[]>;
+    declare public /*out*/ readonly deployedIndexes: pulumi.Output<outputs.vertex.AiIndexDeployedIndex[]>;
     /**
      * The description of the Index.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Used to perform consistent read-modify-write updates.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Stats of the index resource.
      * Structure is documented below.
      */
-    public /*out*/ readonly indexStats!: pulumi.Output<outputs.vertex.AiIndexIndexStat[]>;
+    declare public /*out*/ readonly indexStats: pulumi.Output<outputs.vertex.AiIndexIndexStat[]>;
     /**
      * The update method to use with this Index. The value must be the followings. If not set, BATCH_UPDATE will be used by default.
      * * BATCH_UPDATE: user can call indexes.patch with files on Cloud Storage of datapoints to update.
      * * STREAM_UPDATE: user can call indexes.upsertDatapoints/DeleteDatapoints to update the Index and the updates will be applied in corresponding DeployedIndexes in nearly real-time.
      */
-    public readonly indexUpdateMethod!: pulumi.Output<string | undefined>;
+    declare public readonly indexUpdateMethod: pulumi.Output<string | undefined>;
     /**
      * The labels with user-defined metadata to organize your Indexes.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Additional information about the Index.
      * Although this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.
      * Attempts to create an Index without this field will result in an API error.
      * Structure is documented below.
      */
-    public readonly metadata!: pulumi.Output<outputs.vertex.AiIndexMetadata>;
+    declare public readonly metadata: pulumi.Output<outputs.vertex.AiIndexMetadata | undefined>;
     /**
      * Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific to it. Unset if the Index does not have any additional information.
      */
-    public /*out*/ readonly metadataSchemaUri!: pulumi.Output<string>;
+    declare public /*out*/ readonly metadataSchemaUri: pulumi.Output<string>;
     /**
      * The resource name of the Index.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The region of the index. eg us-central1
      */
-    public readonly region!: pulumi.Output<string | undefined>;
+    declare public readonly region: pulumi.Output<string | undefined>;
     /**
      * The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a AiIndex resource with the given unique name, arguments, and options.
@@ -250,37 +250,34 @@ export class AiIndex extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AiIndexState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["deployedIndexes"] = state ? state.deployedIndexes : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["indexStats"] = state ? state.indexStats : undefined;
-            resourceInputs["indexUpdateMethod"] = state ? state.indexUpdateMethod : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["metadata"] = state ? state.metadata : undefined;
-            resourceInputs["metadataSchemaUri"] = state ? state.metadataSchemaUri : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deployedIndexes"] = state?.deployedIndexes;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["indexStats"] = state?.indexStats;
+            resourceInputs["indexUpdateMethod"] = state?.indexUpdateMethod;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["metadata"] = state?.metadata;
+            resourceInputs["metadataSchemaUri"] = state?.metadataSchemaUri;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as AiIndexArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.metadata === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'metadata'");
-            }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["indexUpdateMethod"] = args ? args.indexUpdateMethod : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["metadata"] = args ? args.metadata : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["indexUpdateMethod"] = args?.indexUpdateMethod;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["metadata"] = args?.metadata;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deployedIndexes"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;

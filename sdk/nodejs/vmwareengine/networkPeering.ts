@@ -119,77 +119,77 @@ export class NetworkPeering extends pulumi.CustomResource {
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
      * up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * User-provided description for this network peering.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * True if custom routes are exported to the peered network; false otherwise.
      */
-    public readonly exportCustomRoutes!: pulumi.Output<boolean | undefined>;
+    declare public readonly exportCustomRoutes: pulumi.Output<boolean | undefined>;
     /**
      * True if all subnet routes with a public IP address range are exported; false otherwise.
      */
-    public readonly exportCustomRoutesWithPublicIp!: pulumi.Output<boolean | undefined>;
+    declare public readonly exportCustomRoutesWithPublicIp: pulumi.Output<boolean | undefined>;
     /**
      * True if custom routes are imported from the peered network; false otherwise.
      */
-    public readonly importCustomRoutes!: pulumi.Output<boolean | undefined>;
+    declare public readonly importCustomRoutes: pulumi.Output<boolean | undefined>;
     /**
      * True if custom routes are imported from the peered network; false otherwise.
      */
-    public readonly importCustomRoutesWithPublicIp!: pulumi.Output<boolean | undefined>;
+    declare public readonly importCustomRoutesWithPublicIp: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the Network Peering.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The relative resource name of the network to peer with a standard VMware Engine network.
      * The provided network can be a consumer VPC network or another standard VMware Engine network.
      */
-    public readonly peerNetwork!: pulumi.Output<string>;
+    declare public readonly peerNetwork: pulumi.Output<string>;
     /**
      * The type of the network to peer with the VMware Engine network.
      * Possible values are: `STANDARD`, `VMWARE_ENGINE_NETWORK`, `PRIVATE_SERVICES_ACCESS`, `NETAPP_CLOUD_VOLUMES`, `THIRD_PARTY_SERVICE`, `DELL_POWERSCALE`, `GOOGLE_CLOUD_NETAPP_VOLUMES`.
      */
-    public readonly peerNetworkType!: pulumi.Output<string>;
+    declare public readonly peerNetworkType: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * State of the network peering.
      * This field has a value of 'ACTIVE' when there's a matching configuration in the peer network.
      * New values may be added to this enum when appropriate.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Details about the current state of the network peering.
      */
-    public /*out*/ readonly stateDetails!: pulumi.Output<string>;
+    declare public /*out*/ readonly stateDetails: pulumi.Output<string>;
     /**
      * System-generated unique identifier for the resource.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * Last updated time of this resource.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
      * fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * The relative resource name of the VMware Engine network. Specify the name in the following form:
      * projects/{project}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId} where {project}
      * can either be a project number or a project ID.
      */
-    public readonly vmwareEngineNetwork!: pulumi.Output<string>;
+    declare public readonly vmwareEngineNetwork: pulumi.Output<string>;
     /**
      * The canonical name of the VMware Engine network in the form:
      * projects/{project_number}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
      */
-    public /*out*/ readonly vmwareEngineNetworkCanonical!: pulumi.Output<string>;
+    declare public /*out*/ readonly vmwareEngineNetworkCanonical: pulumi.Output<string>;
 
     /**
      * Create a NetworkPeering resource with the given unique name, arguments, and options.
@@ -204,43 +204,43 @@ export class NetworkPeering extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkPeeringState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["exportCustomRoutes"] = state ? state.exportCustomRoutes : undefined;
-            resourceInputs["exportCustomRoutesWithPublicIp"] = state ? state.exportCustomRoutesWithPublicIp : undefined;
-            resourceInputs["importCustomRoutes"] = state ? state.importCustomRoutes : undefined;
-            resourceInputs["importCustomRoutesWithPublicIp"] = state ? state.importCustomRoutesWithPublicIp : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["peerNetwork"] = state ? state.peerNetwork : undefined;
-            resourceInputs["peerNetworkType"] = state ? state.peerNetworkType : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["stateDetails"] = state ? state.stateDetails : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["vmwareEngineNetwork"] = state ? state.vmwareEngineNetwork : undefined;
-            resourceInputs["vmwareEngineNetworkCanonical"] = state ? state.vmwareEngineNetworkCanonical : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["exportCustomRoutes"] = state?.exportCustomRoutes;
+            resourceInputs["exportCustomRoutesWithPublicIp"] = state?.exportCustomRoutesWithPublicIp;
+            resourceInputs["importCustomRoutes"] = state?.importCustomRoutes;
+            resourceInputs["importCustomRoutesWithPublicIp"] = state?.importCustomRoutesWithPublicIp;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["peerNetwork"] = state?.peerNetwork;
+            resourceInputs["peerNetworkType"] = state?.peerNetworkType;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["stateDetails"] = state?.stateDetails;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["vmwareEngineNetwork"] = state?.vmwareEngineNetwork;
+            resourceInputs["vmwareEngineNetworkCanonical"] = state?.vmwareEngineNetworkCanonical;
         } else {
             const args = argsOrState as NetworkPeeringArgs | undefined;
-            if ((!args || args.peerNetwork === undefined) && !opts.urn) {
+            if (args?.peerNetwork === undefined && !opts.urn) {
                 throw new Error("Missing required property 'peerNetwork'");
             }
-            if ((!args || args.peerNetworkType === undefined) && !opts.urn) {
+            if (args?.peerNetworkType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'peerNetworkType'");
             }
-            if ((!args || args.vmwareEngineNetwork === undefined) && !opts.urn) {
+            if (args?.vmwareEngineNetwork === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vmwareEngineNetwork'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["exportCustomRoutes"] = args ? args.exportCustomRoutes : undefined;
-            resourceInputs["exportCustomRoutesWithPublicIp"] = args ? args.exportCustomRoutesWithPublicIp : undefined;
-            resourceInputs["importCustomRoutes"] = args ? args.importCustomRoutes : undefined;
-            resourceInputs["importCustomRoutesWithPublicIp"] = args ? args.importCustomRoutesWithPublicIp : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["peerNetwork"] = args ? args.peerNetwork : undefined;
-            resourceInputs["peerNetworkType"] = args ? args.peerNetworkType : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["vmwareEngineNetwork"] = args ? args.vmwareEngineNetwork : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["exportCustomRoutes"] = args?.exportCustomRoutes;
+            resourceInputs["exportCustomRoutesWithPublicIp"] = args?.exportCustomRoutesWithPublicIp;
+            resourceInputs["importCustomRoutes"] = args?.importCustomRoutes;
+            resourceInputs["importCustomRoutesWithPublicIp"] = args?.importCustomRoutesWithPublicIp;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["peerNetwork"] = args?.peerNetwork;
+            resourceInputs["peerNetworkType"] = args?.peerNetworkType;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["vmwareEngineNetwork"] = args?.vmwareEngineNetwork;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateDetails"] = undefined /*out*/;

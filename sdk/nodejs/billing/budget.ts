@@ -287,45 +287,45 @@ export class Budget extends pulumi.CustomResource {
      * using threshold rules.
      * Structure is documented below.
      */
-    public readonly allUpdatesRule!: pulumi.Output<outputs.billing.BudgetAllUpdatesRule | undefined>;
+    declare public readonly allUpdatesRule: pulumi.Output<outputs.billing.BudgetAllUpdatesRule | undefined>;
     /**
      * The budgeted amount for each usage period.
      * Structure is documented below.
      */
-    public readonly amount!: pulumi.Output<outputs.billing.BudgetAmount>;
+    declare public readonly amount: pulumi.Output<outputs.billing.BudgetAmount>;
     /**
      * ID of the billing account to set a budget on.
      */
-    public readonly billingAccount!: pulumi.Output<string>;
+    declare public readonly billingAccount: pulumi.Output<string>;
     /**
      * Filters that define which resources are used to compute the actual
      * spend against the budget.
      * Structure is documented below.
      */
-    public readonly budgetFilter!: pulumi.Output<outputs.billing.BudgetBudgetFilter>;
+    declare public readonly budgetFilter: pulumi.Output<outputs.billing.BudgetBudgetFilter>;
     /**
      * User data for display name in UI. Must be <= 60 chars.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * Resource name of the budget. The resource name
      * implies the scope of a budget. Values are of the form
      * billingAccounts/{billingAccountId}/budgets/{budgetId}.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ownership scope of the budget. The ownership scope and users'
      * IAM permissions determine who has full access to the budget's data.
      * Possible values are: `OWNERSHIP_SCOPE_UNSPECIFIED`, `ALL_USERS`, `BILLING_ACCOUNT`.
      */
-    public readonly ownershipScope!: pulumi.Output<string | undefined>;
+    declare public readonly ownershipScope: pulumi.Output<string | undefined>;
     /**
      * Rules that trigger alerts (notifications of thresholds being
      * crossed) when spend exceeds the specified percentages of the
      * budget.
      * Structure is documented below.
      */
-    public readonly thresholdRules!: pulumi.Output<outputs.billing.BudgetThresholdRule[] | undefined>;
+    declare public readonly thresholdRules: pulumi.Output<outputs.billing.BudgetThresholdRule[] | undefined>;
 
     /**
      * Create a Budget resource with the given unique name, arguments, and options.
@@ -340,29 +340,29 @@ export class Budget extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BudgetState | undefined;
-            resourceInputs["allUpdatesRule"] = state ? state.allUpdatesRule : undefined;
-            resourceInputs["amount"] = state ? state.amount : undefined;
-            resourceInputs["billingAccount"] = state ? state.billingAccount : undefined;
-            resourceInputs["budgetFilter"] = state ? state.budgetFilter : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["ownershipScope"] = state ? state.ownershipScope : undefined;
-            resourceInputs["thresholdRules"] = state ? state.thresholdRules : undefined;
+            resourceInputs["allUpdatesRule"] = state?.allUpdatesRule;
+            resourceInputs["amount"] = state?.amount;
+            resourceInputs["billingAccount"] = state?.billingAccount;
+            resourceInputs["budgetFilter"] = state?.budgetFilter;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["ownershipScope"] = state?.ownershipScope;
+            resourceInputs["thresholdRules"] = state?.thresholdRules;
         } else {
             const args = argsOrState as BudgetArgs | undefined;
-            if ((!args || args.amount === undefined) && !opts.urn) {
+            if (args?.amount === undefined && !opts.urn) {
                 throw new Error("Missing required property 'amount'");
             }
-            if ((!args || args.billingAccount === undefined) && !opts.urn) {
+            if (args?.billingAccount === undefined && !opts.urn) {
                 throw new Error("Missing required property 'billingAccount'");
             }
-            resourceInputs["allUpdatesRule"] = args ? args.allUpdatesRule : undefined;
-            resourceInputs["amount"] = args ? args.amount : undefined;
-            resourceInputs["billingAccount"] = args ? args.billingAccount : undefined;
-            resourceInputs["budgetFilter"] = args ? args.budgetFilter : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["ownershipScope"] = args ? args.ownershipScope : undefined;
-            resourceInputs["thresholdRules"] = args ? args.thresholdRules : undefined;
+            resourceInputs["allUpdatesRule"] = args?.allUpdatesRule;
+            resourceInputs["amount"] = args?.amount;
+            resourceInputs["billingAccount"] = args?.billingAccount;
+            resourceInputs["budgetFilter"] = args?.budgetFilter;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["ownershipScope"] = args?.ownershipScope;
+            resourceInputs["thresholdRules"] = args?.thresholdRules;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

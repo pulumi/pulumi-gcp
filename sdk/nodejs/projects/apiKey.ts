@@ -184,11 +184,11 @@ export class ApiKey extends pulumi.CustomResource {
     /**
      * Human-readable display name of this API key. Modifiable by user.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method.
      */
-    public /*out*/ readonly keyString!: pulumi.Output<string>;
+    declare public /*out*/ readonly keyString: pulumi.Output<string>;
     /**
      * The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
      *
@@ -196,23 +196,23 @@ export class ApiKey extends pulumi.CustomResource {
      *
      * - - -
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The project for the resource
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Key restrictions.
      */
-    public readonly restrictions!: pulumi.Output<outputs.projects.ApiKeyRestrictions | undefined>;
+    declare public readonly restrictions: pulumi.Output<outputs.projects.ApiKeyRestrictions | undefined>;
     /**
      * The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.devsite.corp.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
      */
-    public readonly serviceAccountEmail!: pulumi.Output<string | undefined>;
+    declare public readonly serviceAccountEmail: pulumi.Output<string | undefined>;
     /**
      * Output only. Unique id in UUID4 format.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
 
     /**
      * Create a ApiKey resource with the given unique name, arguments, and options.
@@ -227,20 +227,20 @@ export class ApiKey extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApiKeyState | undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["keyString"] = state ? state.keyString : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["restrictions"] = state ? state.restrictions : undefined;
-            resourceInputs["serviceAccountEmail"] = state ? state.serviceAccountEmail : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["keyString"] = state?.keyString;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["restrictions"] = state?.restrictions;
+            resourceInputs["serviceAccountEmail"] = state?.serviceAccountEmail;
+            resourceInputs["uid"] = state?.uid;
         } else {
             const args = argsOrState as ApiKeyArgs | undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["restrictions"] = args ? args.restrictions : undefined;
-            resourceInputs["serviceAccountEmail"] = args ? args.serviceAccountEmail : undefined;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["restrictions"] = args?.restrictions;
+            resourceInputs["serviceAccountEmail"] = args?.serviceAccountEmail;
             resourceInputs["keyString"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
         }

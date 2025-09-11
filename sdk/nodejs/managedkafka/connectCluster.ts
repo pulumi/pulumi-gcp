@@ -152,60 +152,60 @@ export class ConnectCluster extends pulumi.CustomResource {
      * A capacity configuration of a Kafka cluster.
      * Structure is documented below.
      */
-    public readonly capacityConfig!: pulumi.Output<outputs.managedkafka.ConnectClusterCapacityConfig>;
+    declare public readonly capacityConfig: pulumi.Output<outputs.managedkafka.ConnectClusterCapacityConfig>;
     /**
      * The ID to use for the Connect Cluster, which will become the final component of the connect cluster's name. This value is structured like: `my-connect-cluster-id`.
      */
-    public readonly connectClusterId!: pulumi.Output<string>;
+    declare public readonly connectClusterId: pulumi.Output<string>;
     /**
      * The time when the cluster was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Configuration properties for a Kafka Connect cluster deployed to Google Cloud Platform.
      * Structure is documented below.
      */
-    public readonly gcpConfig!: pulumi.Output<outputs.managedkafka.ConnectClusterGcpConfig>;
+    declare public readonly gcpConfig: pulumi.Output<outputs.managedkafka.ConnectClusterGcpConfig>;
     /**
      * The name of the Kafka cluster this Kafka Connect cluster is attached to. Structured like: `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID`.
      */
-    public readonly kafkaCluster!: pulumi.Output<string>;
+    declare public readonly kafkaCluster: pulumi.Output<string>;
     /**
      * List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * ID of the location of the Kafka Connect resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The name of the connect cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/connectClusters/CONNECT_CLUSTER_ID`.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The current state of the connect cluster. Possible values: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The time when the cluster was last updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a ConnectCluster resource with the given unique name, arguments, and options.
@@ -220,43 +220,43 @@ export class ConnectCluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectClusterState | undefined;
-            resourceInputs["capacityConfig"] = state ? state.capacityConfig : undefined;
-            resourceInputs["connectClusterId"] = state ? state.connectClusterId : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["gcpConfig"] = state ? state.gcpConfig : undefined;
-            resourceInputs["kafkaCluster"] = state ? state.kafkaCluster : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["capacityConfig"] = state?.capacityConfig;
+            resourceInputs["connectClusterId"] = state?.connectClusterId;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["gcpConfig"] = state?.gcpConfig;
+            resourceInputs["kafkaCluster"] = state?.kafkaCluster;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as ConnectClusterArgs | undefined;
-            if ((!args || args.capacityConfig === undefined) && !opts.urn) {
+            if (args?.capacityConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'capacityConfig'");
             }
-            if ((!args || args.connectClusterId === undefined) && !opts.urn) {
+            if (args?.connectClusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectClusterId'");
             }
-            if ((!args || args.gcpConfig === undefined) && !opts.urn) {
+            if (args?.gcpConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'gcpConfig'");
             }
-            if ((!args || args.kafkaCluster === undefined) && !opts.urn) {
+            if (args?.kafkaCluster === undefined && !opts.urn) {
                 throw new Error("Missing required property 'kafkaCluster'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["capacityConfig"] = args ? args.capacityConfig : undefined;
-            resourceInputs["connectClusterId"] = args ? args.connectClusterId : undefined;
-            resourceInputs["gcpConfig"] = args ? args.gcpConfig : undefined;
-            resourceInputs["kafkaCluster"] = args ? args.kafkaCluster : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["capacityConfig"] = args?.capacityConfig;
+            resourceInputs["connectClusterId"] = args?.connectClusterId;
+            resourceInputs["gcpConfig"] = args?.gcpConfig;
+            resourceInputs["kafkaCluster"] = args?.kafkaCluster;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

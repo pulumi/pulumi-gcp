@@ -96,48 +96,48 @@ export class EngineModel extends pulumi.CustomResource {
      * prediction requests that do not specify a version.
      * Structure is documented below.
      */
-    public readonly defaultVersion!: pulumi.Output<outputs.ml.EngineModelDefaultVersion | undefined>;
+    declare public readonly defaultVersion: pulumi.Output<outputs.ml.EngineModelDefaultVersion | undefined>;
     /**
      * The description specified for the model when it was created.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * One or more labels that you can add, to organize your models.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name specified for the model.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
      */
-    public readonly onlinePredictionConsoleLogging!: pulumi.Output<boolean | undefined>;
+    declare public readonly onlinePredictionConsoleLogging: pulumi.Output<boolean | undefined>;
     /**
      * If true, online prediction access logs are sent to StackDriver Logging.
      */
-    public readonly onlinePredictionLogging!: pulumi.Output<boolean | undefined>;
+    declare public readonly onlinePredictionLogging: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The list of regions where the model is going to be deployed.
      * Currently only one region per model is supported
      */
-    public readonly regions!: pulumi.Output<string | undefined>;
+    declare public readonly regions: pulumi.Output<string | undefined>;
 
     /**
      * Create a EngineModel resource with the given unique name, arguments, and options.
@@ -152,26 +152,26 @@ export class EngineModel extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EngineModelState | undefined;
-            resourceInputs["defaultVersion"] = state ? state.defaultVersion : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["onlinePredictionConsoleLogging"] = state ? state.onlinePredictionConsoleLogging : undefined;
-            resourceInputs["onlinePredictionLogging"] = state ? state.onlinePredictionLogging : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["regions"] = state ? state.regions : undefined;
+            resourceInputs["defaultVersion"] = state?.defaultVersion;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["onlinePredictionConsoleLogging"] = state?.onlinePredictionConsoleLogging;
+            resourceInputs["onlinePredictionLogging"] = state?.onlinePredictionLogging;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["regions"] = state?.regions;
         } else {
             const args = argsOrState as EngineModelArgs | undefined;
-            resourceInputs["defaultVersion"] = args ? args.defaultVersion : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["onlinePredictionConsoleLogging"] = args ? args.onlinePredictionConsoleLogging : undefined;
-            resourceInputs["onlinePredictionLogging"] = args ? args.onlinePredictionLogging : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["regions"] = args ? args.regions : undefined;
+            resourceInputs["defaultVersion"] = args?.defaultVersion;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["onlinePredictionConsoleLogging"] = args?.onlinePredictionConsoleLogging;
+            resourceInputs["onlinePredictionLogging"] = args?.onlinePredictionLogging;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["regions"] = args?.regions;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
         }

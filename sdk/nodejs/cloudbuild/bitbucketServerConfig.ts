@@ -173,58 +173,58 @@ export class BitbucketServerConfig extends pulumi.CustomResource {
      * Immutable. API Key that will be attached to webhook. Once this field has been set, it cannot be changed.
      * Changing this field will result in deleting/ recreating the resource.
      */
-    public readonly apiKey!: pulumi.Output<string>;
+    declare public readonly apiKey: pulumi.Output<string>;
     /**
      * The ID to use for the BitbucketServerConfig, which will become the final component of the BitbucketServerConfig's resource name.
      */
-    public readonly configId!: pulumi.Output<string>;
+    declare public readonly configId: pulumi.Output<string>;
     /**
      * Connected Bitbucket Server repositories for this config.
      * Structure is documented below.
      */
-    public readonly connectedRepositories!: pulumi.Output<outputs.cloudbuild.BitbucketServerConfigConnectedRepository[] | undefined>;
+    declare public readonly connectedRepositories: pulumi.Output<outputs.cloudbuild.BitbucketServerConfigConnectedRepository[] | undefined>;
     /**
      * Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed.
      * If you need to change it, please create another BitbucketServerConfig.
      */
-    public readonly hostUri!: pulumi.Output<string>;
+    declare public readonly hostUri: pulumi.Output<string>;
     /**
      * The location of this bitbucket server config.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The resource name for the config.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection.
      * This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty,
      * no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format
      * projects/{project}/global/networks/{network}, where {project} is a project number or id and {network} is the name of a VPC network in the project.
      */
-    public readonly peeredNetwork!: pulumi.Output<string | undefined>;
+    declare public readonly peeredNetwork: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Secret Manager secrets needed by the config.
      * Structure is documented below.
      */
-    public readonly secrets!: pulumi.Output<outputs.cloudbuild.BitbucketServerConfigSecrets>;
+    declare public readonly secrets: pulumi.Output<outputs.cloudbuild.BitbucketServerConfigSecrets>;
     /**
      * SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
      */
-    public readonly sslCa!: pulumi.Output<string | undefined>;
+    declare public readonly sslCa: pulumi.Output<string | undefined>;
     /**
      * Username of the account Cloud Build will use on Bitbucket Server.
      */
-    public readonly username!: pulumi.Output<string>;
+    declare public readonly username: pulumi.Output<string>;
     /**
      * Output only. UUID included in webhook requests. The UUID is used to look up the corresponding config.
      */
-    public /*out*/ readonly webhookKey!: pulumi.Output<string>;
+    declare public /*out*/ readonly webhookKey: pulumi.Output<string>;
 
     /**
      * Create a BitbucketServerConfig resource with the given unique name, arguments, and options.
@@ -239,48 +239,48 @@ export class BitbucketServerConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BitbucketServerConfigState | undefined;
-            resourceInputs["apiKey"] = state ? state.apiKey : undefined;
-            resourceInputs["configId"] = state ? state.configId : undefined;
-            resourceInputs["connectedRepositories"] = state ? state.connectedRepositories : undefined;
-            resourceInputs["hostUri"] = state ? state.hostUri : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["peeredNetwork"] = state ? state.peeredNetwork : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["secrets"] = state ? state.secrets : undefined;
-            resourceInputs["sslCa"] = state ? state.sslCa : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
-            resourceInputs["webhookKey"] = state ? state.webhookKey : undefined;
+            resourceInputs["apiKey"] = state?.apiKey;
+            resourceInputs["configId"] = state?.configId;
+            resourceInputs["connectedRepositories"] = state?.connectedRepositories;
+            resourceInputs["hostUri"] = state?.hostUri;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["peeredNetwork"] = state?.peeredNetwork;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["secrets"] = state?.secrets;
+            resourceInputs["sslCa"] = state?.sslCa;
+            resourceInputs["username"] = state?.username;
+            resourceInputs["webhookKey"] = state?.webhookKey;
         } else {
             const args = argsOrState as BitbucketServerConfigArgs | undefined;
-            if ((!args || args.apiKey === undefined) && !opts.urn) {
+            if (args?.apiKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'apiKey'");
             }
-            if ((!args || args.configId === undefined) && !opts.urn) {
+            if (args?.configId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'configId'");
             }
-            if ((!args || args.hostUri === undefined) && !opts.urn) {
+            if (args?.hostUri === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hostUri'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.secrets === undefined) && !opts.urn) {
+            if (args?.secrets === undefined && !opts.urn) {
                 throw new Error("Missing required property 'secrets'");
             }
-            if ((!args || args.username === undefined) && !opts.urn) {
+            if (args?.username === undefined && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
-            resourceInputs["apiKey"] = args ? args.apiKey : undefined;
-            resourceInputs["configId"] = args ? args.configId : undefined;
-            resourceInputs["connectedRepositories"] = args ? args.connectedRepositories : undefined;
-            resourceInputs["hostUri"] = args ? args.hostUri : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["peeredNetwork"] = args ? args.peeredNetwork : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["secrets"] = args ? args.secrets : undefined;
-            resourceInputs["sslCa"] = args ? args.sslCa : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["apiKey"] = args?.apiKey;
+            resourceInputs["configId"] = args?.configId;
+            resourceInputs["connectedRepositories"] = args?.connectedRepositories;
+            resourceInputs["hostUri"] = args?.hostUri;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["peeredNetwork"] = args?.peeredNetwork;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["secrets"] = args?.secrets;
+            resourceInputs["sslCa"] = args?.sslCa;
+            resourceInputs["username"] = args?.username;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["webhookKey"] = undefined /*out*/;
         }

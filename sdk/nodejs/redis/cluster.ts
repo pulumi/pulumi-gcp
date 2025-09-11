@@ -481,163 +481,170 @@ export class Cluster extends pulumi.CustomResource {
     }
 
     /**
+     * Allows customers to specify if they are okay with deploying a multi-zone
+     * cluster in less than 3 zones. Once set, if there is a zonal outage during
+     * the cluster creation, the cluster will only be deployed in 2 zones, and
+     * stay within the 2 zones for its lifecycle.
+     */
+    declare public readonly allowFewerZonesDeployment: pulumi.Output<boolean | undefined>;
+    /**
      * Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
      * Default value is `AUTH_MODE_DISABLED`.
      * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
      */
-    public readonly authorizationMode!: pulumi.Output<string | undefined>;
+    declare public readonly authorizationMode: pulumi.Output<string | undefined>;
     /**
      * The automated backup config for a instance.
      * Structure is documented below.
      */
-    public readonly automatedBackupConfig!: pulumi.Output<outputs.redis.ClusterAutomatedBackupConfig | undefined>;
+    declare public readonly automatedBackupConfig: pulumi.Output<outputs.redis.ClusterAutomatedBackupConfig | undefined>;
     /**
      * The backup collection full resource name.
      * Example: projects/{project}/locations/{location}/backupCollections/{collection}
      */
-    public /*out*/ readonly backupCollection!: pulumi.Output<string>;
+    declare public /*out*/ readonly backupCollection: pulumi.Output<string>;
     /**
      * The timestamp associated with the cluster creation request. A timestamp in
      * RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
      * digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Cross cluster replication config
      * Structure is documented below.
      */
-    public readonly crossClusterReplicationConfig!: pulumi.Output<outputs.redis.ClusterCrossClusterReplicationConfig>;
+    declare public readonly crossClusterReplicationConfig: pulumi.Output<outputs.redis.ClusterCrossClusterReplicationConfig>;
     /**
      * Optional. Indicates if the cluster is deletion protected or not.
      * If the value if set to true, any delete cluster operation will fail.
      * Default value is true.
      */
-    public readonly deletionProtectionEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly deletionProtectionEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Output only. Endpoints created on each given network,
      * for Redis clients to connect to the cluster.
      * Currently only one endpoint is supported.
      * Structure is documented below.
      */
-    public /*out*/ readonly discoveryEndpoints!: pulumi.Output<outputs.redis.ClusterDiscoveryEndpoint[]>;
+    declare public /*out*/ readonly discoveryEndpoints: pulumi.Output<outputs.redis.ClusterDiscoveryEndpoint[]>;
     /**
      * Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
      * Structure is documented below.
      */
-    public readonly gcsSource!: pulumi.Output<outputs.redis.ClusterGcsSource | undefined>;
+    declare public readonly gcsSource: pulumi.Output<outputs.redis.ClusterGcsSource | undefined>;
     /**
      * The KMS key used to encrypt the at-rest data of the cluster.
      */
-    public readonly kmsKey!: pulumi.Output<string | undefined>;
+    declare public readonly kmsKey: pulumi.Output<string | undefined>;
     /**
      * Maintenance policy for a cluster
      * Structure is documented below.
      */
-    public readonly maintenancePolicy!: pulumi.Output<outputs.redis.ClusterMaintenancePolicy | undefined>;
+    declare public readonly maintenancePolicy: pulumi.Output<outputs.redis.ClusterMaintenancePolicy | undefined>;
     /**
      * Upcoming maintenance schedule.
      * Structure is documented below.
      */
-    public /*out*/ readonly maintenanceSchedules!: pulumi.Output<outputs.redis.ClusterMaintenanceSchedule[]>;
+    declare public /*out*/ readonly maintenanceSchedules: pulumi.Output<outputs.redis.ClusterMaintenanceSchedule[]>;
     /**
      * Backups that generated and managed by memorystore.
      * Structure is documented below.
      */
-    public readonly managedBackupSource!: pulumi.Output<outputs.redis.ClusterManagedBackupSource | undefined>;
+    declare public readonly managedBackupSource: pulumi.Output<outputs.redis.ClusterManagedBackupSource | undefined>;
     /**
      * Cluster's Certificate Authority. This field will only be populated if Redis Cluster's transitEncryptionMode is TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION
      * Structure is documented below.
      */
-    public /*out*/ readonly managedServerCas!: pulumi.Output<outputs.redis.ClusterManagedServerCa[]>;
+    declare public /*out*/ readonly managedServerCas: pulumi.Output<outputs.redis.ClusterManagedServerCa[]>;
     /**
      * Unique name of the resource in this scope including project and location using the form:
      * projects/{projectId}/locations/{locationId}/clusters/{clusterId}
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The nodeType for the Redis cluster.
      * If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
      * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
      */
-    public readonly nodeType!: pulumi.Output<string>;
+    declare public readonly nodeType: pulumi.Output<string>;
     /**
      * Persistence config (RDB, AOF) for the cluster.
      * Structure is documented below.
      */
-    public readonly persistenceConfig!: pulumi.Output<outputs.redis.ClusterPersistenceConfig>;
+    declare public readonly persistenceConfig: pulumi.Output<outputs.redis.ClusterPersistenceConfig>;
     /**
      * Output only. Redis memory precise size in GB for the entire cluster.
      */
-    public /*out*/ readonly preciseSizeGb!: pulumi.Output<number>;
+    declare public /*out*/ readonly preciseSizeGb: pulumi.Output<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Required. Each PscConfig configures the consumer network where two
      * network addresses will be designated to the cluster for client access.
      * Currently, only one PscConfig is supported.
      * Structure is documented below.
      */
-    public readonly pscConfigs!: pulumi.Output<outputs.redis.ClusterPscConfig[] | undefined>;
+    declare public readonly pscConfigs: pulumi.Output<outputs.redis.ClusterPscConfig[] | undefined>;
     /**
      * Output only. PSC connections for discovery of the cluster topology and accessing the cluster.
      * Structure is documented below.
      */
-    public /*out*/ readonly pscConnections!: pulumi.Output<outputs.redis.ClusterPscConnection[]>;
+    declare public /*out*/ readonly pscConnections: pulumi.Output<outputs.redis.ClusterPscConnection[]>;
     /**
      * Service attachment details to configure Psc connections.
      * Structure is documented below.
      */
-    public /*out*/ readonly pscServiceAttachments!: pulumi.Output<outputs.redis.ClusterPscServiceAttachment[]>;
+    declare public /*out*/ readonly pscServiceAttachments: pulumi.Output<outputs.redis.ClusterPscServiceAttachment[]>;
     /**
      * Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
      * Please check Memorystore documentation for the list of supported parameters:
      * https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
      */
-    public readonly redisConfigs!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly redisConfigs: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the region of the Redis cluster.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Optional. The number of replica nodes per shard.
      */
-    public readonly replicaCount!: pulumi.Output<number | undefined>;
+    declare public readonly replicaCount: pulumi.Output<number | undefined>;
     /**
      * Required. Number of shards for the Redis cluster.
      */
-    public readonly shardCount!: pulumi.Output<number>;
+    declare public readonly shardCount: pulumi.Output<number>;
     /**
      * Output only. Redis memory size in GB for the entire cluster.
      */
-    public /*out*/ readonly sizeGb!: pulumi.Output<number>;
+    declare public /*out*/ readonly sizeGb: pulumi.Output<number>;
     /**
      * The current state of this cluster. Can be CREATING, READY, UPDATING, DELETING and SUSPENDED
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Output only. Additional information about the current state of the cluster.
      * Structure is documented below.
      */
-    public /*out*/ readonly stateInfos!: pulumi.Output<outputs.redis.ClusterStateInfo[]>;
+    declare public /*out*/ readonly stateInfos: pulumi.Output<outputs.redis.ClusterStateInfo[]>;
     /**
      * Optional. The in-transit encryption for the Redis cluster.
      * If not provided, encryption is disabled for the cluster.
      * Default value is `TRANSIT_ENCRYPTION_MODE_DISABLED`.
      * Possible values are: `TRANSIT_ENCRYPTION_MODE_UNSPECIFIED`, `TRANSIT_ENCRYPTION_MODE_DISABLED`, `TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION`.
      */
-    public readonly transitEncryptionMode!: pulumi.Output<string | undefined>;
+    declare public readonly transitEncryptionMode: pulumi.Output<string | undefined>;
     /**
      * System assigned, unique identifier for the cluster.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * Immutable. Zone distribution config for Memorystore Redis cluster.
      * Structure is documented below.
      */
-    public readonly zoneDistributionConfig!: pulumi.Output<outputs.redis.ClusterZoneDistributionConfig>;
+    declare public readonly zoneDistributionConfig: pulumi.Output<outputs.redis.ClusterZoneDistributionConfig>;
 
     /**
      * Create a Cluster resource with the given unique name, arguments, and options.
@@ -652,61 +659,63 @@ export class Cluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
-            resourceInputs["authorizationMode"] = state ? state.authorizationMode : undefined;
-            resourceInputs["automatedBackupConfig"] = state ? state.automatedBackupConfig : undefined;
-            resourceInputs["backupCollection"] = state ? state.backupCollection : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["crossClusterReplicationConfig"] = state ? state.crossClusterReplicationConfig : undefined;
-            resourceInputs["deletionProtectionEnabled"] = state ? state.deletionProtectionEnabled : undefined;
-            resourceInputs["discoveryEndpoints"] = state ? state.discoveryEndpoints : undefined;
-            resourceInputs["gcsSource"] = state ? state.gcsSource : undefined;
-            resourceInputs["kmsKey"] = state ? state.kmsKey : undefined;
-            resourceInputs["maintenancePolicy"] = state ? state.maintenancePolicy : undefined;
-            resourceInputs["maintenanceSchedules"] = state ? state.maintenanceSchedules : undefined;
-            resourceInputs["managedBackupSource"] = state ? state.managedBackupSource : undefined;
-            resourceInputs["managedServerCas"] = state ? state.managedServerCas : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nodeType"] = state ? state.nodeType : undefined;
-            resourceInputs["persistenceConfig"] = state ? state.persistenceConfig : undefined;
-            resourceInputs["preciseSizeGb"] = state ? state.preciseSizeGb : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pscConfigs"] = state ? state.pscConfigs : undefined;
-            resourceInputs["pscConnections"] = state ? state.pscConnections : undefined;
-            resourceInputs["pscServiceAttachments"] = state ? state.pscServiceAttachments : undefined;
-            resourceInputs["redisConfigs"] = state ? state.redisConfigs : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["replicaCount"] = state ? state.replicaCount : undefined;
-            resourceInputs["shardCount"] = state ? state.shardCount : undefined;
-            resourceInputs["sizeGb"] = state ? state.sizeGb : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["stateInfos"] = state ? state.stateInfos : undefined;
-            resourceInputs["transitEncryptionMode"] = state ? state.transitEncryptionMode : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["zoneDistributionConfig"] = state ? state.zoneDistributionConfig : undefined;
+            resourceInputs["allowFewerZonesDeployment"] = state?.allowFewerZonesDeployment;
+            resourceInputs["authorizationMode"] = state?.authorizationMode;
+            resourceInputs["automatedBackupConfig"] = state?.automatedBackupConfig;
+            resourceInputs["backupCollection"] = state?.backupCollection;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["crossClusterReplicationConfig"] = state?.crossClusterReplicationConfig;
+            resourceInputs["deletionProtectionEnabled"] = state?.deletionProtectionEnabled;
+            resourceInputs["discoveryEndpoints"] = state?.discoveryEndpoints;
+            resourceInputs["gcsSource"] = state?.gcsSource;
+            resourceInputs["kmsKey"] = state?.kmsKey;
+            resourceInputs["maintenancePolicy"] = state?.maintenancePolicy;
+            resourceInputs["maintenanceSchedules"] = state?.maintenanceSchedules;
+            resourceInputs["managedBackupSource"] = state?.managedBackupSource;
+            resourceInputs["managedServerCas"] = state?.managedServerCas;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nodeType"] = state?.nodeType;
+            resourceInputs["persistenceConfig"] = state?.persistenceConfig;
+            resourceInputs["preciseSizeGb"] = state?.preciseSizeGb;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pscConfigs"] = state?.pscConfigs;
+            resourceInputs["pscConnections"] = state?.pscConnections;
+            resourceInputs["pscServiceAttachments"] = state?.pscServiceAttachments;
+            resourceInputs["redisConfigs"] = state?.redisConfigs;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["replicaCount"] = state?.replicaCount;
+            resourceInputs["shardCount"] = state?.shardCount;
+            resourceInputs["sizeGb"] = state?.sizeGb;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["stateInfos"] = state?.stateInfos;
+            resourceInputs["transitEncryptionMode"] = state?.transitEncryptionMode;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["zoneDistributionConfig"] = state?.zoneDistributionConfig;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
-            if ((!args || args.shardCount === undefined) && !opts.urn) {
+            if (args?.shardCount === undefined && !opts.urn) {
                 throw new Error("Missing required property 'shardCount'");
             }
-            resourceInputs["authorizationMode"] = args ? args.authorizationMode : undefined;
-            resourceInputs["automatedBackupConfig"] = args ? args.automatedBackupConfig : undefined;
-            resourceInputs["crossClusterReplicationConfig"] = args ? args.crossClusterReplicationConfig : undefined;
-            resourceInputs["deletionProtectionEnabled"] = args ? args.deletionProtectionEnabled : undefined;
-            resourceInputs["gcsSource"] = args ? args.gcsSource : undefined;
-            resourceInputs["kmsKey"] = args ? args.kmsKey : undefined;
-            resourceInputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
-            resourceInputs["managedBackupSource"] = args ? args.managedBackupSource : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["nodeType"] = args ? args.nodeType : undefined;
-            resourceInputs["persistenceConfig"] = args ? args.persistenceConfig : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["pscConfigs"] = args ? args.pscConfigs : undefined;
-            resourceInputs["redisConfigs"] = args ? args.redisConfigs : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["replicaCount"] = args ? args.replicaCount : undefined;
-            resourceInputs["shardCount"] = args ? args.shardCount : undefined;
-            resourceInputs["transitEncryptionMode"] = args ? args.transitEncryptionMode : undefined;
-            resourceInputs["zoneDistributionConfig"] = args ? args.zoneDistributionConfig : undefined;
+            resourceInputs["allowFewerZonesDeployment"] = args?.allowFewerZonesDeployment;
+            resourceInputs["authorizationMode"] = args?.authorizationMode;
+            resourceInputs["automatedBackupConfig"] = args?.automatedBackupConfig;
+            resourceInputs["crossClusterReplicationConfig"] = args?.crossClusterReplicationConfig;
+            resourceInputs["deletionProtectionEnabled"] = args?.deletionProtectionEnabled;
+            resourceInputs["gcsSource"] = args?.gcsSource;
+            resourceInputs["kmsKey"] = args?.kmsKey;
+            resourceInputs["maintenancePolicy"] = args?.maintenancePolicy;
+            resourceInputs["managedBackupSource"] = args?.managedBackupSource;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["nodeType"] = args?.nodeType;
+            resourceInputs["persistenceConfig"] = args?.persistenceConfig;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["pscConfigs"] = args?.pscConfigs;
+            resourceInputs["redisConfigs"] = args?.redisConfigs;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["replicaCount"] = args?.replicaCount;
+            resourceInputs["shardCount"] = args?.shardCount;
+            resourceInputs["transitEncryptionMode"] = args?.transitEncryptionMode;
+            resourceInputs["zoneDistributionConfig"] = args?.zoneDistributionConfig;
             resourceInputs["backupCollection"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["discoveryEndpoints"] = undefined /*out*/;

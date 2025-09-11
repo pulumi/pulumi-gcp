@@ -248,18 +248,18 @@ export class KeyRingIAMMember extends pulumi.CustomResource {
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    public readonly condition!: pulumi.Output<outputs.kms.KeyRingIAMMemberCondition | undefined>;
+    declare public readonly condition: pulumi.Output<outputs.kms.KeyRingIAMMemberCondition | undefined>;
     /**
      * (Computed) The etag of the key ring's IAM policy.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The key ring ID, in the form
      * `{project_id}/{location_name}/{key_ring_name}` or
      * `{location_name}/{key_ring_name}`. In the second form, the provider's
      * project setting will be used as a fallback.
      */
-    public readonly keyRingId!: pulumi.Output<string>;
+    declare public readonly keyRingId: pulumi.Output<string>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -270,13 +270,13 @@ export class KeyRingIAMMember extends pulumi.CustomResource {
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
-    public readonly member!: pulumi.Output<string>;
+    declare public readonly member: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.kms.KeyRingIAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    public readonly role!: pulumi.Output<string>;
+    declare public readonly role: pulumi.Output<string>;
 
     /**
      * Create a KeyRingIAMMember resource with the given unique name, arguments, and options.
@@ -291,26 +291,26 @@ export class KeyRingIAMMember extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KeyRingIAMMemberState | undefined;
-            resourceInputs["condition"] = state ? state.condition : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["keyRingId"] = state ? state.keyRingId : undefined;
-            resourceInputs["member"] = state ? state.member : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["condition"] = state?.condition;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["keyRingId"] = state?.keyRingId;
+            resourceInputs["member"] = state?.member;
+            resourceInputs["role"] = state?.role;
         } else {
             const args = argsOrState as KeyRingIAMMemberArgs | undefined;
-            if ((!args || args.keyRingId === undefined) && !opts.urn) {
+            if (args?.keyRingId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'keyRingId'");
             }
-            if ((!args || args.member === undefined) && !opts.urn) {
+            if (args?.member === undefined && !opts.urn) {
                 throw new Error("Missing required property 'member'");
             }
-            if ((!args || args.role === undefined) && !opts.urn) {
+            if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            resourceInputs["condition"] = args ? args.condition : undefined;
-            resourceInputs["keyRingId"] = args ? args.keyRingId : undefined;
-            resourceInputs["member"] = args ? args.member : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["condition"] = args?.condition;
+            resourceInputs["keyRingId"] = args?.keyRingId;
+            resourceInputs["member"] = args?.member;
+            resourceInputs["role"] = args?.role;
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -104,17 +104,17 @@ export class Variable extends pulumi.CustomResource {
      * The name of the variable to manage. Note that variable
      * names can be hierarchical using slashes (e.g. "prod-variables/hostname").
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The name of the RuntimeConfig resource containing this
      * variable.
      */
-    public readonly parent!: pulumi.Output<string>;
+    declare public readonly parent: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * or `value` - (Required) The content to associate with the variable.
      * Exactly one of `text` or `variable` must be specified. If `text` is specified,
@@ -123,14 +123,14 @@ export class Variable extends pulumi.CustomResource {
      *
      * - - -
      */
-    public readonly text!: pulumi.Output<string | undefined>;
+    declare public readonly text: pulumi.Output<string | undefined>;
     /**
      * (Computed) The timestamp in RFC3339 UTC "Zulu" format,
      * accurate to nanoseconds, representing when the variable was last updated.
      * Example: "2016-10-09T12:33:37.578138407Z".
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
-    public readonly value!: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
+    declare public readonly value: pulumi.Output<string | undefined>;
 
     /**
      * Create a Variable resource with the given unique name, arguments, and options.
@@ -145,20 +145,20 @@ export class Variable extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VariableState | undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["text"] = state ? state.text : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["text"] = state?.text;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["value"] = state?.value;
         } else {
             const args = argsOrState as VariableArgs | undefined;
-            if ((!args || args.parent === undefined) && !opts.urn) {
+            if (args?.parent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["parent"] = args?.parent;
+            resourceInputs["project"] = args?.project;
             resourceInputs["text"] = args?.text ? pulumi.secret(args.text) : undefined;
             resourceInputs["value"] = args?.value ? pulumi.secret(args.value) : undefined;
             resourceInputs["updateTime"] = undefined /*out*/;

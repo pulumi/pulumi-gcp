@@ -74,27 +74,27 @@ export class FolderExclusion extends pulumi.CustomResource {
     /**
      * A human-readable description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Whether this exclusion rule should be disabled or not. This defaults to
      * false.
      */
-    public readonly disabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly disabled: pulumi.Output<boolean | undefined>;
     /**
      * The filter to apply when excluding logs. Only log entries that match the filter are excluded.
      * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
      * write a filter.
      */
-    public readonly filter!: pulumi.Output<string>;
+    declare public readonly filter: pulumi.Output<string>;
     /**
      * The folder to be exported to the sink. Note that either [FOLDER_ID] or "folders/[FOLDER_ID]" is
      * accepted.
      */
-    public readonly folder!: pulumi.Output<string>;
+    declare public readonly folder: pulumi.Output<string>;
     /**
      * The name of the logging exclusion.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a FolderExclusion resource with the given unique name, arguments, and options.
@@ -109,24 +109,24 @@ export class FolderExclusion extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FolderExclusionState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["disabled"] = state ? state.disabled : undefined;
-            resourceInputs["filter"] = state ? state.filter : undefined;
-            resourceInputs["folder"] = state ? state.folder : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["disabled"] = state?.disabled;
+            resourceInputs["filter"] = state?.filter;
+            resourceInputs["folder"] = state?.folder;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as FolderExclusionArgs | undefined;
-            if ((!args || args.filter === undefined) && !opts.urn) {
+            if (args?.filter === undefined && !opts.urn) {
                 throw new Error("Missing required property 'filter'");
             }
-            if ((!args || args.folder === undefined) && !opts.urn) {
+            if (args?.folder === undefined && !opts.urn) {
                 throw new Error("Missing required property 'folder'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["disabled"] = args ? args.disabled : undefined;
-            resourceInputs["filter"] = args ? args.filter : undefined;
-            resourceInputs["folder"] = args ? args.folder : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["disabled"] = args?.disabled;
+            resourceInputs["filter"] = args?.filter;
+            resourceInputs["folder"] = args?.folder;
+            resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(FolderExclusion.__pulumiType, name, resourceInputs, opts);

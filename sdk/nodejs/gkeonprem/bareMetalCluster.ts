@@ -357,7 +357,7 @@ export class BareMetalCluster extends pulumi.CustomResource {
      * The Admin Cluster this Bare Metal User Cluster belongs to.
      * This is the full resource name of the Admin Cluster's hub membership.
      */
-    public readonly adminClusterMembership!: pulumi.Output<string>;
+    declare public readonly adminClusterMembership: pulumi.Output<string>;
     /**
      * Annotations on the Bare Metal User Cluster.
      * This field has the same restrictions as Kubernetes annotations.
@@ -371,43 +371,43 @@ export class BareMetalCluster extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A human readable description of this Bare Metal User Cluster.
      */
-    public readonly bareMetalVersion!: pulumi.Output<string>;
+    declare public readonly bareMetalVersion: pulumi.Output<string>;
     /**
      * Binary Authorization related configurations.
      * Structure is documented below.
      */
-    public readonly binaryAuthorization!: pulumi.Output<outputs.gkeonprem.BareMetalClusterBinaryAuthorization | undefined>;
+    declare public readonly binaryAuthorization: pulumi.Output<outputs.gkeonprem.BareMetalClusterBinaryAuthorization | undefined>;
     /**
      * Specifies the User Cluster's observability infrastructure.
      * Structure is documented below.
      */
-    public readonly clusterOperations!: pulumi.Output<outputs.gkeonprem.BareMetalClusterClusterOperations | undefined>;
+    declare public readonly clusterOperations: pulumi.Output<outputs.gkeonprem.BareMetalClusterClusterOperations | undefined>;
     /**
      * Specifies the control plane configuration.
      * Structure is documented below.
      */
-    public readonly controlPlane!: pulumi.Output<outputs.gkeonprem.BareMetalClusterControlPlane>;
+    declare public readonly controlPlane: pulumi.Output<outputs.gkeonprem.BareMetalClusterControlPlane>;
     /**
      * The time the cluster was created, in RFC3339 text format.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The time the cluster was deleted, in RFC3339 text format.
      */
-    public /*out*/ readonly deleteTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly deleteTime: pulumi.Output<string>;
     /**
      * A human readable description of this Bare Metal User Cluster.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * The IP address name of Bare Metal User Cluster's API server.
      */
-    public /*out*/ readonly endpoint!: pulumi.Output<string>;
+    declare public /*out*/ readonly endpoint: pulumi.Output<string>;
     /**
      * This checksum is computed by the server based on the value of other
      * fields, and may be sent on update and delete requests to ensure the
@@ -415,7 +415,7 @@ export class BareMetalCluster extends pulumi.CustomResource {
      * Allows clients to perform consistent read-modify-writes
      * through optimistic concurrency control.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Fleet related configuration.
      * Fleets are a Google Cloud concept for logically organizing clusters,
@@ -425,12 +425,12 @@ export class BareMetalCluster extends pulumi.CustomResource {
      * more details on Anthos multi-cluster capabilities using Fleets.
      * Structure is documented below.
      */
-    public /*out*/ readonly fleets!: pulumi.Output<outputs.gkeonprem.BareMetalClusterFleet[]>;
+    declare public /*out*/ readonly fleets: pulumi.Output<outputs.gkeonprem.BareMetalClusterFleet[]>;
     /**
      * Specifies the load balancer configuration.
      * Structure is documented below.
      */
-    public readonly loadBalancer!: pulumi.Output<outputs.gkeonprem.BareMetalClusterLoadBalancer>;
+    declare public readonly loadBalancer: pulumi.Output<outputs.gkeonprem.BareMetalClusterLoadBalancer>;
     /**
      * The object name of the Bare Metal Cluster custom resource on the
      * associated admin cluster. This field is used to support conflicting
@@ -443,93 +443,93 @@ export class BareMetalCluster extends pulumi.CustomResource {
      * kubectl and should expect to see the local name when viewing admin
      * cluster controller logs.
      */
-    public /*out*/ readonly localName!: pulumi.Output<string>;
+    declare public /*out*/ readonly localName: pulumi.Output<string>;
     /**
      * The location of the resource.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Specifies the workload node configurations.
      * Structure is documented below.
      */
-    public readonly maintenanceConfig!: pulumi.Output<outputs.gkeonprem.BareMetalClusterMaintenanceConfig | undefined>;
+    declare public readonly maintenanceConfig: pulumi.Output<outputs.gkeonprem.BareMetalClusterMaintenanceConfig | undefined>;
     /**
      * The bare metal cluster name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Network configuration.
      * Structure is documented below.
      */
-    public readonly networkConfig!: pulumi.Output<outputs.gkeonprem.BareMetalClusterNetworkConfig>;
+    declare public readonly networkConfig: pulumi.Output<outputs.gkeonprem.BareMetalClusterNetworkConfig>;
     /**
      * Specifies the node access related settings for the bare metal user cluster.
      * Structure is documented below.
      */
-    public readonly nodeAccessConfig!: pulumi.Output<outputs.gkeonprem.BareMetalClusterNodeAccessConfig | undefined>;
+    declare public readonly nodeAccessConfig: pulumi.Output<outputs.gkeonprem.BareMetalClusterNodeAccessConfig | undefined>;
     /**
      * Specifies the workload node configurations.
      * Structure is documented below.
      */
-    public readonly nodeConfig!: pulumi.Output<outputs.gkeonprem.BareMetalClusterNodeConfig | undefined>;
+    declare public readonly nodeConfig: pulumi.Output<outputs.gkeonprem.BareMetalClusterNodeConfig | undefined>;
     /**
      * OS environment related configurations.
      * Structure is documented below.
      */
-    public readonly osEnvironmentConfig!: pulumi.Output<outputs.gkeonprem.BareMetalClusterOsEnvironmentConfig | undefined>;
+    declare public readonly osEnvironmentConfig: pulumi.Output<outputs.gkeonprem.BareMetalClusterOsEnvironmentConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Specifies the cluster proxy configuration.
      * Structure is documented below.
      */
-    public readonly proxy!: pulumi.Output<outputs.gkeonprem.BareMetalClusterProxy | undefined>;
+    declare public readonly proxy: pulumi.Output<outputs.gkeonprem.BareMetalClusterProxy | undefined>;
     /**
      * If set, there are currently changes in flight to the Bare Metal User Cluster.
      */
-    public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly reconciling: pulumi.Output<boolean>;
     /**
      * Specifies the security related settings for the Bare Metal User Cluster.
      * Structure is documented below.
      */
-    public readonly securityConfig!: pulumi.Output<outputs.gkeonprem.BareMetalClusterSecurityConfig | undefined>;
+    declare public readonly securityConfig: pulumi.Output<outputs.gkeonprem.BareMetalClusterSecurityConfig | undefined>;
     /**
      * (Output)
      * The lifecycle state of the condition.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * (Output)
      * Specifies the detailed validation check status
      * Structure is documented below.
      */
-    public /*out*/ readonly statuses!: pulumi.Output<outputs.gkeonprem.BareMetalClusterStatus[]>;
+    declare public /*out*/ readonly statuses: pulumi.Output<outputs.gkeonprem.BareMetalClusterStatus[]>;
     /**
      * Specifies the cluster storage configuration.
      * Structure is documented below.
      */
-    public readonly storage!: pulumi.Output<outputs.gkeonprem.BareMetalClusterStorage>;
+    declare public readonly storage: pulumi.Output<outputs.gkeonprem.BareMetalClusterStorage>;
     /**
      * The unique identifier of the Bare Metal User Cluster.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * The time the cluster was last updated, in RFC3339 text format.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * The cluster upgrade policy.
      * Structure is documented below.
      */
-    public readonly upgradePolicy!: pulumi.Output<outputs.gkeonprem.BareMetalClusterUpgradePolicy | undefined>;
+    declare public readonly upgradePolicy: pulumi.Output<outputs.gkeonprem.BareMetalClusterUpgradePolicy | undefined>;
     /**
      * Specifies the security related settings for the Bare Metal User Cluster.
      * Structure is documented below.
      */
-    public /*out*/ readonly validationChecks!: pulumi.Output<outputs.gkeonprem.BareMetalClusterValidationCheck[]>;
+    declare public /*out*/ readonly validationChecks: pulumi.Output<outputs.gkeonprem.BareMetalClusterValidationCheck[]>;
 
     /**
      * Create a BareMetalCluster resource with the given unique name, arguments, and options.
@@ -544,82 +544,82 @@ export class BareMetalCluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BareMetalClusterState | undefined;
-            resourceInputs["adminClusterMembership"] = state ? state.adminClusterMembership : undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["bareMetalVersion"] = state ? state.bareMetalVersion : undefined;
-            resourceInputs["binaryAuthorization"] = state ? state.binaryAuthorization : undefined;
-            resourceInputs["clusterOperations"] = state ? state.clusterOperations : undefined;
-            resourceInputs["controlPlane"] = state ? state.controlPlane : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["deleteTime"] = state ? state.deleteTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
-            resourceInputs["endpoint"] = state ? state.endpoint : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["fleets"] = state ? state.fleets : undefined;
-            resourceInputs["loadBalancer"] = state ? state.loadBalancer : undefined;
-            resourceInputs["localName"] = state ? state.localName : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["maintenanceConfig"] = state ? state.maintenanceConfig : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networkConfig"] = state ? state.networkConfig : undefined;
-            resourceInputs["nodeAccessConfig"] = state ? state.nodeAccessConfig : undefined;
-            resourceInputs["nodeConfig"] = state ? state.nodeConfig : undefined;
-            resourceInputs["osEnvironmentConfig"] = state ? state.osEnvironmentConfig : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["proxy"] = state ? state.proxy : undefined;
-            resourceInputs["reconciling"] = state ? state.reconciling : undefined;
-            resourceInputs["securityConfig"] = state ? state.securityConfig : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["statuses"] = state ? state.statuses : undefined;
-            resourceInputs["storage"] = state ? state.storage : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["upgradePolicy"] = state ? state.upgradePolicy : undefined;
-            resourceInputs["validationChecks"] = state ? state.validationChecks : undefined;
+            resourceInputs["adminClusterMembership"] = state?.adminClusterMembership;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["bareMetalVersion"] = state?.bareMetalVersion;
+            resourceInputs["binaryAuthorization"] = state?.binaryAuthorization;
+            resourceInputs["clusterOperations"] = state?.clusterOperations;
+            resourceInputs["controlPlane"] = state?.controlPlane;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deleteTime"] = state?.deleteTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
+            resourceInputs["endpoint"] = state?.endpoint;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["fleets"] = state?.fleets;
+            resourceInputs["loadBalancer"] = state?.loadBalancer;
+            resourceInputs["localName"] = state?.localName;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["maintenanceConfig"] = state?.maintenanceConfig;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networkConfig"] = state?.networkConfig;
+            resourceInputs["nodeAccessConfig"] = state?.nodeAccessConfig;
+            resourceInputs["nodeConfig"] = state?.nodeConfig;
+            resourceInputs["osEnvironmentConfig"] = state?.osEnvironmentConfig;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["proxy"] = state?.proxy;
+            resourceInputs["reconciling"] = state?.reconciling;
+            resourceInputs["securityConfig"] = state?.securityConfig;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["statuses"] = state?.statuses;
+            resourceInputs["storage"] = state?.storage;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["upgradePolicy"] = state?.upgradePolicy;
+            resourceInputs["validationChecks"] = state?.validationChecks;
         } else {
             const args = argsOrState as BareMetalClusterArgs | undefined;
-            if ((!args || args.adminClusterMembership === undefined) && !opts.urn) {
+            if (args?.adminClusterMembership === undefined && !opts.urn) {
                 throw new Error("Missing required property 'adminClusterMembership'");
             }
-            if ((!args || args.bareMetalVersion === undefined) && !opts.urn) {
+            if (args?.bareMetalVersion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bareMetalVersion'");
             }
-            if ((!args || args.controlPlane === undefined) && !opts.urn) {
+            if (args?.controlPlane === undefined && !opts.urn) {
                 throw new Error("Missing required property 'controlPlane'");
             }
-            if ((!args || args.loadBalancer === undefined) && !opts.urn) {
+            if (args?.loadBalancer === undefined && !opts.urn) {
                 throw new Error("Missing required property 'loadBalancer'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.networkConfig === undefined) && !opts.urn) {
+            if (args?.networkConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkConfig'");
             }
-            if ((!args || args.storage === undefined) && !opts.urn) {
+            if (args?.storage === undefined && !opts.urn) {
                 throw new Error("Missing required property 'storage'");
             }
-            resourceInputs["adminClusterMembership"] = args ? args.adminClusterMembership : undefined;
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["bareMetalVersion"] = args ? args.bareMetalVersion : undefined;
-            resourceInputs["binaryAuthorization"] = args ? args.binaryAuthorization : undefined;
-            resourceInputs["clusterOperations"] = args ? args.clusterOperations : undefined;
-            resourceInputs["controlPlane"] = args ? args.controlPlane : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["loadBalancer"] = args ? args.loadBalancer : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["maintenanceConfig"] = args ? args.maintenanceConfig : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networkConfig"] = args ? args.networkConfig : undefined;
-            resourceInputs["nodeAccessConfig"] = args ? args.nodeAccessConfig : undefined;
-            resourceInputs["nodeConfig"] = args ? args.nodeConfig : undefined;
-            resourceInputs["osEnvironmentConfig"] = args ? args.osEnvironmentConfig : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["proxy"] = args ? args.proxy : undefined;
-            resourceInputs["securityConfig"] = args ? args.securityConfig : undefined;
-            resourceInputs["storage"] = args ? args.storage : undefined;
-            resourceInputs["upgradePolicy"] = args ? args.upgradePolicy : undefined;
+            resourceInputs["adminClusterMembership"] = args?.adminClusterMembership;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["bareMetalVersion"] = args?.bareMetalVersion;
+            resourceInputs["binaryAuthorization"] = args?.binaryAuthorization;
+            resourceInputs["clusterOperations"] = args?.clusterOperations;
+            resourceInputs["controlPlane"] = args?.controlPlane;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["loadBalancer"] = args?.loadBalancer;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["maintenanceConfig"] = args?.maintenanceConfig;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networkConfig"] = args?.networkConfig;
+            resourceInputs["nodeAccessConfig"] = args?.nodeAccessConfig;
+            resourceInputs["nodeConfig"] = args?.nodeConfig;
+            resourceInputs["osEnvironmentConfig"] = args?.osEnvironmentConfig;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["proxy"] = args?.proxy;
+            resourceInputs["securityConfig"] = args?.securityConfig;
+            resourceInputs["storage"] = args?.storage;
+            resourceInputs["upgradePolicy"] = args?.upgradePolicy;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;

@@ -325,20 +325,20 @@ export class ClusterUserCreatedConnections extends pulumi.CustomResource {
      * A list of cluster endpoints
      * Structure is documented below.
      */
-    public readonly clusterEndpoints!: pulumi.Output<outputs.redis.ClusterUserCreatedConnectionsClusterEndpoint[] | undefined>;
+    declare public readonly clusterEndpoints: pulumi.Output<outputs.redis.ClusterUserCreatedConnectionsClusterEndpoint[] | undefined>;
     /**
      * The name of the Redis cluster these endpoints should be added to.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The name of the region of the Redis cluster these endpoints should be added to.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a ClusterUserCreatedConnections resource with the given unique name, arguments, and options.
@@ -353,19 +353,19 @@ export class ClusterUserCreatedConnections extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterUserCreatedConnectionsState | undefined;
-            resourceInputs["clusterEndpoints"] = state ? state.clusterEndpoints : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["clusterEndpoints"] = state?.clusterEndpoints;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as ClusterUserCreatedConnectionsArgs | undefined;
-            if ((!args || args.region === undefined) && !opts.urn) {
+            if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            resourceInputs["clusterEndpoints"] = args ? args.clusterEndpoints : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["clusterEndpoints"] = args?.clusterEndpoints;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ClusterUserCreatedConnections.__pulumiType, name, resourceInputs, opts);

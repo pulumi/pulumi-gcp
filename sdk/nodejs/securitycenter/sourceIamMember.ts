@@ -79,16 +79,16 @@ export class SourceIamMember extends pulumi.CustomResource {
         return obj['__pulumiType'] === SourceIamMember.__pulumiType;
     }
 
-    public readonly condition!: pulumi.Output<outputs.securitycenter.SourceIamMemberCondition | undefined>;
-    public /*out*/ readonly etag!: pulumi.Output<string>;
-    public readonly member!: pulumi.Output<string>;
+    declare public readonly condition: pulumi.Output<outputs.securitycenter.SourceIamMemberCondition | undefined>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
+    declare public readonly member: pulumi.Output<string>;
     /**
      * The organization whose Cloud Security Command Center the Source
      * lives in.
      */
-    public readonly organization!: pulumi.Output<string>;
-    public readonly role!: pulumi.Output<string>;
-    public readonly source!: pulumi.Output<string>;
+    declare public readonly organization: pulumi.Output<string>;
+    declare public readonly role: pulumi.Output<string>;
+    declare public readonly source: pulumi.Output<string>;
 
     /**
      * Create a SourceIamMember resource with the given unique name, arguments, and options.
@@ -103,31 +103,31 @@ export class SourceIamMember extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SourceIamMemberState | undefined;
-            resourceInputs["condition"] = state ? state.condition : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["member"] = state ? state.member : undefined;
-            resourceInputs["organization"] = state ? state.organization : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
-            resourceInputs["source"] = state ? state.source : undefined;
+            resourceInputs["condition"] = state?.condition;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["member"] = state?.member;
+            resourceInputs["organization"] = state?.organization;
+            resourceInputs["role"] = state?.role;
+            resourceInputs["source"] = state?.source;
         } else {
             const args = argsOrState as SourceIamMemberArgs | undefined;
-            if ((!args || args.member === undefined) && !opts.urn) {
+            if (args?.member === undefined && !opts.urn) {
                 throw new Error("Missing required property 'member'");
             }
-            if ((!args || args.organization === undefined) && !opts.urn) {
+            if (args?.organization === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organization'");
             }
-            if ((!args || args.role === undefined) && !opts.urn) {
+            if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            if ((!args || args.source === undefined) && !opts.urn) {
+            if (args?.source === undefined && !opts.urn) {
                 throw new Error("Missing required property 'source'");
             }
-            resourceInputs["condition"] = args ? args.condition : undefined;
-            resourceInputs["member"] = args ? args.member : undefined;
-            resourceInputs["organization"] = args ? args.organization : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
-            resourceInputs["source"] = args ? args.source : undefined;
+            resourceInputs["condition"] = args?.condition;
+            resourceInputs["member"] = args?.member;
+            resourceInputs["organization"] = args?.organization;
+            resourceInputs["role"] = args?.role;
+            resourceInputs["source"] = args?.source;
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

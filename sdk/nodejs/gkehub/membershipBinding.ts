@@ -115,66 +115,66 @@ export class MembershipBinding extends pulumi.CustomResource {
     /**
      * Time the MembershipBinding was created in UTC.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Time the MembershipBinding was deleted in UTC.
      */
-    public /*out*/ readonly deleteTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly deleteTime: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Labels for this Membership binding.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Location of the membership
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The client-provided identifier of the membership binding.
      */
-    public readonly membershipBindingId!: pulumi.Output<string>;
+    declare public readonly membershipBindingId: pulumi.Output<string>;
     /**
      * Id of the membership
      */
-    public readonly membershipId!: pulumi.Output<string>;
+    declare public readonly membershipId: pulumi.Output<string>;
     /**
      * The resource name for the membershipbinding itself
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * A Workspace resource name in the format
      * `projects/*&#47;locations/*&#47;scopes/*`.
      */
-    public readonly scope!: pulumi.Output<string>;
+    declare public readonly scope: pulumi.Output<string>;
     /**
      * State of the membership binding resource.
      * Structure is documented below.
      */
-    public /*out*/ readonly states!: pulumi.Output<outputs.gkehub.MembershipBindingState[]>;
+    declare public /*out*/ readonly states: pulumi.Output<outputs.gkehub.MembershipBindingState[]>;
     /**
      * Google-generated UUID for this resource.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * Time the MembershipBinding was updated in UTC.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a MembershipBinding resource with the given unique name, arguments, and options.
@@ -189,40 +189,40 @@ export class MembershipBinding extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MembershipBindingState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["deleteTime"] = state ? state.deleteTime : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["membershipBindingId"] = state ? state.membershipBindingId : undefined;
-            resourceInputs["membershipId"] = state ? state.membershipId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["scope"] = state ? state.scope : undefined;
-            resourceInputs["states"] = state ? state.states : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deleteTime"] = state?.deleteTime;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["membershipBindingId"] = state?.membershipBindingId;
+            resourceInputs["membershipId"] = state?.membershipId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["scope"] = state?.scope;
+            resourceInputs["states"] = state?.states;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as MembershipBindingArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.membershipBindingId === undefined) && !opts.urn) {
+            if (args?.membershipBindingId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'membershipBindingId'");
             }
-            if ((!args || args.membershipId === undefined) && !opts.urn) {
+            if (args?.membershipId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'membershipId'");
             }
-            if ((!args || args.scope === undefined) && !opts.urn) {
+            if (args?.scope === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scope'");
             }
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["membershipBindingId"] = args ? args.membershipBindingId : undefined;
-            resourceInputs["membershipId"] = args ? args.membershipId : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["scope"] = args ? args.scope : undefined;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["membershipBindingId"] = args?.membershipBindingId;
+            resourceInputs["membershipId"] = args?.membershipId;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["scope"] = args?.scope;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;

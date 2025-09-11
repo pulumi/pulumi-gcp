@@ -32,9 +32,10 @@ class WorkerPoolArgs:
         """
         The set of arguments for constructing a WorkerPool resource.
         :param pulumi.Input[_builtins.str] location: The location for the resource
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
-               limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
-               configuration. Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[_builtins.str] display_name: A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
         :param pulumi.Input[_builtins.str] name: User-defined name of the `WorkerPool`.
                
@@ -77,9 +78,10 @@ class WorkerPoolArgs:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
-        limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
-        configuration. Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -182,9 +184,10 @@ class _WorkerPoolState:
                  worker_config: Optional[pulumi.Input['WorkerPoolWorkerConfigArgs']] = None):
         """
         Input properties used for looking up and filtering WorkerPool resources.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
-               limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
-               configuration. Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[_builtins.str] create_time: Output only. Time at which the request to create the `WorkerPool` was received.
         :param pulumi.Input[_builtins.str] delete_time: Output only. Time at which the request to delete the `WorkerPool` was received.
         :param pulumi.Input[_builtins.str] display_name: A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
@@ -234,9 +237,10 @@ class _WorkerPoolState:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
-        limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
-        configuration. Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -498,9 +502,10 @@ class WorkerPool(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
-               limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
-               configuration. Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[_builtins.str] display_name: A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] name: User-defined name of the `WorkerPool`.
@@ -677,9 +682,10 @@ class WorkerPool(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
-               limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
-               configuration. Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[_builtins.str] create_time: Output only. Time at which the request to create the `WorkerPool` was received.
         :param pulumi.Input[_builtins.str] delete_time: Output only. Time at which the request to delete the `WorkerPool` was received.
         :param pulumi.Input[_builtins.str] display_name: A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
@@ -720,9 +726,10 @@ class WorkerPool(pulumi.CustomResource):
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
-        User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
-        limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
-        configuration. Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 

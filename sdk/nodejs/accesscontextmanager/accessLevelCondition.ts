@@ -120,18 +120,18 @@ export class AccessLevelCondition extends pulumi.CustomResource {
     /**
      * The name of the Access Level to add this condition to.
      */
-    public readonly accessLevel!: pulumi.Output<string>;
+    declare public readonly accessLevel: pulumi.Output<string>;
     /**
      * The name of the Access Policy this resource belongs to.
      */
-    public /*out*/ readonly accessPolicyId!: pulumi.Output<string>;
+    declare public /*out*/ readonly accessPolicyId: pulumi.Output<string>;
     /**
      * Device specific restrictions, all restrictions must hold for
      * the Condition to be true. If not specified, all devices are
      * allowed.
      * Structure is documented below.
      */
-    public readonly devicePolicy!: pulumi.Output<outputs.accesscontextmanager.AccessLevelConditionDevicePolicy | undefined>;
+    declare public readonly devicePolicy: pulumi.Output<outputs.accesscontextmanager.AccessLevelConditionDevicePolicy | undefined>;
     /**
      * A list of CIDR block IP subnetwork specification. May be IPv4
      * or IPv6.
@@ -144,7 +144,7 @@ export class AccessLevelCondition extends pulumi.CustomResource {
      * listed subnets in order for this Condition to be true.
      * If empty, all IP addresses are allowed.
      */
-    public readonly ipSubnetworks!: pulumi.Output<string[] | undefined>;
+    declare public readonly ipSubnetworks: pulumi.Output<string[] | undefined>;
     /**
      * An allowed list of members (users, service accounts).
      * Using groups is not supported yet.
@@ -154,19 +154,19 @@ export class AccessLevelCondition extends pulumi.CustomResource {
      * groups, etc.).
      * Formats: `user:{emailid}`, `serviceAccount:{emailid}`
      */
-    public readonly members!: pulumi.Output<string[] | undefined>;
+    declare public readonly members: pulumi.Output<string[] | undefined>;
     /**
      * Whether to negate the Condition. If true, the Condition becomes
      * a NAND over its non-empty fields, each field must be false for
      * the Condition overall to be satisfied. Defaults to false.
      */
-    public readonly negate!: pulumi.Output<boolean | undefined>;
+    declare public readonly negate: pulumi.Output<boolean | undefined>;
     /**
      * The request must originate from one of the provided
      * countries/regions.
      * Format: A valid ISO 3166-1 alpha-2 code.
      */
-    public readonly regions!: pulumi.Output<string[] | undefined>;
+    declare public readonly regions: pulumi.Output<string[] | undefined>;
     /**
      * A list of other access levels defined in the same Policy,
      * referenced by resource name. Referencing an AccessLevel which
@@ -174,12 +174,12 @@ export class AccessLevelCondition extends pulumi.CustomResource {
      * granted for the Condition to be true.
      * Format: accessPolicies/{policy_id}/accessLevels/{short_name}
      */
-    public readonly requiredAccessLevels!: pulumi.Output<string[] | undefined>;
+    declare public readonly requiredAccessLevels: pulumi.Output<string[] | undefined>;
     /**
      * The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ipSubnetworks`.
      * Structure is documented below.
      */
-    public readonly vpcNetworkSources!: pulumi.Output<outputs.accesscontextmanager.AccessLevelConditionVpcNetworkSource[] | undefined>;
+    declare public readonly vpcNetworkSources: pulumi.Output<outputs.accesscontextmanager.AccessLevelConditionVpcNetworkSource[] | undefined>;
 
     /**
      * Create a AccessLevelCondition resource with the given unique name, arguments, and options.
@@ -194,28 +194,28 @@ export class AccessLevelCondition extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessLevelConditionState | undefined;
-            resourceInputs["accessLevel"] = state ? state.accessLevel : undefined;
-            resourceInputs["accessPolicyId"] = state ? state.accessPolicyId : undefined;
-            resourceInputs["devicePolicy"] = state ? state.devicePolicy : undefined;
-            resourceInputs["ipSubnetworks"] = state ? state.ipSubnetworks : undefined;
-            resourceInputs["members"] = state ? state.members : undefined;
-            resourceInputs["negate"] = state ? state.negate : undefined;
-            resourceInputs["regions"] = state ? state.regions : undefined;
-            resourceInputs["requiredAccessLevels"] = state ? state.requiredAccessLevels : undefined;
-            resourceInputs["vpcNetworkSources"] = state ? state.vpcNetworkSources : undefined;
+            resourceInputs["accessLevel"] = state?.accessLevel;
+            resourceInputs["accessPolicyId"] = state?.accessPolicyId;
+            resourceInputs["devicePolicy"] = state?.devicePolicy;
+            resourceInputs["ipSubnetworks"] = state?.ipSubnetworks;
+            resourceInputs["members"] = state?.members;
+            resourceInputs["negate"] = state?.negate;
+            resourceInputs["regions"] = state?.regions;
+            resourceInputs["requiredAccessLevels"] = state?.requiredAccessLevels;
+            resourceInputs["vpcNetworkSources"] = state?.vpcNetworkSources;
         } else {
             const args = argsOrState as AccessLevelConditionArgs | undefined;
-            if ((!args || args.accessLevel === undefined) && !opts.urn) {
+            if (args?.accessLevel === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accessLevel'");
             }
-            resourceInputs["accessLevel"] = args ? args.accessLevel : undefined;
-            resourceInputs["devicePolicy"] = args ? args.devicePolicy : undefined;
-            resourceInputs["ipSubnetworks"] = args ? args.ipSubnetworks : undefined;
-            resourceInputs["members"] = args ? args.members : undefined;
-            resourceInputs["negate"] = args ? args.negate : undefined;
-            resourceInputs["regions"] = args ? args.regions : undefined;
-            resourceInputs["requiredAccessLevels"] = args ? args.requiredAccessLevels : undefined;
-            resourceInputs["vpcNetworkSources"] = args ? args.vpcNetworkSources : undefined;
+            resourceInputs["accessLevel"] = args?.accessLevel;
+            resourceInputs["devicePolicy"] = args?.devicePolicy;
+            resourceInputs["ipSubnetworks"] = args?.ipSubnetworks;
+            resourceInputs["members"] = args?.members;
+            resourceInputs["negate"] = args?.negate;
+            resourceInputs["regions"] = args?.regions;
+            resourceInputs["requiredAccessLevels"] = args?.requiredAccessLevels;
+            resourceInputs["vpcNetworkSources"] = args?.vpcNetworkSources;
             resourceInputs["accessPolicyId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

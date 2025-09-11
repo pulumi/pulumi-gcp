@@ -127,45 +127,45 @@ export class AndroidApp extends pulumi.CustomResource {
      * If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AndroidApp.
      * This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
      */
-    public readonly apiKeyId!: pulumi.Output<string>;
+    declare public readonly apiKeyId: pulumi.Output<string>;
     /**
      * The globally unique, Firebase-assigned identifier of the AndroidApp.
      * This identifier should be treated as an opaque token, as the data format is not specified.
      */
-    public /*out*/ readonly appId!: pulumi.Output<string>;
-    public readonly deletionPolicy!: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly appId: pulumi.Output<string>;
+    declare public readonly deletionPolicy: pulumi.Output<string | undefined>;
     /**
      * The user-assigned display name of the AndroidApp.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * This checksum is computed by the server based on the value of other fields, and it may be sent
      * with update requests to ensure the client has an up-to-date value before proceeding.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The fully qualified resource name of the AndroidApp, for example:
      * projects/projectId/androidApps/appId
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The canonical package name of the Android app as would appear in the Google Play
      * Developer Console.
      */
-    public readonly packageName!: pulumi.Output<string>;
+    declare public readonly packageName: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The SHA1 certificate hashes for the AndroidApp.
      */
-    public readonly sha1Hashes!: pulumi.Output<string[] | undefined>;
+    declare public readonly sha1Hashes: pulumi.Output<string[] | undefined>;
     /**
      * The SHA256 certificate hashes for the AndroidApp.
      */
-    public readonly sha256Hashes!: pulumi.Output<string[] | undefined>;
+    declare public readonly sha256Hashes: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a AndroidApp resource with the given unique name, arguments, and options.
@@ -180,31 +180,31 @@ export class AndroidApp extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AndroidAppState | undefined;
-            resourceInputs["apiKeyId"] = state ? state.apiKeyId : undefined;
-            resourceInputs["appId"] = state ? state.appId : undefined;
-            resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["packageName"] = state ? state.packageName : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["sha1Hashes"] = state ? state.sha1Hashes : undefined;
-            resourceInputs["sha256Hashes"] = state ? state.sha256Hashes : undefined;
+            resourceInputs["apiKeyId"] = state?.apiKeyId;
+            resourceInputs["appId"] = state?.appId;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["packageName"] = state?.packageName;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["sha1Hashes"] = state?.sha1Hashes;
+            resourceInputs["sha256Hashes"] = state?.sha256Hashes;
         } else {
             const args = argsOrState as AndroidAppArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.packageName === undefined) && !opts.urn) {
+            if (args?.packageName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'packageName'");
             }
-            resourceInputs["apiKeyId"] = args ? args.apiKeyId : undefined;
-            resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["packageName"] = args ? args.packageName : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["sha1Hashes"] = args ? args.sha1Hashes : undefined;
-            resourceInputs["sha256Hashes"] = args ? args.sha256Hashes : undefined;
+            resourceInputs["apiKeyId"] = args?.apiKeyId;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["packageName"] = args?.packageName;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["sha1Hashes"] = args?.sha1Hashes;
+            resourceInputs["sha256Hashes"] = args?.sha256Hashes;
             resourceInputs["appId"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

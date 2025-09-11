@@ -202,12 +202,12 @@ export class AttestorIamBinding extends pulumi.CustomResource {
     /**
      * Used to find the parent resource to bind the IAM policy to
      */
-    public readonly attestor!: pulumi.Output<string>;
-    public readonly condition!: pulumi.Output<outputs.binaryauthorization.AttestorIamBindingCondition | undefined>;
+    declare public readonly attestor: pulumi.Output<string>;
+    declare public readonly condition: pulumi.Output<outputs.binaryauthorization.AttestorIamBindingCondition | undefined>;
     /**
      * (Computed) The etag of the IAM policy.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -221,18 +221,18 @@ export class AttestorIamBinding extends pulumi.CustomResource {
      * * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
      */
-    public readonly members!: pulumi.Output<string[]>;
+    declare public readonly members: pulumi.Output<string[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.binaryauthorization.AttestorIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    public readonly role!: pulumi.Output<string>;
+    declare public readonly role: pulumi.Output<string>;
 
     /**
      * Create a AttestorIamBinding resource with the given unique name, arguments, and options.
@@ -247,28 +247,28 @@ export class AttestorIamBinding extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AttestorIamBindingState | undefined;
-            resourceInputs["attestor"] = state ? state.attestor : undefined;
-            resourceInputs["condition"] = state ? state.condition : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["members"] = state ? state.members : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["attestor"] = state?.attestor;
+            resourceInputs["condition"] = state?.condition;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["members"] = state?.members;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["role"] = state?.role;
         } else {
             const args = argsOrState as AttestorIamBindingArgs | undefined;
-            if ((!args || args.attestor === undefined) && !opts.urn) {
+            if (args?.attestor === undefined && !opts.urn) {
                 throw new Error("Missing required property 'attestor'");
             }
-            if ((!args || args.members === undefined) && !opts.urn) {
+            if (args?.members === undefined && !opts.urn) {
                 throw new Error("Missing required property 'members'");
             }
-            if ((!args || args.role === undefined) && !opts.urn) {
+            if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            resourceInputs["attestor"] = args ? args.attestor : undefined;
-            resourceInputs["condition"] = args ? args.condition : undefined;
-            resourceInputs["members"] = args ? args.members : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["attestor"] = args?.attestor;
+            resourceInputs["condition"] = args?.condition;
+            resourceInputs["members"] = args?.members;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["role"] = args?.role;
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

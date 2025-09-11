@@ -189,7 +189,7 @@ export class CxAgent extends pulumi.CustomResource {
      * Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
      * Structure is documented below.
      */
-    public readonly advancedSettings!: pulumi.Output<outputs.diagflow.CxAgentAdvancedSettings>;
+    declare public readonly advancedSettings: pulumi.Output<outputs.diagflow.CxAgentAdvancedSettings>;
     /**
      * Answer feedback collection settings.
      * Structure is documented below.
@@ -198,7 +198,7 @@ export class CxAgent extends pulumi.CustomResource {
     /**
      * The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted Web Demo integration.
      */
-    public readonly avatarUri!: pulumi.Output<string | undefined>;
+    declare public readonly avatarUri: pulumi.Output<string | undefined>;
     /**
      * Settings for custom client certificates.
      * Structure is documented below.
@@ -208,16 +208,16 @@ export class CxAgent extends pulumi.CustomResource {
      * The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language)
      * for a list of the currently supported language codes. This field cannot be updated after creation.
      */
-    public readonly defaultLanguageCode!: pulumi.Output<string>;
-    public readonly deleteChatEngineOnDestroy!: pulumi.Output<boolean | undefined>;
+    declare public readonly defaultLanguageCode: pulumi.Output<string>;
+    declare public readonly deleteChatEngineOnDestroy: pulumi.Output<boolean | undefined>;
     /**
      * The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The human-readable name of the agent, unique within the location.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Enable training multi-lingual models for this agent. These models will be trained on all the languages supported by the agent.
      */
@@ -225,7 +225,7 @@ export class CxAgent extends pulumi.CustomResource {
     /**
      * Indicates if automatic spell correction is enabled in detect intent requests.
      */
-    public readonly enableSpellCorrection!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableSpellCorrection: pulumi.Output<boolean | undefined>;
     /**
      * (Optional, Deprecated)
      * Determines whether this agent should log conversation queries.
@@ -234,24 +234,24 @@ export class CxAgent extends pulumi.CustomResource {
      *
      * @deprecated `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
      */
-    public readonly enableStackdriverLogging!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableStackdriverLogging: pulumi.Output<boolean | undefined>;
     /**
      * Gen App Builder-related agent-level settings.
      * Structure is documented below.
      */
-    public readonly genAppBuilderSettings!: pulumi.Output<outputs.diagflow.CxAgentGenAppBuilderSettings>;
+    declare public readonly genAppBuilderSettings: pulumi.Output<outputs.diagflow.CxAgentGenAppBuilderSettings>;
     /**
      * Git integration settings for this agent.
      * Structure is documented below.
      */
-    public readonly gitIntegrationSettings!: pulumi.Output<outputs.diagflow.CxAgentGitIntegrationSettings | undefined>;
+    declare public readonly gitIntegrationSettings: pulumi.Output<outputs.diagflow.CxAgentGitIntegrationSettings | undefined>;
     /**
      * The name of the location this agent is located in.
      * > **Note:** The first time you are deploying an Agent in your project you must configure location settings.
      * This is a one time step but at the moment you can only [configure location settings](https://cloud.google.com/dialogflow/cx/docs/concept/region#location-settings) via the Dialogflow CX console.
      * Another options is to use global location so you don't need to manually configure location settings.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for [agents.restore][].
      */
@@ -259,7 +259,7 @@ export class CxAgent extends pulumi.CustomResource {
     /**
      * The unique identifier of the agent.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Settings for end user personalization.
      * Structure is documented below.
@@ -269,7 +269,7 @@ export class CxAgent extends pulumi.CustomResource {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * A read only boolean field reflecting Zone Isolation status of the agent.
      */
@@ -281,16 +281,16 @@ export class CxAgent extends pulumi.CustomResource {
     /**
      * Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
      */
-    public readonly securitySettings!: pulumi.Output<string | undefined>;
+    declare public readonly securitySettings: pulumi.Output<string | undefined>;
     /**
      * Settings related to speech recognition.
      * Structure is documented below.
      */
-    public readonly speechToTextSettings!: pulumi.Output<outputs.diagflow.CxAgentSpeechToTextSettings | undefined>;
+    declare public readonly speechToTextSettings: pulumi.Output<outputs.diagflow.CxAgentSpeechToTextSettings | undefined>;
     /**
      * Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
      */
-    public /*out*/ readonly startFlow!: pulumi.Output<string>;
+    declare public /*out*/ readonly startFlow: pulumi.Output<string>;
     /**
      * Name of the start playbook in this agent. A start playbook will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: **projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/playbooks/<PlaybookID>**. Currently only the default playbook with id "00000000-0000-0000-0000-000000000000" is allowed.
      */
@@ -298,17 +298,17 @@ export class CxAgent extends pulumi.CustomResource {
     /**
      * The list of all languages supported by this agent (except for the default_language_code).
      */
-    public readonly supportedLanguageCodes!: pulumi.Output<string[] | undefined>;
+    declare public readonly supportedLanguageCodes: pulumi.Output<string[] | undefined>;
     /**
      * Settings related to speech synthesizing.
      * Structure is documented below.
      */
-    public readonly textToSpeechSettings!: pulumi.Output<outputs.diagflow.CxAgentTextToSpeechSettings | undefined>;
+    declare public readonly textToSpeechSettings: pulumi.Output<outputs.diagflow.CxAgentTextToSpeechSettings | undefined>;
     /**
      * The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
      * Europe/Paris.
      */
-    public readonly timeZone!: pulumi.Output<string>;
+    declare public readonly timeZone: pulumi.Output<string>;
 
     /**
      * Create a CxAgent resource with the given unique name, arguments, and options.
@@ -323,70 +323,56 @@ export class CxAgent extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CxAgentState | undefined;
-            resourceInputs["advancedSettings"] = state ? state.advancedSettings : undefined;
-            resourceInputs["answerFeedbackSettings"] = state ? state.answerFeedbackSettings : undefined;
-            resourceInputs["avatarUri"] = state ? state.avatarUri : undefined;
-            resourceInputs["clientCertificateSettings"] = state ? state.clientCertificateSettings : undefined;
-            resourceInputs["defaultLanguageCode"] = state ? state.defaultLanguageCode : undefined;
-            resourceInputs["deleteChatEngineOnDestroy"] = state ? state.deleteChatEngineOnDestroy : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["enableMultiLanguageTraining"] = state ? state.enableMultiLanguageTraining : undefined;
-            resourceInputs["enableSpellCorrection"] = state ? state.enableSpellCorrection : undefined;
-            resourceInputs["enableStackdriverLogging"] = state ? state.enableStackdriverLogging : undefined;
-            resourceInputs["genAppBuilderSettings"] = state ? state.genAppBuilderSettings : undefined;
-            resourceInputs["gitIntegrationSettings"] = state ? state.gitIntegrationSettings : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["locked"] = state ? state.locked : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["personalizationSettings"] = state ? state.personalizationSettings : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["satisfiesPzi"] = state ? state.satisfiesPzi : undefined;
-            resourceInputs["satisfiesPzs"] = state ? state.satisfiesPzs : undefined;
-            resourceInputs["securitySettings"] = state ? state.securitySettings : undefined;
-            resourceInputs["speechToTextSettings"] = state ? state.speechToTextSettings : undefined;
-            resourceInputs["startFlow"] = state ? state.startFlow : undefined;
-            resourceInputs["startPlaybook"] = state ? state.startPlaybook : undefined;
-            resourceInputs["supportedLanguageCodes"] = state ? state.supportedLanguageCodes : undefined;
-            resourceInputs["textToSpeechSettings"] = state ? state.textToSpeechSettings : undefined;
-            resourceInputs["timeZone"] = state ? state.timeZone : undefined;
+            resourceInputs["advancedSettings"] = state?.advancedSettings;
+            resourceInputs["avatarUri"] = state?.avatarUri;
+            resourceInputs["defaultLanguageCode"] = state?.defaultLanguageCode;
+            resourceInputs["deleteChatEngineOnDestroy"] = state?.deleteChatEngineOnDestroy;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["enableSpellCorrection"] = state?.enableSpellCorrection;
+            resourceInputs["enableStackdriverLogging"] = state?.enableStackdriverLogging;
+            resourceInputs["genAppBuilderSettings"] = state?.genAppBuilderSettings;
+            resourceInputs["gitIntegrationSettings"] = state?.gitIntegrationSettings;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["securitySettings"] = state?.securitySettings;
+            resourceInputs["speechToTextSettings"] = state?.speechToTextSettings;
+            resourceInputs["startFlow"] = state?.startFlow;
+            resourceInputs["supportedLanguageCodes"] = state?.supportedLanguageCodes;
+            resourceInputs["textToSpeechSettings"] = state?.textToSpeechSettings;
+            resourceInputs["timeZone"] = state?.timeZone;
         } else {
             const args = argsOrState as CxAgentArgs | undefined;
-            if ((!args || args.defaultLanguageCode === undefined) && !opts.urn) {
+            if (args?.defaultLanguageCode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'defaultLanguageCode'");
             }
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.timeZone === undefined) && !opts.urn) {
+            if (args?.timeZone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'timeZone'");
             }
-            resourceInputs["advancedSettings"] = args ? args.advancedSettings : undefined;
-            resourceInputs["answerFeedbackSettings"] = args ? args.answerFeedbackSettings : undefined;
-            resourceInputs["avatarUri"] = args ? args.avatarUri : undefined;
-            resourceInputs["clientCertificateSettings"] = args ? args.clientCertificateSettings : undefined;
-            resourceInputs["defaultLanguageCode"] = args ? args.defaultLanguageCode : undefined;
-            resourceInputs["deleteChatEngineOnDestroy"] = args ? args.deleteChatEngineOnDestroy : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["enableMultiLanguageTraining"] = args ? args.enableMultiLanguageTraining : undefined;
-            resourceInputs["enableSpellCorrection"] = args ? args.enableSpellCorrection : undefined;
-            resourceInputs["enableStackdriverLogging"] = args ? args.enableStackdriverLogging : undefined;
-            resourceInputs["genAppBuilderSettings"] = args ? args.genAppBuilderSettings : undefined;
-            resourceInputs["gitIntegrationSettings"] = args ? args.gitIntegrationSettings : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["locked"] = args ? args.locked : undefined;
-            resourceInputs["personalizationSettings"] = args ? args.personalizationSettings : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["securitySettings"] = args ? args.securitySettings : undefined;
-            resourceInputs["speechToTextSettings"] = args ? args.speechToTextSettings : undefined;
-            resourceInputs["startPlaybook"] = args ? args.startPlaybook : undefined;
-            resourceInputs["supportedLanguageCodes"] = args ? args.supportedLanguageCodes : undefined;
-            resourceInputs["textToSpeechSettings"] = args ? args.textToSpeechSettings : undefined;
-            resourceInputs["timeZone"] = args ? args.timeZone : undefined;
+            resourceInputs["advancedSettings"] = args?.advancedSettings;
+            resourceInputs["avatarUri"] = args?.avatarUri;
+            resourceInputs["defaultLanguageCode"] = args?.defaultLanguageCode;
+            resourceInputs["deleteChatEngineOnDestroy"] = args?.deleteChatEngineOnDestroy;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["enableSpellCorrection"] = args?.enableSpellCorrection;
+            resourceInputs["enableStackdriverLogging"] = args?.enableStackdriverLogging;
+            resourceInputs["genAppBuilderSettings"] = args?.genAppBuilderSettings;
+            resourceInputs["gitIntegrationSettings"] = args?.gitIntegrationSettings;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["securitySettings"] = args?.securitySettings;
+            resourceInputs["speechToTextSettings"] = args?.speechToTextSettings;
+            resourceInputs["supportedLanguageCodes"] = args?.supportedLanguageCodes;
+            resourceInputs["textToSpeechSettings"] = args?.textToSpeechSettings;
+            resourceInputs["timeZone"] = args?.timeZone;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["satisfiesPzi"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;

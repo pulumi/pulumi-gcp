@@ -108,71 +108,71 @@ export class Entitlement extends pulumi.CustomResource {
      * AdditionalNotificationTargets includes email addresses to be notified.
      * Structure is documented below.
      */
-    public readonly additionalNotificationTargets!: pulumi.Output<outputs.privilegedaccessmanager.EntitlementAdditionalNotificationTargets | undefined>;
+    declare public readonly additionalNotificationTargets: pulumi.Output<outputs.privilegedaccessmanager.EntitlementAdditionalNotificationTargets | undefined>;
     /**
      * The approvals needed before access will be granted to a requester.
      * No approvals will be needed if this field is null. Different types of approval workflows that can be used to gate privileged access granting.
      * Structure is documented below.
      */
-    public readonly approvalWorkflow!: pulumi.Output<outputs.privilegedaccessmanager.EntitlementApprovalWorkflow | undefined>;
+    declare public readonly approvalWorkflow: pulumi.Output<outputs.privilegedaccessmanager.EntitlementApprovalWorkflow | undefined>;
     /**
      * Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Who can create Grants using Entitlement. This list should contain at most one entry
      * Structure is documented below.
      */
-    public readonly eligibleUsers!: pulumi.Output<outputs.privilegedaccessmanager.EntitlementEligibleUser[]>;
+    declare public readonly eligibleUsers: pulumi.Output<outputs.privilegedaccessmanager.EntitlementEligibleUser[]>;
     /**
      * The ID to use for this Entitlement. This will become the last part of the resource name.
      * This value should be 4-63 characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z].
      * This value should be unique among all other Entitlements under the specified `parent`.
      */
-    public readonly entitlementId!: pulumi.Output<string>;
+    declare public readonly entitlementId: pulumi.Output<string>;
     /**
      * For Resource freshness validation (https://google.aip.dev/154)
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The region of the Entitlement resource.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The maximum amount of time for which access would be granted for a request.
      * A requester can choose to ask for access for less than this duration but never more.
      * Format: calculate the time in seconds and concatenate it with 's' i.e. 2 hours = "7200s", 45 minutes = "2700s"
      */
-    public readonly maxRequestDuration!: pulumi.Output<string>;
+    declare public readonly maxRequestDuration: pulumi.Output<string>;
     /**
      * Output Only. The entitlement's name follows a hierarchical structure, comprising the organization, folder, or project, alongside the region and a unique entitlement ID.
      * Formats: organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id}, folders/{folder-number}/locations/{region}/entitlements/{entitlement-id}, and projects/{project-id|project-number}/locations/{region}/entitlements/{entitlement-id}.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
      */
-    public readonly parent!: pulumi.Output<string>;
+    declare public readonly parent: pulumi.Output<string>;
     /**
      * Privileged access that this service can be used to gate.
      * Structure is documented below.
      */
-    public readonly privilegedAccess!: pulumi.Output<outputs.privilegedaccessmanager.EntitlementPrivilegedAccess>;
+    declare public readonly privilegedAccess: pulumi.Output<outputs.privilegedaccessmanager.EntitlementPrivilegedAccess>;
     /**
      * Defines the ways in which a requester should provide the justification while requesting for access.
      * Structure is documented below.
      */
-    public readonly requesterJustificationConfig!: pulumi.Output<outputs.privilegedaccessmanager.EntitlementRequesterJustificationConfig>;
+    declare public readonly requesterJustificationConfig: pulumi.Output<outputs.privilegedaccessmanager.EntitlementRequesterJustificationConfig>;
     /**
      * Output only. The current state of the Entitlement.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Entitlement resource with the given unique name, arguments, and options.
@@ -187,52 +187,52 @@ export class Entitlement extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EntitlementState | undefined;
-            resourceInputs["additionalNotificationTargets"] = state ? state.additionalNotificationTargets : undefined;
-            resourceInputs["approvalWorkflow"] = state ? state.approvalWorkflow : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["eligibleUsers"] = state ? state.eligibleUsers : undefined;
-            resourceInputs["entitlementId"] = state ? state.entitlementId : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["maxRequestDuration"] = state ? state.maxRequestDuration : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["privilegedAccess"] = state ? state.privilegedAccess : undefined;
-            resourceInputs["requesterJustificationConfig"] = state ? state.requesterJustificationConfig : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["additionalNotificationTargets"] = state?.additionalNotificationTargets;
+            resourceInputs["approvalWorkflow"] = state?.approvalWorkflow;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["eligibleUsers"] = state?.eligibleUsers;
+            resourceInputs["entitlementId"] = state?.entitlementId;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["maxRequestDuration"] = state?.maxRequestDuration;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["privilegedAccess"] = state?.privilegedAccess;
+            resourceInputs["requesterJustificationConfig"] = state?.requesterJustificationConfig;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as EntitlementArgs | undefined;
-            if ((!args || args.eligibleUsers === undefined) && !opts.urn) {
+            if (args?.eligibleUsers === undefined && !opts.urn) {
                 throw new Error("Missing required property 'eligibleUsers'");
             }
-            if ((!args || args.entitlementId === undefined) && !opts.urn) {
+            if (args?.entitlementId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'entitlementId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.maxRequestDuration === undefined) && !opts.urn) {
+            if (args?.maxRequestDuration === undefined && !opts.urn) {
                 throw new Error("Missing required property 'maxRequestDuration'");
             }
-            if ((!args || args.parent === undefined) && !opts.urn) {
+            if (args?.parent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            if ((!args || args.privilegedAccess === undefined) && !opts.urn) {
+            if (args?.privilegedAccess === undefined && !opts.urn) {
                 throw new Error("Missing required property 'privilegedAccess'");
             }
-            if ((!args || args.requesterJustificationConfig === undefined) && !opts.urn) {
+            if (args?.requesterJustificationConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'requesterJustificationConfig'");
             }
-            resourceInputs["additionalNotificationTargets"] = args ? args.additionalNotificationTargets : undefined;
-            resourceInputs["approvalWorkflow"] = args ? args.approvalWorkflow : undefined;
-            resourceInputs["eligibleUsers"] = args ? args.eligibleUsers : undefined;
-            resourceInputs["entitlementId"] = args ? args.entitlementId : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["maxRequestDuration"] = args ? args.maxRequestDuration : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
-            resourceInputs["privilegedAccess"] = args ? args.privilegedAccess : undefined;
-            resourceInputs["requesterJustificationConfig"] = args ? args.requesterJustificationConfig : undefined;
+            resourceInputs["additionalNotificationTargets"] = args?.additionalNotificationTargets;
+            resourceInputs["approvalWorkflow"] = args?.approvalWorkflow;
+            resourceInputs["eligibleUsers"] = args?.eligibleUsers;
+            resourceInputs["entitlementId"] = args?.entitlementId;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["maxRequestDuration"] = args?.maxRequestDuration;
+            resourceInputs["parent"] = args?.parent;
+            resourceInputs["privilegedAccess"] = args?.privilegedAccess;
+            resourceInputs["requesterJustificationConfig"] = args?.requesterJustificationConfig;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

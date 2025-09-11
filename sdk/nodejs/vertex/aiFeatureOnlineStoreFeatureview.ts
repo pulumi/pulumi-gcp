@@ -456,63 +456,63 @@ export class AiFeatureOnlineStoreFeatureview extends pulumi.CustomResource {
      * Configures how data is supposed to be extracted from a BigQuery source to be loaded onto the FeatureOnlineStore.
      * Structure is documented below.
      */
-    public readonly bigQuerySource!: pulumi.Output<outputs.vertex.AiFeatureOnlineStoreFeatureviewBigQuerySource | undefined>;
+    declare public readonly bigQuerySource: pulumi.Output<outputs.vertex.AiFeatureOnlineStoreFeatureviewBigQuerySource | undefined>;
     /**
      * The timestamp of when the featureOnlinestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of the FeatureOnlineStore to use for the featureview.
      */
-    public readonly featureOnlineStore!: pulumi.Output<string>;
+    declare public readonly featureOnlineStore: pulumi.Output<string>;
     /**
      * Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
      * Structure is documented below.
      */
-    public readonly featureRegistrySource!: pulumi.Output<outputs.vertex.AiFeatureOnlineStoreFeatureviewFeatureRegistrySource | undefined>;
+    declare public readonly featureRegistrySource: pulumi.Output<outputs.vertex.AiFeatureOnlineStoreFeatureviewFeatureRegistrySource | undefined>;
     /**
      * A set of key/value label pairs to assign to this FeatureView.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Name of the FeatureView. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The region for the resource. It should be the same as the featureonlinestore region.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
      * Structure is documented below.
      */
-    public readonly syncConfig!: pulumi.Output<outputs.vertex.AiFeatureOnlineStoreFeatureviewSyncConfig | undefined>;
+    declare public readonly syncConfig: pulumi.Output<outputs.vertex.AiFeatureOnlineStoreFeatureviewSyncConfig | undefined>;
     /**
      * The timestamp of when the featureOnlinestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
      * Structure is documented below.
      */
-    public readonly vectorSearchConfig!: pulumi.Output<outputs.vertex.AiFeatureOnlineStoreFeatureviewVectorSearchConfig | undefined>;
+    declare public readonly vectorSearchConfig: pulumi.Output<outputs.vertex.AiFeatureOnlineStoreFeatureviewVectorSearchConfig | undefined>;
 
     /**
      * Create a AiFeatureOnlineStoreFeatureview resource with the given unique name, arguments, and options.
@@ -527,33 +527,33 @@ export class AiFeatureOnlineStoreFeatureview extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AiFeatureOnlineStoreFeatureviewState | undefined;
-            resourceInputs["bigQuerySource"] = state ? state.bigQuerySource : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["featureOnlineStore"] = state ? state.featureOnlineStore : undefined;
-            resourceInputs["featureRegistrySource"] = state ? state.featureRegistrySource : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["syncConfig"] = state ? state.syncConfig : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["vectorSearchConfig"] = state ? state.vectorSearchConfig : undefined;
+            resourceInputs["bigQuerySource"] = state?.bigQuerySource;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["featureOnlineStore"] = state?.featureOnlineStore;
+            resourceInputs["featureRegistrySource"] = state?.featureRegistrySource;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["syncConfig"] = state?.syncConfig;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["vectorSearchConfig"] = state?.vectorSearchConfig;
         } else {
             const args = argsOrState as AiFeatureOnlineStoreFeatureviewArgs | undefined;
-            if ((!args || args.featureOnlineStore === undefined) && !opts.urn) {
+            if (args?.featureOnlineStore === undefined && !opts.urn) {
                 throw new Error("Missing required property 'featureOnlineStore'");
             }
-            resourceInputs["bigQuerySource"] = args ? args.bigQuerySource : undefined;
-            resourceInputs["featureOnlineStore"] = args ? args.featureOnlineStore : undefined;
-            resourceInputs["featureRegistrySource"] = args ? args.featureRegistrySource : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["syncConfig"] = args ? args.syncConfig : undefined;
-            resourceInputs["vectorSearchConfig"] = args ? args.vectorSearchConfig : undefined;
+            resourceInputs["bigQuerySource"] = args?.bigQuerySource;
+            resourceInputs["featureOnlineStore"] = args?.featureOnlineStore;
+            resourceInputs["featureRegistrySource"] = args?.featureRegistrySource;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["syncConfig"] = args?.syncConfig;
+            resourceInputs["vectorSearchConfig"] = args?.vectorSearchConfig;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;

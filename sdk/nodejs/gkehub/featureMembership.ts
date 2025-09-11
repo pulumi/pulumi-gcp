@@ -419,35 +419,35 @@ export class FeatureMembership extends pulumi.CustomResource {
     /**
      * Config Management-specific spec. Structure is documented below.
      */
-    public readonly configmanagement!: pulumi.Output<outputs.gkehub.FeatureMembershipConfigmanagement | undefined>;
+    declare public readonly configmanagement: pulumi.Output<outputs.gkehub.FeatureMembershipConfigmanagement | undefined>;
     /**
      * The name of the feature
      */
-    public readonly feature!: pulumi.Output<string>;
+    declare public readonly feature: pulumi.Output<string>;
     /**
      * The location of the feature
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The name of the membership
      */
-    public readonly membership!: pulumi.Output<string>;
+    declare public readonly membership: pulumi.Output<string>;
     /**
      * The location of the membership, for example, "us-central1". Default is "global".
      */
-    public readonly membershipLocation!: pulumi.Output<string | undefined>;
+    declare public readonly membershipLocation: pulumi.Output<string | undefined>;
     /**
      * Service mesh specific spec. Structure is documented below.
      */
-    public readonly mesh!: pulumi.Output<outputs.gkehub.FeatureMembershipMesh | undefined>;
+    declare public readonly mesh: pulumi.Output<outputs.gkehub.FeatureMembershipMesh | undefined>;
     /**
      * Policy Controller-specific spec. Structure is documented below.
      */
-    public readonly policycontroller!: pulumi.Output<outputs.gkehub.FeatureMembershipPolicycontroller | undefined>;
+    declare public readonly policycontroller: pulumi.Output<outputs.gkehub.FeatureMembershipPolicycontroller | undefined>;
     /**
      * The project of the feature
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
 
     /**
      * Create a FeatureMembership resource with the given unique name, arguments, and options.
@@ -462,33 +462,33 @@ export class FeatureMembership extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FeatureMembershipState | undefined;
-            resourceInputs["configmanagement"] = state ? state.configmanagement : undefined;
-            resourceInputs["feature"] = state ? state.feature : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["membership"] = state ? state.membership : undefined;
-            resourceInputs["membershipLocation"] = state ? state.membershipLocation : undefined;
-            resourceInputs["mesh"] = state ? state.mesh : undefined;
-            resourceInputs["policycontroller"] = state ? state.policycontroller : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["configmanagement"] = state?.configmanagement;
+            resourceInputs["feature"] = state?.feature;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["membership"] = state?.membership;
+            resourceInputs["membershipLocation"] = state?.membershipLocation;
+            resourceInputs["mesh"] = state?.mesh;
+            resourceInputs["policycontroller"] = state?.policycontroller;
+            resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as FeatureMembershipArgs | undefined;
-            if ((!args || args.feature === undefined) && !opts.urn) {
+            if (args?.feature === undefined && !opts.urn) {
                 throw new Error("Missing required property 'feature'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.membership === undefined) && !opts.urn) {
+            if (args?.membership === undefined && !opts.urn) {
                 throw new Error("Missing required property 'membership'");
             }
-            resourceInputs["configmanagement"] = args ? args.configmanagement : undefined;
-            resourceInputs["feature"] = args ? args.feature : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["membership"] = args ? args.membership : undefined;
-            resourceInputs["membershipLocation"] = args ? args.membershipLocation : undefined;
-            resourceInputs["mesh"] = args ? args.mesh : undefined;
-            resourceInputs["policycontroller"] = args ? args.policycontroller : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["configmanagement"] = args?.configmanagement;
+            resourceInputs["feature"] = args?.feature;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["membership"] = args?.membership;
+            resourceInputs["membershipLocation"] = args?.membershipLocation;
+            resourceInputs["mesh"] = args?.mesh;
+            resourceInputs["policycontroller"] = args?.policycontroller;
+            resourceInputs["project"] = args?.project;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(FeatureMembership.__pulumiType, name, resourceInputs, opts);

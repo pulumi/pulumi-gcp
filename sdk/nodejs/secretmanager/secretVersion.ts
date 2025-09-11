@@ -150,7 +150,7 @@ export class SecretVersion extends pulumi.CustomResource {
     /**
      * The time at which the Secret was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The deletion policy for the secret version. Setting `ABANDON` allows the resource
      * to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
@@ -159,41 +159,41 @@ export class SecretVersion extends pulumi.CustomResource {
      * * DISABLE
      * * ABANDON
      */
-    public readonly deletionPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly deletionPolicy: pulumi.Output<string | undefined>;
     /**
      * The time at which the Secret was destroyed. Only present if state is DESTROYED.
      */
-    public /*out*/ readonly destroyTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly destroyTime: pulumi.Output<string>;
     /**
      * The current state of the SecretVersion.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
      */
-    public readonly isSecretDataBase64!: pulumi.Output<boolean | undefined>;
+    declare public readonly isSecretDataBase64: pulumi.Output<boolean | undefined>;
     /**
      * The resource name of the SecretVersion. Format:
      * `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Secret Manager secret resource
      */
-    public readonly secret!: pulumi.Output<string>;
+    declare public readonly secret: pulumi.Output<string>;
     /**
      * The secret data. Must be no larger than 64KiB.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    public readonly secretData!: pulumi.Output<string | undefined>;
+    declare public readonly secretData: pulumi.Output<string | undefined>;
     /**
      * Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
      */
-    public readonly secretDataWoVersion!: pulumi.Output<number | undefined>;
+    declare public readonly secretDataWoVersion: pulumi.Output<number | undefined>;
     /**
      * The version of the Secret.
      */
-    public /*out*/ readonly version!: pulumi.Output<string>;
+    declare public /*out*/ readonly version: pulumi.Output<string>;
 
     /**
      * Create a SecretVersion resource with the given unique name, arguments, and options.
@@ -208,27 +208,27 @@ export class SecretVersion extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecretVersionState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
-            resourceInputs["destroyTime"] = state ? state.destroyTime : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["isSecretDataBase64"] = state ? state.isSecretDataBase64 : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["secret"] = state ? state.secret : undefined;
-            resourceInputs["secretData"] = state ? state.secretData : undefined;
-            resourceInputs["secretDataWoVersion"] = state ? state.secretDataWoVersion : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
+            resourceInputs["destroyTime"] = state?.destroyTime;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["isSecretDataBase64"] = state?.isSecretDataBase64;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["secret"] = state?.secret;
+            resourceInputs["secretData"] = state?.secretData;
+            resourceInputs["secretDataWoVersion"] = state?.secretDataWoVersion;
+            resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as SecretVersionArgs | undefined;
-            if ((!args || args.secret === undefined) && !opts.urn) {
+            if (args?.secret === undefined && !opts.urn) {
                 throw new Error("Missing required property 'secret'");
             }
-            resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["isSecretDataBase64"] = args ? args.isSecretDataBase64 : undefined;
-            resourceInputs["secret"] = args ? args.secret : undefined;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["isSecretDataBase64"] = args?.isSecretDataBase64;
+            resourceInputs["secret"] = args?.secret;
             resourceInputs["secretData"] = args?.secretData ? pulumi.secret(args.secretData) : undefined;
-            resourceInputs["secretDataWoVersion"] = args ? args.secretDataWoVersion : undefined;
+            resourceInputs["secretDataWoVersion"] = args?.secretDataWoVersion;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["destroyTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

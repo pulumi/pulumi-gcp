@@ -160,48 +160,48 @@ export class PacketMirroring extends pulumi.CustomResource {
      * set to true.
      * Structure is documented below.
      */
-    public readonly collectorIlb!: pulumi.Output<outputs.compute.PacketMirroringCollectorIlb>;
+    declare public readonly collectorIlb: pulumi.Output<outputs.compute.PacketMirroringCollectorIlb>;
     /**
      * A human-readable description of the rule.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * A filter for mirrored traffic.  If unset, all traffic is mirrored.
      * Structure is documented below.
      */
-    public readonly filter!: pulumi.Output<outputs.compute.PacketMirroringFilter | undefined>;
+    declare public readonly filter: pulumi.Output<outputs.compute.PacketMirroringFilter | undefined>;
     /**
      * A means of specifying which resources to mirror.
      * Structure is documented below.
      */
-    public readonly mirroredResources!: pulumi.Output<outputs.compute.PacketMirroringMirroredResources>;
+    declare public readonly mirroredResources: pulumi.Output<outputs.compute.PacketMirroringMirroredResources>;
     /**
      * The name of the packet mirroring rule
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Specifies the mirrored VPC network. Only packets in this network
      * will be mirrored. All mirrored VMs should have a NIC in the given
      * network. All mirrored subnetworks should belong to the given network.
      * Structure is documented below.
      */
-    public readonly network!: pulumi.Output<outputs.compute.PacketMirroringNetwork>;
+    declare public readonly network: pulumi.Output<outputs.compute.PacketMirroringNetwork>;
     /**
      * Since only one rule can be active at a time, priority is
      * used to break ties in the case of two rules that apply to
      * the same instances.
      */
-    public readonly priority!: pulumi.Output<number>;
+    declare public readonly priority: pulumi.Output<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The Region in which the created address should reside.
      * If it is not provided, the provider region is used.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a PacketMirroring resource with the given unique name, arguments, and options.
@@ -216,35 +216,35 @@ export class PacketMirroring extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PacketMirroringState | undefined;
-            resourceInputs["collectorIlb"] = state ? state.collectorIlb : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["filter"] = state ? state.filter : undefined;
-            resourceInputs["mirroredResources"] = state ? state.mirroredResources : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["collectorIlb"] = state?.collectorIlb;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["filter"] = state?.filter;
+            resourceInputs["mirroredResources"] = state?.mirroredResources;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as PacketMirroringArgs | undefined;
-            if ((!args || args.collectorIlb === undefined) && !opts.urn) {
+            if (args?.collectorIlb === undefined && !opts.urn) {
                 throw new Error("Missing required property 'collectorIlb'");
             }
-            if ((!args || args.mirroredResources === undefined) && !opts.urn) {
+            if (args?.mirroredResources === undefined && !opts.urn) {
                 throw new Error("Missing required property 'mirroredResources'");
             }
-            if ((!args || args.network === undefined) && !opts.urn) {
+            if (args?.network === undefined && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
-            resourceInputs["collectorIlb"] = args ? args.collectorIlb : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["filter"] = args ? args.filter : undefined;
-            resourceInputs["mirroredResources"] = args ? args.mirroredResources : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["collectorIlb"] = args?.collectorIlb;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["filter"] = args?.filter;
+            resourceInputs["mirroredResources"] = args?.mirroredResources;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PacketMirroring.__pulumiType, name, resourceInputs, opts);

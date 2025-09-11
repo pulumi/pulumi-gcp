@@ -107,29 +107,29 @@ export class WorkloadIdentityPoolNamespace extends pulumi.CustomResource {
     /**
      * A description of the namespace. Cannot exceed 256 characters.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Whether the namespace is disabled. If disabled, credentials may no longer be issued for
      * identities within this namespace, however existing credentials will still be accepted until
      * they expire.
      */
-    public readonly disabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly disabled: pulumi.Output<boolean | undefined>;
     /**
      * The resource name of the namespace as
      * `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/namespaces/{workload_identity_pool_namespace_id}`.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Defines the owner that is allowed to mutate this resource. If present, this resource can only
      * be mutated by the owner.
      * Structure is documented below.
      */
-    public /*out*/ readonly ownerServices!: pulumi.Output<outputs.iam.WorkloadIdentityPoolNamespaceOwnerService[]>;
+    declare public /*out*/ readonly ownerServices: pulumi.Output<outputs.iam.WorkloadIdentityPoolNamespaceOwnerService[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The current state of the namespace.
      * * `ACTIVE`: The namespace is active.
@@ -138,13 +138,13 @@ export class WorkloadIdentityPoolNamespace extends pulumi.CustomResource {
      * UndeleteWorkloadIdentityPoolNamespace. You cannot reuse the ID of a soft-deleted namespace
      * until it is permanently deleted.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The ID to use for the pool, which becomes the final component of the resource name. This
      * value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
      * `gcp-` is reserved for use by Google, and may not be specified.
      */
-    public readonly workloadIdentityPoolId!: pulumi.Output<string>;
+    declare public readonly workloadIdentityPoolId: pulumi.Output<string>;
     /**
      * The ID to use for the namespace. This value must:
      * * contain at most 63 characters
@@ -154,7 +154,7 @@ export class WorkloadIdentityPoolNamespace extends pulumi.CustomResource {
      *
      * The prefix `gcp-` will be reserved for future uses.
      */
-    public readonly workloadIdentityPoolNamespaceId!: pulumi.Output<string>;
+    declare public readonly workloadIdentityPoolNamespaceId: pulumi.Output<string>;
 
     /**
      * Create a WorkloadIdentityPoolNamespace resource with the given unique name, arguments, and options.
@@ -169,27 +169,27 @@ export class WorkloadIdentityPoolNamespace extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkloadIdentityPoolNamespaceState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["disabled"] = state ? state.disabled : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["ownerServices"] = state ? state.ownerServices : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["workloadIdentityPoolId"] = state ? state.workloadIdentityPoolId : undefined;
-            resourceInputs["workloadIdentityPoolNamespaceId"] = state ? state.workloadIdentityPoolNamespaceId : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["disabled"] = state?.disabled;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["ownerServices"] = state?.ownerServices;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["workloadIdentityPoolId"] = state?.workloadIdentityPoolId;
+            resourceInputs["workloadIdentityPoolNamespaceId"] = state?.workloadIdentityPoolNamespaceId;
         } else {
             const args = argsOrState as WorkloadIdentityPoolNamespaceArgs | undefined;
-            if ((!args || args.workloadIdentityPoolId === undefined) && !opts.urn) {
+            if (args?.workloadIdentityPoolId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workloadIdentityPoolId'");
             }
-            if ((!args || args.workloadIdentityPoolNamespaceId === undefined) && !opts.urn) {
+            if (args?.workloadIdentityPoolNamespaceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workloadIdentityPoolNamespaceId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["disabled"] = args ? args.disabled : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["workloadIdentityPoolId"] = args ? args.workloadIdentityPoolId : undefined;
-            resourceInputs["workloadIdentityPoolNamespaceId"] = args ? args.workloadIdentityPoolNamespaceId : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["disabled"] = args?.disabled;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["workloadIdentityPoolId"] = args?.workloadIdentityPoolId;
+            resourceInputs["workloadIdentityPoolNamespaceId"] = args?.workloadIdentityPoolNamespaceId;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["ownerServices"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;

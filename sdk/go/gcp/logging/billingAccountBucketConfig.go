@@ -74,9 +74,7 @@ type BillingAccountBucketConfig struct {
 	BillingAccount pulumi.StringOutput `pulumi:"billingAccount"`
 	// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
 	BucketId pulumi.StringOutput `pulumi:"bucketId"`
-	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
-	// key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
-	// updating the log bucket. Changing the KMS key is allowed.
+	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
 	CmekSettings BillingAccountBucketConfigCmekSettingsPtrOutput `pulumi:"cmekSettings"`
 	// Describes this bucket.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -135,9 +133,7 @@ type billingAccountBucketConfigState struct {
 	BillingAccount *string `pulumi:"billingAccount"`
 	// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
 	BucketId *string `pulumi:"bucketId"`
-	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
-	// key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
-	// updating the log bucket. Changing the KMS key is allowed.
+	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
 	CmekSettings *BillingAccountBucketConfigCmekSettings `pulumi:"cmekSettings"`
 	// Describes this bucket.
 	Description *string `pulumi:"description"`
@@ -158,9 +154,7 @@ type BillingAccountBucketConfigState struct {
 	BillingAccount pulumi.StringPtrInput
 	// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
 	BucketId pulumi.StringPtrInput
-	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
-	// key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
-	// updating the log bucket. Changing the KMS key is allowed.
+	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
 	CmekSettings BillingAccountBucketConfigCmekSettingsPtrInput
 	// Describes this bucket.
 	Description pulumi.StringPtrInput
@@ -185,9 +179,7 @@ type billingAccountBucketConfigArgs struct {
 	BillingAccount string `pulumi:"billingAccount"`
 	// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
 	BucketId string `pulumi:"bucketId"`
-	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
-	// key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
-	// updating the log bucket. Changing the KMS key is allowed.
+	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
 	CmekSettings *BillingAccountBucketConfigCmekSettings `pulumi:"cmekSettings"`
 	// Describes this bucket.
 	Description *string `pulumi:"description"`
@@ -205,9 +197,7 @@ type BillingAccountBucketConfigArgs struct {
 	BillingAccount pulumi.StringInput
 	// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
 	BucketId pulumi.StringInput
-	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
-	// key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
-	// updating the log bucket. Changing the KMS key is allowed.
+	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
 	CmekSettings BillingAccountBucketConfigCmekSettingsPtrInput
 	// Describes this bucket.
 	Description pulumi.StringPtrInput
@@ -316,9 +306,7 @@ func (o BillingAccountBucketConfigOutput) BucketId() pulumi.StringOutput {
 	return o.ApplyT(func(v *BillingAccountBucketConfig) pulumi.StringOutput { return v.BucketId }).(pulumi.StringOutput)
 }
 
-// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
-// key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
-// updating the log bucket. Changing the KMS key is allowed.
+// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
 func (o BillingAccountBucketConfigOutput) CmekSettings() BillingAccountBucketConfigCmekSettingsPtrOutput {
 	return o.ApplyT(func(v *BillingAccountBucketConfig) BillingAccountBucketConfigCmekSettingsPtrOutput {
 		return v.CmekSettings

@@ -77,14 +77,14 @@ export class SourceIamPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === SourceIamPolicy.__pulumiType;
     }
 
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The organization whose Cloud Security Command Center the Source
      * lives in.
      */
-    public readonly organization!: pulumi.Output<string>;
-    public readonly policyData!: pulumi.Output<string>;
-    public readonly source!: pulumi.Output<string>;
+    declare public readonly organization: pulumi.Output<string>;
+    declare public readonly policyData: pulumi.Output<string>;
+    declare public readonly source: pulumi.Output<string>;
 
     /**
      * Create a SourceIamPolicy resource with the given unique name, arguments, and options.
@@ -99,24 +99,24 @@ export class SourceIamPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SourceIamPolicyState | undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["organization"] = state ? state.organization : undefined;
-            resourceInputs["policyData"] = state ? state.policyData : undefined;
-            resourceInputs["source"] = state ? state.source : undefined;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["organization"] = state?.organization;
+            resourceInputs["policyData"] = state?.policyData;
+            resourceInputs["source"] = state?.source;
         } else {
             const args = argsOrState as SourceIamPolicyArgs | undefined;
-            if ((!args || args.organization === undefined) && !opts.urn) {
+            if (args?.organization === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organization'");
             }
-            if ((!args || args.policyData === undefined) && !opts.urn) {
+            if (args?.policyData === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyData'");
             }
-            if ((!args || args.source === undefined) && !opts.urn) {
+            if (args?.source === undefined && !opts.urn) {
                 throw new Error("Missing required property 'source'");
             }
-            resourceInputs["organization"] = args ? args.organization : undefined;
-            resourceInputs["policyData"] = args ? args.policyData : undefined;
-            resourceInputs["source"] = args ? args.source : undefined;
+            resourceInputs["organization"] = args?.organization;
+            resourceInputs["policyData"] = args?.policyData;
+            resourceInputs["source"] = args?.source;
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

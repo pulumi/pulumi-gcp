@@ -422,16 +422,14 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
-     * after both the primary and replica are created.
+     * A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
      * 
      */
     @Import(name="replicationCluster")
     private @Nullable Output<DatabaseInstanceReplicationClusterArgs> replicationCluster;
 
     /**
-     * @return A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
-     * after both the primary and replica are created.
+     * @return A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
      * 
      */
     public Optional<Output<DatabaseInstanceReplicationClusterArgs>> replicationCluster() {
@@ -1147,8 +1145,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param replicationCluster A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
-         * after both the primary and replica are created.
+         * @param replicationCluster A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
          * 
          * @return builder
          * 
@@ -1159,8 +1156,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param replicationCluster A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
-         * after both the primary and replica are created.
+         * @param replicationCluster A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
          * 
          * @return builder
          * 

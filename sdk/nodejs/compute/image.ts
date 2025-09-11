@@ -173,24 +173,24 @@ export class Image extends pulumi.CustomResource {
      * Size of the image tar.gz archive stored in Google Cloud Storage (in
      * bytes).
      */
-    public /*out*/ readonly archiveSizeBytes!: pulumi.Output<number>;
+    declare public /*out*/ readonly archiveSizeBytes: pulumi.Output<number>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Size of the image when restored onto a persistent disk (in GB).
      */
-    public readonly diskSizeGb!: pulumi.Output<number>;
+    declare public readonly diskSizeGb: pulumi.Output<number>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of the image family to which this image belongs. You can
      * create disks by specifying an image family instead of a specific
@@ -198,13 +198,13 @@ export class Image extends pulumi.CustomResource {
      * not deprecated. The name of the image family must comply with
      * RFC1035.
      */
-    public readonly family!: pulumi.Output<string | undefined>;
+    declare public readonly family: pulumi.Output<string | undefined>;
     /**
      * A list of features to enable on the guest operating system.
      * Applicable only for bootable images.
      * Structure is documented below.
      */
-    public readonly guestOsFeatures!: pulumi.Output<outputs.compute.ImageGuestOsFeature[]>;
+    declare public readonly guestOsFeatures: pulumi.Output<outputs.compute.ImageGuestOsFeature[]>;
     /**
      * Encrypts the image using a customer-supplied encryption key.
      * After you encrypt an image with a customer-supplied key, you must
@@ -212,22 +212,22 @@ export class Image extends pulumi.CustomResource {
      * disk from the image)
      * Structure is documented below.
      */
-    public readonly imageEncryptionKey!: pulumi.Output<outputs.compute.ImageImageEncryptionKey | undefined>;
+    declare public readonly imageEncryptionKey: pulumi.Output<outputs.compute.ImageImageEncryptionKey | undefined>;
     /**
      * The fingerprint used for optimistic locking of this resource. Used
      * internally during updates.
      */
-    public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly labelFingerprint: pulumi.Output<string>;
     /**
      * Labels to apply to this Image.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Any applicable license URI.
      */
-    public readonly licenses!: pulumi.Output<string[]>;
+    declare public readonly licenses: pulumi.Output<string[]>;
     /**
      * Name of the resource; provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -237,43 +237,43 @@ export class Image extends pulumi.CustomResource {
      * characters must be a dash, lowercase letter, or digit, except the
      * last character, which cannot be a dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The parameters of the raw disk image.
      * Structure is documented below.
      */
-    public readonly rawDisk!: pulumi.Output<outputs.compute.ImageRawDisk | undefined>;
+    declare public readonly rawDisk: pulumi.Output<outputs.compute.ImageRawDisk | undefined>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * Set the secure boot keys of shielded instance.
      * Structure is documented below.
      */
-    public readonly shieldedInstanceInitialState!: pulumi.Output<outputs.compute.ImageShieldedInstanceInitialState>;
+    declare public readonly shieldedInstanceInitialState: pulumi.Output<outputs.compute.ImageShieldedInstanceInitialState>;
     /**
      * The source disk to create this image based on.
      * You must provide either this property or the
      * rawDisk.source property but not both to create an image.
      */
-    public readonly sourceDisk!: pulumi.Output<string | undefined>;
+    declare public readonly sourceDisk: pulumi.Output<string | undefined>;
     /**
      * The customer-supplied encryption key of the source disk. Required if
      * the source disk is protected by a customer-supplied encryption key.
      * Structure is documented below.
      */
-    public readonly sourceDiskEncryptionKey!: pulumi.Output<outputs.compute.ImageSourceDiskEncryptionKey | undefined>;
+    declare public readonly sourceDiskEncryptionKey: pulumi.Output<outputs.compute.ImageSourceDiskEncryptionKey | undefined>;
     /**
      * URL of the source image used to create this image. In order to create an image, you must provide the full or partial
      * URL of one of the following:
@@ -282,13 +282,13 @@ export class Image extends pulumi.CustomResource {
      * * The rawDisk.source URL
      * * The sourceDisk URL
      */
-    public readonly sourceImage!: pulumi.Output<string | undefined>;
+    declare public readonly sourceImage: pulumi.Output<string | undefined>;
     /**
      * The customer-supplied encryption key of the source image. Required if
      * the source image is protected by a customer-supplied encryption key.
      * Structure is documented below.
      */
-    public readonly sourceImageEncryptionKey!: pulumi.Output<outputs.compute.ImageSourceImageEncryptionKey | undefined>;
+    declare public readonly sourceImageEncryptionKey: pulumi.Output<outputs.compute.ImageSourceImageEncryptionKey | undefined>;
     /**
      * URL of the source snapshot used to create this image.
      * In order to create an image, you must provide the full or partial URL of one of the following:
@@ -298,19 +298,19 @@ export class Image extends pulumi.CustomResource {
      * * The rawDisk.source URL
      * * The sourceDisk URL
      */
-    public readonly sourceSnapshot!: pulumi.Output<string | undefined>;
+    declare public readonly sourceSnapshot: pulumi.Output<string | undefined>;
     /**
      * The customer-supplied encryption key of the source snapshot. Required if
      * the source snapshot is protected by a customer-supplied encryption key.
      * Structure is documented below.
      */
-    public readonly sourceSnapshotEncryptionKey!: pulumi.Output<outputs.compute.ImageSourceSnapshotEncryptionKey | undefined>;
+    declare public readonly sourceSnapshotEncryptionKey: pulumi.Output<outputs.compute.ImageSourceSnapshotEncryptionKey | undefined>;
     /**
      * Cloud Storage bucket storage location of the image
      * (regional or multi-regional).
      * Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
      */
-    public readonly storageLocations!: pulumi.Output<string[]>;
+    declare public readonly storageLocations: pulumi.Output<string[]>;
 
     /**
      * Create a Image resource with the given unique name, arguments, and options.
@@ -325,50 +325,50 @@ export class Image extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ImageState | undefined;
-            resourceInputs["archiveSizeBytes"] = state ? state.archiveSizeBytes : undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["diskSizeGb"] = state ? state.diskSizeGb : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["family"] = state ? state.family : undefined;
-            resourceInputs["guestOsFeatures"] = state ? state.guestOsFeatures : undefined;
-            resourceInputs["imageEncryptionKey"] = state ? state.imageEncryptionKey : undefined;
-            resourceInputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["licenses"] = state ? state.licenses : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["rawDisk"] = state ? state.rawDisk : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["shieldedInstanceInitialState"] = state ? state.shieldedInstanceInitialState : undefined;
-            resourceInputs["sourceDisk"] = state ? state.sourceDisk : undefined;
-            resourceInputs["sourceDiskEncryptionKey"] = state ? state.sourceDiskEncryptionKey : undefined;
-            resourceInputs["sourceImage"] = state ? state.sourceImage : undefined;
-            resourceInputs["sourceImageEncryptionKey"] = state ? state.sourceImageEncryptionKey : undefined;
-            resourceInputs["sourceSnapshot"] = state ? state.sourceSnapshot : undefined;
-            resourceInputs["sourceSnapshotEncryptionKey"] = state ? state.sourceSnapshotEncryptionKey : undefined;
-            resourceInputs["storageLocations"] = state ? state.storageLocations : undefined;
+            resourceInputs["archiveSizeBytes"] = state?.archiveSizeBytes;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["diskSizeGb"] = state?.diskSizeGb;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["family"] = state?.family;
+            resourceInputs["guestOsFeatures"] = state?.guestOsFeatures;
+            resourceInputs["imageEncryptionKey"] = state?.imageEncryptionKey;
+            resourceInputs["labelFingerprint"] = state?.labelFingerprint;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["licenses"] = state?.licenses;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["rawDisk"] = state?.rawDisk;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["shieldedInstanceInitialState"] = state?.shieldedInstanceInitialState;
+            resourceInputs["sourceDisk"] = state?.sourceDisk;
+            resourceInputs["sourceDiskEncryptionKey"] = state?.sourceDiskEncryptionKey;
+            resourceInputs["sourceImage"] = state?.sourceImage;
+            resourceInputs["sourceImageEncryptionKey"] = state?.sourceImageEncryptionKey;
+            resourceInputs["sourceSnapshot"] = state?.sourceSnapshot;
+            resourceInputs["sourceSnapshotEncryptionKey"] = state?.sourceSnapshotEncryptionKey;
+            resourceInputs["storageLocations"] = state?.storageLocations;
         } else {
             const args = argsOrState as ImageArgs | undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["diskSizeGb"] = args ? args.diskSizeGb : undefined;
-            resourceInputs["family"] = args ? args.family : undefined;
-            resourceInputs["guestOsFeatures"] = args ? args.guestOsFeatures : undefined;
-            resourceInputs["imageEncryptionKey"] = args ? args.imageEncryptionKey : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["licenses"] = args ? args.licenses : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["rawDisk"] = args ? args.rawDisk : undefined;
-            resourceInputs["shieldedInstanceInitialState"] = args ? args.shieldedInstanceInitialState : undefined;
-            resourceInputs["sourceDisk"] = args ? args.sourceDisk : undefined;
-            resourceInputs["sourceDiskEncryptionKey"] = args ? args.sourceDiskEncryptionKey : undefined;
-            resourceInputs["sourceImage"] = args ? args.sourceImage : undefined;
-            resourceInputs["sourceImageEncryptionKey"] = args ? args.sourceImageEncryptionKey : undefined;
-            resourceInputs["sourceSnapshot"] = args ? args.sourceSnapshot : undefined;
-            resourceInputs["sourceSnapshotEncryptionKey"] = args ? args.sourceSnapshotEncryptionKey : undefined;
-            resourceInputs["storageLocations"] = args ? args.storageLocations : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["diskSizeGb"] = args?.diskSizeGb;
+            resourceInputs["family"] = args?.family;
+            resourceInputs["guestOsFeatures"] = args?.guestOsFeatures;
+            resourceInputs["imageEncryptionKey"] = args?.imageEncryptionKey;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["licenses"] = args?.licenses;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["rawDisk"] = args?.rawDisk;
+            resourceInputs["shieldedInstanceInitialState"] = args?.shieldedInstanceInitialState;
+            resourceInputs["sourceDisk"] = args?.sourceDisk;
+            resourceInputs["sourceDiskEncryptionKey"] = args?.sourceDiskEncryptionKey;
+            resourceInputs["sourceImage"] = args?.sourceImage;
+            resourceInputs["sourceImageEncryptionKey"] = args?.sourceImageEncryptionKey;
+            resourceInputs["sourceSnapshot"] = args?.sourceSnapshot;
+            resourceInputs["sourceSnapshotEncryptionKey"] = args?.sourceSnapshotEncryptionKey;
+            resourceInputs["storageLocations"] = args?.storageLocations;
             resourceInputs["archiveSizeBytes"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;

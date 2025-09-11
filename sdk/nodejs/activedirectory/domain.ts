@@ -85,57 +85,57 @@ export class Domain extends pulumi.CustomResource {
      * The name of delegated administrator account used to perform Active Directory operations.
      * If not specified, setupadmin will be used.
      */
-    public readonly admin!: pulumi.Output<string | undefined>;
+    declare public readonly admin: pulumi.Output<string | undefined>;
     /**
      * The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
      * If CIDR subnets overlap between networks, domain creation will fail.
      */
-    public readonly authorizedNetworks!: pulumi.Output<string[] | undefined>;
-    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
+    declare public readonly authorizedNetworks: pulumi.Output<string[] | undefined>;
+    declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
      * The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
      * of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
      */
-    public readonly domainName!: pulumi.Output<string>;
+    declare public readonly domainName: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The fully-qualified domain name of the exposed domain used by clients to connect to the service.
      * Similar to what would be chosen for an Active Directory set up on an internal network.
      */
-    public /*out*/ readonly fqdn!: pulumi.Output<string>;
+    declare public /*out*/ readonly fqdn: pulumi.Output<string>;
     /**
      * Resource labels that can contain user-provided metadata
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Locations where domain needs to be provisioned. [regions][compute/docs/regions-zones/]
      * e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
      */
-    public readonly locations!: pulumi.Output<string[]>;
+    declare public readonly locations: pulumi.Output<string[]>;
     /**
      * The unique name of the domain using the format: `projects/{project}/locations/global/domains/{domainName}`.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger.
      * Ranges must be unique and non-overlapping with existing subnets in authorizedNetworks
      */
-    public readonly reservedIpRange!: pulumi.Output<string>;
+    declare public readonly reservedIpRange: pulumi.Output<string>;
 
     /**
      * Create a Domain resource with the given unique name, arguments, and options.
@@ -150,37 +150,37 @@ export class Domain extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainState | undefined;
-            resourceInputs["admin"] = state ? state.admin : undefined;
-            resourceInputs["authorizedNetworks"] = state ? state.authorizedNetworks : undefined;
-            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            resourceInputs["domainName"] = state ? state.domainName : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["fqdn"] = state ? state.fqdn : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["locations"] = state ? state.locations : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["reservedIpRange"] = state ? state.reservedIpRange : undefined;
+            resourceInputs["admin"] = state?.admin;
+            resourceInputs["authorizedNetworks"] = state?.authorizedNetworks;
+            resourceInputs["deletionProtection"] = state?.deletionProtection;
+            resourceInputs["domainName"] = state?.domainName;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["fqdn"] = state?.fqdn;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["locations"] = state?.locations;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["reservedIpRange"] = state?.reservedIpRange;
         } else {
             const args = argsOrState as DomainArgs | undefined;
-            if ((!args || args.domainName === undefined) && !opts.urn) {
+            if (args?.domainName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domainName'");
             }
-            if ((!args || args.locations === undefined) && !opts.urn) {
+            if (args?.locations === undefined && !opts.urn) {
                 throw new Error("Missing required property 'locations'");
             }
-            if ((!args || args.reservedIpRange === undefined) && !opts.urn) {
+            if (args?.reservedIpRange === undefined && !opts.urn) {
                 throw new Error("Missing required property 'reservedIpRange'");
             }
-            resourceInputs["admin"] = args ? args.admin : undefined;
-            resourceInputs["authorizedNetworks"] = args ? args.authorizedNetworks : undefined;
-            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            resourceInputs["domainName"] = args ? args.domainName : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["locations"] = args ? args.locations : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["reservedIpRange"] = args ? args.reservedIpRange : undefined;
+            resourceInputs["admin"] = args?.admin;
+            resourceInputs["authorizedNetworks"] = args?.authorizedNetworks;
+            resourceInputs["deletionProtection"] = args?.deletionProtection;
+            resourceInputs["domainName"] = args?.domainName;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["locations"] = args?.locations;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["reservedIpRange"] = args?.reservedIpRange;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["fqdn"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

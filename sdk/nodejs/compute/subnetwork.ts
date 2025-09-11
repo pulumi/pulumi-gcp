@@ -303,36 +303,48 @@ export class Subnetwork extends pulumi.CustomResource {
      * Setting this field to true will allow these packets to match dynamic routes injected
      * via BGP even if their destinations match existing subnet ranges.
      */
-    public readonly allowSubnetCidrRoutesOverlap!: pulumi.Output<boolean>;
+    declare public readonly allowSubnetCidrRoutesOverlap: pulumi.Output<boolean>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource. This field can be set only at resource
      * creation time.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
+    /**
+     * (Optional, Deprecated)
+     * Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
+     * it will not appear in get listings. If not set the default behavior is determined by the
+     * org policy, if there is no org policy specified, then it will default to disabled.
+     * This field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+     *
+     * > **Warning:** This field is being removed in favor of log_config. If logConfig is present, flow logs are enabled.
+     *
+     * @deprecated This field is being removed in favor of log_config. If logConfig is present, flow logs are enabled.
+     */
+    declare public readonly enableFlowLogs: pulumi.Output<boolean>;
     /**
      * The range of external IPv6 addresses that are owned by this subnetwork.
      */
-    public readonly externalIpv6Prefix!: pulumi.Output<string>;
+    declare public readonly externalIpv6Prefix: pulumi.Output<string>;
     /**
      * Fingerprint of this resource. This field is used internally during updates of this resource.
      *
      * @deprecated This field is not useful for users, and has been removed as an output.
      */
-    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly fingerprint: pulumi.Output<string>;
     /**
      * The gateway address for default routes to reach destination addresses
      * outside this subnetwork.
      */
-    public /*out*/ readonly gatewayAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly gatewayAddress: pulumi.Output<string>;
     /**
      * The internal IPv6 address range that is assigned to this subnetwork.
      */
-    public /*out*/ readonly internalIpv6Prefix!: pulumi.Output<string>;
+    declare public /*out*/ readonly internalIpv6Prefix: pulumi.Output<string>;
     /**
      * The range of internal addresses that are owned by this subnetwork.
      * Provide this property when you create the subnetwork. For example,
@@ -340,7 +352,7 @@ export class Subnetwork extends pulumi.CustomResource {
      * non-overlapping within a network. Only IPv4 is supported.
      * Field is optional when `reservedInternalRange` is defined, otherwise required.
      */
-    public readonly ipCidrRange!: pulumi.Output<string>;
+    declare public readonly ipCidrRange: pulumi.Output<string>;
     /**
      * Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
      * in EXTERNAL_IPV6_SUBNETWORK_CREATION mode.
@@ -352,18 +364,18 @@ export class Subnetwork extends pulumi.CustomResource {
      * * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
      * * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
      */
-    public readonly ipCollection!: pulumi.Output<string | undefined>;
+    declare public readonly ipCollection: pulumi.Output<string | undefined>;
     /**
      * The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
      * or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
      * cannot enable direct path.
      * Possible values are: `EXTERNAL`, `INTERNAL`.
      */
-    public readonly ipv6AccessType!: pulumi.Output<string | undefined>;
+    declare public readonly ipv6AccessType: pulumi.Output<string | undefined>;
     /**
      * The range of internal IPv6 addresses that are owned by this subnetwork.
      */
-    public /*out*/ readonly ipv6CidrRange!: pulumi.Output<string>;
+    declare public /*out*/ readonly ipv6CidrRange: pulumi.Output<string>;
     /**
      * Possible endpoints of this subnetwork. It can be one of the following:
      * * VM_ONLY: The subnetwork can be used for creating instances and IPv6 addresses with VM endpoint type. Such a subnetwork
@@ -371,7 +383,7 @@ export class Subnetwork extends pulumi.CustomResource {
      * * VM_AND_FR: The subnetwork can be used for creating both VM instances and Forwarding Rules. It can also be used to reserve
      * IPv6 addresses with both VM and FR endpoint types. Such a subnetwork gets its IPv6 range from Google IP Pool directly.
      */
-    public /*out*/ readonly ipv6GceEndpoint!: pulumi.Output<string>;
+    declare public /*out*/ readonly ipv6GceEndpoint: pulumi.Output<string>;
     /**
      * This field denotes the VPC flow logging options for this subnetwork. If
      * logging is enabled, logs are exported to Cloud Logging. Flow logging
@@ -379,7 +391,7 @@ export class Subnetwork extends pulumi.CustomResource {
      * `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
      * Structure is documented below.
      */
-    public readonly logConfig!: pulumi.Output<outputs.compute.SubnetworkLogConfig | undefined>;
+    declare public readonly logConfig: pulumi.Output<outputs.compute.SubnetworkLogConfig | undefined>;
     /**
      * The name of the resource, provided by the client when initially
      * creating the resource. The name must be 1-63 characters long, and
@@ -389,31 +401,31 @@ export class Subnetwork extends pulumi.CustomResource {
      * following characters must be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The network this subnet belongs to.
      * Only networks that are in the distributed mode can have subnetworks.
      */
-    public readonly network!: pulumi.Output<string>;
+    declare public readonly network: pulumi.Output<string>;
     /**
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      */
-    public readonly params!: pulumi.Output<outputs.compute.SubnetworkParams | undefined>;
+    declare public readonly params: pulumi.Output<outputs.compute.SubnetworkParams | undefined>;
     /**
      * When enabled, VMs in this subnetwork without external IP addresses can
      * access Google APIs and services by using Private Google Access.
      */
-    public readonly privateIpGoogleAccess!: pulumi.Output<boolean>;
+    declare public readonly privateIpGoogleAccess: pulumi.Output<boolean>;
     /**
      * The private IPv6 google access type for the VMs in this subnet.
      */
-    public readonly privateIpv6GoogleAccess!: pulumi.Output<string>;
+    declare public readonly privateIpv6GoogleAccess: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`.
      * A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
@@ -424,16 +436,16 @@ export class Subnetwork extends pulumi.CustomResource {
      * Note that `REGIONAL_MANAGED_PROXY` is the preferred setting for all regional Envoy load balancers.
      * If unspecified, the purpose defaults to `PRIVATE`.
      */
-    public readonly purpose!: pulumi.Output<string>;
+    declare public readonly purpose: pulumi.Output<string>;
     /**
      * The GCP region for this subnetwork.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
      * E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
      */
-    public readonly reservedInternalRange!: pulumi.Output<string | undefined>;
+    declare public readonly reservedInternalRange: pulumi.Output<string | undefined>;
     /**
      * The role of subnetwork.
      * Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
@@ -442,7 +454,7 @@ export class Subnetwork extends pulumi.CustomResource {
      * A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
      * Possible values are: `ACTIVE`, `BACKUP`.
      */
-    public readonly role!: pulumi.Output<string | undefined>;
+    declare public readonly role: pulumi.Output<string | undefined>;
     /**
      * An array of configurations for secondary IP ranges for VM instances
      * contained in this subnetwork. The primary IP of such VM must belong
@@ -450,11 +462,11 @@ export class Subnetwork extends pulumi.CustomResource {
      * to either primary or secondary ranges.
      * Structure is documented below.
      */
-    public readonly secondaryIpRanges!: pulumi.Output<outputs.compute.SubnetworkSecondaryIpRange[]>;
+    declare public readonly secondaryIpRanges: pulumi.Output<outputs.compute.SubnetworkSecondaryIpRange[]>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * Controls the removal behavior of secondary_ip_range.
      * When false, removing secondaryIpRange from config will not produce a diff as
@@ -463,24 +475,24 @@ export class Subnetwork extends pulumi.CustomResource {
      * empty list of secondary IP ranges to the API.
      * Defaults to false.
      */
-    public readonly sendSecondaryIpRangeIfEmpty!: pulumi.Output<boolean | undefined>;
+    declare public readonly sendSecondaryIpRangeIfEmpty: pulumi.Output<boolean | undefined>;
     /**
      * The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
      * If not specified IPV4_ONLY will be used.
      * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
      */
-    public readonly stackType!: pulumi.Output<string>;
+    declare public readonly stackType: pulumi.Output<string>;
     /**
      * 'The state of the subnetwork, which can be one of the following values:
      * READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose
      * set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained.
      * A subnetwork that is draining cannot be used or modified until it reaches a status of READY'
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The unique identifier number for the resource. This identifier is defined by the server.
      */
-    public /*out*/ readonly subnetworkId!: pulumi.Output<number>;
+    declare public /*out*/ readonly subnetworkId: pulumi.Output<number>;
 
     /**
      * Create a Subnetwork resource with the given unique name, arguments, and options.
@@ -495,60 +507,62 @@ export class Subnetwork extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SubnetworkState | undefined;
-            resourceInputs["allowSubnetCidrRoutesOverlap"] = state ? state.allowSubnetCidrRoutesOverlap : undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["externalIpv6Prefix"] = state ? state.externalIpv6Prefix : undefined;
-            resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
-            resourceInputs["gatewayAddress"] = state ? state.gatewayAddress : undefined;
-            resourceInputs["internalIpv6Prefix"] = state ? state.internalIpv6Prefix : undefined;
-            resourceInputs["ipCidrRange"] = state ? state.ipCidrRange : undefined;
-            resourceInputs["ipCollection"] = state ? state.ipCollection : undefined;
-            resourceInputs["ipv6AccessType"] = state ? state.ipv6AccessType : undefined;
-            resourceInputs["ipv6CidrRange"] = state ? state.ipv6CidrRange : undefined;
-            resourceInputs["ipv6GceEndpoint"] = state ? state.ipv6GceEndpoint : undefined;
-            resourceInputs["logConfig"] = state ? state.logConfig : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["params"] = state ? state.params : undefined;
-            resourceInputs["privateIpGoogleAccess"] = state ? state.privateIpGoogleAccess : undefined;
-            resourceInputs["privateIpv6GoogleAccess"] = state ? state.privateIpv6GoogleAccess : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["purpose"] = state ? state.purpose : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["reservedInternalRange"] = state ? state.reservedInternalRange : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
-            resourceInputs["secondaryIpRanges"] = state ? state.secondaryIpRanges : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["sendSecondaryIpRangeIfEmpty"] = state ? state.sendSecondaryIpRangeIfEmpty : undefined;
-            resourceInputs["stackType"] = state ? state.stackType : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["subnetworkId"] = state ? state.subnetworkId : undefined;
+            resourceInputs["allowSubnetCidrRoutesOverlap"] = state?.allowSubnetCidrRoutesOverlap;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["enableFlowLogs"] = state?.enableFlowLogs;
+            resourceInputs["externalIpv6Prefix"] = state?.externalIpv6Prefix;
+            resourceInputs["fingerprint"] = state?.fingerprint;
+            resourceInputs["gatewayAddress"] = state?.gatewayAddress;
+            resourceInputs["internalIpv6Prefix"] = state?.internalIpv6Prefix;
+            resourceInputs["ipCidrRange"] = state?.ipCidrRange;
+            resourceInputs["ipCollection"] = state?.ipCollection;
+            resourceInputs["ipv6AccessType"] = state?.ipv6AccessType;
+            resourceInputs["ipv6CidrRange"] = state?.ipv6CidrRange;
+            resourceInputs["ipv6GceEndpoint"] = state?.ipv6GceEndpoint;
+            resourceInputs["logConfig"] = state?.logConfig;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["params"] = state?.params;
+            resourceInputs["privateIpGoogleAccess"] = state?.privateIpGoogleAccess;
+            resourceInputs["privateIpv6GoogleAccess"] = state?.privateIpv6GoogleAccess;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["purpose"] = state?.purpose;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["reservedInternalRange"] = state?.reservedInternalRange;
+            resourceInputs["role"] = state?.role;
+            resourceInputs["secondaryIpRanges"] = state?.secondaryIpRanges;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["sendSecondaryIpRangeIfEmpty"] = state?.sendSecondaryIpRangeIfEmpty;
+            resourceInputs["stackType"] = state?.stackType;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["subnetworkId"] = state?.subnetworkId;
         } else {
             const args = argsOrState as SubnetworkArgs | undefined;
-            if ((!args || args.network === undefined) && !opts.urn) {
+            if (args?.network === undefined && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
-            resourceInputs["allowSubnetCidrRoutesOverlap"] = args ? args.allowSubnetCidrRoutesOverlap : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["externalIpv6Prefix"] = args ? args.externalIpv6Prefix : undefined;
-            resourceInputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
-            resourceInputs["ipCollection"] = args ? args.ipCollection : undefined;
-            resourceInputs["ipv6AccessType"] = args ? args.ipv6AccessType : undefined;
-            resourceInputs["logConfig"] = args ? args.logConfig : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["params"] = args ? args.params : undefined;
-            resourceInputs["privateIpGoogleAccess"] = args ? args.privateIpGoogleAccess : undefined;
-            resourceInputs["privateIpv6GoogleAccess"] = args ? args.privateIpv6GoogleAccess : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["purpose"] = args ? args.purpose : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["reservedInternalRange"] = args ? args.reservedInternalRange : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
-            resourceInputs["secondaryIpRanges"] = args ? args.secondaryIpRanges : undefined;
-            resourceInputs["sendSecondaryIpRangeIfEmpty"] = args ? args.sendSecondaryIpRangeIfEmpty : undefined;
-            resourceInputs["stackType"] = args ? args.stackType : undefined;
+            resourceInputs["allowSubnetCidrRoutesOverlap"] = args?.allowSubnetCidrRoutesOverlap;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["enableFlowLogs"] = args?.enableFlowLogs;
+            resourceInputs["externalIpv6Prefix"] = args?.externalIpv6Prefix;
+            resourceInputs["ipCidrRange"] = args?.ipCidrRange;
+            resourceInputs["ipCollection"] = args?.ipCollection;
+            resourceInputs["ipv6AccessType"] = args?.ipv6AccessType;
+            resourceInputs["logConfig"] = args?.logConfig;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["params"] = args?.params;
+            resourceInputs["privateIpGoogleAccess"] = args?.privateIpGoogleAccess;
+            resourceInputs["privateIpv6GoogleAccess"] = args?.privateIpv6GoogleAccess;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["purpose"] = args?.purpose;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["reservedInternalRange"] = args?.reservedInternalRange;
+            resourceInputs["role"] = args?.role;
+            resourceInputs["secondaryIpRanges"] = args?.secondaryIpRanges;
+            resourceInputs["sendSecondaryIpRangeIfEmpty"] = args?.sendSecondaryIpRangeIfEmpty;
+            resourceInputs["stackType"] = args?.stackType;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["gatewayAddress"] = undefined /*out*/;

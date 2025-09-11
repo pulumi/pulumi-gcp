@@ -97,21 +97,21 @@ export class ServicePerimeterDryRunResource extends pulumi.CustomResource {
     /**
      * The name of the Access Policy this resource belongs to.
      */
-    public /*out*/ readonly accessPolicyId!: pulumi.Output<string>;
+    declare public /*out*/ readonly accessPolicyId: pulumi.Output<string>;
     /**
      * The perimeter etag is internally used to prevent overwriting the list of perimeter resources on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of resources. The resource to add or remove is merged into that list and then this etag is sent with the PATCH call along with the updated resource list.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The name of the Service Perimeter to add this resource to.
      */
-    public readonly perimeterName!: pulumi.Output<string>;
+    declare public readonly perimeterName: pulumi.Output<string>;
     /**
      * A GCP resource that is inside of the service perimeter.
      * Currently only projects are allowed.
      * Format: projects/{project_number}
      */
-    public readonly resource!: pulumi.Output<string>;
+    declare public readonly resource: pulumi.Output<string>;
 
     /**
      * Create a ServicePerimeterDryRunResource resource with the given unique name, arguments, and options.
@@ -126,20 +126,20 @@ export class ServicePerimeterDryRunResource extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServicePerimeterDryRunResourceState | undefined;
-            resourceInputs["accessPolicyId"] = state ? state.accessPolicyId : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["perimeterName"] = state ? state.perimeterName : undefined;
-            resourceInputs["resource"] = state ? state.resource : undefined;
+            resourceInputs["accessPolicyId"] = state?.accessPolicyId;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["perimeterName"] = state?.perimeterName;
+            resourceInputs["resource"] = state?.resource;
         } else {
             const args = argsOrState as ServicePerimeterDryRunResourceArgs | undefined;
-            if ((!args || args.perimeterName === undefined) && !opts.urn) {
+            if (args?.perimeterName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'perimeterName'");
             }
-            if ((!args || args.resource === undefined) && !opts.urn) {
+            if (args?.resource === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resource'");
             }
-            resourceInputs["perimeterName"] = args ? args.perimeterName : undefined;
-            resourceInputs["resource"] = args ? args.resource : undefined;
+            resourceInputs["perimeterName"] = args?.perimeterName;
+            resourceInputs["resource"] = args?.resource;
             resourceInputs["accessPolicyId"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
         }

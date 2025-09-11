@@ -34,13 +34,13 @@ export class RepositoryIamBinding extends pulumi.CustomResource {
         return obj['__pulumiType'] === RepositoryIamBinding.__pulumiType;
     }
 
-    public readonly condition!: pulumi.Output<outputs.dataform.RepositoryIamBindingCondition | undefined>;
-    public /*out*/ readonly etag!: pulumi.Output<string>;
-    public readonly members!: pulumi.Output<string[]>;
-    public readonly project!: pulumi.Output<string>;
-    public readonly region!: pulumi.Output<string>;
-    public readonly repository!: pulumi.Output<string>;
-    public readonly role!: pulumi.Output<string>;
+    declare public readonly condition: pulumi.Output<outputs.dataform.RepositoryIamBindingCondition | undefined>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
+    declare public readonly members: pulumi.Output<string[]>;
+    declare public readonly project: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
+    declare public readonly repository: pulumi.Output<string>;
+    declare public readonly role: pulumi.Output<string>;
 
     /**
      * Create a RepositoryIamBinding resource with the given unique name, arguments, and options.
@@ -55,30 +55,30 @@ export class RepositoryIamBinding extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RepositoryIamBindingState | undefined;
-            resourceInputs["condition"] = state ? state.condition : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["members"] = state ? state.members : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["repository"] = state ? state.repository : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["condition"] = state?.condition;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["members"] = state?.members;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["repository"] = state?.repository;
+            resourceInputs["role"] = state?.role;
         } else {
             const args = argsOrState as RepositoryIamBindingArgs | undefined;
-            if ((!args || args.members === undefined) && !opts.urn) {
+            if (args?.members === undefined && !opts.urn) {
                 throw new Error("Missing required property 'members'");
             }
-            if ((!args || args.repository === undefined) && !opts.urn) {
+            if (args?.repository === undefined && !opts.urn) {
                 throw new Error("Missing required property 'repository'");
             }
-            if ((!args || args.role === undefined) && !opts.urn) {
+            if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            resourceInputs["condition"] = args ? args.condition : undefined;
-            resourceInputs["members"] = args ? args.members : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["repository"] = args ? args.repository : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["condition"] = args?.condition;
+            resourceInputs["members"] = args?.members;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["repository"] = args?.repository;
+            resourceInputs["role"] = args?.role;
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

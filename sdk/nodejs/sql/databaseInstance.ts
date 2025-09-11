@@ -279,7 +279,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
     /**
      * The list of all maintenance versions applicable on the instance.
      */
-    public /*out*/ readonly availableMaintenanceVersions!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly availableMaintenanceVersions: pulumi.Output<string[]>;
     /**
      * The name of the BackupDR backup to restore from.
      */
@@ -289,12 +289,12 @@ export class DatabaseInstance extends pulumi.CustomResource {
      * resource creation, this provider will attempt to clone another instance as indicated in the context. The
      * configuration is detailed below.
      */
-    public readonly clone!: pulumi.Output<outputs.sql.DatabaseInstanceClone | undefined>;
+    declare public readonly clone: pulumi.Output<outputs.sql.DatabaseInstanceClone | undefined>;
     /**
      * The connection name of the instance to be used in
      * connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
      */
-    public /*out*/ readonly connectionName!: pulumi.Output<string>;
+    declare public /*out*/ readonly connectionName: pulumi.Output<string>;
     /**
      * The MySQL, PostgreSQL or
      * SQL Server version to use. Supported values include `MYSQL_5_6`,
@@ -306,20 +306,20 @@ export class DatabaseInstance extends pulumi.CustomResource {
      * [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
      * includes an up-to-date reference of supported versions.
      */
-    public readonly databaseVersion!: pulumi.Output<string>;
+    declare public readonly databaseVersion: pulumi.Output<string>;
     /**
      * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
      * in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
      */
-    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
+    declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
      * The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
      */
-    public /*out*/ readonly dnsName!: pulumi.Output<string>;
+    declare public /*out*/ readonly dnsName: pulumi.Output<string>;
     /**
      * The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
      */
-    public /*out*/ readonly dnsNames!: pulumi.Output<outputs.sql.DatabaseInstanceDnsName[]>;
+    declare public /*out*/ readonly dnsNames: pulumi.Output<outputs.sql.DatabaseInstanceDnsName[]>;
     /**
      * The full path to the encryption key used for the CMEK disk encryption.  Setting
      * up disk encryption currently requires manual steps outside of this provider.
@@ -330,101 +330,100 @@ export class DatabaseInstance extends pulumi.CustomResource {
      * That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
      * key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
      */
-    public readonly encryptionKeyName!: pulumi.Output<string>;
+    declare public readonly encryptionKeyName: pulumi.Output<string>;
     /**
      * The first IPv4 address of any type assigned.
      */
-    public /*out*/ readonly firstIpAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly firstIpAddress: pulumi.Output<string>;
     /**
      * The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
      */
-    public readonly instanceType!: pulumi.Output<string>;
-    public /*out*/ readonly ipAddresses!: pulumi.Output<outputs.sql.DatabaseInstanceIpAddress[]>;
+    declare public readonly instanceType: pulumi.Output<string>;
+    declare public /*out*/ readonly ipAddresses: pulumi.Output<outputs.sql.DatabaseInstanceIpAddress[]>;
     /**
      * The current software version on the instance. This attribute can not be set during creation. Refer to `availableMaintenanceVersions` attribute to see what `maintenanceVersion` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenanceVersion` value that is older than the current one on the instance will be ignored.
      */
-    public readonly maintenanceVersion!: pulumi.Output<string>;
+    declare public readonly maintenanceVersion: pulumi.Output<string>;
     /**
      * The name of the existing instance that will
      * act as the master in the replication setup. Note, this requires the master to
      * have `binaryLogEnabled` set, as well as existing backups.
      */
-    public readonly masterInstanceName!: pulumi.Output<string>;
+    declare public readonly masterInstanceName: pulumi.Output<string>;
     /**
      * The name of the instance. If the name is left
      * blank, the provider will randomly generate one when the instance is first
      * created. This is done because after a name is used, it cannot be reused for
      * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * For a read pool instance, the number of nodes in the read pool.
      */
-    public readonly nodeCount!: pulumi.Output<number>;
+    declare public readonly nodeCount: pulumi.Output<number>;
     /**
      * The first private (`PRIVATE`) IPv4 address assigned.
      */
-    public /*out*/ readonly privateIpAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly privateIpAddress: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * the URI that points to the service attachment of the instance.
      */
-    public /*out*/ readonly pscServiceAttachmentLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly pscServiceAttachmentLink: pulumi.Output<string>;
     /**
      * The first public (`PRIMARY`) IPv4 address assigned.
      */
-    public /*out*/ readonly publicIpAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly publicIpAddress: pulumi.Output<string>;
     /**
      * The region the instance will sit in. If a region is not provided in the resource definition,
      * the provider region will be used instead.
      *
      * - - -
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The configuration for replication. The
      * configuration is detailed below.
      */
-    public readonly replicaConfiguration!: pulumi.Output<outputs.sql.DatabaseInstanceReplicaConfiguration>;
+    declare public readonly replicaConfiguration: pulumi.Output<outputs.sql.DatabaseInstanceReplicaConfiguration>;
     /**
      * List of replica names. Can be updated.
      */
-    public readonly replicaNames!: pulumi.Output<string[]>;
+    declare public readonly replicaNames: pulumi.Output<string[]>;
     /**
-     * A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
-     * after both the primary and replica are created.
+     * A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
      */
-    public readonly replicationCluster!: pulumi.Output<outputs.sql.DatabaseInstanceReplicationCluster>;
+    declare public readonly replicationCluster: pulumi.Output<outputs.sql.DatabaseInstanceReplicationCluster>;
     /**
      * The context needed to restore the database to a backup run. This field will
      * cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
      * **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
      * block during resource creation/update will trigger the restore action after the resource is created/updated.
      */
-    public readonly restoreBackupContext!: pulumi.Output<outputs.sql.DatabaseInstanceRestoreBackupContext | undefined>;
+    declare public readonly restoreBackupContext: pulumi.Output<outputs.sql.DatabaseInstanceRestoreBackupContext | undefined>;
     /**
      * Initial root password. Can be updated. Required for MS SQL Server.
      */
-    public readonly rootPassword!: pulumi.Output<string | undefined>;
+    declare public readonly rootPassword: pulumi.Output<string | undefined>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
-    public /*out*/ readonly serverCaCerts!: pulumi.Output<outputs.sql.DatabaseInstanceServerCaCert[]>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
+    declare public /*out*/ readonly serverCaCerts: pulumi.Output<outputs.sql.DatabaseInstanceServerCaCert[]>;
     /**
      * The service account email address assigned to the
      * instance.
      */
-    public /*out*/ readonly serviceAccountEmailAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly serviceAccountEmailAddress: pulumi.Output<string>;
     /**
      * The settings to use for the database. The
      * configuration is detailed below. Required if `clone` is not set.
      */
-    public readonly settings!: pulumi.Output<outputs.sql.DatabaseInstanceSettings>;
+    declare public readonly settings: pulumi.Output<outputs.sql.DatabaseInstanceSettings>;
 
     /**
      * Create a DatabaseInstance resource with the given unique name, arguments, and options.
@@ -439,59 +438,57 @@ export class DatabaseInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseInstanceState | undefined;
-            resourceInputs["availableMaintenanceVersions"] = state ? state.availableMaintenanceVersions : undefined;
-            resourceInputs["backupdrBackup"] = state ? state.backupdrBackup : undefined;
-            resourceInputs["clone"] = state ? state.clone : undefined;
-            resourceInputs["connectionName"] = state ? state.connectionName : undefined;
-            resourceInputs["databaseVersion"] = state ? state.databaseVersion : undefined;
-            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            resourceInputs["dnsName"] = state ? state.dnsName : undefined;
-            resourceInputs["dnsNames"] = state ? state.dnsNames : undefined;
-            resourceInputs["encryptionKeyName"] = state ? state.encryptionKeyName : undefined;
-            resourceInputs["firstIpAddress"] = state ? state.firstIpAddress : undefined;
-            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
-            resourceInputs["ipAddresses"] = state ? state.ipAddresses : undefined;
-            resourceInputs["maintenanceVersion"] = state ? state.maintenanceVersion : undefined;
-            resourceInputs["masterInstanceName"] = state ? state.masterInstanceName : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nodeCount"] = state ? state.nodeCount : undefined;
-            resourceInputs["privateIpAddress"] = state ? state.privateIpAddress : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pscServiceAttachmentLink"] = state ? state.pscServiceAttachmentLink : undefined;
-            resourceInputs["publicIpAddress"] = state ? state.publicIpAddress : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["replicaConfiguration"] = state ? state.replicaConfiguration : undefined;
-            resourceInputs["replicaNames"] = state ? state.replicaNames : undefined;
-            resourceInputs["replicationCluster"] = state ? state.replicationCluster : undefined;
-            resourceInputs["restoreBackupContext"] = state ? state.restoreBackupContext : undefined;
-            resourceInputs["rootPassword"] = state ? state.rootPassword : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["serverCaCerts"] = state ? state.serverCaCerts : undefined;
-            resourceInputs["serviceAccountEmailAddress"] = state ? state.serviceAccountEmailAddress : undefined;
-            resourceInputs["settings"] = state ? state.settings : undefined;
+            resourceInputs["availableMaintenanceVersions"] = state?.availableMaintenanceVersions;
+            resourceInputs["clone"] = state?.clone;
+            resourceInputs["connectionName"] = state?.connectionName;
+            resourceInputs["databaseVersion"] = state?.databaseVersion;
+            resourceInputs["deletionProtection"] = state?.deletionProtection;
+            resourceInputs["dnsName"] = state?.dnsName;
+            resourceInputs["dnsNames"] = state?.dnsNames;
+            resourceInputs["encryptionKeyName"] = state?.encryptionKeyName;
+            resourceInputs["firstIpAddress"] = state?.firstIpAddress;
+            resourceInputs["instanceType"] = state?.instanceType;
+            resourceInputs["ipAddresses"] = state?.ipAddresses;
+            resourceInputs["maintenanceVersion"] = state?.maintenanceVersion;
+            resourceInputs["masterInstanceName"] = state?.masterInstanceName;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nodeCount"] = state?.nodeCount;
+            resourceInputs["privateIpAddress"] = state?.privateIpAddress;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pscServiceAttachmentLink"] = state?.pscServiceAttachmentLink;
+            resourceInputs["publicIpAddress"] = state?.publicIpAddress;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["replicaConfiguration"] = state?.replicaConfiguration;
+            resourceInputs["replicaNames"] = state?.replicaNames;
+            resourceInputs["replicationCluster"] = state?.replicationCluster;
+            resourceInputs["restoreBackupContext"] = state?.restoreBackupContext;
+            resourceInputs["rootPassword"] = state?.rootPassword;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["serverCaCerts"] = state?.serverCaCerts;
+            resourceInputs["serviceAccountEmailAddress"] = state?.serviceAccountEmailAddress;
+            resourceInputs["settings"] = state?.settings;
         } else {
             const args = argsOrState as DatabaseInstanceArgs | undefined;
-            if ((!args || args.databaseVersion === undefined) && !opts.urn) {
+            if (args?.databaseVersion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'databaseVersion'");
             }
-            resourceInputs["backupdrBackup"] = args ? args.backupdrBackup : undefined;
-            resourceInputs["clone"] = args ? args.clone : undefined;
-            resourceInputs["databaseVersion"] = args ? args.databaseVersion : undefined;
-            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            resourceInputs["encryptionKeyName"] = args ? args.encryptionKeyName : undefined;
-            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
-            resourceInputs["maintenanceVersion"] = args ? args.maintenanceVersion : undefined;
-            resourceInputs["masterInstanceName"] = args ? args.masterInstanceName : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["nodeCount"] = args ? args.nodeCount : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["clone"] = args?.clone;
+            resourceInputs["databaseVersion"] = args?.databaseVersion;
+            resourceInputs["deletionProtection"] = args?.deletionProtection;
+            resourceInputs["encryptionKeyName"] = args?.encryptionKeyName;
+            resourceInputs["instanceType"] = args?.instanceType;
+            resourceInputs["maintenanceVersion"] = args?.maintenanceVersion;
+            resourceInputs["masterInstanceName"] = args?.masterInstanceName;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["nodeCount"] = args?.nodeCount;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
             resourceInputs["replicaConfiguration"] = args?.replicaConfiguration ? pulumi.secret(args.replicaConfiguration) : undefined;
-            resourceInputs["replicaNames"] = args ? args.replicaNames : undefined;
-            resourceInputs["replicationCluster"] = args ? args.replicationCluster : undefined;
-            resourceInputs["restoreBackupContext"] = args ? args.restoreBackupContext : undefined;
+            resourceInputs["replicaNames"] = args?.replicaNames;
+            resourceInputs["replicationCluster"] = args?.replicationCluster;
+            resourceInputs["restoreBackupContext"] = args?.restoreBackupContext;
             resourceInputs["rootPassword"] = args?.rootPassword ? pulumi.secret(args.rootPassword) : undefined;
-            resourceInputs["settings"] = args ? args.settings : undefined;
+            resourceInputs["settings"] = args?.settings;
             resourceInputs["availableMaintenanceVersions"] = undefined /*out*/;
             resourceInputs["connectionName"] = undefined /*out*/;
             resourceInputs["dnsName"] = undefined /*out*/;
@@ -635,8 +632,7 @@ export interface DatabaseInstanceState {
      */
     replicaNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
-     * after both the primary and replica are created.
+     * A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
      */
     replicationCluster?: pulumi.Input<inputs.sql.DatabaseInstanceReplicationCluster>;
     /**
@@ -756,8 +752,7 @@ export interface DatabaseInstanceArgs {
      */
     replicaNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
-     * after both the primary and replica are created.
+     * A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
      */
     replicationCluster?: pulumi.Input<inputs.sql.DatabaseInstanceReplicationCluster>;
     /**

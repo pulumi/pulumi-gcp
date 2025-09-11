@@ -283,11 +283,11 @@ export class IAMMember extends pulumi.CustomResource {
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    public readonly condition!: pulumi.Output<outputs.serviceaccount.IAMMemberCondition | undefined>;
+    declare public readonly condition: pulumi.Output<outputs.serviceaccount.IAMMemberCondition | undefined>;
     /**
      * (Computed) The etag of the service account IAM policy.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -298,17 +298,17 @@ export class IAMMember extends pulumi.CustomResource {
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
-    public readonly member!: pulumi.Output<string>;
+    declare public readonly member: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.serviceaccount.IAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    public readonly role!: pulumi.Output<string>;
+    declare public readonly role: pulumi.Output<string>;
     /**
      * The fully-qualified name of the service account to apply policy to.
      */
-    public readonly serviceAccountId!: pulumi.Output<string>;
+    declare public readonly serviceAccountId: pulumi.Output<string>;
 
     /**
      * Create a IAMMember resource with the given unique name, arguments, and options.
@@ -323,26 +323,26 @@ export class IAMMember extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IAMMemberState | undefined;
-            resourceInputs["condition"] = state ? state.condition : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["member"] = state ? state.member : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
-            resourceInputs["serviceAccountId"] = state ? state.serviceAccountId : undefined;
+            resourceInputs["condition"] = state?.condition;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["member"] = state?.member;
+            resourceInputs["role"] = state?.role;
+            resourceInputs["serviceAccountId"] = state?.serviceAccountId;
         } else {
             const args = argsOrState as IAMMemberArgs | undefined;
-            if ((!args || args.member === undefined) && !opts.urn) {
+            if (args?.member === undefined && !opts.urn) {
                 throw new Error("Missing required property 'member'");
             }
-            if ((!args || args.role === undefined) && !opts.urn) {
+            if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            if ((!args || args.serviceAccountId === undefined) && !opts.urn) {
+            if (args?.serviceAccountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceAccountId'");
             }
-            resourceInputs["condition"] = args ? args.condition : undefined;
-            resourceInputs["member"] = args ? args.member : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
-            resourceInputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
+            resourceInputs["condition"] = args?.condition;
+            resourceInputs["member"] = args?.member;
+            resourceInputs["role"] = args?.role;
+            resourceInputs["serviceAccountId"] = args?.serviceAccountId;
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

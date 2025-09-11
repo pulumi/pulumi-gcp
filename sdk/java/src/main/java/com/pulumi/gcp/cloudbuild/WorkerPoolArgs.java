@@ -21,18 +21,20 @@ public final class WorkerPoolArgs extends com.pulumi.resources.ResourceArgs {
     public static final WorkerPoolArgs Empty = new WorkerPoolArgs();
 
     /**
-     * User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
-     * limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
-     * configuration. Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     @Import(name="annotations")
     private @Nullable Output<Map<String,String>> annotations;
 
     /**
-     * @return User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
-     * limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
-     * configuration. Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * @return User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -180,9 +182,10 @@ public final class WorkerPoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param annotations User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
-         * limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
-         * configuration. Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * @param annotations User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -193,9 +196,10 @@ public final class WorkerPoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param annotations User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
-         * limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
-         * configuration. Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * @param annotations User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 

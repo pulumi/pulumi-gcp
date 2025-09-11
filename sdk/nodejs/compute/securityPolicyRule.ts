@@ -181,57 +181,57 @@ export class SecurityPolicyRule extends pulumi.CustomResource {
      * * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR.
      * * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
      */
-    public readonly action!: pulumi.Output<string>;
+    declare public readonly action: pulumi.Output<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
      * Structure is documented below.
      */
-    public readonly headerAction!: pulumi.Output<outputs.compute.SecurityPolicyRuleHeaderAction | undefined>;
+    declare public readonly headerAction: pulumi.Output<outputs.compute.SecurityPolicyRuleHeaderAction | undefined>;
     /**
      * A match condition that incoming traffic is evaluated against.
      * If it evaluates to true, the corresponding 'action' is enforced.
      * Structure is documented below.
      */
-    public readonly match!: pulumi.Output<outputs.compute.SecurityPolicyRuleMatch | undefined>;
+    declare public readonly match: pulumi.Output<outputs.compute.SecurityPolicyRuleMatch | undefined>;
     /**
      * Preconfigured WAF configuration to be applied for the rule.
      * If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
      * Structure is documented below.
      */
-    public readonly preconfiguredWafConfig!: pulumi.Output<outputs.compute.SecurityPolicyRulePreconfiguredWafConfig | undefined>;
+    declare public readonly preconfiguredWafConfig: pulumi.Output<outputs.compute.SecurityPolicyRulePreconfiguredWafConfig | undefined>;
     /**
      * If set to true, the specified action is not enforced.
      */
-    public readonly preview!: pulumi.Output<boolean | undefined>;
+    declare public readonly preview: pulumi.Output<boolean | undefined>;
     /**
      * An integer indicating the priority of a rule in the list.
      * The priority must be a positive value between 0 and 2147483647.
      * Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
      */
-    public readonly priority!: pulumi.Output<number>;
+    declare public readonly priority: pulumi.Output<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
      * Structure is documented below.
      */
-    public readonly rateLimitOptions!: pulumi.Output<outputs.compute.SecurityPolicyRuleRateLimitOptions | undefined>;
+    declare public readonly rateLimitOptions: pulumi.Output<outputs.compute.SecurityPolicyRuleRateLimitOptions | undefined>;
     /**
      * Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
      * Structure is documented below.
      */
-    public readonly redirectOptions!: pulumi.Output<outputs.compute.SecurityPolicyRuleRedirectOptions | undefined>;
+    declare public readonly redirectOptions: pulumi.Output<outputs.compute.SecurityPolicyRuleRedirectOptions | undefined>;
     /**
      * The name of the security policy this rule belongs to.
      */
-    public readonly securityPolicy!: pulumi.Output<string>;
+    declare public readonly securityPolicy: pulumi.Output<string>;
 
     /**
      * Create a SecurityPolicyRule resource with the given unique name, arguments, and options.
@@ -246,39 +246,39 @@ export class SecurityPolicyRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecurityPolicyRuleState | undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["headerAction"] = state ? state.headerAction : undefined;
-            resourceInputs["match"] = state ? state.match : undefined;
-            resourceInputs["preconfiguredWafConfig"] = state ? state.preconfiguredWafConfig : undefined;
-            resourceInputs["preview"] = state ? state.preview : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["rateLimitOptions"] = state ? state.rateLimitOptions : undefined;
-            resourceInputs["redirectOptions"] = state ? state.redirectOptions : undefined;
-            resourceInputs["securityPolicy"] = state ? state.securityPolicy : undefined;
+            resourceInputs["action"] = state?.action;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["headerAction"] = state?.headerAction;
+            resourceInputs["match"] = state?.match;
+            resourceInputs["preconfiguredWafConfig"] = state?.preconfiguredWafConfig;
+            resourceInputs["preview"] = state?.preview;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["rateLimitOptions"] = state?.rateLimitOptions;
+            resourceInputs["redirectOptions"] = state?.redirectOptions;
+            resourceInputs["securityPolicy"] = state?.securityPolicy;
         } else {
             const args = argsOrState as SecurityPolicyRuleArgs | undefined;
-            if ((!args || args.action === undefined) && !opts.urn) {
+            if (args?.action === undefined && !opts.urn) {
                 throw new Error("Missing required property 'action'");
             }
-            if ((!args || args.priority === undefined) && !opts.urn) {
+            if (args?.priority === undefined && !opts.urn) {
                 throw new Error("Missing required property 'priority'");
             }
-            if ((!args || args.securityPolicy === undefined) && !opts.urn) {
+            if (args?.securityPolicy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'securityPolicy'");
             }
-            resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["headerAction"] = args ? args.headerAction : undefined;
-            resourceInputs["match"] = args ? args.match : undefined;
-            resourceInputs["preconfiguredWafConfig"] = args ? args.preconfiguredWafConfig : undefined;
-            resourceInputs["preview"] = args ? args.preview : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["rateLimitOptions"] = args ? args.rateLimitOptions : undefined;
-            resourceInputs["redirectOptions"] = args ? args.redirectOptions : undefined;
-            resourceInputs["securityPolicy"] = args ? args.securityPolicy : undefined;
+            resourceInputs["action"] = args?.action;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["headerAction"] = args?.headerAction;
+            resourceInputs["match"] = args?.match;
+            resourceInputs["preconfiguredWafConfig"] = args?.preconfiguredWafConfig;
+            resourceInputs["preview"] = args?.preview;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["rateLimitOptions"] = args?.rateLimitOptions;
+            resourceInputs["redirectOptions"] = args?.redirectOptions;
+            resourceInputs["securityPolicy"] = args?.securityPolicy;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SecurityPolicyRule.__pulumiType, name, resourceInputs, opts);

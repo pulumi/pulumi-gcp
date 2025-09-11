@@ -91,38 +91,38 @@ export class AiMetadataStore extends pulumi.CustomResource {
     /**
      * The timestamp of when the MetadataStore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Description of the MetadataStore.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
      * Structure is documented below.
      */
-    public readonly encryptionSpec!: pulumi.Output<outputs.vertex.AiMetadataStoreEncryptionSpec | undefined>;
+    declare public readonly encryptionSpec: pulumi.Output<outputs.vertex.AiMetadataStoreEncryptionSpec | undefined>;
     /**
      * The name of the MetadataStore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The region of the Metadata Store. eg us-central1
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * State information of the MetadataStore.
      * Structure is documented below.
      */
-    public /*out*/ readonly states!: pulumi.Output<outputs.vertex.AiMetadataStoreState[]>;
+    declare public /*out*/ readonly states: pulumi.Output<outputs.vertex.AiMetadataStoreState[]>;
     /**
      * The timestamp of when the MetadataStore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a AiMetadataStore resource with the given unique name, arguments, and options.
@@ -137,21 +137,21 @@ export class AiMetadataStore extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AiMetadataStoreState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["encryptionSpec"] = state ? state.encryptionSpec : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["states"] = state ? state.states : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["encryptionSpec"] = state?.encryptionSpec;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["states"] = state?.states;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as AiMetadataStoreArgs | undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["encryptionSpec"] = args ? args.encryptionSpec : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["encryptionSpec"] = args?.encryptionSpec;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["states"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;

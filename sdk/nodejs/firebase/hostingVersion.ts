@@ -270,20 +270,20 @@ export class HostingVersion extends pulumi.CustomResource {
      * The configuration for the behavior of the site. This configuration exists in the `firebase.json` file.
      * Structure is documented below.
      */
-    public readonly config!: pulumi.Output<outputs.firebase.HostingVersionConfig | undefined>;
+    declare public readonly config: pulumi.Output<outputs.firebase.HostingVersionConfig | undefined>;
     /**
      * The fully-qualified resource name for the version, in the format:
      * sites/SITE_ID/versions/VERSION_ID
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Required. The ID of the site in which to create this Version.
      */
-    public readonly siteId!: pulumi.Output<string>;
+    declare public readonly siteId: pulumi.Output<string>;
     /**
      * The ID for the version as in sites/SITE_ID/versions/VERSION_ID
      */
-    public /*out*/ readonly versionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly versionId: pulumi.Output<string>;
 
     /**
      * Create a HostingVersion resource with the given unique name, arguments, and options.
@@ -298,17 +298,17 @@ export class HostingVersion extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HostingVersionState | undefined;
-            resourceInputs["config"] = state ? state.config : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["siteId"] = state ? state.siteId : undefined;
-            resourceInputs["versionId"] = state ? state.versionId : undefined;
+            resourceInputs["config"] = state?.config;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["siteId"] = state?.siteId;
+            resourceInputs["versionId"] = state?.versionId;
         } else {
             const args = argsOrState as HostingVersionArgs | undefined;
-            if ((!args || args.siteId === undefined) && !opts.urn) {
+            if (args?.siteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
-            resourceInputs["config"] = args ? args.config : undefined;
-            resourceInputs["siteId"] = args ? args.siteId : undefined;
+            resourceInputs["config"] = args?.config;
+            resourceInputs["siteId"] = args?.siteId;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["versionId"] = undefined /*out*/;
         }

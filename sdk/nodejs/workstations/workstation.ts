@@ -129,79 +129,79 @@ export class Workstation extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Time when this resource was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Human-readable name for this resource.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * 'Client-specified environment variables passed to the workstation container's entrypoint.'
      */
-    public readonly env!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly env: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Host to which clients can send HTTPS traffic that will be received by the workstation.
      * Authorized traffic will be received to the workstation as HTTP on port 80.
      * To send traffic to a different port, clients may prefix the host with the destination port in the format "{port}-{host}".
      */
-    public /*out*/ readonly host!: pulumi.Output<string>;
+    declare public /*out*/ readonly host: pulumi.Output<string>;
     /**
      * Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location where the workstation parent resources reside.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Full name of this resource.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Full resource name of the source workstation from which the workstation's persistent
      * directories will be cloned from during creation.
      */
-    public readonly sourceWorkstation!: pulumi.Output<string | undefined>;
+    declare public readonly sourceWorkstation: pulumi.Output<string | undefined>;
     /**
      * Current state of the workstation.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * A system-assigned unique identified for this resource.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * The ID of the parent workstation cluster.
      */
-    public readonly workstationClusterId!: pulumi.Output<string>;
+    declare public readonly workstationClusterId: pulumi.Output<string>;
     /**
      * The ID of the parent workstation cluster config.
      */
-    public readonly workstationConfigId!: pulumi.Output<string>;
+    declare public readonly workstationConfigId: pulumi.Output<string>;
     /**
      * ID to use for the workstation.
      */
-    public readonly workstationId!: pulumi.Output<string>;
+    declare public readonly workstationId: pulumi.Output<string>;
 
     /**
      * Create a Workstation resource with the given unique name, arguments, and options.
@@ -216,48 +216,48 @@ export class Workstation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkstationState | undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["env"] = state ? state.env : undefined;
-            resourceInputs["host"] = state ? state.host : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["sourceWorkstation"] = state ? state.sourceWorkstation : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["workstationClusterId"] = state ? state.workstationClusterId : undefined;
-            resourceInputs["workstationConfigId"] = state ? state.workstationConfigId : undefined;
-            resourceInputs["workstationId"] = state ? state.workstationId : undefined;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["env"] = state?.env;
+            resourceInputs["host"] = state?.host;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["sourceWorkstation"] = state?.sourceWorkstation;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["workstationClusterId"] = state?.workstationClusterId;
+            resourceInputs["workstationConfigId"] = state?.workstationConfigId;
+            resourceInputs["workstationId"] = state?.workstationId;
         } else {
             const args = argsOrState as WorkstationArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.workstationClusterId === undefined) && !opts.urn) {
+            if (args?.workstationClusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workstationClusterId'");
             }
-            if ((!args || args.workstationConfigId === undefined) && !opts.urn) {
+            if (args?.workstationConfigId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workstationConfigId'");
             }
-            if ((!args || args.workstationId === undefined) && !opts.urn) {
+            if (args?.workstationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workstationId'");
             }
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["env"] = args ? args.env : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["sourceWorkstation"] = args ? args.sourceWorkstation : undefined;
-            resourceInputs["workstationClusterId"] = args ? args.workstationClusterId : undefined;
-            resourceInputs["workstationConfigId"] = args ? args.workstationConfigId : undefined;
-            resourceInputs["workstationId"] = args ? args.workstationId : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["env"] = args?.env;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["sourceWorkstation"] = args?.sourceWorkstation;
+            resourceInputs["workstationClusterId"] = args?.workstationClusterId;
+            resourceInputs["workstationConfigId"] = args?.workstationConfigId;
+            resourceInputs["workstationId"] = args?.workstationId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;

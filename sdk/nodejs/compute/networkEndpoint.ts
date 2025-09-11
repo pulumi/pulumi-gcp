@@ -134,32 +134,32 @@ export class NetworkEndpoint extends pulumi.CustomResource {
      * This is required for network endpoints of type GCE_VM_IP_PORT.
      * The instance must be in the same zone of network endpoint group.
      */
-    public readonly instance!: pulumi.Output<string | undefined>;
+    declare public readonly instance: pulumi.Output<string | undefined>;
     /**
      * IPv4 address of network endpoint. The IP address must belong
      * to a VM in GCE (either the primary IP or as part of an aliased IP
      * range).
      */
-    public readonly ipAddress!: pulumi.Output<string>;
+    declare public readonly ipAddress: pulumi.Output<string>;
     /**
      * The network endpoint group this endpoint is part of.
      */
-    public readonly networkEndpointGroup!: pulumi.Output<string>;
+    declare public readonly networkEndpointGroup: pulumi.Output<string>;
     /**
      * Port number of network endpoint.
      * **Note** `port` is required unless the Network Endpoint Group is created
      * with the type of `GCE_VM_IP`
      */
-    public readonly port!: pulumi.Output<number | undefined>;
+    declare public readonly port: pulumi.Output<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Zone where the containing network endpoint group is located.
      */
-    public readonly zone!: pulumi.Output<string>;
+    declare public readonly zone: pulumi.Output<string>;
 
     /**
      * Create a NetworkEndpoint resource with the given unique name, arguments, and options.
@@ -174,26 +174,26 @@ export class NetworkEndpoint extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkEndpointState | undefined;
-            resourceInputs["instance"] = state ? state.instance : undefined;
-            resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
-            resourceInputs["networkEndpointGroup"] = state ? state.networkEndpointGroup : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["instance"] = state?.instance;
+            resourceInputs["ipAddress"] = state?.ipAddress;
+            resourceInputs["networkEndpointGroup"] = state?.networkEndpointGroup;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as NetworkEndpointArgs | undefined;
-            if ((!args || args.ipAddress === undefined) && !opts.urn) {
+            if (args?.ipAddress === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ipAddress'");
             }
-            if ((!args || args.networkEndpointGroup === undefined) && !opts.urn) {
+            if (args?.networkEndpointGroup === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkEndpointGroup'");
             }
-            resourceInputs["instance"] = args ? args.instance : undefined;
-            resourceInputs["ipAddress"] = args ? args.ipAddress : undefined;
-            resourceInputs["networkEndpointGroup"] = args ? args.networkEndpointGroup : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["instance"] = args?.instance;
+            resourceInputs["ipAddress"] = args?.ipAddress;
+            resourceInputs["networkEndpointGroup"] = args?.networkEndpointGroup;
+            resourceInputs["port"] = args?.port;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["zone"] = args?.zone;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(NetworkEndpoint.__pulumiType, name, resourceInputs, opts);

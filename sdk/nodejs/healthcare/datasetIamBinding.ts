@@ -141,18 +141,18 @@ export class DatasetIamBinding extends pulumi.CustomResource {
         return obj['__pulumiType'] === DatasetIamBinding.__pulumiType;
     }
 
-    public readonly condition!: pulumi.Output<outputs.healthcare.DatasetIamBindingCondition | undefined>;
+    declare public readonly condition: pulumi.Output<outputs.healthcare.DatasetIamBindingCondition | undefined>;
     /**
      * The dataset ID, in the form
      * `{project_id}/{location_name}/{dataset_name}` or
      * `{location_name}/{dataset_name}`. In the second form, the provider's
      * project setting will be used as a fallback.
      */
-    public readonly datasetId!: pulumi.Output<string>;
+    declare public readonly datasetId: pulumi.Output<string>;
     /**
      * (Computed) The etag of the dataset's IAM policy.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -163,13 +163,13 @@ export class DatasetIamBinding extends pulumi.CustomResource {
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
-    public readonly members!: pulumi.Output<string[]>;
+    declare public readonly members: pulumi.Output<string[]>;
     /**
      * The role that should be applied. Only one
      * `gcp.healthcare.DatasetIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    public readonly role!: pulumi.Output<string>;
+    declare public readonly role: pulumi.Output<string>;
 
     /**
      * Create a DatasetIamBinding resource with the given unique name, arguments, and options.
@@ -184,26 +184,26 @@ export class DatasetIamBinding extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatasetIamBindingState | undefined;
-            resourceInputs["condition"] = state ? state.condition : undefined;
-            resourceInputs["datasetId"] = state ? state.datasetId : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["members"] = state ? state.members : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["condition"] = state?.condition;
+            resourceInputs["datasetId"] = state?.datasetId;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["members"] = state?.members;
+            resourceInputs["role"] = state?.role;
         } else {
             const args = argsOrState as DatasetIamBindingArgs | undefined;
-            if ((!args || args.datasetId === undefined) && !opts.urn) {
+            if (args?.datasetId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'datasetId'");
             }
-            if ((!args || args.members === undefined) && !opts.urn) {
+            if (args?.members === undefined && !opts.urn) {
                 throw new Error("Missing required property 'members'");
             }
-            if ((!args || args.role === undefined) && !opts.urn) {
+            if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            resourceInputs["condition"] = args ? args.condition : undefined;
-            resourceInputs["datasetId"] = args ? args.datasetId : undefined;
-            resourceInputs["members"] = args ? args.members : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["condition"] = args?.condition;
+            resourceInputs["datasetId"] = args?.datasetId;
+            resourceInputs["members"] = args?.members;
+            resourceInputs["role"] = args?.role;
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

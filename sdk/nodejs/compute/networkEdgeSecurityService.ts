@@ -89,45 +89,45 @@ export class NetworkEdgeSecurityService extends pulumi.CustomResource {
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * Free-text description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a NetworkEdgeSecurityService.
      * An up-to-date fingerprint must be provided in order to update the NetworkEdgeSecurityService, otherwise the request will fail with error 412 conditionNotMet.
      */
-    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly fingerprint: pulumi.Output<string>;
     /**
      * Name of the resource. Provided by the client when the resource is created.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The region of the gateway security policy.
      */
-    public readonly region!: pulumi.Output<string | undefined>;
+    declare public readonly region: pulumi.Output<string | undefined>;
     /**
      * The resource URL for the network edge security service associated with this network edge security service.
      */
-    public readonly securityPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly securityPolicy: pulumi.Output<string | undefined>;
     /**
      * Server-defined URL for the resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * Server-defined URL for this resource with the resource id.
      */
-    public /*out*/ readonly selfLinkWithServiceId!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLinkWithServiceId: pulumi.Output<string>;
     /**
      * The unique identifier for the resource. This identifier is defined by the server.
      */
-    public /*out*/ readonly serviceId!: pulumi.Output<string>;
+    declare public /*out*/ readonly serviceId: pulumi.Output<string>;
 
     /**
      * Create a NetworkEdgeSecurityService resource with the given unique name, arguments, and options.
@@ -142,23 +142,23 @@ export class NetworkEdgeSecurityService extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkEdgeSecurityServiceState | undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["securityPolicy"] = state ? state.securityPolicy : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["selfLinkWithServiceId"] = state ? state.selfLinkWithServiceId : undefined;
-            resourceInputs["serviceId"] = state ? state.serviceId : undefined;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["fingerprint"] = state?.fingerprint;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["securityPolicy"] = state?.securityPolicy;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["selfLinkWithServiceId"] = state?.selfLinkWithServiceId;
+            resourceInputs["serviceId"] = state?.serviceId;
         } else {
             const args = argsOrState as NetworkEdgeSecurityServiceArgs | undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["securityPolicy"] = args ? args.securityPolicy : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["securityPolicy"] = args?.securityPolicy;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;

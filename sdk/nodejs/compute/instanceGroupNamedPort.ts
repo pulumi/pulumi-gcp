@@ -121,25 +121,25 @@ export class InstanceGroupNamedPort extends pulumi.CustomResource {
     /**
      * The name of the instance group.
      */
-    public readonly group!: pulumi.Output<string>;
+    declare public readonly group: pulumi.Output<string>;
     /**
      * The name for this named port. The name must be 1-63 characters
      * long, and comply with RFC1035.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The port number, which can be a value between 1 and 65535.
      */
-    public readonly port!: pulumi.Output<number>;
+    declare public readonly port: pulumi.Output<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The zone of the instance group.
      */
-    public readonly zone!: pulumi.Output<string>;
+    declare public readonly zone: pulumi.Output<string>;
 
     /**
      * Create a InstanceGroupNamedPort resource with the given unique name, arguments, and options.
@@ -154,24 +154,24 @@ export class InstanceGroupNamedPort extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceGroupNamedPortState | undefined;
-            resourceInputs["group"] = state ? state.group : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["group"] = state?.group;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as InstanceGroupNamedPortArgs | undefined;
-            if ((!args || args.group === undefined) && !opts.urn) {
+            if (args?.group === undefined && !opts.urn) {
                 throw new Error("Missing required property 'group'");
             }
-            if ((!args || args.port === undefined) && !opts.urn) {
+            if (args?.port === undefined && !opts.urn) {
                 throw new Error("Missing required property 'port'");
             }
-            resourceInputs["group"] = args ? args.group : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["group"] = args?.group;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["port"] = args?.port;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["zone"] = args?.zone;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(InstanceGroupNamedPort.__pulumiType, name, resourceInputs, opts);

@@ -90,53 +90,53 @@ export class CapacityCommitment extends pulumi.CustomResource {
      * cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split
      * or merged.
      */
-    public readonly capacityCommitmentId!: pulumi.Output<string | undefined>;
+    declare public readonly capacityCommitmentId: pulumi.Output<string | undefined>;
     /**
      * The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
      */
-    public /*out*/ readonly commitmentEndTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly commitmentEndTime: pulumi.Output<string>;
     /**
      * The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
      */
-    public /*out*/ readonly commitmentStartTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly commitmentStartTime: pulumi.Output<string>;
     /**
      * The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
      */
-    public readonly edition!: pulumi.Output<string | undefined>;
+    declare public readonly edition: pulumi.Output<string | undefined>;
     /**
      * If true, fail the request if another project in the organization has a capacity commitment.
      */
-    public readonly enforceSingleAdminProjectPerOrg!: pulumi.Output<string | undefined>;
+    declare public readonly enforceSingleAdminProjectPerOrg: pulumi.Output<string | undefined>;
     /**
      * The geographic location where the transfer config should reside.
      * Examples: US, EU, asia-northeast1. The default value is US.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * The resource name of the capacity commitment, e.g., projects/myproject/locations/US/capacityCommitments/123
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
      */
-    public readonly plan!: pulumi.Output<string>;
+    declare public readonly plan: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for some commitment plans.
      */
-    public readonly renewalPlan!: pulumi.Output<string | undefined>;
+    declare public readonly renewalPlan: pulumi.Output<string | undefined>;
     /**
      * Number of slots in this commitment.
      */
-    public readonly slotCount!: pulumi.Output<number>;
+    declare public readonly slotCount: pulumi.Output<number>;
     /**
      * State of the commitment
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
 
     /**
      * Create a CapacityCommitment resource with the given unique name, arguments, and options.
@@ -151,34 +151,34 @@ export class CapacityCommitment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CapacityCommitmentState | undefined;
-            resourceInputs["capacityCommitmentId"] = state ? state.capacityCommitmentId : undefined;
-            resourceInputs["commitmentEndTime"] = state ? state.commitmentEndTime : undefined;
-            resourceInputs["commitmentStartTime"] = state ? state.commitmentStartTime : undefined;
-            resourceInputs["edition"] = state ? state.edition : undefined;
-            resourceInputs["enforceSingleAdminProjectPerOrg"] = state ? state.enforceSingleAdminProjectPerOrg : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["plan"] = state ? state.plan : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["renewalPlan"] = state ? state.renewalPlan : undefined;
-            resourceInputs["slotCount"] = state ? state.slotCount : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["capacityCommitmentId"] = state?.capacityCommitmentId;
+            resourceInputs["commitmentEndTime"] = state?.commitmentEndTime;
+            resourceInputs["commitmentStartTime"] = state?.commitmentStartTime;
+            resourceInputs["edition"] = state?.edition;
+            resourceInputs["enforceSingleAdminProjectPerOrg"] = state?.enforceSingleAdminProjectPerOrg;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["plan"] = state?.plan;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["renewalPlan"] = state?.renewalPlan;
+            resourceInputs["slotCount"] = state?.slotCount;
+            resourceInputs["state"] = state?.state;
         } else {
             const args = argsOrState as CapacityCommitmentArgs | undefined;
-            if ((!args || args.plan === undefined) && !opts.urn) {
+            if (args?.plan === undefined && !opts.urn) {
                 throw new Error("Missing required property 'plan'");
             }
-            if ((!args || args.slotCount === undefined) && !opts.urn) {
+            if (args?.slotCount === undefined && !opts.urn) {
                 throw new Error("Missing required property 'slotCount'");
             }
-            resourceInputs["capacityCommitmentId"] = args ? args.capacityCommitmentId : undefined;
-            resourceInputs["edition"] = args ? args.edition : undefined;
-            resourceInputs["enforceSingleAdminProjectPerOrg"] = args ? args.enforceSingleAdminProjectPerOrg : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["plan"] = args ? args.plan : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["renewalPlan"] = args ? args.renewalPlan : undefined;
-            resourceInputs["slotCount"] = args ? args.slotCount : undefined;
+            resourceInputs["capacityCommitmentId"] = args?.capacityCommitmentId;
+            resourceInputs["edition"] = args?.edition;
+            resourceInputs["enforceSingleAdminProjectPerOrg"] = args?.enforceSingleAdminProjectPerOrg;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["plan"] = args?.plan;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["renewalPlan"] = args?.renewalPlan;
+            resourceInputs["slotCount"] = args?.slotCount;
             resourceInputs["commitmentEndTime"] = undefined /*out*/;
             resourceInputs["commitmentStartTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

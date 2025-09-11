@@ -510,89 +510,89 @@ export class Spoke extends pulumi.CustomResource {
     /**
      * Output only. The time the spoke was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * An optional description of the spoke.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of the group that this spoke is associated with.
      */
-    public readonly group!: pulumi.Output<string>;
+    declare public readonly group: pulumi.Output<string>;
     /**
      * Immutable. The URI of the hub that this spoke is attached to.
      */
-    public readonly hub!: pulumi.Output<string>;
+    declare public readonly hub: pulumi.Output<string>;
     /**
      * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
      * Structure is documented below.
      */
-    public readonly linkedInterconnectAttachments!: pulumi.Output<outputs.networkconnectivity.SpokeLinkedInterconnectAttachments | undefined>;
+    declare public readonly linkedInterconnectAttachments: pulumi.Output<outputs.networkconnectivity.SpokeLinkedInterconnectAttachments | undefined>;
     /**
      * Producer VPC network that is associated with the spoke.
      * Structure is documented below.
      */
-    public readonly linkedProducerVpcNetwork!: pulumi.Output<outputs.networkconnectivity.SpokeLinkedProducerVpcNetwork | undefined>;
+    declare public readonly linkedProducerVpcNetwork: pulumi.Output<outputs.networkconnectivity.SpokeLinkedProducerVpcNetwork | undefined>;
     /**
      * The URIs of linked Router appliance resources
      * Structure is documented below.
      */
-    public readonly linkedRouterApplianceInstances!: pulumi.Output<outputs.networkconnectivity.SpokeLinkedRouterApplianceInstances | undefined>;
+    declare public readonly linkedRouterApplianceInstances: pulumi.Output<outputs.networkconnectivity.SpokeLinkedRouterApplianceInstances | undefined>;
     /**
      * VPC network that is associated with the spoke.
      * Structure is documented below.
      */
-    public readonly linkedVpcNetwork!: pulumi.Output<outputs.networkconnectivity.SpokeLinkedVpcNetwork | undefined>;
+    declare public readonly linkedVpcNetwork: pulumi.Output<outputs.networkconnectivity.SpokeLinkedVpcNetwork | undefined>;
     /**
      * The URIs of linked VPN tunnel resources
      * Structure is documented below.
      */
-    public readonly linkedVpnTunnels!: pulumi.Output<outputs.networkconnectivity.SpokeLinkedVpnTunnels | undefined>;
+    declare public readonly linkedVpnTunnels: pulumi.Output<outputs.networkconnectivity.SpokeLinkedVpnTunnels | undefined>;
     /**
      * The location for the resource
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Immutable. The name of the spoke. Spoke names must be unique.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The reasons for the current state in the lifecycle
      * Structure is documented below.
      */
-    public /*out*/ readonly reasons!: pulumi.Output<outputs.networkconnectivity.SpokeReason[]>;
+    declare public /*out*/ readonly reasons: pulumi.Output<outputs.networkconnectivity.SpokeReason[]>;
     /**
      * Output only. The current lifecycle state of this spoke.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
      */
-    public /*out*/ readonly uniqueId!: pulumi.Output<string>;
+    declare public /*out*/ readonly uniqueId: pulumi.Output<string>;
     /**
      * Output only. The time the spoke was last updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Spoke resource with the given unique name, arguments, and options.
@@ -607,45 +607,45 @@ export class Spoke extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SpokeState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["group"] = state ? state.group : undefined;
-            resourceInputs["hub"] = state ? state.hub : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["linkedInterconnectAttachments"] = state ? state.linkedInterconnectAttachments : undefined;
-            resourceInputs["linkedProducerVpcNetwork"] = state ? state.linkedProducerVpcNetwork : undefined;
-            resourceInputs["linkedRouterApplianceInstances"] = state ? state.linkedRouterApplianceInstances : undefined;
-            resourceInputs["linkedVpcNetwork"] = state ? state.linkedVpcNetwork : undefined;
-            resourceInputs["linkedVpnTunnels"] = state ? state.linkedVpnTunnels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["reasons"] = state ? state.reasons : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["uniqueId"] = state ? state.uniqueId : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["group"] = state?.group;
+            resourceInputs["hub"] = state?.hub;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["linkedInterconnectAttachments"] = state?.linkedInterconnectAttachments;
+            resourceInputs["linkedProducerVpcNetwork"] = state?.linkedProducerVpcNetwork;
+            resourceInputs["linkedRouterApplianceInstances"] = state?.linkedRouterApplianceInstances;
+            resourceInputs["linkedVpcNetwork"] = state?.linkedVpcNetwork;
+            resourceInputs["linkedVpnTunnels"] = state?.linkedVpnTunnels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["reasons"] = state?.reasons;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["uniqueId"] = state?.uniqueId;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as SpokeArgs | undefined;
-            if ((!args || args.hub === undefined) && !opts.urn) {
+            if (args?.hub === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hub'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["group"] = args ? args.group : undefined;
-            resourceInputs["hub"] = args ? args.hub : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["linkedInterconnectAttachments"] = args ? args.linkedInterconnectAttachments : undefined;
-            resourceInputs["linkedProducerVpcNetwork"] = args ? args.linkedProducerVpcNetwork : undefined;
-            resourceInputs["linkedRouterApplianceInstances"] = args ? args.linkedRouterApplianceInstances : undefined;
-            resourceInputs["linkedVpcNetwork"] = args ? args.linkedVpcNetwork : undefined;
-            resourceInputs["linkedVpnTunnels"] = args ? args.linkedVpnTunnels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["group"] = args?.group;
+            resourceInputs["hub"] = args?.hub;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["linkedInterconnectAttachments"] = args?.linkedInterconnectAttachments;
+            resourceInputs["linkedProducerVpcNetwork"] = args?.linkedProducerVpcNetwork;
+            resourceInputs["linkedRouterApplianceInstances"] = args?.linkedRouterApplianceInstances;
+            resourceInputs["linkedVpcNetwork"] = args?.linkedVpcNetwork;
+            resourceInputs["linkedVpnTunnels"] = args?.linkedVpnTunnels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;

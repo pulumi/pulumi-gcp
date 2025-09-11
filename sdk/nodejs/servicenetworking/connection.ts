@@ -87,31 +87,31 @@ export class Connection extends pulumi.CustomResource {
         return obj['__pulumiType'] === Connection.__pulumiType;
     }
 
-    public readonly deletionPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly deletionPolicy: pulumi.Output<string | undefined>;
     /**
      * Name of VPC network connected with service producers using VPC peering.
      */
-    public readonly network!: pulumi.Output<string>;
+    declare public readonly network: pulumi.Output<string>;
     /**
      * (Computed) The name of the VPC Network Peering connection that was created by the service producer.
      */
-    public /*out*/ readonly peering!: pulumi.Output<string>;
+    declare public /*out*/ readonly peering: pulumi.Output<string>;
     /**
      * Named IP address range(s) of PEERING type reserved for
      * this service provider. Note that invoking this method with a different range when connection
      * is already established will not reallocate already provisioned service producer subnetworks.
      */
-    public readonly reservedPeeringRanges!: pulumi.Output<string[]>;
+    declare public readonly reservedPeeringRanges: pulumi.Output<string[]>;
     /**
      * Provider peering service that is managing peering connectivity for a
      * service provider organization. For Google services that support this functionality it is
      * 'servicenetworking.googleapis.com'.
      */
-    public readonly service!: pulumi.Output<string>;
+    declare public readonly service: pulumi.Output<string>;
     /**
      * When set to true, enforce an update of the reserved peering ranges on the existing service networking connection in case of a new connection creation failure.
      */
-    public readonly updateOnCreationFail!: pulumi.Output<boolean | undefined>;
+    declare public readonly updateOnCreationFail: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Connection resource with the given unique name, arguments, and options.
@@ -126,28 +126,28 @@ export class Connection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectionState | undefined;
-            resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["peering"] = state ? state.peering : undefined;
-            resourceInputs["reservedPeeringRanges"] = state ? state.reservedPeeringRanges : undefined;
-            resourceInputs["service"] = state ? state.service : undefined;
-            resourceInputs["updateOnCreationFail"] = state ? state.updateOnCreationFail : undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["peering"] = state?.peering;
+            resourceInputs["reservedPeeringRanges"] = state?.reservedPeeringRanges;
+            resourceInputs["service"] = state?.service;
+            resourceInputs["updateOnCreationFail"] = state?.updateOnCreationFail;
         } else {
             const args = argsOrState as ConnectionArgs | undefined;
-            if ((!args || args.network === undefined) && !opts.urn) {
+            if (args?.network === undefined && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
-            if ((!args || args.reservedPeeringRanges === undefined) && !opts.urn) {
+            if (args?.reservedPeeringRanges === undefined && !opts.urn) {
                 throw new Error("Missing required property 'reservedPeeringRanges'");
             }
-            if ((!args || args.service === undefined) && !opts.urn) {
+            if (args?.service === undefined && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
-            resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["reservedPeeringRanges"] = args ? args.reservedPeeringRanges : undefined;
-            resourceInputs["service"] = args ? args.service : undefined;
-            resourceInputs["updateOnCreationFail"] = args ? args.updateOnCreationFail : undefined;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["reservedPeeringRanges"] = args?.reservedPeeringRanges;
+            resourceInputs["service"] = args?.service;
+            resourceInputs["updateOnCreationFail"] = args?.updateOnCreationFail;
             resourceInputs["peering"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

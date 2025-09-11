@@ -895,73 +895,73 @@ export class Function extends pulumi.CustomResource {
      * from the given source.
      * Structure is documented below.
      */
-    public readonly buildConfig!: pulumi.Output<outputs.cloudfunctionsv2.FunctionBuildConfig | undefined>;
+    declare public readonly buildConfig: pulumi.Output<outputs.cloudfunctionsv2.FunctionBuildConfig | undefined>;
     /**
      * User-provided description of a function.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The environment the function is hosted on.
      */
-    public /*out*/ readonly environment!: pulumi.Output<string>;
+    declare public /*out*/ readonly environment: pulumi.Output<string>;
     /**
      * An Eventarc trigger managed by Google Cloud Functions that fires events in
      * response to a condition in another service.
      * Structure is documented below.
      */
-    public readonly eventTrigger!: pulumi.Output<outputs.cloudfunctionsv2.FunctionEventTrigger | undefined>;
+    declare public readonly eventTrigger: pulumi.Output<outputs.cloudfunctionsv2.FunctionEventTrigger | undefined>;
     /**
      * Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources.
      * It must match the pattern projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}.
      */
-    public readonly kmsKeyName!: pulumi.Output<string | undefined>;
+    declare public readonly kmsKeyName: pulumi.Output<string | undefined>;
     /**
      * A set of key/value label pairs associated with this Cloud Function.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location of this cloud function.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * A user-defined name of the function. Function names must
      * be unique globally and match pattern `projects/*&#47;locations/*&#47;functions/*`.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Describes the Service being deployed.
      * Structure is documented below.
      */
-    public readonly serviceConfig!: pulumi.Output<outputs.cloudfunctionsv2.FunctionServiceConfig | undefined>;
+    declare public readonly serviceConfig: pulumi.Output<outputs.cloudfunctionsv2.FunctionServiceConfig | undefined>;
     /**
      * Describes the current state of the function.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The last update timestamp of a Cloud Function.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * Output only. The deployed url for the function.
      */
-    public /*out*/ readonly url!: pulumi.Output<string>;
+    declare public /*out*/ readonly url: pulumi.Output<string>;
 
     /**
      * Create a Function resource with the given unique name, arguments, and options.
@@ -976,35 +976,35 @@ export class Function extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FunctionState | undefined;
-            resourceInputs["buildConfig"] = state ? state.buildConfig : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["environment"] = state ? state.environment : undefined;
-            resourceInputs["eventTrigger"] = state ? state.eventTrigger : undefined;
-            resourceInputs["kmsKeyName"] = state ? state.kmsKeyName : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["serviceConfig"] = state ? state.serviceConfig : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["buildConfig"] = state?.buildConfig;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["environment"] = state?.environment;
+            resourceInputs["eventTrigger"] = state?.eventTrigger;
+            resourceInputs["kmsKeyName"] = state?.kmsKeyName;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["serviceConfig"] = state?.serviceConfig;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["url"] = state?.url;
         } else {
             const args = argsOrState as FunctionArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["buildConfig"] = args ? args.buildConfig : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["eventTrigger"] = args ? args.eventTrigger : undefined;
-            resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["serviceConfig"] = args ? args.serviceConfig : undefined;
+            resourceInputs["buildConfig"] = args?.buildConfig;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["eventTrigger"] = args?.eventTrigger;
+            resourceInputs["kmsKeyName"] = args?.kmsKeyName;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["serviceConfig"] = args?.serviceConfig;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["environment"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;

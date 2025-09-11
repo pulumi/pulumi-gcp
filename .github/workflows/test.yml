@@ -69,7 +69,7 @@ jobs:
         pip3 install virtualenv==20.0.23
         pip3 install pipenv
     - name: Authenticate to Google Cloud
-      uses: google-github-actions/auth@b7593ed2efd1c1617e1b0254da33b86225adb2a5 # v2.1.12
+      uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093 # v3.0.0
       with:
         service_account: ${{ env.GOOGLE_CI_SERVICE_ACCOUNT_EMAIL }}
         workload_identity_provider: projects/${{ env.GOOGLE_PROJECT_NUMBER
@@ -77,7 +77,7 @@ jobs:
           env.GOOGLE_CI_WORKLOAD_IDENTITY_POOL }}/providers/${{
           env.GOOGLE_CI_WORKLOAD_IDENTITY_PROVIDER }}
     - name: Setup gcloud auth
-      uses: google-github-actions/setup-gcloud@cb1e50a9932213ecece00a606661ae9ca44f3397 # v2.2.0
+      uses: google-github-actions/setup-gcloud@aa5489c8933f4cc7a4f7d45035b3b1440c9c10db # v3.0.1
       with:
         install_components: gke-gcloud-auth-plugin
     - name: Install dependencies
@@ -86,12 +86,18 @@ jobs:
       if: matrix.testTarget == 'local'
       working-directory: provider
       run: go test -v -count=1 -cover -timeout 2h -tags=${{ matrix.language }} -parallel 4 .
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Run tests
       if: matrix.testTarget == 'local'
       run: cd examples && go test -v -count=1 -cover -timeout 2h -tags=${{ matrix.language }} -skip TestPulumiExamples -parallel 4 .
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Run pulumi/examples tests
       if: matrix.testTarget == 'pulumiExamples'
       run: cd examples && go test -v -count=1 -cover -timeout 2h -tags=${{ matrix.language }} -run TestPulumiExamples -parallel 4 .
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     strategy:
       fail-fast: false
       matrix:

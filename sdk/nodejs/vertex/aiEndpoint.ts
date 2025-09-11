@@ -174,87 +174,87 @@ export class AiEndpoint extends pulumi.CustomResource {
      * (Output)
      * Output only. Timestamp when the DeployedModel was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Output only. DNS of the dedicated endpoint. Will only be populated if dedicatedEndpointEnabled is true. Format: `https://{endpointId}.{region}-{projectNumber}.prediction.vertexai.goog`.
      */
-    public /*out*/ readonly dedicatedEndpointDns!: pulumi.Output<string>;
+    declare public /*out*/ readonly dedicatedEndpointDns: pulumi.Output<string>;
     /**
      * If true, the endpoint will be exposed through a dedicated DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS will be isolated from other users' traffic and will have better performance and reliability. Note: Once you enabled dedicated endpoint, you won't be able to send request to the shared DNS {region}-aiplatform.googleapis.com. The limitation will be removed soon.
      */
-    public readonly dedicatedEndpointEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly dedicatedEndpointEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud Console](https://console.cloud.google.com/vertex-ai/).
      * Structure is documented below.
      */
-    public /*out*/ readonly deployedModels!: pulumi.Output<outputs.vertex.AiEndpointDeployedModel[]>;
+    declare public /*out*/ readonly deployedModels: pulumi.Output<outputs.vertex.AiEndpointDeployedModel[]>;
     /**
      * The description of the Endpoint.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Customer-managed encryption key spec for an Endpoint. If set, this Endpoint and all sub-resources of this Endpoint will be secured by this key.
      * Structure is documented below.
      */
-    public readonly encryptionSpec!: pulumi.Output<outputs.vertex.AiEndpointEncryptionSpec | undefined>;
+    declare public readonly encryptionSpec: pulumi.Output<outputs.vertex.AiEndpointEncryptionSpec | undefined>;
     /**
      * Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location for the resource
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by CreateModelDeploymentMonitoringJob. Format: `projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}`
      */
-    public /*out*/ readonly modelDeploymentMonitoringJob!: pulumi.Output<string>;
+    declare public /*out*/ readonly modelDeploymentMonitoringJob: pulumi.Output<string>;
     /**
      * The resource name of the Endpoint. The name must be numeric with no leading zeros and can be at most 10 digits.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name. Only one of the fields, `network` or `privateServiceConnectConfig`, can be set.
      */
-    public readonly network!: pulumi.Output<string | undefined>;
+    declare public readonly network: pulumi.Output<string | undefined>;
     /**
      * Configures the request-response logging for online prediction.
      * Structure is documented below.
      */
-    public readonly predictRequestResponseLoggingConfig!: pulumi.Output<outputs.vertex.AiEndpointPredictRequestResponseLoggingConfig | undefined>;
+    declare public readonly predictRequestResponseLoggingConfig: pulumi.Output<outputs.vertex.AiEndpointPredictRequestResponseLoggingConfig | undefined>;
     /**
      * Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
      * Structure is documented below.
      */
-    public readonly privateServiceConnectConfig!: pulumi.Output<outputs.vertex.AiEndpointPrivateServiceConnectConfig | undefined>;
+    declare public readonly privateServiceConnectConfig: pulumi.Output<outputs.vertex.AiEndpointPrivateServiceConnectConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The region for the resource
      */
-    public readonly region!: pulumi.Output<string | undefined>;
+    declare public readonly region: pulumi.Output<string | undefined>;
     /**
      * A map from a DeployedModel's id to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel.
      * If a DeployedModel's id is not listed in this map, then it receives no traffic.
@@ -263,11 +263,11 @@ export class AiEndpoint extends pulumi.CustomResource {
      * [documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.endpoints/deployModel) for more information.
      * > **Note:** To set the map to empty, set `"{}"`, apply, and then remove the field from your config.
      */
-    public readonly trafficSplit!: pulumi.Output<string>;
+    declare public readonly trafficSplit: pulumi.Output<string>;
     /**
      * Output only. Timestamp when this Endpoint was last updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a AiEndpoint resource with the given unique name, arguments, and options.
@@ -282,48 +282,48 @@ export class AiEndpoint extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AiEndpointState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dedicatedEndpointDns"] = state ? state.dedicatedEndpointDns : undefined;
-            resourceInputs["dedicatedEndpointEnabled"] = state ? state.dedicatedEndpointEnabled : undefined;
-            resourceInputs["deployedModels"] = state ? state.deployedModels : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["encryptionSpec"] = state ? state.encryptionSpec : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["modelDeploymentMonitoringJob"] = state ? state.modelDeploymentMonitoringJob : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["predictRequestResponseLoggingConfig"] = state ? state.predictRequestResponseLoggingConfig : undefined;
-            resourceInputs["privateServiceConnectConfig"] = state ? state.privateServiceConnectConfig : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["trafficSplit"] = state ? state.trafficSplit : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dedicatedEndpointDns"] = state?.dedicatedEndpointDns;
+            resourceInputs["dedicatedEndpointEnabled"] = state?.dedicatedEndpointEnabled;
+            resourceInputs["deployedModels"] = state?.deployedModels;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["encryptionSpec"] = state?.encryptionSpec;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["modelDeploymentMonitoringJob"] = state?.modelDeploymentMonitoringJob;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["predictRequestResponseLoggingConfig"] = state?.predictRequestResponseLoggingConfig;
+            resourceInputs["privateServiceConnectConfig"] = state?.privateServiceConnectConfig;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["trafficSplit"] = state?.trafficSplit;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as AiEndpointArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["dedicatedEndpointEnabled"] = args ? args.dedicatedEndpointEnabled : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["encryptionSpec"] = args ? args.encryptionSpec : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["predictRequestResponseLoggingConfig"] = args ? args.predictRequestResponseLoggingConfig : undefined;
-            resourceInputs["privateServiceConnectConfig"] = args ? args.privateServiceConnectConfig : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["trafficSplit"] = args ? args.trafficSplit : undefined;
+            resourceInputs["dedicatedEndpointEnabled"] = args?.dedicatedEndpointEnabled;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["encryptionSpec"] = args?.encryptionSpec;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["predictRequestResponseLoggingConfig"] = args?.predictRequestResponseLoggingConfig;
+            resourceInputs["privateServiceConnectConfig"] = args?.privateServiceConnectConfig;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["trafficSplit"] = args?.trafficSplit;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["dedicatedEndpointDns"] = undefined /*out*/;
             resourceInputs["deployedModels"] = undefined /*out*/;

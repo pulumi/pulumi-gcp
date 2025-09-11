@@ -188,37 +188,37 @@ export class Connector extends pulumi.CustomResource {
     /**
      * Connector config as keys/values. The keys of the map are connector property names, for example: `connector.class`, `tasks.max`, `key.converter`.
      */
-    public readonly configs!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly configs: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The connect cluster name.
      */
-    public readonly connectCluster!: pulumi.Output<string>;
+    declare public readonly connectCluster: pulumi.Output<string>;
     /**
      * The ID to use for the connector, which will become the final component of the connector's name. This value is structured like: `my-connector-id`.
      */
-    public readonly connectorId!: pulumi.Output<string>;
+    declare public readonly connectorId: pulumi.Output<string>;
     /**
      * ID of the location of the Kafka Connect resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The name of the connector. The `connector` segment is used when connecting directly to the connect cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/connectClusters/CONNECT_CLUSTER/connectors/CONNECTOR_ID`.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The current state of the connect. Possible values: `STATE_UNSPECIFIED`, `UNASSIGNED`, `RUNNING`, `PAUSED`, `FAILED`, `RESTARTING`, and `STOPPED`.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * A policy that specifies how to restart the failed connectors/tasks in a Cluster resource. If not set, the failed connectors/tasks won't be restarted.
      * Structure is documented below.
      */
-    public readonly taskRestartPolicy!: pulumi.Output<outputs.managedkafka.ConnectorTaskRestartPolicy | undefined>;
+    declare public readonly taskRestartPolicy: pulumi.Output<outputs.managedkafka.ConnectorTaskRestartPolicy | undefined>;
 
     /**
      * Create a Connector resource with the given unique name, arguments, and options.
@@ -233,31 +233,31 @@ export class Connector extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectorState | undefined;
-            resourceInputs["configs"] = state ? state.configs : undefined;
-            resourceInputs["connectCluster"] = state ? state.connectCluster : undefined;
-            resourceInputs["connectorId"] = state ? state.connectorId : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["taskRestartPolicy"] = state ? state.taskRestartPolicy : undefined;
+            resourceInputs["configs"] = state?.configs;
+            resourceInputs["connectCluster"] = state?.connectCluster;
+            resourceInputs["connectorId"] = state?.connectorId;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["taskRestartPolicy"] = state?.taskRestartPolicy;
         } else {
             const args = argsOrState as ConnectorArgs | undefined;
-            if ((!args || args.connectCluster === undefined) && !opts.urn) {
+            if (args?.connectCluster === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectCluster'");
             }
-            if ((!args || args.connectorId === undefined) && !opts.urn) {
+            if (args?.connectorId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectorId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["configs"] = args ? args.configs : undefined;
-            resourceInputs["connectCluster"] = args ? args.connectCluster : undefined;
-            resourceInputs["connectorId"] = args ? args.connectorId : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["taskRestartPolicy"] = args ? args.taskRestartPolicy : undefined;
+            resourceInputs["configs"] = args?.configs;
+            resourceInputs["connectCluster"] = args?.connectCluster;
+            resourceInputs["connectorId"] = args?.connectorId;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["taskRestartPolicy"] = args?.taskRestartPolicy;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }

@@ -112,64 +112,64 @@ export class ExtensionsInstance extends pulumi.CustomResource {
      * The current Config of the Extension Instance.
      * Structure is documented below.
      */
-    public readonly config!: pulumi.Output<outputs.firebase.ExtensionsInstanceConfig>;
+    declare public readonly config: pulumi.Output<outputs.firebase.ExtensionsInstanceConfig>;
     /**
      * The time at which the Extension Instance was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * If this Instance has `state: ERRORED`, the error messages
      * will be found here.
      * Structure is documented below.
      */
-    public /*out*/ readonly errorStatuses!: pulumi.Output<outputs.firebase.ExtensionsInstanceErrorStatus[]>;
+    declare public /*out*/ readonly errorStatuses: pulumi.Output<outputs.firebase.ExtensionsInstanceErrorStatus[]>;
     /**
      * A weak etag that is computed by the server based on other configuration
      * values and may be sent on update and delete requests to ensure the
      * client has an up-to-date value before proceeding.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The ID to use for the Extension Instance, which will become the final
      * component of the instance's name.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The name of the last operation that acted on this Extension
      * Instance
      */
-    public /*out*/ readonly lastOperationName!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastOperationName: pulumi.Output<string>;
     /**
      * The type of the last operation that acted on the Extension Instance.
      */
-    public /*out*/ readonly lastOperationType!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastOperationType: pulumi.Output<string>;
     /**
      * The fully-qualified resource name of the Extension Instance.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Data set by the extension instance at runtime.
      * Structure is documented below.
      */
-    public /*out*/ readonly runtimeDatas!: pulumi.Output<outputs.firebase.ExtensionsInstanceRuntimeData[]>;
+    declare public /*out*/ readonly runtimeDatas: pulumi.Output<outputs.firebase.ExtensionsInstanceRuntimeData[]>;
     /**
      * The email of the service account to be used at runtime by compute resources
      * created for the operation of the Extension instance.
      */
-    public /*out*/ readonly serviceAccountEmail!: pulumi.Output<string>;
+    declare public /*out*/ readonly serviceAccountEmail: pulumi.Output<string>;
     /**
      * The processing state of the extension instance.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The time at which the Extension Instance was updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a ExtensionsInstance resource with the given unique name, arguments, and options.
@@ -184,30 +184,30 @@ export class ExtensionsInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ExtensionsInstanceState | undefined;
-            resourceInputs["config"] = state ? state.config : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["errorStatuses"] = state ? state.errorStatuses : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["lastOperationName"] = state ? state.lastOperationName : undefined;
-            resourceInputs["lastOperationType"] = state ? state.lastOperationType : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["runtimeDatas"] = state ? state.runtimeDatas : undefined;
-            resourceInputs["serviceAccountEmail"] = state ? state.serviceAccountEmail : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["config"] = state?.config;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["errorStatuses"] = state?.errorStatuses;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["lastOperationName"] = state?.lastOperationName;
+            resourceInputs["lastOperationType"] = state?.lastOperationType;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["runtimeDatas"] = state?.runtimeDatas;
+            resourceInputs["serviceAccountEmail"] = state?.serviceAccountEmail;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as ExtensionsInstanceArgs | undefined;
-            if ((!args || args.config === undefined) && !opts.urn) {
+            if (args?.config === undefined && !opts.urn) {
                 throw new Error("Missing required property 'config'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["config"] = args ? args.config : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["config"] = args?.config;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["project"] = args?.project;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["errorStatuses"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;

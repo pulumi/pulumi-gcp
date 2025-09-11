@@ -86,49 +86,49 @@ export class Kmsconfig extends pulumi.CustomResource {
     /**
      * Resource name of the KMS key to use. Only regional keys are supported. Format: `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{key}}`.
      */
-    public readonly cryptoKeyName!: pulumi.Output<string>;
+    declare public readonly cryptoKeyName: pulumi.Output<string>;
     /**
      * Description for the CMEK policy.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Access to the key needs to be granted. The instructions contain gcloud commands to run to grant access.
      * To make the policy work, a CMEK policy check is required, which verifies key access.
      */
-    public /*out*/ readonly instructions!: pulumi.Output<string>;
+    declare public /*out*/ readonly instructions: pulumi.Output<string>;
     /**
      * Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Name of the policy location. CMEK policies apply to the whole region.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Name of the CMEK policy.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The Service account which needs to have access to the  provided KMS key.
      */
-    public /*out*/ readonly serviceAccount!: pulumi.Output<string>;
+    declare public /*out*/ readonly serviceAccount: pulumi.Output<string>;
 
     /**
      * Create a Kmsconfig resource with the given unique name, arguments, and options.
@@ -143,30 +143,30 @@ export class Kmsconfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KmsconfigState | undefined;
-            resourceInputs["cryptoKeyName"] = state ? state.cryptoKeyName : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["instructions"] = state ? state.instructions : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
+            resourceInputs["cryptoKeyName"] = state?.cryptoKeyName;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["instructions"] = state?.instructions;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["serviceAccount"] = state?.serviceAccount;
         } else {
             const args = argsOrState as KmsconfigArgs | undefined;
-            if ((!args || args.cryptoKeyName === undefined) && !opts.urn) {
+            if (args?.cryptoKeyName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cryptoKeyName'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["cryptoKeyName"] = args ? args.cryptoKeyName : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["cryptoKeyName"] = args?.cryptoKeyName;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["instructions"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;

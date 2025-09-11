@@ -242,21 +242,21 @@ export class InstanceIamPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === InstanceIamPolicy.__pulumiType;
     }
 
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The ID of the instance or a fully qualified identifier for the instance.
      */
-    public readonly name!: pulumi.Output<string>;
-    public readonly policyData!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly policyData: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The region of the Data Fusion instance.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a InstanceIamPolicy resource with the given unique name, arguments, and options.
@@ -271,20 +271,20 @@ export class InstanceIamPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceIamPolicyState | undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["policyData"] = state ? state.policyData : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["policyData"] = state?.policyData;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as InstanceIamPolicyArgs | undefined;
-            if ((!args || args.policyData === undefined) && !opts.urn) {
+            if (args?.policyData === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyData'");
             }
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["policyData"] = args ? args.policyData : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["policyData"] = args?.policyData;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

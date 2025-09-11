@@ -42,12 +42,10 @@ class AzureNodePoolArgs:
         :param pulumi.Input['AzureNodePoolMaxPodsConstraintArgs'] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         :param pulumi.Input[_builtins.str] subnet_id: The ARM ID of the subnet where the node pool VMs run. Make sure it's a subnet under the virtual network in the cluster configuration.
         :param pulumi.Input[_builtins.str] version: The Kubernetes version (e.g. `1.19.10-gke.1000`) running on this node pool.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size
-               of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required),
-               separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-               alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-               non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-               `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[_builtins.str] azure_availability_zone: Optional. The Azure availability zone of the nodes in this nodepool. When unspecified, it defaults to `1`.
         :param pulumi.Input['AzureNodePoolManagementArgs'] management: The Management configuration for this node pool.
         :param pulumi.Input[_builtins.str] name: The name of this resource.
@@ -159,12 +157,10 @@ class AzureNodePoolArgs:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size
-        of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required),
-        separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-        alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-        non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-        `effective_annotations` for all of the annotations present on the resource.
+        Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -245,12 +241,10 @@ class _AzureNodePoolState:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AzureNodePool resources.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size
-               of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required),
-               separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-               alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-               non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-               `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input['AzureNodePoolAutoscalingArgs'] autoscaling: Autoscaler configuration for this node pool.
         :param pulumi.Input[_builtins.str] azure_availability_zone: Optional. The Azure availability zone of the nodes in this nodepool. When unspecified, it defaults to `1`.
         :param pulumi.Input[_builtins.str] cluster: The azureCluster for the resource
@@ -312,12 +306,10 @@ class _AzureNodePoolState:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size
-        of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required),
-        separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-        alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-        non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-        `effective_annotations` for all of the annotations present on the resource.
+        Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -673,12 +665,10 @@ class AzureNodePool(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size
-               of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required),
-               separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-               alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-               non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-               `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[Union['AzureNodePoolAutoscalingArgs', 'AzureNodePoolAutoscalingArgsDict']] autoscaling: Autoscaler configuration for this node pool.
         :param pulumi.Input[_builtins.str] azure_availability_zone: Optional. The Azure availability zone of the nodes in this nodepool. When unspecified, it defaults to `1`.
         :param pulumi.Input[_builtins.str] cluster: The azureCluster for the resource
@@ -915,12 +905,10 @@ class AzureNodePool(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size
-               of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required),
-               separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-               alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-               non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-               `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[Union['AzureNodePoolAutoscalingArgs', 'AzureNodePoolAutoscalingArgsDict']] autoscaling: Autoscaler configuration for this node pool.
         :param pulumi.Input[_builtins.str] azure_availability_zone: Optional. The Azure availability zone of the nodes in this nodepool. When unspecified, it defaults to `1`.
         :param pulumi.Input[_builtins.str] cluster: The azureCluster for the resource
@@ -968,12 +956,10 @@ class AzureNodePool(pulumi.CustomResource):
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
-        Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size
-        of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required),
-        separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-        alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-        non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-        `effective_annotations` for all of the annotations present on the resource.
+        Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 

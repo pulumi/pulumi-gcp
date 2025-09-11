@@ -108,31 +108,31 @@ export class WebApp extends pulumi.CustomResource {
      * If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the WebApp.
      * This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
      */
-    public readonly apiKeyId!: pulumi.Output<string>;
+    declare public readonly apiKeyId: pulumi.Output<string>;
     /**
      * The globally unique, Firebase-assigned identifier of the App.
      * This identifier should be treated as an opaque token, as the data format is not specified.
      */
-    public /*out*/ readonly appId!: pulumi.Output<string>;
+    declare public /*out*/ readonly appId: pulumi.Output<string>;
     /**
      * The URLs where the `WebApp` is hosted.
      */
-    public /*out*/ readonly appUrls!: pulumi.Output<string[]>;
-    public readonly deletionPolicy!: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly appUrls: pulumi.Output<string[]>;
+    declare public readonly deletionPolicy: pulumi.Output<string | undefined>;
     /**
      * The user-assigned display name of the App.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * The fully qualified resource name of the App, for example:
      * projects/projectId/webApps/appId
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
 
     /**
      * Create a WebApp resource with the given unique name, arguments, and options.
@@ -147,22 +147,22 @@ export class WebApp extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WebAppState | undefined;
-            resourceInputs["apiKeyId"] = state ? state.apiKeyId : undefined;
-            resourceInputs["appId"] = state ? state.appId : undefined;
-            resourceInputs["appUrls"] = state ? state.appUrls : undefined;
-            resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["apiKeyId"] = state?.apiKeyId;
+            resourceInputs["appId"] = state?.appId;
+            resourceInputs["appUrls"] = state?.appUrls;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as WebAppArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            resourceInputs["apiKeyId"] = args ? args.apiKeyId : undefined;
-            resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["apiKeyId"] = args?.apiKeyId;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["project"] = args?.project;
             resourceInputs["appId"] = undefined /*out*/;
             resourceInputs["appUrls"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

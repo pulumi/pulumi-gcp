@@ -360,8 +360,7 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<string>> TargetPools { get; private set; } = null!;
 
         /// <summary>
-        /// The target number of running instances for this managed instance group. This value should always be explicitly set
-        /// unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+        /// The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
         /// </summary>
         [Output("targetSize")]
         public Output<int> TargetSize { get; private set; } = null!;
@@ -631,8 +630,7 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// The target number of running instances for this managed instance group. This value should always be explicitly set
-        /// unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+        /// The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
         /// </summary>
         [Input("targetSize")]
         public Input<int>? TargetSize { get; set; }
@@ -912,8 +910,7 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// The target number of running instances for this managed instance group. This value should always be explicitly set
-        /// unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+        /// The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
         /// </summary>
         [Input("targetSize")]
         public Input<int>? TargetSize { get; set; }

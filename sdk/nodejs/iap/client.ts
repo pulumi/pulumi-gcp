@@ -85,20 +85,20 @@ export class Client extends pulumi.CustomResource {
      * is attached to. The format is
      * `projects/{project_number}/brands/{brand_id}`.
      */
-    public readonly brand!: pulumi.Output<string>;
+    declare public readonly brand: pulumi.Output<string>;
     /**
      * Output only. Unique identifier of the OAuth client.
      */
-    public /*out*/ readonly clientId!: pulumi.Output<string>;
+    declare public /*out*/ readonly clientId: pulumi.Output<string>;
     /**
      * Human-friendly name given to the OAuth client.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Output only. Client secret of the OAuth client.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    public /*out*/ readonly secret!: pulumi.Output<string>;
+    declare public /*out*/ readonly secret: pulumi.Output<string>;
 
     /**
      * Create a Client resource with the given unique name, arguments, and options.
@@ -113,20 +113,20 @@ export class Client extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClientState | undefined;
-            resourceInputs["brand"] = state ? state.brand : undefined;
-            resourceInputs["clientId"] = state ? state.clientId : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["secret"] = state ? state.secret : undefined;
+            resourceInputs["brand"] = state?.brand;
+            resourceInputs["clientId"] = state?.clientId;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["secret"] = state?.secret;
         } else {
             const args = argsOrState as ClientArgs | undefined;
-            if ((!args || args.brand === undefined) && !opts.urn) {
+            if (args?.brand === undefined && !opts.urn) {
                 throw new Error("Missing required property 'brand'");
             }
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            resourceInputs["brand"] = args ? args.brand : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["brand"] = args?.brand;
+            resourceInputs["displayName"] = args?.displayName;
             resourceInputs["clientId"] = undefined /*out*/;
             resourceInputs["secret"] = undefined /*out*/;
         }

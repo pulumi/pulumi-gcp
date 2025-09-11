@@ -223,66 +223,66 @@ export class CloudVmCluster extends pulumi.CustomResource {
      * Format:
      * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
      */
-    public readonly backupOdbSubnet!: pulumi.Output<string>;
+    declare public readonly backupOdbSubnet: pulumi.Output<string | undefined>;
     /**
      * CIDR range of the backup subnet.
      */
-    public readonly backupSubnetCidr!: pulumi.Output<string | undefined>;
+    declare public readonly backupSubnetCidr: pulumi.Output<string | undefined>;
     /**
      * Network settings. CIDR to use for cluster IP allocation.
      */
-    public readonly cidr!: pulumi.Output<string | undefined>;
+    declare public readonly cidr: pulumi.Output<string | undefined>;
     /**
      * The ID of the VM Cluster to create. This value is restricted
      * to (^a-z?$) and must be a maximum of 63
      * characters in length. The value must start with a letter and end with
      * a letter or a number.
      */
-    public readonly cloudVmClusterId!: pulumi.Output<string>;
+    declare public readonly cloudVmClusterId: pulumi.Output<string>;
     /**
      * The date and time that the VM cluster was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
-    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
      * User friendly name for this resource.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of the Exadata Infrastructure resource on which VM cluster
      * resource is created, in the following format:
      * projects/{project}/locations/{region}/cloudExadataInfrastuctures/{cloud_extradata_infrastructure}
      */
-    public readonly exadataInfrastructure!: pulumi.Output<string>;
+    declare public readonly exadataInfrastructure: pulumi.Output<string>;
     /**
      * GCP location where Oracle Exadata is hosted. It is same as GCP Oracle zone
      * of Exadata infrastructure.
      */
-    public /*out*/ readonly gcpOracleZone!: pulumi.Output<string>;
+    declare public /*out*/ readonly gcpOracleZone: pulumi.Output<string>;
     /**
      * Labels or tags associated with the VM Cluster.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/DbNode`.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Identifier. The name of the VM Cluster resource with the format:
      * projects/{project}/locations/{region}/cloudVmClusters/{cloud_vm_cluster}
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The name of the VPC network.
      * Format: projects/{project}/global/networks/{network}
      */
-    public readonly network!: pulumi.Output<string | undefined>;
+    declare public readonly network: pulumi.Output<string | undefined>;
     /**
      * The name of the OdbNetwork associated with the VM Cluster.
      * Format:
@@ -290,28 +290,28 @@ export class CloudVmCluster extends pulumi.CustomResource {
      * It is optional but if specified, this should match the parent ODBNetwork of
      * the odbSubnet and backup_odb_subnet.
      */
-    public readonly odbNetwork!: pulumi.Output<string>;
+    declare public readonly odbNetwork: pulumi.Output<string | undefined>;
     /**
      * The name of the OdbSubnet associated with the VM Cluster for
      * IP allocation. Format:
      * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
      */
-    public readonly odbSubnet!: pulumi.Output<string>;
+    declare public readonly odbSubnet: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Various properties and settings associated with Exadata VM cluster.
      * Structure is documented below.
      */
-    public readonly properties!: pulumi.Output<outputs.oracledatabase.CloudVmClusterProperties | undefined>;
+    declare public readonly properties: pulumi.Output<outputs.oracledatabase.CloudVmClusterProperties | undefined>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a CloudVmCluster resource with the given unique name, arguments, and options.
@@ -326,50 +326,50 @@ export class CloudVmCluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CloudVmClusterState | undefined;
-            resourceInputs["backupOdbSubnet"] = state ? state.backupOdbSubnet : undefined;
-            resourceInputs["backupSubnetCidr"] = state ? state.backupSubnetCidr : undefined;
-            resourceInputs["cidr"] = state ? state.cidr : undefined;
-            resourceInputs["cloudVmClusterId"] = state ? state.cloudVmClusterId : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["exadataInfrastructure"] = state ? state.exadataInfrastructure : undefined;
-            resourceInputs["gcpOracleZone"] = state ? state.gcpOracleZone : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["odbNetwork"] = state ? state.odbNetwork : undefined;
-            resourceInputs["odbSubnet"] = state ? state.odbSubnet : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["properties"] = state ? state.properties : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
+            resourceInputs["backupOdbSubnet"] = state?.backupOdbSubnet;
+            resourceInputs["backupSubnetCidr"] = state?.backupSubnetCidr;
+            resourceInputs["cidr"] = state?.cidr;
+            resourceInputs["cloudVmClusterId"] = state?.cloudVmClusterId;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionProtection"] = state?.deletionProtection;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["exadataInfrastructure"] = state?.exadataInfrastructure;
+            resourceInputs["gcpOracleZone"] = state?.gcpOracleZone;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["odbNetwork"] = state?.odbNetwork;
+            resourceInputs["odbSubnet"] = state?.odbSubnet;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["properties"] = state?.properties;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
         } else {
             const args = argsOrState as CloudVmClusterArgs | undefined;
-            if ((!args || args.cloudVmClusterId === undefined) && !opts.urn) {
+            if (args?.cloudVmClusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cloudVmClusterId'");
             }
-            if ((!args || args.exadataInfrastructure === undefined) && !opts.urn) {
+            if (args?.exadataInfrastructure === undefined && !opts.urn) {
                 throw new Error("Missing required property 'exadataInfrastructure'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["backupOdbSubnet"] = args ? args.backupOdbSubnet : undefined;
-            resourceInputs["backupSubnetCidr"] = args ? args.backupSubnetCidr : undefined;
-            resourceInputs["cidr"] = args ? args.cidr : undefined;
-            resourceInputs["cloudVmClusterId"] = args ? args.cloudVmClusterId : undefined;
-            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["exadataInfrastructure"] = args ? args.exadataInfrastructure : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["odbNetwork"] = args ? args.odbNetwork : undefined;
-            resourceInputs["odbSubnet"] = args ? args.odbSubnet : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["properties"] = args ? args.properties : undefined;
+            resourceInputs["backupOdbSubnet"] = args?.backupOdbSubnet;
+            resourceInputs["backupSubnetCidr"] = args?.backupSubnetCidr;
+            resourceInputs["cidr"] = args?.cidr;
+            resourceInputs["cloudVmClusterId"] = args?.cloudVmClusterId;
+            resourceInputs["deletionProtection"] = args?.deletionProtection;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["exadataInfrastructure"] = args?.exadataInfrastructure;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["odbNetwork"] = args?.odbNetwork;
+            resourceInputs["odbSubnet"] = args?.odbSubnet;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["properties"] = args?.properties;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["gcpOracleZone"] = undefined /*out*/;

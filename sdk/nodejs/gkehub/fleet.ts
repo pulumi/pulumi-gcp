@@ -83,41 +83,41 @@ export class Fleet extends pulumi.CustomResource {
     /**
      * The time the fleet was created, in RFC3339 text format.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The default cluster configurations to apply across the fleet.
      * Structure is documented below.
      */
-    public readonly defaultClusterConfig!: pulumi.Output<outputs.gkehub.FleetDefaultClusterConfig | undefined>;
+    declare public readonly defaultClusterConfig: pulumi.Output<outputs.gkehub.FleetDefaultClusterConfig | undefined>;
     /**
      * The time the fleet was deleted, in RFC3339 text format.
      */
-    public /*out*/ readonly deleteTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly deleteTime: pulumi.Output<string>;
     /**
      * A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
      * Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The state of the fleet resource.
      * Structure is documented below.
      */
-    public /*out*/ readonly states!: pulumi.Output<outputs.gkehub.FleetState[]>;
+    declare public /*out*/ readonly states: pulumi.Output<outputs.gkehub.FleetState[]>;
     /**
      * Google-generated UUID for this resource. This is unique across all
      * Fleet resources. If a Fleet resource is deleted and another
      * resource with the same name is created, it gets a different uid.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * The time the fleet was last updated, in RFC3339 text format.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Fleet resource with the given unique name, arguments, and options.
@@ -132,19 +132,19 @@ export class Fleet extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FleetState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["defaultClusterConfig"] = state ? state.defaultClusterConfig : undefined;
-            resourceInputs["deleteTime"] = state ? state.deleteTime : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["states"] = state ? state.states : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["defaultClusterConfig"] = state?.defaultClusterConfig;
+            resourceInputs["deleteTime"] = state?.deleteTime;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["states"] = state?.states;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as FleetArgs | undefined;
-            resourceInputs["defaultClusterConfig"] = args ? args.defaultClusterConfig : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["defaultClusterConfig"] = args?.defaultClusterConfig;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["project"] = args?.project;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
             resourceInputs["states"] = undefined /*out*/;

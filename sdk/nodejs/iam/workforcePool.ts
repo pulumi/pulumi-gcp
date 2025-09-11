@@ -107,33 +107,33 @@ export class WorkforcePool extends pulumi.CustomResource {
      * sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
      * Structure is documented below.
      */
-    public readonly accessRestrictions!: pulumi.Output<outputs.iam.WorkforcePoolAccessRestrictions | undefined>;
+    declare public readonly accessRestrictions: pulumi.Output<outputs.iam.WorkforcePoolAccessRestrictions | undefined>;
     /**
      * A user-specified description of the pool. Cannot exceed 256 characters.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Whether the pool is disabled. You cannot use a disabled pool to exchange tokens,
      * or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
      */
-    public readonly disabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly disabled: pulumi.Output<boolean | undefined>;
     /**
      * A user-specified display name of the pool in Google Cloud Console. Cannot exceed 32 characters.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * The location for the resource.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Output only. The resource name of the pool.
      * Format: `locations/{location}/workforcePools/{workforcePoolId}`
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
      */
-    public readonly parent!: pulumi.Output<string>;
+    declare public readonly parent: pulumi.Output<string>;
     /**
      * Duration that the Google Cloud access tokens, console sign-in sessions,
      * and `gcloud` sign-in sessions from this pool are valid.
@@ -141,7 +141,7 @@ export class WorkforcePool extends pulumi.CustomResource {
      * If `sessionDuration` is not configured, minted credentials have a default duration of one hour (3600s).
      * A duration in seconds with up to nine fractional digits, ending with '`s`'. Example: "`3.5s`".
      */
-    public readonly sessionDuration!: pulumi.Output<string | undefined>;
+    declare public readonly sessionDuration: pulumi.Output<string | undefined>;
     /**
      * Output only. The state of the pool.
      * * STATE_UNSPECIFIED: State unspecified.
@@ -154,13 +154,13 @@ export class WorkforcePool extends pulumi.CustomResource {
      * existing tokens to access resources. If the pool is undeleted, existing
      * tokens grant access again.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The name of the pool. The ID must be a globally unique string of 6 to 63 lowercase letters,
      * digits, or hyphens. It must start with a letter, and cannot have a trailing hyphen.
      * The prefix `gcp-` is reserved for use by Google, and may not be specified.
      */
-    public readonly workforcePoolId!: pulumi.Output<string>;
+    declare public readonly workforcePoolId: pulumi.Output<string>;
 
     /**
      * Create a WorkforcePool resource with the given unique name, arguments, and options.
@@ -175,35 +175,35 @@ export class WorkforcePool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkforcePoolState | undefined;
-            resourceInputs["accessRestrictions"] = state ? state.accessRestrictions : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["disabled"] = state ? state.disabled : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["sessionDuration"] = state ? state.sessionDuration : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["workforcePoolId"] = state ? state.workforcePoolId : undefined;
+            resourceInputs["accessRestrictions"] = state?.accessRestrictions;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["disabled"] = state?.disabled;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["sessionDuration"] = state?.sessionDuration;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["workforcePoolId"] = state?.workforcePoolId;
         } else {
             const args = argsOrState as WorkforcePoolArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.parent === undefined) && !opts.urn) {
+            if (args?.parent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            if ((!args || args.workforcePoolId === undefined) && !opts.urn) {
+            if (args?.workforcePoolId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workforcePoolId'");
             }
-            resourceInputs["accessRestrictions"] = args ? args.accessRestrictions : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["disabled"] = args ? args.disabled : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
-            resourceInputs["sessionDuration"] = args ? args.sessionDuration : undefined;
-            resourceInputs["workforcePoolId"] = args ? args.workforcePoolId : undefined;
+            resourceInputs["accessRestrictions"] = args?.accessRestrictions;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["disabled"] = args?.disabled;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["parent"] = args?.parent;
+            resourceInputs["sessionDuration"] = args?.sessionDuration;
+            resourceInputs["workforcePoolId"] = args?.workforcePoolId;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }

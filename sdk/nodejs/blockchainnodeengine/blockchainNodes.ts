@@ -134,59 +134,59 @@ export class BlockchainNodes extends pulumi.CustomResource {
     /**
      * ID of the requesting object.
      */
-    public readonly blockchainNodeId!: pulumi.Output<string>;
+    declare public readonly blockchainNodeId: pulumi.Output<string>;
     /**
      * User-provided key-value pairs
      * Possible values are: `ETHEREUM`.
      */
-    public readonly blockchainType!: pulumi.Output<string | undefined>;
+    declare public readonly blockchainType: pulumi.Output<string | undefined>;
     /**
      * The connection information through which to interact with a blockchain node.
      * Structure is documented below.
      */
-    public /*out*/ readonly connectionInfos!: pulumi.Output<outputs.blockchainnodeengine.BlockchainNodesConnectionInfo[]>;
+    declare public /*out*/ readonly connectionInfos: pulumi.Output<outputs.blockchainnodeengine.BlockchainNodesConnectionInfo[]>;
     /**
      * The timestamp at which the blockchain node was first created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * User-provided key-value pairs
      * Structure is documented below.
      */
-    public readonly ethereumDetails!: pulumi.Output<outputs.blockchainnodeengine.BlockchainNodesEthereumDetails | undefined>;
+    declare public readonly ethereumDetails: pulumi.Output<outputs.blockchainnodeengine.BlockchainNodesEthereumDetails | undefined>;
     /**
      * User-provided key-value pairs
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Location of Blockchain Node being created.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The fully qualified name of the blockchain node. e.g. projects/my-project/locations/us-central1/blockchainNodes/my-node.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The timestamp at which the blockchain node was last updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a BlockchainNodes resource with the given unique name, arguments, and options.
@@ -201,32 +201,32 @@ export class BlockchainNodes extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BlockchainNodesState | undefined;
-            resourceInputs["blockchainNodeId"] = state ? state.blockchainNodeId : undefined;
-            resourceInputs["blockchainType"] = state ? state.blockchainType : undefined;
-            resourceInputs["connectionInfos"] = state ? state.connectionInfos : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["ethereumDetails"] = state ? state.ethereumDetails : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["blockchainNodeId"] = state?.blockchainNodeId;
+            resourceInputs["blockchainType"] = state?.blockchainType;
+            resourceInputs["connectionInfos"] = state?.connectionInfos;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["ethereumDetails"] = state?.ethereumDetails;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as BlockchainNodesArgs | undefined;
-            if ((!args || args.blockchainNodeId === undefined) && !opts.urn) {
+            if (args?.blockchainNodeId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'blockchainNodeId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["blockchainNodeId"] = args ? args.blockchainNodeId : undefined;
-            resourceInputs["blockchainType"] = args ? args.blockchainType : undefined;
-            resourceInputs["ethereumDetails"] = args ? args.ethereumDetails : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["blockchainNodeId"] = args?.blockchainNodeId;
+            resourceInputs["blockchainType"] = args?.blockchainType;
+            resourceInputs["ethereumDetails"] = args?.ethereumDetails;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
             resourceInputs["connectionInfos"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;

@@ -113,57 +113,57 @@ export class ClientTlsPolicy extends pulumi.CustomResource {
      * Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
      * Structure is documented below.
      */
-    public readonly clientCertificate!: pulumi.Output<outputs.networksecurity.ClientTlsPolicyClientCertificate | undefined>;
+    declare public readonly clientCertificate: pulumi.Output<outputs.networksecurity.ClientTlsPolicyClientCertificate | undefined>;
     /**
      * Time the ClientTlsPolicy was created in UTC.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * A free-text description of the resource. Max length 1024 characters.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Set of label tags associated with the ClientTlsPolicy resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location of the client tls policy.
      * The default value is `global`.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * Name of the ClientTlsPolicy resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate. If empty, client does not validate the server certificate.
      * Structure is documented below.
      */
-    public readonly serverValidationCas!: pulumi.Output<outputs.networksecurity.ClientTlsPolicyServerValidationCa[] | undefined>;
+    declare public readonly serverValidationCas: pulumi.Output<outputs.networksecurity.ClientTlsPolicyServerValidationCa[] | undefined>;
     /**
      * Server Name Indication string to present to the server during TLS handshake. E.g: "secure.example.com".
      */
-    public readonly sni!: pulumi.Output<string | undefined>;
+    declare public readonly sni: pulumi.Output<string | undefined>;
     /**
      * Time the ClientTlsPolicy was updated in UTC.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a ClientTlsPolicy resource with the given unique name, arguments, and options.
@@ -178,28 +178,28 @@ export class ClientTlsPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClientTlsPolicyState | undefined;
-            resourceInputs["clientCertificate"] = state ? state.clientCertificate : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["serverValidationCas"] = state ? state.serverValidationCas : undefined;
-            resourceInputs["sni"] = state ? state.sni : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["clientCertificate"] = state?.clientCertificate;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["serverValidationCas"] = state?.serverValidationCas;
+            resourceInputs["sni"] = state?.sni;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as ClientTlsPolicyArgs | undefined;
-            resourceInputs["clientCertificate"] = args ? args.clientCertificate : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["serverValidationCas"] = args ? args.serverValidationCas : undefined;
-            resourceInputs["sni"] = args ? args.sni : undefined;
+            resourceInputs["clientCertificate"] = args?.clientCertificate;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["serverValidationCas"] = args?.serverValidationCas;
+            resourceInputs["sni"] = args?.sni;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;

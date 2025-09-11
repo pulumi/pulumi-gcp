@@ -84,30 +84,30 @@ export class BiReservation extends pulumi.CustomResource {
     /**
      * LOCATION_DESCRIPTION
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The resource name of the singleton BI reservation. Reservation names have the form `projects/{projectId}/locations/{locationId}/biReservation`.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Preferred tables to use BI capacity for.
      * Structure is documented below.
      */
-    public readonly preferredTables!: pulumi.Output<outputs.bigquery.BiReservationPreferredTable[] | undefined>;
+    declare public readonly preferredTables: pulumi.Output<outputs.bigquery.BiReservationPreferredTable[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Size of a reservation, in bytes.
      */
-    public readonly size!: pulumi.Output<number | undefined>;
+    declare public readonly size: pulumi.Output<number | undefined>;
     /**
      * The last update timestamp of a reservation.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a BiReservation resource with the given unique name, arguments, and options.
@@ -122,21 +122,21 @@ export class BiReservation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BiReservationState | undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["preferredTables"] = state ? state.preferredTables : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["preferredTables"] = state?.preferredTables;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as BiReservationArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["preferredTables"] = args ? args.preferredTables : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["size"] = args ? args.size : undefined;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["preferredTables"] = args?.preferredTables;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["size"] = args?.size;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }

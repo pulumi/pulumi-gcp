@@ -102,48 +102,48 @@ export class HostingChannel extends pulumi.CustomResource {
     /**
      * Required. Immutable. A unique ID within the site that identifies the channel.
      */
-    public readonly channelId!: pulumi.Output<string>;
+    declare public readonly channelId: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The time at which the channel will be automatically deleted. If null, the channel
      * will not be automatically deleted. This field is present in the output whether it's
      * set directly or via the `ttl` field.
      */
-    public readonly expireTime!: pulumi.Output<string>;
+    declare public readonly expireTime: pulumi.Output<string>;
     /**
      * Text labels used for extra metadata and/or filtering
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The fully-qualified resource name for the channel, in the format:
      * sites/SITE_ID/channels/CHANNEL_ID
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The number of previous releases to retain on the channel for rollback or other
      * purposes. Must be a number between 1-100. Defaults to 10 for new channels.
      */
-    public readonly retainedReleaseCount!: pulumi.Output<number>;
+    declare public readonly retainedReleaseCount: pulumi.Output<number>;
     /**
      * Required. The ID of the site in which to create this channel.
      */
-    public readonly siteId!: pulumi.Output<string>;
+    declare public readonly siteId: pulumi.Output<string>;
     /**
      * Input only. A time-to-live for this channel. Sets `expireTime` to the provided
      * duration past the time of the request. A duration in seconds with up to nine fractional
      * digits, terminated by 's'. Example: "86400s" (one day).
      */
-    public readonly ttl!: pulumi.Output<string | undefined>;
+    declare public readonly ttl: pulumi.Output<string | undefined>;
 
     /**
      * Create a HostingChannel resource with the given unique name, arguments, and options.
@@ -158,29 +158,29 @@ export class HostingChannel extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HostingChannelState | undefined;
-            resourceInputs["channelId"] = state ? state.channelId : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["expireTime"] = state ? state.expireTime : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["retainedReleaseCount"] = state ? state.retainedReleaseCount : undefined;
-            resourceInputs["siteId"] = state ? state.siteId : undefined;
-            resourceInputs["ttl"] = state ? state.ttl : undefined;
+            resourceInputs["channelId"] = state?.channelId;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["expireTime"] = state?.expireTime;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["retainedReleaseCount"] = state?.retainedReleaseCount;
+            resourceInputs["siteId"] = state?.siteId;
+            resourceInputs["ttl"] = state?.ttl;
         } else {
             const args = argsOrState as HostingChannelArgs | undefined;
-            if ((!args || args.channelId === undefined) && !opts.urn) {
+            if (args?.channelId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'channelId'");
             }
-            if ((!args || args.siteId === undefined) && !opts.urn) {
+            if (args?.siteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
-            resourceInputs["channelId"] = args ? args.channelId : undefined;
-            resourceInputs["expireTime"] = args ? args.expireTime : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["retainedReleaseCount"] = args ? args.retainedReleaseCount : undefined;
-            resourceInputs["siteId"] = args ? args.siteId : undefined;
-            resourceInputs["ttl"] = args ? args.ttl : undefined;
+            resourceInputs["channelId"] = args?.channelId;
+            resourceInputs["expireTime"] = args?.expireTime;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["retainedReleaseCount"] = args?.retainedReleaseCount;
+            resourceInputs["siteId"] = args?.siteId;
+            resourceInputs["ttl"] = args?.ttl;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;

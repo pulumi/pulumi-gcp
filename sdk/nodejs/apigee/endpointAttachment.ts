@@ -62,33 +62,33 @@ export class EndpointAttachment extends pulumi.CustomResource {
     /**
      * State of the endpoint attachment connection to the service attachment.
      */
-    public /*out*/ readonly connectionState!: pulumi.Output<string>;
+    declare public /*out*/ readonly connectionState: pulumi.Output<string>;
     /**
      * ID of the endpoint attachment.
      */
-    public readonly endpointAttachmentId!: pulumi.Output<string>;
+    declare public readonly endpointAttachmentId: pulumi.Output<string>;
     /**
      * Host that can be used in either HTTP Target Endpoint directly, or as the host in Target Server.
      */
-    public /*out*/ readonly host!: pulumi.Output<string>;
+    declare public /*out*/ readonly host: pulumi.Output<string>;
     /**
      * Location of the endpoint attachment.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Name of the Endpoint Attachment in the following format:
      * organizations/{organization}/endpointAttachments/{endpointAttachment}.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The Apigee Organization associated with the Apigee instance,
      * in the format `organizations/{{org_name}}`.
      */
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * Format: projects/*&#47;regions/*&#47;serviceAttachments/*
      */
-    public readonly serviceAttachment!: pulumi.Output<string>;
+    declare public readonly serviceAttachment: pulumi.Output<string>;
 
     /**
      * Create a EndpointAttachment resource with the given unique name, arguments, and options.
@@ -103,31 +103,31 @@ export class EndpointAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EndpointAttachmentState | undefined;
-            resourceInputs["connectionState"] = state ? state.connectionState : undefined;
-            resourceInputs["endpointAttachmentId"] = state ? state.endpointAttachmentId : undefined;
-            resourceInputs["host"] = state ? state.host : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["serviceAttachment"] = state ? state.serviceAttachment : undefined;
+            resourceInputs["connectionState"] = state?.connectionState;
+            resourceInputs["endpointAttachmentId"] = state?.endpointAttachmentId;
+            resourceInputs["host"] = state?.host;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["serviceAttachment"] = state?.serviceAttachment;
         } else {
             const args = argsOrState as EndpointAttachmentArgs | undefined;
-            if ((!args || args.endpointAttachmentId === undefined) && !opts.urn) {
+            if (args?.endpointAttachmentId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpointAttachmentId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if ((!args || args.serviceAttachment === undefined) && !opts.urn) {
+            if (args?.serviceAttachment === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceAttachment'");
             }
-            resourceInputs["endpointAttachmentId"] = args ? args.endpointAttachmentId : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["serviceAttachment"] = args ? args.serviceAttachment : undefined;
+            resourceInputs["endpointAttachmentId"] = args?.endpointAttachmentId;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["serviceAttachment"] = args?.serviceAttachment;
             resourceInputs["connectionState"] = undefined /*out*/;
             resourceInputs["host"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

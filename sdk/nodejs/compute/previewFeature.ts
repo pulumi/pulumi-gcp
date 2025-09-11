@@ -90,21 +90,21 @@ export class PreviewFeature extends pulumi.CustomResource {
      * The activation status of the preview feature.
      * Possible values are: `ENABLED`, `DISABLED`.
      */
-    public readonly activationStatus!: pulumi.Output<string>;
+    declare public readonly activationStatus: pulumi.Output<string>;
     /**
      * The name of the preview feature.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The rollout operation of the feature.
      * Structure is documented below.
      */
-    public readonly rolloutOperation!: pulumi.Output<outputs.compute.PreviewFeatureRolloutOperation | undefined>;
+    declare public readonly rolloutOperation: pulumi.Output<outputs.compute.PreviewFeatureRolloutOperation | undefined>;
 
     /**
      * Create a PreviewFeature resource with the given unique name, arguments, and options.
@@ -119,19 +119,19 @@ export class PreviewFeature extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PreviewFeatureState | undefined;
-            resourceInputs["activationStatus"] = state ? state.activationStatus : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["rolloutOperation"] = state ? state.rolloutOperation : undefined;
+            resourceInputs["activationStatus"] = state?.activationStatus;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["rolloutOperation"] = state?.rolloutOperation;
         } else {
             const args = argsOrState as PreviewFeatureArgs | undefined;
-            if ((!args || args.activationStatus === undefined) && !opts.urn) {
+            if (args?.activationStatus === undefined && !opts.urn) {
                 throw new Error("Missing required property 'activationStatus'");
             }
-            resourceInputs["activationStatus"] = args ? args.activationStatus : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["rolloutOperation"] = args ? args.rolloutOperation : undefined;
+            resourceInputs["activationStatus"] = args?.activationStatus;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["rolloutOperation"] = args?.rolloutOperation;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PreviewFeature.__pulumiType, name, resourceInputs, opts);

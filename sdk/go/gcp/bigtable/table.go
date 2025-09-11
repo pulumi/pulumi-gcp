@@ -139,12 +139,12 @@ type Table struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument. Note
-	// that in-place update is not supported, and any in-place modification to the schema will lead to failure. To update a
-	// schema, please clear it (by omitting the field), and update the resource again with a new schema.\n The schema must be a
-	// valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like
-	// delimited_bytes.delimiter) the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single
-	// byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
+	// Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument.
+	// 					Note that in-place update is not supported, and any in-place modification to the schema will lead to failure.
+	// 				    To update a schema, please clear it (by omitting the field), and update the resource again with a new schema.\n
+	//
+	//                     The schema must be a valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
+	//                     the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
 	RowKeySchema pulumi.StringPtrOutput `pulumi:"rowKeySchema"`
 	// A list of predefined keys to split the table on.
 	// !> **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
@@ -202,12 +202,12 @@ type tableState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument. Note
-	// that in-place update is not supported, and any in-place modification to the schema will lead to failure. To update a
-	// schema, please clear it (by omitting the field), and update the resource again with a new schema.\n The schema must be a
-	// valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like
-	// delimited_bytes.delimiter) the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single
-	// byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
+	// Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument.
+	// 					Note that in-place update is not supported, and any in-place modification to the schema will lead to failure.
+	// 				    To update a schema, please clear it (by omitting the field), and update the resource again with a new schema.\n
+	//
+	//                     The schema must be a valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
+	//                     the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
 	RowKeySchema *string `pulumi:"rowKeySchema"`
 	// A list of predefined keys to split the table on.
 	// !> **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
@@ -233,12 +233,12 @@ type TableState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument. Note
-	// that in-place update is not supported, and any in-place modification to the schema will lead to failure. To update a
-	// schema, please clear it (by omitting the field), and update the resource again with a new schema.\n The schema must be a
-	// valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like
-	// delimited_bytes.delimiter) the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single
-	// byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
+	// Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument.
+	// 					Note that in-place update is not supported, and any in-place modification to the schema will lead to failure.
+	// 				    To update a schema, please clear it (by omitting the field), and update the resource again with a new schema.\n
+	//
+	//                     The schema must be a valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
+	//                     the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
 	RowKeySchema pulumi.StringPtrInput
 	// A list of predefined keys to split the table on.
 	// !> **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
@@ -268,12 +268,12 @@ type tableArgs struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument. Note
-	// that in-place update is not supported, and any in-place modification to the schema will lead to failure. To update a
-	// schema, please clear it (by omitting the field), and update the resource again with a new schema.\n The schema must be a
-	// valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like
-	// delimited_bytes.delimiter) the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single
-	// byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
+	// Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument.
+	// 					Note that in-place update is not supported, and any in-place modification to the schema will lead to failure.
+	// 				    To update a schema, please clear it (by omitting the field), and update the resource again with a new schema.\n
+	//
+	//                     The schema must be a valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
+	//                     the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
 	RowKeySchema *string `pulumi:"rowKeySchema"`
 	// A list of predefined keys to split the table on.
 	// !> **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
@@ -300,12 +300,12 @@ type TableArgs struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument. Note
-	// that in-place update is not supported, and any in-place modification to the schema will lead to failure. To update a
-	// schema, please clear it (by omitting the field), and update the resource again with a new schema.\n The schema must be a
-	// valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like
-	// delimited_bytes.delimiter) the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single
-	// byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
+	// Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument.
+	// 					Note that in-place update is not supported, and any in-place modification to the schema will lead to failure.
+	// 				    To update a schema, please clear it (by omitting the field), and update the resource again with a new schema.\n
+	//
+	//                     The schema must be a valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
+	//                     the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
 	RowKeySchema pulumi.StringPtrInput
 	// A list of predefined keys to split the table on.
 	// !> **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
@@ -438,12 +438,13 @@ func (o TableOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument. Note
-// that in-place update is not supported, and any in-place modification to the schema will lead to failure. To update a
-// schema, please clear it (by omitting the field), and update the resource again with a new schema.\n The schema must be a
-// valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like
-// delimited_bytes.delimiter) the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single
-// byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
+// Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument.
+//
+//						Note that in-place update is not supported, and any in-place modification to the schema will lead to failure.
+//					    To update a schema, please clear it (by omitting the field), and update the resource again with a new schema.\n
+//
+//	                    The schema must be a valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
+//	                    the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
 func (o TableOutput) RowKeySchema() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringPtrOutput { return v.RowKeySchema }).(pulumi.StringPtrOutput)
 }

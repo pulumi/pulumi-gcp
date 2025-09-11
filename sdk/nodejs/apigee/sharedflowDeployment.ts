@@ -62,26 +62,26 @@ export class SharedflowDeployment extends pulumi.CustomResource {
     /**
      * The resource ID of the environment.
      */
-    public readonly environment!: pulumi.Output<string>;
+    declare public readonly environment: pulumi.Output<string>;
     /**
      * The Apigee Organization associated with the Sharedflow
      */
-    public readonly orgId!: pulumi.Output<string>;
+    declare public readonly orgId: pulumi.Output<string>;
     /**
      * Revision of the Sharedflow to be deployed.
      *
      *
      * - - -
      */
-    public readonly revision!: pulumi.Output<string>;
+    declare public readonly revision: pulumi.Output<string>;
     /**
      * The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com.
      */
-    public readonly serviceAccount!: pulumi.Output<string | undefined>;
+    declare public readonly serviceAccount: pulumi.Output<string | undefined>;
     /**
      * Id of the Sharedflow to be deployed.
      */
-    public readonly sharedflowId!: pulumi.Output<string>;
+    declare public readonly sharedflowId: pulumi.Output<string>;
 
     /**
      * Create a SharedflowDeployment resource with the given unique name, arguments, and options.
@@ -96,30 +96,30 @@ export class SharedflowDeployment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SharedflowDeploymentState | undefined;
-            resourceInputs["environment"] = state ? state.environment : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["revision"] = state ? state.revision : undefined;
-            resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
-            resourceInputs["sharedflowId"] = state ? state.sharedflowId : undefined;
+            resourceInputs["environment"] = state?.environment;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["revision"] = state?.revision;
+            resourceInputs["serviceAccount"] = state?.serviceAccount;
+            resourceInputs["sharedflowId"] = state?.sharedflowId;
         } else {
             const args = argsOrState as SharedflowDeploymentArgs | undefined;
-            if ((!args || args.environment === undefined) && !opts.urn) {
+            if (args?.environment === undefined && !opts.urn) {
                 throw new Error("Missing required property 'environment'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
+            if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if ((!args || args.revision === undefined) && !opts.urn) {
+            if (args?.revision === undefined && !opts.urn) {
                 throw new Error("Missing required property 'revision'");
             }
-            if ((!args || args.sharedflowId === undefined) && !opts.urn) {
+            if (args?.sharedflowId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sharedflowId'");
             }
-            resourceInputs["environment"] = args ? args.environment : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["revision"] = args ? args.revision : undefined;
-            resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
-            resourceInputs["sharedflowId"] = args ? args.sharedflowId : undefined;
+            resourceInputs["environment"] = args?.environment;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["revision"] = args?.revision;
+            resourceInputs["serviceAccount"] = args?.serviceAccount;
+            resourceInputs["sharedflowId"] = args?.sharedflowId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SharedflowDeployment.__pulumiType, name, resourceInputs, opts);

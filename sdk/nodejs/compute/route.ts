@@ -230,21 +230,21 @@ export class Route extends pulumi.CustomResource {
     /**
      * Structure is documented below.
      */
-    public /*out*/ readonly asPaths!: pulumi.Output<outputs.compute.RouteAsPath[]>;
+    declare public /*out*/ readonly asPaths: pulumi.Output<outputs.compute.RouteAsPath[]>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * An optional description of this resource. Provide this property
      * when you create the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The destination range of outgoing packets that this route applies to.
      * Only IPv4 is supported.
      */
-    public readonly destRange!: pulumi.Output<string>;
+    declare public readonly destRange: pulumi.Output<string>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -254,11 +254,11 @@ export class Route extends pulumi.CustomResource {
      * characters must be a dash, lowercase letter, or digit, except the
      * last character, which cannot be a dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The network that this route applies to.
      */
-    public readonly network!: pulumi.Output<string>;
+    declare public readonly network: pulumi.Output<string>;
     /**
      * URL to a gateway that should handle matching packets.
      * Currently, you can only specify the internet gateway, using a full or
@@ -268,11 +268,11 @@ export class Route extends pulumi.CustomResource {
      * * `global/gateways/default-internet-gateway`
      * * The string `default-internet-gateway`.
      */
-    public readonly nextHopGateway!: pulumi.Output<string | undefined>;
+    declare public readonly nextHopGateway: pulumi.Output<string | undefined>;
     /**
      * The hub network that should handle matching packets, which should conform to RFC1035.
      */
-    public /*out*/ readonly nextHopHub!: pulumi.Output<string>;
+    declare public /*out*/ readonly nextHopHub: pulumi.Output<string>;
     /**
      * The IP address or URL to a forwarding rule of type
      * loadBalancingScheme=INTERNAL that should handle matching
@@ -288,7 +288,7 @@ export class Route extends pulumi.CustomResource {
      * Note that this can only be used when the destinationRange is
      * a public (non-RFC 1918) IP CIDR range.
      */
-    public readonly nextHopIlb!: pulumi.Output<string | undefined>;
+    declare public readonly nextHopIlb: pulumi.Output<string | undefined>;
     /**
      * URL to an instance that should handle matching packets.
      * You can specify this as a full or partial URL. For example:
@@ -297,47 +297,47 @@ export class Route extends pulumi.CustomResource {
      * * `zones/zone/instances/instance`
      * * Just the instance name, with the zone in `nextHopInstanceZone`.
      */
-    public readonly nextHopInstance!: pulumi.Output<string | undefined>;
+    declare public readonly nextHopInstance: pulumi.Output<string | undefined>;
     /**
      * (Optional when `nextHopInstance` is
      * specified)  The zone of the instance specified in
      * `nextHopInstance`.  Omit if `nextHopInstance` is specified as
      * a URL.
      */
-    public readonly nextHopInstanceZone!: pulumi.Output<string>;
+    declare public readonly nextHopInstanceZone: pulumi.Output<string>;
     /**
      * Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
      */
-    public /*out*/ readonly nextHopInterRegionCost!: pulumi.Output<string>;
+    declare public /*out*/ readonly nextHopInterRegionCost: pulumi.Output<string>;
     /**
      * Network IP address of an instance that should handle matching packets.
      */
-    public readonly nextHopIp!: pulumi.Output<string>;
+    declare public readonly nextHopIp: pulumi.Output<string>;
     /**
      * Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
      */
-    public /*out*/ readonly nextHopMed!: pulumi.Output<string>;
+    declare public /*out*/ readonly nextHopMed: pulumi.Output<string>;
     /**
      * URL to a Network that should handle matching packets.
      */
-    public /*out*/ readonly nextHopNetwork!: pulumi.Output<string>;
+    declare public /*out*/ readonly nextHopNetwork: pulumi.Output<string>;
     /**
      * Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
      */
-    public /*out*/ readonly nextHopOrigin!: pulumi.Output<string>;
+    declare public /*out*/ readonly nextHopOrigin: pulumi.Output<string>;
     /**
      * The network peering name that should handle matching packets, which should conform to RFC1035.
      */
-    public /*out*/ readonly nextHopPeering!: pulumi.Output<string>;
+    declare public /*out*/ readonly nextHopPeering: pulumi.Output<string>;
     /**
      * URL to a VpnTunnel that should handle matching packets.
      */
-    public readonly nextHopVpnTunnel!: pulumi.Output<string | undefined>;
+    declare public readonly nextHopVpnTunnel: pulumi.Output<string | undefined>;
     /**
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      */
-    public readonly params!: pulumi.Output<outputs.compute.RouteParams | undefined>;
+    declare public readonly params: pulumi.Output<outputs.compute.RouteParams | undefined>;
     /**
      * The priority of this route. Priority is used to break ties in cases
      * where there is more than one matching route of equal prefix length.
@@ -345,18 +345,18 @@ export class Route extends pulumi.CustomResource {
      * lowest-numbered priority value wins.
      * Default value is 1000. Valid range is 0 through 65535.
      */
-    public readonly priority!: pulumi.Output<number | undefined>;
+    declare public readonly priority: pulumi.Output<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The status of the route, which can be one of the following values:
      * - 'ACTIVE' for an active route
      * - 'INACTIVE' for an inactive route
      */
-    public /*out*/ readonly routeStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly routeStatus: pulumi.Output<string>;
     /**
      * The type of this route, which can be one of the following values:
      * - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
@@ -364,20 +364,20 @@ export class Route extends pulumi.CustomResource {
      * - 'BGP' for a route learned from a BGP peer of this router
      * - 'STATIC' for a static route
      */
-    public /*out*/ readonly routeType!: pulumi.Output<string>;
+    declare public /*out*/ readonly routeType: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * A list of instance tags to which this route applies.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * If potential misconfigurations are detected for this route, this field will be populated with warning messages.
      * Structure is documented below.
      */
-    public /*out*/ readonly warnings!: pulumi.Output<outputs.compute.RouteWarning[]>;
+    declare public /*out*/ readonly warnings: pulumi.Output<outputs.compute.RouteWarning[]>;
 
     /**
      * Create a Route resource with the given unique name, arguments, and options.
@@ -392,54 +392,54 @@ export class Route extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouteState | undefined;
-            resourceInputs["asPaths"] = state ? state.asPaths : undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["destRange"] = state ? state.destRange : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["nextHopGateway"] = state ? state.nextHopGateway : undefined;
-            resourceInputs["nextHopHub"] = state ? state.nextHopHub : undefined;
-            resourceInputs["nextHopIlb"] = state ? state.nextHopIlb : undefined;
-            resourceInputs["nextHopInstance"] = state ? state.nextHopInstance : undefined;
-            resourceInputs["nextHopInstanceZone"] = state ? state.nextHopInstanceZone : undefined;
-            resourceInputs["nextHopInterRegionCost"] = state ? state.nextHopInterRegionCost : undefined;
-            resourceInputs["nextHopIp"] = state ? state.nextHopIp : undefined;
-            resourceInputs["nextHopMed"] = state ? state.nextHopMed : undefined;
-            resourceInputs["nextHopNetwork"] = state ? state.nextHopNetwork : undefined;
-            resourceInputs["nextHopOrigin"] = state ? state.nextHopOrigin : undefined;
-            resourceInputs["nextHopPeering"] = state ? state.nextHopPeering : undefined;
-            resourceInputs["nextHopVpnTunnel"] = state ? state.nextHopVpnTunnel : undefined;
-            resourceInputs["params"] = state ? state.params : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["routeStatus"] = state ? state.routeStatus : undefined;
-            resourceInputs["routeType"] = state ? state.routeType : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["warnings"] = state ? state.warnings : undefined;
+            resourceInputs["asPaths"] = state?.asPaths;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["destRange"] = state?.destRange;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["nextHopGateway"] = state?.nextHopGateway;
+            resourceInputs["nextHopHub"] = state?.nextHopHub;
+            resourceInputs["nextHopIlb"] = state?.nextHopIlb;
+            resourceInputs["nextHopInstance"] = state?.nextHopInstance;
+            resourceInputs["nextHopInstanceZone"] = state?.nextHopInstanceZone;
+            resourceInputs["nextHopInterRegionCost"] = state?.nextHopInterRegionCost;
+            resourceInputs["nextHopIp"] = state?.nextHopIp;
+            resourceInputs["nextHopMed"] = state?.nextHopMed;
+            resourceInputs["nextHopNetwork"] = state?.nextHopNetwork;
+            resourceInputs["nextHopOrigin"] = state?.nextHopOrigin;
+            resourceInputs["nextHopPeering"] = state?.nextHopPeering;
+            resourceInputs["nextHopVpnTunnel"] = state?.nextHopVpnTunnel;
+            resourceInputs["params"] = state?.params;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["routeStatus"] = state?.routeStatus;
+            resourceInputs["routeType"] = state?.routeType;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["warnings"] = state?.warnings;
         } else {
             const args = argsOrState as RouteArgs | undefined;
-            if ((!args || args.destRange === undefined) && !opts.urn) {
+            if (args?.destRange === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destRange'");
             }
-            if ((!args || args.network === undefined) && !opts.urn) {
+            if (args?.network === undefined && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["destRange"] = args ? args.destRange : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["nextHopGateway"] = args ? args.nextHopGateway : undefined;
-            resourceInputs["nextHopIlb"] = args ? args.nextHopIlb : undefined;
-            resourceInputs["nextHopInstance"] = args ? args.nextHopInstance : undefined;
-            resourceInputs["nextHopInstanceZone"] = args ? args.nextHopInstanceZone : undefined;
-            resourceInputs["nextHopIp"] = args ? args.nextHopIp : undefined;
-            resourceInputs["nextHopVpnTunnel"] = args ? args.nextHopVpnTunnel : undefined;
-            resourceInputs["params"] = args ? args.params : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["destRange"] = args?.destRange;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["nextHopGateway"] = args?.nextHopGateway;
+            resourceInputs["nextHopIlb"] = args?.nextHopIlb;
+            resourceInputs["nextHopInstance"] = args?.nextHopInstance;
+            resourceInputs["nextHopInstanceZone"] = args?.nextHopInstanceZone;
+            resourceInputs["nextHopIp"] = args?.nextHopIp;
+            resourceInputs["nextHopVpnTunnel"] = args?.nextHopVpnTunnel;
+            resourceInputs["params"] = args?.params;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["asPaths"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["nextHopHub"] = undefined /*out*/;

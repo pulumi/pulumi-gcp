@@ -106,113 +106,113 @@ export class StoragePool extends pulumi.CustomResource {
      * Specifies the Active Directory policy to be used. Format: `projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}`.
      * The policy needs to be in the same location as the storage pool.
      */
-    public readonly activeDirectory!: pulumi.Output<string | undefined>;
+    declare public readonly activeDirectory: pulumi.Output<string | undefined>;
     /**
      * Optional. True if the storage pool supports Auto Tiering enabled volumes. Default is false.
      * Auto-tiering can be enabled after storage pool creation but it can't be disabled once enabled.
      */
-    public readonly allowAutoTiering!: pulumi.Output<boolean | undefined>;
+    declare public readonly allowAutoTiering: pulumi.Output<boolean | undefined>;
     /**
      * Capacity of the storage pool (in GiB).
      */
-    public readonly capacityGib!: pulumi.Output<string>;
+    declare public readonly capacityGib: pulumi.Output<string>;
     /**
      * Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
      */
-    public readonly customPerformanceEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly customPerformanceEnabled: pulumi.Output<boolean | undefined>;
     /**
      * An optional description of this resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Flag indicating that the hot-tier threshold will be auto-increased by 10% of the hot-tier when it hits 100%. Default is true.
      * The increment will kick in only if the new size after increment is still less than or equal to storage pool size.
      */
-    public readonly enableHotTierAutoResize!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableHotTierAutoResize: pulumi.Output<boolean | undefined>;
     /**
      * Reports if volumes in the pool are encrypted using a Google-managed encryption key or CMEK.
      */
-    public /*out*/ readonly encryptionType!: pulumi.Output<string>;
+    declare public /*out*/ readonly encryptionType: pulumi.Output<string>;
     /**
      * Total hot tier capacity for the Storage Pool. It is applicable only to Flex service level.
      * It should be less than the minimum storage pool size and cannot be more than the current storage pool size. It cannot be decreased once set.
      */
-    public readonly hotTierSizeGib!: pulumi.Output<string | undefined>;
+    declare public readonly hotTierSizeGib: pulumi.Output<string | undefined>;
     /**
      * Specifies the CMEK policy to be used for volume encryption. Format: `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}`.
      * The policy needs to be in the same location as the storage pool.
      */
-    public readonly kmsConfig!: pulumi.Output<string | undefined>;
+    declare public readonly kmsConfig: pulumi.Output<string | undefined>;
     /**
      * Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * When enabled, the volumes uses Active Directory as LDAP name service for UID/GID lookups. Required to enable extended group support for NFSv3,
      * using security identifiers for NFSv4.1 or principal names for kerberized NFSv4.1.
      */
-    public readonly ldapEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly ldapEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The resource name of the storage pool. Needs to be unique per location/region.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * VPC network name with format: `projects/{{project}}/global/networks/{{network}}`
      */
-    public readonly network!: pulumi.Output<string>;
+    declare public readonly network: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
      * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
      */
-    public readonly replicaZone!: pulumi.Output<string | undefined>;
+    declare public readonly replicaZone: pulumi.Output<string | undefined>;
     /**
      * Service level of the storage pool.
      * Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
      */
-    public readonly serviceLevel!: pulumi.Output<string>;
+    declare public readonly serviceLevel: pulumi.Output<string>;
     /**
      * Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
      */
-    public readonly totalIops!: pulumi.Output<string | undefined>;
+    declare public readonly totalIops: pulumi.Output<string | undefined>;
     /**
      * Optional. Custom Performance Total Throughput of the pool (in MiB/s).
      */
-    public readonly totalThroughputMibps!: pulumi.Output<string | undefined>;
+    declare public readonly totalThroughputMibps: pulumi.Output<string | undefined>;
     /**
      * Size allocated to volumes in the storage pool (in GiB).
      */
-    public /*out*/ readonly volumeCapacityGib!: pulumi.Output<string>;
+    declare public /*out*/ readonly volumeCapacityGib: pulumi.Output<string>;
     /**
      * Number of volume in the storage pool.
      */
-    public /*out*/ readonly volumeCount!: pulumi.Output<number>;
+    declare public /*out*/ readonly volumeCount: pulumi.Output<number>;
     /**
      * Specifies the active zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
      * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
      * If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
      */
-    public readonly zone!: pulumi.Output<string>;
+    declare public readonly zone: pulumi.Output<string>;
 
     /**
      * Create a StoragePool resource with the given unique name, arguments, and options.
@@ -227,63 +227,63 @@ export class StoragePool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StoragePoolState | undefined;
-            resourceInputs["activeDirectory"] = state ? state.activeDirectory : undefined;
-            resourceInputs["allowAutoTiering"] = state ? state.allowAutoTiering : undefined;
-            resourceInputs["capacityGib"] = state ? state.capacityGib : undefined;
-            resourceInputs["customPerformanceEnabled"] = state ? state.customPerformanceEnabled : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["enableHotTierAutoResize"] = state ? state.enableHotTierAutoResize : undefined;
-            resourceInputs["encryptionType"] = state ? state.encryptionType : undefined;
-            resourceInputs["hotTierSizeGib"] = state ? state.hotTierSizeGib : undefined;
-            resourceInputs["kmsConfig"] = state ? state.kmsConfig : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["ldapEnabled"] = state ? state.ldapEnabled : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["replicaZone"] = state ? state.replicaZone : undefined;
-            resourceInputs["serviceLevel"] = state ? state.serviceLevel : undefined;
-            resourceInputs["totalIops"] = state ? state.totalIops : undefined;
-            resourceInputs["totalThroughputMibps"] = state ? state.totalThroughputMibps : undefined;
-            resourceInputs["volumeCapacityGib"] = state ? state.volumeCapacityGib : undefined;
-            resourceInputs["volumeCount"] = state ? state.volumeCount : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["activeDirectory"] = state?.activeDirectory;
+            resourceInputs["allowAutoTiering"] = state?.allowAutoTiering;
+            resourceInputs["capacityGib"] = state?.capacityGib;
+            resourceInputs["customPerformanceEnabled"] = state?.customPerformanceEnabled;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["enableHotTierAutoResize"] = state?.enableHotTierAutoResize;
+            resourceInputs["encryptionType"] = state?.encryptionType;
+            resourceInputs["hotTierSizeGib"] = state?.hotTierSizeGib;
+            resourceInputs["kmsConfig"] = state?.kmsConfig;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["ldapEnabled"] = state?.ldapEnabled;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["replicaZone"] = state?.replicaZone;
+            resourceInputs["serviceLevel"] = state?.serviceLevel;
+            resourceInputs["totalIops"] = state?.totalIops;
+            resourceInputs["totalThroughputMibps"] = state?.totalThroughputMibps;
+            resourceInputs["volumeCapacityGib"] = state?.volumeCapacityGib;
+            resourceInputs["volumeCount"] = state?.volumeCount;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as StoragePoolArgs | undefined;
-            if ((!args || args.capacityGib === undefined) && !opts.urn) {
+            if (args?.capacityGib === undefined && !opts.urn) {
                 throw new Error("Missing required property 'capacityGib'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.network === undefined) && !opts.urn) {
+            if (args?.network === undefined && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
-            if ((!args || args.serviceLevel === undefined) && !opts.urn) {
+            if (args?.serviceLevel === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceLevel'");
             }
-            resourceInputs["activeDirectory"] = args ? args.activeDirectory : undefined;
-            resourceInputs["allowAutoTiering"] = args ? args.allowAutoTiering : undefined;
-            resourceInputs["capacityGib"] = args ? args.capacityGib : undefined;
-            resourceInputs["customPerformanceEnabled"] = args ? args.customPerformanceEnabled : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enableHotTierAutoResize"] = args ? args.enableHotTierAutoResize : undefined;
-            resourceInputs["hotTierSizeGib"] = args ? args.hotTierSizeGib : undefined;
-            resourceInputs["kmsConfig"] = args ? args.kmsConfig : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["ldapEnabled"] = args ? args.ldapEnabled : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["replicaZone"] = args ? args.replicaZone : undefined;
-            resourceInputs["serviceLevel"] = args ? args.serviceLevel : undefined;
-            resourceInputs["totalIops"] = args ? args.totalIops : undefined;
-            resourceInputs["totalThroughputMibps"] = args ? args.totalThroughputMibps : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["activeDirectory"] = args?.activeDirectory;
+            resourceInputs["allowAutoTiering"] = args?.allowAutoTiering;
+            resourceInputs["capacityGib"] = args?.capacityGib;
+            resourceInputs["customPerformanceEnabled"] = args?.customPerformanceEnabled;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["enableHotTierAutoResize"] = args?.enableHotTierAutoResize;
+            resourceInputs["hotTierSizeGib"] = args?.hotTierSizeGib;
+            resourceInputs["kmsConfig"] = args?.kmsConfig;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["ldapEnabled"] = args?.ldapEnabled;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["replicaZone"] = args?.replicaZone;
+            resourceInputs["serviceLevel"] = args?.serviceLevel;
+            resourceInputs["totalIops"] = args?.totalIops;
+            resourceInputs["totalThroughputMibps"] = args?.totalThroughputMibps;
+            resourceInputs["zone"] = args?.zone;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["encryptionType"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;

@@ -167,29 +167,29 @@ export class User extends pulumi.CustomResource {
      * Identifies the alloydb cluster. Must be in the format
      * 'projects/{project}/locations/{location}/clusters/{cluster_id}'
      */
-    public readonly cluster!: pulumi.Output<string>;
+    declare public readonly cluster: pulumi.Output<string>;
     /**
      * List of database roles this database user has.
      */
-    public readonly databaseRoles!: pulumi.Output<string[] | undefined>;
+    declare public readonly databaseRoles: pulumi.Output<string[] | undefined>;
     /**
      * Name of the resource in the form of projects/{project}/locations/{location}/clusters/{cluster}/users/{user}.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Password for this database user.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * The database role name of the user.
      */
-    public readonly userId!: pulumi.Output<string>;
+    declare public readonly userId: pulumi.Output<string>;
     /**
      * The type of this user.
      * Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
      */
-    public readonly userType!: pulumi.Output<string>;
+    declare public readonly userType: pulumi.Output<string>;
 
     /**
      * Create a User resource with the given unique name, arguments, and options.
@@ -204,28 +204,28 @@ export class User extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserState | undefined;
-            resourceInputs["cluster"] = state ? state.cluster : undefined;
-            resourceInputs["databaseRoles"] = state ? state.databaseRoles : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
-            resourceInputs["userType"] = state ? state.userType : undefined;
+            resourceInputs["cluster"] = state?.cluster;
+            resourceInputs["databaseRoles"] = state?.databaseRoles;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["userId"] = state?.userId;
+            resourceInputs["userType"] = state?.userType;
         } else {
             const args = argsOrState as UserArgs | undefined;
-            if ((!args || args.cluster === undefined) && !opts.urn) {
+            if (args?.cluster === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cluster'");
             }
-            if ((!args || args.userId === undefined) && !opts.urn) {
+            if (args?.userId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
-            if ((!args || args.userType === undefined) && !opts.urn) {
+            if (args?.userType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userType'");
             }
-            resourceInputs["cluster"] = args ? args.cluster : undefined;
-            resourceInputs["databaseRoles"] = args ? args.databaseRoles : undefined;
+            resourceInputs["cluster"] = args?.cluster;
+            resourceInputs["databaseRoles"] = args?.databaseRoles;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
-            resourceInputs["userType"] = args ? args.userType : undefined;
+            resourceInputs["userId"] = args?.userId;
+            resourceInputs["userType"] = args?.userType;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -206,7 +206,7 @@ export class Queue extends pulumi.CustomResource {
      * to App Engine tasks in this queue
      * Structure is documented below.
      */
-    public readonly appEngineRoutingOverride!: pulumi.Output<outputs.cloudtasks.QueueAppEngineRoutingOverride | undefined>;
+    declare public readonly appEngineRoutingOverride: pulumi.Output<outputs.cloudtasks.QueueAppEngineRoutingOverride | undefined>;
     /**
      * The desired state of the queue. Use this to pause and resume the queue.
      *
@@ -218,20 +218,20 @@ export class Queue extends pulumi.CustomResource {
      * Modifies HTTP target for HTTP tasks.
      * Structure is documented below.
      */
-    public readonly httpTarget!: pulumi.Output<outputs.cloudtasks.QueueHttpTarget | undefined>;
+    declare public readonly httpTarget: pulumi.Output<outputs.cloudtasks.QueueHttpTarget | undefined>;
     /**
      * The location of the queue
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The queue name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Rate limits for task dispatches.
      * The queue's actual dispatch rate is the result of:
@@ -242,21 +242,17 @@ export class Queue extends pulumi.CustomResource {
      * smooth sudden large traffic spikes.
      * Structure is documented below.
      */
-    public readonly rateLimits!: pulumi.Output<outputs.cloudtasks.QueueRateLimits>;
+    declare public readonly rateLimits: pulumi.Output<outputs.cloudtasks.QueueRateLimits>;
     /**
      * Settings that determine the retry behavior.
      * Structure is documented below.
      */
-    public readonly retryConfig!: pulumi.Output<outputs.cloudtasks.QueueRetryConfig>;
+    declare public readonly retryConfig: pulumi.Output<outputs.cloudtasks.QueueRetryConfig>;
     /**
      * Configuration options for writing logs to Stackdriver Logging.
      * Structure is documented below.
      */
-    public readonly stackdriverLoggingConfig!: pulumi.Output<outputs.cloudtasks.QueueStackdriverLoggingConfig | undefined>;
-    /**
-     * The current state of the queue.
-     */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public readonly stackdriverLoggingConfig: pulumi.Output<outputs.cloudtasks.QueueStackdriverLoggingConfig | undefined>;
 
     /**
      * Create a Queue resource with the given unique name, arguments, and options.
@@ -271,31 +267,27 @@ export class Queue extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QueueState | undefined;
-            resourceInputs["appEngineRoutingOverride"] = state ? state.appEngineRoutingOverride : undefined;
-            resourceInputs["desiredState"] = state ? state.desiredState : undefined;
-            resourceInputs["httpTarget"] = state ? state.httpTarget : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["rateLimits"] = state ? state.rateLimits : undefined;
-            resourceInputs["retryConfig"] = state ? state.retryConfig : undefined;
-            resourceInputs["stackdriverLoggingConfig"] = state ? state.stackdriverLoggingConfig : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["appEngineRoutingOverride"] = state?.appEngineRoutingOverride;
+            resourceInputs["httpTarget"] = state?.httpTarget;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["rateLimits"] = state?.rateLimits;
+            resourceInputs["retryConfig"] = state?.retryConfig;
+            resourceInputs["stackdriverLoggingConfig"] = state?.stackdriverLoggingConfig;
         } else {
             const args = argsOrState as QueueArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["appEngineRoutingOverride"] = args ? args.appEngineRoutingOverride : undefined;
-            resourceInputs["desiredState"] = args ? args.desiredState : undefined;
-            resourceInputs["httpTarget"] = args ? args.httpTarget : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["rateLimits"] = args ? args.rateLimits : undefined;
-            resourceInputs["retryConfig"] = args ? args.retryConfig : undefined;
-            resourceInputs["stackdriverLoggingConfig"] = args ? args.stackdriverLoggingConfig : undefined;
-            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["appEngineRoutingOverride"] = args?.appEngineRoutingOverride;
+            resourceInputs["httpTarget"] = args?.httpTarget;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["rateLimits"] = args?.rateLimits;
+            resourceInputs["retryConfig"] = args?.retryConfig;
+            resourceInputs["stackdriverLoggingConfig"] = args?.stackdriverLoggingConfig;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Queue.__pulumiType, name, resourceInputs, opts);

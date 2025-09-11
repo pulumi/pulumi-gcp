@@ -88,57 +88,57 @@ export class SecurityScanConfig extends pulumi.CustomResource {
      * If specified, service will use the authentication configuration during scanning.
      * Structure is documented below.
      */
-    public readonly authentication!: pulumi.Output<outputs.compute.SecurityScanConfigAuthentication | undefined>;
+    declare public readonly authentication: pulumi.Output<outputs.compute.SecurityScanConfigAuthentication | undefined>;
     /**
      * The blacklist URL patterns as described in
      * https://cloud.google.com/security-scanner/docs/excluded-urls
      */
-    public readonly blacklistPatterns!: pulumi.Output<string[] | undefined>;
+    declare public readonly blacklistPatterns: pulumi.Output<string[] | undefined>;
     /**
      * The user provider display name of the ScanConfig.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Controls export of scan configurations and results to Cloud Security Command Center.
      * Default value is `ENABLED`.
      * Possible values are: `ENABLED`, `DISABLED`.
      */
-    public readonly exportToSecurityCommandCenter!: pulumi.Output<string | undefined>;
+    declare public readonly exportToSecurityCommandCenter: pulumi.Output<string | undefined>;
     /**
      * The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
      * Defaults to 15.
      */
-    public readonly maxQps!: pulumi.Output<number | undefined>;
+    declare public readonly maxQps: pulumi.Output<number | undefined>;
     /**
      * A server defined name for this index. Format:
      * `projects/{{project}}/scanConfigs/{{server_generated_id}}`
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The schedule of the ScanConfig
      * Structure is documented below.
      */
-    public readonly schedule!: pulumi.Output<outputs.compute.SecurityScanConfigSchedule | undefined>;
+    declare public readonly schedule: pulumi.Output<outputs.compute.SecurityScanConfigSchedule | undefined>;
     /**
      * The starting URLs from which the scanner finds site pages.
      */
-    public readonly startingUrls!: pulumi.Output<string[]>;
+    declare public readonly startingUrls: pulumi.Output<string[]>;
     /**
      * Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
      * Each value may be one of: `APP_ENGINE`, `COMPUTE`.
      */
-    public readonly targetPlatforms!: pulumi.Output<string[] | undefined>;
+    declare public readonly targetPlatforms: pulumi.Output<string[] | undefined>;
     /**
      * Type of the user agents used for scanning
      * Default value is `CHROME_LINUX`.
      * Possible values are: `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, `SAFARI_IPHONE`.
      */
-    public readonly userAgent!: pulumi.Output<string | undefined>;
+    declare public readonly userAgent: pulumi.Output<string | undefined>;
 
     /**
      * Create a SecurityScanConfig resource with the given unique name, arguments, and options.
@@ -153,35 +153,35 @@ export class SecurityScanConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecurityScanConfigState | undefined;
-            resourceInputs["authentication"] = state ? state.authentication : undefined;
-            resourceInputs["blacklistPatterns"] = state ? state.blacklistPatterns : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["exportToSecurityCommandCenter"] = state ? state.exportToSecurityCommandCenter : undefined;
-            resourceInputs["maxQps"] = state ? state.maxQps : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["schedule"] = state ? state.schedule : undefined;
-            resourceInputs["startingUrls"] = state ? state.startingUrls : undefined;
-            resourceInputs["targetPlatforms"] = state ? state.targetPlatforms : undefined;
-            resourceInputs["userAgent"] = state ? state.userAgent : undefined;
+            resourceInputs["authentication"] = state?.authentication;
+            resourceInputs["blacklistPatterns"] = state?.blacklistPatterns;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["exportToSecurityCommandCenter"] = state?.exportToSecurityCommandCenter;
+            resourceInputs["maxQps"] = state?.maxQps;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["schedule"] = state?.schedule;
+            resourceInputs["startingUrls"] = state?.startingUrls;
+            resourceInputs["targetPlatforms"] = state?.targetPlatforms;
+            resourceInputs["userAgent"] = state?.userAgent;
         } else {
             const args = argsOrState as SecurityScanConfigArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.startingUrls === undefined) && !opts.urn) {
+            if (args?.startingUrls === undefined && !opts.urn) {
                 throw new Error("Missing required property 'startingUrls'");
             }
-            resourceInputs["authentication"] = args ? args.authentication : undefined;
-            resourceInputs["blacklistPatterns"] = args ? args.blacklistPatterns : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["exportToSecurityCommandCenter"] = args ? args.exportToSecurityCommandCenter : undefined;
-            resourceInputs["maxQps"] = args ? args.maxQps : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["schedule"] = args ? args.schedule : undefined;
-            resourceInputs["startingUrls"] = args ? args.startingUrls : undefined;
-            resourceInputs["targetPlatforms"] = args ? args.targetPlatforms : undefined;
-            resourceInputs["userAgent"] = args ? args.userAgent : undefined;
+            resourceInputs["authentication"] = args?.authentication;
+            resourceInputs["blacklistPatterns"] = args?.blacklistPatterns;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["exportToSecurityCommandCenter"] = args?.exportToSecurityCommandCenter;
+            resourceInputs["maxQps"] = args?.maxQps;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["schedule"] = args?.schedule;
+            resourceInputs["startingUrls"] = args?.startingUrls;
+            resourceInputs["targetPlatforms"] = args?.targetPlatforms;
+            resourceInputs["userAgent"] = args?.userAgent;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

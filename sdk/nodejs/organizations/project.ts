@@ -114,11 +114,9 @@ export class Project extends pulumi.CustomResource {
     }
 
     /**
-     * Create the 'default' network automatically. Default true. If set to false, the default network will be deleted. Note
-     * that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
-     * if you set autoCreateNetwork to false, since the network will exist momentarily.
+     * Create the 'default' network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set autoCreateNetwork to false, since the network will exist momentarily.
      */
-    public readonly autoCreateNetwork!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoCreateNetwork: pulumi.Output<boolean | undefined>;
     /**
      * The alphanumeric ID of the billing account this project
      * belongs to. The user or service account performing this operation with the provider
@@ -126,12 +124,12 @@ export class Project extends pulumi.CustomResource {
      * See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
      * for more details.
      */
-    public readonly billingAccount!: pulumi.Output<string | undefined>;
-    public readonly deletionPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly billingAccount: pulumi.Output<string | undefined>;
+    declare public readonly deletionPolicy: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The numeric ID of the folder this project should be
      * created under. Only one of `orgId` or `folderId` may be
@@ -139,21 +137,21 @@ export class Project extends pulumi.CustomResource {
      * created under the specified folder. Changing this forces the
      * project to be migrated to the newly specified folder.
      */
-    public readonly folderId!: pulumi.Output<string | undefined>;
+    declare public readonly folderId: pulumi.Output<string | undefined>;
     /**
      * A set of key/value label pairs to assign to the project.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The display name of the project.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The numeric identifier of the project.
      */
-    public /*out*/ readonly number!: pulumi.Output<string>;
+    declare public /*out*/ readonly number: pulumi.Output<string>;
     /**
      * The numeric ID of the organization this project belongs to.
      * Changing this forces a new project to be created.  Only one of
@@ -162,19 +160,19 @@ export class Project extends pulumi.CustomResource {
      * this forces the project to be migrated to the newly specified
      * organization.
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
      * The project ID. Changing this forces a new project to be created.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the `gcp.tags.TagValue` resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Project resource with the given unique name, arguments, and options.
@@ -189,29 +187,29 @@ export class Project extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectState | undefined;
-            resourceInputs["autoCreateNetwork"] = state ? state.autoCreateNetwork : undefined;
-            resourceInputs["billingAccount"] = state ? state.billingAccount : undefined;
-            resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["folderId"] = state ? state.folderId : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["number"] = state ? state.number : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["autoCreateNetwork"] = state?.autoCreateNetwork;
+            resourceInputs["billingAccount"] = state?.billingAccount;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["folderId"] = state?.folderId;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["number"] = state?.number;
+            resourceInputs["orgId"] = state?.orgId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
-            resourceInputs["autoCreateNetwork"] = args ? args.autoCreateNetwork : undefined;
-            resourceInputs["billingAccount"] = args ? args.billingAccount : undefined;
-            resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
-            resourceInputs["folderId"] = args ? args.folderId : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orgId"] = args ? args.orgId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["autoCreateNetwork"] = args?.autoCreateNetwork;
+            resourceInputs["billingAccount"] = args?.billingAccount;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
+            resourceInputs["folderId"] = args?.folderId;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["orgId"] = args?.orgId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["number"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
@@ -228,9 +226,7 @@ export class Project extends pulumi.CustomResource {
  */
 export interface ProjectState {
     /**
-     * Create the 'default' network automatically. Default true. If set to false, the default network will be deleted. Note
-     * that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
-     * if you set autoCreateNetwork to false, since the network will exist momentarily.
+     * Create the 'default' network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set autoCreateNetwork to false, since the network will exist momentarily.
      */
     autoCreateNetwork?: pulumi.Input<boolean>;
     /**
@@ -296,9 +292,7 @@ export interface ProjectState {
  */
 export interface ProjectArgs {
     /**
-     * Create the 'default' network automatically. Default true. If set to false, the default network will be deleted. Note
-     * that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
-     * if you set autoCreateNetwork to false, since the network will exist momentarily.
+     * Create the 'default' network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set autoCreateNetwork to false, since the network will exist momentarily.
      */
     autoCreateNetwork?: pulumi.Input<boolean>;
     /**

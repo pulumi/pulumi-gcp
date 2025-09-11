@@ -147,41 +147,41 @@ export class Snapshot extends pulumi.CustomResource {
      * example, for chargeback tracking.  When you describe your snapshot
      * resource, this field is visible only if it has a non-empty value.
      */
-    public readonly chainName!: pulumi.Output<string | undefined>;
+    declare public readonly chainName: pulumi.Output<string | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * An optional description of this resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Size of the snapshot, specified in GB.
      */
-    public /*out*/ readonly diskSizeGb!: pulumi.Output<number>;
+    declare public /*out*/ readonly diskSizeGb: pulumi.Output<number>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The fingerprint used for optimistic locking of this resource. Used
      * internally during updates.
      */
-    public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly labelFingerprint: pulumi.Output<string>;
     /**
      * Labels to apply to this Snapshot.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A list of public visible licenses that apply to this snapshot. This
      * can be because the original image had licenses attached (such as a
      * Windows image).  snapshotEncryptionKey nested object Encrypts the
      * snapshot using a customer-supplied encryption key.
      */
-    public /*out*/ readonly licenses!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly licenses: pulumi.Output<string[]>;
     /**
      * Name of the resource; provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -191,21 +191,21 @@ export class Snapshot extends pulumi.CustomResource {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * Encrypts the snapshot using a customer-supplied encryption key.
      * After you encrypt a snapshot using a customer-supplied key, you must
@@ -219,36 +219,36 @@ export class Snapshot extends pulumi.CustomResource {
      * key and you do not need to provide a key to use the snapshot later.
      * Structure is documented below.
      */
-    public readonly snapshotEncryptionKey!: pulumi.Output<outputs.compute.SnapshotSnapshotEncryptionKey | undefined>;
+    declare public readonly snapshotEncryptionKey: pulumi.Output<outputs.compute.SnapshotSnapshotEncryptionKey | undefined>;
     /**
      * The unique identifier for the resource.
      */
-    public /*out*/ readonly snapshotId!: pulumi.Output<number>;
+    declare public /*out*/ readonly snapshotId: pulumi.Output<number>;
     /**
      * A reference to the disk used to create this snapshot.
      */
-    public readonly sourceDisk!: pulumi.Output<string>;
+    declare public readonly sourceDisk: pulumi.Output<string>;
     /**
      * The customer-supplied encryption key of the source snapshot. Required
      * if the source snapshot is protected by a customer-supplied encryption
      * key.
      * Structure is documented below.
      */
-    public readonly sourceDiskEncryptionKey!: pulumi.Output<outputs.compute.SnapshotSourceDiskEncryptionKey | undefined>;
+    declare public readonly sourceDiskEncryptionKey: pulumi.Output<outputs.compute.SnapshotSourceDiskEncryptionKey | undefined>;
     /**
      * A size of the storage used by the snapshot. As snapshots share
      * storage, this number is expected to change with snapshot
      * creation/deletion.
      */
-    public /*out*/ readonly storageBytes!: pulumi.Output<number>;
+    declare public /*out*/ readonly storageBytes: pulumi.Output<number>;
     /**
      * Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
      */
-    public readonly storageLocations!: pulumi.Output<string[]>;
+    declare public readonly storageLocations: pulumi.Output<string[]>;
     /**
      * A reference to the zone where the disk is hosted.
      */
-    public readonly zone!: pulumi.Output<string>;
+    declare public readonly zone: pulumi.Output<string>;
 
     /**
      * Create a Snapshot resource with the given unique name, arguments, and options.
@@ -263,40 +263,40 @@ export class Snapshot extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SnapshotState | undefined;
-            resourceInputs["chainName"] = state ? state.chainName : undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["diskSizeGb"] = state ? state.diskSizeGb : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["licenses"] = state ? state.licenses : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["snapshotEncryptionKey"] = state ? state.snapshotEncryptionKey : undefined;
-            resourceInputs["snapshotId"] = state ? state.snapshotId : undefined;
-            resourceInputs["sourceDisk"] = state ? state.sourceDisk : undefined;
-            resourceInputs["sourceDiskEncryptionKey"] = state ? state.sourceDiskEncryptionKey : undefined;
-            resourceInputs["storageBytes"] = state ? state.storageBytes : undefined;
-            resourceInputs["storageLocations"] = state ? state.storageLocations : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["chainName"] = state?.chainName;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["diskSizeGb"] = state?.diskSizeGb;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["labelFingerprint"] = state?.labelFingerprint;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["licenses"] = state?.licenses;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["snapshotEncryptionKey"] = state?.snapshotEncryptionKey;
+            resourceInputs["snapshotId"] = state?.snapshotId;
+            resourceInputs["sourceDisk"] = state?.sourceDisk;
+            resourceInputs["sourceDiskEncryptionKey"] = state?.sourceDiskEncryptionKey;
+            resourceInputs["storageBytes"] = state?.storageBytes;
+            resourceInputs["storageLocations"] = state?.storageLocations;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as SnapshotArgs | undefined;
-            if ((!args || args.sourceDisk === undefined) && !opts.urn) {
+            if (args?.sourceDisk === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceDisk'");
             }
-            resourceInputs["chainName"] = args ? args.chainName : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["snapshotEncryptionKey"] = args ? args.snapshotEncryptionKey : undefined;
-            resourceInputs["sourceDisk"] = args ? args.sourceDisk : undefined;
-            resourceInputs["sourceDiskEncryptionKey"] = args ? args.sourceDiskEncryptionKey : undefined;
-            resourceInputs["storageLocations"] = args ? args.storageLocations : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["chainName"] = args?.chainName;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["snapshotEncryptionKey"] = args?.snapshotEncryptionKey;
+            resourceInputs["sourceDisk"] = args?.sourceDisk;
+            resourceInputs["sourceDiskEncryptionKey"] = args?.sourceDiskEncryptionKey;
+            resourceInputs["storageLocations"] = args?.storageLocations;
+            resourceInputs["zone"] = args?.zone;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["diskSizeGb"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;

@@ -205,61 +205,61 @@ export class AppHostingTraffic extends pulumi.CustomResource {
     /**
      * Id of the backend that this Traffic config applies to
      */
-    public readonly backend!: pulumi.Output<string>;
+    declare public readonly backend: pulumi.Output<string>;
     /**
      * Time at which the backend was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Current state of traffic allocation for the backend.
      * When setting `target`, this field may differ for some time until the desired state is reached.
      * Structure is documented below.
      */
-    public /*out*/ readonly currents!: pulumi.Output<outputs.firebase.AppHostingTrafficCurrent[]>;
+    declare public /*out*/ readonly currents: pulumi.Output<outputs.firebase.AppHostingTrafficCurrent[]>;
     /**
      * Time at which the backend was deleted.
      */
-    public /*out*/ readonly deleteTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly deleteTime: pulumi.Output<string>;
     /**
      * Server-computed checksum based on other values; may be sent
      * on update or delete to ensure operation is done on expected resource.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The location the Backend that this Traffic config applies to
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Identifier. The resource name of the backend traffic config
      * Format:
      * `projects/{project}/locations/{locationId}/backends/{backendId}/traffic`.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The policy for how builds and rollouts are triggered and rolled out.
      * Structure is documented below.
      */
-    public readonly rolloutPolicy!: pulumi.Output<outputs.firebase.AppHostingTrafficRolloutPolicy | undefined>;
+    declare public readonly rolloutPolicy: pulumi.Output<outputs.firebase.AppHostingTrafficRolloutPolicy | undefined>;
     /**
      * Set to manually control the desired traffic for the backend. This will
      * cause current to eventually match this value. The percentages must add
      * up to 100.
      * Structure is documented below.
      */
-    public readonly target!: pulumi.Output<outputs.firebase.AppHostingTrafficTarget | undefined>;
+    declare public readonly target: pulumi.Output<outputs.firebase.AppHostingTrafficTarget | undefined>;
     /**
      * System-assigned, unique identifier.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * Time at which the backend was last updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a AppHostingTraffic resource with the given unique name, arguments, and options.
@@ -274,31 +274,31 @@ export class AppHostingTraffic extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AppHostingTrafficState | undefined;
-            resourceInputs["backend"] = state ? state.backend : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["currents"] = state ? state.currents : undefined;
-            resourceInputs["deleteTime"] = state ? state.deleteTime : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["rolloutPolicy"] = state ? state.rolloutPolicy : undefined;
-            resourceInputs["target"] = state ? state.target : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["backend"] = state?.backend;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["currents"] = state?.currents;
+            resourceInputs["deleteTime"] = state?.deleteTime;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["rolloutPolicy"] = state?.rolloutPolicy;
+            resourceInputs["target"] = state?.target;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as AppHostingTrafficArgs | undefined;
-            if ((!args || args.backend === undefined) && !opts.urn) {
+            if (args?.backend === undefined && !opts.urn) {
                 throw new Error("Missing required property 'backend'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["backend"] = args ? args.backend : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["rolloutPolicy"] = args ? args.rolloutPolicy : undefined;
-            resourceInputs["target"] = args ? args.target : undefined;
+            resourceInputs["backend"] = args?.backend;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["rolloutPolicy"] = args?.rolloutPolicy;
+            resourceInputs["target"] = args?.target;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["currents"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;

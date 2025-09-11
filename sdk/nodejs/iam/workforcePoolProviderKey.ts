@@ -103,42 +103,42 @@ export class WorkforcePoolProviderKey extends pulumi.CustomResource {
      * The time after which the key will be permanently deleted and cannot be recovered.
      * Note that the key may get purged before this time if the total limit of keys per provider is exceeded.
      */
-    public /*out*/ readonly expireTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly expireTime: pulumi.Output<string>;
     /**
      * Immutable. Public half of the asymmetric key.
      * Structure is documented below.
      */
-    public readonly keyData!: pulumi.Output<outputs.iam.WorkforcePoolProviderKeyKeyData>;
+    declare public readonly keyData: pulumi.Output<outputs.iam.WorkforcePoolProviderKeyKeyData>;
     /**
      * The ID to use for the key, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
      */
-    public readonly keyId!: pulumi.Output<string>;
+    declare public readonly keyId: pulumi.Output<string>;
     /**
      * The location for the resource.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Identifier. The resource name of the key.
      * Format: `locations/{location}/workforcePools/{workforcePoolId}/providers/{providerId}/keys/{keyId}`
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the provider.
      */
-    public readonly providerId!: pulumi.Output<string>;
+    declare public readonly providerId: pulumi.Output<string>;
     /**
      * The state of the key.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The purpose of the key.
      * Possible values are: `ENCRYPTION`.
      */
-    public readonly use!: pulumi.Output<string>;
+    declare public readonly use: pulumi.Output<string>;
     /**
      * The ID of the workforce pool.
      */
-    public readonly workforcePoolId!: pulumi.Output<string>;
+    declare public readonly workforcePoolId: pulumi.Output<string>;
 
     /**
      * Create a WorkforcePoolProviderKey resource with the given unique name, arguments, and options.
@@ -153,41 +153,41 @@ export class WorkforcePoolProviderKey extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkforcePoolProviderKeyState | undefined;
-            resourceInputs["expireTime"] = state ? state.expireTime : undefined;
-            resourceInputs["keyData"] = state ? state.keyData : undefined;
-            resourceInputs["keyId"] = state ? state.keyId : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["providerId"] = state ? state.providerId : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["use"] = state ? state.use : undefined;
-            resourceInputs["workforcePoolId"] = state ? state.workforcePoolId : undefined;
+            resourceInputs["expireTime"] = state?.expireTime;
+            resourceInputs["keyData"] = state?.keyData;
+            resourceInputs["keyId"] = state?.keyId;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["providerId"] = state?.providerId;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["use"] = state?.use;
+            resourceInputs["workforcePoolId"] = state?.workforcePoolId;
         } else {
             const args = argsOrState as WorkforcePoolProviderKeyArgs | undefined;
-            if ((!args || args.keyData === undefined) && !opts.urn) {
+            if (args?.keyData === undefined && !opts.urn) {
                 throw new Error("Missing required property 'keyData'");
             }
-            if ((!args || args.keyId === undefined) && !opts.urn) {
+            if (args?.keyId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'keyId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.providerId === undefined) && !opts.urn) {
+            if (args?.providerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'providerId'");
             }
-            if ((!args || args.use === undefined) && !opts.urn) {
+            if (args?.use === undefined && !opts.urn) {
                 throw new Error("Missing required property 'use'");
             }
-            if ((!args || args.workforcePoolId === undefined) && !opts.urn) {
+            if (args?.workforcePoolId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workforcePoolId'");
             }
-            resourceInputs["keyData"] = args ? args.keyData : undefined;
-            resourceInputs["keyId"] = args ? args.keyId : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["providerId"] = args ? args.providerId : undefined;
-            resourceInputs["use"] = args ? args.use : undefined;
-            resourceInputs["workforcePoolId"] = args ? args.workforcePoolId : undefined;
+            resourceInputs["keyData"] = args?.keyData;
+            resourceInputs["keyId"] = args?.keyId;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["providerId"] = args?.providerId;
+            resourceInputs["use"] = args?.use;
+            resourceInputs["workforcePoolId"] = args?.workforcePoolId;
             resourceInputs["expireTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;

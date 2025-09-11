@@ -168,18 +168,18 @@ export class GCPolicy extends pulumi.CustomResource {
     /**
      * The name of the column family.
      */
-    public readonly columnFamily!: pulumi.Output<string>;
+    declare public readonly columnFamily: pulumi.Output<string>;
     /**
      * The deletion policy for the GC policy.
      * Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
      *
      * Possible values are: `ABANDON`.
      */
-    public readonly deletionPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly deletionPolicy: pulumi.Output<string | undefined>;
     /**
      * Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
      */
-    public readonly gcRules!: pulumi.Output<string | undefined>;
+    declare public readonly gcRules: pulumi.Output<string | undefined>;
     /**
      * Boolean for whether to allow ignoring warnings when updating the gc policy.
      * Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
@@ -187,31 +187,31 @@ export class GCPolicy extends pulumi.CustomResource {
      *
      * -----
      */
-    public readonly ignoreWarnings!: pulumi.Output<boolean | undefined>;
+    declare public readonly ignoreWarnings: pulumi.Output<boolean | undefined>;
     /**
      * The name of the Bigtable instance.
      */
-    public readonly instanceName!: pulumi.Output<string>;
+    declare public readonly instanceName: pulumi.Output<string>;
     /**
      * GC policy that applies to all cells older than the given age.
      */
-    public readonly maxAge!: pulumi.Output<outputs.bigtable.GCPolicyMaxAge | undefined>;
+    declare public readonly maxAge: pulumi.Output<outputs.bigtable.GCPolicyMaxAge | undefined>;
     /**
      * GC policy that applies to all versions of a cell except for the most recent.
      */
-    public readonly maxVersions!: pulumi.Output<outputs.bigtable.GCPolicyMaxVersion[] | undefined>;
+    declare public readonly maxVersions: pulumi.Output<outputs.bigtable.GCPolicyMaxVersion[] | undefined>;
     /**
      * If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
      */
-    public readonly mode!: pulumi.Output<string | undefined>;
+    declare public readonly mode: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The name of the table.
      */
-    public readonly table!: pulumi.Output<string>;
+    declare public readonly table: pulumi.Output<string>;
 
     /**
      * Create a GCPolicy resource with the given unique name, arguments, and options.
@@ -226,37 +226,37 @@ export class GCPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GCPolicyState | undefined;
-            resourceInputs["columnFamily"] = state ? state.columnFamily : undefined;
-            resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
-            resourceInputs["gcRules"] = state ? state.gcRules : undefined;
-            resourceInputs["ignoreWarnings"] = state ? state.ignoreWarnings : undefined;
-            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
-            resourceInputs["maxAge"] = state ? state.maxAge : undefined;
-            resourceInputs["maxVersions"] = state ? state.maxVersions : undefined;
-            resourceInputs["mode"] = state ? state.mode : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["table"] = state ? state.table : undefined;
+            resourceInputs["columnFamily"] = state?.columnFamily;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
+            resourceInputs["gcRules"] = state?.gcRules;
+            resourceInputs["ignoreWarnings"] = state?.ignoreWarnings;
+            resourceInputs["instanceName"] = state?.instanceName;
+            resourceInputs["maxAge"] = state?.maxAge;
+            resourceInputs["maxVersions"] = state?.maxVersions;
+            resourceInputs["mode"] = state?.mode;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["table"] = state?.table;
         } else {
             const args = argsOrState as GCPolicyArgs | undefined;
-            if ((!args || args.columnFamily === undefined) && !opts.urn) {
+            if (args?.columnFamily === undefined && !opts.urn) {
                 throw new Error("Missing required property 'columnFamily'");
             }
-            if ((!args || args.instanceName === undefined) && !opts.urn) {
+            if (args?.instanceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceName'");
             }
-            if ((!args || args.table === undefined) && !opts.urn) {
+            if (args?.table === undefined && !opts.urn) {
                 throw new Error("Missing required property 'table'");
             }
-            resourceInputs["columnFamily"] = args ? args.columnFamily : undefined;
-            resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
-            resourceInputs["gcRules"] = args ? args.gcRules : undefined;
-            resourceInputs["ignoreWarnings"] = args ? args.ignoreWarnings : undefined;
-            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
-            resourceInputs["maxAge"] = args ? args.maxAge : undefined;
-            resourceInputs["maxVersions"] = args ? args.maxVersions : undefined;
-            resourceInputs["mode"] = args ? args.mode : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["table"] = args ? args.table : undefined;
+            resourceInputs["columnFamily"] = args?.columnFamily;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
+            resourceInputs["gcRules"] = args?.gcRules;
+            resourceInputs["ignoreWarnings"] = args?.ignoreWarnings;
+            resourceInputs["instanceName"] = args?.instanceName;
+            resourceInputs["maxAge"] = args?.maxAge;
+            resourceInputs["maxVersions"] = args?.maxVersions;
+            resourceInputs["mode"] = args?.mode;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["table"] = args?.table;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GCPolicy.__pulumiType, name, resourceInputs, opts);

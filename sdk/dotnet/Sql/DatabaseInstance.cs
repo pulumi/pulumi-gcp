@@ -519,8 +519,7 @@ namespace Pulumi.Gcp.Sql
         public Output<ImmutableArray<string>> ReplicaNames { get; private set; } = null!;
 
         /// <summary>
-        /// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
-        /// after both the primary and replica are created.
+        /// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
         /// </summary>
         [Output("replicationCluster")]
         public Output<Outputs.DatabaseInstanceReplicationCluster> ReplicationCluster { get; private set; } = null!;
@@ -744,8 +743,7 @@ namespace Pulumi.Gcp.Sql
         }
 
         /// <summary>
-        /// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
-        /// after both the primary and replica are created.
+        /// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
         /// </summary>
         [Input("replicationCluster")]
         public Input<Inputs.DatabaseInstanceReplicationClusterArgs>? ReplicationCluster { get; set; }
@@ -988,8 +986,7 @@ namespace Pulumi.Gcp.Sql
         }
 
         /// <summary>
-        /// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
-        /// after both the primary and replica are created.
+        /// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
         /// </summary>
         [Input("replicationCluster")]
         public Input<Inputs.DatabaseInstanceReplicationClusterGetArgs>? ReplicationCluster { get; set; }

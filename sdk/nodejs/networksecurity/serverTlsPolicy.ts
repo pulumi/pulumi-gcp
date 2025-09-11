@@ -182,59 +182,59 @@ export class ServerTlsPolicy extends pulumi.CustomResource {
      * Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if allowOpen and mtlsPolicy are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility.
      * Consider using it if you wish to upgrade in place your deployment to TLS while having mixed TLS and non-TLS traffic reaching port :80.
      */
-    public readonly allowOpen!: pulumi.Output<boolean | undefined>;
+    declare public readonly allowOpen: pulumi.Output<boolean | undefined>;
     /**
      * Time the ServerTlsPolicy was created in UTC.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * A free-text description of the resource. Max length 1024 characters.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Set of label tags associated with the ServerTlsPolicy resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location of the server tls policy.
      * The default value is `global`.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * This field is required if the policy is used with external HTTPS load balancers. This field can be empty for Traffic Director.
      * Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If allowOpen and mtlsPolicy are set, server allows both plain text and mTLS connections.
      * Structure is documented below.
      */
-    public readonly mtlsPolicy!: pulumi.Output<outputs.networksecurity.ServerTlsPolicyMtlsPolicy | undefined>;
+    declare public readonly mtlsPolicy: pulumi.Output<outputs.networksecurity.ServerTlsPolicyMtlsPolicy | undefined>;
     /**
      * Name of the ServerTlsPolicy resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
      * Structure is documented below.
      */
-    public readonly serverCertificate!: pulumi.Output<outputs.networksecurity.ServerTlsPolicyServerCertificate | undefined>;
+    declare public readonly serverCertificate: pulumi.Output<outputs.networksecurity.ServerTlsPolicyServerCertificate | undefined>;
     /**
      * Time the ServerTlsPolicy was updated in UTC.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a ServerTlsPolicy resource with the given unique name, arguments, and options.
@@ -249,28 +249,28 @@ export class ServerTlsPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServerTlsPolicyState | undefined;
-            resourceInputs["allowOpen"] = state ? state.allowOpen : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["mtlsPolicy"] = state ? state.mtlsPolicy : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["serverCertificate"] = state ? state.serverCertificate : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["allowOpen"] = state?.allowOpen;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["mtlsPolicy"] = state?.mtlsPolicy;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["serverCertificate"] = state?.serverCertificate;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as ServerTlsPolicyArgs | undefined;
-            resourceInputs["allowOpen"] = args ? args.allowOpen : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["mtlsPolicy"] = args ? args.mtlsPolicy : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["serverCertificate"] = args ? args.serverCertificate : undefined;
+            resourceInputs["allowOpen"] = args?.allowOpen;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["mtlsPolicy"] = args?.mtlsPolicy;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["serverCertificate"] = args?.serverCertificate;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;

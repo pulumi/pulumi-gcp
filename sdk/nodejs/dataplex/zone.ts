@@ -100,73 +100,74 @@ export class Zone extends pulumi.CustomResource {
     /**
      * Output only. Aggregated status of the underlying assets of the zone.
      */
-    public /*out*/ readonly assetStatuses!: pulumi.Output<outputs.dataplex.ZoneAssetStatus[]>;
+    declare public /*out*/ readonly assetStatuses: pulumi.Output<outputs.dataplex.ZoneAssetStatus[]>;
     /**
      * Output only. The time when the zone was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Optional. Description of the zone.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Required. Specification of the discovery feature applied to data in this zone.
      */
-    public readonly discoverySpec!: pulumi.Output<outputs.dataplex.ZoneDiscoverySpec>;
+    declare public readonly discoverySpec: pulumi.Output<outputs.dataplex.ZoneDiscoverySpec>;
     /**
      * Optional. User friendly display name.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
-     * Optional. User defined labels for the zone. **Note**: This field is non-authoritative, and will only manage the labels
-     * present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the
-     * resource.
+     * Optional. User defined labels for the zone.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The lake for the resource
      */
-    public readonly lake!: pulumi.Output<string>;
+    declare public readonly lake: pulumi.Output<string>;
     /**
      * The location for the resource
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The name of the zone.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The project for the resource
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Required. Immutable. Specification of the resources that are referenced by the assets within this zone.
      */
-    public readonly resourceSpec!: pulumi.Output<outputs.dataplex.ZoneResourceSpec>;
+    declare public readonly resourceSpec: pulumi.Output<outputs.dataplex.ZoneResourceSpec>;
     /**
      * Output only. Current state of the zone. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Required. Immutable. The type of the zone. Possible values: TYPE_UNSPECIFIED, RAW, CURATED
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and re-created with the same name.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * Output only. The time when the zone was last updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Zone resource with the given unique name, arguments, and options.
@@ -181,50 +182,50 @@ export class Zone extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZoneState | undefined;
-            resourceInputs["assetStatuses"] = state ? state.assetStatuses : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["discoverySpec"] = state ? state.discoverySpec : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["lake"] = state ? state.lake : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["resourceSpec"] = state ? state.resourceSpec : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["assetStatuses"] = state?.assetStatuses;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["discoverySpec"] = state?.discoverySpec;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["lake"] = state?.lake;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["resourceSpec"] = state?.resourceSpec;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as ZoneArgs | undefined;
-            if ((!args || args.discoverySpec === undefined) && !opts.urn) {
+            if (args?.discoverySpec === undefined && !opts.urn) {
                 throw new Error("Missing required property 'discoverySpec'");
             }
-            if ((!args || args.lake === undefined) && !opts.urn) {
+            if (args?.lake === undefined && !opts.urn) {
                 throw new Error("Missing required property 'lake'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.resourceSpec === undefined) && !opts.urn) {
+            if (args?.resourceSpec === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceSpec'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["discoverySpec"] = args ? args.discoverySpec : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["lake"] = args ? args.lake : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["resourceSpec"] = args ? args.resourceSpec : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["discoverySpec"] = args?.discoverySpec;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["lake"] = args?.lake;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["resourceSpec"] = args?.resourceSpec;
+            resourceInputs["type"] = args?.type;
             resourceInputs["assetStatuses"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
@@ -269,9 +270,10 @@ export interface ZoneState {
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Optional. User defined labels for the zone. **Note**: This field is non-authoritative, and will only manage the labels
-     * present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the
-     * resource.
+     * Optional. User defined labels for the zone.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -333,9 +335,10 @@ export interface ZoneArgs {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Optional. User defined labels for the zone. **Note**: This field is non-authoritative, and will only manage the labels
-     * present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the
-     * resource.
+     * Optional. User defined labels for the zone.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

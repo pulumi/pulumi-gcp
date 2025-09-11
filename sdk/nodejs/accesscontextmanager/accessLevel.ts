@@ -100,32 +100,32 @@ export class AccessLevel extends pulumi.CustomResource {
      * A set of predefined conditions for the access level and a combining function.
      * Structure is documented below.
      */
-    public readonly basic!: pulumi.Output<outputs.accesscontextmanager.AccessLevelBasic | undefined>;
+    declare public readonly basic: pulumi.Output<outputs.accesscontextmanager.AccessLevelBasic | undefined>;
     /**
      * Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
      * See CEL spec at: https://github.com/google/cel-spec.
      * Structure is documented below.
      */
-    public readonly custom!: pulumi.Output<outputs.accesscontextmanager.AccessLevelCustom | undefined>;
+    declare public readonly custom: pulumi.Output<outputs.accesscontextmanager.AccessLevelCustom | undefined>;
     /**
      * Description of the AccessLevel and its use. Does not affect behavior.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Resource name for the Access Level. The shortName component must begin
      * with a letter and only include alphanumeric and '_'.
      * Format: accessPolicies/{policy_id}/accessLevels/{short_name}
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The AccessPolicy this AccessLevel lives in.
      * Format: accessPolicies/{policy_id}
      */
-    public readonly parent!: pulumi.Output<string>;
+    declare public readonly parent: pulumi.Output<string>;
     /**
      * Human readable title. Must be unique within the Policy.
      */
-    public readonly title!: pulumi.Output<string>;
+    declare public readonly title: pulumi.Output<string>;
 
     /**
      * Create a AccessLevel resource with the given unique name, arguments, and options.
@@ -140,26 +140,26 @@ export class AccessLevel extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessLevelState | undefined;
-            resourceInputs["basic"] = state ? state.basic : undefined;
-            resourceInputs["custom"] = state ? state.custom : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["title"] = state ? state.title : undefined;
+            resourceInputs["basic"] = state?.basic;
+            resourceInputs["custom"] = state?.custom;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["title"] = state?.title;
         } else {
             const args = argsOrState as AccessLevelArgs | undefined;
-            if ((!args || args.parent === undefined) && !opts.urn) {
+            if (args?.parent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            if ((!args || args.title === undefined) && !opts.urn) {
+            if (args?.title === undefined && !opts.urn) {
                 throw new Error("Missing required property 'title'");
             }
-            resourceInputs["basic"] = args ? args.basic : undefined;
-            resourceInputs["custom"] = args ? args.custom : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
-            resourceInputs["title"] = args ? args.title : undefined;
+            resourceInputs["basic"] = args?.basic;
+            resourceInputs["custom"] = args?.custom;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["parent"] = args?.parent;
+            resourceInputs["title"] = args?.title;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AccessLevel.__pulumiType, name, resourceInputs, opts);

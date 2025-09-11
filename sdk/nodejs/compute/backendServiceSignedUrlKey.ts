@@ -105,22 +105,22 @@ export class BackendServiceSignedUrlKey extends pulumi.CustomResource {
     /**
      * The backend service this signed URL key belongs.
      */
-    public readonly backendService!: pulumi.Output<string>;
+    declare public readonly backendService: pulumi.Output<string>;
     /**
      * 128-bit key value used for signing the URL. The key value must be a
      * valid RFC 4648 Section 5 base64url encoded string.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    public readonly keyValue!: pulumi.Output<string>;
+    declare public readonly keyValue: pulumi.Output<string>;
     /**
      * Name of the signed URL key.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
 
     /**
      * Create a BackendServiceSignedUrlKey resource with the given unique name, arguments, and options.
@@ -135,22 +135,22 @@ export class BackendServiceSignedUrlKey extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BackendServiceSignedUrlKeyState | undefined;
-            resourceInputs["backendService"] = state ? state.backendService : undefined;
-            resourceInputs["keyValue"] = state ? state.keyValue : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["backendService"] = state?.backendService;
+            resourceInputs["keyValue"] = state?.keyValue;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as BackendServiceSignedUrlKeyArgs | undefined;
-            if ((!args || args.backendService === undefined) && !opts.urn) {
+            if (args?.backendService === undefined && !opts.urn) {
                 throw new Error("Missing required property 'backendService'");
             }
-            if ((!args || args.keyValue === undefined) && !opts.urn) {
+            if (args?.keyValue === undefined && !opts.urn) {
                 throw new Error("Missing required property 'keyValue'");
             }
-            resourceInputs["backendService"] = args ? args.backendService : undefined;
+            resourceInputs["backendService"] = args?.backendService;
             resourceInputs["keyValue"] = args?.keyValue ? pulumi.secret(args.keyValue) : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["keyValue"] };

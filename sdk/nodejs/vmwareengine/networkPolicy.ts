@@ -118,64 +118,64 @@ export class NetworkPolicy extends pulumi.CustomResource {
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
      * up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * User-provided description for this network policy.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * IP address range in CIDR notation used to create internet access and external IP access.
      * An RFC 1918 CIDR block, with a "/26" prefix, is required. The range cannot overlap with any
      * prefixes either in the consumer VPC network or in use by the private clouds attached to that VPC network.
      */
-    public readonly edgeServicesCidr!: pulumi.Output<string>;
+    declare public readonly edgeServicesCidr: pulumi.Output<string>;
     /**
      * Network service that allows External IP addresses to be assigned to VMware workloads.
      * This service can only be enabled when internetAccess is also enabled.
      * Structure is documented below.
      */
-    public readonly externalIp!: pulumi.Output<outputs.vmwareengine.NetworkPolicyExternalIp>;
+    declare public readonly externalIp: pulumi.Output<outputs.vmwareengine.NetworkPolicyExternalIp>;
     /**
      * Network service that allows VMware workloads to access the internet.
      * Structure is documented below.
      */
-    public readonly internetAccess!: pulumi.Output<outputs.vmwareengine.NetworkPolicyInternetAccess>;
+    declare public readonly internetAccess: pulumi.Output<outputs.vmwareengine.NetworkPolicyInternetAccess>;
     /**
      * The resource name of the location (region) to create the new network policy in.
      * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
      * For example: projects/my-project/locations/us-central1
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The ID of the Network Policy.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * System-generated unique identifier for the resource.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * Last updated time of this resource.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
      * fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * The relative resource name of the VMware Engine network. Specify the name in the following form:
      * projects/{project}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId} where {project}
      * can either be a project number or a project ID.
      */
-    public readonly vmwareEngineNetwork!: pulumi.Output<string>;
+    declare public readonly vmwareEngineNetwork: pulumi.Output<string>;
     /**
      * The canonical name of the VMware Engine network in the form:
      * projects/{project_number}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
      */
-    public /*out*/ readonly vmwareEngineNetworkCanonical!: pulumi.Output<string>;
+    declare public /*out*/ readonly vmwareEngineNetworkCanonical: pulumi.Output<string>;
 
     /**
      * Create a NetworkPolicy resource with the given unique name, arguments, and options.
@@ -190,37 +190,37 @@ export class NetworkPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkPolicyState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["edgeServicesCidr"] = state ? state.edgeServicesCidr : undefined;
-            resourceInputs["externalIp"] = state ? state.externalIp : undefined;
-            resourceInputs["internetAccess"] = state ? state.internetAccess : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["vmwareEngineNetwork"] = state ? state.vmwareEngineNetwork : undefined;
-            resourceInputs["vmwareEngineNetworkCanonical"] = state ? state.vmwareEngineNetworkCanonical : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["edgeServicesCidr"] = state?.edgeServicesCidr;
+            resourceInputs["externalIp"] = state?.externalIp;
+            resourceInputs["internetAccess"] = state?.internetAccess;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["vmwareEngineNetwork"] = state?.vmwareEngineNetwork;
+            resourceInputs["vmwareEngineNetworkCanonical"] = state?.vmwareEngineNetworkCanonical;
         } else {
             const args = argsOrState as NetworkPolicyArgs | undefined;
-            if ((!args || args.edgeServicesCidr === undefined) && !opts.urn) {
+            if (args?.edgeServicesCidr === undefined && !opts.urn) {
                 throw new Error("Missing required property 'edgeServicesCidr'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.vmwareEngineNetwork === undefined) && !opts.urn) {
+            if (args?.vmwareEngineNetwork === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vmwareEngineNetwork'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["edgeServicesCidr"] = args ? args.edgeServicesCidr : undefined;
-            resourceInputs["externalIp"] = args ? args.externalIp : undefined;
-            resourceInputs["internetAccess"] = args ? args.internetAccess : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["vmwareEngineNetwork"] = args ? args.vmwareEngineNetwork : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["edgeServicesCidr"] = args?.edgeServicesCidr;
+            resourceInputs["externalIp"] = args?.externalIp;
+            resourceInputs["internetAccess"] = args?.internetAccess;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["vmwareEngineNetwork"] = args?.vmwareEngineNetwork;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;

@@ -300,91 +300,89 @@ export class AwsCluster extends pulumi.CustomResource {
     }
 
     /**
-     * Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
-     * all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-     * `effectiveAnnotations` for all of the annotations present on the resource.
+     * Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Configuration related to the cluster RBAC settings.
      */
-    public readonly authorization!: pulumi.Output<outputs.container.AwsClusterAuthorization>;
+    declare public readonly authorization: pulumi.Output<outputs.container.AwsClusterAuthorization>;
     /**
      * The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
      */
-    public readonly awsRegion!: pulumi.Output<string>;
+    declare public readonly awsRegion: pulumi.Output<string>;
     /**
      * Configuration options for the Binary Authorization feature.
      */
-    public readonly binaryAuthorization!: pulumi.Output<outputs.container.AwsClusterBinaryAuthorization>;
+    declare public readonly binaryAuthorization: pulumi.Output<outputs.container.AwsClusterBinaryAuthorization>;
     /**
      * Configuration related to the cluster control plane.
      */
-    public readonly controlPlane!: pulumi.Output<outputs.container.AwsClusterControlPlane>;
+    declare public readonly controlPlane: pulumi.Output<outputs.container.AwsClusterControlPlane>;
     /**
      * Output only. The time at which this cluster was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * Output only. The endpoint of the cluster's API server.
      */
-    public /*out*/ readonly endpoint!: pulumi.Output<string>;
+    declare public /*out*/ readonly endpoint: pulumi.Output<string>;
     /**
      * Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Fleet configuration.
      */
-    public readonly fleet!: pulumi.Output<outputs.container.AwsClusterFleet>;
+    declare public readonly fleet: pulumi.Output<outputs.container.AwsClusterFleet>;
     /**
      * The location for the resource
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Logging configuration.
      */
-    public readonly loggingConfig!: pulumi.Output<outputs.container.AwsClusterLoggingConfig>;
+    declare public readonly loggingConfig: pulumi.Output<outputs.container.AwsClusterLoggingConfig>;
     /**
      * The name of this resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Cluster-wide networking configuration.
      */
-    public readonly networking!: pulumi.Output<outputs.container.AwsClusterNetworking>;
+    declare public readonly networking: pulumi.Output<outputs.container.AwsClusterNetworking>;
     /**
      * The project for the resource
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Output only. If set, there are currently changes in flight to the cluster.
      */
-    public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly reconciling: pulumi.Output<boolean>;
     /**
      * Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Output only. A globally unique identifier for the cluster.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * Output only. The time at which this cluster was last updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * Output only. Workload Identity settings.
      */
-    public /*out*/ readonly workloadIdentityConfigs!: pulumi.Output<outputs.container.AwsClusterWorkloadIdentityConfig[]>;
+    declare public /*out*/ readonly workloadIdentityConfigs: pulumi.Output<outputs.container.AwsClusterWorkloadIdentityConfig[]>;
 
     /**
      * Create a AwsCluster resource with the given unique name, arguments, and options.
@@ -399,59 +397,59 @@ export class AwsCluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AwsClusterState | undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["authorization"] = state ? state.authorization : undefined;
-            resourceInputs["awsRegion"] = state ? state.awsRegion : undefined;
-            resourceInputs["binaryAuthorization"] = state ? state.binaryAuthorization : undefined;
-            resourceInputs["controlPlane"] = state ? state.controlPlane : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
-            resourceInputs["endpoint"] = state ? state.endpoint : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["fleet"] = state ? state.fleet : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["loggingConfig"] = state ? state.loggingConfig : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networking"] = state ? state.networking : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["reconciling"] = state ? state.reconciling : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["workloadIdentityConfigs"] = state ? state.workloadIdentityConfigs : undefined;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["authorization"] = state?.authorization;
+            resourceInputs["awsRegion"] = state?.awsRegion;
+            resourceInputs["binaryAuthorization"] = state?.binaryAuthorization;
+            resourceInputs["controlPlane"] = state?.controlPlane;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
+            resourceInputs["endpoint"] = state?.endpoint;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["fleet"] = state?.fleet;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["loggingConfig"] = state?.loggingConfig;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networking"] = state?.networking;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["reconciling"] = state?.reconciling;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["workloadIdentityConfigs"] = state?.workloadIdentityConfigs;
         } else {
             const args = argsOrState as AwsClusterArgs | undefined;
-            if ((!args || args.authorization === undefined) && !opts.urn) {
+            if (args?.authorization === undefined && !opts.urn) {
                 throw new Error("Missing required property 'authorization'");
             }
-            if ((!args || args.awsRegion === undefined) && !opts.urn) {
+            if (args?.awsRegion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'awsRegion'");
             }
-            if ((!args || args.controlPlane === undefined) && !opts.urn) {
+            if (args?.controlPlane === undefined && !opts.urn) {
                 throw new Error("Missing required property 'controlPlane'");
             }
-            if ((!args || args.fleet === undefined) && !opts.urn) {
+            if (args?.fleet === undefined && !opts.urn) {
                 throw new Error("Missing required property 'fleet'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.networking === undefined) && !opts.urn) {
+            if (args?.networking === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networking'");
             }
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["authorization"] = args ? args.authorization : undefined;
-            resourceInputs["awsRegion"] = args ? args.awsRegion : undefined;
-            resourceInputs["binaryAuthorization"] = args ? args.binaryAuthorization : undefined;
-            resourceInputs["controlPlane"] = args ? args.controlPlane : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["fleet"] = args ? args.fleet : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["loggingConfig"] = args ? args.loggingConfig : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networking"] = args ? args.networking : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["authorization"] = args?.authorization;
+            resourceInputs["awsRegion"] = args?.awsRegion;
+            resourceInputs["binaryAuthorization"] = args?.binaryAuthorization;
+            resourceInputs["controlPlane"] = args?.controlPlane;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["fleet"] = args?.fleet;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["loggingConfig"] = args?.loggingConfig;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networking"] = args?.networking;
+            resourceInputs["project"] = args?.project;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;
             resourceInputs["endpoint"] = undefined /*out*/;
@@ -472,12 +470,10 @@ export class AwsCluster extends pulumi.CustomResource {
  */
 export interface AwsClusterState {
     /**
-     * Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
-     * all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-     * `effectiveAnnotations` for all of the annotations present on the resource.
+     * Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -564,12 +560,10 @@ export interface AwsClusterState {
  */
 export interface AwsClusterArgs {
     /**
-     * Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
-     * all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-     * `effectiveAnnotations` for all of the annotations present on the resource.
+     * Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

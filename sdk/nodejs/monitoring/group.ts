@@ -102,34 +102,34 @@ export class Group extends pulumi.CustomResource {
      * A user-assigned name for this group, used only for display
      * purposes.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * The filter used to determine which monitored resources
      * belong to this group.
      */
-    public readonly filter!: pulumi.Output<string>;
+    declare public readonly filter: pulumi.Output<string>;
     /**
      * If true, the members of this group are considered to be a
      * cluster. The system can perform additional analysis on
      * groups that are clusters.
      */
-    public readonly isCluster!: pulumi.Output<boolean | undefined>;
+    declare public readonly isCluster: pulumi.Output<boolean | undefined>;
     /**
      * A unique identifier for this group. The format is
      * "projects/{project_id_or_number}/groups/{group_id}".
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The name of the group's parent, if it has one. The format is
      * "projects/{project_id_or_number}/groups/{group_id}". For
      * groups with no parent, parentName is the empty string, "".
      */
-    public readonly parentName!: pulumi.Output<string | undefined>;
+    declare public readonly parentName: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
 
     /**
      * Create a Group resource with the given unique name, arguments, and options.
@@ -144,25 +144,25 @@ export class Group extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupState | undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["filter"] = state ? state.filter : undefined;
-            resourceInputs["isCluster"] = state ? state.isCluster : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parentName"] = state ? state.parentName : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["filter"] = state?.filter;
+            resourceInputs["isCluster"] = state?.isCluster;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parentName"] = state?.parentName;
+            resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as GroupArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.filter === undefined) && !opts.urn) {
+            if (args?.filter === undefined && !opts.urn) {
                 throw new Error("Missing required property 'filter'");
             }
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["filter"] = args ? args.filter : undefined;
-            resourceInputs["isCluster"] = args ? args.isCluster : undefined;
-            resourceInputs["parentName"] = args ? args.parentName : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["filter"] = args?.filter;
+            resourceInputs["isCluster"] = args?.isCluster;
+            resourceInputs["parentName"] = args?.parentName;
+            resourceInputs["project"] = args?.project;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

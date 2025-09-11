@@ -207,15 +207,15 @@ export class AiFeatureStoreIamMember extends pulumi.CustomResource {
         return obj['__pulumiType'] === AiFeatureStoreIamMember.__pulumiType;
     }
 
-    public readonly condition!: pulumi.Output<outputs.vertex.AiFeatureStoreIamMemberCondition | undefined>;
+    declare public readonly condition: pulumi.Output<outputs.vertex.AiFeatureStoreIamMemberCondition | undefined>;
     /**
      * (Computed) The etag of the IAM policy.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Used to find the parent resource to bind the IAM policy to
      */
-    public readonly featurestore!: pulumi.Output<string>;
+    declare public readonly featurestore: pulumi.Output<string>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -229,24 +229,24 @@ export class AiFeatureStoreIamMember extends pulumi.CustomResource {
      * * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
      */
-    public readonly member!: pulumi.Output<string>;
+    declare public readonly member: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The region of the dataset. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
      * the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
      * region is specified, it is taken from the provider configuration.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.vertex.AiFeatureStoreIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    public readonly role!: pulumi.Output<string>;
+    declare public readonly role: pulumi.Output<string>;
 
     /**
      * Create a AiFeatureStoreIamMember resource with the given unique name, arguments, and options.
@@ -261,30 +261,30 @@ export class AiFeatureStoreIamMember extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AiFeatureStoreIamMemberState | undefined;
-            resourceInputs["condition"] = state ? state.condition : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["featurestore"] = state ? state.featurestore : undefined;
-            resourceInputs["member"] = state ? state.member : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["condition"] = state?.condition;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["featurestore"] = state?.featurestore;
+            resourceInputs["member"] = state?.member;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["role"] = state?.role;
         } else {
             const args = argsOrState as AiFeatureStoreIamMemberArgs | undefined;
-            if ((!args || args.featurestore === undefined) && !opts.urn) {
+            if (args?.featurestore === undefined && !opts.urn) {
                 throw new Error("Missing required property 'featurestore'");
             }
-            if ((!args || args.member === undefined) && !opts.urn) {
+            if (args?.member === undefined && !opts.urn) {
                 throw new Error("Missing required property 'member'");
             }
-            if ((!args || args.role === undefined) && !opts.urn) {
+            if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            resourceInputs["condition"] = args ? args.condition : undefined;
-            resourceInputs["featurestore"] = args ? args.featurestore : undefined;
-            resourceInputs["member"] = args ? args.member : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["condition"] = args?.condition;
+            resourceInputs["featurestore"] = args?.featurestore;
+            resourceInputs["member"] = args?.member;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["role"] = args?.role;
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

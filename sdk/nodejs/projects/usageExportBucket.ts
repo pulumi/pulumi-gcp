@@ -74,15 +74,15 @@ export class UsageExportBucket extends pulumi.CustomResource {
      *
      * - - -
      */
-    public readonly bucketName!: pulumi.Output<string>;
+    declare public readonly bucketName: pulumi.Output<string>;
     /**
      * A prefix for the reports, for instance, the project name.
      */
-    public readonly prefix!: pulumi.Output<string | undefined>;
+    declare public readonly prefix: pulumi.Output<string | undefined>;
     /**
      * The project to set the export bucket on. If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
 
     /**
      * Create a UsageExportBucket resource with the given unique name, arguments, and options.
@@ -97,17 +97,17 @@ export class UsageExportBucket extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UsageExportBucketState | undefined;
-            resourceInputs["bucketName"] = state ? state.bucketName : undefined;
-            resourceInputs["prefix"] = state ? state.prefix : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["bucketName"] = state?.bucketName;
+            resourceInputs["prefix"] = state?.prefix;
+            resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as UsageExportBucketArgs | undefined;
-            if ((!args || args.bucketName === undefined) && !opts.urn) {
+            if (args?.bucketName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucketName'");
             }
-            resourceInputs["bucketName"] = args ? args.bucketName : undefined;
-            resourceInputs["prefix"] = args ? args.prefix : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["bucketName"] = args?.bucketName;
+            resourceInputs["prefix"] = args?.prefix;
+            resourceInputs["project"] = args?.project;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(UsageExportBucket.__pulumiType, name, resourceInputs, opts);

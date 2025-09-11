@@ -121,16 +121,16 @@ export class AppCheckServiceConfig extends pulumi.CustomResource {
         return obj['__pulumiType'] === AppCheckServiceConfig.__pulumiType;
     }
 
-    public readonly enforcementMode!: pulumi.Output<string | undefined>;
+    declare public readonly enforcementMode: pulumi.Output<string | undefined>;
     /**
      * The fully-qualified resource name of the service enforcement configuration.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The identifier of the service to configure enforcement. Currently, the following service IDs are supported:
      * firebasestorage.googleapis.com (Cloud Storage for Firebase)
@@ -138,7 +138,7 @@ export class AppCheckServiceConfig extends pulumi.CustomResource {
      * firestore.googleapis.com (Cloud Firestore)
      * identitytoolkit.googleapis.com (Authentication)
      */
-    public readonly serviceId!: pulumi.Output<string>;
+    declare public readonly serviceId: pulumi.Output<string>;
 
     /**
      * Create a AppCheckServiceConfig resource with the given unique name, arguments, and options.
@@ -153,18 +153,18 @@ export class AppCheckServiceConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AppCheckServiceConfigState | undefined;
-            resourceInputs["enforcementMode"] = state ? state.enforcementMode : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["serviceId"] = state ? state.serviceId : undefined;
+            resourceInputs["enforcementMode"] = state?.enforcementMode;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["serviceId"] = state?.serviceId;
         } else {
             const args = argsOrState as AppCheckServiceConfigArgs | undefined;
-            if ((!args || args.serviceId === undefined) && !opts.urn) {
+            if (args?.serviceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceId'");
             }
-            resourceInputs["enforcementMode"] = args ? args.enforcementMode : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["serviceId"] = args ? args.serviceId : undefined;
+            resourceInputs["enforcementMode"] = args?.enforcementMode;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["serviceId"] = args?.serviceId;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

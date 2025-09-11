@@ -237,54 +237,54 @@ export class Entry extends pulumi.CustomResource {
      * The aspects that are attached to the entry.
      * Structure is documented below.
      */
-    public readonly aspects!: pulumi.Output<outputs.dataplex.EntryAspect[] | undefined>;
+    declare public readonly aspects: pulumi.Output<outputs.dataplex.EntryAspect[] | undefined>;
     /**
      * The time when the Entry was created in Dataplex.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The entry group id of the entry group the entry will be created in.
      */
-    public readonly entryGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly entryGroupId: pulumi.Output<string | undefined>;
     /**
      * The entry id of the entry.
      */
-    public readonly entryId!: pulumi.Output<string | undefined>;
+    declare public readonly entryId: pulumi.Output<string | undefined>;
     /**
      * A nested object resource.
      * Structure is documented below.
      */
-    public readonly entrySource!: pulumi.Output<outputs.dataplex.EntryEntrySource>;
+    declare public readonly entrySource: pulumi.Output<outputs.dataplex.EntryEntrySource>;
     /**
      * The relative resource name of the entry type that was used to create this entry, in the format projects/{project_number}/locations/{locationId}/entryTypes/{entryTypeId}.
      */
-    public readonly entryType!: pulumi.Output<string>;
+    declare public readonly entryType: pulumi.Output<string>;
     /**
      * A name for the entry that can be referenced by an external system. For more information, see https://cloud.google.com/dataplex/docs/fully-qualified-names.
      * The maximum size of the field is 4000 characters.
      */
-    public readonly fullyQualifiedName!: pulumi.Output<string | undefined>;
+    declare public readonly fullyQualifiedName: pulumi.Output<string | undefined>;
     /**
      * The location where entry will be created.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * The relative resource name of the entry, in the format projects/{project_number}/locations/{locationId}/entryGroups/{entryGroupId}/entries/{entryId}.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The resource name of the parent entry, in the format projects/{project_number}/locations/{locationId}/entryGroups/{entryGroupId}/entries/{entryId}.
      */
-    public readonly parentEntry!: pulumi.Output<string | undefined>;
+    declare public readonly parentEntry: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The time when the entry was last updated in Dataplex.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Entry resource with the given unique name, arguments, and options.
@@ -299,32 +299,32 @@ export class Entry extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EntryState | undefined;
-            resourceInputs["aspects"] = state ? state.aspects : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["entryGroupId"] = state ? state.entryGroupId : undefined;
-            resourceInputs["entryId"] = state ? state.entryId : undefined;
-            resourceInputs["entrySource"] = state ? state.entrySource : undefined;
-            resourceInputs["entryType"] = state ? state.entryType : undefined;
-            resourceInputs["fullyQualifiedName"] = state ? state.fullyQualifiedName : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parentEntry"] = state ? state.parentEntry : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["aspects"] = state?.aspects;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["entryGroupId"] = state?.entryGroupId;
+            resourceInputs["entryId"] = state?.entryId;
+            resourceInputs["entrySource"] = state?.entrySource;
+            resourceInputs["entryType"] = state?.entryType;
+            resourceInputs["fullyQualifiedName"] = state?.fullyQualifiedName;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parentEntry"] = state?.parentEntry;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as EntryArgs | undefined;
-            if ((!args || args.entryType === undefined) && !opts.urn) {
+            if (args?.entryType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'entryType'");
             }
-            resourceInputs["aspects"] = args ? args.aspects : undefined;
-            resourceInputs["entryGroupId"] = args ? args.entryGroupId : undefined;
-            resourceInputs["entryId"] = args ? args.entryId : undefined;
-            resourceInputs["entrySource"] = args ? args.entrySource : undefined;
-            resourceInputs["entryType"] = args ? args.entryType : undefined;
-            resourceInputs["fullyQualifiedName"] = args ? args.fullyQualifiedName : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["parentEntry"] = args ? args.parentEntry : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["aspects"] = args?.aspects;
+            resourceInputs["entryGroupId"] = args?.entryGroupId;
+            resourceInputs["entryId"] = args?.entryId;
+            resourceInputs["entrySource"] = args?.entrySource;
+            resourceInputs["entryType"] = args?.entryType;
+            resourceInputs["fullyQualifiedName"] = args?.fullyQualifiedName;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["parentEntry"] = args?.parentEntry;
+            resourceInputs["project"] = args?.project;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;

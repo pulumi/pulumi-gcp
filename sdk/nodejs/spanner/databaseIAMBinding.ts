@@ -253,19 +253,19 @@ export class DatabaseIAMBinding extends pulumi.CustomResource {
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    public readonly condition!: pulumi.Output<outputs.spanner.DatabaseIAMBindingCondition | undefined>;
+    declare public readonly condition: pulumi.Output<outputs.spanner.DatabaseIAMBindingCondition | undefined>;
     /**
      * The name of the Spanner database.
      */
-    public readonly database!: pulumi.Output<string>;
+    declare public readonly database: pulumi.Output<string>;
     /**
      * (Computed) The etag of the database's IAM policy.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The name of the Spanner instance the database belongs to.
      */
-    public readonly instance!: pulumi.Output<string>;
+    declare public readonly instance: pulumi.Output<string>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -276,18 +276,18 @@ export class DatabaseIAMBinding extends pulumi.CustomResource {
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
-    public readonly members!: pulumi.Output<string[]>;
+    declare public readonly members: pulumi.Output<string[]>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.spanner.DatabaseIAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    public readonly role!: pulumi.Output<string>;
+    declare public readonly role: pulumi.Output<string>;
 
     /**
      * Create a DatabaseIAMBinding resource with the given unique name, arguments, and options.
@@ -302,33 +302,33 @@ export class DatabaseIAMBinding extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseIAMBindingState | undefined;
-            resourceInputs["condition"] = state ? state.condition : undefined;
-            resourceInputs["database"] = state ? state.database : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["instance"] = state ? state.instance : undefined;
-            resourceInputs["members"] = state ? state.members : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["condition"] = state?.condition;
+            resourceInputs["database"] = state?.database;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["instance"] = state?.instance;
+            resourceInputs["members"] = state?.members;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["role"] = state?.role;
         } else {
             const args = argsOrState as DatabaseIAMBindingArgs | undefined;
-            if ((!args || args.database === undefined) && !opts.urn) {
+            if (args?.database === undefined && !opts.urn) {
                 throw new Error("Missing required property 'database'");
             }
-            if ((!args || args.instance === undefined) && !opts.urn) {
+            if (args?.instance === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instance'");
             }
-            if ((!args || args.members === undefined) && !opts.urn) {
+            if (args?.members === undefined && !opts.urn) {
                 throw new Error("Missing required property 'members'");
             }
-            if ((!args || args.role === undefined) && !opts.urn) {
+            if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            resourceInputs["condition"] = args ? args.condition : undefined;
-            resourceInputs["database"] = args ? args.database : undefined;
-            resourceInputs["instance"] = args ? args.instance : undefined;
-            resourceInputs["members"] = args ? args.members : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["condition"] = args?.condition;
+            resourceInputs["database"] = args?.database;
+            resourceInputs["instance"] = args?.instance;
+            resourceInputs["members"] = args?.members;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["role"] = args?.role;
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

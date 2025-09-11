@@ -132,7 +132,7 @@ export class RegionCommitment extends pulumi.CustomResource {
      * If the field is set to true, the commitment will be automatically renewed for either
      * one or three years according to the terms of the existing commitment.
      */
-    public readonly autoRenew!: pulumi.Output<boolean>;
+    declare public readonly autoRenew: pulumi.Output<boolean>;
     /**
      * The category of the commitment. Category MACHINE specifies commitments composed of
      * machine resources such as VCPU or MEMORY, listed in resources. Category LICENSE
@@ -140,32 +140,32 @@ export class RegionCommitment extends pulumi.CustomResource {
      * Note that only MACHINE commitments should have a Type specified.
      * Possible values are: `LICENSE`, `MACHINE`.
      */
-    public readonly category!: pulumi.Output<string>;
+    declare public readonly category: pulumi.Output<string>;
     /**
      * Unique identifier for the resource.
      */
-    public /*out*/ readonly commitmentId!: pulumi.Output<number>;
+    declare public /*out*/ readonly commitmentId: pulumi.Output<number>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * An optional description of this resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Commitment end time in RFC3339 text format.
      */
-    public /*out*/ readonly endTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly endTimestamp: pulumi.Output<string>;
     /**
      * Specifies the already existing reservations to attach to the Commitment.
      */
-    public readonly existingReservations!: pulumi.Output<string>;
+    declare public readonly existingReservations: pulumi.Output<string>;
     /**
      * The license specification required as part of a license commitment.
      * Structure is documented below.
      */
-    public readonly licenseResource!: pulumi.Output<outputs.compute.RegionCommitmentLicenseResource | undefined>;
+    declare public readonly licenseResource: pulumi.Output<outputs.compute.RegionCommitmentLicenseResource | undefined>;
     /**
      * Name of the resource. The name must be 1-63 characters long and match
      * the regular expression `a-z?` which means the
@@ -173,45 +173,45 @@ export class RegionCommitment extends pulumi.CustomResource {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The plan for this commitment, which determines duration and discount rate.
      * The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
      * Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
      */
-    public readonly plan!: pulumi.Output<string>;
+    declare public readonly plan: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * URL of the region where this commitment may be used.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * A list of commitment amounts for particular resources.
      * Note that VCPU and MEMORY resource commitments must occur together.
      * Structure is documented below.
      */
-    public readonly resources!: pulumi.Output<outputs.compute.RegionCommitmentResource[] | undefined>;
+    declare public readonly resources: pulumi.Output<outputs.compute.RegionCommitmentResource[] | undefined>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * Commitment start time in RFC3339 text format.
      */
-    public /*out*/ readonly startTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly startTimestamp: pulumi.Output<string>;
     /**
      * Status of the commitment with regards to eventual expiration
      * (each commitment has an end date defined).
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * A human-readable explanation of the status.
      */
-    public /*out*/ readonly statusMessage!: pulumi.Output<string>;
+    declare public /*out*/ readonly statusMessage: pulumi.Output<string>;
     /**
      * The type of commitment, which affects the discount rate and the eligible resources.
      * The type could be one of the following value: `MEMORY_OPTIMIZED`, `ACCELERATOR_OPTIMIZED`,
@@ -219,7 +219,7 @@ export class RegionCommitment extends pulumi.CustomResource {
      * `GENERAL_PURPOSE_T2D`, `GENERAL_PURPOSE_C3`, `COMPUTE_OPTIMIZED_C2`, `COMPUTE_OPTIMIZED_C2D` and
      * `GRAPHICS_OPTIMIZED_G2`
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a RegionCommitment resource with the given unique name, arguments, and options.
@@ -234,40 +234,40 @@ export class RegionCommitment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegionCommitmentState | undefined;
-            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
-            resourceInputs["category"] = state ? state.category : undefined;
-            resourceInputs["commitmentId"] = state ? state.commitmentId : undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["endTimestamp"] = state ? state.endTimestamp : undefined;
-            resourceInputs["existingReservations"] = state ? state.existingReservations : undefined;
-            resourceInputs["licenseResource"] = state ? state.licenseResource : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["plan"] = state ? state.plan : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["resources"] = state ? state.resources : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["startTimestamp"] = state ? state.startTimestamp : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["statusMessage"] = state ? state.statusMessage : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["category"] = state?.category;
+            resourceInputs["commitmentId"] = state?.commitmentId;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["endTimestamp"] = state?.endTimestamp;
+            resourceInputs["existingReservations"] = state?.existingReservations;
+            resourceInputs["licenseResource"] = state?.licenseResource;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["plan"] = state?.plan;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["resources"] = state?.resources;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["startTimestamp"] = state?.startTimestamp;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["statusMessage"] = state?.statusMessage;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as RegionCommitmentArgs | undefined;
-            if ((!args || args.plan === undefined) && !opts.urn) {
+            if (args?.plan === undefined && !opts.urn) {
                 throw new Error("Missing required property 'plan'");
             }
-            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
-            resourceInputs["category"] = args ? args.category : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["existingReservations"] = args ? args.existingReservations : undefined;
-            resourceInputs["licenseResource"] = args ? args.licenseResource : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["plan"] = args ? args.plan : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["resources"] = args ? args.resources : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["autoRenew"] = args?.autoRenew;
+            resourceInputs["category"] = args?.category;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["existingReservations"] = args?.existingReservations;
+            resourceInputs["licenseResource"] = args?.licenseResource;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["plan"] = args?.plan;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["resources"] = args?.resources;
+            resourceInputs["type"] = args?.type;
             resourceInputs["commitmentId"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["endTimestamp"] = undefined /*out*/;

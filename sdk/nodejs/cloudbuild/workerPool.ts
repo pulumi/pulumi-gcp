@@ -123,63 +123,64 @@ export class WorkerPool extends pulumi.CustomResource {
     }
 
     /**
-     * User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
-     * limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
-     * configuration. Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+     * User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Output only. Time at which the request to create the `WorkerPool` was received.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Output only. Time at which the request to delete the `WorkerPool` was received.
      */
-    public /*out*/ readonly deleteTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly deleteTime: pulumi.Output<string>;
     /**
      * A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * The location for the resource
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * User-defined name of the `WorkerPool`.
      *
      *
      * - - -
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Network configuration for the `WorkerPool`. Structure is documented below.
      */
-    public readonly networkConfig!: pulumi.Output<outputs.cloudbuild.WorkerPoolNetworkConfig | undefined>;
+    declare public readonly networkConfig: pulumi.Output<outputs.cloudbuild.WorkerPoolNetworkConfig | undefined>;
     /**
      * Private Service Connect configuration for the pool.
      */
-    public readonly privateServiceConnect!: pulumi.Output<outputs.cloudbuild.WorkerPoolPrivateServiceConnect | undefined>;
+    declare public readonly privateServiceConnect: pulumi.Output<outputs.cloudbuild.WorkerPoolPrivateServiceConnect | undefined>;
     /**
      * The project for the resource
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Output only. A unique identifier for the `WorkerPool`.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * Output only. Time at which the request to update the `WorkerPool` was received.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
      */
-    public readonly workerConfig!: pulumi.Output<outputs.cloudbuild.WorkerPoolWorkerConfig>;
+    declare public readonly workerConfig: pulumi.Output<outputs.cloudbuild.WorkerPoolWorkerConfig>;
 
     /**
      * Create a WorkerPool resource with the given unique name, arguments, and options.
@@ -194,33 +195,33 @@ export class WorkerPool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkerPoolState | undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["deleteTime"] = state ? state.deleteTime : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networkConfig"] = state ? state.networkConfig : undefined;
-            resourceInputs["privateServiceConnect"] = state ? state.privateServiceConnect : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["workerConfig"] = state ? state.workerConfig : undefined;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deleteTime"] = state?.deleteTime;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networkConfig"] = state?.networkConfig;
+            resourceInputs["privateServiceConnect"] = state?.privateServiceConnect;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["workerConfig"] = state?.workerConfig;
         } else {
             const args = argsOrState as WorkerPoolArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networkConfig"] = args ? args.networkConfig : undefined;
-            resourceInputs["privateServiceConnect"] = args ? args.privateServiceConnect : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["workerConfig"] = args ? args.workerConfig : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networkConfig"] = args?.networkConfig;
+            resourceInputs["privateServiceConnect"] = args?.privateServiceConnect;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["workerConfig"] = args?.workerConfig;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;
@@ -238,9 +239,10 @@ export class WorkerPool extends pulumi.CustomResource {
  */
 export interface WorkerPoolState {
     /**
-     * User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
-     * limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
-     * configuration. Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+     * User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -302,9 +304,10 @@ export interface WorkerPoolState {
  */
 export interface WorkerPoolArgs {
     /**
-     * User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
-     * limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
-     * configuration. Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+     * User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

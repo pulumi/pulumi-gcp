@@ -392,94 +392,94 @@ export class Datascan extends pulumi.CustomResource {
     /**
      * The time when the scan was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The data source for DataScan.
      * Structure is documented below.
      */
-    public readonly data!: pulumi.Output<outputs.dataplex.DatascanData>;
+    declare public readonly data: pulumi.Output<outputs.dataplex.DatascanData>;
     /**
      * DataDiscoveryScan related setting.
      * Structure is documented below.
      */
-    public readonly dataDiscoverySpec!: pulumi.Output<outputs.dataplex.DatascanDataDiscoverySpec | undefined>;
+    declare public readonly dataDiscoverySpec: pulumi.Output<outputs.dataplex.DatascanDataDiscoverySpec | undefined>;
     /**
      * DataProfileScan related setting.
      * Structure is documented below.
      */
-    public readonly dataProfileSpec!: pulumi.Output<outputs.dataplex.DatascanDataProfileSpec | undefined>;
+    declare public readonly dataProfileSpec: pulumi.Output<outputs.dataplex.DatascanDataProfileSpec | undefined>;
     /**
      * DataQualityScan related setting.
      * Structure is documented below.
      */
-    public readonly dataQualitySpec!: pulumi.Output<outputs.dataplex.DatascanDataQualitySpec | undefined>;
+    declare public readonly dataQualitySpec: pulumi.Output<outputs.dataplex.DatascanDataQualitySpec | undefined>;
     /**
      * DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
      */
-    public readonly dataScanId!: pulumi.Output<string>;
+    declare public readonly dataScanId: pulumi.Output<string>;
     /**
      * Description of the scan.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * User friendly display name.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * DataScan execution settings.
      * Structure is documented below.
      */
-    public readonly executionSpec!: pulumi.Output<outputs.dataplex.DatascanExecutionSpec>;
+    declare public readonly executionSpec: pulumi.Output<outputs.dataplex.DatascanExecutionSpec>;
     /**
      * Status of the data scan execution.
      * Structure is documented below.
      */
-    public /*out*/ readonly executionStatuses!: pulumi.Output<outputs.dataplex.DatascanExecutionStatus[]>;
+    declare public /*out*/ readonly executionStatuses: pulumi.Output<outputs.dataplex.DatascanExecutionStatus[]>;
     /**
      * User-defined labels for the scan. A list of key->value pairs.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location where the data scan should reside.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The relative resource name of the scan, of the form: projects/{project}/locations/{locationId}/dataScans/{datascan_id}, where project refers to a projectId or projectNumber and locationId refers to a GCP region.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Current state of the DataScan.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The type of DataScan.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * System generated globally unique ID for the scan. This ID will be different if the scan is deleted and re-created with the same name.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * The time when the scan was last updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Datascan resource with the given unique name, arguments, and options.
@@ -494,51 +494,51 @@ export class Datascan extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatascanState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["data"] = state ? state.data : undefined;
-            resourceInputs["dataDiscoverySpec"] = state ? state.dataDiscoverySpec : undefined;
-            resourceInputs["dataProfileSpec"] = state ? state.dataProfileSpec : undefined;
-            resourceInputs["dataQualitySpec"] = state ? state.dataQualitySpec : undefined;
-            resourceInputs["dataScanId"] = state ? state.dataScanId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["executionSpec"] = state ? state.executionSpec : undefined;
-            resourceInputs["executionStatuses"] = state ? state.executionStatuses : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["data"] = state?.data;
+            resourceInputs["dataDiscoverySpec"] = state?.dataDiscoverySpec;
+            resourceInputs["dataProfileSpec"] = state?.dataProfileSpec;
+            resourceInputs["dataQualitySpec"] = state?.dataQualitySpec;
+            resourceInputs["dataScanId"] = state?.dataScanId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["executionSpec"] = state?.executionSpec;
+            resourceInputs["executionStatuses"] = state?.executionStatuses;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as DatascanArgs | undefined;
-            if ((!args || args.data === undefined) && !opts.urn) {
+            if (args?.data === undefined && !opts.urn) {
                 throw new Error("Missing required property 'data'");
             }
-            if ((!args || args.dataScanId === undefined) && !opts.urn) {
+            if (args?.dataScanId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataScanId'");
             }
-            if ((!args || args.executionSpec === undefined) && !opts.urn) {
+            if (args?.executionSpec === undefined && !opts.urn) {
                 throw new Error("Missing required property 'executionSpec'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            resourceInputs["data"] = args ? args.data : undefined;
-            resourceInputs["dataDiscoverySpec"] = args ? args.dataDiscoverySpec : undefined;
-            resourceInputs["dataProfileSpec"] = args ? args.dataProfileSpec : undefined;
-            resourceInputs["dataQualitySpec"] = args ? args.dataQualitySpec : undefined;
-            resourceInputs["dataScanId"] = args ? args.dataScanId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["executionSpec"] = args ? args.executionSpec : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["data"] = args?.data;
+            resourceInputs["dataDiscoverySpec"] = args?.dataDiscoverySpec;
+            resourceInputs["dataProfileSpec"] = args?.dataProfileSpec;
+            resourceInputs["dataQualitySpec"] = args?.dataQualitySpec;
+            resourceInputs["dataScanId"] = args?.dataScanId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["executionSpec"] = args?.executionSpec;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["project"] = args?.project;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["executionStatuses"] = undefined /*out*/;

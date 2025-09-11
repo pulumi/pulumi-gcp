@@ -79,45 +79,45 @@ export class FirewallPolicy extends pulumi.CustomResource {
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Fingerprint of the resource. This field is used internally during updates of this resource.
      */
-    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly fingerprint: pulumi.Output<string>;
     /**
      * The unique identifier for the resource. This identifier is defined by the server.
      */
-    public /*out*/ readonly firewallPolicyId!: pulumi.Output<string>;
+    declare public /*out*/ readonly firewallPolicyId: pulumi.Output<string>;
     /**
      * Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The parent of the firewall policy.
      */
-    public readonly parent!: pulumi.Output<string>;
+    declare public readonly parent: pulumi.Output<string>;
     /**
      * Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
      */
-    public /*out*/ readonly ruleTupleCount!: pulumi.Output<number>;
+    declare public /*out*/ readonly ruleTupleCount: pulumi.Output<number>;
     /**
      * Server-defined URL for the resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * Server-defined URL for this resource with the resource id.
      */
-    public /*out*/ readonly selfLinkWithId!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLinkWithId: pulumi.Output<string>;
     /**
      * User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created.
      * This field is not applicable to network firewall policies. This name must be set on creation and cannot be changed. The name must be 1-63 characters long, and comply with RFC1035.
      * Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
-    public readonly shortName!: pulumi.Output<string>;
+    declare public readonly shortName: pulumi.Output<string>;
 
     /**
      * Create a FirewallPolicy resource with the given unique name, arguments, and options.
@@ -132,27 +132,27 @@ export class FirewallPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FirewallPolicyState | undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
-            resourceInputs["firewallPolicyId"] = state ? state.firewallPolicyId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["ruleTupleCount"] = state ? state.ruleTupleCount : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["selfLinkWithId"] = state ? state.selfLinkWithId : undefined;
-            resourceInputs["shortName"] = state ? state.shortName : undefined;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["fingerprint"] = state?.fingerprint;
+            resourceInputs["firewallPolicyId"] = state?.firewallPolicyId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["ruleTupleCount"] = state?.ruleTupleCount;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["selfLinkWithId"] = state?.selfLinkWithId;
+            resourceInputs["shortName"] = state?.shortName;
         } else {
             const args = argsOrState as FirewallPolicyArgs | undefined;
-            if ((!args || args.parent === undefined) && !opts.urn) {
+            if (args?.parent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            if ((!args || args.shortName === undefined) && !opts.urn) {
+            if (args?.shortName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'shortName'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
-            resourceInputs["shortName"] = args ? args.shortName : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["parent"] = args?.parent;
+            resourceInputs["shortName"] = args?.shortName;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["firewallPolicyId"] = undefined /*out*/;

@@ -458,8 +458,7 @@ type DatabaseInstance struct {
 	ReplicaConfiguration DatabaseInstanceReplicaConfigurationOutput `pulumi:"replicaConfiguration"`
 	// List of replica names. Can be updated.
 	ReplicaNames pulumi.StringArrayOutput `pulumi:"replicaNames"`
-	// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
-	// after both the primary and replica are created.
+	// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
 	ReplicationCluster DatabaseInstanceReplicationClusterOutput `pulumi:"replicationCluster"`
 	// The context needed to restore the database to a backup run. This field will
 	// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
@@ -598,8 +597,7 @@ type databaseInstanceState struct {
 	ReplicaConfiguration *DatabaseInstanceReplicaConfiguration `pulumi:"replicaConfiguration"`
 	// List of replica names. Can be updated.
 	ReplicaNames []string `pulumi:"replicaNames"`
-	// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
-	// after both the primary and replica are created.
+	// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
 	ReplicationCluster *DatabaseInstanceReplicationCluster `pulumi:"replicationCluster"`
 	// The context needed to restore the database to a backup run. This field will
 	// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
@@ -694,8 +692,7 @@ type DatabaseInstanceState struct {
 	ReplicaConfiguration DatabaseInstanceReplicaConfigurationPtrInput
 	// List of replica names. Can be updated.
 	ReplicaNames pulumi.StringArrayInput
-	// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
-	// after both the primary and replica are created.
+	// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
 	ReplicationCluster DatabaseInstanceReplicationClusterPtrInput
 	// The context needed to restore the database to a backup run. This field will
 	// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
@@ -776,8 +773,7 @@ type databaseInstanceArgs struct {
 	ReplicaConfiguration *DatabaseInstanceReplicaConfiguration `pulumi:"replicaConfiguration"`
 	// List of replica names. Can be updated.
 	ReplicaNames []string `pulumi:"replicaNames"`
-	// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
-	// after both the primary and replica are created.
+	// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
 	ReplicationCluster *DatabaseInstanceReplicationCluster `pulumi:"replicationCluster"`
 	// The context needed to restore the database to a backup run. This field will
 	// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
@@ -849,8 +845,7 @@ type DatabaseInstanceArgs struct {
 	ReplicaConfiguration DatabaseInstanceReplicaConfigurationPtrInput
 	// List of replica names. Can be updated.
 	ReplicaNames pulumi.StringArrayInput
-	// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
-	// after both the primary and replica are created.
+	// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
 	ReplicationCluster DatabaseInstanceReplicationClusterPtrInput
 	// The context needed to restore the database to a backup run. This field will
 	// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
@@ -1094,8 +1089,7 @@ func (o DatabaseInstanceOutput) ReplicaNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringArrayOutput { return v.ReplicaNames }).(pulumi.StringArrayOutput)
 }
 
-// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
-// after both the primary and replica are created.
+// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
 func (o DatabaseInstanceOutput) ReplicationCluster() DatabaseInstanceReplicationClusterOutput {
 	return o.ApplyT(func(v *DatabaseInstance) DatabaseInstanceReplicationClusterOutput { return v.ReplicationCluster }).(DatabaseInstanceReplicationClusterOutput)
 }

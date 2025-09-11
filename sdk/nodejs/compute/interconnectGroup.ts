@@ -91,21 +91,21 @@ export class InterconnectGroup extends pulumi.CustomResource {
      * resource.
      * Structure is documented below.
      */
-    public /*out*/ readonly configureds!: pulumi.Output<outputs.compute.InterconnectGroupConfigured[]>;
+    declare public /*out*/ readonly configureds: pulumi.Output<outputs.compute.InterconnectGroupConfigured[]>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The user's intent for this group. This is the only required field besides
      * the name that must be specified on group creation.
      * Structure is documented below.
      */
-    public readonly intent!: pulumi.Output<outputs.compute.InterconnectGroupIntent>;
+    declare public readonly intent: pulumi.Output<outputs.compute.InterconnectGroupIntent>;
     /**
      * Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
      * strings. Users are encouraged, but not required, to use their preferred
@@ -114,7 +114,7 @@ export class InterconnectGroup extends pulumi.CustomResource {
      * The size of this map is limited by an "Interconnects per group" quota.
      * Structure is documented below.
      */
-    public readonly interconnects!: pulumi.Output<outputs.compute.InterconnectGroupInterconnect[] | undefined>;
+    declare public readonly interconnects: pulumi.Output<outputs.compute.InterconnectGroupInterconnect[] | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be
      * 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -122,18 +122,18 @@ export class InterconnectGroup extends pulumi.CustomResource {
      * character must be a lowercase letter, and all following characters must be a dash,
      * lowercase letter, or digit, except the last character, which cannot be a dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * An analysis of the physical layout of Interconnects in this
      * group. Every Interconnect in the group is shown once in this structure.
      * Structure is documented below.
      */
-    public /*out*/ readonly physicalStructures!: pulumi.Output<outputs.compute.InterconnectGroupPhysicalStructure[]>;
+    declare public /*out*/ readonly physicalStructures: pulumi.Output<outputs.compute.InterconnectGroupPhysicalStructure[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
 
     /**
      * Create a InterconnectGroup resource with the given unique name, arguments, and options.
@@ -148,24 +148,24 @@ export class InterconnectGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InterconnectGroupState | undefined;
-            resourceInputs["configureds"] = state ? state.configureds : undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["intent"] = state ? state.intent : undefined;
-            resourceInputs["interconnects"] = state ? state.interconnects : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["physicalStructures"] = state ? state.physicalStructures : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["configureds"] = state?.configureds;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["intent"] = state?.intent;
+            resourceInputs["interconnects"] = state?.interconnects;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["physicalStructures"] = state?.physicalStructures;
+            resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as InterconnectGroupArgs | undefined;
-            if ((!args || args.intent === undefined) && !opts.urn) {
+            if (args?.intent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'intent'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["intent"] = args ? args.intent : undefined;
-            resourceInputs["interconnects"] = args ? args.interconnects : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["intent"] = args?.intent;
+            resourceInputs["interconnects"] = args?.interconnects;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
             resourceInputs["configureds"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["physicalStructures"] = undefined /*out*/;

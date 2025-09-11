@@ -121,66 +121,66 @@ export class EndpointPolicy extends pulumi.CustomResource {
     /**
      * This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints.
      */
-    public readonly authorizationPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly authorizationPolicy: pulumi.Output<string | undefined>;
     /**
      * A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from the proxy to the actual endpoints.
      */
-    public readonly clientTlsPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly clientTlsPolicy: pulumi.Output<string | undefined>;
     /**
      * Time the TcpRoute was created in UTC.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * A free-text description of the resource. Max length 1024 characters.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Required. A matcher that selects endpoints to which the policies should be applied.
      * Structure is documented below.
      */
-    public readonly endpointMatcher!: pulumi.Output<outputs.networkservices.EndpointPolicyEndpointMatcher>;
+    declare public readonly endpointMatcher: pulumi.Output<outputs.networkservices.EndpointPolicyEndpointMatcher>;
     /**
      * Set of label tags associated with the TcpRoute resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Name of the EndpointPolicy resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
      */
-    public readonly serverTlsPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly serverTlsPolicy: pulumi.Output<string | undefined>;
     /**
      * Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
      * Structure is documented below.
      */
-    public readonly trafficPortSelector!: pulumi.Output<outputs.networkservices.EndpointPolicyTrafficPortSelector | undefined>;
+    declare public readonly trafficPortSelector: pulumi.Output<outputs.networkservices.EndpointPolicyTrafficPortSelector | undefined>;
     /**
      * The type of endpoint policy. This is primarily used to validate the configuration.
      * Possible values are: `SIDECAR_PROXY`, `GRPC_SERVER`.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * Time the TcpRoute was updated in UTC.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a EndpointPolicy resource with the given unique name, arguments, and options.
@@ -195,38 +195,38 @@ export class EndpointPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EndpointPolicyState | undefined;
-            resourceInputs["authorizationPolicy"] = state ? state.authorizationPolicy : undefined;
-            resourceInputs["clientTlsPolicy"] = state ? state.clientTlsPolicy : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["endpointMatcher"] = state ? state.endpointMatcher : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["serverTlsPolicy"] = state ? state.serverTlsPolicy : undefined;
-            resourceInputs["trafficPortSelector"] = state ? state.trafficPortSelector : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["authorizationPolicy"] = state?.authorizationPolicy;
+            resourceInputs["clientTlsPolicy"] = state?.clientTlsPolicy;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["endpointMatcher"] = state?.endpointMatcher;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["serverTlsPolicy"] = state?.serverTlsPolicy;
+            resourceInputs["trafficPortSelector"] = state?.trafficPortSelector;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as EndpointPolicyArgs | undefined;
-            if ((!args || args.endpointMatcher === undefined) && !opts.urn) {
+            if (args?.endpointMatcher === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpointMatcher'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["authorizationPolicy"] = args ? args.authorizationPolicy : undefined;
-            resourceInputs["clientTlsPolicy"] = args ? args.clientTlsPolicy : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["endpointMatcher"] = args ? args.endpointMatcher : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["serverTlsPolicy"] = args ? args.serverTlsPolicy : undefined;
-            resourceInputs["trafficPortSelector"] = args ? args.trafficPortSelector : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["authorizationPolicy"] = args?.authorizationPolicy;
+            resourceInputs["clientTlsPolicy"] = args?.clientTlsPolicy;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["endpointMatcher"] = args?.endpointMatcher;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["serverTlsPolicy"] = args?.serverTlsPolicy;
+            resourceInputs["trafficPortSelector"] = args?.trafficPortSelector;
+            resourceInputs["type"] = args?.type;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;

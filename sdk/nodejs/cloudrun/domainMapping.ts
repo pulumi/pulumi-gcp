@@ -104,31 +104,31 @@ export class DomainMapping extends pulumi.CustomResource {
     /**
      * The location of the cloud run instance. eg us-central1
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Metadata associated with this DomainMapping.
      * Structure is documented below.
      */
-    public readonly metadata!: pulumi.Output<outputs.cloudrun.DomainMappingMetadata>;
+    declare public readonly metadata: pulumi.Output<outputs.cloudrun.DomainMappingMetadata>;
     /**
      * Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The spec for this DomainMapping.
      * Structure is documented below.
      */
-    public readonly spec!: pulumi.Output<outputs.cloudrun.DomainMappingSpec>;
+    declare public readonly spec: pulumi.Output<outputs.cloudrun.DomainMappingSpec>;
     /**
      * (Output)
      * Status of the condition, one of True, False, Unknown.
      */
-    public /*out*/ readonly statuses!: pulumi.Output<outputs.cloudrun.DomainMappingStatus[]>;
+    declare public /*out*/ readonly statuses: pulumi.Output<outputs.cloudrun.DomainMappingStatus[]>;
 
     /**
      * Create a DomainMapping resource with the given unique name, arguments, and options.
@@ -143,25 +143,25 @@ export class DomainMapping extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainMappingState | undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["metadata"] = state ? state.metadata : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["spec"] = state ? state.spec : undefined;
-            resourceInputs["statuses"] = state ? state.statuses : undefined;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["metadata"] = state?.metadata;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["spec"] = state?.spec;
+            resourceInputs["statuses"] = state?.statuses;
         } else {
             const args = argsOrState as DomainMappingArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.spec === undefined) && !opts.urn) {
+            if (args?.spec === undefined && !opts.urn) {
                 throw new Error("Missing required property 'spec'");
             }
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["metadata"] = args ? args.metadata : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["spec"] = args ? args.spec : undefined;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["metadata"] = args?.metadata;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["spec"] = args?.spec;
             resourceInputs["statuses"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

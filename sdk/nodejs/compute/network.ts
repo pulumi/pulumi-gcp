@@ -151,42 +151,42 @@ export class Network extends pulumi.CustomResource {
      * When set to `false`, the network is created in "custom subnet mode" so
      * the user can explicitly connect subnetwork resources.
      */
-    public readonly autoCreateSubnetworks!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoCreateSubnetworks: pulumi.Output<boolean | undefined>;
     /**
      * Enables/disables the comparison of MED across routes with different Neighbor ASNs.
      * This value can only be set if the --bgp-best-path-selection-mode is STANDARD
      */
-    public readonly bgpAlwaysCompareMed!: pulumi.Output<boolean>;
+    declare public readonly bgpAlwaysCompareMed: pulumi.Output<boolean>;
     /**
      * The BGP best selection algorithm to be employed. MODE can be LEGACY or STANDARD.
      * Possible values are: `LEGACY`, `STANDARD`.
      */
-    public readonly bgpBestPathSelectionMode!: pulumi.Output<string>;
+    declare public readonly bgpBestPathSelectionMode: pulumi.Output<string>;
     /**
      * Choice of the behavior of inter-regional cost and MED in the BPS algorithm.
      * Possible values are: `DEFAULT`, `ADD_COST_TO_MED`.
      */
-    public readonly bgpInterRegionCost!: pulumi.Output<string>;
+    declare public readonly bgpInterRegionCost: pulumi.Output<string>;
     /**
      * If set to `true`, default routes (`0.0.0.0/0`) will be deleted
      * immediately after network creation. Defaults to `false`.
      */
-    public readonly deleteDefaultRoutesOnCreate!: pulumi.Output<boolean | undefined>;
+    declare public readonly deleteDefaultRoutesOnCreate: pulumi.Output<boolean | undefined>;
     /**
      * An optional description of this resource. The resource must be
      * recreated to modify this field.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Enable ULA internal ipv6 on this network. Enabling this feature will assign
      * a /48 from google defined ULA prefix fd20::/20.
      */
-    public readonly enableUlaInternalIpv6!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableUlaInternalIpv6: pulumi.Output<boolean | undefined>;
     /**
      * The gateway address for default routing out of the network. This value
      * is selected by GCP.
      */
-    public /*out*/ readonly gatewayIpv4!: pulumi.Output<string>;
+    declare public /*out*/ readonly gatewayIpv4: pulumi.Output<string>;
     /**
      * When enabling ula internal ipv6, caller optionally can specify the /48 range
      * they want from the google defined ULA prefix fd20::/20. The input must be a
@@ -194,7 +194,7 @@ export class Network extends pulumi.CustomResource {
      * fail if the speficied /48 is already in used by another resource.
      * If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field.
      */
-    public readonly internalIpv6Range!: pulumi.Output<string>;
+    declare public readonly internalIpv6Range: pulumi.Output<string>;
     /**
      * Maximum Transmission Unit in bytes. The default value is 1460 bytes.
      * The minimum value for this field is 1300 and the maximum value is 8896 bytes (jumbo frames).
@@ -202,7 +202,7 @@ export class Network extends pulumi.CustomResource {
      * with an ICMP `Fragmentation-Needed` message if the packets are routed to the Internet or other VPCs
      * with varying MTUs.
      */
-    public readonly mtu!: pulumi.Output<number>;
+    declare public readonly mtu: pulumi.Output<number>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -212,17 +212,17 @@ export class Network extends pulumi.CustomResource {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Set the order that Firewall Rules and Firewall Policies are evaluated.
      * Default value is `AFTER_CLASSIC_FIREWALL`.
      * Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
      */
-    public readonly networkFirewallPolicyEnforcementOrder!: pulumi.Output<string | undefined>;
+    declare public readonly networkFirewallPolicyEnforcementOrder: pulumi.Output<string | undefined>;
     /**
      * The unique identifier for the resource. This identifier is defined by the server.
      */
-    public /*out*/ readonly networkId!: pulumi.Output<string>;
+    declare public /*out*/ readonly networkId: pulumi.Output<string>;
     /**
      * A full or partial URL of the network profile to apply to this network.
      * This field can be set only at resource creation time. For example, the
@@ -230,24 +230,24 @@ export class Network extends pulumi.CustomResource {
      * * https://www.googleapis.com/compute/v1/projects/{projectId}/global/networkProfiles/{network_profile_name}
      * * projects/{projectId}/global/networkProfiles/{network_profile_name}
      */
-    public readonly networkProfile!: pulumi.Output<string | undefined>;
+    declare public readonly networkProfile: pulumi.Output<string | undefined>;
     /**
      * (Deprecated)
      * The unique identifier for the resource. This identifier is defined by the server.
      *
      * @deprecated `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
      */
-    public /*out*/ readonly numericId!: pulumi.Output<string>;
+    declare public /*out*/ readonly numericId: pulumi.Output<string>;
     /**
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      */
-    public readonly params!: pulumi.Output<outputs.compute.NetworkParams | undefined>;
+    declare public readonly params: pulumi.Output<outputs.compute.NetworkParams | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The network-wide routing mode to use. If set to `REGIONAL`, this
      * network's cloud routers will only advertise routes with subnetworks
@@ -256,11 +256,11 @@ export class Network extends pulumi.CustomResource {
      * subnetworks of this network, across regions.
      * Possible values are: `REGIONAL`, `GLOBAL`.
      */
-    public readonly routingMode!: pulumi.Output<string>;
+    declare public readonly routingMode: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
 
     /**
      * Create a Network resource with the given unique name, arguments, and options.
@@ -275,42 +275,42 @@ export class Network extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkState | undefined;
-            resourceInputs["autoCreateSubnetworks"] = state ? state.autoCreateSubnetworks : undefined;
-            resourceInputs["bgpAlwaysCompareMed"] = state ? state.bgpAlwaysCompareMed : undefined;
-            resourceInputs["bgpBestPathSelectionMode"] = state ? state.bgpBestPathSelectionMode : undefined;
-            resourceInputs["bgpInterRegionCost"] = state ? state.bgpInterRegionCost : undefined;
-            resourceInputs["deleteDefaultRoutesOnCreate"] = state ? state.deleteDefaultRoutesOnCreate : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enableUlaInternalIpv6"] = state ? state.enableUlaInternalIpv6 : undefined;
-            resourceInputs["gatewayIpv4"] = state ? state.gatewayIpv4 : undefined;
-            resourceInputs["internalIpv6Range"] = state ? state.internalIpv6Range : undefined;
-            resourceInputs["mtu"] = state ? state.mtu : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networkFirewallPolicyEnforcementOrder"] = state ? state.networkFirewallPolicyEnforcementOrder : undefined;
-            resourceInputs["networkId"] = state ? state.networkId : undefined;
-            resourceInputs["networkProfile"] = state ? state.networkProfile : undefined;
-            resourceInputs["numericId"] = state ? state.numericId : undefined;
-            resourceInputs["params"] = state ? state.params : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["routingMode"] = state ? state.routingMode : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["autoCreateSubnetworks"] = state?.autoCreateSubnetworks;
+            resourceInputs["bgpAlwaysCompareMed"] = state?.bgpAlwaysCompareMed;
+            resourceInputs["bgpBestPathSelectionMode"] = state?.bgpBestPathSelectionMode;
+            resourceInputs["bgpInterRegionCost"] = state?.bgpInterRegionCost;
+            resourceInputs["deleteDefaultRoutesOnCreate"] = state?.deleteDefaultRoutesOnCreate;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["enableUlaInternalIpv6"] = state?.enableUlaInternalIpv6;
+            resourceInputs["gatewayIpv4"] = state?.gatewayIpv4;
+            resourceInputs["internalIpv6Range"] = state?.internalIpv6Range;
+            resourceInputs["mtu"] = state?.mtu;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networkFirewallPolicyEnforcementOrder"] = state?.networkFirewallPolicyEnforcementOrder;
+            resourceInputs["networkId"] = state?.networkId;
+            resourceInputs["networkProfile"] = state?.networkProfile;
+            resourceInputs["numericId"] = state?.numericId;
+            resourceInputs["params"] = state?.params;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["routingMode"] = state?.routingMode;
+            resourceInputs["selfLink"] = state?.selfLink;
         } else {
             const args = argsOrState as NetworkArgs | undefined;
-            resourceInputs["autoCreateSubnetworks"] = args ? args.autoCreateSubnetworks : undefined;
-            resourceInputs["bgpAlwaysCompareMed"] = args ? args.bgpAlwaysCompareMed : undefined;
-            resourceInputs["bgpBestPathSelectionMode"] = args ? args.bgpBestPathSelectionMode : undefined;
-            resourceInputs["bgpInterRegionCost"] = args ? args.bgpInterRegionCost : undefined;
-            resourceInputs["deleteDefaultRoutesOnCreate"] = args ? args.deleteDefaultRoutesOnCreate : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enableUlaInternalIpv6"] = args ? args.enableUlaInternalIpv6 : undefined;
-            resourceInputs["internalIpv6Range"] = args ? args.internalIpv6Range : undefined;
-            resourceInputs["mtu"] = args ? args.mtu : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networkFirewallPolicyEnforcementOrder"] = args ? args.networkFirewallPolicyEnforcementOrder : undefined;
-            resourceInputs["networkProfile"] = args ? args.networkProfile : undefined;
-            resourceInputs["params"] = args ? args.params : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["routingMode"] = args ? args.routingMode : undefined;
+            resourceInputs["autoCreateSubnetworks"] = args?.autoCreateSubnetworks;
+            resourceInputs["bgpAlwaysCompareMed"] = args?.bgpAlwaysCompareMed;
+            resourceInputs["bgpBestPathSelectionMode"] = args?.bgpBestPathSelectionMode;
+            resourceInputs["bgpInterRegionCost"] = args?.bgpInterRegionCost;
+            resourceInputs["deleteDefaultRoutesOnCreate"] = args?.deleteDefaultRoutesOnCreate;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["enableUlaInternalIpv6"] = args?.enableUlaInternalIpv6;
+            resourceInputs["internalIpv6Range"] = args?.internalIpv6Range;
+            resourceInputs["mtu"] = args?.mtu;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networkFirewallPolicyEnforcementOrder"] = args?.networkFirewallPolicyEnforcementOrder;
+            resourceInputs["networkProfile"] = args?.networkProfile;
+            resourceInputs["params"] = args?.params;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["routingMode"] = args?.routingMode;
             resourceInputs["gatewayIpv4"] = undefined /*out*/;
             resourceInputs["networkId"] = undefined /*out*/;
             resourceInputs["numericId"] = undefined /*out*/;

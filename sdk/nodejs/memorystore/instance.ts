@@ -365,44 +365,51 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
+     * Allows customers to specify if they are okay with deploying a multi-zone
+     * instance in less than 3 zones. Once set, if there is a zonal outage during
+     * the instance creation, the instance will only be deployed in 2 zones, and
+     * stay within the 2 zones for its lifecycle.
+     */
+    declare public readonly allowFewerZonesDeployment: pulumi.Output<boolean | undefined>;
+    /**
      * Optional. Immutable. Authorization mode of the instance. Possible values:
      * AUTH_DISABLED
      * IAM_AUTH
      */
-    public readonly authorizationMode!: pulumi.Output<string>;
+    declare public readonly authorizationMode: pulumi.Output<string>;
     /**
      * The automated backup config for a instance.
      * Structure is documented below.
      */
-    public readonly automatedBackupConfig!: pulumi.Output<outputs.memorystore.InstanceAutomatedBackupConfig | undefined>;
+    declare public readonly automatedBackupConfig: pulumi.Output<outputs.memorystore.InstanceAutomatedBackupConfig | undefined>;
     /**
      * The backup collection full resource name.
      * Example: projects/{project}/locations/{location}/backupCollections/{collection}
      */
-    public /*out*/ readonly backupCollection!: pulumi.Output<string>;
+    declare public /*out*/ readonly backupCollection: pulumi.Output<string>;
     /**
      * Output only. Creation timestamp of the instance.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Cross instance replication config
      * Structure is documented below.
      */
-    public readonly crossInstanceReplicationConfig!: pulumi.Output<outputs.memorystore.InstanceCrossInstanceReplicationConfig>;
+    declare public readonly crossInstanceReplicationConfig: pulumi.Output<outputs.memorystore.InstanceCrossInstanceReplicationConfig>;
     /**
      * Optional. If set to true deletion of the instance will fail.
      */
-    public readonly deletionProtectionEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly deletionProtectionEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Immutable. User inputs for the auto-created endpoints connections.
      */
-    public readonly desiredAutoCreatedEndpoints!: pulumi.Output<outputs.memorystore.InstanceDesiredAutoCreatedEndpoint[] | undefined>;
+    declare public readonly desiredAutoCreatedEndpoints: pulumi.Output<outputs.memorystore.InstanceDesiredAutoCreatedEndpoint[] | undefined>;
     /**
      * `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead.
      *
      * @deprecated `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead.
      */
-    public readonly desiredPscAutoConnections!: pulumi.Output<outputs.memorystore.InstanceDesiredPscAutoConnection[] | undefined>;
+    declare public readonly desiredPscAutoConnections: pulumi.Output<outputs.memorystore.InstanceDesiredPscAutoConnection[] | undefined>;
     /**
      * (Deprecated)
      * Deprecated. Output only. Endpoints clients can connect to the instance through.
@@ -410,29 +417,29 @@ export class Instance extends pulumi.CustomResource {
      *
      * @deprecated This field is deprecated. As a result it will not be populated if the connections are created using `desiredAutoCreatedEndpoints` parameter or `gcp.memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY.
      */
-    public /*out*/ readonly discoveryEndpoints!: pulumi.Output<outputs.memorystore.InstanceDiscoveryEndpoint[]>;
+    declare public /*out*/ readonly discoveryEndpoints: pulumi.Output<outputs.memorystore.InstanceDiscoveryEndpoint[]>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Endpoints for the instance.
      * Structure is documented below.
      */
-    public /*out*/ readonly endpoints!: pulumi.Output<outputs.memorystore.InstanceEndpoint[]>;
+    declare public /*out*/ readonly endpoints: pulumi.Output<outputs.memorystore.InstanceEndpoint[]>;
     /**
      * Optional. User-provided engine configurations for the instance.
      */
-    public readonly engineConfigs!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly engineConfigs: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Optional. Engine version of the instance.
      */
-    public readonly engineVersion!: pulumi.Output<string>;
+    declare public readonly engineVersion: pulumi.Output<string>;
     /**
      * GCS source for the instance.
      * Structure is documented below.
      */
-    public readonly gcsSource!: pulumi.Output<outputs.memorystore.InstanceGcsSource | undefined>;
+    declare public readonly gcsSource: pulumi.Output<outputs.memorystore.InstanceGcsSource | undefined>;
     /**
      * Required. The ID to use for the instance, which will become the final component of
      * the instance's resource name.
@@ -443,41 +450,41 @@ export class Instance extends pulumi.CustomResource {
      * * Must not end with a hyphen
      * * Must be unique within a location
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The KMS key used to encrypt the at-rest data of the cluster
      */
-    public readonly kmsKey!: pulumi.Output<string | undefined>;
+    declare public readonly kmsKey: pulumi.Output<string | undefined>;
     /**
      * Optional. Labels to represent user-provided metadata.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `memorystore.googleapis.com/CertificateAuthority`.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Maintenance policy for a cluster
      * Structure is documented below.
      */
-    public readonly maintenancePolicy!: pulumi.Output<outputs.memorystore.InstanceMaintenancePolicy | undefined>;
+    declare public readonly maintenancePolicy: pulumi.Output<outputs.memorystore.InstanceMaintenancePolicy | undefined>;
     /**
      * Upcoming maintenance schedule.
      * Structure is documented below.
      */
-    public /*out*/ readonly maintenanceSchedules!: pulumi.Output<outputs.memorystore.InstanceMaintenanceSchedule[]>;
+    declare public /*out*/ readonly maintenanceSchedules: pulumi.Output<outputs.memorystore.InstanceMaintenanceSchedule[]>;
     /**
      * Managed backup source for the instance.
      * Structure is documented below.
      */
-    public readonly managedBackupSource!: pulumi.Output<outputs.memorystore.InstanceManagedBackupSource | undefined>;
+    declare public readonly managedBackupSource: pulumi.Output<outputs.memorystore.InstanceManagedBackupSource | undefined>;
     /**
      * Instance's Certificate Authority. This field will only be populated if instance's transitEncryptionMode is SERVER_AUTHENTICATION
      * Structure is documented below.
      */
-    public /*out*/ readonly managedServerCas!: pulumi.Output<outputs.memorystore.InstanceManagedServerCa[]>;
+    declare public /*out*/ readonly managedServerCas: pulumi.Output<outputs.memorystore.InstanceManagedServerCa[]>;
     /**
      * Optional. cluster or cluster-disabled.
      * Possible values:
@@ -485,17 +492,17 @@ export class Instance extends pulumi.CustomResource {
      * CLUSTER_DISABLED
      * Possible values are: `CLUSTER`, `CLUSTER_DISABLED`.
      */
-    public readonly mode!: pulumi.Output<string>;
+    declare public readonly mode: pulumi.Output<string>;
     /**
      * Identifier. Unique name of the instance.
      * Format: projects/{project}/locations/{location}/instances/{instance}
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Represents configuration for nodes of the instance.
      * Structure is documented below.
      */
-    public /*out*/ readonly nodeConfigs!: pulumi.Output<outputs.memorystore.InstanceNodeConfig[]>;
+    declare public /*out*/ readonly nodeConfigs: pulumi.Output<outputs.memorystore.InstanceNodeConfig[]>;
     /**
      * Optional. Machine type for individual nodes of the instance.
      * Possible values:
@@ -504,22 +511,22 @@ export class Instance extends pulumi.CustomResource {
      * HIGHMEM_XLARGE
      * STANDARD_SMALL
      */
-    public readonly nodeType!: pulumi.Output<string>;
+    declare public readonly nodeType: pulumi.Output<string>;
     /**
      * Represents persistence configuration for a instance.
      * Structure is documented below.
      */
-    public readonly persistenceConfig!: pulumi.Output<outputs.memorystore.InstancePersistenceConfig>;
+    declare public readonly persistenceConfig: pulumi.Output<outputs.memorystore.InstancePersistenceConfig>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Configuration of a service attachment of the cluster, for creating PSC connections.
      * Structure is documented below.
      */
-    public /*out*/ readonly pscAttachmentDetails!: pulumi.Output<outputs.memorystore.InstancePscAttachmentDetail[]>;
+    declare public /*out*/ readonly pscAttachmentDetails: pulumi.Output<outputs.memorystore.InstancePscAttachmentDetail[]>;
     /**
      * (Deprecated)
      * Output only. User inputs and resource details of the auto-created PSC connections.
@@ -527,20 +534,20 @@ export class Instance extends pulumi.CustomResource {
      *
      * @deprecated `pscAutoConnections` is deprecated  Use `endpoints.connections.pscAutoConnections` instead.
      */
-    public /*out*/ readonly pscAutoConnections!: pulumi.Output<outputs.memorystore.InstancePscAutoConnection[]>;
+    declare public /*out*/ readonly pscAutoConnections: pulumi.Output<outputs.memorystore.InstancePscAutoConnection[]>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Optional. Number of replica nodes per shard. If omitted the default is 0 replicas.
      */
-    public readonly replicaCount!: pulumi.Output<number>;
+    declare public readonly replicaCount: pulumi.Output<number>;
     /**
      * Required. Number of shards for the instance.
      */
-    public readonly shardCount!: pulumi.Output<number>;
+    declare public readonly shardCount: pulumi.Output<number>;
     /**
      * Output only. Current state of the instance.
      * Possible values:
@@ -549,32 +556,32 @@ export class Instance extends pulumi.CustomResource {
      * UPDATING
      * DELETING
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Additional information about the state of the instance.
      * Structure is documented below.
      */
-    public /*out*/ readonly stateInfos!: pulumi.Output<outputs.memorystore.InstanceStateInfo[]>;
+    declare public /*out*/ readonly stateInfos: pulumi.Output<outputs.memorystore.InstanceStateInfo[]>;
     /**
      * Optional. Immutable. In-transit encryption mode of the instance.
      * Possible values:
      * TRANSIT_ENCRYPTION_DISABLED
      * SERVER_AUTHENTICATION
      */
-    public readonly transitEncryptionMode!: pulumi.Output<string>;
+    declare public readonly transitEncryptionMode: pulumi.Output<string>;
     /**
      * Output only. System assigned, unique identifier for the instance.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * Output only. Latest update timestamp of the instance.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * Zone distribution configuration for allocation of instance resources.
      * Structure is documented below.
      */
-    public readonly zoneDistributionConfig!: pulumi.Output<outputs.memorystore.InstanceZoneDistributionConfig>;
+    declare public readonly zoneDistributionConfig: pulumi.Output<outputs.memorystore.InstanceZoneDistributionConfig>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -589,79 +596,81 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["authorizationMode"] = state ? state.authorizationMode : undefined;
-            resourceInputs["automatedBackupConfig"] = state ? state.automatedBackupConfig : undefined;
-            resourceInputs["backupCollection"] = state ? state.backupCollection : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["crossInstanceReplicationConfig"] = state ? state.crossInstanceReplicationConfig : undefined;
-            resourceInputs["deletionProtectionEnabled"] = state ? state.deletionProtectionEnabled : undefined;
-            resourceInputs["desiredAutoCreatedEndpoints"] = state ? state.desiredAutoCreatedEndpoints : undefined;
-            resourceInputs["desiredPscAutoConnections"] = state ? state.desiredPscAutoConnections : undefined;
-            resourceInputs["discoveryEndpoints"] = state ? state.discoveryEndpoints : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["endpoints"] = state ? state.endpoints : undefined;
-            resourceInputs["engineConfigs"] = state ? state.engineConfigs : undefined;
-            resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
-            resourceInputs["gcsSource"] = state ? state.gcsSource : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["kmsKey"] = state ? state.kmsKey : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["maintenancePolicy"] = state ? state.maintenancePolicy : undefined;
-            resourceInputs["maintenanceSchedules"] = state ? state.maintenanceSchedules : undefined;
-            resourceInputs["managedBackupSource"] = state ? state.managedBackupSource : undefined;
-            resourceInputs["managedServerCas"] = state ? state.managedServerCas : undefined;
-            resourceInputs["mode"] = state ? state.mode : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nodeConfigs"] = state ? state.nodeConfigs : undefined;
-            resourceInputs["nodeType"] = state ? state.nodeType : undefined;
-            resourceInputs["persistenceConfig"] = state ? state.persistenceConfig : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pscAttachmentDetails"] = state ? state.pscAttachmentDetails : undefined;
-            resourceInputs["pscAutoConnections"] = state ? state.pscAutoConnections : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["replicaCount"] = state ? state.replicaCount : undefined;
-            resourceInputs["shardCount"] = state ? state.shardCount : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["stateInfos"] = state ? state.stateInfos : undefined;
-            resourceInputs["transitEncryptionMode"] = state ? state.transitEncryptionMode : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["zoneDistributionConfig"] = state ? state.zoneDistributionConfig : undefined;
+            resourceInputs["allowFewerZonesDeployment"] = state?.allowFewerZonesDeployment;
+            resourceInputs["authorizationMode"] = state?.authorizationMode;
+            resourceInputs["automatedBackupConfig"] = state?.automatedBackupConfig;
+            resourceInputs["backupCollection"] = state?.backupCollection;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["crossInstanceReplicationConfig"] = state?.crossInstanceReplicationConfig;
+            resourceInputs["deletionProtectionEnabled"] = state?.deletionProtectionEnabled;
+            resourceInputs["desiredAutoCreatedEndpoints"] = state?.desiredAutoCreatedEndpoints;
+            resourceInputs["desiredPscAutoConnections"] = state?.desiredPscAutoConnections;
+            resourceInputs["discoveryEndpoints"] = state?.discoveryEndpoints;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["endpoints"] = state?.endpoints;
+            resourceInputs["engineConfigs"] = state?.engineConfigs;
+            resourceInputs["engineVersion"] = state?.engineVersion;
+            resourceInputs["gcsSource"] = state?.gcsSource;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["kmsKey"] = state?.kmsKey;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["maintenancePolicy"] = state?.maintenancePolicy;
+            resourceInputs["maintenanceSchedules"] = state?.maintenanceSchedules;
+            resourceInputs["managedBackupSource"] = state?.managedBackupSource;
+            resourceInputs["managedServerCas"] = state?.managedServerCas;
+            resourceInputs["mode"] = state?.mode;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nodeConfigs"] = state?.nodeConfigs;
+            resourceInputs["nodeType"] = state?.nodeType;
+            resourceInputs["persistenceConfig"] = state?.persistenceConfig;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pscAttachmentDetails"] = state?.pscAttachmentDetails;
+            resourceInputs["pscAutoConnections"] = state?.pscAutoConnections;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["replicaCount"] = state?.replicaCount;
+            resourceInputs["shardCount"] = state?.shardCount;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["stateInfos"] = state?.stateInfos;
+            resourceInputs["transitEncryptionMode"] = state?.transitEncryptionMode;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["zoneDistributionConfig"] = state?.zoneDistributionConfig;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.shardCount === undefined) && !opts.urn) {
+            if (args?.shardCount === undefined && !opts.urn) {
                 throw new Error("Missing required property 'shardCount'");
             }
-            resourceInputs["authorizationMode"] = args ? args.authorizationMode : undefined;
-            resourceInputs["automatedBackupConfig"] = args ? args.automatedBackupConfig : undefined;
-            resourceInputs["crossInstanceReplicationConfig"] = args ? args.crossInstanceReplicationConfig : undefined;
-            resourceInputs["deletionProtectionEnabled"] = args ? args.deletionProtectionEnabled : undefined;
-            resourceInputs["desiredAutoCreatedEndpoints"] = args ? args.desiredAutoCreatedEndpoints : undefined;
-            resourceInputs["desiredPscAutoConnections"] = args ? args.desiredPscAutoConnections : undefined;
-            resourceInputs["engineConfigs"] = args ? args.engineConfigs : undefined;
-            resourceInputs["engineVersion"] = args ? args.engineVersion : undefined;
-            resourceInputs["gcsSource"] = args ? args.gcsSource : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["kmsKey"] = args ? args.kmsKey : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
-            resourceInputs["managedBackupSource"] = args ? args.managedBackupSource : undefined;
-            resourceInputs["mode"] = args ? args.mode : undefined;
-            resourceInputs["nodeType"] = args ? args.nodeType : undefined;
-            resourceInputs["persistenceConfig"] = args ? args.persistenceConfig : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["replicaCount"] = args ? args.replicaCount : undefined;
-            resourceInputs["shardCount"] = args ? args.shardCount : undefined;
-            resourceInputs["transitEncryptionMode"] = args ? args.transitEncryptionMode : undefined;
-            resourceInputs["zoneDistributionConfig"] = args ? args.zoneDistributionConfig : undefined;
+            resourceInputs["allowFewerZonesDeployment"] = args?.allowFewerZonesDeployment;
+            resourceInputs["authorizationMode"] = args?.authorizationMode;
+            resourceInputs["automatedBackupConfig"] = args?.automatedBackupConfig;
+            resourceInputs["crossInstanceReplicationConfig"] = args?.crossInstanceReplicationConfig;
+            resourceInputs["deletionProtectionEnabled"] = args?.deletionProtectionEnabled;
+            resourceInputs["desiredAutoCreatedEndpoints"] = args?.desiredAutoCreatedEndpoints;
+            resourceInputs["desiredPscAutoConnections"] = args?.desiredPscAutoConnections;
+            resourceInputs["engineConfigs"] = args?.engineConfigs;
+            resourceInputs["engineVersion"] = args?.engineVersion;
+            resourceInputs["gcsSource"] = args?.gcsSource;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["kmsKey"] = args?.kmsKey;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["maintenancePolicy"] = args?.maintenancePolicy;
+            resourceInputs["managedBackupSource"] = args?.managedBackupSource;
+            resourceInputs["mode"] = args?.mode;
+            resourceInputs["nodeType"] = args?.nodeType;
+            resourceInputs["persistenceConfig"] = args?.persistenceConfig;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["replicaCount"] = args?.replicaCount;
+            resourceInputs["shardCount"] = args?.shardCount;
+            resourceInputs["transitEncryptionMode"] = args?.transitEncryptionMode;
+            resourceInputs["zoneDistributionConfig"] = args?.zoneDistributionConfig;
             resourceInputs["backupCollection"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["discoveryEndpoints"] = undefined /*out*/;

@@ -131,22 +131,22 @@ export class Schema extends pulumi.CustomResource {
      * error indicating that the limit has been reached require manually
      * [deleting old revisions](https://cloud.google.com/pubsub/docs/delete-schema-revision).
      */
-    public readonly definition!: pulumi.Output<string | undefined>;
+    declare public readonly definition: pulumi.Output<string | undefined>;
     /**
      * The ID to use for the schema, which will become the final component of the schema's resource name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The type of the schema definition
      * Default value is `TYPE_UNSPECIFIED`.
      * Possible values are: `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, `AVRO`.
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string | undefined>;
 
     /**
      * Create a Schema resource with the given unique name, arguments, and options.
@@ -161,16 +161,16 @@ export class Schema extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SchemaState | undefined;
-            resourceInputs["definition"] = state ? state.definition : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["definition"] = state?.definition;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as SchemaArgs | undefined;
-            resourceInputs["definition"] = args ? args.definition : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["definition"] = args?.definition;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["type"] = args?.type;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Schema.__pulumiType, name, resourceInputs, opts);

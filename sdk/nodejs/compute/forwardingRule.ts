@@ -836,7 +836,7 @@ export class ForwardingRule extends pulumi.CustomResource {
      * forwarding rule. The L3_DEFAULT protocol requires `allPorts` be set to
      * true.
      */
-    public readonly allPorts!: pulumi.Output<boolean | undefined>;
+    declare public readonly allPorts: pulumi.Output<boolean | undefined>;
     /**
      * This field is used along with the `backendService` field for
      * internal load balancing or with the `target` field for internal
@@ -846,38 +846,38 @@ export class ForwardingRule extends pulumi.CustomResource {
      * Otherwise only allows access from clients in the same region as the
      * internal load balancer.
      */
-    public readonly allowGlobalAccess!: pulumi.Output<boolean | undefined>;
+    declare public readonly allowGlobalAccess: pulumi.Output<boolean | undefined>;
     /**
      * This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
      */
-    public readonly allowPscGlobalAccess!: pulumi.Output<boolean | undefined>;
+    declare public readonly allowPscGlobalAccess: pulumi.Output<boolean | undefined>;
     /**
      * Identifies the backend service to which the forwarding rule sends traffic.
      * Required for Internal TCP/UDP Load Balancing and Network Load Balancing;
      * must be omitted for all other load balancer types.
      */
-    public readonly backendService!: pulumi.Output<string | undefined>;
+    declare public readonly backendService: pulumi.Output<string | undefined>;
     /**
      * [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
      */
-    public /*out*/ readonly baseForwardingRule!: pulumi.Output<string>;
+    declare public /*out*/ readonly baseForwardingRule: pulumi.Output<string>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The unique identifier number for the resource. This identifier is defined by the server.
      */
-    public /*out*/ readonly forwardingRuleId!: pulumi.Output<number>;
+    declare public /*out*/ readonly forwardingRuleId: pulumi.Output<number>;
     /**
      * IP address for which this forwarding rule accepts traffic. When a client
      * sends traffic to this IP address, the forwarding rule directs the traffic
@@ -911,7 +911,7 @@ export class ForwardingRule extends pulumi.CustomResource {
      * When reading an `IPAddress`, the API always returns the IP
      * address number.
      */
-    public readonly ipAddress!: pulumi.Output<string>;
+    declare public readonly ipAddress: pulumi.Output<string>;
     /**
      * Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
      * in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
@@ -923,7 +923,7 @@ export class ForwardingRule extends pulumi.CustomResource {
      * * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
      * * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
      */
-    public readonly ipCollection!: pulumi.Output<string | undefined>;
+    declare public readonly ipCollection: pulumi.Output<string | undefined>;
     /**
      * The IP protocol to which this rule applies.
      * For protocol forwarding, valid
@@ -938,14 +938,14 @@ export class ForwardingRule extends pulumi.CustomResource {
      * A forwarding rule with "L3_DEFAULT" IPProtocal cannot be attached to a backend service with TCP or UDP.
      * Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, `L3_DEFAULT`.
      */
-    public readonly ipProtocol!: pulumi.Output<string>;
+    declare public readonly ipProtocol: pulumi.Output<string>;
     /**
      * The IP address version that will be used by this forwarding rule.
      * Valid options are IPV4 and IPV6.
      * If not set, the IPv4 address will be used by default.
      * Possible values are: `IPV4`, `IPV6`.
      */
-    public readonly ipVersion!: pulumi.Output<string>;
+    declare public readonly ipVersion: pulumi.Output<string>;
     /**
      * Indicates whether or not this load balancer can be used as a collector for
      * packet mirroring. To prevent mirroring loops, instances behind this
@@ -954,19 +954,19 @@ export class ForwardingRule extends pulumi.CustomResource {
      * This can only be set to true for load balancers that have their
      * `loadBalancingScheme` set to `INTERNAL`.
      */
-    public readonly isMirroringCollector!: pulumi.Output<boolean | undefined>;
+    declare public readonly isMirroringCollector: pulumi.Output<boolean | undefined>;
     /**
      * The fingerprint used for optimistic locking of this resource.  Used
      * internally during updates.
      */
-    public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly labelFingerprint: pulumi.Output<string>;
     /**
      * Labels to apply to this forwarding rule.  A list of key->value pairs.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Specifies the forwarding rule type.
      * Note that an empty string value (`""`) is also supported for some use
@@ -977,7 +977,7 @@ export class ForwardingRule extends pulumi.CustomResource {
      * Default value is `EXTERNAL`.
      * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`.
      */
-    public readonly loadBalancingScheme!: pulumi.Output<string | undefined>;
+    declare public readonly loadBalancingScheme: pulumi.Output<string | undefined>;
     /**
      * Name of the resource; provided by the client when the resource is created.
      * The name must be 1-63 characters long, and comply with
@@ -991,7 +991,7 @@ export class ForwardingRule extends pulumi.CustomResource {
      * APIs, the forwarding rule name must be a 1-20 characters string with
      * lowercase letters and numbers and must start with a letter.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * This field is not used for external load balancing.
      * For Internal TCP/UDP Load Balancing, this field identifies the network that
@@ -1002,7 +1002,7 @@ export class ForwardingRule extends pulumi.CustomResource {
      * For Private Service Connect forwarding rules that forward traffic to Google
      * APIs, a network must be provided.
      */
-    public readonly network!: pulumi.Output<string>;
+    declare public readonly network: pulumi.Output<string>;
     /**
      * This signifies the networking tier used for configuring
      * this load balancer and can only take the following values:
@@ -1015,11 +1015,11 @@ export class ForwardingRule extends pulumi.CustomResource {
      * networkTier of the Address.
      * Possible values are: `PREMIUM`, `STANDARD`.
      */
-    public readonly networkTier!: pulumi.Output<string>;
+    declare public readonly networkTier: pulumi.Output<string>;
     /**
      * This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
      */
-    public readonly noAutomateDnsZone!: pulumi.Output<boolean | undefined>;
+    declare public readonly noAutomateDnsZone: pulumi.Output<boolean | undefined>;
     /**
      * The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
      * Only packets addressed to ports in the specified range will be forwarded
@@ -1042,7 +1042,7 @@ export class ForwardingRule extends pulumi.CustomResource {
      * cannot have overlapping `portRange`s.
      * @pattern: \d+(?:-\d+)?
      */
-    public readonly portRange!: pulumi.Output<string>;
+    declare public readonly portRange: pulumi.Output<string>;
     /**
      * The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
      * Only packets addressed to ports in the specified range will be forwarded
@@ -1063,41 +1063,41 @@ export class ForwardingRule extends pulumi.CustomResource {
      * they share at least one port number.
      * @pattern: \d+(?:-\d+)?
      */
-    public readonly ports!: pulumi.Output<string[] | undefined>;
+    declare public readonly ports: pulumi.Output<string[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The PSC connection id of the PSC Forwarding Rule.
      */
-    public /*out*/ readonly pscConnectionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly pscConnectionId: pulumi.Output<string>;
     /**
      * The PSC connection status of the PSC Forwarding Rule. Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`
      */
-    public /*out*/ readonly pscConnectionStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly pscConnectionStatus: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
-    public readonly recreateClosedPsc!: pulumi.Output<boolean | undefined>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
+    declare public readonly recreateClosedPsc: pulumi.Output<boolean | undefined>;
     /**
      * A reference to the region where the regional forwarding rule resides.
      * This field is not applicable to global forwarding rules.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
      * Service Directory resources to register this forwarding rule with.
      * Currently, only supports a single Service Directory resource.
      * Structure is documented below.
      */
-    public readonly serviceDirectoryRegistrations!: pulumi.Output<outputs.compute.ForwardingRuleServiceDirectoryRegistrations>;
+    declare public readonly serviceDirectoryRegistrations: pulumi.Output<outputs.compute.ForwardingRuleServiceDirectoryRegistrations>;
     /**
      * An optional prefix to the service name for this Forwarding Rule.
      * If specified, will be the first label of the fully qualified service
@@ -1110,16 +1110,16 @@ export class ForwardingRule extends pulumi.CustomResource {
      * character, which cannot be a dash.
      * This field is only used for INTERNAL load balancing.
      */
-    public readonly serviceLabel!: pulumi.Output<string | undefined>;
+    declare public readonly serviceLabel: pulumi.Output<string | undefined>;
     /**
      * The internal fully qualified service name for this Forwarding Rule.
      * This field is only used for INTERNAL load balancing.
      */
-    public /*out*/ readonly serviceName!: pulumi.Output<string>;
+    declare public /*out*/ readonly serviceName: pulumi.Output<string>;
     /**
      * If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
      */
-    public readonly sourceIpRanges!: pulumi.Output<string[] | undefined>;
+    declare public readonly sourceIpRanges: pulumi.Output<string[] | undefined>;
     /**
      * This field identifies the subnetwork that the load balanced IP should
      * belong to for this Forwarding Rule, used in internal load balancing and
@@ -1128,7 +1128,7 @@ export class ForwardingRule extends pulumi.CustomResource {
      * However, a subnetwork must be specified if the network is in custom subnet
      * mode or when creating external forwarding rule with IPv6.
      */
-    public readonly subnetwork!: pulumi.Output<string>;
+    declare public readonly subnetwork: pulumi.Output<string>;
     /**
      * The URL of the target resource to receive the matched traffic.  For
      * regional forwarding rules, this target must be in the same region as the
@@ -1138,7 +1138,7 @@ export class ForwardingRule extends pulumi.CustomResource {
      * *  For load balancers, see the "Target" column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
      * For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
      */
-    public readonly target!: pulumi.Output<string | undefined>;
+    declare public readonly target: pulumi.Output<string | undefined>;
 
     /**
      * Create a ForwardingRule resource with the given unique name, arguments, and options.
@@ -1153,70 +1153,70 @@ export class ForwardingRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ForwardingRuleState | undefined;
-            resourceInputs["allPorts"] = state ? state.allPorts : undefined;
-            resourceInputs["allowGlobalAccess"] = state ? state.allowGlobalAccess : undefined;
-            resourceInputs["allowPscGlobalAccess"] = state ? state.allowPscGlobalAccess : undefined;
-            resourceInputs["backendService"] = state ? state.backendService : undefined;
-            resourceInputs["baseForwardingRule"] = state ? state.baseForwardingRule : undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["forwardingRuleId"] = state ? state.forwardingRuleId : undefined;
-            resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
-            resourceInputs["ipCollection"] = state ? state.ipCollection : undefined;
-            resourceInputs["ipProtocol"] = state ? state.ipProtocol : undefined;
-            resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
-            resourceInputs["isMirroringCollector"] = state ? state.isMirroringCollector : undefined;
-            resourceInputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["loadBalancingScheme"] = state ? state.loadBalancingScheme : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["networkTier"] = state ? state.networkTier : undefined;
-            resourceInputs["noAutomateDnsZone"] = state ? state.noAutomateDnsZone : undefined;
-            resourceInputs["portRange"] = state ? state.portRange : undefined;
-            resourceInputs["ports"] = state ? state.ports : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pscConnectionId"] = state ? state.pscConnectionId : undefined;
-            resourceInputs["pscConnectionStatus"] = state ? state.pscConnectionStatus : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["recreateClosedPsc"] = state ? state.recreateClosedPsc : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
-            resourceInputs["serviceDirectoryRegistrations"] = state ? state.serviceDirectoryRegistrations : undefined;
-            resourceInputs["serviceLabel"] = state ? state.serviceLabel : undefined;
-            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
-            resourceInputs["sourceIpRanges"] = state ? state.sourceIpRanges : undefined;
-            resourceInputs["subnetwork"] = state ? state.subnetwork : undefined;
-            resourceInputs["target"] = state ? state.target : undefined;
+            resourceInputs["allPorts"] = state?.allPorts;
+            resourceInputs["allowGlobalAccess"] = state?.allowGlobalAccess;
+            resourceInputs["allowPscGlobalAccess"] = state?.allowPscGlobalAccess;
+            resourceInputs["backendService"] = state?.backendService;
+            resourceInputs["baseForwardingRule"] = state?.baseForwardingRule;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["forwardingRuleId"] = state?.forwardingRuleId;
+            resourceInputs["ipAddress"] = state?.ipAddress;
+            resourceInputs["ipCollection"] = state?.ipCollection;
+            resourceInputs["ipProtocol"] = state?.ipProtocol;
+            resourceInputs["ipVersion"] = state?.ipVersion;
+            resourceInputs["isMirroringCollector"] = state?.isMirroringCollector;
+            resourceInputs["labelFingerprint"] = state?.labelFingerprint;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["loadBalancingScheme"] = state?.loadBalancingScheme;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["networkTier"] = state?.networkTier;
+            resourceInputs["noAutomateDnsZone"] = state?.noAutomateDnsZone;
+            resourceInputs["portRange"] = state?.portRange;
+            resourceInputs["ports"] = state?.ports;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pscConnectionId"] = state?.pscConnectionId;
+            resourceInputs["pscConnectionStatus"] = state?.pscConnectionStatus;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["recreateClosedPsc"] = state?.recreateClosedPsc;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["serviceDirectoryRegistrations"] = state?.serviceDirectoryRegistrations;
+            resourceInputs["serviceLabel"] = state?.serviceLabel;
+            resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["sourceIpRanges"] = state?.sourceIpRanges;
+            resourceInputs["subnetwork"] = state?.subnetwork;
+            resourceInputs["target"] = state?.target;
         } else {
             const args = argsOrState as ForwardingRuleArgs | undefined;
-            resourceInputs["allPorts"] = args ? args.allPorts : undefined;
-            resourceInputs["allowGlobalAccess"] = args ? args.allowGlobalAccess : undefined;
-            resourceInputs["allowPscGlobalAccess"] = args ? args.allowPscGlobalAccess : undefined;
-            resourceInputs["backendService"] = args ? args.backendService : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["ipAddress"] = args ? args.ipAddress : undefined;
-            resourceInputs["ipCollection"] = args ? args.ipCollection : undefined;
-            resourceInputs["ipProtocol"] = args ? args.ipProtocol : undefined;
-            resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
-            resourceInputs["isMirroringCollector"] = args ? args.isMirroringCollector : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["loadBalancingScheme"] = args ? args.loadBalancingScheme : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["networkTier"] = args ? args.networkTier : undefined;
-            resourceInputs["noAutomateDnsZone"] = args ? args.noAutomateDnsZone : undefined;
-            resourceInputs["portRange"] = args ? args.portRange : undefined;
-            resourceInputs["ports"] = args ? args.ports : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["recreateClosedPsc"] = args ? args.recreateClosedPsc : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["serviceDirectoryRegistrations"] = args ? args.serviceDirectoryRegistrations : undefined;
-            resourceInputs["serviceLabel"] = args ? args.serviceLabel : undefined;
-            resourceInputs["sourceIpRanges"] = args ? args.sourceIpRanges : undefined;
-            resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
-            resourceInputs["target"] = args ? args.target : undefined;
+            resourceInputs["allPorts"] = args?.allPorts;
+            resourceInputs["allowGlobalAccess"] = args?.allowGlobalAccess;
+            resourceInputs["allowPscGlobalAccess"] = args?.allowPscGlobalAccess;
+            resourceInputs["backendService"] = args?.backendService;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["ipAddress"] = args?.ipAddress;
+            resourceInputs["ipCollection"] = args?.ipCollection;
+            resourceInputs["ipProtocol"] = args?.ipProtocol;
+            resourceInputs["ipVersion"] = args?.ipVersion;
+            resourceInputs["isMirroringCollector"] = args?.isMirroringCollector;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["loadBalancingScheme"] = args?.loadBalancingScheme;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["networkTier"] = args?.networkTier;
+            resourceInputs["noAutomateDnsZone"] = args?.noAutomateDnsZone;
+            resourceInputs["portRange"] = args?.portRange;
+            resourceInputs["ports"] = args?.ports;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["recreateClosedPsc"] = args?.recreateClosedPsc;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["serviceDirectoryRegistrations"] = args?.serviceDirectoryRegistrations;
+            resourceInputs["serviceLabel"] = args?.serviceLabel;
+            resourceInputs["sourceIpRanges"] = args?.sourceIpRanges;
+            resourceInputs["subnetwork"] = args?.subnetwork;
+            resourceInputs["target"] = args?.target;
             resourceInputs["baseForwardingRule"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;

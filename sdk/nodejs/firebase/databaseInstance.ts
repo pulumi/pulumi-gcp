@@ -143,37 +143,37 @@ export class DatabaseInstance extends pulumi.CustomResource {
      * The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances
      * or https://{instance-id}.{region}.firebasedatabase.app in other regions.
      */
-    public /*out*/ readonly databaseUrl!: pulumi.Output<string>;
+    declare public /*out*/ readonly databaseUrl: pulumi.Output<string>;
     /**
      * The intended database state. Possible values: ACTIVE, DISABLED.
      */
-    public readonly desiredState!: pulumi.Output<string | undefined>;
+    declare public readonly desiredState: pulumi.Output<string | undefined>;
     /**
      * The globally unique identifier of the Firebase Realtime Database instance.
      * Instance IDs cannot be reused after deletion.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The fully-qualified resource name of the Firebase Realtime Database, in
      * the format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
      * PROJECT_NUMBER: The Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
      * Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * A reference to the region where the Firebase Realtime database resides.
      * Check all [available regions](https://firebase.google.com/docs/projects/locations#rtdb-locations)
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The current database state. Set desiredState to :DISABLED to disable the database and :ACTIVE to reenable the database
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The database type.
      * Each project can create one default Firebase Realtime Database, which cannot be deleted once created.
@@ -182,7 +182,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
      * Default value is `USER_DATABASE`.
      * Possible values are: `DEFAULT_DATABASE`, `USER_DATABASE`.
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string | undefined>;
 
     /**
      * Create a DatabaseInstance resource with the given unique name, arguments, and options.
@@ -197,27 +197,27 @@ export class DatabaseInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseInstanceState | undefined;
-            resourceInputs["databaseUrl"] = state ? state.databaseUrl : undefined;
-            resourceInputs["desiredState"] = state ? state.desiredState : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["databaseUrl"] = state?.databaseUrl;
+            resourceInputs["desiredState"] = state?.desiredState;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as DatabaseInstanceArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.region === undefined) && !opts.urn) {
+            if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            resourceInputs["desiredState"] = args ? args.desiredState : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["desiredState"] = args?.desiredState;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["type"] = args?.type;
             resourceInputs["databaseUrl"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;

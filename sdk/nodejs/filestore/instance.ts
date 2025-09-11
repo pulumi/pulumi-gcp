@@ -180,87 +180,87 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Indicates whether the instance is protected against deletion.
      */
-    public readonly deletionProtectionEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly deletionProtectionEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The reason for enabling deletion protection.
      */
-    public readonly deletionProtectionReason!: pulumi.Output<string | undefined>;
+    declare public readonly deletionProtectionReason: pulumi.Output<string | undefined>;
     /**
      * A description of the instance.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Directory Services configuration.
      * Should only be set if protocol is "NFS_V4_1".
      * Structure is documented below.
      */
-    public readonly directoryServices!: pulumi.Output<outputs.filestore.InstanceDirectoryServices | undefined>;
+    declare public readonly directoryServices: pulumi.Output<outputs.filestore.InstanceDirectoryServices | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Output only fields for replication configuration.
      * Structure is documented below.
      */
-    public /*out*/ readonly effectiveReplications!: pulumi.Output<outputs.filestore.InstanceEffectiveReplication[]>;
+    declare public /*out*/ readonly effectiveReplications: pulumi.Output<outputs.filestore.InstanceEffectiveReplication[]>;
     /**
      * Server-specified ETag for the instance resource to prevent
      * simultaneous updates from overwriting each other.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * File system shares on the instance. For this version, only a
      * single file share is supported.
      * Structure is documented below.
      */
-    public readonly fileShares!: pulumi.Output<outputs.filestore.InstanceFileShares>;
+    declare public readonly fileShares: pulumi.Output<outputs.filestore.InstanceFileShares>;
     /**
      * Replication configuration, once set, this cannot be updated.
      * Additionally this should be specified on the replica instance only, indicating the active as the peerInstance
      * Structure is documented below.
      */
-    public readonly initialReplication!: pulumi.Output<outputs.filestore.InstanceInitialReplication | undefined>;
+    declare public readonly initialReplication: pulumi.Output<outputs.filestore.InstanceInitialReplication | undefined>;
     /**
      * KMS key name used for data encryption.
      */
-    public readonly kmsKeyName!: pulumi.Output<string | undefined>;
+    declare public readonly kmsKeyName: pulumi.Output<string | undefined>;
     /**
      * Resource labels to represent user-provided metadata.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The resource name of the instance.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * VPC networks to which the instance is connected. For this version,
      * only a single network is supported.
      * Structure is documented below.
      */
-    public readonly networks!: pulumi.Output<outputs.filestore.InstanceNetwork[]>;
+    declare public readonly networks: pulumi.Output<outputs.filestore.InstanceNetwork[]>;
     /**
      * Performance configuration for the instance. If not provided,
      * the default performance settings will be used.
      * Structure is documented below.
      */
-    public readonly performanceConfig!: pulumi.Output<outputs.filestore.InstancePerformanceConfig | undefined>;
+    declare public readonly performanceConfig: pulumi.Output<outputs.filestore.InstancePerformanceConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Either NFSv3, for using NFS version 3 as file sharing protocol,
      * or NFSv4.1, for using NFS version 4.1 as file sharing protocol.
@@ -269,12 +269,12 @@ export class Instance extends pulumi.CustomResource {
      * Default value is `NFS_V3`.
      * Possible values are: `NFS_V3`, `NFS_V4_1`.
      */
-    public readonly protocol!: pulumi.Output<string | undefined>;
+    declare public readonly protocol: pulumi.Output<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * A map of resource manager tags. Resource manager tag keys
      * and values have the same definition as resource manager
@@ -286,12 +286,12 @@ export class Instance extends pulumi.CustomResource {
      * will trigger recreation. To apply tags to an existing
      * resource, see the `gcp.tags.TagValue` resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The service tier of the instance.
      * Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
      */
-    public readonly tier!: pulumi.Output<string>;
+    declare public readonly tier: pulumi.Output<string>;
     /**
      * (Optional, Deprecated)
      * The name of the Filestore zone of the instance.
@@ -300,7 +300,7 @@ export class Instance extends pulumi.CustomResource {
      *
      * @deprecated `zone` is deprecated and will be removed in a future major release. Use `location` instead.
      */
-    public readonly zone!: pulumi.Output<string>;
+    declare public readonly zone: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -315,56 +315,56 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["deletionProtectionEnabled"] = state ? state.deletionProtectionEnabled : undefined;
-            resourceInputs["deletionProtectionReason"] = state ? state.deletionProtectionReason : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["directoryServices"] = state ? state.directoryServices : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["effectiveReplications"] = state ? state.effectiveReplications : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["fileShares"] = state ? state.fileShares : undefined;
-            resourceInputs["initialReplication"] = state ? state.initialReplication : undefined;
-            resourceInputs["kmsKeyName"] = state ? state.kmsKeyName : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networks"] = state ? state.networks : undefined;
-            resourceInputs["performanceConfig"] = state ? state.performanceConfig : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["protocol"] = state ? state.protocol : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["tier"] = state ? state.tier : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionProtectionEnabled"] = state?.deletionProtectionEnabled;
+            resourceInputs["deletionProtectionReason"] = state?.deletionProtectionReason;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["directoryServices"] = state?.directoryServices;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["effectiveReplications"] = state?.effectiveReplications;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["fileShares"] = state?.fileShares;
+            resourceInputs["initialReplication"] = state?.initialReplication;
+            resourceInputs["kmsKeyName"] = state?.kmsKeyName;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networks"] = state?.networks;
+            resourceInputs["performanceConfig"] = state?.performanceConfig;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["protocol"] = state?.protocol;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["tier"] = state?.tier;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.fileShares === undefined) && !opts.urn) {
+            if (args?.fileShares === undefined && !opts.urn) {
                 throw new Error("Missing required property 'fileShares'");
             }
-            if ((!args || args.networks === undefined) && !opts.urn) {
+            if (args?.networks === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networks'");
             }
-            if ((!args || args.tier === undefined) && !opts.urn) {
+            if (args?.tier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tier'");
             }
-            resourceInputs["deletionProtectionEnabled"] = args ? args.deletionProtectionEnabled : undefined;
-            resourceInputs["deletionProtectionReason"] = args ? args.deletionProtectionReason : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["directoryServices"] = args ? args.directoryServices : undefined;
-            resourceInputs["fileShares"] = args ? args.fileShares : undefined;
-            resourceInputs["initialReplication"] = args ? args.initialReplication : undefined;
-            resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networks"] = args ? args.networks : undefined;
-            resourceInputs["performanceConfig"] = args ? args.performanceConfig : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["protocol"] = args ? args.protocol : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["tier"] = args ? args.tier : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["deletionProtectionEnabled"] = args?.deletionProtectionEnabled;
+            resourceInputs["deletionProtectionReason"] = args?.deletionProtectionReason;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["directoryServices"] = args?.directoryServices;
+            resourceInputs["fileShares"] = args?.fileShares;
+            resourceInputs["initialReplication"] = args?.initialReplication;
+            resourceInputs["kmsKeyName"] = args?.kmsKeyName;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networks"] = args?.networks;
+            resourceInputs["performanceConfig"] = args?.performanceConfig;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["protocol"] = args?.protocol;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["tier"] = args?.tier;
+            resourceInputs["zone"] = args?.zone;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["effectiveReplications"] = undefined /*out*/;

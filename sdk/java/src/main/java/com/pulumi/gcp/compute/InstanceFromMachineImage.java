@@ -147,16 +147,14 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
         return this.canIpForward;
     }
     /**
-     * The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-     * to create.
+     * The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
      * 
      */
     @Export(name="confidentialInstanceConfig", refs={InstanceFromMachineImageConfidentialInstanceConfig.class}, tree="[0]")
     private Output<InstanceFromMachineImageConfidentialInstanceConfig> confidentialInstanceConfig;
 
     /**
-     * @return The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-     * to create.
+     * @return The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
      * 
      */
     public Output<InstanceFromMachineImageConfidentialInstanceConfig> confidentialInstanceConfig() {
@@ -191,18 +189,18 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
         return this.creationTimestamp;
     }
     /**
-     * Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
-     * SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance
-     * life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
+     * Current status of the instance.
+     * 					This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED.
+     * 					For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
      * 
      */
     @Export(name="currentStatus", refs={String.class}, tree="[0]")
     private Output<String> currentStatus;
 
     /**
-     * @return Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
-     * SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance
-     * life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
+     * @return Current status of the instance.
+     * 					This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED.
+     * 					For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
      * 
      */
     public Output<String> currentStatus() {
@@ -285,18 +283,14 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
         return this.guestAccelerators;
     }
     /**
-     * A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-     * labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
-     * exceed 253 characters. Changing this forces a new resource to be created.
+     * A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
      * 
      */
     @Export(name="hostname", refs={String.class}, tree="[0]")
     private Output<String> hostname;
 
     /**
-     * @return A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
-     * labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
-     * exceed 253 characters. Changing this forces a new resource to be created.
+     * @return A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
      * 
      */
     public Output<String> hostname() {
@@ -331,16 +325,14 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
         return this.instanceId;
     }
     /**
-     * Action to be taken when a customer&#39;s encryption key is revoked. Supports &#34;STOP&#34; and &#34;NONE&#34;, with &#34;NONE&#34; being the
-     * default.
+     * Action to be taken when a customer&#39;s encryption key is revoked. Supports &#34;STOP&#34; and &#34;NONE&#34;, with &#34;NONE&#34; being the default.
      * 
      */
     @Export(name="keyRevocationActionType", refs={String.class}, tree="[0]")
     private Output<String> keyRevocationActionType;
 
     /**
-     * @return Action to be taken when a customer&#39;s encryption key is revoked. Supports &#34;STOP&#34; and &#34;NONE&#34;, with &#34;NONE&#34; being the
-     * default.
+     * @return Action to be taken when a customer&#39;s encryption key is revoked. Supports &#34;STOP&#34; and &#34;NONE&#34;, with &#34;NONE&#34; being the default.
      * 
      */
     public Output<String> keyRevocationActionType() {
@@ -361,18 +353,20 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
         return this.labelFingerprint;
     }
     /**
-     * A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
-     * the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on
-     * the resource.
+     * A set of key/value label pairs assigned to the instance.
+     * 
+     *                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     *                 Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> labels;
 
     /**
-     * @return A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
-     * the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on
-     * the resource.
+     * @return A set of key/value label pairs assigned to the instance.
+     * 
+     *                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     *                 Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
     public Output<Map<String,String>> labels() {
@@ -479,16 +473,14 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
         return this.networkInterfaces;
     }
     /**
-     * Configures network performance settings for the instance. If not specified, the instance will be created with its
-     * default network performance configuration.
+     * Configures network performance settings for the instance. If not specified, the instance will be created with its default network performance configuration.
      * 
      */
     @Export(name="networkPerformanceConfig", refs={InstanceFromMachineImageNetworkPerformanceConfig.class}, tree="[0]")
     private Output<InstanceFromMachineImageNetworkPerformanceConfig> networkPerformanceConfig;
 
     /**
-     * @return Configures network performance settings for the instance. If not specified, the instance will be created with its
-     * default network performance configuration.
+     * @return Configures network performance settings for the instance. If not specified, the instance will be created with its default network performance configuration.
      * 
      */
     public Output<InstanceFromMachineImageNetworkPerformanceConfig> networkPerformanceConfig() {
@@ -523,16 +515,14 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
         return this.partnerMetadata;
     }
     /**
-     * The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
-     * self_link nor project are provided, the provider project is used.
+     * The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
-     * self_link nor project are provided, the provider project is used.
+     * @return The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
      * 
      */
     public Output<String> project() {

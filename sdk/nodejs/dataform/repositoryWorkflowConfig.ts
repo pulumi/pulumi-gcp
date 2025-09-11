@@ -164,42 +164,42 @@ export class RepositoryWorkflowConfig extends pulumi.CustomResource {
     /**
      * Optional. Optional schedule (in cron format) for automatic creation of compilation results.
      */
-    public readonly cronSchedule!: pulumi.Output<string | undefined>;
+    declare public readonly cronSchedule: pulumi.Output<string | undefined>;
     /**
      * Optional. If left unset, a default InvocationConfig will be used.
      * Structure is documented below.
      */
-    public readonly invocationConfig!: pulumi.Output<outputs.dataform.RepositoryWorkflowConfigInvocationConfig | undefined>;
+    declare public readonly invocationConfig: pulumi.Output<outputs.dataform.RepositoryWorkflowConfigInvocationConfig | undefined>;
     /**
      * The workflow's name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Records of the 10 most recent scheduled execution attempts, ordered in in descending order of executionTime. Updated whenever automatic creation of a workflow invocation is triggered by cronSchedule.
      * Structure is documented below.
      */
-    public /*out*/ readonly recentScheduledExecutionRecords!: pulumi.Output<outputs.dataform.RepositoryWorkflowConfigRecentScheduledExecutionRecord[]>;
+    declare public /*out*/ readonly recentScheduledExecutionRecords: pulumi.Output<outputs.dataform.RepositoryWorkflowConfigRecentScheduledExecutionRecord[]>;
     /**
      * A reference to the region
      */
-    public readonly region!: pulumi.Output<string | undefined>;
+    declare public readonly region: pulumi.Output<string | undefined>;
     /**
      * The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*&#47;locations/*&#47;repositories/*&#47;releaseConfigs/*.
      */
-    public readonly releaseConfig!: pulumi.Output<string>;
+    declare public readonly releaseConfig: pulumi.Output<string>;
     /**
      * A reference to the Dataform repository
      */
-    public readonly repository!: pulumi.Output<string | undefined>;
+    declare public readonly repository: pulumi.Output<string | undefined>;
     /**
      * Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
      */
-    public readonly timeZone!: pulumi.Output<string | undefined>;
+    declare public readonly timeZone: pulumi.Output<string | undefined>;
 
     /**
      * Create a RepositoryWorkflowConfig resource with the given unique name, arguments, and options.
@@ -214,28 +214,28 @@ export class RepositoryWorkflowConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RepositoryWorkflowConfigState | undefined;
-            resourceInputs["cronSchedule"] = state ? state.cronSchedule : undefined;
-            resourceInputs["invocationConfig"] = state ? state.invocationConfig : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["recentScheduledExecutionRecords"] = state ? state.recentScheduledExecutionRecords : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["releaseConfig"] = state ? state.releaseConfig : undefined;
-            resourceInputs["repository"] = state ? state.repository : undefined;
-            resourceInputs["timeZone"] = state ? state.timeZone : undefined;
+            resourceInputs["cronSchedule"] = state?.cronSchedule;
+            resourceInputs["invocationConfig"] = state?.invocationConfig;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["recentScheduledExecutionRecords"] = state?.recentScheduledExecutionRecords;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["releaseConfig"] = state?.releaseConfig;
+            resourceInputs["repository"] = state?.repository;
+            resourceInputs["timeZone"] = state?.timeZone;
         } else {
             const args = argsOrState as RepositoryWorkflowConfigArgs | undefined;
-            if ((!args || args.releaseConfig === undefined) && !opts.urn) {
+            if (args?.releaseConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'releaseConfig'");
             }
-            resourceInputs["cronSchedule"] = args ? args.cronSchedule : undefined;
-            resourceInputs["invocationConfig"] = args ? args.invocationConfig : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["releaseConfig"] = args ? args.releaseConfig : undefined;
-            resourceInputs["repository"] = args ? args.repository : undefined;
-            resourceInputs["timeZone"] = args ? args.timeZone : undefined;
+            resourceInputs["cronSchedule"] = args?.cronSchedule;
+            resourceInputs["invocationConfig"] = args?.invocationConfig;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["releaseConfig"] = args?.releaseConfig;
+            resourceInputs["repository"] = args?.repository;
+            resourceInputs["timeZone"] = args?.timeZone;
             resourceInputs["recentScheduledExecutionRecords"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

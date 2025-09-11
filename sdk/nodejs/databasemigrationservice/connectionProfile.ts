@@ -500,81 +500,81 @@ export class ConnectionProfile extends pulumi.CustomResource {
      * Specifies required connection parameters, and the parameters required to create an AlloyDB destination cluster.
      * Structure is documented below.
      */
-    public readonly alloydb!: pulumi.Output<outputs.databasemigrationservice.ConnectionProfileAlloydb | undefined>;
+    declare public readonly alloydb: pulumi.Output<outputs.databasemigrationservice.ConnectionProfileAlloydb | undefined>;
     /**
      * Specifies required connection parameters, and, optionally, the parameters required to create a Cloud SQL destination database instance.
      * Structure is documented below.
      */
-    public readonly cloudsql!: pulumi.Output<outputs.databasemigrationservice.ConnectionProfileCloudsql | undefined>;
+    declare public readonly cloudsql: pulumi.Output<outputs.databasemigrationservice.ConnectionProfileCloudsql | undefined>;
     /**
      * The ID of the connection profile.
      */
-    public readonly connectionProfileId!: pulumi.Output<string>;
+    declare public readonly connectionProfileId: pulumi.Output<string>;
     /**
      * Output only. The timestamp when the resource was created. A timestamp in RFC3339 UTC 'Zulu' format, accurate to nanoseconds. Example: '2014-10-02T15:01:23.045123456Z'.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The database provider.
      */
-    public /*out*/ readonly dbprovider!: pulumi.Output<string>;
+    declare public /*out*/ readonly dbprovider: pulumi.Output<string>;
     /**
      * The connection profile display name.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Output only. The error details in case of state FAILED.
      * Structure is documented below.
      */
-    public /*out*/ readonly errors!: pulumi.Output<outputs.databasemigrationservice.ConnectionProfileError[]>;
+    declare public /*out*/ readonly errors: pulumi.Output<outputs.databasemigrationservice.ConnectionProfileError[]>;
     /**
      * The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location where the connection profile should reside.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * Specifies connection parameters required specifically for MySQL databases.
      * Structure is documented below.
      */
-    public readonly mysql!: pulumi.Output<outputs.databasemigrationservice.ConnectionProfileMysql | undefined>;
+    declare public readonly mysql: pulumi.Output<outputs.databasemigrationservice.ConnectionProfileMysql | undefined>;
     /**
      * The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Specifies connection parameters required specifically for Oracle databases.
      * Structure is documented below.
      */
-    public readonly oracle!: pulumi.Output<outputs.databasemigrationservice.ConnectionProfileOracle | undefined>;
+    declare public readonly oracle: pulumi.Output<outputs.databasemigrationservice.ConnectionProfileOracle | undefined>;
     /**
      * Specifies connection parameters required specifically for PostgreSQL databases.
      * Structure is documented below.
      */
-    public readonly postgresql!: pulumi.Output<outputs.databasemigrationservice.ConnectionProfilePostgresql | undefined>;
+    declare public readonly postgresql: pulumi.Output<outputs.databasemigrationservice.ConnectionProfilePostgresql | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The current connection profile state.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
 
     /**
      * Create a ConnectionProfile resource with the given unique name, arguments, and options.
@@ -589,38 +589,38 @@ export class ConnectionProfile extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectionProfileState | undefined;
-            resourceInputs["alloydb"] = state ? state.alloydb : undefined;
-            resourceInputs["cloudsql"] = state ? state.cloudsql : undefined;
-            resourceInputs["connectionProfileId"] = state ? state.connectionProfileId : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dbprovider"] = state ? state.dbprovider : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["errors"] = state ? state.errors : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["mysql"] = state ? state.mysql : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["oracle"] = state ? state.oracle : undefined;
-            resourceInputs["postgresql"] = state ? state.postgresql : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["alloydb"] = state?.alloydb;
+            resourceInputs["cloudsql"] = state?.cloudsql;
+            resourceInputs["connectionProfileId"] = state?.connectionProfileId;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dbprovider"] = state?.dbprovider;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["errors"] = state?.errors;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["mysql"] = state?.mysql;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["oracle"] = state?.oracle;
+            resourceInputs["postgresql"] = state?.postgresql;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["state"] = state?.state;
         } else {
             const args = argsOrState as ConnectionProfileArgs | undefined;
-            if ((!args || args.connectionProfileId === undefined) && !opts.urn) {
+            if (args?.connectionProfileId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectionProfileId'");
             }
-            resourceInputs["alloydb"] = args ? args.alloydb : undefined;
-            resourceInputs["cloudsql"] = args ? args.cloudsql : undefined;
-            resourceInputs["connectionProfileId"] = args ? args.connectionProfileId : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["mysql"] = args ? args.mysql : undefined;
-            resourceInputs["oracle"] = args ? args.oracle : undefined;
-            resourceInputs["postgresql"] = args ? args.postgresql : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["alloydb"] = args?.alloydb;
+            resourceInputs["cloudsql"] = args?.cloudsql;
+            resourceInputs["connectionProfileId"] = args?.connectionProfileId;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["mysql"] = args?.mysql;
+            resourceInputs["oracle"] = args?.oracle;
+            resourceInputs["postgresql"] = args?.postgresql;
+            resourceInputs["project"] = args?.project;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["dbprovider"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;

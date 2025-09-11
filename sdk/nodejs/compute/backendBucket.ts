@@ -163,44 +163,44 @@ export class BackendBucket extends pulumi.CustomResource {
     /**
      * Cloud Storage bucket name.
      */
-    public readonly bucketName!: pulumi.Output<string>;
+    declare public readonly bucketName: pulumi.Output<string>;
     /**
      * Cloud CDN configuration for this Backend Bucket.
      * Structure is documented below.
      */
-    public readonly cdnPolicy!: pulumi.Output<outputs.compute.BackendBucketCdnPolicy>;
+    declare public readonly cdnPolicy: pulumi.Output<outputs.compute.BackendBucketCdnPolicy>;
     /**
      * Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
      * Possible values are: `AUTOMATIC`, `DISABLED`.
      */
-    public readonly compressionMode!: pulumi.Output<string | undefined>;
+    declare public readonly compressionMode: pulumi.Output<string | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * Headers that the HTTP/S load balancer should add to proxied responses.
      */
-    public readonly customResponseHeaders!: pulumi.Output<string[] | undefined>;
+    declare public readonly customResponseHeaders: pulumi.Output<string[] | undefined>;
     /**
      * An optional textual description of the resource; provided by the
      * client when the resource is created.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The security policy associated with this backend bucket.
      */
-    public readonly edgeSecurityPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly edgeSecurityPolicy: pulumi.Output<string | undefined>;
     /**
      * If true, enable Cloud CDN for this BackendBucket.
      */
-    public readonly enableCdn!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableCdn: pulumi.Output<boolean | undefined>;
     /**
      * The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
      * If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
      * Possible values are: `INTERNAL_MANAGED`.
      */
-    public readonly loadBalancingScheme!: pulumi.Output<string | undefined>;
+    declare public readonly loadBalancingScheme: pulumi.Output<string | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -210,7 +210,7 @@ export class BackendBucket extends pulumi.CustomResource {
      * characters must be a dash, lowercase letter, or digit, except the
      * last character, which cannot be a dash.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
@@ -220,11 +220,11 @@ export class BackendBucket extends pulumi.CustomResource {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The URI of the created resource.
      */
-    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly selfLink: pulumi.Output<string>;
 
     /**
      * Create a BackendBucket resource with the given unique name, arguments, and options.
@@ -239,35 +239,33 @@ export class BackendBucket extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BackendBucketState | undefined;
-            resourceInputs["bucketName"] = state ? state.bucketName : undefined;
-            resourceInputs["cdnPolicy"] = state ? state.cdnPolicy : undefined;
-            resourceInputs["compressionMode"] = state ? state.compressionMode : undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["customResponseHeaders"] = state ? state.customResponseHeaders : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["edgeSecurityPolicy"] = state ? state.edgeSecurityPolicy : undefined;
-            resourceInputs["enableCdn"] = state ? state.enableCdn : undefined;
-            resourceInputs["loadBalancingScheme"] = state ? state.loadBalancingScheme : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["params"] = state ? state.params : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["bucketName"] = state?.bucketName;
+            resourceInputs["cdnPolicy"] = state?.cdnPolicy;
+            resourceInputs["compressionMode"] = state?.compressionMode;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["customResponseHeaders"] = state?.customResponseHeaders;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["edgeSecurityPolicy"] = state?.edgeSecurityPolicy;
+            resourceInputs["enableCdn"] = state?.enableCdn;
+            resourceInputs["loadBalancingScheme"] = state?.loadBalancingScheme;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["selfLink"] = state?.selfLink;
         } else {
             const args = argsOrState as BackendBucketArgs | undefined;
-            if ((!args || args.bucketName === undefined) && !opts.urn) {
+            if (args?.bucketName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucketName'");
             }
-            resourceInputs["bucketName"] = args ? args.bucketName : undefined;
-            resourceInputs["cdnPolicy"] = args ? args.cdnPolicy : undefined;
-            resourceInputs["compressionMode"] = args ? args.compressionMode : undefined;
-            resourceInputs["customResponseHeaders"] = args ? args.customResponseHeaders : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["edgeSecurityPolicy"] = args ? args.edgeSecurityPolicy : undefined;
-            resourceInputs["enableCdn"] = args ? args.enableCdn : undefined;
-            resourceInputs["loadBalancingScheme"] = args ? args.loadBalancingScheme : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["params"] = args ? args.params : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["bucketName"] = args?.bucketName;
+            resourceInputs["cdnPolicy"] = args?.cdnPolicy;
+            resourceInputs["compressionMode"] = args?.compressionMode;
+            resourceInputs["customResponseHeaders"] = args?.customResponseHeaders;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["edgeSecurityPolicy"] = args?.edgeSecurityPolicy;
+            resourceInputs["enableCdn"] = args?.enableCdn;
+            resourceInputs["loadBalancingScheme"] = args?.loadBalancingScheme;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         }

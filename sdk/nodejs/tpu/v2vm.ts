@@ -171,16 +171,16 @@ export class V2Vm extends pulumi.CustomResource {
      * as `acceleratorType`. If neither is specified, `acceleratorType` defaults to 'v2-8'.
      * Structure is documented below.
      */
-    public readonly acceleratorConfig!: pulumi.Output<outputs.tpu.V2VmAcceleratorConfig>;
+    declare public readonly acceleratorConfig: pulumi.Output<outputs.tpu.V2VmAcceleratorConfig>;
     /**
      * TPU accelerator type for the TPU. `acceleratorType` cannot be used at the same time as
      * `acceleratorConfig`. If neither is specified, `acceleratorType` defaults to 'v2-8'.
      */
-    public readonly acceleratorType!: pulumi.Output<string>;
+    declare public readonly acceleratorType: pulumi.Output<string>;
     /**
      * The API version that created this Node.
      */
-    public /*out*/ readonly apiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly apiVersion: pulumi.Output<string>;
     /**
      * The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must
      * be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger
@@ -189,114 +189,114 @@ export class V2Vm extends pulumi.CustomResource {
      * with any subnetworks in the user's provided network, or the provided network is peered with
      * another network that is using that CIDR block.
      */
-    public readonly cidrBlock!: pulumi.Output<string>;
+    declare public readonly cidrBlock: pulumi.Output<string>;
     /**
      * The additional data disks for the Node.
      * Structure is documented below.
      */
-    public readonly dataDisks!: pulumi.Output<outputs.tpu.V2VmDataDisk[] | undefined>;
+    declare public readonly dataDisks: pulumi.Output<outputs.tpu.V2VmDataDisk[] | undefined>;
     /**
      * Text description of the TPU.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The health status of the TPU node.
      */
-    public /*out*/ readonly health!: pulumi.Output<string>;
+    declare public /*out*/ readonly health: pulumi.Output<string>;
     /**
      * If this field is populated, it contains a description of why the TPU Node is unhealthy.
      */
-    public /*out*/ readonly healthDescription!: pulumi.Output<string>;
+    declare public /*out*/ readonly healthDescription: pulumi.Output<string>;
     /**
      * Resource labels to represent user-provided metadata.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script.
      */
-    public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly metadata: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Whether the Node belongs to a Multislice group.
      */
-    public /*out*/ readonly multisliceNode!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly multisliceNode: pulumi.Output<boolean>;
     /**
      * The immutable name of the TPU.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Network configurations for the TPU node.
      * Structure is documented below.
      */
-    public readonly networkConfig!: pulumi.Output<outputs.tpu.V2VmNetworkConfig>;
+    declare public readonly networkConfig: pulumi.Output<outputs.tpu.V2VmNetworkConfig>;
     /**
      * Repeated network configurations for the TPU node. This field is used to specify multiple
      * network configs for the TPU node.
      * Structure is documented below.
      */
-    public readonly networkConfigs!: pulumi.Output<outputs.tpu.V2VmNetworkConfig[] | undefined>;
+    declare public readonly networkConfigs: pulumi.Output<outputs.tpu.V2VmNetworkConfig[] | undefined>;
     /**
      * The network endpoints where TPU workers can be accessed and sent work. It is recommended that
      * runtime clients of the node reach out to the 0th entry in this map first.
      * Structure is documented below.
      */
-    public /*out*/ readonly networkEndpoints!: pulumi.Output<outputs.tpu.V2VmNetworkEndpoint[]>;
+    declare public /*out*/ readonly networkEndpoints: pulumi.Output<outputs.tpu.V2VmNetworkEndpoint[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The qualified name of the QueuedResource that requested this Node.
      */
-    public /*out*/ readonly queuedResource!: pulumi.Output<string>;
+    declare public /*out*/ readonly queuedResource: pulumi.Output<string>;
     /**
      * Runtime version for the TPU.
      */
-    public readonly runtimeVersion!: pulumi.Output<string>;
+    declare public readonly runtimeVersion: pulumi.Output<string>;
     /**
      * The scheduling options for this node.
      * Structure is documented below.
      */
-    public readonly schedulingConfig!: pulumi.Output<outputs.tpu.V2VmSchedulingConfig | undefined>;
+    declare public readonly schedulingConfig: pulumi.Output<outputs.tpu.V2VmSchedulingConfig | undefined>;
     /**
      * The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is
      * specified, the default compute service account will be used.
      * Structure is documented below.
      */
-    public readonly serviceAccount!: pulumi.Output<outputs.tpu.V2VmServiceAccount>;
+    declare public readonly serviceAccount: pulumi.Output<outputs.tpu.V2VmServiceAccount>;
     /**
      * Shielded Instance options.
      * Structure is documented below.
      */
-    public readonly shieldedInstanceConfig!: pulumi.Output<outputs.tpu.V2VmShieldedInstanceConfig | undefined>;
+    declare public readonly shieldedInstanceConfig: pulumi.Output<outputs.tpu.V2VmShieldedInstanceConfig | undefined>;
     /**
      * The current state for the TPU Node.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The Symptoms that have occurred to the TPU Node.
      * Structure is documented below.
      */
-    public /*out*/ readonly symptoms!: pulumi.Output<outputs.tpu.V2VmSymptom[]>;
+    declare public /*out*/ readonly symptoms: pulumi.Output<outputs.tpu.V2VmSymptom[]>;
     /**
      * Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * The GCP location for the TPU. If it is not provided, the provider zone is used.
      */
-    public readonly zone!: pulumi.Output<string>;
+    declare public readonly zone: pulumi.Output<string>;
 
     /**
      * Create a V2Vm resource with the given unique name, arguments, and options.
@@ -311,55 +311,55 @@ export class V2Vm extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as V2VmState | undefined;
-            resourceInputs["acceleratorConfig"] = state ? state.acceleratorConfig : undefined;
-            resourceInputs["acceleratorType"] = state ? state.acceleratorType : undefined;
-            resourceInputs["apiVersion"] = state ? state.apiVersion : undefined;
-            resourceInputs["cidrBlock"] = state ? state.cidrBlock : undefined;
-            resourceInputs["dataDisks"] = state ? state.dataDisks : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["health"] = state ? state.health : undefined;
-            resourceInputs["healthDescription"] = state ? state.healthDescription : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["metadata"] = state ? state.metadata : undefined;
-            resourceInputs["multisliceNode"] = state ? state.multisliceNode : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networkConfig"] = state ? state.networkConfig : undefined;
-            resourceInputs["networkConfigs"] = state ? state.networkConfigs : undefined;
-            resourceInputs["networkEndpoints"] = state ? state.networkEndpoints : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["queuedResource"] = state ? state.queuedResource : undefined;
-            resourceInputs["runtimeVersion"] = state ? state.runtimeVersion : undefined;
-            resourceInputs["schedulingConfig"] = state ? state.schedulingConfig : undefined;
-            resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
-            resourceInputs["shieldedInstanceConfig"] = state ? state.shieldedInstanceConfig : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["symptoms"] = state ? state.symptoms : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["acceleratorConfig"] = state?.acceleratorConfig;
+            resourceInputs["acceleratorType"] = state?.acceleratorType;
+            resourceInputs["apiVersion"] = state?.apiVersion;
+            resourceInputs["cidrBlock"] = state?.cidrBlock;
+            resourceInputs["dataDisks"] = state?.dataDisks;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["health"] = state?.health;
+            resourceInputs["healthDescription"] = state?.healthDescription;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["metadata"] = state?.metadata;
+            resourceInputs["multisliceNode"] = state?.multisliceNode;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networkConfig"] = state?.networkConfig;
+            resourceInputs["networkConfigs"] = state?.networkConfigs;
+            resourceInputs["networkEndpoints"] = state?.networkEndpoints;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["queuedResource"] = state?.queuedResource;
+            resourceInputs["runtimeVersion"] = state?.runtimeVersion;
+            resourceInputs["schedulingConfig"] = state?.schedulingConfig;
+            resourceInputs["serviceAccount"] = state?.serviceAccount;
+            resourceInputs["shieldedInstanceConfig"] = state?.shieldedInstanceConfig;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["symptoms"] = state?.symptoms;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as V2VmArgs | undefined;
-            if ((!args || args.runtimeVersion === undefined) && !opts.urn) {
+            if (args?.runtimeVersion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'runtimeVersion'");
             }
-            resourceInputs["acceleratorConfig"] = args ? args.acceleratorConfig : undefined;
-            resourceInputs["acceleratorType"] = args ? args.acceleratorType : undefined;
-            resourceInputs["cidrBlock"] = args ? args.cidrBlock : undefined;
-            resourceInputs["dataDisks"] = args ? args.dataDisks : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["metadata"] = args ? args.metadata : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networkConfig"] = args ? args.networkConfig : undefined;
-            resourceInputs["networkConfigs"] = args ? args.networkConfigs : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["runtimeVersion"] = args ? args.runtimeVersion : undefined;
-            resourceInputs["schedulingConfig"] = args ? args.schedulingConfig : undefined;
-            resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
-            resourceInputs["shieldedInstanceConfig"] = args ? args.shieldedInstanceConfig : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["acceleratorConfig"] = args?.acceleratorConfig;
+            resourceInputs["acceleratorType"] = args?.acceleratorType;
+            resourceInputs["cidrBlock"] = args?.cidrBlock;
+            resourceInputs["dataDisks"] = args?.dataDisks;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["metadata"] = args?.metadata;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networkConfig"] = args?.networkConfig;
+            resourceInputs["networkConfigs"] = args?.networkConfigs;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["runtimeVersion"] = args?.runtimeVersion;
+            resourceInputs["schedulingConfig"] = args?.schedulingConfig;
+            resourceInputs["serviceAccount"] = args?.serviceAccount;
+            resourceInputs["shieldedInstanceConfig"] = args?.shieldedInstanceConfig;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["zone"] = args?.zone;
             resourceInputs["apiVersion"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["health"] = undefined /*out*/;
