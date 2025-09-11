@@ -12,6 +12,244 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Three different resources help you manage your IAM policy for Vertex AI FeatureGroup. Each of these resources serves a different use case:
+//
+// * `vertex.AiFeatureGroupIamPolicy`: Authoritative. Sets the IAM policy for the featuregroup and replaces any existing policy already attached.
+// * `vertex.AiFeatureGroupIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the featuregroup are preserved.
+// * `vertex.AiFeatureGroupIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the featuregroup are preserved.
+//
+// # A data source can be used to retrieve policy data in advent you do not need creation
+//
+// * `vertex.AiFeatureGroupIamPolicy`: Retrieves the IAM policy for the featuregroup
+//
+// > **Note:** `vertex.AiFeatureGroupIamPolicy` **cannot** be used in conjunction with `vertex.AiFeatureGroupIamBinding` and `vertex.AiFeatureGroupIamMember` or they will fight over what your policy should be.
+//
+// > **Note:** `vertex.AiFeatureGroupIamBinding` resources **can be** used in conjunction with `vertex.AiFeatureGroupIamMember` resources **only if** they do not grant privilege to the same role.
+//
+// ## vertex.AiFeatureGroupIamPolicy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/viewer",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vertex.NewAiFeatureGroupIamPolicy(ctx, "policy", &vertex.AiFeatureGroupIamPolicyArgs{
+//				Region:       pulumi.Any(featureGroup.Region),
+//				FeatureGroup: pulumi.Any(featureGroup.Name),
+//				PolicyData:   pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## vertex.AiFeatureGroupIamBinding
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vertex.NewAiFeatureGroupIamBinding(ctx, "binding", &vertex.AiFeatureGroupIamBindingArgs{
+//				Region:       pulumi.Any(featureGroup.Region),
+//				FeatureGroup: pulumi.Any(featureGroup.Name),
+//				Role:         pulumi.String("roles/viewer"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## vertex.AiFeatureGroupIamMember
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vertex.NewAiFeatureGroupIamMember(ctx, "member", &vertex.AiFeatureGroupIamMemberArgs{
+//				Region:       pulumi.Any(featureGroup.Region),
+//				FeatureGroup: pulumi.Any(featureGroup.Name),
+//				Role:         pulumi.String("roles/viewer"),
+//				Member:       pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## This resource supports User Project Overrides.
+//
+// -
+//
+// # IAM policy for Vertex AI FeatureGroup
+//
+// Three different resources help you manage your IAM policy for Vertex AI FeatureGroup. Each of these resources serves a different use case:
+//
+// * `vertex.AiFeatureGroupIamPolicy`: Authoritative. Sets the IAM policy for the featuregroup and replaces any existing policy already attached.
+// * `vertex.AiFeatureGroupIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the featuregroup are preserved.
+// * `vertex.AiFeatureGroupIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the featuregroup are preserved.
+//
+// # A data source can be used to retrieve policy data in advent you do not need creation
+//
+// * `vertex.AiFeatureGroupIamPolicy`: Retrieves the IAM policy for the featuregroup
+//
+// > **Note:** `vertex.AiFeatureGroupIamPolicy` **cannot** be used in conjunction with `vertex.AiFeatureGroupIamBinding` and `vertex.AiFeatureGroupIamMember` or they will fight over what your policy should be.
+//
+// > **Note:** `vertex.AiFeatureGroupIamBinding` resources **can be** used in conjunction with `vertex.AiFeatureGroupIamMember` resources **only if** they do not grant privilege to the same role.
+//
+// ## vertex.AiFeatureGroupIamPolicy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/viewer",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vertex.NewAiFeatureGroupIamPolicy(ctx, "policy", &vertex.AiFeatureGroupIamPolicyArgs{
+//				Region:       pulumi.Any(featureGroup.Region),
+//				FeatureGroup: pulumi.Any(featureGroup.Name),
+//				PolicyData:   pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## vertex.AiFeatureGroupIamBinding
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vertex.NewAiFeatureGroupIamBinding(ctx, "binding", &vertex.AiFeatureGroupIamBindingArgs{
+//				Region:       pulumi.Any(featureGroup.Region),
+//				FeatureGroup: pulumi.Any(featureGroup.Name),
+//				Role:         pulumi.String("roles/viewer"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## vertex.AiFeatureGroupIamMember
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vertex.NewAiFeatureGroupIamMember(ctx, "member", &vertex.AiFeatureGroupIamMemberArgs{
+//				Region:       pulumi.Any(featureGroup.Region),
+//				FeatureGroup: pulumi.Any(featureGroup.Name),
+//				Role:         pulumi.String("roles/viewer"),
+//				Member:       pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // For all import syntaxes, the "resource in question" can take any of the following forms:

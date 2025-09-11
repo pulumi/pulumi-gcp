@@ -11,6 +11,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// An association between a Firebase project and a Google Cloud Storage bucket.
+// This association enables integration of Cloud Storage buckets with Firebase such as Firebase SDKS, Authentication, and Security Rules.
+//
+// To get more information about Bucket, see:
+//
+// * [API documentation](https://firebase.google.com/docs/reference/rest/storage/rest/v1beta/projects.buckets)
+// * How-to Guides
+//   - [Official Documentation](https://firebase.google.com/docs/storage/)
+//
 // ## Example Usage
 //
 // ### Firebasestorage Bucket Basic

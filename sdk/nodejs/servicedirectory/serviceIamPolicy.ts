@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.servicedirectory.ServiceIamBinding` resources **can be** used in conjunction with `gcp.servicedirectory.ServiceIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_service\_directory\_service\_iam\_policy
+ * ## gcp.servicedirectory.ServiceIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -84,7 +84,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.servicedirectory.ServiceIamBinding` resources **can be** used in conjunction with `gcp.servicedirectory.ServiceIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_service\_directory\_service\_iam\_policy
+ * ## gcp.servicedirectory.ServiceIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -15,6 +15,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A Firebase Realtime Database instance.
+ * 
+ * To get more information about Instance, see:
+ * 
+ * * [API documentation](https://firebase.google.com/docs/reference/rest/database/database-management/rest)
+ * * How-to Guides
+ *     * [Official Documentation](https://firebase.google.com/products/realtime-database)
+ * 
  * ## Example Usage
  * 
  * ### Firebase Database Instance Basic

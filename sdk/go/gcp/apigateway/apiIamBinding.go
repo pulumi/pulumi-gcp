@@ -26,7 +26,7 @@ import (
 //
 // > **Note:** `apigateway.ApiIamBinding` resources **can be** used in conjunction with `apigateway.ApiIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_api\_gateway\_api\_iam\_policy
+// ## apigateway.ApiIamPolicy
 //
 // ```go
 // package main
@@ -148,7 +148,7 @@ import (
 //
 // > **Note:** `apigateway.ApiIamBinding` resources **can be** used in conjunction with `apigateway.ApiIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## google\_api\_gateway\_api\_iam\_policy
+// ## apigateway.ApiIamPolicy
 //
 // ```go
 // package main

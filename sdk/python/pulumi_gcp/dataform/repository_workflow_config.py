@@ -331,6 +331,14 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
                  time_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A resource represents a Dataform workflow configuration
+
+        To get more information about RepositoryWorkflowConfig, see:
+
+        * [API documentation](https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories.workflowConfigs)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/dataform/docs/workflow-configurations)
+
         ## Example Usage
 
         ### Dataform Repository Workflow Config
@@ -463,6 +471,14 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
                  args: RepositoryWorkflowConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A resource represents a Dataform workflow configuration
+
+        To get more information about RepositoryWorkflowConfig, see:
+
+        * [API documentation](https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories.workflowConfigs)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/dataform/docs/workflow-configurations)
+
         ## Example Usage
 
         ### Dataform Repository Workflow Config

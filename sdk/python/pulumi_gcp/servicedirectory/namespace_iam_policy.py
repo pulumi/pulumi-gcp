@@ -139,7 +139,7 @@ class NamespaceIamPolicy(pulumi.CustomResource):
 
         > **Note:** `servicedirectory.NamespaceIamBinding` resources **can be** used in conjunction with `servicedirectory.NamespaceIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_service\\_directory\\_namespace\\_iam\\_policy
+        ## servicedirectory.NamespaceIamPolicy
 
         ```python
         import pulumi
@@ -199,7 +199,7 @@ class NamespaceIamPolicy(pulumi.CustomResource):
 
         > **Note:** `servicedirectory.NamespaceIamBinding` resources **can be** used in conjunction with `servicedirectory.NamespaceIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_service\\_directory\\_namespace\\_iam\\_policy
+        ## servicedirectory.NamespaceIamPolicy
 
         ```python
         import pulumi
@@ -301,7 +301,7 @@ class NamespaceIamPolicy(pulumi.CustomResource):
 
         > **Note:** `servicedirectory.NamespaceIamBinding` resources **can be** used in conjunction with `servicedirectory.NamespaceIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_service\\_directory\\_namespace\\_iam\\_policy
+        ## servicedirectory.NamespaceIamPolicy
 
         ```python
         import pulumi
@@ -361,7 +361,7 @@ class NamespaceIamPolicy(pulumi.CustomResource):
 
         > **Note:** `servicedirectory.NamespaceIamBinding` resources **can be** used in conjunction with `servicedirectory.NamespaceIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_service\\_directory\\_namespace\\_iam\\_policy
+        ## servicedirectory.NamespaceIamPolicy
 
         ```python
         import pulumi

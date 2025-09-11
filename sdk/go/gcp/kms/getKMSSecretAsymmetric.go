@@ -11,6 +11,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This data source allows you to use data encrypted with a Google Cloud KMS asymmetric key
+// within your resource definitions.
+//
+// For more information see
+// [the official documentation](https://cloud.google.com/kms/docs/encrypt-decrypt-rsa).
+//
+// > **NOTE:** Using this data provider will allow you to conceal secret data within your
+// resource definitions, but it does not take care of protecting that data in the
+// logging output, plan output, or state output.  Please take care to secure your secret
+// data outside of resource definitions.
+//
 // ## Example Usage
 //
 // First, create a KMS KeyRing and CryptoKey using the resource definitions:

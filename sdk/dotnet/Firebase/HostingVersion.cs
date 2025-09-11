@@ -10,6 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Firebase
 {
     /// <summary>
+    /// A `Version` is a configuration which determine how a site is displayed. Static files are not supported at the moment.
+    /// 
+    /// To get more information about Version, see:
+    /// 
+    /// * [API documentation](https://firebase.google.com/docs/reference/hosting/rest/v1beta1/sites.versions)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://firebase.google.com/docs/hosting)
+    /// 
     /// ## Example Usage
     /// 
     /// ### Firebasehosting Version Redirect

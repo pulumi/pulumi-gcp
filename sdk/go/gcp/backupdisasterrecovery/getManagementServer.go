@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Get information about a Google Backup DR Management server.
+//
 // ## Example Usage
 //
 // ```go
