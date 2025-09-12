@@ -10,7 +10,6 @@ import (
 	"github.com/pulumi/providertest/pulumitest"
 	"github.com/pulumi/providertest/pulumitest/assertpreview"
 	"github.com/pulumi/providertest/pulumitest/opttest"
-	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
 
@@ -20,6 +19,7 @@ type testProviderUpgradeOptions struct {
 	installDeps     bool
 	project         string
 	region          string
+	zone            string
 	extraOpts       []opttest.Option
 }
 
@@ -34,16 +34,30 @@ func testProviderUpgrade(t *testing.T, dir string, opts *testProviderUpgradeOpti
 
 	providerName := "gcp"
 	if opts == nil {
+		project := os.Getenv("GOOGLE_PROJECT")
+		if project == "" {
+			project = "pulumi-development"
+		}
+
+		region := os.Getenv("GOOGLE_REGION")
+		if region == "" {
+			region = "us-central1"
+		}
+
+		zone := os.Getenv("GOOGLE_ZONE")
+		if zone == "" {
+			zone = "us-central1-a"
+		}
+
 		opts = &testProviderUpgradeOptions{
 			baselineVersion: "8.41.1",
-			project:         "pulumi-development",
-			region:          "us-east1",
+			project:         project,
+			region:          region,
+			zone:            zone,
 			linkNodeSDK:     true,
 			installDeps:     true,
 		}
 	}
-
-	assert.NotEmpty(t, opts.project, "project must be set")
 
 	cwd, err := os.Getwd()
 	require.NoError(t, err)
@@ -61,10 +75,18 @@ func testProviderUpgrade(t *testing.T, dir string, opts *testProviderUpgradeOpti
 	options = append(options, opts.extraOpts...)
 	test := pulumitest.NewPulumiTest(t, dir, options...)
 
-	test.SetConfig(t, "gcp:project", opts.project)
+	if opts.project != "" {
+		test.SetConfig(t, "gcp:project", opts.project)
+	}
+
 	if opts.region != "" {
 		test.SetConfig(t, "gcp:region", opts.region)
 	}
+
+	if opts.zone != "" {
+		test.SetConfig(t, "gcp:zone", opts.zone)
+	}
+
 	result := providertest.PreviewProviderUpgrade(t, test, providerName, opts.baselineVersion,
 		optproviderupgrade.DisableAttach())
 	assertpreview.HasNoReplacements(t, result)
