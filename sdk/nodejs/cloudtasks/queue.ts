@@ -213,7 +213,7 @@ export class Queue extends pulumi.CustomResource {
      * * RUNNING: The queue is running. Tasks can be dispatched.
      * * PAUSED: The queue is paused. Tasks are not dispatched but can be added to the queue.
      */
-    public readonly desiredState!: pulumi.Output<string | undefined>;
+    declare public readonly desiredState: pulumi.Output<string | undefined>;
     /**
      * Modifies HTTP target for HTTP tasks.
      * Structure is documented below.
@@ -253,6 +253,10 @@ export class Queue extends pulumi.CustomResource {
      * Structure is documented below.
      */
     declare public readonly stackdriverLoggingConfig: pulumi.Output<outputs.cloudtasks.QueueStackdriverLoggingConfig | undefined>;
+    /**
+     * The current state of the queue.
+     */
+    declare public /*out*/ readonly state: pulumi.Output<string>;
 
     /**
      * Create a Queue resource with the given unique name, arguments, and options.
@@ -268,6 +272,7 @@ export class Queue extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as QueueState | undefined;
             resourceInputs["appEngineRoutingOverride"] = state?.appEngineRoutingOverride;
+            resourceInputs["desiredState"] = state?.desiredState;
             resourceInputs["httpTarget"] = state?.httpTarget;
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
@@ -275,12 +280,14 @@ export class Queue extends pulumi.CustomResource {
             resourceInputs["rateLimits"] = state?.rateLimits;
             resourceInputs["retryConfig"] = state?.retryConfig;
             resourceInputs["stackdriverLoggingConfig"] = state?.stackdriverLoggingConfig;
+            resourceInputs["state"] = state?.state;
         } else {
             const args = argsOrState as QueueArgs | undefined;
             if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
             resourceInputs["appEngineRoutingOverride"] = args?.appEngineRoutingOverride;
+            resourceInputs["desiredState"] = args?.desiredState;
             resourceInputs["httpTarget"] = args?.httpTarget;
             resourceInputs["location"] = args?.location;
             resourceInputs["name"] = args?.name;
@@ -288,6 +295,7 @@ export class Queue extends pulumi.CustomResource {
             resourceInputs["rateLimits"] = args?.rateLimits;
             resourceInputs["retryConfig"] = args?.retryConfig;
             resourceInputs["stackdriverLoggingConfig"] = args?.stackdriverLoggingConfig;
+            resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Queue.__pulumiType, name, resourceInputs, opts);

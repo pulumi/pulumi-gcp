@@ -80,7 +80,7 @@ export class OrganizationSecurityPolicy extends pulumi.CustomResource {
     /**
      * User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
      */
-    declare public readonly displayName: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * Fingerprint of this resource. This field is used internally during
      * updates of this resource.
@@ -98,7 +98,7 @@ export class OrganizationSecurityPolicy extends pulumi.CustomResource {
     /**
      * User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is CLOUD_ARMOR.
      */
-    public readonly shortName!: pulumi.Output<string | undefined>;
+    declare public readonly shortName: pulumi.Output<string | undefined>;
     /**
      * The type indicates the intended use of the security policy. This field can be set only at resource creation time.
      * Default value is `FIREWALL`.
@@ -124,18 +124,17 @@ export class OrganizationSecurityPolicy extends pulumi.CustomResource {
             resourceInputs["fingerprint"] = state?.fingerprint;
             resourceInputs["parent"] = state?.parent;
             resourceInputs["policyId"] = state?.policyId;
+            resourceInputs["shortName"] = state?.shortName;
             resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as OrganizationSecurityPolicyArgs | undefined;
-            if (args?.displayName === undefined && !opts.urn) {
-                throw new Error("Missing required property 'displayName'");
-            }
             if (args?.parent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["parent"] = args?.parent;
+            resourceInputs["shortName"] = args?.shortName;
             resourceInputs["type"] = args?.type;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["policyId"] = undefined /*out*/;

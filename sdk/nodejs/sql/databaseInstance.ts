@@ -283,7 +283,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
     /**
      * The name of the BackupDR backup to restore from.
      */
-    public readonly backupdrBackup!: pulumi.Output<string | undefined>;
+    declare public readonly backupdrBackup: pulumi.Output<string | undefined>;
     /**
      * The context needed to create this instance as a clone of another instance. When this field is set during
      * resource creation, this provider will attempt to clone another instance as indicated in the context. The
@@ -439,6 +439,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as DatabaseInstanceState | undefined;
             resourceInputs["availableMaintenanceVersions"] = state?.availableMaintenanceVersions;
+            resourceInputs["backupdrBackup"] = state?.backupdrBackup;
             resourceInputs["clone"] = state?.clone;
             resourceInputs["connectionName"] = state?.connectionName;
             resourceInputs["databaseVersion"] = state?.databaseVersion;
@@ -472,6 +473,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             if (args?.databaseVersion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'databaseVersion'");
             }
+            resourceInputs["backupdrBackup"] = args?.backupdrBackup;
             resourceInputs["clone"] = args?.clone;
             resourceInputs["databaseVersion"] = args?.databaseVersion;
             resourceInputs["deletionProtection"] = args?.deletionProtection;

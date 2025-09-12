@@ -194,7 +194,7 @@ export class User extends pulumi.CustomResource {
      *
      * - - -
      */
-    public readonly passwordWoVersion!: pulumi.Output<number | undefined>;
+    declare public readonly passwordWoVersion: pulumi.Output<number | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
@@ -230,6 +230,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["password"] = state?.password;
             resourceInputs["passwordPolicy"] = state?.passwordPolicy;
+            resourceInputs["passwordWoVersion"] = state?.passwordWoVersion;
             resourceInputs["project"] = state?.project;
             resourceInputs["sqlServerUserDetails"] = state?.sqlServerUserDetails;
             resourceInputs["type"] = state?.type;
@@ -244,6 +245,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["passwordPolicy"] = args?.passwordPolicy;
+            resourceInputs["passwordWoVersion"] = args?.passwordWoVersion;
             resourceInputs["project"] = args?.project;
             resourceInputs["type"] = args?.type;
             resourceInputs["sqlServerUserDetails"] = undefined /*out*/;

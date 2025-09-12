@@ -481,13 +481,6 @@ export class Cluster extends pulumi.CustomResource {
     }
 
     /**
-     * Allows customers to specify if they are okay with deploying a multi-zone
-     * cluster in less than 3 zones. Once set, if there is a zonal outage during
-     * the cluster creation, the cluster will only be deployed in 2 zones, and
-     * stay within the 2 zones for its lifecycle.
-     */
-    declare public readonly allowFewerZonesDeployment: pulumi.Output<boolean | undefined>;
-    /**
      * Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
      * Default value is `AUTH_MODE_DISABLED`.
      * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
@@ -659,7 +652,6 @@ export class Cluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
-            resourceInputs["allowFewerZonesDeployment"] = state?.allowFewerZonesDeployment;
             resourceInputs["authorizationMode"] = state?.authorizationMode;
             resourceInputs["automatedBackupConfig"] = state?.automatedBackupConfig;
             resourceInputs["backupCollection"] = state?.backupCollection;
@@ -696,7 +688,6 @@ export class Cluster extends pulumi.CustomResource {
             if (args?.shardCount === undefined && !opts.urn) {
                 throw new Error("Missing required property 'shardCount'");
             }
-            resourceInputs["allowFewerZonesDeployment"] = args?.allowFewerZonesDeployment;
             resourceInputs["authorizationMode"] = args?.authorizationMode;
             resourceInputs["automatedBackupConfig"] = args?.automatedBackupConfig;
             resourceInputs["crossClusterReplicationConfig"] = args?.crossClusterReplicationConfig;

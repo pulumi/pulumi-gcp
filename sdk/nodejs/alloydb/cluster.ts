@@ -301,6 +301,7 @@ export class Cluster extends pulumi.CustomResource {
      * Possible values: DEFAULT, FORCE
      */
     declare public readonly deletionPolicy: pulumi.Output<string | undefined>;
+    declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
      * User-settable and human-readable display name for the Cluster.
      */
@@ -442,6 +443,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["continuousBackupInfos"] = state?.continuousBackupInfos;
             resourceInputs["databaseVersion"] = state?.databaseVersion;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
+            resourceInputs["deletionProtection"] = state?.deletionProtection;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
@@ -482,6 +484,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["continuousBackupConfig"] = args?.continuousBackupConfig;
             resourceInputs["databaseVersion"] = args?.databaseVersion;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
+            resourceInputs["deletionProtection"] = args?.deletionProtection;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["encryptionConfig"] = args?.encryptionConfig;
             resourceInputs["etag"] = args?.etag;

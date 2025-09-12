@@ -103,7 +103,7 @@ export class LbTrafficExtension extends pulumi.CustomResource {
      * [Supported application load balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs).
      * Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
      */
-    declare public readonly loadBalancingScheme: pulumi.Output<string | undefined>;
+    declare public readonly loadBalancingScheme: pulumi.Output<string>;
     /**
      * The location of the traffic extension
      */
@@ -153,6 +153,9 @@ export class LbTrafficExtension extends pulumi.CustomResource {
             }
             if (args?.forwardingRules === undefined && !opts.urn) {
                 throw new Error("Missing required property 'forwardingRules'");
+            }
+            if (args?.loadBalancingScheme === undefined && !opts.urn) {
+                throw new Error("Missing required property 'loadBalancingScheme'");
             }
             if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");

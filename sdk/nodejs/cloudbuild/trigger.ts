@@ -777,7 +777,7 @@ export class Trigger extends pulumi.CustomResource {
      * Configuration for triggers that respond to Developer Connect events.
      * Structure is documented below.
      */
-    public readonly developerConnectEventConfig!: pulumi.Output<outputs.cloudbuild.TriggerDeveloperConnectEventConfig | undefined>;
+    declare public readonly developerConnectEventConfig: pulumi.Output<outputs.cloudbuild.TriggerDeveloperConnectEventConfig | undefined>;
     /**
      * Whether the trigger is disabled or not. If true, the trigger will never result in a build.
      */
@@ -922,6 +922,7 @@ export class Trigger extends pulumi.CustomResource {
             resourceInputs["build"] = state?.build;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["description"] = state?.description;
+            resourceInputs["developerConnectEventConfig"] = state?.developerConnectEventConfig;
             resourceInputs["disabled"] = state?.disabled;
             resourceInputs["filename"] = state?.filename;
             resourceInputs["filter"] = state?.filter;
@@ -948,6 +949,7 @@ export class Trigger extends pulumi.CustomResource {
             resourceInputs["bitbucketServerTriggerConfig"] = args?.bitbucketServerTriggerConfig;
             resourceInputs["build"] = args?.build;
             resourceInputs["description"] = args?.description;
+            resourceInputs["developerConnectEventConfig"] = args?.developerConnectEventConfig;
             resourceInputs["disabled"] = args?.disabled;
             resourceInputs["filename"] = args?.filename;
             resourceInputs["filter"] = args?.filter;

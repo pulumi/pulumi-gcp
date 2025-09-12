@@ -338,14 +338,10 @@ export class WebRegionForwardingRuleServiceIamMember extends pulumi.CustomResour
     }
 
     /**
-     * Used to find the parent resource to bind the IAM policy to
-     */
-    declare public readonly applicationId: pulumi.Output<string>;
-    /**
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    declare public readonly condition: pulumi.Output<outputs.beyondcorp.ApplicationIamMemberCondition | undefined>;
+    declare public readonly condition: pulumi.Output<outputs.iap.WebRegionForwardingRuleServiceIamMemberCondition | undefined>;
     /**
      * (Computed) The etag of the IAM policy.
      */
@@ -353,7 +349,7 @@ export class WebRegionForwardingRuleServiceIamMember extends pulumi.CustomResour
     /**
      * Used to find the parent resource to bind the IAM policy to
      */
-    public readonly forwardingRuleRegionServiceName!: pulumi.Output<string>;
+    declare public readonly forwardingRuleRegionServiceName: pulumi.Output<string>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -378,17 +374,13 @@ export class WebRegionForwardingRuleServiceIamMember extends pulumi.CustomResour
      * the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
      * region is specified, it is taken from the provider configuration.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.iap.WebRegionForwardingRuleServiceIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     declare public readonly role: pulumi.Output<string>;
-    /**
-     * Part of `parent`. See documentation of `projectsId`. Used to find the parent resource to bind the IAM policy to
-     */
-    declare public readonly securityGatewaysId: pulumi.Output<string>;
 
     /**
      * Create a WebRegionForwardingRuleServiceIamMember resource with the given unique name, arguments, and options.
@@ -402,18 +394,18 @@ export class WebRegionForwardingRuleServiceIamMember extends pulumi.CustomResour
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as ApplicationIamMemberState | undefined;
-            resourceInputs["applicationId"] = state?.applicationId;
+            const state = argsOrState as WebRegionForwardingRuleServiceIamMemberState | undefined;
             resourceInputs["condition"] = state?.condition;
             resourceInputs["etag"] = state?.etag;
+            resourceInputs["forwardingRuleRegionServiceName"] = state?.forwardingRuleRegionServiceName;
             resourceInputs["member"] = state?.member;
             resourceInputs["project"] = state?.project;
+            resourceInputs["region"] = state?.region;
             resourceInputs["role"] = state?.role;
-            resourceInputs["securityGatewaysId"] = state?.securityGatewaysId;
         } else {
-            const args = argsOrState as ApplicationIamMemberArgs | undefined;
-            if (args?.applicationId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'applicationId'");
+            const args = argsOrState as WebRegionForwardingRuleServiceIamMemberArgs | undefined;
+            if (args?.forwardingRuleRegionServiceName === undefined && !opts.urn) {
+                throw new Error("Missing required property 'forwardingRuleRegionServiceName'");
             }
             if (args?.member === undefined && !opts.urn) {
                 throw new Error("Missing required property 'member'");
@@ -421,15 +413,12 @@ export class WebRegionForwardingRuleServiceIamMember extends pulumi.CustomResour
             if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            if (args?.securityGatewaysId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'securityGatewaysId'");
-            }
-            resourceInputs["applicationId"] = args?.applicationId;
             resourceInputs["condition"] = args?.condition;
+            resourceInputs["forwardingRuleRegionServiceName"] = args?.forwardingRuleRegionServiceName;
             resourceInputs["member"] = args?.member;
             resourceInputs["project"] = args?.project;
+            resourceInputs["region"] = args?.region;
             resourceInputs["role"] = args?.role;
-            resourceInputs["securityGatewaysId"] = args?.securityGatewaysId;
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

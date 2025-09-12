@@ -215,7 +215,7 @@ export class BackendBucket extends pulumi.CustomResource {
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      */
-    public readonly params!: pulumi.Output<outputs.compute.BackendBucketParams | undefined>;
+    declare public readonly params: pulumi.Output<outputs.compute.BackendBucketParams | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -249,6 +249,7 @@ export class BackendBucket extends pulumi.CustomResource {
             resourceInputs["enableCdn"] = state?.enableCdn;
             resourceInputs["loadBalancingScheme"] = state?.loadBalancingScheme;
             resourceInputs["name"] = state?.name;
+            resourceInputs["params"] = state?.params;
             resourceInputs["project"] = state?.project;
             resourceInputs["selfLink"] = state?.selfLink;
         } else {
@@ -265,6 +266,7 @@ export class BackendBucket extends pulumi.CustomResource {
             resourceInputs["enableCdn"] = args?.enableCdn;
             resourceInputs["loadBalancingScheme"] = args?.loadBalancingScheme;
             resourceInputs["name"] = args?.name;
+            resourceInputs["params"] = args?.params;
             resourceInputs["project"] = args?.project;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;

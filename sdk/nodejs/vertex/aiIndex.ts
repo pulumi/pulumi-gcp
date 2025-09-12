@@ -209,7 +209,7 @@ export class AiIndex extends pulumi.CustomResource {
      * Attempts to create an Index without this field will result in an API error.
      * Structure is documented below.
      */
-    declare public readonly metadata: pulumi.Output<outputs.vertex.AiIndexMetadata | undefined>;
+    declare public readonly metadata: pulumi.Output<outputs.vertex.AiIndexMetadata>;
     /**
      * Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific to it. Unset if the Index does not have any additional information.
      */
@@ -270,6 +270,9 @@ export class AiIndex extends pulumi.CustomResource {
             const args = argsOrState as AiIndexArgs | undefined;
             if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
+            }
+            if (args?.metadata === undefined && !opts.urn) {
+                throw new Error("Missing required property 'metadata'");
             }
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;

@@ -175,7 +175,7 @@ export class TableIamBinding extends pulumi.CustomResource {
     /**
      * The name or relative resource id of the instance that owns the table.
      */
-    declare public readonly instance: pulumi.Output<string>;
+    declare public readonly instanceName: pulumi.Output<string>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -222,15 +222,15 @@ export class TableIamBinding extends pulumi.CustomResource {
             const state = argsOrState as TableIamBindingState | undefined;
             resourceInputs["condition"] = state?.condition;
             resourceInputs["etag"] = state?.etag;
-            resourceInputs["instance"] = state?.instance;
+            resourceInputs["instanceName"] = state?.instanceName;
             resourceInputs["members"] = state?.members;
             resourceInputs["project"] = state?.project;
             resourceInputs["role"] = state?.role;
             resourceInputs["table"] = state?.table;
         } else {
             const args = argsOrState as TableIamBindingArgs | undefined;
-            if (args?.instance === undefined && !opts.urn) {
-                throw new Error("Missing required property 'instance'");
+            if (args?.instanceName === undefined && !opts.urn) {
+                throw new Error("Missing required property 'instanceName'");
             }
             if (args?.members === undefined && !opts.urn) {
                 throw new Error("Missing required property 'members'");
@@ -242,7 +242,7 @@ export class TableIamBinding extends pulumi.CustomResource {
                 throw new Error("Missing required property 'table'");
             }
             resourceInputs["condition"] = args?.condition;
-            resourceInputs["instance"] = args?.instance;
+            resourceInputs["instanceName"] = args?.instanceName;
             resourceInputs["members"] = args?.members;
             resourceInputs["project"] = args?.project;
             resourceInputs["role"] = args?.role;

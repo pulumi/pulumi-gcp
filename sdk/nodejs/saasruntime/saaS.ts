@@ -91,59 +91,59 @@ export class SaaS extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The timestamp when the resource was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
-    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    declare public /*out*/ readonly effectiveAnnotations: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * An opaque value that uniquely identifies a version or
      * generation of a resource. It can be used to confirm that the client
      * and server agree on the ordering of a resource being written.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The labels on the resource, which can be used for categorization.
      * similar to Kubernetes resource labels.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * List of locations that the service is available in. Rollout refers to the
      * list to generate a rollout plan.
      * Structure is documented below.
      */
-    public readonly locations!: pulumi.Output<outputs.saasruntime.SaaSLocation[] | undefined>;
+    declare public readonly locations: pulumi.Output<outputs.saasruntime.SaaSLocation[] | undefined>;
     /**
      * Identifier. The resource name (full URI of the resource) following the standard naming
      * scheme:
      * "projects/{project}/locations/{location}/saas/{saas}"
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
-    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The ID value for the new saas.
      */
-    public readonly saasId!: pulumi.Output<string>;
+    declare public readonly saasId: pulumi.Output<string>;
     /**
      * The unique identifier of the resource. UID is unique in the time
      * and space for this resource within the scope of the service. It is
@@ -151,13 +151,13 @@ export class SaaS extends pulumi.CustomResource {
      * and must not be changed. UID is used to uniquely identify resources
      * with resource name reuses. This should be a UUID4.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * The timestamp when the resource was last updated. Any
      * change to the resource made by users must refresh this value.
      * Changes to a resource made by the service should refresh this value.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a SaaS resource with the given unique name, arguments, and options.
@@ -172,34 +172,34 @@ export class SaaS extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SaaSState | undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
-            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["locations"] = state ? state.locations : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
-            resourceInputs["saasId"] = state ? state.saasId : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["locations"] = state?.locations;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["saasId"] = state?.saasId;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as SaaSArgs | undefined;
-            if ((!args || args.location === undefined) && !opts.urn) {
+            if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.saasId === undefined) && !opts.urn) {
+            if (args?.saasId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'saasId'");
             }
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["locations"] = args ? args.locations : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["saasId"] = args ? args.saasId : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["locations"] = args?.locations;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["saasId"] = args?.saasId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
