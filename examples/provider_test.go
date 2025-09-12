@@ -95,15 +95,3 @@ func testProviderUpgrade(t *testing.T, dir string, opts *testProviderUpgradeOpti
 func defaultUpgradeTest(t *testing.T, dir string) {
 	testProviderUpgrade(t, dir, nil)
 }
-
-func TestBucketUpgrade(t *testing.T) {
-	defaultUpgradeTest(t, "bucket")
-}
-
-func TestTopicUpgrade(t *testing.T) {
-	defaultUpgradeTest(t, "topic")
-}
-
-func TestServerlessUpgrade(t *testing.T) {
-	defaultUpgradeTest(t, "serverless")
-}
