@@ -80,8 +80,10 @@ jobs:
       uses: google-github-actions/setup-gcloud@aa5489c8933f4cc7a4f7d45035b3b1440c9c10db # v3.0.1
       with:
         install_components: gke-gcloud-auth-plugin
+    - name: Install nodejs dependencies
+      run: make install_nodejs_sdk
     - name: Install dependencies
-      run: make install_${{ matrix.language}}_sdk
+      run: make install_${{ matrix.language }}_sdk
     - name: Run provider tests
       if: matrix.testTarget == 'local'
       working-directory: provider
