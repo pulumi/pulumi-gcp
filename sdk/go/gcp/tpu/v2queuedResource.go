@@ -7,10 +7,18 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A Cloud TPU Queued Resource.
+//
+// To get more information about QueuedResource, see:
+//
+// * [API documentation](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.queuedResources)
+// * How-to Guides
+//   - [Official Documentation](https://cloud.google.com/tpu/docs/)
+//
 // ## Example Usage
 //
 // ### Tpu V2 Queued Resource Basic
@@ -20,7 +28,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/tpu"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tpu"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -60,8 +68,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/tpu"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tpu"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )

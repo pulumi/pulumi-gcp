@@ -935,6 +935,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> runtimeconfigCustomEndpoint() {
         return Codegen.optional(this.runtimeconfigCustomEndpoint);
     }
+    @Export(name="saasRuntimeCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> saasRuntimeCustomEndpoint;
+
+    public Output<Optional<String>> saasRuntimeCustomEndpoint() {
+        return Codegen.optional(this.saasRuntimeCustomEndpoint);
+    }
     @Export(name="secretManagerCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> secretManagerCustomEndpoint;
 
@@ -1072,12 +1078,6 @@ public class Provider extends com.pulumi.resources.ProviderResource {
 
     public Output<Optional<String>> tagsLocationCustomEndpoint() {
         return Codegen.optional(this.tagsLocationCustomEndpoint);
-    }
-    @Export(name="tpuCustomEndpoint", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> tpuCustomEndpoint;
-
-    public Output<Optional<String>> tpuCustomEndpoint() {
-        return Codegen.optional(this.tpuCustomEndpoint);
     }
     @Export(name="tpuV2CustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tpuV2CustomEndpoint;

@@ -5,6 +5,7 @@ package com.pulumi.gcp.vertex.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vertex.inputs.AiIndexMetadataConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -22,16 +23,16 @@ public final class AiIndexMetadataArgs extends com.pulumi.resources.ResourceArgs
      * Structure is documented below.
      * 
      */
-    @Import(name="config")
-    private @Nullable Output<AiIndexMetadataConfigArgs> config;
+    @Import(name="config", required=true)
+    private Output<AiIndexMetadataConfigArgs> config;
 
     /**
      * @return The configuration of the Matching Engine Index.
      * Structure is documented below.
      * 
      */
-    public Optional<Output<AiIndexMetadataConfigArgs>> config() {
-        return Optional.ofNullable(this.config);
+    public Output<AiIndexMetadataConfigArgs> config() {
+        return this.config;
     }
 
     /**
@@ -109,7 +110,7 @@ public final class AiIndexMetadataArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder config(@Nullable Output<AiIndexMetadataConfigArgs> config) {
+        public Builder config(Output<AiIndexMetadataConfigArgs> config) {
             $.config = config;
             return this;
         }
@@ -180,6 +181,9 @@ public final class AiIndexMetadataArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public AiIndexMetadataArgs build() {
+            if ($.config == null) {
+                throw new MissingRequiredPropertyException("AiIndexMetadataArgs", "config");
+            }
             return $;
         }
     }

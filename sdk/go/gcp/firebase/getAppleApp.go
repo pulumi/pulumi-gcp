@@ -7,10 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A Google Cloud Firebase Apple application instance
 func LookupAppleApp(ctx *pulumi.Context, args *LookupAppleAppArgs, opts ...pulumi.InvokeOption) (*LookupAppleAppResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAppleAppResult

@@ -48,7 +48,7 @@ namespace Pulumi.Gcp.BigTable
     ///     var editor = new Gcp.BigTable.TableIamPolicy("editor", new()
     ///     {
     ///         Project = "your-project",
-    ///         Instance = "your-bigtable-instance",
+    ///         InstanceName = "your-bigtable-instance",
     ///         Table = "your-bigtable-table",
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
@@ -69,7 +69,7 @@ namespace Pulumi.Gcp.BigTable
     ///     var editor = new Gcp.BigTable.TableIamBinding("editor", new()
     ///     {
     ///         Table = "your-bigtable-table",
-    ///         Instance = "your-bigtable-instance",
+    ///         InstanceName = "your-bigtable-instance",
     ///         Role = "roles/bigtable.user",
     ///         Members = new[]
     ///         {
@@ -93,7 +93,7 @@ namespace Pulumi.Gcp.BigTable
     ///     var editor = new Gcp.BigTable.TableIamMember("editor", new()
     ///     {
     ///         Table = "your-bigtable-table",
-    ///         Instance = "your-bigtable-instance",
+    ///         InstanceName = "your-bigtable-instance",
     ///         Role = "roles/bigtable.user",
     ///         Member = "user:jane@example.com",
     ///     });
@@ -129,7 +129,7 @@ namespace Pulumi.Gcp.BigTable
     ///     var editor = new Gcp.BigTable.TableIamPolicy("editor", new()
     ///     {
     ///         Project = "your-project",
-    ///         Instance = "your-bigtable-instance",
+    ///         InstanceName = "your-bigtable-instance",
     ///         Table = "your-bigtable-table",
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
@@ -150,7 +150,7 @@ namespace Pulumi.Gcp.BigTable
     ///     var editor = new Gcp.BigTable.TableIamBinding("editor", new()
     ///     {
     ///         Table = "your-bigtable-table",
-    ///         Instance = "your-bigtable-instance",
+    ///         InstanceName = "your-bigtable-instance",
     ///         Role = "roles/bigtable.user",
     ///         Members = new[]
     ///         {
@@ -174,7 +174,7 @@ namespace Pulumi.Gcp.BigTable
     ///     var editor = new Gcp.BigTable.TableIamMember("editor", new()
     ///     {
     ///         Table = "your-bigtable-table",
-    ///         Instance = "your-bigtable-instance",
+    ///         InstanceName = "your-bigtable-instance",
     ///         Role = "roles/bigtable.user",
     ///         Member = "user:jane@example.com",
     ///     });
@@ -223,8 +223,8 @@ namespace Pulumi.Gcp.BigTable
         /// <summary>
         /// The name or relative resource id of the instance that owns the table.
         /// </summary>
-        [Output("instance")]
-        public Output<string> Instance { get; private set; } = null!;
+        [Output("instanceName")]
+        public Output<string> InstanceName { get; private set; } = null!;
 
         /// <summary>
         /// Identities that will be granted the privilege in `role`.
@@ -316,8 +316,8 @@ namespace Pulumi.Gcp.BigTable
         /// <summary>
         /// The name or relative resource id of the instance that owns the table.
         /// </summary>
-        [Input("instance", required: true)]
-        public Input<string> Instance { get; set; } = null!;
+        [Input("instanceName", required: true)]
+        public Input<string> InstanceName { get; set; } = null!;
 
         /// <summary>
         /// Identities that will be granted the privilege in `role`.
@@ -377,8 +377,8 @@ namespace Pulumi.Gcp.BigTable
         /// <summary>
         /// The name or relative resource id of the instance that owns the table.
         /// </summary>
-        [Input("instance")]
-        public Input<string>? Instance { get; set; }
+        [Input("instanceName")]
+        public Input<string>? InstanceName { get; set; }
 
         /// <summary>
         /// Identities that will be granted the privilege in `role`.

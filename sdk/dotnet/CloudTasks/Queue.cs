@@ -244,6 +244,15 @@ namespace Pulumi.Gcp.CloudTasks
         public Output<Outputs.QueueAppEngineRoutingOverride?> AppEngineRoutingOverride { get; private set; } = null!;
 
         /// <summary>
+        /// The desired state of the queue. Use this to pause and resume the queue.
+        /// 
+        /// * RUNNING: The queue is running. Tasks can be dispatched.
+        /// * PAUSED: The queue is paused. Tasks are not dispatched but can be added to the queue.
+        /// </summary>
+        [Output("desiredState")]
+        public Output<string?> DesiredState { get; private set; } = null!;
+
+        /// <summary>
         /// Modifies HTTP target for HTTP tasks.
         /// Structure is documented below.
         /// </summary>
@@ -295,6 +304,12 @@ namespace Pulumi.Gcp.CloudTasks
         /// </summary>
         [Output("stackdriverLoggingConfig")]
         public Output<Outputs.QueueStackdriverLoggingConfig?> StackdriverLoggingConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// The current state of the queue.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
 
 
         /// <summary>
@@ -349,6 +364,15 @@ namespace Pulumi.Gcp.CloudTasks
         /// </summary>
         [Input("appEngineRoutingOverride")]
         public Input<Inputs.QueueAppEngineRoutingOverrideArgs>? AppEngineRoutingOverride { get; set; }
+
+        /// <summary>
+        /// The desired state of the queue. Use this to pause and resume the queue.
+        /// 
+        /// * RUNNING: The queue is running. Tasks can be dispatched.
+        /// * PAUSED: The queue is paused. Tasks are not dispatched but can be added to the queue.
+        /// </summary>
+        [Input("desiredState")]
+        public Input<string>? DesiredState { get; set; }
 
         /// <summary>
         /// Modifies HTTP target for HTTP tasks.
@@ -420,6 +444,15 @@ namespace Pulumi.Gcp.CloudTasks
         public Input<Inputs.QueueAppEngineRoutingOverrideGetArgs>? AppEngineRoutingOverride { get; set; }
 
         /// <summary>
+        /// The desired state of the queue. Use this to pause and resume the queue.
+        /// 
+        /// * RUNNING: The queue is running. Tasks can be dispatched.
+        /// * PAUSED: The queue is paused. Tasks are not dispatched but can be added to the queue.
+        /// </summary>
+        [Input("desiredState")]
+        public Input<string>? DesiredState { get; set; }
+
+        /// <summary>
         /// Modifies HTTP target for HTTP tasks.
         /// Structure is documented below.
         /// </summary>
@@ -471,6 +504,12 @@ namespace Pulumi.Gcp.CloudTasks
         /// </summary>
         [Input("stackdriverLoggingConfig")]
         public Input<Inputs.QueueStackdriverLoggingConfigGetArgs>? StackdriverLoggingConfig { get; set; }
+
+        /// <summary>
+        /// The current state of the queue.
+        /// </summary>
+        [Input("state")]
+        public Input<string>? State { get; set; }
 
         public QueueState()
         {

@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,14 +27,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AppConnector{}
 	case "gcp:beyondcorp/appGateway:AppGateway":
 		r = &AppGateway{}
-	case "gcp:beyondcorp/application:Application":
-		r = &Application{}
-	case "gcp:beyondcorp/applicationIamBinding:ApplicationIamBinding":
-		r = &ApplicationIamBinding{}
-	case "gcp:beyondcorp/applicationIamMember:ApplicationIamMember":
-		r = &ApplicationIamMember{}
-	case "gcp:beyondcorp/applicationIamPolicy:ApplicationIamPolicy":
-		r = &ApplicationIamPolicy{}
 	case "gcp:beyondcorp/securityGateway:SecurityGateway":
 		r = &SecurityGateway{}
 	case "gcp:beyondcorp/securityGatewayApplication:SecurityGatewayApplication":
@@ -77,26 +69,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"beyondcorp/appGateway",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"gcp",
-		"beyondcorp/application",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"gcp",
-		"beyondcorp/applicationIamBinding",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"gcp",
-		"beyondcorp/applicationIamMember",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"gcp",
-		"beyondcorp/applicationIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

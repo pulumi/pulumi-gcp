@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.Vertex.Outputs
         /// The configuration of the Matching Engine Index.
         /// Structure is documented below.
         /// </summary>
-        public readonly Outputs.AiIndexMetadataConfig? Config;
+        public readonly Outputs.AiIndexMetadataConfig Config;
         /// <summary>
         /// Allows inserting, updating  or deleting the contents of the Matching Engine Index.
         /// The string must be a valid Cloud Storage directory path. If this
@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.Vertex.Outputs
 
         [OutputConstructor]
         private AiIndexMetadata(
-            Outputs.AiIndexMetadataConfig? config,
+            Outputs.AiIndexMetadataConfig config,
 
             string? contentsDeltaUri,
 

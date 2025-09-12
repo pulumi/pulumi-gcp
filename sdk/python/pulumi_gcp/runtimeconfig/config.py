@@ -155,6 +155,14 @@ class Config(pulumi.CustomResource):
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Manages a RuntimeConfig resource in Google Cloud.
+
+        To get more information about RuntimeConfigs, see:
+
+        * [API documentation](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/v1beta1/projects.configs)
+        * How-to Guides
+            * [Runtime Configurator Fundamentals](https://cloud.google.com/deployment-manager/runtime-configurator/)
+
         ## Example Usage
 
         Example creating a RuntimeConfig resource.
@@ -205,6 +213,14 @@ class Config(pulumi.CustomResource):
                  args: Optional[ConfigArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manages a RuntimeConfig resource in Google Cloud.
+
+        To get more information about RuntimeConfigs, see:
+
+        * [API documentation](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/v1beta1/projects.configs)
+        * How-to Guides
+            * [Runtime Configurator Fundamentals](https://cloud.google.com/deployment-manager/runtime-configurator/)
+
         ## Example Usage
 
         Example creating a RuntimeConfig resource.

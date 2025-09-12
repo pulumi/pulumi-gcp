@@ -159,6 +159,13 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.deletionPolicy);
     }
 
+    @Import(name="deletionProtection")
+    private @Nullable Output<Boolean> deletionProtection;
+
+    public Optional<Output<Boolean>> deletionProtection() {
+        return Optional.ofNullable(this.deletionProtection);
+    }
+
     /**
      * User-settable and human-readable display name for the Cluster.
      * 
@@ -422,6 +429,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.continuousBackupConfig = $.continuousBackupConfig;
         this.databaseVersion = $.databaseVersion;
         this.deletionPolicy = $.deletionPolicy;
+        this.deletionProtection = $.deletionProtection;
         this.displayName = $.displayName;
         this.encryptionConfig = $.encryptionConfig;
         this.etag = $.etag;
@@ -628,6 +636,15 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder deletionPolicy(String deletionPolicy) {
             return deletionPolicy(Output.of(deletionPolicy));
+        }
+
+        public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
+            $.deletionProtection = deletionProtection;
+            return this;
+        }
+
+        public Builder deletionProtection(Boolean deletionProtection) {
+            return deletionProtection(Output.of(deletionProtection));
         }
 
         /**

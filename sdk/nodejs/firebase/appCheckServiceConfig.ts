@@ -24,7 +24,6 @@ import * as utilities from "../utilities";
  * const appcheck = new gcp.projects.Service("appcheck", {
  *     project: "my-project-name",
  *     service: "firebaseappcheck.googleapis.com",
- *     disableOnDestroy: false,
  * });
  * const _default = new gcp.firebase.AppCheckServiceConfig("default", {
  *     project: "my-project-name",
@@ -42,7 +41,6 @@ import * as utilities from "../utilities";
  * const appcheck = new gcp.projects.Service("appcheck", {
  *     project: "my-project-name",
  *     service: "firebaseappcheck.googleapis.com",
- *     disableOnDestroy: false,
  * });
  * const _default = new gcp.firebase.AppCheckServiceConfig("default", {
  *     project: "my-project-name",
@@ -61,7 +59,6 @@ import * as utilities from "../utilities";
  * const appcheck = new gcp.projects.Service("appcheck", {
  *     project: "my-project-name",
  *     service: "firebaseappcheck.googleapis.com",
- *     disableOnDestroy: false,
  * });
  * const _default = new gcp.firebase.AppCheckServiceConfig("default", {
  *     project: "my-project-name",

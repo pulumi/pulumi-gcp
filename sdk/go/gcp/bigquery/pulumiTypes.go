@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -3203,6 +3203,8 @@ func (o DataTransferConfigScheduleOptionsPtrOutput) StartTime() pulumi.StringPtr
 type DataTransferConfigSensitiveParams struct {
 	// The Secret Access Key of the AWS account transferring data from.
 	SecretAccessKey *string `pulumi:"secretAccessKey"`
+	// The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+	SecretAccessKeyWoVersion *int `pulumi:"secretAccessKeyWoVersion"`
 }
 
 // DataTransferConfigSensitiveParamsInput is an input type that accepts DataTransferConfigSensitiveParamsArgs and DataTransferConfigSensitiveParamsOutput values.
@@ -3219,6 +3221,8 @@ type DataTransferConfigSensitiveParamsInput interface {
 type DataTransferConfigSensitiveParamsArgs struct {
 	// The Secret Access Key of the AWS account transferring data from.
 	SecretAccessKey pulumi.StringPtrInput `pulumi:"secretAccessKey"`
+	// The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+	SecretAccessKeyWoVersion pulumi.IntPtrInput `pulumi:"secretAccessKeyWoVersion"`
 }
 
 func (DataTransferConfigSensitiveParamsArgs) ElementType() reflect.Type {
@@ -3303,6 +3307,11 @@ func (o DataTransferConfigSensitiveParamsOutput) SecretAccessKey() pulumi.String
 	return o.ApplyT(func(v DataTransferConfigSensitiveParams) *string { return v.SecretAccessKey }).(pulumi.StringPtrOutput)
 }
 
+// The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+func (o DataTransferConfigSensitiveParamsOutput) SecretAccessKeyWoVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DataTransferConfigSensitiveParams) *int { return v.SecretAccessKeyWoVersion }).(pulumi.IntPtrOutput)
+}
+
 type DataTransferConfigSensitiveParamsPtrOutput struct{ *pulumi.OutputState }
 
 func (DataTransferConfigSensitiveParamsPtrOutput) ElementType() reflect.Type {
@@ -3335,6 +3344,16 @@ func (o DataTransferConfigSensitiveParamsPtrOutput) SecretAccessKey() pulumi.Str
 		}
 		return v.SecretAccessKey
 	}).(pulumi.StringPtrOutput)
+}
+
+// The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+func (o DataTransferConfigSensitiveParamsPtrOutput) SecretAccessKeyWoVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DataTransferConfigSensitiveParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SecretAccessKeyWoVersion
+	}).(pulumi.IntPtrOutput)
 }
 
 type DatasetAccessType struct {
@@ -8758,6 +8777,11 @@ type JobQuery struct {
 	// Requires destinationTable to be set. For standard SQL queries, this flag is ignored and large results are always allowed.
 	// However, you must still set destinationTable when result size exceeds the allowed maximum response size.
 	AllowLargeResults *bool `pulumi:"allowLargeResults"`
+	// Connection properties to customize query behavior. Under JDBC, these correspond
+	// directly to connection properties passed to the DriverManager. Under ODBC, these
+	// correspond to properties in the connection string.
+	// Structure is documented below.
+	ConnectionProperties []JobQueryConnectionProperty `pulumi:"connectionProperties"`
 	// Whether to run the query as continuous or a regular query.
 	Continuous *bool `pulumi:"continuous"`
 	// Specifies whether the job is allowed to create new tables. The following values are supported:
@@ -8845,6 +8869,11 @@ type JobQueryArgs struct {
 	// Requires destinationTable to be set. For standard SQL queries, this flag is ignored and large results are always allowed.
 	// However, you must still set destinationTable when result size exceeds the allowed maximum response size.
 	AllowLargeResults pulumi.BoolPtrInput `pulumi:"allowLargeResults"`
+	// Connection properties to customize query behavior. Under JDBC, these correspond
+	// directly to connection properties passed to the DriverManager. Under ODBC, these
+	// correspond to properties in the connection string.
+	// Structure is documented below.
+	ConnectionProperties JobQueryConnectionPropertyArrayInput `pulumi:"connectionProperties"`
 	// Whether to run the query as continuous or a regular query.
 	Continuous pulumi.BoolPtrInput `pulumi:"continuous"`
 	// Specifies whether the job is allowed to create new tables. The following values are supported:
@@ -8998,6 +9027,14 @@ func (o JobQueryOutput) ToJobQueryPtrOutputWithContext(ctx context.Context) JobQ
 // However, you must still set destinationTable when result size exceeds the allowed maximum response size.
 func (o JobQueryOutput) AllowLargeResults() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobQuery) *bool { return v.AllowLargeResults }).(pulumi.BoolPtrOutput)
+}
+
+// Connection properties to customize query behavior. Under JDBC, these correspond
+// directly to connection properties passed to the DriverManager. Under ODBC, these
+// correspond to properties in the connection string.
+// Structure is documented below.
+func (o JobQueryOutput) ConnectionProperties() JobQueryConnectionPropertyArrayOutput {
+	return o.ApplyT(func(v JobQuery) []JobQueryConnectionProperty { return v.ConnectionProperties }).(JobQueryConnectionPropertyArrayOutput)
 }
 
 // Whether to run the query as continuous or a regular query.
@@ -9156,6 +9193,19 @@ func (o JobQueryPtrOutput) AllowLargeResults() pulumi.BoolPtrOutput {
 		}
 		return v.AllowLargeResults
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Connection properties to customize query behavior. Under JDBC, these correspond
+// directly to connection properties passed to the DriverManager. Under ODBC, these
+// correspond to properties in the connection string.
+// Structure is documented below.
+func (o JobQueryPtrOutput) ConnectionProperties() JobQueryConnectionPropertyArrayOutput {
+	return o.ApplyT(func(v *JobQuery) []JobQueryConnectionProperty {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionProperties
+	}).(JobQueryConnectionPropertyArrayOutput)
 }
 
 // Whether to run the query as continuous or a regular query.
@@ -9361,6 +9411,112 @@ func (o JobQueryPtrOutput) WriteDisposition() pulumi.StringPtrOutput {
 		}
 		return v.WriteDisposition
 	}).(pulumi.StringPtrOutput)
+}
+
+type JobQueryConnectionProperty struct {
+	// The key of the property to set. Currently supported connection properties:
+	Key string `pulumi:"key"`
+	// The value of the property to set.
+	Value string `pulumi:"value"`
+}
+
+// JobQueryConnectionPropertyInput is an input type that accepts JobQueryConnectionPropertyArgs and JobQueryConnectionPropertyOutput values.
+// You can construct a concrete instance of `JobQueryConnectionPropertyInput` via:
+//
+//	JobQueryConnectionPropertyArgs{...}
+type JobQueryConnectionPropertyInput interface {
+	pulumi.Input
+
+	ToJobQueryConnectionPropertyOutput() JobQueryConnectionPropertyOutput
+	ToJobQueryConnectionPropertyOutputWithContext(context.Context) JobQueryConnectionPropertyOutput
+}
+
+type JobQueryConnectionPropertyArgs struct {
+	// The key of the property to set. Currently supported connection properties:
+	Key pulumi.StringInput `pulumi:"key"`
+	// The value of the property to set.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (JobQueryConnectionPropertyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobQueryConnectionProperty)(nil)).Elem()
+}
+
+func (i JobQueryConnectionPropertyArgs) ToJobQueryConnectionPropertyOutput() JobQueryConnectionPropertyOutput {
+	return i.ToJobQueryConnectionPropertyOutputWithContext(context.Background())
+}
+
+func (i JobQueryConnectionPropertyArgs) ToJobQueryConnectionPropertyOutputWithContext(ctx context.Context) JobQueryConnectionPropertyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobQueryConnectionPropertyOutput)
+}
+
+// JobQueryConnectionPropertyArrayInput is an input type that accepts JobQueryConnectionPropertyArray and JobQueryConnectionPropertyArrayOutput values.
+// You can construct a concrete instance of `JobQueryConnectionPropertyArrayInput` via:
+//
+//	JobQueryConnectionPropertyArray{ JobQueryConnectionPropertyArgs{...} }
+type JobQueryConnectionPropertyArrayInput interface {
+	pulumi.Input
+
+	ToJobQueryConnectionPropertyArrayOutput() JobQueryConnectionPropertyArrayOutput
+	ToJobQueryConnectionPropertyArrayOutputWithContext(context.Context) JobQueryConnectionPropertyArrayOutput
+}
+
+type JobQueryConnectionPropertyArray []JobQueryConnectionPropertyInput
+
+func (JobQueryConnectionPropertyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobQueryConnectionProperty)(nil)).Elem()
+}
+
+func (i JobQueryConnectionPropertyArray) ToJobQueryConnectionPropertyArrayOutput() JobQueryConnectionPropertyArrayOutput {
+	return i.ToJobQueryConnectionPropertyArrayOutputWithContext(context.Background())
+}
+
+func (i JobQueryConnectionPropertyArray) ToJobQueryConnectionPropertyArrayOutputWithContext(ctx context.Context) JobQueryConnectionPropertyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobQueryConnectionPropertyArrayOutput)
+}
+
+type JobQueryConnectionPropertyOutput struct{ *pulumi.OutputState }
+
+func (JobQueryConnectionPropertyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobQueryConnectionProperty)(nil)).Elem()
+}
+
+func (o JobQueryConnectionPropertyOutput) ToJobQueryConnectionPropertyOutput() JobQueryConnectionPropertyOutput {
+	return o
+}
+
+func (o JobQueryConnectionPropertyOutput) ToJobQueryConnectionPropertyOutputWithContext(ctx context.Context) JobQueryConnectionPropertyOutput {
+	return o
+}
+
+// The key of the property to set. Currently supported connection properties:
+func (o JobQueryConnectionPropertyOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v JobQueryConnectionProperty) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The value of the property to set.
+func (o JobQueryConnectionPropertyOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v JobQueryConnectionProperty) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type JobQueryConnectionPropertyArrayOutput struct{ *pulumi.OutputState }
+
+func (JobQueryConnectionPropertyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobQueryConnectionProperty)(nil)).Elem()
+}
+
+func (o JobQueryConnectionPropertyArrayOutput) ToJobQueryConnectionPropertyArrayOutput() JobQueryConnectionPropertyArrayOutput {
+	return o
+}
+
+func (o JobQueryConnectionPropertyArrayOutput) ToJobQueryConnectionPropertyArrayOutputWithContext(ctx context.Context) JobQueryConnectionPropertyArrayOutput {
+	return o
+}
+
+func (o JobQueryConnectionPropertyArrayOutput) Index(i pulumi.IntInput) JobQueryConnectionPropertyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobQueryConnectionProperty {
+		return vs[0].([]JobQueryConnectionProperty)[vs[1].(int)]
+	}).(JobQueryConnectionPropertyOutput)
 }
 
 type JobQueryDefaultDataset struct {
@@ -16651,7 +16807,10 @@ type TableView struct {
 	// A query that BigQuery executes when the view is referenced.
 	Query string `pulumi:"query"`
 	// Specifies whether to use BigQuery's legacy SQL for this view.
-	// The default value is true. If set to false, the view will use BigQuery's standard SQL.
+	// If set to `false`, the view will use BigQuery's standard SQL. If set to
+	// `true`, the view will use BigQuery's legacy SQL. If unset, the API will
+	// interpret it as a `true` and assumes the legacy SQL dialect for its query
+	// according to the [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#ViewDefinition).
 	// > **Note**: Starting in provider version `7.0.0`, no default value is
 	// provided for this field unless explicitly set in the configuration.
 	UseLegacySql *bool `pulumi:"useLegacySql"`
@@ -16672,7 +16831,10 @@ type TableViewArgs struct {
 	// A query that BigQuery executes when the view is referenced.
 	Query pulumi.StringInput `pulumi:"query"`
 	// Specifies whether to use BigQuery's legacy SQL for this view.
-	// The default value is true. If set to false, the view will use BigQuery's standard SQL.
+	// If set to `false`, the view will use BigQuery's standard SQL. If set to
+	// `true`, the view will use BigQuery's legacy SQL. If unset, the API will
+	// interpret it as a `true` and assumes the legacy SQL dialect for its query
+	// according to the [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#ViewDefinition).
 	// > **Note**: Starting in provider version `7.0.0`, no default value is
 	// provided for this field unless explicitly set in the configuration.
 	UseLegacySql pulumi.BoolPtrInput `pulumi:"useLegacySql"`
@@ -16761,7 +16923,10 @@ func (o TableViewOutput) Query() pulumi.StringOutput {
 }
 
 // Specifies whether to use BigQuery's legacy SQL for this view.
-// The default value is true. If set to false, the view will use BigQuery's standard SQL.
+// If set to `false`, the view will use BigQuery's standard SQL. If set to
+// `true`, the view will use BigQuery's legacy SQL. If unset, the API will
+// interpret it as a `true` and assumes the legacy SQL dialect for its query
+// according to the [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#ViewDefinition).
 // > **Note**: Starting in provider version `7.0.0`, no default value is
 // provided for this field unless explicitly set in the configuration.
 func (o TableViewOutput) UseLegacySql() pulumi.BoolPtrOutput {
@@ -16803,7 +16968,10 @@ func (o TableViewPtrOutput) Query() pulumi.StringPtrOutput {
 }
 
 // Specifies whether to use BigQuery's legacy SQL for this view.
-// The default value is true. If set to false, the view will use BigQuery's standard SQL.
+// If set to `false`, the view will use BigQuery's standard SQL. If set to
+// `true`, the view will use BigQuery's legacy SQL. If unset, the API will
+// interpret it as a `true` and assumes the legacy SQL dialect for its query
+// according to the [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#ViewDefinition).
 // > **Note**: Starting in provider version `7.0.0`, no default value is
 // provided for this field unless explicitly set in the configuration.
 func (o TableViewPtrOutput) UseLegacySql() pulumi.BoolPtrOutput {
@@ -21270,7 +21438,7 @@ func (o GetTableTimePartitioningArrayOutput) Index(i pulumi.IntInput) GetTableTi
 type GetTableView struct {
 	// A query that BigQuery executes when the view is referenced.
 	Query string `pulumi:"query"`
-	// Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to false, the view will use BigQuery's standard SQL
+	// Specifies whether to use BigQuery's legacy SQL for this view. If set to false, the view will use BigQuery's standard SQL
 	UseLegacySql bool `pulumi:"useLegacySql"`
 }
 
@@ -21288,7 +21456,7 @@ type GetTableViewInput interface {
 type GetTableViewArgs struct {
 	// A query that BigQuery executes when the view is referenced.
 	Query pulumi.StringInput `pulumi:"query"`
-	// Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to false, the view will use BigQuery's standard SQL
+	// Specifies whether to use BigQuery's legacy SQL for this view. If set to false, the view will use BigQuery's standard SQL
 	UseLegacySql pulumi.BoolInput `pulumi:"useLegacySql"`
 }
 
@@ -21348,7 +21516,7 @@ func (o GetTableViewOutput) Query() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTableView) string { return v.Query }).(pulumi.StringOutput)
 }
 
-// Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to false, the view will use BigQuery's standard SQL
+// Specifies whether to use BigQuery's legacy SQL for this view. If set to false, the view will use BigQuery's standard SQL
 func (o GetTableViewOutput) UseLegacySql() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetTableView) bool { return v.UseLegacySql }).(pulumi.BoolOutput)
 }
@@ -21576,6 +21744,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobLoadTimePartitioningPtrInput)(nil)).Elem(), JobLoadTimePartitioningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobQueryInput)(nil)).Elem(), JobQueryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobQueryPtrInput)(nil)).Elem(), JobQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobQueryConnectionPropertyInput)(nil)).Elem(), JobQueryConnectionPropertyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobQueryConnectionPropertyArrayInput)(nil)).Elem(), JobQueryConnectionPropertyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobQueryDefaultDatasetInput)(nil)).Elem(), JobQueryDefaultDatasetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobQueryDefaultDatasetPtrInput)(nil)).Elem(), JobQueryDefaultDatasetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobQueryDestinationEncryptionConfigurationInput)(nil)).Elem(), JobQueryDestinationEncryptionConfigurationArgs{})
@@ -21828,6 +21998,8 @@ func init() {
 	pulumi.RegisterOutputType(JobLoadTimePartitioningPtrOutput{})
 	pulumi.RegisterOutputType(JobQueryOutput{})
 	pulumi.RegisterOutputType(JobQueryPtrOutput{})
+	pulumi.RegisterOutputType(JobQueryConnectionPropertyOutput{})
+	pulumi.RegisterOutputType(JobQueryConnectionPropertyArrayOutput{})
 	pulumi.RegisterOutputType(JobQueryDefaultDatasetOutput{})
 	pulumi.RegisterOutputType(JobQueryDefaultDatasetPtrOutput{})
 	pulumi.RegisterOutputType(JobQueryDestinationEncryptionConfigurationOutput{})

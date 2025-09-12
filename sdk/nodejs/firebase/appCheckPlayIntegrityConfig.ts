@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  * const playIntegrity = new gcp.projects.Service("play_integrity", {
  *     project: "my-project-name",
  *     service: "playintegrity.googleapis.com",
- *     disableOnDestroy: false,
  * });
  * const _default = new gcp.firebase.AndroidApp("default", {
  *     project: "my-project-name",
@@ -59,7 +58,6 @@ import * as utilities from "../utilities";
  * const playIntegrity = new gcp.projects.Service("play_integrity", {
  *     project: "my-project-name",
  *     service: "playintegrity.googleapis.com",
- *     disableOnDestroy: false,
  * });
  * const _default = new gcp.firebase.AndroidApp("default", {
  *     project: "my-project-name",

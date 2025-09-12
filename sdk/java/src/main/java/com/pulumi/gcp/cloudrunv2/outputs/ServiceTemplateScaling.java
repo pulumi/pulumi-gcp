@@ -12,8 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceTemplateScaling {
     /**
-     * @return Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
-     * a default value based on the project&#39;s available container instances quota in the region and specified instance size.
+     * @return Combined maximum number of instances for all revisions receiving traffic.
      * 
      */
     private @Nullable Integer maxInstanceCount;
@@ -25,8 +24,7 @@ public final class ServiceTemplateScaling {
 
     private ServiceTemplateScaling() {}
     /**
-     * @return Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
-     * a default value based on the project&#39;s available container instances quota in the region and specified instance size.
+     * @return Combined maximum number of instances for all revisions receiving traffic.
      * 
      */
     public Optional<Integer> maxInstanceCount() {

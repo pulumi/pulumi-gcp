@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,7 +27,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigtable"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigtable"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -82,7 +82,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigtable"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigtable"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -128,7 +128,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigtable"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigtable"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -187,7 +187,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigtable"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigtable"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -299,6 +299,9 @@ func NewAppProfile(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'AppProfileId'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("gcp:bigquery/appProfile:AppProfile"),
+		},
 		{
 			Type: pulumi.String("gcp:bigquery/appProfile:AppProfile"),
 		},

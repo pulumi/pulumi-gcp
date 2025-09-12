@@ -20,7 +20,7 @@ public final class GetTableIamPolicyResult {
      * 
      */
     private String id;
-    private String instance;
+    private String instanceName;
     /**
      * @return (Computed) The policy data
      * 
@@ -44,8 +44,8 @@ public final class GetTableIamPolicyResult {
     public String id() {
         return this.id;
     }
-    public String instance() {
-        return this.instance;
+    public String instanceName() {
+        return this.instanceName;
     }
     /**
      * @return (Computed) The policy data
@@ -72,7 +72,7 @@ public final class GetTableIamPolicyResult {
     public static final class Builder {
         private String etag;
         private String id;
-        private String instance;
+        private String instanceName;
         private String policyData;
         private String project;
         private String table;
@@ -81,7 +81,7 @@ public final class GetTableIamPolicyResult {
     	      Objects.requireNonNull(defaults);
     	      this.etag = defaults.etag;
     	      this.id = defaults.id;
-    	      this.instance = defaults.instance;
+    	      this.instanceName = defaults.instanceName;
     	      this.policyData = defaults.policyData;
     	      this.project = defaults.project;
     	      this.table = defaults.table;
@@ -104,11 +104,11 @@ public final class GetTableIamPolicyResult {
             return this;
         }
         @CustomType.Setter
-        public Builder instance(String instance) {
-            if (instance == null) {
-              throw new MissingRequiredPropertyException("GetTableIamPolicyResult", "instance");
+        public Builder instanceName(String instanceName) {
+            if (instanceName == null) {
+              throw new MissingRequiredPropertyException("GetTableIamPolicyResult", "instanceName");
             }
-            this.instance = instance;
+            this.instanceName = instanceName;
             return this;
         }
         @CustomType.Setter
@@ -139,7 +139,7 @@ public final class GetTableIamPolicyResult {
             final var _resultValue = new GetTableIamPolicyResult();
             _resultValue.etag = etag;
             _resultValue.id = id;
-            _resultValue.instance = instance;
+            _resultValue.instanceName = instanceName;
             _resultValue.policyData = policyData;
             _resultValue.project = project;
             _resultValue.table = table;

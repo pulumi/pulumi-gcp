@@ -7,6 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * A Managed Service for Kafka Connect Connectors.
+ *
  * ## Example Usage
  *
  * ### Managedkafka Connector Basic

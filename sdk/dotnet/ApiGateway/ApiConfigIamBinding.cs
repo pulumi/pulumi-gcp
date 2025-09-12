@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.ApiGateway
     /// 
     /// &gt; **Note:** `gcp.apigateway.ApiConfigIamBinding` resources **can be** used in conjunction with `gcp.apigateway.ApiConfigIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
-    /// ## google\_api\_gateway\_api\_config\_iam\_policy
+    /// ## gcp.apigateway.ApiConfigIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -124,7 +124,7 @@ namespace Pulumi.Gcp.ApiGateway
     /// 
     /// &gt; **Note:** `gcp.apigateway.ApiConfigIamBinding` resources **can be** used in conjunction with `gcp.apigateway.ApiConfigIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
-    /// ## google\_api\_gateway\_api\_config\_iam\_policy
+    /// ## gcp.apigateway.ApiConfigIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

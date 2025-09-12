@@ -35,31 +35,6 @@ public final class GetAccountKeyPlainArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * The ID of the project that the service account is present in.
-     * Defaults to the provider project configuration.
-     * 
-     * @deprecated
-     * `project` is deprecated and will be removed in a future major release. This field is non-functional and can be removed from your configuration safely.
-     * 
-     */
-    @Deprecated /* `project` is deprecated and will be removed in a future major release. This field is non-functional and can be removed from your configuration safely. */
-    @Import(name="project")
-    private @Nullable String project;
-
-    /**
-     * @return The ID of the project that the service account is present in.
-     * Defaults to the provider project configuration.
-     * 
-     * @deprecated
-     * `project` is deprecated and will be removed in a future major release. This field is non-functional and can be removed from your configuration safely.
-     * 
-     */
-    @Deprecated /* `project` is deprecated and will be removed in a future major release. This field is non-functional and can be removed from your configuration safely. */
-    public Optional<String> project() {
-        return Optional.ofNullable(this.project);
-    }
-
-    /**
      * The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
      * 
      */
@@ -78,7 +53,6 @@ public final class GetAccountKeyPlainArgs extends com.pulumi.resources.InvokeArg
 
     private GetAccountKeyPlainArgs(GetAccountKeyPlainArgs $) {
         this.name = $.name;
-        this.project = $.project;
         this.publicKeyType = $.publicKeyType;
     }
 
@@ -110,22 +84,6 @@ public final class GetAccountKeyPlainArgs extends com.pulumi.resources.InvokeArg
          */
         public Builder name(String name) {
             $.name = name;
-            return this;
-        }
-
-        /**
-         * @param project The ID of the project that the service account is present in.
-         * Defaults to the provider project configuration.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `project` is deprecated and will be removed in a future major release. This field is non-functional and can be removed from your configuration safely.
-         * 
-         */
-        @Deprecated /* `project` is deprecated and will be removed in a future major release. This field is non-functional and can be removed from your configuration safely. */
-        public Builder project(@Nullable String project) {
-            $.project = project;
             return this;
         }
 

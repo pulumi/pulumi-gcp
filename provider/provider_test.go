@@ -21,7 +21,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/auto"
 	pulumirpc "github.com/pulumi/pulumi/sdk/v3/proto/go"
 
-	"github.com/pulumi/pulumi-gcp/provider/v8/pkg/version"
+	"github.com/pulumi/pulumi-gcp/provider/v9/pkg/version"
 )
 
 const (

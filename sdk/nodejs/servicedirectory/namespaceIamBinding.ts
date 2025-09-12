@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.servicedirectory.NamespaceIamBinding` resources **can be** used in conjunction with `gcp.servicedirectory.NamespaceIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_service\_directory\_namespace\_iam\_policy
+ * ## gcp.servicedirectory.NamespaceIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -86,7 +86,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.servicedirectory.NamespaceIamBinding` resources **can be** used in conjunction with `gcp.servicedirectory.NamespaceIamMember` resources **only if** they do not grant privilege to the same role.
  *
- * ## google\_service\_directory\_namespace\_iam\_policy
+ * ## gcp.servicedirectory.NamespaceIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.apigee.KeystoresAliasesKeyCertFileArgs;
 import com.pulumi.gcp.apigee.inputs.KeystoresAliasesKeyCertFileState;
 import com.pulumi.gcp.apigee.outputs.KeystoresAliasesKeyCertFileCertsInfo;
+import com.pulumi.gcp.apigee.outputs.KeystoresAliasesKeyCertFileTimeouts;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -83,16 +84,16 @@ public class KeystoresAliasesKeyCertFile extends com.pulumi.resources.CustomReso
      * Structure is documented below.
      * 
      */
-    @Export(name="certsInfo", refs={KeystoresAliasesKeyCertFileCertsInfo.class}, tree="[0]")
-    private Output<KeystoresAliasesKeyCertFileCertsInfo> certsInfo;
+    @Export(name="certsInfos", refs={List.class,KeystoresAliasesKeyCertFileCertsInfo.class}, tree="[0,1]")
+    private Output<List<KeystoresAliasesKeyCertFileCertsInfo>> certsInfos;
 
     /**
      * @return Chain of certificates under this alias.
      * Structure is documented below.
      * 
      */
-    public Output<KeystoresAliasesKeyCertFileCertsInfo> certsInfo() {
-        return this.certsInfo;
+    public Output<List<KeystoresAliasesKeyCertFileCertsInfo>> certsInfos() {
+        return this.certsInfos;
     }
     /**
      * Environment associated with the alias
@@ -163,6 +164,12 @@ public class KeystoresAliasesKeyCertFile extends com.pulumi.resources.CustomReso
      */
     public Output<Optional<String>> password() {
         return Codegen.optional(this.password);
+    }
+    @Export(name="timeouts", refs={KeystoresAliasesKeyCertFileTimeouts.class}, tree="[0]")
+    private Output</* @Nullable */ KeystoresAliasesKeyCertFileTimeouts> timeouts;
+
+    public Output<Optional<KeystoresAliasesKeyCertFileTimeouts>> timeouts() {
+        return Codegen.optional(this.timeouts);
     }
     /**
      * Optional.Type of Alias

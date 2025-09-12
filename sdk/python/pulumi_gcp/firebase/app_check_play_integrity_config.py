@@ -191,8 +191,7 @@ class AppCheckPlayIntegrityConfig(pulumi.CustomResource):
         # Enables the Play Integrity API
         play_integrity = gcp.projects.Service("play_integrity",
             project="my-project-name",
-            service="playintegrity.googleapis.com",
-            disable_on_destroy=False)
+            service="playintegrity.googleapis.com")
         default = gcp.firebase.AndroidApp("default",
             project="my-project-name",
             display_name="Play Integrity app",
@@ -218,8 +217,7 @@ class AppCheckPlayIntegrityConfig(pulumi.CustomResource):
         # Enables the Play Integrity API
         play_integrity = gcp.projects.Service("play_integrity",
             project="my-project-name",
-            service="playintegrity.googleapis.com",
-            disable_on_destroy=False)
+            service="playintegrity.googleapis.com")
         default = gcp.firebase.AndroidApp("default",
             project="my-project-name",
             display_name="Play Integrity app",
@@ -299,8 +297,7 @@ class AppCheckPlayIntegrityConfig(pulumi.CustomResource):
         # Enables the Play Integrity API
         play_integrity = gcp.projects.Service("play_integrity",
             project="my-project-name",
-            service="playintegrity.googleapis.com",
-            disable_on_destroy=False)
+            service="playintegrity.googleapis.com")
         default = gcp.firebase.AndroidApp("default",
             project="my-project-name",
             display_name="Play Integrity app",
@@ -326,8 +323,7 @@ class AppCheckPlayIntegrityConfig(pulumi.CustomResource):
         # Enables the Play Integrity API
         play_integrity = gcp.projects.Service("play_integrity",
             project="my-project-name",
-            service="playintegrity.googleapis.com",
-            disable_on_destroy=False)
+            service="playintegrity.googleapis.com")
         default = gcp.firebase.AndroidApp("default",
             project="my-project-name",
             display_name="Play Integrity app",

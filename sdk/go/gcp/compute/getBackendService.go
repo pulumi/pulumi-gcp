@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,7 +22,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -108,6 +108,7 @@ type LookupBackendServiceResult struct {
 	Name                                string                                               `pulumi:"name"`
 	NetworkPassThroughLbTrafficPolicies []GetBackendServiceNetworkPassThroughLbTrafficPolicy `pulumi:"networkPassThroughLbTrafficPolicies"`
 	OutlierDetections                   []GetBackendServiceOutlierDetection                  `pulumi:"outlierDetections"`
+	Params                              []GetBackendServiceParam                             `pulumi:"params"`
 	// The name of a service that has been added to an instance group in this backend.
 	PortName string  `pulumi:"portName"`
 	Project  *string `pulumi:"project"`
@@ -296,6 +297,10 @@ func (o LookupBackendServiceResultOutput) NetworkPassThroughLbTrafficPolicies() 
 
 func (o LookupBackendServiceResultOutput) OutlierDetections() GetBackendServiceOutlierDetectionArrayOutput {
 	return o.ApplyT(func(v LookupBackendServiceResult) []GetBackendServiceOutlierDetection { return v.OutlierDetections }).(GetBackendServiceOutlierDetectionArrayOutput)
+}
+
+func (o LookupBackendServiceResultOutput) Params() GetBackendServiceParamArrayOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) []GetBackendServiceParam { return v.Params }).(GetBackendServiceParamArrayOutput)
 }
 
 // The name of a service that has been added to an instance group in this backend.

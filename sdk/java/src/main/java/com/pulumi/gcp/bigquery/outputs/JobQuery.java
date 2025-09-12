@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.bigquery.outputs.JobQueryConnectionProperty;
 import com.pulumi.gcp.bigquery.outputs.JobQueryDefaultDataset;
 import com.pulumi.gcp.bigquery.outputs.JobQueryDestinationEncryptionConfiguration;
 import com.pulumi.gcp.bigquery.outputs.JobQueryDestinationTable;
@@ -27,6 +28,14 @@ public final class JobQuery {
      * 
      */
     private @Nullable Boolean allowLargeResults;
+    /**
+     * @return Connection properties to customize query behavior. Under JDBC, these correspond
+     * directly to connection properties passed to the DriverManager. Under ODBC, these
+     * correspond to properties in the connection string.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<JobQueryConnectionProperty> connectionProperties;
     /**
      * @return Whether to run the query as continuous or a regular query.
      * 
@@ -157,6 +166,16 @@ public final class JobQuery {
      */
     public Optional<Boolean> allowLargeResults() {
         return Optional.ofNullable(this.allowLargeResults);
+    }
+    /**
+     * @return Connection properties to customize query behavior. Under JDBC, these correspond
+     * directly to connection properties passed to the DriverManager. Under ODBC, these
+     * correspond to properties in the connection string.
+     * Structure is documented below.
+     * 
+     */
+    public List<JobQueryConnectionProperty> connectionProperties() {
+        return this.connectionProperties == null ? List.of() : this.connectionProperties;
     }
     /**
      * @return Whether to run the query as continuous or a regular query.
@@ -323,6 +342,7 @@ public final class JobQuery {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean allowLargeResults;
+        private @Nullable List<JobQueryConnectionProperty> connectionProperties;
         private @Nullable Boolean continuous;
         private @Nullable String createDisposition;
         private @Nullable JobQueryDefaultDataset defaultDataset;
@@ -344,6 +364,7 @@ public final class JobQuery {
         public Builder(JobQuery defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowLargeResults = defaults.allowLargeResults;
+    	      this.connectionProperties = defaults.connectionProperties;
     	      this.continuous = defaults.continuous;
     	      this.createDisposition = defaults.createDisposition;
     	      this.defaultDataset = defaults.defaultDataset;
@@ -368,6 +389,15 @@ public final class JobQuery {
 
             this.allowLargeResults = allowLargeResults;
             return this;
+        }
+        @CustomType.Setter
+        public Builder connectionProperties(@Nullable List<JobQueryConnectionProperty> connectionProperties) {
+
+            this.connectionProperties = connectionProperties;
+            return this;
+        }
+        public Builder connectionProperties(JobQueryConnectionProperty... connectionProperties) {
+            return connectionProperties(List.of(connectionProperties));
         }
         @CustomType.Setter
         public Builder continuous(@Nullable Boolean continuous) {
@@ -482,6 +512,7 @@ public final class JobQuery {
         public JobQuery build() {
             final var _resultValue = new JobQuery();
             _resultValue.allowLargeResults = allowLargeResults;
+            _resultValue.connectionProperties = connectionProperties;
             _resultValue.continuous = continuous;
             _resultValue.createDisposition = createDisposition;
             _resultValue.defaultDataset = defaultDataset;

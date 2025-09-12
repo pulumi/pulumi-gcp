@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.apigateway.ApiConfigIamBinding` resources **can be** used in conjunction with `gcp.apigateway.ApiConfigIamMember` resources **only if** they do not grant privilege to the same role.
  * 
- * ## google\_api\_gateway\_api\_config\_iam\_policy
+ * ## gcp.apigateway.ApiConfigIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -170,7 +170,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.apigateway.ApiConfigIamBinding` resources **can be** used in conjunction with `gcp.apigateway.ApiConfigIamMember` resources **only if** they do not grant privilege to the same role.
  * 
- * ## google\_api\_gateway\_api\_config\_iam\_policy
+ * ## gcp.apigateway.ApiConfigIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

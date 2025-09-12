@@ -4,6 +4,7 @@
 package com.pulumi.gcp.vertex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vertex.outputs.AiIndexMetadataConfig;
 import java.lang.Boolean;
 import java.lang.String;
@@ -18,7 +19,7 @@ public final class AiIndexMetadata {
      * Structure is documented below.
      * 
      */
-    private @Nullable AiIndexMetadataConfig config;
+    private AiIndexMetadataConfig config;
     /**
      * @return Allows inserting, updating  or deleting the contents of the Matching Engine Index.
      * The string must be a valid Cloud Storage directory path. If this
@@ -42,8 +43,8 @@ public final class AiIndexMetadata {
      * Structure is documented below.
      * 
      */
-    public Optional<AiIndexMetadataConfig> config() {
-        return Optional.ofNullable(this.config);
+    public AiIndexMetadataConfig config() {
+        return this.config;
     }
     /**
      * @return Allows inserting, updating  or deleting the contents of the Matching Engine Index.
@@ -75,7 +76,7 @@ public final class AiIndexMetadata {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable AiIndexMetadataConfig config;
+        private AiIndexMetadataConfig config;
         private @Nullable String contentsDeltaUri;
         private @Nullable Boolean isCompleteOverwrite;
         public Builder() {}
@@ -87,8 +88,10 @@ public final class AiIndexMetadata {
         }
 
         @CustomType.Setter
-        public Builder config(@Nullable AiIndexMetadataConfig config) {
-
+        public Builder config(AiIndexMetadataConfig config) {
+            if (config == null) {
+              throw new MissingRequiredPropertyException("AiIndexMetadata", "config");
+            }
             this.config = config;
             return this;
         }

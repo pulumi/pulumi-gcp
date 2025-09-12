@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * To get more information about Endpoint, see:
  *
- * * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.endpoints)
+ * * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.endpoints)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
  *
@@ -95,7 +95,6 @@ import * as utilities from "../utilities";
  *     privateServiceConnectConfig: {
  *         enablePrivateServiceConnect: true,
  *         projectAllowlists: [project.then(project => project.projectId)],
- *         enableSecurePrivateServiceConnect: false,
  *     },
  * });
  * ```

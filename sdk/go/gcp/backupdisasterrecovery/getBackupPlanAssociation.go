@@ -7,10 +7,12 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A Backup and DR BackupPlanAssociation.
+//
 // ## Example Usage
 //
 // ```go
@@ -18,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/backupdisasterrecovery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/backupdisasterrecovery"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )

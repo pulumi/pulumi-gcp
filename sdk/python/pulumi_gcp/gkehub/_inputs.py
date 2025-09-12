@@ -55,8 +55,6 @@ __all__ = [
     'FeatureIamMemberConditionArgsDict',
     'FeatureMembershipConfigmanagementArgs',
     'FeatureMembershipConfigmanagementArgsDict',
-    'FeatureMembershipConfigmanagementBinauthzArgs',
-    'FeatureMembershipConfigmanagementBinauthzArgsDict',
     'FeatureMembershipConfigmanagementConfigSyncArgs',
     'FeatureMembershipConfigmanagementConfigSyncArgsDict',
     'FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgs',
@@ -1741,12 +1739,6 @@ class FeatureIamMemberConditionArgs:
 
 if not MYPY:
     class FeatureMembershipConfigmanagementArgsDict(TypedDict):
-        binauthz: NotRequired[pulumi.Input['FeatureMembershipConfigmanagementBinauthzArgsDict']]
-        """
-        (Optional, Deprecated)
-        Binauthz configuration for the cluster. Structure is documented below.
-        This field will be ignored and should not be set.
-        """
         config_sync: NotRequired[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncArgsDict']]
         """
         Config Sync configuration for the cluster. Structure is documented below.
@@ -1779,16 +1771,12 @@ elif False:
 @pulumi.input_type
 class FeatureMembershipConfigmanagementArgs:
     def __init__(__self__, *,
-                 binauthz: Optional[pulumi.Input['FeatureMembershipConfigmanagementBinauthzArgs']] = None,
                  config_sync: Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncArgs']] = None,
                  hierarchy_controller: Optional[pulumi.Input['FeatureMembershipConfigmanagementHierarchyControllerArgs']] = None,
                  management: Optional[pulumi.Input[_builtins.str]] = None,
                  policy_controller: Optional[pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerArgs']] = None,
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input['FeatureMembershipConfigmanagementBinauthzArgs'] binauthz: (Optional, Deprecated)
-               Binauthz configuration for the cluster. Structure is documented below.
-               This field will be ignored and should not be set.
         :param pulumi.Input['FeatureMembershipConfigmanagementConfigSyncArgs'] config_sync: Config Sync configuration for the cluster. Structure is documented below.
         :param pulumi.Input['FeatureMembershipConfigmanagementHierarchyControllerArgs'] hierarchy_controller: Hierarchy Controller configuration for the cluster. Structure is documented below.
                Configuring Hierarchy Controller through the configmanagement feature is no longer recommended.
@@ -1801,8 +1789,6 @@ class FeatureMembershipConfigmanagementArgs:
                Use the policycontroller feature instead.
         :param pulumi.Input[_builtins.str] version: Version of Config Sync installed.
         """
-        if binauthz is not None:
-            pulumi.set(__self__, "binauthz", binauthz)
         if config_sync is not None:
             pulumi.set(__self__, "config_sync", config_sync)
         if hierarchy_controller is not None:
@@ -1813,20 +1799,6 @@ class FeatureMembershipConfigmanagementArgs:
             pulumi.set(__self__, "policy_controller", policy_controller)
         if version is not None:
             pulumi.set(__self__, "version", version)
-
-    @_builtins.property
-    @pulumi.getter
-    def binauthz(self) -> Optional[pulumi.Input['FeatureMembershipConfigmanagementBinauthzArgs']]:
-        """
-        (Optional, Deprecated)
-        Binauthz configuration for the cluster. Structure is documented below.
-        This field will be ignored and should not be set.
-        """
-        return pulumi.get(self, "binauthz")
-
-    @binauthz.setter
-    def binauthz(self, value: Optional[pulumi.Input['FeatureMembershipConfigmanagementBinauthzArgs']]):
-        pulumi.set(self, "binauthz", value)
 
     @_builtins.property
     @pulumi.getter(name="configSync")
@@ -1893,38 +1865,6 @@ class FeatureMembershipConfigmanagementArgs:
     @version.setter
     def version(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "version", value)
-
-
-if not MYPY:
-    class FeatureMembershipConfigmanagementBinauthzArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether binauthz is enabled in this cluster.
-        """
-elif False:
-    FeatureMembershipConfigmanagementBinauthzArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class FeatureMembershipConfigmanagementBinauthzArgs:
-    def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None):
-        """
-        :param pulumi.Input[_builtins.bool] enabled: Whether binauthz is enabled in this cluster.
-        """
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
-
-    @_builtins.property
-    @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether binauthz is enabled in this cluster.
-        """
-        return pulumi.get(self, "enabled")
-
-    @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "enabled", value)
 
 
 if not MYPY:

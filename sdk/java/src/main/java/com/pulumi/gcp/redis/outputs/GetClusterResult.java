@@ -31,7 +31,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterResult {
-    private Boolean allowFewerZonesDeployment;
     private String authorizationMode;
     private List<GetClusterAutomatedBackupConfig> automatedBackupConfigs;
     private String backupCollection;
@@ -70,9 +69,6 @@ public final class GetClusterResult {
     private List<GetClusterZoneDistributionConfig> zoneDistributionConfigs;
 
     private GetClusterResult() {}
-    public Boolean allowFewerZonesDeployment() {
-        return this.allowFewerZonesDeployment;
-    }
     public String authorizationMode() {
         return this.authorizationMode;
     }
@@ -183,7 +179,6 @@ public final class GetClusterResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Boolean allowFewerZonesDeployment;
         private String authorizationMode;
         private List<GetClusterAutomatedBackupConfig> automatedBackupConfigs;
         private String backupCollection;
@@ -219,7 +214,6 @@ public final class GetClusterResult {
         public Builder() {}
         public Builder(GetClusterResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.allowFewerZonesDeployment = defaults.allowFewerZonesDeployment;
     	      this.authorizationMode = defaults.authorizationMode;
     	      this.automatedBackupConfigs = defaults.automatedBackupConfigs;
     	      this.backupCollection = defaults.backupCollection;
@@ -254,14 +248,6 @@ public final class GetClusterResult {
     	      this.zoneDistributionConfigs = defaults.zoneDistributionConfigs;
         }
 
-        @CustomType.Setter
-        public Builder allowFewerZonesDeployment(Boolean allowFewerZonesDeployment) {
-            if (allowFewerZonesDeployment == null) {
-              throw new MissingRequiredPropertyException("GetClusterResult", "allowFewerZonesDeployment");
-            }
-            this.allowFewerZonesDeployment = allowFewerZonesDeployment;
-            return this;
-        }
         @CustomType.Setter
         public Builder authorizationMode(String authorizationMode) {
             if (authorizationMode == null) {
@@ -558,7 +544,6 @@ public final class GetClusterResult {
         }
         public GetClusterResult build() {
             final var _resultValue = new GetClusterResult();
-            _resultValue.allowFewerZonesDeployment = allowFewerZonesDeployment;
             _resultValue.authorizationMode = authorizationMode;
             _resultValue.automatedBackupConfigs = automatedBackupConfigs;
             _resultValue.backupCollection = backupCollection;

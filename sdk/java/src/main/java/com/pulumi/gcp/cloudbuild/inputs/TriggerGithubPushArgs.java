@@ -17,14 +17,14 @@ public final class TriggerGithubPushArgs extends com.pulumi.resources.ResourceAr
     public static final TriggerGithubPushArgs Empty = new TriggerGithubPushArgs();
 
     /**
-     * Regex of branches to match.  Specify only one of branch or tag.
+     * Regex of branches to match.
      * 
      */
     @Import(name="branch")
     private @Nullable Output<String> branch;
 
     /**
-     * @return Regex of branches to match.  Specify only one of branch or tag.
+     * @return Regex of branches to match.
      * 
      */
     public Optional<Output<String>> branch() {
@@ -32,14 +32,14 @@ public final class TriggerGithubPushArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+     * If true, only trigger a build if the revision regex does NOT match the git_ref regex.
      * 
      */
     @Import(name="invertRegex")
     private @Nullable Output<Boolean> invertRegex;
 
     /**
-     * @return When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+     * @return If true, only trigger a build if the revision regex does NOT match the git_ref regex.
      * 
      */
     public Optional<Output<Boolean>> invertRegex() {
@@ -47,14 +47,14 @@ public final class TriggerGithubPushArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Regex of tags to match.  Specify only one of branch or tag.
+     * Regex of tags to match.
      * 
      */
     @Import(name="tag")
     private @Nullable Output<String> tag;
 
     /**
-     * @return Regex of tags to match.  Specify only one of branch or tag.
+     * @return Regex of tags to match.
      * 
      */
     public Optional<Output<String>> tag() {
@@ -88,7 +88,7 @@ public final class TriggerGithubPushArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param branch Regex of branches to match.  Specify only one of branch or tag.
+         * @param branch Regex of branches to match.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class TriggerGithubPushArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param branch Regex of branches to match.  Specify only one of branch or tag.
+         * @param branch Regex of branches to match.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class TriggerGithubPushArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param invertRegex When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+         * @param invertRegex If true, only trigger a build if the revision regex does NOT match the git_ref regex.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class TriggerGithubPushArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param invertRegex When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+         * @param invertRegex If true, only trigger a build if the revision regex does NOT match the git_ref regex.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class TriggerGithubPushArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tag Regex of tags to match.  Specify only one of branch or tag.
+         * @param tag Regex of tags to match.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class TriggerGithubPushArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tag Regex of tags to match.  Specify only one of branch or tag.
+         * @param tag Regex of tags to match.
          * 
          * @return builder
          * 

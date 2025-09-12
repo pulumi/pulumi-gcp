@@ -20,13 +20,13 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// <summary>
         /// The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
         /// </summary>
-        public readonly int RetentionPeriod;
+        public readonly string RetentionPeriod;
 
         [OutputConstructor]
         private GetBucketRetentionPolicyResult(
             bool isLocked,
 
-            int retentionPeriod)
+            string retentionPeriod)
         {
             IsLocked = isLocked;
             RetentionPeriod = retentionPeriod;

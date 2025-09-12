@@ -19,6 +19,12 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         public Input<int>? ManualInstanceCount { get; set; }
 
         /// <summary>
+        /// Combined maximum number of instances for all revisions receiving traffic.
+        /// </summary>
+        [Input("maxInstanceCount")]
+        public Input<int>? MaxInstanceCount { get; set; }
+
+        /// <summary>
         /// Minimum number of instances for the service, to be divided among all revisions receiving traffic.
         /// </summary>
         [Input("minInstanceCount")]

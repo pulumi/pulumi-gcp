@@ -315,18 +315,6 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * (Optional, Deprecated)
-     * Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
-     * it will not appear in get listings. If not set the default behavior is determined by the
-     * org policy, if there is no org policy specified, then it will default to disabled.
-     * This field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
-     *
-     * > **Warning:** This field is being removed in favor of log_config. If logConfig is present, flow logs are enabled.
-     *
-     * @deprecated This field is being removed in favor of log_config. If logConfig is present, flow logs are enabled.
-     */
-    declare public readonly enableFlowLogs: pulumi.Output<boolean>;
-    /**
      * The range of external IPv6 addresses that are owned by this subnetwork.
      */
     declare public readonly externalIpv6Prefix: pulumi.Output<string>;
@@ -510,7 +498,6 @@ export class Subnetwork extends pulumi.CustomResource {
             resourceInputs["allowSubnetCidrRoutesOverlap"] = state?.allowSubnetCidrRoutesOverlap;
             resourceInputs["creationTimestamp"] = state?.creationTimestamp;
             resourceInputs["description"] = state?.description;
-            resourceInputs["enableFlowLogs"] = state?.enableFlowLogs;
             resourceInputs["externalIpv6Prefix"] = state?.externalIpv6Prefix;
             resourceInputs["fingerprint"] = state?.fingerprint;
             resourceInputs["gatewayAddress"] = state?.gatewayAddress;
@@ -544,7 +531,6 @@ export class Subnetwork extends pulumi.CustomResource {
             }
             resourceInputs["allowSubnetCidrRoutesOverlap"] = args?.allowSubnetCidrRoutesOverlap;
             resourceInputs["description"] = args?.description;
-            resourceInputs["enableFlowLogs"] = args?.enableFlowLogs;
             resourceInputs["externalIpv6Prefix"] = args?.externalIpv6Prefix;
             resourceInputs["ipCidrRange"] = args?.ipCidrRange;
             resourceInputs["ipCollection"] = args?.ipCollection;
@@ -599,18 +585,6 @@ export interface SubnetworkState {
      * creation time.
      */
     description?: pulumi.Input<string>;
-    /**
-     * (Optional, Deprecated)
-     * Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
-     * it will not appear in get listings. If not set the default behavior is determined by the
-     * org policy, if there is no org policy specified, then it will default to disabled.
-     * This field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
-     *
-     * > **Warning:** This field is being removed in favor of log_config. If logConfig is present, flow logs are enabled.
-     *
-     * @deprecated This field is being removed in favor of log_config. If logConfig is present, flow logs are enabled.
-     */
-    enableFlowLogs?: pulumi.Input<boolean>;
     /**
      * The range of external IPv6 addresses that are owned by this subnetwork.
      */
@@ -797,18 +771,6 @@ export interface SubnetworkArgs {
      * creation time.
      */
     description?: pulumi.Input<string>;
-    /**
-     * (Optional, Deprecated)
-     * Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
-     * it will not appear in get listings. If not set the default behavior is determined by the
-     * org policy, if there is no org policy specified, then it will default to disabled.
-     * This field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
-     *
-     * > **Warning:** This field is being removed in favor of log_config. If logConfig is present, flow logs are enabled.
-     *
-     * @deprecated This field is being removed in favor of log_config. If logConfig is present, flow logs are enabled.
-     */
-    enableFlowLogs?: pulumi.Input<boolean>;
     /**
      * The range of external IPv6 addresses that are owned by this subnetwork.
      */

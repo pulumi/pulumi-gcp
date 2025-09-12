@@ -102,8 +102,8 @@ public final class LbTrafficExtensionArgs extends com.pulumi.resources.ResourceA
      * Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
      * 
      */
-    @Import(name="loadBalancingScheme")
-    private @Nullable Output<String> loadBalancingScheme;
+    @Import(name="loadBalancingScheme", required=true)
+    private Output<String> loadBalancingScheme;
 
     /**
      * @return All backend services and forwarding rules referenced by this extension must share the same load balancing scheme.
@@ -112,8 +112,8 @@ public final class LbTrafficExtensionArgs extends com.pulumi.resources.ResourceA
      * Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
      * 
      */
-    public Optional<Output<String>> loadBalancingScheme() {
-        return Optional.ofNullable(this.loadBalancingScheme);
+    public Output<String> loadBalancingScheme() {
+        return this.loadBalancingScheme;
     }
 
     /**
@@ -329,7 +329,7 @@ public final class LbTrafficExtensionArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder loadBalancingScheme(@Nullable Output<String> loadBalancingScheme) {
+        public Builder loadBalancingScheme(Output<String> loadBalancingScheme) {
             $.loadBalancingScheme = loadBalancingScheme;
             return this;
         }
@@ -418,6 +418,9 @@ public final class LbTrafficExtensionArgs extends com.pulumi.resources.ResourceA
             }
             if ($.forwardingRules == null) {
                 throw new MissingRequiredPropertyException("LbTrafficExtensionArgs", "forwardingRules");
+            }
+            if ($.loadBalancingScheme == null) {
+                throw new MissingRequiredPropertyException("LbTrafficExtensionArgs", "loadBalancingScheme");
             }
             if ($.location == null) {
                 throw new MissingRequiredPropertyException("LbTrafficExtensionArgs", "location");

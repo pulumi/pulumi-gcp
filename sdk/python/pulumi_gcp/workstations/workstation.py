@@ -520,6 +520,14 @@ class Workstation(pulumi.CustomResource):
                  workstation_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A single instance of a developer workstation with its own persistent storage.
+
+        To get more information about Workstation, see:
+
+        * [API documentation](https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs.workstations)
+        * How-to Guides
+            * [Workstations](https://cloud.google.com/workstations/docs/)
+
         ## Example Usage
 
         ### Workstation Basic
@@ -624,6 +632,14 @@ class Workstation(pulumi.CustomResource):
                  args: WorkstationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A single instance of a developer workstation with its own persistent storage.
+
+        To get more information about Workstation, see:
+
+        * [API documentation](https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs.workstations)
+        * How-to Guides
+            * [Workstations](https://cloud.google.com/workstations/docs/)
+
         ## Example Usage
 
         ### Workstation Basic

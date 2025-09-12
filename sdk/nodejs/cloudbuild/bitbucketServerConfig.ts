@@ -73,10 +73,7 @@ import * as utilities from "../utilities";
  * import * as std from "@pulumi/std";
  *
  * const project = gcp.organizations.getProject({});
- * const servicenetworking = new gcp.projects.Service("servicenetworking", {
- *     service: "servicenetworking.googleapis.com",
- *     disableOnDestroy: false,
- * });
+ * const servicenetworking = new gcp.projects.Service("servicenetworking", {service: "servicenetworking.googleapis.com"});
  * const vpcNetwork = new gcp.compute.Network("vpc_network", {name: "vpc-network"}, {
  *     dependsOn: [servicenetworking],
  * });

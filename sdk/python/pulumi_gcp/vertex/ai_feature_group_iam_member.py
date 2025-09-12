@@ -305,6 +305,124 @@ class AiFeatureGroupIamMember(pulumi.CustomResource):
                  role: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Three different resources help you manage your IAM policy for Vertex AI FeatureGroup. Each of these resources serves a different use case:
+
+        * `vertex.AiFeatureGroupIamPolicy`: Authoritative. Sets the IAM policy for the featuregroup and replaces any existing policy already attached.
+        * `vertex.AiFeatureGroupIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the featuregroup are preserved.
+        * `vertex.AiFeatureGroupIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the featuregroup are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `vertex.AiFeatureGroupIamPolicy`: Retrieves the IAM policy for the featuregroup
+
+        > **Note:** `vertex.AiFeatureGroupIamPolicy` **cannot** be used in conjunction with `vertex.AiFeatureGroupIamBinding` and `vertex.AiFeatureGroupIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `vertex.AiFeatureGroupIamBinding` resources **can be** used in conjunction with `vertex.AiFeatureGroupIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## vertex.AiFeatureGroupIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.vertex.AiFeatureGroupIamPolicy("policy",
+            region=feature_group["region"],
+            feature_group=feature_group["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## vertex.AiFeatureGroupIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.vertex.AiFeatureGroupIamBinding("binding",
+            region=feature_group["region"],
+            feature_group=feature_group["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## vertex.AiFeatureGroupIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.vertex.AiFeatureGroupIamMember("member",
+            region=feature_group["region"],
+            feature_group=feature_group["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Vertex AI FeatureGroup
+
+        Three different resources help you manage your IAM policy for Vertex AI FeatureGroup. Each of these resources serves a different use case:
+
+        * `vertex.AiFeatureGroupIamPolicy`: Authoritative. Sets the IAM policy for the featuregroup and replaces any existing policy already attached.
+        * `vertex.AiFeatureGroupIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the featuregroup are preserved.
+        * `vertex.AiFeatureGroupIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the featuregroup are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `vertex.AiFeatureGroupIamPolicy`: Retrieves the IAM policy for the featuregroup
+
+        > **Note:** `vertex.AiFeatureGroupIamPolicy` **cannot** be used in conjunction with `vertex.AiFeatureGroupIamBinding` and `vertex.AiFeatureGroupIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `vertex.AiFeatureGroupIamBinding` resources **can be** used in conjunction with `vertex.AiFeatureGroupIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## vertex.AiFeatureGroupIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.vertex.AiFeatureGroupIamPolicy("policy",
+            region=feature_group["region"],
+            feature_group=feature_group["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## vertex.AiFeatureGroupIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.vertex.AiFeatureGroupIamBinding("binding",
+            region=feature_group["region"],
+            feature_group=feature_group["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## vertex.AiFeatureGroupIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.vertex.AiFeatureGroupIamMember("member",
+            region=feature_group["region"],
+            feature_group=feature_group["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms:
@@ -373,6 +491,124 @@ class AiFeatureGroupIamMember(pulumi.CustomResource):
                  args: AiFeatureGroupIamMemberArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Three different resources help you manage your IAM policy for Vertex AI FeatureGroup. Each of these resources serves a different use case:
+
+        * `vertex.AiFeatureGroupIamPolicy`: Authoritative. Sets the IAM policy for the featuregroup and replaces any existing policy already attached.
+        * `vertex.AiFeatureGroupIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the featuregroup are preserved.
+        * `vertex.AiFeatureGroupIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the featuregroup are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `vertex.AiFeatureGroupIamPolicy`: Retrieves the IAM policy for the featuregroup
+
+        > **Note:** `vertex.AiFeatureGroupIamPolicy` **cannot** be used in conjunction with `vertex.AiFeatureGroupIamBinding` and `vertex.AiFeatureGroupIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `vertex.AiFeatureGroupIamBinding` resources **can be** used in conjunction with `vertex.AiFeatureGroupIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## vertex.AiFeatureGroupIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.vertex.AiFeatureGroupIamPolicy("policy",
+            region=feature_group["region"],
+            feature_group=feature_group["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## vertex.AiFeatureGroupIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.vertex.AiFeatureGroupIamBinding("binding",
+            region=feature_group["region"],
+            feature_group=feature_group["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## vertex.AiFeatureGroupIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.vertex.AiFeatureGroupIamMember("member",
+            region=feature_group["region"],
+            feature_group=feature_group["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Vertex AI FeatureGroup
+
+        Three different resources help you manage your IAM policy for Vertex AI FeatureGroup. Each of these resources serves a different use case:
+
+        * `vertex.AiFeatureGroupIamPolicy`: Authoritative. Sets the IAM policy for the featuregroup and replaces any existing policy already attached.
+        * `vertex.AiFeatureGroupIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the featuregroup are preserved.
+        * `vertex.AiFeatureGroupIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the featuregroup are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `vertex.AiFeatureGroupIamPolicy`: Retrieves the IAM policy for the featuregroup
+
+        > **Note:** `vertex.AiFeatureGroupIamPolicy` **cannot** be used in conjunction with `vertex.AiFeatureGroupIamBinding` and `vertex.AiFeatureGroupIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `vertex.AiFeatureGroupIamBinding` resources **can be** used in conjunction with `vertex.AiFeatureGroupIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## vertex.AiFeatureGroupIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.vertex.AiFeatureGroupIamPolicy("policy",
+            region=feature_group["region"],
+            feature_group=feature_group["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## vertex.AiFeatureGroupIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.vertex.AiFeatureGroupIamBinding("binding",
+            region=feature_group["region"],
+            feature_group=feature_group["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## vertex.AiFeatureGroupIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.vertex.AiFeatureGroupIamMember("member",
+            region=feature_group["region"],
+            feature_group=feature_group["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms:

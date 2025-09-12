@@ -5,7 +5,6 @@ package com.pulumi.gcp.gkehub.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementBinauthzArgs;
 import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementConfigSyncArgs;
 import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementHierarchyControllerArgs;
 import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementPolicyControllerArgs;
@@ -18,25 +17,6 @@ import javax.annotation.Nullable;
 public final class FeatureMembershipConfigmanagementArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final FeatureMembershipConfigmanagementArgs Empty = new FeatureMembershipConfigmanagementArgs();
-
-    /**
-     * (Optional, Deprecated)
-     * Binauthz configuration for the cluster. Structure is documented below.
-     * This field will be ignored and should not be set.
-     * 
-     */
-    @Import(name="binauthz")
-    private @Nullable Output<FeatureMembershipConfigmanagementBinauthzArgs> binauthz;
-
-    /**
-     * @return (Optional, Deprecated)
-     * Binauthz configuration for the cluster. Structure is documented below.
-     * This field will be ignored and should not be set.
-     * 
-     */
-    public Optional<Output<FeatureMembershipConfigmanagementBinauthzArgs>> binauthz() {
-        return Optional.ofNullable(this.binauthz);
-    }
 
     /**
      * Config Sync configuration for the cluster. Structure is documented below.
@@ -128,7 +108,6 @@ public final class FeatureMembershipConfigmanagementArgs extends com.pulumi.reso
     private FeatureMembershipConfigmanagementArgs() {}
 
     private FeatureMembershipConfigmanagementArgs(FeatureMembershipConfigmanagementArgs $) {
-        this.binauthz = $.binauthz;
         this.configSync = $.configSync;
         this.hierarchyController = $.hierarchyController;
         this.management = $.management;
@@ -152,31 +131,6 @@ public final class FeatureMembershipConfigmanagementArgs extends com.pulumi.reso
 
         public Builder(FeatureMembershipConfigmanagementArgs defaults) {
             $ = new FeatureMembershipConfigmanagementArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param binauthz (Optional, Deprecated)
-         * Binauthz configuration for the cluster. Structure is documented below.
-         * This field will be ignored and should not be set.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder binauthz(@Nullable Output<FeatureMembershipConfigmanagementBinauthzArgs> binauthz) {
-            $.binauthz = binauthz;
-            return this;
-        }
-
-        /**
-         * @param binauthz (Optional, Deprecated)
-         * Binauthz configuration for the cluster. Structure is documented below.
-         * This field will be ignored and should not be set.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder binauthz(FeatureMembershipConfigmanagementBinauthzArgs binauthz) {
-            return binauthz(Output.of(binauthz));
         }
 
         /**

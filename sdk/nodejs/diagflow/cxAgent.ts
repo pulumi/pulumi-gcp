@@ -96,6 +96,39 @@ import * as utilities from "../utilities";
  *     genAppBuilderSettings: {
  *         engine: "projects/-/locations/-/collections/-/engines/-",
  *     },
+ *     startPlaybook: "projects/-/locations/-/agents/-/playbooks/00000000-0000-0000-0000-000000000000",
+ *     enableMultiLanguageTraining: false,
+ *     locked: false,
+ *     answerFeedbackSettings: {
+ *         enableAnswerFeedback: false,
+ *     },
+ *     clientCertificateSettings: {
+ *         passphrase: "projects/example-proj/secrets/example-secret/versions/example-version",
+ *         privateKey: "projects/example-proj/secrets/example-secret/versions/example-version",
+ *         sslCertificate: `-----BEGIN CERTIFICATE-----
+ * MIIDdDCCAlygAwIBAgIJANg0gKeB5LKmMA0GCSqGSIb3DQEBCwUAMIGSMQswCQYD
+ * VQQGEwJVUzETMBEGA1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5j
+ * aXNjbzEZMBcGA1UECgwQR2l0SHViLCBJbmMuMRkwFwYDVQQLDBBHb3Zlcm5tZW50
+ * IFRlYW0xGTAXBgNVBAMMEGdvdnN0YWNrLmdpdGh1Yi5pbzAeFw0yMDA1MDUxNzM2
+ * MzVaFw0zMDA1MDMxNzM2MzVaMIGSMQswCQYDVQQGEwJVUzETMBEGA1UECAwKQ2Fs
+ * aWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzEZMBcGA1UECgwQR2l0SHVi
+ * LCBJbmMuMRkwFwYDVQQLDBBHb3Zlcm5tZW50IFRlYW0xGTAXBgNVBAMMEGdvdnN0
+ * YWNrLmdpdGh1Yi5pbzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAK5P
+ * 4d9qWZPjZ2eA4eYV2Q8Z3Zp4g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+ * g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+ * g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+ * g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+ * g8e6g8e6g8e6g8e6g8e6AgMBAAGjggEaMIIBFjAdBgNVHQ4EFgQUCneA9H8fC+tC
+ * g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+ * g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+ * g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+ * g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+ * -----END CERTIFICATE-----
+ * `,
+ *     },
+ *     personalizationSettings: {
+ *         defaultEndUserMetadata: "{\"example-key\": \"example-value\"}",
+ *     },
  * });
  * ```
  *
@@ -158,9 +191,19 @@ export class CxAgent extends pulumi.CustomResource {
      */
     declare public readonly advancedSettings: pulumi.Output<outputs.diagflow.CxAgentAdvancedSettings>;
     /**
+     * Answer feedback collection settings.
+     * Structure is documented below.
+     */
+    declare public readonly answerFeedbackSettings: pulumi.Output<outputs.diagflow.CxAgentAnswerFeedbackSettings | undefined>;
+    /**
      * The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted Web Demo integration.
      */
     declare public readonly avatarUri: pulumi.Output<string | undefined>;
+    /**
+     * Settings for custom client certificates.
+     * Structure is documented below.
+     */
+    declare public readonly clientCertificateSettings: pulumi.Output<outputs.diagflow.CxAgentClientCertificateSettings | undefined>;
     /**
      * The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language)
      * for a list of the currently supported language codes. This field cannot be updated after creation.
@@ -175,6 +218,10 @@ export class CxAgent extends pulumi.CustomResource {
      * The human-readable name of the agent, unique within the location.
      */
     declare public readonly displayName: pulumi.Output<string>;
+    /**
+     * Enable training multi-lingual models for this agent. These models will be trained on all the languages supported by the agent.
+     */
+    declare public readonly enableMultiLanguageTraining: pulumi.Output<boolean | undefined>;
     /**
      * Indicates if automatic spell correction is enabled in detect intent requests.
      */
@@ -206,14 +253,31 @@ export class CxAgent extends pulumi.CustomResource {
      */
     declare public readonly location: pulumi.Output<string>;
     /**
+     * Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for [agents.restore][].
+     */
+    declare public readonly locked: pulumi.Output<boolean | undefined>;
+    /**
      * The unique identifier of the agent.
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
+    /**
+     * Settings for end user personalization.
+     * Structure is documented below.
+     */
+    declare public readonly personalizationSettings: pulumi.Output<outputs.diagflow.CxAgentPersonalizationSettings | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     declare public readonly project: pulumi.Output<string>;
+    /**
+     * A read only boolean field reflecting Zone Isolation status of the agent.
+     */
+    declare public /*out*/ readonly satisfiesPzi: pulumi.Output<boolean>;
+    /**
+     * A read only boolean field reflecting Zone Separation status of the agent.
+     */
+    declare public /*out*/ readonly satisfiesPzs: pulumi.Output<boolean>;
     /**
      * Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
      */
@@ -227,6 +291,10 @@ export class CxAgent extends pulumi.CustomResource {
      * Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
      */
     declare public /*out*/ readonly startFlow: pulumi.Output<string>;
+    /**
+     * Name of the start playbook in this agent. A start playbook will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: **projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/playbooks/<PlaybookID>**. Currently only the default playbook with id "00000000-0000-0000-0000-000000000000" is allowed.
+     */
+    declare public readonly startPlaybook: pulumi.Output<string | undefined>;
     /**
      * The list of all languages supported by this agent (except for the default_language_code).
      */
@@ -256,21 +324,29 @@ export class CxAgent extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as CxAgentState | undefined;
             resourceInputs["advancedSettings"] = state?.advancedSettings;
+            resourceInputs["answerFeedbackSettings"] = state?.answerFeedbackSettings;
             resourceInputs["avatarUri"] = state?.avatarUri;
+            resourceInputs["clientCertificateSettings"] = state?.clientCertificateSettings;
             resourceInputs["defaultLanguageCode"] = state?.defaultLanguageCode;
             resourceInputs["deleteChatEngineOnDestroy"] = state?.deleteChatEngineOnDestroy;
             resourceInputs["description"] = state?.description;
             resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["enableMultiLanguageTraining"] = state?.enableMultiLanguageTraining;
             resourceInputs["enableSpellCorrection"] = state?.enableSpellCorrection;
             resourceInputs["enableStackdriverLogging"] = state?.enableStackdriverLogging;
             resourceInputs["genAppBuilderSettings"] = state?.genAppBuilderSettings;
             resourceInputs["gitIntegrationSettings"] = state?.gitIntegrationSettings;
             resourceInputs["location"] = state?.location;
+            resourceInputs["locked"] = state?.locked;
             resourceInputs["name"] = state?.name;
+            resourceInputs["personalizationSettings"] = state?.personalizationSettings;
             resourceInputs["project"] = state?.project;
+            resourceInputs["satisfiesPzi"] = state?.satisfiesPzi;
+            resourceInputs["satisfiesPzs"] = state?.satisfiesPzs;
             resourceInputs["securitySettings"] = state?.securitySettings;
             resourceInputs["speechToTextSettings"] = state?.speechToTextSettings;
             resourceInputs["startFlow"] = state?.startFlow;
+            resourceInputs["startPlaybook"] = state?.startPlaybook;
             resourceInputs["supportedLanguageCodes"] = state?.supportedLanguageCodes;
             resourceInputs["textToSpeechSettings"] = state?.textToSpeechSettings;
             resourceInputs["timeZone"] = state?.timeZone;
@@ -289,23 +365,31 @@ export class CxAgent extends pulumi.CustomResource {
                 throw new Error("Missing required property 'timeZone'");
             }
             resourceInputs["advancedSettings"] = args?.advancedSettings;
+            resourceInputs["answerFeedbackSettings"] = args?.answerFeedbackSettings;
             resourceInputs["avatarUri"] = args?.avatarUri;
+            resourceInputs["clientCertificateSettings"] = args?.clientCertificateSettings;
             resourceInputs["defaultLanguageCode"] = args?.defaultLanguageCode;
             resourceInputs["deleteChatEngineOnDestroy"] = args?.deleteChatEngineOnDestroy;
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["enableMultiLanguageTraining"] = args?.enableMultiLanguageTraining;
             resourceInputs["enableSpellCorrection"] = args?.enableSpellCorrection;
             resourceInputs["enableStackdriverLogging"] = args?.enableStackdriverLogging;
             resourceInputs["genAppBuilderSettings"] = args?.genAppBuilderSettings;
             resourceInputs["gitIntegrationSettings"] = args?.gitIntegrationSettings;
             resourceInputs["location"] = args?.location;
+            resourceInputs["locked"] = args?.locked;
+            resourceInputs["personalizationSettings"] = args?.personalizationSettings;
             resourceInputs["project"] = args?.project;
             resourceInputs["securitySettings"] = args?.securitySettings;
             resourceInputs["speechToTextSettings"] = args?.speechToTextSettings;
+            resourceInputs["startPlaybook"] = args?.startPlaybook;
             resourceInputs["supportedLanguageCodes"] = args?.supportedLanguageCodes;
             resourceInputs["textToSpeechSettings"] = args?.textToSpeechSettings;
             resourceInputs["timeZone"] = args?.timeZone;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["satisfiesPzi"] = undefined /*out*/;
+            resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["startFlow"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -324,9 +408,19 @@ export interface CxAgentState {
      */
     advancedSettings?: pulumi.Input<inputs.diagflow.CxAgentAdvancedSettings>;
     /**
+     * Answer feedback collection settings.
+     * Structure is documented below.
+     */
+    answerFeedbackSettings?: pulumi.Input<inputs.diagflow.CxAgentAnswerFeedbackSettings>;
+    /**
      * The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted Web Demo integration.
      */
     avatarUri?: pulumi.Input<string>;
+    /**
+     * Settings for custom client certificates.
+     * Structure is documented below.
+     */
+    clientCertificateSettings?: pulumi.Input<inputs.diagflow.CxAgentClientCertificateSettings>;
     /**
      * The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language)
      * for a list of the currently supported language codes. This field cannot be updated after creation.
@@ -341,6 +435,10 @@ export interface CxAgentState {
      * The human-readable name of the agent, unique within the location.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * Enable training multi-lingual models for this agent. These models will be trained on all the languages supported by the agent.
+     */
+    enableMultiLanguageTraining?: pulumi.Input<boolean>;
     /**
      * Indicates if automatic spell correction is enabled in detect intent requests.
      */
@@ -372,14 +470,31 @@ export interface CxAgentState {
      */
     location?: pulumi.Input<string>;
     /**
+     * Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for [agents.restore][].
+     */
+    locked?: pulumi.Input<boolean>;
+    /**
      * The unique identifier of the agent.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Settings for end user personalization.
+     * Structure is documented below.
+     */
+    personalizationSettings?: pulumi.Input<inputs.diagflow.CxAgentPersonalizationSettings>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * A read only boolean field reflecting Zone Isolation status of the agent.
+     */
+    satisfiesPzi?: pulumi.Input<boolean>;
+    /**
+     * A read only boolean field reflecting Zone Separation status of the agent.
+     */
+    satisfiesPzs?: pulumi.Input<boolean>;
     /**
      * Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
      */
@@ -393,6 +508,10 @@ export interface CxAgentState {
      * Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
      */
     startFlow?: pulumi.Input<string>;
+    /**
+     * Name of the start playbook in this agent. A start playbook will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: **projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/playbooks/<PlaybookID>**. Currently only the default playbook with id "00000000-0000-0000-0000-000000000000" is allowed.
+     */
+    startPlaybook?: pulumi.Input<string>;
     /**
      * The list of all languages supported by this agent (except for the default_language_code).
      */
@@ -420,9 +539,19 @@ export interface CxAgentArgs {
      */
     advancedSettings?: pulumi.Input<inputs.diagflow.CxAgentAdvancedSettings>;
     /**
+     * Answer feedback collection settings.
+     * Structure is documented below.
+     */
+    answerFeedbackSettings?: pulumi.Input<inputs.diagflow.CxAgentAnswerFeedbackSettings>;
+    /**
      * The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted Web Demo integration.
      */
     avatarUri?: pulumi.Input<string>;
+    /**
+     * Settings for custom client certificates.
+     * Structure is documented below.
+     */
+    clientCertificateSettings?: pulumi.Input<inputs.diagflow.CxAgentClientCertificateSettings>;
     /**
      * The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language)
      * for a list of the currently supported language codes. This field cannot be updated after creation.
@@ -437,6 +566,10 @@ export interface CxAgentArgs {
      * The human-readable name of the agent, unique within the location.
      */
     displayName: pulumi.Input<string>;
+    /**
+     * Enable training multi-lingual models for this agent. These models will be trained on all the languages supported by the agent.
+     */
+    enableMultiLanguageTraining?: pulumi.Input<boolean>;
     /**
      * Indicates if automatic spell correction is enabled in detect intent requests.
      */
@@ -468,6 +601,15 @@ export interface CxAgentArgs {
      */
     location: pulumi.Input<string>;
     /**
+     * Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for [agents.restore][].
+     */
+    locked?: pulumi.Input<boolean>;
+    /**
+     * Settings for end user personalization.
+     * Structure is documented below.
+     */
+    personalizationSettings?: pulumi.Input<inputs.diagflow.CxAgentPersonalizationSettings>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -481,6 +623,10 @@ export interface CxAgentArgs {
      * Structure is documented below.
      */
     speechToTextSettings?: pulumi.Input<inputs.diagflow.CxAgentSpeechToTextSettings>;
+    /**
+     * Name of the start playbook in this agent. A start playbook will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: **projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/playbooks/<PlaybookID>**. Currently only the default playbook with id "00000000-0000-0000-0000-000000000000" is allowed.
+     */
+    startPlaybook?: pulumi.Input<string>;
     /**
      * The list of all languages supported by this agent (except for the default_language_code).
      */

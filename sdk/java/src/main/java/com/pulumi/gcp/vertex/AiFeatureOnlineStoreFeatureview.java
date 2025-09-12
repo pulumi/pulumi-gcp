@@ -346,7 +346,6 @@ import javax.annotation.Nullable;
  *         var vertexai = new Service("vertexai", ServiceArgs.builder()
  *             .service("aiplatform.googleapis.com")
  *             .project(project.projectId())
- *             .disableOnDestroy(false)
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(wait60Seconds)
  *                 .build());

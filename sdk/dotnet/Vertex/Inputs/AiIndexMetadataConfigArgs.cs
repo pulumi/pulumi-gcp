@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Vertex.Inputs
     public sealed class AiIndexMetadataConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The configuration with regard to the algorithms used for efficient search.
+        /// The configuration with regard to the algorithms used for efficient search. This field may be required based on your configuration.
         /// Structure is documented below.
         /// </summary>
         [Input("algorithmConfig")]

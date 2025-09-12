@@ -47,6 +47,7 @@ export interface GetDatabaseInstanceArgs {
  */
 export interface GetDatabaseInstanceResult {
     readonly availableMaintenanceVersions: string[];
+    readonly backupdrBackup: string;
     readonly clones: outputs.sql.GetDatabaseInstanceClone[];
     readonly connectionName: string;
     readonly databaseVersion: string;

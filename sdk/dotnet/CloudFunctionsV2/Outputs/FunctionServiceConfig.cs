@@ -71,6 +71,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.FunctionServiceConfigSecretVolume> SecretVolumes;
         /// <summary>
+        /// (Output)
         /// Name of the service associated with a Function.
         /// </summary>
         public readonly string? Service;

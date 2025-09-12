@@ -139,7 +139,7 @@ class ServiceIamPolicy(pulumi.CustomResource):
 
         > **Note:** `servicedirectory.ServiceIamBinding` resources **can be** used in conjunction with `servicedirectory.ServiceIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_service\\_directory\\_service\\_iam\\_policy
+        ## servicedirectory.ServiceIamPolicy
 
         ```python
         import pulumi
@@ -199,7 +199,7 @@ class ServiceIamPolicy(pulumi.CustomResource):
 
         > **Note:** `servicedirectory.ServiceIamBinding` resources **can be** used in conjunction with `servicedirectory.ServiceIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_service\\_directory\\_service\\_iam\\_policy
+        ## servicedirectory.ServiceIamPolicy
 
         ```python
         import pulumi
@@ -301,7 +301,7 @@ class ServiceIamPolicy(pulumi.CustomResource):
 
         > **Note:** `servicedirectory.ServiceIamBinding` resources **can be** used in conjunction with `servicedirectory.ServiceIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_service\\_directory\\_service\\_iam\\_policy
+        ## servicedirectory.ServiceIamPolicy
 
         ```python
         import pulumi
@@ -361,7 +361,7 @@ class ServiceIamPolicy(pulumi.CustomResource):
 
         > **Note:** `servicedirectory.ServiceIamBinding` resources **can be** used in conjunction with `servicedirectory.ServiceIamMember` resources **only if** they do not grant privilege to the same role.
 
-        ## google\\_service\\_directory\\_service\\_iam\\_policy
+        ## servicedirectory.ServiceIamPolicy
 
         ```python
         import pulumi

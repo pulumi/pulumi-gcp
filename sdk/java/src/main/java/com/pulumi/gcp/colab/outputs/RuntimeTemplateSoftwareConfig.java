@@ -5,10 +5,8 @@ package com.pulumi.gcp.colab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.colab.outputs.RuntimeTemplateSoftwareConfigEnv;
-import com.pulumi.gcp.colab.outputs.RuntimeTemplateSoftwareConfigPostStartupScriptConfig;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -19,19 +17,6 @@ public final class RuntimeTemplateSoftwareConfig {
      * 
      */
     private @Nullable List<RuntimeTemplateSoftwareConfigEnv> envs;
-    /**
-     * @return (Optional, Deprecated)
-     * Post startup script config.
-     * Structure is documented below.
-     * 
-     * &gt; **Warning:** `post_startup_script_config` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
-     * 
-     * @deprecated
-     * `post_startup_script_config` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
-     * 
-     */
-    @Deprecated /* `post_startup_script_config` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time. */
-    private @Nullable RuntimeTemplateSoftwareConfigPostStartupScriptConfig postStartupScriptConfig;
 
     private RuntimeTemplateSoftwareConfig() {}
     /**
@@ -41,21 +26,6 @@ public final class RuntimeTemplateSoftwareConfig {
      */
     public List<RuntimeTemplateSoftwareConfigEnv> envs() {
         return this.envs == null ? List.of() : this.envs;
-    }
-    /**
-     * @return (Optional, Deprecated)
-     * Post startup script config.
-     * Structure is documented below.
-     * 
-     * &gt; **Warning:** `post_startup_script_config` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
-     * 
-     * @deprecated
-     * `post_startup_script_config` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
-     * 
-     */
-    @Deprecated /* `post_startup_script_config` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time. */
-    public Optional<RuntimeTemplateSoftwareConfigPostStartupScriptConfig> postStartupScriptConfig() {
-        return Optional.ofNullable(this.postStartupScriptConfig);
     }
 
     public static Builder builder() {
@@ -68,12 +38,10 @@ public final class RuntimeTemplateSoftwareConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<RuntimeTemplateSoftwareConfigEnv> envs;
-        private @Nullable RuntimeTemplateSoftwareConfigPostStartupScriptConfig postStartupScriptConfig;
         public Builder() {}
         public Builder(RuntimeTemplateSoftwareConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.envs = defaults.envs;
-    	      this.postStartupScriptConfig = defaults.postStartupScriptConfig;
         }
 
         @CustomType.Setter
@@ -85,16 +53,9 @@ public final class RuntimeTemplateSoftwareConfig {
         public Builder envs(RuntimeTemplateSoftwareConfigEnv... envs) {
             return envs(List.of(envs));
         }
-        @CustomType.Setter
-        public Builder postStartupScriptConfig(@Nullable RuntimeTemplateSoftwareConfigPostStartupScriptConfig postStartupScriptConfig) {
-
-            this.postStartupScriptConfig = postStartupScriptConfig;
-            return this;
-        }
         public RuntimeTemplateSoftwareConfig build() {
             final var _resultValue = new RuntimeTemplateSoftwareConfig();
             _resultValue.envs = envs;
-            _resultValue.postStartupScriptConfig = postStartupScriptConfig;
             return _resultValue;
         }
     }

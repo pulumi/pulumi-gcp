@@ -215,6 +215,14 @@ class HostingSite(pulumi.CustomResource):
                  site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A `Site` represents a Firebase Hosting site.
+
+        To get more information about Site, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/hosting/rest/v1beta1/projects.sites)
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/docs/hosting)
+
         ## Example Usage
 
         ### Firebasehosting Site Basic
@@ -299,6 +307,14 @@ class HostingSite(pulumi.CustomResource):
                  args: Optional[HostingSiteArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A `Site` represents a Firebase Hosting site.
+
+        To get more information about Site, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/hosting/rest/v1beta1/projects.sites)
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/docs/hosting)
+
         ## Example Usage
 
         ### Firebasehosting Site Basic

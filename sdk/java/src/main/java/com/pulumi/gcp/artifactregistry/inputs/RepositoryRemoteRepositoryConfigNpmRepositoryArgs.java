@@ -35,7 +35,6 @@ public final class RepositoryRemoteRepositoryConfigNpmRepositoryArgs extends com
 
     /**
      * Address of the remote repository.
-     * Default value is `NPMJS`.
      * Possible values are: `NPMJS`.
      * 
      */
@@ -44,7 +43,6 @@ public final class RepositoryRemoteRepositoryConfigNpmRepositoryArgs extends com
 
     /**
      * @return Address of the remote repository.
-     * Default value is `NPMJS`.
      * Possible values are: `NPMJS`.
      * 
      */
@@ -102,7 +100,6 @@ public final class RepositoryRemoteRepositoryConfigNpmRepositoryArgs extends com
 
         /**
          * @param publicRepository Address of the remote repository.
-         * Default value is `NPMJS`.
          * Possible values are: `NPMJS`.
          * 
          * @return builder
@@ -115,7 +112,6 @@ public final class RepositoryRemoteRepositoryConfigNpmRepositoryArgs extends com
 
         /**
          * @param publicRepository Address of the remote repository.
-         * Default value is `NPMJS`.
          * Possible values are: `NPMJS`.
          * 
          * @return builder

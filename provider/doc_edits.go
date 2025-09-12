@@ -17,6 +17,7 @@ func editRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
 		removeBetaFromDescriptionField,
 		substituteRandomSuffix,
 		rewritemembersField,
+		skipBetaWarning,
 	)
 }
 
@@ -145,3 +146,13 @@ var fixUpKmsCryptoKey = targetedSimpleReplace(
 		"to the resource to prevent accidental destruction.",
 	"For this reason, it is strongly recommended that you use "+
 		"Pulumi's [protect resource option](https://www.pulumi.com/docs/concepts/options/protect/).")
+
+var skipBetaWarning = tfbridge.DocsEdit{
+	Path: "*",
+	Edit: func(_ string, content []byte) ([]byte, error) {
+		//nolint:lll
+		betaWarning := "~> **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.\nSee Provider Versions for more details on beta resources.\n\n"
+		content = bytes.Replace(content, []byte(betaWarning), []byte(""), -1)
+		return content, nil
+	},
+}

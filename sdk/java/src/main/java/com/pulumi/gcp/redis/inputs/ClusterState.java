@@ -35,27 +35,6 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     public static final ClusterState Empty = new ClusterState();
 
     /**
-     * Allows customers to specify if they are okay with deploying a multi-zone
-     * cluster in less than 3 zones. Once set, if there is a zonal outage during
-     * the cluster creation, the cluster will only be deployed in 2 zones, and
-     * stay within the 2 zones for its lifecycle.
-     * 
-     */
-    @Import(name="allowFewerZonesDeployment")
-    private @Nullable Output<Boolean> allowFewerZonesDeployment;
-
-    /**
-     * @return Allows customers to specify if they are okay with deploying a multi-zone
-     * cluster in less than 3 zones. Once set, if there is a zonal outage during
-     * the cluster creation, the cluster will only be deployed in 2 zones, and
-     * stay within the 2 zones for its lifecycle.
-     * 
-     */
-    public Optional<Output<Boolean>> allowFewerZonesDeployment() {
-        return Optional.ofNullable(this.allowFewerZonesDeployment);
-    }
-
-    /**
      * Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
      * Default value is `AUTH_MODE_DISABLED`.
      * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
@@ -591,7 +570,6 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     private ClusterState() {}
 
     private ClusterState(ClusterState $) {
-        this.allowFewerZonesDeployment = $.allowFewerZonesDeployment;
         this.authorizationMode = $.authorizationMode;
         this.automatedBackupConfig = $.automatedBackupConfig;
         this.backupCollection = $.backupCollection;
@@ -641,33 +619,6 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ClusterState defaults) {
             $ = new ClusterState(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param allowFewerZonesDeployment Allows customers to specify if they are okay with deploying a multi-zone
-         * cluster in less than 3 zones. Once set, if there is a zonal outage during
-         * the cluster creation, the cluster will only be deployed in 2 zones, and
-         * stay within the 2 zones for its lifecycle.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder allowFewerZonesDeployment(@Nullable Output<Boolean> allowFewerZonesDeployment) {
-            $.allowFewerZonesDeployment = allowFewerZonesDeployment;
-            return this;
-        }
-
-        /**
-         * @param allowFewerZonesDeployment Allows customers to specify if they are okay with deploying a multi-zone
-         * cluster in less than 3 zones. Once set, if there is a zonal outage during
-         * the cluster creation, the cluster will only be deployed in 2 zones, and
-         * stay within the 2 zones for its lifecycle.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder allowFewerZonesDeployment(Boolean allowFewerZonesDeployment) {
-            return allowFewerZonesDeployment(Output.of(allowFewerZonesDeployment));
         }
 
         /**

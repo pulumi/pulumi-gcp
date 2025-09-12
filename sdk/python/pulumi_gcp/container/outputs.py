@@ -4772,6 +4772,8 @@ class ClusterClusterAutoscaling(dict):
             suggest = "auto_provisioning_locations"
         elif key == "autoscalingProfile":
             suggest = "autoscaling_profile"
+        elif key == "defaultComputeClassEnabled":
+            suggest = "default_compute_class_enabled"
         elif key == "resourceLimits":
             suggest = "resource_limits"
 
@@ -4790,6 +4792,7 @@ class ClusterClusterAutoscaling(dict):
                  auto_provisioning_defaults: Optional['outputs.ClusterClusterAutoscalingAutoProvisioningDefaults'] = None,
                  auto_provisioning_locations: Optional[Sequence[_builtins.str]] = None,
                  autoscaling_profile: Optional[_builtins.str] = None,
+                 default_compute_class_enabled: Optional[_builtins.bool] = None,
                  enabled: Optional[_builtins.bool] = None,
                  resource_limits: Optional[Sequence['outputs.ClusterClusterAutoscalingResourceLimit']] = None):
         """
@@ -4803,6 +4806,7 @@ class ClusterClusterAutoscaling(dict):
                options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
                feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
                when deciding to remove nodes from a cluster. Can be `BALANCED` or `OPTIMIZE_UTILIZATION`. Defaults to `BALANCED`.
+        :param _builtins.bool default_compute_class_enabled: Specifies whether default compute class behaviour is enabled. If enabled, cluster autoscaler will use Compute Class with name default for all the workloads, if not overriden.
         :param _builtins.bool enabled: Whether node auto-provisioning is enabled. Must be supplied for GKE Standard clusters, `true` is implied
                for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
         :param Sequence['ClusterClusterAutoscalingResourceLimitArgs'] resource_limits: Global constraints for machine resources in the
@@ -4816,6 +4820,8 @@ class ClusterClusterAutoscaling(dict):
             pulumi.set(__self__, "auto_provisioning_locations", auto_provisioning_locations)
         if autoscaling_profile is not None:
             pulumi.set(__self__, "autoscaling_profile", autoscaling_profile)
+        if default_compute_class_enabled is not None:
+            pulumi.set(__self__, "default_compute_class_enabled", default_compute_class_enabled)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if resource_limits is not None:
@@ -4851,6 +4857,14 @@ class ClusterClusterAutoscaling(dict):
         when deciding to remove nodes from a cluster. Can be `BALANCED` or `OPTIMIZE_UTILIZATION`. Defaults to `BALANCED`.
         """
         return pulumi.get(self, "autoscaling_profile")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultComputeClassEnabled")
+    def default_compute_class_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Specifies whether default compute class behaviour is enabled. If enabled, cluster autoscaler will use Compute Class with name default for all the workloads, if not overriden.
+        """
+        return pulumi.get(self, "default_compute_class_enabled")
 
     @_builtins.property
     @pulumi.getter
@@ -19095,18 +19109,21 @@ class GetClusterClusterAutoscalingResult(dict):
                  auto_provisioning_defaults: Sequence['outputs.GetClusterClusterAutoscalingAutoProvisioningDefaultResult'],
                  auto_provisioning_locations: Sequence[_builtins.str],
                  autoscaling_profile: _builtins.str,
+                 default_compute_class_enabled: _builtins.bool,
                  enabled: _builtins.bool,
                  resource_limits: Sequence['outputs.GetClusterClusterAutoscalingResourceLimitResult']):
         """
         :param Sequence['GetClusterClusterAutoscalingAutoProvisioningDefaultArgs'] auto_provisioning_defaults: Contains defaults for a node pool created by NAP.
         :param Sequence[_builtins.str] auto_provisioning_locations: The list of Google Compute Engine zones in which the NodePool's nodes can be created by NAP.
         :param _builtins.str autoscaling_profile: Configuration options for the Autoscaling profile feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability when deciding to remove nodes from a cluster. Can be BALANCED or OPTIMIZE_UTILIZATION. Defaults to BALANCED.
+        :param _builtins.bool default_compute_class_enabled: Specifies whether default compute class behaviour is enabled. If enabled, cluster autoscaler will use Compute Class with name default for all the workloads, if not overriden.
         :param _builtins.bool enabled: Whether node auto-provisioning is enabled. Resource limits for cpu and memory must be defined to enable node auto-provisioning.
         :param Sequence['GetClusterClusterAutoscalingResourceLimitArgs'] resource_limits: Global constraints for machine resources in the cluster. Configuring the cpu and memory types is required if node auto-provisioning is enabled. These limits will apply to node pool autoscaling in addition to node auto-provisioning.
         """
         pulumi.set(__self__, "auto_provisioning_defaults", auto_provisioning_defaults)
         pulumi.set(__self__, "auto_provisioning_locations", auto_provisioning_locations)
         pulumi.set(__self__, "autoscaling_profile", autoscaling_profile)
+        pulumi.set(__self__, "default_compute_class_enabled", default_compute_class_enabled)
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "resource_limits", resource_limits)
 
@@ -19133,6 +19150,14 @@ class GetClusterClusterAutoscalingResult(dict):
         Configuration options for the Autoscaling profile feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability when deciding to remove nodes from a cluster. Can be BALANCED or OPTIMIZE_UTILIZATION. Defaults to BALANCED.
         """
         return pulumi.get(self, "autoscaling_profile")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultComputeClassEnabled")
+    def default_compute_class_enabled(self) -> _builtins.bool:
+        """
+        Specifies whether default compute class behaviour is enabled. If enabled, cluster autoscaler will use Compute Class with name default for all the workloads, if not overriden.
+        """
+        return pulumi.get(self, "default_compute_class_enabled")
 
     @_builtins.property
     @pulumi.getter

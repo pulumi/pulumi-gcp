@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -3709,8 +3709,8 @@ func (o BucketObjectRetentionPtrOutput) RetainUntilTime() pulumi.StringPtrOutput
 type BucketRetentionPolicy struct {
 	// If set to `true`, the bucket will be [locked](https://cloud.google.com/storage/docs/using-bucket-lock#lock-bucket) and permanently restrict edits to the bucket's retention policy.  Caution: Locking a bucket is an irreversible action.
 	IsLocked *bool `pulumi:"isLocked"`
-	// The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 2,147,483,647 seconds.
-	RetentionPeriod int `pulumi:"retentionPeriod"`
+	// The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
+	RetentionPeriod string `pulumi:"retentionPeriod"`
 }
 
 // BucketRetentionPolicyInput is an input type that accepts BucketRetentionPolicyArgs and BucketRetentionPolicyOutput values.
@@ -3727,8 +3727,8 @@ type BucketRetentionPolicyInput interface {
 type BucketRetentionPolicyArgs struct {
 	// If set to `true`, the bucket will be [locked](https://cloud.google.com/storage/docs/using-bucket-lock#lock-bucket) and permanently restrict edits to the bucket's retention policy.  Caution: Locking a bucket is an irreversible action.
 	IsLocked pulumi.BoolPtrInput `pulumi:"isLocked"`
-	// The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 2,147,483,647 seconds.
-	RetentionPeriod pulumi.IntInput `pulumi:"retentionPeriod"`
+	// The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
+	RetentionPeriod pulumi.StringInput `pulumi:"retentionPeriod"`
 }
 
 func (BucketRetentionPolicyArgs) ElementType() reflect.Type {
@@ -3813,9 +3813,9 @@ func (o BucketRetentionPolicyOutput) IsLocked() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BucketRetentionPolicy) *bool { return v.IsLocked }).(pulumi.BoolPtrOutput)
 }
 
-// The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 2,147,483,647 seconds.
-func (o BucketRetentionPolicyOutput) RetentionPeriod() pulumi.IntOutput {
-	return o.ApplyT(func(v BucketRetentionPolicy) int { return v.RetentionPeriod }).(pulumi.IntOutput)
+// The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
+func (o BucketRetentionPolicyOutput) RetentionPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketRetentionPolicy) string { return v.RetentionPeriod }).(pulumi.StringOutput)
 }
 
 type BucketRetentionPolicyPtrOutput struct{ *pulumi.OutputState }
@@ -3852,14 +3852,14 @@ func (o BucketRetentionPolicyPtrOutput) IsLocked() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 2,147,483,647 seconds.
-func (o BucketRetentionPolicyPtrOutput) RetentionPeriod() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *BucketRetentionPolicy) *int {
+// The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
+func (o BucketRetentionPolicyPtrOutput) RetentionPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketRetentionPolicy) *string {
 		if v == nil {
 			return nil
 		}
 		return &v.RetentionPeriod
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 type BucketSoftDeletePolicy struct {
@@ -18005,7 +18005,7 @@ type GetBucketRetentionPolicy struct {
 	// If set to true, the bucket will be locked and permanently restrict edits to the bucket's retention policy.  Caution: Locking a bucket is an irreversible action.
 	IsLocked bool `pulumi:"isLocked"`
 	// The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
-	RetentionPeriod int `pulumi:"retentionPeriod"`
+	RetentionPeriod string `pulumi:"retentionPeriod"`
 }
 
 // GetBucketRetentionPolicyInput is an input type that accepts GetBucketRetentionPolicyArgs and GetBucketRetentionPolicyOutput values.
@@ -18023,7 +18023,7 @@ type GetBucketRetentionPolicyArgs struct {
 	// If set to true, the bucket will be locked and permanently restrict edits to the bucket's retention policy.  Caution: Locking a bucket is an irreversible action.
 	IsLocked pulumi.BoolInput `pulumi:"isLocked"`
 	// The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
-	RetentionPeriod pulumi.IntInput `pulumi:"retentionPeriod"`
+	RetentionPeriod pulumi.StringInput `pulumi:"retentionPeriod"`
 }
 
 func (GetBucketRetentionPolicyArgs) ElementType() reflect.Type {
@@ -18083,8 +18083,8 @@ func (o GetBucketRetentionPolicyOutput) IsLocked() pulumi.BoolOutput {
 }
 
 // The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
-func (o GetBucketRetentionPolicyOutput) RetentionPeriod() pulumi.IntOutput {
-	return o.ApplyT(func(v GetBucketRetentionPolicy) int { return v.RetentionPeriod }).(pulumi.IntOutput)
+func (o GetBucketRetentionPolicyOutput) RetentionPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketRetentionPolicy) string { return v.RetentionPeriod }).(pulumi.StringOutput)
 }
 
 type GetBucketRetentionPolicyArrayOutput struct{ *pulumi.OutputState }

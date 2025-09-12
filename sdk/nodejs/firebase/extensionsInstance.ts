@@ -7,6 +7,12 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * An Instance is an installation of an Extension into a user's project.
+ *
+ * To get more information about Instance, see:
+ * * How-to Guides
+ *     * [Official Documentation](https://firebase.google.com/products/extensions)
+ *
  * ## Example Usage
  *
  * ### Firebase Extentions Instance Resize Image

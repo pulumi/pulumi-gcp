@@ -281,6 +281,10 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly availableMaintenanceVersions: pulumi.Output<string[]>;
     /**
+     * The name of the BackupDR backup to restore from.
+     */
+    declare public readonly backupdrBackup: pulumi.Output<string | undefined>;
+    /**
      * The context needed to create this instance as a clone of another instance. When this field is set during
      * resource creation, this provider will attempt to clone another instance as indicated in the context. The
      * configuration is detailed below.
@@ -435,6 +439,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as DatabaseInstanceState | undefined;
             resourceInputs["availableMaintenanceVersions"] = state?.availableMaintenanceVersions;
+            resourceInputs["backupdrBackup"] = state?.backupdrBackup;
             resourceInputs["clone"] = state?.clone;
             resourceInputs["connectionName"] = state?.connectionName;
             resourceInputs["databaseVersion"] = state?.databaseVersion;
@@ -468,6 +473,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             if (args?.databaseVersion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'databaseVersion'");
             }
+            resourceInputs["backupdrBackup"] = args?.backupdrBackup;
             resourceInputs["clone"] = args?.clone;
             resourceInputs["databaseVersion"] = args?.databaseVersion;
             resourceInputs["deletionProtection"] = args?.deletionProtection;
@@ -513,6 +519,10 @@ export interface DatabaseInstanceState {
      * The list of all maintenance versions applicable on the instance.
      */
     availableMaintenanceVersions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The name of the BackupDR backup to restore from.
+     */
+    backupdrBackup?: pulumi.Input<string>;
     /**
      * The context needed to create this instance as a clone of another instance. When this field is set during
      * resource creation, this provider will attempt to clone another instance as indicated in the context. The
@@ -659,6 +669,10 @@ export interface DatabaseInstanceState {
  * The set of arguments for constructing a DatabaseInstance resource.
  */
 export interface DatabaseInstanceArgs {
+    /**
+     * The name of the BackupDR backup to restore from.
+     */
+    backupdrBackup?: pulumi.Input<string>;
     /**
      * The context needed to create this instance as a clone of another instance. When this field is set during
      * resource creation, this provider will attempt to clone another instance as indicated in the context. The

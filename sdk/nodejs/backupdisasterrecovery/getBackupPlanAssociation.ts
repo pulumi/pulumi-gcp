@@ -7,6 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * A Backup and DR BackupPlanAssociation.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -67,6 +69,8 @@ export interface GetBackupPlanAssociationResult {
     readonly updateTime: string;
 }
 /**
+ * A Backup and DR BackupPlanAssociation.
+ *
  * ## Example Usage
  *
  * ```typescript

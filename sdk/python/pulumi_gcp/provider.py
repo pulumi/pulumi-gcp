@@ -178,6 +178,7 @@ class ProviderArgs:
                  resource_manager_v3_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  runtime_config_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  runtimeconfig_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 saas_runtime_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  secret_manager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  secret_manager_regional_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -202,7 +203,6 @@ class ProviderArgs:
                  storage_transfer_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  tags_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  tags_location_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 tpu_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  tpu_v2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  transcoder_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  universe_domain: Optional[pulumi.Input[_builtins.str]] = None,
@@ -537,6 +537,8 @@ class ProviderArgs:
             pulumi.set(__self__, "runtime_config_custom_endpoint", runtime_config_custom_endpoint)
         if runtimeconfig_custom_endpoint is not None:
             pulumi.set(__self__, "runtimeconfig_custom_endpoint", runtimeconfig_custom_endpoint)
+        if saas_runtime_custom_endpoint is not None:
+            pulumi.set(__self__, "saas_runtime_custom_endpoint", saas_runtime_custom_endpoint)
         if scopes is not None:
             pulumi.set(__self__, "scopes", scopes)
         if secret_manager_custom_endpoint is not None:
@@ -585,8 +587,6 @@ class ProviderArgs:
             pulumi.set(__self__, "tags_custom_endpoint", tags_custom_endpoint)
         if tags_location_custom_endpoint is not None:
             pulumi.set(__self__, "tags_location_custom_endpoint", tags_location_custom_endpoint)
-        if tpu_custom_endpoint is not None:
-            pulumi.set(__self__, "tpu_custom_endpoint", tpu_custom_endpoint)
         if tpu_v2_custom_endpoint is not None:
             pulumi.set(__self__, "tpu_v2_custom_endpoint", tpu_v2_custom_endpoint)
         if transcoder_custom_endpoint is not None:
@@ -2035,6 +2035,15 @@ class ProviderArgs:
         pulumi.set(self, "runtimeconfig_custom_endpoint", value)
 
     @_builtins.property
+    @pulumi.getter(name="saasRuntimeCustomEndpoint")
+    def saas_runtime_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "saas_runtime_custom_endpoint")
+
+    @saas_runtime_custom_endpoint.setter
+    def saas_runtime_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "saas_runtime_custom_endpoint", value)
+
+    @_builtins.property
     @pulumi.getter
     def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "scopes")
@@ -2249,15 +2258,6 @@ class ProviderArgs:
     @tags_location_custom_endpoint.setter
     def tags_location_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "tags_location_custom_endpoint", value)
-
-    @_builtins.property
-    @pulumi.getter(name="tpuCustomEndpoint")
-    def tpu_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "tpu_custom_endpoint")
-
-    @tpu_custom_endpoint.setter
-    def tpu_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "tpu_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="tpuV2CustomEndpoint")
@@ -2523,6 +2523,7 @@ class Provider(pulumi.ProviderResource):
                  resource_manager_v3_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  runtime_config_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  runtimeconfig_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 saas_runtime_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  secret_manager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  secret_manager_regional_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2547,7 +2548,6 @@ class Provider(pulumi.ProviderResource):
                  storage_transfer_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  tags_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  tags_location_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 tpu_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  tpu_v2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  transcoder_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  universe_domain: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2754,6 +2754,7 @@ class Provider(pulumi.ProviderResource):
                  resource_manager_v3_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  runtime_config_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  runtimeconfig_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 saas_runtime_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  secret_manager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  secret_manager_regional_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2778,7 +2779,6 @@ class Provider(pulumi.ProviderResource):
                  storage_transfer_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  tags_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  tags_location_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 tpu_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  tpu_v2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  transcoder_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  universe_domain: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2961,6 +2961,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["resource_manager_v3_custom_endpoint"] = resource_manager_v3_custom_endpoint
             __props__.__dict__["runtime_config_custom_endpoint"] = runtime_config_custom_endpoint
             __props__.__dict__["runtimeconfig_custom_endpoint"] = runtimeconfig_custom_endpoint
+            __props__.__dict__["saas_runtime_custom_endpoint"] = saas_runtime_custom_endpoint
             __props__.__dict__["scopes"] = pulumi.Output.from_input(scopes).apply(pulumi.runtime.to_json) if scopes is not None else None
             __props__.__dict__["secret_manager_custom_endpoint"] = secret_manager_custom_endpoint
             __props__.__dict__["secret_manager_regional_custom_endpoint"] = secret_manager_regional_custom_endpoint
@@ -2985,7 +2986,6 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["storage_transfer_custom_endpoint"] = storage_transfer_custom_endpoint
             __props__.__dict__["tags_custom_endpoint"] = tags_custom_endpoint
             __props__.__dict__["tags_location_custom_endpoint"] = tags_location_custom_endpoint
-            __props__.__dict__["tpu_custom_endpoint"] = tpu_custom_endpoint
             __props__.__dict__["tpu_v2_custom_endpoint"] = tpu_v2_custom_endpoint
             __props__.__dict__["transcoder_custom_endpoint"] = transcoder_custom_endpoint
             __props__.__dict__["universe_domain"] = universe_domain
@@ -3768,6 +3768,11 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "runtimeconfig_custom_endpoint")
 
     @_builtins.property
+    @pulumi.getter(name="saasRuntimeCustomEndpoint")
+    def saas_runtime_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "saas_runtime_custom_endpoint")
+
+    @_builtins.property
     @pulumi.getter(name="secretManagerCustomEndpoint")
     def secret_manager_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "secret_manager_custom_endpoint")
@@ -3881,11 +3886,6 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="tagsLocationCustomEndpoint")
     def tags_location_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "tags_location_custom_endpoint")
-
-    @_builtins.property
-    @pulumi.getter(name="tpuCustomEndpoint")
-    def tpu_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
-        return pulumi.get(self, "tpu_custom_endpoint")
 
     @_builtins.property
     @pulumi.getter(name="tpuV2CustomEndpoint")

@@ -8,10 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// AuthorizationPolicy is a resource that specifies how a server should authorize incoming connections. This resource in itself does not change the configuration unless it's attached to a target https proxy or endpoint config selector resource.
+//
+// To get more information about AuthorizationPolicy, see:
+//
+// * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-security/rest/v1beta1/projects.locations.authorizationPolicies)
+//
 // ## Example Usage
 //
 // ### Network Security Authorization Policy Basic
@@ -21,7 +27,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/networksecurity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -65,7 +71,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/networksecurity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )

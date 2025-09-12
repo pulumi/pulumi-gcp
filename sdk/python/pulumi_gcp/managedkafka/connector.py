@@ -277,6 +277,8 @@ class Connector(pulumi.CustomResource):
                  task_restart_policy: Optional[pulumi.Input[Union['ConnectorTaskRestartPolicyArgs', 'ConnectorTaskRestartPolicyArgsDict']]] = None,
                  __props__=None):
         """
+        A Managed Service for Kafka Connect Connectors.
+
         ## Example Usage
 
         ### Managedkafka Connector Basic
@@ -433,6 +435,8 @@ class Connector(pulumi.CustomResource):
                  args: ConnectorArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A Managed Service for Kafka Connect Connectors.
+
         ## Example Usage
 
         ### Managedkafka Connector Basic

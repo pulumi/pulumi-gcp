@@ -118,3 +118,15 @@ func TestPulumiLabelsSecretNode(t *testing.T) {
 		})
 	integration.ProgramTest(t, &test)
 }
+
+func TestBucketUpgrade(t *testing.T) {
+	defaultUpgradeTest(t, "bucket")
+}
+
+func TestTopicUpgrade(t *testing.T) {
+	defaultUpgradeTest(t, "topic")
+}
+
+func TestServerlessUpgrade(t *testing.T) {
+	defaultUpgradeTest(t, "serverless")
+}

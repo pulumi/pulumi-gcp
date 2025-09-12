@@ -20,13 +20,6 @@ public final class GetAccountKeyResult {
     private String keyAlgorithm;
     private String name;
     /**
-     * @deprecated
-     * `project` is deprecated and will be removed in a future major release. This field is non-functional and can be removed from your configuration safely.
-     * 
-     */
-    @Deprecated /* `project` is deprecated and will be removed in a future major release. This field is non-functional and can be removed from your configuration safely. */
-    private @Nullable String project;
-    /**
      * @return The public key, base64 encoded
      * 
      */
@@ -46,15 +39,6 @@ public final class GetAccountKeyResult {
     }
     public String name() {
         return this.name;
-    }
-    /**
-     * @deprecated
-     * `project` is deprecated and will be removed in a future major release. This field is non-functional and can be removed from your configuration safely.
-     * 
-     */
-    @Deprecated /* `project` is deprecated and will be removed in a future major release. This field is non-functional and can be removed from your configuration safely. */
-    public Optional<String> project() {
-        return Optional.ofNullable(this.project);
     }
     /**
      * @return The public key, base64 encoded
@@ -79,7 +63,6 @@ public final class GetAccountKeyResult {
         private String id;
         private String keyAlgorithm;
         private String name;
-        private @Nullable String project;
         private String publicKey;
         private @Nullable String publicKeyType;
         public Builder() {}
@@ -88,7 +71,6 @@ public final class GetAccountKeyResult {
     	      this.id = defaults.id;
     	      this.keyAlgorithm = defaults.keyAlgorithm;
     	      this.name = defaults.name;
-    	      this.project = defaults.project;
     	      this.publicKey = defaults.publicKey;
     	      this.publicKeyType = defaults.publicKeyType;
         }
@@ -118,12 +100,6 @@ public final class GetAccountKeyResult {
             return this;
         }
         @CustomType.Setter
-        public Builder project(@Nullable String project) {
-
-            this.project = project;
-            return this;
-        }
-        @CustomType.Setter
         public Builder publicKey(String publicKey) {
             if (publicKey == null) {
               throw new MissingRequiredPropertyException("GetAccountKeyResult", "publicKey");
@@ -142,7 +118,6 @@ public final class GetAccountKeyResult {
             _resultValue.id = id;
             _resultValue.keyAlgorithm = keyAlgorithm;
             _resultValue.name = name;
-            _resultValue.project = project;
             _resultValue.publicKey = publicKey;
             _resultValue.publicKeyType = publicKeyType;
             return _resultValue;

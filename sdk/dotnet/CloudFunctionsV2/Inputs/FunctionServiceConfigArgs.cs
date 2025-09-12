@@ -112,6 +112,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Inputs
         }
 
         /// <summary>
+        /// (Output)
         /// Name of the service associated with a Function.
         /// </summary>
         [Input("service")]

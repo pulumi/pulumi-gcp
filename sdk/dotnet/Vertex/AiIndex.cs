@@ -237,7 +237,7 @@ namespace Pulumi.Gcp.Vertex
         /// Structure is documented below.
         /// </summary>
         [Output("metadata")]
-        public Output<Outputs.AiIndexMetadata?> Metadata { get; private set; } = null!;
+        public Output<Outputs.AiIndexMetadata> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific to it. Unset if the Index does not have any additional information.
@@ -368,8 +368,8 @@ namespace Pulumi.Gcp.Vertex
         /// Attempts to create an Index without this field will result in an API error.
         /// Structure is documented below.
         /// </summary>
-        [Input("metadata")]
-        public Input<Inputs.AiIndexMetadataArgs>? Metadata { get; set; }
+        [Input("metadata", required: true)]
+        public Input<Inputs.AiIndexMetadataArgs> Metadata { get; set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

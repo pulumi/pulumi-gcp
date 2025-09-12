@@ -6,8 +6,11 @@ package com.pulumi.gcp.diagflow.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.diagflow.inputs.CxAgentAdvancedSettingsArgs;
+import com.pulumi.gcp.diagflow.inputs.CxAgentAnswerFeedbackSettingsArgs;
+import com.pulumi.gcp.diagflow.inputs.CxAgentClientCertificateSettingsArgs;
 import com.pulumi.gcp.diagflow.inputs.CxAgentGenAppBuilderSettingsArgs;
 import com.pulumi.gcp.diagflow.inputs.CxAgentGitIntegrationSettingsArgs;
+import com.pulumi.gcp.diagflow.inputs.CxAgentPersonalizationSettingsArgs;
 import com.pulumi.gcp.diagflow.inputs.CxAgentSpeechToTextSettingsArgs;
 import com.pulumi.gcp.diagflow.inputs.CxAgentTextToSpeechSettingsArgs;
 import java.lang.Boolean;
@@ -42,6 +45,23 @@ public final class CxAgentState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Answer feedback collection settings.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="answerFeedbackSettings")
+    private @Nullable Output<CxAgentAnswerFeedbackSettingsArgs> answerFeedbackSettings;
+
+    /**
+     * @return Answer feedback collection settings.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<CxAgentAnswerFeedbackSettingsArgs>> answerFeedbackSettings() {
+        return Optional.ofNullable(this.answerFeedbackSettings);
+    }
+
+    /**
      * The URI of the agent&#39;s avatar. Avatars are used throughout the Dialogflow console and in the self-hosted Web Demo integration.
      * 
      */
@@ -54,6 +74,23 @@ public final class CxAgentState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> avatarUri() {
         return Optional.ofNullable(this.avatarUri);
+    }
+
+    /**
+     * Settings for custom client certificates.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="clientCertificateSettings")
+    private @Nullable Output<CxAgentClientCertificateSettingsArgs> clientCertificateSettings;
+
+    /**
+     * @return Settings for custom client certificates.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<CxAgentClientCertificateSettingsArgs>> clientCertificateSettings() {
+        return Optional.ofNullable(this.clientCertificateSettings);
     }
 
     /**
@@ -108,6 +145,21 @@ public final class CxAgentState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> displayName() {
         return Optional.ofNullable(this.displayName);
+    }
+
+    /**
+     * Enable training multi-lingual models for this agent. These models will be trained on all the languages supported by the agent.
+     * 
+     */
+    @Import(name="enableMultiLanguageTraining")
+    private @Nullable Output<Boolean> enableMultiLanguageTraining;
+
+    /**
+     * @return Enable training multi-lingual models for this agent. These models will be trained on all the languages supported by the agent.
+     * 
+     */
+    public Optional<Output<Boolean>> enableMultiLanguageTraining() {
+        return Optional.ofNullable(this.enableMultiLanguageTraining);
     }
 
     /**
@@ -210,6 +262,21 @@ public final class CxAgentState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for [agents.restore][].
+     * 
+     */
+    @Import(name="locked")
+    private @Nullable Output<Boolean> locked;
+
+    /**
+     * @return Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for [agents.restore][].
+     * 
+     */
+    public Optional<Output<Boolean>> locked() {
+        return Optional.ofNullable(this.locked);
+    }
+
+    /**
      * The unique identifier of the agent.
      * 
      */
@@ -222,6 +289,23 @@ public final class CxAgentState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * Settings for end user personalization.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="personalizationSettings")
+    private @Nullable Output<CxAgentPersonalizationSettingsArgs> personalizationSettings;
+
+    /**
+     * @return Settings for end user personalization.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<CxAgentPersonalizationSettingsArgs>> personalizationSettings() {
+        return Optional.ofNullable(this.personalizationSettings);
     }
 
     /**
@@ -239,6 +323,36 @@ public final class CxAgentState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
+    }
+
+    /**
+     * A read only boolean field reflecting Zone Isolation status of the agent.
+     * 
+     */
+    @Import(name="satisfiesPzi")
+    private @Nullable Output<Boolean> satisfiesPzi;
+
+    /**
+     * @return A read only boolean field reflecting Zone Isolation status of the agent.
+     * 
+     */
+    public Optional<Output<Boolean>> satisfiesPzi() {
+        return Optional.ofNullable(this.satisfiesPzi);
+    }
+
+    /**
+     * A read only boolean field reflecting Zone Separation status of the agent.
+     * 
+     */
+    @Import(name="satisfiesPzs")
+    private @Nullable Output<Boolean> satisfiesPzs;
+
+    /**
+     * @return A read only boolean field reflecting Zone Separation status of the agent.
+     * 
+     */
+    public Optional<Output<Boolean>> satisfiesPzs() {
+        return Optional.ofNullable(this.satisfiesPzs);
     }
 
     /**
@@ -286,6 +400,21 @@ public final class CxAgentState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> startFlow() {
         return Optional.ofNullable(this.startFlow);
+    }
+
+    /**
+     * Name of the start playbook in this agent. A start playbook will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: **projects/&lt;ProjectID&gt;/locations/&lt;LocationID&gt;/agents/&lt;AgentID&gt;/playbooks/&lt;PlaybookID&gt;**. Currently only the default playbook with id &#34;00000000-0000-0000-0000-000000000000&#34; is allowed.
+     * 
+     */
+    @Import(name="startPlaybook")
+    private @Nullable Output<String> startPlaybook;
+
+    /**
+     * @return Name of the start playbook in this agent. A start playbook will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: **projects/&lt;ProjectID&gt;/locations/&lt;LocationID&gt;/agents/&lt;AgentID&gt;/playbooks/&lt;PlaybookID&gt;**. Currently only the default playbook with id &#34;00000000-0000-0000-0000-000000000000&#34; is allowed.
+     * 
+     */
+    public Optional<Output<String>> startPlaybook() {
+        return Optional.ofNullable(this.startPlaybook);
     }
 
     /**
@@ -341,21 +470,29 @@ public final class CxAgentState extends com.pulumi.resources.ResourceArgs {
 
     private CxAgentState(CxAgentState $) {
         this.advancedSettings = $.advancedSettings;
+        this.answerFeedbackSettings = $.answerFeedbackSettings;
         this.avatarUri = $.avatarUri;
+        this.clientCertificateSettings = $.clientCertificateSettings;
         this.defaultLanguageCode = $.defaultLanguageCode;
         this.deleteChatEngineOnDestroy = $.deleteChatEngineOnDestroy;
         this.description = $.description;
         this.displayName = $.displayName;
+        this.enableMultiLanguageTraining = $.enableMultiLanguageTraining;
         this.enableSpellCorrection = $.enableSpellCorrection;
         this.enableStackdriverLogging = $.enableStackdriverLogging;
         this.genAppBuilderSettings = $.genAppBuilderSettings;
         this.gitIntegrationSettings = $.gitIntegrationSettings;
         this.location = $.location;
+        this.locked = $.locked;
         this.name = $.name;
+        this.personalizationSettings = $.personalizationSettings;
         this.project = $.project;
+        this.satisfiesPzi = $.satisfiesPzi;
+        this.satisfiesPzs = $.satisfiesPzs;
         this.securitySettings = $.securitySettings;
         this.speechToTextSettings = $.speechToTextSettings;
         this.startFlow = $.startFlow;
+        this.startPlaybook = $.startPlaybook;
         this.supportedLanguageCodes = $.supportedLanguageCodes;
         this.textToSpeechSettings = $.textToSpeechSettings;
         this.timeZone = $.timeZone;
@@ -405,6 +542,29 @@ public final class CxAgentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param answerFeedbackSettings Answer feedback collection settings.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder answerFeedbackSettings(@Nullable Output<CxAgentAnswerFeedbackSettingsArgs> answerFeedbackSettings) {
+            $.answerFeedbackSettings = answerFeedbackSettings;
+            return this;
+        }
+
+        /**
+         * @param answerFeedbackSettings Answer feedback collection settings.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder answerFeedbackSettings(CxAgentAnswerFeedbackSettingsArgs answerFeedbackSettings) {
+            return answerFeedbackSettings(Output.of(answerFeedbackSettings));
+        }
+
+        /**
          * @param avatarUri The URI of the agent&#39;s avatar. Avatars are used throughout the Dialogflow console and in the self-hosted Web Demo integration.
          * 
          * @return builder
@@ -423,6 +583,29 @@ public final class CxAgentState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder avatarUri(String avatarUri) {
             return avatarUri(Output.of(avatarUri));
+        }
+
+        /**
+         * @param clientCertificateSettings Settings for custom client certificates.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientCertificateSettings(@Nullable Output<CxAgentClientCertificateSettingsArgs> clientCertificateSettings) {
+            $.clientCertificateSettings = clientCertificateSettings;
+            return this;
+        }
+
+        /**
+         * @param clientCertificateSettings Settings for custom client certificates.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientCertificateSettings(CxAgentClientCertificateSettingsArgs clientCertificateSettings) {
+            return clientCertificateSettings(Output.of(clientCertificateSettings));
         }
 
         /**
@@ -497,6 +680,27 @@ public final class CxAgentState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param enableMultiLanguageTraining Enable training multi-lingual models for this agent. These models will be trained on all the languages supported by the agent.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableMultiLanguageTraining(@Nullable Output<Boolean> enableMultiLanguageTraining) {
+            $.enableMultiLanguageTraining = enableMultiLanguageTraining;
+            return this;
+        }
+
+        /**
+         * @param enableMultiLanguageTraining Enable training multi-lingual models for this agent. These models will be trained on all the languages supported by the agent.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableMultiLanguageTraining(Boolean enableMultiLanguageTraining) {
+            return enableMultiLanguageTraining(Output.of(enableMultiLanguageTraining));
         }
 
         /**
@@ -629,6 +833,27 @@ public final class CxAgentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param locked Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for [agents.restore][].
+         * 
+         * @return builder
+         * 
+         */
+        public Builder locked(@Nullable Output<Boolean> locked) {
+            $.locked = locked;
+            return this;
+        }
+
+        /**
+         * @param locked Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for [agents.restore][].
+         * 
+         * @return builder
+         * 
+         */
+        public Builder locked(Boolean locked) {
+            return locked(Output.of(locked));
+        }
+
+        /**
          * @param name The unique identifier of the agent.
          * 
          * @return builder
@@ -647,6 +872,29 @@ public final class CxAgentState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param personalizationSettings Settings for end user personalization.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder personalizationSettings(@Nullable Output<CxAgentPersonalizationSettingsArgs> personalizationSettings) {
+            $.personalizationSettings = personalizationSettings;
+            return this;
+        }
+
+        /**
+         * @param personalizationSettings Settings for end user personalization.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder personalizationSettings(CxAgentPersonalizationSettingsArgs personalizationSettings) {
+            return personalizationSettings(Output.of(personalizationSettings));
         }
 
         /**
@@ -670,6 +918,48 @@ public final class CxAgentState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param satisfiesPzi A read only boolean field reflecting Zone Isolation status of the agent.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder satisfiesPzi(@Nullable Output<Boolean> satisfiesPzi) {
+            $.satisfiesPzi = satisfiesPzi;
+            return this;
+        }
+
+        /**
+         * @param satisfiesPzi A read only boolean field reflecting Zone Isolation status of the agent.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder satisfiesPzi(Boolean satisfiesPzi) {
+            return satisfiesPzi(Output.of(satisfiesPzi));
+        }
+
+        /**
+         * @param satisfiesPzs A read only boolean field reflecting Zone Separation status of the agent.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder satisfiesPzs(@Nullable Output<Boolean> satisfiesPzs) {
+            $.satisfiesPzs = satisfiesPzs;
+            return this;
+        }
+
+        /**
+         * @param satisfiesPzs A read only boolean field reflecting Zone Separation status of the agent.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder satisfiesPzs(Boolean satisfiesPzs) {
+            return satisfiesPzs(Output.of(satisfiesPzs));
         }
 
         /**
@@ -735,6 +1025,27 @@ public final class CxAgentState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder startFlow(String startFlow) {
             return startFlow(Output.of(startFlow));
+        }
+
+        /**
+         * @param startPlaybook Name of the start playbook in this agent. A start playbook will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: **projects/&lt;ProjectID&gt;/locations/&lt;LocationID&gt;/agents/&lt;AgentID&gt;/playbooks/&lt;PlaybookID&gt;**. Currently only the default playbook with id &#34;00000000-0000-0000-0000-000000000000&#34; is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startPlaybook(@Nullable Output<String> startPlaybook) {
+            $.startPlaybook = startPlaybook;
+            return this;
+        }
+
+        /**
+         * @param startPlaybook Name of the start playbook in this agent. A start playbook will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: **projects/&lt;ProjectID&gt;/locations/&lt;LocationID&gt;/agents/&lt;AgentID&gt;/playbooks/&lt;PlaybookID&gt;**. Currently only the default playbook with id &#34;00000000-0000-0000-0000-000000000000&#34; is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startPlaybook(String startPlaybook) {
+            return startPlaybook(Output.of(startPlaybook));
         }
 
         /**

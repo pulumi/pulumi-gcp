@@ -331,6 +331,14 @@ class AndroidApp(pulumi.CustomResource):
                  sha256_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
+        A Google Cloud Firebase Android application instance
+
+        To get more information about AndroidApp, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps)
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/docs/android/setup)
+
         ## Example Usage
 
         ### Firebase Android App Basic
@@ -429,6 +437,14 @@ class AndroidApp(pulumi.CustomResource):
                  args: AndroidAppArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A Google Cloud Firebase Android application instance
+
+        To get more information about AndroidApp, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps)
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/docs/android/setup)
+
         ## Example Usage
 
         ### Firebase Android App Basic

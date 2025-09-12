@@ -7,6 +7,14 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * The WireGroup resource represents a group of redundant wires between interconnects in two different metros. Each WireGroup belongs to a CrossSiteNetwork. A wire group defines endpoints and the wires which exist between them.
+ *
+ * To get more information about WireGroup, see:
+ *
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/wireGroups)
+ * * How-to Guides
+ *     * [Create a WireGroup](https://cloud.google.com/network-connectivity/docs/interconnect/how-to/cross-site/modify-network#add-wire-group)
+ *
  * ## Example Usage
  *
  * ### Compute Wire Group Basic

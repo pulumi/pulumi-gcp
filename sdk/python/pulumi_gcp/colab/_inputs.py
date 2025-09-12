@@ -45,8 +45,6 @@ __all__ = [
     'RuntimeTemplateSoftwareConfigArgsDict',
     'RuntimeTemplateSoftwareConfigEnvArgs',
     'RuntimeTemplateSoftwareConfigEnvArgsDict',
-    'RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs',
-    'RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgsDict',
     'ScheduleCreateNotebookExecutionJobRequestArgs',
     'ScheduleCreateNotebookExecutionJobRequestArgsDict',
     'ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs',
@@ -648,38 +646,19 @@ if not MYPY:
         Environment variables to be passed to the container.
         Structure is documented below.
         """
-        post_startup_script_config: NotRequired[pulumi.Input['RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgsDict']]
-        """
-        (Optional, Deprecated)
-        Post startup script config.
-        Structure is documented below.
-
-        > **Warning:** `post_startup_script_config` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
-        """
 elif False:
     RuntimeTemplateSoftwareConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RuntimeTemplateSoftwareConfigArgs:
     def __init__(__self__, *,
-                 envs: Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeTemplateSoftwareConfigEnvArgs']]]] = None,
-                 post_startup_script_config: Optional[pulumi.Input['RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs']] = None):
+                 envs: Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeTemplateSoftwareConfigEnvArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['RuntimeTemplateSoftwareConfigEnvArgs']]] envs: Environment variables to be passed to the container.
                Structure is documented below.
-        :param pulumi.Input['RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs'] post_startup_script_config: (Optional, Deprecated)
-               Post startup script config.
-               Structure is documented below.
-               
-               > **Warning:** `post_startup_script_config` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
         """
         if envs is not None:
             pulumi.set(__self__, "envs", envs)
-        if post_startup_script_config is not None:
-            warnings.warn("""`post_startup_script_config` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.""", DeprecationWarning)
-            pulumi.log.warn("""post_startup_script_config is deprecated: `post_startup_script_config` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.""")
-        if post_startup_script_config is not None:
-            pulumi.set(__self__, "post_startup_script_config", post_startup_script_config)
 
     @_builtins.property
     @pulumi.getter
@@ -693,23 +672,6 @@ class RuntimeTemplateSoftwareConfigArgs:
     @envs.setter
     def envs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeTemplateSoftwareConfigEnvArgs']]]]):
         pulumi.set(self, "envs", value)
-
-    @_builtins.property
-    @pulumi.getter(name="postStartupScriptConfig")
-    @_utilities.deprecated("""`post_startup_script_config` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.""")
-    def post_startup_script_config(self) -> Optional[pulumi.Input['RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs']]:
-        """
-        (Optional, Deprecated)
-        Post startup script config.
-        Structure is documented below.
-
-        > **Warning:** `post_startup_script_config` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
-        """
-        return pulumi.get(self, "post_startup_script_config")
-
-    @post_startup_script_config.setter
-    def post_startup_script_config(self, value: Optional[pulumi.Input['RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs']]):
-        pulumi.set(self, "post_startup_script_config", value)
 
 
 if not MYPY:
@@ -762,81 +724,6 @@ class RuntimeTemplateSoftwareConfigEnvArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "value", value)
-
-
-if not MYPY:
-    class RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgsDict(TypedDict):
-        post_startup_script: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Post startup script to run after runtime is started.
-        """
-        post_startup_script_behavior: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Post startup script behavior that defines download and execution behavior.
-        Possible values are: `RUN_ONCE`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
-        """
-        post_startup_script_url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Post startup script url to download. Example: https://bucket/script.sh.
-        """
-elif False:
-    RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs:
-    def __init__(__self__, *,
-                 post_startup_script: Optional[pulumi.Input[_builtins.str]] = None,
-                 post_startup_script_behavior: Optional[pulumi.Input[_builtins.str]] = None,
-                 post_startup_script_url: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] post_startup_script: Post startup script to run after runtime is started.
-        :param pulumi.Input[_builtins.str] post_startup_script_behavior: Post startup script behavior that defines download and execution behavior.
-               Possible values are: `RUN_ONCE`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
-        :param pulumi.Input[_builtins.str] post_startup_script_url: Post startup script url to download. Example: https://bucket/script.sh.
-        """
-        if post_startup_script is not None:
-            pulumi.set(__self__, "post_startup_script", post_startup_script)
-        if post_startup_script_behavior is not None:
-            pulumi.set(__self__, "post_startup_script_behavior", post_startup_script_behavior)
-        if post_startup_script_url is not None:
-            pulumi.set(__self__, "post_startup_script_url", post_startup_script_url)
-
-    @_builtins.property
-    @pulumi.getter(name="postStartupScript")
-    def post_startup_script(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Post startup script to run after runtime is started.
-        """
-        return pulumi.get(self, "post_startup_script")
-
-    @post_startup_script.setter
-    def post_startup_script(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "post_startup_script", value)
-
-    @_builtins.property
-    @pulumi.getter(name="postStartupScriptBehavior")
-    def post_startup_script_behavior(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Post startup script behavior that defines download and execution behavior.
-        Possible values are: `RUN_ONCE`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
-        """
-        return pulumi.get(self, "post_startup_script_behavior")
-
-    @post_startup_script_behavior.setter
-    def post_startup_script_behavior(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "post_startup_script_behavior", value)
-
-    @_builtins.property
-    @pulumi.getter(name="postStartupScriptUrl")
-    def post_startup_script_url(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Post startup script url to download. Example: https://bucket/script.sh.
-        """
-        return pulumi.get(self, "post_startup_script_url")
-
-    @post_startup_script_url.setter
-    def post_startup_script_url(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "post_startup_script_url", value)
 
 
 if not MYPY:

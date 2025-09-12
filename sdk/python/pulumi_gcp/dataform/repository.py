@@ -471,6 +471,14 @@ class Repository(pulumi.CustomResource):
                  workspace_compilation_overrides: Optional[pulumi.Input[Union['RepositoryWorkspaceCompilationOverridesArgs', 'RepositoryWorkspaceCompilationOverridesArgsDict']]] = None,
                  __props__=None):
         """
+        A resource represents a Dataform Git repository
+
+        To get more information about Repository, see:
+
+        * [API documentation](https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/dataform/docs/)
+
         ## Example Usage
 
         ### Dataform Repository
@@ -578,6 +586,14 @@ class Repository(pulumi.CustomResource):
                  args: Optional[RepositoryArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A resource represents a Dataform Git repository
+
+        To get more information about Repository, see:
+
+        * [API documentation](https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/dataform/docs/)
+
         ## Example Usage
 
         ### Dataform Repository

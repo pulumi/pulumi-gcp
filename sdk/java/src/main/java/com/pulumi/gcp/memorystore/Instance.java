@@ -218,7 +218,6 @@ import javax.annotation.Nullable;
  *             .authorizationMode("AUTH_DISABLED")
  *             .kmsKey("my-key")
  *             .engineConfigs(Map.of("maxmemory-policy", "volatile-ttl"))
- *             .allowFewerZonesDeployment(true)
  *             .zoneDistributionConfig(InstanceZoneDistributionConfigArgs.builder()
  *                 .mode("SINGLE_ZONE")
  *                 .zone("us-central1-b")
@@ -533,26 +532,6 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:memorystore/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
-    /**
-     * Allows customers to specify if they are okay with deploying a multi-zone
-     * instance in less than 3 zones. Once set, if there is a zonal outage during
-     * the instance creation, the instance will only be deployed in 2 zones, and
-     * stay within the 2 zones for its lifecycle.
-     * 
-     */
-    @Export(name="allowFewerZonesDeployment", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> allowFewerZonesDeployment;
-
-    /**
-     * @return Allows customers to specify if they are okay with deploying a multi-zone
-     * instance in less than 3 zones. Once set, if there is a zonal outage during
-     * the instance creation, the instance will only be deployed in 2 zones, and
-     * stay within the 2 zones for its lifecycle.
-     * 
-     */
-    public Output<Optional<Boolean>> allowFewerZonesDeployment() {
-        return Codegen.optional(this.allowFewerZonesDeployment);
-    }
     /**
      * Optional. Immutable. Authorization mode of the instance. Possible values:
      * AUTH_DISABLED

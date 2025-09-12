@@ -21,7 +21,6 @@ namespace Pulumi.Gcp.ArtifactRegistry.Inputs
 
         /// <summary>
         /// Address of the remote repository.
-        /// Default value is `PYPI`.
         /// Possible values are: `PYPI`.
         /// </summary>
         [Input("publicRepository")]

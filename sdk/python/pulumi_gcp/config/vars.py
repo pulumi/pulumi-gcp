@@ -658,6 +658,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('runtimeconfigCustomEndpoint')
 
     @_builtins.property
+    def saas_runtime_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('saasRuntimeCustomEndpoint')
+
+    @_builtins.property
     def scopes(self) -> Optional[str]:
         return __config__.get('scopes')
 
@@ -756,10 +760,6 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def tags_location_custom_endpoint(self) -> Optional[str]:
         return __config__.get('tagsLocationCustomEndpoint')
-
-    @_builtins.property
-    def tpu_custom_endpoint(self) -> Optional[str]:
-        return __config__.get('tpuCustomEndpoint')
 
     @_builtins.property
     def tpu_v2_custom_endpoint(self) -> Optional[str]:

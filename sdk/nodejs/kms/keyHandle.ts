@@ -44,7 +44,6 @@ import * as utilities from "../utilities";
  * const kmsApiService = new gcp.projects.Service("kms_api_service", {
  *     service: "cloudkms.googleapis.com",
  *     project: keyProject.projectId,
- *     disableOnDestroy: false,
  *     disableDependentServices: true,
  * }, {
  *     dependsOn: [keyProject],

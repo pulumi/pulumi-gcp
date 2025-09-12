@@ -191,7 +191,6 @@ import * as utilities from "../utilities";
  * const vertexai = new gcp.projects.Service("vertexai", {
  *     service: "aiplatform.googleapis.com",
  *     project: project.projectId,
- *     disableOnDestroy: false,
  * }, {
  *     dependsOn: [wait60Seconds],
  * });

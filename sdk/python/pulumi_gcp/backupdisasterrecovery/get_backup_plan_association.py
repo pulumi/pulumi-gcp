@@ -163,6 +163,8 @@ def get_backup_plan_association(backup_plan_association_id: Optional[_builtins.s
                                 project: Optional[_builtins.str] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBackupPlanAssociationResult:
     """
+    A Backup and DR BackupPlanAssociation.
+
     ## Example Usage
 
     ```python
@@ -205,6 +207,8 @@ def get_backup_plan_association_output(backup_plan_association_id: Optional[pulu
                                        project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBackupPlanAssociationResult]:
     """
+    A Backup and DR BackupPlanAssociation.
+
     ## Example Usage
 
     ```python

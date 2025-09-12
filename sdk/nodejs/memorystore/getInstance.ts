@@ -52,7 +52,6 @@ export interface GetInstanceArgs {
  * A collection of values returned by getInstance.
  */
 export interface GetInstanceResult {
-    readonly allowFewerZonesDeployment: boolean;
     readonly authorizationMode: string;
     readonly automatedBackupConfigs: outputs.memorystore.GetInstanceAutomatedBackupConfig[];
     readonly backupCollection: string;

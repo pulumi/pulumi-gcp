@@ -27,7 +27,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, annotations=None, automated_backup_policies=None, backup_sources=None, cluster_id=None, cluster_type=None, continuous_backup_configs=None, continuous_backup_infos=None, database_version=None, deletion_policy=None, display_name=None, effective_annotations=None, effective_labels=None, encryption_configs=None, encryption_infos=None, etag=None, id=None, initial_users=None, labels=None, location=None, maintenance_update_policies=None, migration_sources=None, name=None, network_configs=None, project=None, psc_configs=None, pulumi_labels=None, reconciling=None, restore_backup_sources=None, restore_continuous_backup_sources=None, secondary_configs=None, skip_await_major_version_upgrade=None, state=None, subscription_type=None, trial_metadatas=None, uid=None):
+    def __init__(__self__, annotations=None, automated_backup_policies=None, backup_sources=None, cluster_id=None, cluster_type=None, continuous_backup_configs=None, continuous_backup_infos=None, database_version=None, deletion_policy=None, deletion_protection=None, display_name=None, effective_annotations=None, effective_labels=None, encryption_configs=None, encryption_infos=None, etag=None, id=None, initial_users=None, labels=None, location=None, maintenance_update_policies=None, migration_sources=None, name=None, network_configs=None, project=None, psc_configs=None, pulumi_labels=None, reconciling=None, restore_backup_sources=None, restore_continuous_backup_sources=None, secondary_configs=None, skip_await_major_version_upgrade=None, state=None, subscription_type=None, trial_metadatas=None, uid=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -55,6 +55,9 @@ class GetClusterResult:
         if deletion_policy and not isinstance(deletion_policy, str):
             raise TypeError("Expected argument 'deletion_policy' to be a str")
         pulumi.set(__self__, "deletion_policy", deletion_policy)
+        if deletion_protection and not isinstance(deletion_protection, bool):
+            raise TypeError("Expected argument 'deletion_protection' to be a bool")
+        pulumi.set(__self__, "deletion_protection", deletion_protection)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
@@ -178,6 +181,11 @@ class GetClusterResult:
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> _builtins.str:
         return pulumi.get(self, "deletion_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> _builtins.bool:
+        return pulumi.get(self, "deletion_protection")
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -328,6 +336,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             continuous_backup_infos=self.continuous_backup_infos,
             database_version=self.database_version,
             deletion_policy=self.deletion_policy,
+            deletion_protection=self.deletion_protection,
             display_name=self.display_name,
             effective_annotations=self.effective_annotations,
             effective_labels=self.effective_labels,
@@ -397,6 +406,7 @@ def get_cluster(cluster_id: Optional[_builtins.str] = None,
         continuous_backup_infos=pulumi.get(__ret__, 'continuous_backup_infos'),
         database_version=pulumi.get(__ret__, 'database_version'),
         deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
+        deletion_protection=pulumi.get(__ret__, 'deletion_protection'),
         display_name=pulumi.get(__ret__, 'display_name'),
         effective_annotations=pulumi.get(__ret__, 'effective_annotations'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
@@ -463,6 +473,7 @@ def get_cluster_output(cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
         continuous_backup_infos=pulumi.get(__response__, 'continuous_backup_infos'),
         database_version=pulumi.get(__response__, 'database_version'),
         deletion_policy=pulumi.get(__response__, 'deletion_policy'),
+        deletion_protection=pulumi.get(__response__, 'deletion_protection'),
         display_name=pulumi.get(__response__, 'display_name'),
         effective_annotations=pulumi.get(__response__, 'effective_annotations'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),

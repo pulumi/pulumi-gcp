@@ -149,7 +149,7 @@ public class LbTrafficExtension extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="loadBalancingScheme", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> loadBalancingScheme;
+    private Output<String> loadBalancingScheme;
 
     /**
      * @return All backend services and forwarding rules referenced by this extension must share the same load balancing scheme.
@@ -158,8 +158,8 @@ public class LbTrafficExtension extends com.pulumi.resources.CustomResource {
      * Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
      * 
      */
-    public Output<Optional<String>> loadBalancingScheme() {
-        return Codegen.optional(this.loadBalancingScheme);
+    public Output<String> loadBalancingScheme() {
+        return this.loadBalancingScheme;
     }
     /**
      * The location of the traffic extension

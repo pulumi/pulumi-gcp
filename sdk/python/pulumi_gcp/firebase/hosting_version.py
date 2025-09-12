@@ -145,6 +145,14 @@ class HostingVersion(pulumi.CustomResource):
                  site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A `Version` is a configuration which determine how a site is displayed. Static files are not supported at the moment.
+
+        To get more information about Version, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/hosting/rest/v1beta1/sites.versions)
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/docs/hosting)
+
         ## Example Usage
 
         ### Firebasehosting Version Redirect
@@ -359,6 +367,14 @@ class HostingVersion(pulumi.CustomResource):
                  args: HostingVersionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A `Version` is a configuration which determine how a site is displayed. Static files are not supported at the moment.
+
+        To get more information about Version, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/hosting/rest/v1beta1/sites.versions)
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/docs/hosting)
+
         ## Example Usage
 
         ### Firebasehosting Version Redirect

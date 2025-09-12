@@ -7,10 +7,18 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A `Site` represents a Firebase Hosting site.
+//
+// To get more information about Site, see:
+//
+// * [API documentation](https://firebase.google.com/docs/reference/hosting/rest/v1beta1/projects.sites)
+// * How-to Guides
+//   - [Official Documentation](https://firebase.google.com/docs/hosting)
+//
 // ## Example Usage
 //
 // ### Firebasehosting Site Basic
@@ -20,7 +28,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/firebase"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -46,7 +54,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/firebase"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -80,7 +88,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/firebase"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )

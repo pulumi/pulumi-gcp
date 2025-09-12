@@ -353,6 +353,14 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
                  user: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        RBACRoleBinding represents a rbacrolebinding across the Fleet.
+
+        To get more information about MembershipRBACRoleBinding, see:
+
+        * [API documentation](https://cloud.google.com/anthos/fleet-management/docs/reference/rest/v1/projects.locations.memberships)
+        * How-to Guides
+            * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
+
         ## Example Usage
 
         ### Gkehub Membership Rbac Role Binding Basic
@@ -433,6 +441,14 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
                  args: MembershipRbacRoleBindingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        RBACRoleBinding represents a rbacrolebinding across the Fleet.
+
+        To get more information about MembershipRBACRoleBinding, see:
+
+        * [API documentation](https://cloud.google.com/anthos/fleet-management/docs/reference/rest/v1/projects.locations.memberships)
+        * How-to Guides
+            * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
+
         ## Example Usage
 
         ### Gkehub Membership Rbac Role Binding Basic

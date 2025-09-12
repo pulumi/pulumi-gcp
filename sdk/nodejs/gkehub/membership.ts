@@ -157,14 +157,6 @@ export class Membership extends pulumi.CustomResource {
      */
     declare public readonly authority: pulumi.Output<outputs.gkehub.MembershipAuthority | undefined>;
     /**
-     * The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
-     *
-     * > **Warning:** `description` is deprecated and will be removed in a future major release.
-     *
-     * @deprecated `description` is deprecated and will be removed in a future major release.
-     */
-    declare public readonly description: pulumi.Output<string | undefined>;
-    /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
@@ -218,7 +210,6 @@ export class Membership extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as MembershipState | undefined;
             resourceInputs["authority"] = state?.authority;
-            resourceInputs["description"] = state?.description;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["endpoint"] = state?.endpoint;
             resourceInputs["labels"] = state?.labels;
@@ -233,7 +224,6 @@ export class Membership extends pulumi.CustomResource {
                 throw new Error("Missing required property 'membershipId'");
             }
             resourceInputs["authority"] = args?.authority;
-            resourceInputs["description"] = args?.description;
             resourceInputs["endpoint"] = args?.endpoint;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
@@ -261,14 +251,6 @@ export interface MembershipState {
      * Structure is documented below.
      */
     authority?: pulumi.Input<inputs.gkehub.MembershipAuthority>;
-    /**
-     * The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
-     *
-     * > **Warning:** `description` is deprecated and will be removed in a future major release.
-     *
-     * @deprecated `description` is deprecated and will be removed in a future major release.
-     */
-    description?: pulumi.Input<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
@@ -321,14 +303,6 @@ export interface MembershipArgs {
      * Structure is documented below.
      */
     authority?: pulumi.Input<inputs.gkehub.MembershipAuthority>;
-    /**
-     * The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
-     *
-     * > **Warning:** `description` is deprecated and will be removed in a future major release.
-     *
-     * @deprecated `description` is deprecated and will be removed in a future major release.
-     */
-    description?: pulumi.Input<string>;
     /**
      * If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
      * Structure is documented below.

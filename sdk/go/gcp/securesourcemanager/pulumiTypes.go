@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -477,7 +477,7 @@ func (o InstanceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 
 type InstancePrivateConfig struct {
 	// CA pool resource, resource must in the format of `projects/{project}/locations/{location}/caPools/{ca_pool}`.
-	CaPool string `pulumi:"caPool"`
+	CaPool *string `pulumi:"caPool"`
 	// (Output)
 	// Service Attachment for HTTP, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
 	HttpServiceAttachment *string `pulumi:"httpServiceAttachment"`
@@ -501,7 +501,7 @@ type InstancePrivateConfigInput interface {
 
 type InstancePrivateConfigArgs struct {
 	// CA pool resource, resource must in the format of `projects/{project}/locations/{location}/caPools/{ca_pool}`.
-	CaPool pulumi.StringInput `pulumi:"caPool"`
+	CaPool pulumi.StringPtrInput `pulumi:"caPool"`
 	// (Output)
 	// Service Attachment for HTTP, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
 	HttpServiceAttachment pulumi.StringPtrInput `pulumi:"httpServiceAttachment"`
@@ -590,8 +590,8 @@ func (o InstancePrivateConfigOutput) ToInstancePrivateConfigPtrOutputWithContext
 }
 
 // CA pool resource, resource must in the format of `projects/{project}/locations/{location}/caPools/{ca_pool}`.
-func (o InstancePrivateConfigOutput) CaPool() pulumi.StringOutput {
-	return o.ApplyT(func(v InstancePrivateConfig) string { return v.CaPool }).(pulumi.StringOutput)
+func (o InstancePrivateConfigOutput) CaPool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstancePrivateConfig) *string { return v.CaPool }).(pulumi.StringPtrOutput)
 }
 
 // (Output)
@@ -641,7 +641,7 @@ func (o InstancePrivateConfigPtrOutput) CaPool() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.CaPool
+		return v.CaPool
 	}).(pulumi.StringPtrOutput)
 }
 

@@ -30,6 +30,7 @@ class BackendBucketArgs:
                  enable_cdn: Optional[pulumi.Input[_builtins.bool]] = None,
                  load_balancing_scheme: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input['BackendBucketParamsArgs']] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BackendBucket resource.
@@ -53,6 +54,8 @@ class BackendBucketArgs:
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
+        :param pulumi.Input['BackendBucketParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -73,6 +76,8 @@ class BackendBucketArgs:
             pulumi.set(__self__, "load_balancing_scheme", load_balancing_scheme)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -197,6 +202,19 @@ class BackendBucketArgs:
 
     @_builtins.property
     @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['BackendBucketParamsArgs']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['BackendBucketParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @_builtins.property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
@@ -222,6 +240,7 @@ class _BackendBucketState:
                  enable_cdn: Optional[pulumi.Input[_builtins.bool]] = None,
                  load_balancing_scheme: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input['BackendBucketParamsArgs']] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  self_link: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -247,6 +266,8 @@ class _BackendBucketState:
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
+        :param pulumi.Input['BackendBucketParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
@@ -271,6 +292,8 @@ class _BackendBucketState:
             pulumi.set(__self__, "load_balancing_scheme", load_balancing_scheme)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if self_link is not None:
@@ -409,6 +432,19 @@ class _BackendBucketState:
 
     @_builtins.property
     @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['BackendBucketParamsArgs']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['BackendBucketParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @_builtins.property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
@@ -448,6 +484,7 @@ class BackendBucket(pulumi.CustomResource):
                  enable_cdn: Optional[pulumi.Input[_builtins.bool]] = None,
                  load_balancing_scheme: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input[Union['BackendBucketParamsArgs', 'BackendBucketParamsArgsDict']]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -589,6 +626,8 @@ class BackendBucket(pulumi.CustomResource):
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
+        :param pulumi.Input[Union['BackendBucketParamsArgs', 'BackendBucketParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -739,6 +778,7 @@ class BackendBucket(pulumi.CustomResource):
                  enable_cdn: Optional[pulumi.Input[_builtins.bool]] = None,
                  load_balancing_scheme: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input[Union['BackendBucketParamsArgs', 'BackendBucketParamsArgsDict']]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -760,6 +800,7 @@ class BackendBucket(pulumi.CustomResource):
             __props__.__dict__["enable_cdn"] = enable_cdn
             __props__.__dict__["load_balancing_scheme"] = load_balancing_scheme
             __props__.__dict__["name"] = name
+            __props__.__dict__["params"] = params
             __props__.__dict__["project"] = project
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["self_link"] = None
@@ -783,6 +824,7 @@ class BackendBucket(pulumi.CustomResource):
             enable_cdn: Optional[pulumi.Input[_builtins.bool]] = None,
             load_balancing_scheme: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            params: Optional[pulumi.Input[Union['BackendBucketParamsArgs', 'BackendBucketParamsArgsDict']]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             self_link: Optional[pulumi.Input[_builtins.str]] = None) -> 'BackendBucket':
         """
@@ -813,6 +855,8 @@ class BackendBucket(pulumi.CustomResource):
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
+        :param pulumi.Input[Union['BackendBucketParamsArgs', 'BackendBucketParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
@@ -831,6 +875,7 @@ class BackendBucket(pulumi.CustomResource):
         __props__.__dict__["enable_cdn"] = enable_cdn
         __props__.__dict__["load_balancing_scheme"] = load_balancing_scheme
         __props__.__dict__["name"] = name
+        __props__.__dict__["params"] = params
         __props__.__dict__["project"] = project
         __props__.__dict__["self_link"] = self_link
         return BackendBucket(resource_name, opts=opts, __props__=__props__)
@@ -925,6 +970,15 @@ class BackendBucket(pulumi.CustomResource):
         last character, which cannot be a dash.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def params(self) -> pulumi.Output[Optional['outputs.BackendBucketParams']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
 
     @_builtins.property
     @pulumi.getter

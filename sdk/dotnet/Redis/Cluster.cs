@@ -545,7 +545,6 @@ namespace Pulumi.Gcp.Redis
     ///             { "maxmemory-policy", "volatile-ttl" },
     ///         },
     ///         DeletionProtectionEnabled = true,
-    ///         AllowFewerZonesDeployment = true,
     ///         ZoneDistributionConfig = new Gcp.Redis.Inputs.ClusterZoneDistributionConfigArgs
     ///         {
     ///             Mode = "MULTI_ZONE",
@@ -685,15 +684,6 @@ namespace Pulumi.Gcp.Redis
     [GcpResourceType("gcp:redis/cluster:Cluster")]
     public partial class Cluster : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// Allows customers to specify if they are okay with deploying a multi-zone
-        /// cluster in less than 3 zones. Once set, if there is a zonal outage during
-        /// the cluster creation, the cluster will only be deployed in 2 zones, and
-        /// stay within the 2 zones for its lifecycle.
-        /// </summary>
-        [Output("allowFewerZonesDeployment")]
-        public Output<bool?> AllowFewerZonesDeployment { get; private set; } = null!;
-
         /// <summary>
         /// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
         /// Default value is `AUTH_MODE_DISABLED`.
@@ -961,15 +951,6 @@ namespace Pulumi.Gcp.Redis
     public sealed class ClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Allows customers to specify if they are okay with deploying a multi-zone
-        /// cluster in less than 3 zones. Once set, if there is a zonal outage during
-        /// the cluster creation, the cluster will only be deployed in 2 zones, and
-        /// stay within the 2 zones for its lifecycle.
-        /// </summary>
-        [Input("allowFewerZonesDeployment")]
-        public Input<bool>? AllowFewerZonesDeployment { get; set; }
-
-        /// <summary>
         /// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
         /// Default value is `AUTH_MODE_DISABLED`.
         /// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
@@ -1126,15 +1107,6 @@ namespace Pulumi.Gcp.Redis
 
     public sealed class ClusterState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Allows customers to specify if they are okay with deploying a multi-zone
-        /// cluster in less than 3 zones. Once set, if there is a zonal outage during
-        /// the cluster creation, the cluster will only be deployed in 2 zones, and
-        /// stay within the 2 zones for its lifecycle.
-        /// </summary>
-        [Input("allowFewerZonesDeployment")]
-        public Input<bool>? AllowFewerZonesDeployment { get; set; }
-
         /// <summary>
         /// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
         /// Default value is `AUTH_MODE_DISABLED`.

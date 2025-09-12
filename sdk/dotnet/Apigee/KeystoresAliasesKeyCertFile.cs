@@ -58,8 +58,8 @@ namespace Pulumi.Gcp.Apigee
         /// Chain of certificates under this alias.
         /// Structure is documented below.
         /// </summary>
-        [Output("certsInfo")]
-        public Output<Outputs.KeystoresAliasesKeyCertFileCertsInfo> CertsInfo { get; private set; } = null!;
+        [Output("certsInfos")]
+        public Output<ImmutableArray<Outputs.KeystoresAliasesKeyCertFileCertsInfo>> CertsInfos { get; private set; } = null!;
 
         /// <summary>
         /// Environment associated with the alias
@@ -90,6 +90,9 @@ namespace Pulumi.Gcp.Apigee
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
+
+        [Output("timeouts")]
+        public Output<Outputs.KeystoresAliasesKeyCertFileTimeouts?> Timeouts { get; private set; } = null!;
 
         /// <summary>
         /// Optional.Type of Alias
@@ -164,13 +167,6 @@ namespace Pulumi.Gcp.Apigee
         public Input<string> Cert { get; set; } = null!;
 
         /// <summary>
-        /// Chain of certificates under this alias.
-        /// Structure is documented below.
-        /// </summary>
-        [Input("certsInfo")]
-        public Input<Inputs.KeystoresAliasesKeyCertFileCertsInfoArgs>? CertsInfo { get; set; }
-
-        /// <summary>
         /// Environment associated with the alias
         /// </summary>
         [Input("environment", required: true)]
@@ -220,6 +216,9 @@ namespace Pulumi.Gcp.Apigee
             }
         }
 
+        [Input("timeouts")]
+        public Input<Inputs.KeystoresAliasesKeyCertFileTimeoutsArgs>? Timeouts { get; set; }
+
         public KeystoresAliasesKeyCertFileArgs()
         {
         }
@@ -243,12 +242,18 @@ namespace Pulumi.Gcp.Apigee
         [Input("cert")]
         public Input<string>? Cert { get; set; }
 
+        [Input("certsInfos")]
+        private InputList<Inputs.KeystoresAliasesKeyCertFileCertsInfoGetArgs>? _certsInfos;
+
         /// <summary>
         /// Chain of certificates under this alias.
         /// Structure is documented below.
         /// </summary>
-        [Input("certsInfo")]
-        public Input<Inputs.KeystoresAliasesKeyCertFileCertsInfoGetArgs>? CertsInfo { get; set; }
+        public InputList<Inputs.KeystoresAliasesKeyCertFileCertsInfoGetArgs> CertsInfos
+        {
+            get => _certsInfos ?? (_certsInfos = new InputList<Inputs.KeystoresAliasesKeyCertFileCertsInfoGetArgs>());
+            set => _certsInfos = value;
+        }
 
         /// <summary>
         /// Environment associated with the alias
@@ -299,6 +304,9 @@ namespace Pulumi.Gcp.Apigee
                 _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("timeouts")]
+        public Input<Inputs.KeystoresAliasesKeyCertFileTimeoutsGetArgs>? Timeouts { get; set; }
 
         /// <summary>
         /// Optional.Type of Alias

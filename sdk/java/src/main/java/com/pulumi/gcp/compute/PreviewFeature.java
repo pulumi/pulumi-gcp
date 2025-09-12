@@ -16,6 +16,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Represents a single Google Compute Engine preview feature such as Alpha API access, which can be enabled or disabled for a project.
+ * 
+ * To get more information about PreviewFeature, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/PreviewFeatures)
+ * * How-to Guides
+ *     * [Use the Compute Engine alpha API](https://cloud.google.com/compute/docs/reference/rest/alpha)
+ * 
  * ## Example Usage
  * 
  * ### Preview Feature Basic

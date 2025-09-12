@@ -18,6 +18,12 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
+ * An Instance is an installation of an Extension into a user&#39;s project.
+ * 
+ * To get more information about Instance, see:
+ * * How-to Guides
+ *     * [Official Documentation](https://firebase.google.com/products/extensions)
+ * 
  * ## Example Usage
  * 
  * ### Firebase Extentions Instance Resize Image

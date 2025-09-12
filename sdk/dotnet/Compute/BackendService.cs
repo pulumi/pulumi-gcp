@@ -986,6 +986,13 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.BackendServiceOutlierDetection?> OutlierDetection { get; private set; } = null!;
 
         /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Output("params")]
+        public Output<Outputs.BackendServiceParams?> Params { get; private set; } = null!;
+
+        /// <summary>
         /// Name of backend port. The same name should appear in the instance
         /// groups referenced by this service. Required when the load balancing
         /// scheme is EXTERNAL.
@@ -1437,6 +1444,13 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.BackendServiceOutlierDetectionArgs>? OutlierDetection { get; set; }
 
         /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.BackendServiceParamsArgs>? Params { get; set; }
+
+        /// <summary>
         /// Name of backend port. The same name should appear in the instance
         /// groups referenced by this service. Required when the load balancing
         /// scheme is EXTERNAL.
@@ -1861,6 +1875,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("outlierDetection")]
         public Input<Inputs.BackendServiceOutlierDetectionGetArgs>? OutlierDetection { get; set; }
+
+        /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.BackendServiceParamsGetArgs>? Params { get; set; }
 
         /// <summary>
         /// Name of backend port. The same name should appear in the instance

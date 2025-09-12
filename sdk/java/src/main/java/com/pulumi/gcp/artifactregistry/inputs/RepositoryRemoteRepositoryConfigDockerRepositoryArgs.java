@@ -35,7 +35,6 @@ public final class RepositoryRemoteRepositoryConfigDockerRepositoryArgs extends 
 
     /**
      * Address of the remote repository.
-     * Default value is `DOCKER_HUB`.
      * Possible values are: `DOCKER_HUB`.
      * 
      */
@@ -44,7 +43,6 @@ public final class RepositoryRemoteRepositoryConfigDockerRepositoryArgs extends 
 
     /**
      * @return Address of the remote repository.
-     * Default value is `DOCKER_HUB`.
      * Possible values are: `DOCKER_HUB`.
      * 
      */
@@ -102,7 +100,6 @@ public final class RepositoryRemoteRepositoryConfigDockerRepositoryArgs extends 
 
         /**
          * @param publicRepository Address of the remote repository.
-         * Default value is `DOCKER_HUB`.
          * Possible values are: `DOCKER_HUB`.
          * 
          * @return builder
@@ -115,7 +112,6 @@ public final class RepositoryRemoteRepositoryConfigDockerRepositoryArgs extends 
 
         /**
          * @param publicRepository Address of the remote repository.
-         * Default value is `DOCKER_HUB`.
          * Possible values are: `DOCKER_HUB`.
          * 
          * @return builder

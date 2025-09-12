@@ -386,6 +386,8 @@ class ConnectCluster(pulumi.CustomResource):
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        A Managed Service for Kafka Connect cluster.
+
         ## Example Usage
 
         ### Managedkafka Connect Cluster Basic
@@ -514,6 +516,8 @@ class ConnectCluster(pulumi.CustomResource):
                  args: ConnectClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A Managed Service for Kafka Connect cluster.
+
         ## Example Usage
 
         ### Managedkafka Connect Cluster Basic

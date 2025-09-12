@@ -10,6 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.GkeHub
 {
     /// <summary>
+    /// RBACRoleBinding represents a rbacrolebinding across the Fleet.
+    /// 
+    /// To get more information about MembershipRBACRoleBinding, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/anthos/fleet-management/docs/reference/rest/v1/projects.locations.memberships)
+    /// * How-to Guides
+    ///     * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
+    /// 
     /// ## Example Usage
     /// 
     /// ### Gkehub Membership Rbac Role Binding Basic

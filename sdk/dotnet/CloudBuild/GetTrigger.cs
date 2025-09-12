@@ -168,6 +168,7 @@ namespace Pulumi.Gcp.CloudBuild
         public readonly ImmutableArray<Outputs.GetTriggerBuildResult> Builds;
         public readonly string CreateTime;
         public readonly string Description;
+        public readonly ImmutableArray<Outputs.GetTriggerDeveloperConnectEventConfigResult> DeveloperConnectEventConfigs;
         public readonly bool Disabled;
         public readonly string Filename;
         public readonly string Filter;
@@ -204,6 +205,8 @@ namespace Pulumi.Gcp.CloudBuild
             string createTime,
 
             string description,
+
+            ImmutableArray<Outputs.GetTriggerDeveloperConnectEventConfigResult> developerConnectEventConfigs,
 
             bool disabled,
 
@@ -252,6 +255,7 @@ namespace Pulumi.Gcp.CloudBuild
             Builds = builds;
             CreateTime = createTime;
             Description = description;
+            DeveloperConnectEventConfigs = developerConnectEventConfigs;
             Disabled = disabled;
             Filename = filename;
             Filter = filter;

@@ -111,7 +111,6 @@ import * as utilities from "../utilities";
  *     engineConfigs: {
  *         "maxmemory-policy": "volatile-ttl",
  *     },
- *     allowFewerZonesDeployment: true,
  *     zoneDistributionConfig: {
  *         mode: "SINGLE_ZONE",
  *         zone: "us-central1-b",
@@ -366,13 +365,6 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
-     * Allows customers to specify if they are okay with deploying a multi-zone
-     * instance in less than 3 zones. Once set, if there is a zonal outage during
-     * the instance creation, the instance will only be deployed in 2 zones, and
-     * stay within the 2 zones for its lifecycle.
-     */
-    declare public readonly allowFewerZonesDeployment: pulumi.Output<boolean | undefined>;
-    /**
      * Optional. Immutable. Authorization mode of the instance. Possible values:
      * AUTH_DISABLED
      * IAM_AUTH
@@ -597,7 +589,6 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["allowFewerZonesDeployment"] = state?.allowFewerZonesDeployment;
             resourceInputs["authorizationMode"] = state?.authorizationMode;
             resourceInputs["automatedBackupConfig"] = state?.automatedBackupConfig;
             resourceInputs["backupCollection"] = state?.backupCollection;
@@ -648,7 +639,6 @@ export class Instance extends pulumi.CustomResource {
             if (args?.shardCount === undefined && !opts.urn) {
                 throw new Error("Missing required property 'shardCount'");
             }
-            resourceInputs["allowFewerZonesDeployment"] = args?.allowFewerZonesDeployment;
             resourceInputs["authorizationMode"] = args?.authorizationMode;
             resourceInputs["automatedBackupConfig"] = args?.automatedBackupConfig;
             resourceInputs["crossInstanceReplicationConfig"] = args?.crossInstanceReplicationConfig;
@@ -700,13 +690,6 @@ export class Instance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Instance resources.
  */
 export interface InstanceState {
-    /**
-     * Allows customers to specify if they are okay with deploying a multi-zone
-     * instance in less than 3 zones. Once set, if there is a zonal outage during
-     * the instance creation, the instance will only be deployed in 2 zones, and
-     * stay within the 2 zones for its lifecycle.
-     */
-    allowFewerZonesDeployment?: pulumi.Input<boolean>;
     /**
      * Optional. Immutable. Authorization mode of the instance. Possible values:
      * AUTH_DISABLED
@@ -924,13 +907,6 @@ export interface InstanceState {
  * The set of arguments for constructing a Instance resource.
  */
 export interface InstanceArgs {
-    /**
-     * Allows customers to specify if they are okay with deploying a multi-zone
-     * instance in less than 3 zones. Once set, if there is a zonal outage during
-     * the instance creation, the instance will only be deployed in 2 zones, and
-     * stay within the 2 zones for its lifecycle.
-     */
-    allowFewerZonesDeployment?: pulumi.Input<boolean>;
     /**
      * Optional. Immutable. Authorization mode of the instance. Possible values:
      * AUTH_DISABLED

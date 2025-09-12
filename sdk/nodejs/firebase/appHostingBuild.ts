@@ -30,7 +30,6 @@ import * as utilities from "../utilities";
  * const fah = new gcp.projects.Service("fah", {
  *     project: "my-project-name",
  *     service: "firebaseapphosting.googleapis.com",
- *     disableOnDestroy: false,
  * });
  * const exampleAppHostingBackend = new gcp.firebase.AppHostingBackend("example", {
  *     project: "my-project-name",
@@ -75,7 +74,6 @@ import * as utilities from "../utilities";
  * const fah = new gcp.projects.Service("fah", {
  *     project: "my-project-name",
  *     service: "firebaseapphosting.googleapis.com",
- *     disableOnDestroy: false,
  * });
  * const exampleAppHostingBackend = new gcp.firebase.AppHostingBackend("example", {
  *     project: "my-project-name",

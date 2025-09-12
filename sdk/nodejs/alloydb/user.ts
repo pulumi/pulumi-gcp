@@ -30,6 +30,7 @@ import * as utilities from "../utilities";
  *     initialUser: {
  *         password: "cluster_secret",
  *     },
+ *     deletionProtection: false,
  * });
  * const defaultNetwork = new gcp.compute.Network("default", {name: "alloydb-network"});
  * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
@@ -78,6 +79,7 @@ import * as utilities from "../utilities";
  *     initialUser: {
  *         password: "cluster_secret",
  *     },
+ *     deletionProtection: false,
  * });
  * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
  *     name: "alloydb-cluster",
