@@ -27,7 +27,7 @@ class GetRegionBackendServiceResult:
     """
     A collection of values returned by getRegionBackendService.
     """
-    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, circuit_breakers=None, connection_draining_timeout_sec=None, connection_tracking_policies=None, consistent_hashes=None, creation_timestamp=None, custom_metrics=None, description=None, dynamic_forwardings=None, enable_cdn=None, failover_policies=None, fingerprint=None, generated_id=None, ha_policies=None, health_checks=None, iaps=None, id=None, ip_address_selection_policy=None, load_balancing_scheme=None, locality_lb_policy=None, log_configs=None, name=None, network=None, outlier_detections=None, port_name=None, project=None, protocol=None, region=None, security_policy=None, self_link=None, session_affinity=None, strong_session_affinity_cookies=None, subsettings=None, timeout_sec=None):
+    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, circuit_breakers=None, connection_draining_timeout_sec=None, connection_tracking_policies=None, consistent_hashes=None, creation_timestamp=None, custom_metrics=None, description=None, dynamic_forwardings=None, enable_cdn=None, failover_policies=None, fingerprint=None, generated_id=None, ha_policies=None, health_checks=None, iaps=None, id=None, ip_address_selection_policy=None, load_balancing_scheme=None, locality_lb_policy=None, log_configs=None, name=None, network=None, outlier_detections=None, params=None, port_name=None, project=None, protocol=None, region=None, security_policy=None, self_link=None, session_affinity=None, strong_session_affinity_cookies=None, subsettings=None, timeout_sec=None):
         if affinity_cookie_ttl_sec and not isinstance(affinity_cookie_ttl_sec, int):
             raise TypeError("Expected argument 'affinity_cookie_ttl_sec' to be a int")
         pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
@@ -106,6 +106,9 @@ class GetRegionBackendServiceResult:
         if outlier_detections and not isinstance(outlier_detections, list):
             raise TypeError("Expected argument 'outlier_detections' to be a list")
         pulumi.set(__self__, "outlier_detections", outlier_detections)
+        if params and not isinstance(params, list):
+            raise TypeError("Expected argument 'params' to be a list")
+        pulumi.set(__self__, "params", params)
         if port_name and not isinstance(port_name, str):
             raise TypeError("Expected argument 'port_name' to be a str")
         pulumi.set(__self__, "port_name", port_name)
@@ -271,6 +274,11 @@ class GetRegionBackendServiceResult:
         return pulumi.get(self, "outlier_detections")
 
     @_builtins.property
+    @pulumi.getter
+    def params(self) -> Sequence['outputs.GetRegionBackendServiceParamResult']:
+        return pulumi.get(self, "params")
+
+    @_builtins.property
     @pulumi.getter(name="portName")
     def port_name(self) -> _builtins.str:
         return pulumi.get(self, "port_name")
@@ -353,6 +361,7 @@ class AwaitableGetRegionBackendServiceResult(GetRegionBackendServiceResult):
             name=self.name,
             network=self.network,
             outlier_detections=self.outlier_detections,
+            params=self.params,
             port_name=self.port_name,
             project=self.project,
             protocol=self.protocol,
@@ -424,6 +433,7 @@ def get_region_backend_service(name: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         network=pulumi.get(__ret__, 'network'),
         outlier_detections=pulumi.get(__ret__, 'outlier_detections'),
+        params=pulumi.get(__ret__, 'params'),
         port_name=pulumi.get(__ret__, 'port_name'),
         project=pulumi.get(__ret__, 'project'),
         protocol=pulumi.get(__ret__, 'protocol'),
@@ -492,6 +502,7 @@ def get_region_backend_service_output(name: Optional[pulumi.Input[_builtins.str]
         name=pulumi.get(__response__, 'name'),
         network=pulumi.get(__response__, 'network'),
         outlier_detections=pulumi.get(__response__, 'outlier_detections'),
+        params=pulumi.get(__response__, 'params'),
         port_name=pulumi.get(__response__, 'port_name'),
         project=pulumi.get(__response__, 'project'),
         protocol=pulumi.get(__response__, 'protocol'),

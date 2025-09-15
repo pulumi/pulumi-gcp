@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:discoveryengine/aclConfig:AclConfig":
+		r = &AclConfig{}
 	case "gcp:discoveryengine/chatEngine:ChatEngine":
 		r = &ChatEngine{}
 	case "gcp:discoveryengine/cmekConfig:CmekConfig":
@@ -50,6 +52,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"discoveryengine/aclConfig",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"discoveryengine/chatEngine",

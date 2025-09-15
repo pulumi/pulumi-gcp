@@ -181,6 +181,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string Name;
         public readonly string Network;
         public readonly ImmutableArray<Outputs.GetRegionBackendServiceOutlierDetectionResult> OutlierDetections;
+        public readonly ImmutableArray<Outputs.GetRegionBackendServiceParamResult> Params;
         public readonly string PortName;
         public readonly string? Project;
         public readonly string Protocol;
@@ -246,6 +247,8 @@ namespace Pulumi.Gcp.Compute
 
             ImmutableArray<Outputs.GetRegionBackendServiceOutlierDetectionResult> outlierDetections,
 
+            ImmutableArray<Outputs.GetRegionBackendServiceParamResult> @params,
+
             string portName,
 
             string? project,
@@ -292,6 +295,7 @@ namespace Pulumi.Gcp.Compute
             Name = name;
             Network = network;
             OutlierDetections = outlierDetections;
+            Params = @params;
             PortName = portName;
             Project = project;
             Protocol = protocol;

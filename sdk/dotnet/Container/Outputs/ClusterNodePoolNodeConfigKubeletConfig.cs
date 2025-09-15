@@ -90,6 +90,12 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly int? MaxParallelImagePulls;
         /// <summary>
+        /// Configuration for the [memory manager](https://kubernetes.io/docs/tasks/administer-cluster/memory-manager/) on the node.
+        /// The memory manager optimizes memory and hugepages allocation for pods, especially
+        /// those in the Guaranteed QoS class, by influencing NUMA affinity. Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ClusterNodePoolNodeConfigKubeletConfigMemoryManager? MemoryManager;
+        /// <summary>
         /// Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
         /// </summary>
         public readonly int? PodPidsLimit;
@@ -97,6 +103,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// Defines whether to enable single process OOM killer. If true, the processes in the container will be OOM killed individually instead of as a group.
         /// </summary>
         public readonly bool? SingleProcessOomKill;
+        /// <summary>
+        /// These settings control the kubelet's [Topology Manager policy](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/#topology-manager-policies), which coordinates the set of components responsible for performance optimizations related to CPU isolation, memory, and device locality. Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ClusterNodePoolNodeConfigKubeletConfigTopologyManager? TopologyManager;
 
         [OutputConstructor]
         private ClusterNodePoolNodeConfigKubeletConfig(
@@ -132,9 +142,13 @@ namespace Pulumi.Gcp.Container.Outputs
 
             int? maxParallelImagePulls,
 
+            Outputs.ClusterNodePoolNodeConfigKubeletConfigMemoryManager? memoryManager,
+
             int? podPidsLimit,
 
-            bool? singleProcessOomKill)
+            bool? singleProcessOomKill,
+
+            Outputs.ClusterNodePoolNodeConfigKubeletConfigTopologyManager? topologyManager)
         {
             AllowedUnsafeSysctls = allowedUnsafeSysctls;
             ContainerLogMaxFiles = containerLogMaxFiles;
@@ -152,8 +166,10 @@ namespace Pulumi.Gcp.Container.Outputs
             ImageMinimumGcAge = imageMinimumGcAge;
             InsecureKubeletReadonlyPortEnabled = insecureKubeletReadonlyPortEnabled;
             MaxParallelImagePulls = maxParallelImagePulls;
+            MemoryManager = memoryManager;
             PodPidsLimit = podPidsLimit;
             SingleProcessOomKill = singleProcessOomKill;
+            TopologyManager = topologyManager;
         }
     }
 }

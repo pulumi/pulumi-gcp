@@ -83,10 +83,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? Mode;
         /// <summary>
-        /// Indicates how many IOPS to provision for the disk. This
-        /// sets the number of I/O operations per second that the disk can handle.
-        /// Values must be between 10,000 and 120,000. For more details, see the
-        /// [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+        /// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. For more details, see the [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk) or the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks) depending on the selected disk_type.
         /// </summary>
         public readonly int? ProvisionedIops;
         /// <summary>

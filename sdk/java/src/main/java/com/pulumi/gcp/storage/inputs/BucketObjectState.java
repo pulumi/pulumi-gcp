@@ -167,21 +167,9 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.deletionPolicy);
     }
 
-    /**
-     * @deprecated
-     * `detect_md5hash` is deprecated and will be removed in future release. Start using `source_md5hash` instead
-     * 
-     */
-    @Deprecated /* `detect_md5hash` is deprecated and will be removed in future release. Start using `source_md5hash` instead */
     @Import(name="detectMd5hash")
     private @Nullable Output<String> detectMd5hash;
 
-    /**
-     * @deprecated
-     * `detect_md5hash` is deprecated and will be removed in future release. Start using `source_md5hash` instead
-     * 
-     */
-    @Deprecated /* `detect_md5hash` is deprecated and will be removed in future release. Start using `source_md5hash` instead */
     public Optional<Output<String>> detectMd5hash() {
         return Optional.ofNullable(this.detectMd5hash);
     }
@@ -694,27 +682,11 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
             return deletionPolicy(Output.of(deletionPolicy));
         }
 
-        /**
-         * @return builder
-         * 
-         * @deprecated
-         * `detect_md5hash` is deprecated and will be removed in future release. Start using `source_md5hash` instead
-         * 
-         */
-        @Deprecated /* `detect_md5hash` is deprecated and will be removed in future release. Start using `source_md5hash` instead */
         public Builder detectMd5hash(@Nullable Output<String> detectMd5hash) {
             $.detectMd5hash = detectMd5hash;
             return this;
         }
 
-        /**
-         * @return builder
-         * 
-         * @deprecated
-         * `detect_md5hash` is deprecated and will be removed in future release. Start using `source_md5hash` instead
-         * 
-         */
-        @Deprecated /* `detect_md5hash` is deprecated and will be removed in future release. Start using `source_md5hash` instead */
         public Builder detectMd5hash(String detectMd5hash) {
             return detectMd5hash(Output.of(detectMd5hash));
         }

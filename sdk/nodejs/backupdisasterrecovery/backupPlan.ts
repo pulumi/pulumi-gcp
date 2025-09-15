@@ -212,7 +212,7 @@ export class BackupPlan extends pulumi.CustomResource {
      */
     declare public readonly resourceType: pulumi.Output<string>;
     /**
-     * The list of all resource types to which the 'BackupPlan' can be applied.
+     * The list of all resource types to which the `BackupPlan` can be applied.
      */
     declare public /*out*/ readonly supportedResourceTypes: pulumi.Output<string[]>;
     /**
@@ -334,7 +334,7 @@ export interface BackupPlanState {
      */
     resourceType?: pulumi.Input<string>;
     /**
-     * The list of all resource types to which the 'BackupPlan' can be applied.
+     * The list of all resource types to which the `BackupPlan` can be applied.
      */
     supportedResourceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**

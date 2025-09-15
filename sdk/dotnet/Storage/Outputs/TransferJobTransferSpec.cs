@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Storage.Outputs
     public sealed class TransferJobTransferSpec
     {
         /// <summary>
+        /// An AWS S3 Compatible data source. Structure documented below.
+        /// </summary>
+        public readonly Outputs.TransferJobTransferSpecAwsS3CompatibleDataSource? AwsS3CompatibleDataSource;
+        /// <summary>
         /// An AWS S3 data source. Structure documented below.
         /// </summary>
         public readonly Outputs.TransferJobTransferSpecAwsS3DataSource? AwsS3DataSource;
@@ -64,6 +68,8 @@ namespace Pulumi.Gcp.Storage.Outputs
 
         [OutputConstructor]
         private TransferJobTransferSpec(
+            Outputs.TransferJobTransferSpecAwsS3CompatibleDataSource? awsS3CompatibleDataSource,
+
             Outputs.TransferJobTransferSpecAwsS3DataSource? awsS3DataSource,
 
             Outputs.TransferJobTransferSpecAzureBlobStorageDataSource? azureBlobStorageDataSource,
@@ -88,6 +94,7 @@ namespace Pulumi.Gcp.Storage.Outputs
 
             Outputs.TransferJobTransferSpecTransferOptions? transferOptions)
         {
+            AwsS3CompatibleDataSource = awsS3CompatibleDataSource;
             AwsS3DataSource = awsS3DataSource;
             AzureBlobStorageDataSource = azureBlobStorageDataSource;
             GcsDataSink = gcsDataSink;

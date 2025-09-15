@@ -198,7 +198,7 @@ public class OrganizationSink extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.filter);
     }
     /**
-     * Whether or not to include children organizations in the sink export. If true, logs
+     * Whether or not to include child folders or projects in the sink export. If true, logs
      * associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
      * 
      */
@@ -206,7 +206,7 @@ public class OrganizationSink extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> includeChildren;
 
     /**
-     * @return Whether or not to include children organizations in the sink export. If true, logs
+     * @return Whether or not to include child folders or projects in the sink export. If true, logs
      * associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
      * 
      */

@@ -76,6 +76,7 @@ export interface GetRepositoryResult {
     readonly name: string;
     readonly project?: string;
     readonly pulumiLabels: {[key: string]: string};
+    readonly registryUri: string;
     readonly remoteRepositoryConfigs: outputs.artifactregistry.GetRepositoryRemoteRepositoryConfig[];
     readonly repositoryId: string;
     readonly updateTime: string;

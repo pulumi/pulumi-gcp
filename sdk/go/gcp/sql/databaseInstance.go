@@ -421,6 +421,8 @@ type DatabaseInstance struct {
 	// That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
 	// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
 	EncryptionKeyName pulumi.StringOutput `pulumi:"encryptionKeyName"`
+	// The description of final backup. Only set this field when `final_backup_config.enabled` is true.
+	FinalBackupDescription pulumi.StringPtrOutput `pulumi:"finalBackupDescription"`
 	// The first IPv4 address of any type assigned.
 	FirstIpAddress pulumi.StringOutput `pulumi:"firstIpAddress"`
 	// The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
@@ -560,6 +562,8 @@ type databaseInstanceState struct {
 	// That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
 	// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
 	EncryptionKeyName *string `pulumi:"encryptionKeyName"`
+	// The description of final backup. Only set this field when `final_backup_config.enabled` is true.
+	FinalBackupDescription *string `pulumi:"finalBackupDescription"`
 	// The first IPv4 address of any type assigned.
 	FirstIpAddress *string `pulumi:"firstIpAddress"`
 	// The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
@@ -655,6 +659,8 @@ type DatabaseInstanceState struct {
 	// That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
 	// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
 	EncryptionKeyName pulumi.StringPtrInput
+	// The description of final backup. Only set this field when `final_backup_config.enabled` is true.
+	FinalBackupDescription pulumi.StringPtrInput
 	// The first IPv4 address of any type assigned.
 	FirstIpAddress pulumi.StringPtrInput
 	// The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
@@ -745,6 +751,8 @@ type databaseInstanceArgs struct {
 	// That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
 	// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
 	EncryptionKeyName *string `pulumi:"encryptionKeyName"`
+	// The description of final backup. Only set this field when `final_backup_config.enabled` is true.
+	FinalBackupDescription *string `pulumi:"finalBackupDescription"`
 	// The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
 	InstanceType *string `pulumi:"instanceType"`
 	// The current software version on the instance. This attribute can not be set during creation. Refer to `availableMaintenanceVersions` attribute to see what `maintenanceVersion` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenanceVersion` value that is older than the current one on the instance will be ignored.
@@ -817,6 +825,8 @@ type DatabaseInstanceArgs struct {
 	// That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
 	// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
 	EncryptionKeyName pulumi.StringPtrInput
+	// The description of final backup. Only set this field when `final_backup_config.enabled` is true.
+	FinalBackupDescription pulumi.StringPtrInput
 	// The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
 	InstanceType pulumi.StringPtrInput
 	// The current software version on the instance. This attribute can not be set during creation. Refer to `availableMaintenanceVersions` attribute to see what `maintenanceVersion` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenanceVersion` value that is older than the current one on the instance will be ignored.
@@ -1008,6 +1018,11 @@ func (o DatabaseInstanceOutput) DnsNames() DatabaseInstanceDnsNameArrayOutput {
 // key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
 func (o DatabaseInstanceOutput) EncryptionKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.EncryptionKeyName }).(pulumi.StringOutput)
+}
+
+// The description of final backup. Only set this field when `final_backup_config.enabled` is true.
+func (o DatabaseInstanceOutput) FinalBackupDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringPtrOutput { return v.FinalBackupDescription }).(pulumi.StringPtrOutput)
 }
 
 // The first IPv4 address of any type assigned.

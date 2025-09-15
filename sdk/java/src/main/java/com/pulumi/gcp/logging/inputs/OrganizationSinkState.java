@@ -130,7 +130,7 @@ public final class OrganizationSinkState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Whether or not to include children organizations in the sink export. If true, logs
+     * Whether or not to include child folders or projects in the sink export. If true, logs
      * associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
      * 
      */
@@ -138,7 +138,7 @@ public final class OrganizationSinkState extends com.pulumi.resources.ResourceAr
     private @Nullable Output<Boolean> includeChildren;
 
     /**
-     * @return Whether or not to include children organizations in the sink export. If true, logs
+     * @return Whether or not to include child folders or projects in the sink export. If true, logs
      * associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
      * 
      */
@@ -401,7 +401,7 @@ public final class OrganizationSinkState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param includeChildren Whether or not to include children organizations in the sink export. If true, logs
+         * @param includeChildren Whether or not to include child folders or projects in the sink export. If true, logs
          * associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
          * 
          * @return builder
@@ -413,7 +413,7 @@ public final class OrganizationSinkState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param includeChildren Whether or not to include children organizations in the sink export. If true, logs
+         * @param includeChildren Whether or not to include child folders or projects in the sink export. If true, logs
          * associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
          * 
          * @return builder

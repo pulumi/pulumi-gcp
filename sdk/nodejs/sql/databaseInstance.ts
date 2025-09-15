@@ -332,6 +332,10 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     declare public readonly encryptionKeyName: pulumi.Output<string>;
     /**
+     * The description of final backup. Only set this field when `final_backup_config.enabled` is true.
+     */
+    declare public readonly finalBackupDescription: pulumi.Output<string | undefined>;
+    /**
      * The first IPv4 address of any type assigned.
      */
     declare public /*out*/ readonly firstIpAddress: pulumi.Output<string>;
@@ -447,6 +451,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["dnsName"] = state?.dnsName;
             resourceInputs["dnsNames"] = state?.dnsNames;
             resourceInputs["encryptionKeyName"] = state?.encryptionKeyName;
+            resourceInputs["finalBackupDescription"] = state?.finalBackupDescription;
             resourceInputs["firstIpAddress"] = state?.firstIpAddress;
             resourceInputs["instanceType"] = state?.instanceType;
             resourceInputs["ipAddresses"] = state?.ipAddresses;
@@ -478,6 +483,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["databaseVersion"] = args?.databaseVersion;
             resourceInputs["deletionProtection"] = args?.deletionProtection;
             resourceInputs["encryptionKeyName"] = args?.encryptionKeyName;
+            resourceInputs["finalBackupDescription"] = args?.finalBackupDescription;
             resourceInputs["instanceType"] = args?.instanceType;
             resourceInputs["maintenanceVersion"] = args?.maintenanceVersion;
             resourceInputs["masterInstanceName"] = args?.masterInstanceName;
@@ -570,6 +576,10 @@ export interface DatabaseInstanceState {
      * key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
      */
     encryptionKeyName?: pulumi.Input<string>;
+    /**
+     * The description of final backup. Only set this field when `final_backup_config.enabled` is true.
+     */
+    finalBackupDescription?: pulumi.Input<string>;
     /**
      * The first IPv4 address of any type assigned.
      */
@@ -707,6 +717,10 @@ export interface DatabaseInstanceArgs {
      * key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
      */
     encryptionKeyName?: pulumi.Input<string>;
+    /**
+     * The description of final backup. Only set this field when `final_backup_config.enabled` is true.
+     */
+    finalBackupDescription?: pulumi.Input<string>;
     /**
      * The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
      */

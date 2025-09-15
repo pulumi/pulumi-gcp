@@ -138,6 +138,7 @@ namespace Pulumi.Gcp.Sql
         public readonly string DnsName;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceDnsNameResult> DnsNames;
         public readonly string EncryptionKeyName;
+        public readonly string FinalBackupDescription;
         public readonly string FirstIpAddress;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -183,6 +184,8 @@ namespace Pulumi.Gcp.Sql
             ImmutableArray<Outputs.GetDatabaseInstanceDnsNameResult> dnsNames,
 
             string encryptionKeyName,
+
+            string finalBackupDescription,
 
             string firstIpAddress,
 
@@ -237,6 +240,7 @@ namespace Pulumi.Gcp.Sql
             DnsName = dnsName;
             DnsNames = dnsNames;
             EncryptionKeyName = encryptionKeyName;
+            FinalBackupDescription = finalBackupDescription;
             FirstIpAddress = firstIpAddress;
             Id = id;
             InstanceType = instanceType;

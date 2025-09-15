@@ -1010,6 +1010,9 @@ type RegionBackendService struct {
 	// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
 	// Structure is documented below.
 	OutlierDetection RegionBackendServiceOutlierDetectionPtrOutput `pulumi:"outlierDetection"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params RegionBackendServiceParamsPtrOutput `pulumi:"params"`
 	// A named port on a backend instance group representing the port for
 	// communication to the backend VMs in that group. Required when the
 	// loadBalancingScheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
@@ -1238,6 +1241,9 @@ type regionBackendServiceState struct {
 	// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
 	// Structure is documented below.
 	OutlierDetection *RegionBackendServiceOutlierDetection `pulumi:"outlierDetection"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params *RegionBackendServiceParams `pulumi:"params"`
 	// A named port on a backend instance group representing the port for
 	// communication to the backend VMs in that group. Required when the
 	// loadBalancingScheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
@@ -1437,6 +1443,9 @@ type RegionBackendServiceState struct {
 	// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
 	// Structure is documented below.
 	OutlierDetection RegionBackendServiceOutlierDetectionPtrInput
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params RegionBackendServiceParamsPtrInput
 	// A named port on a backend instance group representing the port for
 	// communication to the backend VMs in that group. Required when the
 	// loadBalancingScheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
@@ -1633,6 +1642,9 @@ type regionBackendServiceArgs struct {
 	// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
 	// Structure is documented below.
 	OutlierDetection *RegionBackendServiceOutlierDetection `pulumi:"outlierDetection"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params *RegionBackendServiceParams `pulumi:"params"`
 	// A named port on a backend instance group representing the port for
 	// communication to the backend VMs in that group. Required when the
 	// loadBalancingScheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
@@ -1824,6 +1836,9 @@ type RegionBackendServiceArgs struct {
 	// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
 	// Structure is documented below.
 	OutlierDetection RegionBackendServiceOutlierDetectionPtrInput
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params RegionBackendServiceParamsPtrInput
 	// A named port on a backend instance group representing the port for
 	// communication to the backend VMs in that group. Required when the
 	// loadBalancingScheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
@@ -2184,6 +2199,12 @@ func (o RegionBackendServiceOutput) Network() pulumi.StringPtrOutput {
 // Structure is documented below.
 func (o RegionBackendServiceOutput) OutlierDetection() RegionBackendServiceOutlierDetectionPtrOutput {
 	return o.ApplyT(func(v *RegionBackendService) RegionBackendServiceOutlierDetectionPtrOutput { return v.OutlierDetection }).(RegionBackendServiceOutlierDetectionPtrOutput)
+}
+
+// Additional params passed with the request, but not persisted as part of resource payload
+// Structure is documented below.
+func (o RegionBackendServiceOutput) Params() RegionBackendServiceParamsPtrOutput {
+	return o.ApplyT(func(v *RegionBackendService) RegionBackendServiceParamsPtrOutput { return v.Params }).(RegionBackendServiceParamsPtrOutput)
 }
 
 // A named port on a backend instance group representing the port for

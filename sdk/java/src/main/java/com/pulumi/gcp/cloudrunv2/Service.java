@@ -13,6 +13,7 @@ import com.pulumi.gcp.cloudrunv2.inputs.ServiceState;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceBinaryAuthorization;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceBuildConfig;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceCondition;
+import com.pulumi.gcp.cloudrunv2.outputs.ServiceMultiRegionSettings;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceScaling;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplate;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTerminalCondition;
@@ -1502,6 +1503,22 @@ public class Service extends com.pulumi.resources.CustomResource {
      */
     public Output<String> location() {
         return this.location;
+    }
+    /**
+     * Settings for creating a Multi-Region Service. Make sure to use region = &#39;global&#39; when using them. For more information, visit https://cloud.google.com/run/docs/multiple-regions#deploy
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="multiRegionSettings", refs={ServiceMultiRegionSettings.class}, tree="[0]")
+    private Output</* @Nullable */ ServiceMultiRegionSettings> multiRegionSettings;
+
+    /**
+     * @return Settings for creating a Multi-Region Service. Make sure to use region = &#39;global&#39; when using them. For more information, visit https://cloud.google.com/run/docs/multiple-regions#deploy
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ServiceMultiRegionSettings>> multiRegionSettings() {
+        return Codegen.optional(this.multiRegionSettings);
     }
     /**
      * Name of the Service.

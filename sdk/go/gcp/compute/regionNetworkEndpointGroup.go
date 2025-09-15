@@ -397,7 +397,6 @@ import (
 //				PscData: &compute.RegionNetworkEndpointGroupPscDataArgs{
 //					ProducerPort: pulumi.String("88"),
 //				},
-//				Network:    _default.SelfLink,
 //				Subnetwork: defaultSubnetwork.SelfLink,
 //			})
 //			if err != nil {
@@ -579,7 +578,7 @@ type RegionNetworkEndpointGroup struct {
 	// This field is only used for PSC and INTERNET NEGs.
 	// The URL of the network to which all network endpoints in the NEG belong. Uses
 	// "default" project network if unspecified.
-	Network pulumi.StringPtrOutput `pulumi:"network"`
+	Network pulumi.StringOutput `pulumi:"network"`
 	// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.
 	// Default value is `SERVERLESS`.
 	// Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `GCE_VM_IP_PORTMAP`.
@@ -990,8 +989,8 @@ func (o RegionNetworkEndpointGroupOutput) Name() pulumi.StringOutput {
 // This field is only used for PSC and INTERNET NEGs.
 // The URL of the network to which all network endpoints in the NEG belong. Uses
 // "default" project network if unspecified.
-func (o RegionNetworkEndpointGroupOutput) Network() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RegionNetworkEndpointGroup) pulumi.StringPtrOutput { return v.Network }).(pulumi.StringPtrOutput)
+func (o RegionNetworkEndpointGroupOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionNetworkEndpointGroup) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
 }
 
 // Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.

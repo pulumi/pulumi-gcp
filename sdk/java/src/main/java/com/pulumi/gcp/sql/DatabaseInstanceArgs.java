@@ -136,6 +136,21 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The description of final backup. Only set this field when `final_backup_config.enabled` is true.
+     * 
+     */
+    @Import(name="finalBackupDescription")
+    private @Nullable Output<String> finalBackupDescription;
+
+    /**
+     * @return The description of final backup. Only set this field when `final_backup_config.enabled` is true.
+     * 
+     */
+    public Optional<Output<String>> finalBackupDescription() {
+        return Optional.ofNullable(this.finalBackupDescription);
+    }
+
+    /**
      * The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
      * 
      */
@@ -366,6 +381,7 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
         this.databaseVersion = $.databaseVersion;
         this.deletionProtection = $.deletionProtection;
         this.encryptionKeyName = $.encryptionKeyName;
+        this.finalBackupDescription = $.finalBackupDescription;
         this.instanceType = $.instanceType;
         this.maintenanceVersion = $.maintenanceVersion;
         this.masterInstanceName = $.masterInstanceName;
@@ -538,6 +554,27 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder encryptionKeyName(String encryptionKeyName) {
             return encryptionKeyName(Output.of(encryptionKeyName));
+        }
+
+        /**
+         * @param finalBackupDescription The description of final backup. Only set this field when `final_backup_config.enabled` is true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder finalBackupDescription(@Nullable Output<String> finalBackupDescription) {
+            $.finalBackupDescription = finalBackupDescription;
+            return this;
+        }
+
+        /**
+         * @param finalBackupDescription The description of final backup. Only set this field when `final_backup_config.enabled` is true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder finalBackupDescription(String finalBackupDescription) {
+            return finalBackupDescription(Output.of(finalBackupDescription));
         }
 
         /**

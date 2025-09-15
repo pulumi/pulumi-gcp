@@ -51,6 +51,7 @@ __all__ = [
     'ServiceCondition',
     'ServiceIamBindingCondition',
     'ServiceIamMemberCondition',
+    'ServiceMultiRegionSettings',
     'ServiceScaling',
     'ServiceTemplate',
     'ServiceTemplateContainer',
@@ -142,6 +143,7 @@ __all__ = [
     'GetServiceBinaryAuthorizationResult',
     'GetServiceBuildConfigResult',
     'GetServiceConditionResult',
+    'GetServiceMultiRegionSettingResult',
     'GetServiceScalingResult',
     'GetServiceTemplateResult',
     'GetServiceTemplateContainerResult',
@@ -2584,6 +2586,56 @@ class ServiceIamMemberCondition(dict):
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class ServiceMultiRegionSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "multiRegionId":
+            suggest = "multi_region_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceMultiRegionSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceMultiRegionSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceMultiRegionSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 multi_region_id: Optional[_builtins.str] = None,
+                 regions: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str multi_region_id: (Output)
+               System-generated unique id for the multi-region Service.
+        :param Sequence[_builtins.str] regions: The list of regions to deploy the multi-region Service.
+        """
+        if multi_region_id is not None:
+            pulumi.set(__self__, "multi_region_id", multi_region_id)
+        if regions is not None:
+            pulumi.set(__self__, "regions", regions)
+
+    @_builtins.property
+    @pulumi.getter(name="multiRegionId")
+    def multi_region_id(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        System-generated unique id for the multi-region Service.
+        """
+        return pulumi.get(self, "multi_region_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def regions(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The list of regions to deploy the multi-region Service.
+        """
+        return pulumi.get(self, "regions")
 
 
 @pulumi.output_type
@@ -8188,6 +8240,35 @@ class GetServiceConditionResult(dict):
         type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetServiceMultiRegionSettingResult(dict):
+    def __init__(__self__, *,
+                 multi_region_id: _builtins.str,
+                 regions: Sequence[_builtins.str]):
+        """
+        :param _builtins.str multi_region_id: System-generated unique id for the multi-region Service.
+        :param Sequence[_builtins.str] regions: The list of regions to deploy the multi-region Service.
+        """
+        pulumi.set(__self__, "multi_region_id", multi_region_id)
+        pulumi.set(__self__, "regions", regions)
+
+    @_builtins.property
+    @pulumi.getter(name="multiRegionId")
+    def multi_region_id(self) -> _builtins.str:
+        """
+        System-generated unique id for the multi-region Service.
+        """
+        return pulumi.get(self, "multi_region_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def regions(self) -> Sequence[_builtins.str]:
+        """
+        The list of regions to deploy the multi-region Service.
+        """
+        return pulumi.get(self, "regions")
 
 
 @pulumi.output_type

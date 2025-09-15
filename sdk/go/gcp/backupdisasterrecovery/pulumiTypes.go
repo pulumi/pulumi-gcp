@@ -1065,6 +1065,8 @@ type GetBackupBackup struct {
 	BackupId string `pulumi:"backupId"`
 	// The ID of the Backup Vault of the Data Source in which the Backup belongs.
 	BackupVaultId string `pulumi:"backupVaultId"`
+	// The time when the backup was created.
+	CreateTime string `pulumi:"createTime"`
 	// The ID of the Data Source in which the Backup belongs.
 	DataSourceId string `pulumi:"dataSourceId"`
 	// The location in which the Backup belongs.
@@ -1089,6 +1091,8 @@ type GetBackupBackupArgs struct {
 	BackupId pulumi.StringInput `pulumi:"backupId"`
 	// The ID of the Backup Vault of the Data Source in which the Backup belongs.
 	BackupVaultId pulumi.StringInput `pulumi:"backupVaultId"`
+	// The time when the backup was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// The ID of the Data Source in which the Backup belongs.
 	DataSourceId pulumi.StringInput `pulumi:"dataSourceId"`
 	// The location in which the Backup belongs.
@@ -1156,6 +1160,11 @@ func (o GetBackupBackupOutput) BackupId() pulumi.StringOutput {
 // The ID of the Backup Vault of the Data Source in which the Backup belongs.
 func (o GetBackupBackupOutput) BackupVaultId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupBackup) string { return v.BackupVaultId }).(pulumi.StringOutput)
+}
+
+// The time when the backup was created.
+func (o GetBackupBackupOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupBackup) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // The ID of the Data Source in which the Backup belongs.
@@ -2750,6 +2759,163 @@ func (o GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArray
 	}).(GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyOutput)
 }
 
+type GetDataSourceReferencesDataSourceReference struct {
+	// The state of the backup config for the data source.
+	BackupConfigState string `pulumi:"backupConfigState"`
+	// The number of backups for the data source.
+	BackupCount int `pulumi:"backupCount"`
+	// The underlying data source resource.
+	DataSource string `pulumi:"dataSource"`
+	// The GCP resource name for the data source.
+	GcpResourceName string `pulumi:"gcpResourceName"`
+	// The state of the last backup.
+	LastBackupState string `pulumi:"lastBackupState"`
+	// The last time a successful backup was made.
+	LastSuccessfulBackupTime string `pulumi:"lastSuccessfulBackupTime"`
+	Name                     string `pulumi:"name"`
+	// - (Required) The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance" (right now this service not available for compute Instances , it will be added soon )
+	ResourceType string `pulumi:"resourceType"`
+}
+
+// GetDataSourceReferencesDataSourceReferenceInput is an input type that accepts GetDataSourceReferencesDataSourceReferenceArgs and GetDataSourceReferencesDataSourceReferenceOutput values.
+// You can construct a concrete instance of `GetDataSourceReferencesDataSourceReferenceInput` via:
+//
+//	GetDataSourceReferencesDataSourceReferenceArgs{...}
+type GetDataSourceReferencesDataSourceReferenceInput interface {
+	pulumi.Input
+
+	ToGetDataSourceReferencesDataSourceReferenceOutput() GetDataSourceReferencesDataSourceReferenceOutput
+	ToGetDataSourceReferencesDataSourceReferenceOutputWithContext(context.Context) GetDataSourceReferencesDataSourceReferenceOutput
+}
+
+type GetDataSourceReferencesDataSourceReferenceArgs struct {
+	// The state of the backup config for the data source.
+	BackupConfigState pulumi.StringInput `pulumi:"backupConfigState"`
+	// The number of backups for the data source.
+	BackupCount pulumi.IntInput `pulumi:"backupCount"`
+	// The underlying data source resource.
+	DataSource pulumi.StringInput `pulumi:"dataSource"`
+	// The GCP resource name for the data source.
+	GcpResourceName pulumi.StringInput `pulumi:"gcpResourceName"`
+	// The state of the last backup.
+	LastBackupState pulumi.StringInput `pulumi:"lastBackupState"`
+	// The last time a successful backup was made.
+	LastSuccessfulBackupTime pulumi.StringInput `pulumi:"lastSuccessfulBackupTime"`
+	Name                     pulumi.StringInput `pulumi:"name"`
+	// - (Required) The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance" (right now this service not available for compute Instances , it will be added soon )
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+}
+
+func (GetDataSourceReferencesDataSourceReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataSourceReferencesDataSourceReference)(nil)).Elem()
+}
+
+func (i GetDataSourceReferencesDataSourceReferenceArgs) ToGetDataSourceReferencesDataSourceReferenceOutput() GetDataSourceReferencesDataSourceReferenceOutput {
+	return i.ToGetDataSourceReferencesDataSourceReferenceOutputWithContext(context.Background())
+}
+
+func (i GetDataSourceReferencesDataSourceReferenceArgs) ToGetDataSourceReferencesDataSourceReferenceOutputWithContext(ctx context.Context) GetDataSourceReferencesDataSourceReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDataSourceReferencesDataSourceReferenceOutput)
+}
+
+// GetDataSourceReferencesDataSourceReferenceArrayInput is an input type that accepts GetDataSourceReferencesDataSourceReferenceArray and GetDataSourceReferencesDataSourceReferenceArrayOutput values.
+// You can construct a concrete instance of `GetDataSourceReferencesDataSourceReferenceArrayInput` via:
+//
+//	GetDataSourceReferencesDataSourceReferenceArray{ GetDataSourceReferencesDataSourceReferenceArgs{...} }
+type GetDataSourceReferencesDataSourceReferenceArrayInput interface {
+	pulumi.Input
+
+	ToGetDataSourceReferencesDataSourceReferenceArrayOutput() GetDataSourceReferencesDataSourceReferenceArrayOutput
+	ToGetDataSourceReferencesDataSourceReferenceArrayOutputWithContext(context.Context) GetDataSourceReferencesDataSourceReferenceArrayOutput
+}
+
+type GetDataSourceReferencesDataSourceReferenceArray []GetDataSourceReferencesDataSourceReferenceInput
+
+func (GetDataSourceReferencesDataSourceReferenceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDataSourceReferencesDataSourceReference)(nil)).Elem()
+}
+
+func (i GetDataSourceReferencesDataSourceReferenceArray) ToGetDataSourceReferencesDataSourceReferenceArrayOutput() GetDataSourceReferencesDataSourceReferenceArrayOutput {
+	return i.ToGetDataSourceReferencesDataSourceReferenceArrayOutputWithContext(context.Background())
+}
+
+func (i GetDataSourceReferencesDataSourceReferenceArray) ToGetDataSourceReferencesDataSourceReferenceArrayOutputWithContext(ctx context.Context) GetDataSourceReferencesDataSourceReferenceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDataSourceReferencesDataSourceReferenceArrayOutput)
+}
+
+type GetDataSourceReferencesDataSourceReferenceOutput struct{ *pulumi.OutputState }
+
+func (GetDataSourceReferencesDataSourceReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataSourceReferencesDataSourceReference)(nil)).Elem()
+}
+
+func (o GetDataSourceReferencesDataSourceReferenceOutput) ToGetDataSourceReferencesDataSourceReferenceOutput() GetDataSourceReferencesDataSourceReferenceOutput {
+	return o
+}
+
+func (o GetDataSourceReferencesDataSourceReferenceOutput) ToGetDataSourceReferencesDataSourceReferenceOutputWithContext(ctx context.Context) GetDataSourceReferencesDataSourceReferenceOutput {
+	return o
+}
+
+// The state of the backup config for the data source.
+func (o GetDataSourceReferencesDataSourceReferenceOutput) BackupConfigState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataSourceReferencesDataSourceReference) string { return v.BackupConfigState }).(pulumi.StringOutput)
+}
+
+// The number of backups for the data source.
+func (o GetDataSourceReferencesDataSourceReferenceOutput) BackupCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDataSourceReferencesDataSourceReference) int { return v.BackupCount }).(pulumi.IntOutput)
+}
+
+// The underlying data source resource.
+func (o GetDataSourceReferencesDataSourceReferenceOutput) DataSource() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataSourceReferencesDataSourceReference) string { return v.DataSource }).(pulumi.StringOutput)
+}
+
+// The GCP resource name for the data source.
+func (o GetDataSourceReferencesDataSourceReferenceOutput) GcpResourceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataSourceReferencesDataSourceReference) string { return v.GcpResourceName }).(pulumi.StringOutput)
+}
+
+// The state of the last backup.
+func (o GetDataSourceReferencesDataSourceReferenceOutput) LastBackupState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataSourceReferencesDataSourceReference) string { return v.LastBackupState }).(pulumi.StringOutput)
+}
+
+// The last time a successful backup was made.
+func (o GetDataSourceReferencesDataSourceReferenceOutput) LastSuccessfulBackupTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataSourceReferencesDataSourceReference) string { return v.LastSuccessfulBackupTime }).(pulumi.StringOutput)
+}
+
+func (o GetDataSourceReferencesDataSourceReferenceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataSourceReferencesDataSourceReference) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// - (Required) The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance" (right now this service not available for compute Instances , it will be added soon )
+func (o GetDataSourceReferencesDataSourceReferenceOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataSourceReferencesDataSourceReference) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+type GetDataSourceReferencesDataSourceReferenceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDataSourceReferencesDataSourceReferenceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDataSourceReferencesDataSourceReference)(nil)).Elem()
+}
+
+func (o GetDataSourceReferencesDataSourceReferenceArrayOutput) ToGetDataSourceReferencesDataSourceReferenceArrayOutput() GetDataSourceReferencesDataSourceReferenceArrayOutput {
+	return o
+}
+
+func (o GetDataSourceReferencesDataSourceReferenceArrayOutput) ToGetDataSourceReferencesDataSourceReferenceArrayOutputWithContext(ctx context.Context) GetDataSourceReferencesDataSourceReferenceArrayOutput {
+	return o
+}
+
+func (o GetDataSourceReferencesDataSourceReferenceArrayOutput) Index(i pulumi.IntInput) GetDataSourceReferencesDataSourceReferenceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDataSourceReferencesDataSourceReference {
+		return vs[0].([]GetDataSourceReferencesDataSourceReference)[vs[1].(int)]
+	}).(GetDataSourceReferencesDataSourceReferenceOutput)
+}
+
 type GetManagementServerManagementUri struct {
 	// The management console api endpoint.
 	Api string `pulumi:"api"`
@@ -3004,6 +3170,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDataSourceDataSourceGcpResourceArrayInput)(nil)).Elem(), GetDataSourceDataSourceGcpResourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyInput)(nil)).Elem(), GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArrayInput)(nil)).Elem(), GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataSourceReferencesDataSourceReferenceInput)(nil)).Elem(), GetDataSourceReferencesDataSourceReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataSourceReferencesDataSourceReferenceArrayInput)(nil)).Elem(), GetDataSourceReferencesDataSourceReferenceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetManagementServerManagementUriInput)(nil)).Elem(), GetManagementServerManagementUriArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetManagementServerManagementUriArrayInput)(nil)).Elem(), GetManagementServerManagementUriArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetManagementServerNetworkInput)(nil)).Elem(), GetManagementServerNetworkArgs{})
@@ -3049,6 +3217,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDataSourceDataSourceGcpResourceArrayOutput{})
 	pulumi.RegisterOutputType(GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyOutput{})
 	pulumi.RegisterOutputType(GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArrayOutput{})
+	pulumi.RegisterOutputType(GetDataSourceReferencesDataSourceReferenceOutput{})
+	pulumi.RegisterOutputType(GetDataSourceReferencesDataSourceReferenceArrayOutput{})
 	pulumi.RegisterOutputType(GetManagementServerManagementUriOutput{})
 	pulumi.RegisterOutputType(GetManagementServerManagementUriArrayOutput{})
 	pulumi.RegisterOutputType(GetManagementServerNetworkOutput{})

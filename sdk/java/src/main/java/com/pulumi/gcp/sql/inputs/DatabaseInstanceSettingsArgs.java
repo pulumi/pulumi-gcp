@@ -13,6 +13,7 @@ import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsConnectionPoolConfigArg
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsDataCacheConfigArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsDatabaseFlagArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsDenyMaintenancePeriodArgs;
+import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsFinalBackupConfigArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsInsightsConfigArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsLocationPreferenceArgs;
@@ -348,6 +349,21 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * Config used to determine the final backup settings for the instance
+     * 
+     */
+    @Import(name="finalBackupConfig")
+    private @Nullable Output<DatabaseInstanceSettingsFinalBackupConfigArgs> finalBackupConfig;
+
+    /**
+     * @return Config used to determine the final backup settings for the instance
+     * 
+     */
+    public Optional<Output<DatabaseInstanceSettingsFinalBackupConfigArgs>> finalBackupConfig() {
+        return Optional.ofNullable(this.finalBackupConfig);
+    }
+
+    /**
      * Configuration of Query Insights.
      * 
      */
@@ -526,6 +542,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         this.effectiveAvailabilityType = $.effectiveAvailabilityType;
         this.enableDataplexIntegration = $.enableDataplexIntegration;
         this.enableGoogleMlIntegration = $.enableGoogleMlIntegration;
+        this.finalBackupConfig = $.finalBackupConfig;
         this.insightsConfig = $.insightsConfig;
         this.ipConfiguration = $.ipConfiguration;
         this.locationPreference = $.locationPreference;
@@ -996,6 +1013,27 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
          */
         public Builder enableGoogleMlIntegration(Boolean enableGoogleMlIntegration) {
             return enableGoogleMlIntegration(Output.of(enableGoogleMlIntegration));
+        }
+
+        /**
+         * @param finalBackupConfig Config used to determine the final backup settings for the instance
+         * 
+         * @return builder
+         * 
+         */
+        public Builder finalBackupConfig(@Nullable Output<DatabaseInstanceSettingsFinalBackupConfigArgs> finalBackupConfig) {
+            $.finalBackupConfig = finalBackupConfig;
+            return this;
+        }
+
+        /**
+         * @param finalBackupConfig Config used to determine the final backup settings for the instance
+         * 
+         * @return builder
+         * 
+         */
+        public Builder finalBackupConfig(DatabaseInstanceSettingsFinalBackupConfigArgs finalBackupConfig) {
+            return finalBackupConfig(Output.of(finalBackupConfig));
         }
 
         /**

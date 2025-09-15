@@ -65,7 +65,7 @@ class InstanceArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] deletion_protection_enabled: Optional. If set to true deletion of the instance will fail.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDesiredAutoCreatedEndpointArgs']]] desired_auto_created_endpoints: Immutable. User inputs for the auto-created endpoints connections.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]] desired_psc_auto_connections: `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]] desired_psc_auto_connections: `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] engine_configs: Optional. User-provided engine configurations for the instance.
         :param pulumi.Input[_builtins.str] engine_version: Optional. Engine version of the instance.
         :param pulumi.Input['InstanceGcsSourceArgs'] gcs_source: GCS source for the instance.
@@ -115,8 +115,8 @@ class InstanceArgs:
         if desired_auto_created_endpoints is not None:
             pulumi.set(__self__, "desired_auto_created_endpoints", desired_auto_created_endpoints)
         if desired_psc_auto_connections is not None:
-            warnings.warn("""`desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.""", DeprecationWarning)
-            pulumi.log.warn("""desired_psc_auto_connections is deprecated: `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.""")
+            warnings.warn("""`desired_psc_auto_connections` is deprecated. Use `desired_auto_created_endpoints` instead. `terraform import` will only work with desired_auto_created_endpoints`.""", DeprecationWarning)
+            pulumi.log.warn("""desired_psc_auto_connections is deprecated: `desired_psc_auto_connections` is deprecated. Use `desired_auto_created_endpoints` instead. `terraform import` will only work with desired_auto_created_endpoints`.""")
         if desired_psc_auto_connections is not None:
             pulumi.set(__self__, "desired_psc_auto_connections", desired_psc_auto_connections)
         if engine_configs is not None:
@@ -257,10 +257,10 @@ class InstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="desiredPscAutoConnections")
-    @_utilities.deprecated("""`desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.""")
+    @_utilities.deprecated("""`desired_psc_auto_connections` is deprecated. Use `desired_auto_created_endpoints` instead. `terraform import` will only work with desired_auto_created_endpoints`.""")
     def desired_psc_auto_connections(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]]]:
         """
-        `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
+        `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
         """
         return pulumi.get(self, "desired_psc_auto_connections")
 
@@ -513,7 +513,7 @@ class _InstanceState:
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] deletion_protection_enabled: Optional. If set to true deletion of the instance will fail.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDesiredAutoCreatedEndpointArgs']]] desired_auto_created_endpoints: Immutable. User inputs for the auto-created endpoints connections.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]] desired_psc_auto_connections: `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]] desired_psc_auto_connections: `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDiscoveryEndpointArgs']]] discovery_endpoints: (Deprecated)
                Deprecated. Output only. Endpoints clients can connect to the instance through.
                Structure is documented below.
@@ -605,8 +605,8 @@ class _InstanceState:
         if desired_auto_created_endpoints is not None:
             pulumi.set(__self__, "desired_auto_created_endpoints", desired_auto_created_endpoints)
         if desired_psc_auto_connections is not None:
-            warnings.warn("""`desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.""", DeprecationWarning)
-            pulumi.log.warn("""desired_psc_auto_connections is deprecated: `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.""")
+            warnings.warn("""`desired_psc_auto_connections` is deprecated. Use `desired_auto_created_endpoints` instead. `terraform import` will only work with desired_auto_created_endpoints`.""", DeprecationWarning)
+            pulumi.log.warn("""desired_psc_auto_connections is deprecated: `desired_psc_auto_connections` is deprecated. Use `desired_auto_created_endpoints` instead. `terraform import` will only work with desired_auto_created_endpoints`.""")
         if desired_psc_auto_connections is not None:
             pulumi.set(__self__, "desired_psc_auto_connections", desired_psc_auto_connections)
         if discovery_endpoints is not None:
@@ -769,10 +769,10 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter(name="desiredPscAutoConnections")
-    @_utilities.deprecated("""`desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.""")
+    @_utilities.deprecated("""`desired_psc_auto_connections` is deprecated. Use `desired_auto_created_endpoints` instead. `terraform import` will only work with desired_auto_created_endpoints`.""")
     def desired_psc_auto_connections(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]]]:
         """
-        `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
+        `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
         """
         return pulumi.get(self, "desired_psc_auto_connections")
 
@@ -1545,7 +1545,7 @@ class Instance(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] deletion_protection_enabled: Optional. If set to true deletion of the instance will fail.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredAutoCreatedEndpointArgs', 'InstanceDesiredAutoCreatedEndpointArgsDict']]]] desired_auto_created_endpoints: Immutable. User inputs for the auto-created endpoints connections.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredPscAutoConnectionArgs', 'InstanceDesiredPscAutoConnectionArgsDict']]]] desired_psc_auto_connections: `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredPscAutoConnectionArgs', 'InstanceDesiredPscAutoConnectionArgsDict']]]] desired_psc_auto_connections: `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] engine_configs: Optional. User-provided engine configurations for the instance.
         :param pulumi.Input[_builtins.str] engine_version: Optional. Engine version of the instance.
         :param pulumi.Input[Union['InstanceGcsSourceArgs', 'InstanceGcsSourceArgsDict']] gcs_source: GCS source for the instance.
@@ -2064,7 +2064,7 @@ class Instance(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] deletion_protection_enabled: Optional. If set to true deletion of the instance will fail.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredAutoCreatedEndpointArgs', 'InstanceDesiredAutoCreatedEndpointArgsDict']]]] desired_auto_created_endpoints: Immutable. User inputs for the auto-created endpoints connections.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredPscAutoConnectionArgs', 'InstanceDesiredPscAutoConnectionArgsDict']]]] desired_psc_auto_connections: `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredPscAutoConnectionArgs', 'InstanceDesiredPscAutoConnectionArgsDict']]]] desired_psc_auto_connections: `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDiscoveryEndpointArgs', 'InstanceDiscoveryEndpointArgsDict']]]] discovery_endpoints: (Deprecated)
                Deprecated. Output only. Endpoints clients can connect to the instance through.
                Structure is documented below.
@@ -2249,10 +2249,10 @@ class Instance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="desiredPscAutoConnections")
-    @_utilities.deprecated("""`desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.""")
+    @_utilities.deprecated("""`desired_psc_auto_connections` is deprecated. Use `desired_auto_created_endpoints` instead. `terraform import` will only work with desired_auto_created_endpoints`.""")
     def desired_psc_auto_connections(self) -> pulumi.Output[Optional[Sequence['outputs.InstanceDesiredPscAutoConnection']]]:
         """
-        `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
+        `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
         """
         return pulumi.get(self, "desired_psc_auto_connections")
 

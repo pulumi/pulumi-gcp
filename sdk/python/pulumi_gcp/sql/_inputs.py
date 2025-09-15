@@ -49,6 +49,8 @@ __all__ = [
     'DatabaseInstanceSettingsDatabaseFlagArgsDict',
     'DatabaseInstanceSettingsDenyMaintenancePeriodArgs',
     'DatabaseInstanceSettingsDenyMaintenancePeriodArgsDict',
+    'DatabaseInstanceSettingsFinalBackupConfigArgs',
+    'DatabaseInstanceSettingsFinalBackupConfigArgsDict',
     'DatabaseInstanceSettingsInsightsConfigArgs',
     'DatabaseInstanceSettingsInsightsConfigArgsDict',
     'DatabaseInstanceSettingsIpConfigurationArgs',
@@ -995,6 +997,10 @@ if not MYPY:
         """
         Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
         """
+        final_backup_config: NotRequired[pulumi.Input['DatabaseInstanceSettingsFinalBackupConfigArgsDict']]
+        """
+        Config used to determine the final backup settings for the instance
+        """
         insights_config: NotRequired[pulumi.Input['DatabaseInstanceSettingsInsightsConfigArgsDict']]
         """
         Configuration of Query Insights.
@@ -1057,6 +1063,7 @@ class DatabaseInstanceSettingsArgs:
                  effective_availability_type: Optional[pulumi.Input[_builtins.str]] = None,
                  enable_dataplex_integration: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_google_ml_integration: Optional[pulumi.Input[_builtins.bool]] = None,
+                 final_backup_config: Optional[pulumi.Input['DatabaseInstanceSettingsFinalBackupConfigArgs']] = None,
                  insights_config: Optional[pulumi.Input['DatabaseInstanceSettingsInsightsConfigArgs']] = None,
                  ip_configuration: Optional[pulumi.Input['DatabaseInstanceSettingsIpConfigurationArgs']] = None,
                  location_preference: Optional[pulumi.Input['DatabaseInstanceSettingsLocationPreferenceArgs']] = None,
@@ -1101,6 +1108,7 @@ class DatabaseInstanceSettingsArgs:
                `settings.0.availability_type`).
         :param pulumi.Input[_builtins.bool] enable_dataplex_integration: Enables [Cloud SQL instance integration with Dataplex](https://cloud.google.com/sql/docs/mysql/dataplex-catalog-integration). MySQL, Postgres and SQL Server instances are supported for this feature. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] enable_google_ml_integration: Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
+        :param pulumi.Input['DatabaseInstanceSettingsFinalBackupConfigArgs'] final_backup_config: Config used to determine the final backup settings for the instance
         :param pulumi.Input['DatabaseInstanceSettingsInsightsConfigArgs'] insights_config: Configuration of Query Insights.
         :param pulumi.Input['DatabaseInstanceSettingsMaintenanceWindowArgs'] maintenance_window: Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
         :param pulumi.Input[_builtins.str] pricing_plan: Pricing plan for this instance, can only be `PER_USE`.
@@ -1155,6 +1163,8 @@ class DatabaseInstanceSettingsArgs:
             pulumi.set(__self__, "enable_dataplex_integration", enable_dataplex_integration)
         if enable_google_ml_integration is not None:
             pulumi.set(__self__, "enable_google_ml_integration", enable_google_ml_integration)
+        if final_backup_config is not None:
+            pulumi.set(__self__, "final_backup_config", final_backup_config)
         if insights_config is not None:
             pulumi.set(__self__, "insights_config", insights_config)
         if ip_configuration is not None:
@@ -1452,6 +1462,18 @@ class DatabaseInstanceSettingsArgs:
     @enable_google_ml_integration.setter
     def enable_google_ml_integration(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "enable_google_ml_integration", value)
+
+    @_builtins.property
+    @pulumi.getter(name="finalBackupConfig")
+    def final_backup_config(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsFinalBackupConfigArgs']]:
+        """
+        Config used to determine the final backup settings for the instance
+        """
+        return pulumi.get(self, "final_backup_config")
+
+    @final_backup_config.setter
+    def final_backup_config(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsFinalBackupConfigArgs']]):
+        pulumi.set(self, "final_backup_config", value)
 
     @_builtins.property
     @pulumi.getter(name="insightsConfig")
@@ -2107,6 +2129,58 @@ class DatabaseInstanceSettingsDenyMaintenancePeriodArgs:
 
 
 if not MYPY:
+    class DatabaseInstanceSettingsFinalBackupConfigArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        True if enabled final backup.
+        """
+        retention_days: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The number of days we retain the final backup after instance deletion. The valid range is between 1 and 365. For instances managed by BackupDR, the valid range is between 1 day and 99 years.
+        """
+elif False:
+    DatabaseInstanceSettingsFinalBackupConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DatabaseInstanceSettingsFinalBackupConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 retention_days: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: True if enabled final backup.
+        :param pulumi.Input[_builtins.int] retention_days: The number of days we retain the final backup after instance deletion. The valid range is between 1 and 365. For instances managed by BackupDR, the valid range is between 1 day and 99 years.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if retention_days is not None:
+            pulumi.set(__self__, "retention_days", retention_days)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        True if enabled final backup.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="retentionDays")
+    def retention_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The number of days we retain the final backup after instance deletion. The valid range is between 1 and 365. For instances managed by BackupDR, the valid range is between 1 day and 99 years.
+        """
+        return pulumi.get(self, "retention_days")
+
+    @retention_days.setter
+    def retention_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "retention_days", value)
+
+
+if not MYPY:
     class DatabaseInstanceSettingsInsightsConfigArgsDict(TypedDict):
         query_insights_enabled: NotRequired[pulumi.Input[_builtins.bool]]
         """
@@ -2619,9 +2693,21 @@ if not MYPY:
         """
         "The consumer network of this consumer endpoint. This must be a resource path that includes both the host project and the network name. For example, `projects/project1/global/networks/network1`. The consumer host project of this network might be different from the consumer service project."
         """
+        consumer_network_status: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output) The connection policy status of the consumer network.
+        """
         consumer_service_project_id: NotRequired[pulumi.Input[_builtins.str]]
         """
         The project ID of consumer service project of this consumer endpoint.
+        """
+        ip_address: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output) The IP address of the consumer endpoint.
+        """
+        status: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output) The connection status of the consumer endpoint.
         """
 elif False:
     DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgsDict: TypeAlias = Mapping[str, Any]
@@ -2630,14 +2716,26 @@ elif False:
 class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs:
     def __init__(__self__, *,
                  consumer_network: pulumi.Input[_builtins.str],
-                 consumer_service_project_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 consumer_network_status: Optional[pulumi.Input[_builtins.str]] = None,
+                 consumer_service_project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] consumer_network: "The consumer network of this consumer endpoint. This must be a resource path that includes both the host project and the network name. For example, `projects/project1/global/networks/network1`. The consumer host project of this network might be different from the consumer service project."
+        :param pulumi.Input[_builtins.str] consumer_network_status: (Output) The connection policy status of the consumer network.
         :param pulumi.Input[_builtins.str] consumer_service_project_id: The project ID of consumer service project of this consumer endpoint.
+        :param pulumi.Input[_builtins.str] ip_address: (Output) The IP address of the consumer endpoint.
+        :param pulumi.Input[_builtins.str] status: (Output) The connection status of the consumer endpoint.
         """
         pulumi.set(__self__, "consumer_network", consumer_network)
+        if consumer_network_status is not None:
+            pulumi.set(__self__, "consumer_network_status", consumer_network_status)
         if consumer_service_project_id is not None:
             pulumi.set(__self__, "consumer_service_project_id", consumer_service_project_id)
+        if ip_address is not None:
+            pulumi.set(__self__, "ip_address", ip_address)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
 
     @_builtins.property
     @pulumi.getter(name="consumerNetwork")
@@ -2652,6 +2750,18 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs:
         pulumi.set(self, "consumer_network", value)
 
     @_builtins.property
+    @pulumi.getter(name="consumerNetworkStatus")
+    def consumer_network_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output) The connection policy status of the consumer network.
+        """
+        return pulumi.get(self, "consumer_network_status")
+
+    @consumer_network_status.setter
+    def consumer_network_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "consumer_network_status", value)
+
+    @_builtins.property
     @pulumi.getter(name="consumerServiceProjectId")
     def consumer_service_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -2662,6 +2772,30 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs:
     @consumer_service_project_id.setter
     def consumer_service_project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "consumer_service_project_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output) The IP address of the consumer endpoint.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @ip_address.setter
+    def ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ip_address", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output) The connection status of the consumer endpoint.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "status", value)
 
 
 if not MYPY:

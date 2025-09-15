@@ -102,6 +102,8 @@ __all__ = [
     'TransferJobScheduleScheduleStartDate',
     'TransferJobScheduleStartTimeOfDay',
     'TransferJobTransferSpec',
+    'TransferJobTransferSpecAwsS3CompatibleDataSource',
+    'TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata',
     'TransferJobTransferSpecAwsS3DataSource',
     'TransferJobTransferSpecAwsS3DataSourceAwsAccessKey',
     'TransferJobTransferSpecAzureBlobStorageDataSource',
@@ -4377,7 +4379,9 @@ class TransferJobTransferSpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "awsS3DataSource":
+        if key == "awsS3CompatibleDataSource":
+            suggest = "aws_s3_compatible_data_source"
+        elif key == "awsS3DataSource":
             suggest = "aws_s3_data_source"
         elif key == "azureBlobStorageDataSource":
             suggest = "azure_blob_storage_data_source"
@@ -4414,6 +4418,7 @@ class TransferJobTransferSpec(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 aws_s3_compatible_data_source: Optional['outputs.TransferJobTransferSpecAwsS3CompatibleDataSource'] = None,
                  aws_s3_data_source: Optional['outputs.TransferJobTransferSpecAwsS3DataSource'] = None,
                  azure_blob_storage_data_source: Optional['outputs.TransferJobTransferSpecAzureBlobStorageDataSource'] = None,
                  gcs_data_sink: Optional['outputs.TransferJobTransferSpecGcsDataSink'] = None,
@@ -4427,6 +4432,7 @@ class TransferJobTransferSpec(dict):
                  source_agent_pool_name: Optional[_builtins.str] = None,
                  transfer_options: Optional['outputs.TransferJobTransferSpecTransferOptions'] = None):
         """
+        :param 'TransferJobTransferSpecAwsS3CompatibleDataSourceArgs' aws_s3_compatible_data_source: An AWS S3 Compatible data source. Structure documented below.
         :param 'TransferJobTransferSpecAwsS3DataSourceArgs' aws_s3_data_source: An AWS S3 data source. Structure documented below.
         :param 'TransferJobTransferSpecAzureBlobStorageDataSourceArgs' azure_blob_storage_data_source: An Azure Blob Storage data source. Structure documented below.
         :param 'TransferJobTransferSpecGcsDataSinkArgs' gcs_data_sink: A Google Cloud Storage data sink. Structure documented below.
@@ -4440,6 +4446,8 @@ class TransferJobTransferSpec(dict):
         :param _builtins.str source_agent_pool_name: Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
         :param 'TransferJobTransferSpecTransferOptionsArgs' transfer_options: Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
         """
+        if aws_s3_compatible_data_source is not None:
+            pulumi.set(__self__, "aws_s3_compatible_data_source", aws_s3_compatible_data_source)
         if aws_s3_data_source is not None:
             pulumi.set(__self__, "aws_s3_data_source", aws_s3_data_source)
         if azure_blob_storage_data_source is not None:
@@ -4464,6 +4472,14 @@ class TransferJobTransferSpec(dict):
             pulumi.set(__self__, "source_agent_pool_name", source_agent_pool_name)
         if transfer_options is not None:
             pulumi.set(__self__, "transfer_options", transfer_options)
+
+    @_builtins.property
+    @pulumi.getter(name="awsS3CompatibleDataSource")
+    def aws_s3_compatible_data_source(self) -> Optional['outputs.TransferJobTransferSpecAwsS3CompatibleDataSource']:
+        """
+        An AWS S3 Compatible data source. Structure documented below.
+        """
+        return pulumi.get(self, "aws_s3_compatible_data_source")
 
     @_builtins.property
     @pulumi.getter(name="awsS3DataSource")
@@ -4563,6 +4579,166 @@ class TransferJobTransferSpec(dict):
 
 
 @pulumi.output_type
+class TransferJobTransferSpecAwsS3CompatibleDataSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bucketName":
+            suggest = "bucket_name"
+        elif key == "s3Metadata":
+            suggest = "s3_metadata"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TransferJobTransferSpecAwsS3CompatibleDataSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TransferJobTransferSpecAwsS3CompatibleDataSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TransferJobTransferSpecAwsS3CompatibleDataSource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bucket_name: _builtins.str,
+                 endpoint: _builtins.str,
+                 path: Optional[_builtins.str] = None,
+                 region: Optional[_builtins.str] = None,
+                 s3_metadata: Optional['outputs.TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata'] = None):
+        """
+        :param _builtins.str bucket_name: Name of the bucket.
+        :param _builtins.str endpoint: Endpoint of the storage service.
+        :param _builtins.str path: Specifies the path to transfer objects.
+        :param _builtins.str region: Specifies the region to sign requests with. This can be left blank if requests should be signed with an empty region.
+        :param 'TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataArgs' s3_metadata: S3 compatible metadata.
+        """
+        pulumi.set(__self__, "bucket_name", bucket_name)
+        pulumi.set(__self__, "endpoint", endpoint)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if s3_metadata is not None:
+            pulumi.set(__self__, "s3_metadata", s3_metadata)
+
+    @_builtins.property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> _builtins.str:
+        """
+        Name of the bucket.
+        """
+        return pulumi.get(self, "bucket_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def endpoint(self) -> _builtins.str:
+        """
+        Endpoint of the storage service.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> Optional[_builtins.str]:
+        """
+        Specifies the path to transfer objects.
+        """
+        return pulumi.get(self, "path")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        Specifies the region to sign requests with. This can be left blank if requests should be signed with an empty region.
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter(name="s3Metadata")
+    def s3_metadata(self) -> Optional['outputs.TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata']:
+        """
+        S3 compatible metadata.
+        """
+        return pulumi.get(self, "s3_metadata")
+
+
+@pulumi.output_type
+class TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authMethod":
+            suggest = "auth_method"
+        elif key == "listApi":
+            suggest = "list_api"
+        elif key == "requestModel":
+            suggest = "request_model"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 auth_method: Optional[_builtins.str] = None,
+                 list_api: Optional[_builtins.str] = None,
+                 protocol: Optional[_builtins.str] = None,
+                 request_model: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str auth_method: Authentication and authorization method used by the storage service. When not specified, Transfer Service will attempt to determine right auth method to use.
+        :param _builtins.str list_api: The Listing API to use for discovering objects. When not specified, Transfer Service will attempt to determine the right API to use.
+        :param _builtins.str protocol: The network protocol of the agent. When not specified, the default value of NetworkProtocol NETWORK_PROTOCOL_HTTPS is used.
+        :param _builtins.str request_model: API request model used to call the storage service. When not specified, the default value of RequestModel REQUEST_MODEL_VIRTUAL_HOSTED_STYLE is used.
+        """
+        if auth_method is not None:
+            pulumi.set(__self__, "auth_method", auth_method)
+        if list_api is not None:
+            pulumi.set(__self__, "list_api", list_api)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if request_model is not None:
+            pulumi.set(__self__, "request_model", request_model)
+
+    @_builtins.property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> Optional[_builtins.str]:
+        """
+        Authentication and authorization method used by the storage service. When not specified, Transfer Service will attempt to determine right auth method to use.
+        """
+        return pulumi.get(self, "auth_method")
+
+    @_builtins.property
+    @pulumi.getter(name="listApi")
+    def list_api(self) -> Optional[_builtins.str]:
+        """
+        The Listing API to use for discovering objects. When not specified, Transfer Service will attempt to determine the right API to use.
+        """
+        return pulumi.get(self, "list_api")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> Optional[_builtins.str]:
+        """
+        The network protocol of the agent. When not specified, the default value of NetworkProtocol NETWORK_PROTOCOL_HTTPS is used.
+        """
+        return pulumi.get(self, "protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="requestModel")
+    def request_model(self) -> Optional[_builtins.str]:
+        """
+        API request model used to call the storage service. When not specified, the default value of RequestModel REQUEST_MODEL_VIRTUAL_HOSTED_STYLE is used.
+        """
+        return pulumi.get(self, "request_model")
+
+
+@pulumi.output_type
 class TransferJobTransferSpecAwsS3DataSource(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -4573,6 +4749,8 @@ class TransferJobTransferSpecAwsS3DataSource(dict):
             suggest = "aws_access_key"
         elif key == "cloudfrontDomain":
             suggest = "cloudfront_domain"
+        elif key == "credentialsSecret":
+            suggest = "credentials_secret"
         elif key == "managedPrivateNetwork":
             suggest = "managed_private_network"
         elif key == "roleArn":
@@ -4593,6 +4771,7 @@ class TransferJobTransferSpecAwsS3DataSource(dict):
                  bucket_name: _builtins.str,
                  aws_access_key: Optional['outputs.TransferJobTransferSpecAwsS3DataSourceAwsAccessKey'] = None,
                  cloudfront_domain: Optional[_builtins.str] = None,
+                 credentials_secret: Optional[_builtins.str] = None,
                  managed_private_network: Optional[_builtins.bool] = None,
                  path: Optional[_builtins.str] = None,
                  role_arn: Optional[_builtins.str] = None):
@@ -4600,6 +4779,7 @@ class TransferJobTransferSpecAwsS3DataSource(dict):
         :param _builtins.str bucket_name: S3 Bucket name.
         :param 'TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs' aws_access_key: AWS credentials block.
         :param _builtins.str cloudfront_domain: The CloudFront distribution domain name pointing to this bucket, to use when fetching. See [Transfer from S3 via CloudFront](https://cloud.google.com/storage-transfer/docs/s3-cloudfront) for more information. Format: https://{id}.cloudfront.net or any valid custom domain. Must begin with https://.
+        :param _builtins.str credentials_secret: The Resource name of a secret in Secret Manager. AWS credentials must be stored in Secret Manager in JSON format. If credentials_secret is specified, do not specify role_arn or aws_access_key. Format: projects/{projectNumber}/secrets/{secret_name}.
         :param _builtins.bool managed_private_network: Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
         :param _builtins.str path: S3 Bucket path in bucket to transfer.
         :param _builtins.str role_arn: The Amazon Resource Name (ARN) of the role to support temporary credentials via 'AssumeRoleWithWebIdentity'. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a 'AssumeRoleWithWebIdentity' call for the provided role using the [GoogleServiceAccount][] for this project.
@@ -4609,6 +4789,8 @@ class TransferJobTransferSpecAwsS3DataSource(dict):
             pulumi.set(__self__, "aws_access_key", aws_access_key)
         if cloudfront_domain is not None:
             pulumi.set(__self__, "cloudfront_domain", cloudfront_domain)
+        if credentials_secret is not None:
+            pulumi.set(__self__, "credentials_secret", credentials_secret)
         if managed_private_network is not None:
             pulumi.set(__self__, "managed_private_network", managed_private_network)
         if path is not None:
@@ -4639,6 +4821,14 @@ class TransferJobTransferSpecAwsS3DataSource(dict):
         The CloudFront distribution domain name pointing to this bucket, to use when fetching. See [Transfer from S3 via CloudFront](https://cloud.google.com/storage-transfer/docs/s3-cloudfront) for more information. Format: https://{id}.cloudfront.net or any valid custom domain. Must begin with https://.
         """
         return pulumi.get(self, "cloudfront_domain")
+
+    @_builtins.property
+    @pulumi.getter(name="credentialsSecret")
+    def credentials_secret(self) -> Optional[_builtins.str]:
+        """
+        The Resource name of a secret in Secret Manager. AWS credentials must be stored in Secret Manager in JSON format. If credentials_secret is specified, do not specify role_arn or aws_access_key. Format: projects/{projectNumber}/secrets/{secret_name}.
+        """
+        return pulumi.get(self, "credentials_secret")
 
     @_builtins.property
     @pulumi.getter(name="managedPrivateNetwork")

@@ -215,6 +215,71 @@ import (
 //	}
 //
 // ```
+// ### Healthcare Fhir Store Consent Config
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			topic, err := pubsub.NewTopic(ctx, "topic", &pubsub.TopicArgs{
+//				Name: pulumi.String("fhir-notifications"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			dataset, err := healthcare.NewDataset(ctx, "dataset", &healthcare.DatasetArgs{
+//				Name:     pulumi.String("example-dataset"),
+//				Location: pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = healthcare.NewFhirStore(ctx, "default", &healthcare.FhirStoreArgs{
+//				Name:                            pulumi.String("example-fhir-store"),
+//				Dataset:                         dataset.ID(),
+//				Version:                         pulumi.String("R4"),
+//				ComplexDataTypeReferenceParsing: pulumi.String("DISABLED"),
+//				EnableUpdateCreate:              pulumi.Bool(false),
+//				DisableReferentialIntegrity:     pulumi.Bool(false),
+//				DisableResourceVersioning:       pulumi.Bool(false),
+//				EnableHistoryImport:             pulumi.Bool(false),
+//				DefaultSearchHandlingStrict:     pulumi.Bool(false),
+//				NotificationConfigs: healthcare.FhirStoreNotificationConfigArray{
+//					&healthcare.FhirStoreNotificationConfigArgs{
+//						PubsubTopic: topic.ID(),
+//					},
+//				},
+//				Labels: pulumi.StringMap{
+//					"label1": pulumi.String("labelvalue1"),
+//				},
+//				ConsentConfig: &healthcare.FhirStoreConsentConfigArgs{
+//					Version:        pulumi.String("V1"),
+//					AccessEnforced: pulumi.Bool(true),
+//					ConsentHeaderHandling: &healthcare.FhirStoreConsentConfigConsentHeaderHandlingArgs{
+//						Profile: pulumi.String("REQUIRED_ON_READ"),
+//					},
+//					AccessDeterminationLogConfig: &healthcare.FhirStoreConsentConfigAccessDeterminationLogConfigArgs{
+//						LogLevel: pulumi.String("VERBOSE"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -239,6 +304,9 @@ type FhirStore struct {
 	// Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
 	// Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
 	ComplexDataTypeReferenceParsing pulumi.StringOutput `pulumi:"complexDataTypeReferenceParsing"`
+	// Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
+	// Structure is documented below.
+	ConsentConfig FhirStoreConsentConfigPtrOutput `pulumi:"consentConfig"`
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
 	Dataset pulumi.StringOutput `pulumi:"dataset"`
@@ -365,6 +433,9 @@ type fhirStoreState struct {
 	// Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
 	// Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
 	ComplexDataTypeReferenceParsing *string `pulumi:"complexDataTypeReferenceParsing"`
+	// Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
+	// Structure is documented below.
+	ConsentConfig *FhirStoreConsentConfig `pulumi:"consentConfig"`
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
 	Dataset *string `pulumi:"dataset"`
@@ -454,6 +525,9 @@ type FhirStoreState struct {
 	// Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
 	// Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
 	ComplexDataTypeReferenceParsing pulumi.StringPtrInput
+	// Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
+	// Structure is documented below.
+	ConsentConfig FhirStoreConsentConfigPtrInput
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
 	Dataset pulumi.StringPtrInput
@@ -547,6 +621,9 @@ type fhirStoreArgs struct {
 	// Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
 	// Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
 	ComplexDataTypeReferenceParsing *string `pulumi:"complexDataTypeReferenceParsing"`
+	// Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
+	// Structure is documented below.
+	ConsentConfig *FhirStoreConsentConfig `pulumi:"consentConfig"`
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
 	Dataset string `pulumi:"dataset"`
@@ -630,6 +707,9 @@ type FhirStoreArgs struct {
 	// Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
 	// Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
 	ComplexDataTypeReferenceParsing pulumi.StringPtrInput
+	// Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
+	// Structure is documented below.
+	ConsentConfig FhirStoreConsentConfigPtrInput
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
 	Dataset pulumi.StringInput
@@ -799,6 +879,12 @@ func (o FhirStoreOutput) ToFhirStoreOutputWithContext(ctx context.Context) FhirS
 // Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
 func (o FhirStoreOutput) ComplexDataTypeReferenceParsing() pulumi.StringOutput {
 	return o.ApplyT(func(v *FhirStore) pulumi.StringOutput { return v.ComplexDataTypeReferenceParsing }).(pulumi.StringOutput)
+}
+
+// Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
+// Structure is documented below.
+func (o FhirStoreOutput) ConsentConfig() FhirStoreConsentConfigPtrOutput {
+	return o.ApplyT(func(v *FhirStore) FhirStoreConsentConfigPtrOutput { return v.ConsentConfig }).(FhirStoreConsentConfigPtrOutput)
 }
 
 // Identifies the dataset addressed by this request. Must be in the format

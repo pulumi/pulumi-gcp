@@ -457,7 +457,7 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
-        /// Possible values are: `NEXT_HOP_ROUTING_MODE`.
+        /// Possible values are: `NEXT_HOP_ROUTING_MODE`, `EXPLICIT_ROUTING_MODE`.
         /// </summary>
         [Output("routingMode")]
         public Output<string?> RoutingMode { get; private set; } = null!;
@@ -678,7 +678,7 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
-        /// Possible values are: `NEXT_HOP_ROUTING_MODE`.
+        /// Possible values are: `NEXT_HOP_ROUTING_MODE`, `EXPLICIT_ROUTING_MODE`.
         /// </summary>
         [Input("routingMode")]
         public Input<string>? RoutingMode { get; set; }
@@ -883,7 +883,7 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
-        /// Possible values are: `NEXT_HOP_ROUTING_MODE`.
+        /// Possible values are: `NEXT_HOP_ROUTING_MODE`, `EXPLICIT_ROUTING_MODE`.
         /// </summary>
         [Input("routingMode")]
         public Input<string>? RoutingMode { get; set; }

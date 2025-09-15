@@ -1159,6 +1159,13 @@ namespace Pulumi.Gcp.CloudRunV2
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
+        /// Settings for creating a Multi-Region Service. Make sure to use region = 'global' when using them. For more information, visit https://cloud.google.com/run/docs/multiple-regions#deploy
+        /// Structure is documented below.
+        /// </summary>
+        [Output("multiRegionSettings")]
+        public Output<Outputs.ServiceMultiRegionSettings?> MultiRegionSettings { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the Service.
         /// </summary>
         [Output("name")]
@@ -1427,6 +1434,13 @@ namespace Pulumi.Gcp.CloudRunV2
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
+        /// Settings for creating a Multi-Region Service. Make sure to use region = 'global' when using them. For more information, visit https://cloud.google.com/run/docs/multiple-regions#deploy
+        /// Structure is documented below.
+        /// </summary>
+        [Input("multiRegionSettings")]
+        public Input<Inputs.ServiceMultiRegionSettingsArgs>? MultiRegionSettings { get; set; }
+
+        /// <summary>
         /// Name of the Service.
         /// </summary>
         [Input("name")]
@@ -1686,6 +1700,13 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// Settings for creating a Multi-Region Service. Make sure to use region = 'global' when using them. For more information, visit https://cloud.google.com/run/docs/multiple-regions#deploy
+        /// Structure is documented below.
+        /// </summary>
+        [Input("multiRegionSettings")]
+        public Input<Inputs.ServiceMultiRegionSettingsGetArgs>? MultiRegionSettings { get; set; }
 
         /// <summary>
         /// Name of the Service.

@@ -190,6 +190,66 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// });
     /// ```
+    /// ### Healthcare Fhir Store Consent Config
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var topic = new Gcp.PubSub.Topic("topic", new()
+    ///     {
+    ///         Name = "fhir-notifications",
+    ///     });
+    /// 
+    ///     var dataset = new Gcp.Healthcare.Dataset("dataset", new()
+    ///     {
+    ///         Name = "example-dataset",
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Healthcare.FhirStore("default", new()
+    ///     {
+    ///         Name = "example-fhir-store",
+    ///         Dataset = dataset.Id,
+    ///         Version = "R4",
+    ///         ComplexDataTypeReferenceParsing = "DISABLED",
+    ///         EnableUpdateCreate = false,
+    ///         DisableReferentialIntegrity = false,
+    ///         DisableResourceVersioning = false,
+    ///         EnableHistoryImport = false,
+    ///         DefaultSearchHandlingStrict = false,
+    ///         NotificationConfigs = new[]
+    ///         {
+    ///             new Gcp.Healthcare.Inputs.FhirStoreNotificationConfigArgs
+    ///             {
+    ///                 PubsubTopic = topic.Id,
+    ///             },
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "label1", "labelvalue1" },
+    ///         },
+    ///         ConsentConfig = new Gcp.Healthcare.Inputs.FhirStoreConsentConfigArgs
+    ///         {
+    ///             Version = "V1",
+    ///             AccessEnforced = true,
+    ///             ConsentHeaderHandling = new Gcp.Healthcare.Inputs.FhirStoreConsentConfigConsentHeaderHandlingArgs
+    ///             {
+    ///                 Profile = "REQUIRED_ON_READ",
+    ///             },
+    ///             AccessDeterminationLogConfig = new Gcp.Healthcare.Inputs.FhirStoreConsentConfigAccessDeterminationLogConfigArgs
+    ///             {
+    ///                 LogLevel = "VERBOSE",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -218,6 +278,13 @@ namespace Pulumi.Gcp.Healthcare
         /// </summary>
         [Output("complexDataTypeReferenceParsing")]
         public Output<string> ComplexDataTypeReferenceParsing { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("consentConfig")]
+        public Output<Outputs.FhirStoreConsentConfig?> ConsentConfig { get; private set; } = null!;
 
         /// <summary>
         /// Identifies the dataset addressed by this request. Must be in the format
@@ -423,6 +490,13 @@ namespace Pulumi.Gcp.Healthcare
         public Input<string>? ComplexDataTypeReferenceParsing { get; set; }
 
         /// <summary>
+        /// Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("consentConfig")]
+        public Input<Inputs.FhirStoreConsentConfigArgs>? ConsentConfig { get; set; }
+
+        /// <summary>
         /// Identifies the dataset addressed by this request. Must be in the format
         /// 'projects/{project}/locations/{location}/datasets/{dataset}'
         /// </summary>
@@ -580,6 +654,13 @@ namespace Pulumi.Gcp.Healthcare
         /// </summary>
         [Input("complexDataTypeReferenceParsing")]
         public Input<string>? ComplexDataTypeReferenceParsing { get; set; }
+
+        /// <summary>
+        /// Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("consentConfig")]
+        public Input<Inputs.FhirStoreConsentConfigGetArgs>? ConsentConfig { get; set; }
 
         /// <summary>
         /// Identifies the dataset addressed by this request. Must be in the format

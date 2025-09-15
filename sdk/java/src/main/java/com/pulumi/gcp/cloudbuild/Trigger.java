@@ -128,8 +128,9 @@ import javax.annotation.Nullable;
  *             .build(TriggerBuildArgs.builder()
  *                 .steps(                
  *                     TriggerBuildStepArgs.builder()
- *                         .name("gcr.io/cloud-builders/gsutil")
+ *                         .name("gcr.io/cloud-builders/gcloud")
  *                         .args(                        
+ *                             "storage",
  *                             "cp",
  *                             "gs://mybucket/remotefile.zip",
  *                             "localfile.zip")

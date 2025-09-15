@@ -7646,6 +7646,8 @@ func (o WorkerPoolPrivateServiceConnectPtrOutput) RouteAllTraffic() pulumi.BoolP
 type WorkerPoolWorkerConfig struct {
 	// Size of the disk attached to the worker, in GB. See [diskSizeGb](https://cloud.google.com/build/docs/private-pools/private-pool-config-file-schema#disksizegb). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
+	// Enable nested virtualization on the worker, if supported by the machine type. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will set this to false.
+	EnableNestedVirtualization *bool `pulumi:"enableNestedVirtualization"`
 	// Machine type of a worker, such as `n1-standard-1`. See [machineType](https://cloud.google.com/build/docs/private-pools/private-pool-config-file-schema#machinetype). If left blank, Cloud Build will use `n1-standard-1`.
 	MachineType *string `pulumi:"machineType"`
 	// If true, workers are created without any public address, which prevents network egress to public IPs.
@@ -7666,6 +7668,8 @@ type WorkerPoolWorkerConfigInput interface {
 type WorkerPoolWorkerConfigArgs struct {
 	// Size of the disk attached to the worker, in GB. See [diskSizeGb](https://cloud.google.com/build/docs/private-pools/private-pool-config-file-schema#disksizegb). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
+	// Enable nested virtualization on the worker, if supported by the machine type. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will set this to false.
+	EnableNestedVirtualization pulumi.BoolPtrInput `pulumi:"enableNestedVirtualization"`
 	// Machine type of a worker, such as `n1-standard-1`. See [machineType](https://cloud.google.com/build/docs/private-pools/private-pool-config-file-schema#machinetype). If left blank, Cloud Build will use `n1-standard-1`.
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
 	// If true, workers are created without any public address, which prevents network egress to public IPs.
@@ -7754,6 +7758,11 @@ func (o WorkerPoolWorkerConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WorkerPoolWorkerConfig) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
 }
 
+// Enable nested virtualization on the worker, if supported by the machine type. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will set this to false.
+func (o WorkerPoolWorkerConfigOutput) EnableNestedVirtualization() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkerPoolWorkerConfig) *bool { return v.EnableNestedVirtualization }).(pulumi.BoolPtrOutput)
+}
+
 // Machine type of a worker, such as `n1-standard-1`. See [machineType](https://cloud.google.com/build/docs/private-pools/private-pool-config-file-schema#machinetype). If left blank, Cloud Build will use `n1-standard-1`.
 func (o WorkerPoolWorkerConfigOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkerPoolWorkerConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
@@ -7796,6 +7805,16 @@ func (o WorkerPoolWorkerConfigPtrOutput) DiskSizeGb() pulumi.IntPtrOutput {
 		}
 		return v.DiskSizeGb
 	}).(pulumi.IntPtrOutput)
+}
+
+// Enable nested virtualization on the worker, if supported by the machine type. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will set this to false.
+func (o WorkerPoolWorkerConfigPtrOutput) EnableNestedVirtualization() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolWorkerConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableNestedVirtualization
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Machine type of a worker, such as `n1-standard-1`. See [machineType](https://cloud.google.com/build/docs/private-pools/private-pool-config-file-schema#machinetype). If left blank, Cloud Build will use `n1-standard-1`.

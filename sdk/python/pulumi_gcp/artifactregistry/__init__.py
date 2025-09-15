@@ -11,6 +11,7 @@ from .get_docker_images import *
 from .get_locations import *
 from .get_npm_package import *
 from .get_package import *
+from .get_python_package import *
 from .get_repositories import *
 from .get_repository import *
 from .get_repository_iam_policy import *

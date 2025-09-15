@@ -275,6 +275,10 @@ export class Volume extends pulumi.CustomResource {
      */
     declare public readonly storagePool: pulumi.Output<string>;
     /**
+     * Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+     */
+    declare public readonly throughputMibps: pulumi.Output<number>;
+    /**
      * Tiering policy for the volume.
      * Structure is documented below.
      */
@@ -343,6 +347,7 @@ export class Volume extends pulumi.CustomResource {
             resourceInputs["state"] = state?.state;
             resourceInputs["stateDetails"] = state?.stateDetails;
             resourceInputs["storagePool"] = state?.storagePool;
+            resourceInputs["throughputMibps"] = state?.throughputMibps;
             resourceInputs["tieringPolicy"] = state?.tieringPolicy;
             resourceInputs["unixPermissions"] = state?.unixPermissions;
             resourceInputs["usedGib"] = state?.usedGib;
@@ -386,6 +391,7 @@ export class Volume extends pulumi.CustomResource {
             resourceInputs["snapshotDirectory"] = args?.snapshotDirectory;
             resourceInputs["snapshotPolicy"] = args?.snapshotPolicy;
             resourceInputs["storagePool"] = args?.storagePool;
+            resourceInputs["throughputMibps"] = args?.throughputMibps;
             resourceInputs["tieringPolicy"] = args?.tieringPolicy;
             resourceInputs["unixPermissions"] = args?.unixPermissions;
             resourceInputs["activeDirectory"] = undefined /*out*/;
@@ -592,6 +598,10 @@ export interface VolumeState {
      */
     storagePool?: pulumi.Input<string>;
     /**
+     * Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+     */
+    throughputMibps?: pulumi.Input<number>;
+    /**
      * Tiering policy for the volume.
      * Structure is documented below.
      */
@@ -721,6 +731,10 @@ export interface VolumeArgs {
      * Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
      */
     storagePool: pulumi.Input<string>;
+    /**
+     * Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+     */
+    throughputMibps?: pulumi.Input<number>;
     /**
      * Tiering policy for the volume.
      * Structure is documented below.

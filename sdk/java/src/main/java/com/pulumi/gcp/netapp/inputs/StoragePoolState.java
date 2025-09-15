@@ -6,6 +6,7 @@ package com.pulumi.gcp.netapp.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
@@ -50,6 +51,21 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> allowAutoTiering() {
         return Optional.ofNullable(this.allowAutoTiering);
+    }
+
+    /**
+     * Available throughput of the storage pool (in MiB/s).
+     * 
+     */
+    @Import(name="availableThroughputMibps")
+    private @Nullable Output<Double> availableThroughputMibps;
+
+    /**
+     * @return Available throughput of the storage pool (in MiB/s).
+     * 
+     */
+    public Optional<Output<Double>> availableThroughputMibps() {
+        return Optional.ofNullable(this.availableThroughputMibps);
     }
 
     /**
@@ -296,6 +312,25 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * QoS (Quality of Service) type of the storage pool.
+     * Possible values are: AUTO, MANUAL.
+     * Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
+     * 
+     */
+    @Import(name="qosType")
+    private @Nullable Output<String> qosType;
+
+    /**
+     * @return QoS (Quality of Service) type of the storage pool.
+     * Possible values are: AUTO, MANUAL.
+     * Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
+     * 
+     */
+    public Optional<Output<String>> qosType() {
+        return Optional.ofNullable(this.qosType);
+    }
+
+    /**
      * Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
      * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
      * 
@@ -413,6 +448,7 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
     private StoragePoolState(StoragePoolState $) {
         this.activeDirectory = $.activeDirectory;
         this.allowAutoTiering = $.allowAutoTiering;
+        this.availableThroughputMibps = $.availableThroughputMibps;
         this.capacityGib = $.capacityGib;
         this.customPerformanceEnabled = $.customPerformanceEnabled;
         this.description = $.description;
@@ -428,6 +464,7 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
         this.network = $.network;
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
+        this.qosType = $.qosType;
         this.replicaZone = $.replicaZone;
         this.serviceLevel = $.serviceLevel;
         this.totalIops = $.totalIops;
@@ -499,6 +536,27 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder allowAutoTiering(Boolean allowAutoTiering) {
             return allowAutoTiering(Output.of(allowAutoTiering));
+        }
+
+        /**
+         * @param availableThroughputMibps Available throughput of the storage pool (in MiB/s).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder availableThroughputMibps(@Nullable Output<Double> availableThroughputMibps) {
+            $.availableThroughputMibps = availableThroughputMibps;
+            return this;
+        }
+
+        /**
+         * @param availableThroughputMibps Available throughput of the storage pool (in MiB/s).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder availableThroughputMibps(Double availableThroughputMibps) {
+            return availableThroughputMibps(Output.of(availableThroughputMibps));
         }
 
         /**
@@ -832,6 +890,31 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
             return pulumiLabels(Output.of(pulumiLabels));
+        }
+
+        /**
+         * @param qosType QoS (Quality of Service) type of the storage pool.
+         * Possible values are: AUTO, MANUAL.
+         * Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder qosType(@Nullable Output<String> qosType) {
+            $.qosType = qosType;
+            return this;
+        }
+
+        /**
+         * @param qosType QoS (Quality of Service) type of the storage pool.
+         * Possible values are: AUTO, MANUAL.
+         * Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder qosType(String qosType) {
+            return qosType(Output.of(qosType));
         }
 
         /**

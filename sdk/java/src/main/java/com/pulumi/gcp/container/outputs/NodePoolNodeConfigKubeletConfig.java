@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigKubeletConfigEvictionMinimumReclaim;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigKubeletConfigEvictionSoft;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigKubeletConfigEvictionSoftGracePeriod;
+import com.pulumi.gcp.container.outputs.NodePoolNodeConfigKubeletConfigMemoryManager;
+import com.pulumi.gcp.container.outputs.NodePoolNodeConfigKubeletConfigTopologyManager;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -98,6 +100,11 @@ public final class NodePoolNodeConfigKubeletConfig {
      */
     private @Nullable Integer maxParallelImagePulls;
     /**
+     * @return Configuration for the Memory Manager on the node. The memory manager optimizes memory and hugepages allocation for pods, especially those in the Guaranteed QoS class, by influencing NUMA affinity.
+     * 
+     */
+    private @Nullable NodePoolNodeConfigKubeletConfigMemoryManager memoryManager;
+    /**
      * @return Controls the maximum number of processes allowed to run in a pod.
      * 
      */
@@ -107,6 +114,11 @@ public final class NodePoolNodeConfigKubeletConfig {
      * 
      */
     private @Nullable Boolean singleProcessOomKill;
+    /**
+     * @return Configuration for the Topology Manager on the node. The Topology Manager aligns CPU, memory, and device resources on a node to optimize performance, especially for NUMA-aware workloads, by ensuring resource co-location.
+     * 
+     */
+    private @Nullable NodePoolNodeConfigKubeletConfigTopologyManager topologyManager;
 
     private NodePoolNodeConfigKubeletConfig() {}
     /**
@@ -222,6 +234,13 @@ public final class NodePoolNodeConfigKubeletConfig {
         return Optional.ofNullable(this.maxParallelImagePulls);
     }
     /**
+     * @return Configuration for the Memory Manager on the node. The memory manager optimizes memory and hugepages allocation for pods, especially those in the Guaranteed QoS class, by influencing NUMA affinity.
+     * 
+     */
+    public Optional<NodePoolNodeConfigKubeletConfigMemoryManager> memoryManager() {
+        return Optional.ofNullable(this.memoryManager);
+    }
+    /**
      * @return Controls the maximum number of processes allowed to run in a pod.
      * 
      */
@@ -234,6 +253,13 @@ public final class NodePoolNodeConfigKubeletConfig {
      */
     public Optional<Boolean> singleProcessOomKill() {
         return Optional.ofNullable(this.singleProcessOomKill);
+    }
+    /**
+     * @return Configuration for the Topology Manager on the node. The Topology Manager aligns CPU, memory, and device resources on a node to optimize performance, especially for NUMA-aware workloads, by ensuring resource co-location.
+     * 
+     */
+    public Optional<NodePoolNodeConfigKubeletConfigTopologyManager> topologyManager() {
+        return Optional.ofNullable(this.topologyManager);
     }
 
     public static Builder builder() {
@@ -261,8 +287,10 @@ public final class NodePoolNodeConfigKubeletConfig {
         private @Nullable String imageMinimumGcAge;
         private @Nullable String insecureKubeletReadonlyPortEnabled;
         private @Nullable Integer maxParallelImagePulls;
+        private @Nullable NodePoolNodeConfigKubeletConfigMemoryManager memoryManager;
         private @Nullable Integer podPidsLimit;
         private @Nullable Boolean singleProcessOomKill;
+        private @Nullable NodePoolNodeConfigKubeletConfigTopologyManager topologyManager;
         public Builder() {}
         public Builder(NodePoolNodeConfigKubeletConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -282,8 +310,10 @@ public final class NodePoolNodeConfigKubeletConfig {
     	      this.imageMinimumGcAge = defaults.imageMinimumGcAge;
     	      this.insecureKubeletReadonlyPortEnabled = defaults.insecureKubeletReadonlyPortEnabled;
     	      this.maxParallelImagePulls = defaults.maxParallelImagePulls;
+    	      this.memoryManager = defaults.memoryManager;
     	      this.podPidsLimit = defaults.podPidsLimit;
     	      this.singleProcessOomKill = defaults.singleProcessOomKill;
+    	      this.topologyManager = defaults.topologyManager;
         }
 
         @CustomType.Setter
@@ -386,6 +416,12 @@ public final class NodePoolNodeConfigKubeletConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder memoryManager(@Nullable NodePoolNodeConfigKubeletConfigMemoryManager memoryManager) {
+
+            this.memoryManager = memoryManager;
+            return this;
+        }
+        @CustomType.Setter
         public Builder podPidsLimit(@Nullable Integer podPidsLimit) {
 
             this.podPidsLimit = podPidsLimit;
@@ -395,6 +431,12 @@ public final class NodePoolNodeConfigKubeletConfig {
         public Builder singleProcessOomKill(@Nullable Boolean singleProcessOomKill) {
 
             this.singleProcessOomKill = singleProcessOomKill;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder topologyManager(@Nullable NodePoolNodeConfigKubeletConfigTopologyManager topologyManager) {
+
+            this.topologyManager = topologyManager;
             return this;
         }
         public NodePoolNodeConfigKubeletConfig build() {
@@ -415,8 +457,10 @@ public final class NodePoolNodeConfigKubeletConfig {
             _resultValue.imageMinimumGcAge = imageMinimumGcAge;
             _resultValue.insecureKubeletReadonlyPortEnabled = insecureKubeletReadonlyPortEnabled;
             _resultValue.maxParallelImagePulls = maxParallelImagePulls;
+            _resultValue.memoryManager = memoryManager;
             _resultValue.podPidsLimit = podPidsLimit;
             _resultValue.singleProcessOomKill = singleProcessOomKill;
+            _resultValue.topologyManager = topologyManager;
             return _resultValue;
         }
     }

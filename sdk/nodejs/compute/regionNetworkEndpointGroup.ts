@@ -246,7 +246,6 @@ import * as utilities from "../utilities";
  *     pscData: {
  *         producerPort: "88",
  *     },
- *     network: _default.selfLink,
  *     subnetwork: defaultSubnetwork.selfLink,
  * });
  * ```
@@ -396,7 +395,7 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
      * The URL of the network to which all network endpoints in the NEG belong. Uses
      * "default" project network if unspecified.
      */
-    declare public readonly network: pulumi.Output<string | undefined>;
+    declare public readonly network: pulumi.Output<string>;
     /**
      * Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.
      * Default value is `SERVERLESS`.

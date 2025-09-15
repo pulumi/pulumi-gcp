@@ -221,6 +221,42 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * ### Firestore Index Unique
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const database = new gcp.firestore.Database("database", {
+ *     project: "my-project-name",
+ *     name: "database-id-unique",
+ *     locationId: "nam5",
+ *     type: "FIRESTORE_NATIVE",
+ *     databaseEdition: "ENTERPRISE",
+ *     deleteProtectionState: "DELETE_PROTECTION_DISABLED",
+ *     deletionPolicy: "DELETE",
+ * });
+ * const my_index = new gcp.firestore.Index("my-index", {
+ *     project: "my-project-name",
+ *     database: database.name,
+ *     collection: "atestcollection",
+ *     apiScope: "MONGODB_COMPATIBLE_API",
+ *     queryScope: "COLLECTION_GROUP",
+ *     multikey: true,
+ *     density: "DENSE",
+ *     unique: true,
+ *     fields: [
+ *         {
+ *             fieldPath: "name",
+ *             order: "ASCENDING",
+ *         },
+ *         {
+ *             fieldPath: "description",
+ *             order: "DESCENDING",
+ *         },
+ *     ],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -311,6 +347,10 @@ export class Index extends pulumi.CustomResource {
      * Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
      */
     declare public readonly queryScope: pulumi.Output<string | undefined>;
+    /**
+     * Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
+     */
+    declare public readonly unique: pulumi.Output<boolean>;
 
     /**
      * Create a Index resource with the given unique name, arguments, and options.
@@ -334,6 +374,7 @@ export class Index extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
             resourceInputs["queryScope"] = state?.queryScope;
+            resourceInputs["unique"] = state?.unique;
         } else {
             const args = argsOrState as IndexArgs | undefined;
             if (args?.collection === undefined && !opts.urn) {
@@ -350,6 +391,7 @@ export class Index extends pulumi.CustomResource {
             resourceInputs["multikey"] = args?.multikey;
             resourceInputs["project"] = args?.project;
             resourceInputs["queryScope"] = args?.queryScope;
+            resourceInputs["unique"] = args?.unique;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -410,6 +452,10 @@ export interface IndexState {
      * Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
      */
     queryScope?: pulumi.Input<string>;
+    /**
+     * Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
+     */
+    unique?: pulumi.Input<boolean>;
 }
 
 /**
@@ -460,4 +506,8 @@ export interface IndexArgs {
      * Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
      */
     queryScope?: pulumi.Input<string>;
+    /**
+     * Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
+     */
+    unique?: pulumi.Input<boolean>;
 }

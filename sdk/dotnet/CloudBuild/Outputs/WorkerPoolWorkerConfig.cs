@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         /// </summary>
         public readonly int? DiskSizeGb;
         /// <summary>
+        /// Enable nested virtualization on the worker, if supported by the machine type. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will set this to false.
+        /// </summary>
+        public readonly bool? EnableNestedVirtualization;
+        /// <summary>
         /// Machine type of a worker, such as `n1-standard-1`. See [machineType](https://cloud.google.com/build/docs/private-pools/private-pool-config-file-schema#machinetype). If left blank, Cloud Build will use `n1-standard-1`.
         /// </summary>
         public readonly string? MachineType;
@@ -30,11 +34,14 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         private WorkerPoolWorkerConfig(
             int? diskSizeGb,
 
+            bool? enableNestedVirtualization,
+
             string? machineType,
 
             bool? noExternalIp)
         {
             DiskSizeGb = diskSizeGb;
+            EnableNestedVirtualization = enableNestedVirtualization;
             MachineType = machineType;
             NoExternalIp = noExternalIp;
         }

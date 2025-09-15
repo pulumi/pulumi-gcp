@@ -112,7 +112,7 @@ namespace Pulumi.Gcp.Logging
         public Output<string?> Filter { get; private set; } = null!;
 
         /// <summary>
-        /// Whether or not to include children organizations in the sink export. If true, logs
+        /// Whether or not to include child folders or projects in the sink export. If true, logs
         /// associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
         /// </summary>
         [Output("includeChildren")]
@@ -243,7 +243,7 @@ namespace Pulumi.Gcp.Logging
         public Input<string>? Filter { get; set; }
 
         /// <summary>
-        /// Whether or not to include children organizations in the sink export. If true, logs
+        /// Whether or not to include child folders or projects in the sink export. If true, logs
         /// associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
         /// </summary>
         [Input("includeChildren")]
@@ -329,7 +329,7 @@ namespace Pulumi.Gcp.Logging
         public Input<string>? Filter { get; set; }
 
         /// <summary>
-        /// Whether or not to include children organizations in the sink export. If true, logs
+        /// Whether or not to include child folders or projects in the sink export. If true, logs
         /// associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
         /// </summary>
         [Input("includeChildren")]

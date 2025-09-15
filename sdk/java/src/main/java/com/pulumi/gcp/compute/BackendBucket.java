@@ -368,6 +368,7 @@ public class BackendBucket extends com.pulumi.resources.CustomResource {
     }
     /**
      * If true, enable Cloud CDN for this BackendBucket.
+     * Note: This cannot be set to true when loadBalancingScheme is set to INTERNAL_MANAGED.
      * 
      */
     @Export(name="enableCdn", refs={Boolean.class}, tree="[0]")
@@ -375,6 +376,7 @@ public class BackendBucket extends com.pulumi.resources.CustomResource {
 
     /**
      * @return If true, enable Cloud CDN for this BackendBucket.
+     * Note: This cannot be set to true when loadBalancingScheme is set to INTERNAL_MANAGED.
      * 
      */
     public Output<Optional<Boolean>> enableCdn() {
@@ -383,6 +385,7 @@ public class BackendBucket extends com.pulumi.resources.CustomResource {
     /**
      * The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
      * If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+     * Important: CDN cannot be enabled (enableCdn cannot be set to true) when loadBalancingScheme is set to INTERNAL_MANAGED.
      * Possible values are: `INTERNAL_MANAGED`.
      * 
      */
@@ -392,6 +395,7 @@ public class BackendBucket extends com.pulumi.resources.CustomResource {
     /**
      * @return The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
      * If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+     * Important: CDN cannot be enabled (enableCdn cannot be set to true) when loadBalancingScheme is set to INTERNAL_MANAGED.
      * Possible values are: `INTERNAL_MANAGED`.
      * 
      */

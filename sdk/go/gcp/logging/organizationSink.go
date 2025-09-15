@@ -104,7 +104,7 @@ type OrganizationSink struct {
 	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter pulumi.StringPtrOutput `pulumi:"filter"`
-	// Whether or not to include children organizations in the sink export. If true, logs
+	// Whether or not to include child folders or projects in the sink export. If true, logs
 	// associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
 	IncludeChildren pulumi.BoolPtrOutput `pulumi:"includeChildren"`
 	// Whether or not to intercept logs from child projects. If true, matching logs will not
@@ -177,7 +177,7 @@ type organizationSinkState struct {
 	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter *string `pulumi:"filter"`
-	// Whether or not to include children organizations in the sink export. If true, logs
+	// Whether or not to include child folders or projects in the sink export. If true, logs
 	// associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
 	IncludeChildren *bool `pulumi:"includeChildren"`
 	// Whether or not to intercept logs from child projects. If true, matching logs will not
@@ -215,7 +215,7 @@ type OrganizationSinkState struct {
 	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter pulumi.StringPtrInput
-	// Whether or not to include children organizations in the sink export. If true, logs
+	// Whether or not to include child folders or projects in the sink export. If true, logs
 	// associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
 	IncludeChildren pulumi.BoolPtrInput
 	// Whether or not to intercept logs from child projects. If true, matching logs will not
@@ -257,7 +257,7 @@ type organizationSinkArgs struct {
 	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter *string `pulumi:"filter"`
-	// Whether or not to include children organizations in the sink export. If true, logs
+	// Whether or not to include child folders or projects in the sink export. If true, logs
 	// associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
 	IncludeChildren *bool `pulumi:"includeChildren"`
 	// Whether or not to intercept logs from child projects. If true, matching logs will not
@@ -293,7 +293,7 @@ type OrganizationSinkArgs struct {
 	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter pulumi.StringPtrInput
-	// Whether or not to include children organizations in the sink export. If true, logs
+	// Whether or not to include child folders or projects in the sink export. If true, logs
 	// associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
 	IncludeChildren pulumi.BoolPtrInput
 	// Whether or not to intercept logs from child projects. If true, matching logs will not
@@ -432,7 +432,7 @@ func (o OrganizationSinkOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OrganizationSink) pulumi.StringPtrOutput { return v.Filter }).(pulumi.StringPtrOutput)
 }
 
-// Whether or not to include children organizations in the sink export. If true, logs
+// Whether or not to include child folders or projects in the sink export. If true, logs
 // associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
 func (o OrganizationSinkOutput) IncludeChildren() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OrganizationSink) pulumi.BoolPtrOutput { return v.IncludeChildren }).(pulumi.BoolPtrOutput)

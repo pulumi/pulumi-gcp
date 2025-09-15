@@ -13,6 +13,307 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type AclConfigIdpConfig struct {
+	// External third party identity provider config.
+	// Structure is documented below.
+	ExternalIdpConfig *AclConfigIdpConfigExternalIdpConfig `pulumi:"externalIdpConfig"`
+	// Identity provider type.
+	// Possible values are: `GSUITE`, `THIRD_PARTY`.
+	IdpType *string `pulumi:"idpType"`
+}
+
+// AclConfigIdpConfigInput is an input type that accepts AclConfigIdpConfigArgs and AclConfigIdpConfigOutput values.
+// You can construct a concrete instance of `AclConfigIdpConfigInput` via:
+//
+//	AclConfigIdpConfigArgs{...}
+type AclConfigIdpConfigInput interface {
+	pulumi.Input
+
+	ToAclConfigIdpConfigOutput() AclConfigIdpConfigOutput
+	ToAclConfigIdpConfigOutputWithContext(context.Context) AclConfigIdpConfigOutput
+}
+
+type AclConfigIdpConfigArgs struct {
+	// External third party identity provider config.
+	// Structure is documented below.
+	ExternalIdpConfig AclConfigIdpConfigExternalIdpConfigPtrInput `pulumi:"externalIdpConfig"`
+	// Identity provider type.
+	// Possible values are: `GSUITE`, `THIRD_PARTY`.
+	IdpType pulumi.StringPtrInput `pulumi:"idpType"`
+}
+
+func (AclConfigIdpConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclConfigIdpConfig)(nil)).Elem()
+}
+
+func (i AclConfigIdpConfigArgs) ToAclConfigIdpConfigOutput() AclConfigIdpConfigOutput {
+	return i.ToAclConfigIdpConfigOutputWithContext(context.Background())
+}
+
+func (i AclConfigIdpConfigArgs) ToAclConfigIdpConfigOutputWithContext(ctx context.Context) AclConfigIdpConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclConfigIdpConfigOutput)
+}
+
+func (i AclConfigIdpConfigArgs) ToAclConfigIdpConfigPtrOutput() AclConfigIdpConfigPtrOutput {
+	return i.ToAclConfigIdpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AclConfigIdpConfigArgs) ToAclConfigIdpConfigPtrOutputWithContext(ctx context.Context) AclConfigIdpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclConfigIdpConfigOutput).ToAclConfigIdpConfigPtrOutputWithContext(ctx)
+}
+
+// AclConfigIdpConfigPtrInput is an input type that accepts AclConfigIdpConfigArgs, AclConfigIdpConfigPtr and AclConfigIdpConfigPtrOutput values.
+// You can construct a concrete instance of `AclConfigIdpConfigPtrInput` via:
+//
+//	        AclConfigIdpConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AclConfigIdpConfigPtrInput interface {
+	pulumi.Input
+
+	ToAclConfigIdpConfigPtrOutput() AclConfigIdpConfigPtrOutput
+	ToAclConfigIdpConfigPtrOutputWithContext(context.Context) AclConfigIdpConfigPtrOutput
+}
+
+type aclConfigIdpConfigPtrType AclConfigIdpConfigArgs
+
+func AclConfigIdpConfigPtr(v *AclConfigIdpConfigArgs) AclConfigIdpConfigPtrInput {
+	return (*aclConfigIdpConfigPtrType)(v)
+}
+
+func (*aclConfigIdpConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AclConfigIdpConfig)(nil)).Elem()
+}
+
+func (i *aclConfigIdpConfigPtrType) ToAclConfigIdpConfigPtrOutput() AclConfigIdpConfigPtrOutput {
+	return i.ToAclConfigIdpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aclConfigIdpConfigPtrType) ToAclConfigIdpConfigPtrOutputWithContext(ctx context.Context) AclConfigIdpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclConfigIdpConfigPtrOutput)
+}
+
+type AclConfigIdpConfigOutput struct{ *pulumi.OutputState }
+
+func (AclConfigIdpConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclConfigIdpConfig)(nil)).Elem()
+}
+
+func (o AclConfigIdpConfigOutput) ToAclConfigIdpConfigOutput() AclConfigIdpConfigOutput {
+	return o
+}
+
+func (o AclConfigIdpConfigOutput) ToAclConfigIdpConfigOutputWithContext(ctx context.Context) AclConfigIdpConfigOutput {
+	return o
+}
+
+func (o AclConfigIdpConfigOutput) ToAclConfigIdpConfigPtrOutput() AclConfigIdpConfigPtrOutput {
+	return o.ToAclConfigIdpConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AclConfigIdpConfigOutput) ToAclConfigIdpConfigPtrOutputWithContext(ctx context.Context) AclConfigIdpConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AclConfigIdpConfig) *AclConfigIdpConfig {
+		return &v
+	}).(AclConfigIdpConfigPtrOutput)
+}
+
+// External third party identity provider config.
+// Structure is documented below.
+func (o AclConfigIdpConfigOutput) ExternalIdpConfig() AclConfigIdpConfigExternalIdpConfigPtrOutput {
+	return o.ApplyT(func(v AclConfigIdpConfig) *AclConfigIdpConfigExternalIdpConfig { return v.ExternalIdpConfig }).(AclConfigIdpConfigExternalIdpConfigPtrOutput)
+}
+
+// Identity provider type.
+// Possible values are: `GSUITE`, `THIRD_PARTY`.
+func (o AclConfigIdpConfigOutput) IdpType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AclConfigIdpConfig) *string { return v.IdpType }).(pulumi.StringPtrOutput)
+}
+
+type AclConfigIdpConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AclConfigIdpConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AclConfigIdpConfig)(nil)).Elem()
+}
+
+func (o AclConfigIdpConfigPtrOutput) ToAclConfigIdpConfigPtrOutput() AclConfigIdpConfigPtrOutput {
+	return o
+}
+
+func (o AclConfigIdpConfigPtrOutput) ToAclConfigIdpConfigPtrOutputWithContext(ctx context.Context) AclConfigIdpConfigPtrOutput {
+	return o
+}
+
+func (o AclConfigIdpConfigPtrOutput) Elem() AclConfigIdpConfigOutput {
+	return o.ApplyT(func(v *AclConfigIdpConfig) AclConfigIdpConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AclConfigIdpConfig
+		return ret
+	}).(AclConfigIdpConfigOutput)
+}
+
+// External third party identity provider config.
+// Structure is documented below.
+func (o AclConfigIdpConfigPtrOutput) ExternalIdpConfig() AclConfigIdpConfigExternalIdpConfigPtrOutput {
+	return o.ApplyT(func(v *AclConfigIdpConfig) *AclConfigIdpConfigExternalIdpConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalIdpConfig
+	}).(AclConfigIdpConfigExternalIdpConfigPtrOutput)
+}
+
+// Identity provider type.
+// Possible values are: `GSUITE`, `THIRD_PARTY`.
+func (o AclConfigIdpConfigPtrOutput) IdpType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AclConfigIdpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdpType
+	}).(pulumi.StringPtrOutput)
+}
+
+type AclConfigIdpConfigExternalIdpConfig struct {
+	// Workforce pool name: "locations/global/workforcePools/pool_id"
+	WorkforcePoolName *string `pulumi:"workforcePoolName"`
+}
+
+// AclConfigIdpConfigExternalIdpConfigInput is an input type that accepts AclConfigIdpConfigExternalIdpConfigArgs and AclConfigIdpConfigExternalIdpConfigOutput values.
+// You can construct a concrete instance of `AclConfigIdpConfigExternalIdpConfigInput` via:
+//
+//	AclConfigIdpConfigExternalIdpConfigArgs{...}
+type AclConfigIdpConfigExternalIdpConfigInput interface {
+	pulumi.Input
+
+	ToAclConfigIdpConfigExternalIdpConfigOutput() AclConfigIdpConfigExternalIdpConfigOutput
+	ToAclConfigIdpConfigExternalIdpConfigOutputWithContext(context.Context) AclConfigIdpConfigExternalIdpConfigOutput
+}
+
+type AclConfigIdpConfigExternalIdpConfigArgs struct {
+	// Workforce pool name: "locations/global/workforcePools/pool_id"
+	WorkforcePoolName pulumi.StringPtrInput `pulumi:"workforcePoolName"`
+}
+
+func (AclConfigIdpConfigExternalIdpConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclConfigIdpConfigExternalIdpConfig)(nil)).Elem()
+}
+
+func (i AclConfigIdpConfigExternalIdpConfigArgs) ToAclConfigIdpConfigExternalIdpConfigOutput() AclConfigIdpConfigExternalIdpConfigOutput {
+	return i.ToAclConfigIdpConfigExternalIdpConfigOutputWithContext(context.Background())
+}
+
+func (i AclConfigIdpConfigExternalIdpConfigArgs) ToAclConfigIdpConfigExternalIdpConfigOutputWithContext(ctx context.Context) AclConfigIdpConfigExternalIdpConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclConfigIdpConfigExternalIdpConfigOutput)
+}
+
+func (i AclConfigIdpConfigExternalIdpConfigArgs) ToAclConfigIdpConfigExternalIdpConfigPtrOutput() AclConfigIdpConfigExternalIdpConfigPtrOutput {
+	return i.ToAclConfigIdpConfigExternalIdpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AclConfigIdpConfigExternalIdpConfigArgs) ToAclConfigIdpConfigExternalIdpConfigPtrOutputWithContext(ctx context.Context) AclConfigIdpConfigExternalIdpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclConfigIdpConfigExternalIdpConfigOutput).ToAclConfigIdpConfigExternalIdpConfigPtrOutputWithContext(ctx)
+}
+
+// AclConfigIdpConfigExternalIdpConfigPtrInput is an input type that accepts AclConfigIdpConfigExternalIdpConfigArgs, AclConfigIdpConfigExternalIdpConfigPtr and AclConfigIdpConfigExternalIdpConfigPtrOutput values.
+// You can construct a concrete instance of `AclConfigIdpConfigExternalIdpConfigPtrInput` via:
+//
+//	        AclConfigIdpConfigExternalIdpConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AclConfigIdpConfigExternalIdpConfigPtrInput interface {
+	pulumi.Input
+
+	ToAclConfigIdpConfigExternalIdpConfigPtrOutput() AclConfigIdpConfigExternalIdpConfigPtrOutput
+	ToAclConfigIdpConfigExternalIdpConfigPtrOutputWithContext(context.Context) AclConfigIdpConfigExternalIdpConfigPtrOutput
+}
+
+type aclConfigIdpConfigExternalIdpConfigPtrType AclConfigIdpConfigExternalIdpConfigArgs
+
+func AclConfigIdpConfigExternalIdpConfigPtr(v *AclConfigIdpConfigExternalIdpConfigArgs) AclConfigIdpConfigExternalIdpConfigPtrInput {
+	return (*aclConfigIdpConfigExternalIdpConfigPtrType)(v)
+}
+
+func (*aclConfigIdpConfigExternalIdpConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AclConfigIdpConfigExternalIdpConfig)(nil)).Elem()
+}
+
+func (i *aclConfigIdpConfigExternalIdpConfigPtrType) ToAclConfigIdpConfigExternalIdpConfigPtrOutput() AclConfigIdpConfigExternalIdpConfigPtrOutput {
+	return i.ToAclConfigIdpConfigExternalIdpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aclConfigIdpConfigExternalIdpConfigPtrType) ToAclConfigIdpConfigExternalIdpConfigPtrOutputWithContext(ctx context.Context) AclConfigIdpConfigExternalIdpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclConfigIdpConfigExternalIdpConfigPtrOutput)
+}
+
+type AclConfigIdpConfigExternalIdpConfigOutput struct{ *pulumi.OutputState }
+
+func (AclConfigIdpConfigExternalIdpConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclConfigIdpConfigExternalIdpConfig)(nil)).Elem()
+}
+
+func (o AclConfigIdpConfigExternalIdpConfigOutput) ToAclConfigIdpConfigExternalIdpConfigOutput() AclConfigIdpConfigExternalIdpConfigOutput {
+	return o
+}
+
+func (o AclConfigIdpConfigExternalIdpConfigOutput) ToAclConfigIdpConfigExternalIdpConfigOutputWithContext(ctx context.Context) AclConfigIdpConfigExternalIdpConfigOutput {
+	return o
+}
+
+func (o AclConfigIdpConfigExternalIdpConfigOutput) ToAclConfigIdpConfigExternalIdpConfigPtrOutput() AclConfigIdpConfigExternalIdpConfigPtrOutput {
+	return o.ToAclConfigIdpConfigExternalIdpConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AclConfigIdpConfigExternalIdpConfigOutput) ToAclConfigIdpConfigExternalIdpConfigPtrOutputWithContext(ctx context.Context) AclConfigIdpConfigExternalIdpConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AclConfigIdpConfigExternalIdpConfig) *AclConfigIdpConfigExternalIdpConfig {
+		return &v
+	}).(AclConfigIdpConfigExternalIdpConfigPtrOutput)
+}
+
+// Workforce pool name: "locations/global/workforcePools/pool_id"
+func (o AclConfigIdpConfigExternalIdpConfigOutput) WorkforcePoolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AclConfigIdpConfigExternalIdpConfig) *string { return v.WorkforcePoolName }).(pulumi.StringPtrOutput)
+}
+
+type AclConfigIdpConfigExternalIdpConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AclConfigIdpConfigExternalIdpConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AclConfigIdpConfigExternalIdpConfig)(nil)).Elem()
+}
+
+func (o AclConfigIdpConfigExternalIdpConfigPtrOutput) ToAclConfigIdpConfigExternalIdpConfigPtrOutput() AclConfigIdpConfigExternalIdpConfigPtrOutput {
+	return o
+}
+
+func (o AclConfigIdpConfigExternalIdpConfigPtrOutput) ToAclConfigIdpConfigExternalIdpConfigPtrOutputWithContext(ctx context.Context) AclConfigIdpConfigExternalIdpConfigPtrOutput {
+	return o
+}
+
+func (o AclConfigIdpConfigExternalIdpConfigPtrOutput) Elem() AclConfigIdpConfigExternalIdpConfigOutput {
+	return o.ApplyT(func(v *AclConfigIdpConfigExternalIdpConfig) AclConfigIdpConfigExternalIdpConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AclConfigIdpConfigExternalIdpConfig
+		return ret
+	}).(AclConfigIdpConfigExternalIdpConfigOutput)
+}
+
+// Workforce pool name: "locations/global/workforcePools/pool_id"
+func (o AclConfigIdpConfigExternalIdpConfigPtrOutput) WorkforcePoolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AclConfigIdpConfigExternalIdpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkforcePoolName
+	}).(pulumi.StringPtrOutput)
+}
+
 type ChatEngineChatEngineConfig struct {
 	// The configuration to generate the Dialogflow agent that is associated to this Engine.
 	// Exactly one of `agentCreationConfig` or `dialogflowAgentToLink` must be set.
@@ -4522,6 +4823,10 @@ func (o TargetSiteSiteVerificationInfoArrayOutput) Index(i pulumi.IntInput) Targ
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AclConfigIdpConfigInput)(nil)).Elem(), AclConfigIdpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclConfigIdpConfigPtrInput)(nil)).Elem(), AclConfigIdpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclConfigIdpConfigExternalIdpConfigInput)(nil)).Elem(), AclConfigIdpConfigExternalIdpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclConfigIdpConfigExternalIdpConfigPtrInput)(nil)).Elem(), AclConfigIdpConfigExternalIdpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ChatEngineChatEngineConfigInput)(nil)).Elem(), ChatEngineChatEngineConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ChatEngineChatEngineConfigPtrInput)(nil)).Elem(), ChatEngineChatEngineConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ChatEngineChatEngineConfigAgentCreationConfigInput)(nil)).Elem(), ChatEngineChatEngineConfigAgentCreationConfigArgs{})
@@ -4578,6 +4883,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetSiteFailureReasonQuotaFailurePtrInput)(nil)).Elem(), TargetSiteFailureReasonQuotaFailureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetSiteSiteVerificationInfoInput)(nil)).Elem(), TargetSiteSiteVerificationInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetSiteSiteVerificationInfoArrayInput)(nil)).Elem(), TargetSiteSiteVerificationInfoArray{})
+	pulumi.RegisterOutputType(AclConfigIdpConfigOutput{})
+	pulumi.RegisterOutputType(AclConfigIdpConfigPtrOutput{})
+	pulumi.RegisterOutputType(AclConfigIdpConfigExternalIdpConfigOutput{})
+	pulumi.RegisterOutputType(AclConfigIdpConfigExternalIdpConfigPtrOutput{})
 	pulumi.RegisterOutputType(ChatEngineChatEngineConfigOutput{})
 	pulumi.RegisterOutputType(ChatEngineChatEngineConfigPtrOutput{})
 	pulumi.RegisterOutputType(ChatEngineChatEngineConfigAgentCreationConfigOutput{})

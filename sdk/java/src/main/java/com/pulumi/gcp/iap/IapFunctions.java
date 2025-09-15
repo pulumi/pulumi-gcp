@@ -25,6 +25,8 @@ import com.pulumi.gcp.iap.inputs.GetWebBackendServiceIamPolicyArgs;
 import com.pulumi.gcp.iap.inputs.GetWebBackendServiceIamPolicyPlainArgs;
 import com.pulumi.gcp.iap.inputs.GetWebCloudRunServiceIamPolicyArgs;
 import com.pulumi.gcp.iap.inputs.GetWebCloudRunServiceIamPolicyPlainArgs;
+import com.pulumi.gcp.iap.inputs.GetWebForwardingRuleServiceIamPolicyArgs;
+import com.pulumi.gcp.iap.inputs.GetWebForwardingRuleServiceIamPolicyPlainArgs;
 import com.pulumi.gcp.iap.inputs.GetWebIamPolicyArgs;
 import com.pulumi.gcp.iap.inputs.GetWebIamPolicyPlainArgs;
 import com.pulumi.gcp.iap.inputs.GetWebRegionBackendServiceIamPolicyArgs;
@@ -43,6 +45,7 @@ import com.pulumi.gcp.iap.outputs.GetTunnelIamPolicyResult;
 import com.pulumi.gcp.iap.outputs.GetTunnelInstanceIamPolicyResult;
 import com.pulumi.gcp.iap.outputs.GetWebBackendServiceIamPolicyResult;
 import com.pulumi.gcp.iap.outputs.GetWebCloudRunServiceIamPolicyResult;
+import com.pulumi.gcp.iap.outputs.GetWebForwardingRuleServiceIamPolicyResult;
 import com.pulumi.gcp.iap.outputs.GetWebIamPolicyResult;
 import com.pulumi.gcp.iap.outputs.GetWebRegionBackendServiceIamPolicyResult;
 import com.pulumi.gcp.iap.outputs.GetWebRegionForwardingRuleServiceIamPolicyResult;
@@ -1909,6 +1912,221 @@ public final class IapFunctions {
      */
     public static CompletableFuture<GetWebCloudRunServiceIamPolicyResult> getWebCloudRunServiceIamPolicyPlain(GetWebCloudRunServiceIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:iap/getWebCloudRunServiceIamPolicy:getWebCloudRunServiceIamPolicy", TypeShape.of(GetWebCloudRunServiceIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for webforwardingruleservice
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetWebForwardingRuleServiceIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getWebForwardingRuleServiceIamPolicy(GetWebForwardingRuleServiceIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .forwardingRuleServiceName(default_.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetWebForwardingRuleServiceIamPolicyResult> getWebForwardingRuleServiceIamPolicy(GetWebForwardingRuleServiceIamPolicyArgs args) {
+        return getWebForwardingRuleServiceIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for webforwardingruleservice
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetWebForwardingRuleServiceIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getWebForwardingRuleServiceIamPolicy(GetWebForwardingRuleServiceIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .forwardingRuleServiceName(default_.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetWebForwardingRuleServiceIamPolicyResult> getWebForwardingRuleServiceIamPolicyPlain(GetWebForwardingRuleServiceIamPolicyPlainArgs args) {
+        return getWebForwardingRuleServiceIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for webforwardingruleservice
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetWebForwardingRuleServiceIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getWebForwardingRuleServiceIamPolicy(GetWebForwardingRuleServiceIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .forwardingRuleServiceName(default_.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetWebForwardingRuleServiceIamPolicyResult> getWebForwardingRuleServiceIamPolicy(GetWebForwardingRuleServiceIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:iap/getWebForwardingRuleServiceIamPolicy:getWebForwardingRuleServiceIamPolicy", TypeShape.of(GetWebForwardingRuleServiceIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for webforwardingruleservice
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetWebForwardingRuleServiceIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getWebForwardingRuleServiceIamPolicy(GetWebForwardingRuleServiceIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .forwardingRuleServiceName(default_.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetWebForwardingRuleServiceIamPolicyResult> getWebForwardingRuleServiceIamPolicy(GetWebForwardingRuleServiceIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:iap/getWebForwardingRuleServiceIamPolicy:getWebForwardingRuleServiceIamPolicy", TypeShape.of(GetWebForwardingRuleServiceIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for webforwardingruleservice
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetWebForwardingRuleServiceIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getWebForwardingRuleServiceIamPolicy(GetWebForwardingRuleServiceIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .forwardingRuleServiceName(default_.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetWebForwardingRuleServiceIamPolicyResult> getWebForwardingRuleServiceIamPolicyPlain(GetWebForwardingRuleServiceIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:iap/getWebForwardingRuleServiceIamPolicy:getWebForwardingRuleServiceIamPolicy", TypeShape.of(GetWebForwardingRuleServiceIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves the current IAM policy data for web

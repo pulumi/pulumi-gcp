@@ -32,6 +32,7 @@ public final class GetDatabaseInstanceResult {
     private String dnsName;
     private List<GetDatabaseInstanceDnsName> dnsNames;
     private String encryptionKeyName;
+    private String finalBackupDescription;
     private String firstIpAddress;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -86,6 +87,9 @@ public final class GetDatabaseInstanceResult {
     }
     public String encryptionKeyName() {
         return this.encryptionKeyName;
+    }
+    public String finalBackupDescription() {
+        return this.finalBackupDescription;
     }
     public String firstIpAddress() {
         return this.firstIpAddress;
@@ -176,6 +180,7 @@ public final class GetDatabaseInstanceResult {
         private String dnsName;
         private List<GetDatabaseInstanceDnsName> dnsNames;
         private String encryptionKeyName;
+        private String finalBackupDescription;
         private String firstIpAddress;
         private String id;
         private String instanceType;
@@ -210,6 +215,7 @@ public final class GetDatabaseInstanceResult {
     	      this.dnsName = defaults.dnsName;
     	      this.dnsNames = defaults.dnsNames;
     	      this.encryptionKeyName = defaults.encryptionKeyName;
+    	      this.finalBackupDescription = defaults.finalBackupDescription;
     	      this.firstIpAddress = defaults.firstIpAddress;
     	      this.id = defaults.id;
     	      this.instanceType = defaults.instanceType;
@@ -313,6 +319,14 @@ public final class GetDatabaseInstanceResult {
               throw new MissingRequiredPropertyException("GetDatabaseInstanceResult", "encryptionKeyName");
             }
             this.encryptionKeyName = encryptionKeyName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder finalBackupDescription(String finalBackupDescription) {
+            if (finalBackupDescription == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceResult", "finalBackupDescription");
+            }
+            this.finalBackupDescription = finalBackupDescription;
             return this;
         }
         @CustomType.Setter
@@ -521,6 +535,7 @@ public final class GetDatabaseInstanceResult {
             _resultValue.dnsName = dnsName;
             _resultValue.dnsNames = dnsNames;
             _resultValue.encryptionKeyName = encryptionKeyName;
+            _resultValue.finalBackupDescription = finalBackupDescription;
             _resultValue.firstIpAddress = firstIpAddress;
             _resultValue.id = id;
             _resultValue.instanceType = instanceType;

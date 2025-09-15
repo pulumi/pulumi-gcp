@@ -1014,6 +1014,13 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.RegionBackendServiceOutlierDetection?> OutlierDetection { get; private set; } = null!;
 
         /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Output("params")]
+        public Output<Outputs.RegionBackendServiceParams?> Params { get; private set; } = null!;
+
+        /// <summary>
         /// A named port on a backend instance group representing the port for
         /// communication to the backend VMs in that group. Required when the
         /// loadBalancingScheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
@@ -1389,6 +1396,13 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.RegionBackendServiceOutlierDetectionArgs>? OutlierDetection { get; set; }
 
         /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.RegionBackendServiceParamsArgs>? Params { get; set; }
+
+        /// <summary>
         /// A named port on a backend instance group representing the port for
         /// communication to the backend VMs in that group. Required when the
         /// loadBalancingScheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
@@ -1737,6 +1751,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("outlierDetection")]
         public Input<Inputs.RegionBackendServiceOutlierDetectionGetArgs>? OutlierDetection { get; set; }
+
+        /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.RegionBackendServiceParamsGetArgs>? Params { get; set; }
 
         /// <summary>
         /// A named port on a backend instance group representing the port for

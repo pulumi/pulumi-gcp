@@ -43,6 +43,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceDnsNameResult> DnsNames;
         public readonly string EncryptionKeyName;
+        /// <summary>
+        /// The description of final backup if instance enable create final backup during instance deletion.
+        /// </summary>
+        public readonly string FinalBackupDescription;
         public readonly string FirstIpAddress;
         /// <summary>
         /// The type of the instance. See https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType for supported values.
@@ -127,6 +131,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string encryptionKeyName,
 
+            string finalBackupDescription,
+
             string firstIpAddress,
 
             string instanceType,
@@ -178,6 +184,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             DnsName = dnsName;
             DnsNames = dnsNames;
             EncryptionKeyName = encryptionKeyName;
+            FinalBackupDescription = finalBackupDescription;
             FirstIpAddress = firstIpAddress;
             InstanceType = instanceType;
             IpAddresses = ipAddresses;

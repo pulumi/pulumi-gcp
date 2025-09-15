@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.healthcare.FhirStoreArgs;
 import com.pulumi.gcp.healthcare.inputs.FhirStoreState;
+import com.pulumi.gcp.healthcare.outputs.FhirStoreConsentConfig;
 import com.pulumi.gcp.healthcare.outputs.FhirStoreNotificationConfig;
 import com.pulumi.gcp.healthcare.outputs.FhirStoreStreamConfig;
 import java.lang.Boolean;
@@ -232,6 +233,79 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Healthcare Fhir Store Consent Config
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
+ * import com.pulumi.gcp.healthcare.Dataset;
+ * import com.pulumi.gcp.healthcare.DatasetArgs;
+ * import com.pulumi.gcp.healthcare.FhirStore;
+ * import com.pulumi.gcp.healthcare.FhirStoreArgs;
+ * import com.pulumi.gcp.healthcare.inputs.FhirStoreNotificationConfigArgs;
+ * import com.pulumi.gcp.healthcare.inputs.FhirStoreConsentConfigArgs;
+ * import com.pulumi.gcp.healthcare.inputs.FhirStoreConsentConfigConsentHeaderHandlingArgs;
+ * import com.pulumi.gcp.healthcare.inputs.FhirStoreConsentConfigAccessDeterminationLogConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var topic = new Topic("topic", TopicArgs.builder()
+ *             .name("fhir-notifications")
+ *             .build());
+ * 
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()
+ *             .name("example-dataset")
+ *             .location("us-central1")
+ *             .build());
+ * 
+ *         var default_ = new FhirStore("default", FhirStoreArgs.builder()
+ *             .name("example-fhir-store")
+ *             .dataset(dataset.id())
+ *             .version("R4")
+ *             .complexDataTypeReferenceParsing("DISABLED")
+ *             .enableUpdateCreate(false)
+ *             .disableReferentialIntegrity(false)
+ *             .disableResourceVersioning(false)
+ *             .enableHistoryImport(false)
+ *             .defaultSearchHandlingStrict(false)
+ *             .notificationConfigs(FhirStoreNotificationConfigArgs.builder()
+ *                 .pubsubTopic(topic.id())
+ *                 .build())
+ *             .labels(Map.of("label1", "labelvalue1"))
+ *             .consentConfig(FhirStoreConsentConfigArgs.builder()
+ *                 .version("V1")
+ *                 .accessEnforced(true)
+ *                 .consentHeaderHandling(FhirStoreConsentConfigConsentHeaderHandlingArgs.builder()
+ *                     .profile("REQUIRED_ON_READ")
+ *                     .build())
+ *                 .accessDeterminationLogConfig(FhirStoreConsentConfigAccessDeterminationLogConfigArgs.builder()
+ *                     .logLevel("VERBOSE")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -269,6 +343,22 @@ public class FhirStore extends com.pulumi.resources.CustomResource {
      */
     public Output<String> complexDataTypeReferenceParsing() {
         return this.complexDataTypeReferenceParsing;
+    }
+    /**
+     * Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="consentConfig", refs={FhirStoreConsentConfig.class}, tree="[0]")
+    private Output</* @Nullable */ FhirStoreConsentConfig> consentConfig;
+
+    /**
+     * @return Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<FhirStoreConsentConfig>> consentConfig() {
+        return Codegen.optional(this.consentConfig);
     }
     /**
      * Identifies the dataset addressed by this request. Must be in the format

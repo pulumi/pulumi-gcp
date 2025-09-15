@@ -165,7 +165,7 @@ namespace Pulumi.Gcp.CertificateManager
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// A map entry that is inputted into the cetrificate map
+        /// A map entry that is inputted into the certificate map
         /// </summary>
         [Output("map")]
         public Output<string> Map { get; private set; } = null!;
@@ -309,7 +309,7 @@ namespace Pulumi.Gcp.CertificateManager
         }
 
         /// <summary>
-        /// A map entry that is inputted into the cetrificate map
+        /// A map entry that is inputted into the certificate map
         /// </summary>
         [Input("map", required: true)]
         public Input<string> Map { get; set; } = null!;
@@ -413,7 +413,7 @@ namespace Pulumi.Gcp.CertificateManager
         }
 
         /// <summary>
-        /// A map entry that is inputted into the cetrificate map
+        /// A map entry that is inputted into the certificate map
         /// </summary>
         [Input("map")]
         public Input<string>? Map { get; set; }

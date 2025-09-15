@@ -249,6 +249,25 @@ public final class StoragePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * QoS (Quality of Service) type of the storage pool.
+     * Possible values are: AUTO, MANUAL.
+     * Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
+     * 
+     */
+    @Import(name="qosType")
+    private @Nullable Output<String> qosType;
+
+    /**
+     * @return QoS (Quality of Service) type of the storage pool.
+     * Possible values are: AUTO, MANUAL.
+     * Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
+     * 
+     */
+    public Optional<Output<String>> qosType() {
+        return Optional.ofNullable(this.qosType);
+    }
+
+    /**
      * Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
      * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
      * 
@@ -348,6 +367,7 @@ public final class StoragePoolArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.network = $.network;
         this.project = $.project;
+        this.qosType = $.qosType;
         this.replicaZone = $.replicaZone;
         this.serviceLevel = $.serviceLevel;
         this.totalIops = $.totalIops;
@@ -685,6 +705,31 @@ public final class StoragePoolArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param qosType QoS (Quality of Service) type of the storage pool.
+         * Possible values are: AUTO, MANUAL.
+         * Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder qosType(@Nullable Output<String> qosType) {
+            $.qosType = qosType;
+            return this;
+        }
+
+        /**
+         * @param qosType QoS (Quality of Service) type of the storage pool.
+         * Possible values are: AUTO, MANUAL.
+         * Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder qosType(String qosType) {
+            return qosType(Output.of(qosType));
         }
 
         /**

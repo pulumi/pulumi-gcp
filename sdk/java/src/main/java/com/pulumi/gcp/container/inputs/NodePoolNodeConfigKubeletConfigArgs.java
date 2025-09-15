@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigKubeletConfigEvictionMinimumReclaimArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigKubeletConfigEvictionSoftArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigKubeletConfigEvictionSoftGracePeriodArgs;
+import com.pulumi.gcp.container.inputs.NodePoolNodeConfigKubeletConfigMemoryManagerArgs;
+import com.pulumi.gcp.container.inputs.NodePoolNodeConfigKubeletConfigTopologyManagerArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -262,6 +264,21 @@ public final class NodePoolNodeConfigKubeletConfigArgs extends com.pulumi.resour
     }
 
     /**
+     * Configuration for the Memory Manager on the node. The memory manager optimizes memory and hugepages allocation for pods, especially those in the Guaranteed QoS class, by influencing NUMA affinity.
+     * 
+     */
+    @Import(name="memoryManager")
+    private @Nullable Output<NodePoolNodeConfigKubeletConfigMemoryManagerArgs> memoryManager;
+
+    /**
+     * @return Configuration for the Memory Manager on the node. The memory manager optimizes memory and hugepages allocation for pods, especially those in the Guaranteed QoS class, by influencing NUMA affinity.
+     * 
+     */
+    public Optional<Output<NodePoolNodeConfigKubeletConfigMemoryManagerArgs>> memoryManager() {
+        return Optional.ofNullable(this.memoryManager);
+    }
+
+    /**
      * Controls the maximum number of processes allowed to run in a pod.
      * 
      */
@@ -291,6 +308,21 @@ public final class NodePoolNodeConfigKubeletConfigArgs extends com.pulumi.resour
         return Optional.ofNullable(this.singleProcessOomKill);
     }
 
+    /**
+     * Configuration for the Topology Manager on the node. The Topology Manager aligns CPU, memory, and device resources on a node to optimize performance, especially for NUMA-aware workloads, by ensuring resource co-location.
+     * 
+     */
+    @Import(name="topologyManager")
+    private @Nullable Output<NodePoolNodeConfigKubeletConfigTopologyManagerArgs> topologyManager;
+
+    /**
+     * @return Configuration for the Topology Manager on the node. The Topology Manager aligns CPU, memory, and device resources on a node to optimize performance, especially for NUMA-aware workloads, by ensuring resource co-location.
+     * 
+     */
+    public Optional<Output<NodePoolNodeConfigKubeletConfigTopologyManagerArgs>> topologyManager() {
+        return Optional.ofNullable(this.topologyManager);
+    }
+
     private NodePoolNodeConfigKubeletConfigArgs() {}
 
     private NodePoolNodeConfigKubeletConfigArgs(NodePoolNodeConfigKubeletConfigArgs $) {
@@ -310,8 +342,10 @@ public final class NodePoolNodeConfigKubeletConfigArgs extends com.pulumi.resour
         this.imageMinimumGcAge = $.imageMinimumGcAge;
         this.insecureKubeletReadonlyPortEnabled = $.insecureKubeletReadonlyPortEnabled;
         this.maxParallelImagePulls = $.maxParallelImagePulls;
+        this.memoryManager = $.memoryManager;
         this.podPidsLimit = $.podPidsLimit;
         this.singleProcessOomKill = $.singleProcessOomKill;
+        this.topologyManager = $.topologyManager;
     }
 
     public static Builder builder() {
@@ -679,6 +713,27 @@ public final class NodePoolNodeConfigKubeletConfigArgs extends com.pulumi.resour
         }
 
         /**
+         * @param memoryManager Configuration for the Memory Manager on the node. The memory manager optimizes memory and hugepages allocation for pods, especially those in the Guaranteed QoS class, by influencing NUMA affinity.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder memoryManager(@Nullable Output<NodePoolNodeConfigKubeletConfigMemoryManagerArgs> memoryManager) {
+            $.memoryManager = memoryManager;
+            return this;
+        }
+
+        /**
+         * @param memoryManager Configuration for the Memory Manager on the node. The memory manager optimizes memory and hugepages allocation for pods, especially those in the Guaranteed QoS class, by influencing NUMA affinity.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder memoryManager(NodePoolNodeConfigKubeletConfigMemoryManagerArgs memoryManager) {
+            return memoryManager(Output.of(memoryManager));
+        }
+
+        /**
          * @param podPidsLimit Controls the maximum number of processes allowed to run in a pod.
          * 
          * @return builder
@@ -718,6 +773,27 @@ public final class NodePoolNodeConfigKubeletConfigArgs extends com.pulumi.resour
          */
         public Builder singleProcessOomKill(Boolean singleProcessOomKill) {
             return singleProcessOomKill(Output.of(singleProcessOomKill));
+        }
+
+        /**
+         * @param topologyManager Configuration for the Topology Manager on the node. The Topology Manager aligns CPU, memory, and device resources on a node to optimize performance, especially for NUMA-aware workloads, by ensuring resource co-location.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder topologyManager(@Nullable Output<NodePoolNodeConfigKubeletConfigTopologyManagerArgs> topologyManager) {
+            $.topologyManager = topologyManager;
+            return this;
+        }
+
+        /**
+         * @param topologyManager Configuration for the Topology Manager on the node. The Topology Manager aligns CPU, memory, and device resources on a node to optimize performance, especially for NUMA-aware workloads, by ensuring resource co-location.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder topologyManager(NodePoolNodeConfigKubeletConfigTopologyManagerArgs topologyManager) {
+            return topologyManager(Output.of(topologyManager));
         }
 
         public NodePoolNodeConfigKubeletConfigArgs build() {

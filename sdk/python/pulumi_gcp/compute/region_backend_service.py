@@ -43,6 +43,7 @@ class RegionBackendServiceArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  network: Optional[pulumi.Input[_builtins.str]] = None,
                  outlier_detection: Optional[pulumi.Input['RegionBackendServiceOutlierDetectionArgs']] = None,
+                 params: Optional[pulumi.Input['RegionBackendServiceParamsArgs']] = None,
                  port_name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  protocol: Optional[pulumi.Input[_builtins.str]] = None,
@@ -182,6 +183,8 @@ class RegionBackendServiceArgs:
                This field is applicable only when the `load_balancing_scheme` is set
                to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
                Structure is documented below.
+        :param pulumi.Input['RegionBackendServiceParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] port_name: A named port on a backend instance group representing the port for
                communication to the backend VMs in that group. Required when the
                loadBalancingScheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
@@ -255,6 +258,8 @@ class RegionBackendServiceArgs:
             pulumi.set(__self__, "network", network)
         if outlier_detection is not None:
             pulumi.set(__self__, "outlier_detection", outlier_detection)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if port_name is not None:
             pulumi.set(__self__, "port_name", port_name)
         if project is not None:
@@ -645,6 +650,19 @@ class RegionBackendServiceArgs:
         pulumi.set(self, "outlier_detection", value)
 
     @_builtins.property
+    @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['RegionBackendServiceParamsArgs']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['RegionBackendServiceParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @_builtins.property
     @pulumi.getter(name="portName")
     def port_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -800,6 +818,7 @@ class _RegionBackendServiceState:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  network: Optional[pulumi.Input[_builtins.str]] = None,
                  outlier_detection: Optional[pulumi.Input['RegionBackendServiceOutlierDetectionArgs']] = None,
+                 params: Optional[pulumi.Input['RegionBackendServiceParamsArgs']] = None,
                  port_name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  protocol: Optional[pulumi.Input[_builtins.str]] = None,
@@ -944,6 +963,8 @@ class _RegionBackendServiceState:
                This field is applicable only when the `load_balancing_scheme` is set
                to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
                Structure is documented below.
+        :param pulumi.Input['RegionBackendServiceParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] port_name: A named port on a backend instance group representing the port for
                communication to the backend VMs in that group. Required when the
                loadBalancingScheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
@@ -1024,6 +1045,8 @@ class _RegionBackendServiceState:
             pulumi.set(__self__, "network", network)
         if outlier_detection is not None:
             pulumi.set(__self__, "outlier_detection", outlier_detection)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if port_name is not None:
             pulumi.set(__self__, "port_name", port_name)
         if project is not None:
@@ -1453,6 +1476,19 @@ class _RegionBackendServiceState:
         pulumi.set(self, "outlier_detection", value)
 
     @_builtins.property
+    @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['RegionBackendServiceParamsArgs']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['RegionBackendServiceParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @_builtins.property
     @pulumi.getter(name="portName")
     def port_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -1620,6 +1656,7 @@ class RegionBackendService(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  network: Optional[pulumi.Input[_builtins.str]] = None,
                  outlier_detection: Optional[pulumi.Input[Union['RegionBackendServiceOutlierDetectionArgs', 'RegionBackendServiceOutlierDetectionArgsDict']]] = None,
+                 params: Optional[pulumi.Input[Union['RegionBackendServiceParamsArgs', 'RegionBackendServiceParamsArgsDict']]] = None,
                  port_name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  protocol: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2236,6 +2273,8 @@ class RegionBackendService(pulumi.CustomResource):
         :param pulumi.Input[Union['RegionBackendServiceOutlierDetectionArgs', 'RegionBackendServiceOutlierDetectionArgsDict']] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
                This field is applicable only when the `load_balancing_scheme` is set
                to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
+               Structure is documented below.
+        :param pulumi.Input[Union['RegionBackendServiceParamsArgs', 'RegionBackendServiceParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[_builtins.str] port_name: A named port on a backend instance group representing the port for
                communication to the backend VMs in that group. Required when the
@@ -2786,6 +2825,7 @@ class RegionBackendService(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  network: Optional[pulumi.Input[_builtins.str]] = None,
                  outlier_detection: Optional[pulumi.Input[Union['RegionBackendServiceOutlierDetectionArgs', 'RegionBackendServiceOutlierDetectionArgsDict']]] = None,
+                 params: Optional[pulumi.Input[Union['RegionBackendServiceParamsArgs', 'RegionBackendServiceParamsArgsDict']]] = None,
                  port_name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  protocol: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2826,6 +2866,7 @@ class RegionBackendService(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
             __props__.__dict__["outlier_detection"] = outlier_detection
+            __props__.__dict__["params"] = params
             __props__.__dict__["port_name"] = port_name
             __props__.__dict__["project"] = project
             __props__.__dict__["protocol"] = protocol
@@ -2874,6 +2915,7 @@ class RegionBackendService(pulumi.CustomResource):
             name: Optional[pulumi.Input[_builtins.str]] = None,
             network: Optional[pulumi.Input[_builtins.str]] = None,
             outlier_detection: Optional[pulumi.Input[Union['RegionBackendServiceOutlierDetectionArgs', 'RegionBackendServiceOutlierDetectionArgsDict']]] = None,
+            params: Optional[pulumi.Input[Union['RegionBackendServiceParamsArgs', 'RegionBackendServiceParamsArgsDict']]] = None,
             port_name: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             protocol: Optional[pulumi.Input[_builtins.str]] = None,
@@ -3023,6 +3065,8 @@ class RegionBackendService(pulumi.CustomResource):
                This field is applicable only when the `load_balancing_scheme` is set
                to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
                Structure is documented below.
+        :param pulumi.Input[Union['RegionBackendServiceParamsArgs', 'RegionBackendServiceParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] port_name: A named port on a backend instance group representing the port for
                communication to the backend VMs in that group. Required when the
                loadBalancingScheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
@@ -3082,6 +3126,7 @@ class RegionBackendService(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
         __props__.__dict__["outlier_detection"] = outlier_detection
+        __props__.__dict__["params"] = params
         __props__.__dict__["port_name"] = port_name
         __props__.__dict__["project"] = project
         __props__.__dict__["protocol"] = protocol
@@ -3400,6 +3445,15 @@ class RegionBackendService(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "outlier_detection")
+
+    @_builtins.property
+    @pulumi.getter
+    def params(self) -> pulumi.Output[Optional['outputs.RegionBackendServiceParams']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
 
     @_builtins.property
     @pulumi.getter(name="portName")

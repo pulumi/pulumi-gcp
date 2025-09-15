@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.RegionUrlMapPathMatcherDefaultRouteAction;
 import com.pulumi.gcp.compute.outputs.RegionUrlMapPathMatcherDefaultUrlRedirect;
+import com.pulumi.gcp.compute.outputs.RegionUrlMapPathMatcherHeaderAction;
 import com.pulumi.gcp.compute.outputs.RegionUrlMapPathMatcherPathRule;
 import com.pulumi.gcp.compute.outputs.RegionUrlMapPathMatcherRouteRule;
 import java.lang.String;
@@ -47,6 +48,15 @@ public final class RegionUrlMapPathMatcher {
      * 
      */
     private @Nullable String description;
+    /**
+     * @return Specifies changes to request and response headers that need to take effect for the selected backendService.
+     * headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+     * headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+     * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable RegionUrlMapPathMatcherHeaderAction headerAction;
     /**
      * @return The name to which this PathMatcher is referred by the HostRule.
      * 
@@ -115,6 +125,17 @@ public final class RegionUrlMapPathMatcher {
         return Optional.ofNullable(this.description);
     }
     /**
+     * @return Specifies changes to request and response headers that need to take effect for the selected backendService.
+     * headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+     * headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+     * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<RegionUrlMapPathMatcherHeaderAction> headerAction() {
+        return Optional.ofNullable(this.headerAction);
+    }
+    /**
      * @return The name to which this PathMatcher is referred by the HostRule.
      * 
      */
@@ -161,6 +182,7 @@ public final class RegionUrlMapPathMatcher {
         private @Nullable String defaultService;
         private @Nullable RegionUrlMapPathMatcherDefaultUrlRedirect defaultUrlRedirect;
         private @Nullable String description;
+        private @Nullable RegionUrlMapPathMatcherHeaderAction headerAction;
         private String name;
         private @Nullable List<RegionUrlMapPathMatcherPathRule> pathRules;
         private @Nullable List<RegionUrlMapPathMatcherRouteRule> routeRules;
@@ -171,6 +193,7 @@ public final class RegionUrlMapPathMatcher {
     	      this.defaultService = defaults.defaultService;
     	      this.defaultUrlRedirect = defaults.defaultUrlRedirect;
     	      this.description = defaults.description;
+    	      this.headerAction = defaults.headerAction;
     	      this.name = defaults.name;
     	      this.pathRules = defaults.pathRules;
     	      this.routeRules = defaults.routeRules;
@@ -198,6 +221,12 @@ public final class RegionUrlMapPathMatcher {
         public Builder description(@Nullable String description) {
 
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder headerAction(@Nullable RegionUrlMapPathMatcherHeaderAction headerAction) {
+
+            this.headerAction = headerAction;
             return this;
         }
         @CustomType.Setter
@@ -232,6 +261,7 @@ public final class RegionUrlMapPathMatcher {
             _resultValue.defaultService = defaultService;
             _resultValue.defaultUrlRedirect = defaultUrlRedirect;
             _resultValue.description = description;
+            _resultValue.headerAction = headerAction;
             _resultValue.name = name;
             _resultValue.pathRules = pathRules;
             _resultValue.routeRules = routeRules;

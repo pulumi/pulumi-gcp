@@ -1081,6 +1081,8 @@ type Repository struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// The repository endpoint, for example: us-docker.pkg.dev/my-proj/my-repo.
+	RegistryUri pulumi.StringOutput `pulumi:"registryUri"`
 	// Configuration specific for a Remote Repository.
 	// Structure is documented below.
 	RemoteRepositoryConfig RepositoryRemoteRepositoryConfigPtrOutput `pulumi:"remoteRepositoryConfig"`
@@ -1200,6 +1202,8 @@ type repositoryState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// The repository endpoint, for example: us-docker.pkg.dev/my-proj/my-repo.
+	RegistryUri *string `pulumi:"registryUri"`
 	// Configuration specific for a Remote Repository.
 	// Structure is documented below.
 	RemoteRepositoryConfig *RepositoryRemoteRepositoryConfig `pulumi:"remoteRepositoryConfig"`
@@ -1279,6 +1283,8 @@ type RepositoryState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
+	// The repository endpoint, for example: us-docker.pkg.dev/my-proj/my-repo.
+	RegistryUri pulumi.StringPtrInput
 	// Configuration specific for a Remote Repository.
 	// Structure is documented below.
 	RemoteRepositoryConfig RepositoryRemoteRepositoryConfigPtrInput
@@ -1626,6 +1632,11 @@ func (o RepositoryOutput) Project() pulumi.StringOutput {
 // and default labels configured on the provider.
 func (o RepositoryOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+// The repository endpoint, for example: us-docker.pkg.dev/my-proj/my-repo.
+func (o RepositoryOutput) RegistryUri() pulumi.StringOutput {
+	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.RegistryUri }).(pulumi.StringOutput)
 }
 
 // Configuration specific for a Remote Repository.

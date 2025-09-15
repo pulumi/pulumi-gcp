@@ -193,6 +193,21 @@ public final class TransferJobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The user-managed service account to run the job. If this field is specified, the given service account is granted the necessary permissions to all applicable resources (e.g. GCS buckets) required by the job.
+     * 
+     */
+    @Import(name="serviceAccount")
+    private @Nullable Output<String> serviceAccount;
+
+    /**
+     * @return The user-managed service account to run the job. If this field is specified, the given service account is granted the necessary permissions to all applicable resources (e.g. GCS buckets) required by the job.
+     * 
+     */
+    public Optional<Output<String>> serviceAccount() {
+        return Optional.ofNullable(this.serviceAccount);
+    }
+
+    /**
      * Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
      * 
      */
@@ -236,6 +251,7 @@ public final class TransferJobState extends com.pulumi.resources.ResourceArgs {
         this.project = $.project;
         this.replicationSpec = $.replicationSpec;
         this.schedule = $.schedule;
+        this.serviceAccount = $.serviceAccount;
         this.status = $.status;
         this.transferSpec = $.transferSpec;
     }
@@ -493,6 +509,27 @@ public final class TransferJobState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder schedule(TransferJobScheduleArgs schedule) {
             return schedule(Output.of(schedule));
+        }
+
+        /**
+         * @param serviceAccount The user-managed service account to run the job. If this field is specified, the given service account is granted the necessary permissions to all applicable resources (e.g. GCS buckets) required by the job.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccount(@Nullable Output<String> serviceAccount) {
+            $.serviceAccount = serviceAccount;
+            return this;
+        }
+
+        /**
+         * @param serviceAccount The user-managed service account to run the job. If this field is specified, the given service account is granted the necessary permissions to all applicable resources (e.g. GCS buckets) required by the job.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccount(String serviceAccount) {
+            return serviceAccount(Output.of(serviceAccount));
         }
 
         /**

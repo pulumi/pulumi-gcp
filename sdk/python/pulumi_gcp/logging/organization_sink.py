@@ -50,7 +50,7 @@ class OrganizationSinkArgs:
         :param pulumi.Input[_builtins.str] filter: The filter to apply when exporting logs. Only log entries that match the filter are exported.
                See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
-        :param pulumi.Input[_builtins.bool] include_children: Whether or not to include children organizations in the sink export. If true, logs
+        :param pulumi.Input[_builtins.bool] include_children: Whether or not to include child folders or projects in the sink export. If true, logs
                associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
         :param pulumi.Input[_builtins.bool] intercept_children: Whether or not to intercept logs from child projects. If true, matching logs will not
                match with sinks in child resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
@@ -173,7 +173,7 @@ class OrganizationSinkArgs:
     @pulumi.getter(name="includeChildren")
     def include_children(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether or not to include children organizations in the sink export. If true, logs
+        Whether or not to include child folders or projects in the sink export. If true, logs
         associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
         """
         return pulumi.get(self, "include_children")
@@ -240,7 +240,7 @@ class _OrganizationSinkState:
         :param pulumi.Input[_builtins.str] filter: The filter to apply when exporting logs. Only log entries that match the filter are exported.
                See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
-        :param pulumi.Input[_builtins.bool] include_children: Whether or not to include children organizations in the sink export. If true, logs
+        :param pulumi.Input[_builtins.bool] include_children: Whether or not to include child folders or projects in the sink export. If true, logs
                associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
         :param pulumi.Input[_builtins.bool] intercept_children: Whether or not to intercept logs from child projects. If true, matching logs will not
                match with sinks in child resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
@@ -358,7 +358,7 @@ class _OrganizationSinkState:
     @pulumi.getter(name="includeChildren")
     def include_children(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether or not to include children organizations in the sink export. If true, logs
+        Whether or not to include child folders or projects in the sink export. If true, logs
         associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
         """
         return pulumi.get(self, "include_children")
@@ -492,7 +492,7 @@ class OrganizationSink(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] filter: The filter to apply when exporting logs. Only log entries that match the filter are exported.
                See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
-        :param pulumi.Input[_builtins.bool] include_children: Whether or not to include children organizations in the sink export. If true, logs
+        :param pulumi.Input[_builtins.bool] include_children: Whether or not to include child folders or projects in the sink export. If true, logs
                associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
         :param pulumi.Input[_builtins.bool] intercept_children: Whether or not to intercept logs from child projects. If true, matching logs will not
                match with sinks in child resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
@@ -637,7 +637,7 @@ class OrganizationSink(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] filter: The filter to apply when exporting logs. Only log entries that match the filter are exported.
                See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
-        :param pulumi.Input[_builtins.bool] include_children: Whether or not to include children organizations in the sink export. If true, logs
+        :param pulumi.Input[_builtins.bool] include_children: Whether or not to include child folders or projects in the sink export. If true, logs
                associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
         :param pulumi.Input[_builtins.bool] intercept_children: Whether or not to intercept logs from child projects. If true, matching logs will not
                match with sinks in child resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
@@ -725,7 +725,7 @@ class OrganizationSink(pulumi.CustomResource):
     @pulumi.getter(name="includeChildren")
     def include_children(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Whether or not to include children organizations in the sink export. If true, logs
+        Whether or not to include child folders or projects in the sink export. If true, logs
         associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
         """
         return pulumi.get(self, "include_children")

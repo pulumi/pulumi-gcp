@@ -1224,7 +1224,7 @@ class AutonomousDatabase(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="odbNetwork")
-    def odb_network(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def odb_network(self) -> pulumi.Output[_builtins.str]:
         """
         The name of the OdbNetwork associated with the Autonomous Database.
         Format:
@@ -1236,7 +1236,7 @@ class AutonomousDatabase(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="odbSubnet")
-    def odb_subnet(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def odb_subnet(self) -> pulumi.Output[_builtins.str]:
         """
         The name of the OdbSubnet associated with the Autonomous Database for
         IP allocation. Format:

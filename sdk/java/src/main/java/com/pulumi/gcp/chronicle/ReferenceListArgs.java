@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.chronicle.inputs.ReferenceListEntryArgs;
+import com.pulumi.gcp.chronicle.inputs.ReferenceListScopeInfoArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -131,6 +132,23 @@ public final class ReferenceListArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * ScopeInfo specifies the scope info of the reference list.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="scopeInfos")
+    private @Nullable Output<List<ReferenceListScopeInfoArgs>> scopeInfos;
+
+    /**
+     * @return ScopeInfo specifies the scope info of the reference list.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<ReferenceListScopeInfoArgs>>> scopeInfos() {
+        return Optional.ofNullable(this.scopeInfos);
+    }
+
+    /**
      * Possible values:
      * REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING
      * REFERENCE_LIST_SYNTAX_TYPE_REGEX
@@ -160,6 +178,7 @@ public final class ReferenceListArgs extends com.pulumi.resources.ResourceArgs {
         this.location = $.location;
         this.project = $.project;
         this.referenceListId = $.referenceListId;
+        this.scopeInfos = $.scopeInfos;
         this.syntaxType = $.syntaxType;
     }
 
@@ -342,6 +361,40 @@ public final class ReferenceListArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder referenceListId(String referenceListId) {
             return referenceListId(Output.of(referenceListId));
+        }
+
+        /**
+         * @param scopeInfos ScopeInfo specifies the scope info of the reference list.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scopeInfos(@Nullable Output<List<ReferenceListScopeInfoArgs>> scopeInfos) {
+            $.scopeInfos = scopeInfos;
+            return this;
+        }
+
+        /**
+         * @param scopeInfos ScopeInfo specifies the scope info of the reference list.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scopeInfos(List<ReferenceListScopeInfoArgs> scopeInfos) {
+            return scopeInfos(Output.of(scopeInfos));
+        }
+
+        /**
+         * @param scopeInfos ScopeInfo specifies the scope info of the reference list.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scopeInfos(ReferenceListScopeInfoArgs... scopeInfos) {
+            return scopeInfos(List.of(scopeInfos));
         }
 
         /**

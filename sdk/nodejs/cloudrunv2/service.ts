@@ -760,6 +760,11 @@ export class Service extends pulumi.CustomResource {
      */
     declare public readonly location: pulumi.Output<string>;
     /**
+     * Settings for creating a Multi-Region Service. Make sure to use region = 'global' when using them. For more information, visit https://cloud.google.com/run/docs/multiple-regions#deploy
+     * Structure is documented below.
+     */
+    declare public readonly multiRegionSettings: pulumi.Output<outputs.cloudrunv2.ServiceMultiRegionSettings | undefined>;
+    /**
      * Name of the Service.
      */
     declare public readonly name: pulumi.Output<string>;
@@ -867,6 +872,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["latestReadyRevision"] = state?.latestReadyRevision;
             resourceInputs["launchStage"] = state?.launchStage;
             resourceInputs["location"] = state?.location;
+            resourceInputs["multiRegionSettings"] = state?.multiRegionSettings;
             resourceInputs["name"] = state?.name;
             resourceInputs["observedGeneration"] = state?.observedGeneration;
             resourceInputs["project"] = state?.project;
@@ -904,6 +910,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["labels"] = args?.labels;
             resourceInputs["launchStage"] = args?.launchStage;
             resourceInputs["location"] = args?.location;
+            resourceInputs["multiRegionSettings"] = args?.multiRegionSettings;
             resourceInputs["name"] = args?.name;
             resourceInputs["project"] = args?.project;
             resourceInputs["scaling"] = args?.scaling;
@@ -1063,6 +1070,11 @@ export interface ServiceState {
      */
     location?: pulumi.Input<string>;
     /**
+     * Settings for creating a Multi-Region Service. Make sure to use region = 'global' when using them. For more information, visit https://cloud.google.com/run/docs/multiple-regions#deploy
+     * Structure is documented below.
+     */
+    multiRegionSettings?: pulumi.Input<inputs.cloudrunv2.ServiceMultiRegionSettings>;
+    /**
      * Name of the Service.
      */
     name?: pulumi.Input<string>;
@@ -1209,6 +1221,11 @@ export interface ServiceArgs {
      * The location of the cloud run service
      */
     location: pulumi.Input<string>;
+    /**
+     * Settings for creating a Multi-Region Service. Make sure to use region = 'global' when using them. For more information, visit https://cloud.google.com/run/docs/multiple-regions#deploy
+     * Structure is documented below.
+     */
+    multiRegionSettings?: pulumi.Input<inputs.cloudrunv2.ServiceMultiRegionSettings>;
     /**
      * Name of the Service.
      */

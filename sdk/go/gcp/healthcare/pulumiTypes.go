@@ -1468,6 +1468,529 @@ func (o DicomStoreStreamConfigBigqueryDestinationOutput) TableUri() pulumi.Strin
 	return o.ApplyT(func(v DicomStoreStreamConfigBigqueryDestination) string { return v.TableUri }).(pulumi.StringOutput)
 }
 
+type FhirStoreConsentConfig struct {
+	// Specifies how the server logs the consent-aware requests. If not specified, the AccessDeterminationLogConfig.LogLevel.MINIMUM option is used.
+	// Structure is documented below.
+	AccessDeterminationLogConfig *FhirStoreConsentConfigAccessDeterminationLogConfig `pulumi:"accessDeterminationLogConfig"`
+	// The default value is false. If set to true, when accessing FHIR resources, the consent headers will be verified against consents given by patients. See the ConsentEnforcementVersion for the supported consent headers.
+	AccessEnforced *bool `pulumi:"accessEnforced"`
+	// Different options to configure the behaviour of the server when handling the X-Consent-Scope header.
+	// Structure is documented below.
+	ConsentHeaderHandling *FhirStoreConsentConfigConsentHeaderHandling `pulumi:"consentHeaderHandling"`
+	// (Output)
+	// The versioned names of the enforced admin Consent resource(s), in the format projects/{projectId}/locations/{location}/datasets/{datasetId}/fhirStores/{fhirStoreId}/fhir/Consent/{resourceId}/_history/{version_id}. For FHIR stores with disableResourceVersioning=true, the format is projects/{projectId}/locations/{location}/datasets/{datasetId}/fhirStores/{fhirStoreId}/fhir/Consent/{resourceId}. This field can only be updated using [fhirStores.applyAdminConsents][].
+	EnforcedAdminConsents []string `pulumi:"enforcedAdminConsents"`
+	// Specifies which consent enforcement version is being used for this FHIR store. This field can only be set once by either [fhirStores.create][] or [fhirStores.patch][]. After that, you must call [fhirStores.applyConsents][] to change the version.
+	// Possible values are: `CONSENT_ENFORCEMENT_VERSION_UNSPECIFIED`, `V1`.
+	Version string `pulumi:"version"`
+}
+
+// FhirStoreConsentConfigInput is an input type that accepts FhirStoreConsentConfigArgs and FhirStoreConsentConfigOutput values.
+// You can construct a concrete instance of `FhirStoreConsentConfigInput` via:
+//
+//	FhirStoreConsentConfigArgs{...}
+type FhirStoreConsentConfigInput interface {
+	pulumi.Input
+
+	ToFhirStoreConsentConfigOutput() FhirStoreConsentConfigOutput
+	ToFhirStoreConsentConfigOutputWithContext(context.Context) FhirStoreConsentConfigOutput
+}
+
+type FhirStoreConsentConfigArgs struct {
+	// Specifies how the server logs the consent-aware requests. If not specified, the AccessDeterminationLogConfig.LogLevel.MINIMUM option is used.
+	// Structure is documented below.
+	AccessDeterminationLogConfig FhirStoreConsentConfigAccessDeterminationLogConfigPtrInput `pulumi:"accessDeterminationLogConfig"`
+	// The default value is false. If set to true, when accessing FHIR resources, the consent headers will be verified against consents given by patients. See the ConsentEnforcementVersion for the supported consent headers.
+	AccessEnforced pulumi.BoolPtrInput `pulumi:"accessEnforced"`
+	// Different options to configure the behaviour of the server when handling the X-Consent-Scope header.
+	// Structure is documented below.
+	ConsentHeaderHandling FhirStoreConsentConfigConsentHeaderHandlingPtrInput `pulumi:"consentHeaderHandling"`
+	// (Output)
+	// The versioned names of the enforced admin Consent resource(s), in the format projects/{projectId}/locations/{location}/datasets/{datasetId}/fhirStores/{fhirStoreId}/fhir/Consent/{resourceId}/_history/{version_id}. For FHIR stores with disableResourceVersioning=true, the format is projects/{projectId}/locations/{location}/datasets/{datasetId}/fhirStores/{fhirStoreId}/fhir/Consent/{resourceId}. This field can only be updated using [fhirStores.applyAdminConsents][].
+	EnforcedAdminConsents pulumi.StringArrayInput `pulumi:"enforcedAdminConsents"`
+	// Specifies which consent enforcement version is being used for this FHIR store. This field can only be set once by either [fhirStores.create][] or [fhirStores.patch][]. After that, you must call [fhirStores.applyConsents][] to change the version.
+	// Possible values are: `CONSENT_ENFORCEMENT_VERSION_UNSPECIFIED`, `V1`.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (FhirStoreConsentConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FhirStoreConsentConfig)(nil)).Elem()
+}
+
+func (i FhirStoreConsentConfigArgs) ToFhirStoreConsentConfigOutput() FhirStoreConsentConfigOutput {
+	return i.ToFhirStoreConsentConfigOutputWithContext(context.Background())
+}
+
+func (i FhirStoreConsentConfigArgs) ToFhirStoreConsentConfigOutputWithContext(ctx context.Context) FhirStoreConsentConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreConsentConfigOutput)
+}
+
+func (i FhirStoreConsentConfigArgs) ToFhirStoreConsentConfigPtrOutput() FhirStoreConsentConfigPtrOutput {
+	return i.ToFhirStoreConsentConfigPtrOutputWithContext(context.Background())
+}
+
+func (i FhirStoreConsentConfigArgs) ToFhirStoreConsentConfigPtrOutputWithContext(ctx context.Context) FhirStoreConsentConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreConsentConfigOutput).ToFhirStoreConsentConfigPtrOutputWithContext(ctx)
+}
+
+// FhirStoreConsentConfigPtrInput is an input type that accepts FhirStoreConsentConfigArgs, FhirStoreConsentConfigPtr and FhirStoreConsentConfigPtrOutput values.
+// You can construct a concrete instance of `FhirStoreConsentConfigPtrInput` via:
+//
+//	        FhirStoreConsentConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type FhirStoreConsentConfigPtrInput interface {
+	pulumi.Input
+
+	ToFhirStoreConsentConfigPtrOutput() FhirStoreConsentConfigPtrOutput
+	ToFhirStoreConsentConfigPtrOutputWithContext(context.Context) FhirStoreConsentConfigPtrOutput
+}
+
+type fhirStoreConsentConfigPtrType FhirStoreConsentConfigArgs
+
+func FhirStoreConsentConfigPtr(v *FhirStoreConsentConfigArgs) FhirStoreConsentConfigPtrInput {
+	return (*fhirStoreConsentConfigPtrType)(v)
+}
+
+func (*fhirStoreConsentConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FhirStoreConsentConfig)(nil)).Elem()
+}
+
+func (i *fhirStoreConsentConfigPtrType) ToFhirStoreConsentConfigPtrOutput() FhirStoreConsentConfigPtrOutput {
+	return i.ToFhirStoreConsentConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *fhirStoreConsentConfigPtrType) ToFhirStoreConsentConfigPtrOutputWithContext(ctx context.Context) FhirStoreConsentConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreConsentConfigPtrOutput)
+}
+
+type FhirStoreConsentConfigOutput struct{ *pulumi.OutputState }
+
+func (FhirStoreConsentConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FhirStoreConsentConfig)(nil)).Elem()
+}
+
+func (o FhirStoreConsentConfigOutput) ToFhirStoreConsentConfigOutput() FhirStoreConsentConfigOutput {
+	return o
+}
+
+func (o FhirStoreConsentConfigOutput) ToFhirStoreConsentConfigOutputWithContext(ctx context.Context) FhirStoreConsentConfigOutput {
+	return o
+}
+
+func (o FhirStoreConsentConfigOutput) ToFhirStoreConsentConfigPtrOutput() FhirStoreConsentConfigPtrOutput {
+	return o.ToFhirStoreConsentConfigPtrOutputWithContext(context.Background())
+}
+
+func (o FhirStoreConsentConfigOutput) ToFhirStoreConsentConfigPtrOutputWithContext(ctx context.Context) FhirStoreConsentConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FhirStoreConsentConfig) *FhirStoreConsentConfig {
+		return &v
+	}).(FhirStoreConsentConfigPtrOutput)
+}
+
+// Specifies how the server logs the consent-aware requests. If not specified, the AccessDeterminationLogConfig.LogLevel.MINIMUM option is used.
+// Structure is documented below.
+func (o FhirStoreConsentConfigOutput) AccessDeterminationLogConfig() FhirStoreConsentConfigAccessDeterminationLogConfigPtrOutput {
+	return o.ApplyT(func(v FhirStoreConsentConfig) *FhirStoreConsentConfigAccessDeterminationLogConfig {
+		return v.AccessDeterminationLogConfig
+	}).(FhirStoreConsentConfigAccessDeterminationLogConfigPtrOutput)
+}
+
+// The default value is false. If set to true, when accessing FHIR resources, the consent headers will be verified against consents given by patients. See the ConsentEnforcementVersion for the supported consent headers.
+func (o FhirStoreConsentConfigOutput) AccessEnforced() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FhirStoreConsentConfig) *bool { return v.AccessEnforced }).(pulumi.BoolPtrOutput)
+}
+
+// Different options to configure the behaviour of the server when handling the X-Consent-Scope header.
+// Structure is documented below.
+func (o FhirStoreConsentConfigOutput) ConsentHeaderHandling() FhirStoreConsentConfigConsentHeaderHandlingPtrOutput {
+	return o.ApplyT(func(v FhirStoreConsentConfig) *FhirStoreConsentConfigConsentHeaderHandling {
+		return v.ConsentHeaderHandling
+	}).(FhirStoreConsentConfigConsentHeaderHandlingPtrOutput)
+}
+
+// (Output)
+// The versioned names of the enforced admin Consent resource(s), in the format projects/{projectId}/locations/{location}/datasets/{datasetId}/fhirStores/{fhirStoreId}/fhir/Consent/{resourceId}/_history/{version_id}. For FHIR stores with disableResourceVersioning=true, the format is projects/{projectId}/locations/{location}/datasets/{datasetId}/fhirStores/{fhirStoreId}/fhir/Consent/{resourceId}. This field can only be updated using [fhirStores.applyAdminConsents][].
+func (o FhirStoreConsentConfigOutput) EnforcedAdminConsents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FhirStoreConsentConfig) []string { return v.EnforcedAdminConsents }).(pulumi.StringArrayOutput)
+}
+
+// Specifies which consent enforcement version is being used for this FHIR store. This field can only be set once by either [fhirStores.create][] or [fhirStores.patch][]. After that, you must call [fhirStores.applyConsents][] to change the version.
+// Possible values are: `CONSENT_ENFORCEMENT_VERSION_UNSPECIFIED`, `V1`.
+func (o FhirStoreConsentConfigOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v FhirStoreConsentConfig) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type FhirStoreConsentConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (FhirStoreConsentConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FhirStoreConsentConfig)(nil)).Elem()
+}
+
+func (o FhirStoreConsentConfigPtrOutput) ToFhirStoreConsentConfigPtrOutput() FhirStoreConsentConfigPtrOutput {
+	return o
+}
+
+func (o FhirStoreConsentConfigPtrOutput) ToFhirStoreConsentConfigPtrOutputWithContext(ctx context.Context) FhirStoreConsentConfigPtrOutput {
+	return o
+}
+
+func (o FhirStoreConsentConfigPtrOutput) Elem() FhirStoreConsentConfigOutput {
+	return o.ApplyT(func(v *FhirStoreConsentConfig) FhirStoreConsentConfig {
+		if v != nil {
+			return *v
+		}
+		var ret FhirStoreConsentConfig
+		return ret
+	}).(FhirStoreConsentConfigOutput)
+}
+
+// Specifies how the server logs the consent-aware requests. If not specified, the AccessDeterminationLogConfig.LogLevel.MINIMUM option is used.
+// Structure is documented below.
+func (o FhirStoreConsentConfigPtrOutput) AccessDeterminationLogConfig() FhirStoreConsentConfigAccessDeterminationLogConfigPtrOutput {
+	return o.ApplyT(func(v *FhirStoreConsentConfig) *FhirStoreConsentConfigAccessDeterminationLogConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AccessDeterminationLogConfig
+	}).(FhirStoreConsentConfigAccessDeterminationLogConfigPtrOutput)
+}
+
+// The default value is false. If set to true, when accessing FHIR resources, the consent headers will be verified against consents given by patients. See the ConsentEnforcementVersion for the supported consent headers.
+func (o FhirStoreConsentConfigPtrOutput) AccessEnforced() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FhirStoreConsentConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AccessEnforced
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Different options to configure the behaviour of the server when handling the X-Consent-Scope header.
+// Structure is documented below.
+func (o FhirStoreConsentConfigPtrOutput) ConsentHeaderHandling() FhirStoreConsentConfigConsentHeaderHandlingPtrOutput {
+	return o.ApplyT(func(v *FhirStoreConsentConfig) *FhirStoreConsentConfigConsentHeaderHandling {
+		if v == nil {
+			return nil
+		}
+		return v.ConsentHeaderHandling
+	}).(FhirStoreConsentConfigConsentHeaderHandlingPtrOutput)
+}
+
+// (Output)
+// The versioned names of the enforced admin Consent resource(s), in the format projects/{projectId}/locations/{location}/datasets/{datasetId}/fhirStores/{fhirStoreId}/fhir/Consent/{resourceId}/_history/{version_id}. For FHIR stores with disableResourceVersioning=true, the format is projects/{projectId}/locations/{location}/datasets/{datasetId}/fhirStores/{fhirStoreId}/fhir/Consent/{resourceId}. This field can only be updated using [fhirStores.applyAdminConsents][].
+func (o FhirStoreConsentConfigPtrOutput) EnforcedAdminConsents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FhirStoreConsentConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EnforcedAdminConsents
+	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies which consent enforcement version is being used for this FHIR store. This field can only be set once by either [fhirStores.create][] or [fhirStores.patch][]. After that, you must call [fhirStores.applyConsents][] to change the version.
+// Possible values are: `CONSENT_ENFORCEMENT_VERSION_UNSPECIFIED`, `V1`.
+func (o FhirStoreConsentConfigPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FhirStoreConsentConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type FhirStoreConsentConfigAccessDeterminationLogConfig struct {
+	// Controls the amount of detail to include as part of the audit logs.
+	// Default value is `MINIMUM`.
+	// Possible values are: `LOG_LEVEL_UNSPECIFIED`, `DISABLED`, `MINIMUM`, `VERBOSE`.
+	LogLevel *string `pulumi:"logLevel"`
+}
+
+// FhirStoreConsentConfigAccessDeterminationLogConfigInput is an input type that accepts FhirStoreConsentConfigAccessDeterminationLogConfigArgs and FhirStoreConsentConfigAccessDeterminationLogConfigOutput values.
+// You can construct a concrete instance of `FhirStoreConsentConfigAccessDeterminationLogConfigInput` via:
+//
+//	FhirStoreConsentConfigAccessDeterminationLogConfigArgs{...}
+type FhirStoreConsentConfigAccessDeterminationLogConfigInput interface {
+	pulumi.Input
+
+	ToFhirStoreConsentConfigAccessDeterminationLogConfigOutput() FhirStoreConsentConfigAccessDeterminationLogConfigOutput
+	ToFhirStoreConsentConfigAccessDeterminationLogConfigOutputWithContext(context.Context) FhirStoreConsentConfigAccessDeterminationLogConfigOutput
+}
+
+type FhirStoreConsentConfigAccessDeterminationLogConfigArgs struct {
+	// Controls the amount of detail to include as part of the audit logs.
+	// Default value is `MINIMUM`.
+	// Possible values are: `LOG_LEVEL_UNSPECIFIED`, `DISABLED`, `MINIMUM`, `VERBOSE`.
+	LogLevel pulumi.StringPtrInput `pulumi:"logLevel"`
+}
+
+func (FhirStoreConsentConfigAccessDeterminationLogConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FhirStoreConsentConfigAccessDeterminationLogConfig)(nil)).Elem()
+}
+
+func (i FhirStoreConsentConfigAccessDeterminationLogConfigArgs) ToFhirStoreConsentConfigAccessDeterminationLogConfigOutput() FhirStoreConsentConfigAccessDeterminationLogConfigOutput {
+	return i.ToFhirStoreConsentConfigAccessDeterminationLogConfigOutputWithContext(context.Background())
+}
+
+func (i FhirStoreConsentConfigAccessDeterminationLogConfigArgs) ToFhirStoreConsentConfigAccessDeterminationLogConfigOutputWithContext(ctx context.Context) FhirStoreConsentConfigAccessDeterminationLogConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreConsentConfigAccessDeterminationLogConfigOutput)
+}
+
+func (i FhirStoreConsentConfigAccessDeterminationLogConfigArgs) ToFhirStoreConsentConfigAccessDeterminationLogConfigPtrOutput() FhirStoreConsentConfigAccessDeterminationLogConfigPtrOutput {
+	return i.ToFhirStoreConsentConfigAccessDeterminationLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (i FhirStoreConsentConfigAccessDeterminationLogConfigArgs) ToFhirStoreConsentConfigAccessDeterminationLogConfigPtrOutputWithContext(ctx context.Context) FhirStoreConsentConfigAccessDeterminationLogConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreConsentConfigAccessDeterminationLogConfigOutput).ToFhirStoreConsentConfigAccessDeterminationLogConfigPtrOutputWithContext(ctx)
+}
+
+// FhirStoreConsentConfigAccessDeterminationLogConfigPtrInput is an input type that accepts FhirStoreConsentConfigAccessDeterminationLogConfigArgs, FhirStoreConsentConfigAccessDeterminationLogConfigPtr and FhirStoreConsentConfigAccessDeterminationLogConfigPtrOutput values.
+// You can construct a concrete instance of `FhirStoreConsentConfigAccessDeterminationLogConfigPtrInput` via:
+//
+//	        FhirStoreConsentConfigAccessDeterminationLogConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type FhirStoreConsentConfigAccessDeterminationLogConfigPtrInput interface {
+	pulumi.Input
+
+	ToFhirStoreConsentConfigAccessDeterminationLogConfigPtrOutput() FhirStoreConsentConfigAccessDeterminationLogConfigPtrOutput
+	ToFhirStoreConsentConfigAccessDeterminationLogConfigPtrOutputWithContext(context.Context) FhirStoreConsentConfigAccessDeterminationLogConfigPtrOutput
+}
+
+type fhirStoreConsentConfigAccessDeterminationLogConfigPtrType FhirStoreConsentConfigAccessDeterminationLogConfigArgs
+
+func FhirStoreConsentConfigAccessDeterminationLogConfigPtr(v *FhirStoreConsentConfigAccessDeterminationLogConfigArgs) FhirStoreConsentConfigAccessDeterminationLogConfigPtrInput {
+	return (*fhirStoreConsentConfigAccessDeterminationLogConfigPtrType)(v)
+}
+
+func (*fhirStoreConsentConfigAccessDeterminationLogConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FhirStoreConsentConfigAccessDeterminationLogConfig)(nil)).Elem()
+}
+
+func (i *fhirStoreConsentConfigAccessDeterminationLogConfigPtrType) ToFhirStoreConsentConfigAccessDeterminationLogConfigPtrOutput() FhirStoreConsentConfigAccessDeterminationLogConfigPtrOutput {
+	return i.ToFhirStoreConsentConfigAccessDeterminationLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *fhirStoreConsentConfigAccessDeterminationLogConfigPtrType) ToFhirStoreConsentConfigAccessDeterminationLogConfigPtrOutputWithContext(ctx context.Context) FhirStoreConsentConfigAccessDeterminationLogConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreConsentConfigAccessDeterminationLogConfigPtrOutput)
+}
+
+type FhirStoreConsentConfigAccessDeterminationLogConfigOutput struct{ *pulumi.OutputState }
+
+func (FhirStoreConsentConfigAccessDeterminationLogConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FhirStoreConsentConfigAccessDeterminationLogConfig)(nil)).Elem()
+}
+
+func (o FhirStoreConsentConfigAccessDeterminationLogConfigOutput) ToFhirStoreConsentConfigAccessDeterminationLogConfigOutput() FhirStoreConsentConfigAccessDeterminationLogConfigOutput {
+	return o
+}
+
+func (o FhirStoreConsentConfigAccessDeterminationLogConfigOutput) ToFhirStoreConsentConfigAccessDeterminationLogConfigOutputWithContext(ctx context.Context) FhirStoreConsentConfigAccessDeterminationLogConfigOutput {
+	return o
+}
+
+func (o FhirStoreConsentConfigAccessDeterminationLogConfigOutput) ToFhirStoreConsentConfigAccessDeterminationLogConfigPtrOutput() FhirStoreConsentConfigAccessDeterminationLogConfigPtrOutput {
+	return o.ToFhirStoreConsentConfigAccessDeterminationLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (o FhirStoreConsentConfigAccessDeterminationLogConfigOutput) ToFhirStoreConsentConfigAccessDeterminationLogConfigPtrOutputWithContext(ctx context.Context) FhirStoreConsentConfigAccessDeterminationLogConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FhirStoreConsentConfigAccessDeterminationLogConfig) *FhirStoreConsentConfigAccessDeterminationLogConfig {
+		return &v
+	}).(FhirStoreConsentConfigAccessDeterminationLogConfigPtrOutput)
+}
+
+// Controls the amount of detail to include as part of the audit logs.
+// Default value is `MINIMUM`.
+// Possible values are: `LOG_LEVEL_UNSPECIFIED`, `DISABLED`, `MINIMUM`, `VERBOSE`.
+func (o FhirStoreConsentConfigAccessDeterminationLogConfigOutput) LogLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FhirStoreConsentConfigAccessDeterminationLogConfig) *string { return v.LogLevel }).(pulumi.StringPtrOutput)
+}
+
+type FhirStoreConsentConfigAccessDeterminationLogConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (FhirStoreConsentConfigAccessDeterminationLogConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FhirStoreConsentConfigAccessDeterminationLogConfig)(nil)).Elem()
+}
+
+func (o FhirStoreConsentConfigAccessDeterminationLogConfigPtrOutput) ToFhirStoreConsentConfigAccessDeterminationLogConfigPtrOutput() FhirStoreConsentConfigAccessDeterminationLogConfigPtrOutput {
+	return o
+}
+
+func (o FhirStoreConsentConfigAccessDeterminationLogConfigPtrOutput) ToFhirStoreConsentConfigAccessDeterminationLogConfigPtrOutputWithContext(ctx context.Context) FhirStoreConsentConfigAccessDeterminationLogConfigPtrOutput {
+	return o
+}
+
+func (o FhirStoreConsentConfigAccessDeterminationLogConfigPtrOutput) Elem() FhirStoreConsentConfigAccessDeterminationLogConfigOutput {
+	return o.ApplyT(func(v *FhirStoreConsentConfigAccessDeterminationLogConfig) FhirStoreConsentConfigAccessDeterminationLogConfig {
+		if v != nil {
+			return *v
+		}
+		var ret FhirStoreConsentConfigAccessDeterminationLogConfig
+		return ret
+	}).(FhirStoreConsentConfigAccessDeterminationLogConfigOutput)
+}
+
+// Controls the amount of detail to include as part of the audit logs.
+// Default value is `MINIMUM`.
+// Possible values are: `LOG_LEVEL_UNSPECIFIED`, `DISABLED`, `MINIMUM`, `VERBOSE`.
+func (o FhirStoreConsentConfigAccessDeterminationLogConfigPtrOutput) LogLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FhirStoreConsentConfigAccessDeterminationLogConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogLevel
+	}).(pulumi.StringPtrOutput)
+}
+
+type FhirStoreConsentConfigConsentHeaderHandling struct {
+	// Specifies the default server behavior when the header is empty. If not specified, the ScopeProfile.PERMIT_EMPTY_SCOPE option is used.
+	// Default value is `PERMIT_EMPTY_SCOPE`.
+	// Possible values are: `SCOPE_PROFILE_UNSPECIFIED`, `PERMIT_EMPTY_SCOPE`, `REQUIRED_ON_READ`.
+	Profile *string `pulumi:"profile"`
+}
+
+// FhirStoreConsentConfigConsentHeaderHandlingInput is an input type that accepts FhirStoreConsentConfigConsentHeaderHandlingArgs and FhirStoreConsentConfigConsentHeaderHandlingOutput values.
+// You can construct a concrete instance of `FhirStoreConsentConfigConsentHeaderHandlingInput` via:
+//
+//	FhirStoreConsentConfigConsentHeaderHandlingArgs{...}
+type FhirStoreConsentConfigConsentHeaderHandlingInput interface {
+	pulumi.Input
+
+	ToFhirStoreConsentConfigConsentHeaderHandlingOutput() FhirStoreConsentConfigConsentHeaderHandlingOutput
+	ToFhirStoreConsentConfigConsentHeaderHandlingOutputWithContext(context.Context) FhirStoreConsentConfigConsentHeaderHandlingOutput
+}
+
+type FhirStoreConsentConfigConsentHeaderHandlingArgs struct {
+	// Specifies the default server behavior when the header is empty. If not specified, the ScopeProfile.PERMIT_EMPTY_SCOPE option is used.
+	// Default value is `PERMIT_EMPTY_SCOPE`.
+	// Possible values are: `SCOPE_PROFILE_UNSPECIFIED`, `PERMIT_EMPTY_SCOPE`, `REQUIRED_ON_READ`.
+	Profile pulumi.StringPtrInput `pulumi:"profile"`
+}
+
+func (FhirStoreConsentConfigConsentHeaderHandlingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FhirStoreConsentConfigConsentHeaderHandling)(nil)).Elem()
+}
+
+func (i FhirStoreConsentConfigConsentHeaderHandlingArgs) ToFhirStoreConsentConfigConsentHeaderHandlingOutput() FhirStoreConsentConfigConsentHeaderHandlingOutput {
+	return i.ToFhirStoreConsentConfigConsentHeaderHandlingOutputWithContext(context.Background())
+}
+
+func (i FhirStoreConsentConfigConsentHeaderHandlingArgs) ToFhirStoreConsentConfigConsentHeaderHandlingOutputWithContext(ctx context.Context) FhirStoreConsentConfigConsentHeaderHandlingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreConsentConfigConsentHeaderHandlingOutput)
+}
+
+func (i FhirStoreConsentConfigConsentHeaderHandlingArgs) ToFhirStoreConsentConfigConsentHeaderHandlingPtrOutput() FhirStoreConsentConfigConsentHeaderHandlingPtrOutput {
+	return i.ToFhirStoreConsentConfigConsentHeaderHandlingPtrOutputWithContext(context.Background())
+}
+
+func (i FhirStoreConsentConfigConsentHeaderHandlingArgs) ToFhirStoreConsentConfigConsentHeaderHandlingPtrOutputWithContext(ctx context.Context) FhirStoreConsentConfigConsentHeaderHandlingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreConsentConfigConsentHeaderHandlingOutput).ToFhirStoreConsentConfigConsentHeaderHandlingPtrOutputWithContext(ctx)
+}
+
+// FhirStoreConsentConfigConsentHeaderHandlingPtrInput is an input type that accepts FhirStoreConsentConfigConsentHeaderHandlingArgs, FhirStoreConsentConfigConsentHeaderHandlingPtr and FhirStoreConsentConfigConsentHeaderHandlingPtrOutput values.
+// You can construct a concrete instance of `FhirStoreConsentConfigConsentHeaderHandlingPtrInput` via:
+//
+//	        FhirStoreConsentConfigConsentHeaderHandlingArgs{...}
+//
+//	or:
+//
+//	        nil
+type FhirStoreConsentConfigConsentHeaderHandlingPtrInput interface {
+	pulumi.Input
+
+	ToFhirStoreConsentConfigConsentHeaderHandlingPtrOutput() FhirStoreConsentConfigConsentHeaderHandlingPtrOutput
+	ToFhirStoreConsentConfigConsentHeaderHandlingPtrOutputWithContext(context.Context) FhirStoreConsentConfigConsentHeaderHandlingPtrOutput
+}
+
+type fhirStoreConsentConfigConsentHeaderHandlingPtrType FhirStoreConsentConfigConsentHeaderHandlingArgs
+
+func FhirStoreConsentConfigConsentHeaderHandlingPtr(v *FhirStoreConsentConfigConsentHeaderHandlingArgs) FhirStoreConsentConfigConsentHeaderHandlingPtrInput {
+	return (*fhirStoreConsentConfigConsentHeaderHandlingPtrType)(v)
+}
+
+func (*fhirStoreConsentConfigConsentHeaderHandlingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FhirStoreConsentConfigConsentHeaderHandling)(nil)).Elem()
+}
+
+func (i *fhirStoreConsentConfigConsentHeaderHandlingPtrType) ToFhirStoreConsentConfigConsentHeaderHandlingPtrOutput() FhirStoreConsentConfigConsentHeaderHandlingPtrOutput {
+	return i.ToFhirStoreConsentConfigConsentHeaderHandlingPtrOutputWithContext(context.Background())
+}
+
+func (i *fhirStoreConsentConfigConsentHeaderHandlingPtrType) ToFhirStoreConsentConfigConsentHeaderHandlingPtrOutputWithContext(ctx context.Context) FhirStoreConsentConfigConsentHeaderHandlingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreConsentConfigConsentHeaderHandlingPtrOutput)
+}
+
+type FhirStoreConsentConfigConsentHeaderHandlingOutput struct{ *pulumi.OutputState }
+
+func (FhirStoreConsentConfigConsentHeaderHandlingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FhirStoreConsentConfigConsentHeaderHandling)(nil)).Elem()
+}
+
+func (o FhirStoreConsentConfigConsentHeaderHandlingOutput) ToFhirStoreConsentConfigConsentHeaderHandlingOutput() FhirStoreConsentConfigConsentHeaderHandlingOutput {
+	return o
+}
+
+func (o FhirStoreConsentConfigConsentHeaderHandlingOutput) ToFhirStoreConsentConfigConsentHeaderHandlingOutputWithContext(ctx context.Context) FhirStoreConsentConfigConsentHeaderHandlingOutput {
+	return o
+}
+
+func (o FhirStoreConsentConfigConsentHeaderHandlingOutput) ToFhirStoreConsentConfigConsentHeaderHandlingPtrOutput() FhirStoreConsentConfigConsentHeaderHandlingPtrOutput {
+	return o.ToFhirStoreConsentConfigConsentHeaderHandlingPtrOutputWithContext(context.Background())
+}
+
+func (o FhirStoreConsentConfigConsentHeaderHandlingOutput) ToFhirStoreConsentConfigConsentHeaderHandlingPtrOutputWithContext(ctx context.Context) FhirStoreConsentConfigConsentHeaderHandlingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FhirStoreConsentConfigConsentHeaderHandling) *FhirStoreConsentConfigConsentHeaderHandling {
+		return &v
+	}).(FhirStoreConsentConfigConsentHeaderHandlingPtrOutput)
+}
+
+// Specifies the default server behavior when the header is empty. If not specified, the ScopeProfile.PERMIT_EMPTY_SCOPE option is used.
+// Default value is `PERMIT_EMPTY_SCOPE`.
+// Possible values are: `SCOPE_PROFILE_UNSPECIFIED`, `PERMIT_EMPTY_SCOPE`, `REQUIRED_ON_READ`.
+func (o FhirStoreConsentConfigConsentHeaderHandlingOutput) Profile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FhirStoreConsentConfigConsentHeaderHandling) *string { return v.Profile }).(pulumi.StringPtrOutput)
+}
+
+type FhirStoreConsentConfigConsentHeaderHandlingPtrOutput struct{ *pulumi.OutputState }
+
+func (FhirStoreConsentConfigConsentHeaderHandlingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FhirStoreConsentConfigConsentHeaderHandling)(nil)).Elem()
+}
+
+func (o FhirStoreConsentConfigConsentHeaderHandlingPtrOutput) ToFhirStoreConsentConfigConsentHeaderHandlingPtrOutput() FhirStoreConsentConfigConsentHeaderHandlingPtrOutput {
+	return o
+}
+
+func (o FhirStoreConsentConfigConsentHeaderHandlingPtrOutput) ToFhirStoreConsentConfigConsentHeaderHandlingPtrOutputWithContext(ctx context.Context) FhirStoreConsentConfigConsentHeaderHandlingPtrOutput {
+	return o
+}
+
+func (o FhirStoreConsentConfigConsentHeaderHandlingPtrOutput) Elem() FhirStoreConsentConfigConsentHeaderHandlingOutput {
+	return o.ApplyT(func(v *FhirStoreConsentConfigConsentHeaderHandling) FhirStoreConsentConfigConsentHeaderHandling {
+		if v != nil {
+			return *v
+		}
+		var ret FhirStoreConsentConfigConsentHeaderHandling
+		return ret
+	}).(FhirStoreConsentConfigConsentHeaderHandlingOutput)
+}
+
+// Specifies the default server behavior when the header is empty. If not specified, the ScopeProfile.PERMIT_EMPTY_SCOPE option is used.
+// Default value is `PERMIT_EMPTY_SCOPE`.
+// Possible values are: `SCOPE_PROFILE_UNSPECIFIED`, `PERMIT_EMPTY_SCOPE`, `REQUIRED_ON_READ`.
+func (o FhirStoreConsentConfigConsentHeaderHandlingPtrOutput) Profile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FhirStoreConsentConfigConsentHeaderHandling) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Profile
+	}).(pulumi.StringPtrOutput)
+}
+
 type FhirStoreIamBindingCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
@@ -4921,6 +5444,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DicomStoreStreamConfigInput)(nil)).Elem(), DicomStoreStreamConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DicomStoreStreamConfigArrayInput)(nil)).Elem(), DicomStoreStreamConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DicomStoreStreamConfigBigqueryDestinationInput)(nil)).Elem(), DicomStoreStreamConfigBigqueryDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreConsentConfigInput)(nil)).Elem(), FhirStoreConsentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreConsentConfigPtrInput)(nil)).Elem(), FhirStoreConsentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreConsentConfigAccessDeterminationLogConfigInput)(nil)).Elem(), FhirStoreConsentConfigAccessDeterminationLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreConsentConfigAccessDeterminationLogConfigPtrInput)(nil)).Elem(), FhirStoreConsentConfigAccessDeterminationLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreConsentConfigConsentHeaderHandlingInput)(nil)).Elem(), FhirStoreConsentConfigConsentHeaderHandlingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreConsentConfigConsentHeaderHandlingPtrInput)(nil)).Elem(), FhirStoreConsentConfigConsentHeaderHandlingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreIamBindingConditionInput)(nil)).Elem(), FhirStoreIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreIamBindingConditionPtrInput)(nil)).Elem(), FhirStoreIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreIamMemberConditionInput)(nil)).Elem(), FhirStoreIamMemberConditionArgs{})
@@ -4981,6 +5510,12 @@ func init() {
 	pulumi.RegisterOutputType(DicomStoreStreamConfigOutput{})
 	pulumi.RegisterOutputType(DicomStoreStreamConfigArrayOutput{})
 	pulumi.RegisterOutputType(DicomStoreStreamConfigBigqueryDestinationOutput{})
+	pulumi.RegisterOutputType(FhirStoreConsentConfigOutput{})
+	pulumi.RegisterOutputType(FhirStoreConsentConfigPtrOutput{})
+	pulumi.RegisterOutputType(FhirStoreConsentConfigAccessDeterminationLogConfigOutput{})
+	pulumi.RegisterOutputType(FhirStoreConsentConfigAccessDeterminationLogConfigPtrOutput{})
+	pulumi.RegisterOutputType(FhirStoreConsentConfigConsentHeaderHandlingOutput{})
+	pulumi.RegisterOutputType(FhirStoreConsentConfigConsentHeaderHandlingPtrOutput{})
 	pulumi.RegisterOutputType(FhirStoreIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(FhirStoreIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(FhirStoreIamMemberConditionOutput{})

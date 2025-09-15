@@ -115,6 +115,12 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<int>? MaxParallelImagePulls { get; set; }
 
         /// <summary>
+        /// Configuration for the Memory Manager on the node. The memory manager optimizes memory and hugepages allocation for pods, especially those in the Guaranteed QoS class, by influencing NUMA affinity.
+        /// </summary>
+        [Input("memoryManager")]
+        public Input<Inputs.NodePoolNodeConfigKubeletConfigMemoryManagerGetArgs>? MemoryManager { get; set; }
+
+        /// <summary>
         /// Controls the maximum number of processes allowed to run in a pod.
         /// </summary>
         [Input("podPidsLimit")]
@@ -125,6 +131,12 @@ namespace Pulumi.Gcp.Container.Inputs
         /// </summary>
         [Input("singleProcessOomKill")]
         public Input<bool>? SingleProcessOomKill { get; set; }
+
+        /// <summary>
+        /// Configuration for the Topology Manager on the node. The Topology Manager aligns CPU, memory, and device resources on a node to optimize performance, especially for NUMA-aware workloads, by ensuring resource co-location.
+        /// </summary>
+        [Input("topologyManager")]
+        public Input<Inputs.NodePoolNodeConfigKubeletConfigTopologyManagerGetArgs>? TopologyManager { get; set; }
 
         public NodePoolNodeConfigKubeletConfigGetArgs()
         {

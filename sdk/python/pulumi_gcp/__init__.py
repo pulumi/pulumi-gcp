@@ -5161,6 +5161,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "discoveryengine/aclConfig",
+  "fqn": "pulumi_gcp.discoveryengine",
+  "classes": {
+   "gcp:discoveryengine/aclConfig:AclConfig": "AclConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "discoveryengine/chatEngine",
   "fqn": "pulumi_gcp.discoveryengine",
   "classes": {
@@ -6761,6 +6769,30 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "iap/webForwardingRuleServiceIamBinding",
+  "fqn": "pulumi_gcp.iap",
+  "classes": {
+   "gcp:iap/webForwardingRuleServiceIamBinding:WebForwardingRuleServiceIamBinding": "WebForwardingRuleServiceIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iap/webForwardingRuleServiceIamMember",
+  "fqn": "pulumi_gcp.iap",
+  "classes": {
+   "gcp:iap/webForwardingRuleServiceIamMember:WebForwardingRuleServiceIamMember": "WebForwardingRuleServiceIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iap/webForwardingRuleServiceIamPolicy",
+  "fqn": "pulumi_gcp.iap",
+  "classes": {
+   "gcp:iap/webForwardingRuleServiceIamPolicy:WebForwardingRuleServiceIamPolicy": "WebForwardingRuleServiceIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "iap/webIamBinding",
   "fqn": "pulumi_gcp.iap",
   "classes": {
@@ -7613,6 +7645,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.networkmanagement",
   "classes": {
    "gcp:networkmanagement/connectivityTest:ConnectivityTest": "ConnectivityTest"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networkmanagement/organizationVpcFlowLogsConfig",
+  "fqn": "pulumi_gcp.networkmanagement",
+  "classes": {
+   "gcp:networkmanagement/organizationVpcFlowLogsConfig:OrganizationVpcFlowLogsConfig": "OrganizationVpcFlowLogsConfig"
   }
  },
  {
@@ -8565,6 +8605,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.saasruntime",
   "classes": {
    "gcp:saasruntime/saaS:SaaS": "SaaS"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "saasruntime/unitKind",
+  "fqn": "pulumi_gcp.saasruntime",
+  "classes": {
+   "gcp:saasruntime/unitKind:UnitKind": "UnitKind"
   }
  },
  {

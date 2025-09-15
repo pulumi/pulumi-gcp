@@ -26,6 +26,9 @@ __all__ = [
     'DicomStoreNotificationConfig',
     'DicomStoreStreamConfig',
     'DicomStoreStreamConfigBigqueryDestination',
+    'FhirStoreConsentConfig',
+    'FhirStoreConsentConfigAccessDeterminationLogConfig',
+    'FhirStoreConsentConfigConsentHeaderHandling',
     'FhirStoreIamBindingCondition',
     'FhirStoreIamMemberCondition',
     'FhirStoreNotificationConfig',
@@ -382,6 +385,166 @@ class DicomStoreStreamConfigBigqueryDestination(dict):
         a fully qualified BigQuery table URI where DICOM instance metadata will be streamed.
         """
         return pulumi.get(self, "table_uri")
+
+
+@pulumi.output_type
+class FhirStoreConsentConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessDeterminationLogConfig":
+            suggest = "access_determination_log_config"
+        elif key == "accessEnforced":
+            suggest = "access_enforced"
+        elif key == "consentHeaderHandling":
+            suggest = "consent_header_handling"
+        elif key == "enforcedAdminConsents":
+            suggest = "enforced_admin_consents"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FhirStoreConsentConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FhirStoreConsentConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FhirStoreConsentConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 version: _builtins.str,
+                 access_determination_log_config: Optional['outputs.FhirStoreConsentConfigAccessDeterminationLogConfig'] = None,
+                 access_enforced: Optional[_builtins.bool] = None,
+                 consent_header_handling: Optional['outputs.FhirStoreConsentConfigConsentHeaderHandling'] = None,
+                 enforced_admin_consents: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str version: Specifies which consent enforcement version is being used for this FHIR store. This field can only be set once by either [fhirStores.create][] or [fhirStores.patch][]. After that, you must call [fhirStores.applyConsents][] to change the version.
+               Possible values are: `CONSENT_ENFORCEMENT_VERSION_UNSPECIFIED`, `V1`.
+        :param 'FhirStoreConsentConfigAccessDeterminationLogConfigArgs' access_determination_log_config: Specifies how the server logs the consent-aware requests. If not specified, the AccessDeterminationLogConfig.LogLevel.MINIMUM option is used.
+               Structure is documented below.
+        :param _builtins.bool access_enforced: The default value is false. If set to true, when accessing FHIR resources, the consent headers will be verified against consents given by patients. See the ConsentEnforcementVersion for the supported consent headers.
+        :param 'FhirStoreConsentConfigConsentHeaderHandlingArgs' consent_header_handling: Different options to configure the behaviour of the server when handling the X-Consent-Scope header.
+               Structure is documented below.
+        :param Sequence[_builtins.str] enforced_admin_consents: (Output)
+               The versioned names of the enforced admin Consent resource(s), in the format projects/{projectId}/locations/{location}/datasets/{datasetId}/fhirStores/{fhirStoreId}/fhir/Consent/{resourceId}/_history/{version_id}. For FHIR stores with disableResourceVersioning=true, the format is projects/{projectId}/locations/{location}/datasets/{datasetId}/fhirStores/{fhirStoreId}/fhir/Consent/{resourceId}. This field can only be updated using [fhirStores.applyAdminConsents][].
+        """
+        pulumi.set(__self__, "version", version)
+        if access_determination_log_config is not None:
+            pulumi.set(__self__, "access_determination_log_config", access_determination_log_config)
+        if access_enforced is not None:
+            pulumi.set(__self__, "access_enforced", access_enforced)
+        if consent_header_handling is not None:
+            pulumi.set(__self__, "consent_header_handling", consent_header_handling)
+        if enforced_admin_consents is not None:
+            pulumi.set(__self__, "enforced_admin_consents", enforced_admin_consents)
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> _builtins.str:
+        """
+        Specifies which consent enforcement version is being used for this FHIR store. This field can only be set once by either [fhirStores.create][] or [fhirStores.patch][]. After that, you must call [fhirStores.applyConsents][] to change the version.
+        Possible values are: `CONSENT_ENFORCEMENT_VERSION_UNSPECIFIED`, `V1`.
+        """
+        return pulumi.get(self, "version")
+
+    @_builtins.property
+    @pulumi.getter(name="accessDeterminationLogConfig")
+    def access_determination_log_config(self) -> Optional['outputs.FhirStoreConsentConfigAccessDeterminationLogConfig']:
+        """
+        Specifies how the server logs the consent-aware requests. If not specified, the AccessDeterminationLogConfig.LogLevel.MINIMUM option is used.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "access_determination_log_config")
+
+    @_builtins.property
+    @pulumi.getter(name="accessEnforced")
+    def access_enforced(self) -> Optional[_builtins.bool]:
+        """
+        The default value is false. If set to true, when accessing FHIR resources, the consent headers will be verified against consents given by patients. See the ConsentEnforcementVersion for the supported consent headers.
+        """
+        return pulumi.get(self, "access_enforced")
+
+    @_builtins.property
+    @pulumi.getter(name="consentHeaderHandling")
+    def consent_header_handling(self) -> Optional['outputs.FhirStoreConsentConfigConsentHeaderHandling']:
+        """
+        Different options to configure the behaviour of the server when handling the X-Consent-Scope header.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "consent_header_handling")
+
+    @_builtins.property
+    @pulumi.getter(name="enforcedAdminConsents")
+    def enforced_admin_consents(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (Output)
+        The versioned names of the enforced admin Consent resource(s), in the format projects/{projectId}/locations/{location}/datasets/{datasetId}/fhirStores/{fhirStoreId}/fhir/Consent/{resourceId}/_history/{version_id}. For FHIR stores with disableResourceVersioning=true, the format is projects/{projectId}/locations/{location}/datasets/{datasetId}/fhirStores/{fhirStoreId}/fhir/Consent/{resourceId}. This field can only be updated using [fhirStores.applyAdminConsents][].
+        """
+        return pulumi.get(self, "enforced_admin_consents")
+
+
+@pulumi.output_type
+class FhirStoreConsentConfigAccessDeterminationLogConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "logLevel":
+            suggest = "log_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FhirStoreConsentConfigAccessDeterminationLogConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FhirStoreConsentConfigAccessDeterminationLogConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FhirStoreConsentConfigAccessDeterminationLogConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 log_level: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str log_level: Controls the amount of detail to include as part of the audit logs.
+               Default value is `MINIMUM`.
+               Possible values are: `LOG_LEVEL_UNSPECIFIED`, `DISABLED`, `MINIMUM`, `VERBOSE`.
+        """
+        if log_level is not None:
+            pulumi.set(__self__, "log_level", log_level)
+
+    @_builtins.property
+    @pulumi.getter(name="logLevel")
+    def log_level(self) -> Optional[_builtins.str]:
+        """
+        Controls the amount of detail to include as part of the audit logs.
+        Default value is `MINIMUM`.
+        Possible values are: `LOG_LEVEL_UNSPECIFIED`, `DISABLED`, `MINIMUM`, `VERBOSE`.
+        """
+        return pulumi.get(self, "log_level")
+
+
+@pulumi.output_type
+class FhirStoreConsentConfigConsentHeaderHandling(dict):
+    def __init__(__self__, *,
+                 profile: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str profile: Specifies the default server behavior when the header is empty. If not specified, the ScopeProfile.PERMIT_EMPTY_SCOPE option is used.
+               Default value is `PERMIT_EMPTY_SCOPE`.
+               Possible values are: `SCOPE_PROFILE_UNSPECIFIED`, `PERMIT_EMPTY_SCOPE`, `REQUIRED_ON_READ`.
+        """
+        if profile is not None:
+            pulumi.set(__self__, "profile", profile)
+
+    @_builtins.property
+    @pulumi.getter
+    def profile(self) -> Optional[_builtins.str]:
+        """
+        Specifies the default server behavior when the header is empty. If not specified, the ScopeProfile.PERMIT_EMPTY_SCOPE option is used.
+        Default value is `PERMIT_EMPTY_SCOPE`.
+        Possible values are: `SCOPE_PROFILE_UNSPECIFIED`, `PERMIT_EMPTY_SCOPE`, `REQUIRED_ON_READ`.
+        """
+        return pulumi.get(self, "profile")
 
 
 @pulumi.output_type

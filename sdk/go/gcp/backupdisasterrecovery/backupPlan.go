@@ -228,7 +228,7 @@ type BackupPlan struct {
 	// The resource type to which the `BackupPlan` will be applied.
 	// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
 	ResourceType pulumi.StringOutput `pulumi:"resourceType"`
-	// The list of all resource types to which the 'BackupPlan' can be applied.
+	// The list of all resource types to which the `BackupPlan` can be applied.
 	SupportedResourceTypes pulumi.StringArrayOutput `pulumi:"supportedResourceTypes"`
 	// When the `BackupPlan` was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -304,7 +304,7 @@ type backupPlanState struct {
 	// The resource type to which the `BackupPlan` will be applied.
 	// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
 	ResourceType *string `pulumi:"resourceType"`
-	// The list of all resource types to which the 'BackupPlan' can be applied.
+	// The list of all resource types to which the `BackupPlan` can be applied.
 	SupportedResourceTypes []string `pulumi:"supportedResourceTypes"`
 	// When the `BackupPlan` was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -336,7 +336,7 @@ type BackupPlanState struct {
 	// The resource type to which the `BackupPlan` will be applied.
 	// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
 	ResourceType pulumi.StringPtrInput
-	// The list of all resource types to which the 'BackupPlan' can be applied.
+	// The list of all resource types to which the `BackupPlan` can be applied.
 	SupportedResourceTypes pulumi.StringArrayInput
 	// When the `BackupPlan` was last updated.
 	UpdateTime pulumi.StringPtrInput
@@ -536,7 +536,7 @@ func (o BackupPlanOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupPlan) pulumi.StringOutput { return v.ResourceType }).(pulumi.StringOutput)
 }
 
-// The list of all resource types to which the 'BackupPlan' can be applied.
+// The list of all resource types to which the `BackupPlan` can be applied.
 func (o BackupPlanOutput) SupportedResourceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BackupPlan) pulumi.StringArrayOutput { return v.SupportedResourceTypes }).(pulumi.StringArrayOutput)
 }

@@ -58,7 +58,6 @@ namespace Pulumi.Gcp.Projects
         /// Beta
         /// If `true`, the usage of the service to be disabled will be checked and an error
         /// will be returned if the service to be disabled has usage in last 30 days.
-        /// Defaults to `false`.
         /// </summary>
         [Output("checkIfServiceHasUsageOnDestroy")]
         public Output<bool?> CheckIfServiceHasUsageOnDestroy { get; private set; } = null!;
@@ -138,7 +137,6 @@ namespace Pulumi.Gcp.Projects
         /// Beta
         /// If `true`, the usage of the service to be disabled will be checked and an error
         /// will be returned if the service to be disabled has usage in last 30 days.
-        /// Defaults to `false`.
         /// </summary>
         [Input("checkIfServiceHasUsageOnDestroy")]
         public Input<bool>? CheckIfServiceHasUsageOnDestroy { get; set; }
@@ -180,7 +178,6 @@ namespace Pulumi.Gcp.Projects
         /// Beta
         /// If `true`, the usage of the service to be disabled will be checked and an error
         /// will be returned if the service to be disabled has usage in last 30 days.
-        /// Defaults to `false`.
         /// </summary>
         [Input("checkIfServiceHasUsageOnDestroy")]
         public Input<bool>? CheckIfServiceHasUsageOnDestroy { get; set; }

@@ -401,14 +401,14 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
         return this.resourceType;
     }
     /**
-     * The list of all resource types to which the &#39;BackupPlan&#39; can be applied.
+     * The list of all resource types to which the `BackupPlan` can be applied.
      * 
      */
     @Export(name="supportedResourceTypes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> supportedResourceTypes;
 
     /**
-     * @return The list of all resource types to which the &#39;BackupPlan&#39; can be applied.
+     * @return The list of all resource types to which the `BackupPlan` can be applied.
      * 
      */
     public Output<List<String>> supportedResourceTypes() {

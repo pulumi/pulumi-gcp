@@ -5,6 +5,7 @@ package com.pulumi.gcp.healthcare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.healthcare.inputs.FhirStoreConsentConfigArgs;
 import com.pulumi.gcp.healthcare.inputs.FhirStoreNotificationConfigArgs;
 import com.pulumi.gcp.healthcare.inputs.FhirStoreStreamConfigArgs;
 import java.lang.Boolean;
@@ -35,6 +36,23 @@ public final class FhirStoreState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> complexDataTypeReferenceParsing() {
         return Optional.ofNullable(this.complexDataTypeReferenceParsing);
+    }
+
+    /**
+     * Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="consentConfig")
+    private @Nullable Output<FhirStoreConsentConfigArgs> consentConfig;
+
+    /**
+     * @return Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<FhirStoreConsentConfigArgs>> consentConfig() {
+        return Optional.ofNullable(this.consentConfig);
     }
 
     /**
@@ -387,6 +405,7 @@ public final class FhirStoreState extends com.pulumi.resources.ResourceArgs {
 
     private FhirStoreState(FhirStoreState $) {
         this.complexDataTypeReferenceParsing = $.complexDataTypeReferenceParsing;
+        this.consentConfig = $.consentConfig;
         this.dataset = $.dataset;
         this.defaultSearchHandlingStrict = $.defaultSearchHandlingStrict;
         this.disableReferentialIntegrity = $.disableReferentialIntegrity;
@@ -444,6 +463,29 @@ public final class FhirStoreState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder complexDataTypeReferenceParsing(String complexDataTypeReferenceParsing) {
             return complexDataTypeReferenceParsing(Output.of(complexDataTypeReferenceParsing));
+        }
+
+        /**
+         * @param consentConfig Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder consentConfig(@Nullable Output<FhirStoreConsentConfigArgs> consentConfig) {
+            $.consentConfig = consentConfig;
+            return this;
+        }
+
+        /**
+         * @param consentConfig Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder consentConfig(FhirStoreConsentConfigArgs consentConfig) {
+            return consentConfig(Output.of(consentConfig));
         }
 
         /**

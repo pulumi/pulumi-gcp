@@ -6002,6 +6002,166 @@ func (o ServiceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ServiceMultiRegionSettings struct {
+	// (Output)
+	// System-generated unique id for the multi-region Service.
+	MultiRegionId *string `pulumi:"multiRegionId"`
+	// The list of regions to deploy the multi-region Service.
+	Regions []string `pulumi:"regions"`
+}
+
+// ServiceMultiRegionSettingsInput is an input type that accepts ServiceMultiRegionSettingsArgs and ServiceMultiRegionSettingsOutput values.
+// You can construct a concrete instance of `ServiceMultiRegionSettingsInput` via:
+//
+//	ServiceMultiRegionSettingsArgs{...}
+type ServiceMultiRegionSettingsInput interface {
+	pulumi.Input
+
+	ToServiceMultiRegionSettingsOutput() ServiceMultiRegionSettingsOutput
+	ToServiceMultiRegionSettingsOutputWithContext(context.Context) ServiceMultiRegionSettingsOutput
+}
+
+type ServiceMultiRegionSettingsArgs struct {
+	// (Output)
+	// System-generated unique id for the multi-region Service.
+	MultiRegionId pulumi.StringPtrInput `pulumi:"multiRegionId"`
+	// The list of regions to deploy the multi-region Service.
+	Regions pulumi.StringArrayInput `pulumi:"regions"`
+}
+
+func (ServiceMultiRegionSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceMultiRegionSettings)(nil)).Elem()
+}
+
+func (i ServiceMultiRegionSettingsArgs) ToServiceMultiRegionSettingsOutput() ServiceMultiRegionSettingsOutput {
+	return i.ToServiceMultiRegionSettingsOutputWithContext(context.Background())
+}
+
+func (i ServiceMultiRegionSettingsArgs) ToServiceMultiRegionSettingsOutputWithContext(ctx context.Context) ServiceMultiRegionSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceMultiRegionSettingsOutput)
+}
+
+func (i ServiceMultiRegionSettingsArgs) ToServiceMultiRegionSettingsPtrOutput() ServiceMultiRegionSettingsPtrOutput {
+	return i.ToServiceMultiRegionSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceMultiRegionSettingsArgs) ToServiceMultiRegionSettingsPtrOutputWithContext(ctx context.Context) ServiceMultiRegionSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceMultiRegionSettingsOutput).ToServiceMultiRegionSettingsPtrOutputWithContext(ctx)
+}
+
+// ServiceMultiRegionSettingsPtrInput is an input type that accepts ServiceMultiRegionSettingsArgs, ServiceMultiRegionSettingsPtr and ServiceMultiRegionSettingsPtrOutput values.
+// You can construct a concrete instance of `ServiceMultiRegionSettingsPtrInput` via:
+//
+//	        ServiceMultiRegionSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceMultiRegionSettingsPtrInput interface {
+	pulumi.Input
+
+	ToServiceMultiRegionSettingsPtrOutput() ServiceMultiRegionSettingsPtrOutput
+	ToServiceMultiRegionSettingsPtrOutputWithContext(context.Context) ServiceMultiRegionSettingsPtrOutput
+}
+
+type serviceMultiRegionSettingsPtrType ServiceMultiRegionSettingsArgs
+
+func ServiceMultiRegionSettingsPtr(v *ServiceMultiRegionSettingsArgs) ServiceMultiRegionSettingsPtrInput {
+	return (*serviceMultiRegionSettingsPtrType)(v)
+}
+
+func (*serviceMultiRegionSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceMultiRegionSettings)(nil)).Elem()
+}
+
+func (i *serviceMultiRegionSettingsPtrType) ToServiceMultiRegionSettingsPtrOutput() ServiceMultiRegionSettingsPtrOutput {
+	return i.ToServiceMultiRegionSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceMultiRegionSettingsPtrType) ToServiceMultiRegionSettingsPtrOutputWithContext(ctx context.Context) ServiceMultiRegionSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceMultiRegionSettingsPtrOutput)
+}
+
+type ServiceMultiRegionSettingsOutput struct{ *pulumi.OutputState }
+
+func (ServiceMultiRegionSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceMultiRegionSettings)(nil)).Elem()
+}
+
+func (o ServiceMultiRegionSettingsOutput) ToServiceMultiRegionSettingsOutput() ServiceMultiRegionSettingsOutput {
+	return o
+}
+
+func (o ServiceMultiRegionSettingsOutput) ToServiceMultiRegionSettingsOutputWithContext(ctx context.Context) ServiceMultiRegionSettingsOutput {
+	return o
+}
+
+func (o ServiceMultiRegionSettingsOutput) ToServiceMultiRegionSettingsPtrOutput() ServiceMultiRegionSettingsPtrOutput {
+	return o.ToServiceMultiRegionSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceMultiRegionSettingsOutput) ToServiceMultiRegionSettingsPtrOutputWithContext(ctx context.Context) ServiceMultiRegionSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceMultiRegionSettings) *ServiceMultiRegionSettings {
+		return &v
+	}).(ServiceMultiRegionSettingsPtrOutput)
+}
+
+// (Output)
+// System-generated unique id for the multi-region Service.
+func (o ServiceMultiRegionSettingsOutput) MultiRegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMultiRegionSettings) *string { return v.MultiRegionId }).(pulumi.StringPtrOutput)
+}
+
+// The list of regions to deploy the multi-region Service.
+func (o ServiceMultiRegionSettingsOutput) Regions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServiceMultiRegionSettings) []string { return v.Regions }).(pulumi.StringArrayOutput)
+}
+
+type ServiceMultiRegionSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceMultiRegionSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceMultiRegionSettings)(nil)).Elem()
+}
+
+func (o ServiceMultiRegionSettingsPtrOutput) ToServiceMultiRegionSettingsPtrOutput() ServiceMultiRegionSettingsPtrOutput {
+	return o
+}
+
+func (o ServiceMultiRegionSettingsPtrOutput) ToServiceMultiRegionSettingsPtrOutputWithContext(ctx context.Context) ServiceMultiRegionSettingsPtrOutput {
+	return o
+}
+
+func (o ServiceMultiRegionSettingsPtrOutput) Elem() ServiceMultiRegionSettingsOutput {
+	return o.ApplyT(func(v *ServiceMultiRegionSettings) ServiceMultiRegionSettings {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceMultiRegionSettings
+		return ret
+	}).(ServiceMultiRegionSettingsOutput)
+}
+
+// (Output)
+// System-generated unique id for the multi-region Service.
+func (o ServiceMultiRegionSettingsPtrOutput) MultiRegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMultiRegionSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MultiRegionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of regions to deploy the multi-region Service.
+func (o ServiceMultiRegionSettingsPtrOutput) Regions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServiceMultiRegionSettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Regions
+	}).(pulumi.StringArrayOutput)
+}
+
 type ServiceScaling struct {
 	// Total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
 	ManualInstanceCount *int `pulumi:"manualInstanceCount"`
@@ -19997,6 +20157,112 @@ func (o GetServiceConditionArrayOutput) Index(i pulumi.IntInput) GetServiceCondi
 	}).(GetServiceConditionOutput)
 }
 
+type GetServiceMultiRegionSetting struct {
+	// System-generated unique id for the multi-region Service.
+	MultiRegionId string `pulumi:"multiRegionId"`
+	// The list of regions to deploy the multi-region Service.
+	Regions []string `pulumi:"regions"`
+}
+
+// GetServiceMultiRegionSettingInput is an input type that accepts GetServiceMultiRegionSettingArgs and GetServiceMultiRegionSettingOutput values.
+// You can construct a concrete instance of `GetServiceMultiRegionSettingInput` via:
+//
+//	GetServiceMultiRegionSettingArgs{...}
+type GetServiceMultiRegionSettingInput interface {
+	pulumi.Input
+
+	ToGetServiceMultiRegionSettingOutput() GetServiceMultiRegionSettingOutput
+	ToGetServiceMultiRegionSettingOutputWithContext(context.Context) GetServiceMultiRegionSettingOutput
+}
+
+type GetServiceMultiRegionSettingArgs struct {
+	// System-generated unique id for the multi-region Service.
+	MultiRegionId pulumi.StringInput `pulumi:"multiRegionId"`
+	// The list of regions to deploy the multi-region Service.
+	Regions pulumi.StringArrayInput `pulumi:"regions"`
+}
+
+func (GetServiceMultiRegionSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceMultiRegionSetting)(nil)).Elem()
+}
+
+func (i GetServiceMultiRegionSettingArgs) ToGetServiceMultiRegionSettingOutput() GetServiceMultiRegionSettingOutput {
+	return i.ToGetServiceMultiRegionSettingOutputWithContext(context.Background())
+}
+
+func (i GetServiceMultiRegionSettingArgs) ToGetServiceMultiRegionSettingOutputWithContext(ctx context.Context) GetServiceMultiRegionSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMultiRegionSettingOutput)
+}
+
+// GetServiceMultiRegionSettingArrayInput is an input type that accepts GetServiceMultiRegionSettingArray and GetServiceMultiRegionSettingArrayOutput values.
+// You can construct a concrete instance of `GetServiceMultiRegionSettingArrayInput` via:
+//
+//	GetServiceMultiRegionSettingArray{ GetServiceMultiRegionSettingArgs{...} }
+type GetServiceMultiRegionSettingArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceMultiRegionSettingArrayOutput() GetServiceMultiRegionSettingArrayOutput
+	ToGetServiceMultiRegionSettingArrayOutputWithContext(context.Context) GetServiceMultiRegionSettingArrayOutput
+}
+
+type GetServiceMultiRegionSettingArray []GetServiceMultiRegionSettingInput
+
+func (GetServiceMultiRegionSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceMultiRegionSetting)(nil)).Elem()
+}
+
+func (i GetServiceMultiRegionSettingArray) ToGetServiceMultiRegionSettingArrayOutput() GetServiceMultiRegionSettingArrayOutput {
+	return i.ToGetServiceMultiRegionSettingArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceMultiRegionSettingArray) ToGetServiceMultiRegionSettingArrayOutputWithContext(ctx context.Context) GetServiceMultiRegionSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMultiRegionSettingArrayOutput)
+}
+
+type GetServiceMultiRegionSettingOutput struct{ *pulumi.OutputState }
+
+func (GetServiceMultiRegionSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceMultiRegionSetting)(nil)).Elem()
+}
+
+func (o GetServiceMultiRegionSettingOutput) ToGetServiceMultiRegionSettingOutput() GetServiceMultiRegionSettingOutput {
+	return o
+}
+
+func (o GetServiceMultiRegionSettingOutput) ToGetServiceMultiRegionSettingOutputWithContext(ctx context.Context) GetServiceMultiRegionSettingOutput {
+	return o
+}
+
+// System-generated unique id for the multi-region Service.
+func (o GetServiceMultiRegionSettingOutput) MultiRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMultiRegionSetting) string { return v.MultiRegionId }).(pulumi.StringOutput)
+}
+
+// The list of regions to deploy the multi-region Service.
+func (o GetServiceMultiRegionSettingOutput) Regions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceMultiRegionSetting) []string { return v.Regions }).(pulumi.StringArrayOutput)
+}
+
+type GetServiceMultiRegionSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceMultiRegionSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceMultiRegionSetting)(nil)).Elem()
+}
+
+func (o GetServiceMultiRegionSettingArrayOutput) ToGetServiceMultiRegionSettingArrayOutput() GetServiceMultiRegionSettingArrayOutput {
+	return o
+}
+
+func (o GetServiceMultiRegionSettingArrayOutput) ToGetServiceMultiRegionSettingArrayOutputWithContext(ctx context.Context) GetServiceMultiRegionSettingArrayOutput {
+	return o
+}
+
+func (o GetServiceMultiRegionSettingArrayOutput) Index(i pulumi.IntInput) GetServiceMultiRegionSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceMultiRegionSetting {
+		return vs[0].([]GetServiceMultiRegionSetting)[vs[1].(int)]
+	}).(GetServiceMultiRegionSettingOutput)
+}
+
 type GetServiceScaling struct {
 	// Total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
 	ManualInstanceCount int `pulumi:"manualInstanceCount"`
@@ -27266,6 +27532,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIamBindingConditionPtrInput)(nil)).Elem(), ServiceIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIamMemberConditionInput)(nil)).Elem(), ServiceIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIamMemberConditionPtrInput)(nil)).Elem(), ServiceIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMultiRegionSettingsInput)(nil)).Elem(), ServiceMultiRegionSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMultiRegionSettingsPtrInput)(nil)).Elem(), ServiceMultiRegionSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceScalingInput)(nil)).Elem(), ServiceScalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceScalingPtrInput)(nil)).Elem(), ServiceScalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateInput)(nil)).Elem(), ServiceTemplateArgs{})
@@ -27448,6 +27716,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceBuildConfigArrayInput)(nil)).Elem(), GetServiceBuildConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceConditionInput)(nil)).Elem(), GetServiceConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceConditionArrayInput)(nil)).Elem(), GetServiceConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMultiRegionSettingInput)(nil)).Elem(), GetServiceMultiRegionSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMultiRegionSettingArrayInput)(nil)).Elem(), GetServiceMultiRegionSettingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceScalingInput)(nil)).Elem(), GetServiceScalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceScalingArrayInput)(nil)).Elem(), GetServiceScalingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateInput)(nil)).Elem(), GetServiceTemplateArgs{})
@@ -27634,6 +27904,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(ServiceIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(ServiceMultiRegionSettingsOutput{})
+	pulumi.RegisterOutputType(ServiceMultiRegionSettingsPtrOutput{})
 	pulumi.RegisterOutputType(ServiceScalingOutput{})
 	pulumi.RegisterOutputType(ServiceScalingPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateOutput{})
@@ -27816,6 +28088,8 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceBuildConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceConditionOutput{})
 	pulumi.RegisterOutputType(GetServiceConditionArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceMultiRegionSettingOutput{})
+	pulumi.RegisterOutputType(GetServiceMultiRegionSettingArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceScalingOutput{})
 	pulumi.RegisterOutputType(GetServiceScalingArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateOutput{})

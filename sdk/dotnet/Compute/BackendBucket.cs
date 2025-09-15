@@ -233,6 +233,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// If true, enable Cloud CDN for this BackendBucket.
+        /// Note: This cannot be set to true when loadBalancingScheme is set to INTERNAL_MANAGED.
         /// </summary>
         [Output("enableCdn")]
         public Output<bool?> EnableCdn { get; private set; } = null!;
@@ -240,6 +241,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
         /// If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+        /// Important: CDN cannot be enabled (enableCdn cannot be set to true) when loadBalancingScheme is set to INTERNAL_MANAGED.
         /// Possible values are: `INTERNAL_MANAGED`.
         /// </summary>
         [Output("loadBalancingScheme")]
@@ -370,6 +372,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// If true, enable Cloud CDN for this BackendBucket.
+        /// Note: This cannot be set to true when loadBalancingScheme is set to INTERNAL_MANAGED.
         /// </summary>
         [Input("enableCdn")]
         public Input<bool>? EnableCdn { get; set; }
@@ -377,6 +380,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
         /// If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+        /// Important: CDN cannot be enabled (enableCdn cannot be set to true) when loadBalancingScheme is set to INTERNAL_MANAGED.
         /// Possible values are: `INTERNAL_MANAGED`.
         /// </summary>
         [Input("loadBalancingScheme")]
@@ -469,6 +473,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// If true, enable Cloud CDN for this BackendBucket.
+        /// Note: This cannot be set to true when loadBalancingScheme is set to INTERNAL_MANAGED.
         /// </summary>
         [Input("enableCdn")]
         public Input<bool>? EnableCdn { get; set; }
@@ -476,6 +481,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
         /// If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+        /// Important: CDN cannot be enabled (enableCdn cannot be set to true) when loadBalancingScheme is set to INTERNAL_MANAGED.
         /// Possible values are: `INTERNAL_MANAGED`.
         /// </summary>
         [Input("loadBalancingScheme")]

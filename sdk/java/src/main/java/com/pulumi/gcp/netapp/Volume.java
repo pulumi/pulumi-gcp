@@ -18,6 +18,7 @@ import com.pulumi.gcp.netapp.outputs.VolumeRestoreParameters;
 import com.pulumi.gcp.netapp.outputs.VolumeSnapshotPolicy;
 import com.pulumi.gcp.netapp.outputs.VolumeTieringPolicy;
 import java.lang.Boolean;
+import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -697,6 +698,20 @@ public class Volume extends com.pulumi.resources.CustomResource {
      */
     public Output<String> storagePool() {
         return this.storagePool;
+    }
+    /**
+     * Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+     * 
+     */
+    @Export(name="throughputMibps", refs={Double.class}, tree="[0]")
+    private Output<Double> throughputMibps;
+
+    /**
+     * @return Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+     * 
+     */
+    public Output<Double> throughputMibps() {
+        return this.throughputMibps;
     }
     /**
      * Tiering policy for the volume.

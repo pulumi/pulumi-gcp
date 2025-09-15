@@ -21,6 +21,11 @@ public final class GetBackupBackup {
      */
     private String backupVaultId;
     /**
+     * @return The time when the backup was created.
+     * 
+     */
+    private String createTime;
+    /**
      * @return The ID of the Data Source in which the Backup belongs.
      * 
      */
@@ -50,6 +55,13 @@ public final class GetBackupBackup {
      */
     public String backupVaultId() {
         return this.backupVaultId;
+    }
+    /**
+     * @return The time when the backup was created.
+     * 
+     */
+    public String createTime() {
+        return this.createTime;
     }
     /**
      * @return The ID of the Data Source in which the Backup belongs.
@@ -84,6 +96,7 @@ public final class GetBackupBackup {
     public static final class Builder {
         private String backupId;
         private String backupVaultId;
+        private String createTime;
         private String dataSourceId;
         private String location;
         private String name;
@@ -92,6 +105,7 @@ public final class GetBackupBackup {
     	      Objects.requireNonNull(defaults);
     	      this.backupId = defaults.backupId;
     	      this.backupVaultId = defaults.backupVaultId;
+    	      this.createTime = defaults.createTime;
     	      this.dataSourceId = defaults.dataSourceId;
     	      this.location = defaults.location;
     	      this.name = defaults.name;
@@ -111,6 +125,14 @@ public final class GetBackupBackup {
               throw new MissingRequiredPropertyException("GetBackupBackup", "backupVaultId");
             }
             this.backupVaultId = backupVaultId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder createTime(String createTime) {
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetBackupBackup", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
@@ -141,6 +163,7 @@ public final class GetBackupBackup {
             final var _resultValue = new GetBackupBackup();
             _resultValue.backupId = backupId;
             _resultValue.backupVaultId = backupVaultId;
+            _resultValue.createTime = createTime;
             _resultValue.dataSourceId = dataSourceId;
             _resultValue.location = location;
             _resultValue.name = name;

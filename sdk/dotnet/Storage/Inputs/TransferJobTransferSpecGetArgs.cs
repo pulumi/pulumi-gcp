@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.Storage.Inputs
     public sealed class TransferJobTransferSpecGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// An AWS S3 Compatible data source. Structure documented below.
+        /// </summary>
+        [Input("awsS3CompatibleDataSource")]
+        public Input<Inputs.TransferJobTransferSpecAwsS3CompatibleDataSourceGetArgs>? AwsS3CompatibleDataSource { get; set; }
+
+        /// <summary>
         /// An AWS S3 data source. Structure documented below.
         /// </summary>
         [Input("awsS3DataSource")]

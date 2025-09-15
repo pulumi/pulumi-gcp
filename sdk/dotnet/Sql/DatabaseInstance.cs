@@ -428,6 +428,12 @@ namespace Pulumi.Gcp.Sql
         public Output<string> EncryptionKeyName { get; private set; } = null!;
 
         /// <summary>
+        /// The description of final backup. Only set this field when `final_backup_config.enabled` is true.
+        /// </summary>
+        [Output("finalBackupDescription")]
+        public Output<string?> FinalBackupDescription { get; private set; } = null!;
+
+        /// <summary>
         /// The first IPv4 address of any type assigned.
         /// </summary>
         [Output("firstIpAddress")]
@@ -663,6 +669,12 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? EncryptionKeyName { get; set; }
 
         /// <summary>
+        /// The description of final backup. Only set this field when `final_backup_config.enabled` is true.
+        /// </summary>
+        [Input("finalBackupDescription")]
+        public Input<string>? FinalBackupDescription { get; set; }
+
+        /// <summary>
         /// The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
         /// </summary>
         [Input("instanceType")]
@@ -872,6 +884,12 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Input("encryptionKeyName")]
         public Input<string>? EncryptionKeyName { get; set; }
+
+        /// <summary>
+        /// The description of final backup. Only set this field when `final_backup_config.enabled` is true.
+        /// </summary>
+        [Input("finalBackupDescription")]
+        public Input<string>? FinalBackupDescription { get; set; }
 
         /// <summary>
         /// The first IPv4 address of any type assigned.

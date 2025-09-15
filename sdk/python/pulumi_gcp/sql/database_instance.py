@@ -26,6 +26,7 @@ class DatabaseInstanceArgs:
                  clone: Optional[pulumi.Input['DatabaseInstanceCloneArgs']] = None,
                  deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  encryption_key_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 final_backup_description: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_type: Optional[pulumi.Input[_builtins.str]] = None,
                  maintenance_version: Optional[pulumi.Input[_builtins.str]] = None,
                  master_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -64,6 +65,7 @@ class DatabaseInstanceArgs:
                manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
                That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
                key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
+        :param pulumi.Input[_builtins.str] final_backup_description: The description of final backup. Only set this field when `final_backup_config.enabled` is true.
         :param pulumi.Input[_builtins.str] instance_type: The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
         :param pulumi.Input[_builtins.str] maintenance_version: The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
         :param pulumi.Input[_builtins.str] master_instance_name: The name of the existing instance that will
@@ -101,6 +103,8 @@ class DatabaseInstanceArgs:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if encryption_key_name is not None:
             pulumi.set(__self__, "encryption_key_name", encryption_key_name)
+        if final_backup_description is not None:
+            pulumi.set(__self__, "final_backup_description", final_backup_description)
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
         if maintenance_version is not None:
@@ -205,6 +209,18 @@ class DatabaseInstanceArgs:
     @encryption_key_name.setter
     def encryption_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "encryption_key_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="finalBackupDescription")
+    def final_backup_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The description of final backup. Only set this field when `final_backup_config.enabled` is true.
+        """
+        return pulumi.get(self, "final_backup_description")
+
+    @final_backup_description.setter
+    def final_backup_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "final_backup_description", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
@@ -389,6 +405,7 @@ class _DatabaseInstanceState:
                  dns_name: Optional[pulumi.Input[_builtins.str]] = None,
                  dns_names: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceDnsNameArgs']]]] = None,
                  encryption_key_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 final_backup_description: Optional[pulumi.Input[_builtins.str]] = None,
                  first_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_type: Optional[pulumi.Input[_builtins.str]] = None,
                  ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceIpAddressArgs']]]] = None,
@@ -440,6 +457,7 @@ class _DatabaseInstanceState:
                manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
                That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
                key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
+        :param pulumi.Input[_builtins.str] final_backup_description: The description of final backup. Only set this field when `final_backup_config.enabled` is true.
         :param pulumi.Input[_builtins.str] first_ip_address: The first IPv4 address of any type assigned.
         :param pulumi.Input[_builtins.str] instance_type: The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
         :param pulumi.Input[_builtins.str] maintenance_version: The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
@@ -493,6 +511,8 @@ class _DatabaseInstanceState:
             pulumi.set(__self__, "dns_names", dns_names)
         if encryption_key_name is not None:
             pulumi.set(__self__, "encryption_key_name", encryption_key_name)
+        if final_backup_description is not None:
+            pulumi.set(__self__, "final_backup_description", final_backup_description)
         if first_ip_address is not None:
             pulumi.set(__self__, "first_ip_address", first_ip_address)
         if instance_type is not None:
@@ -662,6 +682,18 @@ class _DatabaseInstanceState:
     @encryption_key_name.setter
     def encryption_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "encryption_key_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="finalBackupDescription")
+    def final_backup_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The description of final backup. Only set this field when `final_backup_config.enabled` is true.
+        """
+        return pulumi.get(self, "final_backup_description")
+
+    @final_backup_description.setter
+    def final_backup_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "final_backup_description", value)
 
     @_builtins.property
     @pulumi.getter(name="firstIpAddress")
@@ -936,6 +968,7 @@ class DatabaseInstance(pulumi.CustomResource):
                  database_version: Optional[pulumi.Input[_builtins.str]] = None,
                  deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  encryption_key_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 final_backup_description: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_type: Optional[pulumi.Input[_builtins.str]] = None,
                  maintenance_version: Optional[pulumi.Input[_builtins.str]] = None,
                  master_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1208,6 +1241,7 @@ class DatabaseInstance(pulumi.CustomResource):
                manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
                That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
                key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
+        :param pulumi.Input[_builtins.str] final_backup_description: The description of final backup. Only set this field when `final_backup_config.enabled` is true.
         :param pulumi.Input[_builtins.str] instance_type: The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
         :param pulumi.Input[_builtins.str] maintenance_version: The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
         :param pulumi.Input[_builtins.str] master_instance_name: The name of the existing instance that will
@@ -1495,6 +1529,7 @@ class DatabaseInstance(pulumi.CustomResource):
                  database_version: Optional[pulumi.Input[_builtins.str]] = None,
                  deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  encryption_key_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 final_backup_description: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_type: Optional[pulumi.Input[_builtins.str]] = None,
                  maintenance_version: Optional[pulumi.Input[_builtins.str]] = None,
                  master_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1524,6 +1559,7 @@ class DatabaseInstance(pulumi.CustomResource):
             __props__.__dict__["database_version"] = database_version
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["encryption_key_name"] = encryption_key_name
+            __props__.__dict__["final_backup_description"] = final_backup_description
             __props__.__dict__["instance_type"] = instance_type
             __props__.__dict__["maintenance_version"] = maintenance_version
             __props__.__dict__["master_instance_name"] = master_instance_name
@@ -1570,6 +1606,7 @@ class DatabaseInstance(pulumi.CustomResource):
             dns_name: Optional[pulumi.Input[_builtins.str]] = None,
             dns_names: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseInstanceDnsNameArgs', 'DatabaseInstanceDnsNameArgsDict']]]]] = None,
             encryption_key_name: Optional[pulumi.Input[_builtins.str]] = None,
+            final_backup_description: Optional[pulumi.Input[_builtins.str]] = None,
             first_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
             instance_type: Optional[pulumi.Input[_builtins.str]] = None,
             ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseInstanceIpAddressArgs', 'DatabaseInstanceIpAddressArgsDict']]]]] = None,
@@ -1626,6 +1663,7 @@ class DatabaseInstance(pulumi.CustomResource):
                manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
                That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
                key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
+        :param pulumi.Input[_builtins.str] final_backup_description: The description of final backup. Only set this field when `final_backup_config.enabled` is true.
         :param pulumi.Input[_builtins.str] first_ip_address: The first IPv4 address of any type assigned.
         :param pulumi.Input[_builtins.str] instance_type: The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
         :param pulumi.Input[_builtins.str] maintenance_version: The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
@@ -1674,6 +1712,7 @@ class DatabaseInstance(pulumi.CustomResource):
         __props__.__dict__["dns_name"] = dns_name
         __props__.__dict__["dns_names"] = dns_names
         __props__.__dict__["encryption_key_name"] = encryption_key_name
+        __props__.__dict__["final_backup_description"] = final_backup_description
         __props__.__dict__["first_ip_address"] = first_ip_address
         __props__.__dict__["instance_type"] = instance_type
         __props__.__dict__["ip_addresses"] = ip_addresses
@@ -1787,6 +1826,14 @@ class DatabaseInstance(pulumi.CustomResource):
         key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
         """
         return pulumi.get(self, "encryption_key_name")
+
+    @_builtins.property
+    @pulumi.getter(name="finalBackupDescription")
+    def final_backup_description(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The description of final backup. Only set this field when `final_backup_config.enabled` is true.
+        """
+        return pulumi.get(self, "final_backup_description")
 
     @_builtins.property
     @pulumi.getter(name="firstIpAddress")

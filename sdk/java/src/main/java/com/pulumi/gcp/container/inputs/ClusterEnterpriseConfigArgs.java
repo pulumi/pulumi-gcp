@@ -18,29 +18,45 @@ public final class ClusterEnterpriseConfigArgs extends com.pulumi.resources.Reso
     /**
      * The effective tier of the cluster.
      * 
+     * @deprecated
+     * GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
+     * 
      */
+    @Deprecated /* GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release */
     @Import(name="clusterTier")
     private @Nullable Output<String> clusterTier;
 
     /**
      * @return The effective tier of the cluster.
      * 
+     * @deprecated
+     * GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
+     * 
      */
+    @Deprecated /* GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release */
     public Optional<Output<String>> clusterTier() {
         return Optional.ofNullable(this.clusterTier);
     }
 
     /**
-     * Sets the tier of the cluster. Available options include `STANDARD` and `ENTERPRISE`.
+     * (DEPRECATED) Sets the tier of the cluster. Available options include `STANDARD` and `ENTERPRISE`. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
+     * 
+     * @deprecated
+     * GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
      * 
      */
+    @Deprecated /* GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release */
     @Import(name="desiredTier")
     private @Nullable Output<String> desiredTier;
 
     /**
-     * @return Sets the tier of the cluster. Available options include `STANDARD` and `ENTERPRISE`.
+     * @return (DEPRECATED) Sets the tier of the cluster. Available options include `STANDARD` and `ENTERPRISE`. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
+     * 
+     * @deprecated
+     * GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
      * 
      */
+    @Deprecated /* GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release */
     public Optional<Output<String>> desiredTier() {
         return Optional.ofNullable(this.desiredTier);
     }
@@ -75,7 +91,11 @@ public final class ClusterEnterpriseConfigArgs extends com.pulumi.resources.Reso
          * 
          * @return builder
          * 
+         * @deprecated
+         * GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
+         * 
          */
+        @Deprecated /* GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release */
         public Builder clusterTier(@Nullable Output<String> clusterTier) {
             $.clusterTier = clusterTier;
             return this;
@@ -86,28 +106,40 @@ public final class ClusterEnterpriseConfigArgs extends com.pulumi.resources.Reso
          * 
          * @return builder
          * 
+         * @deprecated
+         * GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
+         * 
          */
+        @Deprecated /* GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release */
         public Builder clusterTier(String clusterTier) {
             return clusterTier(Output.of(clusterTier));
         }
 
         /**
-         * @param desiredTier Sets the tier of the cluster. Available options include `STANDARD` and `ENTERPRISE`.
+         * @param desiredTier (DEPRECATED) Sets the tier of the cluster. Available options include `STANDARD` and `ENTERPRISE`. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
          * 
          * @return builder
          * 
+         * @deprecated
+         * GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
+         * 
          */
+        @Deprecated /* GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release */
         public Builder desiredTier(@Nullable Output<String> desiredTier) {
             $.desiredTier = desiredTier;
             return this;
         }
 
         /**
-         * @param desiredTier Sets the tier of the cluster. Available options include `STANDARD` and `ENTERPRISE`.
+         * @param desiredTier (DEPRECATED) Sets the tier of the cluster. Available options include `STANDARD` and `ENTERPRISE`. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
          * 
          * @return builder
          * 
+         * @deprecated
+         * GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
+         * 
          */
+        @Deprecated /* GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release */
         public Builder desiredTier(String desiredTier) {
             return desiredTier(Output.of(desiredTier));
         }

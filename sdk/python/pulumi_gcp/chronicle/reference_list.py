@@ -27,7 +27,8 @@ class ReferenceListArgs:
                  location: pulumi.Input[_builtins.str],
                  reference_list_id: pulumi.Input[_builtins.str],
                  syntax_type: pulumi.Input[_builtins.str],
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 scope_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ReferenceListScopeInfoArgs']]]] = None):
         """
         The set of arguments for constructing a ReferenceList resource.
         :param pulumi.Input[_builtins.str] description: Required. A user-provided description of the reference list.
@@ -51,6 +52,8 @@ class ReferenceListArgs:
                REFERENCE_LIST_SYNTAX_TYPE_CIDR
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Sequence[pulumi.Input['ReferenceListScopeInfoArgs']]] scope_infos: ScopeInfo specifies the scope info of the reference list.
+               Structure is documented below.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "entries", entries)
@@ -60,6 +63,8 @@ class ReferenceListArgs:
         pulumi.set(__self__, "syntax_type", syntax_type)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if scope_infos is not None:
+            pulumi.set(__self__, "scope_infos", scope_infos)
 
     @_builtins.property
     @pulumi.getter
@@ -158,6 +163,19 @@ class ReferenceListArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "project", value)
+
+    @_builtins.property
+    @pulumi.getter(name="scopeInfos")
+    def scope_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ReferenceListScopeInfoArgs']]]]:
+        """
+        ScopeInfo specifies the scope info of the reference list.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scope_infos")
+
+    @scope_infos.setter
+    def scope_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ReferenceListScopeInfoArgs']]]]):
+        pulumi.set(self, "scope_infos", value)
 
 
 @pulumi.input_type
@@ -426,6 +444,7 @@ class ReferenceList(pulumi.CustomResource):
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  reference_list_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 scope_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ReferenceListScopeInfoArgs', 'ReferenceListScopeInfoArgsDict']]]]] = None,
                  syntax_type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -445,6 +464,14 @@ class ReferenceList(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        test_scope = gcp.chronicle.DataAccessScope("test_scope",
+            location="us",
+            instance="00000000-0000-0000-0000-000000000000",
+            data_access_scope_id="scope-id",
+            description="test scope description",
+            allowed_data_access_labels=[{
+                "log_type": "GCP_CLOUDAUDIT",
+            }])
         example = gcp.chronicle.ReferenceList("example",
             location="us",
             instance="00000000-0000-0000-0000-000000000000",
@@ -453,7 +480,12 @@ class ReferenceList(pulumi.CustomResource):
             entries=[{
                 "value": "referencelist-entry-value",
             }],
-            syntax_type="REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING")
+            syntax_type="REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING",
+            scope_infos=[{
+                "reference_list_scope": {
+                    "scope_names": [test_scope.name],
+                },
+            }])
         ```
 
         ## Import
@@ -499,6 +531,8 @@ class ReferenceList(pulumi.CustomResource):
                - Contains only letters, numbers and underscore.
                - Has length < 256.
                - Must be unique.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ReferenceListScopeInfoArgs', 'ReferenceListScopeInfoArgsDict']]]] scope_infos: ScopeInfo specifies the scope info of the reference list.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] syntax_type: Possible values:
                REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING
                REFERENCE_LIST_SYNTAX_TYPE_REGEX
@@ -527,6 +561,14 @@ class ReferenceList(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        test_scope = gcp.chronicle.DataAccessScope("test_scope",
+            location="us",
+            instance="00000000-0000-0000-0000-000000000000",
+            data_access_scope_id="scope-id",
+            description="test scope description",
+            allowed_data_access_labels=[{
+                "log_type": "GCP_CLOUDAUDIT",
+            }])
         example = gcp.chronicle.ReferenceList("example",
             location="us",
             instance="00000000-0000-0000-0000-000000000000",
@@ -535,7 +577,12 @@ class ReferenceList(pulumi.CustomResource):
             entries=[{
                 "value": "referencelist-entry-value",
             }],
-            syntax_type="REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING")
+            syntax_type="REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING",
+            scope_infos=[{
+                "reference_list_scope": {
+                    "scope_names": [test_scope.name],
+                },
+            }])
         ```
 
         ## Import
@@ -583,6 +630,7 @@ class ReferenceList(pulumi.CustomResource):
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  reference_list_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 scope_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ReferenceListScopeInfoArgs', 'ReferenceListScopeInfoArgsDict']]]]] = None,
                  syntax_type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -609,6 +657,7 @@ class ReferenceList(pulumi.CustomResource):
             if reference_list_id is None and not opts.urn:
                 raise TypeError("Missing required property 'reference_list_id'")
             __props__.__dict__["reference_list_id"] = reference_list_id
+            __props__.__dict__["scope_infos"] = scope_infos
             if syntax_type is None and not opts.urn:
                 raise TypeError("Missing required property 'syntax_type'")
             __props__.__dict__["syntax_type"] = syntax_type
@@ -617,7 +666,6 @@ class ReferenceList(pulumi.CustomResource):
             __props__.__dict__["revision_create_time"] = None
             __props__.__dict__["rule_associations_count"] = None
             __props__.__dict__["rules"] = None
-            __props__.__dict__["scope_infos"] = None
         super(ReferenceList, __self__).__init__(
             'gcp:chronicle/referenceList:ReferenceList',
             resource_name,
@@ -805,7 +853,7 @@ class ReferenceList(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="scopeInfos")
-    def scope_infos(self) -> pulumi.Output[Sequence['outputs.ReferenceListScopeInfo']]:
+    def scope_infos(self) -> pulumi.Output[Optional[Sequence['outputs.ReferenceListScopeInfo']]]:
         """
         ScopeInfo specifies the scope info of the reference list.
         Structure is documented below.

@@ -22,6 +22,7 @@ import com.pulumi.gcp.compute.outputs.RegionBackendServiceHaPolicy;
 import com.pulumi.gcp.compute.outputs.RegionBackendServiceIap;
 import com.pulumi.gcp.compute.outputs.RegionBackendServiceLogConfig;
 import com.pulumi.gcp.compute.outputs.RegionBackendServiceOutlierDetection;
+import com.pulumi.gcp.compute.outputs.RegionBackendServiceParams;
 import com.pulumi.gcp.compute.outputs.RegionBackendServiceStrongSessionAffinityCookie;
 import com.pulumi.gcp.compute.outputs.RegionBackendServiceSubsetting;
 import java.lang.Boolean;
@@ -1589,6 +1590,22 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<RegionBackendServiceOutlierDetection>> outlierDetection() {
         return Codegen.optional(this.outlierDetection);
+    }
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="params", refs={RegionBackendServiceParams.class}, tree="[0]")
+    private Output</* @Nullable */ RegionBackendServiceParams> params;
+
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<RegionBackendServiceParams>> params() {
+        return Codegen.optional(this.params);
     }
     /**
      * A named port on a backend instance group representing the port for

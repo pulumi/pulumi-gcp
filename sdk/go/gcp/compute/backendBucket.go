@@ -240,9 +240,11 @@ type BackendBucket struct {
 	// The security policy associated with this backend bucket.
 	EdgeSecurityPolicy pulumi.StringPtrOutput `pulumi:"edgeSecurityPolicy"`
 	// If true, enable Cloud CDN for this BackendBucket.
+	// Note: This cannot be set to true when loadBalancingScheme is set to INTERNAL_MANAGED.
 	EnableCdn pulumi.BoolPtrOutput `pulumi:"enableCdn"`
 	// The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
 	// If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+	// Important: CDN cannot be enabled (enableCdn cannot be set to true) when loadBalancingScheme is set to INTERNAL_MANAGED.
 	// Possible values are: `INTERNAL_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrOutput `pulumi:"loadBalancingScheme"`
 	// Name of the resource. Provided by the client when the resource is
@@ -314,9 +316,11 @@ type backendBucketState struct {
 	// The security policy associated with this backend bucket.
 	EdgeSecurityPolicy *string `pulumi:"edgeSecurityPolicy"`
 	// If true, enable Cloud CDN for this BackendBucket.
+	// Note: This cannot be set to true when loadBalancingScheme is set to INTERNAL_MANAGED.
 	EnableCdn *bool `pulumi:"enableCdn"`
 	// The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
 	// If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+	// Important: CDN cannot be enabled (enableCdn cannot be set to true) when loadBalancingScheme is set to INTERNAL_MANAGED.
 	// Possible values are: `INTERNAL_MANAGED`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// Name of the resource. Provided by the client when the resource is
@@ -356,9 +360,11 @@ type BackendBucketState struct {
 	// The security policy associated with this backend bucket.
 	EdgeSecurityPolicy pulumi.StringPtrInput
 	// If true, enable Cloud CDN for this BackendBucket.
+	// Note: This cannot be set to true when loadBalancingScheme is set to INTERNAL_MANAGED.
 	EnableCdn pulumi.BoolPtrInput
 	// The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
 	// If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+	// Important: CDN cannot be enabled (enableCdn cannot be set to true) when loadBalancingScheme is set to INTERNAL_MANAGED.
 	// Possible values are: `INTERNAL_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is
@@ -400,9 +406,11 @@ type backendBucketArgs struct {
 	// The security policy associated with this backend bucket.
 	EdgeSecurityPolicy *string `pulumi:"edgeSecurityPolicy"`
 	// If true, enable Cloud CDN for this BackendBucket.
+	// Note: This cannot be set to true when loadBalancingScheme is set to INTERNAL_MANAGED.
 	EnableCdn *bool `pulumi:"enableCdn"`
 	// The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
 	// If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+	// Important: CDN cannot be enabled (enableCdn cannot be set to true) when loadBalancingScheme is set to INTERNAL_MANAGED.
 	// Possible values are: `INTERNAL_MANAGED`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// Name of the resource. Provided by the client when the resource is
@@ -439,9 +447,11 @@ type BackendBucketArgs struct {
 	// The security policy associated with this backend bucket.
 	EdgeSecurityPolicy pulumi.StringPtrInput
 	// If true, enable Cloud CDN for this BackendBucket.
+	// Note: This cannot be set to true when loadBalancingScheme is set to INTERNAL_MANAGED.
 	EnableCdn pulumi.BoolPtrInput
 	// The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
 	// If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+	// Important: CDN cannot be enabled (enableCdn cannot be set to true) when loadBalancingScheme is set to INTERNAL_MANAGED.
 	// Possible values are: `INTERNAL_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is
@@ -586,12 +596,14 @@ func (o BackendBucketOutput) EdgeSecurityPolicy() pulumi.StringPtrOutput {
 }
 
 // If true, enable Cloud CDN for this BackendBucket.
+// Note: This cannot be set to true when loadBalancingScheme is set to INTERNAL_MANAGED.
 func (o BackendBucketOutput) EnableCdn() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BackendBucket) pulumi.BoolPtrOutput { return v.EnableCdn }).(pulumi.BoolPtrOutput)
 }
 
 // The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
 // If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+// Important: CDN cannot be enabled (enableCdn cannot be set to true) when loadBalancingScheme is set to INTERNAL_MANAGED.
 // Possible values are: `INTERNAL_MANAGED`.
 func (o BackendBucketOutput) LoadBalancingScheme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackendBucket) pulumi.StringPtrOutput { return v.LoadBalancingScheme }).(pulumi.StringPtrOutput)

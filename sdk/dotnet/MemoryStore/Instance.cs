@@ -545,7 +545,7 @@ namespace Pulumi.Gcp.MemoryStore
         public Output<ImmutableArray<Outputs.InstanceDesiredAutoCreatedEndpoint>> DesiredAutoCreatedEndpoints { get; private set; } = null!;
 
         /// <summary>
-        /// `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
+        /// `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
         /// </summary>
         [Output("desiredPscAutoConnections")]
         public Output<ImmutableArray<Outputs.InstanceDesiredPscAutoConnection>> DesiredPscAutoConnections { get; private set; } = null!;
@@ -875,9 +875,9 @@ namespace Pulumi.Gcp.MemoryStore
         private InputList<Inputs.InstanceDesiredPscAutoConnectionArgs>? _desiredPscAutoConnections;
 
         /// <summary>
-        /// `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
+        /// `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
         /// </summary>
-        [Obsolete(@"`desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.")]
+        [Obsolete(@"`desired_psc_auto_connections` is deprecated. Use `desired_auto_created_endpoints` instead. `terraform import` will only work with desired_auto_created_endpoints`.")]
         public InputList<Inputs.InstanceDesiredPscAutoConnectionArgs> DesiredPscAutoConnections
         {
             get => _desiredPscAutoConnections ?? (_desiredPscAutoConnections = new InputList<Inputs.InstanceDesiredPscAutoConnectionArgs>());
@@ -1090,9 +1090,9 @@ namespace Pulumi.Gcp.MemoryStore
         private InputList<Inputs.InstanceDesiredPscAutoConnectionGetArgs>? _desiredPscAutoConnections;
 
         /// <summary>
-        /// `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
+        /// `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
         /// </summary>
-        [Obsolete(@"`desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.")]
+        [Obsolete(@"`desired_psc_auto_connections` is deprecated. Use `desired_auto_created_endpoints` instead. `terraform import` will only work with desired_auto_created_endpoints`.")]
         public InputList<Inputs.InstanceDesiredPscAutoConnectionGetArgs> DesiredPscAutoConnections
         {
             get => _desiredPscAutoConnections ?? (_desiredPscAutoConnections = new InputList<Inputs.InstanceDesiredPscAutoConnectionGetArgs>());

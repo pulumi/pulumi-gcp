@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherDefaultRouteActionArgs;
 import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherDefaultUrlRedirectArgs;
+import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherHeaderActionArgs;
 import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleArgs;
 import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherRouteRuleArgs;
 import java.lang.String;
@@ -102,6 +103,29 @@ public final class RegionUrlMapPathMatcherArgs extends com.pulumi.resources.Reso
     }
 
     /**
+     * Specifies changes to request and response headers that need to take effect for the selected backendService.
+     * headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+     * headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+     * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="headerAction")
+    private @Nullable Output<RegionUrlMapPathMatcherHeaderActionArgs> headerAction;
+
+    /**
+     * @return Specifies changes to request and response headers that need to take effect for the selected backendService.
+     * headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+     * headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+     * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RegionUrlMapPathMatcherHeaderActionArgs>> headerAction() {
+        return Optional.ofNullable(this.headerAction);
+    }
+
+    /**
      * The name to which this PathMatcher is referred by the HostRule.
      * 
      */
@@ -177,6 +201,7 @@ public final class RegionUrlMapPathMatcherArgs extends com.pulumi.resources.Reso
         this.defaultService = $.defaultService;
         this.defaultUrlRedirect = $.defaultUrlRedirect;
         this.description = $.description;
+        this.headerAction = $.headerAction;
         this.name = $.name;
         this.pathRules = $.pathRules;
         this.routeRules = $.routeRules;
@@ -302,6 +327,35 @@ public final class RegionUrlMapPathMatcherArgs extends com.pulumi.resources.Reso
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param headerAction Specifies changes to request and response headers that need to take effect for the selected backendService.
+         * headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+         * headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+         * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder headerAction(@Nullable Output<RegionUrlMapPathMatcherHeaderActionArgs> headerAction) {
+            $.headerAction = headerAction;
+            return this;
+        }
+
+        /**
+         * @param headerAction Specifies changes to request and response headers that need to take effect for the selected backendService.
+         * headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+         * headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+         * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder headerAction(RegionUrlMapPathMatcherHeaderActionArgs headerAction) {
+            return headerAction(Output.of(headerAction));
         }
 
         /**

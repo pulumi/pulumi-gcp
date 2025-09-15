@@ -45,6 +45,11 @@ export const getDataSource: typeof import("./getDataSource").getDataSource = nul
 export const getDataSourceOutput: typeof import("./getDataSource").getDataSourceOutput = null as any;
 utilities.lazyLoad(exports, ["getDataSource","getDataSourceOutput"], () => require("./getDataSource"));
 
+export { GetDataSourceReferencesArgs, GetDataSourceReferencesResult, GetDataSourceReferencesOutputArgs } from "./getDataSourceReferences";
+export const getDataSourceReferences: typeof import("./getDataSourceReferences").getDataSourceReferences = null as any;
+export const getDataSourceReferencesOutput: typeof import("./getDataSourceReferences").getDataSourceReferencesOutput = null as any;
+utilities.lazyLoad(exports, ["getDataSourceReferences","getDataSourceReferencesOutput"], () => require("./getDataSourceReferences"));
+
 export { GetManagementServerArgs, GetManagementServerResult, GetManagementServerOutputArgs } from "./getManagementServer";
 export const getManagementServer: typeof import("./getManagementServer").getManagementServer = null as any;
 export const getManagementServerOutput: typeof import("./getManagementServer").getManagementServerOutput = null as any;

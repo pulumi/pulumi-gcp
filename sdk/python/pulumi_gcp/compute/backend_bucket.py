@@ -44,8 +44,10 @@ class BackendBucketArgs:
                client when the resource is created.
         :param pulumi.Input[_builtins.str] edge_security_policy: The security policy associated with this backend bucket.
         :param pulumi.Input[_builtins.bool] enable_cdn: If true, enable Cloud CDN for this BackendBucket.
+               Note: This cannot be set to true when loadBalancingScheme is set to INTERNAL_MANAGED.
         :param pulumi.Input[_builtins.str] load_balancing_scheme: The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
                If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+               Important: CDN cannot be enabled (enableCdn cannot be set to true) when loadBalancingScheme is set to INTERNAL_MANAGED.
                Possible values are: `INTERNAL_MANAGED`.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -161,6 +163,7 @@ class BackendBucketArgs:
     def enable_cdn(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         If true, enable Cloud CDN for this BackendBucket.
+        Note: This cannot be set to true when loadBalancingScheme is set to INTERNAL_MANAGED.
         """
         return pulumi.get(self, "enable_cdn")
 
@@ -174,6 +177,7 @@ class BackendBucketArgs:
         """
         The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
         If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+        Important: CDN cannot be enabled (enableCdn cannot be set to true) when loadBalancingScheme is set to INTERNAL_MANAGED.
         Possible values are: `INTERNAL_MANAGED`.
         """
         return pulumi.get(self, "load_balancing_scheme")
@@ -256,8 +260,10 @@ class _BackendBucketState:
                client when the resource is created.
         :param pulumi.Input[_builtins.str] edge_security_policy: The security policy associated with this backend bucket.
         :param pulumi.Input[_builtins.bool] enable_cdn: If true, enable Cloud CDN for this BackendBucket.
+               Note: This cannot be set to true when loadBalancingScheme is set to INTERNAL_MANAGED.
         :param pulumi.Input[_builtins.str] load_balancing_scheme: The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
                If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+               Important: CDN cannot be enabled (enableCdn cannot be set to true) when loadBalancingScheme is set to INTERNAL_MANAGED.
                Possible values are: `INTERNAL_MANAGED`.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -391,6 +397,7 @@ class _BackendBucketState:
     def enable_cdn(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         If true, enable Cloud CDN for this BackendBucket.
+        Note: This cannot be set to true when loadBalancingScheme is set to INTERNAL_MANAGED.
         """
         return pulumi.get(self, "enable_cdn")
 
@@ -404,6 +411,7 @@ class _BackendBucketState:
         """
         The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
         If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+        Important: CDN cannot be enabled (enableCdn cannot be set to true) when loadBalancingScheme is set to INTERNAL_MANAGED.
         Possible values are: `INTERNAL_MANAGED`.
         """
         return pulumi.get(self, "load_balancing_scheme")
@@ -616,8 +624,10 @@ class BackendBucket(pulumi.CustomResource):
                client when the resource is created.
         :param pulumi.Input[_builtins.str] edge_security_policy: The security policy associated with this backend bucket.
         :param pulumi.Input[_builtins.bool] enable_cdn: If true, enable Cloud CDN for this BackendBucket.
+               Note: This cannot be set to true when loadBalancingScheme is set to INTERNAL_MANAGED.
         :param pulumi.Input[_builtins.str] load_balancing_scheme: The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
                If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+               Important: CDN cannot be enabled (enableCdn cannot be set to true) when loadBalancingScheme is set to INTERNAL_MANAGED.
                Possible values are: `INTERNAL_MANAGED`.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -845,8 +855,10 @@ class BackendBucket(pulumi.CustomResource):
                client when the resource is created.
         :param pulumi.Input[_builtins.str] edge_security_policy: The security policy associated with this backend bucket.
         :param pulumi.Input[_builtins.bool] enable_cdn: If true, enable Cloud CDN for this BackendBucket.
+               Note: This cannot be set to true when loadBalancingScheme is set to INTERNAL_MANAGED.
         :param pulumi.Input[_builtins.str] load_balancing_scheme: The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
                If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+               Important: CDN cannot be enabled (enableCdn cannot be set to true) when loadBalancingScheme is set to INTERNAL_MANAGED.
                Possible values are: `INTERNAL_MANAGED`.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -944,6 +956,7 @@ class BackendBucket(pulumi.CustomResource):
     def enable_cdn(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
         If true, enable Cloud CDN for this BackendBucket.
+        Note: This cannot be set to true when loadBalancingScheme is set to INTERNAL_MANAGED.
         """
         return pulumi.get(self, "enable_cdn")
 
@@ -953,6 +966,7 @@ class BackendBucket(pulumi.CustomResource):
         """
         The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
         If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+        Important: CDN cannot be enabled (enableCdn cannot be set to true) when loadBalancingScheme is set to INTERNAL_MANAGED.
         Possible values are: `INTERNAL_MANAGED`.
         """
         return pulumi.get(self, "load_balancing_scheme")

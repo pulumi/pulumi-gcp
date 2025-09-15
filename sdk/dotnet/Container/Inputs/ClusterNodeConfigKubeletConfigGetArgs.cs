@@ -127,6 +127,14 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<int>? MaxParallelImagePulls { get; set; }
 
         /// <summary>
+        /// Configuration for the [memory manager](https://kubernetes.io/docs/tasks/administer-cluster/memory-manager/) on the node.
+        /// The memory manager optimizes memory and hugepages allocation for pods, especially
+        /// those in the Guaranteed QoS class, by influencing NUMA affinity. Structure is documented below.
+        /// </summary>
+        [Input("memoryManager")]
+        public Input<Inputs.ClusterNodeConfigKubeletConfigMemoryManagerGetArgs>? MemoryManager { get; set; }
+
+        /// <summary>
         /// Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
         /// </summary>
         [Input("podPidsLimit")]
@@ -137,6 +145,12 @@ namespace Pulumi.Gcp.Container.Inputs
         /// </summary>
         [Input("singleProcessOomKill")]
         public Input<bool>? SingleProcessOomKill { get; set; }
+
+        /// <summary>
+        /// These settings control the kubelet's [Topology Manager policy](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/#topology-manager-policies), which coordinates the set of components responsible for performance optimizations related to CPU isolation, memory, and device locality. Structure is documented below.
+        /// </summary>
+        [Input("topologyManager")]
+        public Input<Inputs.ClusterNodeConfigKubeletConfigTopologyManagerGetArgs>? TopologyManager { get; set; }
 
         public ClusterNodeConfigKubeletConfigGetArgs()
         {

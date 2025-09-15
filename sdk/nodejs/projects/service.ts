@@ -71,7 +71,6 @@ export class Service extends pulumi.CustomResource {
      * Beta
      * If `true`, the usage of the service to be disabled will be checked and an error
      * will be returned if the service to be disabled has usage in last 30 days.
-     * Defaults to `false`.
      */
     declare public readonly checkIfServiceHasUsageOnDestroy: pulumi.Output<boolean | undefined>;
     /**
@@ -134,7 +133,6 @@ export interface ServiceState {
      * Beta
      * If `true`, the usage of the service to be disabled will be checked and an error
      * will be returned if the service to be disabled has usage in last 30 days.
-     * Defaults to `false`.
      */
     checkIfServiceHasUsageOnDestroy?: pulumi.Input<boolean>;
     /**
@@ -164,7 +162,6 @@ export interface ServiceArgs {
      * Beta
      * If `true`, the usage of the service to be disabled will be checked and an error
      * will be returned if the service to be disabled has usage in last 30 days.
-     * Defaults to `false`.
      */
     checkIfServiceHasUsageOnDestroy?: pulumi.Input<boolean>;
     /**

@@ -71,6 +71,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WebCloudRunServiceIamMember{}
 	case "gcp:iap/webCloudRunServiceIamPolicy:WebCloudRunServiceIamPolicy":
 		r = &WebCloudRunServiceIamPolicy{}
+	case "gcp:iap/webForwardingRuleServiceIamBinding:WebForwardingRuleServiceIamBinding":
+		r = &WebForwardingRuleServiceIamBinding{}
+	case "gcp:iap/webForwardingRuleServiceIamMember:WebForwardingRuleServiceIamMember":
+		r = &WebForwardingRuleServiceIamMember{}
+	case "gcp:iap/webForwardingRuleServiceIamPolicy:WebForwardingRuleServiceIamPolicy":
+		r = &WebForwardingRuleServiceIamPolicy{}
 	case "gcp:iap/webIamBinding:WebIamBinding":
 		r = &WebIamBinding{}
 	case "gcp:iap/webIamMember:WebIamMember":
@@ -237,6 +243,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"iap/webCloudRunServiceIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"iap/webForwardingRuleServiceIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"iap/webForwardingRuleServiceIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"iap/webForwardingRuleServiceIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

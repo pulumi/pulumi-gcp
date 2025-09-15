@@ -88,6 +88,7 @@ export interface GetServiceResult {
     readonly latestReadyRevision: string;
     readonly launchStage: string;
     readonly location?: string;
+    readonly multiRegionSettings: outputs.cloudrunv2.GetServiceMultiRegionSetting[];
     readonly name: string;
     readonly observedGeneration: string;
     readonly project?: string;

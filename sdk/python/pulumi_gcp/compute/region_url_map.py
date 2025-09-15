@@ -25,6 +25,7 @@ class RegionUrlMapArgs:
                  default_service: Optional[pulumi.Input[_builtins.str]] = None,
                  default_url_redirect: Optional[pulumi.Input['RegionUrlMapDefaultUrlRedirectArgs']] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 header_action: Optional[pulumi.Input['RegionUrlMapHeaderActionArgs']] = None,
                  host_rules: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapHostRuleArgs']]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  path_matchers: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherArgs']]]] = None,
@@ -51,6 +52,11 @@ class RegionUrlMapArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
                you create the resource.
+        :param pulumi.Input['RegionUrlMapHeaderActionArgs'] header_action: Specifies changes to request and response headers that need to take effect for the selected backendService.
+               headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+               headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+               Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapHostRuleArgs']]] host_rules: The list of HostRules to use against the URL.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is
@@ -78,6 +84,8 @@ class RegionUrlMapArgs:
             pulumi.set(__self__, "default_url_redirect", default_url_redirect)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if header_action is not None:
+            pulumi.set(__self__, "header_action", header_action)
         if host_rules is not None:
             pulumi.set(__self__, "host_rules", host_rules)
         if name is not None:
@@ -152,6 +160,22 @@ class RegionUrlMapArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="headerAction")
+    def header_action(self) -> Optional[pulumi.Input['RegionUrlMapHeaderActionArgs']]:
+        """
+        Specifies changes to request and response headers that need to take effect for the selected backendService.
+        headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+        headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+        Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "header_action")
+
+    @header_action.setter
+    def header_action(self, value: Optional[pulumi.Input['RegionUrlMapHeaderActionArgs']]):
+        pulumi.set(self, "header_action", value)
 
     @_builtins.property
     @pulumi.getter(name="hostRules")
@@ -247,6 +271,7 @@ class _RegionUrlMapState:
                  default_url_redirect: Optional[pulumi.Input['RegionUrlMapDefaultUrlRedirectArgs']] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
+                 header_action: Optional[pulumi.Input['RegionUrlMapHeaderActionArgs']] = None,
                  host_rules: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapHostRuleArgs']]]] = None,
                  map_id: Optional[pulumi.Input[_builtins.int]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -278,6 +303,11 @@ class _RegionUrlMapState:
                you create the resource.
         :param pulumi.Input[_builtins.str] fingerprint: Fingerprint of this resource. This field is used internally during
                updates of this resource.
+        :param pulumi.Input['RegionUrlMapHeaderActionArgs'] header_action: Specifies changes to request and response headers that need to take effect for the selected backendService.
+               headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+               headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+               Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapHostRuleArgs']]] host_rules: The list of HostRules to use against the URL.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] map_id: The unique identifier for the resource.
@@ -311,6 +341,8 @@ class _RegionUrlMapState:
             pulumi.set(__self__, "description", description)
         if fingerprint is not None:
             pulumi.set(__self__, "fingerprint", fingerprint)
+        if header_action is not None:
+            pulumi.set(__self__, "header_action", header_action)
         if host_rules is not None:
             pulumi.set(__self__, "host_rules", host_rules)
         if map_id is not None:
@@ -414,6 +446,22 @@ class _RegionUrlMapState:
     @fingerprint.setter
     def fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "fingerprint", value)
+
+    @_builtins.property
+    @pulumi.getter(name="headerAction")
+    def header_action(self) -> Optional[pulumi.Input['RegionUrlMapHeaderActionArgs']]:
+        """
+        Specifies changes to request and response headers that need to take effect for the selected backendService.
+        headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+        headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+        Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "header_action")
+
+    @header_action.setter
+    def header_action(self, value: Optional[pulumi.Input['RegionUrlMapHeaderActionArgs']]):
+        pulumi.set(self, "header_action", value)
 
     @_builtins.property
     @pulumi.getter(name="hostRules")
@@ -534,6 +582,7 @@ class RegionUrlMap(pulumi.CustomResource):
                  default_service: Optional[pulumi.Input[_builtins.str]] = None,
                  default_url_redirect: Optional[pulumi.Input[Union['RegionUrlMapDefaultUrlRedirectArgs', 'RegionUrlMapDefaultUrlRedirectArgsDict']]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 header_action: Optional[pulumi.Input[Union['RegionUrlMapHeaderActionArgs', 'RegionUrlMapHeaderActionArgsDict']]] = None,
                  host_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionUrlMapHostRuleArgs', 'RegionUrlMapHostRuleArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  path_matchers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionUrlMapPathMatcherArgs', 'RegionUrlMapPathMatcherArgsDict']]]]] = None,
@@ -1559,6 +1608,11 @@ class RegionUrlMap(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
                you create the resource.
+        :param pulumi.Input[Union['RegionUrlMapHeaderActionArgs', 'RegionUrlMapHeaderActionArgsDict']] header_action: Specifies changes to request and response headers that need to take effect for the selected backendService.
+               headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+               headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+               Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionUrlMapHostRuleArgs', 'RegionUrlMapHostRuleArgsDict']]]] host_rules: The list of HostRules to use against the URL.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is
@@ -2601,6 +2655,7 @@ class RegionUrlMap(pulumi.CustomResource):
                  default_service: Optional[pulumi.Input[_builtins.str]] = None,
                  default_url_redirect: Optional[pulumi.Input[Union['RegionUrlMapDefaultUrlRedirectArgs', 'RegionUrlMapDefaultUrlRedirectArgsDict']]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 header_action: Optional[pulumi.Input[Union['RegionUrlMapHeaderActionArgs', 'RegionUrlMapHeaderActionArgsDict']]] = None,
                  host_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionUrlMapHostRuleArgs', 'RegionUrlMapHostRuleArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  path_matchers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionUrlMapPathMatcherArgs', 'RegionUrlMapPathMatcherArgsDict']]]]] = None,
@@ -2620,6 +2675,7 @@ class RegionUrlMap(pulumi.CustomResource):
             __props__.__dict__["default_service"] = default_service
             __props__.__dict__["default_url_redirect"] = default_url_redirect
             __props__.__dict__["description"] = description
+            __props__.__dict__["header_action"] = header_action
             __props__.__dict__["host_rules"] = host_rules
             __props__.__dict__["name"] = name
             __props__.__dict__["path_matchers"] = path_matchers
@@ -2646,6 +2702,7 @@ class RegionUrlMap(pulumi.CustomResource):
             default_url_redirect: Optional[pulumi.Input[Union['RegionUrlMapDefaultUrlRedirectArgs', 'RegionUrlMapDefaultUrlRedirectArgsDict']]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
+            header_action: Optional[pulumi.Input[Union['RegionUrlMapHeaderActionArgs', 'RegionUrlMapHeaderActionArgsDict']]] = None,
             host_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionUrlMapHostRuleArgs', 'RegionUrlMapHostRuleArgsDict']]]]] = None,
             map_id: Optional[pulumi.Input[_builtins.int]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2682,6 +2739,11 @@ class RegionUrlMap(pulumi.CustomResource):
                you create the resource.
         :param pulumi.Input[_builtins.str] fingerprint: Fingerprint of this resource. This field is used internally during
                updates of this resource.
+        :param pulumi.Input[Union['RegionUrlMapHeaderActionArgs', 'RegionUrlMapHeaderActionArgsDict']] header_action: Specifies changes to request and response headers that need to take effect for the selected backendService.
+               headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+               headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+               Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionUrlMapHostRuleArgs', 'RegionUrlMapHostRuleArgsDict']]]] host_rules: The list of HostRules to use against the URL.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] map_id: The unique identifier for the resource.
@@ -2713,6 +2775,7 @@ class RegionUrlMap(pulumi.CustomResource):
         __props__.__dict__["default_url_redirect"] = default_url_redirect
         __props__.__dict__["description"] = description
         __props__.__dict__["fingerprint"] = fingerprint
+        __props__.__dict__["header_action"] = header_action
         __props__.__dict__["host_rules"] = host_rules
         __props__.__dict__["map_id"] = map_id
         __props__.__dict__["name"] = name
@@ -2785,6 +2848,18 @@ class RegionUrlMap(pulumi.CustomResource):
         updates of this resource.
         """
         return pulumi.get(self, "fingerprint")
+
+    @_builtins.property
+    @pulumi.getter(name="headerAction")
+    def header_action(self) -> pulumi.Output[Optional['outputs.RegionUrlMapHeaderAction']]:
+        """
+        Specifies changes to request and response headers that need to take effect for the selected backendService.
+        headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+        headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+        Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "header_action")
 
     @_builtins.property
     @pulumi.getter(name="hostRules")

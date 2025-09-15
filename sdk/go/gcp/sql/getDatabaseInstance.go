@@ -67,6 +67,7 @@ type LookupDatabaseInstanceResult struct {
 	DnsName                      string                       `pulumi:"dnsName"`
 	DnsNames                     []GetDatabaseInstanceDnsName `pulumi:"dnsNames"`
 	EncryptionKeyName            string                       `pulumi:"encryptionKeyName"`
+	FinalBackupDescription       string                       `pulumi:"finalBackupDescription"`
 	FirstIpAddress               string                       `pulumi:"firstIpAddress"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                         string                                    `pulumi:"id"`
@@ -162,6 +163,10 @@ func (o LookupDatabaseInstanceResultOutput) DnsNames() GetDatabaseInstanceDnsNam
 
 func (o LookupDatabaseInstanceResultOutput) EncryptionKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.EncryptionKeyName }).(pulumi.StringOutput)
+}
+
+func (o LookupDatabaseInstanceResultOutput) FinalBackupDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.FinalBackupDescription }).(pulumi.StringOutput)
 }
 
 func (o LookupDatabaseInstanceResultOutput) FirstIpAddress() pulumi.StringOutput {

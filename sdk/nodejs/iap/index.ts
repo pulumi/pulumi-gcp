@@ -85,6 +85,11 @@ export const getWebCloudRunServiceIamPolicy: typeof import("./getWebCloudRunServ
 export const getWebCloudRunServiceIamPolicyOutput: typeof import("./getWebCloudRunServiceIamPolicy").getWebCloudRunServiceIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getWebCloudRunServiceIamPolicy","getWebCloudRunServiceIamPolicyOutput"], () => require("./getWebCloudRunServiceIamPolicy"));
 
+export { GetWebForwardingRuleServiceIamPolicyArgs, GetWebForwardingRuleServiceIamPolicyResult, GetWebForwardingRuleServiceIamPolicyOutputArgs } from "./getWebForwardingRuleServiceIamPolicy";
+export const getWebForwardingRuleServiceIamPolicy: typeof import("./getWebForwardingRuleServiceIamPolicy").getWebForwardingRuleServiceIamPolicy = null as any;
+export const getWebForwardingRuleServiceIamPolicyOutput: typeof import("./getWebForwardingRuleServiceIamPolicy").getWebForwardingRuleServiceIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getWebForwardingRuleServiceIamPolicy","getWebForwardingRuleServiceIamPolicyOutput"], () => require("./getWebForwardingRuleServiceIamPolicy"));
+
 export { GetWebIamPolicyArgs, GetWebIamPolicyResult, GetWebIamPolicyOutputArgs } from "./getWebIamPolicy";
 export const getWebIamPolicy: typeof import("./getWebIamPolicy").getWebIamPolicy = null as any;
 export const getWebIamPolicyOutput: typeof import("./getWebIamPolicy").getWebIamPolicyOutput = null as any;
@@ -194,6 +199,21 @@ export { WebCloudRunServiceIamPolicyArgs, WebCloudRunServiceIamPolicyState } fro
 export type WebCloudRunServiceIamPolicy = import("./webCloudRunServiceIamPolicy").WebCloudRunServiceIamPolicy;
 export const WebCloudRunServiceIamPolicy: typeof import("./webCloudRunServiceIamPolicy").WebCloudRunServiceIamPolicy = null as any;
 utilities.lazyLoad(exports, ["WebCloudRunServiceIamPolicy"], () => require("./webCloudRunServiceIamPolicy"));
+
+export { WebForwardingRuleServiceIamBindingArgs, WebForwardingRuleServiceIamBindingState } from "./webForwardingRuleServiceIamBinding";
+export type WebForwardingRuleServiceIamBinding = import("./webForwardingRuleServiceIamBinding").WebForwardingRuleServiceIamBinding;
+export const WebForwardingRuleServiceIamBinding: typeof import("./webForwardingRuleServiceIamBinding").WebForwardingRuleServiceIamBinding = null as any;
+utilities.lazyLoad(exports, ["WebForwardingRuleServiceIamBinding"], () => require("./webForwardingRuleServiceIamBinding"));
+
+export { WebForwardingRuleServiceIamMemberArgs, WebForwardingRuleServiceIamMemberState } from "./webForwardingRuleServiceIamMember";
+export type WebForwardingRuleServiceIamMember = import("./webForwardingRuleServiceIamMember").WebForwardingRuleServiceIamMember;
+export const WebForwardingRuleServiceIamMember: typeof import("./webForwardingRuleServiceIamMember").WebForwardingRuleServiceIamMember = null as any;
+utilities.lazyLoad(exports, ["WebForwardingRuleServiceIamMember"], () => require("./webForwardingRuleServiceIamMember"));
+
+export { WebForwardingRuleServiceIamPolicyArgs, WebForwardingRuleServiceIamPolicyState } from "./webForwardingRuleServiceIamPolicy";
+export type WebForwardingRuleServiceIamPolicy = import("./webForwardingRuleServiceIamPolicy").WebForwardingRuleServiceIamPolicy;
+export const WebForwardingRuleServiceIamPolicy: typeof import("./webForwardingRuleServiceIamPolicy").WebForwardingRuleServiceIamPolicy = null as any;
+utilities.lazyLoad(exports, ["WebForwardingRuleServiceIamPolicy"], () => require("./webForwardingRuleServiceIamPolicy"));
 
 export { WebIamBindingArgs, WebIamBindingState } from "./webIamBinding";
 export type WebIamBinding = import("./webIamBinding").WebIamBinding;
@@ -325,6 +345,12 @@ const _module = {
                 return new WebCloudRunServiceIamMember(name, <any>undefined, { urn })
             case "gcp:iap/webCloudRunServiceIamPolicy:WebCloudRunServiceIamPolicy":
                 return new WebCloudRunServiceIamPolicy(name, <any>undefined, { urn })
+            case "gcp:iap/webForwardingRuleServiceIamBinding:WebForwardingRuleServiceIamBinding":
+                return new WebForwardingRuleServiceIamBinding(name, <any>undefined, { urn })
+            case "gcp:iap/webForwardingRuleServiceIamMember:WebForwardingRuleServiceIamMember":
+                return new WebForwardingRuleServiceIamMember(name, <any>undefined, { urn })
+            case "gcp:iap/webForwardingRuleServiceIamPolicy:WebForwardingRuleServiceIamPolicy":
+                return new WebForwardingRuleServiceIamPolicy(name, <any>undefined, { urn })
             case "gcp:iap/webIamBinding:WebIamBinding":
                 return new WebIamBinding(name, <any>undefined, { urn })
             case "gcp:iap/webIamMember:WebIamMember":
@@ -385,6 +411,9 @@ pulumi.runtime.registerResourceModule("gcp", "iap/webBackendServiceIamPolicy", _
 pulumi.runtime.registerResourceModule("gcp", "iap/webCloudRunServiceIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/webCloudRunServiceIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/webCloudRunServiceIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "iap/webForwardingRuleServiceIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "iap/webForwardingRuleServiceIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "iap/webForwardingRuleServiceIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/webIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/webIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/webIamPolicy", _module)

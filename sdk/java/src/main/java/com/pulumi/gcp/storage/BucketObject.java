@@ -253,12 +253,6 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> deletionPolicy() {
         return Codegen.optional(this.deletionPolicy);
     }
-    /**
-     * @deprecated
-     * `detect_md5hash` is deprecated and will be removed in future release. Start using `source_md5hash` instead
-     * 
-     */
-    @Deprecated /* `detect_md5hash` is deprecated and will be removed in future release. Start using `source_md5hash` instead */
     @Export(name="detectMd5hash", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> detectMd5hash;
 

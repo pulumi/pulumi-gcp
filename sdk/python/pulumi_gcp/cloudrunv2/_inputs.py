@@ -85,6 +85,8 @@ __all__ = [
     'ServiceIamBindingConditionArgsDict',
     'ServiceIamMemberConditionArgs',
     'ServiceIamMemberConditionArgsDict',
+    'ServiceMultiRegionSettingsArgs',
+    'ServiceMultiRegionSettingsArgsDict',
     'ServiceScalingArgs',
     'ServiceScalingArgsDict',
     'ServiceTemplateArgs',
@@ -3450,6 +3452,61 @@ class ServiceIamMemberConditionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class ServiceMultiRegionSettingsArgsDict(TypedDict):
+        multi_region_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        System-generated unique id for the multi-region Service.
+        """
+        regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        The list of regions to deploy the multi-region Service.
+        """
+elif False:
+    ServiceMultiRegionSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ServiceMultiRegionSettingsArgs:
+    def __init__(__self__, *,
+                 multi_region_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] multi_region_id: (Output)
+               System-generated unique id for the multi-region Service.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] regions: The list of regions to deploy the multi-region Service.
+        """
+        if multi_region_id is not None:
+            pulumi.set(__self__, "multi_region_id", multi_region_id)
+        if regions is not None:
+            pulumi.set(__self__, "regions", regions)
+
+    @_builtins.property
+    @pulumi.getter(name="multiRegionId")
+    def multi_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        System-generated unique id for the multi-region Service.
+        """
+        return pulumi.get(self, "multi_region_id")
+
+    @multi_region_id.setter
+    def multi_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "multi_region_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of regions to deploy the multi-region Service.
+        """
+        return pulumi.get(self, "regions")
+
+    @regions.setter
+    def regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "regions", value)
 
 
 if not MYPY:

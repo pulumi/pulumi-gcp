@@ -200,6 +200,21 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The description of final backup. Only set this field when `final_backup_config.enabled` is true.
+     * 
+     */
+    @Import(name="finalBackupDescription")
+    private @Nullable Output<String> finalBackupDescription;
+
+    /**
+     * @return The description of final backup. Only set this field when `final_backup_config.enabled` is true.
+     * 
+     */
+    public Optional<Output<String>> finalBackupDescription() {
+        return Optional.ofNullable(this.finalBackupDescription);
+    }
+
+    /**
      * The first IPv4 address of any type assigned.
      * 
      */
@@ -540,6 +555,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         this.dnsName = $.dnsName;
         this.dnsNames = $.dnsNames;
         this.encryptionKeyName = $.encryptionKeyName;
+        this.finalBackupDescription = $.finalBackupDescription;
         this.firstIpAddress = $.firstIpAddress;
         this.instanceType = $.instanceType;
         this.ipAddresses = $.ipAddresses;
@@ -826,6 +842,27 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
          */
         public Builder encryptionKeyName(String encryptionKeyName) {
             return encryptionKeyName(Output.of(encryptionKeyName));
+        }
+
+        /**
+         * @param finalBackupDescription The description of final backup. Only set this field when `final_backup_config.enabled` is true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder finalBackupDescription(@Nullable Output<String> finalBackupDescription) {
+            $.finalBackupDescription = finalBackupDescription;
+            return this;
+        }
+
+        /**
+         * @param finalBackupDescription The description of final backup. Only set this field when `final_backup_config.enabled` is true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder finalBackupDescription(String finalBackupDescription) {
+            return finalBackupDescription(Output.of(finalBackupDescription));
         }
 
         /**

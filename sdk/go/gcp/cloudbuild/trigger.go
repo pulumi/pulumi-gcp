@@ -81,8 +81,9 @@ import (
 //				Build: &cloudbuild.TriggerBuildArgs{
 //					Steps: cloudbuild.TriggerBuildStepArray{
 //						&cloudbuild.TriggerBuildStepArgs{
-//							Name: pulumi.String("gcr.io/cloud-builders/gsutil"),
+//							Name: pulumi.String("gcr.io/cloud-builders/gcloud"),
 //							Args: pulumi.StringArray{
+//								pulumi.String("storage"),
 //								pulumi.String("cp"),
 //								pulumi.String("gs://mybucket/remotefile.zip"),
 //								pulumi.String("localfile.zip"),

@@ -122,6 +122,8 @@ type StoragePool struct {
 	// Optional. True if the storage pool supports Auto Tiering enabled volumes. Default is false.
 	// Auto-tiering can be enabled after storage pool creation but it can't be disabled once enabled.
 	AllowAutoTiering pulumi.BoolPtrOutput `pulumi:"allowAutoTiering"`
+	// Available throughput of the storage pool (in MiB/s).
+	AvailableThroughputMibps pulumi.Float64Output `pulumi:"availableThroughputMibps"`
 	// Capacity of the storage pool (in GiB).
 	CapacityGib pulumi.StringOutput `pulumi:"capacityGib"`
 	// Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
@@ -161,6 +163,10 @@ type StoragePool struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// QoS (Quality of Service) type of the storage pool.
+	// Possible values are: AUTO, MANUAL.
+	// Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
+	QosType pulumi.StringPtrOutput `pulumi:"qosType"`
 	// Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
 	// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
 	ReplicaZone pulumi.StringPtrOutput `pulumi:"replicaZone"`
@@ -168,9 +174,9 @@ type StoragePool struct {
 	// Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
 	ServiceLevel pulumi.StringOutput `pulumi:"serviceLevel"`
 	// Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
-	TotalIops pulumi.StringPtrOutput `pulumi:"totalIops"`
+	TotalIops pulumi.StringOutput `pulumi:"totalIops"`
 	// Optional. Custom Performance Total Throughput of the pool (in MiB/s).
-	TotalThroughputMibps pulumi.StringPtrOutput `pulumi:"totalThroughputMibps"`
+	TotalThroughputMibps pulumi.StringOutput `pulumi:"totalThroughputMibps"`
 	// Size allocated to volumes in the storage pool (in GiB).
 	VolumeCapacityGib pulumi.StringOutput `pulumi:"volumeCapacityGib"`
 	// Number of volume in the storage pool.
@@ -234,6 +240,8 @@ type storagePoolState struct {
 	// Optional. True if the storage pool supports Auto Tiering enabled volumes. Default is false.
 	// Auto-tiering can be enabled after storage pool creation but it can't be disabled once enabled.
 	AllowAutoTiering *bool `pulumi:"allowAutoTiering"`
+	// Available throughput of the storage pool (in MiB/s).
+	AvailableThroughputMibps *float64 `pulumi:"availableThroughputMibps"`
 	// Capacity of the storage pool (in GiB).
 	CapacityGib *string `pulumi:"capacityGib"`
 	// Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
@@ -273,6 +281,10 @@ type storagePoolState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// QoS (Quality of Service) type of the storage pool.
+	// Possible values are: AUTO, MANUAL.
+	// Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
+	QosType *string `pulumi:"qosType"`
 	// Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
 	// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
 	ReplicaZone *string `pulumi:"replicaZone"`
@@ -300,6 +312,8 @@ type StoragePoolState struct {
 	// Optional. True if the storage pool supports Auto Tiering enabled volumes. Default is false.
 	// Auto-tiering can be enabled after storage pool creation but it can't be disabled once enabled.
 	AllowAutoTiering pulumi.BoolPtrInput
+	// Available throughput of the storage pool (in MiB/s).
+	AvailableThroughputMibps pulumi.Float64PtrInput
 	// Capacity of the storage pool (in GiB).
 	CapacityGib pulumi.StringPtrInput
 	// Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
@@ -339,6 +353,10 @@ type StoragePoolState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
+	// QoS (Quality of Service) type of the storage pool.
+	// Possible values are: AUTO, MANUAL.
+	// Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
+	QosType pulumi.StringPtrInput
 	// Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
 	// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
 	ReplicaZone pulumi.StringPtrInput
@@ -402,6 +420,10 @@ type storagePoolArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// QoS (Quality of Service) type of the storage pool.
+	// Possible values are: AUTO, MANUAL.
+	// Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
+	QosType *string `pulumi:"qosType"`
 	// Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
 	// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
 	ReplicaZone *string `pulumi:"replicaZone"`
@@ -458,6 +480,10 @@ type StoragePoolArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// QoS (Quality of Service) type of the storage pool.
+	// Possible values are: AUTO, MANUAL.
+	// Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
+	QosType pulumi.StringPtrInput
 	// Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
 	// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
 	ReplicaZone pulumi.StringPtrInput
@@ -573,6 +599,11 @@ func (o StoragePoolOutput) AllowAutoTiering() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.BoolPtrOutput { return v.AllowAutoTiering }).(pulumi.BoolPtrOutput)
 }
 
+// Available throughput of the storage pool (in MiB/s).
+func (o StoragePoolOutput) AvailableThroughputMibps() pulumi.Float64Output {
+	return o.ApplyT(func(v *StoragePool) pulumi.Float64Output { return v.AvailableThroughputMibps }).(pulumi.Float64Output)
+}
+
 // Capacity of the storage pool (in GiB).
 func (o StoragePoolOutput) CapacityGib() pulumi.StringOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.CapacityGib }).(pulumi.StringOutput)
@@ -657,6 +688,13 @@ func (o StoragePoolOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
+// QoS (Quality of Service) type of the storage pool.
+// Possible values are: AUTO, MANUAL.
+// Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
+func (o StoragePoolOutput) QosType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StoragePool) pulumi.StringPtrOutput { return v.QosType }).(pulumi.StringPtrOutput)
+}
+
 // Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
 // [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
 func (o StoragePoolOutput) ReplicaZone() pulumi.StringPtrOutput {
@@ -670,13 +708,13 @@ func (o StoragePoolOutput) ServiceLevel() pulumi.StringOutput {
 }
 
 // Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
-func (o StoragePoolOutput) TotalIops() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StoragePool) pulumi.StringPtrOutput { return v.TotalIops }).(pulumi.StringPtrOutput)
+func (o StoragePoolOutput) TotalIops() pulumi.StringOutput {
+	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.TotalIops }).(pulumi.StringOutput)
 }
 
 // Optional. Custom Performance Total Throughput of the pool (in MiB/s).
-func (o StoragePoolOutput) TotalThroughputMibps() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StoragePool) pulumi.StringPtrOutput { return v.TotalThroughputMibps }).(pulumi.StringPtrOutput)
+func (o StoragePoolOutput) TotalThroughputMibps() pulumi.StringOutput {
+	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.TotalThroughputMibps }).(pulumi.StringOutput)
 }
 
 // Size allocated to volumes in the storage pool (in GiB).

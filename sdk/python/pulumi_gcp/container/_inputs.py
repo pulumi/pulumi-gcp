@@ -331,6 +331,10 @@ __all__ = [
     'ClusterNodeConfigKubeletConfigEvictionSoftArgsDict',
     'ClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArgs',
     'ClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArgsDict',
+    'ClusterNodeConfigKubeletConfigMemoryManagerArgs',
+    'ClusterNodeConfigKubeletConfigMemoryManagerArgsDict',
+    'ClusterNodeConfigKubeletConfigTopologyManagerArgs',
+    'ClusterNodeConfigKubeletConfigTopologyManagerArgsDict',
     'ClusterNodeConfigLinuxNodeConfigArgs',
     'ClusterNodeConfigLinuxNodeConfigArgsDict',
     'ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs',
@@ -437,6 +441,10 @@ __all__ = [
     'ClusterNodePoolNodeConfigKubeletConfigEvictionSoftArgsDict',
     'ClusterNodePoolNodeConfigKubeletConfigEvictionSoftGracePeriodArgs',
     'ClusterNodePoolNodeConfigKubeletConfigEvictionSoftGracePeriodArgsDict',
+    'ClusterNodePoolNodeConfigKubeletConfigMemoryManagerArgs',
+    'ClusterNodePoolNodeConfigKubeletConfigMemoryManagerArgsDict',
+    'ClusterNodePoolNodeConfigKubeletConfigTopologyManagerArgs',
+    'ClusterNodePoolNodeConfigKubeletConfigTopologyManagerArgsDict',
     'ClusterNodePoolNodeConfigLinuxNodeConfigArgs',
     'ClusterNodePoolNodeConfigLinuxNodeConfigArgsDict',
     'ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs',
@@ -573,6 +581,10 @@ __all__ = [
     'NodePoolNodeConfigKubeletConfigEvictionSoftArgsDict',
     'NodePoolNodeConfigKubeletConfigEvictionSoftGracePeriodArgs',
     'NodePoolNodeConfigKubeletConfigEvictionSoftGracePeriodArgsDict',
+    'NodePoolNodeConfigKubeletConfigMemoryManagerArgs',
+    'NodePoolNodeConfigKubeletConfigMemoryManagerArgsDict',
+    'NodePoolNodeConfigKubeletConfigTopologyManagerArgs',
+    'NodePoolNodeConfigKubeletConfigTopologyManagerArgsDict',
     'NodePoolNodeConfigLinuxNodeConfigArgs',
     'NodePoolNodeConfigLinuxNodeConfigArgsDict',
     'NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs',
@@ -7148,7 +7160,7 @@ if not MYPY:
         """
         desired_tier: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Sets the tier of the cluster. Available options include `STANDARD` and `ENTERPRISE`.
+        (DEPRECATED) Sets the tier of the cluster. Available options include `STANDARD` and `ENTERPRISE`. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
         """
 elif False:
     ClusterEnterpriseConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -7160,15 +7172,22 @@ class ClusterEnterpriseConfigArgs:
                  desired_tier: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cluster_tier: The effective tier of the cluster.
-        :param pulumi.Input[_builtins.str] desired_tier: Sets the tier of the cluster. Available options include `STANDARD` and `ENTERPRISE`.
+        :param pulumi.Input[_builtins.str] desired_tier: (DEPRECATED) Sets the tier of the cluster. Available options include `STANDARD` and `ENTERPRISE`. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
         """
         if cluster_tier is not None:
+            warnings.warn("""GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release""", DeprecationWarning)
+            pulumi.log.warn("""cluster_tier is deprecated: GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release""")
+        if cluster_tier is not None:
             pulumi.set(__self__, "cluster_tier", cluster_tier)
+        if desired_tier is not None:
+            warnings.warn("""GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release""", DeprecationWarning)
+            pulumi.log.warn("""desired_tier is deprecated: GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release""")
         if desired_tier is not None:
             pulumi.set(__self__, "desired_tier", desired_tier)
 
     @_builtins.property
     @pulumi.getter(name="clusterTier")
+    @_utilities.deprecated("""GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release""")
     def cluster_tier(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The effective tier of the cluster.
@@ -7181,9 +7200,10 @@ class ClusterEnterpriseConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="desiredTier")
+    @_utilities.deprecated("""GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release""")
     def desired_tier(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Sets the tier of the cluster. Available options include `STANDARD` and `ENTERPRISE`.
+        (DEPRECATED) Sets the tier of the cluster. Available options include `STANDARD` and `ENTERPRISE`. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
         """
         return pulumi.get(self, "desired_tier")
 
@@ -8851,7 +8871,7 @@ if not MYPY:
         disk_type: NotRequired[pulumi.Input[_builtins.str]]
         """
         Type of the disk attached to each node
-        (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced' This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
+        (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', or 'hyperdisk-balanced'). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`. This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
         """
         effective_taints: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigEffectiveTaintArgsDict']]]]
         """
@@ -9130,7 +9150,7 @@ class ClusterNodeConfigArgs:
                in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated to `boot_disk.size_gb`, and must match if specified in both places.
                Prefer configuring `boot_disk`.
         :param pulumi.Input[_builtins.str] disk_type: Type of the disk attached to each node
-               (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced' This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
+               (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', or 'hyperdisk-balanced'). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`. This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigEffectiveTaintArgs']]] effective_taints: List of kubernetes taints applied to each node. Structure is documented above.
         :param pulumi.Input[_builtins.bool] enable_confidential_storage: Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
         :param pulumi.Input['ClusterNodeConfigEphemeralStorageConfigArgs'] ephemeral_storage_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
@@ -9402,7 +9422,7 @@ class ClusterNodeConfigArgs:
     def disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Type of the disk attached to each node
-        (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced' This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
+        (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', or 'hyperdisk-balanced'). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`. This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
         """
         return pulumi.get(self, "disk_type")
 
@@ -10013,7 +10033,7 @@ if not MYPY:
         disk_type: NotRequired[pulumi.Input[_builtins.str]]
         """
         Type of the disk attached to each node
-        (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', 'hyperdisk-balanced'). If unspecified, the default disk type is 'pd-balanced' This is being migrated from `node_config.disk_type`, and must match if specified in both places. Prefer using this field.
+        (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', or 'hyperdisk-balanced'). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`. This is being migrated from `node_config.disk_type`, and must match if specified in both places. Prefer using this field.
         """
         provisioned_iops: NotRequired[pulumi.Input[_builtins.int]]
         """
@@ -10040,7 +10060,7 @@ class ClusterNodeConfigBootDiskArgs:
                  size_gb: Optional[pulumi.Input[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] disk_type: Type of the disk attached to each node
-               (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', 'hyperdisk-balanced'). If unspecified, the default disk type is 'pd-balanced' This is being migrated from `node_config.disk_type`, and must match if specified in both places. Prefer using this field.
+               (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', or 'hyperdisk-balanced'). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`. This is being migrated from `node_config.disk_type`, and must match if specified in both places. Prefer using this field.
         :param pulumi.Input[_builtins.int] provisioned_iops: Configure disk IOPs. This is only valid if the `disk_type` is 'hyperdisk-balanced'. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
         :param pulumi.Input[_builtins.int] provisioned_throughput: Configure disk throughput. This is only valid if the `disk_type` is 'hyperdisk-balanced'. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
         :param pulumi.Input[_builtins.int] size_gb: Size of the disk attached to each node, specified
@@ -10060,7 +10080,7 @@ class ClusterNodeConfigBootDiskArgs:
     def disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Type of the disk attached to each node
-        (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', 'hyperdisk-balanced'). If unspecified, the default disk type is 'pd-balanced' This is being migrated from `node_config.disk_type`, and must match if specified in both places. Prefer using this field.
+        (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', or 'hyperdisk-balanced'). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`. This is being migrated from `node_config.disk_type`, and must match if specified in both places. Prefer using this field.
         """
         return pulumi.get(self, "disk_type")
 
@@ -10898,6 +10918,12 @@ if not MYPY:
         """
         Set the maximum number of image pulls in parallel. The integer must be between 2 and 5, inclusive.
         """
+        memory_manager: NotRequired[pulumi.Input['ClusterNodeConfigKubeletConfigMemoryManagerArgsDict']]
+        """
+        Configuration for the [memory manager](https://kubernetes.io/docs/tasks/administer-cluster/memory-manager/) on the node.
+        The memory manager optimizes memory and hugepages allocation for pods, especially
+        those in the Guaranteed QoS class, by influencing NUMA affinity. Structure is documented below.
+        """
         pod_pids_limit: NotRequired[pulumi.Input[_builtins.int]]
         """
         Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
@@ -10905,6 +10931,10 @@ if not MYPY:
         single_process_oom_kill: NotRequired[pulumi.Input[_builtins.bool]]
         """
         Defines whether to enable single process OOM killer. If true, the processes in the container will be OOM killed individually instead of as a group.
+        """
+        topology_manager: NotRequired[pulumi.Input['ClusterNodeConfigKubeletConfigTopologyManagerArgsDict']]
+        """
+        These settings control the kubelet's [Topology Manager policy](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/#topology-manager-policies), which coordinates the set of components responsible for performance optimizations related to CPU isolation, memory, and device locality. Structure is documented below.
         """
 elif False:
     ClusterNodeConfigKubeletConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -10928,8 +10958,10 @@ class ClusterNodeConfigKubeletConfigArgs:
                  image_minimum_gc_age: Optional[pulumi.Input[_builtins.str]] = None,
                  insecure_kubelet_readonly_port_enabled: Optional[pulumi.Input[_builtins.str]] = None,
                  max_parallel_image_pulls: Optional[pulumi.Input[_builtins.int]] = None,
+                 memory_manager: Optional[pulumi.Input['ClusterNodeConfigKubeletConfigMemoryManagerArgs']] = None,
                  pod_pids_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 single_process_oom_kill: Optional[pulumi.Input[_builtins.bool]] = None):
+                 single_process_oom_kill: Optional[pulumi.Input[_builtins.bool]] = None,
+                 topology_manager: Optional[pulumi.Input['ClusterNodeConfigKubeletConfigTopologyManagerArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_unsafe_sysctls: Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods. The allowed sysctl groups are `kernel.shm*`, `kernel.msg*`, `kernel.sem`, `fs.mqueue.*`, and `net.*`.
         :param pulumi.Input[_builtins.int] container_log_max_files: Defines the maximum number of container log files that can be present for a container. The integer must be between 2 and 10, inclusive.
@@ -10959,8 +10991,12 @@ class ClusterNodeConfigKubeletConfigArgs:
         :param pulumi.Input[_builtins.str] image_minimum_gc_age: Defines the minimum age for an unused image before it is garbage collected. Specified as a sequence of decimal numbers, each with optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`. The value cannot be greater than "2m".
         :param pulumi.Input[_builtins.str] insecure_kubelet_readonly_port_enabled: Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
         :param pulumi.Input[_builtins.int] max_parallel_image_pulls: Set the maximum number of image pulls in parallel. The integer must be between 2 and 5, inclusive.
+        :param pulumi.Input['ClusterNodeConfigKubeletConfigMemoryManagerArgs'] memory_manager: Configuration for the [memory manager](https://kubernetes.io/docs/tasks/administer-cluster/memory-manager/) on the node.
+               The memory manager optimizes memory and hugepages allocation for pods, especially
+               those in the Guaranteed QoS class, by influencing NUMA affinity. Structure is documented below.
         :param pulumi.Input[_builtins.int] pod_pids_limit: Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
         :param pulumi.Input[_builtins.bool] single_process_oom_kill: Defines whether to enable single process OOM killer. If true, the processes in the container will be OOM killed individually instead of as a group.
+        :param pulumi.Input['ClusterNodeConfigKubeletConfigTopologyManagerArgs'] topology_manager: These settings control the kubelet's [Topology Manager policy](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/#topology-manager-policies), which coordinates the set of components responsible for performance optimizations related to CPU isolation, memory, and device locality. Structure is documented below.
         """
         if allowed_unsafe_sysctls is not None:
             pulumi.set(__self__, "allowed_unsafe_sysctls", allowed_unsafe_sysctls)
@@ -10994,10 +11030,14 @@ class ClusterNodeConfigKubeletConfigArgs:
             pulumi.set(__self__, "insecure_kubelet_readonly_port_enabled", insecure_kubelet_readonly_port_enabled)
         if max_parallel_image_pulls is not None:
             pulumi.set(__self__, "max_parallel_image_pulls", max_parallel_image_pulls)
+        if memory_manager is not None:
+            pulumi.set(__self__, "memory_manager", memory_manager)
         if pod_pids_limit is not None:
             pulumi.set(__self__, "pod_pids_limit", pod_pids_limit)
         if single_process_oom_kill is not None:
             pulumi.set(__self__, "single_process_oom_kill", single_process_oom_kill)
+        if topology_manager is not None:
+            pulumi.set(__self__, "topology_manager", topology_manager)
 
     @_builtins.property
     @pulumi.getter(name="allowedUnsafeSysctls")
@@ -11204,6 +11244,20 @@ class ClusterNodeConfigKubeletConfigArgs:
         pulumi.set(self, "max_parallel_image_pulls", value)
 
     @_builtins.property
+    @pulumi.getter(name="memoryManager")
+    def memory_manager(self) -> Optional[pulumi.Input['ClusterNodeConfigKubeletConfigMemoryManagerArgs']]:
+        """
+        Configuration for the [memory manager](https://kubernetes.io/docs/tasks/administer-cluster/memory-manager/) on the node.
+        The memory manager optimizes memory and hugepages allocation for pods, especially
+        those in the Guaranteed QoS class, by influencing NUMA affinity. Structure is documented below.
+        """
+        return pulumi.get(self, "memory_manager")
+
+    @memory_manager.setter
+    def memory_manager(self, value: Optional[pulumi.Input['ClusterNodeConfigKubeletConfigMemoryManagerArgs']]):
+        pulumi.set(self, "memory_manager", value)
+
+    @_builtins.property
     @pulumi.getter(name="podPidsLimit")
     def pod_pids_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -11226,6 +11280,18 @@ class ClusterNodeConfigKubeletConfigArgs:
     @single_process_oom_kill.setter
     def single_process_oom_kill(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "single_process_oom_kill", value)
+
+    @_builtins.property
+    @pulumi.getter(name="topologyManager")
+    def topology_manager(self) -> Optional[pulumi.Input['ClusterNodeConfigKubeletConfigTopologyManagerArgs']]:
+        """
+        These settings control the kubelet's [Topology Manager policy](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/#topology-manager-policies), which coordinates the set of components responsible for performance optimizations related to CPU isolation, memory, and device locality. Structure is documented below.
+        """
+        return pulumi.get(self, "topology_manager")
+
+    @topology_manager.setter
+    def topology_manager(self, value: Optional[pulumi.Input['ClusterNodeConfigKubeletConfigTopologyManagerArgs']]):
+        pulumi.set(self, "topology_manager", value)
 
 
 if not MYPY:
@@ -11622,6 +11688,102 @@ class ClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArgs:
     @pid_available.setter
     def pid_available(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "pid_available", value)
+
+
+if not MYPY:
+    class ClusterNodeConfigKubeletConfigMemoryManagerArgsDict(TypedDict):
+        policy: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The [Memory
+        Manager](https://kubernetes.io/docs/tasks/administer-cluster/memory-manager/)
+        policy can be set to None (default) or Static. This policy dictates how memory alignment is handled on the node.  If unset (or set to the empty string `""`), the API will treat the field as if set to "None".
+        """
+elif False:
+    ClusterNodeConfigKubeletConfigMemoryManagerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterNodeConfigKubeletConfigMemoryManagerArgs:
+    def __init__(__self__, *,
+                 policy: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] policy: The [Memory
+               Manager](https://kubernetes.io/docs/tasks/administer-cluster/memory-manager/)
+               policy can be set to None (default) or Static. This policy dictates how memory alignment is handled on the node.  If unset (or set to the empty string `""`), the API will treat the field as if set to "None".
+        """
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+
+    @_builtins.property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The [Memory
+        Manager](https://kubernetes.io/docs/tasks/administer-cluster/memory-manager/)
+        policy can be set to None (default) or Static. This policy dictates how memory alignment is handled on the node.  If unset (or set to the empty string `""`), the API will treat the field as if set to "None".
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "policy", value)
+
+
+if not MYPY:
+    class ClusterNodeConfigKubeletConfigTopologyManagerArgsDict(TypedDict):
+        policy: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The Topology Manager policy controls resource alignment on the node and can be set to one of the following: none (default), best-effort, restricted, or single-numa-node.  If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
+        """
+        scope: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The Topology Manager scope, defining the granularity at which
+        policy decisions are applied. Valid values are "container" (resources are aligned
+        per container within a pod which is set by default) or "pod" (resources are aligned for the entire pod).  If unset (or set to the empty string `""`), the API will treat the field as if set to "container".
+        """
+elif False:
+    ClusterNodeConfigKubeletConfigTopologyManagerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterNodeConfigKubeletConfigTopologyManagerArgs:
+    def __init__(__self__, *,
+                 policy: Optional[pulumi.Input[_builtins.str]] = None,
+                 scope: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] policy: The Topology Manager policy controls resource alignment on the node and can be set to one of the following: none (default), best-effort, restricted, or single-numa-node.  If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
+        :param pulumi.Input[_builtins.str] scope: The Topology Manager scope, defining the granularity at which
+               policy decisions are applied. Valid values are "container" (resources are aligned
+               per container within a pod which is set by default) or "pod" (resources are aligned for the entire pod).  If unset (or set to the empty string `""`), the API will treat the field as if set to "container".
+        """
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+        if scope is not None:
+            pulumi.set(__self__, "scope", scope)
+
+    @_builtins.property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The Topology Manager policy controls resource alignment on the node and can be set to one of the following: none (default), best-effort, restricted, or single-numa-node.  If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "policy", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The Topology Manager scope, defining the granularity at which
+        policy decisions are applied. Valid values are "container" (resources are aligned
+        per container within a pod which is set by default) or "pod" (resources are aligned for the entire pod).  If unset (or set to the empty string `""`), the API will treat the field as if set to "container".
+        """
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "scope", value)
 
 
 if not MYPY:
@@ -13868,7 +14030,7 @@ if not MYPY:
         disk_type: NotRequired[pulumi.Input[_builtins.str]]
         """
         Type of the disk attached to each node
-        (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced' This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
+        (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', or 'hyperdisk-balanced'). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`. This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
         """
         effective_taints: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigEffectiveTaintArgsDict']]]]
         """
@@ -14147,7 +14309,7 @@ class ClusterNodePoolNodeConfigArgs:
                in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated to `boot_disk.size_gb`, and must match if specified in both places.
                Prefer configuring `boot_disk`.
         :param pulumi.Input[_builtins.str] disk_type: Type of the disk attached to each node
-               (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced' This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
+               (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', or 'hyperdisk-balanced'). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`. This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigEffectiveTaintArgs']]] effective_taints: List of kubernetes taints applied to each node. Structure is documented above.
         :param pulumi.Input[_builtins.bool] enable_confidential_storage: Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
         :param pulumi.Input['ClusterNodePoolNodeConfigEphemeralStorageConfigArgs'] ephemeral_storage_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
@@ -14419,7 +14581,7 @@ class ClusterNodePoolNodeConfigArgs:
     def disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Type of the disk attached to each node
-        (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-balanced' This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
+        (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', or 'hyperdisk-balanced'). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`. This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
         """
         return pulumi.get(self, "disk_type")
 
@@ -15030,7 +15192,7 @@ if not MYPY:
         disk_type: NotRequired[pulumi.Input[_builtins.str]]
         """
         Type of the disk attached to each node
-        (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', 'hyperdisk-balanced'). If unspecified, the default disk type is 'pd-balanced' This is being migrated from `node_config.disk_type`, and must match if specified in both places. Prefer using this field.
+        (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', or 'hyperdisk-balanced'). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`. This is being migrated from `node_config.disk_type`, and must match if specified in both places. Prefer using this field.
         """
         provisioned_iops: NotRequired[pulumi.Input[_builtins.int]]
         """
@@ -15057,7 +15219,7 @@ class ClusterNodePoolNodeConfigBootDiskArgs:
                  size_gb: Optional[pulumi.Input[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] disk_type: Type of the disk attached to each node
-               (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', 'hyperdisk-balanced'). If unspecified, the default disk type is 'pd-balanced' This is being migrated from `node_config.disk_type`, and must match if specified in both places. Prefer using this field.
+               (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', or 'hyperdisk-balanced'). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`. This is being migrated from `node_config.disk_type`, and must match if specified in both places. Prefer using this field.
         :param pulumi.Input[_builtins.int] provisioned_iops: Configure disk IOPs. This is only valid if the `disk_type` is 'hyperdisk-balanced'. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
         :param pulumi.Input[_builtins.int] provisioned_throughput: Configure disk throughput. This is only valid if the `disk_type` is 'hyperdisk-balanced'. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
         :param pulumi.Input[_builtins.int] size_gb: Size of the disk attached to each node, specified
@@ -15077,7 +15239,7 @@ class ClusterNodePoolNodeConfigBootDiskArgs:
     def disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Type of the disk attached to each node
-        (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', 'hyperdisk-balanced'). If unspecified, the default disk type is 'pd-balanced' This is being migrated from `node_config.disk_type`, and must match if specified in both places. Prefer using this field.
+        (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', or 'hyperdisk-balanced'). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`. This is being migrated from `node_config.disk_type`, and must match if specified in both places. Prefer using this field.
         """
         return pulumi.get(self, "disk_type")
 
@@ -15915,6 +16077,12 @@ if not MYPY:
         """
         Set the maximum number of image pulls in parallel. The integer must be between 2 and 5, inclusive.
         """
+        memory_manager: NotRequired[pulumi.Input['ClusterNodePoolNodeConfigKubeletConfigMemoryManagerArgsDict']]
+        """
+        Configuration for the [memory manager](https://kubernetes.io/docs/tasks/administer-cluster/memory-manager/) on the node.
+        The memory manager optimizes memory and hugepages allocation for pods, especially
+        those in the Guaranteed QoS class, by influencing NUMA affinity. Structure is documented below.
+        """
         pod_pids_limit: NotRequired[pulumi.Input[_builtins.int]]
         """
         Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
@@ -15922,6 +16090,10 @@ if not MYPY:
         single_process_oom_kill: NotRequired[pulumi.Input[_builtins.bool]]
         """
         Defines whether to enable single process OOM killer. If true, the processes in the container will be OOM killed individually instead of as a group.
+        """
+        topology_manager: NotRequired[pulumi.Input['ClusterNodePoolNodeConfigKubeletConfigTopologyManagerArgsDict']]
+        """
+        These settings control the kubelet's [Topology Manager policy](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/#topology-manager-policies), which coordinates the set of components responsible for performance optimizations related to CPU isolation, memory, and device locality. Structure is documented below.
         """
 elif False:
     ClusterNodePoolNodeConfigKubeletConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -15945,8 +16117,10 @@ class ClusterNodePoolNodeConfigKubeletConfigArgs:
                  image_minimum_gc_age: Optional[pulumi.Input[_builtins.str]] = None,
                  insecure_kubelet_readonly_port_enabled: Optional[pulumi.Input[_builtins.str]] = None,
                  max_parallel_image_pulls: Optional[pulumi.Input[_builtins.int]] = None,
+                 memory_manager: Optional[pulumi.Input['ClusterNodePoolNodeConfigKubeletConfigMemoryManagerArgs']] = None,
                  pod_pids_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 single_process_oom_kill: Optional[pulumi.Input[_builtins.bool]] = None):
+                 single_process_oom_kill: Optional[pulumi.Input[_builtins.bool]] = None,
+                 topology_manager: Optional[pulumi.Input['ClusterNodePoolNodeConfigKubeletConfigTopologyManagerArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_unsafe_sysctls: Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods. The allowed sysctl groups are `kernel.shm*`, `kernel.msg*`, `kernel.sem`, `fs.mqueue.*`, and `net.*`.
         :param pulumi.Input[_builtins.int] container_log_max_files: Defines the maximum number of container log files that can be present for a container. The integer must be between 2 and 10, inclusive.
@@ -15976,8 +16150,12 @@ class ClusterNodePoolNodeConfigKubeletConfigArgs:
         :param pulumi.Input[_builtins.str] image_minimum_gc_age: Defines the minimum age for an unused image before it is garbage collected. Specified as a sequence of decimal numbers, each with optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`. The value cannot be greater than "2m".
         :param pulumi.Input[_builtins.str] insecure_kubelet_readonly_port_enabled: Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
         :param pulumi.Input[_builtins.int] max_parallel_image_pulls: Set the maximum number of image pulls in parallel. The integer must be between 2 and 5, inclusive.
+        :param pulumi.Input['ClusterNodePoolNodeConfigKubeletConfigMemoryManagerArgs'] memory_manager: Configuration for the [memory manager](https://kubernetes.io/docs/tasks/administer-cluster/memory-manager/) on the node.
+               The memory manager optimizes memory and hugepages allocation for pods, especially
+               those in the Guaranteed QoS class, by influencing NUMA affinity. Structure is documented below.
         :param pulumi.Input[_builtins.int] pod_pids_limit: Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
         :param pulumi.Input[_builtins.bool] single_process_oom_kill: Defines whether to enable single process OOM killer. If true, the processes in the container will be OOM killed individually instead of as a group.
+        :param pulumi.Input['ClusterNodePoolNodeConfigKubeletConfigTopologyManagerArgs'] topology_manager: These settings control the kubelet's [Topology Manager policy](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/#topology-manager-policies), which coordinates the set of components responsible for performance optimizations related to CPU isolation, memory, and device locality. Structure is documented below.
         """
         if allowed_unsafe_sysctls is not None:
             pulumi.set(__self__, "allowed_unsafe_sysctls", allowed_unsafe_sysctls)
@@ -16011,10 +16189,14 @@ class ClusterNodePoolNodeConfigKubeletConfigArgs:
             pulumi.set(__self__, "insecure_kubelet_readonly_port_enabled", insecure_kubelet_readonly_port_enabled)
         if max_parallel_image_pulls is not None:
             pulumi.set(__self__, "max_parallel_image_pulls", max_parallel_image_pulls)
+        if memory_manager is not None:
+            pulumi.set(__self__, "memory_manager", memory_manager)
         if pod_pids_limit is not None:
             pulumi.set(__self__, "pod_pids_limit", pod_pids_limit)
         if single_process_oom_kill is not None:
             pulumi.set(__self__, "single_process_oom_kill", single_process_oom_kill)
+        if topology_manager is not None:
+            pulumi.set(__self__, "topology_manager", topology_manager)
 
     @_builtins.property
     @pulumi.getter(name="allowedUnsafeSysctls")
@@ -16221,6 +16403,20 @@ class ClusterNodePoolNodeConfigKubeletConfigArgs:
         pulumi.set(self, "max_parallel_image_pulls", value)
 
     @_builtins.property
+    @pulumi.getter(name="memoryManager")
+    def memory_manager(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigKubeletConfigMemoryManagerArgs']]:
+        """
+        Configuration for the [memory manager](https://kubernetes.io/docs/tasks/administer-cluster/memory-manager/) on the node.
+        The memory manager optimizes memory and hugepages allocation for pods, especially
+        those in the Guaranteed QoS class, by influencing NUMA affinity. Structure is documented below.
+        """
+        return pulumi.get(self, "memory_manager")
+
+    @memory_manager.setter
+    def memory_manager(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigKubeletConfigMemoryManagerArgs']]):
+        pulumi.set(self, "memory_manager", value)
+
+    @_builtins.property
     @pulumi.getter(name="podPidsLimit")
     def pod_pids_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -16243,6 +16439,18 @@ class ClusterNodePoolNodeConfigKubeletConfigArgs:
     @single_process_oom_kill.setter
     def single_process_oom_kill(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "single_process_oom_kill", value)
+
+    @_builtins.property
+    @pulumi.getter(name="topologyManager")
+    def topology_manager(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigKubeletConfigTopologyManagerArgs']]:
+        """
+        These settings control the kubelet's [Topology Manager policy](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/#topology-manager-policies), which coordinates the set of components responsible for performance optimizations related to CPU isolation, memory, and device locality. Structure is documented below.
+        """
+        return pulumi.get(self, "topology_manager")
+
+    @topology_manager.setter
+    def topology_manager(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigKubeletConfigTopologyManagerArgs']]):
+        pulumi.set(self, "topology_manager", value)
 
 
 if not MYPY:
@@ -16639,6 +16847,102 @@ class ClusterNodePoolNodeConfigKubeletConfigEvictionSoftGracePeriodArgs:
     @pid_available.setter
     def pid_available(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "pid_available", value)
+
+
+if not MYPY:
+    class ClusterNodePoolNodeConfigKubeletConfigMemoryManagerArgsDict(TypedDict):
+        policy: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The [Memory
+        Manager](https://kubernetes.io/docs/tasks/administer-cluster/memory-manager/)
+        policy can be set to None (default) or Static. This policy dictates how memory alignment is handled on the node.  If unset (or set to the empty string `""`), the API will treat the field as if set to "None".
+        """
+elif False:
+    ClusterNodePoolNodeConfigKubeletConfigMemoryManagerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterNodePoolNodeConfigKubeletConfigMemoryManagerArgs:
+    def __init__(__self__, *,
+                 policy: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] policy: The [Memory
+               Manager](https://kubernetes.io/docs/tasks/administer-cluster/memory-manager/)
+               policy can be set to None (default) or Static. This policy dictates how memory alignment is handled on the node.  If unset (or set to the empty string `""`), the API will treat the field as if set to "None".
+        """
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+
+    @_builtins.property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The [Memory
+        Manager](https://kubernetes.io/docs/tasks/administer-cluster/memory-manager/)
+        policy can be set to None (default) or Static. This policy dictates how memory alignment is handled on the node.  If unset (or set to the empty string `""`), the API will treat the field as if set to "None".
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "policy", value)
+
+
+if not MYPY:
+    class ClusterNodePoolNodeConfigKubeletConfigTopologyManagerArgsDict(TypedDict):
+        policy: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The Topology Manager policy controls resource alignment on the node and can be set to one of the following: none (default), best-effort, restricted, or single-numa-node.  If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
+        """
+        scope: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The Topology Manager scope, defining the granularity at which
+        policy decisions are applied. Valid values are "container" (resources are aligned
+        per container within a pod which is set by default) or "pod" (resources are aligned for the entire pod).  If unset (or set to the empty string `""`), the API will treat the field as if set to "container".
+        """
+elif False:
+    ClusterNodePoolNodeConfigKubeletConfigTopologyManagerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterNodePoolNodeConfigKubeletConfigTopologyManagerArgs:
+    def __init__(__self__, *,
+                 policy: Optional[pulumi.Input[_builtins.str]] = None,
+                 scope: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] policy: The Topology Manager policy controls resource alignment on the node and can be set to one of the following: none (default), best-effort, restricted, or single-numa-node.  If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
+        :param pulumi.Input[_builtins.str] scope: The Topology Manager scope, defining the granularity at which
+               policy decisions are applied. Valid values are "container" (resources are aligned
+               per container within a pod which is set by default) or "pod" (resources are aligned for the entire pod).  If unset (or set to the empty string `""`), the API will treat the field as if set to "container".
+        """
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+        if scope is not None:
+            pulumi.set(__self__, "scope", scope)
+
+    @_builtins.property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The Topology Manager policy controls resource alignment on the node and can be set to one of the following: none (default), best-effort, restricted, or single-numa-node.  If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "policy", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The Topology Manager scope, defining the granularity at which
+        policy decisions are applied. Valid values are "container" (resources are aligned
+        per container within a pod which is set by default) or "pod" (resources are aligned for the entire pod).  If unset (or set to the empty string `""`), the API will treat the field as if set to "container".
+        """
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "scope", value)
 
 
 if not MYPY:
@@ -21410,6 +21714,10 @@ if not MYPY:
         """
         Set the maximum number of image pulls in parallel.
         """
+        memory_manager: NotRequired[pulumi.Input['NodePoolNodeConfigKubeletConfigMemoryManagerArgsDict']]
+        """
+        Configuration for the Memory Manager on the node. The memory manager optimizes memory and hugepages allocation for pods, especially those in the Guaranteed QoS class, by influencing NUMA affinity.
+        """
         pod_pids_limit: NotRequired[pulumi.Input[_builtins.int]]
         """
         Controls the maximum number of processes allowed to run in a pod.
@@ -21417,6 +21725,10 @@ if not MYPY:
         single_process_oom_kill: NotRequired[pulumi.Input[_builtins.bool]]
         """
         Defines whether to enable single process OOM killer.
+        """
+        topology_manager: NotRequired[pulumi.Input['NodePoolNodeConfigKubeletConfigTopologyManagerArgsDict']]
+        """
+        Configuration for the Topology Manager on the node. The Topology Manager aligns CPU, memory, and device resources on a node to optimize performance, especially for NUMA-aware workloads, by ensuring resource co-location.
         """
 elif False:
     NodePoolNodeConfigKubeletConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -21440,8 +21752,10 @@ class NodePoolNodeConfigKubeletConfigArgs:
                  image_minimum_gc_age: Optional[pulumi.Input[_builtins.str]] = None,
                  insecure_kubelet_readonly_port_enabled: Optional[pulumi.Input[_builtins.str]] = None,
                  max_parallel_image_pulls: Optional[pulumi.Input[_builtins.int]] = None,
+                 memory_manager: Optional[pulumi.Input['NodePoolNodeConfigKubeletConfigMemoryManagerArgs']] = None,
                  pod_pids_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 single_process_oom_kill: Optional[pulumi.Input[_builtins.bool]] = None):
+                 single_process_oom_kill: Optional[pulumi.Input[_builtins.bool]] = None,
+                 topology_manager: Optional[pulumi.Input['NodePoolNodeConfigKubeletConfigTopologyManagerArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_unsafe_sysctls: Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods.
         :param pulumi.Input[_builtins.int] container_log_max_files: Defines the maximum number of container log files that can be present for a container.
@@ -21459,8 +21773,10 @@ class NodePoolNodeConfigKubeletConfigArgs:
         :param pulumi.Input[_builtins.str] image_minimum_gc_age: Defines the minimum age for an unused image before it is garbage collected.
         :param pulumi.Input[_builtins.str] insecure_kubelet_readonly_port_enabled: Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
         :param pulumi.Input[_builtins.int] max_parallel_image_pulls: Set the maximum number of image pulls in parallel.
+        :param pulumi.Input['NodePoolNodeConfigKubeletConfigMemoryManagerArgs'] memory_manager: Configuration for the Memory Manager on the node. The memory manager optimizes memory and hugepages allocation for pods, especially those in the Guaranteed QoS class, by influencing NUMA affinity.
         :param pulumi.Input[_builtins.int] pod_pids_limit: Controls the maximum number of processes allowed to run in a pod.
         :param pulumi.Input[_builtins.bool] single_process_oom_kill: Defines whether to enable single process OOM killer.
+        :param pulumi.Input['NodePoolNodeConfigKubeletConfigTopologyManagerArgs'] topology_manager: Configuration for the Topology Manager on the node. The Topology Manager aligns CPU, memory, and device resources on a node to optimize performance, especially for NUMA-aware workloads, by ensuring resource co-location.
         """
         if allowed_unsafe_sysctls is not None:
             pulumi.set(__self__, "allowed_unsafe_sysctls", allowed_unsafe_sysctls)
@@ -21494,10 +21810,14 @@ class NodePoolNodeConfigKubeletConfigArgs:
             pulumi.set(__self__, "insecure_kubelet_readonly_port_enabled", insecure_kubelet_readonly_port_enabled)
         if max_parallel_image_pulls is not None:
             pulumi.set(__self__, "max_parallel_image_pulls", max_parallel_image_pulls)
+        if memory_manager is not None:
+            pulumi.set(__self__, "memory_manager", memory_manager)
         if pod_pids_limit is not None:
             pulumi.set(__self__, "pod_pids_limit", pod_pids_limit)
         if single_process_oom_kill is not None:
             pulumi.set(__self__, "single_process_oom_kill", single_process_oom_kill)
+        if topology_manager is not None:
+            pulumi.set(__self__, "topology_manager", topology_manager)
 
     @_builtins.property
     @pulumi.getter(name="allowedUnsafeSysctls")
@@ -21692,6 +22012,18 @@ class NodePoolNodeConfigKubeletConfigArgs:
         pulumi.set(self, "max_parallel_image_pulls", value)
 
     @_builtins.property
+    @pulumi.getter(name="memoryManager")
+    def memory_manager(self) -> Optional[pulumi.Input['NodePoolNodeConfigKubeletConfigMemoryManagerArgs']]:
+        """
+        Configuration for the Memory Manager on the node. The memory manager optimizes memory and hugepages allocation for pods, especially those in the Guaranteed QoS class, by influencing NUMA affinity.
+        """
+        return pulumi.get(self, "memory_manager")
+
+    @memory_manager.setter
+    def memory_manager(self, value: Optional[pulumi.Input['NodePoolNodeConfigKubeletConfigMemoryManagerArgs']]):
+        pulumi.set(self, "memory_manager", value)
+
+    @_builtins.property
     @pulumi.getter(name="podPidsLimit")
     def pod_pids_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -21714,6 +22046,18 @@ class NodePoolNodeConfigKubeletConfigArgs:
     @single_process_oom_kill.setter
     def single_process_oom_kill(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "single_process_oom_kill", value)
+
+    @_builtins.property
+    @pulumi.getter(name="topologyManager")
+    def topology_manager(self) -> Optional[pulumi.Input['NodePoolNodeConfigKubeletConfigTopologyManagerArgs']]:
+        """
+        Configuration for the Topology Manager on the node. The Topology Manager aligns CPU, memory, and device resources on a node to optimize performance, especially for NUMA-aware workloads, by ensuring resource co-location.
+        """
+        return pulumi.get(self, "topology_manager")
+
+    @topology_manager.setter
+    def topology_manager(self, value: Optional[pulumi.Input['NodePoolNodeConfigKubeletConfigTopologyManagerArgs']]):
+        pulumi.set(self, "topology_manager", value)
 
 
 if not MYPY:
@@ -22110,6 +22454,90 @@ class NodePoolNodeConfigKubeletConfigEvictionSoftGracePeriodArgs:
     @pid_available.setter
     def pid_available(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "pid_available", value)
+
+
+if not MYPY:
+    class NodePoolNodeConfigKubeletConfigMemoryManagerArgsDict(TypedDict):
+        policy: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The Memory Manager policy to use. This policy guides how memory and hugepages are allocated and managed for pods on the node, influencing NUMA affinity.
+        """
+elif False:
+    NodePoolNodeConfigKubeletConfigMemoryManagerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NodePoolNodeConfigKubeletConfigMemoryManagerArgs:
+    def __init__(__self__, *,
+                 policy: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] policy: The Memory Manager policy to use. This policy guides how memory and hugepages are allocated and managed for pods on the node, influencing NUMA affinity.
+        """
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+
+    @_builtins.property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The Memory Manager policy to use. This policy guides how memory and hugepages are allocated and managed for pods on the node, influencing NUMA affinity.
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "policy", value)
+
+
+if not MYPY:
+    class NodePoolNodeConfigKubeletConfigTopologyManagerArgsDict(TypedDict):
+        policy: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The Topology Manager policy to use. This policy dictates how resource alignment is handled on the node.
+        """
+        scope: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The Topology Manager scope, defining the granularity at which policy decisions are applied. Valid values are "container" (resources are aligned per container within a pod) or "pod" (resources are aligned for the entire pod).
+        """
+elif False:
+    NodePoolNodeConfigKubeletConfigTopologyManagerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NodePoolNodeConfigKubeletConfigTopologyManagerArgs:
+    def __init__(__self__, *,
+                 policy: Optional[pulumi.Input[_builtins.str]] = None,
+                 scope: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] policy: The Topology Manager policy to use. This policy dictates how resource alignment is handled on the node.
+        :param pulumi.Input[_builtins.str] scope: The Topology Manager scope, defining the granularity at which policy decisions are applied. Valid values are "container" (resources are aligned per container within a pod) or "pod" (resources are aligned for the entire pod).
+        """
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+        if scope is not None:
+            pulumi.set(__self__, "scope", scope)
+
+    @_builtins.property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The Topology Manager policy to use. This policy dictates how resource alignment is handled on the node.
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "policy", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The Topology Manager scope, defining the granularity at which policy decisions are applied. Valid values are "container" (resources are aligned per container within a pod) or "pod" (resources are aligned for the entire pod).
+        """
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "scope", value)
 
 
 if not MYPY:

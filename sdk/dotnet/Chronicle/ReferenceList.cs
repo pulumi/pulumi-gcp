@@ -30,6 +30,21 @@ namespace Pulumi.Gcp.Chronicle
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var testScope = new Gcp.Chronicle.DataAccessScope("test_scope", new()
+    ///     {
+    ///         Location = "us",
+    ///         Instance = "00000000-0000-0000-0000-000000000000",
+    ///         DataAccessScopeId = "scope-id",
+    ///         Description = "test scope description",
+    ///         AllowedDataAccessLabels = new[]
+    ///         {
+    ///             new Gcp.Chronicle.Inputs.DataAccessScopeAllowedDataAccessLabelArgs
+    ///             {
+    ///                 LogType = "GCP_CLOUDAUDIT",
+    ///             },
+    ///         },
+    ///     });
+    /// 
     ///     var example = new Gcp.Chronicle.ReferenceList("example", new()
     ///     {
     ///         Location = "us",
@@ -44,6 +59,19 @@ namespace Pulumi.Gcp.Chronicle
     ///             },
     ///         },
     ///         SyntaxType = "REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING",
+    ///         ScopeInfos = new[]
+    ///         {
+    ///             new Gcp.Chronicle.Inputs.ReferenceListScopeInfoArgs
+    ///             {
+    ///                 ReferenceListScope = new Gcp.Chronicle.Inputs.ReferenceListScopeInfoReferenceListScopeArgs
+    ///                 {
+    ///                     ScopeNames = new[]
+    ///                     {
+    ///                         testScope.Name,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -271,6 +299,19 @@ namespace Pulumi.Gcp.Chronicle
         /// </summary>
         [Input("referenceListId", required: true)]
         public Input<string> ReferenceListId { get; set; } = null!;
+
+        [Input("scopeInfos")]
+        private InputList<Inputs.ReferenceListScopeInfoArgs>? _scopeInfos;
+
+        /// <summary>
+        /// ScopeInfo specifies the scope info of the reference list.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ReferenceListScopeInfoArgs> ScopeInfos
+        {
+            get => _scopeInfos ?? (_scopeInfos = new InputList<Inputs.ReferenceListScopeInfoArgs>());
+            set => _scopeInfos = value;
+        }
 
         /// <summary>
         /// Possible values:

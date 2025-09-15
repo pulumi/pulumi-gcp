@@ -30,6 +30,11 @@ public final class TransferJobTransferSpecAwsS3DataSource {
      */
     private @Nullable String cloudfrontDomain;
     /**
+     * @return The Resource name of a secret in Secret Manager. AWS credentials must be stored in Secret Manager in JSON format. If credentials_secret is specified, do not specify role_arn or aws_access_key. Format: projects/{projectNumber}/secrets/{secret_name}.
+     * 
+     */
+    private @Nullable String credentialsSecret;
+    /**
      * @return Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
      * 
      */
@@ -68,6 +73,13 @@ public final class TransferJobTransferSpecAwsS3DataSource {
         return Optional.ofNullable(this.cloudfrontDomain);
     }
     /**
+     * @return The Resource name of a secret in Secret Manager. AWS credentials must be stored in Secret Manager in JSON format. If credentials_secret is specified, do not specify role_arn or aws_access_key. Format: projects/{projectNumber}/secrets/{secret_name}.
+     * 
+     */
+    public Optional<String> credentialsSecret() {
+        return Optional.ofNullable(this.credentialsSecret);
+    }
+    /**
      * @return Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
      * 
      */
@@ -101,6 +113,7 @@ public final class TransferJobTransferSpecAwsS3DataSource {
         private @Nullable TransferJobTransferSpecAwsS3DataSourceAwsAccessKey awsAccessKey;
         private String bucketName;
         private @Nullable String cloudfrontDomain;
+        private @Nullable String credentialsSecret;
         private @Nullable Boolean managedPrivateNetwork;
         private @Nullable String path;
         private @Nullable String roleArn;
@@ -110,6 +123,7 @@ public final class TransferJobTransferSpecAwsS3DataSource {
     	      this.awsAccessKey = defaults.awsAccessKey;
     	      this.bucketName = defaults.bucketName;
     	      this.cloudfrontDomain = defaults.cloudfrontDomain;
+    	      this.credentialsSecret = defaults.credentialsSecret;
     	      this.managedPrivateNetwork = defaults.managedPrivateNetwork;
     	      this.path = defaults.path;
     	      this.roleArn = defaults.roleArn;
@@ -136,6 +150,12 @@ public final class TransferJobTransferSpecAwsS3DataSource {
             return this;
         }
         @CustomType.Setter
+        public Builder credentialsSecret(@Nullable String credentialsSecret) {
+
+            this.credentialsSecret = credentialsSecret;
+            return this;
+        }
+        @CustomType.Setter
         public Builder managedPrivateNetwork(@Nullable Boolean managedPrivateNetwork) {
 
             this.managedPrivateNetwork = managedPrivateNetwork;
@@ -158,6 +178,7 @@ public final class TransferJobTransferSpecAwsS3DataSource {
             _resultValue.awsAccessKey = awsAccessKey;
             _resultValue.bucketName = bucketName;
             _resultValue.cloudfrontDomain = cloudfrontDomain;
+            _resultValue.credentialsSecret = credentialsSecret;
             _resultValue.managedPrivateNetwork = managedPrivateNetwork;
             _resultValue.path = path;
             _resultValue.roleArn = roleArn;

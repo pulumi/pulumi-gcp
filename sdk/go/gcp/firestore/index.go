@@ -337,6 +337,60 @@ import (
 //	}
 //
 // ```
+// ### Firestore Index Unique
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			database, err := firestore.NewDatabase(ctx, "database", &firestore.DatabaseArgs{
+//				Project:               pulumi.String("my-project-name"),
+//				Name:                  pulumi.String("database-id-unique"),
+//				LocationId:            pulumi.String("nam5"),
+//				Type:                  pulumi.String("FIRESTORE_NATIVE"),
+//				DatabaseEdition:       pulumi.String("ENTERPRISE"),
+//				DeleteProtectionState: pulumi.String("DELETE_PROTECTION_DISABLED"),
+//				DeletionPolicy:        pulumi.String("DELETE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firestore.NewIndex(ctx, "my-index", &firestore.IndexArgs{
+//				Project:    pulumi.String("my-project-name"),
+//				Database:   database.Name,
+//				Collection: pulumi.String("atestcollection"),
+//				ApiScope:   pulumi.String("MONGODB_COMPATIBLE_API"),
+//				QueryScope: pulumi.String("COLLECTION_GROUP"),
+//				Multikey:   pulumi.Bool(true),
+//				Density:    pulumi.String("DENSE"),
+//				Unique:     pulumi.Bool(true),
+//				Fields: firestore.IndexFieldArray{
+//					&firestore.IndexFieldArgs{
+//						FieldPath: pulumi.String("name"),
+//						Order:     pulumi.String("ASCENDING"),
+//					},
+//					&firestore.IndexFieldArgs{
+//						FieldPath: pulumi.String("description"),
+//						Order:     pulumi.String("DESCENDING"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -383,6 +437,8 @@ type Index struct {
 	// Default value is `COLLECTION`.
 	// Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
 	QueryScope pulumi.StringPtrOutput `pulumi:"queryScope"`
+	// Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
+	Unique pulumi.BoolOutput `pulumi:"unique"`
 }
 
 // NewIndex registers a new resource with the given unique name, arguments, and options.
@@ -452,6 +508,8 @@ type indexState struct {
 	// Default value is `COLLECTION`.
 	// Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
 	QueryScope *string `pulumi:"queryScope"`
+	// Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
+	Unique *bool `pulumi:"unique"`
 }
 
 type IndexState struct {
@@ -486,6 +544,8 @@ type IndexState struct {
 	// Default value is `COLLECTION`.
 	// Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
 	QueryScope pulumi.StringPtrInput
+	// Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
+	Unique pulumi.BoolPtrInput
 }
 
 func (IndexState) ElementType() reflect.Type {
@@ -521,6 +581,8 @@ type indexArgs struct {
 	// Default value is `COLLECTION`.
 	// Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
 	QueryScope *string `pulumi:"queryScope"`
+	// Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
+	Unique *bool `pulumi:"unique"`
 }
 
 // The set of arguments for constructing a Index resource.
@@ -553,6 +615,8 @@ type IndexArgs struct {
 	// Default value is `COLLECTION`.
 	// Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
 	QueryScope pulumi.StringPtrInput
+	// Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
+	Unique pulumi.BoolPtrInput
 }
 
 func (IndexArgs) ElementType() reflect.Type {
@@ -698,6 +762,11 @@ func (o IndexOutput) Project() pulumi.StringOutput {
 // Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
 func (o IndexOutput) QueryScope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Index) pulumi.StringPtrOutput { return v.QueryScope }).(pulumi.StringPtrOutput)
+}
+
+// Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
+func (o IndexOutput) Unique() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Index) pulumi.BoolOutput { return v.Unique }).(pulumi.BoolOutput)
 }
 
 type IndexArrayOutput struct{ *pulumi.OutputState }

@@ -175,6 +175,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public readonly string Name;
         public readonly string? Project;
         public readonly ImmutableDictionary<string, string> PulumiLabels;
+        public readonly string RegistryUri;
         public readonly ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigResult> RemoteRepositoryConfigs;
         public readonly string RepositoryId;
         public readonly string UpdateTime;
@@ -215,6 +216,8 @@ namespace Pulumi.Gcp.ArtifactRegistry
 
             ImmutableDictionary<string, string> pulumiLabels,
 
+            string registryUri,
+
             ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigResult> remoteRepositoryConfigs,
 
             string repositoryId,
@@ -241,6 +244,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
             Name = name;
             Project = project;
             PulumiLabels = pulumiLabels;
+            RegistryUri = registryUri;
             RemoteRepositoryConfigs = remoteRepositoryConfigs;
             RepositoryId = repositoryId;
             UpdateTime = updateTime;

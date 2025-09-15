@@ -4254,6 +4254,10 @@ if not MYPY:
         """
         Size of the disk attached to the worker, in GB. See [diskSizeGb](https://cloud.google.com/build/docs/private-pools/private-pool-config-file-schema#disksizegb). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
         """
+        enable_nested_virtualization: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Enable nested virtualization on the worker, if supported by the machine type. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will set this to false.
+        """
         machine_type: NotRequired[pulumi.Input[_builtins.str]]
         """
         Machine type of a worker, such as `n1-standard-1`. See [machineType](https://cloud.google.com/build/docs/private-pools/private-pool-config-file-schema#machinetype). If left blank, Cloud Build will use `n1-standard-1`.
@@ -4269,15 +4273,19 @@ elif False:
 class WorkerPoolWorkerConfigArgs:
     def __init__(__self__, *,
                  disk_size_gb: Optional[pulumi.Input[_builtins.int]] = None,
+                 enable_nested_virtualization: Optional[pulumi.Input[_builtins.bool]] = None,
                  machine_type: Optional[pulumi.Input[_builtins.str]] = None,
                  no_external_ip: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.int] disk_size_gb: Size of the disk attached to the worker, in GB. See [diskSizeGb](https://cloud.google.com/build/docs/private-pools/private-pool-config-file-schema#disksizegb). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+        :param pulumi.Input[_builtins.bool] enable_nested_virtualization: Enable nested virtualization on the worker, if supported by the machine type. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will set this to false.
         :param pulumi.Input[_builtins.str] machine_type: Machine type of a worker, such as `n1-standard-1`. See [machineType](https://cloud.google.com/build/docs/private-pools/private-pool-config-file-schema#machinetype). If left blank, Cloud Build will use `n1-standard-1`.
         :param pulumi.Input[_builtins.bool] no_external_ip: If true, workers are created without any public address, which prevents network egress to public IPs.
         """
         if disk_size_gb is not None:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if enable_nested_virtualization is not None:
+            pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
         if machine_type is not None:
             pulumi.set(__self__, "machine_type", machine_type)
         if no_external_ip is not None:
@@ -4294,6 +4302,18 @@ class WorkerPoolWorkerConfigArgs:
     @disk_size_gb.setter
     def disk_size_gb(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "disk_size_gb", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableNestedVirtualization")
+    def enable_nested_virtualization(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enable nested virtualization on the worker, if supported by the machine type. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will set this to false.
+        """
+        return pulumi.get(self, "enable_nested_virtualization")
+
+    @enable_nested_virtualization.setter
+    def enable_nested_virtualization(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_nested_virtualization", value)
 
     @_builtins.property
     @pulumi.getter(name="machineType")

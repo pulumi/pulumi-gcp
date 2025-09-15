@@ -1079,6 +1079,9 @@ type Service struct {
 	LaunchStage pulumi.StringOutput `pulumi:"launchStage"`
 	// The location of the cloud run service
 	Location pulumi.StringOutput `pulumi:"location"`
+	// Settings for creating a Multi-Region Service. Make sure to use region = 'global' when using them. For more information, visit https://cloud.google.com/run/docs/multiple-regions#deploy
+	// Structure is documented below.
+	MultiRegionSettings ServiceMultiRegionSettingsPtrOutput `pulumi:"multiRegionSettings"`
 	// Name of the Service.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The generation of this Service currently serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
@@ -1231,6 +1234,9 @@ type serviceState struct {
 	LaunchStage *string `pulumi:"launchStage"`
 	// The location of the cloud run service
 	Location *string `pulumi:"location"`
+	// Settings for creating a Multi-Region Service. Make sure to use region = 'global' when using them. For more information, visit https://cloud.google.com/run/docs/multiple-regions#deploy
+	// Structure is documented below.
+	MultiRegionSettings *ServiceMultiRegionSettings `pulumi:"multiRegionSettings"`
 	// Name of the Service.
 	Name *string `pulumi:"name"`
 	// The generation of this Service currently serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
@@ -1343,6 +1349,9 @@ type ServiceState struct {
 	LaunchStage pulumi.StringPtrInput
 	// The location of the cloud run service
 	Location pulumi.StringPtrInput
+	// Settings for creating a Multi-Region Service. Make sure to use region = 'global' when using them. For more information, visit https://cloud.google.com/run/docs/multiple-regions#deploy
+	// Structure is documented below.
+	MultiRegionSettings ServiceMultiRegionSettingsPtrInput
 	// Name of the Service.
 	Name pulumi.StringPtrInput
 	// The generation of this Service currently serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
@@ -1435,6 +1444,9 @@ type serviceArgs struct {
 	LaunchStage *string `pulumi:"launchStage"`
 	// The location of the cloud run service
 	Location string `pulumi:"location"`
+	// Settings for creating a Multi-Region Service. Make sure to use region = 'global' when using them. For more information, visit https://cloud.google.com/run/docs/multiple-regions#deploy
+	// Structure is documented below.
+	MultiRegionSettings *ServiceMultiRegionSettings `pulumi:"multiRegionSettings"`
 	// Name of the Service.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -1499,6 +1511,9 @@ type ServiceArgs struct {
 	LaunchStage pulumi.StringPtrInput
 	// The location of the cloud run service
 	Location pulumi.StringInput
+	// Settings for creating a Multi-Region Service. Make sure to use region = 'global' when using them. For more information, visit https://cloud.google.com/run/docs/multiple-regions#deploy
+	// Structure is documented below.
+	MultiRegionSettings ServiceMultiRegionSettingsPtrInput
 	// Name of the Service.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -1751,6 +1766,12 @@ func (o ServiceOutput) LaunchStage() pulumi.StringOutput {
 // The location of the cloud run service
 func (o ServiceOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// Settings for creating a Multi-Region Service. Make sure to use region = 'global' when using them. For more information, visit https://cloud.google.com/run/docs/multiple-regions#deploy
+// Structure is documented below.
+func (o ServiceOutput) MultiRegionSettings() ServiceMultiRegionSettingsPtrOutput {
+	return o.ApplyT(func(v *Service) ServiceMultiRegionSettingsPtrOutput { return v.MultiRegionSettings }).(ServiceMultiRegionSettingsPtrOutput)
 }
 
 // Name of the Service.

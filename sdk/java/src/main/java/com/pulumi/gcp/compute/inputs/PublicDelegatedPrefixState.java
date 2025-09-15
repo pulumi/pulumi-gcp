@@ -5,9 +5,11 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.compute.inputs.PublicDelegatedPrefixPublicDelegatedSubPrefixArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -154,6 +156,27 @@ public final class PublicDelegatedPrefixState extends com.pulumi.resources.Resou
     }
 
     /**
+     * List of sub public delegated fixes for BYO IP functionality.
+     * Each item in this array represents a sub prefix that can be
+     * used to create addresses or further allocations.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="publicDelegatedSubPrefixs")
+    private @Nullable Output<List<PublicDelegatedPrefixPublicDelegatedSubPrefixArgs>> publicDelegatedSubPrefixs;
+
+    /**
+     * @return List of sub public delegated fixes for BYO IP functionality.
+     * Each item in this array represents a sub prefix that can be
+     * used to create addresses or further allocations.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<PublicDelegatedPrefixPublicDelegatedSubPrefixArgs>>> publicDelegatedSubPrefixs() {
+        return Optional.ofNullable(this.publicDelegatedSubPrefixs);
+    }
+
+    /**
      * A region where the prefix will reside.
      * 
      */
@@ -194,6 +217,7 @@ public final class PublicDelegatedPrefixState extends com.pulumi.resources.Resou
         this.name = $.name;
         this.parentPrefix = $.parentPrefix;
         this.project = $.project;
+        this.publicDelegatedSubPrefixs = $.publicDelegatedSubPrefixs;
         this.region = $.region;
         this.selfLink = $.selfLink;
     }
@@ -398,6 +422,46 @@ public final class PublicDelegatedPrefixState extends com.pulumi.resources.Resou
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param publicDelegatedSubPrefixs List of sub public delegated fixes for BYO IP functionality.
+         * Each item in this array represents a sub prefix that can be
+         * used to create addresses or further allocations.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicDelegatedSubPrefixs(@Nullable Output<List<PublicDelegatedPrefixPublicDelegatedSubPrefixArgs>> publicDelegatedSubPrefixs) {
+            $.publicDelegatedSubPrefixs = publicDelegatedSubPrefixs;
+            return this;
+        }
+
+        /**
+         * @param publicDelegatedSubPrefixs List of sub public delegated fixes for BYO IP functionality.
+         * Each item in this array represents a sub prefix that can be
+         * used to create addresses or further allocations.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicDelegatedSubPrefixs(List<PublicDelegatedPrefixPublicDelegatedSubPrefixArgs> publicDelegatedSubPrefixs) {
+            return publicDelegatedSubPrefixs(Output.of(publicDelegatedSubPrefixs));
+        }
+
+        /**
+         * @param publicDelegatedSubPrefixs List of sub public delegated fixes for BYO IP functionality.
+         * Each item in this array represents a sub prefix that can be
+         * used to create addresses or further allocations.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicDelegatedSubPrefixs(PublicDelegatedPrefixPublicDelegatedSubPrefixArgs... publicDelegatedSubPrefixs) {
+            return publicDelegatedSubPrefixs(List.of(publicDelegatedSubPrefixs));
         }
 
         /**

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.storage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.storage.outputs.TransferJobTransferSpecAwsS3CompatibleDataSource;
 import com.pulumi.gcp.storage.outputs.TransferJobTransferSpecAwsS3DataSource;
 import com.pulumi.gcp.storage.outputs.TransferJobTransferSpecAzureBlobStorageDataSource;
 import com.pulumi.gcp.storage.outputs.TransferJobTransferSpecGcsDataSink;
@@ -21,6 +22,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class TransferJobTransferSpec {
+    /**
+     * @return An AWS S3 Compatible data source. Structure documented below.
+     * 
+     */
+    private @Nullable TransferJobTransferSpecAwsS3CompatibleDataSource awsS3CompatibleDataSource;
     /**
      * @return An AWS S3 data source. Structure documented below.
      * 
@@ -83,6 +89,13 @@ public final class TransferJobTransferSpec {
     private @Nullable TransferJobTransferSpecTransferOptions transferOptions;
 
     private TransferJobTransferSpec() {}
+    /**
+     * @return An AWS S3 Compatible data source. Structure documented below.
+     * 
+     */
+    public Optional<TransferJobTransferSpecAwsS3CompatibleDataSource> awsS3CompatibleDataSource() {
+        return Optional.ofNullable(this.awsS3CompatibleDataSource);
+    }
     /**
      * @return An AWS S3 data source. Structure documented below.
      * 
@@ -177,6 +190,7 @@ public final class TransferJobTransferSpec {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable TransferJobTransferSpecAwsS3CompatibleDataSource awsS3CompatibleDataSource;
         private @Nullable TransferJobTransferSpecAwsS3DataSource awsS3DataSource;
         private @Nullable TransferJobTransferSpecAzureBlobStorageDataSource azureBlobStorageDataSource;
         private @Nullable TransferJobTransferSpecGcsDataSink gcsDataSink;
@@ -192,6 +206,7 @@ public final class TransferJobTransferSpec {
         public Builder() {}
         public Builder(TransferJobTransferSpec defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.awsS3CompatibleDataSource = defaults.awsS3CompatibleDataSource;
     	      this.awsS3DataSource = defaults.awsS3DataSource;
     	      this.azureBlobStorageDataSource = defaults.azureBlobStorageDataSource;
     	      this.gcsDataSink = defaults.gcsDataSink;
@@ -206,6 +221,12 @@ public final class TransferJobTransferSpec {
     	      this.transferOptions = defaults.transferOptions;
         }
 
+        @CustomType.Setter
+        public Builder awsS3CompatibleDataSource(@Nullable TransferJobTransferSpecAwsS3CompatibleDataSource awsS3CompatibleDataSource) {
+
+            this.awsS3CompatibleDataSource = awsS3CompatibleDataSource;
+            return this;
+        }
         @CustomType.Setter
         public Builder awsS3DataSource(@Nullable TransferJobTransferSpecAwsS3DataSource awsS3DataSource) {
 
@@ -280,6 +301,7 @@ public final class TransferJobTransferSpec {
         }
         public TransferJobTransferSpec build() {
             final var _resultValue = new TransferJobTransferSpec();
+            _resultValue.awsS3CompatibleDataSource = awsS3CompatibleDataSource;
             _resultValue.awsS3DataSource = awsS3DataSource;
             _resultValue.azureBlobStorageDataSource = azureBlobStorageDataSource;
             _resultValue.gcsDataSink = gcsDataSink;

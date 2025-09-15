@@ -75,9 +75,10 @@ namespace Pulumi.Gcp.CloudBuild
     ///             {
     ///                 new Gcp.CloudBuild.Inputs.TriggerBuildStepArgs
     ///                 {
-    ///                     Name = "gcr.io/cloud-builders/gsutil",
+    ///                     Name = "gcr.io/cloud-builders/gcloud",
     ///                     Args = new[]
     ///                     {
+    ///                         "storage",
     ///                         "cp",
     ///                         "gs://mybucket/remotefile.zip",
     ///                         "localfile.zip",

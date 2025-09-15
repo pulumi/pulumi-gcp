@@ -91,6 +91,7 @@ type LookupRegionBackendServiceResult struct {
 	Name                         string                                              `pulumi:"name"`
 	Network                      string                                              `pulumi:"network"`
 	OutlierDetections            []GetRegionBackendServiceOutlierDetection           `pulumi:"outlierDetections"`
+	Params                       []GetRegionBackendServiceParam                      `pulumi:"params"`
 	PortName                     string                                              `pulumi:"portName"`
 	Project                      *string                                             `pulumi:"project"`
 	Protocol                     string                                              `pulumi:"protocol"`
@@ -257,6 +258,10 @@ func (o LookupRegionBackendServiceResultOutput) OutlierDetections() GetRegionBac
 	return o.ApplyT(func(v LookupRegionBackendServiceResult) []GetRegionBackendServiceOutlierDetection {
 		return v.OutlierDetections
 	}).(GetRegionBackendServiceOutlierDetectionArrayOutput)
+}
+
+func (o LookupRegionBackendServiceResultOutput) Params() GetRegionBackendServiceParamArrayOutput {
+	return o.ApplyT(func(v LookupRegionBackendServiceResult) []GetRegionBackendServiceParam { return v.Params }).(GetRegionBackendServiceParamArrayOutput)
 }
 
 func (o LookupRegionBackendServiceResultOutput) PortName() pulumi.StringOutput {

@@ -1116,8 +1116,9 @@ class Trigger(pulumi.CustomResource):
             build={
                 "steps": [
                     {
-                        "name": "gcr.io/cloud-builders/gsutil",
+                        "name": "gcr.io/cloud-builders/gcloud",
                         "args": [
+                            "storage",
                             "cp",
                             "gs://mybucket/remotefile.zip",
                             "localfile.zip",
@@ -1883,8 +1884,9 @@ class Trigger(pulumi.CustomResource):
             build={
                 "steps": [
                     {
-                        "name": "gcr.io/cloud-builders/gsutil",
+                        "name": "gcr.io/cloud-builders/gcloud",
                         "args": [
+                            "storage",
                             "cp",
                             "gs://mybucket/remotefile.zip",
                             "localfile.zip",

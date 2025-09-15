@@ -5,9 +5,10 @@ package com.pulumi.gcp.chronicle.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.chronicle.inputs.ReferenceListScopeInfoReferenceListScopeArgs;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ReferenceListScopeInfoArgs extends com.pulumi.resources.ResourceArgs {
@@ -19,16 +20,16 @@ public final class ReferenceListScopeInfoArgs extends com.pulumi.resources.Resou
      * Structure is documented below.
      * 
      */
-    @Import(name="referenceListScope", required=true)
-    private Output<ReferenceListScopeInfoReferenceListScopeArgs> referenceListScope;
+    @Import(name="referenceListScope")
+    private @Nullable Output<ReferenceListScopeInfoReferenceListScopeArgs> referenceListScope;
 
     /**
      * @return ReferenceListScope specifies the list of scope names of the reference list.
      * Structure is documented below.
      * 
      */
-    public Output<ReferenceListScopeInfoReferenceListScopeArgs> referenceListScope() {
-        return this.referenceListScope;
+    public Optional<Output<ReferenceListScopeInfoReferenceListScopeArgs>> referenceListScope() {
+        return Optional.ofNullable(this.referenceListScope);
     }
 
     private ReferenceListScopeInfoArgs() {}
@@ -62,7 +63,7 @@ public final class ReferenceListScopeInfoArgs extends com.pulumi.resources.Resou
          * @return builder
          * 
          */
-        public Builder referenceListScope(Output<ReferenceListScopeInfoReferenceListScopeArgs> referenceListScope) {
+        public Builder referenceListScope(@Nullable Output<ReferenceListScopeInfoReferenceListScopeArgs> referenceListScope) {
             $.referenceListScope = referenceListScope;
             return this;
         }
@@ -79,9 +80,6 @@ public final class ReferenceListScopeInfoArgs extends com.pulumi.resources.Resou
         }
 
         public ReferenceListScopeInfoArgs build() {
-            if ($.referenceListScope == null) {
-                throw new MissingRequiredPropertyException("ReferenceListScopeInfoArgs", "referenceListScope");
-            }
             return $;
         }
     }

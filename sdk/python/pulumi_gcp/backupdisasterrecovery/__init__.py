@@ -14,6 +14,7 @@ from .get_backup_plan import *
 from .get_backup_plan_association import *
 from .get_backup_vault import *
 from .get_data_source import *
+from .get_data_source_references import *
 from .get_management_server import *
 from .management_server import *
 from .service_config import *

@@ -84,6 +84,7 @@ export interface GetRegionBackendServiceResult {
     readonly name: string;
     readonly network: string;
     readonly outlierDetections: outputs.compute.GetRegionBackendServiceOutlierDetection[];
+    readonly params: outputs.compute.GetRegionBackendServiceParam[];
     readonly portName: string;
     readonly project?: string;
     readonly protocol: string;

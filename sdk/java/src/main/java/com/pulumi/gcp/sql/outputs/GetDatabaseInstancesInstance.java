@@ -58,6 +58,11 @@ public final class GetDatabaseInstancesInstance {
      */
     private List<GetDatabaseInstancesInstanceDnsName> dnsNames;
     private String encryptionKeyName;
+    /**
+     * @return The description of final backup if instance enable create final backup during instance deletion.
+     * 
+     */
+    private String finalBackupDescription;
     private String firstIpAddress;
     /**
      * @return The type of the instance. See https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType for supported values.
@@ -191,6 +196,13 @@ public final class GetDatabaseInstancesInstance {
     }
     public String encryptionKeyName() {
         return this.encryptionKeyName;
+    }
+    /**
+     * @return The description of final backup if instance enable create final backup during instance deletion.
+     * 
+     */
+    public String finalBackupDescription() {
+        return this.finalBackupDescription;
     }
     public String firstIpAddress() {
         return this.firstIpAddress;
@@ -330,6 +342,7 @@ public final class GetDatabaseInstancesInstance {
         private String dnsName;
         private List<GetDatabaseInstancesInstanceDnsName> dnsNames;
         private String encryptionKeyName;
+        private String finalBackupDescription;
         private String firstIpAddress;
         private String instanceType;
         private List<GetDatabaseInstancesInstanceIpAddress> ipAddresses;
@@ -363,6 +376,7 @@ public final class GetDatabaseInstancesInstance {
     	      this.dnsName = defaults.dnsName;
     	      this.dnsNames = defaults.dnsNames;
     	      this.encryptionKeyName = defaults.encryptionKeyName;
+    	      this.finalBackupDescription = defaults.finalBackupDescription;
     	      this.firstIpAddress = defaults.firstIpAddress;
     	      this.instanceType = defaults.instanceType;
     	      this.ipAddresses = defaults.ipAddresses;
@@ -465,6 +479,14 @@ public final class GetDatabaseInstancesInstance {
               throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "encryptionKeyName");
             }
             this.encryptionKeyName = encryptionKeyName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder finalBackupDescription(String finalBackupDescription) {
+            if (finalBackupDescription == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "finalBackupDescription");
+            }
+            this.finalBackupDescription = finalBackupDescription;
             return this;
         }
         @CustomType.Setter
@@ -667,6 +689,7 @@ public final class GetDatabaseInstancesInstance {
             _resultValue.dnsName = dnsName;
             _resultValue.dnsNames = dnsNames;
             _resultValue.encryptionKeyName = encryptionKeyName;
+            _resultValue.finalBackupDescription = finalBackupDescription;
             _resultValue.firstIpAddress = firstIpAddress;
             _resultValue.instanceType = instanceType;
             _resultValue.ipAddresses = ipAddresses;

@@ -61,6 +61,7 @@ export interface GetBackupArgs {
 export interface GetBackupResult {
     readonly backupVaultId: string;
     readonly backups: outputs.backupdisasterrecovery.GetBackupBackup[];
+    readonly createTime: string;
     readonly dataSourceId: string;
     /**
      * The provider-assigned unique ID for this managed resource.

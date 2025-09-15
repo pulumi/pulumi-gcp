@@ -110,8 +110,7 @@ type BucketObject struct {
 	// Structure is documented below.
 	CustomerEncryption BucketObjectCustomerEncryptionPtrOutput `pulumi:"customerEncryption"`
 	DeletionPolicy     pulumi.StringPtrOutput                  `pulumi:"deletionPolicy"`
-	// Deprecated: `detectMd5hash` is deprecated and will be removed in future release. Start using `sourceMd5hash` instead
-	DetectMd5hash pulumi.StringPtrOutput `pulumi:"detectMd5hash"`
+	DetectMd5hash      pulumi.StringPtrOutput                  `pulumi:"detectMd5hash"`
 	// Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
 	EventBasedHold pulumi.BoolPtrOutput `pulumi:"eventBasedHold"`
 	// When set to true, it ensure the object's Content-Type is empty.
@@ -219,8 +218,7 @@ type bucketObjectState struct {
 	// Structure is documented below.
 	CustomerEncryption *BucketObjectCustomerEncryption `pulumi:"customerEncryption"`
 	DeletionPolicy     *string                         `pulumi:"deletionPolicy"`
-	// Deprecated: `detectMd5hash` is deprecated and will be removed in future release. Start using `sourceMd5hash` instead
-	DetectMd5hash *string `pulumi:"detectMd5hash"`
+	DetectMd5hash      *string                         `pulumi:"detectMd5hash"`
 	// Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
 	EventBasedHold *bool `pulumi:"eventBasedHold"`
 	// When set to true, it ensure the object's Content-Type is empty.
@@ -285,8 +283,7 @@ type BucketObjectState struct {
 	// Structure is documented below.
 	CustomerEncryption BucketObjectCustomerEncryptionPtrInput
 	DeletionPolicy     pulumi.StringPtrInput
-	// Deprecated: `detectMd5hash` is deprecated and will be removed in future release. Start using `sourceMd5hash` instead
-	DetectMd5hash pulumi.StringPtrInput
+	DetectMd5hash      pulumi.StringPtrInput
 	// Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
 	EventBasedHold pulumi.BoolPtrInput
 	// When set to true, it ensure the object's Content-Type is empty.
@@ -353,8 +350,7 @@ type bucketObjectArgs struct {
 	// Structure is documented below.
 	CustomerEncryption *BucketObjectCustomerEncryption `pulumi:"customerEncryption"`
 	DeletionPolicy     *string                         `pulumi:"deletionPolicy"`
-	// Deprecated: `detectMd5hash` is deprecated and will be removed in future release. Start using `sourceMd5hash` instead
-	DetectMd5hash *string `pulumi:"detectMd5hash"`
+	DetectMd5hash      *string                         `pulumi:"detectMd5hash"`
 	// Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
 	EventBasedHold *bool `pulumi:"eventBasedHold"`
 	// When set to true, it ensure the object's Content-Type is empty.
@@ -405,8 +401,7 @@ type BucketObjectArgs struct {
 	// Structure is documented below.
 	CustomerEncryption BucketObjectCustomerEncryptionPtrInput
 	DeletionPolicy     pulumi.StringPtrInput
-	// Deprecated: `detectMd5hash` is deprecated and will be removed in future release. Start using `sourceMd5hash` instead
-	DetectMd5hash pulumi.StringPtrInput
+	DetectMd5hash      pulumi.StringPtrInput
 	// Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
 	EventBasedHold pulumi.BoolPtrInput
 	// When set to true, it ensure the object's Content-Type is empty.
@@ -574,7 +569,6 @@ func (o BucketObjectOutput) DeletionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: `detectMd5hash` is deprecated and will be removed in future release. Start using `sourceMd5hash` instead
 func (o BucketObjectOutput) DetectMd5hash() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringPtrOutput { return v.DetectMd5hash }).(pulumi.StringPtrOutput)
 }

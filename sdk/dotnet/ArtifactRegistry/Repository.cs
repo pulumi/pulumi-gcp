@@ -1002,6 +1002,12 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
+        /// The repository endpoint, for example: us-docker.pkg.dev/my-proj/my-repo.
+        /// </summary>
+        [Output("registryUri")]
+        public Output<string> RegistryUri { get; private set; } = null!;
+
+        /// <summary>
         /// Configuration specific for a Remote Repository.
         /// Structure is documented below.
         /// </summary>
@@ -1383,6 +1389,12 @@ namespace Pulumi.Gcp.ArtifactRegistry
                 _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// The repository endpoint, for example: us-docker.pkg.dev/my-proj/my-repo.
+        /// </summary>
+        [Input("registryUri")]
+        public Input<string>? RegistryUri { get; set; }
 
         /// <summary>
         /// Configuration specific for a Remote Repository.

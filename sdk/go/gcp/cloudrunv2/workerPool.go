@@ -285,7 +285,7 @@ import (
 //				Name:               pulumi.String("cloudrun-worker-pool"),
 //				Location:           pulumi.String("us-central1"),
 //				DeletionProtection: pulumi.Bool(false),
-//				LaunchStage:        pulumi.String("ALPHA"),
+//				LaunchStage:        pulumi.String("BETA"),
 //				Template: &cloudrunv2.WorkerPoolTemplateArgs{
 //					Containers: cloudrunv2.WorkerPoolTemplateContainerArray{
 //						&cloudrunv2.WorkerPoolTemplateContainerArgs{

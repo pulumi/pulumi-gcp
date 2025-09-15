@@ -37,6 +37,7 @@ __all__ = [
     'GetDataSourceDataSourceBackupApplianceApplicationResult',
     'GetDataSourceDataSourceGcpResourceResult',
     'GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyResult',
+    'GetDataSourceReferencesDataSourceReferenceResult',
     'GetManagementServerManagementUriResult',
     'GetManagementServerNetworkResult',
 ]
@@ -566,18 +567,21 @@ class GetBackupBackupResult(dict):
     def __init__(__self__, *,
                  backup_id: _builtins.str,
                  backup_vault_id: _builtins.str,
+                 create_time: _builtins.str,
                  data_source_id: _builtins.str,
                  location: _builtins.str,
                  name: _builtins.str):
         """
         :param _builtins.str backup_id: Id of the requesting object, Backup.
         :param _builtins.str backup_vault_id: The ID of the Backup Vault of the Data Source in which the Backup belongs.
+        :param _builtins.str create_time: The time when the backup was created.
         :param _builtins.str data_source_id: The ID of the Data Source in which the Backup belongs.
         :param _builtins.str location: The location in which the Backup belongs.
         :param _builtins.str name: Name of the resource.
         """
         pulumi.set(__self__, "backup_id", backup_id)
         pulumi.set(__self__, "backup_vault_id", backup_vault_id)
+        pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "data_source_id", data_source_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "name", name)
@@ -597,6 +601,14 @@ class GetBackupBackupResult(dict):
         The ID of the Backup Vault of the Data Source in which the Backup belongs.
         """
         return pulumi.get(self, "backup_vault_id")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The time when the backup was created.
+        """
+        return pulumi.get(self, "create_time")
 
     @_builtins.property
     @pulumi.getter(name="dataSourceId")
@@ -1285,6 +1297,97 @@ class GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyResult(
         The sum of all the disk sizes.
         """
         return pulumi.get(self, "total_disk_size_gb")
+
+
+@pulumi.output_type
+class GetDataSourceReferencesDataSourceReferenceResult(dict):
+    def __init__(__self__, *,
+                 backup_config_state: _builtins.str,
+                 backup_count: _builtins.int,
+                 data_source: _builtins.str,
+                 gcp_resource_name: _builtins.str,
+                 last_backup_state: _builtins.str,
+                 last_successful_backup_time: _builtins.str,
+                 name: _builtins.str,
+                 resource_type: _builtins.str):
+        """
+        :param _builtins.str backup_config_state: The state of the backup config for the data source.
+        :param _builtins.int backup_count: The number of backups for the data source.
+        :param _builtins.str data_source: The underlying data source resource.
+        :param _builtins.str gcp_resource_name: The GCP resource name for the data source.
+        :param _builtins.str last_backup_state: The state of the last backup.
+        :param _builtins.str last_successful_backup_time: The last time a successful backup was made.
+        :param _builtins.str resource_type: - (Required) The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance" (right now this service not available for compute Instances , it will be added soon )
+        """
+        pulumi.set(__self__, "backup_config_state", backup_config_state)
+        pulumi.set(__self__, "backup_count", backup_count)
+        pulumi.set(__self__, "data_source", data_source)
+        pulumi.set(__self__, "gcp_resource_name", gcp_resource_name)
+        pulumi.set(__self__, "last_backup_state", last_backup_state)
+        pulumi.set(__self__, "last_successful_backup_time", last_successful_backup_time)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_type", resource_type)
+
+    @_builtins.property
+    @pulumi.getter(name="backupConfigState")
+    def backup_config_state(self) -> _builtins.str:
+        """
+        The state of the backup config for the data source.
+        """
+        return pulumi.get(self, "backup_config_state")
+
+    @_builtins.property
+    @pulumi.getter(name="backupCount")
+    def backup_count(self) -> _builtins.int:
+        """
+        The number of backups for the data source.
+        """
+        return pulumi.get(self, "backup_count")
+
+    @_builtins.property
+    @pulumi.getter(name="dataSource")
+    def data_source(self) -> _builtins.str:
+        """
+        The underlying data source resource.
+        """
+        return pulumi.get(self, "data_source")
+
+    @_builtins.property
+    @pulumi.getter(name="gcpResourceName")
+    def gcp_resource_name(self) -> _builtins.str:
+        """
+        The GCP resource name for the data source.
+        """
+        return pulumi.get(self, "gcp_resource_name")
+
+    @_builtins.property
+    @pulumi.getter(name="lastBackupState")
+    def last_backup_state(self) -> _builtins.str:
+        """
+        The state of the last backup.
+        """
+        return pulumi.get(self, "last_backup_state")
+
+    @_builtins.property
+    @pulumi.getter(name="lastSuccessfulBackupTime")
+    def last_successful_backup_time(self) -> _builtins.str:
+        """
+        The last time a successful backup was made.
+        """
+        return pulumi.get(self, "last_successful_backup_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> _builtins.str:
+        """
+        - (Required) The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance" (right now this service not available for compute Instances , it will be added soon )
+        """
+        return pulumi.get(self, "resource_type")
 
 
 @pulumi.output_type

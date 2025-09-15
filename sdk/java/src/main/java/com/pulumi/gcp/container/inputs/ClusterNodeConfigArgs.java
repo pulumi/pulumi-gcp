@@ -140,7 +140,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * Type of the disk attached to each node
-     * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39; or &#39;pd-ssd&#39;). If unspecified, the default disk type is &#39;pd-balanced&#39; This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
+     * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39;, &#39;pd-ssd&#39;, or &#39;hyperdisk-balanced&#39;). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`. This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
      * 
      */
     @Import(name="diskType")
@@ -148,7 +148,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return Type of the disk attached to each node
-     * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39; or &#39;pd-ssd&#39;). If unspecified, the default disk type is &#39;pd-balanced&#39; This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
+     * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39;, &#39;pd-ssd&#39;, or &#39;hyperdisk-balanced&#39;). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`. This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
      * 
      */
     public Optional<Output<String>> diskType() {
@@ -1041,7 +1041,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param diskType Type of the disk attached to each node
-         * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39; or &#39;pd-ssd&#39;). If unspecified, the default disk type is &#39;pd-balanced&#39; This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
+         * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39;, &#39;pd-ssd&#39;, or &#39;hyperdisk-balanced&#39;). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`. This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
          * 
          * @return builder
          * 
@@ -1053,7 +1053,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param diskType Type of the disk attached to each node
-         * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39; or &#39;pd-ssd&#39;). If unspecified, the default disk type is &#39;pd-balanced&#39; This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
+         * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39;, &#39;pd-ssd&#39;, or &#39;hyperdisk-balanced&#39;). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`. This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
          * 
          * @return builder
          * 

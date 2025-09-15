@@ -641,18 +641,18 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.desiredAutoCreatedEndpoints);
     }
     /**
-     * `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
+     * `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
      * 
      * @deprecated
-     * `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
+     * `desired_psc_auto_connections` is deprecated. Use `desired_auto_created_endpoints` instead. `terraform import` will only work with desired_auto_created_endpoints`.
      * 
      */
-    @Deprecated /* `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead. */
+    @Deprecated /* `desired_psc_auto_connections` is deprecated. Use `desired_auto_created_endpoints` instead. `terraform import` will only work with desired_auto_created_endpoints`. */
     @Export(name="desiredPscAutoConnections", refs={List.class,InstanceDesiredPscAutoConnection.class}, tree="[0,1]")
     private Output</* @Nullable */ List<InstanceDesiredPscAutoConnection>> desiredPscAutoConnections;
 
     /**
-     * @return `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
+     * @return `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
      * 
      */
     public Output<Optional<List<InstanceDesiredPscAutoConnection>>> desiredPscAutoConnections() {

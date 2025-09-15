@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string? ClusterTier;
         /// <summary>
-        /// Sets the tier of the cluster. Available options include `STANDARD` and `ENTERPRISE`.
+        /// (DEPRECATED) Sets the tier of the cluster. Available options include `STANDARD` and `ENTERPRISE`. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
         /// </summary>
         public readonly string? DesiredTier;
 

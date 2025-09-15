@@ -304,7 +304,7 @@ namespace Pulumi.Gcp.OracleDatabase
         /// the odb_subnet and backup_odb_subnet.
         /// </summary>
         [Output("odbNetwork")]
-        public Output<string?> OdbNetwork { get; private set; } = null!;
+        public Output<string> OdbNetwork { get; private set; } = null!;
 
         /// <summary>
         /// The name of the OdbSubnet associated with the Autonomous Database for
@@ -312,7 +312,7 @@ namespace Pulumi.Gcp.OracleDatabase
         /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
         /// </summary>
         [Output("odbSubnet")]
-        public Output<string?> OdbSubnet { get; private set; } = null!;
+        public Output<string> OdbSubnet { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

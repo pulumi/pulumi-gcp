@@ -27,13 +27,16 @@ class GetBackupResult:
     """
     A collection of values returned by getBackup.
     """
-    def __init__(__self__, backup_vault_id=None, backups=None, data_source_id=None, id=None, location=None, name=None, project=None):
+    def __init__(__self__, backup_vault_id=None, backups=None, create_time=None, data_source_id=None, id=None, location=None, name=None, project=None):
         if backup_vault_id and not isinstance(backup_vault_id, str):
             raise TypeError("Expected argument 'backup_vault_id' to be a str")
         pulumi.set(__self__, "backup_vault_id", backup_vault_id)
         if backups and not isinstance(backups, list):
             raise TypeError("Expected argument 'backups' to be a list")
         pulumi.set(__self__, "backups", backups)
+        if create_time and not isinstance(create_time, str):
+            raise TypeError("Expected argument 'create_time' to be a str")
+        pulumi.set(__self__, "create_time", create_time)
         if data_source_id and not isinstance(data_source_id, str):
             raise TypeError("Expected argument 'data_source_id' to be a str")
         pulumi.set(__self__, "data_source_id", data_source_id)
@@ -59,6 +62,11 @@ class GetBackupResult:
     @pulumi.getter
     def backups(self) -> Sequence['outputs.GetBackupBackupResult']:
         return pulumi.get(self, "backups")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        return pulumi.get(self, "create_time")
 
     @_builtins.property
     @pulumi.getter(name="dataSourceId")
@@ -97,6 +105,7 @@ class AwaitableGetBackupResult(GetBackupResult):
         return GetBackupResult(
             backup_vault_id=self.backup_vault_id,
             backups=self.backups,
+            create_time=self.create_time,
             data_source_id=self.data_source_id,
             id=self.id,
             location=self.location,
@@ -141,6 +150,7 @@ def get_backup(backup_vault_id: Optional[_builtins.str] = None,
     return AwaitableGetBackupResult(
         backup_vault_id=pulumi.get(__ret__, 'backup_vault_id'),
         backups=pulumi.get(__ret__, 'backups'),
+        create_time=pulumi.get(__ret__, 'create_time'),
         data_source_id=pulumi.get(__ret__, 'data_source_id'),
         id=pulumi.get(__ret__, 'id'),
         location=pulumi.get(__ret__, 'location'),
@@ -182,6 +192,7 @@ def get_backup_output(backup_vault_id: Optional[pulumi.Input[_builtins.str]] = N
     return __ret__.apply(lambda __response__: GetBackupResult(
         backup_vault_id=pulumi.get(__response__, 'backup_vault_id'),
         backups=pulumi.get(__response__, 'backups'),
+        create_time=pulumi.get(__response__, 'create_time'),
         data_source_id=pulumi.get(__response__, 'data_source_id'),
         id=pulumi.get(__response__, 'id'),
         location=pulumi.get(__response__, 'location'),

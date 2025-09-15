@@ -245,6 +245,12 @@ namespace Pulumi.Gcp.Storage
         public Output<Outputs.TransferJobSchedule?> Schedule { get; private set; } = null!;
 
         /// <summary>
+        /// The user-managed service account to run the job. If this field is specified, the given service account is granted the necessary permissions to all applicable resources (e.g. GCS buckets) required by the job.
+        /// </summary>
+        [Output("serviceAccount")]
+        public Output<string?> ServiceAccount { get; private set; } = null!;
+
+        /// <summary>
         /// Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
         /// </summary>
         [Output("status")]
@@ -354,6 +360,12 @@ namespace Pulumi.Gcp.Storage
         public Input<Inputs.TransferJobScheduleArgs>? Schedule { get; set; }
 
         /// <summary>
+        /// The user-managed service account to run the job. If this field is specified, the given service account is granted the necessary permissions to all applicable resources (e.g. GCS buckets) required by the job.
+        /// </summary>
+        [Input("serviceAccount")]
+        public Input<string>? ServiceAccount { get; set; }
+
+        /// <summary>
         /// Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
         /// </summary>
         [Input("status")]
@@ -441,6 +453,12 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         [Input("schedule")]
         public Input<Inputs.TransferJobScheduleGetArgs>? Schedule { get; set; }
+
+        /// <summary>
+        /// The user-managed service account to run the job. If this field is specified, the given service account is granted the necessary permissions to all applicable resources (e.g. GCS buckets) required by the job.
+        /// </summary>
+        [Input("serviceAccount")]
+        public Input<string>? ServiceAccount { get; set; }
 
         /// <summary>
         /// Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**

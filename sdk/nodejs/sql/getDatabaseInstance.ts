@@ -55,6 +55,7 @@ export interface GetDatabaseInstanceResult {
     readonly dnsName: string;
     readonly dnsNames: outputs.sql.GetDatabaseInstanceDnsName[];
     readonly encryptionKeyName: string;
+    readonly finalBackupDescription: string;
     readonly firstIpAddress: string;
     /**
      * The provider-assigned unique ID for this managed resource.

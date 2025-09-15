@@ -13164,6 +13164,8 @@ func (o TransferJobScheduleStartTimeOfDayPtrOutput) Seconds() pulumi.IntPtrOutpu
 }
 
 type TransferJobTransferSpec struct {
+	// An AWS S3 Compatible data source. Structure documented below.
+	AwsS3CompatibleDataSource *TransferJobTransferSpecAwsS3CompatibleDataSource `pulumi:"awsS3CompatibleDataSource"`
 	// An AWS S3 data source. Structure documented below.
 	AwsS3DataSource *TransferJobTransferSpecAwsS3DataSource `pulumi:"awsS3DataSource"`
 	// An Azure Blob Storage data source. Structure documented below.
@@ -13202,6 +13204,8 @@ type TransferJobTransferSpecInput interface {
 }
 
 type TransferJobTransferSpecArgs struct {
+	// An AWS S3 Compatible data source. Structure documented below.
+	AwsS3CompatibleDataSource TransferJobTransferSpecAwsS3CompatibleDataSourcePtrInput `pulumi:"awsS3CompatibleDataSource"`
 	// An AWS S3 data source. Structure documented below.
 	AwsS3DataSource TransferJobTransferSpecAwsS3DataSourcePtrInput `pulumi:"awsS3DataSource"`
 	// An Azure Blob Storage data source. Structure documented below.
@@ -13305,6 +13309,13 @@ func (o TransferJobTransferSpecOutput) ToTransferJobTransferSpecPtrOutputWithCon
 	}).(TransferJobTransferSpecPtrOutput)
 }
 
+// An AWS S3 Compatible data source. Structure documented below.
+func (o TransferJobTransferSpecOutput) AwsS3CompatibleDataSource() TransferJobTransferSpecAwsS3CompatibleDataSourcePtrOutput {
+	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecAwsS3CompatibleDataSource {
+		return v.AwsS3CompatibleDataSource
+	}).(TransferJobTransferSpecAwsS3CompatibleDataSourcePtrOutput)
+}
+
 // An AWS S3 data source. Structure documented below.
 func (o TransferJobTransferSpecOutput) AwsS3DataSource() TransferJobTransferSpecAwsS3DataSourcePtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecAwsS3DataSource { return v.AwsS3DataSource }).(TransferJobTransferSpecAwsS3DataSourcePtrOutput)
@@ -13389,6 +13400,16 @@ func (o TransferJobTransferSpecPtrOutput) Elem() TransferJobTransferSpecOutput {
 		var ret TransferJobTransferSpec
 		return ret
 	}).(TransferJobTransferSpecOutput)
+}
+
+// An AWS S3 Compatible data source. Structure documented below.
+func (o TransferJobTransferSpecPtrOutput) AwsS3CompatibleDataSource() TransferJobTransferSpecAwsS3CompatibleDataSourcePtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpec) *TransferJobTransferSpecAwsS3CompatibleDataSource {
+		if v == nil {
+			return nil
+		}
+		return v.AwsS3CompatibleDataSource
+	}).(TransferJobTransferSpecAwsS3CompatibleDataSourcePtrOutput)
 }
 
 // An AWS S3 data source. Structure documented below.
@@ -13511,6 +13532,415 @@ func (o TransferJobTransferSpecPtrOutput) TransferOptions() TransferJobTransferS
 	}).(TransferJobTransferSpecTransferOptionsPtrOutput)
 }
 
+type TransferJobTransferSpecAwsS3CompatibleDataSource struct {
+	// Name of the bucket.
+	BucketName string `pulumi:"bucketName"`
+	// Endpoint of the storage service.
+	Endpoint string `pulumi:"endpoint"`
+	// Specifies the path to transfer objects.
+	Path *string `pulumi:"path"`
+	// Specifies the region to sign requests with. This can be left blank if requests should be signed with an empty region.
+	Region *string `pulumi:"region"`
+	// S3 compatible metadata.
+	S3Metadata *TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata `pulumi:"s3Metadata"`
+}
+
+// TransferJobTransferSpecAwsS3CompatibleDataSourceInput is an input type that accepts TransferJobTransferSpecAwsS3CompatibleDataSourceArgs and TransferJobTransferSpecAwsS3CompatibleDataSourceOutput values.
+// You can construct a concrete instance of `TransferJobTransferSpecAwsS3CompatibleDataSourceInput` via:
+//
+//	TransferJobTransferSpecAwsS3CompatibleDataSourceArgs{...}
+type TransferJobTransferSpecAwsS3CompatibleDataSourceInput interface {
+	pulumi.Input
+
+	ToTransferJobTransferSpecAwsS3CompatibleDataSourceOutput() TransferJobTransferSpecAwsS3CompatibleDataSourceOutput
+	ToTransferJobTransferSpecAwsS3CompatibleDataSourceOutputWithContext(context.Context) TransferJobTransferSpecAwsS3CompatibleDataSourceOutput
+}
+
+type TransferJobTransferSpecAwsS3CompatibleDataSourceArgs struct {
+	// Name of the bucket.
+	BucketName pulumi.StringInput `pulumi:"bucketName"`
+	// Endpoint of the storage service.
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+	// Specifies the path to transfer objects.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Specifies the region to sign requests with. This can be left blank if requests should be signed with an empty region.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// S3 compatible metadata.
+	S3Metadata TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrInput `pulumi:"s3Metadata"`
+}
+
+func (TransferJobTransferSpecAwsS3CompatibleDataSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferJobTransferSpecAwsS3CompatibleDataSource)(nil)).Elem()
+}
+
+func (i TransferJobTransferSpecAwsS3CompatibleDataSourceArgs) ToTransferJobTransferSpecAwsS3CompatibleDataSourceOutput() TransferJobTransferSpecAwsS3CompatibleDataSourceOutput {
+	return i.ToTransferJobTransferSpecAwsS3CompatibleDataSourceOutputWithContext(context.Background())
+}
+
+func (i TransferJobTransferSpecAwsS3CompatibleDataSourceArgs) ToTransferJobTransferSpecAwsS3CompatibleDataSourceOutputWithContext(ctx context.Context) TransferJobTransferSpecAwsS3CompatibleDataSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobTransferSpecAwsS3CompatibleDataSourceOutput)
+}
+
+func (i TransferJobTransferSpecAwsS3CompatibleDataSourceArgs) ToTransferJobTransferSpecAwsS3CompatibleDataSourcePtrOutput() TransferJobTransferSpecAwsS3CompatibleDataSourcePtrOutput {
+	return i.ToTransferJobTransferSpecAwsS3CompatibleDataSourcePtrOutputWithContext(context.Background())
+}
+
+func (i TransferJobTransferSpecAwsS3CompatibleDataSourceArgs) ToTransferJobTransferSpecAwsS3CompatibleDataSourcePtrOutputWithContext(ctx context.Context) TransferJobTransferSpecAwsS3CompatibleDataSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobTransferSpecAwsS3CompatibleDataSourceOutput).ToTransferJobTransferSpecAwsS3CompatibleDataSourcePtrOutputWithContext(ctx)
+}
+
+// TransferJobTransferSpecAwsS3CompatibleDataSourcePtrInput is an input type that accepts TransferJobTransferSpecAwsS3CompatibleDataSourceArgs, TransferJobTransferSpecAwsS3CompatibleDataSourcePtr and TransferJobTransferSpecAwsS3CompatibleDataSourcePtrOutput values.
+// You can construct a concrete instance of `TransferJobTransferSpecAwsS3CompatibleDataSourcePtrInput` via:
+//
+//	        TransferJobTransferSpecAwsS3CompatibleDataSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type TransferJobTransferSpecAwsS3CompatibleDataSourcePtrInput interface {
+	pulumi.Input
+
+	ToTransferJobTransferSpecAwsS3CompatibleDataSourcePtrOutput() TransferJobTransferSpecAwsS3CompatibleDataSourcePtrOutput
+	ToTransferJobTransferSpecAwsS3CompatibleDataSourcePtrOutputWithContext(context.Context) TransferJobTransferSpecAwsS3CompatibleDataSourcePtrOutput
+}
+
+type transferJobTransferSpecAwsS3CompatibleDataSourcePtrType TransferJobTransferSpecAwsS3CompatibleDataSourceArgs
+
+func TransferJobTransferSpecAwsS3CompatibleDataSourcePtr(v *TransferJobTransferSpecAwsS3CompatibleDataSourceArgs) TransferJobTransferSpecAwsS3CompatibleDataSourcePtrInput {
+	return (*transferJobTransferSpecAwsS3CompatibleDataSourcePtrType)(v)
+}
+
+func (*transferJobTransferSpecAwsS3CompatibleDataSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferJobTransferSpecAwsS3CompatibleDataSource)(nil)).Elem()
+}
+
+func (i *transferJobTransferSpecAwsS3CompatibleDataSourcePtrType) ToTransferJobTransferSpecAwsS3CompatibleDataSourcePtrOutput() TransferJobTransferSpecAwsS3CompatibleDataSourcePtrOutput {
+	return i.ToTransferJobTransferSpecAwsS3CompatibleDataSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *transferJobTransferSpecAwsS3CompatibleDataSourcePtrType) ToTransferJobTransferSpecAwsS3CompatibleDataSourcePtrOutputWithContext(ctx context.Context) TransferJobTransferSpecAwsS3CompatibleDataSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobTransferSpecAwsS3CompatibleDataSourcePtrOutput)
+}
+
+type TransferJobTransferSpecAwsS3CompatibleDataSourceOutput struct{ *pulumi.OutputState }
+
+func (TransferJobTransferSpecAwsS3CompatibleDataSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferJobTransferSpecAwsS3CompatibleDataSource)(nil)).Elem()
+}
+
+func (o TransferJobTransferSpecAwsS3CompatibleDataSourceOutput) ToTransferJobTransferSpecAwsS3CompatibleDataSourceOutput() TransferJobTransferSpecAwsS3CompatibleDataSourceOutput {
+	return o
+}
+
+func (o TransferJobTransferSpecAwsS3CompatibleDataSourceOutput) ToTransferJobTransferSpecAwsS3CompatibleDataSourceOutputWithContext(ctx context.Context) TransferJobTransferSpecAwsS3CompatibleDataSourceOutput {
+	return o
+}
+
+func (o TransferJobTransferSpecAwsS3CompatibleDataSourceOutput) ToTransferJobTransferSpecAwsS3CompatibleDataSourcePtrOutput() TransferJobTransferSpecAwsS3CompatibleDataSourcePtrOutput {
+	return o.ToTransferJobTransferSpecAwsS3CompatibleDataSourcePtrOutputWithContext(context.Background())
+}
+
+func (o TransferJobTransferSpecAwsS3CompatibleDataSourceOutput) ToTransferJobTransferSpecAwsS3CompatibleDataSourcePtrOutputWithContext(ctx context.Context) TransferJobTransferSpecAwsS3CompatibleDataSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferJobTransferSpecAwsS3CompatibleDataSource) *TransferJobTransferSpecAwsS3CompatibleDataSource {
+		return &v
+	}).(TransferJobTransferSpecAwsS3CompatibleDataSourcePtrOutput)
+}
+
+// Name of the bucket.
+func (o TransferJobTransferSpecAwsS3CompatibleDataSourceOutput) BucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v TransferJobTransferSpecAwsS3CompatibleDataSource) string { return v.BucketName }).(pulumi.StringOutput)
+}
+
+// Endpoint of the storage service.
+func (o TransferJobTransferSpecAwsS3CompatibleDataSourceOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v TransferJobTransferSpecAwsS3CompatibleDataSource) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// Specifies the path to transfer objects.
+func (o TransferJobTransferSpecAwsS3CompatibleDataSourceOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransferJobTransferSpecAwsS3CompatibleDataSource) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the region to sign requests with. This can be left blank if requests should be signed with an empty region.
+func (o TransferJobTransferSpecAwsS3CompatibleDataSourceOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransferJobTransferSpecAwsS3CompatibleDataSource) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// S3 compatible metadata.
+func (o TransferJobTransferSpecAwsS3CompatibleDataSourceOutput) S3Metadata() TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrOutput {
+	return o.ApplyT(func(v TransferJobTransferSpecAwsS3CompatibleDataSource) *TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata {
+		return v.S3Metadata
+	}).(TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrOutput)
+}
+
+type TransferJobTransferSpecAwsS3CompatibleDataSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (TransferJobTransferSpecAwsS3CompatibleDataSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferJobTransferSpecAwsS3CompatibleDataSource)(nil)).Elem()
+}
+
+func (o TransferJobTransferSpecAwsS3CompatibleDataSourcePtrOutput) ToTransferJobTransferSpecAwsS3CompatibleDataSourcePtrOutput() TransferJobTransferSpecAwsS3CompatibleDataSourcePtrOutput {
+	return o
+}
+
+func (o TransferJobTransferSpecAwsS3CompatibleDataSourcePtrOutput) ToTransferJobTransferSpecAwsS3CompatibleDataSourcePtrOutputWithContext(ctx context.Context) TransferJobTransferSpecAwsS3CompatibleDataSourcePtrOutput {
+	return o
+}
+
+func (o TransferJobTransferSpecAwsS3CompatibleDataSourcePtrOutput) Elem() TransferJobTransferSpecAwsS3CompatibleDataSourceOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecAwsS3CompatibleDataSource) TransferJobTransferSpecAwsS3CompatibleDataSource {
+		if v != nil {
+			return *v
+		}
+		var ret TransferJobTransferSpecAwsS3CompatibleDataSource
+		return ret
+	}).(TransferJobTransferSpecAwsS3CompatibleDataSourceOutput)
+}
+
+// Name of the bucket.
+func (o TransferJobTransferSpecAwsS3CompatibleDataSourcePtrOutput) BucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecAwsS3CompatibleDataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BucketName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Endpoint of the storage service.
+func (o TransferJobTransferSpecAwsS3CompatibleDataSourcePtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecAwsS3CompatibleDataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the path to transfer objects.
+func (o TransferJobTransferSpecAwsS3CompatibleDataSourcePtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecAwsS3CompatibleDataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the region to sign requests with. This can be left blank if requests should be signed with an empty region.
+func (o TransferJobTransferSpecAwsS3CompatibleDataSourcePtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecAwsS3CompatibleDataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// S3 compatible metadata.
+func (o TransferJobTransferSpecAwsS3CompatibleDataSourcePtrOutput) S3Metadata() TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecAwsS3CompatibleDataSource) *TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata {
+		if v == nil {
+			return nil
+		}
+		return v.S3Metadata
+	}).(TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrOutput)
+}
+
+type TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata struct {
+	// Authentication and authorization method used by the storage service. When not specified, Transfer Service will attempt to determine right auth method to use.
+	AuthMethod *string `pulumi:"authMethod"`
+	// The Listing API to use for discovering objects. When not specified, Transfer Service will attempt to determine the right API to use.
+	ListApi *string `pulumi:"listApi"`
+	// The network protocol of the agent. When not specified, the default value of NetworkProtocol NETWORK_PROTOCOL_HTTPS is used.
+	Protocol *string `pulumi:"protocol"`
+	// API request model used to call the storage service. When not specified, the default value of RequestModel REQUEST_MODEL_VIRTUAL_HOSTED_STYLE is used.
+	RequestModel *string `pulumi:"requestModel"`
+}
+
+// TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataInput is an input type that accepts TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataArgs and TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataOutput values.
+// You can construct a concrete instance of `TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataInput` via:
+//
+//	TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataArgs{...}
+type TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataInput interface {
+	pulumi.Input
+
+	ToTransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataOutput() TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataOutput
+	ToTransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataOutputWithContext(context.Context) TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataOutput
+}
+
+type TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataArgs struct {
+	// Authentication and authorization method used by the storage service. When not specified, Transfer Service will attempt to determine right auth method to use.
+	AuthMethod pulumi.StringPtrInput `pulumi:"authMethod"`
+	// The Listing API to use for discovering objects. When not specified, Transfer Service will attempt to determine the right API to use.
+	ListApi pulumi.StringPtrInput `pulumi:"listApi"`
+	// The network protocol of the agent. When not specified, the default value of NetworkProtocol NETWORK_PROTOCOL_HTTPS is used.
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+	// API request model used to call the storage service. When not specified, the default value of RequestModel REQUEST_MODEL_VIRTUAL_HOSTED_STYLE is used.
+	RequestModel pulumi.StringPtrInput `pulumi:"requestModel"`
+}
+
+func (TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata)(nil)).Elem()
+}
+
+func (i TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataArgs) ToTransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataOutput() TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataOutput {
+	return i.ToTransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataOutputWithContext(context.Background())
+}
+
+func (i TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataArgs) ToTransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataOutputWithContext(ctx context.Context) TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataOutput)
+}
+
+func (i TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataArgs) ToTransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrOutput() TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrOutput {
+	return i.ToTransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrOutputWithContext(context.Background())
+}
+
+func (i TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataArgs) ToTransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrOutputWithContext(ctx context.Context) TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataOutput).ToTransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrOutputWithContext(ctx)
+}
+
+// TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrInput is an input type that accepts TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataArgs, TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtr and TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrOutput values.
+// You can construct a concrete instance of `TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrInput` via:
+//
+//	        TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataArgs{...}
+//
+//	or:
+//
+//	        nil
+type TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrInput interface {
+	pulumi.Input
+
+	ToTransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrOutput() TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrOutput
+	ToTransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrOutputWithContext(context.Context) TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrOutput
+}
+
+type transferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrType TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataArgs
+
+func TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtr(v *TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataArgs) TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrInput {
+	return (*transferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrType)(v)
+}
+
+func (*transferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata)(nil)).Elem()
+}
+
+func (i *transferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrType) ToTransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrOutput() TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrOutput {
+	return i.ToTransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrOutputWithContext(context.Background())
+}
+
+func (i *transferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrType) ToTransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrOutputWithContext(ctx context.Context) TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrOutput)
+}
+
+type TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataOutput struct{ *pulumi.OutputState }
+
+func (TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata)(nil)).Elem()
+}
+
+func (o TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataOutput) ToTransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataOutput() TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataOutput {
+	return o
+}
+
+func (o TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataOutput) ToTransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataOutputWithContext(ctx context.Context) TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataOutput {
+	return o
+}
+
+func (o TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataOutput) ToTransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrOutput() TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrOutput {
+	return o.ToTransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrOutputWithContext(context.Background())
+}
+
+func (o TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataOutput) ToTransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrOutputWithContext(ctx context.Context) TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata) *TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata {
+		return &v
+	}).(TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrOutput)
+}
+
+// Authentication and authorization method used by the storage service. When not specified, Transfer Service will attempt to determine right auth method to use.
+func (o TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataOutput) AuthMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata) *string { return v.AuthMethod }).(pulumi.StringPtrOutput)
+}
+
+// The Listing API to use for discovering objects. When not specified, Transfer Service will attempt to determine the right API to use.
+func (o TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataOutput) ListApi() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata) *string { return v.ListApi }).(pulumi.StringPtrOutput)
+}
+
+// The network protocol of the agent. When not specified, the default value of NetworkProtocol NETWORK_PROTOCOL_HTTPS is used.
+func (o TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// API request model used to call the storage service. When not specified, the default value of RequestModel REQUEST_MODEL_VIRTUAL_HOSTED_STYLE is used.
+func (o TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataOutput) RequestModel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata) *string { return v.RequestModel }).(pulumi.StringPtrOutput)
+}
+
+type TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrOutput struct{ *pulumi.OutputState }
+
+func (TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata)(nil)).Elem()
+}
+
+func (o TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrOutput) ToTransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrOutput() TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrOutput {
+	return o
+}
+
+func (o TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrOutput) ToTransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrOutputWithContext(ctx context.Context) TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrOutput {
+	return o
+}
+
+func (o TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrOutput) Elem() TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata) TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata {
+		if v != nil {
+			return *v
+		}
+		var ret TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata
+		return ret
+	}).(TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataOutput)
+}
+
+// Authentication and authorization method used by the storage service. When not specified, Transfer Service will attempt to determine right auth method to use.
+func (o TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrOutput) AuthMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthMethod
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Listing API to use for discovering objects. When not specified, Transfer Service will attempt to determine the right API to use.
+func (o TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrOutput) ListApi() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ListApi
+	}).(pulumi.StringPtrOutput)
+}
+
+// The network protocol of the agent. When not specified, the default value of NetworkProtocol NETWORK_PROTOCOL_HTTPS is used.
+func (o TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Protocol
+	}).(pulumi.StringPtrOutput)
+}
+
+// API request model used to call the storage service. When not specified, the default value of RequestModel REQUEST_MODEL_VIRTUAL_HOSTED_STYLE is used.
+func (o TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrOutput) RequestModel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RequestModel
+	}).(pulumi.StringPtrOutput)
+}
+
 type TransferJobTransferSpecAwsS3DataSource struct {
 	// AWS credentials block.
 	AwsAccessKey *TransferJobTransferSpecAwsS3DataSourceAwsAccessKey `pulumi:"awsAccessKey"`
@@ -13518,6 +13948,8 @@ type TransferJobTransferSpecAwsS3DataSource struct {
 	BucketName string `pulumi:"bucketName"`
 	// The CloudFront distribution domain name pointing to this bucket, to use when fetching. See [Transfer from S3 via CloudFront](https://cloud.google.com/storage-transfer/docs/s3-cloudfront) for more information. Format: https://{id}.cloudfront.net or any valid custom domain. Must begin with https://.
 	CloudfrontDomain *string `pulumi:"cloudfrontDomain"`
+	// The Resource name of a secret in Secret Manager. AWS credentials must be stored in Secret Manager in JSON format. If credentialsSecret is specified, do not specify roleArn or aws_access_key. Format: projects/{projectNumber}/secrets/{secret_name}.
+	CredentialsSecret *string `pulumi:"credentialsSecret"`
 	// Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
 	ManagedPrivateNetwork *bool `pulumi:"managedPrivateNetwork"`
 	// S3 Bucket path in bucket to transfer.
@@ -13544,6 +13976,8 @@ type TransferJobTransferSpecAwsS3DataSourceArgs struct {
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
 	// The CloudFront distribution domain name pointing to this bucket, to use when fetching. See [Transfer from S3 via CloudFront](https://cloud.google.com/storage-transfer/docs/s3-cloudfront) for more information. Format: https://{id}.cloudfront.net or any valid custom domain. Must begin with https://.
 	CloudfrontDomain pulumi.StringPtrInput `pulumi:"cloudfrontDomain"`
+	// The Resource name of a secret in Secret Manager. AWS credentials must be stored in Secret Manager in JSON format. If credentialsSecret is specified, do not specify roleArn or aws_access_key. Format: projects/{projectNumber}/secrets/{secret_name}.
+	CredentialsSecret pulumi.StringPtrInput `pulumi:"credentialsSecret"`
 	// Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
 	ManagedPrivateNetwork pulumi.BoolPtrInput `pulumi:"managedPrivateNetwork"`
 	// S3 Bucket path in bucket to transfer.
@@ -13646,6 +14080,11 @@ func (o TransferJobTransferSpecAwsS3DataSourceOutput) CloudfrontDomain() pulumi.
 	return o.ApplyT(func(v TransferJobTransferSpecAwsS3DataSource) *string { return v.CloudfrontDomain }).(pulumi.StringPtrOutput)
 }
 
+// The Resource name of a secret in Secret Manager. AWS credentials must be stored in Secret Manager in JSON format. If credentialsSecret is specified, do not specify roleArn or aws_access_key. Format: projects/{projectNumber}/secrets/{secret_name}.
+func (o TransferJobTransferSpecAwsS3DataSourceOutput) CredentialsSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransferJobTransferSpecAwsS3DataSource) *string { return v.CredentialsSecret }).(pulumi.StringPtrOutput)
+}
+
 // Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
 func (o TransferJobTransferSpecAwsS3DataSourceOutput) ManagedPrivateNetwork() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecAwsS3DataSource) *bool { return v.ManagedPrivateNetwork }).(pulumi.BoolPtrOutput)
@@ -13712,6 +14151,16 @@ func (o TransferJobTransferSpecAwsS3DataSourcePtrOutput) CloudfrontDomain() pulu
 			return nil
 		}
 		return v.CloudfrontDomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Resource name of a secret in Secret Manager. AWS credentials must be stored in Secret Manager in JSON format. If credentialsSecret is specified, do not specify roleArn or aws_access_key. Format: projects/{projectNumber}/secrets/{secret_name}.
+func (o TransferJobTransferSpecAwsS3DataSourcePtrOutput) CredentialsSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecAwsS3DataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CredentialsSecret
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -21961,6 +22410,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobScheduleStartTimeOfDayPtrInput)(nil)).Elem(), TransferJobScheduleStartTimeOfDayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecInput)(nil)).Elem(), TransferJobTransferSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecPtrInput)(nil)).Elem(), TransferJobTransferSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecAwsS3CompatibleDataSourceInput)(nil)).Elem(), TransferJobTransferSpecAwsS3CompatibleDataSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecAwsS3CompatibleDataSourcePtrInput)(nil)).Elem(), TransferJobTransferSpecAwsS3CompatibleDataSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataInput)(nil)).Elem(), TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrInput)(nil)).Elem(), TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecAwsS3DataSourceInput)(nil)).Elem(), TransferJobTransferSpecAwsS3DataSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecAwsS3DataSourcePtrInput)(nil)).Elem(), TransferJobTransferSpecAwsS3DataSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyInput)(nil)).Elem(), TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs{})
@@ -22265,6 +22718,10 @@ func init() {
 	pulumi.RegisterOutputType(TransferJobScheduleStartTimeOfDayPtrOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecPtrOutput{})
+	pulumi.RegisterOutputType(TransferJobTransferSpecAwsS3CompatibleDataSourceOutput{})
+	pulumi.RegisterOutputType(TransferJobTransferSpecAwsS3CompatibleDataSourcePtrOutput{})
+	pulumi.RegisterOutputType(TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataOutput{})
+	pulumi.RegisterOutputType(TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataPtrOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecAwsS3DataSourceOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecAwsS3DataSourcePtrOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput{})

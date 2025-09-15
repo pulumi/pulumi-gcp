@@ -1497,6 +1497,20 @@ public class Repository extends com.pulumi.resources.CustomResource {
         return this.pulumiLabels;
     }
     /**
+     * The repository endpoint, for example: us-docker.pkg.dev/my-proj/my-repo.
+     * 
+     */
+    @Export(name="registryUri", refs={String.class}, tree="[0]")
+    private Output<String> registryUri;
+
+    /**
+     * @return The repository endpoint, for example: us-docker.pkg.dev/my-proj/my-repo.
+     * 
+     */
+    public Output<String> registryUri() {
+        return this.registryUri;
+    }
+    /**
      * Configuration specific for a Remote Repository.
      * Structure is documented below.
      * 

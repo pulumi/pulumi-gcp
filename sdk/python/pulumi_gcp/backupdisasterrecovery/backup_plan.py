@@ -187,7 +187,7 @@ class _BackupPlanState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] resource_type: The resource type to which the `BackupPlan` will be applied.
                Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] supported_resource_types: The list of all resource types to which the 'BackupPlan' can be applied.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] supported_resource_types: The list of all resource types to which the `BackupPlan` can be applied.
         :param pulumi.Input[_builtins.str] update_time: When the `BackupPlan` was last updated.
         """
         if backup_plan_id is not None:
@@ -356,7 +356,7 @@ class _BackupPlanState:
     @pulumi.getter(name="supportedResourceTypes")
     def supported_resource_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The list of all resource types to which the 'BackupPlan' can be applied.
+        The list of all resource types to which the `BackupPlan` can be applied.
         """
         return pulumi.get(self, "supported_resource_types")
 
@@ -759,7 +759,7 @@ class BackupPlan(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] resource_type: The resource type to which the `BackupPlan` will be applied.
                Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] supported_resource_types: The list of all resource types to which the 'BackupPlan' can be applied.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] supported_resource_types: The list of all resource types to which the `BackupPlan` can be applied.
         :param pulumi.Input[_builtins.str] update_time: When the `BackupPlan` was last updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -876,7 +876,7 @@ class BackupPlan(pulumi.CustomResource):
     @pulumi.getter(name="supportedResourceTypes")
     def supported_resource_types(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        The list of all resource types to which the 'BackupPlan' can be applied.
+        The list of all resource types to which the `BackupPlan` can be applied.
         """
         return pulumi.get(self, "supported_resource_types")
 
