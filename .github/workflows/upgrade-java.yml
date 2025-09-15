@@ -21,6 +21,7 @@ permissions:
   contents: write
   issues: write
   pull-requests: write
+  id-token: write # For ESC secrets.
 
 jobs:
   upgrade_java:
@@ -32,7 +33,16 @@ jobs:
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
         with:
           # Persist credentials so upgrade-provider can push a new branch.
-          persist-credentials: true
+          persist-credentials: true      
+      - env:
+          ESC_ACTION_ENVIRONMENT: github-secrets/${{ github.repository_owner }}-${{ github.event.repository.name }}
+          ESC_ACTION_EXPORT_ENVIRONMENT_VARIABLES: "false"
+          ESC_ACTION_OIDC_AUTH: "true"
+          ESC_ACTION_OIDC_ORGANIZATION: pulumi
+          ESC_ACTION_OIDC_REQUESTED_TOKEN_TYPE: urn:pulumi:token-type:access_token:organization
+        id: esc-secrets
+        name: Fetch secrets from ESC
+        uses: pulumi/esc-action@9eb774255b1a4afb7855678ae8d4a77359da0d9b
 
       - name: Setup tools
         uses: ./.github/actions/setup-tools
@@ -57,6 +67,6 @@ jobs:
           REPO: ${{github.repository}}
           # upgrade-provider calls into gh CLI tool to open PRs that uses GH_TOKEN env var, which is not obivous.
           # setting this correctly makes sure the PR has the correct owner and permissions work as expected.
-          GH_TOKEN: ${{ secrets.PULUMI_PROVIDER_AUTOMATION_TOKEN || secrets.PULUMI_BOT_TOKEN || secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.esc-secrets.outputs.PULUMI_PROVIDER_AUTOMATION_TOKEN || steps.esc-secrets.outputs.PULUMI_BOT_TOKEN || secrets.GITHUB_TOKEN }}
         run: |
           upgrade-provider "$REPO" --kind=java --java-version="$V"

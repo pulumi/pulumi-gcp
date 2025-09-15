@@ -59,9 +59,9 @@ permissions:
   contents: write
   issues: write
   pull-requests: write
+  id-token: write # For ESC secrets.
 
 env:
-  GH_TOKEN: ${{ secrets.PULUMI_PROVIDER_AUTOMATION_TOKEN || secrets.PULUMI_BOT_TOKEN || secrets.GITHUB_TOKEN }}
   GOOGLE_CI_SERVICE_ACCOUNT_EMAIL: pulumi-ci@pulumi-ci-gcp-provider.iam.gserviceaccount.com
   GOOGLE_CI_WORKLOAD_IDENTITY_POOL: pulumi-ci
   GOOGLE_CI_WORKLOAD_IDENTITY_PROVIDER: pulumi-ci
@@ -83,7 +83,16 @@ jobs:
     - name: Checkout Repo
       uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
       with:
-        persist-credentials: false
+        persist-credentials: false    
+    - env:
+        ESC_ACTION_ENVIRONMENT: github-secrets/${{ github.repository_owner }}-${{ github.event.repository.name }}
+        ESC_ACTION_EXPORT_ENVIRONMENT_VARIABLES: "false"
+        ESC_ACTION_OIDC_AUTH: "true"
+        ESC_ACTION_OIDC_ORGANIZATION: pulumi
+        ESC_ACTION_OIDC_REQUESTED_TOKEN_TYPE: urn:pulumi:token-type:access_token:organization
+      id: esc-secrets
+      name: Fetch secrets from ESC
+      uses: pulumi/esc-action@9eb774255b1a4afb7855678ae8d4a77359da0d9b
     - name: Setup tools
       uses: ./.github/actions/setup-tools
       with:
@@ -102,6 +111,8 @@ jobs:
         pr-description: ${{ inputs.pr-description }}
         pr-title-prefix: ${{ inputs.pr-title-prefix }}
         patch-release: ${{ github.event.client_payload.patch-release }}
+      env:
+        GH_TOKEN: ${{ steps.esc-secrets.outputs.PULUMI_PROVIDER_AUTOMATION_TOKEN || steps.esc-secrets.outputs.PULUMI_BOT_TOKEN || secrets.GITHUB_TOKEN }}
     - name: Call upgrade provider action
       if: github.event_name == 'repository_dispatch'
       uses: pulumi/pulumi-upgrade-provider-action@3c670a7cb92732324c8ccc17f7f9ef9dfca126d0 # v0.0.17
@@ -116,3 +127,5 @@ jobs:
         pr-description: ${{ github.event.client_payload.pr-description }}
         pr-title-prefix: ${{ github.event.client_payload.pr-title-prefix }}
         patch-release: ${{ github.event.client_payload.patch-release }}
+      env:
+        GH_TOKEN: ${{ steps.esc-secrets.outputs.PULUMI_PROVIDER_AUTOMATION_TOKEN || steps.esc-secrets.outputs.PULUMI_BOT_TOKEN || secrets.GITHUB_TOKEN }}
