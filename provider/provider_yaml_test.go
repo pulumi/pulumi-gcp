@@ -1165,6 +1165,7 @@ func TestEmptyLabels(t *testing.T) {
 //
 // Improvement tracked in <https://github.com/pulumi/pulumi-gcp/issues/2390>.
 func TestUnmanagedEmptyLabels(t *testing.T) {
+	t.Skip("Blocked by https://github.com/pulumi/pulumi/issues/20496")
 	pt := pulumiTest(t, "test-programs/empty-unmanaged-label")
 	proj := getProject()
 	pt.SetConfig(t, "gcpProj", proj)
