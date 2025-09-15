@@ -976,7 +976,6 @@ func TestImport(t *testing.T) {
 			programPath:      filepath.Join("test-programs", "labeled-bucket-with-defaults"),
 			resourceType:     "gcp:storage/bucket:Bucket",
 			explicitProvider: true,
-			skip:             "Skipping due to https://github.com/pulumi/pulumi/issues/17290",
 		},
 		{
 			testName:     "bucket-iam-binding",
