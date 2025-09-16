@@ -22,10 +22,33 @@ on:
     # 3 AM UTC ~ 8 PM PDT / 7 PM PST daily. Time chosen to run during off hours.
     - cron: 0 3 * * *
 
+env:
+  AWS_CORP_S3_UPLOAD_ACCESS_KEY_ID: ${{ secrets.AWS_CORP_S3_UPLOAD_ACCESS_KEY_ID }}
+  AWS_CORP_S3_UPLOAD_SECRET_ACCESS_KEY: ${{ secrets.AWS_CORP_S3_UPLOAD_SECRET_ACCESS_KEY }}
+  CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+  GOOGLE_CI_SERVICE_ACCOUNT_EMAIL: pulumi-ci@pulumi-ci-gcp-provider.iam.gserviceaccount.com
+  GOOGLE_CI_WORKLOAD_IDENTITY_POOL: pulumi-ci
+  GOOGLE_CI_WORKLOAD_IDENTITY_PROVIDER: pulumi-ci
+  GOOGLE_PROJECT: pulumi-ci-gcp-provider
+  GOOGLE_PROJECT_NUMBER: "895284651812"
+  GOOGLE_REGION: us-central1
+  GOOGLE_ZONE: us-central1-a
+  PULUMI_API: https://api.pulumi-staging.io
+  PULUMI_BOT_TOKEN: ${{ secrets.PULUMI_BOT_TOKEN }}
+  PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
+  PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
+  PULUMI_MISSING_DOCS_ERROR: "true"
+  RELEASE_BOT_ENDPOINT: ${{ secrets.RELEASE_BOT_ENDPOINT }}
+  RELEASE_BOT_KEY: ${{ secrets.RELEASE_BOT_KEY }}
+  S3_COVERAGE_BUCKET_NAME: ${{ secrets.S3_COVERAGE_BUCKET_NAME }}
+  SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+  TF_APPEND_USER_AGENT: pulumi
+
 permissions:
   contents: write
   issues: write
   pull-requests: write
+  id-token: write # For ESC secrets.
 
 jobs:
   upgrade_provider:
@@ -36,7 +59,10 @@ jobs:
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
         with:
           # Persist credentials so upgrade-provider can push a new branch.
-          persist-credentials: true
+          persist-credentials: true      
+      - id: esc-secrets
+        name: Map environment to ESC outputs
+        uses: ./.github/actions/esc-action
       - name: Setup tools
         uses: ./.github/actions/setup-tools
         with:
@@ -56,7 +82,7 @@ jobs:
         run: upgrade-provider "$REPO" --kind=check-upstream-version
         env:
           REPO: ${{ github.repository }}
-          GH_TOKEN: ${{ secrets.PULUMI_PROVIDER_AUTOMATION_TOKEN || secrets.PULUMI_BOT_TOKEN || secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.esc-secrets.outputs.PULUMI_PROVIDER_AUTOMATION_TOKEN || steps.esc-secrets.outputs.PULUMI_BOT_TOKEN || secrets.GITHUB_TOKEN }}
         shell: bash
       - name: Calculate target version
         id: target_version
@@ -77,7 +103,7 @@ jobs:
           target-version: ${{ steps.target_version.outputs.version }}
           allow-missing-docs: false
         env:
-          GH_TOKEN: ${{ secrets.PULUMI_PROVIDER_AUTOMATION_TOKEN || secrets.PULUMI_BOT_TOKEN || secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.esc-secrets.outputs.PULUMI_PROVIDER_AUTOMATION_TOKEN || steps.esc-secrets.outputs.PULUMI_BOT_TOKEN || secrets.GITHUB_TOKEN }}
       - name: Comment on upgrade issue if automated PR failed
         if: steps.upgrade_provider.outcome == 'failure'
         shell: bash
@@ -85,5 +111,5 @@ jobs:
           issue_number=$(gh issue list --search "pulumiupgradeproviderissue" --repo "${{ github.repository }}" --json=number --jq=".[0].number")
           gh issue comment "${issue_number}" --repo "${{ github.repository }}" --body "Failed to create automatic PR: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}/"
         env:
-          GH_TOKEN: ${{ secrets.PULUMI_PROVIDER_AUTOMATION_TOKEN || secrets.PULUMI_BOT_TOKEN || secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.esc-secrets.outputs.PULUMI_PROVIDER_AUTOMATION_TOKEN || steps.esc-secrets.outputs.PULUMI_BOT_TOKEN || secrets.GITHUB_TOKEN }}
 
