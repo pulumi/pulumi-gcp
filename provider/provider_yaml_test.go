@@ -991,6 +991,44 @@ func extractFieldFromState(t *testing.T, state interface{}, resourceUrn string, 
 	return nil
 }
 
+func TestImport(t *testing.T) {
+	for _, tc := range []struct {
+		testName         string
+		programPath      string
+		resourceType     string
+		explicitProvider bool
+		skip             string // If skip is non-empty, the test will be skipped with skip's value as the reason
+	}{
+		{
+			testName:     "bucket-iam-binding",
+			programPath:  filepath.Join("test-programs", "bucket-iam-binding"),
+			resourceType: "gcp:storage/bucketIAMBinding:BucketIAMBinding",
+		},
+	} {
+		t.Run(tc.testName, func(t *testing.T) {
+			if tc.skip != "" {
+				t.Skip(tc.skip)
+			}
+			test := pulumiTest(t, tc.programPath)
+
+			res := test.Up(t)
+			resourceID := res.Outputs["resourceId"].Value.(string)
+			resourceUrn := res.Outputs["resourceUrn"].Value.(string)
+
+			providerUrn := ""
+			if tc.explicitProvider {
+				providerUrn = res.Outputs["providerUrn"].Value.(string)
+			}
+
+			pulumiTestDeleteFromState(t, test, resourceUrn)
+			pulumiTestImport(t, test, tc.resourceType, "resource", resourceID, providerUrn)
+
+			prevResult := test.Preview(t)
+			assertpreview.HasNoChanges(t, prevResult)
+		})
+	}
+}
+
 func TestImportLabels(t *testing.T) {
 	for _, tc := range []struct {
 		testName         string
@@ -1010,11 +1048,6 @@ func TestImportLabels(t *testing.T) {
 			resourceType:     "gcp:storage/bucket:Bucket",
 			explicitProvider: true,
 		},
-		//{
-		//	testName:     "bucket-iam-binding",
-		//	programPath:  filepath.Join("test-programs", "bucket-iam-binding"),
-		//	resourceType: "gcp:storage/bucketIAMBinding:BucketIAMBinding",
-		//},
 	} {
 		t.Run(tc.testName, func(t *testing.T) {
 			if tc.skip != "" {
