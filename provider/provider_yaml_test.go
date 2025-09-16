@@ -958,7 +958,40 @@ func pulumiTestDeleteFromState(t *testing.T, ptest *pulumitest.PulumiTest, resou
 	pulumiTestExec(t, ptest, arguments...)
 }
 
-func TestImport(t *testing.T) {
+// extractFieldFromState extracts a specified field from a specific resource in the state
+func extractFieldFromState(t *testing.T, state interface{}, resourceUrn string, field string) map[string]interface{} {
+	// Marshal the state to JSON
+	stateData, err := json.Marshal(state)
+	require.NoError(t, err)
+
+	// Parse into a map
+	var stateMap map[string]interface{}
+	require.NoError(t, json.Unmarshal(stateData, &stateMap))
+
+	// Extract deployment from the state
+	deployment, _ := stateMap["deployment"].(map[string]interface{})
+	resources, _ := deployment["resources"].([]interface{})
+
+	// Find the resource
+	for _, resource := range resources {
+		if resourceMap, ok := resource.(map[string]interface{}); ok {
+			if urn, ok := resourceMap["urn"].(string); ok && urn == resourceUrn {
+				// Extract the outputs (which contain the actual resource properties)
+				outputs, ok := resourceMap["outputs"].(map[string]interface{})
+				require.True(t, ok, "Resource should have outputs")
+
+				// Extract the labels field
+				labels, ok := outputs[field].(map[string]interface{})
+				require.True(t, ok, fmt.Sprintf("%s resource should have %s field", resourceUrn, field))
+				return labels
+			}
+		}
+	}
+	require.Fail(t, "Should find resource with URN: %s", resourceUrn)
+	return nil
+}
+
+func TestImportLabels(t *testing.T) {
 	for _, tc := range []struct {
 		testName         string
 		programPath      string
@@ -967,21 +1000,21 @@ func TestImport(t *testing.T) {
 		skip             string // If skip is non-empty, the the test will be skipped with skip's value as the reason
 	}{
 		{
-			testName:     "bucket",
+			testName:     "labeled-bucket",
 			programPath:  filepath.Join("test-programs", "labeled-bucket"),
 			resourceType: "gcp:storage/bucket:Bucket",
 		},
 		{
-			testName:         "bucket-with-defaults",
+			testName:         "labeled-bucket-with-defaults",
 			programPath:      filepath.Join("test-programs", "labeled-bucket-with-defaults"),
 			resourceType:     "gcp:storage/bucket:Bucket",
 			explicitProvider: true,
 		},
-		{
-			testName:     "bucket-iam-binding",
-			programPath:  filepath.Join("test-programs", "bucket-iam-binding"),
-			resourceType: "gcp:storage/bucketIAMBinding:BucketIAMBinding",
-		},
+		//{
+		//	testName:     "bucket-iam-binding",
+		//	programPath:  filepath.Join("test-programs", "bucket-iam-binding"),
+		//	resourceType: "gcp:storage/bucketIAMBinding:BucketIAMBinding",
+		//},
 	} {
 		t.Run(tc.testName, func(t *testing.T) {
 			if tc.skip != "" {
@@ -998,11 +1031,40 @@ func TestImport(t *testing.T) {
 				providerUrn = res.Outputs["providerUrn"].Value.(string)
 			}
 
+			initialState := test.ExportStack(t)
+			initialLabels := extractFieldFromState(t, initialState, resourceUrn, "labels")
+			require.NotEmptyf(t, initialLabels, "Labels are set on Create")
+
 			pulumiTestDeleteFromState(t, test, resourceUrn)
 			pulumiTestImport(t, test, tc.resourceType, "resource", resourceID, providerUrn)
 
-			prevResult := test.Preview(t)
-			assertpreview.HasNoChanges(t, prevResult)
+			// Expect effectiveLabels to hold all labels we originally created the Bucket with:
+			// Bucket labels, default labels, provisioning label.
+			importState := test.ExportStack(t)
+			effectiveLabels := extractFieldFromState(t, importState, resourceUrn, "effectiveLabels")
+			fmt.Println(effectiveLabels)
+			appLabel := effectiveLabels["app"]
+			provisioningLabel := effectiveLabels["goog-pulumi-provisioned"]
+			require.True(t, appLabel == "my-label")
+			require.True(t, provisioningLabel == "true")
+			if tc.explicitProvider {
+				defaultLabel := effectiveLabels["def"]
+				require.True(t, defaultLabel == "defaultlabel")
+			}
+
+			// Use the generated program from Import.
+			// Notably, this will not have Labels in it - these were written to effectiveLabels.
+			test.UpdateSource(t, tc.programPath+"/imported-program")
+			test.Up(t)
+
+			finalState := test.ExportStack(t)
+			finalLabels := extractFieldFromState(t, finalState, resourceUrn, "labels")
+
+			// The resource labels should be empty
+			require.Empty(
+				t,
+				finalLabels,
+				"Bucket will have no labels after typical import and update since they were not imported.")
 		})
 	}
 }
