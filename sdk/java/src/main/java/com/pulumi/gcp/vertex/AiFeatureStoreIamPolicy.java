@@ -30,7 +30,6 @@ import javax.annotation.Nullable;
  * 
  * ## gcp.vertex.AiFeatureStoreIamPolicy
  * 
- * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -73,11 +72,9 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## gcp.vertex.AiFeatureStoreIamBinding
  * 
- * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -112,11 +109,9 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## gcp.vertex.AiFeatureStoreIamMember
  * 
- * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -151,7 +146,6 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## This resource supports User Project Overrides.
  * 
@@ -175,7 +169,6 @@ import javax.annotation.Nullable;
  * 
  * ## gcp.vertex.AiFeatureStoreIamPolicy
  * 
- * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -218,11 +211,9 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## gcp.vertex.AiFeatureStoreIamBinding
  * 
- * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -257,11 +248,9 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## gcp.vertex.AiFeatureStoreIamMember
  * 
- * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -296,7 +285,6 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

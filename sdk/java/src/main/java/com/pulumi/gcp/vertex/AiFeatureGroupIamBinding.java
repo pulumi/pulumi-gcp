@@ -33,7 +33,6 @@ import javax.annotation.Nullable;
  * 
  * ## gcp.vertex.AiFeatureGroupIamPolicy
  * 
- * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -75,11 +74,9 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## gcp.vertex.AiFeatureGroupIamBinding
  * 
- * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -113,11 +110,9 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## gcp.vertex.AiFeatureGroupIamMember
  * 
- * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -151,7 +146,6 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## This resource supports User Project Overrides.
  * 
@@ -175,7 +169,6 @@ import javax.annotation.Nullable;
  * 
  * ## gcp.vertex.AiFeatureGroupIamPolicy
  * 
- * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -217,11 +210,9 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## gcp.vertex.AiFeatureGroupIamBinding
  * 
- * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -255,11 +246,9 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## gcp.vertex.AiFeatureGroupIamMember
  * 
- * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -293,7 +282,6 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

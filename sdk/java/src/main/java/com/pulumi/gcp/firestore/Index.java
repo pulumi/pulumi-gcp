@@ -386,11 +386,8 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
-<<<<<<< HEAD
- * &lt;!--End PulumiCodeChooser --&gt;
  * ### Firestore Index Unique
  * 
- * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -450,9 +447,6 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
-=======
->>>>>>> master
  * 
  * ## Import
  * 

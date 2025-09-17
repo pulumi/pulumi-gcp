@@ -275,7 +275,6 @@ public final class CertificatemanagerFunctions {
      * 
      * ## Example Usage
      * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -307,7 +306,6 @@ public final class CertificatemanagerFunctions {
      * }
      * }
      * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDnsAuthorizationResult> getDnsAuthorization(GetDnsAuthorizationArgs args) {
@@ -318,7 +316,6 @@ public final class CertificatemanagerFunctions {
      * 
      * ## Example Usage
      * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -350,7 +347,6 @@ public final class CertificatemanagerFunctions {
      * }
      * }
      * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDnsAuthorizationResult> getDnsAuthorizationPlain(GetDnsAuthorizationPlainArgs args) {
@@ -361,7 +357,6 @@ public final class CertificatemanagerFunctions {
      * 
      * ## Example Usage
      * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -393,7 +388,6 @@ public final class CertificatemanagerFunctions {
      * }
      * }
      * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDnsAuthorizationResult> getDnsAuthorization(GetDnsAuthorizationArgs args, InvokeOptions options) {
@@ -404,7 +398,6 @@ public final class CertificatemanagerFunctions {
      * 
      * ## Example Usage
      * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -436,7 +429,6 @@ public final class CertificatemanagerFunctions {
      * }
      * }
      * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDnsAuthorizationResult> getDnsAuthorization(GetDnsAuthorizationArgs args, InvokeOutputOptions options) {
@@ -447,7 +439,6 @@ public final class CertificatemanagerFunctions {
      * 
      * ## Example Usage
      * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -479,7 +470,6 @@ public final class CertificatemanagerFunctions {
      * }
      * }
      * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDnsAuthorizationResult> getDnsAuthorizationPlain(GetDnsAuthorizationPlainArgs args, InvokeOptions options) {

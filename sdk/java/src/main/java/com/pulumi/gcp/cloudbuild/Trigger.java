@@ -1102,10 +1102,8 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * ### Cloudbuild Trigger Developer Connect Pull
  * 
- * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -1147,10 +1145,8 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * ### Cloudbuild Trigger Developer Connect Push
  * 
- * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -1191,10 +1187,8 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * ### Cloudbuild Trigger Developer Connect Push Branch
  * 
- * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -1234,7 +1228,6 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

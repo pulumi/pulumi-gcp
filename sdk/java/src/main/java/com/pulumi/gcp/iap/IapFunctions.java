@@ -1834,7 +1834,6 @@ public final class IapFunctions {
      * 
      * ## Example Usage
      * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1866,7 +1865,6 @@ public final class IapFunctions {
      * }
      * }
      * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetWebForwardingRuleServiceIamPolicyResult> getWebForwardingRuleServiceIamPolicy(GetWebForwardingRuleServiceIamPolicyArgs args) {
@@ -1877,7 +1875,6 @@ public final class IapFunctions {
      * 
      * ## Example Usage
      * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1909,7 +1906,6 @@ public final class IapFunctions {
      * }
      * }
      * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetWebForwardingRuleServiceIamPolicyResult> getWebForwardingRuleServiceIamPolicyPlain(GetWebForwardingRuleServiceIamPolicyPlainArgs args) {
@@ -1920,7 +1916,6 @@ public final class IapFunctions {
      * 
      * ## Example Usage
      * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1952,7 +1947,6 @@ public final class IapFunctions {
      * }
      * }
      * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetWebForwardingRuleServiceIamPolicyResult> getWebForwardingRuleServiceIamPolicy(GetWebForwardingRuleServiceIamPolicyArgs args, InvokeOptions options) {
@@ -1963,7 +1957,6 @@ public final class IapFunctions {
      * 
      * ## Example Usage
      * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1995,7 +1988,6 @@ public final class IapFunctions {
      * }
      * }
      * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetWebForwardingRuleServiceIamPolicyResult> getWebForwardingRuleServiceIamPolicy(GetWebForwardingRuleServiceIamPolicyArgs args, InvokeOutputOptions options) {
@@ -2006,7 +1998,6 @@ public final class IapFunctions {
      * 
      * ## Example Usage
      * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2038,7 +2029,6 @@ public final class IapFunctions {
      * }
      * }
      * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetWebForwardingRuleServiceIamPolicyResult> getWebForwardingRuleServiceIamPolicyPlain(GetWebForwardingRuleServiceIamPolicyPlainArgs args, InvokeOptions options) {
@@ -2539,7 +2529,6 @@ public final class IapFunctions {
      * 
      * ## Example Usage
      * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2572,7 +2561,6 @@ public final class IapFunctions {
      * }
      * }
      * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetWebRegionForwardingRuleServiceIamPolicyResult> getWebRegionForwardingRuleServiceIamPolicy(GetWebRegionForwardingRuleServiceIamPolicyArgs args) {
@@ -2583,7 +2571,6 @@ public final class IapFunctions {
      * 
      * ## Example Usage
      * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2616,7 +2603,6 @@ public final class IapFunctions {
      * }
      * }
      * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetWebRegionForwardingRuleServiceIamPolicyResult> getWebRegionForwardingRuleServiceIamPolicyPlain(GetWebRegionForwardingRuleServiceIamPolicyPlainArgs args) {
@@ -2627,7 +2613,6 @@ public final class IapFunctions {
      * 
      * ## Example Usage
      * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2660,7 +2645,6 @@ public final class IapFunctions {
      * }
      * }
      * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetWebRegionForwardingRuleServiceIamPolicyResult> getWebRegionForwardingRuleServiceIamPolicy(GetWebRegionForwardingRuleServiceIamPolicyArgs args, InvokeOptions options) {
@@ -2671,7 +2655,6 @@ public final class IapFunctions {
      * 
      * ## Example Usage
      * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2704,7 +2687,6 @@ public final class IapFunctions {
      * }
      * }
      * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetWebRegionForwardingRuleServiceIamPolicyResult> getWebRegionForwardingRuleServiceIamPolicy(GetWebRegionForwardingRuleServiceIamPolicyArgs args, InvokeOutputOptions options) {
@@ -2715,7 +2697,6 @@ public final class IapFunctions {
      * 
      * ## Example Usage
      * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -2748,7 +2729,6 @@ public final class IapFunctions {
      * }
      * }
      * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetWebRegionForwardingRuleServiceIamPolicyResult> getWebRegionForwardingRuleServiceIamPolicyPlain(GetWebRegionForwardingRuleServiceIamPolicyPlainArgs args, InvokeOptions options) {

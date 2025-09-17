@@ -124,12 +124,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
-<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/gcp/iap/WebForwardingRuleServiceIamMember.java
- * &lt;!--End PulumiCodeChooser --&gt;
  * ## gcp.iap.WebForwardingRuleServiceIamBinding
-=======
- * ## gcp.beyondcorp.ApplicationIamBinding
->>>>>>> master:sdk/java/src/main/java/com/pulumi/gcp/beyondcorp/ApplicationIamMember.java
  * 
  * <pre>
  * {@code
@@ -206,12 +201,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
-<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/gcp/iap/WebForwardingRuleServiceIamMember.java
- * &lt;!--End PulumiCodeChooser --&gt;
  * ## gcp.iap.WebForwardingRuleServiceIamMember
-=======
- * ## gcp.beyondcorp.ApplicationIamMember
->>>>>>> master:sdk/java/src/main/java/com/pulumi/gcp/beyondcorp/ApplicationIamMember.java
  * 
  * <pre>
  * {@code
@@ -403,12 +393,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
-<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/gcp/iap/WebForwardingRuleServiceIamMember.java
- * &lt;!--End PulumiCodeChooser --&gt;
  * ## gcp.iap.WebForwardingRuleServiceIamBinding
-=======
- * ## gcp.beyondcorp.ApplicationIamBinding
->>>>>>> master:sdk/java/src/main/java/com/pulumi/gcp/beyondcorp/ApplicationIamMember.java
  * 
  * <pre>
  * {@code
@@ -485,12 +470,7 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
-<<<<<<< HEAD:sdk/java/src/main/java/com/pulumi/gcp/iap/WebForwardingRuleServiceIamMember.java
- * &lt;!--End PulumiCodeChooser --&gt;
  * ## gcp.iap.WebForwardingRuleServiceIamMember
-=======
- * ## gcp.beyondcorp.ApplicationIamMember
->>>>>>> master:sdk/java/src/main/java/com/pulumi/gcp/beyondcorp/ApplicationIamMember.java
  * 
  * <pre>
  * {@code

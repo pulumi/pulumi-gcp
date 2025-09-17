@@ -1225,7 +1225,6 @@ public final class ArtifactregistryFunctions {
      * 
      * ## Example Usage
      * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1272,7 +1271,6 @@ public final class ArtifactregistryFunctions {
      * }
      * }
      * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNpmPackageResult> getNpmPackage(GetNpmPackageArgs args) {
@@ -1283,7 +1281,6 @@ public final class ArtifactregistryFunctions {
      * 
      * ## Example Usage
      * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1330,7 +1327,6 @@ public final class ArtifactregistryFunctions {
      * }
      * }
      * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNpmPackageResult> getNpmPackagePlain(GetNpmPackagePlainArgs args) {
@@ -1341,7 +1337,6 @@ public final class ArtifactregistryFunctions {
      * 
      * ## Example Usage
      * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1388,7 +1383,6 @@ public final class ArtifactregistryFunctions {
      * }
      * }
      * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNpmPackageResult> getNpmPackage(GetNpmPackageArgs args, InvokeOptions options) {
@@ -1399,7 +1393,6 @@ public final class ArtifactregistryFunctions {
      * 
      * ## Example Usage
      * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1446,7 +1439,6 @@ public final class ArtifactregistryFunctions {
      * }
      * }
      * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNpmPackageResult> getNpmPackage(GetNpmPackageArgs args, InvokeOutputOptions options) {
@@ -1457,7 +1449,6 @@ public final class ArtifactregistryFunctions {
      * 
      * ## Example Usage
      * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1504,7 +1495,6 @@ public final class ArtifactregistryFunctions {
      * }
      * }
      * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNpmPackageResult> getNpmPackagePlain(GetNpmPackagePlainArgs args, InvokeOptions options) {
@@ -1720,7 +1710,6 @@ public final class ArtifactregistryFunctions {
      * 
      * ## Example Usage
      * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1767,7 +1756,6 @@ public final class ArtifactregistryFunctions {
      * }
      * }
      * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPythonPackageResult> getPythonPackage(GetPythonPackageArgs args) {
@@ -1778,7 +1766,6 @@ public final class ArtifactregistryFunctions {
      * 
      * ## Example Usage
      * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1825,7 +1812,6 @@ public final class ArtifactregistryFunctions {
      * }
      * }
      * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPythonPackageResult> getPythonPackagePlain(GetPythonPackagePlainArgs args) {
@@ -1836,7 +1822,6 @@ public final class ArtifactregistryFunctions {
      * 
      * ## Example Usage
      * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1883,7 +1868,6 @@ public final class ArtifactregistryFunctions {
      * }
      * }
      * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPythonPackageResult> getPythonPackage(GetPythonPackageArgs args, InvokeOptions options) {
@@ -1894,7 +1878,6 @@ public final class ArtifactregistryFunctions {
      * 
      * ## Example Usage
      * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1941,7 +1924,6 @@ public final class ArtifactregistryFunctions {
      * }
      * }
      * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPythonPackageResult> getPythonPackage(GetPythonPackageArgs args, InvokeOutputOptions options) {
@@ -1952,7 +1934,6 @@ public final class ArtifactregistryFunctions {
      * 
      * ## Example Usage
      * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1999,7 +1980,6 @@ public final class ArtifactregistryFunctions {
      * }
      * }
      * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPythonPackageResult> getPythonPackagePlain(GetPythonPackagePlainArgs args, InvokeOptions options) {

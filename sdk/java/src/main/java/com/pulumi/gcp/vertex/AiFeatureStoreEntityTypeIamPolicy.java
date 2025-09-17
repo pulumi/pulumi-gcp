@@ -30,7 +30,6 @@ import javax.annotation.Nullable;
  * 
  * ## gcp.vertex.AiFeatureStoreEntityTypeIamPolicy
  * 
- * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -72,11 +71,9 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## gcp.vertex.AiFeatureStoreEntityTypeIamBinding
  * 
- * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -110,11 +107,9 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## gcp.vertex.AiFeatureStoreEntityTypeIamMember
  * 
- * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -148,7 +143,6 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## &gt; **Custom Roles** If you&#39;re importing a IAM resource with a custom role, make sure to use the
  * 
@@ -173,7 +167,6 @@ import javax.annotation.Nullable;
  * 
  * ## gcp.vertex.AiFeatureStoreEntityTypeIamPolicy
  * 
- * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -215,11 +208,9 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## gcp.vertex.AiFeatureStoreEntityTypeIamBinding
  * 
- * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -253,11 +244,9 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## gcp.vertex.AiFeatureStoreEntityTypeIamMember
  * 
- * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -291,7 +280,6 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

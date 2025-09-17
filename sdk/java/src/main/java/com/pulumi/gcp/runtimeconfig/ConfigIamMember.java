@@ -32,7 +32,6 @@ import javax.annotation.Nullable;
  * 
  * ## gcp.runtimeconfig.ConfigIamPolicy
  * 
- * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -74,11 +73,9 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## gcp.runtimeconfig.ConfigIamBinding
  * 
- * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -112,11 +109,9 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## gcp.runtimeconfig.ConfigIamMember
  * 
- * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -150,7 +145,6 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## This resource supports User Project Overrides.
  * 
@@ -174,7 +168,6 @@ import javax.annotation.Nullable;
  * 
  * ## gcp.runtimeconfig.ConfigIamPolicy
  * 
- * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -216,11 +209,9 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## gcp.runtimeconfig.ConfigIamBinding
  * 
- * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -254,11 +245,9 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## gcp.runtimeconfig.ConfigIamMember
  * 
- * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
  * package generated_program;
@@ -292,7 +281,6 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
