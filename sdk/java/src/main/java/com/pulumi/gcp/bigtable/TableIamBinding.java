@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  * 
  *         var editor = new TableIamPolicy("editor", TableIamPolicyArgs.builder()
  *             .project("your-project")
- *             .instance("your-bigtable-instance")
+ *             .instanceName("your-bigtable-instance")
  *             .table("your-bigtable-table")
  *             .policyData(admin.policyData())
  *             .build());
@@ -98,7 +98,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) }{{@code
  *         var editor = new TableIamBinding("editor", TableIamBindingArgs.builder()
  *             .table("your-bigtable-table")
- *             .instance("your-bigtable-instance")
+ *             .instanceName("your-bigtable-instance")
  *             .role("roles/bigtable.user")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -134,7 +134,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) }{{@code
  *         var editor = new TableIamMember("editor", TableIamMemberArgs.builder()
  *             .table("your-bigtable-table")
- *             .instance("your-bigtable-instance")
+ *             .instanceName("your-bigtable-instance")
  *             .role("roles/bigtable.user")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -179,7 +179,7 @@ import javax.annotation.Nullable;
  * 
  *         var editor = new TableIamPolicy("editor", TableIamPolicyArgs.builder()
  *             .project("your-project")
- *             .instance("your-bigtable-instance")
+ *             .instanceName("your-bigtable-instance")
  *             .table("your-bigtable-table")
  *             .policyData(admin.policyData())
  *             .build());
@@ -215,7 +215,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) }{{@code
  *         var editor = new TableIamBinding("editor", TableIamBindingArgs.builder()
  *             .table("your-bigtable-table")
- *             .instance("your-bigtable-instance")
+ *             .instanceName("your-bigtable-instance")
  *             .role("roles/bigtable.user")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -251,7 +251,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) }{{@code
  *         var editor = new TableIamMember("editor", TableIamMemberArgs.builder()
  *             .table("your-bigtable-table")
- *             .instance("your-bigtable-instance")
+ *             .instanceName("your-bigtable-instance")
  *             .role("roles/bigtable.user")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -314,15 +314,15 @@ public class TableIamBinding extends com.pulumi.resources.CustomResource {
      * The name or relative resource id of the instance that owns the table.
      * 
      */
-    @Export(name="instance", refs={String.class}, tree="[0]")
-    private Output<String> instance;
+    @Export(name="instanceName", refs={String.class}, tree="[0]")
+    private Output<String> instanceName;
 
     /**
      * @return The name or relative resource id of the instance that owns the table.
      * 
      */
-    public Output<String> instance() {
-        return this.instance;
+    public Output<String> instanceName() {
+        return this.instanceName;
     }
     /**
      * Identities that will be granted the privilege in `role`.

@@ -18,18 +18,39 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string ConsumerNetwork;
         /// <summary>
+        /// (Output) The connection policy status of the consumer network.
+        /// </summary>
+        public readonly string? ConsumerNetworkStatus;
+        /// <summary>
         /// The project ID of consumer service project of this consumer endpoint.
         /// </summary>
         public readonly string? ConsumerServiceProjectId;
+        /// <summary>
+        /// (Output) The IP address of the consumer endpoint.
+        /// </summary>
+        public readonly string? IpAddress;
+        /// <summary>
+        /// (Output) The connection status of the consumer endpoint.
+        /// </summary>
+        public readonly string? Status;
 
         [OutputConstructor]
         private DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection(
             string consumerNetwork,
 
-            string? consumerServiceProjectId)
+            string? consumerNetworkStatus,
+
+            string? consumerServiceProjectId,
+
+            string? ipAddress,
+
+            string? status)
         {
             ConsumerNetwork = consumerNetwork;
+            ConsumerNetworkStatus = consumerNetworkStatus;
             ConsumerServiceProjectId = consumerServiceProjectId;
+            IpAddress = ipAddress;
+            Status = status;
         }
     }
 }

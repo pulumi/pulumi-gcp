@@ -18,7 +18,6 @@ public final class TriggerRepositoryEventConfigPullRequestArgs extends com.pulum
 
     /**
      * Regex of branches to match.
-     * The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
      * 
      */
     @Import(name="branch")
@@ -26,7 +25,6 @@ public final class TriggerRepositoryEventConfigPullRequestArgs extends com.pulum
 
     /**
      * @return Regex of branches to match.
-     * The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
      * 
      */
     public Optional<Output<String>> branch() {
@@ -34,7 +32,7 @@ public final class TriggerRepositoryEventConfigPullRequestArgs extends com.pulum
     }
 
     /**
-     * Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
+     * Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
      * Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
      * 
      */
@@ -42,7 +40,7 @@ public final class TriggerRepositoryEventConfigPullRequestArgs extends com.pulum
     private @Nullable Output<String> commentControl;
 
     /**
-     * @return Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
+     * @return Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
      * Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
      * 
      */
@@ -93,7 +91,6 @@ public final class TriggerRepositoryEventConfigPullRequestArgs extends com.pulum
 
         /**
          * @param branch Regex of branches to match.
-         * The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
          * 
          * @return builder
          * 
@@ -105,7 +102,6 @@ public final class TriggerRepositoryEventConfigPullRequestArgs extends com.pulum
 
         /**
          * @param branch Regex of branches to match.
-         * The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
          * 
          * @return builder
          * 
@@ -115,7 +111,7 @@ public final class TriggerRepositoryEventConfigPullRequestArgs extends com.pulum
         }
 
         /**
-         * @param commentControl Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
+         * @param commentControl Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
          * Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
          * 
          * @return builder
@@ -127,7 +123,7 @@ public final class TriggerRepositoryEventConfigPullRequestArgs extends com.pulum
         }
 
         /**
-         * @param commentControl Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
+         * @param commentControl Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
          * Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
          * 
          * @return builder

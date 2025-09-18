@@ -16,10 +16,25 @@ public final class GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConn
      */
     private String consumerNetwork;
     /**
+     * @return The connection policy status of the consumer network.
+     * 
+     */
+    private String consumerNetworkStatus;
+    /**
      * @return The project ID of consumer service project of this consumer endpoint.
      * 
      */
     private String consumerServiceProjectId;
+    /**
+     * @return The IP address of the consumer endpoint.
+     * 
+     */
+    private String ipAddress;
+    /**
+     * @return The connection status of the consumer endpoint.
+     * 
+     */
+    private String status;
 
     private GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection() {}
     /**
@@ -30,11 +45,32 @@ public final class GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConn
         return this.consumerNetwork;
     }
     /**
+     * @return The connection policy status of the consumer network.
+     * 
+     */
+    public String consumerNetworkStatus() {
+        return this.consumerNetworkStatus;
+    }
+    /**
      * @return The project ID of consumer service project of this consumer endpoint.
      * 
      */
     public String consumerServiceProjectId() {
         return this.consumerServiceProjectId;
+    }
+    /**
+     * @return The IP address of the consumer endpoint.
+     * 
+     */
+    public String ipAddress() {
+        return this.ipAddress;
+    }
+    /**
+     * @return The connection status of the consumer endpoint.
+     * 
+     */
+    public String status() {
+        return this.status;
     }
 
     public static Builder builder() {
@@ -47,12 +83,18 @@ public final class GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConn
     @CustomType.Builder
     public static final class Builder {
         private String consumerNetwork;
+        private String consumerNetworkStatus;
         private String consumerServiceProjectId;
+        private String ipAddress;
+        private String status;
         public Builder() {}
         public Builder(GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.consumerNetwork = defaults.consumerNetwork;
+    	      this.consumerNetworkStatus = defaults.consumerNetworkStatus;
     	      this.consumerServiceProjectId = defaults.consumerServiceProjectId;
+    	      this.ipAddress = defaults.ipAddress;
+    	      this.status = defaults.status;
         }
 
         @CustomType.Setter
@@ -64,6 +106,14 @@ public final class GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConn
             return this;
         }
         @CustomType.Setter
+        public Builder consumerNetworkStatus(String consumerNetworkStatus) {
+            if (consumerNetworkStatus == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection", "consumerNetworkStatus");
+            }
+            this.consumerNetworkStatus = consumerNetworkStatus;
+            return this;
+        }
+        @CustomType.Setter
         public Builder consumerServiceProjectId(String consumerServiceProjectId) {
             if (consumerServiceProjectId == null) {
               throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection", "consumerServiceProjectId");
@@ -71,10 +121,29 @@ public final class GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConn
             this.consumerServiceProjectId = consumerServiceProjectId;
             return this;
         }
+        @CustomType.Setter
+        public Builder ipAddress(String ipAddress) {
+            if (ipAddress == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection", "ipAddress");
+            }
+            this.ipAddress = ipAddress;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder status(String status) {
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection", "status");
+            }
+            this.status = status;
+            return this;
+        }
         public GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection build() {
             final var _resultValue = new GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection();
             _resultValue.consumerNetwork = consumerNetwork;
+            _resultValue.consumerNetworkStatus = consumerNetworkStatus;
             _resultValue.consumerServiceProjectId = consumerServiceProjectId;
+            _resultValue.ipAddress = ipAddress;
+            _resultValue.status = status;
             return _resultValue;
         }
     }

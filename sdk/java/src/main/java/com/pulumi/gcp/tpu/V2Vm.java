@@ -26,6 +26,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A Cloud TPU VM instance.
+ * 
+ * To get more information about Vm, see:
+ * 
+ * * [API documentation](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.nodes)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/tpu/docs/)
+ * 
  * ## Example Usage
  * 
  * ### Tpu V2 Vm Basic

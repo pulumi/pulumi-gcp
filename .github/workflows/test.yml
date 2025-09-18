@@ -90,7 +90,7 @@ jobs:
       with:
         install_components: gke-gcloud-auth-plugin
     - name: Install dependencies
-      run: make install_${{ matrix.language}}_sdk
+      run: make install_${{ matrix.language }}_sdk
     - name: Run provider tests
       if: matrix.testTarget == 'local'
       working-directory: provider

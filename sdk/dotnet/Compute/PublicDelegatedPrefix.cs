@@ -223,6 +223,15 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// List of sub public delegated fixes for BYO IP functionality.
+        /// Each item in this array represents a sub prefix that can be
+        /// used to create addresses or further allocations.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("publicDelegatedSubPrefixs")]
+        public Output<ImmutableArray<Outputs.PublicDelegatedPrefixPublicDelegatedSubPrefix>> PublicDelegatedSubPrefixs { get; private set; } = null!;
+
+        /// <summary>
         /// A region where the prefix will reside.
         /// </summary>
         [Output("region")]
@@ -405,6 +414,21 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("publicDelegatedSubPrefixs")]
+        private InputList<Inputs.PublicDelegatedPrefixPublicDelegatedSubPrefixGetArgs>? _publicDelegatedSubPrefixs;
+
+        /// <summary>
+        /// List of sub public delegated fixes for BYO IP functionality.
+        /// Each item in this array represents a sub prefix that can be
+        /// used to create addresses or further allocations.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.PublicDelegatedPrefixPublicDelegatedSubPrefixGetArgs> PublicDelegatedSubPrefixs
+        {
+            get => _publicDelegatedSubPrefixs ?? (_publicDelegatedSubPrefixs = new InputList<Inputs.PublicDelegatedPrefixPublicDelegatedSubPrefixGetArgs>());
+            set => _publicDelegatedSubPrefixs = value;
+        }
 
         /// <summary>
         /// A region where the prefix will reside.

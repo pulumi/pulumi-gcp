@@ -167,7 +167,6 @@ namespace Pulumi.Gcp.MemoryStore
     ///         {
     ///             { "maxmemory-policy", "volatile-ttl" },
     ///         },
-    ///         AllowFewerZonesDeployment = true,
     ///         ZoneDistributionConfig = new Gcp.MemoryStore.Inputs.InstanceZoneDistributionConfigArgs
     ///         {
     ///             Mode = "SINGLE_ZONE",
@@ -499,15 +498,6 @@ namespace Pulumi.Gcp.MemoryStore
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Allows customers to specify if they are okay with deploying a multi-zone
-        /// instance in less than 3 zones. Once set, if there is a zonal outage during
-        /// the instance creation, the instance will only be deployed in 2 zones, and
-        /// stay within the 2 zones for its lifecycle.
-        /// </summary>
-        [Output("allowFewerZonesDeployment")]
-        public Output<bool?> AllowFewerZonesDeployment { get; private set; } = null!;
-
-        /// <summary>
         /// Optional. Immutable. Authorization mode of the instance. Possible values:
         /// AUTH_DISABLED
         /// IAM_AUTH
@@ -555,7 +545,7 @@ namespace Pulumi.Gcp.MemoryStore
         public Output<ImmutableArray<Outputs.InstanceDesiredAutoCreatedEndpoint>> DesiredAutoCreatedEndpoints { get; private set; } = null!;
 
         /// <summary>
-        /// `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
+        /// `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
         /// </summary>
         [Output("desiredPscAutoConnections")]
         public Output<ImmutableArray<Outputs.InstanceDesiredPscAutoConnection>> DesiredPscAutoConnections { get; private set; } = null!;
@@ -842,15 +832,6 @@ namespace Pulumi.Gcp.MemoryStore
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Allows customers to specify if they are okay with deploying a multi-zone
-        /// instance in less than 3 zones. Once set, if there is a zonal outage during
-        /// the instance creation, the instance will only be deployed in 2 zones, and
-        /// stay within the 2 zones for its lifecycle.
-        /// </summary>
-        [Input("allowFewerZonesDeployment")]
-        public Input<bool>? AllowFewerZonesDeployment { get; set; }
-
-        /// <summary>
         /// Optional. Immutable. Authorization mode of the instance. Possible values:
         /// AUTH_DISABLED
         /// IAM_AUTH
@@ -894,9 +875,9 @@ namespace Pulumi.Gcp.MemoryStore
         private InputList<Inputs.InstanceDesiredPscAutoConnectionArgs>? _desiredPscAutoConnections;
 
         /// <summary>
-        /// `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
+        /// `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
         /// </summary>
-        [Obsolete(@"`desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.")]
+        [Obsolete(@"`desired_psc_auto_connections` is deprecated. Use `desired_auto_created_endpoints` instead. `terraform import` will only work with desired_auto_created_endpoints`.")]
         public InputList<Inputs.InstanceDesiredPscAutoConnectionArgs> DesiredPscAutoConnections
         {
             get => _desiredPscAutoConnections ?? (_desiredPscAutoConnections = new InputList<Inputs.InstanceDesiredPscAutoConnectionArgs>());
@@ -1053,15 +1034,6 @@ namespace Pulumi.Gcp.MemoryStore
     public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Allows customers to specify if they are okay with deploying a multi-zone
-        /// instance in less than 3 zones. Once set, if there is a zonal outage during
-        /// the instance creation, the instance will only be deployed in 2 zones, and
-        /// stay within the 2 zones for its lifecycle.
-        /// </summary>
-        [Input("allowFewerZonesDeployment")]
-        public Input<bool>? AllowFewerZonesDeployment { get; set; }
-
-        /// <summary>
         /// Optional. Immutable. Authorization mode of the instance. Possible values:
         /// AUTH_DISABLED
         /// IAM_AUTH
@@ -1118,9 +1090,9 @@ namespace Pulumi.Gcp.MemoryStore
         private InputList<Inputs.InstanceDesiredPscAutoConnectionGetArgs>? _desiredPscAutoConnections;
 
         /// <summary>
-        /// `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
+        /// `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
         /// </summary>
-        [Obsolete(@"`desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.")]
+        [Obsolete(@"`desired_psc_auto_connections` is deprecated. Use `desired_auto_created_endpoints` instead. `terraform import` will only work with desired_auto_created_endpoints`.")]
         public InputList<Inputs.InstanceDesiredPscAutoConnectionGetArgs> DesiredPscAutoConnections
         {
             get => _desiredPscAutoConnections ?? (_desiredPscAutoConnections = new InputList<Inputs.InstanceDesiredPscAutoConnectionGetArgs>());

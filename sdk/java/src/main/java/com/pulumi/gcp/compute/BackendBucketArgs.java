@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.BackendBucketCdnPolicyArgs;
+import com.pulumi.gcp.compute.inputs.BackendBucketParamsArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -117,6 +118,7 @@ public final class BackendBucketArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * If true, enable Cloud CDN for this BackendBucket.
+     * Note: This cannot be set to true when loadBalancingScheme is set to INTERNAL_MANAGED.
      * 
      */
     @Import(name="enableCdn")
@@ -124,6 +126,7 @@ public final class BackendBucketArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return If true, enable Cloud CDN for this BackendBucket.
+     * Note: This cannot be set to true when loadBalancingScheme is set to INTERNAL_MANAGED.
      * 
      */
     public Optional<Output<Boolean>> enableCdn() {
@@ -133,6 +136,7 @@ public final class BackendBucketArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
      * If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+     * Important: CDN cannot be enabled (enableCdn cannot be set to true) when loadBalancingScheme is set to INTERNAL_MANAGED.
      * Possible values are: `INTERNAL_MANAGED`.
      * 
      */
@@ -142,6 +146,7 @@ public final class BackendBucketArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
      * If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+     * Important: CDN cannot be enabled (enableCdn cannot be set to true) when loadBalancingScheme is set to INTERNAL_MANAGED.
      * Possible values are: `INTERNAL_MANAGED`.
      * 
      */
@@ -177,6 +182,23 @@ public final class BackendBucketArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="params")
+    private @Nullable Output<BackendBucketParamsArgs> params;
+
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<BackendBucketParamsArgs>> params() {
+        return Optional.ofNullable(this.params);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -205,6 +227,7 @@ public final class BackendBucketArgs extends com.pulumi.resources.ResourceArgs {
         this.enableCdn = $.enableCdn;
         this.loadBalancingScheme = $.loadBalancingScheme;
         this.name = $.name;
+        this.params = $.params;
         this.project = $.project;
     }
 
@@ -370,6 +393,7 @@ public final class BackendBucketArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param enableCdn If true, enable Cloud CDN for this BackendBucket.
+         * Note: This cannot be set to true when loadBalancingScheme is set to INTERNAL_MANAGED.
          * 
          * @return builder
          * 
@@ -381,6 +405,7 @@ public final class BackendBucketArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param enableCdn If true, enable Cloud CDN for this BackendBucket.
+         * Note: This cannot be set to true when loadBalancingScheme is set to INTERNAL_MANAGED.
          * 
          * @return builder
          * 
@@ -392,6 +417,7 @@ public final class BackendBucketArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param loadBalancingScheme The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
          * If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+         * Important: CDN cannot be enabled (enableCdn cannot be set to true) when loadBalancingScheme is set to INTERNAL_MANAGED.
          * Possible values are: `INTERNAL_MANAGED`.
          * 
          * @return builder
@@ -405,6 +431,7 @@ public final class BackendBucketArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param loadBalancingScheme The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
          * If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+         * Important: CDN cannot be enabled (enableCdn cannot be set to true) when loadBalancingScheme is set to INTERNAL_MANAGED.
          * Possible values are: `INTERNAL_MANAGED`.
          * 
          * @return builder
@@ -445,6 +472,29 @@ public final class BackendBucketArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param params Additional params passed with the request, but not persisted as part of resource payload
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(@Nullable Output<BackendBucketParamsArgs> params) {
+            $.params = params;
+            return this;
+        }
+
+        /**
+         * @param params Additional params passed with the request, but not persisted as part of resource payload
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(BackendBucketParamsArgs params) {
+            return params(Output.of(params));
         }
 
         /**

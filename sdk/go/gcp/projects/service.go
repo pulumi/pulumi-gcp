@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,7 +19,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -27,9 +27,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := projects.NewService(ctx, "project", &projects.ServiceArgs{
-//				Project:          pulumi.String("your-project-id"),
-//				Service:          pulumi.String("iam.googleapis.com"),
-//				DisableOnDestroy: pulumi.Bool(false),
+//				Project: pulumi.String("your-project-id"),
+//				Service: pulumi.String("iam.googleapis.com"),
 //			})
 //			if err != nil {
 //				return err
@@ -67,7 +66,6 @@ type Service struct {
 	// Beta
 	// If `true`, the usage of the service to be disabled will be checked and an error
 	// will be returned if the service to be disabled has usage in last 30 days.
-	// Defaults to `false`.
 	CheckIfServiceHasUsageOnDestroy pulumi.BoolPtrOutput `pulumi:"checkIfServiceHasUsageOnDestroy"`
 	// If `true`, services that are enabled
 	// and which depend on this service should also be disabled when this service is
@@ -118,7 +116,6 @@ type serviceState struct {
 	// Beta
 	// If `true`, the usage of the service to be disabled will be checked and an error
 	// will be returned if the service to be disabled has usage in last 30 days.
-	// Defaults to `false`.
 	CheckIfServiceHasUsageOnDestroy *bool `pulumi:"checkIfServiceHasUsageOnDestroy"`
 	// If `true`, services that are enabled
 	// and which depend on this service should also be disabled when this service is
@@ -137,7 +134,6 @@ type ServiceState struct {
 	// Beta
 	// If `true`, the usage of the service to be disabled will be checked and an error
 	// will be returned if the service to be disabled has usage in last 30 days.
-	// Defaults to `false`.
 	CheckIfServiceHasUsageOnDestroy pulumi.BoolPtrInput
 	// If `true`, services that are enabled
 	// and which depend on this service should also be disabled when this service is
@@ -160,7 +156,6 @@ type serviceArgs struct {
 	// Beta
 	// If `true`, the usage of the service to be disabled will be checked and an error
 	// will be returned if the service to be disabled has usage in last 30 days.
-	// Defaults to `false`.
 	CheckIfServiceHasUsageOnDestroy *bool `pulumi:"checkIfServiceHasUsageOnDestroy"`
 	// If `true`, services that are enabled
 	// and which depend on this service should also be disabled when this service is
@@ -180,7 +175,6 @@ type ServiceArgs struct {
 	// Beta
 	// If `true`, the usage of the service to be disabled will be checked and an error
 	// will be returned if the service to be disabled has usage in last 30 days.
-	// Defaults to `false`.
 	CheckIfServiceHasUsageOnDestroy pulumi.BoolPtrInput
 	// If `true`, services that are enabled
 	// and which depend on this service should also be disabled when this service is
@@ -285,7 +279,6 @@ func (o ServiceOutput) ToServiceOutputWithContext(ctx context.Context) ServiceOu
 // Beta
 // If `true`, the usage of the service to be disabled will be checked and an error
 // will be returned if the service to be disabled has usage in last 30 days.
-// Defaults to `false`.
 func (o ServiceOutput) CheckIfServiceHasUsageOnDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.BoolPtrOutput { return v.CheckIfServiceHasUsageOnDestroy }).(pulumi.BoolPtrOutput)
 }

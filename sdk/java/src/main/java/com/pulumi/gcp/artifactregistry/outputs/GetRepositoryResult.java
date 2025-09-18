@@ -41,6 +41,7 @@ public final class GetRepositoryResult {
     private String name;
     private @Nullable String project;
     private Map<String,String> pulumiLabels;
+    private String registryUri;
     private List<GetRepositoryRemoteRepositoryConfig> remoteRepositoryConfigs;
     private String repositoryId;
     private String updateTime;
@@ -100,6 +101,9 @@ public final class GetRepositoryResult {
     public Map<String,String> pulumiLabels() {
         return this.pulumiLabels;
     }
+    public String registryUri() {
+        return this.registryUri;
+    }
     public List<GetRepositoryRemoteRepositoryConfig> remoteRepositoryConfigs() {
         return this.remoteRepositoryConfigs;
     }
@@ -141,6 +145,7 @@ public final class GetRepositoryResult {
         private String name;
         private @Nullable String project;
         private Map<String,String> pulumiLabels;
+        private String registryUri;
         private List<GetRepositoryRemoteRepositoryConfig> remoteRepositoryConfigs;
         private String repositoryId;
         private String updateTime;
@@ -165,6 +170,7 @@ public final class GetRepositoryResult {
     	      this.name = defaults.name;
     	      this.project = defaults.project;
     	      this.pulumiLabels = defaults.pulumiLabels;
+    	      this.registryUri = defaults.registryUri;
     	      this.remoteRepositoryConfigs = defaults.remoteRepositoryConfigs;
     	      this.repositoryId = defaults.repositoryId;
     	      this.updateTime = defaults.updateTime;
@@ -308,6 +314,14 @@ public final class GetRepositoryResult {
             return this;
         }
         @CustomType.Setter
+        public Builder registryUri(String registryUri) {
+            if (registryUri == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryResult", "registryUri");
+            }
+            this.registryUri = registryUri;
+            return this;
+        }
+        @CustomType.Setter
         public Builder remoteRepositoryConfigs(List<GetRepositoryRemoteRepositoryConfig> remoteRepositoryConfigs) {
             if (remoteRepositoryConfigs == null) {
               throw new MissingRequiredPropertyException("GetRepositoryResult", "remoteRepositoryConfigs");
@@ -374,6 +388,7 @@ public final class GetRepositoryResult {
             _resultValue.name = name;
             _resultValue.project = project;
             _resultValue.pulumiLabels = pulumiLabels;
+            _resultValue.registryUri = registryUri;
             _resultValue.remoteRepositoryConfigs = remoteRepositoryConfigs;
             _resultValue.repositoryId = repositoryId;
             _resultValue.updateTime = updateTime;

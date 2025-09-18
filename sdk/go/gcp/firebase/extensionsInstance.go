@@ -8,10 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// An Instance is an installation of an Extension into a user's project.
+//
+// To get more information about Instance, see:
+// * How-to Guides
+//   - [Official Documentation](https://firebase.google.com/products/extensions)
+//
 // ## Example Usage
 //
 // ### Firebase Extentions Instance Resize Image
@@ -21,8 +27,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/firebase"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )

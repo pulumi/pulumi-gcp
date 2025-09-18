@@ -325,7 +325,7 @@ import javax.annotation.Nullable;
  *             .name("cloudrun-worker-pool")
  *             .location("us-central1")
  *             .deletionProtection(false)
- *             .launchStage("ALPHA")
+ *             .launchStage("BETA")
  *             .template(WorkerPoolTemplateArgs.builder()
  *                 .containers(WorkerPoolTemplateContainerArgs.builder()
  *                     .image("us-docker.pkg.dev/cloudrun/container/worker-pool")

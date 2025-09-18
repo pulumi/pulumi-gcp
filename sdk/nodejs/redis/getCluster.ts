@@ -53,7 +53,6 @@ export interface GetClusterArgs {
  * A collection of values returned by getCluster.
  */
 export interface GetClusterResult {
-    readonly allowFewerZonesDeployment: boolean;
     readonly authorizationMode: string;
     readonly automatedBackupConfigs: outputs.redis.GetClusterAutomatedBackupConfig[];
     readonly backupCollection: string;

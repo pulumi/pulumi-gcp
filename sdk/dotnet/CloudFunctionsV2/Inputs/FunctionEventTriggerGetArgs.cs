@@ -28,8 +28,8 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Inputs
         /// <summary>
         /// Required. The type of event to observe.
         /// </summary>
-        [Input("eventType")]
-        public Input<string>? EventType { get; set; }
+        [Input("eventType", required: true)]
+        public Input<string> EventType { get; set; } = null!;
 
         /// <summary>
         /// The name of a Pub/Sub topic in the same project that will be used

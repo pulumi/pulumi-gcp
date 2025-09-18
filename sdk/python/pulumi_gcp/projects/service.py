@@ -30,7 +30,6 @@ class ServiceArgs:
         :param pulumi.Input[_builtins.bool] check_if_service_has_usage_on_destroy: Beta
                If `true`, the usage of the service to be disabled will be checked and an error
                will be returned if the service to be disabled has usage in last 30 days.
-               Defaults to `false`.
         :param pulumi.Input[_builtins.bool] disable_dependent_services: If `true`, services that are enabled
                and which depend on this service should also be disabled when this service is
                destroyed. If `false` or unset, an error will be generated if any enabled
@@ -67,7 +66,6 @@ class ServiceArgs:
         Beta
         If `true`, the usage of the service to be disabled will be checked and an error
         will be returned if the service to be disabled has usage in last 30 days.
-        Defaults to `false`.
         """
         return pulumi.get(self, "check_if_service_has_usage_on_destroy")
 
@@ -126,7 +124,6 @@ class _ServiceState:
         :param pulumi.Input[_builtins.bool] check_if_service_has_usage_on_destroy: Beta
                If `true`, the usage of the service to be disabled will be checked and an error
                will be returned if the service to be disabled has usage in last 30 days.
-               Defaults to `false`.
         :param pulumi.Input[_builtins.bool] disable_dependent_services: If `true`, services that are enabled
                and which depend on this service should also be disabled when this service is
                destroyed. If `false` or unset, an error will be generated if any enabled
@@ -153,7 +150,6 @@ class _ServiceState:
         Beta
         If `true`, the usage of the service to be disabled will be checked and an error
         will be returned if the service to be disabled has usage in last 30 days.
-        Defaults to `false`.
         """
         return pulumi.get(self, "check_if_service_has_usage_on_destroy")
 
@@ -232,8 +228,7 @@ class Service(pulumi.CustomResource):
 
         project = gcp.projects.Service("project",
             project="your-project-id",
-            service="iam.googleapis.com",
-            disable_on_destroy=False)
+            service="iam.googleapis.com")
         ```
 
         ## Import
@@ -263,7 +258,6 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] check_if_service_has_usage_on_destroy: Beta
                If `true`, the usage of the service to be disabled will be checked and an error
                will be returned if the service to be disabled has usage in last 30 days.
-               Defaults to `false`.
         :param pulumi.Input[_builtins.bool] disable_dependent_services: If `true`, services that are enabled
                and which depend on this service should also be disabled when this service is
                destroyed. If `false` or unset, an error will be generated if any enabled
@@ -287,8 +281,7 @@ class Service(pulumi.CustomResource):
 
         project = gcp.projects.Service("project",
             project="your-project-id",
-            service="iam.googleapis.com",
-            disable_on_destroy=False)
+            service="iam.googleapis.com")
         ```
 
         ## Import
@@ -374,7 +367,6 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] check_if_service_has_usage_on_destroy: Beta
                If `true`, the usage of the service to be disabled will be checked and an error
                will be returned if the service to be disabled has usage in last 30 days.
-               Defaults to `false`.
         :param pulumi.Input[_builtins.bool] disable_dependent_services: If `true`, services that are enabled
                and which depend on this service should also be disabled when this service is
                destroyed. If `false` or unset, an error will be generated if any enabled
@@ -401,7 +393,6 @@ class Service(pulumi.CustomResource):
         Beta
         If `true`, the usage of the service to be disabled will be checked and an error
         will be returned if the service to be disabled has usage in last 30 days.
-        Defaults to `false`.
         """
         return pulumi.get(self, "check_if_service_has_usage_on_destroy")
 

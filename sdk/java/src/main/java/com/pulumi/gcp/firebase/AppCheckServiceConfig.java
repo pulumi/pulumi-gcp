@@ -55,7 +55,6 @@ import javax.annotation.Nullable;
  *         var appcheck = new Service("appcheck", ServiceArgs.builder()
  *             .project("my-project-name")
  *             .service("firebaseappcheck.googleapis.com")
- *             .disableOnDestroy(false)
  *             .build());
  * 
  *         var default_ = new AppCheckServiceConfig("default", AppCheckServiceConfigArgs.builder()
@@ -99,7 +98,6 @@ import javax.annotation.Nullable;
  *         var appcheck = new Service("appcheck", ServiceArgs.builder()
  *             .project("my-project-name")
  *             .service("firebaseappcheck.googleapis.com")
- *             .disableOnDestroy(false)
  *             .build());
  * 
  *         var default_ = new AppCheckServiceConfig("default", AppCheckServiceConfigArgs.builder()
@@ -144,7 +142,6 @@ import javax.annotation.Nullable;
  *         var appcheck = new Service("appcheck", ServiceArgs.builder()
  *             .project("my-project-name")
  *             .service("firebaseappcheck.googleapis.com")
- *             .disableOnDestroy(false)
  *             .build());
  * 
  *         var default_ = new AppCheckServiceConfig("default", AppCheckServiceConfigArgs.builder()

@@ -40,6 +40,14 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? Description;
         /// <summary>
+        /// Specifies changes to request and response headers that need to take effect for the selected backendService.
+        /// headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+        /// headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+        /// Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.RegionUrlMapPathMatcherHeaderAction? HeaderAction;
+        /// <summary>
         /// The name to which this PathMatcher is referred by the HostRule.
         /// </summary>
         public readonly string Name;
@@ -74,6 +82,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? description,
 
+            Outputs.RegionUrlMapPathMatcherHeaderAction? headerAction,
+
             string name,
 
             ImmutableArray<Outputs.RegionUrlMapPathMatcherPathRule> pathRules,
@@ -84,6 +94,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             DefaultService = defaultService;
             DefaultUrlRedirect = defaultUrlRedirect;
             Description = description;
+            HeaderAction = headerAction;
             Name = name;
             PathRules = pathRules;
             RouteRules = routeRules;

@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -71,6 +71,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WebCloudRunServiceIamMember{}
 	case "gcp:iap/webCloudRunServiceIamPolicy:WebCloudRunServiceIamPolicy":
 		r = &WebCloudRunServiceIamPolicy{}
+	case "gcp:iap/webForwardingRuleServiceIamBinding:WebForwardingRuleServiceIamBinding":
+		r = &WebForwardingRuleServiceIamBinding{}
+	case "gcp:iap/webForwardingRuleServiceIamMember:WebForwardingRuleServiceIamMember":
+		r = &WebForwardingRuleServiceIamMember{}
+	case "gcp:iap/webForwardingRuleServiceIamPolicy:WebForwardingRuleServiceIamPolicy":
+		r = &WebForwardingRuleServiceIamPolicy{}
 	case "gcp:iap/webIamBinding:WebIamBinding":
 		r = &WebIamBinding{}
 	case "gcp:iap/webIamMember:WebIamMember":
@@ -83,6 +89,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WebRegionBackendServiceIamMember{}
 	case "gcp:iap/webRegionBackendServiceIamPolicy:WebRegionBackendServiceIamPolicy":
 		r = &WebRegionBackendServiceIamPolicy{}
+	case "gcp:iap/webRegionForwardingRuleServiceIamBinding:WebRegionForwardingRuleServiceIamBinding":
+		r = &WebRegionForwardingRuleServiceIamBinding{}
+	case "gcp:iap/webRegionForwardingRuleServiceIamMember:WebRegionForwardingRuleServiceIamMember":
+		r = &WebRegionForwardingRuleServiceIamMember{}
+	case "gcp:iap/webRegionForwardingRuleServiceIamPolicy:WebRegionForwardingRuleServiceIamPolicy":
+		r = &WebRegionForwardingRuleServiceIamPolicy{}
 	case "gcp:iap/webTypeAppEngingIamBinding:WebTypeAppEngingIamBinding":
 		r = &WebTypeAppEngingIamBinding{}
 	case "gcp:iap/webTypeAppEngingIamMember:WebTypeAppEngingIamMember":
@@ -235,6 +247,21 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"iap/webForwardingRuleServiceIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"iap/webForwardingRuleServiceIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"iap/webForwardingRuleServiceIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"iap/webIamBinding",
 		&module{version},
 	)
@@ -261,6 +288,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"iap/webRegionBackendServiceIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"iap/webRegionForwardingRuleServiceIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"iap/webRegionForwardingRuleServiceIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"iap/webRegionForwardingRuleServiceIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -1227,7 +1227,7 @@ type FunctionEventTrigger struct {
 	// Structure is documented below.
 	EventFilters []FunctionEventTriggerEventFilter `pulumi:"eventFilters"`
 	// Required. The type of event to observe.
-	EventType *string `pulumi:"eventType"`
+	EventType string `pulumi:"eventType"`
 	// The name of a Pub/Sub topic in the same project that will be used
 	// as the transport topic for the event delivery.
 	PubsubTopic *string `pulumi:"pubsubTopic"`
@@ -1265,7 +1265,7 @@ type FunctionEventTriggerArgs struct {
 	// Structure is documented below.
 	EventFilters FunctionEventTriggerEventFilterArrayInput `pulumi:"eventFilters"`
 	// Required. The type of event to observe.
-	EventType pulumi.StringPtrInput `pulumi:"eventType"`
+	EventType pulumi.StringInput `pulumi:"eventType"`
 	// The name of a Pub/Sub topic in the same project that will be used
 	// as the transport topic for the event delivery.
 	PubsubTopic pulumi.StringPtrInput `pulumi:"pubsubTopic"`
@@ -1371,8 +1371,8 @@ func (o FunctionEventTriggerOutput) EventFilters() FunctionEventTriggerEventFilt
 }
 
 // Required. The type of event to observe.
-func (o FunctionEventTriggerOutput) EventType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FunctionEventTrigger) *string { return v.EventType }).(pulumi.StringPtrOutput)
+func (o FunctionEventTriggerOutput) EventType() pulumi.StringOutput {
+	return o.ApplyT(func(v FunctionEventTrigger) string { return v.EventType }).(pulumi.StringOutput)
 }
 
 // The name of a Pub/Sub topic in the same project that will be used
@@ -1450,7 +1450,7 @@ func (o FunctionEventTriggerPtrOutput) EventType() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return v.EventType
+		return &v.EventType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2009,6 +2009,7 @@ type FunctionServiceConfig struct {
 	// Secret volumes configuration.
 	// Structure is documented below.
 	SecretVolumes []FunctionServiceConfigSecretVolume `pulumi:"secretVolumes"`
+	// (Output)
 	// Name of the service associated with a Function.
 	Service *string `pulumi:"service"`
 	// The email of the service account for this function.
@@ -2072,6 +2073,7 @@ type FunctionServiceConfigArgs struct {
 	// Secret volumes configuration.
 	// Structure is documented below.
 	SecretVolumes FunctionServiceConfigSecretVolumeArrayInput `pulumi:"secretVolumes"`
+	// (Output)
 	// Name of the service associated with a Function.
 	Service pulumi.StringPtrInput `pulumi:"service"`
 	// The email of the service account for this function.
@@ -2238,6 +2240,7 @@ func (o FunctionServiceConfigOutput) SecretVolumes() FunctionServiceConfigSecret
 	return o.ApplyT(func(v FunctionServiceConfig) []FunctionServiceConfigSecretVolume { return v.SecretVolumes }).(FunctionServiceConfigSecretVolumeArrayOutput)
 }
 
+// (Output)
 // Name of the service associated with a Function.
 func (o FunctionServiceConfigOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionServiceConfig) *string { return v.Service }).(pulumi.StringPtrOutput)
@@ -2425,6 +2428,7 @@ func (o FunctionServiceConfigPtrOutput) SecretVolumes() FunctionServiceConfigSec
 	}).(FunctionServiceConfigSecretVolumeArrayOutput)
 }
 
+// (Output)
 // Name of the service associated with a Function.
 func (o FunctionServiceConfigPtrOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FunctionServiceConfig) *string {

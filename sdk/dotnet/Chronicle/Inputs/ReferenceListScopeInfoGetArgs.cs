@@ -16,8 +16,8 @@ namespace Pulumi.Gcp.Chronicle.Inputs
         /// ReferenceListScope specifies the list of scope names of the reference list.
         /// Structure is documented below.
         /// </summary>
-        [Input("referenceListScope", required: true)]
-        public Input<Inputs.ReferenceListScopeInfoReferenceListScopeGetArgs> ReferenceListScope { get; set; } = null!;
+        [Input("referenceListScope")]
+        public Input<Inputs.ReferenceListScopeInfoReferenceListScopeGetArgs>? ReferenceListScope { get; set; }
 
         public ReferenceListScopeInfoGetArgs()
         {

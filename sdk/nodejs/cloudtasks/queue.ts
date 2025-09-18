@@ -208,6 +208,13 @@ export class Queue extends pulumi.CustomResource {
      */
     declare public readonly appEngineRoutingOverride: pulumi.Output<outputs.cloudtasks.QueueAppEngineRoutingOverride | undefined>;
     /**
+     * The desired state of the queue. Use this to pause and resume the queue.
+     *
+     * * RUNNING: The queue is running. Tasks can be dispatched.
+     * * PAUSED: The queue is paused. Tasks are not dispatched but can be added to the queue.
+     */
+    declare public readonly desiredState: pulumi.Output<string | undefined>;
+    /**
      * Modifies HTTP target for HTTP tasks.
      * Structure is documented below.
      */
@@ -246,6 +253,10 @@ export class Queue extends pulumi.CustomResource {
      * Structure is documented below.
      */
     declare public readonly stackdriverLoggingConfig: pulumi.Output<outputs.cloudtasks.QueueStackdriverLoggingConfig | undefined>;
+    /**
+     * The current state of the queue.
+     */
+    declare public /*out*/ readonly state: pulumi.Output<string>;
 
     /**
      * Create a Queue resource with the given unique name, arguments, and options.
@@ -261,6 +272,7 @@ export class Queue extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as QueueState | undefined;
             resourceInputs["appEngineRoutingOverride"] = state?.appEngineRoutingOverride;
+            resourceInputs["desiredState"] = state?.desiredState;
             resourceInputs["httpTarget"] = state?.httpTarget;
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
@@ -268,12 +280,14 @@ export class Queue extends pulumi.CustomResource {
             resourceInputs["rateLimits"] = state?.rateLimits;
             resourceInputs["retryConfig"] = state?.retryConfig;
             resourceInputs["stackdriverLoggingConfig"] = state?.stackdriverLoggingConfig;
+            resourceInputs["state"] = state?.state;
         } else {
             const args = argsOrState as QueueArgs | undefined;
             if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
             resourceInputs["appEngineRoutingOverride"] = args?.appEngineRoutingOverride;
+            resourceInputs["desiredState"] = args?.desiredState;
             resourceInputs["httpTarget"] = args?.httpTarget;
             resourceInputs["location"] = args?.location;
             resourceInputs["name"] = args?.name;
@@ -281,6 +295,7 @@ export class Queue extends pulumi.CustomResource {
             resourceInputs["rateLimits"] = args?.rateLimits;
             resourceInputs["retryConfig"] = args?.retryConfig;
             resourceInputs["stackdriverLoggingConfig"] = args?.stackdriverLoggingConfig;
+            resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Queue.__pulumiType, name, resourceInputs, opts);
@@ -297,6 +312,13 @@ export interface QueueState {
      * Structure is documented below.
      */
     appEngineRoutingOverride?: pulumi.Input<inputs.cloudtasks.QueueAppEngineRoutingOverride>;
+    /**
+     * The desired state of the queue. Use this to pause and resume the queue.
+     *
+     * * RUNNING: The queue is running. Tasks can be dispatched.
+     * * PAUSED: The queue is paused. Tasks are not dispatched but can be added to the queue.
+     */
+    desiredState?: pulumi.Input<string>;
     /**
      * Modifies HTTP target for HTTP tasks.
      * Structure is documented below.
@@ -336,6 +358,10 @@ export interface QueueState {
      * Structure is documented below.
      */
     stackdriverLoggingConfig?: pulumi.Input<inputs.cloudtasks.QueueStackdriverLoggingConfig>;
+    /**
+     * The current state of the queue.
+     */
+    state?: pulumi.Input<string>;
 }
 
 /**
@@ -348,6 +374,13 @@ export interface QueueArgs {
      * Structure is documented below.
      */
     appEngineRoutingOverride?: pulumi.Input<inputs.cloudtasks.QueueAppEngineRoutingOverride>;
+    /**
+     * The desired state of the queue. Use this to pause and resume the queue.
+     *
+     * * RUNNING: The queue is running. Tasks can be dispatched.
+     * * PAUSED: The queue is paused. Tasks are not dispatched but can be added to the queue.
+     */
+    desiredState?: pulumi.Input<string>;
     /**
      * Modifies HTTP target for HTTP tasks.
      * Structure is documented below.

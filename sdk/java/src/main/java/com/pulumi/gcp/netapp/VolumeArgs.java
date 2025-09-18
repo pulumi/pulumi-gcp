@@ -13,6 +13,7 @@ import com.pulumi.gcp.netapp.inputs.VolumeRestoreParametersArgs;
 import com.pulumi.gcp.netapp.inputs.VolumeSnapshotPolicyArgs;
 import com.pulumi.gcp.netapp.inputs.VolumeTieringPolicyArgs;
 import java.lang.Boolean;
+import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -394,6 +395,21 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+     * 
+     */
+    @Import(name="throughputMibps")
+    private @Nullable Output<Double> throughputMibps;
+
+    /**
+     * @return Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+     * 
+     */
+    public Optional<Output<Double>> throughputMibps() {
+        return Optional.ofNullable(this.throughputMibps);
+    }
+
+    /**
      * Tiering policy for the volume.
      * Structure is documented below.
      * 
@@ -450,6 +466,7 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
         this.snapshotDirectory = $.snapshotDirectory;
         this.snapshotPolicy = $.snapshotPolicy;
         this.storagePool = $.storagePool;
+        this.throughputMibps = $.throughputMibps;
         this.tieringPolicy = $.tieringPolicy;
         this.unixPermissions = $.unixPermissions;
     }
@@ -1003,6 +1020,27 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder storagePool(String storagePool) {
             return storagePool(Output.of(storagePool));
+        }
+
+        /**
+         * @param throughputMibps Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder throughputMibps(@Nullable Output<Double> throughputMibps) {
+            $.throughputMibps = throughputMibps;
+            return this;
+        }
+
+        /**
+         * @param throughputMibps Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder throughputMibps(Double throughputMibps) {
+            return throughputMibps(Output.of(throughputMibps));
         }
 
         /**

@@ -18,10 +18,25 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnec
      */
     private String consumerNetwork;
     /**
+     * @return (Output) The connection policy status of the consumer network.
+     * 
+     */
+    private @Nullable String consumerNetworkStatus;
+    /**
      * @return The project ID of consumer service project of this consumer endpoint.
      * 
      */
     private @Nullable String consumerServiceProjectId;
+    /**
+     * @return (Output) The IP address of the consumer endpoint.
+     * 
+     */
+    private @Nullable String ipAddress;
+    /**
+     * @return (Output) The connection status of the consumer endpoint.
+     * 
+     */
+    private @Nullable String status;
 
     private DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection() {}
     /**
@@ -32,11 +47,32 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnec
         return this.consumerNetwork;
     }
     /**
+     * @return (Output) The connection policy status of the consumer network.
+     * 
+     */
+    public Optional<String> consumerNetworkStatus() {
+        return Optional.ofNullable(this.consumerNetworkStatus);
+    }
+    /**
      * @return The project ID of consumer service project of this consumer endpoint.
      * 
      */
     public Optional<String> consumerServiceProjectId() {
         return Optional.ofNullable(this.consumerServiceProjectId);
+    }
+    /**
+     * @return (Output) The IP address of the consumer endpoint.
+     * 
+     */
+    public Optional<String> ipAddress() {
+        return Optional.ofNullable(this.ipAddress);
+    }
+    /**
+     * @return (Output) The connection status of the consumer endpoint.
+     * 
+     */
+    public Optional<String> status() {
+        return Optional.ofNullable(this.status);
     }
 
     public static Builder builder() {
@@ -49,12 +85,18 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnec
     @CustomType.Builder
     public static final class Builder {
         private String consumerNetwork;
+        private @Nullable String consumerNetworkStatus;
         private @Nullable String consumerServiceProjectId;
+        private @Nullable String ipAddress;
+        private @Nullable String status;
         public Builder() {}
         public Builder(DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.consumerNetwork = defaults.consumerNetwork;
+    	      this.consumerNetworkStatus = defaults.consumerNetworkStatus;
     	      this.consumerServiceProjectId = defaults.consumerServiceProjectId;
+    	      this.ipAddress = defaults.ipAddress;
+    	      this.status = defaults.status;
         }
 
         @CustomType.Setter
@@ -66,15 +108,36 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnec
             return this;
         }
         @CustomType.Setter
+        public Builder consumerNetworkStatus(@Nullable String consumerNetworkStatus) {
+
+            this.consumerNetworkStatus = consumerNetworkStatus;
+            return this;
+        }
+        @CustomType.Setter
         public Builder consumerServiceProjectId(@Nullable String consumerServiceProjectId) {
 
             this.consumerServiceProjectId = consumerServiceProjectId;
             return this;
         }
+        @CustomType.Setter
+        public Builder ipAddress(@Nullable String ipAddress) {
+
+            this.ipAddress = ipAddress;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder status(@Nullable String status) {
+
+            this.status = status;
+            return this;
+        }
         public DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection build() {
             final var _resultValue = new DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection();
             _resultValue.consumerNetwork = consumerNetwork;
+            _resultValue.consumerNetworkStatus = consumerNetworkStatus;
             _resultValue.consumerServiceProjectId = consumerServiceProjectId;
+            _resultValue.ipAddress = ipAddress;
+            _resultValue.status = status;
             return _resultValue;
         }
     }

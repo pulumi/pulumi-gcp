@@ -618,7 +618,6 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
         vertexai = gcp.projects.Service("vertexai",
             service="aiplatform.googleapis.com",
             project=project.project_id,
-            disable_on_destroy=False,
             opts = pulumi.ResourceOptions(depends_on=[wait60_seconds]))
         featureonlinestore = gcp.vertex.AiFeatureOnlineStore("featureonlinestore",
             name="example_cross_project_featureview",
@@ -1054,7 +1053,6 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
         vertexai = gcp.projects.Service("vertexai",
             service="aiplatform.googleapis.com",
             project=project.project_id,
-            disable_on_destroy=False,
             opts = pulumi.ResourceOptions(depends_on=[wait60_seconds]))
         featureonlinestore = gcp.vertex.AiFeatureOnlineStore("featureonlinestore",
             name="example_cross_project_featureview",

@@ -19,7 +19,7 @@ public final class AiIndexMetadataConfigArgs extends com.pulumi.resources.Resour
     public static final AiIndexMetadataConfigArgs Empty = new AiIndexMetadataConfigArgs();
 
     /**
-     * The configuration with regard to the algorithms used for efficient search.
+     * The configuration with regard to the algorithms used for efficient search. This field may be required based on your configuration.
      * Structure is documented below.
      * 
      */
@@ -27,7 +27,7 @@ public final class AiIndexMetadataConfigArgs extends com.pulumi.resources.Resour
     private @Nullable Output<AiIndexMetadataConfigAlgorithmConfigArgs> algorithmConfig;
 
     /**
-     * @return The configuration with regard to the algorithms used for efficient search.
+     * @return The configuration with regard to the algorithms used for efficient search. This field may be required based on your configuration.
      * Structure is documented below.
      * 
      */
@@ -166,7 +166,7 @@ public final class AiIndexMetadataConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param algorithmConfig The configuration with regard to the algorithms used for efficient search.
+         * @param algorithmConfig The configuration with regard to the algorithms used for efficient search. This field may be required based on your configuration.
          * Structure is documented below.
          * 
          * @return builder
@@ -178,7 +178,7 @@ public final class AiIndexMetadataConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param algorithmConfig The configuration with regard to the algorithms used for efficient search.
+         * @param algorithmConfig The configuration with regard to the algorithms used for efficient search. This field may be required based on your configuration.
          * Structure is documented below.
          * 
          * @return builder

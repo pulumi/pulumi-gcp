@@ -12,6 +12,8 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     public static class GetManagementServer
     {
         /// <summary>
+        /// Get information about a Google Backup DR Management server.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -34,6 +36,8 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetManagementServerResult>("gcp:backupdisasterrecovery/getManagementServer:getManagementServer", args ?? new GetManagementServerArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Get information about a Google Backup DR Management server.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -56,6 +60,8 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
             => global::Pulumi.Deployment.Instance.Invoke<GetManagementServerResult>("gcp:backupdisasterrecovery/getManagementServer:getManagementServer", args ?? new GetManagementServerInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Get information about a Google Backup DR Management server.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

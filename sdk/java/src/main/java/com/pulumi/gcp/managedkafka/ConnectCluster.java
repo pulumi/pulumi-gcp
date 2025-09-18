@@ -19,6 +19,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A Managed Service for Kafka Connect cluster.
+ * 
  * ## Example Usage
  * 
  * ### Managedkafka Connect Cluster Basic

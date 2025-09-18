@@ -339,7 +339,7 @@ export class Gateway extends pulumi.CustomResource {
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
-     * Possible values are: `NEXT_HOP_ROUTING_MODE`.
+     * Possible values are: `NEXT_HOP_ROUTING_MODE`, `EXPLICIT_ROUTING_MODE`.
      */
     declare public readonly routingMode: pulumi.Output<string | undefined>;
     /**
@@ -538,7 +538,7 @@ export interface GatewayState {
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
-     * Possible values are: `NEXT_HOP_ROUTING_MODE`.
+     * Possible values are: `NEXT_HOP_ROUTING_MODE`, `EXPLICIT_ROUTING_MODE`.
      */
     routingMode?: pulumi.Input<string>;
     /**
@@ -650,7 +650,7 @@ export interface GatewayArgs {
     project?: pulumi.Input<string>;
     /**
      * The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
-     * Possible values are: `NEXT_HOP_ROUTING_MODE`.
+     * Possible values are: `NEXT_HOP_ROUTING_MODE`, `EXPLICIT_ROUTING_MODE`.
      */
     routingMode?: pulumi.Input<string>;
     /**

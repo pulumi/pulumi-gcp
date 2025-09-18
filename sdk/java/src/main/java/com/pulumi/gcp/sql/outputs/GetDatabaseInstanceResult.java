@@ -24,6 +24,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetDatabaseInstanceResult {
     private List<String> availableMaintenanceVersions;
+    private String backupdrBackup;
     private List<GetDatabaseInstanceClone> clones;
     private String connectionName;
     private String databaseVersion;
@@ -31,6 +32,7 @@ public final class GetDatabaseInstanceResult {
     private String dnsName;
     private List<GetDatabaseInstanceDnsName> dnsNames;
     private String encryptionKeyName;
+    private String finalBackupDescription;
     private String firstIpAddress;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -62,6 +64,9 @@ public final class GetDatabaseInstanceResult {
     public List<String> availableMaintenanceVersions() {
         return this.availableMaintenanceVersions;
     }
+    public String backupdrBackup() {
+        return this.backupdrBackup;
+    }
     public List<GetDatabaseInstanceClone> clones() {
         return this.clones;
     }
@@ -82,6 +87,9 @@ public final class GetDatabaseInstanceResult {
     }
     public String encryptionKeyName() {
         return this.encryptionKeyName;
+    }
+    public String finalBackupDescription() {
+        return this.finalBackupDescription;
     }
     public String firstIpAddress() {
         return this.firstIpAddress;
@@ -164,6 +172,7 @@ public final class GetDatabaseInstanceResult {
     @CustomType.Builder
     public static final class Builder {
         private List<String> availableMaintenanceVersions;
+        private String backupdrBackup;
         private List<GetDatabaseInstanceClone> clones;
         private String connectionName;
         private String databaseVersion;
@@ -171,6 +180,7 @@ public final class GetDatabaseInstanceResult {
         private String dnsName;
         private List<GetDatabaseInstanceDnsName> dnsNames;
         private String encryptionKeyName;
+        private String finalBackupDescription;
         private String firstIpAddress;
         private String id;
         private String instanceType;
@@ -197,6 +207,7 @@ public final class GetDatabaseInstanceResult {
         public Builder(GetDatabaseInstanceResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availableMaintenanceVersions = defaults.availableMaintenanceVersions;
+    	      this.backupdrBackup = defaults.backupdrBackup;
     	      this.clones = defaults.clones;
     	      this.connectionName = defaults.connectionName;
     	      this.databaseVersion = defaults.databaseVersion;
@@ -204,6 +215,7 @@ public final class GetDatabaseInstanceResult {
     	      this.dnsName = defaults.dnsName;
     	      this.dnsNames = defaults.dnsNames;
     	      this.encryptionKeyName = defaults.encryptionKeyName;
+    	      this.finalBackupDescription = defaults.finalBackupDescription;
     	      this.firstIpAddress = defaults.firstIpAddress;
     	      this.id = defaults.id;
     	      this.instanceType = defaults.instanceType;
@@ -238,6 +250,14 @@ public final class GetDatabaseInstanceResult {
         }
         public Builder availableMaintenanceVersions(String... availableMaintenanceVersions) {
             return availableMaintenanceVersions(List.of(availableMaintenanceVersions));
+        }
+        @CustomType.Setter
+        public Builder backupdrBackup(String backupdrBackup) {
+            if (backupdrBackup == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceResult", "backupdrBackup");
+            }
+            this.backupdrBackup = backupdrBackup;
+            return this;
         }
         @CustomType.Setter
         public Builder clones(List<GetDatabaseInstanceClone> clones) {
@@ -299,6 +319,14 @@ public final class GetDatabaseInstanceResult {
               throw new MissingRequiredPropertyException("GetDatabaseInstanceResult", "encryptionKeyName");
             }
             this.encryptionKeyName = encryptionKeyName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder finalBackupDescription(String finalBackupDescription) {
+            if (finalBackupDescription == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceResult", "finalBackupDescription");
+            }
+            this.finalBackupDescription = finalBackupDescription;
             return this;
         }
         @CustomType.Setter
@@ -499,6 +527,7 @@ public final class GetDatabaseInstanceResult {
         public GetDatabaseInstanceResult build() {
             final var _resultValue = new GetDatabaseInstanceResult();
             _resultValue.availableMaintenanceVersions = availableMaintenanceVersions;
+            _resultValue.backupdrBackup = backupdrBackup;
             _resultValue.clones = clones;
             _resultValue.connectionName = connectionName;
             _resultValue.databaseVersion = databaseVersion;
@@ -506,6 +535,7 @@ public final class GetDatabaseInstanceResult {
             _resultValue.dnsName = dnsName;
             _resultValue.dnsNames = dnsNames;
             _resultValue.encryptionKeyName = encryptionKeyName;
+            _resultValue.finalBackupDescription = finalBackupDescription;
             _resultValue.firstIpAddress = firstIpAddress;
             _resultValue.id = id;
             _resultValue.instanceType = instanceType;

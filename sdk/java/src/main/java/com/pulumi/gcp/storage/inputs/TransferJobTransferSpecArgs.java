@@ -5,6 +5,7 @@ package com.pulumi.gcp.storage.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.storage.inputs.TransferJobTransferSpecAwsS3CompatibleDataSourceArgs;
 import com.pulumi.gcp.storage.inputs.TransferJobTransferSpecAwsS3DataSourceArgs;
 import com.pulumi.gcp.storage.inputs.TransferJobTransferSpecAzureBlobStorageDataSourceArgs;
 import com.pulumi.gcp.storage.inputs.TransferJobTransferSpecGcsDataSinkArgs;
@@ -24,6 +25,21 @@ import javax.annotation.Nullable;
 public final class TransferJobTransferSpecArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final TransferJobTransferSpecArgs Empty = new TransferJobTransferSpecArgs();
+
+    /**
+     * An AWS S3 Compatible data source. Structure documented below.
+     * 
+     */
+    @Import(name="awsS3CompatibleDataSource")
+    private @Nullable Output<TransferJobTransferSpecAwsS3CompatibleDataSourceArgs> awsS3CompatibleDataSource;
+
+    /**
+     * @return An AWS S3 Compatible data source. Structure documented below.
+     * 
+     */
+    public Optional<Output<TransferJobTransferSpecAwsS3CompatibleDataSourceArgs>> awsS3CompatibleDataSource() {
+        return Optional.ofNullable(this.awsS3CompatibleDataSource);
+    }
 
     /**
      * An AWS S3 data source. Structure documented below.
@@ -208,6 +224,7 @@ public final class TransferJobTransferSpecArgs extends com.pulumi.resources.Reso
     private TransferJobTransferSpecArgs() {}
 
     private TransferJobTransferSpecArgs(TransferJobTransferSpecArgs $) {
+        this.awsS3CompatibleDataSource = $.awsS3CompatibleDataSource;
         this.awsS3DataSource = $.awsS3DataSource;
         this.azureBlobStorageDataSource = $.azureBlobStorageDataSource;
         this.gcsDataSink = $.gcsDataSink;
@@ -238,6 +255,27 @@ public final class TransferJobTransferSpecArgs extends com.pulumi.resources.Reso
 
         public Builder(TransferJobTransferSpecArgs defaults) {
             $ = new TransferJobTransferSpecArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param awsS3CompatibleDataSource An AWS S3 Compatible data source. Structure documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder awsS3CompatibleDataSource(@Nullable Output<TransferJobTransferSpecAwsS3CompatibleDataSourceArgs> awsS3CompatibleDataSource) {
+            $.awsS3CompatibleDataSource = awsS3CompatibleDataSource;
+            return this;
+        }
+
+        /**
+         * @param awsS3CompatibleDataSource An AWS S3 Compatible data source. Structure documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder awsS3CompatibleDataSource(TransferJobTransferSpecAwsS3CompatibleDataSourceArgs awsS3CompatibleDataSource) {
+            return awsS3CompatibleDataSource(Output.of(awsS3CompatibleDataSource));
         }
 
         /**

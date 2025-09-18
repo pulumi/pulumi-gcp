@@ -74,6 +74,7 @@ import javax.annotation.Nullable;
  *             .initialUser(ClusterInitialUserArgs.builder()
  *                 .password("cluster_secret")
  *                 .build())
+ *             .deletionProtection(false)
  *             .build());
  * 
  *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
@@ -171,6 +172,7 @@ import javax.annotation.Nullable;
  *             .initialUser(ClusterInitialUserArgs.builder()
  *                 .password("cluster_secret")
  *                 .build())
+ *             .deletionProtection(false)
  *             .build());
  * 
  *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()

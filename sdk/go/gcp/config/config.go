@@ -4,7 +4,7 @@
 package config
 
 import (
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
@@ -512,6 +512,9 @@ func GetRuntimeConfigCustomEndpoint(ctx *pulumi.Context) string {
 func GetRuntimeconfigCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:runtimeconfigCustomEndpoint")
 }
+func GetSaasRuntimeCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:saasRuntimeCustomEndpoint")
+}
 func GetScopes(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:scopes")
 }
@@ -594,9 +597,6 @@ func GetTagsCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetTagsLocationCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:tagsLocationCustomEndpoint")
-}
-func GetTpuCustomEndpoint(ctx *pulumi.Context) string {
-	return config.Get(ctx, "gcp:tpuCustomEndpoint")
 }
 func GetTpuV2CustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:tpuV2CustomEndpoint")

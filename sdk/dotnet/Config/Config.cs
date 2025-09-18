@@ -1145,6 +1145,13 @@ namespace Pulumi.Gcp
             set => _runtimeconfigCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _saasRuntimeCustomEndpoint = new __Value<string?>(() => __config.Get("saasRuntimeCustomEndpoint"));
+        public static string? SaasRuntimeCustomEndpoint
+        {
+            get => _saasRuntimeCustomEndpoint.Get();
+            set => _saasRuntimeCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<ImmutableArray<string>> _scopes = new __Value<ImmutableArray<string>>(() => __config.GetObject<ImmutableArray<string>>("scopes"));
         public static ImmutableArray<string> Scopes
         {
@@ -1318,13 +1325,6 @@ namespace Pulumi.Gcp
         {
             get => _tagsLocationCustomEndpoint.Get();
             set => _tagsLocationCustomEndpoint.Set(value);
-        }
-
-        private static readonly __Value<string?> _tpuCustomEndpoint = new __Value<string?>(() => __config.Get("tpuCustomEndpoint"));
-        public static string? TpuCustomEndpoint
-        {
-            get => _tpuCustomEndpoint.Get();
-            set => _tpuCustomEndpoint.Set(value);
         }
 
         private static readonly __Value<string?> _tpuV2CustomEndpoint = new __Value<string?>(() => __config.Get("tpuV2CustomEndpoint"));

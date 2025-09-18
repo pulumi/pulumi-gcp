@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -64,11 +64,6 @@ type GetAccountKeyArgs struct {
 	// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{KEYID}`, where `{ACCOUNT}`
 	// is the email address or unique id of the service account.
 	Name string `pulumi:"name"`
-	// The ID of the project that the service account is present in.
-	// Defaults to the provider project configuration.
-	//
-	// Deprecated: `project` is deprecated and will be removed in a future major release. This field is non-functional and can be removed from your configuration safely.
-	Project *string `pulumi:"project"`
 	// The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
 	PublicKeyType *string `pulumi:"publicKeyType"`
 }
@@ -79,8 +74,6 @@ type GetAccountKeyResult struct {
 	Id           string `pulumi:"id"`
 	KeyAlgorithm string `pulumi:"keyAlgorithm"`
 	Name         string `pulumi:"name"`
-	// Deprecated: `project` is deprecated and will be removed in a future major release. This field is non-functional and can be removed from your configuration safely.
-	Project *string `pulumi:"project"`
 	// The public key, base64 encoded
 	PublicKey     string  `pulumi:"publicKey"`
 	PublicKeyType *string `pulumi:"publicKeyType"`
@@ -101,11 +94,6 @@ type GetAccountKeyOutputArgs struct {
 	// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{KEYID}`, where `{ACCOUNT}`
 	// is the email address or unique id of the service account.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The ID of the project that the service account is present in.
-	// Defaults to the provider project configuration.
-	//
-	// Deprecated: `project` is deprecated and will be removed in a future major release. This field is non-functional and can be removed from your configuration safely.
-	Project pulumi.StringPtrInput `pulumi:"project"`
 	// The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
 	PublicKeyType pulumi.StringPtrInput `pulumi:"publicKeyType"`
 }
@@ -140,11 +128,6 @@ func (o GetAccountKeyResultOutput) KeyAlgorithm() pulumi.StringOutput {
 
 func (o GetAccountKeyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountKeyResult) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Deprecated: `project` is deprecated and will be removed in a future major release. This field is non-functional and can be removed from your configuration safely.
-func (o GetAccountKeyResultOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAccountKeyResult) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
 // The public key, base64 encoded

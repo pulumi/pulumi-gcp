@@ -233,6 +233,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// If true, enable Cloud CDN for this BackendBucket.
+        /// Note: This cannot be set to true when loadBalancingScheme is set to INTERNAL_MANAGED.
         /// </summary>
         [Output("enableCdn")]
         public Output<bool?> EnableCdn { get; private set; } = null!;
@@ -240,6 +241,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
         /// If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+        /// Important: CDN cannot be enabled (enableCdn cannot be set to true) when loadBalancingScheme is set to INTERNAL_MANAGED.
         /// Possible values are: `INTERNAL_MANAGED`.
         /// </summary>
         [Output("loadBalancingScheme")]
@@ -256,6 +258,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Output("params")]
+        public Output<Outputs.BackendBucketParams?> Params { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -363,6 +372,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// If true, enable Cloud CDN for this BackendBucket.
+        /// Note: This cannot be set to true when loadBalancingScheme is set to INTERNAL_MANAGED.
         /// </summary>
         [Input("enableCdn")]
         public Input<bool>? EnableCdn { get; set; }
@@ -370,6 +380,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
         /// If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+        /// Important: CDN cannot be enabled (enableCdn cannot be set to true) when loadBalancingScheme is set to INTERNAL_MANAGED.
         /// Possible values are: `INTERNAL_MANAGED`.
         /// </summary>
         [Input("loadBalancingScheme")]
@@ -386,6 +397,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.BackendBucketParamsArgs>? Params { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -455,6 +473,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// If true, enable Cloud CDN for this BackendBucket.
+        /// Note: This cannot be set to true when loadBalancingScheme is set to INTERNAL_MANAGED.
         /// </summary>
         [Input("enableCdn")]
         public Input<bool>? EnableCdn { get; set; }
@@ -462,6 +481,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
         /// If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+        /// Important: CDN cannot be enabled (enableCdn cannot be set to true) when loadBalancingScheme is set to INTERNAL_MANAGED.
         /// Possible values are: `INTERNAL_MANAGED`.
         /// </summary>
         [Input("loadBalancingScheme")]
@@ -478,6 +498,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.BackendBucketParamsGetArgs>? Params { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

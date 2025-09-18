@@ -36,7 +36,6 @@ __all__ = [
     'FeatureIamBindingCondition',
     'FeatureIamMemberCondition',
     'FeatureMembershipConfigmanagement',
-    'FeatureMembershipConfigmanagementBinauthz',
     'FeatureMembershipConfigmanagementConfigSync',
     'FeatureMembershipConfigmanagementConfigSyncDeploymentOverride',
     'FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer',
@@ -1291,16 +1290,12 @@ class FeatureMembershipConfigmanagement(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 binauthz: Optional['outputs.FeatureMembershipConfigmanagementBinauthz'] = None,
                  config_sync: Optional['outputs.FeatureMembershipConfigmanagementConfigSync'] = None,
                  hierarchy_controller: Optional['outputs.FeatureMembershipConfigmanagementHierarchyController'] = None,
                  management: Optional[_builtins.str] = None,
                  policy_controller: Optional['outputs.FeatureMembershipConfigmanagementPolicyController'] = None,
                  version: Optional[_builtins.str] = None):
         """
-        :param 'FeatureMembershipConfigmanagementBinauthzArgs' binauthz: (Optional, Deprecated)
-               Binauthz configuration for the cluster. Structure is documented below.
-               This field will be ignored and should not be set.
         :param 'FeatureMembershipConfigmanagementConfigSyncArgs' config_sync: Config Sync configuration for the cluster. Structure is documented below.
         :param 'FeatureMembershipConfigmanagementHierarchyControllerArgs' hierarchy_controller: Hierarchy Controller configuration for the cluster. Structure is documented below.
                Configuring Hierarchy Controller through the configmanagement feature is no longer recommended.
@@ -1313,8 +1308,6 @@ class FeatureMembershipConfigmanagement(dict):
                Use the policycontroller feature instead.
         :param _builtins.str version: Version of Config Sync installed.
         """
-        if binauthz is not None:
-            pulumi.set(__self__, "binauthz", binauthz)
         if config_sync is not None:
             pulumi.set(__self__, "config_sync", config_sync)
         if hierarchy_controller is not None:
@@ -1325,16 +1318,6 @@ class FeatureMembershipConfigmanagement(dict):
             pulumi.set(__self__, "policy_controller", policy_controller)
         if version is not None:
             pulumi.set(__self__, "version", version)
-
-    @_builtins.property
-    @pulumi.getter
-    def binauthz(self) -> Optional['outputs.FeatureMembershipConfigmanagementBinauthz']:
-        """
-        (Optional, Deprecated)
-        Binauthz configuration for the cluster. Structure is documented below.
-        This field will be ignored and should not be set.
-        """
-        return pulumi.get(self, "binauthz")
 
     @_builtins.property
     @pulumi.getter(name="configSync")
@@ -1381,25 +1364,6 @@ class FeatureMembershipConfigmanagement(dict):
         Version of Config Sync installed.
         """
         return pulumi.get(self, "version")
-
-
-@pulumi.output_type
-class FeatureMembershipConfigmanagementBinauthz(dict):
-    def __init__(__self__, *,
-                 enabled: Optional[_builtins.bool] = None):
-        """
-        :param _builtins.bool enabled: Whether binauthz is enabled in this cluster.
-        """
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
-
-    @_builtins.property
-    @pulumi.getter
-    def enabled(self) -> Optional[_builtins.bool]:
-        """
-        Whether binauthz is enabled in this cluster.
-        """
-        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type

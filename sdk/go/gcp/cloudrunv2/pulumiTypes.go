@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -6002,9 +6002,171 @@ func (o ServiceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ServiceMultiRegionSettings struct {
+	// (Output)
+	// System-generated unique id for the multi-region Service.
+	MultiRegionId *string `pulumi:"multiRegionId"`
+	// The list of regions to deploy the multi-region Service.
+	Regions []string `pulumi:"regions"`
+}
+
+// ServiceMultiRegionSettingsInput is an input type that accepts ServiceMultiRegionSettingsArgs and ServiceMultiRegionSettingsOutput values.
+// You can construct a concrete instance of `ServiceMultiRegionSettingsInput` via:
+//
+//	ServiceMultiRegionSettingsArgs{...}
+type ServiceMultiRegionSettingsInput interface {
+	pulumi.Input
+
+	ToServiceMultiRegionSettingsOutput() ServiceMultiRegionSettingsOutput
+	ToServiceMultiRegionSettingsOutputWithContext(context.Context) ServiceMultiRegionSettingsOutput
+}
+
+type ServiceMultiRegionSettingsArgs struct {
+	// (Output)
+	// System-generated unique id for the multi-region Service.
+	MultiRegionId pulumi.StringPtrInput `pulumi:"multiRegionId"`
+	// The list of regions to deploy the multi-region Service.
+	Regions pulumi.StringArrayInput `pulumi:"regions"`
+}
+
+func (ServiceMultiRegionSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceMultiRegionSettings)(nil)).Elem()
+}
+
+func (i ServiceMultiRegionSettingsArgs) ToServiceMultiRegionSettingsOutput() ServiceMultiRegionSettingsOutput {
+	return i.ToServiceMultiRegionSettingsOutputWithContext(context.Background())
+}
+
+func (i ServiceMultiRegionSettingsArgs) ToServiceMultiRegionSettingsOutputWithContext(ctx context.Context) ServiceMultiRegionSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceMultiRegionSettingsOutput)
+}
+
+func (i ServiceMultiRegionSettingsArgs) ToServiceMultiRegionSettingsPtrOutput() ServiceMultiRegionSettingsPtrOutput {
+	return i.ToServiceMultiRegionSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceMultiRegionSettingsArgs) ToServiceMultiRegionSettingsPtrOutputWithContext(ctx context.Context) ServiceMultiRegionSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceMultiRegionSettingsOutput).ToServiceMultiRegionSettingsPtrOutputWithContext(ctx)
+}
+
+// ServiceMultiRegionSettingsPtrInput is an input type that accepts ServiceMultiRegionSettingsArgs, ServiceMultiRegionSettingsPtr and ServiceMultiRegionSettingsPtrOutput values.
+// You can construct a concrete instance of `ServiceMultiRegionSettingsPtrInput` via:
+//
+//	        ServiceMultiRegionSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceMultiRegionSettingsPtrInput interface {
+	pulumi.Input
+
+	ToServiceMultiRegionSettingsPtrOutput() ServiceMultiRegionSettingsPtrOutput
+	ToServiceMultiRegionSettingsPtrOutputWithContext(context.Context) ServiceMultiRegionSettingsPtrOutput
+}
+
+type serviceMultiRegionSettingsPtrType ServiceMultiRegionSettingsArgs
+
+func ServiceMultiRegionSettingsPtr(v *ServiceMultiRegionSettingsArgs) ServiceMultiRegionSettingsPtrInput {
+	return (*serviceMultiRegionSettingsPtrType)(v)
+}
+
+func (*serviceMultiRegionSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceMultiRegionSettings)(nil)).Elem()
+}
+
+func (i *serviceMultiRegionSettingsPtrType) ToServiceMultiRegionSettingsPtrOutput() ServiceMultiRegionSettingsPtrOutput {
+	return i.ToServiceMultiRegionSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceMultiRegionSettingsPtrType) ToServiceMultiRegionSettingsPtrOutputWithContext(ctx context.Context) ServiceMultiRegionSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceMultiRegionSettingsPtrOutput)
+}
+
+type ServiceMultiRegionSettingsOutput struct{ *pulumi.OutputState }
+
+func (ServiceMultiRegionSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceMultiRegionSettings)(nil)).Elem()
+}
+
+func (o ServiceMultiRegionSettingsOutput) ToServiceMultiRegionSettingsOutput() ServiceMultiRegionSettingsOutput {
+	return o
+}
+
+func (o ServiceMultiRegionSettingsOutput) ToServiceMultiRegionSettingsOutputWithContext(ctx context.Context) ServiceMultiRegionSettingsOutput {
+	return o
+}
+
+func (o ServiceMultiRegionSettingsOutput) ToServiceMultiRegionSettingsPtrOutput() ServiceMultiRegionSettingsPtrOutput {
+	return o.ToServiceMultiRegionSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceMultiRegionSettingsOutput) ToServiceMultiRegionSettingsPtrOutputWithContext(ctx context.Context) ServiceMultiRegionSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceMultiRegionSettings) *ServiceMultiRegionSettings {
+		return &v
+	}).(ServiceMultiRegionSettingsPtrOutput)
+}
+
+// (Output)
+// System-generated unique id for the multi-region Service.
+func (o ServiceMultiRegionSettingsOutput) MultiRegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMultiRegionSettings) *string { return v.MultiRegionId }).(pulumi.StringPtrOutput)
+}
+
+// The list of regions to deploy the multi-region Service.
+func (o ServiceMultiRegionSettingsOutput) Regions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServiceMultiRegionSettings) []string { return v.Regions }).(pulumi.StringArrayOutput)
+}
+
+type ServiceMultiRegionSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceMultiRegionSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceMultiRegionSettings)(nil)).Elem()
+}
+
+func (o ServiceMultiRegionSettingsPtrOutput) ToServiceMultiRegionSettingsPtrOutput() ServiceMultiRegionSettingsPtrOutput {
+	return o
+}
+
+func (o ServiceMultiRegionSettingsPtrOutput) ToServiceMultiRegionSettingsPtrOutputWithContext(ctx context.Context) ServiceMultiRegionSettingsPtrOutput {
+	return o
+}
+
+func (o ServiceMultiRegionSettingsPtrOutput) Elem() ServiceMultiRegionSettingsOutput {
+	return o.ApplyT(func(v *ServiceMultiRegionSettings) ServiceMultiRegionSettings {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceMultiRegionSettings
+		return ret
+	}).(ServiceMultiRegionSettingsOutput)
+}
+
+// (Output)
+// System-generated unique id for the multi-region Service.
+func (o ServiceMultiRegionSettingsPtrOutput) MultiRegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMultiRegionSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MultiRegionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of regions to deploy the multi-region Service.
+func (o ServiceMultiRegionSettingsPtrOutput) Regions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServiceMultiRegionSettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Regions
+	}).(pulumi.StringArrayOutput)
+}
+
 type ServiceScaling struct {
 	// Total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
 	ManualInstanceCount *int `pulumi:"manualInstanceCount"`
+	// Combined maximum number of instances for all revisions receiving traffic.
+	MaxInstanceCount *int `pulumi:"maxInstanceCount"`
 	// Minimum number of instances for the service, to be divided among all revisions receiving traffic.
 	MinInstanceCount *int `pulumi:"minInstanceCount"`
 	// The [scaling mode](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#scalingmode) for the service.
@@ -6026,6 +6188,8 @@ type ServiceScalingInput interface {
 type ServiceScalingArgs struct {
 	// Total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
 	ManualInstanceCount pulumi.IntPtrInput `pulumi:"manualInstanceCount"`
+	// Combined maximum number of instances for all revisions receiving traffic.
+	MaxInstanceCount pulumi.IntPtrInput `pulumi:"maxInstanceCount"`
 	// Minimum number of instances for the service, to be divided among all revisions receiving traffic.
 	MinInstanceCount pulumi.IntPtrInput `pulumi:"minInstanceCount"`
 	// The [scaling mode](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#scalingmode) for the service.
@@ -6115,6 +6279,11 @@ func (o ServiceScalingOutput) ManualInstanceCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceScaling) *int { return v.ManualInstanceCount }).(pulumi.IntPtrOutput)
 }
 
+// Combined maximum number of instances for all revisions receiving traffic.
+func (o ServiceScalingOutput) MaxInstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceScaling) *int { return v.MaxInstanceCount }).(pulumi.IntPtrOutput)
+}
+
 // Minimum number of instances for the service, to be divided among all revisions receiving traffic.
 func (o ServiceScalingOutput) MinInstanceCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceScaling) *int { return v.MinInstanceCount }).(pulumi.IntPtrOutput)
@@ -6157,6 +6326,16 @@ func (o ServiceScalingPtrOutput) ManualInstanceCount() pulumi.IntPtrOutput {
 			return nil
 		}
 		return v.ManualInstanceCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Combined maximum number of instances for all revisions receiving traffic.
+func (o ServiceScalingPtrOutput) MaxInstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceScaling) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxInstanceCount
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -9758,8 +9937,7 @@ func (o ServiceTemplateNodeSelectorPtrOutput) Accelerator() pulumi.StringPtrOutp
 }
 
 type ServiceTemplateScaling struct {
-	// Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
-	// a default value based on the project's available container instances quota in the region and specified instance size.
+	// Combined maximum number of instances for all revisions receiving traffic.
 	MaxInstanceCount *int `pulumi:"maxInstanceCount"`
 	// Minimum number of instances for the service, to be divided among all revisions receiving traffic.
 	MinInstanceCount *int `pulumi:"minInstanceCount"`
@@ -9777,8 +9955,7 @@ type ServiceTemplateScalingInput interface {
 }
 
 type ServiceTemplateScalingArgs struct {
-	// Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
-	// a default value based on the project's available container instances quota in the region and specified instance size.
+	// Combined maximum number of instances for all revisions receiving traffic.
 	MaxInstanceCount pulumi.IntPtrInput `pulumi:"maxInstanceCount"`
 	// Minimum number of instances for the service, to be divided among all revisions receiving traffic.
 	MinInstanceCount pulumi.IntPtrInput `pulumi:"minInstanceCount"`
@@ -9861,8 +10038,7 @@ func (o ServiceTemplateScalingOutput) ToServiceTemplateScalingPtrOutputWithConte
 	}).(ServiceTemplateScalingPtrOutput)
 }
 
-// Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
-// a default value based on the project's available container instances quota in the region and specified instance size.
+// Combined maximum number of instances for all revisions receiving traffic.
 func (o ServiceTemplateScalingOutput) MaxInstanceCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateScaling) *int { return v.MaxInstanceCount }).(pulumi.IntPtrOutput)
 }
@@ -9896,8 +10072,7 @@ func (o ServiceTemplateScalingPtrOutput) Elem() ServiceTemplateScalingOutput {
 	}).(ServiceTemplateScalingOutput)
 }
 
-// Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
-// a default value based on the project's available container instances quota in the region and specified instance size.
+// Combined maximum number of instances for all revisions receiving traffic.
 func (o ServiceTemplateScalingPtrOutput) MaxInstanceCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateScaling) *int {
 		if v == nil {
@@ -13461,8 +13636,6 @@ type WorkerPoolTemplateContainer struct {
 	Args []string `pulumi:"args"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 	Commands []string `pulumi:"commands"`
-	// Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
-	DependsOns []string `pulumi:"dependsOns"`
 	// List of environment variables to set in the container.
 	// Structure is documented below.
 	Envs []WorkerPoolTemplateContainerEnv `pulumi:"envs"`
@@ -13496,8 +13669,6 @@ type WorkerPoolTemplateContainerArgs struct {
 	Args pulumi.StringArrayInput `pulumi:"args"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 	Commands pulumi.StringArrayInput `pulumi:"commands"`
-	// Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
-	DependsOns pulumi.StringArrayInput `pulumi:"dependsOns"`
 	// List of environment variables to set in the container.
 	// Structure is documented below.
 	Envs WorkerPoolTemplateContainerEnvArrayInput `pulumi:"envs"`
@@ -13574,11 +13745,6 @@ func (o WorkerPoolTemplateContainerOutput) Args() pulumi.StringArrayOutput {
 // Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 func (o WorkerPoolTemplateContainerOutput) Commands() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkerPoolTemplateContainer) []string { return v.Commands }).(pulumi.StringArrayOutput)
-}
-
-// Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
-func (o WorkerPoolTemplateContainerOutput) DependsOns() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v WorkerPoolTemplateContainer) []string { return v.DependsOns }).(pulumi.StringArrayOutput)
 }
 
 // List of environment variables to set in the container.
@@ -19991,9 +20157,117 @@ func (o GetServiceConditionArrayOutput) Index(i pulumi.IntInput) GetServiceCondi
 	}).(GetServiceConditionOutput)
 }
 
+type GetServiceMultiRegionSetting struct {
+	// System-generated unique id for the multi-region Service.
+	MultiRegionId string `pulumi:"multiRegionId"`
+	// The list of regions to deploy the multi-region Service.
+	Regions []string `pulumi:"regions"`
+}
+
+// GetServiceMultiRegionSettingInput is an input type that accepts GetServiceMultiRegionSettingArgs and GetServiceMultiRegionSettingOutput values.
+// You can construct a concrete instance of `GetServiceMultiRegionSettingInput` via:
+//
+//	GetServiceMultiRegionSettingArgs{...}
+type GetServiceMultiRegionSettingInput interface {
+	pulumi.Input
+
+	ToGetServiceMultiRegionSettingOutput() GetServiceMultiRegionSettingOutput
+	ToGetServiceMultiRegionSettingOutputWithContext(context.Context) GetServiceMultiRegionSettingOutput
+}
+
+type GetServiceMultiRegionSettingArgs struct {
+	// System-generated unique id for the multi-region Service.
+	MultiRegionId pulumi.StringInput `pulumi:"multiRegionId"`
+	// The list of regions to deploy the multi-region Service.
+	Regions pulumi.StringArrayInput `pulumi:"regions"`
+}
+
+func (GetServiceMultiRegionSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceMultiRegionSetting)(nil)).Elem()
+}
+
+func (i GetServiceMultiRegionSettingArgs) ToGetServiceMultiRegionSettingOutput() GetServiceMultiRegionSettingOutput {
+	return i.ToGetServiceMultiRegionSettingOutputWithContext(context.Background())
+}
+
+func (i GetServiceMultiRegionSettingArgs) ToGetServiceMultiRegionSettingOutputWithContext(ctx context.Context) GetServiceMultiRegionSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMultiRegionSettingOutput)
+}
+
+// GetServiceMultiRegionSettingArrayInput is an input type that accepts GetServiceMultiRegionSettingArray and GetServiceMultiRegionSettingArrayOutput values.
+// You can construct a concrete instance of `GetServiceMultiRegionSettingArrayInput` via:
+//
+//	GetServiceMultiRegionSettingArray{ GetServiceMultiRegionSettingArgs{...} }
+type GetServiceMultiRegionSettingArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceMultiRegionSettingArrayOutput() GetServiceMultiRegionSettingArrayOutput
+	ToGetServiceMultiRegionSettingArrayOutputWithContext(context.Context) GetServiceMultiRegionSettingArrayOutput
+}
+
+type GetServiceMultiRegionSettingArray []GetServiceMultiRegionSettingInput
+
+func (GetServiceMultiRegionSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceMultiRegionSetting)(nil)).Elem()
+}
+
+func (i GetServiceMultiRegionSettingArray) ToGetServiceMultiRegionSettingArrayOutput() GetServiceMultiRegionSettingArrayOutput {
+	return i.ToGetServiceMultiRegionSettingArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceMultiRegionSettingArray) ToGetServiceMultiRegionSettingArrayOutputWithContext(ctx context.Context) GetServiceMultiRegionSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMultiRegionSettingArrayOutput)
+}
+
+type GetServiceMultiRegionSettingOutput struct{ *pulumi.OutputState }
+
+func (GetServiceMultiRegionSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceMultiRegionSetting)(nil)).Elem()
+}
+
+func (o GetServiceMultiRegionSettingOutput) ToGetServiceMultiRegionSettingOutput() GetServiceMultiRegionSettingOutput {
+	return o
+}
+
+func (o GetServiceMultiRegionSettingOutput) ToGetServiceMultiRegionSettingOutputWithContext(ctx context.Context) GetServiceMultiRegionSettingOutput {
+	return o
+}
+
+// System-generated unique id for the multi-region Service.
+func (o GetServiceMultiRegionSettingOutput) MultiRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMultiRegionSetting) string { return v.MultiRegionId }).(pulumi.StringOutput)
+}
+
+// The list of regions to deploy the multi-region Service.
+func (o GetServiceMultiRegionSettingOutput) Regions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceMultiRegionSetting) []string { return v.Regions }).(pulumi.StringArrayOutput)
+}
+
+type GetServiceMultiRegionSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceMultiRegionSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceMultiRegionSetting)(nil)).Elem()
+}
+
+func (o GetServiceMultiRegionSettingArrayOutput) ToGetServiceMultiRegionSettingArrayOutput() GetServiceMultiRegionSettingArrayOutput {
+	return o
+}
+
+func (o GetServiceMultiRegionSettingArrayOutput) ToGetServiceMultiRegionSettingArrayOutputWithContext(ctx context.Context) GetServiceMultiRegionSettingArrayOutput {
+	return o
+}
+
+func (o GetServiceMultiRegionSettingArrayOutput) Index(i pulumi.IntInput) GetServiceMultiRegionSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceMultiRegionSetting {
+		return vs[0].([]GetServiceMultiRegionSetting)[vs[1].(int)]
+	}).(GetServiceMultiRegionSettingOutput)
+}
+
 type GetServiceScaling struct {
 	// Total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
 	ManualInstanceCount int `pulumi:"manualInstanceCount"`
+	// Combined maximum number of instances for all revisions receiving traffic.
+	MaxInstanceCount int `pulumi:"maxInstanceCount"`
 	// Minimum number of instances for the service, to be divided among all revisions receiving traffic.
 	MinInstanceCount int `pulumi:"minInstanceCount"`
 	// The [scaling mode](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#scalingmode) for the service. Possible values: ["AUTOMATIC", "MANUAL"]
@@ -20014,6 +20288,8 @@ type GetServiceScalingInput interface {
 type GetServiceScalingArgs struct {
 	// Total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
 	ManualInstanceCount pulumi.IntInput `pulumi:"manualInstanceCount"`
+	// Combined maximum number of instances for all revisions receiving traffic.
+	MaxInstanceCount pulumi.IntInput `pulumi:"maxInstanceCount"`
 	// Minimum number of instances for the service, to be divided among all revisions receiving traffic.
 	MinInstanceCount pulumi.IntInput `pulumi:"minInstanceCount"`
 	// The [scaling mode](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#scalingmode) for the service. Possible values: ["AUTOMATIC", "MANUAL"]
@@ -20074,6 +20350,11 @@ func (o GetServiceScalingOutput) ToGetServiceScalingOutputWithContext(ctx contex
 // Total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
 func (o GetServiceScalingOutput) ManualInstanceCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServiceScaling) int { return v.ManualInstanceCount }).(pulumi.IntOutput)
+}
+
+// Combined maximum number of instances for all revisions receiving traffic.
+func (o GetServiceScalingOutput) MaxInstanceCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceScaling) int { return v.MaxInstanceCount }).(pulumi.IntOutput)
 }
 
 // Minimum number of instances for the service, to be divided among all revisions receiving traffic.
@@ -25196,8 +25477,6 @@ type GetWorkerPoolTemplateContainer struct {
 	Args []string `pulumi:"args"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 	Commands []string `pulumi:"commands"`
-	// Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
-	DependsOns []string `pulumi:"dependsOns"`
 	// List of environment variables to set in the container.
 	Envs []GetWorkerPoolTemplateContainerEnv `pulumi:"envs"`
 	// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
@@ -25228,8 +25507,6 @@ type GetWorkerPoolTemplateContainerArgs struct {
 	Args pulumi.StringArrayInput `pulumi:"args"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 	Commands pulumi.StringArrayInput `pulumi:"commands"`
-	// Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
-	DependsOns pulumi.StringArrayInput `pulumi:"dependsOns"`
 	// List of environment variables to set in the container.
 	Envs GetWorkerPoolTemplateContainerEnvArrayInput `pulumi:"envs"`
 	// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
@@ -25303,11 +25580,6 @@ func (o GetWorkerPoolTemplateContainerOutput) Args() pulumi.StringArrayOutput {
 // Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 func (o GetWorkerPoolTemplateContainerOutput) Commands() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetWorkerPoolTemplateContainer) []string { return v.Commands }).(pulumi.StringArrayOutput)
-}
-
-// Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
-func (o GetWorkerPoolTemplateContainerOutput) DependsOns() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetWorkerPoolTemplateContainer) []string { return v.DependsOns }).(pulumi.StringArrayOutput)
 }
 
 // List of environment variables to set in the container.
@@ -27260,6 +27532,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIamBindingConditionPtrInput)(nil)).Elem(), ServiceIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIamMemberConditionInput)(nil)).Elem(), ServiceIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIamMemberConditionPtrInput)(nil)).Elem(), ServiceIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMultiRegionSettingsInput)(nil)).Elem(), ServiceMultiRegionSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMultiRegionSettingsPtrInput)(nil)).Elem(), ServiceMultiRegionSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceScalingInput)(nil)).Elem(), ServiceScalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceScalingPtrInput)(nil)).Elem(), ServiceScalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateInput)(nil)).Elem(), ServiceTemplateArgs{})
@@ -27442,6 +27716,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceBuildConfigArrayInput)(nil)).Elem(), GetServiceBuildConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceConditionInput)(nil)).Elem(), GetServiceConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceConditionArrayInput)(nil)).Elem(), GetServiceConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMultiRegionSettingInput)(nil)).Elem(), GetServiceMultiRegionSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMultiRegionSettingArrayInput)(nil)).Elem(), GetServiceMultiRegionSettingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceScalingInput)(nil)).Elem(), GetServiceScalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceScalingArrayInput)(nil)).Elem(), GetServiceScalingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateInput)(nil)).Elem(), GetServiceTemplateArgs{})
@@ -27628,6 +27904,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(ServiceIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(ServiceMultiRegionSettingsOutput{})
+	pulumi.RegisterOutputType(ServiceMultiRegionSettingsPtrOutput{})
 	pulumi.RegisterOutputType(ServiceScalingOutput{})
 	pulumi.RegisterOutputType(ServiceScalingPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateOutput{})
@@ -27810,6 +28088,8 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceBuildConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceConditionOutput{})
 	pulumi.RegisterOutputType(GetServiceConditionArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceMultiRegionSettingOutput{})
+	pulumi.RegisterOutputType(GetServiceMultiRegionSettingArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceScalingOutput{})
 	pulumi.RegisterOutputType(GetServiceScalingArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateOutput{})

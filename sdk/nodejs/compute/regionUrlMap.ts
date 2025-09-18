@@ -1117,6 +1117,14 @@ export class RegionUrlMap extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly fingerprint: pulumi.Output<string>;
     /**
+     * Specifies changes to request and response headers that need to take effect for the selected backendService.
+     * headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+     * headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+     * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+     * Structure is documented below.
+     */
+    declare public readonly headerAction: pulumi.Output<outputs.compute.RegionUrlMapHeaderAction | undefined>;
+    /**
      * The list of HostRules to use against the URL.
      * Structure is documented below.
      */
@@ -1180,6 +1188,7 @@ export class RegionUrlMap extends pulumi.CustomResource {
             resourceInputs["defaultUrlRedirect"] = state?.defaultUrlRedirect;
             resourceInputs["description"] = state?.description;
             resourceInputs["fingerprint"] = state?.fingerprint;
+            resourceInputs["headerAction"] = state?.headerAction;
             resourceInputs["hostRules"] = state?.hostRules;
             resourceInputs["mapId"] = state?.mapId;
             resourceInputs["name"] = state?.name;
@@ -1194,6 +1203,7 @@ export class RegionUrlMap extends pulumi.CustomResource {
             resourceInputs["defaultService"] = args?.defaultService;
             resourceInputs["defaultUrlRedirect"] = args?.defaultUrlRedirect;
             resourceInputs["description"] = args?.description;
+            resourceInputs["headerAction"] = args?.headerAction;
             resourceInputs["hostRules"] = args?.hostRules;
             resourceInputs["name"] = args?.name;
             resourceInputs["pathMatchers"] = args?.pathMatchers;
@@ -1253,6 +1263,14 @@ export interface RegionUrlMapState {
      * updates of this resource.
      */
     fingerprint?: pulumi.Input<string>;
+    /**
+     * Specifies changes to request and response headers that need to take effect for the selected backendService.
+     * headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+     * headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+     * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+     * Structure is documented below.
+     */
+    headerAction?: pulumi.Input<inputs.compute.RegionUrlMapHeaderAction>;
     /**
      * The list of HostRules to use against the URL.
      * Structure is documented below.
@@ -1333,6 +1351,14 @@ export interface RegionUrlMapArgs {
      * you create the resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Specifies changes to request and response headers that need to take effect for the selected backendService.
+     * headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+     * headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+     * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+     * Structure is documented below.
+     */
+    headerAction?: pulumi.Input<inputs.compute.RegionUrlMapHeaderAction>;
     /**
      * The list of HostRules to use against the URL.
      * Structure is documented below.

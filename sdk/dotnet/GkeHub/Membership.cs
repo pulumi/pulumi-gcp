@@ -173,14 +173,6 @@ namespace Pulumi.Gcp.GkeHub
         public Output<Outputs.MembershipAuthority?> Authority { get; private set; } = null!;
 
         /// <summary>
-        /// The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
-        /// 
-        /// &gt; **Warning:** `description` is deprecated and will be removed in a future major release.
-        /// </summary>
-        [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
-
-        /// <summary>
         /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         /// </summary>
         [Output("effectiveLabels")]
@@ -296,14 +288,6 @@ namespace Pulumi.Gcp.GkeHub
         public Input<Inputs.MembershipAuthorityArgs>? Authority { get; set; }
 
         /// <summary>
-        /// The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
-        /// 
-        /// &gt; **Warning:** `description` is deprecated and will be removed in a future major release.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
         /// If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
         /// Structure is documented below.
         /// </summary>
@@ -361,14 +345,6 @@ namespace Pulumi.Gcp.GkeHub
         /// </summary>
         [Input("authority")]
         public Input<Inputs.MembershipAuthorityGetArgs>? Authority { get; set; }
-
-        /// <summary>
-        /// The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
-        /// 
-        /// &gt; **Warning:** `description` is deprecated and will be removed in a future major release.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
 
         [Input("effectiveLabels")]
         private InputMap<string>? _effectiveLabels;

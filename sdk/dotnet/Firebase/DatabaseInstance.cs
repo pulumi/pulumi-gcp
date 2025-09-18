@@ -10,6 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Firebase
 {
     /// <summary>
+    /// A Firebase Realtime Database instance.
+    /// 
+    /// To get more information about Instance, see:
+    /// 
+    /// * [API documentation](https://firebase.google.com/docs/reference/rest/database/database-management/rest)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://firebase.google.com/products/realtime-database)
+    /// 
     /// ## Example Usage
     /// 
     /// ### Firebase Database Instance Basic
@@ -79,7 +87,6 @@ namespace Pulumi.Gcp.Firebase
     ///     {
     ///         Project = @default.ProjectId,
     ///         ServiceName = "firebase.googleapis.com",
-    ///         DisableOnDestroy = false,
     ///     });
     /// 
     ///     var defaultProject = new Gcp.Firebase.Project("default", new()
@@ -97,7 +104,6 @@ namespace Pulumi.Gcp.Firebase
     ///     {
     ///         Project = defaultProject.ProjectID,
     ///         ServiceName = "firebasedatabase.googleapis.com",
-    ///         DisableOnDestroy = false,
     ///     });
     /// 
     ///     var wait60Seconds = new Time.Index.Sleep("wait_60_seconds", new()

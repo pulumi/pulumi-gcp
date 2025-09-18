@@ -464,7 +464,7 @@ class ReferenceListEntryArgs:
 
 if not MYPY:
     class ReferenceListScopeInfoArgsDict(TypedDict):
-        reference_list_scope: pulumi.Input['ReferenceListScopeInfoReferenceListScopeArgsDict']
+        reference_list_scope: NotRequired[pulumi.Input['ReferenceListScopeInfoReferenceListScopeArgsDict']]
         """
         ReferenceListScope specifies the list of scope names of the reference list.
         Structure is documented below.
@@ -475,16 +475,17 @@ elif False:
 @pulumi.input_type
 class ReferenceListScopeInfoArgs:
     def __init__(__self__, *,
-                 reference_list_scope: pulumi.Input['ReferenceListScopeInfoReferenceListScopeArgs']):
+                 reference_list_scope: Optional[pulumi.Input['ReferenceListScopeInfoReferenceListScopeArgs']] = None):
         """
         :param pulumi.Input['ReferenceListScopeInfoReferenceListScopeArgs'] reference_list_scope: ReferenceListScope specifies the list of scope names of the reference list.
                Structure is documented below.
         """
-        pulumi.set(__self__, "reference_list_scope", reference_list_scope)
+        if reference_list_scope is not None:
+            pulumi.set(__self__, "reference_list_scope", reference_list_scope)
 
     @_builtins.property
     @pulumi.getter(name="referenceListScope")
-    def reference_list_scope(self) -> pulumi.Input['ReferenceListScopeInfoReferenceListScopeArgs']:
+    def reference_list_scope(self) -> Optional[pulumi.Input['ReferenceListScopeInfoReferenceListScopeArgs']]:
         """
         ReferenceListScope specifies the list of scope names of the reference list.
         Structure is documented below.
@@ -492,7 +493,7 @@ class ReferenceListScopeInfoArgs:
         return pulumi.get(self, "reference_list_scope")
 
     @reference_list_scope.setter
-    def reference_list_scope(self, value: pulumi.Input['ReferenceListScopeInfoReferenceListScopeArgs']):
+    def reference_list_scope(self, value: Optional[pulumi.Input['ReferenceListScopeInfoReferenceListScopeArgs']]):
         pulumi.set(self, "reference_list_scope", value)
 
 

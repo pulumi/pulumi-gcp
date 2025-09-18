@@ -35,7 +35,6 @@ public final class RepositoryRemoteRepositoryConfigMavenRepositoryArgs extends c
 
     /**
      * Address of the remote repository.
-     * Default value is `MAVEN_CENTRAL`.
      * Possible values are: `MAVEN_CENTRAL`.
      * 
      */
@@ -44,7 +43,6 @@ public final class RepositoryRemoteRepositoryConfigMavenRepositoryArgs extends c
 
     /**
      * @return Address of the remote repository.
-     * Default value is `MAVEN_CENTRAL`.
      * Possible values are: `MAVEN_CENTRAL`.
      * 
      */
@@ -102,7 +100,6 @@ public final class RepositoryRemoteRepositoryConfigMavenRepositoryArgs extends c
 
         /**
          * @param publicRepository Address of the remote repository.
-         * Default value is `MAVEN_CENTRAL`.
          * Possible values are: `MAVEN_CENTRAL`.
          * 
          * @return builder
@@ -115,7 +112,6 @@ public final class RepositoryRemoteRepositoryConfigMavenRepositoryArgs extends c
 
         /**
          * @param publicRepository Address of the remote repository.
-         * Default value is `MAVEN_CENTRAL`.
          * Possible values are: `MAVEN_CENTRAL`.
          * 
          * @return builder

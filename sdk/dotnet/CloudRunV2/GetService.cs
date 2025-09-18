@@ -187,6 +187,7 @@ namespace Pulumi.Gcp.CloudRunV2
         public readonly string LatestReadyRevision;
         public readonly string LaunchStage;
         public readonly string? Location;
+        public readonly ImmutableArray<Outputs.GetServiceMultiRegionSettingResult> MultiRegionSettings;
         public readonly string Name;
         public readonly string ObservedGeneration;
         public readonly string? Project;
@@ -260,6 +261,8 @@ namespace Pulumi.Gcp.CloudRunV2
 
             string? location,
 
+            ImmutableArray<Outputs.GetServiceMultiRegionSettingResult> multiRegionSettings,
+
             string name,
 
             string observedGeneration,
@@ -316,6 +319,7 @@ namespace Pulumi.Gcp.CloudRunV2
             LatestReadyRevision = latestReadyRevision;
             LaunchStage = launchStage;
             Location = location;
+            MultiRegionSettings = multiRegionSettings;
             Name = name;
             ObservedGeneration = observedGeneration;
             Project = project;

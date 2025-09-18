@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -65,7 +65,6 @@ type LookupMembershipArgs struct {
 // A collection of values returned by getMembership.
 type LookupMembershipResult struct {
 	Authorities     []GetMembershipAuthority `pulumi:"authorities"`
-	Description     string                   `pulumi:"description"`
 	EffectiveLabels map[string]string        `pulumi:"effectiveLabels"`
 	Endpoints       []GetMembershipEndpoint  `pulumi:"endpoints"`
 	// The provider-assigned unique ID for this managed resource.
@@ -120,10 +119,6 @@ func (o LookupMembershipResultOutput) ToLookupMembershipResultOutputWithContext(
 
 func (o LookupMembershipResultOutput) Authorities() GetMembershipAuthorityArrayOutput {
 	return o.ApplyT(func(v LookupMembershipResult) []GetMembershipAuthority { return v.Authorities }).(GetMembershipAuthorityArrayOutput)
-}
-
-func (o LookupMembershipResultOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMembershipResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
 func (o LookupMembershipResultOutput) EffectiveLabels() pulumi.StringMapOutput {

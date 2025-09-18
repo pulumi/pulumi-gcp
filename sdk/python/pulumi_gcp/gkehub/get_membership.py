@@ -27,13 +27,10 @@ class GetMembershipResult:
     """
     A collection of values returned by getMembership.
     """
-    def __init__(__self__, authorities=None, description=None, effective_labels=None, endpoints=None, id=None, labels=None, location=None, membership_id=None, name=None, project=None, pulumi_labels=None):
+    def __init__(__self__, authorities=None, effective_labels=None, endpoints=None, id=None, labels=None, location=None, membership_id=None, name=None, project=None, pulumi_labels=None):
         if authorities and not isinstance(authorities, list):
             raise TypeError("Expected argument 'authorities' to be a list")
         pulumi.set(__self__, "authorities", authorities)
-        if description and not isinstance(description, str):
-            raise TypeError("Expected argument 'description' to be a str")
-        pulumi.set(__self__, "description", description)
         if effective_labels and not isinstance(effective_labels, dict):
             raise TypeError("Expected argument 'effective_labels' to be a dict")
         pulumi.set(__self__, "effective_labels", effective_labels)
@@ -66,11 +63,6 @@ class GetMembershipResult:
     @pulumi.getter
     def authorities(self) -> Sequence['outputs.GetMembershipAuthorityResult']:
         return pulumi.get(self, "authorities")
-
-    @_builtins.property
-    @pulumi.getter
-    def description(self) -> _builtins.str:
-        return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
@@ -128,7 +120,6 @@ class AwaitableGetMembershipResult(GetMembershipResult):
             yield self
         return GetMembershipResult(
             authorities=self.authorities,
-            description=self.description,
             effective_labels=self.effective_labels,
             endpoints=self.endpoints,
             id=self.id,
@@ -174,7 +165,6 @@ def get_membership(location: Optional[_builtins.str] = None,
 
     return AwaitableGetMembershipResult(
         authorities=pulumi.get(__ret__, 'authorities'),
-        description=pulumi.get(__ret__, 'description'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         endpoints=pulumi.get(__ret__, 'endpoints'),
         id=pulumi.get(__ret__, 'id'),
@@ -217,7 +207,6 @@ def get_membership_output(location: Optional[pulumi.Input[_builtins.str]] = None
     __ret__ = pulumi.runtime.invoke_output('gcp:gkehub/getMembership:getMembership', __args__, opts=opts, typ=GetMembershipResult)
     return __ret__.apply(lambda __response__: GetMembershipResult(
         authorities=pulumi.get(__response__, 'authorities'),
-        description=pulumi.get(__response__, 'description'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),
         endpoints=pulumi.get(__response__, 'endpoints'),
         id=pulumi.get(__response__, 'id'),

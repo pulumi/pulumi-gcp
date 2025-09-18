@@ -85,6 +85,8 @@ __all__ = [
     'ServiceIamBindingConditionArgsDict',
     'ServiceIamMemberConditionArgs',
     'ServiceIamMemberConditionArgsDict',
+    'ServiceMultiRegionSettingsArgs',
+    'ServiceMultiRegionSettingsArgsDict',
     'ServiceScalingArgs',
     'ServiceScalingArgsDict',
     'ServiceTemplateArgs',
@@ -3453,10 +3455,69 @@ class ServiceIamMemberConditionArgs:
 
 
 if not MYPY:
+    class ServiceMultiRegionSettingsArgsDict(TypedDict):
+        multi_region_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        System-generated unique id for the multi-region Service.
+        """
+        regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        The list of regions to deploy the multi-region Service.
+        """
+elif False:
+    ServiceMultiRegionSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ServiceMultiRegionSettingsArgs:
+    def __init__(__self__, *,
+                 multi_region_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] multi_region_id: (Output)
+               System-generated unique id for the multi-region Service.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] regions: The list of regions to deploy the multi-region Service.
+        """
+        if multi_region_id is not None:
+            pulumi.set(__self__, "multi_region_id", multi_region_id)
+        if regions is not None:
+            pulumi.set(__self__, "regions", regions)
+
+    @_builtins.property
+    @pulumi.getter(name="multiRegionId")
+    def multi_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        System-generated unique id for the multi-region Service.
+        """
+        return pulumi.get(self, "multi_region_id")
+
+    @multi_region_id.setter
+    def multi_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "multi_region_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of regions to deploy the multi-region Service.
+        """
+        return pulumi.get(self, "regions")
+
+    @regions.setter
+    def regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "regions", value)
+
+
+if not MYPY:
     class ServiceScalingArgsDict(TypedDict):
         manual_instance_count: NotRequired[pulumi.Input[_builtins.int]]
         """
         Total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
+        """
+        max_instance_count: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Combined maximum number of instances for all revisions receiving traffic.
         """
         min_instance_count: NotRequired[pulumi.Input[_builtins.int]]
         """
@@ -3474,16 +3535,20 @@ elif False:
 class ServiceScalingArgs:
     def __init__(__self__, *,
                  manual_instance_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 max_instance_count: Optional[pulumi.Input[_builtins.int]] = None,
                  min_instance_count: Optional[pulumi.Input[_builtins.int]] = None,
                  scaling_mode: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] manual_instance_count: Total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
+        :param pulumi.Input[_builtins.int] max_instance_count: Combined maximum number of instances for all revisions receiving traffic.
         :param pulumi.Input[_builtins.int] min_instance_count: Minimum number of instances for the service, to be divided among all revisions receiving traffic.
         :param pulumi.Input[_builtins.str] scaling_mode: The [scaling mode](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#scalingmode) for the service.
                Possible values are: `AUTOMATIC`, `MANUAL`.
         """
         if manual_instance_count is not None:
             pulumi.set(__self__, "manual_instance_count", manual_instance_count)
+        if max_instance_count is not None:
+            pulumi.set(__self__, "max_instance_count", max_instance_count)
         if min_instance_count is not None:
             pulumi.set(__self__, "min_instance_count", min_instance_count)
         if scaling_mode is not None:
@@ -3500,6 +3565,18 @@ class ServiceScalingArgs:
     @manual_instance_count.setter
     def manual_instance_count(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "manual_instance_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxInstanceCount")
+    def max_instance_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Combined maximum number of instances for all revisions receiving traffic.
+        """
+        return pulumi.get(self, "max_instance_count")
+
+    @max_instance_count.setter
+    def max_instance_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_instance_count", value)
 
     @_builtins.property
     @pulumi.getter(name="minInstanceCount")
@@ -5429,8 +5506,7 @@ if not MYPY:
     class ServiceTemplateScalingArgsDict(TypedDict):
         max_instance_count: NotRequired[pulumi.Input[_builtins.int]]
         """
-        Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
-        a default value based on the project's available container instances quota in the region and specified instance size.
+        Combined maximum number of instances for all revisions receiving traffic.
         """
         min_instance_count: NotRequired[pulumi.Input[_builtins.int]]
         """
@@ -5445,8 +5521,7 @@ class ServiceTemplateScalingArgs:
                  max_instance_count: Optional[pulumi.Input[_builtins.int]] = None,
                  min_instance_count: Optional[pulumi.Input[_builtins.int]] = None):
         """
-        :param pulumi.Input[_builtins.int] max_instance_count: Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
-               a default value based on the project's available container instances quota in the region and specified instance size.
+        :param pulumi.Input[_builtins.int] max_instance_count: Combined maximum number of instances for all revisions receiving traffic.
         :param pulumi.Input[_builtins.int] min_instance_count: Minimum number of instances for the service, to be divided among all revisions receiving traffic.
         """
         if max_instance_count is not None:
@@ -5458,8 +5533,7 @@ class ServiceTemplateScalingArgs:
     @pulumi.getter(name="maxInstanceCount")
     def max_instance_count(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
-        a default value based on the project's available container instances quota in the region and specified instance size.
+        Combined maximum number of instances for all revisions receiving traffic.
         """
         return pulumi.get(self, "max_instance_count")
 
@@ -7538,10 +7612,6 @@ if not MYPY:
         """
         Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         """
-        depends_ons: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
-        """
         envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkerPoolTemplateContainerEnvArgsDict']]]]
         """
         List of environment variables to set in the container.
@@ -7574,7 +7644,6 @@ class WorkerPoolTemplateContainerArgs:
                  image: pulumi.Input[_builtins.str],
                  args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  envs: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolTemplateContainerEnvArgs']]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  resources: Optional[pulumi.Input['WorkerPoolTemplateContainerResourcesArgs']] = None,
@@ -7584,7 +7653,6 @@ class WorkerPoolTemplateContainerArgs:
         :param pulumi.Input[_builtins.str] image: URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] commands: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] depends_ons: Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
         :param pulumi.Input[Sequence[pulumi.Input['WorkerPoolTemplateContainerEnvArgs']]] envs: List of environment variables to set in the container.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the container specified as a DNS_LABEL.
@@ -7599,8 +7667,6 @@ class WorkerPoolTemplateContainerArgs:
             pulumi.set(__self__, "args", args)
         if commands is not None:
             pulumi.set(__self__, "commands", commands)
-        if depends_ons is not None:
-            pulumi.set(__self__, "depends_ons", depends_ons)
         if envs is not None:
             pulumi.set(__self__, "envs", envs)
         if name is not None:
@@ -7647,18 +7713,6 @@ class WorkerPoolTemplateContainerArgs:
     @commands.setter
     def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "commands", value)
-
-    @_builtins.property
-    @pulumi.getter(name="dependsOns")
-    def depends_ons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
-        """
-        return pulumi.get(self, "depends_ons")
-
-    @depends_ons.setter
-    def depends_ons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "depends_ons", value)
 
     @_builtins.property
     @pulumi.getter

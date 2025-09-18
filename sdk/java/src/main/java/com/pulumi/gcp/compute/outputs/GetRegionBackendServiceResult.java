@@ -17,6 +17,7 @@ import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceHaPolicy;
 import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceIap;
 import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceLogConfig;
 import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceOutlierDetection;
+import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceParam;
 import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceStrongSessionAffinityCooky;
 import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceSubsetting;
 import java.lang.Boolean;
@@ -59,6 +60,7 @@ public final class GetRegionBackendServiceResult {
     private String name;
     private String network;
     private List<GetRegionBackendServiceOutlierDetection> outlierDetections;
+    private List<GetRegionBackendServiceParam> params;
     private String portName;
     private @Nullable String project;
     private String protocol;
@@ -153,6 +155,9 @@ public final class GetRegionBackendServiceResult {
     public List<GetRegionBackendServiceOutlierDetection> outlierDetections() {
         return this.outlierDetections;
     }
+    public List<GetRegionBackendServiceParam> params() {
+        return this.params;
+    }
     public String portName() {
         return this.portName;
     }
@@ -219,6 +224,7 @@ public final class GetRegionBackendServiceResult {
         private String name;
         private String network;
         private List<GetRegionBackendServiceOutlierDetection> outlierDetections;
+        private List<GetRegionBackendServiceParam> params;
         private String portName;
         private @Nullable String project;
         private String protocol;
@@ -258,6 +264,7 @@ public final class GetRegionBackendServiceResult {
     	      this.name = defaults.name;
     	      this.network = defaults.network;
     	      this.outlierDetections = defaults.outlierDetections;
+    	      this.params = defaults.params;
     	      this.portName = defaults.portName;
     	      this.project = defaults.project;
     	      this.protocol = defaults.protocol;
@@ -518,6 +525,17 @@ public final class GetRegionBackendServiceResult {
             return outlierDetections(List.of(outlierDetections));
         }
         @CustomType.Setter
+        public Builder params(List<GetRegionBackendServiceParam> params) {
+            if (params == null) {
+              throw new MissingRequiredPropertyException("GetRegionBackendServiceResult", "params");
+            }
+            this.params = params;
+            return this;
+        }
+        public Builder params(GetRegionBackendServiceParam... params) {
+            return params(List.of(params));
+        }
+        @CustomType.Setter
         public Builder portName(String portName) {
             if (portName == null) {
               throw new MissingRequiredPropertyException("GetRegionBackendServiceResult", "portName");
@@ -627,6 +645,7 @@ public final class GetRegionBackendServiceResult {
             _resultValue.name = name;
             _resultValue.network = network;
             _resultValue.outlierDetections = outlierDetections;
+            _resultValue.params = params;
             _resultValue.portName = portName;
             _resultValue.project = project;
             _resultValue.protocol = protocol;

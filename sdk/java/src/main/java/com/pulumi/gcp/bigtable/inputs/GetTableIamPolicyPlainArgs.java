@@ -15,19 +15,11 @@ public final class GetTableIamPolicyPlainArgs extends com.pulumi.resources.Invok
 
     public static final GetTableIamPolicyPlainArgs Empty = new GetTableIamPolicyPlainArgs();
 
-    /**
-     * The name or relative resource id of the instance that owns the table.
-     * 
-     */
-    @Import(name="instance", required=true)
-    private String instance;
+    @Import(name="instanceName", required=true)
+    private String instanceName;
 
-    /**
-     * @return The name or relative resource id of the instance that owns the table.
-     * 
-     */
-    public String instance() {
-        return this.instance;
+    public String instanceName() {
+        return this.instanceName;
     }
 
     @Import(name="project")
@@ -55,7 +47,7 @@ public final class GetTableIamPolicyPlainArgs extends com.pulumi.resources.Invok
     private GetTableIamPolicyPlainArgs() {}
 
     private GetTableIamPolicyPlainArgs(GetTableIamPolicyPlainArgs $) {
-        this.instance = $.instance;
+        this.instanceName = $.instanceName;
         this.project = $.project;
         this.table = $.table;
     }
@@ -78,14 +70,8 @@ public final class GetTableIamPolicyPlainArgs extends com.pulumi.resources.Invok
             $ = new GetTableIamPolicyPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param instance The name or relative resource id of the instance that owns the table.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder instance(String instance) {
-            $.instance = instance;
+        public Builder instanceName(String instanceName) {
+            $.instanceName = instanceName;
             return this;
         }
 
@@ -106,8 +92,8 @@ public final class GetTableIamPolicyPlainArgs extends com.pulumi.resources.Invok
         }
 
         public GetTableIamPolicyPlainArgs build() {
-            if ($.instance == null) {
-                throw new MissingRequiredPropertyException("GetTableIamPolicyPlainArgs", "instance");
+            if ($.instanceName == null) {
+                throw new MissingRequiredPropertyException("GetTableIamPolicyPlainArgs", "instanceName");
             }
             if ($.table == null) {
                 throw new MissingRequiredPropertyException("GetTableIamPolicyPlainArgs", "table");

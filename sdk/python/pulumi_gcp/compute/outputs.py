@@ -31,6 +31,7 @@ __all__ = [
     'BackendBucketCdnPolicyNegativeCachingPolicy',
     'BackendBucketIamBindingCondition',
     'BackendBucketIamMemberCondition',
+    'BackendBucketParams',
     'BackendServiceBackend',
     'BackendServiceBackendCustomMetric',
     'BackendServiceCdnPolicy',
@@ -58,6 +59,7 @@ __all__ = [
     'BackendServiceOutlierDetection',
     'BackendServiceOutlierDetectionBaseEjectionTime',
     'BackendServiceOutlierDetectionInterval',
+    'BackendServiceParams',
     'BackendServiceSecuritySettings',
     'BackendServiceSecuritySettingsAwsV4Authentication',
     'BackendServiceStrongSessionAffinityCookie',
@@ -354,6 +356,7 @@ __all__ = [
     'PerInstanceConfigPreservedStateInternalIpIpAddress',
     'PreviewFeatureRolloutOperation',
     'PreviewFeatureRolloutOperationRolloutInput',
+    'PublicDelegatedPrefixPublicDelegatedSubPrefix',
     'RegionAutoscalerAutoscalingPolicy',
     'RegionAutoscalerAutoscalingPolicyCpuUtilization',
     'RegionAutoscalerAutoscalingPolicyLoadBalancingUtilization',
@@ -388,6 +391,7 @@ __all__ = [
     'RegionBackendServiceOutlierDetection',
     'RegionBackendServiceOutlierDetectionBaseEjectionTime',
     'RegionBackendServiceOutlierDetectionInterval',
+    'RegionBackendServiceParams',
     'RegionBackendServiceStrongSessionAffinityCookie',
     'RegionBackendServiceStrongSessionAffinityCookieTtl',
     'RegionBackendServiceSubsetting',
@@ -529,6 +533,9 @@ __all__ = [
     'RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd',
     'RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd',
     'RegionUrlMapDefaultUrlRedirect',
+    'RegionUrlMapHeaderAction',
+    'RegionUrlMapHeaderActionRequestHeadersToAdd',
+    'RegionUrlMapHeaderActionResponseHeadersToAdd',
     'RegionUrlMapHostRule',
     'RegionUrlMapPathMatcher',
     'RegionUrlMapPathMatcherDefaultRouteAction',
@@ -548,6 +555,9 @@ __all__ = [
     'RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd',
     'RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd',
     'RegionUrlMapPathMatcherDefaultUrlRedirect',
+    'RegionUrlMapPathMatcherHeaderAction',
+    'RegionUrlMapPathMatcherHeaderActionRequestHeadersToAdd',
+    'RegionUrlMapPathMatcherHeaderActionResponseHeadersToAdd',
     'RegionUrlMapPathMatcherPathRule',
     'RegionUrlMapPathMatcherPathRuleRouteAction',
     'RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicy',
@@ -828,6 +838,7 @@ __all__ = [
     'GetBackendBucketCdnPolicyBypassCacheOnRequestHeaderResult',
     'GetBackendBucketCdnPolicyCacheKeyPolicyResult',
     'GetBackendBucketCdnPolicyNegativeCachingPolicyResult',
+    'GetBackendBucketParamResult',
     'GetBackendServiceBackendResult',
     'GetBackendServiceBackendCustomMetricResult',
     'GetBackendServiceCdnPolicyResult',
@@ -853,6 +864,7 @@ __all__ = [
     'GetBackendServiceOutlierDetectionResult',
     'GetBackendServiceOutlierDetectionBaseEjectionTimeResult',
     'GetBackendServiceOutlierDetectionIntervalResult',
+    'GetBackendServiceParamResult',
     'GetBackendServiceSecuritySettingResult',
     'GetBackendServiceSecuritySettingAwsV4AuthenticationResult',
     'GetBackendServiceStrongSessionAffinityCookyResult',
@@ -979,6 +991,7 @@ __all__ = [
     'GetRegionBackendServiceOutlierDetectionResult',
     'GetRegionBackendServiceOutlierDetectionBaseEjectionTimeResult',
     'GetRegionBackendServiceOutlierDetectionIntervalResult',
+    'GetRegionBackendServiceParamResult',
     'GetRegionBackendServiceStrongSessionAffinityCookyResult',
     'GetRegionBackendServiceStrongSessionAffinityCookyTtlResult',
     'GetRegionBackendServiceSubsettingResult',
@@ -2266,6 +2279,46 @@ class BackendBucketIamMemberCondition(dict):
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class BackendBucketParams(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceManagerTags":
+            suggest = "resource_manager_tags"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BackendBucketParams. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BackendBucketParams.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BackendBucketParams.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_manager_tags: Optional[Mapping[str, _builtins.str]] = None):
+        """
+        :param Mapping[str, _builtins.str] resource_manager_tags: Resource manager tags to be bound to the backend bucket. Tag keys and values have the
+               same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+               and values are in the format tagValues/456.
+        """
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Resource manager tags to be bound to the backend bucket. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456.
+        """
+        return pulumi.get(self, "resource_manager_tags")
 
 
 @pulumi.output_type
@@ -4380,6 +4433,46 @@ class BackendServiceOutlierDetectionInterval(dict):
         `nanos` field. Must be from 0 to 999,999,999 inclusive.
         """
         return pulumi.get(self, "nanos")
+
+
+@pulumi.output_type
+class BackendServiceParams(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceManagerTags":
+            suggest = "resource_manager_tags"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BackendServiceParams. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BackendServiceParams.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BackendServiceParams.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_manager_tags: Optional[Mapping[str, _builtins.str]] = None):
+        """
+        :param Mapping[str, _builtins.str] resource_manager_tags: Resource manager tags to be bound to the backend service. Tag keys and values have the
+               same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+               and values are in the format tagValues/456.
+        """
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Resource manager tags to be bound to the backend service. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456.
+        """
+        return pulumi.get(self, "resource_manager_tags")
 
 
 @pulumi.output_type
@@ -19197,10 +19290,7 @@ class InstanceTemplateDisk(dict):
         :param _builtins.str mode: The mode in which to attach this disk, either READ_WRITE
                or READ_ONLY. If you are attaching or creating a boot disk, this must
                read-write mode.
-        :param _builtins.int provisioned_iops: Indicates how many IOPS to provision for the disk. This
-               sets the number of I/O operations per second that the disk can handle.
-               Values must be between 10,000 and 120,000. For more details, see the
-               [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+        :param _builtins.int provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. For more details, see the [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk) or the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks) depending on the selected disk_type.
         :param _builtins.int provisioned_throughput: Indicates how much throughput to provision for the disk, in MB/s. This sets the amount of data that can be read or written from the disk per second. Values must greater than or equal to 1. For more details, see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
         :param Mapping[str, _builtins.str] resource_manager_tags: A set of key/value resource manager tag pairs to bind to this disk. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
         :param _builtins.str resource_policies: - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
@@ -19396,10 +19486,7 @@ class InstanceTemplateDisk(dict):
     @pulumi.getter(name="provisionedIops")
     def provisioned_iops(self) -> Optional[_builtins.int]:
         """
-        Indicates how many IOPS to provision for the disk. This
-        sets the number of I/O operations per second that the disk can handle.
-        Values must be between 10,000 and 120,000. For more details, see the
-        [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+        Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. For more details, see the [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk) or the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks) depending on the selected disk_type.
         """
         return pulumi.get(self, "provisioned_iops")
 
@@ -26278,6 +26365,160 @@ class PreviewFeatureRolloutOperationRolloutInput(dict):
 
 
 @pulumi.output_type
+class PublicDelegatedPrefixPublicDelegatedSubPrefix(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allocatablePrefixLength":
+            suggest = "allocatable_prefix_length"
+        elif key == "delegateeProject":
+            suggest = "delegatee_project"
+        elif key == "ipCidrRange":
+            suggest = "ip_cidr_range"
+        elif key == "isAddress":
+            suggest = "is_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PublicDelegatedPrefixPublicDelegatedSubPrefix. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PublicDelegatedPrefixPublicDelegatedSubPrefix.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PublicDelegatedPrefixPublicDelegatedSubPrefix.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allocatable_prefix_length: Optional[_builtins.int] = None,
+                 delegatee_project: Optional[_builtins.str] = None,
+                 description: Optional[_builtins.str] = None,
+                 ip_cidr_range: Optional[_builtins.str] = None,
+                 is_address: Optional[_builtins.bool] = None,
+                 mode: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None,
+                 region: Optional[_builtins.str] = None,
+                 status: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int allocatable_prefix_length: The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
+        :param _builtins.str delegatee_project: Name of the project scoping this PublicDelegatedSubPrefix.
+        :param _builtins.str description: An optional description of this resource.
+        :param _builtins.str ip_cidr_range: The IP address range, in CIDR format, represented by this public delegated prefix.
+        :param _builtins.bool is_address: Whether the sub prefix is delegated for address creation.
+        :param _builtins.str mode: Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
+               EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
+               Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
+        :param _builtins.str name: Name of the resource. The name must be 1-63 characters long, and
+               comply with RFC1035. Specifically, the name must be 1-63 characters
+               long and match the regular expression `a-z?`
+               which means the first character must be a lowercase letter, and all
+               following characters must be a dash, lowercase letter, or digit,
+               except the last character, which cannot be a dash.
+        :param _builtins.str region: A region where the prefix will reside.
+        :param _builtins.str status: The status of the sub public delegated prefix.
+               Possible values are: `INITIALIZING`, `READY_TO_ANNOUNCE`, `ANNOUNCED`, `DELETING`.
+        """
+        if allocatable_prefix_length is not None:
+            pulumi.set(__self__, "allocatable_prefix_length", allocatable_prefix_length)
+        if delegatee_project is not None:
+            pulumi.set(__self__, "delegatee_project", delegatee_project)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if ip_cidr_range is not None:
+            pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
+        if is_address is not None:
+            pulumi.set(__self__, "is_address", is_address)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter(name="allocatablePrefixLength")
+    def allocatable_prefix_length(self) -> Optional[_builtins.int]:
+        """
+        The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
+        """
+        return pulumi.get(self, "allocatable_prefix_length")
+
+    @_builtins.property
+    @pulumi.getter(name="delegateeProject")
+    def delegatee_project(self) -> Optional[_builtins.str]:
+        """
+        Name of the project scoping this PublicDelegatedSubPrefix.
+        """
+        return pulumi.get(self, "delegatee_project")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        An optional description of this resource.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="ipCidrRange")
+    def ip_cidr_range(self) -> Optional[_builtins.str]:
+        """
+        The IP address range, in CIDR format, represented by this public delegated prefix.
+        """
+        return pulumi.get(self, "ip_cidr_range")
+
+    @_builtins.property
+    @pulumi.getter(name="isAddress")
+    def is_address(self) -> Optional[_builtins.bool]:
+        """
+        Whether the sub prefix is delegated for address creation.
+        """
+        return pulumi.get(self, "is_address")
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> Optional[_builtins.str]:
+        """
+        Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
+        EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
+        Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
+        """
+        return pulumi.get(self, "mode")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Name of the resource. The name must be 1-63 characters long, and
+        comply with RFC1035. Specifically, the name must be 1-63 characters
+        long and match the regular expression `a-z?`
+        which means the first character must be a lowercase letter, and all
+        following characters must be a dash, lowercase letter, or digit,
+        except the last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        A region where the prefix will reside.
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the sub public delegated prefix.
+        Possible values are: `INITIALIZING`, `READY_TO_ANNOUNCE`, `ANNOUNCED`, `DELETING`.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
 class RegionAutoscalerAutoscalingPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -29146,6 +29387,46 @@ class RegionBackendServiceOutlierDetectionInterval(dict):
 
 
 @pulumi.output_type
+class RegionBackendServiceParams(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceManagerTags":
+            suggest = "resource_manager_tags"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionBackendServiceParams. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionBackendServiceParams.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionBackendServiceParams.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_manager_tags: Optional[Mapping[str, _builtins.str]] = None):
+        """
+        :param Mapping[str, _builtins.str] resource_manager_tags: Resource manager tags to be bound to the region backend service. Tag keys and values have the
+               same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+               and values are in the format tagValues/456.
+        """
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Resource manager tags to be bound to the region backend service. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+
+@pulumi.output_type
 class RegionBackendServiceStrongSessionAffinityCookie(dict):
     def __init__(__self__, *,
                  name: Optional[_builtins.str] = None,
@@ -31920,10 +32201,7 @@ class RegionInstanceTemplateDisk(dict):
         :param _builtins.str mode: The mode in which to attach this disk, either READ_WRITE
                or READ_ONLY. If you are attaching or creating a boot disk, this must
                read-write mode.
-        :param _builtins.int provisioned_iops: Indicates how many IOPS to provision for the disk. This
-               sets the number of I/O operations per second that the disk can handle.
-               Values must be between 10,000 and 120,000. For more details, see the
-               [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+        :param _builtins.int provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. For more details, see the [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk) or the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks) depending on the selected disk_type.
         :param _builtins.int provisioned_throughput: Indicates how much throughput to provision for the disk, in MB/s. This sets the amount of data that can be read or written from the disk per second. Values must greater than or equal to 1. For more details, see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
         :param Mapping[str, _builtins.str] resource_manager_tags: A set of key/value resource manager tag pairs to bind to this disk. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
         :param _builtins.str resource_policies: - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
@@ -32119,10 +32397,7 @@ class RegionInstanceTemplateDisk(dict):
     @pulumi.getter(name="provisionedIops")
     def provisioned_iops(self) -> Optional[_builtins.int]:
         """
-        Indicates how many IOPS to provision for the disk. This
-        sets the number of I/O operations per second that the disk can handle.
-        Values must be between 10,000 and 120,000. For more details, see the
-        [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+        Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. For more details, see the [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk) or the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks) depending on the selected disk_type.
         """
         return pulumi.get(self, "provisioned_iops")
 
@@ -39603,6 +39878,216 @@ class RegionUrlMapDefaultUrlRedirect(dict):
 
 
 @pulumi.output_type
+class RegionUrlMapHeaderAction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "requestHeadersToAdds":
+            suggest = "request_headers_to_adds"
+        elif key == "requestHeadersToRemoves":
+            suggest = "request_headers_to_removes"
+        elif key == "responseHeadersToAdds":
+            suggest = "response_headers_to_adds"
+        elif key == "responseHeadersToRemoves":
+            suggest = "response_headers_to_removes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionUrlMapHeaderAction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionUrlMapHeaderAction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionUrlMapHeaderAction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 request_headers_to_adds: Optional[Sequence['outputs.RegionUrlMapHeaderActionRequestHeadersToAdd']] = None,
+                 request_headers_to_removes: Optional[Sequence[_builtins.str]] = None,
+                 response_headers_to_adds: Optional[Sequence['outputs.RegionUrlMapHeaderActionResponseHeadersToAdd']] = None,
+                 response_headers_to_removes: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence['RegionUrlMapHeaderActionRequestHeadersToAddArgs'] request_headers_to_adds: Headers to add to a matching request before forwarding the request to the backendService.
+               Structure is documented below.
+        :param Sequence[_builtins.str] request_headers_to_removes: A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
+        :param Sequence['RegionUrlMapHeaderActionResponseHeadersToAddArgs'] response_headers_to_adds: Headers to add the response before sending the response back to the client.
+               Structure is documented below.
+        :param Sequence[_builtins.str] response_headers_to_removes: A list of header names for headers that need to be removed from the response before sending the response back to the client.
+        """
+        if request_headers_to_adds is not None:
+            pulumi.set(__self__, "request_headers_to_adds", request_headers_to_adds)
+        if request_headers_to_removes is not None:
+            pulumi.set(__self__, "request_headers_to_removes", request_headers_to_removes)
+        if response_headers_to_adds is not None:
+            pulumi.set(__self__, "response_headers_to_adds", response_headers_to_adds)
+        if response_headers_to_removes is not None:
+            pulumi.set(__self__, "response_headers_to_removes", response_headers_to_removes)
+
+    @_builtins.property
+    @pulumi.getter(name="requestHeadersToAdds")
+    def request_headers_to_adds(self) -> Optional[Sequence['outputs.RegionUrlMapHeaderActionRequestHeadersToAdd']]:
+        """
+        Headers to add to a matching request before forwarding the request to the backendService.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "request_headers_to_adds")
+
+    @_builtins.property
+    @pulumi.getter(name="requestHeadersToRemoves")
+    def request_headers_to_removes(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
+        """
+        return pulumi.get(self, "request_headers_to_removes")
+
+    @_builtins.property
+    @pulumi.getter(name="responseHeadersToAdds")
+    def response_headers_to_adds(self) -> Optional[Sequence['outputs.RegionUrlMapHeaderActionResponseHeadersToAdd']]:
+        """
+        Headers to add the response before sending the response back to the client.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "response_headers_to_adds")
+
+    @_builtins.property
+    @pulumi.getter(name="responseHeadersToRemoves")
+    def response_headers_to_removes(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        A list of header names for headers that need to be removed from the response before sending the response back to the client.
+        """
+        return pulumi.get(self, "response_headers_to_removes")
+
+
+@pulumi.output_type
+class RegionUrlMapHeaderActionRequestHeadersToAdd(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "headerName":
+            suggest = "header_name"
+        elif key == "headerValue":
+            suggest = "header_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionUrlMapHeaderActionRequestHeadersToAdd. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionUrlMapHeaderActionRequestHeadersToAdd.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionUrlMapHeaderActionRequestHeadersToAdd.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 header_name: Optional[_builtins.str] = None,
+                 header_value: Optional[_builtins.str] = None,
+                 replace: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str header_name: The name of the header.
+        :param _builtins.str header_value: The value of the header to add.
+        :param _builtins.bool replace: If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+               The default value is false.
+        """
+        if header_name is not None:
+            pulumi.set(__self__, "header_name", header_name)
+        if header_value is not None:
+            pulumi.set(__self__, "header_value", header_value)
+        if replace is not None:
+            pulumi.set(__self__, "replace", replace)
+
+    @_builtins.property
+    @pulumi.getter(name="headerName")
+    def header_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the header.
+        """
+        return pulumi.get(self, "header_name")
+
+    @_builtins.property
+    @pulumi.getter(name="headerValue")
+    def header_value(self) -> Optional[_builtins.str]:
+        """
+        The value of the header to add.
+        """
+        return pulumi.get(self, "header_value")
+
+    @_builtins.property
+    @pulumi.getter
+    def replace(self) -> Optional[_builtins.bool]:
+        """
+        If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+        The default value is false.
+        """
+        return pulumi.get(self, "replace")
+
+
+@pulumi.output_type
+class RegionUrlMapHeaderActionResponseHeadersToAdd(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "headerName":
+            suggest = "header_name"
+        elif key == "headerValue":
+            suggest = "header_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionUrlMapHeaderActionResponseHeadersToAdd. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionUrlMapHeaderActionResponseHeadersToAdd.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionUrlMapHeaderActionResponseHeadersToAdd.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 header_name: Optional[_builtins.str] = None,
+                 header_value: Optional[_builtins.str] = None,
+                 replace: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str header_name: The name of the header.
+        :param _builtins.str header_value: The value of the header to add.
+        :param _builtins.bool replace: If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+               The default value is false.
+        """
+        if header_name is not None:
+            pulumi.set(__self__, "header_name", header_name)
+        if header_value is not None:
+            pulumi.set(__self__, "header_value", header_value)
+        if replace is not None:
+            pulumi.set(__self__, "replace", replace)
+
+    @_builtins.property
+    @pulumi.getter(name="headerName")
+    def header_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the header.
+        """
+        return pulumi.get(self, "header_name")
+
+    @_builtins.property
+    @pulumi.getter(name="headerValue")
+    def header_value(self) -> Optional[_builtins.str]:
+        """
+        The value of the header to add.
+        """
+        return pulumi.get(self, "header_value")
+
+    @_builtins.property
+    @pulumi.getter
+    def replace(self) -> Optional[_builtins.bool]:
+        """
+        If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+        The default value is false.
+        """
+        return pulumi.get(self, "replace")
+
+
+@pulumi.output_type
 class RegionUrlMapHostRule(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -39681,6 +40166,8 @@ class RegionUrlMapPathMatcher(dict):
             suggest = "default_service"
         elif key == "defaultUrlRedirect":
             suggest = "default_url_redirect"
+        elif key == "headerAction":
+            suggest = "header_action"
         elif key == "pathRules":
             suggest = "path_rules"
         elif key == "routeRules":
@@ -39703,6 +40190,7 @@ class RegionUrlMapPathMatcher(dict):
                  default_service: Optional[_builtins.str] = None,
                  default_url_redirect: Optional['outputs.RegionUrlMapPathMatcherDefaultUrlRedirect'] = None,
                  description: Optional[_builtins.str] = None,
+                 header_action: Optional['outputs.RegionUrlMapPathMatcherHeaderAction'] = None,
                  path_rules: Optional[Sequence['outputs.RegionUrlMapPathMatcherPathRule']] = None,
                  route_rules: Optional[Sequence['outputs.RegionUrlMapPathMatcherRouteRule']] = None):
         """
@@ -39721,6 +40209,11 @@ class RegionUrlMapPathMatcher(dict):
                defaultRouteAction must not be set.
                Structure is documented below.
         :param _builtins.str description: An optional description of this resource.
+        :param 'RegionUrlMapPathMatcherHeaderActionArgs' header_action: Specifies changes to request and response headers that need to take effect for the selected backendService.
+               headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+               headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+               Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+               Structure is documented below.
         :param Sequence['RegionUrlMapPathMatcherPathRuleArgs'] path_rules: The list of path rules. Use this list instead of routeRules when routing based
                on simple path matching is all that's required. The order by which path rules
                are specified does not matter. Matches are always done on the longest-path-first
@@ -39745,6 +40238,8 @@ class RegionUrlMapPathMatcher(dict):
             pulumi.set(__self__, "default_url_redirect", default_url_redirect)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if header_action is not None:
+            pulumi.set(__self__, "header_action", header_action)
         if path_rules is not None:
             pulumi.set(__self__, "path_rules", path_rules)
         if route_rules is not None:
@@ -39799,6 +40294,18 @@ class RegionUrlMapPathMatcher(dict):
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="headerAction")
+    def header_action(self) -> Optional['outputs.RegionUrlMapPathMatcherHeaderAction']:
+        """
+        Specifies changes to request and response headers that need to take effect for the selected backendService.
+        headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+        headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+        Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "header_action")
 
     @_builtins.property
     @pulumi.getter(name="pathRules")
@@ -41089,6 +41596,216 @@ class RegionUrlMapPathMatcherDefaultUrlRedirect(dict):
         the request method will be retained.
         """
         return pulumi.get(self, "redirect_response_code")
+
+
+@pulumi.output_type
+class RegionUrlMapPathMatcherHeaderAction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "requestHeadersToAdds":
+            suggest = "request_headers_to_adds"
+        elif key == "requestHeadersToRemoves":
+            suggest = "request_headers_to_removes"
+        elif key == "responseHeadersToAdds":
+            suggest = "response_headers_to_adds"
+        elif key == "responseHeadersToRemoves":
+            suggest = "response_headers_to_removes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionUrlMapPathMatcherHeaderAction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionUrlMapPathMatcherHeaderAction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionUrlMapPathMatcherHeaderAction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 request_headers_to_adds: Optional[Sequence['outputs.RegionUrlMapPathMatcherHeaderActionRequestHeadersToAdd']] = None,
+                 request_headers_to_removes: Optional[Sequence[_builtins.str]] = None,
+                 response_headers_to_adds: Optional[Sequence['outputs.RegionUrlMapPathMatcherHeaderActionResponseHeadersToAdd']] = None,
+                 response_headers_to_removes: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence['RegionUrlMapPathMatcherHeaderActionRequestHeadersToAddArgs'] request_headers_to_adds: Headers to add to a matching request before forwarding the request to the backendService.
+               Structure is documented below.
+        :param Sequence[_builtins.str] request_headers_to_removes: A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
+        :param Sequence['RegionUrlMapPathMatcherHeaderActionResponseHeadersToAddArgs'] response_headers_to_adds: Headers to add the response before sending the response back to the client.
+               Structure is documented below.
+        :param Sequence[_builtins.str] response_headers_to_removes: A list of header names for headers that need to be removed from the response before sending the response back to the client.
+        """
+        if request_headers_to_adds is not None:
+            pulumi.set(__self__, "request_headers_to_adds", request_headers_to_adds)
+        if request_headers_to_removes is not None:
+            pulumi.set(__self__, "request_headers_to_removes", request_headers_to_removes)
+        if response_headers_to_adds is not None:
+            pulumi.set(__self__, "response_headers_to_adds", response_headers_to_adds)
+        if response_headers_to_removes is not None:
+            pulumi.set(__self__, "response_headers_to_removes", response_headers_to_removes)
+
+    @_builtins.property
+    @pulumi.getter(name="requestHeadersToAdds")
+    def request_headers_to_adds(self) -> Optional[Sequence['outputs.RegionUrlMapPathMatcherHeaderActionRequestHeadersToAdd']]:
+        """
+        Headers to add to a matching request before forwarding the request to the backendService.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "request_headers_to_adds")
+
+    @_builtins.property
+    @pulumi.getter(name="requestHeadersToRemoves")
+    def request_headers_to_removes(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
+        """
+        return pulumi.get(self, "request_headers_to_removes")
+
+    @_builtins.property
+    @pulumi.getter(name="responseHeadersToAdds")
+    def response_headers_to_adds(self) -> Optional[Sequence['outputs.RegionUrlMapPathMatcherHeaderActionResponseHeadersToAdd']]:
+        """
+        Headers to add the response before sending the response back to the client.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "response_headers_to_adds")
+
+    @_builtins.property
+    @pulumi.getter(name="responseHeadersToRemoves")
+    def response_headers_to_removes(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        A list of header names for headers that need to be removed from the response before sending the response back to the client.
+        """
+        return pulumi.get(self, "response_headers_to_removes")
+
+
+@pulumi.output_type
+class RegionUrlMapPathMatcherHeaderActionRequestHeadersToAdd(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "headerName":
+            suggest = "header_name"
+        elif key == "headerValue":
+            suggest = "header_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionUrlMapPathMatcherHeaderActionRequestHeadersToAdd. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionUrlMapPathMatcherHeaderActionRequestHeadersToAdd.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionUrlMapPathMatcherHeaderActionRequestHeadersToAdd.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 header_name: Optional[_builtins.str] = None,
+                 header_value: Optional[_builtins.str] = None,
+                 replace: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str header_name: The name of the header.
+        :param _builtins.str header_value: The value of the header to add.
+        :param _builtins.bool replace: If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+               The default value is false.
+        """
+        if header_name is not None:
+            pulumi.set(__self__, "header_name", header_name)
+        if header_value is not None:
+            pulumi.set(__self__, "header_value", header_value)
+        if replace is not None:
+            pulumi.set(__self__, "replace", replace)
+
+    @_builtins.property
+    @pulumi.getter(name="headerName")
+    def header_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the header.
+        """
+        return pulumi.get(self, "header_name")
+
+    @_builtins.property
+    @pulumi.getter(name="headerValue")
+    def header_value(self) -> Optional[_builtins.str]:
+        """
+        The value of the header to add.
+        """
+        return pulumi.get(self, "header_value")
+
+    @_builtins.property
+    @pulumi.getter
+    def replace(self) -> Optional[_builtins.bool]:
+        """
+        If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+        The default value is false.
+        """
+        return pulumi.get(self, "replace")
+
+
+@pulumi.output_type
+class RegionUrlMapPathMatcherHeaderActionResponseHeadersToAdd(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "headerName":
+            suggest = "header_name"
+        elif key == "headerValue":
+            suggest = "header_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionUrlMapPathMatcherHeaderActionResponseHeadersToAdd. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionUrlMapPathMatcherHeaderActionResponseHeadersToAdd.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionUrlMapPathMatcherHeaderActionResponseHeadersToAdd.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 header_name: Optional[_builtins.str] = None,
+                 header_value: Optional[_builtins.str] = None,
+                 replace: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str header_name: The name of the header.
+        :param _builtins.str header_value: The value of the header to add.
+        :param _builtins.bool replace: If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+               The default value is false.
+        """
+        if header_name is not None:
+            pulumi.set(__self__, "header_name", header_name)
+        if header_value is not None:
+            pulumi.set(__self__, "header_value", header_value)
+        if replace is not None:
+            pulumi.set(__self__, "replace", replace)
+
+    @_builtins.property
+    @pulumi.getter(name="headerName")
+    def header_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the header.
+        """
+        return pulumi.get(self, "header_name")
+
+    @_builtins.property
+    @pulumi.getter(name="headerValue")
+    def header_value(self) -> Optional[_builtins.str]:
+        """
+        The value of the header to add.
+        """
+        return pulumi.get(self, "header_value")
+
+    @_builtins.property
+    @pulumi.getter
+    def replace(self) -> Optional[_builtins.bool]:
+        """
+        If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+        The default value is false.
+        """
+        return pulumi.get(self, "replace")
 
 
 @pulumi.output_type
@@ -61001,6 +61718,28 @@ class GetBackendBucketCdnPolicyNegativeCachingPolicyResult(dict):
 
 
 @pulumi.output_type
+class GetBackendBucketParamResult(dict):
+    def __init__(__self__, *,
+                 resource_manager_tags: Mapping[str, _builtins.str]):
+        """
+        :param Mapping[str, _builtins.str] resource_manager_tags: Resource manager tags to be bound to the backend bucket. Tag keys and values have the
+               same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+               and values are in the format tagValues/456.
+        """
+        pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Mapping[str, _builtins.str]:
+        """
+        Resource manager tags to be bound to the backend bucket. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+
+@pulumi.output_type
 class GetBackendServiceBackendResult(dict):
     def __init__(__self__, *,
                  balancing_mode: _builtins.str,
@@ -62521,6 +63260,28 @@ class GetBackendServiceOutlierDetectionIntervalResult(dict):
         inclusive.
         """
         return pulumi.get(self, "seconds")
+
+
+@pulumi.output_type
+class GetBackendServiceParamResult(dict):
+    def __init__(__self__, *,
+                 resource_manager_tags: Mapping[str, _builtins.str]):
+        """
+        :param Mapping[str, _builtins.str] resource_manager_tags: Resource manager tags to be bound to the backend service. Tag keys and values have the
+               same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+               and values are in the format tagValues/456.
+        """
+        pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Mapping[str, _builtins.str]:
+        """
+        Resource manager tags to be bound to the backend service. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456.
+        """
+        return pulumi.get(self, "resource_manager_tags")
 
 
 @pulumi.output_type
@@ -70692,6 +71453,28 @@ class GetRegionBackendServiceOutlierDetectionIntervalResult(dict):
         inclusive.
         """
         return pulumi.get(self, "seconds")
+
+
+@pulumi.output_type
+class GetRegionBackendServiceParamResult(dict):
+    def __init__(__self__, *,
+                 resource_manager_tags: Mapping[str, _builtins.str]):
+        """
+        :param Mapping[str, _builtins.str] resource_manager_tags: Resource manager tags to be bound to the region backend service. Tag keys and values have the
+               same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+               and values are in the format tagValues/456.
+        """
+        pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Mapping[str, _builtins.str]:
+        """
+        Resource manager tags to be bound to the region backend service. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456.
+        """
+        return pulumi.get(self, "resource_manager_tags")
 
 
 @pulumi.output_type

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -1417,6 +1417,8 @@ type DatabaseInstanceSettings struct {
 	EnableDataplexIntegration *bool `pulumi:"enableDataplexIntegration"`
 	// Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
 	EnableGoogleMlIntegration *bool `pulumi:"enableGoogleMlIntegration"`
+	// Config used to determine the final backup settings for the instance
+	FinalBackupConfig *DatabaseInstanceSettingsFinalBackupConfig `pulumi:"finalBackupConfig"`
 	// Configuration of Query Insights.
 	InsightsConfig     *DatabaseInstanceSettingsInsightsConfig     `pulumi:"insightsConfig"`
 	IpConfiguration    *DatabaseInstanceSettingsIpConfiguration    `pulumi:"ipConfiguration"`
@@ -1505,6 +1507,8 @@ type DatabaseInstanceSettingsArgs struct {
 	EnableDataplexIntegration pulumi.BoolPtrInput `pulumi:"enableDataplexIntegration"`
 	// Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
 	EnableGoogleMlIntegration pulumi.BoolPtrInput `pulumi:"enableGoogleMlIntegration"`
+	// Config used to determine the final backup settings for the instance
+	FinalBackupConfig DatabaseInstanceSettingsFinalBackupConfigPtrInput `pulumi:"finalBackupConfig"`
 	// Configuration of Query Insights.
 	InsightsConfig     DatabaseInstanceSettingsInsightsConfigPtrInput     `pulumi:"insightsConfig"`
 	IpConfiguration    DatabaseInstanceSettingsIpConfigurationPtrInput    `pulumi:"ipConfiguration"`
@@ -1732,6 +1736,13 @@ func (o DatabaseInstanceSettingsOutput) EnableDataplexIntegration() pulumi.BoolP
 // Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
 func (o DatabaseInstanceSettingsOutput) EnableGoogleMlIntegration() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *bool { return v.EnableGoogleMlIntegration }).(pulumi.BoolPtrOutput)
+}
+
+// Config used to determine the final backup settings for the instance
+func (o DatabaseInstanceSettingsOutput) FinalBackupConfig() DatabaseInstanceSettingsFinalBackupConfigPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettings) *DatabaseInstanceSettingsFinalBackupConfig {
+		return v.FinalBackupConfig
+	}).(DatabaseInstanceSettingsFinalBackupConfigPtrOutput)
 }
 
 // Configuration of Query Insights.
@@ -2050,6 +2061,16 @@ func (o DatabaseInstanceSettingsPtrOutput) EnableGoogleMlIntegration() pulumi.Bo
 		}
 		return v.EnableGoogleMlIntegration
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Config used to determine the final backup settings for the instance
+func (o DatabaseInstanceSettingsPtrOutput) FinalBackupConfig() DatabaseInstanceSettingsFinalBackupConfigPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettings) *DatabaseInstanceSettingsFinalBackupConfig {
+		if v == nil {
+			return nil
+		}
+		return v.FinalBackupConfig
+	}).(DatabaseInstanceSettingsFinalBackupConfigPtrOutput)
 }
 
 // Configuration of Query Insights.
@@ -3506,6 +3527,162 @@ func (o DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput) Time() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+type DatabaseInstanceSettingsFinalBackupConfig struct {
+	// True if enabled final backup.
+	Enabled *bool `pulumi:"enabled"`
+	// The number of days we retain the final backup after instance deletion. The valid range is between 1 and 365. For instances managed by BackupDR, the valid range is between 1 day and 99 years.
+	RetentionDays *int `pulumi:"retentionDays"`
+}
+
+// DatabaseInstanceSettingsFinalBackupConfigInput is an input type that accepts DatabaseInstanceSettingsFinalBackupConfigArgs and DatabaseInstanceSettingsFinalBackupConfigOutput values.
+// You can construct a concrete instance of `DatabaseInstanceSettingsFinalBackupConfigInput` via:
+//
+//	DatabaseInstanceSettingsFinalBackupConfigArgs{...}
+type DatabaseInstanceSettingsFinalBackupConfigInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceSettingsFinalBackupConfigOutput() DatabaseInstanceSettingsFinalBackupConfigOutput
+	ToDatabaseInstanceSettingsFinalBackupConfigOutputWithContext(context.Context) DatabaseInstanceSettingsFinalBackupConfigOutput
+}
+
+type DatabaseInstanceSettingsFinalBackupConfigArgs struct {
+	// True if enabled final backup.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The number of days we retain the final backup after instance deletion. The valid range is between 1 and 365. For instances managed by BackupDR, the valid range is between 1 day and 99 years.
+	RetentionDays pulumi.IntPtrInput `pulumi:"retentionDays"`
+}
+
+func (DatabaseInstanceSettingsFinalBackupConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceSettingsFinalBackupConfig)(nil)).Elem()
+}
+
+func (i DatabaseInstanceSettingsFinalBackupConfigArgs) ToDatabaseInstanceSettingsFinalBackupConfigOutput() DatabaseInstanceSettingsFinalBackupConfigOutput {
+	return i.ToDatabaseInstanceSettingsFinalBackupConfigOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceSettingsFinalBackupConfigArgs) ToDatabaseInstanceSettingsFinalBackupConfigOutputWithContext(ctx context.Context) DatabaseInstanceSettingsFinalBackupConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsFinalBackupConfigOutput)
+}
+
+func (i DatabaseInstanceSettingsFinalBackupConfigArgs) ToDatabaseInstanceSettingsFinalBackupConfigPtrOutput() DatabaseInstanceSettingsFinalBackupConfigPtrOutput {
+	return i.ToDatabaseInstanceSettingsFinalBackupConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceSettingsFinalBackupConfigArgs) ToDatabaseInstanceSettingsFinalBackupConfigPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsFinalBackupConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsFinalBackupConfigOutput).ToDatabaseInstanceSettingsFinalBackupConfigPtrOutputWithContext(ctx)
+}
+
+// DatabaseInstanceSettingsFinalBackupConfigPtrInput is an input type that accepts DatabaseInstanceSettingsFinalBackupConfigArgs, DatabaseInstanceSettingsFinalBackupConfigPtr and DatabaseInstanceSettingsFinalBackupConfigPtrOutput values.
+// You can construct a concrete instance of `DatabaseInstanceSettingsFinalBackupConfigPtrInput` via:
+//
+//	        DatabaseInstanceSettingsFinalBackupConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatabaseInstanceSettingsFinalBackupConfigPtrInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceSettingsFinalBackupConfigPtrOutput() DatabaseInstanceSettingsFinalBackupConfigPtrOutput
+	ToDatabaseInstanceSettingsFinalBackupConfigPtrOutputWithContext(context.Context) DatabaseInstanceSettingsFinalBackupConfigPtrOutput
+}
+
+type databaseInstanceSettingsFinalBackupConfigPtrType DatabaseInstanceSettingsFinalBackupConfigArgs
+
+func DatabaseInstanceSettingsFinalBackupConfigPtr(v *DatabaseInstanceSettingsFinalBackupConfigArgs) DatabaseInstanceSettingsFinalBackupConfigPtrInput {
+	return (*databaseInstanceSettingsFinalBackupConfigPtrType)(v)
+}
+
+func (*databaseInstanceSettingsFinalBackupConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseInstanceSettingsFinalBackupConfig)(nil)).Elem()
+}
+
+func (i *databaseInstanceSettingsFinalBackupConfigPtrType) ToDatabaseInstanceSettingsFinalBackupConfigPtrOutput() DatabaseInstanceSettingsFinalBackupConfigPtrOutput {
+	return i.ToDatabaseInstanceSettingsFinalBackupConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *databaseInstanceSettingsFinalBackupConfigPtrType) ToDatabaseInstanceSettingsFinalBackupConfigPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsFinalBackupConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsFinalBackupConfigPtrOutput)
+}
+
+type DatabaseInstanceSettingsFinalBackupConfigOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceSettingsFinalBackupConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceSettingsFinalBackupConfig)(nil)).Elem()
+}
+
+func (o DatabaseInstanceSettingsFinalBackupConfigOutput) ToDatabaseInstanceSettingsFinalBackupConfigOutput() DatabaseInstanceSettingsFinalBackupConfigOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsFinalBackupConfigOutput) ToDatabaseInstanceSettingsFinalBackupConfigOutputWithContext(ctx context.Context) DatabaseInstanceSettingsFinalBackupConfigOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsFinalBackupConfigOutput) ToDatabaseInstanceSettingsFinalBackupConfigPtrOutput() DatabaseInstanceSettingsFinalBackupConfigPtrOutput {
+	return o.ToDatabaseInstanceSettingsFinalBackupConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseInstanceSettingsFinalBackupConfigOutput) ToDatabaseInstanceSettingsFinalBackupConfigPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsFinalBackupConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseInstanceSettingsFinalBackupConfig) *DatabaseInstanceSettingsFinalBackupConfig {
+		return &v
+	}).(DatabaseInstanceSettingsFinalBackupConfigPtrOutput)
+}
+
+// True if enabled final backup.
+func (o DatabaseInstanceSettingsFinalBackupConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsFinalBackupConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The number of days we retain the final backup after instance deletion. The valid range is between 1 and 365. For instances managed by BackupDR, the valid range is between 1 day and 99 years.
+func (o DatabaseInstanceSettingsFinalBackupConfigOutput) RetentionDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsFinalBackupConfig) *int { return v.RetentionDays }).(pulumi.IntPtrOutput)
+}
+
+type DatabaseInstanceSettingsFinalBackupConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceSettingsFinalBackupConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseInstanceSettingsFinalBackupConfig)(nil)).Elem()
+}
+
+func (o DatabaseInstanceSettingsFinalBackupConfigPtrOutput) ToDatabaseInstanceSettingsFinalBackupConfigPtrOutput() DatabaseInstanceSettingsFinalBackupConfigPtrOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsFinalBackupConfigPtrOutput) ToDatabaseInstanceSettingsFinalBackupConfigPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsFinalBackupConfigPtrOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsFinalBackupConfigPtrOutput) Elem() DatabaseInstanceSettingsFinalBackupConfigOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsFinalBackupConfig) DatabaseInstanceSettingsFinalBackupConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseInstanceSettingsFinalBackupConfig
+		return ret
+	}).(DatabaseInstanceSettingsFinalBackupConfigOutput)
+}
+
+// True if enabled final backup.
+func (o DatabaseInstanceSettingsFinalBackupConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsFinalBackupConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The number of days we retain the final backup after instance deletion. The valid range is between 1 and 365. For instances managed by BackupDR, the valid range is between 1 day and 99 years.
+func (o DatabaseInstanceSettingsFinalBackupConfigPtrOutput) RetentionDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsFinalBackupConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetentionDays
+	}).(pulumi.IntPtrOutput)
+}
+
 type DatabaseInstanceSettingsInsightsConfig struct {
 	// True if Query Insights feature is enabled.
 	QueryInsightsEnabled *bool `pulumi:"queryInsightsEnabled"`
@@ -4306,8 +4483,14 @@ func (o DatabaseInstanceSettingsIpConfigurationPscConfigArrayOutput) Index(i pul
 type DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection struct {
 	// "The consumer network of this consumer endpoint. This must be a resource path that includes both the host project and the network name. For example, `projects/project1/global/networks/network1`. The consumer host project of this network might be different from the consumer service project."
 	ConsumerNetwork string `pulumi:"consumerNetwork"`
+	// (Output) The connection policy status of the consumer network.
+	ConsumerNetworkStatus *string `pulumi:"consumerNetworkStatus"`
 	// The project ID of consumer service project of this consumer endpoint.
 	ConsumerServiceProjectId *string `pulumi:"consumerServiceProjectId"`
+	// (Output) The IP address of the consumer endpoint.
+	IpAddress *string `pulumi:"ipAddress"`
+	// (Output) The connection status of the consumer endpoint.
+	Status *string `pulumi:"status"`
 }
 
 // DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionInput is an input type that accepts DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs and DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionOutput values.
@@ -4324,8 +4507,14 @@ type DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionInput inte
 type DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs struct {
 	// "The consumer network of this consumer endpoint. This must be a resource path that includes both the host project and the network name. For example, `projects/project1/global/networks/network1`. The consumer host project of this network might be different from the consumer service project."
 	ConsumerNetwork pulumi.StringInput `pulumi:"consumerNetwork"`
+	// (Output) The connection policy status of the consumer network.
+	ConsumerNetworkStatus pulumi.StringPtrInput `pulumi:"consumerNetworkStatus"`
 	// The project ID of consumer service project of this consumer endpoint.
 	ConsumerServiceProjectId pulumi.StringPtrInput `pulumi:"consumerServiceProjectId"`
+	// (Output) The IP address of the consumer endpoint.
+	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
+	// (Output) The connection status of the consumer endpoint.
+	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
 func (DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs) ElementType() reflect.Type {
@@ -4386,11 +4575,28 @@ func (o DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionOutput)
 	}).(pulumi.StringOutput)
 }
 
+// (Output) The connection policy status of the consumer network.
+func (o DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionOutput) ConsumerNetworkStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection) *string {
+		return v.ConsumerNetworkStatus
+	}).(pulumi.StringPtrOutput)
+}
+
 // The project ID of consumer service project of this consumer endpoint.
 func (o DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionOutput) ConsumerServiceProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection) *string {
 		return v.ConsumerServiceProjectId
 	}).(pulumi.StringPtrOutput)
+}
+
+// (Output) The IP address of the consumer endpoint.
+func (o DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+}
+
+// (Output) The connection status of the consumer endpoint.
+func (o DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
 type DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArrayOutput struct{ *pulumi.OutputState }
@@ -6688,6 +6894,8 @@ type GetDatabaseInstanceSetting struct {
 	EnableDataplexIntegration bool `pulumi:"enableDataplexIntegration"`
 	// Enables Vertex AI Integration.
 	EnableGoogleMlIntegration bool `pulumi:"enableGoogleMlIntegration"`
+	// Config used to determine the final backup settings for the instance
+	FinalBackupConfigs []GetDatabaseInstanceSettingFinalBackupConfig `pulumi:"finalBackupConfigs"`
 	// Configuration of Query Insights.
 	InsightsConfigs     []GetDatabaseInstanceSettingInsightsConfig     `pulumi:"insightsConfigs"`
 	IpConfigurations    []GetDatabaseInstanceSettingIpConfiguration    `pulumi:"ipConfigurations"`
@@ -6770,6 +6978,8 @@ type GetDatabaseInstanceSettingArgs struct {
 	EnableDataplexIntegration pulumi.BoolInput `pulumi:"enableDataplexIntegration"`
 	// Enables Vertex AI Integration.
 	EnableGoogleMlIntegration pulumi.BoolInput `pulumi:"enableGoogleMlIntegration"`
+	// Config used to determine the final backup settings for the instance
+	FinalBackupConfigs GetDatabaseInstanceSettingFinalBackupConfigArrayInput `pulumi:"finalBackupConfigs"`
 	// Configuration of Query Insights.
 	InsightsConfigs     GetDatabaseInstanceSettingInsightsConfigArrayInput     `pulumi:"insightsConfigs"`
 	IpConfigurations    GetDatabaseInstanceSettingIpConfigurationArrayInput    `pulumi:"ipConfigurations"`
@@ -6967,6 +7177,13 @@ func (o GetDatabaseInstanceSettingOutput) EnableDataplexIntegration() pulumi.Boo
 // Enables Vertex AI Integration.
 func (o GetDatabaseInstanceSettingOutput) EnableGoogleMlIntegration() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) bool { return v.EnableGoogleMlIntegration }).(pulumi.BoolOutput)
+}
+
+// Config used to determine the final backup settings for the instance
+func (o GetDatabaseInstanceSettingOutput) FinalBackupConfigs() GetDatabaseInstanceSettingFinalBackupConfigArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSetting) []GetDatabaseInstanceSettingFinalBackupConfig {
+		return v.FinalBackupConfigs
+	}).(GetDatabaseInstanceSettingFinalBackupConfigArrayOutput)
 }
 
 // Configuration of Query Insights.
@@ -8043,6 +8260,112 @@ func (o GetDatabaseInstanceSettingDenyMaintenancePeriodArrayOutput) Index(i pulu
 	}).(GetDatabaseInstanceSettingDenyMaintenancePeriodOutput)
 }
 
+type GetDatabaseInstanceSettingFinalBackupConfig struct {
+	// When this parameter is set to true, the final backup is enabled for the instance
+	Enabled bool `pulumi:"enabled"`
+	// The number of days to retain the final backup after the instance deletion. The valid range is between 1 and 365. For instances managed by BackupDR, the valid range is between 1 day and 99 years. The final backup will be purged at (time_of_instance_deletion + retention_days).
+	RetentionDays int `pulumi:"retentionDays"`
+}
+
+// GetDatabaseInstanceSettingFinalBackupConfigInput is an input type that accepts GetDatabaseInstanceSettingFinalBackupConfigArgs and GetDatabaseInstanceSettingFinalBackupConfigOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceSettingFinalBackupConfigInput` via:
+//
+//	GetDatabaseInstanceSettingFinalBackupConfigArgs{...}
+type GetDatabaseInstanceSettingFinalBackupConfigInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceSettingFinalBackupConfigOutput() GetDatabaseInstanceSettingFinalBackupConfigOutput
+	ToGetDatabaseInstanceSettingFinalBackupConfigOutputWithContext(context.Context) GetDatabaseInstanceSettingFinalBackupConfigOutput
+}
+
+type GetDatabaseInstanceSettingFinalBackupConfigArgs struct {
+	// When this parameter is set to true, the final backup is enabled for the instance
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The number of days to retain the final backup after the instance deletion. The valid range is between 1 and 365. For instances managed by BackupDR, the valid range is between 1 day and 99 years. The final backup will be purged at (time_of_instance_deletion + retention_days).
+	RetentionDays pulumi.IntInput `pulumi:"retentionDays"`
+}
+
+func (GetDatabaseInstanceSettingFinalBackupConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceSettingFinalBackupConfig)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceSettingFinalBackupConfigArgs) ToGetDatabaseInstanceSettingFinalBackupConfigOutput() GetDatabaseInstanceSettingFinalBackupConfigOutput {
+	return i.ToGetDatabaseInstanceSettingFinalBackupConfigOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceSettingFinalBackupConfigArgs) ToGetDatabaseInstanceSettingFinalBackupConfigOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingFinalBackupConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingFinalBackupConfigOutput)
+}
+
+// GetDatabaseInstanceSettingFinalBackupConfigArrayInput is an input type that accepts GetDatabaseInstanceSettingFinalBackupConfigArray and GetDatabaseInstanceSettingFinalBackupConfigArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceSettingFinalBackupConfigArrayInput` via:
+//
+//	GetDatabaseInstanceSettingFinalBackupConfigArray{ GetDatabaseInstanceSettingFinalBackupConfigArgs{...} }
+type GetDatabaseInstanceSettingFinalBackupConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceSettingFinalBackupConfigArrayOutput() GetDatabaseInstanceSettingFinalBackupConfigArrayOutput
+	ToGetDatabaseInstanceSettingFinalBackupConfigArrayOutputWithContext(context.Context) GetDatabaseInstanceSettingFinalBackupConfigArrayOutput
+}
+
+type GetDatabaseInstanceSettingFinalBackupConfigArray []GetDatabaseInstanceSettingFinalBackupConfigInput
+
+func (GetDatabaseInstanceSettingFinalBackupConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceSettingFinalBackupConfig)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceSettingFinalBackupConfigArray) ToGetDatabaseInstanceSettingFinalBackupConfigArrayOutput() GetDatabaseInstanceSettingFinalBackupConfigArrayOutput {
+	return i.ToGetDatabaseInstanceSettingFinalBackupConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceSettingFinalBackupConfigArray) ToGetDatabaseInstanceSettingFinalBackupConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingFinalBackupConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingFinalBackupConfigArrayOutput)
+}
+
+type GetDatabaseInstanceSettingFinalBackupConfigOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceSettingFinalBackupConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceSettingFinalBackupConfig)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceSettingFinalBackupConfigOutput) ToGetDatabaseInstanceSettingFinalBackupConfigOutput() GetDatabaseInstanceSettingFinalBackupConfigOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingFinalBackupConfigOutput) ToGetDatabaseInstanceSettingFinalBackupConfigOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingFinalBackupConfigOutput {
+	return o
+}
+
+// When this parameter is set to true, the final backup is enabled for the instance
+func (o GetDatabaseInstanceSettingFinalBackupConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingFinalBackupConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The number of days to retain the final backup after the instance deletion. The valid range is between 1 and 365. For instances managed by BackupDR, the valid range is between 1 day and 99 years. The final backup will be purged at (time_of_instance_deletion + retention_days).
+func (o GetDatabaseInstanceSettingFinalBackupConfigOutput) RetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingFinalBackupConfig) int { return v.RetentionDays }).(pulumi.IntOutput)
+}
+
+type GetDatabaseInstanceSettingFinalBackupConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceSettingFinalBackupConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceSettingFinalBackupConfig)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceSettingFinalBackupConfigArrayOutput) ToGetDatabaseInstanceSettingFinalBackupConfigArrayOutput() GetDatabaseInstanceSettingFinalBackupConfigArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingFinalBackupConfigArrayOutput) ToGetDatabaseInstanceSettingFinalBackupConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingFinalBackupConfigArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingFinalBackupConfigArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceSettingFinalBackupConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstanceSettingFinalBackupConfig {
+		return vs[0].([]GetDatabaseInstanceSettingFinalBackupConfig)[vs[1].(int)]
+	}).(GetDatabaseInstanceSettingFinalBackupConfigOutput)
+}
+
 type GetDatabaseInstanceSettingInsightsConfig struct {
 	// True if Query Insights feature is enabled.
 	QueryInsightsEnabled bool `pulumi:"queryInsightsEnabled"`
@@ -8595,8 +8918,14 @@ func (o GetDatabaseInstanceSettingIpConfigurationPscConfigArrayOutput) Index(i p
 type GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection struct {
 	// The consumer network of this consumer endpoint. This must be a resource path that includes both the host project and the network name. The consumer host project of this network might be different from the consumer service project.
 	ConsumerNetwork string `pulumi:"consumerNetwork"`
+	// The connection policy status of the consumer network.
+	ConsumerNetworkStatus string `pulumi:"consumerNetworkStatus"`
 	// The project ID of consumer service project of this consumer endpoint.
 	ConsumerServiceProjectId string `pulumi:"consumerServiceProjectId"`
+	// The IP address of the consumer endpoint.
+	IpAddress string `pulumi:"ipAddress"`
+	// The connection status of the consumer endpoint.
+	Status string `pulumi:"status"`
 }
 
 // GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionInput is an input type that accepts GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArgs and GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput values.
@@ -8613,8 +8942,14 @@ type GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionInput in
 type GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArgs struct {
 	// The consumer network of this consumer endpoint. This must be a resource path that includes both the host project and the network name. The consumer host project of this network might be different from the consumer service project.
 	ConsumerNetwork pulumi.StringInput `pulumi:"consumerNetwork"`
+	// The connection policy status of the consumer network.
+	ConsumerNetworkStatus pulumi.StringInput `pulumi:"consumerNetworkStatus"`
 	// The project ID of consumer service project of this consumer endpoint.
 	ConsumerServiceProjectId pulumi.StringInput `pulumi:"consumerServiceProjectId"`
+	// The IP address of the consumer endpoint.
+	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
+	// The connection status of the consumer endpoint.
+	Status pulumi.StringInput `pulumi:"status"`
 }
 
 func (GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArgs) ElementType() reflect.Type {
@@ -8675,11 +9010,28 @@ func (o GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutpu
 	}).(pulumi.StringOutput)
 }
 
+// The connection policy status of the consumer network.
+func (o GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput) ConsumerNetworkStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection) string {
+		return v.ConsumerNetworkStatus
+	}).(pulumi.StringOutput)
+}
+
 // The project ID of consumer service project of this consumer endpoint.
 func (o GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput) ConsumerServiceProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection) string {
 		return v.ConsumerServiceProjectId
 	}).(pulumi.StringOutput)
+}
+
+// The IP address of the consumer endpoint.
+func (o GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// The connection status of the consumer endpoint.
+func (o GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection) string { return v.Status }).(pulumi.StringOutput)
 }
 
 type GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutput struct{ *pulumi.OutputState }
@@ -9192,6 +9544,8 @@ func (o GetDatabaseInstanceSettingSqlServerAuditConfigArrayOutput) Index(i pulum
 type GetDatabaseInstancesInstance struct {
 	// Available Maintenance versions.
 	AvailableMaintenanceVersions []string `pulumi:"availableMaintenanceVersions"`
+	// The name of the BackupDR backup to restore from.
+	BackupdrBackup string `pulumi:"backupdrBackup"`
 	// Configuration for creating a new instance as a clone of another instance.
 	Clones []GetDatabaseInstancesInstanceClone `pulumi:"clones"`
 	// The connection name of the instance to be used in connection strings. For example, when connecting with Cloud SQL Proxy.
@@ -9204,7 +9558,9 @@ type GetDatabaseInstancesInstance struct {
 	// The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
 	DnsNames          []GetDatabaseInstancesInstanceDnsName `pulumi:"dnsNames"`
 	EncryptionKeyName string                                `pulumi:"encryptionKeyName"`
-	FirstIpAddress    string                                `pulumi:"firstIpAddress"`
+	// The description of final backup if instance enable create final backup during instance deletion.
+	FinalBackupDescription string `pulumi:"finalBackupDescription"`
+	FirstIpAddress         string `pulumi:"firstIpAddress"`
 	// The type of the instance. See https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType for supported values.
 	InstanceType string                                  `pulumi:"instanceType"`
 	IpAddresses  []GetDatabaseInstancesInstanceIpAddress `pulumi:"ipAddresses"`
@@ -9255,6 +9611,8 @@ type GetDatabaseInstancesInstanceInput interface {
 type GetDatabaseInstancesInstanceArgs struct {
 	// Available Maintenance versions.
 	AvailableMaintenanceVersions pulumi.StringArrayInput `pulumi:"availableMaintenanceVersions"`
+	// The name of the BackupDR backup to restore from.
+	BackupdrBackup pulumi.StringInput `pulumi:"backupdrBackup"`
 	// Configuration for creating a new instance as a clone of another instance.
 	Clones GetDatabaseInstancesInstanceCloneArrayInput `pulumi:"clones"`
 	// The connection name of the instance to be used in connection strings. For example, when connecting with Cloud SQL Proxy.
@@ -9267,7 +9625,9 @@ type GetDatabaseInstancesInstanceArgs struct {
 	// The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
 	DnsNames          GetDatabaseInstancesInstanceDnsNameArrayInput `pulumi:"dnsNames"`
 	EncryptionKeyName pulumi.StringInput                            `pulumi:"encryptionKeyName"`
-	FirstIpAddress    pulumi.StringInput                            `pulumi:"firstIpAddress"`
+	// The description of final backup if instance enable create final backup during instance deletion.
+	FinalBackupDescription pulumi.StringInput `pulumi:"finalBackupDescription"`
+	FirstIpAddress         pulumi.StringInput `pulumi:"firstIpAddress"`
 	// The type of the instance. See https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType for supported values.
 	InstanceType pulumi.StringInput                              `pulumi:"instanceType"`
 	IpAddresses  GetDatabaseInstancesInstanceIpAddressArrayInput `pulumi:"ipAddresses"`
@@ -9360,6 +9720,11 @@ func (o GetDatabaseInstancesInstanceOutput) AvailableMaintenanceVersions() pulum
 	return o.ApplyT(func(v GetDatabaseInstancesInstance) []string { return v.AvailableMaintenanceVersions }).(pulumi.StringArrayOutput)
 }
 
+// The name of the BackupDR backup to restore from.
+func (o GetDatabaseInstancesInstanceOutput) BackupdrBackup() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.BackupdrBackup }).(pulumi.StringOutput)
+}
+
 // Configuration for creating a new instance as a clone of another instance.
 func (o GetDatabaseInstancesInstanceOutput) Clones() GetDatabaseInstancesInstanceCloneArrayOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstance) []GetDatabaseInstancesInstanceClone { return v.Clones }).(GetDatabaseInstancesInstanceCloneArrayOutput)
@@ -9391,6 +9756,11 @@ func (o GetDatabaseInstancesInstanceOutput) DnsNames() GetDatabaseInstancesInsta
 
 func (o GetDatabaseInstancesInstanceOutput) EncryptionKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.EncryptionKeyName }).(pulumi.StringOutput)
+}
+
+// The description of final backup if instance enable create final backup during instance deletion.
+func (o GetDatabaseInstancesInstanceOutput) FinalBackupDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.FinalBackupDescription }).(pulumi.StringOutput)
 }
 
 func (o GetDatabaseInstancesInstanceOutput) FirstIpAddress() pulumi.StringOutput {
@@ -10472,6 +10842,8 @@ type GetDatabaseInstancesInstanceSetting struct {
 	EnableDataplexIntegration bool `pulumi:"enableDataplexIntegration"`
 	// Enables Vertex AI Integration.
 	EnableGoogleMlIntegration bool `pulumi:"enableGoogleMlIntegration"`
+	// Config used to determine the final backup settings for the instance
+	FinalBackupConfigs []GetDatabaseInstancesInstanceSettingFinalBackupConfig `pulumi:"finalBackupConfigs"`
 	// Configuration of Query Insights.
 	InsightsConfigs     []GetDatabaseInstancesInstanceSettingInsightsConfig     `pulumi:"insightsConfigs"`
 	IpConfigurations    []GetDatabaseInstancesInstanceSettingIpConfiguration    `pulumi:"ipConfigurations"`
@@ -10554,6 +10926,8 @@ type GetDatabaseInstancesInstanceSettingArgs struct {
 	EnableDataplexIntegration pulumi.BoolInput `pulumi:"enableDataplexIntegration"`
 	// Enables Vertex AI Integration.
 	EnableGoogleMlIntegration pulumi.BoolInput `pulumi:"enableGoogleMlIntegration"`
+	// Config used to determine the final backup settings for the instance
+	FinalBackupConfigs GetDatabaseInstancesInstanceSettingFinalBackupConfigArrayInput `pulumi:"finalBackupConfigs"`
 	// Configuration of Query Insights.
 	InsightsConfigs     GetDatabaseInstancesInstanceSettingInsightsConfigArrayInput     `pulumi:"insightsConfigs"`
 	IpConfigurations    GetDatabaseInstancesInstanceSettingIpConfigurationArrayInput    `pulumi:"ipConfigurations"`
@@ -10753,6 +11127,13 @@ func (o GetDatabaseInstancesInstanceSettingOutput) EnableDataplexIntegration() p
 // Enables Vertex AI Integration.
 func (o GetDatabaseInstancesInstanceSettingOutput) EnableGoogleMlIntegration() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) bool { return v.EnableGoogleMlIntegration }).(pulumi.BoolOutput)
+}
+
+// Config used to determine the final backup settings for the instance
+func (o GetDatabaseInstancesInstanceSettingOutput) FinalBackupConfigs() GetDatabaseInstancesInstanceSettingFinalBackupConfigArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) []GetDatabaseInstancesInstanceSettingFinalBackupConfig {
+		return v.FinalBackupConfigs
+	}).(GetDatabaseInstancesInstanceSettingFinalBackupConfigArrayOutput)
 }
 
 // Configuration of Query Insights.
@@ -11835,6 +12216,112 @@ func (o GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayOutput) Ind
 	}).(GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodOutput)
 }
 
+type GetDatabaseInstancesInstanceSettingFinalBackupConfig struct {
+	// When this parameter is set to true, the final backup is enabled for the instance
+	Enabled bool `pulumi:"enabled"`
+	// The number of days to retain the final backup after the instance deletion. The valid range is between 1 and 365. For instances managed by BackupDR, the valid range is between 1 day and 99 years. The final backup will be purged at (time_of_instance_deletion + retention_days).
+	RetentionDays int `pulumi:"retentionDays"`
+}
+
+// GetDatabaseInstancesInstanceSettingFinalBackupConfigInput is an input type that accepts GetDatabaseInstancesInstanceSettingFinalBackupConfigArgs and GetDatabaseInstancesInstanceSettingFinalBackupConfigOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingFinalBackupConfigInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingFinalBackupConfigArgs{...}
+type GetDatabaseInstancesInstanceSettingFinalBackupConfigInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingFinalBackupConfigOutput() GetDatabaseInstancesInstanceSettingFinalBackupConfigOutput
+	ToGetDatabaseInstancesInstanceSettingFinalBackupConfigOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingFinalBackupConfigOutput
+}
+
+type GetDatabaseInstancesInstanceSettingFinalBackupConfigArgs struct {
+	// When this parameter is set to true, the final backup is enabled for the instance
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The number of days to retain the final backup after the instance deletion. The valid range is between 1 and 365. For instances managed by BackupDR, the valid range is between 1 day and 99 years. The final backup will be purged at (time_of_instance_deletion + retention_days).
+	RetentionDays pulumi.IntInput `pulumi:"retentionDays"`
+}
+
+func (GetDatabaseInstancesInstanceSettingFinalBackupConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingFinalBackupConfig)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingFinalBackupConfigArgs) ToGetDatabaseInstancesInstanceSettingFinalBackupConfigOutput() GetDatabaseInstancesInstanceSettingFinalBackupConfigOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingFinalBackupConfigOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingFinalBackupConfigArgs) ToGetDatabaseInstancesInstanceSettingFinalBackupConfigOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingFinalBackupConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingFinalBackupConfigOutput)
+}
+
+// GetDatabaseInstancesInstanceSettingFinalBackupConfigArrayInput is an input type that accepts GetDatabaseInstancesInstanceSettingFinalBackupConfigArray and GetDatabaseInstancesInstanceSettingFinalBackupConfigArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingFinalBackupConfigArrayInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingFinalBackupConfigArray{ GetDatabaseInstancesInstanceSettingFinalBackupConfigArgs{...} }
+type GetDatabaseInstancesInstanceSettingFinalBackupConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingFinalBackupConfigArrayOutput() GetDatabaseInstancesInstanceSettingFinalBackupConfigArrayOutput
+	ToGetDatabaseInstancesInstanceSettingFinalBackupConfigArrayOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingFinalBackupConfigArrayOutput
+}
+
+type GetDatabaseInstancesInstanceSettingFinalBackupConfigArray []GetDatabaseInstancesInstanceSettingFinalBackupConfigInput
+
+func (GetDatabaseInstancesInstanceSettingFinalBackupConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingFinalBackupConfig)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingFinalBackupConfigArray) ToGetDatabaseInstancesInstanceSettingFinalBackupConfigArrayOutput() GetDatabaseInstancesInstanceSettingFinalBackupConfigArrayOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingFinalBackupConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingFinalBackupConfigArray) ToGetDatabaseInstancesInstanceSettingFinalBackupConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingFinalBackupConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingFinalBackupConfigArrayOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingFinalBackupConfigOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingFinalBackupConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingFinalBackupConfig)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingFinalBackupConfigOutput) ToGetDatabaseInstancesInstanceSettingFinalBackupConfigOutput() GetDatabaseInstancesInstanceSettingFinalBackupConfigOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingFinalBackupConfigOutput) ToGetDatabaseInstancesInstanceSettingFinalBackupConfigOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingFinalBackupConfigOutput {
+	return o
+}
+
+// When this parameter is set to true, the final backup is enabled for the instance
+func (o GetDatabaseInstancesInstanceSettingFinalBackupConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingFinalBackupConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The number of days to retain the final backup after the instance deletion. The valid range is between 1 and 365. For instances managed by BackupDR, the valid range is between 1 day and 99 years. The final backup will be purged at (time_of_instance_deletion + retention_days).
+func (o GetDatabaseInstancesInstanceSettingFinalBackupConfigOutput) RetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingFinalBackupConfig) int { return v.RetentionDays }).(pulumi.IntOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingFinalBackupConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingFinalBackupConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingFinalBackupConfig)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingFinalBackupConfigArrayOutput) ToGetDatabaseInstancesInstanceSettingFinalBackupConfigArrayOutput() GetDatabaseInstancesInstanceSettingFinalBackupConfigArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingFinalBackupConfigArrayOutput) ToGetDatabaseInstancesInstanceSettingFinalBackupConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingFinalBackupConfigArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingFinalBackupConfigArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceSettingFinalBackupConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceSettingFinalBackupConfig {
+		return vs[0].([]GetDatabaseInstancesInstanceSettingFinalBackupConfig)[vs[1].(int)]
+	}).(GetDatabaseInstancesInstanceSettingFinalBackupConfigOutput)
+}
+
 type GetDatabaseInstancesInstanceSettingInsightsConfig struct {
 	// True if Query Insights feature is enabled.
 	QueryInsightsEnabled bool `pulumi:"queryInsightsEnabled"`
@@ -12392,8 +12879,14 @@ func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayOutput) 
 type GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnection struct {
 	// The consumer network of this consumer endpoint. This must be a resource path that includes both the host project and the network name. The consumer host project of this network might be different from the consumer service project.
 	ConsumerNetwork string `pulumi:"consumerNetwork"`
+	// The connection policy status of the consumer network.
+	ConsumerNetworkStatus string `pulumi:"consumerNetworkStatus"`
 	// The project ID of consumer service project of this consumer endpoint.
 	ConsumerServiceProjectId string `pulumi:"consumerServiceProjectId"`
+	// The IP address of the consumer endpoint.
+	IpAddress string `pulumi:"ipAddress"`
+	// The connection status of the consumer endpoint.
+	Status string `pulumi:"status"`
 }
 
 // GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionInput is an input type that accepts GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArgs and GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput values.
@@ -12410,8 +12903,14 @@ type GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectio
 type GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArgs struct {
 	// The consumer network of this consumer endpoint. This must be a resource path that includes both the host project and the network name. The consumer host project of this network might be different from the consumer service project.
 	ConsumerNetwork pulumi.StringInput `pulumi:"consumerNetwork"`
+	// The connection policy status of the consumer network.
+	ConsumerNetworkStatus pulumi.StringInput `pulumi:"consumerNetworkStatus"`
 	// The project ID of consumer service project of this consumer endpoint.
 	ConsumerServiceProjectId pulumi.StringInput `pulumi:"consumerServiceProjectId"`
+	// The IP address of the consumer endpoint.
+	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
+	// The connection status of the consumer endpoint.
+	Status pulumi.StringInput `pulumi:"status"`
 }
 
 func (GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArgs) ElementType() reflect.Type {
@@ -12472,10 +12971,31 @@ func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnec
 	}).(pulumi.StringOutput)
 }
 
+// The connection policy status of the consumer network.
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput) ConsumerNetworkStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnection) string {
+		return v.ConsumerNetworkStatus
+	}).(pulumi.StringOutput)
+}
+
 // The project ID of consumer service project of this consumer endpoint.
 func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput) ConsumerServiceProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnection) string {
 		return v.ConsumerServiceProjectId
+	}).(pulumi.StringOutput)
+}
+
+// The IP address of the consumer endpoint.
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnection) string {
+		return v.IpAddress
+	}).(pulumi.StringOutput)
+}
+
+// The connection status of the consumer endpoint.
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnection) string {
+		return v.Status
 	}).(pulumi.StringOutput)
 }
 
@@ -13341,6 +13861,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsDatabaseFlagArrayInput)(nil)).Elem(), DatabaseInstanceSettingsDatabaseFlagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsDenyMaintenancePeriodInput)(nil)).Elem(), DatabaseInstanceSettingsDenyMaintenancePeriodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsDenyMaintenancePeriodPtrInput)(nil)).Elem(), DatabaseInstanceSettingsDenyMaintenancePeriodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsFinalBackupConfigInput)(nil)).Elem(), DatabaseInstanceSettingsFinalBackupConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsFinalBackupConfigPtrInput)(nil)).Elem(), DatabaseInstanceSettingsFinalBackupConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsInsightsConfigInput)(nil)).Elem(), DatabaseInstanceSettingsInsightsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsInsightsConfigPtrInput)(nil)).Elem(), DatabaseInstanceSettingsInsightsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsIpConfigurationInput)(nil)).Elem(), DatabaseInstanceSettingsIpConfigurationArgs{})
@@ -13401,6 +13923,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingDatabaseFlagArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingDatabaseFlagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingDenyMaintenancePeriodInput)(nil)).Elem(), GetDatabaseInstanceSettingDenyMaintenancePeriodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingDenyMaintenancePeriodArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingDenyMaintenancePeriodArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingFinalBackupConfigInput)(nil)).Elem(), GetDatabaseInstanceSettingFinalBackupConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingFinalBackupConfigArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingFinalBackupConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingInsightsConfigInput)(nil)).Elem(), GetDatabaseInstanceSettingInsightsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingInsightsConfigArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingInsightsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingIpConfigurationInput)(nil)).Elem(), GetDatabaseInstanceSettingIpConfigurationArgs{})
@@ -13455,6 +13979,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingDatabaseFlagArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingDatabaseFlagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingFinalBackupConfigInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingFinalBackupConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingFinalBackupConfigArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingFinalBackupConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingInsightsConfigInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingInsightsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingInsightsConfigArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingInsightsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingIpConfigurationInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingIpConfigurationArgs{})
@@ -13511,6 +14037,8 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsDatabaseFlagArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsDenyMaintenancePeriodOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceSettingsFinalBackupConfigOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceSettingsFinalBackupConfigPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsInsightsConfigOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsInsightsConfigPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsIpConfigurationOutput{})
@@ -13571,6 +14099,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingDatabaseFlagArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingDenyMaintenancePeriodOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingDenyMaintenancePeriodArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceSettingFinalBackupConfigOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceSettingFinalBackupConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingInsightsConfigOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingInsightsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingIpConfigurationOutput{})
@@ -13625,6 +14155,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingDatabaseFlagArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingFinalBackupConfigOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingFinalBackupConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingInsightsConfigOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingInsightsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingIpConfigurationOutput{})

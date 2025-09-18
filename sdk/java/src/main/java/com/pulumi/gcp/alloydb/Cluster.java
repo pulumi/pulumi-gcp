@@ -74,6 +74,7 @@ import javax.annotation.Nullable;
  *             .networkConfig(ClusterNetworkConfigArgs.builder()
  *                 .network(defaultNetwork.id())
  *                 .build())
+ *             .deletionProtection(false)
  *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
@@ -128,6 +129,7 @@ import javax.annotation.Nullable;
  *             .initialUser(ClusterInitialUserArgs.builder()
  *                 .password("alloydb-cluster")
  *                 .build())
+ *             .deletionProtection(false)
  *             .build());
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
@@ -188,6 +190,7 @@ import javax.annotation.Nullable;
  *             .initialUser(ClusterInitialUserArgs.builder()
  *                 .password("alloydb-cluster")
  *                 .build())
+ *             .deletionProtection(false)
  *             .build());
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
@@ -275,6 +278,7 @@ import javax.annotation.Nullable;
  *                 .labels(Map.of("test", "alloydb-cluster-full"))
  *                 .build())
  *             .labels(Map.of("test", "alloydb-cluster-full"))
+ *             .deletionProtection(false)
  *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
@@ -333,6 +337,7 @@ import javax.annotation.Nullable;
  *             .networkConfig(ClusterNetworkConfigArgs.builder()
  *                 .network(default_.id())
  *                 .build())
+ *             .deletionProtection(false)
  *             .build());
  * 
  *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()
@@ -373,6 +378,7 @@ import javax.annotation.Nullable;
  *             .secondaryConfig(ClusterSecondaryConfigArgs.builder()
  *                 .primaryClusterName(primary.name())
  *                 .build())
+ *             .deletionProtection(false)
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(primaryInstance)
  *                 .build());
@@ -573,6 +579,12 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> deletionPolicy() {
         return Codegen.optional(this.deletionPolicy);
+    }
+    @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> deletionProtection;
+
+    public Output<Optional<Boolean>> deletionProtection() {
+        return Codegen.optional(this.deletionProtection);
     }
     /**
      * User-settable and human-readable display name for the Cluster.

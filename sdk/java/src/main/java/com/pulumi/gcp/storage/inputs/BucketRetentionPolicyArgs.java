@@ -7,7 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -33,17 +33,17 @@ public final class BucketRetentionPolicyArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 2,147,483,647 seconds.
+     * The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
      * 
      */
     @Import(name="retentionPeriod", required=true)
-    private Output<Integer> retentionPeriod;
+    private Output<String> retentionPeriod;
 
     /**
-     * @return The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 2,147,483,647 seconds.
+     * @return The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
      * 
      */
-    public Output<Integer> retentionPeriod() {
+    public Output<String> retentionPeriod() {
         return this.retentionPeriod;
     }
 
@@ -94,23 +94,23 @@ public final class BucketRetentionPolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param retentionPeriod The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 2,147,483,647 seconds.
+         * @param retentionPeriod The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
          * 
          * @return builder
          * 
          */
-        public Builder retentionPeriod(Output<Integer> retentionPeriod) {
+        public Builder retentionPeriod(Output<String> retentionPeriod) {
             $.retentionPeriod = retentionPeriod;
             return this;
         }
 
         /**
-         * @param retentionPeriod The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 2,147,483,647 seconds.
+         * @param retentionPeriod The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
          * 
          * @return builder
          * 
          */
-        public Builder retentionPeriod(Integer retentionPeriod) {
+        public Builder retentionPeriod(String retentionPeriod) {
             return retentionPeriod(Output.of(retentionPeriod));
         }
 

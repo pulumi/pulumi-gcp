@@ -7,6 +7,14 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * A resource represents a Dataform workflow configuration
+ *
+ * To get more information about RepositoryWorkflowConfig, see:
+ *
+ * * [API documentation](https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories.workflowConfigs)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/dataform/docs/workflow-configurations)
+ *
  * ## Example Usage
  *
  * ### Dataform Repository Workflow Config

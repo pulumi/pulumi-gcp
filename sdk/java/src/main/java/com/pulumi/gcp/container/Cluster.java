@@ -776,14 +776,18 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.endpoint;
     }
     /**
-     * Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+     * (DEPRECATED) Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
+     * 
+     * @deprecated
+     * GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
      * 
      */
+    @Deprecated /* GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release */
     @Export(name="enterpriseConfig", refs={ClusterEnterpriseConfig.class}, tree="[0]")
     private Output<ClusterEnterpriseConfig> enterpriseConfig;
 
     /**
-     * @return Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+     * @return (DEPRECATED) Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
      * 
      */
     public Output<ClusterEnterpriseConfig> enterpriseConfig() {

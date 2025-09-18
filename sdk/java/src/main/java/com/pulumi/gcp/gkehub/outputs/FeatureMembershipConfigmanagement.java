@@ -4,7 +4,6 @@
 package com.pulumi.gcp.gkehub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.gcp.gkehub.outputs.FeatureMembershipConfigmanagementBinauthz;
 import com.pulumi.gcp.gkehub.outputs.FeatureMembershipConfigmanagementConfigSync;
 import com.pulumi.gcp.gkehub.outputs.FeatureMembershipConfigmanagementHierarchyController;
 import com.pulumi.gcp.gkehub.outputs.FeatureMembershipConfigmanagementPolicyController;
@@ -15,13 +14,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class FeatureMembershipConfigmanagement {
-    /**
-     * @return (Optional, Deprecated)
-     * Binauthz configuration for the cluster. Structure is documented below.
-     * This field will be ignored and should not be set.
-     * 
-     */
-    private @Nullable FeatureMembershipConfigmanagementBinauthz binauthz;
     /**
      * @return Config Sync configuration for the cluster. Structure is documented below.
      * 
@@ -55,15 +47,6 @@ public final class FeatureMembershipConfigmanagement {
     private @Nullable String version;
 
     private FeatureMembershipConfigmanagement() {}
-    /**
-     * @return (Optional, Deprecated)
-     * Binauthz configuration for the cluster. Structure is documented below.
-     * This field will be ignored and should not be set.
-     * 
-     */
-    public Optional<FeatureMembershipConfigmanagementBinauthz> binauthz() {
-        return Optional.ofNullable(this.binauthz);
-    }
     /**
      * @return Config Sync configuration for the cluster. Structure is documented below.
      * 
@@ -115,7 +98,6 @@ public final class FeatureMembershipConfigmanagement {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable FeatureMembershipConfigmanagementBinauthz binauthz;
         private @Nullable FeatureMembershipConfigmanagementConfigSync configSync;
         private @Nullable FeatureMembershipConfigmanagementHierarchyController hierarchyController;
         private @Nullable String management;
@@ -124,7 +106,6 @@ public final class FeatureMembershipConfigmanagement {
         public Builder() {}
         public Builder(FeatureMembershipConfigmanagement defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.binauthz = defaults.binauthz;
     	      this.configSync = defaults.configSync;
     	      this.hierarchyController = defaults.hierarchyController;
     	      this.management = defaults.management;
@@ -132,12 +113,6 @@ public final class FeatureMembershipConfigmanagement {
     	      this.version = defaults.version;
         }
 
-        @CustomType.Setter
-        public Builder binauthz(@Nullable FeatureMembershipConfigmanagementBinauthz binauthz) {
-
-            this.binauthz = binauthz;
-            return this;
-        }
         @CustomType.Setter
         public Builder configSync(@Nullable FeatureMembershipConfigmanagementConfigSync configSync) {
 
@@ -170,7 +145,6 @@ public final class FeatureMembershipConfigmanagement {
         }
         public FeatureMembershipConfigmanagement build() {
             final var _resultValue = new FeatureMembershipConfigmanagement();
-            _resultValue.binauthz = binauthz;
             _resultValue.configSync = configSync;
             _resultValue.hierarchyController = hierarchyController;
             _resultValue.management = management;

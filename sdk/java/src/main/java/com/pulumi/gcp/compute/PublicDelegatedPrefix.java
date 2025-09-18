@@ -10,9 +10,11 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.PublicDelegatedPrefixArgs;
 import com.pulumi.gcp.compute.inputs.PublicDelegatedPrefixState;
+import com.pulumi.gcp.compute.outputs.PublicDelegatedPrefixPublicDelegatedSubPrefix;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -346,6 +348,26 @@ public class PublicDelegatedPrefix extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * List of sub public delegated fixes for BYO IP functionality.
+     * Each item in this array represents a sub prefix that can be
+     * used to create addresses or further allocations.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="publicDelegatedSubPrefixs", refs={List.class,PublicDelegatedPrefixPublicDelegatedSubPrefix.class}, tree="[0,1]")
+    private Output<List<PublicDelegatedPrefixPublicDelegatedSubPrefix>> publicDelegatedSubPrefixs;
+
+    /**
+     * @return List of sub public delegated fixes for BYO IP functionality.
+     * Each item in this array represents a sub prefix that can be
+     * used to create addresses or further allocations.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<PublicDelegatedPrefixPublicDelegatedSubPrefix>> publicDelegatedSubPrefixs() {
+        return this.publicDelegatedSubPrefixs;
     }
     /**
      * A region where the prefix will reside.

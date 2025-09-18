@@ -19,6 +19,10 @@ import java.util.concurrent.CompletableFuture;
 
 public final class CloudassetFunctions {
     /**
+     * Retrieve all the resources within a given accessible CRM scope (project/folder/organization). See the
+     * [REST API](https://cloud.google.com/asset-inventory/docs/reference/rest/v1p1beta1/resources/searchAll)
+     * for more details.
+     * 
      * ## Example Usage
      * 
      * ### Searching For All Projects In An Org
@@ -129,6 +133,10 @@ public final class CloudassetFunctions {
         return getResourcesSearchAll(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieve all the resources within a given accessible CRM scope (project/folder/organization). See the
+     * [REST API](https://cloud.google.com/asset-inventory/docs/reference/rest/v1p1beta1/resources/searchAll)
+     * for more details.
+     * 
      * ## Example Usage
      * 
      * ### Searching For All Projects In An Org
@@ -239,6 +247,10 @@ public final class CloudassetFunctions {
         return getResourcesSearchAllPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieve all the resources within a given accessible CRM scope (project/folder/organization). See the
+     * [REST API](https://cloud.google.com/asset-inventory/docs/reference/rest/v1p1beta1/resources/searchAll)
+     * for more details.
+     * 
      * ## Example Usage
      * 
      * ### Searching For All Projects In An Org
@@ -349,6 +361,10 @@ public final class CloudassetFunctions {
         return Deployment.getInstance().invoke("gcp:cloudasset/getResourcesSearchAll:getResourcesSearchAll", TypeShape.of(GetResourcesSearchAllInvokeResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieve all the resources within a given accessible CRM scope (project/folder/organization). See the
+     * [REST API](https://cloud.google.com/asset-inventory/docs/reference/rest/v1p1beta1/resources/searchAll)
+     * for more details.
+     * 
      * ## Example Usage
      * 
      * ### Searching For All Projects In An Org
@@ -459,6 +475,10 @@ public final class CloudassetFunctions {
         return Deployment.getInstance().invoke("gcp:cloudasset/getResourcesSearchAll:getResourcesSearchAll", TypeShape.of(GetResourcesSearchAllInvokeResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieve all the resources within a given accessible CRM scope (project/folder/organization). See the
+     * [REST API](https://cloud.google.com/asset-inventory/docs/reference/rest/v1p1beta1/resources/searchAll)
+     * for more details.
+     * 
      * ## Example Usage
      * 
      * ### Searching For All Projects In An Org

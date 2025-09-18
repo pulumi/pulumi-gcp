@@ -64,6 +64,21 @@ public final class TransferJobTransferSpecAwsS3DataSourceArgs extends com.pulumi
     }
 
     /**
+     * The Resource name of a secret in Secret Manager. AWS credentials must be stored in Secret Manager in JSON format. If credentials_secret is specified, do not specify role_arn or aws_access_key. Format: projects/{projectNumber}/secrets/{secret_name}.
+     * 
+     */
+    @Import(name="credentialsSecret")
+    private @Nullable Output<String> credentialsSecret;
+
+    /**
+     * @return The Resource name of a secret in Secret Manager. AWS credentials must be stored in Secret Manager in JSON format. If credentials_secret is specified, do not specify role_arn or aws_access_key. Format: projects/{projectNumber}/secrets/{secret_name}.
+     * 
+     */
+    public Optional<Output<String>> credentialsSecret() {
+        return Optional.ofNullable(this.credentialsSecret);
+    }
+
+    /**
      * Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
      * 
      */
@@ -114,6 +129,7 @@ public final class TransferJobTransferSpecAwsS3DataSourceArgs extends com.pulumi
         this.awsAccessKey = $.awsAccessKey;
         this.bucketName = $.bucketName;
         this.cloudfrontDomain = $.cloudfrontDomain;
+        this.credentialsSecret = $.credentialsSecret;
         this.managedPrivateNetwork = $.managedPrivateNetwork;
         this.path = $.path;
         this.roleArn = $.roleArn;
@@ -198,6 +214,27 @@ public final class TransferJobTransferSpecAwsS3DataSourceArgs extends com.pulumi
          */
         public Builder cloudfrontDomain(String cloudfrontDomain) {
             return cloudfrontDomain(Output.of(cloudfrontDomain));
+        }
+
+        /**
+         * @param credentialsSecret The Resource name of a secret in Secret Manager. AWS credentials must be stored in Secret Manager in JSON format. If credentials_secret is specified, do not specify role_arn or aws_access_key. Format: projects/{projectNumber}/secrets/{secret_name}.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder credentialsSecret(@Nullable Output<String> credentialsSecret) {
+            $.credentialsSecret = credentialsSecret;
+            return this;
+        }
+
+        /**
+         * @param credentialsSecret The Resource name of a secret in Secret Manager. AWS credentials must be stored in Secret Manager in JSON format. If credentials_secret is specified, do not specify role_arn or aws_access_key. Format: projects/{projectNumber}/secrets/{secret_name}.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder credentialsSecret(String credentialsSecret) {
+            return credentialsSecret(Output.of(credentialsSecret));
         }
 
         /**

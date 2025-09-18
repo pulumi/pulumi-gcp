@@ -43,7 +43,6 @@ import javax.annotation.Nullable;
  *         var project = new Service("project", ServiceArgs.builder()
  *             .project("your-project-id")
  *             .service("iam.googleapis.com")
- *             .disableOnDestroy(false)
  *             .build());
  * 
  *     }
@@ -80,7 +79,6 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Beta
      * If `true`, the usage of the service to be disabled will be checked and an error
      * will be returned if the service to be disabled has usage in last 30 days.
-     * Defaults to `false`.
      * 
      */
     @Export(name="checkIfServiceHasUsageOnDestroy", refs={Boolean.class}, tree="[0]")
@@ -90,7 +88,6 @@ public class Service extends com.pulumi.resources.CustomResource {
      * @return Beta
      * If `true`, the usage of the service to be disabled will be checked and an error
      * will be returned if the service to be disabled has usage in last 30 days.
-     * Defaults to `false`.
      * 
      */
     public Output<Optional<Boolean>> checkIfServiceHasUsageOnDestroy() {

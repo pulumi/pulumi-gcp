@@ -89,9 +89,6 @@ class BucketObjectArgs:
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if detect_md5hash is not None:
-            warnings.warn("""`detect_md5hash` is deprecated and will be removed in future release. Start using `source_md5hash` instead""", DeprecationWarning)
-            pulumi.log.warn("""detect_md5hash is deprecated: `detect_md5hash` is deprecated and will be removed in future release. Start using `source_md5hash` instead""")
-        if detect_md5hash is not None:
             pulumi.set(__self__, "detect_md5hash", detect_md5hash)
         if event_based_hold is not None:
             pulumi.set(__self__, "event_based_hold", event_based_hold)
@@ -223,7 +220,6 @@ class BucketObjectArgs:
 
     @_builtins.property
     @pulumi.getter(name="detectMd5hash")
-    @_utilities.deprecated("""`detect_md5hash` is deprecated and will be removed in future release. Start using `source_md5hash` instead""")
     def detect_md5hash(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "detect_md5hash")
 
@@ -448,9 +444,6 @@ class _BucketObjectState:
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if detect_md5hash is not None:
-            warnings.warn("""`detect_md5hash` is deprecated and will be removed in future release. Start using `source_md5hash` instead""", DeprecationWarning)
-            pulumi.log.warn("""detect_md5hash is deprecated: `detect_md5hash` is deprecated and will be removed in future release. Start using `source_md5hash` instead""")
-        if detect_md5hash is not None:
             pulumi.set(__self__, "detect_md5hash", detect_md5hash)
         if event_based_hold is not None:
             pulumi.set(__self__, "event_based_hold", event_based_hold)
@@ -606,7 +599,6 @@ class _BucketObjectState:
 
     @_builtins.property
     @pulumi.getter(name="detectMd5hash")
-    @_utilities.deprecated("""`detect_md5hash` is deprecated and will be removed in future release. Start using `source_md5hash` instead""")
     def detect_md5hash(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "detect_md5hash")
 
@@ -1231,7 +1223,6 @@ class BucketObject(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="detectMd5hash")
-    @_utilities.deprecated("""`detect_md5hash` is deprecated and will be removed in future release. Start using `source_md5hash` instead""")
     def detect_md5hash(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "detect_md5hash")
 

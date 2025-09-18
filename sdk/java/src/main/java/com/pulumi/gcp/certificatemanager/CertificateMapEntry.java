@@ -239,14 +239,14 @@ public class CertificateMapEntry extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.labels);
     }
     /**
-     * A map entry that is inputted into the cetrificate map
+     * A map entry that is inputted into the certificate map
      * 
      */
     @Export(name="map", refs={String.class}, tree="[0]")
     private Output<String> map;
 
     /**
-     * @return A map entry that is inputted into the cetrificate map
+     * @return A map entry that is inputted into the certificate map
      * 
      */
     public Output<String> map() {

@@ -350,6 +350,7 @@ class _RepositoryState:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 registry_uri: Optional[pulumi.Input[_builtins.str]] = None,
                  remote_repository_config: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigArgs']] = None,
                  repository_id: Optional[pulumi.Input[_builtins.str]] = None,
                  update_time: Optional[pulumi.Input[_builtins.str]] = None,
@@ -404,6 +405,7 @@ class _RepositoryState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[_builtins.str] registry_uri: The repository endpoint, for example: us-docker.pkg.dev/my-proj/my-repo.
         :param pulumi.Input['RepositoryRemoteRepositoryConfigArgs'] remote_repository_config: Configuration specific for a Remote Repository.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] repository_id: The last part of the repository name, for example:
@@ -444,6 +446,8 @@ class _RepositoryState:
             pulumi.set(__self__, "project", project)
         if pulumi_labels is not None:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        if registry_uri is not None:
+            pulumi.set(__self__, "registry_uri", registry_uri)
         if remote_repository_config is not None:
             pulumi.set(__self__, "remote_repository_config", remote_repository_config)
         if repository_id is not None:
@@ -666,6 +670,18 @@ class _RepositoryState:
     @pulumi_labels.setter
     def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
+
+    @_builtins.property
+    @pulumi.getter(name="registryUri")
+    def registry_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The repository endpoint, for example: us-docker.pkg.dev/my-proj/my-repo.
+        """
+        return pulumi.get(self, "registry_uri")
+
+    @registry_uri.setter
+    def registry_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "registry_uri", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteRepositoryConfig")
@@ -2008,6 +2024,7 @@ class Repository(pulumi.CustomResource):
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["pulumi_labels"] = None
+            __props__.__dict__["registry_uri"] = None
             __props__.__dict__["update_time"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -2036,6 +2053,7 @@ class Repository(pulumi.CustomResource):
             name: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            registry_uri: Optional[pulumi.Input[_builtins.str]] = None,
             remote_repository_config: Optional[pulumi.Input[Union['RepositoryRemoteRepositoryConfigArgs', 'RepositoryRemoteRepositoryConfigArgsDict']]] = None,
             repository_id: Optional[pulumi.Input[_builtins.str]] = None,
             update_time: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2095,6 +2113,7 @@ class Repository(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[_builtins.str] registry_uri: The repository endpoint, for example: us-docker.pkg.dev/my-proj/my-repo.
         :param pulumi.Input[Union['RepositoryRemoteRepositoryConfigArgs', 'RepositoryRemoteRepositoryConfigArgsDict']] remote_repository_config: Configuration specific for a Remote Repository.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] repository_id: The last part of the repository name, for example:
@@ -2124,6 +2143,7 @@ class Repository(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
+        __props__.__dict__["registry_uri"] = registry_uri
         __props__.__dict__["remote_repository_config"] = remote_repository_config
         __props__.__dict__["repository_id"] = repository_id
         __props__.__dict__["update_time"] = update_time
@@ -2282,6 +2302,14 @@ class Repository(pulumi.CustomResource):
         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
+
+    @_builtins.property
+    @pulumi.getter(name="registryUri")
+    def registry_uri(self) -> pulumi.Output[_builtins.str]:
+        """
+        The repository endpoint, for example: us-docker.pkg.dev/my-proj/my-repo.
+        """
+        return pulumi.get(self, "registry_uri")
 
     @_builtins.property
     @pulumi.getter(name="remoteRepositoryConfig")

@@ -19,6 +19,11 @@ public final class WorkerPoolWorkerConfig {
      */
     private @Nullable Integer diskSizeGb;
     /**
+     * @return Enable nested virtualization on the worker, if supported by the machine type. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will set this to false.
+     * 
+     */
+    private @Nullable Boolean enableNestedVirtualization;
+    /**
      * @return Machine type of a worker, such as `n1-standard-1`. See [machineType](https://cloud.google.com/build/docs/private-pools/private-pool-config-file-schema#machinetype). If left blank, Cloud Build will use `n1-standard-1`.
      * 
      */
@@ -36,6 +41,13 @@ public final class WorkerPoolWorkerConfig {
      */
     public Optional<Integer> diskSizeGb() {
         return Optional.ofNullable(this.diskSizeGb);
+    }
+    /**
+     * @return Enable nested virtualization on the worker, if supported by the machine type. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will set this to false.
+     * 
+     */
+    public Optional<Boolean> enableNestedVirtualization() {
+        return Optional.ofNullable(this.enableNestedVirtualization);
     }
     /**
      * @return Machine type of a worker, such as `n1-standard-1`. See [machineType](https://cloud.google.com/build/docs/private-pools/private-pool-config-file-schema#machinetype). If left blank, Cloud Build will use `n1-standard-1`.
@@ -62,12 +74,14 @@ public final class WorkerPoolWorkerConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer diskSizeGb;
+        private @Nullable Boolean enableNestedVirtualization;
         private @Nullable String machineType;
         private @Nullable Boolean noExternalIp;
         public Builder() {}
         public Builder(WorkerPoolWorkerConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.diskSizeGb = defaults.diskSizeGb;
+    	      this.enableNestedVirtualization = defaults.enableNestedVirtualization;
     	      this.machineType = defaults.machineType;
     	      this.noExternalIp = defaults.noExternalIp;
         }
@@ -76,6 +90,12 @@ public final class WorkerPoolWorkerConfig {
         public Builder diskSizeGb(@Nullable Integer diskSizeGb) {
 
             this.diskSizeGb = diskSizeGb;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableNestedVirtualization(@Nullable Boolean enableNestedVirtualization) {
+
+            this.enableNestedVirtualization = enableNestedVirtualization;
             return this;
         }
         @CustomType.Setter
@@ -93,6 +113,7 @@ public final class WorkerPoolWorkerConfig {
         public WorkerPoolWorkerConfig build() {
             final var _resultValue = new WorkerPoolWorkerConfig();
             _resultValue.diskSizeGb = diskSizeGb;
+            _resultValue.enableNestedVirtualization = enableNestedVirtualization;
             _resultValue.machineType = machineType;
             _resultValue.noExternalIp = noExternalIp;
             return _resultValue;

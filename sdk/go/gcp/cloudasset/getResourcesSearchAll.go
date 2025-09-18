@@ -7,10 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Retrieve all the resources within a given accessible CRM scope (project/folder/organization). See the
+// [REST API](https://cloud.google.com/asset-inventory/docs/reference/rest/v1p1beta1/resources/searchAll)
+// for more details.
+//
 // ## Example Usage
 //
 // ### Searching For All Projects In An Org
@@ -20,7 +24,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudasset"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudasset"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -49,7 +53,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudasset"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudasset"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -79,7 +83,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudasset"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudasset"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )

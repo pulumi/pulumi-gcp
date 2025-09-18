@@ -27,7 +27,7 @@ class GetRepositoryResult:
     """
     A collection of values returned by getRepository.
     """
-    def __init__(__self__, cleanup_policies=None, cleanup_policy_dry_run=None, create_time=None, description=None, docker_configs=None, effective_labels=None, format=None, id=None, kms_key_name=None, labels=None, location=None, maven_configs=None, mode=None, name=None, project=None, pulumi_labels=None, remote_repository_configs=None, repository_id=None, update_time=None, virtual_repository_configs=None, vulnerability_scanning_configs=None):
+    def __init__(__self__, cleanup_policies=None, cleanup_policy_dry_run=None, create_time=None, description=None, docker_configs=None, effective_labels=None, format=None, id=None, kms_key_name=None, labels=None, location=None, maven_configs=None, mode=None, name=None, project=None, pulumi_labels=None, registry_uri=None, remote_repository_configs=None, repository_id=None, update_time=None, virtual_repository_configs=None, vulnerability_scanning_configs=None):
         if cleanup_policies and not isinstance(cleanup_policies, list):
             raise TypeError("Expected argument 'cleanup_policies' to be a list")
         pulumi.set(__self__, "cleanup_policies", cleanup_policies)
@@ -76,6 +76,9 @@ class GetRepositoryResult:
         if pulumi_labels and not isinstance(pulumi_labels, dict):
             raise TypeError("Expected argument 'pulumi_labels' to be a dict")
         pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        if registry_uri and not isinstance(registry_uri, str):
+            raise TypeError("Expected argument 'registry_uri' to be a str")
+        pulumi.set(__self__, "registry_uri", registry_uri)
         if remote_repository_configs and not isinstance(remote_repository_configs, list):
             raise TypeError("Expected argument 'remote_repository_configs' to be a list")
         pulumi.set(__self__, "remote_repository_configs", remote_repository_configs)
@@ -176,6 +179,11 @@ class GetRepositoryResult:
         return pulumi.get(self, "pulumi_labels")
 
     @_builtins.property
+    @pulumi.getter(name="registryUri")
+    def registry_uri(self) -> _builtins.str:
+        return pulumi.get(self, "registry_uri")
+
+    @_builtins.property
     @pulumi.getter(name="remoteRepositoryConfigs")
     def remote_repository_configs(self) -> Sequence['outputs.GetRepositoryRemoteRepositoryConfigResult']:
         return pulumi.get(self, "remote_repository_configs")
@@ -223,6 +231,7 @@ class AwaitableGetRepositoryResult(GetRepositoryResult):
             name=self.name,
             project=self.project,
             pulumi_labels=self.pulumi_labels,
+            registry_uri=self.registry_uri,
             remote_repository_configs=self.remote_repository_configs,
             repository_id=self.repository_id,
             update_time=self.update_time,
@@ -281,6 +290,7 @@ def get_repository(location: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
+        registry_uri=pulumi.get(__ret__, 'registry_uri'),
         remote_repository_configs=pulumi.get(__ret__, 'remote_repository_configs'),
         repository_id=pulumi.get(__ret__, 'repository_id'),
         update_time=pulumi.get(__ret__, 'update_time'),
@@ -336,6 +346,7 @@ def get_repository_output(location: Optional[pulumi.Input[_builtins.str]] = None
         name=pulumi.get(__response__, 'name'),
         project=pulumi.get(__response__, 'project'),
         pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
+        registry_uri=pulumi.get(__response__, 'registry_uri'),
         remote_repository_configs=pulumi.get(__response__, 'remote_repository_configs'),
         repository_id=pulumi.get(__response__, 'repository_id'),
         update_time=pulumi.get(__response__, 'update_time'),

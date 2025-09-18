@@ -445,9 +445,7 @@ class WorkerPool(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        servicenetworking = gcp.projects.Service("servicenetworking",
-            service="servicenetworking.googleapis.com",
-            disable_on_destroy=False)
+        servicenetworking = gcp.projects.Service("servicenetworking", service="servicenetworking.googleapis.com")
         network = gcp.compute.Network("network",
             name="my-network",
             auto_create_subnetworks=False,
@@ -550,9 +548,7 @@ class WorkerPool(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        servicenetworking = gcp.projects.Service("servicenetworking",
-            service="servicenetworking.googleapis.com",
-            disable_on_destroy=False)
+        servicenetworking = gcp.projects.Service("servicenetworking", service="servicenetworking.googleapis.com")
         network = gcp.compute.Network("network",
             name="my-network",
             auto_create_subnetworks=False,

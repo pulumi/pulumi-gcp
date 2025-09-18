@@ -257,7 +257,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
-     * Possible values are: `NEXT_HOP_ROUTING_MODE`.
+     * Possible values are: `NEXT_HOP_ROUTING_MODE`, `EXPLICIT_ROUTING_MODE`.
      * 
      */
     @Import(name="routingMode")
@@ -265,7 +265,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
-     * Possible values are: `NEXT_HOP_ROUTING_MODE`.
+     * Possible values are: `NEXT_HOP_ROUTING_MODE`, `EXPLICIT_ROUTING_MODE`.
      * 
      */
     public Optional<Output<String>> routingMode() {
@@ -734,7 +734,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param routingMode The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
-         * Possible values are: `NEXT_HOP_ROUTING_MODE`.
+         * Possible values are: `NEXT_HOP_ROUTING_MODE`, `EXPLICIT_ROUTING_MODE`.
          * 
          * @return builder
          * 
@@ -746,7 +746,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param routingMode The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
-         * Possible values are: `NEXT_HOP_ROUTING_MODE`.
+         * Possible values are: `NEXT_HOP_ROUTING_MODE`, `EXPLICIT_ROUTING_MODE`.
          * 
          * @return builder
          * 

@@ -149,6 +149,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string Id;
         public readonly string LoadBalancingScheme;
         public readonly string Name;
+        public readonly ImmutableArray<Outputs.GetBackendBucketParamResult> Params;
         public readonly string? Project;
         public readonly string SelfLink;
 
@@ -176,6 +177,8 @@ namespace Pulumi.Gcp.Compute
 
             string name,
 
+            ImmutableArray<Outputs.GetBackendBucketParamResult> @params,
+
             string? project,
 
             string selfLink)
@@ -191,6 +194,7 @@ namespace Pulumi.Gcp.Compute
             Id = id;
             LoadBalancingScheme = loadBalancingScheme;
             Name = name;
+            Params = @params;
             Project = project;
             SelfLink = selfLink;
         }

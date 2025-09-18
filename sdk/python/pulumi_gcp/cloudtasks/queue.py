@@ -23,6 +23,7 @@ class QueueArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
                  app_engine_routing_override: Optional[pulumi.Input['QueueAppEngineRoutingOverrideArgs']] = None,
+                 desired_state: Optional[pulumi.Input[_builtins.str]] = None,
                  http_target: Optional[pulumi.Input['QueueHttpTargetArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -35,6 +36,10 @@ class QueueArgs:
         :param pulumi.Input['QueueAppEngineRoutingOverrideArgs'] app_engine_routing_override: Overrides for task-level appEngineRouting. These settings apply only
                to App Engine tasks in this queue
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] desired_state: The desired state of the queue. Use this to pause and resume the queue.
+               
+               * RUNNING: The queue is running. Tasks can be dispatched.
+               * PAUSED: The queue is paused. Tasks are not dispatched but can be added to the queue.
         :param pulumi.Input['QueueHttpTargetArgs'] http_target: Modifies HTTP target for HTTP tasks.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The queue name.
@@ -56,6 +61,8 @@ class QueueArgs:
         pulumi.set(__self__, "location", location)
         if app_engine_routing_override is not None:
             pulumi.set(__self__, "app_engine_routing_override", app_engine_routing_override)
+        if desired_state is not None:
+            pulumi.set(__self__, "desired_state", desired_state)
         if http_target is not None:
             pulumi.set(__self__, "http_target", http_target)
         if name is not None:
@@ -94,6 +101,21 @@ class QueueArgs:
     @app_engine_routing_override.setter
     def app_engine_routing_override(self, value: Optional[pulumi.Input['QueueAppEngineRoutingOverrideArgs']]):
         pulumi.set(self, "app_engine_routing_override", value)
+
+    @_builtins.property
+    @pulumi.getter(name="desiredState")
+    def desired_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The desired state of the queue. Use this to pause and resume the queue.
+
+        * RUNNING: The queue is running. Tasks can be dispatched.
+        * PAUSED: The queue is paused. Tasks are not dispatched but can be added to the queue.
+        """
+        return pulumi.get(self, "desired_state")
+
+    @desired_state.setter
+    def desired_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "desired_state", value)
 
     @_builtins.property
     @pulumi.getter(name="httpTarget")
@@ -183,18 +205,24 @@ class QueueArgs:
 class _QueueState:
     def __init__(__self__, *,
                  app_engine_routing_override: Optional[pulumi.Input['QueueAppEngineRoutingOverrideArgs']] = None,
+                 desired_state: Optional[pulumi.Input[_builtins.str]] = None,
                  http_target: Optional[pulumi.Input['QueueHttpTargetArgs']] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  rate_limits: Optional[pulumi.Input['QueueRateLimitsArgs']] = None,
                  retry_config: Optional[pulumi.Input['QueueRetryConfigArgs']] = None,
-                 stackdriver_logging_config: Optional[pulumi.Input['QueueStackdriverLoggingConfigArgs']] = None):
+                 stackdriver_logging_config: Optional[pulumi.Input['QueueStackdriverLoggingConfigArgs']] = None,
+                 state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Queue resources.
         :param pulumi.Input['QueueAppEngineRoutingOverrideArgs'] app_engine_routing_override: Overrides for task-level appEngineRouting. These settings apply only
                to App Engine tasks in this queue
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] desired_state: The desired state of the queue. Use this to pause and resume the queue.
+               
+               * RUNNING: The queue is running. Tasks can be dispatched.
+               * PAUSED: The queue is paused. Tasks are not dispatched but can be added to the queue.
         :param pulumi.Input['QueueHttpTargetArgs'] http_target: Modifies HTTP target for HTTP tasks.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location of the queue
@@ -213,9 +241,12 @@ class _QueueState:
                Structure is documented below.
         :param pulumi.Input['QueueStackdriverLoggingConfigArgs'] stackdriver_logging_config: Configuration options for writing logs to Stackdriver Logging.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] state: The current state of the queue.
         """
         if app_engine_routing_override is not None:
             pulumi.set(__self__, "app_engine_routing_override", app_engine_routing_override)
+        if desired_state is not None:
+            pulumi.set(__self__, "desired_state", desired_state)
         if http_target is not None:
             pulumi.set(__self__, "http_target", http_target)
         if location is not None:
@@ -230,6 +261,8 @@ class _QueueState:
             pulumi.set(__self__, "retry_config", retry_config)
         if stackdriver_logging_config is not None:
             pulumi.set(__self__, "stackdriver_logging_config", stackdriver_logging_config)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
 
     @_builtins.property
     @pulumi.getter(name="appEngineRoutingOverride")
@@ -244,6 +277,21 @@ class _QueueState:
     @app_engine_routing_override.setter
     def app_engine_routing_override(self, value: Optional[pulumi.Input['QueueAppEngineRoutingOverrideArgs']]):
         pulumi.set(self, "app_engine_routing_override", value)
+
+    @_builtins.property
+    @pulumi.getter(name="desiredState")
+    def desired_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The desired state of the queue. Use this to pause and resume the queue.
+
+        * RUNNING: The queue is running. Tasks can be dispatched.
+        * PAUSED: The queue is paused. Tasks are not dispatched but can be added to the queue.
+        """
+        return pulumi.get(self, "desired_state")
+
+    @desired_state.setter
+    def desired_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "desired_state", value)
 
     @_builtins.property
     @pulumi.getter(name="httpTarget")
@@ -340,6 +388,18 @@ class _QueueState:
     def stackdriver_logging_config(self, value: Optional[pulumi.Input['QueueStackdriverLoggingConfigArgs']]):
         pulumi.set(self, "stackdriver_logging_config", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The current state of the queue.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "state", value)
+
 
 @pulumi.type_token("gcp:cloudtasks/queue:Queue")
 class Queue(pulumi.CustomResource):
@@ -348,6 +408,7 @@ class Queue(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_engine_routing_override: Optional[pulumi.Input[Union['QueueAppEngineRoutingOverrideArgs', 'QueueAppEngineRoutingOverrideArgsDict']]] = None,
+                 desired_state: Optional[pulumi.Input[_builtins.str]] = None,
                  http_target: Optional[pulumi.Input[Union['QueueHttpTargetArgs', 'QueueHttpTargetArgsDict']]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -522,6 +583,10 @@ class Queue(pulumi.CustomResource):
         :param pulumi.Input[Union['QueueAppEngineRoutingOverrideArgs', 'QueueAppEngineRoutingOverrideArgsDict']] app_engine_routing_override: Overrides for task-level appEngineRouting. These settings apply only
                to App Engine tasks in this queue
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] desired_state: The desired state of the queue. Use this to pause and resume the queue.
+               
+               * RUNNING: The queue is running. Tasks can be dispatched.
+               * PAUSED: The queue is paused. Tasks are not dispatched but can be added to the queue.
         :param pulumi.Input[Union['QueueHttpTargetArgs', 'QueueHttpTargetArgsDict']] http_target: Modifies HTTP target for HTTP tasks.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location of the queue
@@ -724,6 +789,7 @@ class Queue(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_engine_routing_override: Optional[pulumi.Input[Union['QueueAppEngineRoutingOverrideArgs', 'QueueAppEngineRoutingOverrideArgsDict']]] = None,
+                 desired_state: Optional[pulumi.Input[_builtins.str]] = None,
                  http_target: Optional[pulumi.Input[Union['QueueHttpTargetArgs', 'QueueHttpTargetArgsDict']]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -741,6 +807,7 @@ class Queue(pulumi.CustomResource):
             __props__ = QueueArgs.__new__(QueueArgs)
 
             __props__.__dict__["app_engine_routing_override"] = app_engine_routing_override
+            __props__.__dict__["desired_state"] = desired_state
             __props__.__dict__["http_target"] = http_target
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -750,6 +817,7 @@ class Queue(pulumi.CustomResource):
             __props__.__dict__["rate_limits"] = rate_limits
             __props__.__dict__["retry_config"] = retry_config
             __props__.__dict__["stackdriver_logging_config"] = stackdriver_logging_config
+            __props__.__dict__["state"] = None
         super(Queue, __self__).__init__(
             'gcp:cloudtasks/queue:Queue',
             resource_name,
@@ -761,13 +829,15 @@ class Queue(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             app_engine_routing_override: Optional[pulumi.Input[Union['QueueAppEngineRoutingOverrideArgs', 'QueueAppEngineRoutingOverrideArgsDict']]] = None,
+            desired_state: Optional[pulumi.Input[_builtins.str]] = None,
             http_target: Optional[pulumi.Input[Union['QueueHttpTargetArgs', 'QueueHttpTargetArgsDict']]] = None,
             location: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             rate_limits: Optional[pulumi.Input[Union['QueueRateLimitsArgs', 'QueueRateLimitsArgsDict']]] = None,
             retry_config: Optional[pulumi.Input[Union['QueueRetryConfigArgs', 'QueueRetryConfigArgsDict']]] = None,
-            stackdriver_logging_config: Optional[pulumi.Input[Union['QueueStackdriverLoggingConfigArgs', 'QueueStackdriverLoggingConfigArgsDict']]] = None) -> 'Queue':
+            stackdriver_logging_config: Optional[pulumi.Input[Union['QueueStackdriverLoggingConfigArgs', 'QueueStackdriverLoggingConfigArgsDict']]] = None,
+            state: Optional[pulumi.Input[_builtins.str]] = None) -> 'Queue':
         """
         Get an existing Queue resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -778,6 +848,10 @@ class Queue(pulumi.CustomResource):
         :param pulumi.Input[Union['QueueAppEngineRoutingOverrideArgs', 'QueueAppEngineRoutingOverrideArgsDict']] app_engine_routing_override: Overrides for task-level appEngineRouting. These settings apply only
                to App Engine tasks in this queue
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] desired_state: The desired state of the queue. Use this to pause and resume the queue.
+               
+               * RUNNING: The queue is running. Tasks can be dispatched.
+               * PAUSED: The queue is paused. Tasks are not dispatched but can be added to the queue.
         :param pulumi.Input[Union['QueueHttpTargetArgs', 'QueueHttpTargetArgsDict']] http_target: Modifies HTTP target for HTTP tasks.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location of the queue
@@ -796,12 +870,14 @@ class Queue(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Union['QueueStackdriverLoggingConfigArgs', 'QueueStackdriverLoggingConfigArgsDict']] stackdriver_logging_config: Configuration options for writing logs to Stackdriver Logging.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] state: The current state of the queue.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _QueueState.__new__(_QueueState)
 
         __props__.__dict__["app_engine_routing_override"] = app_engine_routing_override
+        __props__.__dict__["desired_state"] = desired_state
         __props__.__dict__["http_target"] = http_target
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
@@ -809,6 +885,7 @@ class Queue(pulumi.CustomResource):
         __props__.__dict__["rate_limits"] = rate_limits
         __props__.__dict__["retry_config"] = retry_config
         __props__.__dict__["stackdriver_logging_config"] = stackdriver_logging_config
+        __props__.__dict__["state"] = state
         return Queue(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -820,6 +897,17 @@ class Queue(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "app_engine_routing_override")
+
+    @_builtins.property
+    @pulumi.getter(name="desiredState")
+    def desired_state(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The desired state of the queue. Use this to pause and resume the queue.
+
+        * RUNNING: The queue is running. Tasks can be dispatched.
+        * PAUSED: The queue is paused. Tasks are not dispatched but can be added to the queue.
+        """
+        return pulumi.get(self, "desired_state")
 
     @_builtins.property
     @pulumi.getter(name="httpTarget")
@@ -887,4 +975,12 @@ class Queue(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "stackdriver_logging_config")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[_builtins.str]:
+        """
+        The current state of the queue.
+        """
+        return pulumi.get(self, "state")
 

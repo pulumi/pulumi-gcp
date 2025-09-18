@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetBackendBucketCdnPolicy;
+import com.pulumi.gcp.compute.outputs.GetBackendBucketParam;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -30,6 +31,7 @@ public final class GetBackendBucketResult {
     private String id;
     private String loadBalancingScheme;
     private String name;
+    private List<GetBackendBucketParam> params;
     private @Nullable String project;
     private String selfLink;
 
@@ -71,6 +73,9 @@ public final class GetBackendBucketResult {
     public String name() {
         return this.name;
     }
+    public List<GetBackendBucketParam> params() {
+        return this.params;
+    }
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
@@ -98,6 +103,7 @@ public final class GetBackendBucketResult {
         private String id;
         private String loadBalancingScheme;
         private String name;
+        private List<GetBackendBucketParam> params;
         private @Nullable String project;
         private String selfLink;
         public Builder() {}
@@ -114,6 +120,7 @@ public final class GetBackendBucketResult {
     	      this.id = defaults.id;
     	      this.loadBalancingScheme = defaults.loadBalancingScheme;
     	      this.name = defaults.name;
+    	      this.params = defaults.params;
     	      this.project = defaults.project;
     	      this.selfLink = defaults.selfLink;
         }
@@ -213,6 +220,17 @@ public final class GetBackendBucketResult {
             return this;
         }
         @CustomType.Setter
+        public Builder params(List<GetBackendBucketParam> params) {
+            if (params == null) {
+              throw new MissingRequiredPropertyException("GetBackendBucketResult", "params");
+            }
+            this.params = params;
+            return this;
+        }
+        public Builder params(GetBackendBucketParam... params) {
+            return params(List.of(params));
+        }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
 
             this.project = project;
@@ -239,6 +257,7 @@ public final class GetBackendBucketResult {
             _resultValue.id = id;
             _resultValue.loadBalancingScheme = loadBalancingScheme;
             _resultValue.name = name;
+            _resultValue.params = params;
             _resultValue.project = project;
             _resultValue.selfLink = selfLink;
             return _resultValue;

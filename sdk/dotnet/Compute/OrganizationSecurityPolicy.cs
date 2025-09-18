@@ -67,10 +67,10 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// A textual name of the security policy.
+        /// User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
         /// </summary>
         [Output("displayName")]
-        public Output<string> DisplayName { get; private set; } = null!;
+        public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
         /// Fingerprint of this resource. This field is used internally during
@@ -93,11 +93,15 @@ namespace Pulumi.Gcp.Compute
         public Output<string> PolicyId { get; private set; } = null!;
 
         /// <summary>
-        /// The type indicates the intended use of the security policy.
-        /// For organization security policies, the only supported type
-        /// is "FIREWALL".
+        /// User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is CLOUD_ARMOR.
+        /// </summary>
+        [Output("shortName")]
+        public Output<string?> ShortName { get; private set; } = null!;
+
+        /// <summary>
+        /// The type indicates the intended use of the security policy. This field can be set only at resource creation time.
         /// Default value is `FIREWALL`.
-        /// Possible values are: `FIREWALL`.
+        /// Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -155,10 +159,10 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// A textual name of the security policy.
+        /// User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
         /// </summary>
-        [Input("displayName", required: true)]
-        public Input<string> DisplayName { get; set; } = null!;
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
 
         /// <summary>
         /// The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
@@ -168,11 +172,15 @@ namespace Pulumi.Gcp.Compute
         public Input<string> Parent { get; set; } = null!;
 
         /// <summary>
-        /// The type indicates the intended use of the security policy.
-        /// For organization security policies, the only supported type
-        /// is "FIREWALL".
+        /// User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is CLOUD_ARMOR.
+        /// </summary>
+        [Input("shortName")]
+        public Input<string>? ShortName { get; set; }
+
+        /// <summary>
+        /// The type indicates the intended use of the security policy. This field can be set only at resource creation time.
         /// Default value is `FIREWALL`.
-        /// Possible values are: `FIREWALL`.
+        /// Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -192,7 +200,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// A textual name of the security policy.
+        /// User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
@@ -218,11 +226,15 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? PolicyId { get; set; }
 
         /// <summary>
-        /// The type indicates the intended use of the security policy.
-        /// For organization security policies, the only supported type
-        /// is "FIREWALL".
+        /// User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is CLOUD_ARMOR.
+        /// </summary>
+        [Input("shortName")]
+        public Input<string>? ShortName { get; set; }
+
+        /// <summary>
+        /// The type indicates the intended use of the security policy. This field can be set only at resource creation time.
         /// Default value is `FIREWALL`.
-        /// Possible values are: `FIREWALL`.
+        /// Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

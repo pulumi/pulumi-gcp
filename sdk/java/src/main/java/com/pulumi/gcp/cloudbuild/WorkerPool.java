@@ -98,7 +98,6 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var servicenetworking = new Service("servicenetworking", ServiceArgs.builder()
  *             .service("servicenetworking.googleapis.com")
- *             .disableOnDestroy(false)
  *             .build());
  * 
  *         var network = new Network("network", NetworkArgs.builder()

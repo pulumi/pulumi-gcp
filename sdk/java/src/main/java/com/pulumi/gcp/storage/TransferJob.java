@@ -352,6 +352,20 @@ public class TransferJob extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.schedule);
     }
     /**
+     * The user-managed service account to run the job. If this field is specified, the given service account is granted the necessary permissions to all applicable resources (e.g. GCS buckets) required by the job.
+     * 
+     */
+    @Export(name="serviceAccount", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> serviceAccount;
+
+    /**
+     * @return The user-managed service account to run the job. If this field is specified, the given service account is granted the necessary permissions to all applicable resources (e.g. GCS buckets) required by the job.
+     * 
+     */
+    public Output<Optional<String>> serviceAccount() {
+        return Codegen.optional(this.serviceAccount);
+    }
+    /**
      * Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
      * 
      */

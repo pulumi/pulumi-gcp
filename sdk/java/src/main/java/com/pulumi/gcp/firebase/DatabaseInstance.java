@@ -15,6 +15,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A Firebase Realtime Database instance.
+ * 
+ * To get more information about Instance, see:
+ * 
+ * * [API documentation](https://firebase.google.com/docs/reference/rest/database/database-management/rest)
+ * * How-to Guides
+ *     * [Official Documentation](https://firebase.google.com/products/realtime-database)
+ * 
  * ## Example Usage
  * 
  * ### Firebase Database Instance Basic
@@ -127,7 +135,6 @@ import javax.annotation.Nullable;
  *         var firebase = new Service("firebase", ServiceArgs.builder()
  *             .project(default_.projectId())
  *             .service("firebase.googleapis.com")
- *             .disableOnDestroy(false)
  *             .build());
  * 
  *         var defaultProject = new com.pulumi.gcp.firebase.Project("defaultProject", com.pulumi.gcp.firebase.ProjectArgs.builder()
@@ -139,7 +146,6 @@ import javax.annotation.Nullable;
  *         var firebaseDatabase = new Service("firebaseDatabase", ServiceArgs.builder()
  *             .project(defaultProject.project())
  *             .service("firebasedatabase.googleapis.com")
- *             .disableOnDestroy(false)
  *             .build());
  * 
  *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()

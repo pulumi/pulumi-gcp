@@ -8,10 +8,248 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Three different resources help you manage your IAM policy for Compute Engine BackendBucket. Each of these resources serves a different use case:
+//
+// * `compute.BackendBucketIamPolicy`: Authoritative. Sets the IAM policy for the backendbucket and replaces any existing policy already attached.
+// * `compute.BackendBucketIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the backendbucket are preserved.
+// * `compute.BackendBucketIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the backendbucket are preserved.
+//
+// # A data source can be used to retrieve policy data in advent you do not need creation
+//
+// * `compute.BackendBucketIamPolicy`: Retrieves the IAM policy for the backendbucket
+//
+// > **Note:** `compute.BackendBucketIamPolicy` **cannot** be used in conjunction with `compute.BackendBucketIamBinding` and `compute.BackendBucketIamMember` or they will fight over what your policy should be.
+//
+// > **Note:** `compute.BackendBucketIamBinding` resources **can be** used in conjunction with `compute.BackendBucketIamMember` resources **only if** they do not grant privilege to the same role.
+//
+// ## compute.BackendBucketIamPolicy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/viewer",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewBackendBucketIamPolicy(ctx, "policy", &compute.BackendBucketIamPolicyArgs{
+//				Project:    pulumi.Any(imageBackend.Project),
+//				Name:       pulumi.Any(imageBackend.Name),
+//				PolicyData: pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## compute.BackendBucketIamBinding
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewBackendBucketIamBinding(ctx, "binding", &compute.BackendBucketIamBindingArgs{
+//				Project: pulumi.Any(imageBackend.Project),
+//				Name:    pulumi.Any(imageBackend.Name),
+//				Role:    pulumi.String("roles/viewer"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## compute.BackendBucketIamMember
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewBackendBucketIamMember(ctx, "member", &compute.BackendBucketIamMemberArgs{
+//				Project: pulumi.Any(imageBackend.Project),
+//				Name:    pulumi.Any(imageBackend.Name),
+//				Role:    pulumi.String("roles/viewer"),
+//				Member:  pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## This resource supports User Project Overrides.
+//
+// -
+//
+// # IAM policy for Compute Engine BackendBucket
+//
+// Three different resources help you manage your IAM policy for Compute Engine BackendBucket. Each of these resources serves a different use case:
+//
+// * `compute.BackendBucketIamPolicy`: Authoritative. Sets the IAM policy for the backendbucket and replaces any existing policy already attached.
+// * `compute.BackendBucketIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the backendbucket are preserved.
+// * `compute.BackendBucketIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the backendbucket are preserved.
+//
+// # A data source can be used to retrieve policy data in advent you do not need creation
+//
+// * `compute.BackendBucketIamPolicy`: Retrieves the IAM policy for the backendbucket
+//
+// > **Note:** `compute.BackendBucketIamPolicy` **cannot** be used in conjunction with `compute.BackendBucketIamBinding` and `compute.BackendBucketIamMember` or they will fight over what your policy should be.
+//
+// > **Note:** `compute.BackendBucketIamBinding` resources **can be** used in conjunction with `compute.BackendBucketIamMember` resources **only if** they do not grant privilege to the same role.
+//
+// ## compute.BackendBucketIamPolicy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/viewer",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewBackendBucketIamPolicy(ctx, "policy", &compute.BackendBucketIamPolicyArgs{
+//				Project:    pulumi.Any(imageBackend.Project),
+//				Name:       pulumi.Any(imageBackend.Name),
+//				PolicyData: pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## compute.BackendBucketIamBinding
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewBackendBucketIamBinding(ctx, "binding", &compute.BackendBucketIamBindingArgs{
+//				Project: pulumi.Any(imageBackend.Project),
+//				Name:    pulumi.Any(imageBackend.Name),
+//				Role:    pulumi.String("roles/viewer"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## compute.BackendBucketIamMember
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewBackendBucketIamMember(ctx, "member", &compute.BackendBucketIamMemberArgs{
+//				Project: pulumi.Any(imageBackend.Project),
+//				Name:    pulumi.Any(imageBackend.Name),
+//				Role:    pulumi.String("roles/viewer"),
+//				Member:  pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // For all import syntaxes, the "resource in question" can take any of the following forms:

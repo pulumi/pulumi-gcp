@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -753,7 +753,7 @@ func (o ReferenceListEntryArrayOutput) Index(i pulumi.IntInput) ReferenceListEnt
 type ReferenceListScopeInfo struct {
 	// ReferenceListScope specifies the list of scope names of the reference list.
 	// Structure is documented below.
-	ReferenceListScope ReferenceListScopeInfoReferenceListScope `pulumi:"referenceListScope"`
+	ReferenceListScope *ReferenceListScopeInfoReferenceListScope `pulumi:"referenceListScope"`
 }
 
 // ReferenceListScopeInfoInput is an input type that accepts ReferenceListScopeInfoArgs and ReferenceListScopeInfoOutput values.
@@ -770,7 +770,7 @@ type ReferenceListScopeInfoInput interface {
 type ReferenceListScopeInfoArgs struct {
 	// ReferenceListScope specifies the list of scope names of the reference list.
 	// Structure is documented below.
-	ReferenceListScope ReferenceListScopeInfoReferenceListScopeInput `pulumi:"referenceListScope"`
+	ReferenceListScope ReferenceListScopeInfoReferenceListScopePtrInput `pulumi:"referenceListScope"`
 }
 
 func (ReferenceListScopeInfoArgs) ElementType() reflect.Type {
@@ -826,8 +826,8 @@ func (o ReferenceListScopeInfoOutput) ToReferenceListScopeInfoOutputWithContext(
 
 // ReferenceListScope specifies the list of scope names of the reference list.
 // Structure is documented below.
-func (o ReferenceListScopeInfoOutput) ReferenceListScope() ReferenceListScopeInfoReferenceListScopeOutput {
-	return o.ApplyT(func(v ReferenceListScopeInfo) ReferenceListScopeInfoReferenceListScope { return v.ReferenceListScope }).(ReferenceListScopeInfoReferenceListScopeOutput)
+func (o ReferenceListScopeInfoOutput) ReferenceListScope() ReferenceListScopeInfoReferenceListScopePtrOutput {
+	return o.ApplyT(func(v ReferenceListScopeInfo) *ReferenceListScopeInfoReferenceListScope { return v.ReferenceListScope }).(ReferenceListScopeInfoReferenceListScopePtrOutput)
 }
 
 type ReferenceListScopeInfoArrayOutput struct{ *pulumi.OutputState }
@@ -887,6 +887,47 @@ func (i ReferenceListScopeInfoReferenceListScopeArgs) ToReferenceListScopeInfoRe
 	return pulumi.ToOutputWithContext(ctx, i).(ReferenceListScopeInfoReferenceListScopeOutput)
 }
 
+func (i ReferenceListScopeInfoReferenceListScopeArgs) ToReferenceListScopeInfoReferenceListScopePtrOutput() ReferenceListScopeInfoReferenceListScopePtrOutput {
+	return i.ToReferenceListScopeInfoReferenceListScopePtrOutputWithContext(context.Background())
+}
+
+func (i ReferenceListScopeInfoReferenceListScopeArgs) ToReferenceListScopeInfoReferenceListScopePtrOutputWithContext(ctx context.Context) ReferenceListScopeInfoReferenceListScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReferenceListScopeInfoReferenceListScopeOutput).ToReferenceListScopeInfoReferenceListScopePtrOutputWithContext(ctx)
+}
+
+// ReferenceListScopeInfoReferenceListScopePtrInput is an input type that accepts ReferenceListScopeInfoReferenceListScopeArgs, ReferenceListScopeInfoReferenceListScopePtr and ReferenceListScopeInfoReferenceListScopePtrOutput values.
+// You can construct a concrete instance of `ReferenceListScopeInfoReferenceListScopePtrInput` via:
+//
+//	        ReferenceListScopeInfoReferenceListScopeArgs{...}
+//
+//	or:
+//
+//	        nil
+type ReferenceListScopeInfoReferenceListScopePtrInput interface {
+	pulumi.Input
+
+	ToReferenceListScopeInfoReferenceListScopePtrOutput() ReferenceListScopeInfoReferenceListScopePtrOutput
+	ToReferenceListScopeInfoReferenceListScopePtrOutputWithContext(context.Context) ReferenceListScopeInfoReferenceListScopePtrOutput
+}
+
+type referenceListScopeInfoReferenceListScopePtrType ReferenceListScopeInfoReferenceListScopeArgs
+
+func ReferenceListScopeInfoReferenceListScopePtr(v *ReferenceListScopeInfoReferenceListScopeArgs) ReferenceListScopeInfoReferenceListScopePtrInput {
+	return (*referenceListScopeInfoReferenceListScopePtrType)(v)
+}
+
+func (*referenceListScopeInfoReferenceListScopePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReferenceListScopeInfoReferenceListScope)(nil)).Elem()
+}
+
+func (i *referenceListScopeInfoReferenceListScopePtrType) ToReferenceListScopeInfoReferenceListScopePtrOutput() ReferenceListScopeInfoReferenceListScopePtrOutput {
+	return i.ToReferenceListScopeInfoReferenceListScopePtrOutputWithContext(context.Background())
+}
+
+func (i *referenceListScopeInfoReferenceListScopePtrType) ToReferenceListScopeInfoReferenceListScopePtrOutputWithContext(ctx context.Context) ReferenceListScopeInfoReferenceListScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReferenceListScopeInfoReferenceListScopePtrOutput)
+}
+
 type ReferenceListScopeInfoReferenceListScopeOutput struct{ *pulumi.OutputState }
 
 func (ReferenceListScopeInfoReferenceListScopeOutput) ElementType() reflect.Type {
@@ -901,11 +942,57 @@ func (o ReferenceListScopeInfoReferenceListScopeOutput) ToReferenceListScopeInfo
 	return o
 }
 
+func (o ReferenceListScopeInfoReferenceListScopeOutput) ToReferenceListScopeInfoReferenceListScopePtrOutput() ReferenceListScopeInfoReferenceListScopePtrOutput {
+	return o.ToReferenceListScopeInfoReferenceListScopePtrOutputWithContext(context.Background())
+}
+
+func (o ReferenceListScopeInfoReferenceListScopeOutput) ToReferenceListScopeInfoReferenceListScopePtrOutputWithContext(ctx context.Context) ReferenceListScopeInfoReferenceListScopePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReferenceListScopeInfoReferenceListScope) *ReferenceListScopeInfoReferenceListScope {
+		return &v
+	}).(ReferenceListScopeInfoReferenceListScopePtrOutput)
+}
+
 // Optional. The list of scope names of the reference list. The scope names should be
 // full resource names and should be of the format:
 // "projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{scope_name}".
 func (o ReferenceListScopeInfoReferenceListScopeOutput) ScopeNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ReferenceListScopeInfoReferenceListScope) []string { return v.ScopeNames }).(pulumi.StringArrayOutput)
+}
+
+type ReferenceListScopeInfoReferenceListScopePtrOutput struct{ *pulumi.OutputState }
+
+func (ReferenceListScopeInfoReferenceListScopePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReferenceListScopeInfoReferenceListScope)(nil)).Elem()
+}
+
+func (o ReferenceListScopeInfoReferenceListScopePtrOutput) ToReferenceListScopeInfoReferenceListScopePtrOutput() ReferenceListScopeInfoReferenceListScopePtrOutput {
+	return o
+}
+
+func (o ReferenceListScopeInfoReferenceListScopePtrOutput) ToReferenceListScopeInfoReferenceListScopePtrOutputWithContext(ctx context.Context) ReferenceListScopeInfoReferenceListScopePtrOutput {
+	return o
+}
+
+func (o ReferenceListScopeInfoReferenceListScopePtrOutput) Elem() ReferenceListScopeInfoReferenceListScopeOutput {
+	return o.ApplyT(func(v *ReferenceListScopeInfoReferenceListScope) ReferenceListScopeInfoReferenceListScope {
+		if v != nil {
+			return *v
+		}
+		var ret ReferenceListScopeInfoReferenceListScope
+		return ret
+	}).(ReferenceListScopeInfoReferenceListScopeOutput)
+}
+
+// Optional. The list of scope names of the reference list. The scope names should be
+// full resource names and should be of the format:
+// "projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{scope_name}".
+func (o ReferenceListScopeInfoReferenceListScopePtrOutput) ScopeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ReferenceListScopeInfoReferenceListScope) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ScopeNames
+	}).(pulumi.StringArrayOutput)
 }
 
 type RetrohuntExecutionInterval struct {
@@ -2161,6 +2248,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ReferenceListScopeInfoInput)(nil)).Elem(), ReferenceListScopeInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReferenceListScopeInfoArrayInput)(nil)).Elem(), ReferenceListScopeInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReferenceListScopeInfoReferenceListScopeInput)(nil)).Elem(), ReferenceListScopeInfoReferenceListScopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReferenceListScopeInfoReferenceListScopePtrInput)(nil)).Elem(), ReferenceListScopeInfoReferenceListScopeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RetrohuntExecutionIntervalInput)(nil)).Elem(), RetrohuntExecutionIntervalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RetrohuntExecutionIntervalArrayInput)(nil)).Elem(), RetrohuntExecutionIntervalArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RetrohuntProcessIntervalInput)(nil)).Elem(), RetrohuntProcessIntervalArgs{})
@@ -2192,6 +2280,7 @@ func init() {
 	pulumi.RegisterOutputType(ReferenceListScopeInfoOutput{})
 	pulumi.RegisterOutputType(ReferenceListScopeInfoArrayOutput{})
 	pulumi.RegisterOutputType(ReferenceListScopeInfoReferenceListScopeOutput{})
+	pulumi.RegisterOutputType(ReferenceListScopeInfoReferenceListScopePtrOutput{})
 	pulumi.RegisterOutputType(RetrohuntExecutionIntervalOutput{})
 	pulumi.RegisterOutputType(RetrohuntExecutionIntervalArrayOutput{})
 	pulumi.RegisterOutputType(RetrohuntProcessIntervalOutput{})

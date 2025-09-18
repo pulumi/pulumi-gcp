@@ -11,8 +11,11 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.diagflow.CxAgentArgs;
 import com.pulumi.gcp.diagflow.inputs.CxAgentState;
 import com.pulumi.gcp.diagflow.outputs.CxAgentAdvancedSettings;
+import com.pulumi.gcp.diagflow.outputs.CxAgentAnswerFeedbackSettings;
+import com.pulumi.gcp.diagflow.outputs.CxAgentClientCertificateSettings;
 import com.pulumi.gcp.diagflow.outputs.CxAgentGenAppBuilderSettings;
 import com.pulumi.gcp.diagflow.outputs.CxAgentGitIntegrationSettings;
+import com.pulumi.gcp.diagflow.outputs.CxAgentPersonalizationSettings;
 import com.pulumi.gcp.diagflow.outputs.CxAgentSpeechToTextSettings;
 import com.pulumi.gcp.diagflow.outputs.CxAgentTextToSpeechSettings;
 import java.lang.Boolean;
@@ -55,6 +58,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.diagflow.inputs.CxAgentGitIntegrationSettingsGithubSettingsArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxAgentTextToSpeechSettingsArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxAgentGenAppBuilderSettingsArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxAgentAnswerFeedbackSettingsArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxAgentClientCertificateSettingsArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxAgentPersonalizationSettingsArgs;
  * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -143,6 +149,40 @@ import javax.annotation.Nullable;
  *             .genAppBuilderSettings(CxAgentGenAppBuilderSettingsArgs.builder()
  *                 .engine("projects/-/locations/-/collections/-/engines/-")
  *                 .build())
+ *             .startPlaybook("projects/-/locations/-/agents/-/playbooks/00000000-0000-0000-0000-000000000000")
+ *             .enableMultiLanguageTraining(false)
+ *             .locked(false)
+ *             .answerFeedbackSettings(CxAgentAnswerFeedbackSettingsArgs.builder()
+ *                 .enableAnswerFeedback(false)
+ *                 .build())
+ *             .clientCertificateSettings(CxAgentClientCertificateSettingsArgs.builder()
+ *                 .passphrase("projects/example-proj/secrets/example-secret/versions/example-version")
+ *                 .privateKey("projects/example-proj/secrets/example-secret/versions/example-version")
+ *                 .sslCertificate("""
+ * -----BEGIN CERTIFICATE-----
+ * MIIDdDCCAlygAwIBAgIJANg0gKeB5LKmMA0GCSqGSIb3DQEBCwUAMIGSMQswCQYD
+ * VQQGEwJVUzETMBEGA1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5j
+ * aXNjbzEZMBcGA1UECgwQR2l0SHViLCBJbmMuMRkwFwYDVQQLDBBHb3Zlcm5tZW50
+ * IFRlYW0xGTAXBgNVBAMMEGdvdnN0YWNrLmdpdGh1Yi5pbzAeFw0yMDA1MDUxNzM2
+ * MzVaFw0zMDA1MDMxNzM2MzVaMIGSMQswCQYDVQQGEwJVUzETMBEGA1UECAwKQ2Fs
+ * aWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzEZMBcGA1UECgwQR2l0SHVi
+ * LCBJbmMuMRkwFwYDVQQLDBBHb3Zlcm5tZW50IFRlYW0xGTAXBgNVBAMMEGdvdnN0
+ * YWNrLmdpdGh1Yi5pbzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAK5P
+ * 4d9qWZPjZ2eA4eYV2Q8Z3Zp4g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+ * g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+ * g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+ * g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+ * g8e6g8e6g8e6g8e6g8e6AgMBAAGjggEaMIIBFjAdBgNVHQ4EFgQUCneA9H8fC+tC
+ * g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+ * g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+ * g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+ * g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+ * -----END CERTIFICATE-----
+ *                 """)
+ *                 .build())
+ *             .personalizationSettings(CxAgentPersonalizationSettingsArgs.builder()
+ *                 .defaultEndUserMetadata("{\"example-key\": \"example-value\"}")
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -196,6 +236,22 @@ public class CxAgent extends com.pulumi.resources.CustomResource {
         return this.advancedSettings;
     }
     /**
+     * Answer feedback collection settings.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="answerFeedbackSettings", refs={CxAgentAnswerFeedbackSettings.class}, tree="[0]")
+    private Output</* @Nullable */ CxAgentAnswerFeedbackSettings> answerFeedbackSettings;
+
+    /**
+     * @return Answer feedback collection settings.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<CxAgentAnswerFeedbackSettings>> answerFeedbackSettings() {
+        return Codegen.optional(this.answerFeedbackSettings);
+    }
+    /**
      * The URI of the agent&#39;s avatar. Avatars are used throughout the Dialogflow console and in the self-hosted Web Demo integration.
      * 
      */
@@ -208,6 +264,22 @@ public class CxAgent extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> avatarUri() {
         return Codegen.optional(this.avatarUri);
+    }
+    /**
+     * Settings for custom client certificates.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="clientCertificateSettings", refs={CxAgentClientCertificateSettings.class}, tree="[0]")
+    private Output</* @Nullable */ CxAgentClientCertificateSettings> clientCertificateSettings;
+
+    /**
+     * @return Settings for custom client certificates.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<CxAgentClientCertificateSettings>> clientCertificateSettings() {
+        return Codegen.optional(this.clientCertificateSettings);
     }
     /**
      * The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language)
@@ -258,6 +330,20 @@ public class CxAgent extends com.pulumi.resources.CustomResource {
      */
     public Output<String> displayName() {
         return this.displayName;
+    }
+    /**
+     * Enable training multi-lingual models for this agent. These models will be trained on all the languages supported by the agent.
+     * 
+     */
+    @Export(name="enableMultiLanguageTraining", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> enableMultiLanguageTraining;
+
+    /**
+     * @return Enable training multi-lingual models for this agent. These models will be trained on all the languages supported by the agent.
+     * 
+     */
+    public Output<Optional<Boolean>> enableMultiLanguageTraining() {
+        return Codegen.optional(this.enableMultiLanguageTraining);
     }
     /**
      * Indicates if automatic spell correction is enabled in detect intent requests.
@@ -350,6 +436,20 @@ public class CxAgent extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
+     * Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for [agents.restore][].
+     * 
+     */
+    @Export(name="locked", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> locked;
+
+    /**
+     * @return Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for [agents.restore][].
+     * 
+     */
+    public Output<Optional<Boolean>> locked() {
+        return Codegen.optional(this.locked);
+    }
+    /**
      * The unique identifier of the agent.
      * 
      */
@@ -362,6 +462,22 @@ public class CxAgent extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Settings for end user personalization.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="personalizationSettings", refs={CxAgentPersonalizationSettings.class}, tree="[0]")
+    private Output</* @Nullable */ CxAgentPersonalizationSettings> personalizationSettings;
+
+    /**
+     * @return Settings for end user personalization.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<CxAgentPersonalizationSettings>> personalizationSettings() {
+        return Codegen.optional(this.personalizationSettings);
     }
     /**
      * The ID of the project in which the resource belongs.
@@ -378,6 +494,34 @@ public class CxAgent extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * A read only boolean field reflecting Zone Isolation status of the agent.
+     * 
+     */
+    @Export(name="satisfiesPzi", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> satisfiesPzi;
+
+    /**
+     * @return A read only boolean field reflecting Zone Isolation status of the agent.
+     * 
+     */
+    public Output<Boolean> satisfiesPzi() {
+        return this.satisfiesPzi;
+    }
+    /**
+     * A read only boolean field reflecting Zone Separation status of the agent.
+     * 
+     */
+    @Export(name="satisfiesPzs", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> satisfiesPzs;
+
+    /**
+     * @return A read only boolean field reflecting Zone Separation status of the agent.
+     * 
+     */
+    public Output<Boolean> satisfiesPzs() {
+        return this.satisfiesPzs;
     }
     /**
      * Name of the SecuritySettings reference for the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/securitySettings/&lt;Security Settings ID&gt;.
@@ -422,6 +566,20 @@ public class CxAgent extends com.pulumi.resources.CustomResource {
      */
     public Output<String> startFlow() {
         return this.startFlow;
+    }
+    /**
+     * Name of the start playbook in this agent. A start playbook will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: **projects/&lt;ProjectID&gt;/locations/&lt;LocationID&gt;/agents/&lt;AgentID&gt;/playbooks/&lt;PlaybookID&gt;**. Currently only the default playbook with id &#34;00000000-0000-0000-0000-000000000000&#34; is allowed.
+     * 
+     */
+    @Export(name="startPlaybook", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> startPlaybook;
+
+    /**
+     * @return Name of the start playbook in this agent. A start playbook will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: **projects/&lt;ProjectID&gt;/locations/&lt;LocationID&gt;/agents/&lt;AgentID&gt;/playbooks/&lt;PlaybookID&gt;**. Currently only the default playbook with id &#34;00000000-0000-0000-0000-000000000000&#34; is allowed.
+     * 
+     */
+    public Output<Optional<String>> startPlaybook() {
+        return Codegen.optional(this.startPlaybook);
     }
     /**
      * The list of all languages supported by this agent (except for the default_language_code).

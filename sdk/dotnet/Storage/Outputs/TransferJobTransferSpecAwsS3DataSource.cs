@@ -26,6 +26,10 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// </summary>
         public readonly string? CloudfrontDomain;
         /// <summary>
+        /// The Resource name of a secret in Secret Manager. AWS credentials must be stored in Secret Manager in JSON format. If credentials_secret is specified, do not specify role_arn or aws_access_key. Format: projects/{projectNumber}/secrets/{secret_name}.
+        /// </summary>
+        public readonly string? CredentialsSecret;
+        /// <summary>
         /// Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
         /// </summary>
         public readonly bool? ManagedPrivateNetwork;
@@ -46,6 +50,8 @@ namespace Pulumi.Gcp.Storage.Outputs
 
             string? cloudfrontDomain,
 
+            string? credentialsSecret,
+
             bool? managedPrivateNetwork,
 
             string? path,
@@ -55,6 +61,7 @@ namespace Pulumi.Gcp.Storage.Outputs
             AwsAccessKey = awsAccessKey;
             BucketName = bucketName;
             CloudfrontDomain = cloudfrontDomain;
+            CredentialsSecret = credentialsSecret;
             ManagedPrivateNetwork = managedPrivateNetwork;
             Path = path;
             RoleArn = roleArn;

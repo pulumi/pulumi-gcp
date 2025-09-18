@@ -12,6 +12,7 @@ import com.pulumi.gcp.compute.RegionUrlMapArgs;
 import com.pulumi.gcp.compute.inputs.RegionUrlMapState;
 import com.pulumi.gcp.compute.outputs.RegionUrlMapDefaultRouteAction;
 import com.pulumi.gcp.compute.outputs.RegionUrlMapDefaultUrlRedirect;
+import com.pulumi.gcp.compute.outputs.RegionUrlMapHeaderAction;
 import com.pulumi.gcp.compute.outputs.RegionUrlMapHostRule;
 import com.pulumi.gcp.compute.outputs.RegionUrlMapPathMatcher;
 import com.pulumi.gcp.compute.outputs.RegionUrlMapTest;
@@ -1578,6 +1579,28 @@ public class RegionUrlMap extends com.pulumi.resources.CustomResource {
      */
     public Output<String> fingerprint() {
         return this.fingerprint;
+    }
+    /**
+     * Specifies changes to request and response headers that need to take effect for the selected backendService.
+     * headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+     * headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+     * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="headerAction", refs={RegionUrlMapHeaderAction.class}, tree="[0]")
+    private Output</* @Nullable */ RegionUrlMapHeaderAction> headerAction;
+
+    /**
+     * @return Specifies changes to request and response headers that need to take effect for the selected backendService.
+     * headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+     * headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+     * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<RegionUrlMapHeaderAction>> headerAction() {
+        return Codegen.optional(this.headerAction);
     }
     /**
      * The list of HostRules to use against the URL.

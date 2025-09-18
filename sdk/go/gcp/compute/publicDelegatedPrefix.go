@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -67,7 +67,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -119,7 +119,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -220,6 +220,11 @@ type PublicDelegatedPrefix struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// List of sub public delegated fixes for BYO IP functionality.
+	// Each item in this array represents a sub prefix that can be
+	// used to create addresses or further allocations.
+	// Structure is documented below.
+	PublicDelegatedSubPrefixs PublicDelegatedPrefixPublicDelegatedSubPrefixArrayOutput `pulumi:"publicDelegatedSubPrefixs"`
 	// A region where the prefix will reside.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The URI of the created resource.
@@ -289,6 +294,11 @@ type publicDelegatedPrefixState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// List of sub public delegated fixes for BYO IP functionality.
+	// Each item in this array represents a sub prefix that can be
+	// used to create addresses or further allocations.
+	// Structure is documented below.
+	PublicDelegatedSubPrefixs []PublicDelegatedPrefixPublicDelegatedSubPrefix `pulumi:"publicDelegatedSubPrefixs"`
 	// A region where the prefix will reside.
 	Region *string `pulumi:"region"`
 	// The URI of the created resource.
@@ -320,6 +330,11 @@ type PublicDelegatedPrefixState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// List of sub public delegated fixes for BYO IP functionality.
+	// Each item in this array represents a sub prefix that can be
+	// used to create addresses or further allocations.
+	// Structure is documented below.
+	PublicDelegatedSubPrefixs PublicDelegatedPrefixPublicDelegatedSubPrefixArrayInput
 	// A region where the prefix will reside.
 	Region pulumi.StringPtrInput
 	// The URI of the created resource.
@@ -522,6 +537,16 @@ func (o PublicDelegatedPrefixOutput) ParentPrefix() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o PublicDelegatedPrefixOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *PublicDelegatedPrefix) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// List of sub public delegated fixes for BYO IP functionality.
+// Each item in this array represents a sub prefix that can be
+// used to create addresses or further allocations.
+// Structure is documented below.
+func (o PublicDelegatedPrefixOutput) PublicDelegatedSubPrefixs() PublicDelegatedPrefixPublicDelegatedSubPrefixArrayOutput {
+	return o.ApplyT(func(v *PublicDelegatedPrefix) PublicDelegatedPrefixPublicDelegatedSubPrefixArrayOutput {
+		return v.PublicDelegatedSubPrefixs
+	}).(PublicDelegatedPrefixPublicDelegatedSubPrefixArrayOutput)
 }
 
 // A region where the prefix will reside.

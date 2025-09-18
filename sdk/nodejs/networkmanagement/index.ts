@@ -15,6 +15,11 @@ export const getConnectivityTestRun: typeof import("./getConnectivityTestRun").g
 export const getConnectivityTestRunOutput: typeof import("./getConnectivityTestRun").getConnectivityTestRunOutput = null as any;
 utilities.lazyLoad(exports, ["getConnectivityTestRun","getConnectivityTestRunOutput"], () => require("./getConnectivityTestRun"));
 
+export { OrganizationVpcFlowLogsConfigArgs, OrganizationVpcFlowLogsConfigState } from "./organizationVpcFlowLogsConfig";
+export type OrganizationVpcFlowLogsConfig = import("./organizationVpcFlowLogsConfig").OrganizationVpcFlowLogsConfig;
+export const OrganizationVpcFlowLogsConfig: typeof import("./organizationVpcFlowLogsConfig").OrganizationVpcFlowLogsConfig = null as any;
+utilities.lazyLoad(exports, ["OrganizationVpcFlowLogsConfig"], () => require("./organizationVpcFlowLogsConfig"));
+
 export { VpcFlowLogsConfigArgs, VpcFlowLogsConfigState } from "./vpcFlowLogsConfig";
 export type VpcFlowLogsConfig = import("./vpcFlowLogsConfig").VpcFlowLogsConfig;
 export const VpcFlowLogsConfig: typeof import("./vpcFlowLogsConfig").VpcFlowLogsConfig = null as any;
@@ -27,6 +32,8 @@ const _module = {
         switch (type) {
             case "gcp:networkmanagement/connectivityTest:ConnectivityTest":
                 return new ConnectivityTest(name, <any>undefined, { urn })
+            case "gcp:networkmanagement/organizationVpcFlowLogsConfig:OrganizationVpcFlowLogsConfig":
+                return new OrganizationVpcFlowLogsConfig(name, <any>undefined, { urn })
             case "gcp:networkmanagement/vpcFlowLogsConfig:VpcFlowLogsConfig":
                 return new VpcFlowLogsConfig(name, <any>undefined, { urn })
             default:
@@ -35,4 +42,5 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "networkmanagement/connectivityTest", _module)
+pulumi.runtime.registerResourceModule("gcp", "networkmanagement/organizationVpcFlowLogsConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkmanagement/vpcFlowLogsConfig", _module)

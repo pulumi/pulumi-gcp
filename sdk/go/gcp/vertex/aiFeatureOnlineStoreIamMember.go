@@ -8,10 +8,248 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Three different resources help you manage your IAM policy for Vertex AI FeatureOnlineStore. Each of these resources serves a different use case:
+//
+// * `vertex.AiFeatureOnlineStoreIamPolicy`: Authoritative. Sets the IAM policy for the featureonlinestore and replaces any existing policy already attached.
+// * `vertex.AiFeatureOnlineStoreIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the featureonlinestore are preserved.
+// * `vertex.AiFeatureOnlineStoreIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the featureonlinestore are preserved.
+//
+// # A data source can be used to retrieve policy data in advent you do not need creation
+//
+// * `vertex.AiFeatureOnlineStoreIamPolicy`: Retrieves the IAM policy for the featureonlinestore
+//
+// > **Note:** `vertex.AiFeatureOnlineStoreIamPolicy` **cannot** be used in conjunction with `vertex.AiFeatureOnlineStoreIamBinding` and `vertex.AiFeatureOnlineStoreIamMember` or they will fight over what your policy should be.
+//
+// > **Note:** `vertex.AiFeatureOnlineStoreIamBinding` resources **can be** used in conjunction with `vertex.AiFeatureOnlineStoreIamMember` resources **only if** they do not grant privilege to the same role.
+//
+// ## vertex.AiFeatureOnlineStoreIamPolicy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/viewer",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vertex.NewAiFeatureOnlineStoreIamPolicy(ctx, "policy", &vertex.AiFeatureOnlineStoreIamPolicyArgs{
+//				Region:             pulumi.Any(featureOnlineStore.Region),
+//				FeatureOnlineStore: pulumi.Any(featureOnlineStore.Name),
+//				PolicyData:         pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## vertex.AiFeatureOnlineStoreIamBinding
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vertex.NewAiFeatureOnlineStoreIamBinding(ctx, "binding", &vertex.AiFeatureOnlineStoreIamBindingArgs{
+//				Region:             pulumi.Any(featureOnlineStore.Region),
+//				FeatureOnlineStore: pulumi.Any(featureOnlineStore.Name),
+//				Role:               pulumi.String("roles/viewer"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## vertex.AiFeatureOnlineStoreIamMember
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vertex.NewAiFeatureOnlineStoreIamMember(ctx, "member", &vertex.AiFeatureOnlineStoreIamMemberArgs{
+//				Region:             pulumi.Any(featureOnlineStore.Region),
+//				FeatureOnlineStore: pulumi.Any(featureOnlineStore.Name),
+//				Role:               pulumi.String("roles/viewer"),
+//				Member:             pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## This resource supports User Project Overrides.
+//
+// -
+//
+// # IAM policy for Vertex AI FeatureOnlineStore
+//
+// Three different resources help you manage your IAM policy for Vertex AI FeatureOnlineStore. Each of these resources serves a different use case:
+//
+// * `vertex.AiFeatureOnlineStoreIamPolicy`: Authoritative. Sets the IAM policy for the featureonlinestore and replaces any existing policy already attached.
+// * `vertex.AiFeatureOnlineStoreIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the featureonlinestore are preserved.
+// * `vertex.AiFeatureOnlineStoreIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the featureonlinestore are preserved.
+//
+// # A data source can be used to retrieve policy data in advent you do not need creation
+//
+// * `vertex.AiFeatureOnlineStoreIamPolicy`: Retrieves the IAM policy for the featureonlinestore
+//
+// > **Note:** `vertex.AiFeatureOnlineStoreIamPolicy` **cannot** be used in conjunction with `vertex.AiFeatureOnlineStoreIamBinding` and `vertex.AiFeatureOnlineStoreIamMember` or they will fight over what your policy should be.
+//
+// > **Note:** `vertex.AiFeatureOnlineStoreIamBinding` resources **can be** used in conjunction with `vertex.AiFeatureOnlineStoreIamMember` resources **only if** they do not grant privilege to the same role.
+//
+// ## vertex.AiFeatureOnlineStoreIamPolicy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/viewer",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vertex.NewAiFeatureOnlineStoreIamPolicy(ctx, "policy", &vertex.AiFeatureOnlineStoreIamPolicyArgs{
+//				Region:             pulumi.Any(featureOnlineStore.Region),
+//				FeatureOnlineStore: pulumi.Any(featureOnlineStore.Name),
+//				PolicyData:         pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## vertex.AiFeatureOnlineStoreIamBinding
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vertex.NewAiFeatureOnlineStoreIamBinding(ctx, "binding", &vertex.AiFeatureOnlineStoreIamBindingArgs{
+//				Region:             pulumi.Any(featureOnlineStore.Region),
+//				FeatureOnlineStore: pulumi.Any(featureOnlineStore.Name),
+//				Role:               pulumi.String("roles/viewer"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## vertex.AiFeatureOnlineStoreIamMember
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vertex.NewAiFeatureOnlineStoreIamMember(ctx, "member", &vertex.AiFeatureOnlineStoreIamMemberArgs{
+//				Region:             pulumi.Any(featureOnlineStore.Region),
+//				FeatureOnlineStore: pulumi.Any(featureOnlineStore.Name),
+//				Role:               pulumi.String("roles/viewer"),
+//				Member:             pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // For all import syntaxes, the "resource in question" can take any of the following forms:

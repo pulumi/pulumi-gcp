@@ -15,8 +15,12 @@ import com.pulumi.gcp.artifactregistry.inputs.GetDockerImagesArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetDockerImagesPlainArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetLocationsArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetLocationsPlainArgs;
+import com.pulumi.gcp.artifactregistry.inputs.GetNpmPackageArgs;
+import com.pulumi.gcp.artifactregistry.inputs.GetNpmPackagePlainArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetPackageArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetPackagePlainArgs;
+import com.pulumi.gcp.artifactregistry.inputs.GetPythonPackageArgs;
+import com.pulumi.gcp.artifactregistry.inputs.GetPythonPackagePlainArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetRepositoriesArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetRepositoriesPlainArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetRepositoryArgs;
@@ -32,7 +36,9 @@ import com.pulumi.gcp.artifactregistry.inputs.GetVersionPlainArgs;
 import com.pulumi.gcp.artifactregistry.outputs.GetDockerImageResult;
 import com.pulumi.gcp.artifactregistry.outputs.GetDockerImagesResult;
 import com.pulumi.gcp.artifactregistry.outputs.GetLocationsResult;
+import com.pulumi.gcp.artifactregistry.outputs.GetNpmPackageResult;
 import com.pulumi.gcp.artifactregistry.outputs.GetPackageResult;
+import com.pulumi.gcp.artifactregistry.outputs.GetPythonPackageResult;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoriesResult;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryIamPolicyResult;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryResult;
@@ -1215,6 +1221,286 @@ public final class ArtifactregistryFunctions {
         return Deployment.getInstance().invokeAsync("gcp:artifactregistry/getLocations:getLocations", TypeShape.of(GetLocationsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * This data source fetches information from a provided Artifact Registry repository, based on a the latest version of the package and optional version.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.Repository;
+     * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetNpmPackageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var npmRepo = new Repository("npmRepo", RepositoryArgs.builder()
+     *             .location("us-central1")
+     *             .repositoryId("my-npm-repo")
+     *             .format("NPM")
+     *             .build());
+     * 
+     *         final var latest = ArtifactregistryFunctions.getNpmPackage(GetNpmPackageArgs.builder()
+     *             .location(npmRepo.location())
+     *             .repositoryId(npmRepo.repositoryId())
+     *             .packageName("example-pkg")
+     *             .build());
+     * 
+     *         final var withVersion = ArtifactregistryFunctions.getNpmPackage(GetNpmPackageArgs.builder()
+     *             .location(npmRepo.location())
+     *             .repositoryId(npmRepo.repositoryId())
+     *             .packageName("example-pkg:1.0.0")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetNpmPackageResult> getNpmPackage(GetNpmPackageArgs args) {
+        return getNpmPackage(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source fetches information from a provided Artifact Registry repository, based on a the latest version of the package and optional version.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.Repository;
+     * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetNpmPackageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var npmRepo = new Repository("npmRepo", RepositoryArgs.builder()
+     *             .location("us-central1")
+     *             .repositoryId("my-npm-repo")
+     *             .format("NPM")
+     *             .build());
+     * 
+     *         final var latest = ArtifactregistryFunctions.getNpmPackage(GetNpmPackageArgs.builder()
+     *             .location(npmRepo.location())
+     *             .repositoryId(npmRepo.repositoryId())
+     *             .packageName("example-pkg")
+     *             .build());
+     * 
+     *         final var withVersion = ArtifactregistryFunctions.getNpmPackage(GetNpmPackageArgs.builder()
+     *             .location(npmRepo.location())
+     *             .repositoryId(npmRepo.repositoryId())
+     *             .packageName("example-pkg:1.0.0")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetNpmPackageResult> getNpmPackagePlain(GetNpmPackagePlainArgs args) {
+        return getNpmPackagePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source fetches information from a provided Artifact Registry repository, based on a the latest version of the package and optional version.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.Repository;
+     * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetNpmPackageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var npmRepo = new Repository("npmRepo", RepositoryArgs.builder()
+     *             .location("us-central1")
+     *             .repositoryId("my-npm-repo")
+     *             .format("NPM")
+     *             .build());
+     * 
+     *         final var latest = ArtifactregistryFunctions.getNpmPackage(GetNpmPackageArgs.builder()
+     *             .location(npmRepo.location())
+     *             .repositoryId(npmRepo.repositoryId())
+     *             .packageName("example-pkg")
+     *             .build());
+     * 
+     *         final var withVersion = ArtifactregistryFunctions.getNpmPackage(GetNpmPackageArgs.builder()
+     *             .location(npmRepo.location())
+     *             .repositoryId(npmRepo.repositoryId())
+     *             .packageName("example-pkg:1.0.0")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetNpmPackageResult> getNpmPackage(GetNpmPackageArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:artifactregistry/getNpmPackage:getNpmPackage", TypeShape.of(GetNpmPackageResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source fetches information from a provided Artifact Registry repository, based on a the latest version of the package and optional version.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.Repository;
+     * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetNpmPackageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var npmRepo = new Repository("npmRepo", RepositoryArgs.builder()
+     *             .location("us-central1")
+     *             .repositoryId("my-npm-repo")
+     *             .format("NPM")
+     *             .build());
+     * 
+     *         final var latest = ArtifactregistryFunctions.getNpmPackage(GetNpmPackageArgs.builder()
+     *             .location(npmRepo.location())
+     *             .repositoryId(npmRepo.repositoryId())
+     *             .packageName("example-pkg")
+     *             .build());
+     * 
+     *         final var withVersion = ArtifactregistryFunctions.getNpmPackage(GetNpmPackageArgs.builder()
+     *             .location(npmRepo.location())
+     *             .repositoryId(npmRepo.repositoryId())
+     *             .packageName("example-pkg:1.0.0")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetNpmPackageResult> getNpmPackage(GetNpmPackageArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:artifactregistry/getNpmPackage:getNpmPackage", TypeShape.of(GetNpmPackageResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source fetches information from a provided Artifact Registry repository, based on a the latest version of the package and optional version.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.Repository;
+     * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetNpmPackageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var npmRepo = new Repository("npmRepo", RepositoryArgs.builder()
+     *             .location("us-central1")
+     *             .repositoryId("my-npm-repo")
+     *             .format("NPM")
+     *             .build());
+     * 
+     *         final var latest = ArtifactregistryFunctions.getNpmPackage(GetNpmPackageArgs.builder()
+     *             .location(npmRepo.location())
+     *             .repositoryId(npmRepo.repositoryId())
+     *             .packageName("example-pkg")
+     *             .build());
+     * 
+     *         final var withVersion = ArtifactregistryFunctions.getNpmPackage(GetNpmPackageArgs.builder()
+     *             .location(npmRepo.location())
+     *             .repositoryId(npmRepo.repositoryId())
+     *             .packageName("example-pkg:1.0.0")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetNpmPackageResult> getNpmPackagePlain(GetNpmPackagePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:artifactregistry/getNpmPackage:getNpmPackage", TypeShape.of(GetNpmPackageResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * This data source fetches information of a package from a provided Artifact Registry repository.
      * 
      * ## Example Usage
@@ -1418,6 +1704,286 @@ public final class ArtifactregistryFunctions {
      */
     public static CompletableFuture<GetPackageResult> getPackagePlain(GetPackagePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:artifactregistry/getPackage:getPackage", TypeShape.of(GetPackageResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source fetches information from a provided Artifact Registry repository, based on a the latest version of the package and optional version.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.Repository;
+     * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetPythonPackageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var pythonRepo = new Repository("pythonRepo", RepositoryArgs.builder()
+     *             .location("us-central1")
+     *             .repositoryId("my-python-repo")
+     *             .format("PYTHON")
+     *             .build());
+     * 
+     *         final var latest = ArtifactregistryFunctions.getPythonPackage(GetPythonPackageArgs.builder()
+     *             .location(pythonRepo.location())
+     *             .repositoryId(pythonRepo.repositoryId())
+     *             .packageName("example_pkg")
+     *             .build());
+     * 
+     *         final var withVersion = ArtifactregistryFunctions.getPythonPackage(GetPythonPackageArgs.builder()
+     *             .location(pythonRepo.location())
+     *             .repositoryId(pythonRepo.repositoryId())
+     *             .packageName("example_pkg:1.0.0")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPythonPackageResult> getPythonPackage(GetPythonPackageArgs args) {
+        return getPythonPackage(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source fetches information from a provided Artifact Registry repository, based on a the latest version of the package and optional version.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.Repository;
+     * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetPythonPackageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var pythonRepo = new Repository("pythonRepo", RepositoryArgs.builder()
+     *             .location("us-central1")
+     *             .repositoryId("my-python-repo")
+     *             .format("PYTHON")
+     *             .build());
+     * 
+     *         final var latest = ArtifactregistryFunctions.getPythonPackage(GetPythonPackageArgs.builder()
+     *             .location(pythonRepo.location())
+     *             .repositoryId(pythonRepo.repositoryId())
+     *             .packageName("example_pkg")
+     *             .build());
+     * 
+     *         final var withVersion = ArtifactregistryFunctions.getPythonPackage(GetPythonPackageArgs.builder()
+     *             .location(pythonRepo.location())
+     *             .repositoryId(pythonRepo.repositoryId())
+     *             .packageName("example_pkg:1.0.0")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetPythonPackageResult> getPythonPackagePlain(GetPythonPackagePlainArgs args) {
+        return getPythonPackagePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source fetches information from a provided Artifact Registry repository, based on a the latest version of the package and optional version.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.Repository;
+     * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetPythonPackageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var pythonRepo = new Repository("pythonRepo", RepositoryArgs.builder()
+     *             .location("us-central1")
+     *             .repositoryId("my-python-repo")
+     *             .format("PYTHON")
+     *             .build());
+     * 
+     *         final var latest = ArtifactregistryFunctions.getPythonPackage(GetPythonPackageArgs.builder()
+     *             .location(pythonRepo.location())
+     *             .repositoryId(pythonRepo.repositoryId())
+     *             .packageName("example_pkg")
+     *             .build());
+     * 
+     *         final var withVersion = ArtifactregistryFunctions.getPythonPackage(GetPythonPackageArgs.builder()
+     *             .location(pythonRepo.location())
+     *             .repositoryId(pythonRepo.repositoryId())
+     *             .packageName("example_pkg:1.0.0")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPythonPackageResult> getPythonPackage(GetPythonPackageArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:artifactregistry/getPythonPackage:getPythonPackage", TypeShape.of(GetPythonPackageResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source fetches information from a provided Artifact Registry repository, based on a the latest version of the package and optional version.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.Repository;
+     * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetPythonPackageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var pythonRepo = new Repository("pythonRepo", RepositoryArgs.builder()
+     *             .location("us-central1")
+     *             .repositoryId("my-python-repo")
+     *             .format("PYTHON")
+     *             .build());
+     * 
+     *         final var latest = ArtifactregistryFunctions.getPythonPackage(GetPythonPackageArgs.builder()
+     *             .location(pythonRepo.location())
+     *             .repositoryId(pythonRepo.repositoryId())
+     *             .packageName("example_pkg")
+     *             .build());
+     * 
+     *         final var withVersion = ArtifactregistryFunctions.getPythonPackage(GetPythonPackageArgs.builder()
+     *             .location(pythonRepo.location())
+     *             .repositoryId(pythonRepo.repositoryId())
+     *             .packageName("example_pkg:1.0.0")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPythonPackageResult> getPythonPackage(GetPythonPackageArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:artifactregistry/getPythonPackage:getPythonPackage", TypeShape.of(GetPythonPackageResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source fetches information from a provided Artifact Registry repository, based on a the latest version of the package and optional version.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.Repository;
+     * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetPythonPackageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var pythonRepo = new Repository("pythonRepo", RepositoryArgs.builder()
+     *             .location("us-central1")
+     *             .repositoryId("my-python-repo")
+     *             .format("PYTHON")
+     *             .build());
+     * 
+     *         final var latest = ArtifactregistryFunctions.getPythonPackage(GetPythonPackageArgs.builder()
+     *             .location(pythonRepo.location())
+     *             .repositoryId(pythonRepo.repositoryId())
+     *             .packageName("example_pkg")
+     *             .build());
+     * 
+     *         final var withVersion = ArtifactregistryFunctions.getPythonPackage(GetPythonPackageArgs.builder()
+     *             .location(pythonRepo.location())
+     *             .repositoryId(pythonRepo.repositoryId())
+     *             .packageName("example_pkg:1.0.0")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetPythonPackageResult> getPythonPackagePlain(GetPythonPackagePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:artifactregistry/getPythonPackage:getPythonPackage", TypeShape.of(GetPythonPackageResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get information about Artifact Registry repositories.

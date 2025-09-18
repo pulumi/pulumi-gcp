@@ -30,27 +30,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     public static final InstanceArgs Empty = new InstanceArgs();
 
     /**
-     * Allows customers to specify if they are okay with deploying a multi-zone
-     * instance in less than 3 zones. Once set, if there is a zonal outage during
-     * the instance creation, the instance will only be deployed in 2 zones, and
-     * stay within the 2 zones for its lifecycle.
-     * 
-     */
-    @Import(name="allowFewerZonesDeployment")
-    private @Nullable Output<Boolean> allowFewerZonesDeployment;
-
-    /**
-     * @return Allows customers to specify if they are okay with deploying a multi-zone
-     * instance in less than 3 zones. Once set, if there is a zonal outage during
-     * the instance creation, the instance will only be deployed in 2 zones, and
-     * stay within the 2 zones for its lifecycle.
-     * 
-     */
-    public Optional<Output<Boolean>> allowFewerZonesDeployment() {
-        return Optional.ofNullable(this.allowFewerZonesDeployment);
-    }
-
-    /**
      * Optional. Immutable. Authorization mode of the instance. Possible values:
      * AUTH_DISABLED
      * IAM_AUTH
@@ -134,24 +113,24 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
+     * `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
      * 
      * @deprecated
-     * `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
+     * `desired_psc_auto_connections` is deprecated. Use `desired_auto_created_endpoints` instead. `terraform import` will only work with desired_auto_created_endpoints`.
      * 
      */
-    @Deprecated /* `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead. */
+    @Deprecated /* `desired_psc_auto_connections` is deprecated. Use `desired_auto_created_endpoints` instead. `terraform import` will only work with desired_auto_created_endpoints`. */
     @Import(name="desiredPscAutoConnections")
     private @Nullable Output<List<InstanceDesiredPscAutoConnectionArgs>> desiredPscAutoConnections;
 
     /**
-     * @return `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
+     * @return `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
      * 
      * @deprecated
-     * `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
+     * `desired_psc_auto_connections` is deprecated. Use `desired_auto_created_endpoints` instead. `terraform import` will only work with desired_auto_created_endpoints`.
      * 
      */
-    @Deprecated /* `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead. */
+    @Deprecated /* `desired_psc_auto_connections` is deprecated. Use `desired_auto_created_endpoints` instead. `terraform import` will only work with desired_auto_created_endpoints`. */
     public Optional<Output<List<InstanceDesiredPscAutoConnectionArgs>>> desiredPscAutoConnections() {
         return Optional.ofNullable(this.desiredPscAutoConnections);
     }
@@ -468,7 +447,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private InstanceArgs() {}
 
     private InstanceArgs(InstanceArgs $) {
-        this.allowFewerZonesDeployment = $.allowFewerZonesDeployment;
         this.authorizationMode = $.authorizationMode;
         this.automatedBackupConfig = $.automatedBackupConfig;
         this.crossInstanceReplicationConfig = $.crossInstanceReplicationConfig;
@@ -510,33 +488,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(InstanceArgs defaults) {
             $ = new InstanceArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param allowFewerZonesDeployment Allows customers to specify if they are okay with deploying a multi-zone
-         * instance in less than 3 zones. Once set, if there is a zonal outage during
-         * the instance creation, the instance will only be deployed in 2 zones, and
-         * stay within the 2 zones for its lifecycle.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder allowFewerZonesDeployment(@Nullable Output<Boolean> allowFewerZonesDeployment) {
-            $.allowFewerZonesDeployment = allowFewerZonesDeployment;
-            return this;
-        }
-
-        /**
-         * @param allowFewerZonesDeployment Allows customers to specify if they are okay with deploying a multi-zone
-         * instance in less than 3 zones. Once set, if there is a zonal outage during
-         * the instance creation, the instance will only be deployed in 2 zones, and
-         * stay within the 2 zones for its lifecycle.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder allowFewerZonesDeployment(Boolean allowFewerZonesDeployment) {
-            return allowFewerZonesDeployment(Output.of(allowFewerZonesDeployment));
         }
 
         /**
@@ -663,44 +614,44 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param desiredPscAutoConnections `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
+         * @param desiredPscAutoConnections `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
          * 
          * @return builder
          * 
          * @deprecated
-         * `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
+         * `desired_psc_auto_connections` is deprecated. Use `desired_auto_created_endpoints` instead. `terraform import` will only work with desired_auto_created_endpoints`.
          * 
          */
-        @Deprecated /* `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead. */
+        @Deprecated /* `desired_psc_auto_connections` is deprecated. Use `desired_auto_created_endpoints` instead. `terraform import` will only work with desired_auto_created_endpoints`. */
         public Builder desiredPscAutoConnections(@Nullable Output<List<InstanceDesiredPscAutoConnectionArgs>> desiredPscAutoConnections) {
             $.desiredPscAutoConnections = desiredPscAutoConnections;
             return this;
         }
 
         /**
-         * @param desiredPscAutoConnections `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
+         * @param desiredPscAutoConnections `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
          * 
          * @return builder
          * 
          * @deprecated
-         * `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
+         * `desired_psc_auto_connections` is deprecated. Use `desired_auto_created_endpoints` instead. `terraform import` will only work with desired_auto_created_endpoints`.
          * 
          */
-        @Deprecated /* `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead. */
+        @Deprecated /* `desired_psc_auto_connections` is deprecated. Use `desired_auto_created_endpoints` instead. `terraform import` will only work with desired_auto_created_endpoints`. */
         public Builder desiredPscAutoConnections(List<InstanceDesiredPscAutoConnectionArgs> desiredPscAutoConnections) {
             return desiredPscAutoConnections(Output.of(desiredPscAutoConnections));
         }
 
         /**
-         * @param desiredPscAutoConnections `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
+         * @param desiredPscAutoConnections `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
          * 
          * @return builder
          * 
          * @deprecated
-         * `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
+         * `desired_psc_auto_connections` is deprecated. Use `desired_auto_created_endpoints` instead. `terraform import` will only work with desired_auto_created_endpoints`.
          * 
          */
-        @Deprecated /* `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead. */
+        @Deprecated /* `desired_psc_auto_connections` is deprecated. Use `desired_auto_created_endpoints` instead. `terraform import` will only work with desired_auto_created_endpoints`. */
         public Builder desiredPscAutoConnections(InstanceDesiredPscAutoConnectionArgs... desiredPscAutoConnections) {
             return desiredPscAutoConnections(List.of(desiredPscAutoConnections));
         }

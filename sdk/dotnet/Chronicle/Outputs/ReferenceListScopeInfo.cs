@@ -17,10 +17,10 @@ namespace Pulumi.Gcp.Chronicle.Outputs
         /// ReferenceListScope specifies the list of scope names of the reference list.
         /// Structure is documented below.
         /// </summary>
-        public readonly Outputs.ReferenceListScopeInfoReferenceListScope ReferenceListScope;
+        public readonly Outputs.ReferenceListScopeInfoReferenceListScope? ReferenceListScope;
 
         [OutputConstructor]
-        private ReferenceListScopeInfo(Outputs.ReferenceListScopeInfoReferenceListScope referenceListScope)
+        private ReferenceListScopeInfo(Outputs.ReferenceListScopeInfoReferenceListScope? referenceListScope)
         {
             ReferenceListScope = referenceListScope;
         }

@@ -17,6 +17,7 @@ import com.pulumi.gcp.compute.inputs.RegionBackendServiceHaPolicyArgs;
 import com.pulumi.gcp.compute.inputs.RegionBackendServiceIapArgs;
 import com.pulumi.gcp.compute.inputs.RegionBackendServiceLogConfigArgs;
 import com.pulumi.gcp.compute.inputs.RegionBackendServiceOutlierDetectionArgs;
+import com.pulumi.gcp.compute.inputs.RegionBackendServiceParamsArgs;
 import com.pulumi.gcp.compute.inputs.RegionBackendServiceStrongSessionAffinityCookieArgs;
 import com.pulumi.gcp.compute.inputs.RegionBackendServiceSubsettingArgs;
 import java.lang.Boolean;
@@ -575,6 +576,23 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="params")
+    private @Nullable Output<RegionBackendServiceParamsArgs> params;
+
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RegionBackendServiceParamsArgs>> params() {
+        return Optional.ofNullable(this.params);
+    }
+
+    /**
      * A named port on a backend instance group representing the port for
      * communication to the backend VMs in that group. Required when the
      * loadBalancingScheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
@@ -772,6 +790,7 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
         this.name = $.name;
         this.network = $.network;
         this.outlierDetection = $.outlierDetection;
+        this.params = $.params;
         this.portName = $.portName;
         this.project = $.project;
         this.protocol = $.protocol;
@@ -1495,6 +1514,29 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
          */
         public Builder outlierDetection(RegionBackendServiceOutlierDetectionArgs outlierDetection) {
             return outlierDetection(Output.of(outlierDetection));
+        }
+
+        /**
+         * @param params Additional params passed with the request, but not persisted as part of resource payload
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(@Nullable Output<RegionBackendServiceParamsArgs> params) {
+            $.params = params;
+            return this;
+        }
+
+        /**
+         * @param params Additional params passed with the request, but not persisted as part of resource payload
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(RegionBackendServiceParamsArgs params) {
+            return params(Output.of(params));
         }
 
         /**

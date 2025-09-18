@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudfunctionsv2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionEventTriggerEventFilterArgs;
 import java.lang.String;
 import java.util.List;
@@ -38,15 +39,15 @@ public final class FunctionEventTriggerArgs extends com.pulumi.resources.Resourc
      * Required. The type of event to observe.
      * 
      */
-    @Import(name="eventType")
-    private @Nullable Output<String> eventType;
+    @Import(name="eventType", required=true)
+    private Output<String> eventType;
 
     /**
      * @return Required. The type of event to observe.
      * 
      */
-    public Optional<Output<String>> eventType() {
-        return Optional.ofNullable(this.eventType);
+    public Output<String> eventType() {
+        return this.eventType;
     }
 
     /**
@@ -212,7 +213,7 @@ public final class FunctionEventTriggerArgs extends com.pulumi.resources.Resourc
          * @return builder
          * 
          */
-        public Builder eventType(@Nullable Output<String> eventType) {
+        public Builder eventType(Output<String> eventType) {
             $.eventType = eventType;
             return this;
         }
@@ -351,6 +352,9 @@ public final class FunctionEventTriggerArgs extends com.pulumi.resources.Resourc
         }
 
         public FunctionEventTriggerArgs build() {
+            if ($.eventType == null) {
+                throw new MissingRequiredPropertyException("FunctionEventTriggerArgs", "eventType");
+            }
             return $;
         }
     }

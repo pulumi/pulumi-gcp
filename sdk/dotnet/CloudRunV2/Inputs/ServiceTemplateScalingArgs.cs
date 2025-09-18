@@ -13,8 +13,7 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
     public sealed class ServiceTemplateScalingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
-        /// a default value based on the project's available container instances quota in the region and specified instance size.
+        /// Combined maximum number of instances for all revisions receiving traffic.
         /// </summary>
         [Input("maxInstanceCount")]
         public Input<int>? MaxInstanceCount { get; set; }

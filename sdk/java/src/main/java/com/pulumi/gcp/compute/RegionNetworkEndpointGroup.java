@@ -452,7 +452,6 @@ import javax.annotation.Nullable;
  *             .pscData(RegionNetworkEndpointGroupPscDataArgs.builder()
  *                 .producerPort("88")
  *                 .build())
- *             .network(default_.selfLink())
  *             .subnetwork(defaultSubnetwork.selfLink())
  *             .build());
  * 
@@ -730,7 +729,7 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
      * 
      */
     @Export(name="network", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> network;
+    private Output<String> network;
 
     /**
      * @return This field is only used for PSC and INTERNET NEGs.
@@ -738,8 +737,8 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
      * &#34;default&#34; project network if unspecified.
      * 
      */
-    public Output<Optional<String>> network() {
-        return Codegen.optional(this.network);
+    public Output<String> network() {
+        return this.network;
     }
     /**
      * Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.

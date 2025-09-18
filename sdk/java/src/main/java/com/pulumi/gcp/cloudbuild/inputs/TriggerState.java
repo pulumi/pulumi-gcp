@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.cloudbuild.inputs.TriggerApprovalConfigArgs;
 import com.pulumi.gcp.cloudbuild.inputs.TriggerBitbucketServerTriggerConfigArgs;
 import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildArgs;
+import com.pulumi.gcp.cloudbuild.inputs.TriggerDeveloperConnectEventConfigArgs;
 import com.pulumi.gcp.cloudbuild.inputs.TriggerGitFileSourceArgs;
 import com.pulumi.gcp.cloudbuild.inputs.TriggerGithubArgs;
 import com.pulumi.gcp.cloudbuild.inputs.TriggerPubsubConfigArgs;
@@ -111,6 +112,23 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Configuration for triggers that respond to Developer Connect events.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="developerConnectEventConfig")
+    private @Nullable Output<TriggerDeveloperConnectEventConfigArgs> developerConnectEventConfig;
+
+    /**
+     * @return Configuration for triggers that respond to Developer Connect events.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<TriggerDeveloperConnectEventConfigArgs>> developerConnectEventConfig() {
+        return Optional.ofNullable(this.developerConnectEventConfig);
     }
 
     /**
@@ -511,6 +529,7 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
         this.build = $.build;
         this.createTime = $.createTime;
         this.description = $.description;
+        this.developerConnectEventConfig = $.developerConnectEventConfig;
         this.disabled = $.disabled;
         this.filename = $.filename;
         this.filter = $.filter;
@@ -664,6 +683,29 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param developerConnectEventConfig Configuration for triggers that respond to Developer Connect events.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder developerConnectEventConfig(@Nullable Output<TriggerDeveloperConnectEventConfigArgs> developerConnectEventConfig) {
+            $.developerConnectEventConfig = developerConnectEventConfig;
+            return this;
+        }
+
+        /**
+         * @param developerConnectEventConfig Configuration for triggers that respond to Developer Connect events.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder developerConnectEventConfig(TriggerDeveloperConnectEventConfigArgs developerConnectEventConfig) {
+            return developerConnectEventConfig(Output.of(developerConnectEventConfig));
         }
 
         /**

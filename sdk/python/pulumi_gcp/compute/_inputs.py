@@ -45,6 +45,8 @@ __all__ = [
     'BackendBucketIamBindingConditionArgsDict',
     'BackendBucketIamMemberConditionArgs',
     'BackendBucketIamMemberConditionArgsDict',
+    'BackendBucketParamsArgs',
+    'BackendBucketParamsArgsDict',
     'BackendServiceBackendArgs',
     'BackendServiceBackendArgsDict',
     'BackendServiceBackendCustomMetricArgs',
@@ -99,6 +101,8 @@ __all__ = [
     'BackendServiceOutlierDetectionBaseEjectionTimeArgsDict',
     'BackendServiceOutlierDetectionIntervalArgs',
     'BackendServiceOutlierDetectionIntervalArgsDict',
+    'BackendServiceParamsArgs',
+    'BackendServiceParamsArgsDict',
     'BackendServiceSecuritySettingsArgs',
     'BackendServiceSecuritySettingsArgsDict',
     'BackendServiceSecuritySettingsAwsV4AuthenticationArgs',
@@ -691,6 +695,8 @@ __all__ = [
     'PreviewFeatureRolloutOperationArgsDict',
     'PreviewFeatureRolloutOperationRolloutInputArgs',
     'PreviewFeatureRolloutOperationRolloutInputArgsDict',
+    'PublicDelegatedPrefixPublicDelegatedSubPrefixArgs',
+    'PublicDelegatedPrefixPublicDelegatedSubPrefixArgsDict',
     'RegionAutoscalerAutoscalingPolicyArgs',
     'RegionAutoscalerAutoscalingPolicyArgsDict',
     'RegionAutoscalerAutoscalingPolicyCpuUtilizationArgs',
@@ -759,6 +765,8 @@ __all__ = [
     'RegionBackendServiceOutlierDetectionBaseEjectionTimeArgsDict',
     'RegionBackendServiceOutlierDetectionIntervalArgs',
     'RegionBackendServiceOutlierDetectionIntervalArgsDict',
+    'RegionBackendServiceParamsArgs',
+    'RegionBackendServiceParamsArgsDict',
     'RegionBackendServiceStrongSessionAffinityCookieArgs',
     'RegionBackendServiceStrongSessionAffinityCookieArgsDict',
     'RegionBackendServiceStrongSessionAffinityCookieTtlArgs',
@@ -1041,6 +1049,12 @@ __all__ = [
     'RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgsDict',
     'RegionUrlMapDefaultUrlRedirectArgs',
     'RegionUrlMapDefaultUrlRedirectArgsDict',
+    'RegionUrlMapHeaderActionArgs',
+    'RegionUrlMapHeaderActionArgsDict',
+    'RegionUrlMapHeaderActionRequestHeadersToAddArgs',
+    'RegionUrlMapHeaderActionRequestHeadersToAddArgsDict',
+    'RegionUrlMapHeaderActionResponseHeadersToAddArgs',
+    'RegionUrlMapHeaderActionResponseHeadersToAddArgsDict',
     'RegionUrlMapHostRuleArgs',
     'RegionUrlMapHostRuleArgsDict',
     'RegionUrlMapPathMatcherArgs',
@@ -1079,6 +1093,12 @@ __all__ = [
     'RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgsDict',
     'RegionUrlMapPathMatcherDefaultUrlRedirectArgs',
     'RegionUrlMapPathMatcherDefaultUrlRedirectArgsDict',
+    'RegionUrlMapPathMatcherHeaderActionArgs',
+    'RegionUrlMapPathMatcherHeaderActionArgsDict',
+    'RegionUrlMapPathMatcherHeaderActionRequestHeadersToAddArgs',
+    'RegionUrlMapPathMatcherHeaderActionRequestHeadersToAddArgsDict',
+    'RegionUrlMapPathMatcherHeaderActionResponseHeadersToAddArgs',
+    'RegionUrlMapPathMatcherHeaderActionResponseHeadersToAddArgsDict',
     'RegionUrlMapPathMatcherPathRuleArgs',
     'RegionUrlMapPathMatcherPathRuleArgsDict',
     'RegionUrlMapPathMatcherPathRuleRouteActionArgs',
@@ -3186,6 +3206,44 @@ class BackendBucketIamMemberConditionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class BackendBucketParamsArgsDict(TypedDict):
+        resource_manager_tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+        """
+        Resource manager tags to be bound to the backend bucket. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456.
+        """
+elif False:
+    BackendBucketParamsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BackendBucketParamsArgs:
+    def __init__(__self__, *,
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] resource_manager_tags: Resource manager tags to be bound to the backend bucket. Tag keys and values have the
+               same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+               and values are in the format tagValues/456.
+        """
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Resource manager tags to be bound to the backend bucket. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+    @resource_manager_tags.setter
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "resource_manager_tags", value)
 
 
 if not MYPY:
@@ -6076,6 +6134,44 @@ class BackendServiceOutlierDetectionIntervalArgs:
     @nanos.setter
     def nanos(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "nanos", value)
+
+
+if not MYPY:
+    class BackendServiceParamsArgsDict(TypedDict):
+        resource_manager_tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+        """
+        Resource manager tags to be bound to the backend service. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456.
+        """
+elif False:
+    BackendServiceParamsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BackendServiceParamsArgs:
+    def __init__(__self__, *,
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] resource_manager_tags: Resource manager tags to be bound to the backend service. Tag keys and values have the
+               same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+               and values are in the format tagValues/456.
+        """
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Resource manager tags to be bound to the backend service. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+    @resource_manager_tags.setter
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "resource_manager_tags", value)
 
 
 if not MYPY:
@@ -25443,10 +25539,7 @@ if not MYPY:
         """
         provisioned_iops: NotRequired[pulumi.Input[_builtins.int]]
         """
-        Indicates how many IOPS to provision for the disk. This
-        sets the number of I/O operations per second that the disk can handle.
-        Values must be between 10,000 and 120,000. For more details, see the
-        [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+        Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. For more details, see the [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk) or the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks) depending on the selected disk_type.
         """
         provisioned_throughput: NotRequired[pulumi.Input[_builtins.int]]
         """
@@ -25565,10 +25658,7 @@ class InstanceTemplateDiskArgs:
         :param pulumi.Input[_builtins.str] mode: The mode in which to attach this disk, either READ_WRITE
                or READ_ONLY. If you are attaching or creating a boot disk, this must
                read-write mode.
-        :param pulumi.Input[_builtins.int] provisioned_iops: Indicates how many IOPS to provision for the disk. This
-               sets the number of I/O operations per second that the disk can handle.
-               Values must be between 10,000 and 120,000. For more details, see the
-               [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+        :param pulumi.Input[_builtins.int] provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. For more details, see the [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk) or the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks) depending on the selected disk_type.
         :param pulumi.Input[_builtins.int] provisioned_throughput: Indicates how much throughput to provision for the disk, in MB/s. This sets the amount of data that can be read or written from the disk per second. Values must greater than or equal to 1. For more details, see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] resource_manager_tags: A set of key/value resource manager tag pairs to bind to this disk. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
         :param pulumi.Input[_builtins.str] resource_policies: - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
@@ -25812,10 +25902,7 @@ class InstanceTemplateDiskArgs:
     @pulumi.getter(name="provisionedIops")
     def provisioned_iops(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Indicates how many IOPS to provision for the disk. This
-        sets the number of I/O operations per second that the disk can handle.
-        Values must be between 10,000 and 120,000. For more details, see the
-        [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+        Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. For more details, see the [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk) or the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks) depending on the selected disk_type.
         """
         return pulumi.get(self, "provisioned_iops")
 
@@ -35052,6 +35139,222 @@ class PreviewFeatureRolloutOperationRolloutInputArgs:
 
 
 if not MYPY:
+    class PublicDelegatedPrefixPublicDelegatedSubPrefixArgsDict(TypedDict):
+        allocatable_prefix_length: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
+        """
+        delegatee_project: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the project scoping this PublicDelegatedSubPrefix.
+        """
+        description: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        An optional description of this resource.
+        """
+        ip_cidr_range: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The IP address range, in CIDR format, represented by this public delegated prefix.
+        """
+        is_address: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether the sub prefix is delegated for address creation.
+        """
+        mode: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
+        EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
+        Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the resource. The name must be 1-63 characters long, and
+        comply with RFC1035. Specifically, the name must be 1-63 characters
+        long and match the regular expression `a-z?`
+        which means the first character must be a lowercase letter, and all
+        following characters must be a dash, lowercase letter, or digit,
+        except the last character, which cannot be a dash.
+        """
+        region: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A region where the prefix will reside.
+        """
+        status: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The status of the sub public delegated prefix.
+        Possible values are: `INITIALIZING`, `READY_TO_ANNOUNCE`, `ANNOUNCED`, `DELETING`.
+        """
+elif False:
+    PublicDelegatedPrefixPublicDelegatedSubPrefixArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PublicDelegatedPrefixPublicDelegatedSubPrefixArgs:
+    def __init__(__self__, *,
+                 allocatable_prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
+                 delegatee_project: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 ip_cidr_range: Optional[pulumi.Input[_builtins.str]] = None,
+                 is_address: Optional[pulumi.Input[_builtins.bool]] = None,
+                 mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] allocatable_prefix_length: The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
+        :param pulumi.Input[_builtins.str] delegatee_project: Name of the project scoping this PublicDelegatedSubPrefix.
+        :param pulumi.Input[_builtins.str] description: An optional description of this resource.
+        :param pulumi.Input[_builtins.str] ip_cidr_range: The IP address range, in CIDR format, represented by this public delegated prefix.
+        :param pulumi.Input[_builtins.bool] is_address: Whether the sub prefix is delegated for address creation.
+        :param pulumi.Input[_builtins.str] mode: Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
+               EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
+               Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
+        :param pulumi.Input[_builtins.str] name: Name of the resource. The name must be 1-63 characters long, and
+               comply with RFC1035. Specifically, the name must be 1-63 characters
+               long and match the regular expression `a-z?`
+               which means the first character must be a lowercase letter, and all
+               following characters must be a dash, lowercase letter, or digit,
+               except the last character, which cannot be a dash.
+        :param pulumi.Input[_builtins.str] region: A region where the prefix will reside.
+        :param pulumi.Input[_builtins.str] status: The status of the sub public delegated prefix.
+               Possible values are: `INITIALIZING`, `READY_TO_ANNOUNCE`, `ANNOUNCED`, `DELETING`.
+        """
+        if allocatable_prefix_length is not None:
+            pulumi.set(__self__, "allocatable_prefix_length", allocatable_prefix_length)
+        if delegatee_project is not None:
+            pulumi.set(__self__, "delegatee_project", delegatee_project)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if ip_cidr_range is not None:
+            pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
+        if is_address is not None:
+            pulumi.set(__self__, "is_address", is_address)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter(name="allocatablePrefixLength")
+    def allocatable_prefix_length(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
+        """
+        return pulumi.get(self, "allocatable_prefix_length")
+
+    @allocatable_prefix_length.setter
+    def allocatable_prefix_length(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "allocatable_prefix_length", value)
+
+    @_builtins.property
+    @pulumi.getter(name="delegateeProject")
+    def delegatee_project(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the project scoping this PublicDelegatedSubPrefix.
+        """
+        return pulumi.get(self, "delegatee_project")
+
+    @delegatee_project.setter
+    def delegatee_project(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "delegatee_project", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        An optional description of this resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipCidrRange")
+    def ip_cidr_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The IP address range, in CIDR format, represented by this public delegated prefix.
+        """
+        return pulumi.get(self, "ip_cidr_range")
+
+    @ip_cidr_range.setter
+    def ip_cidr_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ip_cidr_range", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isAddress")
+    def is_address(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether the sub prefix is delegated for address creation.
+        """
+        return pulumi.get(self, "is_address")
+
+    @is_address.setter
+    def is_address(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "is_address", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
+        EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
+        Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "mode", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the resource. The name must be 1-63 characters long, and
+        comply with RFC1035. Specifically, the name must be 1-63 characters
+        long and match the regular expression `a-z?`
+        which means the first character must be a lowercase letter, and all
+        following characters must be a dash, lowercase letter, or digit,
+        except the last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A region where the prefix will reside.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The status of the sub public delegated prefix.
+        Possible values are: `INITIALIZING`, `READY_TO_ANNOUNCE`, `ANNOUNCED`, `DELETING`.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "status", value)
+
+
+if not MYPY:
     class RegionAutoscalerAutoscalingPolicyArgsDict(TypedDict):
         max_replicas: pulumi.Input[_builtins.int]
         """
@@ -38953,6 +39256,44 @@ class RegionBackendServiceOutlierDetectionIntervalArgs:
 
 
 if not MYPY:
+    class RegionBackendServiceParamsArgsDict(TypedDict):
+        resource_manager_tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+        """
+        Resource manager tags to be bound to the region backend service. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456.
+        """
+elif False:
+    RegionBackendServiceParamsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionBackendServiceParamsArgs:
+    def __init__(__self__, *,
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] resource_manager_tags: Resource manager tags to be bound to the region backend service. Tag keys and values have the
+               same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+               and values are in the format tagValues/456.
+        """
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Resource manager tags to be bound to the region backend service. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+    @resource_manager_tags.setter
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "resource_manager_tags", value)
+
+
+if not MYPY:
     class RegionBackendServiceStrongSessionAffinityCookieArgsDict(TypedDict):
         name: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -42451,10 +42792,7 @@ if not MYPY:
         """
         provisioned_iops: NotRequired[pulumi.Input[_builtins.int]]
         """
-        Indicates how many IOPS to provision for the disk. This
-        sets the number of I/O operations per second that the disk can handle.
-        Values must be between 10,000 and 120,000. For more details, see the
-        [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+        Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. For more details, see the [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk) or the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks) depending on the selected disk_type.
         """
         provisioned_throughput: NotRequired[pulumi.Input[_builtins.int]]
         """
@@ -42573,10 +42911,7 @@ class RegionInstanceTemplateDiskArgs:
         :param pulumi.Input[_builtins.str] mode: The mode in which to attach this disk, either READ_WRITE
                or READ_ONLY. If you are attaching or creating a boot disk, this must
                read-write mode.
-        :param pulumi.Input[_builtins.int] provisioned_iops: Indicates how many IOPS to provision for the disk. This
-               sets the number of I/O operations per second that the disk can handle.
-               Values must be between 10,000 and 120,000. For more details, see the
-               [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+        :param pulumi.Input[_builtins.int] provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. For more details, see the [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk) or the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks) depending on the selected disk_type.
         :param pulumi.Input[_builtins.int] provisioned_throughput: Indicates how much throughput to provision for the disk, in MB/s. This sets the amount of data that can be read or written from the disk per second. Values must greater than or equal to 1. For more details, see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] resource_manager_tags: A set of key/value resource manager tag pairs to bind to this disk. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
         :param pulumi.Input[_builtins.str] resource_policies: - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
@@ -42820,10 +43155,7 @@ class RegionInstanceTemplateDiskArgs:
     @pulumi.getter(name="provisionedIops")
     def provisioned_iops(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Indicates how many IOPS to provision for the disk. This
-        sets the number of I/O operations per second that the disk can handle.
-        Values must be between 10,000 and 120,000. For more details, see the
-        [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+        Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. For more details, see the [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk) or the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks) depending on the selected disk_type.
         """
         return pulumi.get(self, "provisioned_iops")
 
@@ -52893,6 +53225,254 @@ class RegionUrlMapDefaultUrlRedirectArgs:
 
 
 if not MYPY:
+    class RegionUrlMapHeaderActionArgsDict(TypedDict):
+        request_headers_to_adds: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapHeaderActionRequestHeadersToAddArgsDict']]]]
+        """
+        Headers to add to a matching request before forwarding the request to the backendService.
+        Structure is documented below.
+        """
+        request_headers_to_removes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
+        """
+        response_headers_to_adds: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapHeaderActionResponseHeadersToAddArgsDict']]]]
+        """
+        Headers to add the response before sending the response back to the client.
+        Structure is documented below.
+        """
+        response_headers_to_removes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        A list of header names for headers that need to be removed from the response before sending the response back to the client.
+        """
+elif False:
+    RegionUrlMapHeaderActionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionUrlMapHeaderActionArgs:
+    def __init__(__self__, *,
+                 request_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapHeaderActionRequestHeadersToAddArgs']]]] = None,
+                 request_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 response_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapHeaderActionResponseHeadersToAddArgs']]]] = None,
+                 response_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapHeaderActionRequestHeadersToAddArgs']]] request_headers_to_adds: Headers to add to a matching request before forwarding the request to the backendService.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] request_headers_to_removes: A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapHeaderActionResponseHeadersToAddArgs']]] response_headers_to_adds: Headers to add the response before sending the response back to the client.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] response_headers_to_removes: A list of header names for headers that need to be removed from the response before sending the response back to the client.
+        """
+        if request_headers_to_adds is not None:
+            pulumi.set(__self__, "request_headers_to_adds", request_headers_to_adds)
+        if request_headers_to_removes is not None:
+            pulumi.set(__self__, "request_headers_to_removes", request_headers_to_removes)
+        if response_headers_to_adds is not None:
+            pulumi.set(__self__, "response_headers_to_adds", response_headers_to_adds)
+        if response_headers_to_removes is not None:
+            pulumi.set(__self__, "response_headers_to_removes", response_headers_to_removes)
+
+    @_builtins.property
+    @pulumi.getter(name="requestHeadersToAdds")
+    def request_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapHeaderActionRequestHeadersToAddArgs']]]]:
+        """
+        Headers to add to a matching request before forwarding the request to the backendService.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "request_headers_to_adds")
+
+    @request_headers_to_adds.setter
+    def request_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapHeaderActionRequestHeadersToAddArgs']]]]):
+        pulumi.set(self, "request_headers_to_adds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="requestHeadersToRemoves")
+    def request_headers_to_removes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
+        """
+        return pulumi.get(self, "request_headers_to_removes")
+
+    @request_headers_to_removes.setter
+    def request_headers_to_removes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "request_headers_to_removes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="responseHeadersToAdds")
+    def response_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapHeaderActionResponseHeadersToAddArgs']]]]:
+        """
+        Headers to add the response before sending the response back to the client.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "response_headers_to_adds")
+
+    @response_headers_to_adds.setter
+    def response_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapHeaderActionResponseHeadersToAddArgs']]]]):
+        pulumi.set(self, "response_headers_to_adds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="responseHeadersToRemoves")
+    def response_headers_to_removes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of header names for headers that need to be removed from the response before sending the response back to the client.
+        """
+        return pulumi.get(self, "response_headers_to_removes")
+
+    @response_headers_to_removes.setter
+    def response_headers_to_removes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "response_headers_to_removes", value)
+
+
+if not MYPY:
+    class RegionUrlMapHeaderActionRequestHeadersToAddArgsDict(TypedDict):
+        header_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The name of the header.
+        """
+        header_value: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The value of the header to add.
+        """
+        replace: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+        The default value is false.
+        """
+elif False:
+    RegionUrlMapHeaderActionRequestHeadersToAddArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionUrlMapHeaderActionRequestHeadersToAddArgs:
+    def __init__(__self__, *,
+                 header_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 header_value: Optional[pulumi.Input[_builtins.str]] = None,
+                 replace: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.str] header_name: The name of the header.
+        :param pulumi.Input[_builtins.str] header_value: The value of the header to add.
+        :param pulumi.Input[_builtins.bool] replace: If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+               The default value is false.
+        """
+        if header_name is not None:
+            pulumi.set(__self__, "header_name", header_name)
+        if header_value is not None:
+            pulumi.set(__self__, "header_value", header_value)
+        if replace is not None:
+            pulumi.set(__self__, "replace", replace)
+
+    @_builtins.property
+    @pulumi.getter(name="headerName")
+    def header_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the header.
+        """
+        return pulumi.get(self, "header_name")
+
+    @header_name.setter
+    def header_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "header_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="headerValue")
+    def header_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The value of the header to add.
+        """
+        return pulumi.get(self, "header_value")
+
+    @header_value.setter
+    def header_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "header_value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def replace(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+        The default value is false.
+        """
+        return pulumi.get(self, "replace")
+
+    @replace.setter
+    def replace(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "replace", value)
+
+
+if not MYPY:
+    class RegionUrlMapHeaderActionResponseHeadersToAddArgsDict(TypedDict):
+        header_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The name of the header.
+        """
+        header_value: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The value of the header to add.
+        """
+        replace: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+        The default value is false.
+        """
+elif False:
+    RegionUrlMapHeaderActionResponseHeadersToAddArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionUrlMapHeaderActionResponseHeadersToAddArgs:
+    def __init__(__self__, *,
+                 header_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 header_value: Optional[pulumi.Input[_builtins.str]] = None,
+                 replace: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.str] header_name: The name of the header.
+        :param pulumi.Input[_builtins.str] header_value: The value of the header to add.
+        :param pulumi.Input[_builtins.bool] replace: If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+               The default value is false.
+        """
+        if header_name is not None:
+            pulumi.set(__self__, "header_name", header_name)
+        if header_value is not None:
+            pulumi.set(__self__, "header_value", header_value)
+        if replace is not None:
+            pulumi.set(__self__, "replace", replace)
+
+    @_builtins.property
+    @pulumi.getter(name="headerName")
+    def header_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the header.
+        """
+        return pulumi.get(self, "header_name")
+
+    @header_name.setter
+    def header_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "header_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="headerValue")
+    def header_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The value of the header to add.
+        """
+        return pulumi.get(self, "header_value")
+
+    @header_value.setter
+    def header_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "header_value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def replace(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+        The default value is false.
+        """
+        return pulumi.get(self, "replace")
+
+    @replace.setter
+    def replace(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "replace", value)
+
+
+if not MYPY:
     class RegionUrlMapHostRuleArgsDict(TypedDict):
         hosts: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
         """
@@ -53009,6 +53589,14 @@ if not MYPY:
         """
         An optional description of this resource.
         """
+        header_action: NotRequired[pulumi.Input['RegionUrlMapPathMatcherHeaderActionArgsDict']]
+        """
+        Specifies changes to request and response headers that need to take effect for the selected backendService.
+        headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+        headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+        Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+        Structure is documented below.
+        """
         path_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherPathRuleArgsDict']]]]
         """
         The list of path rules. Use this list instead of routeRules when routing based
@@ -53040,6 +53628,7 @@ class RegionUrlMapPathMatcherArgs:
                  default_service: Optional[pulumi.Input[_builtins.str]] = None,
                  default_url_redirect: Optional[pulumi.Input['RegionUrlMapPathMatcherDefaultUrlRedirectArgs']] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 header_action: Optional[pulumi.Input['RegionUrlMapPathMatcherHeaderActionArgs']] = None,
                  path_rules: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherPathRuleArgs']]]] = None,
                  route_rules: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleArgs']]]] = None):
         """
@@ -53058,6 +53647,11 @@ class RegionUrlMapPathMatcherArgs:
                defaultRouteAction must not be set.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
+        :param pulumi.Input['RegionUrlMapPathMatcherHeaderActionArgs'] header_action: Specifies changes to request and response headers that need to take effect for the selected backendService.
+               headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+               headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+               Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherPathRuleArgs']]] path_rules: The list of path rules. Use this list instead of routeRules when routing based
                on simple path matching is all that's required. The order by which path rules
                are specified does not matter. Matches are always done on the longest-path-first
@@ -53082,6 +53676,8 @@ class RegionUrlMapPathMatcherArgs:
             pulumi.set(__self__, "default_url_redirect", default_url_redirect)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if header_action is not None:
+            pulumi.set(__self__, "header_action", header_action)
         if path_rules is not None:
             pulumi.set(__self__, "path_rules", path_rules)
         if route_rules is not None:
@@ -53156,6 +53752,22 @@ class RegionUrlMapPathMatcherArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="headerAction")
+    def header_action(self) -> Optional[pulumi.Input['RegionUrlMapPathMatcherHeaderActionArgs']]:
+        """
+        Specifies changes to request and response headers that need to take effect for the selected backendService.
+        headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+        headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+        Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "header_action")
+
+    @header_action.setter
+    def header_action(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherHeaderActionArgs']]):
+        pulumi.set(self, "header_action", value)
 
     @_builtins.property
     @pulumi.getter(name="pathRules")
@@ -54836,6 +55448,254 @@ class RegionUrlMapPathMatcherDefaultUrlRedirectArgs:
     @redirect_response_code.setter
     def redirect_response_code(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "redirect_response_code", value)
+
+
+if not MYPY:
+    class RegionUrlMapPathMatcherHeaderActionArgsDict(TypedDict):
+        request_headers_to_adds: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherHeaderActionRequestHeadersToAddArgsDict']]]]
+        """
+        Headers to add to a matching request before forwarding the request to the backendService.
+        Structure is documented below.
+        """
+        request_headers_to_removes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
+        """
+        response_headers_to_adds: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherHeaderActionResponseHeadersToAddArgsDict']]]]
+        """
+        Headers to add the response before sending the response back to the client.
+        Structure is documented below.
+        """
+        response_headers_to_removes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        A list of header names for headers that need to be removed from the response before sending the response back to the client.
+        """
+elif False:
+    RegionUrlMapPathMatcherHeaderActionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionUrlMapPathMatcherHeaderActionArgs:
+    def __init__(__self__, *,
+                 request_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherHeaderActionRequestHeadersToAddArgs']]]] = None,
+                 request_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 response_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherHeaderActionResponseHeadersToAddArgs']]]] = None,
+                 response_headers_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherHeaderActionRequestHeadersToAddArgs']]] request_headers_to_adds: Headers to add to a matching request before forwarding the request to the backendService.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] request_headers_to_removes: A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherHeaderActionResponseHeadersToAddArgs']]] response_headers_to_adds: Headers to add the response before sending the response back to the client.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] response_headers_to_removes: A list of header names for headers that need to be removed from the response before sending the response back to the client.
+        """
+        if request_headers_to_adds is not None:
+            pulumi.set(__self__, "request_headers_to_adds", request_headers_to_adds)
+        if request_headers_to_removes is not None:
+            pulumi.set(__self__, "request_headers_to_removes", request_headers_to_removes)
+        if response_headers_to_adds is not None:
+            pulumi.set(__self__, "response_headers_to_adds", response_headers_to_adds)
+        if response_headers_to_removes is not None:
+            pulumi.set(__self__, "response_headers_to_removes", response_headers_to_removes)
+
+    @_builtins.property
+    @pulumi.getter(name="requestHeadersToAdds")
+    def request_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherHeaderActionRequestHeadersToAddArgs']]]]:
+        """
+        Headers to add to a matching request before forwarding the request to the backendService.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "request_headers_to_adds")
+
+    @request_headers_to_adds.setter
+    def request_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherHeaderActionRequestHeadersToAddArgs']]]]):
+        pulumi.set(self, "request_headers_to_adds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="requestHeadersToRemoves")
+    def request_headers_to_removes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
+        """
+        return pulumi.get(self, "request_headers_to_removes")
+
+    @request_headers_to_removes.setter
+    def request_headers_to_removes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "request_headers_to_removes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="responseHeadersToAdds")
+    def response_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherHeaderActionResponseHeadersToAddArgs']]]]:
+        """
+        Headers to add the response before sending the response back to the client.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "response_headers_to_adds")
+
+    @response_headers_to_adds.setter
+    def response_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherHeaderActionResponseHeadersToAddArgs']]]]):
+        pulumi.set(self, "response_headers_to_adds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="responseHeadersToRemoves")
+    def response_headers_to_removes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of header names for headers that need to be removed from the response before sending the response back to the client.
+        """
+        return pulumi.get(self, "response_headers_to_removes")
+
+    @response_headers_to_removes.setter
+    def response_headers_to_removes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "response_headers_to_removes", value)
+
+
+if not MYPY:
+    class RegionUrlMapPathMatcherHeaderActionRequestHeadersToAddArgsDict(TypedDict):
+        header_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The name of the header.
+        """
+        header_value: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The value of the header to add.
+        """
+        replace: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+        The default value is false.
+        """
+elif False:
+    RegionUrlMapPathMatcherHeaderActionRequestHeadersToAddArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionUrlMapPathMatcherHeaderActionRequestHeadersToAddArgs:
+    def __init__(__self__, *,
+                 header_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 header_value: Optional[pulumi.Input[_builtins.str]] = None,
+                 replace: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.str] header_name: The name of the header.
+        :param pulumi.Input[_builtins.str] header_value: The value of the header to add.
+        :param pulumi.Input[_builtins.bool] replace: If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+               The default value is false.
+        """
+        if header_name is not None:
+            pulumi.set(__self__, "header_name", header_name)
+        if header_value is not None:
+            pulumi.set(__self__, "header_value", header_value)
+        if replace is not None:
+            pulumi.set(__self__, "replace", replace)
+
+    @_builtins.property
+    @pulumi.getter(name="headerName")
+    def header_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the header.
+        """
+        return pulumi.get(self, "header_name")
+
+    @header_name.setter
+    def header_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "header_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="headerValue")
+    def header_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The value of the header to add.
+        """
+        return pulumi.get(self, "header_value")
+
+    @header_value.setter
+    def header_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "header_value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def replace(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+        The default value is false.
+        """
+        return pulumi.get(self, "replace")
+
+    @replace.setter
+    def replace(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "replace", value)
+
+
+if not MYPY:
+    class RegionUrlMapPathMatcherHeaderActionResponseHeadersToAddArgsDict(TypedDict):
+        header_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The name of the header.
+        """
+        header_value: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The value of the header to add.
+        """
+        replace: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+        The default value is false.
+        """
+elif False:
+    RegionUrlMapPathMatcherHeaderActionResponseHeadersToAddArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionUrlMapPathMatcherHeaderActionResponseHeadersToAddArgs:
+    def __init__(__self__, *,
+                 header_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 header_value: Optional[pulumi.Input[_builtins.str]] = None,
+                 replace: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.str] header_name: The name of the header.
+        :param pulumi.Input[_builtins.str] header_value: The value of the header to add.
+        :param pulumi.Input[_builtins.bool] replace: If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+               The default value is false.
+        """
+        if header_name is not None:
+            pulumi.set(__self__, "header_name", header_name)
+        if header_value is not None:
+            pulumi.set(__self__, "header_value", header_value)
+        if replace is not None:
+            pulumi.set(__self__, "replace", replace)
+
+    @_builtins.property
+    @pulumi.getter(name="headerName")
+    def header_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the header.
+        """
+        return pulumi.get(self, "header_name")
+
+    @header_name.setter
+    def header_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "header_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="headerValue")
+    def header_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The value of the header to add.
+        """
+        return pulumi.get(self, "header_value")
+
+    @header_value.setter
+    def header_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "header_value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def replace(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+        The default value is false.
+        """
+        return pulumi.get(self, "replace")
+
+    @replace.setter
+    def replace(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "replace", value)
 
 
 if not MYPY:

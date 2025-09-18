@@ -47,6 +47,7 @@ export interface GetDatabaseInstanceArgs {
  */
 export interface GetDatabaseInstanceResult {
     readonly availableMaintenanceVersions: string[];
+    readonly backupdrBackup: string;
     readonly clones: outputs.sql.GetDatabaseInstanceClone[];
     readonly connectionName: string;
     readonly databaseVersion: string;
@@ -54,6 +55,7 @@ export interface GetDatabaseInstanceResult {
     readonly dnsName: string;
     readonly dnsNames: outputs.sql.GetDatabaseInstanceDnsName[];
     readonly encryptionKeyName: string;
+    readonly finalBackupDescription: string;
     readonly firstIpAddress: string;
     /**
      * The provider-assigned unique ID for this managed resource.

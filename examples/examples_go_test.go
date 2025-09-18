@@ -60,7 +60,7 @@ func getGoBaseOptions(t *testing.T) integration.ProgramTestOptions {
 	base := getBaseOptions(t)
 	goBase := base.With(integration.ProgramTestOptions{
 		Dependencies: []string{
-			"github.com/pulumi/pulumi-gcp/sdk/v8",
+			"github.com/pulumi/pulumi-gcp/sdk/v9",
 		},
 	})
 
@@ -398,7 +398,7 @@ func (st labelsState) validateTransitionTo(t *testing.T, st2 labelsState) {
 
 	baseOpts := integration.ProgramTestOptions{
 		Dependencies: []string{
-			fmt.Sprintf("github.com/pulumi/pulumi-gcp/sdk/v8=%s", goSdkFolder),
+			fmt.Sprintf("github.com/pulumi/pulumi-gcp/sdk/v9=%s", goSdkFolder),
 		},
 	}
 	if _, envConfigSet := os.LookupEnv("GOOGLE_ZONE"); envConfigSet {

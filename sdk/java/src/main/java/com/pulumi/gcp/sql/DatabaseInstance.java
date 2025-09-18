@@ -447,6 +447,20 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
         return this.availableMaintenanceVersions;
     }
     /**
+     * The name of the BackupDR backup to restore from.
+     * 
+     */
+    @Export(name="backupdrBackup", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> backupdrBackup;
+
+    /**
+     * @return The name of the BackupDR backup to restore from.
+     * 
+     */
+    public Output<Optional<String>> backupdrBackup() {
+        return Codegen.optional(this.backupdrBackup);
+    }
+    /**
      * The context needed to create this instance as a clone of another instance. When this field is set during
      * resource creation, this provider will attempt to clone another instance as indicated in the context. The
      * configuration is detailed below.
@@ -581,6 +595,20 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> encryptionKeyName() {
         return this.encryptionKeyName;
+    }
+    /**
+     * The description of final backup. Only set this field when `final_backup_config.enabled` is true.
+     * 
+     */
+    @Export(name="finalBackupDescription", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> finalBackupDescription;
+
+    /**
+     * @return The description of final backup. Only set this field when `final_backup_config.enabled` is true.
+     * 
+     */
+    public Output<Optional<String>> finalBackupDescription() {
+        return Codegen.optional(this.finalBackupDescription);
     }
     /**
      * The first IPv4 address of any type assigned.

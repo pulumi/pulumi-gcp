@@ -319,7 +319,9 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly endpoint: pulumi.Output<string>;
     /**
-     * Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+     * (DEPRECATED) Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
+     *
+     * @deprecated GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
      */
     declare public readonly enterpriseConfig: pulumi.Output<outputs.container.ClusterEnterpriseConfig>;
     /**
@@ -1023,7 +1025,9 @@ export interface ClusterState {
      */
     endpoint?: pulumi.Input<string>;
     /**
-     * Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+     * (DEPRECATED) Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
+     *
+     * @deprecated GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
      */
     enterpriseConfig?: pulumi.Input<inputs.container.ClusterEnterpriseConfig>;
     /**
@@ -1519,7 +1523,9 @@ export interface ClusterArgs {
      */
     enableTpu?: pulumi.Input<boolean>;
     /**
-     * Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+     * (DEPRECATED) Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
+     *
+     * @deprecated GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
      */
     enterpriseConfig?: pulumi.Input<inputs.container.ClusterEnterpriseConfig>;
     /**

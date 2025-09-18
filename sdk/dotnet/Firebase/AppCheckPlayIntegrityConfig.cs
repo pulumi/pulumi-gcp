@@ -37,7 +37,6 @@ namespace Pulumi.Gcp.Firebase
     ///     {
     ///         Project = "my-project-name",
     ///         ServiceName = "playintegrity.googleapis.com",
-    ///         DisableOnDestroy = false,
     ///     });
     /// 
     ///     var @default = new Gcp.Firebase.AndroidApp("default", new()
@@ -98,7 +97,6 @@ namespace Pulumi.Gcp.Firebase
     ///     {
     ///         Project = "my-project-name",
     ///         ServiceName = "playintegrity.googleapis.com",
-    ///         DisableOnDestroy = false,
     ///     });
     /// 
     ///     var @default = new Gcp.Firebase.AndroidApp("default", new()

@@ -281,6 +281,10 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly availableMaintenanceVersions: pulumi.Output<string[]>;
     /**
+     * The name of the BackupDR backup to restore from.
+     */
+    declare public readonly backupdrBackup: pulumi.Output<string | undefined>;
+    /**
      * The context needed to create this instance as a clone of another instance. When this field is set during
      * resource creation, this provider will attempt to clone another instance as indicated in the context. The
      * configuration is detailed below.
@@ -327,6 +331,10 @@ export class DatabaseInstance extends pulumi.CustomResource {
      * key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
      */
     declare public readonly encryptionKeyName: pulumi.Output<string>;
+    /**
+     * The description of final backup. Only set this field when `final_backup_config.enabled` is true.
+     */
+    declare public readonly finalBackupDescription: pulumi.Output<string | undefined>;
     /**
      * The first IPv4 address of any type assigned.
      */
@@ -435,6 +443,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as DatabaseInstanceState | undefined;
             resourceInputs["availableMaintenanceVersions"] = state?.availableMaintenanceVersions;
+            resourceInputs["backupdrBackup"] = state?.backupdrBackup;
             resourceInputs["clone"] = state?.clone;
             resourceInputs["connectionName"] = state?.connectionName;
             resourceInputs["databaseVersion"] = state?.databaseVersion;
@@ -442,6 +451,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["dnsName"] = state?.dnsName;
             resourceInputs["dnsNames"] = state?.dnsNames;
             resourceInputs["encryptionKeyName"] = state?.encryptionKeyName;
+            resourceInputs["finalBackupDescription"] = state?.finalBackupDescription;
             resourceInputs["firstIpAddress"] = state?.firstIpAddress;
             resourceInputs["instanceType"] = state?.instanceType;
             resourceInputs["ipAddresses"] = state?.ipAddresses;
@@ -468,10 +478,12 @@ export class DatabaseInstance extends pulumi.CustomResource {
             if (args?.databaseVersion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'databaseVersion'");
             }
+            resourceInputs["backupdrBackup"] = args?.backupdrBackup;
             resourceInputs["clone"] = args?.clone;
             resourceInputs["databaseVersion"] = args?.databaseVersion;
             resourceInputs["deletionProtection"] = args?.deletionProtection;
             resourceInputs["encryptionKeyName"] = args?.encryptionKeyName;
+            resourceInputs["finalBackupDescription"] = args?.finalBackupDescription;
             resourceInputs["instanceType"] = args?.instanceType;
             resourceInputs["maintenanceVersion"] = args?.maintenanceVersion;
             resourceInputs["masterInstanceName"] = args?.masterInstanceName;
@@ -513,6 +525,10 @@ export interface DatabaseInstanceState {
      * The list of all maintenance versions applicable on the instance.
      */
     availableMaintenanceVersions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The name of the BackupDR backup to restore from.
+     */
+    backupdrBackup?: pulumi.Input<string>;
     /**
      * The context needed to create this instance as a clone of another instance. When this field is set during
      * resource creation, this provider will attempt to clone another instance as indicated in the context. The
@@ -560,6 +576,10 @@ export interface DatabaseInstanceState {
      * key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
      */
     encryptionKeyName?: pulumi.Input<string>;
+    /**
+     * The description of final backup. Only set this field when `final_backup_config.enabled` is true.
+     */
+    finalBackupDescription?: pulumi.Input<string>;
     /**
      * The first IPv4 address of any type assigned.
      */
@@ -660,6 +680,10 @@ export interface DatabaseInstanceState {
  */
 export interface DatabaseInstanceArgs {
     /**
+     * The name of the BackupDR backup to restore from.
+     */
+    backupdrBackup?: pulumi.Input<string>;
+    /**
      * The context needed to create this instance as a clone of another instance. When this field is set during
      * resource creation, this provider will attempt to clone another instance as indicated in the context. The
      * configuration is detailed below.
@@ -693,6 +717,10 @@ export interface DatabaseInstanceArgs {
      * key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
      */
     encryptionKeyName?: pulumi.Input<string>;
+    /**
+     * The description of final backup. Only set this field when `final_backup_config.enabled` is true.
+     */
+    finalBackupDescription?: pulumi.Input<string>;
     /**
      * The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
      */

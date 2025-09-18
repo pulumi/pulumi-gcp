@@ -5647,7 +5647,7 @@ class AiIndexMetadata(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 config: Optional['outputs.AiIndexMetadataConfig'] = None,
+                 config: 'outputs.AiIndexMetadataConfig',
                  contents_delta_uri: Optional[_builtins.str] = None,
                  is_complete_overwrite: Optional[_builtins.bool] = None):
         """
@@ -5662,8 +5662,7 @@ class AiIndexMetadata(dict):
         :param _builtins.bool is_complete_overwrite: If this field is set together with contentsDeltaUri when calling IndexService.UpdateIndex,
                then existing content of the Index will be replaced by the data from the contentsDeltaUri.
         """
-        if config is not None:
-            pulumi.set(__self__, "config", config)
+        pulumi.set(__self__, "config", config)
         if contents_delta_uri is not None:
             pulumi.set(__self__, "contents_delta_uri", contents_delta_uri)
         if is_complete_overwrite is not None:
@@ -5671,7 +5670,7 @@ class AiIndexMetadata(dict):
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional['outputs.AiIndexMetadataConfig']:
+    def config(self) -> 'outputs.AiIndexMetadataConfig':
         """
         The configuration of the Matching Engine Index.
         Structure is documented below.
@@ -5737,7 +5736,7 @@ class AiIndexMetadataConfig(dict):
                  shard_size: Optional[_builtins.str] = None):
         """
         :param _builtins.int dimensions: The number of dimensions of the input vectors.
-        :param 'AiIndexMetadataConfigAlgorithmConfigArgs' algorithm_config: The configuration with regard to the algorithms used for efficient search.
+        :param 'AiIndexMetadataConfigAlgorithmConfigArgs' algorithm_config: The configuration with regard to the algorithms used for efficient search. This field may be required based on your configuration.
                Structure is documented below.
         :param _builtins.int approximate_neighbors_count: The default number of neighbors to find via approximate search before exact reordering is
                performed. Exact reordering is a procedure where results returned by an
@@ -5781,7 +5780,7 @@ class AiIndexMetadataConfig(dict):
     @pulumi.getter(name="algorithmConfig")
     def algorithm_config(self) -> Optional['outputs.AiIndexMetadataConfigAlgorithmConfig']:
         """
-        The configuration with regard to the algorithms used for efficient search.
+        The configuration with regard to the algorithms used for efficient search. This field may be required based on your configuration.
         Structure is documented below.
         """
         return pulumi.get(self, "algorithm_config")
@@ -6244,7 +6243,7 @@ class GetAiIndexMetadataConfigResult(dict):
                  feature_norm_type: _builtins.str,
                  shard_size: _builtins.str):
         """
-        :param Sequence['GetAiIndexMetadataConfigAlgorithmConfigArgs'] algorithm_configs: The configuration with regard to the algorithms used for efficient search.
+        :param Sequence['GetAiIndexMetadataConfigAlgorithmConfigArgs'] algorithm_configs: The configuration with regard to the algorithms used for efficient search. This field may be required based on your configuration.
         :param _builtins.int approximate_neighbors_count: The default number of neighbors to find via approximate search before exact reordering is
                performed. Exact reordering is a procedure where results returned by an
                approximate search algorithm are reordered via a more expensive distance computation.
@@ -6275,7 +6274,7 @@ class GetAiIndexMetadataConfigResult(dict):
     @pulumi.getter(name="algorithmConfigs")
     def algorithm_configs(self) -> Sequence['outputs.GetAiIndexMetadataConfigAlgorithmConfigResult']:
         """
-        The configuration with regard to the algorithms used for efficient search.
+        The configuration with regard to the algorithms used for efficient search. This field may be required based on your configuration.
         """
         return pulumi.get(self, "algorithm_configs")
 

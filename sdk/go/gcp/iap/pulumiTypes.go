@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -4870,6 +4870,348 @@ func (o WebCloudRunServiceIamMemberConditionPtrOutput) Title() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+type WebForwardingRuleServiceIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
+}
+
+// WebForwardingRuleServiceIamBindingConditionInput is an input type that accepts WebForwardingRuleServiceIamBindingConditionArgs and WebForwardingRuleServiceIamBindingConditionOutput values.
+// You can construct a concrete instance of `WebForwardingRuleServiceIamBindingConditionInput` via:
+//
+//	WebForwardingRuleServiceIamBindingConditionArgs{...}
+type WebForwardingRuleServiceIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToWebForwardingRuleServiceIamBindingConditionOutput() WebForwardingRuleServiceIamBindingConditionOutput
+	ToWebForwardingRuleServiceIamBindingConditionOutputWithContext(context.Context) WebForwardingRuleServiceIamBindingConditionOutput
+}
+
+type WebForwardingRuleServiceIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (WebForwardingRuleServiceIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebForwardingRuleServiceIamBindingCondition)(nil)).Elem()
+}
+
+func (i WebForwardingRuleServiceIamBindingConditionArgs) ToWebForwardingRuleServiceIamBindingConditionOutput() WebForwardingRuleServiceIamBindingConditionOutput {
+	return i.ToWebForwardingRuleServiceIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i WebForwardingRuleServiceIamBindingConditionArgs) ToWebForwardingRuleServiceIamBindingConditionOutputWithContext(ctx context.Context) WebForwardingRuleServiceIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebForwardingRuleServiceIamBindingConditionOutput)
+}
+
+func (i WebForwardingRuleServiceIamBindingConditionArgs) ToWebForwardingRuleServiceIamBindingConditionPtrOutput() WebForwardingRuleServiceIamBindingConditionPtrOutput {
+	return i.ToWebForwardingRuleServiceIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i WebForwardingRuleServiceIamBindingConditionArgs) ToWebForwardingRuleServiceIamBindingConditionPtrOutputWithContext(ctx context.Context) WebForwardingRuleServiceIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebForwardingRuleServiceIamBindingConditionOutput).ToWebForwardingRuleServiceIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// WebForwardingRuleServiceIamBindingConditionPtrInput is an input type that accepts WebForwardingRuleServiceIamBindingConditionArgs, WebForwardingRuleServiceIamBindingConditionPtr and WebForwardingRuleServiceIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `WebForwardingRuleServiceIamBindingConditionPtrInput` via:
+//
+//	        WebForwardingRuleServiceIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type WebForwardingRuleServiceIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToWebForwardingRuleServiceIamBindingConditionPtrOutput() WebForwardingRuleServiceIamBindingConditionPtrOutput
+	ToWebForwardingRuleServiceIamBindingConditionPtrOutputWithContext(context.Context) WebForwardingRuleServiceIamBindingConditionPtrOutput
+}
+
+type webForwardingRuleServiceIamBindingConditionPtrType WebForwardingRuleServiceIamBindingConditionArgs
+
+func WebForwardingRuleServiceIamBindingConditionPtr(v *WebForwardingRuleServiceIamBindingConditionArgs) WebForwardingRuleServiceIamBindingConditionPtrInput {
+	return (*webForwardingRuleServiceIamBindingConditionPtrType)(v)
+}
+
+func (*webForwardingRuleServiceIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebForwardingRuleServiceIamBindingCondition)(nil)).Elem()
+}
+
+func (i *webForwardingRuleServiceIamBindingConditionPtrType) ToWebForwardingRuleServiceIamBindingConditionPtrOutput() WebForwardingRuleServiceIamBindingConditionPtrOutput {
+	return i.ToWebForwardingRuleServiceIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *webForwardingRuleServiceIamBindingConditionPtrType) ToWebForwardingRuleServiceIamBindingConditionPtrOutputWithContext(ctx context.Context) WebForwardingRuleServiceIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebForwardingRuleServiceIamBindingConditionPtrOutput)
+}
+
+type WebForwardingRuleServiceIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (WebForwardingRuleServiceIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebForwardingRuleServiceIamBindingCondition)(nil)).Elem()
+}
+
+func (o WebForwardingRuleServiceIamBindingConditionOutput) ToWebForwardingRuleServiceIamBindingConditionOutput() WebForwardingRuleServiceIamBindingConditionOutput {
+	return o
+}
+
+func (o WebForwardingRuleServiceIamBindingConditionOutput) ToWebForwardingRuleServiceIamBindingConditionOutputWithContext(ctx context.Context) WebForwardingRuleServiceIamBindingConditionOutput {
+	return o
+}
+
+func (o WebForwardingRuleServiceIamBindingConditionOutput) ToWebForwardingRuleServiceIamBindingConditionPtrOutput() WebForwardingRuleServiceIamBindingConditionPtrOutput {
+	return o.ToWebForwardingRuleServiceIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o WebForwardingRuleServiceIamBindingConditionOutput) ToWebForwardingRuleServiceIamBindingConditionPtrOutputWithContext(ctx context.Context) WebForwardingRuleServiceIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebForwardingRuleServiceIamBindingCondition) *WebForwardingRuleServiceIamBindingCondition {
+		return &v
+	}).(WebForwardingRuleServiceIamBindingConditionPtrOutput)
+}
+
+func (o WebForwardingRuleServiceIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebForwardingRuleServiceIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o WebForwardingRuleServiceIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v WebForwardingRuleServiceIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o WebForwardingRuleServiceIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v WebForwardingRuleServiceIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type WebForwardingRuleServiceIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (WebForwardingRuleServiceIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebForwardingRuleServiceIamBindingCondition)(nil)).Elem()
+}
+
+func (o WebForwardingRuleServiceIamBindingConditionPtrOutput) ToWebForwardingRuleServiceIamBindingConditionPtrOutput() WebForwardingRuleServiceIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o WebForwardingRuleServiceIamBindingConditionPtrOutput) ToWebForwardingRuleServiceIamBindingConditionPtrOutputWithContext(ctx context.Context) WebForwardingRuleServiceIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o WebForwardingRuleServiceIamBindingConditionPtrOutput) Elem() WebForwardingRuleServiceIamBindingConditionOutput {
+	return o.ApplyT(func(v *WebForwardingRuleServiceIamBindingCondition) WebForwardingRuleServiceIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret WebForwardingRuleServiceIamBindingCondition
+		return ret
+	}).(WebForwardingRuleServiceIamBindingConditionOutput)
+}
+
+func (o WebForwardingRuleServiceIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebForwardingRuleServiceIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o WebForwardingRuleServiceIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebForwardingRuleServiceIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o WebForwardingRuleServiceIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebForwardingRuleServiceIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type WebForwardingRuleServiceIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
+}
+
+// WebForwardingRuleServiceIamMemberConditionInput is an input type that accepts WebForwardingRuleServiceIamMemberConditionArgs and WebForwardingRuleServiceIamMemberConditionOutput values.
+// You can construct a concrete instance of `WebForwardingRuleServiceIamMemberConditionInput` via:
+//
+//	WebForwardingRuleServiceIamMemberConditionArgs{...}
+type WebForwardingRuleServiceIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToWebForwardingRuleServiceIamMemberConditionOutput() WebForwardingRuleServiceIamMemberConditionOutput
+	ToWebForwardingRuleServiceIamMemberConditionOutputWithContext(context.Context) WebForwardingRuleServiceIamMemberConditionOutput
+}
+
+type WebForwardingRuleServiceIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (WebForwardingRuleServiceIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebForwardingRuleServiceIamMemberCondition)(nil)).Elem()
+}
+
+func (i WebForwardingRuleServiceIamMemberConditionArgs) ToWebForwardingRuleServiceIamMemberConditionOutput() WebForwardingRuleServiceIamMemberConditionOutput {
+	return i.ToWebForwardingRuleServiceIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i WebForwardingRuleServiceIamMemberConditionArgs) ToWebForwardingRuleServiceIamMemberConditionOutputWithContext(ctx context.Context) WebForwardingRuleServiceIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebForwardingRuleServiceIamMemberConditionOutput)
+}
+
+func (i WebForwardingRuleServiceIamMemberConditionArgs) ToWebForwardingRuleServiceIamMemberConditionPtrOutput() WebForwardingRuleServiceIamMemberConditionPtrOutput {
+	return i.ToWebForwardingRuleServiceIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i WebForwardingRuleServiceIamMemberConditionArgs) ToWebForwardingRuleServiceIamMemberConditionPtrOutputWithContext(ctx context.Context) WebForwardingRuleServiceIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebForwardingRuleServiceIamMemberConditionOutput).ToWebForwardingRuleServiceIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// WebForwardingRuleServiceIamMemberConditionPtrInput is an input type that accepts WebForwardingRuleServiceIamMemberConditionArgs, WebForwardingRuleServiceIamMemberConditionPtr and WebForwardingRuleServiceIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `WebForwardingRuleServiceIamMemberConditionPtrInput` via:
+//
+//	        WebForwardingRuleServiceIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type WebForwardingRuleServiceIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToWebForwardingRuleServiceIamMemberConditionPtrOutput() WebForwardingRuleServiceIamMemberConditionPtrOutput
+	ToWebForwardingRuleServiceIamMemberConditionPtrOutputWithContext(context.Context) WebForwardingRuleServiceIamMemberConditionPtrOutput
+}
+
+type webForwardingRuleServiceIamMemberConditionPtrType WebForwardingRuleServiceIamMemberConditionArgs
+
+func WebForwardingRuleServiceIamMemberConditionPtr(v *WebForwardingRuleServiceIamMemberConditionArgs) WebForwardingRuleServiceIamMemberConditionPtrInput {
+	return (*webForwardingRuleServiceIamMemberConditionPtrType)(v)
+}
+
+func (*webForwardingRuleServiceIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebForwardingRuleServiceIamMemberCondition)(nil)).Elem()
+}
+
+func (i *webForwardingRuleServiceIamMemberConditionPtrType) ToWebForwardingRuleServiceIamMemberConditionPtrOutput() WebForwardingRuleServiceIamMemberConditionPtrOutput {
+	return i.ToWebForwardingRuleServiceIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *webForwardingRuleServiceIamMemberConditionPtrType) ToWebForwardingRuleServiceIamMemberConditionPtrOutputWithContext(ctx context.Context) WebForwardingRuleServiceIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebForwardingRuleServiceIamMemberConditionPtrOutput)
+}
+
+type WebForwardingRuleServiceIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (WebForwardingRuleServiceIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebForwardingRuleServiceIamMemberCondition)(nil)).Elem()
+}
+
+func (o WebForwardingRuleServiceIamMemberConditionOutput) ToWebForwardingRuleServiceIamMemberConditionOutput() WebForwardingRuleServiceIamMemberConditionOutput {
+	return o
+}
+
+func (o WebForwardingRuleServiceIamMemberConditionOutput) ToWebForwardingRuleServiceIamMemberConditionOutputWithContext(ctx context.Context) WebForwardingRuleServiceIamMemberConditionOutput {
+	return o
+}
+
+func (o WebForwardingRuleServiceIamMemberConditionOutput) ToWebForwardingRuleServiceIamMemberConditionPtrOutput() WebForwardingRuleServiceIamMemberConditionPtrOutput {
+	return o.ToWebForwardingRuleServiceIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o WebForwardingRuleServiceIamMemberConditionOutput) ToWebForwardingRuleServiceIamMemberConditionPtrOutputWithContext(ctx context.Context) WebForwardingRuleServiceIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebForwardingRuleServiceIamMemberCondition) *WebForwardingRuleServiceIamMemberCondition {
+		return &v
+	}).(WebForwardingRuleServiceIamMemberConditionPtrOutput)
+}
+
+func (o WebForwardingRuleServiceIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebForwardingRuleServiceIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o WebForwardingRuleServiceIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v WebForwardingRuleServiceIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o WebForwardingRuleServiceIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v WebForwardingRuleServiceIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type WebForwardingRuleServiceIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (WebForwardingRuleServiceIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebForwardingRuleServiceIamMemberCondition)(nil)).Elem()
+}
+
+func (o WebForwardingRuleServiceIamMemberConditionPtrOutput) ToWebForwardingRuleServiceIamMemberConditionPtrOutput() WebForwardingRuleServiceIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o WebForwardingRuleServiceIamMemberConditionPtrOutput) ToWebForwardingRuleServiceIamMemberConditionPtrOutputWithContext(ctx context.Context) WebForwardingRuleServiceIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o WebForwardingRuleServiceIamMemberConditionPtrOutput) Elem() WebForwardingRuleServiceIamMemberConditionOutput {
+	return o.ApplyT(func(v *WebForwardingRuleServiceIamMemberCondition) WebForwardingRuleServiceIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret WebForwardingRuleServiceIamMemberCondition
+		return ret
+	}).(WebForwardingRuleServiceIamMemberConditionOutput)
+}
+
+func (o WebForwardingRuleServiceIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebForwardingRuleServiceIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o WebForwardingRuleServiceIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebForwardingRuleServiceIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o WebForwardingRuleServiceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebForwardingRuleServiceIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type WebIamBindingCondition struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	//
@@ -5587,6 +5929,348 @@ func (o WebRegionBackendServiceIamMemberConditionPtrOutput) Expression() pulumi.
 // A title for the expression, i.e. a short string describing its purpose.
 func (o WebRegionBackendServiceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebRegionBackendServiceIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type WebRegionForwardingRuleServiceIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
+}
+
+// WebRegionForwardingRuleServiceIamBindingConditionInput is an input type that accepts WebRegionForwardingRuleServiceIamBindingConditionArgs and WebRegionForwardingRuleServiceIamBindingConditionOutput values.
+// You can construct a concrete instance of `WebRegionForwardingRuleServiceIamBindingConditionInput` via:
+//
+//	WebRegionForwardingRuleServiceIamBindingConditionArgs{...}
+type WebRegionForwardingRuleServiceIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToWebRegionForwardingRuleServiceIamBindingConditionOutput() WebRegionForwardingRuleServiceIamBindingConditionOutput
+	ToWebRegionForwardingRuleServiceIamBindingConditionOutputWithContext(context.Context) WebRegionForwardingRuleServiceIamBindingConditionOutput
+}
+
+type WebRegionForwardingRuleServiceIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (WebRegionForwardingRuleServiceIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebRegionForwardingRuleServiceIamBindingCondition)(nil)).Elem()
+}
+
+func (i WebRegionForwardingRuleServiceIamBindingConditionArgs) ToWebRegionForwardingRuleServiceIamBindingConditionOutput() WebRegionForwardingRuleServiceIamBindingConditionOutput {
+	return i.ToWebRegionForwardingRuleServiceIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i WebRegionForwardingRuleServiceIamBindingConditionArgs) ToWebRegionForwardingRuleServiceIamBindingConditionOutputWithContext(ctx context.Context) WebRegionForwardingRuleServiceIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebRegionForwardingRuleServiceIamBindingConditionOutput)
+}
+
+func (i WebRegionForwardingRuleServiceIamBindingConditionArgs) ToWebRegionForwardingRuleServiceIamBindingConditionPtrOutput() WebRegionForwardingRuleServiceIamBindingConditionPtrOutput {
+	return i.ToWebRegionForwardingRuleServiceIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i WebRegionForwardingRuleServiceIamBindingConditionArgs) ToWebRegionForwardingRuleServiceIamBindingConditionPtrOutputWithContext(ctx context.Context) WebRegionForwardingRuleServiceIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebRegionForwardingRuleServiceIamBindingConditionOutput).ToWebRegionForwardingRuleServiceIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// WebRegionForwardingRuleServiceIamBindingConditionPtrInput is an input type that accepts WebRegionForwardingRuleServiceIamBindingConditionArgs, WebRegionForwardingRuleServiceIamBindingConditionPtr and WebRegionForwardingRuleServiceIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `WebRegionForwardingRuleServiceIamBindingConditionPtrInput` via:
+//
+//	        WebRegionForwardingRuleServiceIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type WebRegionForwardingRuleServiceIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToWebRegionForwardingRuleServiceIamBindingConditionPtrOutput() WebRegionForwardingRuleServiceIamBindingConditionPtrOutput
+	ToWebRegionForwardingRuleServiceIamBindingConditionPtrOutputWithContext(context.Context) WebRegionForwardingRuleServiceIamBindingConditionPtrOutput
+}
+
+type webRegionForwardingRuleServiceIamBindingConditionPtrType WebRegionForwardingRuleServiceIamBindingConditionArgs
+
+func WebRegionForwardingRuleServiceIamBindingConditionPtr(v *WebRegionForwardingRuleServiceIamBindingConditionArgs) WebRegionForwardingRuleServiceIamBindingConditionPtrInput {
+	return (*webRegionForwardingRuleServiceIamBindingConditionPtrType)(v)
+}
+
+func (*webRegionForwardingRuleServiceIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebRegionForwardingRuleServiceIamBindingCondition)(nil)).Elem()
+}
+
+func (i *webRegionForwardingRuleServiceIamBindingConditionPtrType) ToWebRegionForwardingRuleServiceIamBindingConditionPtrOutput() WebRegionForwardingRuleServiceIamBindingConditionPtrOutput {
+	return i.ToWebRegionForwardingRuleServiceIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *webRegionForwardingRuleServiceIamBindingConditionPtrType) ToWebRegionForwardingRuleServiceIamBindingConditionPtrOutputWithContext(ctx context.Context) WebRegionForwardingRuleServiceIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebRegionForwardingRuleServiceIamBindingConditionPtrOutput)
+}
+
+type WebRegionForwardingRuleServiceIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (WebRegionForwardingRuleServiceIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebRegionForwardingRuleServiceIamBindingCondition)(nil)).Elem()
+}
+
+func (o WebRegionForwardingRuleServiceIamBindingConditionOutput) ToWebRegionForwardingRuleServiceIamBindingConditionOutput() WebRegionForwardingRuleServiceIamBindingConditionOutput {
+	return o
+}
+
+func (o WebRegionForwardingRuleServiceIamBindingConditionOutput) ToWebRegionForwardingRuleServiceIamBindingConditionOutputWithContext(ctx context.Context) WebRegionForwardingRuleServiceIamBindingConditionOutput {
+	return o
+}
+
+func (o WebRegionForwardingRuleServiceIamBindingConditionOutput) ToWebRegionForwardingRuleServiceIamBindingConditionPtrOutput() WebRegionForwardingRuleServiceIamBindingConditionPtrOutput {
+	return o.ToWebRegionForwardingRuleServiceIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o WebRegionForwardingRuleServiceIamBindingConditionOutput) ToWebRegionForwardingRuleServiceIamBindingConditionPtrOutputWithContext(ctx context.Context) WebRegionForwardingRuleServiceIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebRegionForwardingRuleServiceIamBindingCondition) *WebRegionForwardingRuleServiceIamBindingCondition {
+		return &v
+	}).(WebRegionForwardingRuleServiceIamBindingConditionPtrOutput)
+}
+
+func (o WebRegionForwardingRuleServiceIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebRegionForwardingRuleServiceIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o WebRegionForwardingRuleServiceIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v WebRegionForwardingRuleServiceIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o WebRegionForwardingRuleServiceIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v WebRegionForwardingRuleServiceIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type WebRegionForwardingRuleServiceIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (WebRegionForwardingRuleServiceIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebRegionForwardingRuleServiceIamBindingCondition)(nil)).Elem()
+}
+
+func (o WebRegionForwardingRuleServiceIamBindingConditionPtrOutput) ToWebRegionForwardingRuleServiceIamBindingConditionPtrOutput() WebRegionForwardingRuleServiceIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o WebRegionForwardingRuleServiceIamBindingConditionPtrOutput) ToWebRegionForwardingRuleServiceIamBindingConditionPtrOutputWithContext(ctx context.Context) WebRegionForwardingRuleServiceIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o WebRegionForwardingRuleServiceIamBindingConditionPtrOutput) Elem() WebRegionForwardingRuleServiceIamBindingConditionOutput {
+	return o.ApplyT(func(v *WebRegionForwardingRuleServiceIamBindingCondition) WebRegionForwardingRuleServiceIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret WebRegionForwardingRuleServiceIamBindingCondition
+		return ret
+	}).(WebRegionForwardingRuleServiceIamBindingConditionOutput)
+}
+
+func (o WebRegionForwardingRuleServiceIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebRegionForwardingRuleServiceIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o WebRegionForwardingRuleServiceIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebRegionForwardingRuleServiceIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o WebRegionForwardingRuleServiceIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebRegionForwardingRuleServiceIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type WebRegionForwardingRuleServiceIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
+}
+
+// WebRegionForwardingRuleServiceIamMemberConditionInput is an input type that accepts WebRegionForwardingRuleServiceIamMemberConditionArgs and WebRegionForwardingRuleServiceIamMemberConditionOutput values.
+// You can construct a concrete instance of `WebRegionForwardingRuleServiceIamMemberConditionInput` via:
+//
+//	WebRegionForwardingRuleServiceIamMemberConditionArgs{...}
+type WebRegionForwardingRuleServiceIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToWebRegionForwardingRuleServiceIamMemberConditionOutput() WebRegionForwardingRuleServiceIamMemberConditionOutput
+	ToWebRegionForwardingRuleServiceIamMemberConditionOutputWithContext(context.Context) WebRegionForwardingRuleServiceIamMemberConditionOutput
+}
+
+type WebRegionForwardingRuleServiceIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (WebRegionForwardingRuleServiceIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebRegionForwardingRuleServiceIamMemberCondition)(nil)).Elem()
+}
+
+func (i WebRegionForwardingRuleServiceIamMemberConditionArgs) ToWebRegionForwardingRuleServiceIamMemberConditionOutput() WebRegionForwardingRuleServiceIamMemberConditionOutput {
+	return i.ToWebRegionForwardingRuleServiceIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i WebRegionForwardingRuleServiceIamMemberConditionArgs) ToWebRegionForwardingRuleServiceIamMemberConditionOutputWithContext(ctx context.Context) WebRegionForwardingRuleServiceIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebRegionForwardingRuleServiceIamMemberConditionOutput)
+}
+
+func (i WebRegionForwardingRuleServiceIamMemberConditionArgs) ToWebRegionForwardingRuleServiceIamMemberConditionPtrOutput() WebRegionForwardingRuleServiceIamMemberConditionPtrOutput {
+	return i.ToWebRegionForwardingRuleServiceIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i WebRegionForwardingRuleServiceIamMemberConditionArgs) ToWebRegionForwardingRuleServiceIamMemberConditionPtrOutputWithContext(ctx context.Context) WebRegionForwardingRuleServiceIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebRegionForwardingRuleServiceIamMemberConditionOutput).ToWebRegionForwardingRuleServiceIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// WebRegionForwardingRuleServiceIamMemberConditionPtrInput is an input type that accepts WebRegionForwardingRuleServiceIamMemberConditionArgs, WebRegionForwardingRuleServiceIamMemberConditionPtr and WebRegionForwardingRuleServiceIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `WebRegionForwardingRuleServiceIamMemberConditionPtrInput` via:
+//
+//	        WebRegionForwardingRuleServiceIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type WebRegionForwardingRuleServiceIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToWebRegionForwardingRuleServiceIamMemberConditionPtrOutput() WebRegionForwardingRuleServiceIamMemberConditionPtrOutput
+	ToWebRegionForwardingRuleServiceIamMemberConditionPtrOutputWithContext(context.Context) WebRegionForwardingRuleServiceIamMemberConditionPtrOutput
+}
+
+type webRegionForwardingRuleServiceIamMemberConditionPtrType WebRegionForwardingRuleServiceIamMemberConditionArgs
+
+func WebRegionForwardingRuleServiceIamMemberConditionPtr(v *WebRegionForwardingRuleServiceIamMemberConditionArgs) WebRegionForwardingRuleServiceIamMemberConditionPtrInput {
+	return (*webRegionForwardingRuleServiceIamMemberConditionPtrType)(v)
+}
+
+func (*webRegionForwardingRuleServiceIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebRegionForwardingRuleServiceIamMemberCondition)(nil)).Elem()
+}
+
+func (i *webRegionForwardingRuleServiceIamMemberConditionPtrType) ToWebRegionForwardingRuleServiceIamMemberConditionPtrOutput() WebRegionForwardingRuleServiceIamMemberConditionPtrOutput {
+	return i.ToWebRegionForwardingRuleServiceIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *webRegionForwardingRuleServiceIamMemberConditionPtrType) ToWebRegionForwardingRuleServiceIamMemberConditionPtrOutputWithContext(ctx context.Context) WebRegionForwardingRuleServiceIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebRegionForwardingRuleServiceIamMemberConditionPtrOutput)
+}
+
+type WebRegionForwardingRuleServiceIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (WebRegionForwardingRuleServiceIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebRegionForwardingRuleServiceIamMemberCondition)(nil)).Elem()
+}
+
+func (o WebRegionForwardingRuleServiceIamMemberConditionOutput) ToWebRegionForwardingRuleServiceIamMemberConditionOutput() WebRegionForwardingRuleServiceIamMemberConditionOutput {
+	return o
+}
+
+func (o WebRegionForwardingRuleServiceIamMemberConditionOutput) ToWebRegionForwardingRuleServiceIamMemberConditionOutputWithContext(ctx context.Context) WebRegionForwardingRuleServiceIamMemberConditionOutput {
+	return o
+}
+
+func (o WebRegionForwardingRuleServiceIamMemberConditionOutput) ToWebRegionForwardingRuleServiceIamMemberConditionPtrOutput() WebRegionForwardingRuleServiceIamMemberConditionPtrOutput {
+	return o.ToWebRegionForwardingRuleServiceIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o WebRegionForwardingRuleServiceIamMemberConditionOutput) ToWebRegionForwardingRuleServiceIamMemberConditionPtrOutputWithContext(ctx context.Context) WebRegionForwardingRuleServiceIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebRegionForwardingRuleServiceIamMemberCondition) *WebRegionForwardingRuleServiceIamMemberCondition {
+		return &v
+	}).(WebRegionForwardingRuleServiceIamMemberConditionPtrOutput)
+}
+
+func (o WebRegionForwardingRuleServiceIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebRegionForwardingRuleServiceIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o WebRegionForwardingRuleServiceIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v WebRegionForwardingRuleServiceIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o WebRegionForwardingRuleServiceIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v WebRegionForwardingRuleServiceIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type WebRegionForwardingRuleServiceIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (WebRegionForwardingRuleServiceIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebRegionForwardingRuleServiceIamMemberCondition)(nil)).Elem()
+}
+
+func (o WebRegionForwardingRuleServiceIamMemberConditionPtrOutput) ToWebRegionForwardingRuleServiceIamMemberConditionPtrOutput() WebRegionForwardingRuleServiceIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o WebRegionForwardingRuleServiceIamMemberConditionPtrOutput) ToWebRegionForwardingRuleServiceIamMemberConditionPtrOutputWithContext(ctx context.Context) WebRegionForwardingRuleServiceIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o WebRegionForwardingRuleServiceIamMemberConditionPtrOutput) Elem() WebRegionForwardingRuleServiceIamMemberConditionOutput {
+	return o.ApplyT(func(v *WebRegionForwardingRuleServiceIamMemberCondition) WebRegionForwardingRuleServiceIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret WebRegionForwardingRuleServiceIamMemberCondition
+		return ret
+	}).(WebRegionForwardingRuleServiceIamMemberConditionOutput)
+}
+
+func (o WebRegionForwardingRuleServiceIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebRegionForwardingRuleServiceIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o WebRegionForwardingRuleServiceIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebRegionForwardingRuleServiceIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o WebRegionForwardingRuleServiceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebRegionForwardingRuleServiceIamMemberCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -6411,6 +7095,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WebCloudRunServiceIamBindingConditionPtrInput)(nil)).Elem(), WebCloudRunServiceIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebCloudRunServiceIamMemberConditionInput)(nil)).Elem(), WebCloudRunServiceIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebCloudRunServiceIamMemberConditionPtrInput)(nil)).Elem(), WebCloudRunServiceIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebForwardingRuleServiceIamBindingConditionInput)(nil)).Elem(), WebForwardingRuleServiceIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebForwardingRuleServiceIamBindingConditionPtrInput)(nil)).Elem(), WebForwardingRuleServiceIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebForwardingRuleServiceIamMemberConditionInput)(nil)).Elem(), WebForwardingRuleServiceIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebForwardingRuleServiceIamMemberConditionPtrInput)(nil)).Elem(), WebForwardingRuleServiceIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebIamBindingConditionInput)(nil)).Elem(), WebIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebIamBindingConditionPtrInput)(nil)).Elem(), WebIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebIamMemberConditionInput)(nil)).Elem(), WebIamMemberConditionArgs{})
@@ -6419,6 +7107,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WebRegionBackendServiceIamBindingConditionPtrInput)(nil)).Elem(), WebRegionBackendServiceIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebRegionBackendServiceIamMemberConditionInput)(nil)).Elem(), WebRegionBackendServiceIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebRegionBackendServiceIamMemberConditionPtrInput)(nil)).Elem(), WebRegionBackendServiceIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebRegionForwardingRuleServiceIamBindingConditionInput)(nil)).Elem(), WebRegionForwardingRuleServiceIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebRegionForwardingRuleServiceIamBindingConditionPtrInput)(nil)).Elem(), WebRegionForwardingRuleServiceIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebRegionForwardingRuleServiceIamMemberConditionInput)(nil)).Elem(), WebRegionForwardingRuleServiceIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebRegionForwardingRuleServiceIamMemberConditionPtrInput)(nil)).Elem(), WebRegionForwardingRuleServiceIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebTypeAppEngingIamBindingConditionInput)(nil)).Elem(), WebTypeAppEngingIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebTypeAppEngingIamBindingConditionPtrInput)(nil)).Elem(), WebTypeAppEngingIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebTypeAppEngingIamMemberConditionInput)(nil)).Elem(), WebTypeAppEngingIamMemberConditionArgs{})
@@ -6479,6 +7171,10 @@ func init() {
 	pulumi.RegisterOutputType(WebCloudRunServiceIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(WebCloudRunServiceIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(WebCloudRunServiceIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(WebForwardingRuleServiceIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(WebForwardingRuleServiceIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(WebForwardingRuleServiceIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(WebForwardingRuleServiceIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(WebIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(WebIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(WebIamMemberConditionOutput{})
@@ -6487,6 +7183,10 @@ func init() {
 	pulumi.RegisterOutputType(WebRegionBackendServiceIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(WebRegionBackendServiceIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(WebRegionBackendServiceIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(WebRegionForwardingRuleServiceIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(WebRegionForwardingRuleServiceIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(WebRegionForwardingRuleServiceIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(WebRegionForwardingRuleServiceIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(WebTypeAppEngingIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(WebTypeAppEngingIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(WebTypeAppEngingIamMemberConditionOutput{})

@@ -117,6 +117,12 @@ namespace Pulumi.Gcp.Netapp
         public Output<bool?> AllowAutoTiering { get; private set; } = null!;
 
         /// <summary>
+        /// Available throughput of the storage pool (in MiB/s).
+        /// </summary>
+        [Output("availableThroughputMibps")]
+        public Output<double> AvailableThroughputMibps { get; private set; } = null!;
+
+        /// <summary>
         /// Capacity of the storage pool (in GiB).
         /// </summary>
         [Output("capacityGib")]
@@ -216,6 +222,14 @@ namespace Pulumi.Gcp.Netapp
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
+        /// QoS (Quality of Service) type of the storage pool.
+        /// Possible values are: AUTO, MANUAL.
+        /// Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
+        /// </summary>
+        [Output("qosType")]
+        public Output<string?> QosType { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
         /// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
         /// </summary>
@@ -233,13 +247,13 @@ namespace Pulumi.Gcp.Netapp
         /// Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
         /// </summary>
         [Output("totalIops")]
-        public Output<string?> TotalIops { get; private set; } = null!;
+        public Output<string> TotalIops { get; private set; } = null!;
 
         /// <summary>
         /// Optional. Custom Performance Total Throughput of the pool (in MiB/s).
         /// </summary>
         [Output("totalThroughputMibps")]
-        public Output<string?> TotalThroughputMibps { get; private set; } = null!;
+        public Output<string> TotalThroughputMibps { get; private set; } = null!;
 
         /// <summary>
         /// Size allocated to volumes in the storage pool (in GiB).
@@ -413,6 +427,14 @@ namespace Pulumi.Gcp.Netapp
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// QoS (Quality of Service) type of the storage pool.
+        /// Possible values are: AUTO, MANUAL.
+        /// Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
+        /// </summary>
+        [Input("qosType")]
+        public Input<string>? QosType { get; set; }
+
+        /// <summary>
         /// Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
         /// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
         /// </summary>
@@ -467,6 +489,12 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Input("allowAutoTiering")]
         public Input<bool>? AllowAutoTiering { get; set; }
+
+        /// <summary>
+        /// Available throughput of the storage pool (in MiB/s).
+        /// </summary>
+        [Input("availableThroughputMibps")]
+        public Input<double>? AvailableThroughputMibps { get; set; }
 
         /// <summary>
         /// Capacity of the storage pool (in GiB).
@@ -592,6 +620,14 @@ namespace Pulumi.Gcp.Netapp
                 _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// QoS (Quality of Service) type of the storage pool.
+        /// Possible values are: AUTO, MANUAL.
+        /// Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
+        /// </summary>
+        [Input("qosType")]
+        public Input<string>? QosType { get; set; }
 
         /// <summary>
         /// Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a

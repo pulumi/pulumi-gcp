@@ -18,7 +18,7 @@ public final class GetRepositoryRemoteRepositoryConfigPythonRepository {
      */
     private List<GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository> customRepositories;
     /**
-     * @return Address of the remote repository. Default value: &#34;PYPI&#34; Possible values: [&#34;PYPI&#34;]
+     * @return Address of the remote repository. Possible values: [&#34;PYPI&#34;]
      * 
      */
     private String publicRepository;
@@ -32,7 +32,7 @@ public final class GetRepositoryRemoteRepositoryConfigPythonRepository {
         return this.customRepositories;
     }
     /**
-     * @return Address of the remote repository. Default value: &#34;PYPI&#34; Possible values: [&#34;PYPI&#34;]
+     * @return Address of the remote repository. Possible values: [&#34;PYPI&#34;]
      * 
      */
     public String publicRepository() {

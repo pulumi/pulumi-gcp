@@ -807,7 +807,6 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             psc_data={
                 "producer_port": "88",
             },
-            network=default.self_link,
             subnetwork=default_subnetwork.self_link)
         ```
         ### Region Network Endpoint Group Internet Ip Port
@@ -1158,7 +1157,6 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             psc_data={
                 "producer_port": "88",
             },
-            network=default.self_link,
             subnetwork=default_subnetwork.self_link)
         ```
         ### Region Network Endpoint Group Internet Ip Port
@@ -1435,7 +1433,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def network(self) -> pulumi.Output[_builtins.str]:
         """
         This field is only used for PSC and INTERNET NEGs.
         The URL of the network to which all network endpoints in the NEG belong. Uses

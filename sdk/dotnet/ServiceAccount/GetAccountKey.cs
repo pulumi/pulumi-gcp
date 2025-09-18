@@ -129,13 +129,6 @@ namespace Pulumi.Gcp.ServiceAccount
         public string Name { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the project that the service account is present in.
-        /// Defaults to the provider project configuration.
-        /// </summary>
-        [Input("project")]
-        public string? Project { get; set; }
-
-        /// <summary>
         /// The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
         /// </summary>
         [Input("publicKeyType")]
@@ -156,13 +149,6 @@ namespace Pulumi.Gcp.ServiceAccount
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// The ID of the project that the service account is present in.
-        /// Defaults to the provider project configuration.
-        /// </summary>
-        [Input("project")]
-        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
@@ -186,7 +172,6 @@ namespace Pulumi.Gcp.ServiceAccount
         public readonly string Id;
         public readonly string KeyAlgorithm;
         public readonly string Name;
-        public readonly string? Project;
         /// <summary>
         /// The public key, base64 encoded
         /// </summary>
@@ -201,8 +186,6 @@ namespace Pulumi.Gcp.ServiceAccount
 
             string name,
 
-            string? project,
-
             string publicKey,
 
             string? publicKeyType)
@@ -210,7 +193,6 @@ namespace Pulumi.Gcp.ServiceAccount
             Id = id;
             KeyAlgorithm = keyAlgorithm;
             Name = name;
-            Project = project;
             PublicKey = publicKey;
             PublicKeyType = publicKeyType;
         }

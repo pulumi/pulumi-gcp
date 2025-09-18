@@ -25,6 +25,7 @@ class TriggerArgs:
                  bitbucket_server_trigger_config: Optional[pulumi.Input['TriggerBitbucketServerTriggerConfigArgs']] = None,
                  build: Optional[pulumi.Input['TriggerBuildArgs']] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 developer_connect_event_config: Optional[pulumi.Input['TriggerDeveloperConnectEventConfigArgs']] = None,
                  disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  filename: Optional[pulumi.Input[_builtins.str]] = None,
                  filter: Optional[pulumi.Input[_builtins.str]] = None,
@@ -55,6 +56,8 @@ class TriggerArgs:
         :param pulumi.Input['TriggerBuildArgs'] build: Contents of the build template. Either a filename or build template must be provided.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: Human-readable description of the trigger.
+        :param pulumi.Input['TriggerDeveloperConnectEventConfigArgs'] developer_connect_event_config: Configuration for triggers that respond to Developer Connect events.
+               Structure is documented below.
         :param pulumi.Input[_builtins.bool] disabled: Whether the trigger is disabled or not. If true, the trigger will never result in a build.
         :param pulumi.Input[_builtins.str] filename: Path, from the source root, to a file whose contents is used for the template.
                Either a filename or build template must be provided. Set this only when using trigger_template or github.
@@ -128,6 +131,8 @@ class TriggerArgs:
             pulumi.set(__self__, "build", build)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if developer_connect_event_config is not None:
+            pulumi.set(__self__, "developer_connect_event_config", developer_connect_event_config)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if filename is not None:
@@ -219,6 +224,19 @@ class TriggerArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="developerConnectEventConfig")
+    def developer_connect_event_config(self) -> Optional[pulumi.Input['TriggerDeveloperConnectEventConfigArgs']]:
+        """
+        Configuration for triggers that respond to Developer Connect events.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "developer_connect_event_config")
+
+    @developer_connect_event_config.setter
+    def developer_connect_event_config(self, value: Optional[pulumi.Input['TriggerDeveloperConnectEventConfigArgs']]):
+        pulumi.set(self, "developer_connect_event_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -502,6 +520,7 @@ class _TriggerState:
                  build: Optional[pulumi.Input['TriggerBuildArgs']] = None,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 developer_connect_event_config: Optional[pulumi.Input['TriggerDeveloperConnectEventConfigArgs']] = None,
                  disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  filename: Optional[pulumi.Input[_builtins.str]] = None,
                  filter: Optional[pulumi.Input[_builtins.str]] = None,
@@ -534,6 +553,8 @@ class _TriggerState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Time when the trigger was created.
         :param pulumi.Input[_builtins.str] description: Human-readable description of the trigger.
+        :param pulumi.Input['TriggerDeveloperConnectEventConfigArgs'] developer_connect_event_config: Configuration for triggers that respond to Developer Connect events.
+               Structure is documented below.
         :param pulumi.Input[_builtins.bool] disabled: Whether the trigger is disabled or not. If true, the trigger will never result in a build.
         :param pulumi.Input[_builtins.str] filename: Path, from the source root, to a file whose contents is used for the template.
                Either a filename or build template must be provided. Set this only when using trigger_template or github.
@@ -610,6 +631,8 @@ class _TriggerState:
             pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if developer_connect_event_config is not None:
+            pulumi.set(__self__, "developer_connect_event_config", developer_connect_event_config)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if filename is not None:
@@ -715,6 +738,19 @@ class _TriggerState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="developerConnectEventConfig")
+    def developer_connect_event_config(self) -> Optional[pulumi.Input['TriggerDeveloperConnectEventConfigArgs']]:
+        """
+        Configuration for triggers that respond to Developer Connect events.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "developer_connect_event_config")
+
+    @developer_connect_event_config.setter
+    def developer_connect_event_config(self, value: Optional[pulumi.Input['TriggerDeveloperConnectEventConfigArgs']]):
+        pulumi.set(self, "developer_connect_event_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1012,6 +1048,7 @@ class Trigger(pulumi.CustomResource):
                  bitbucket_server_trigger_config: Optional[pulumi.Input[Union['TriggerBitbucketServerTriggerConfigArgs', 'TriggerBitbucketServerTriggerConfigArgsDict']]] = None,
                  build: Optional[pulumi.Input[Union['TriggerBuildArgs', 'TriggerBuildArgsDict']]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 developer_connect_event_config: Optional[pulumi.Input[Union['TriggerDeveloperConnectEventConfigArgs', 'TriggerDeveloperConnectEventConfigArgsDict']]] = None,
                  disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  filename: Optional[pulumi.Input[_builtins.str]] = None,
                  filter: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1079,8 +1116,9 @@ class Trigger(pulumi.CustomResource):
             build={
                 "steps": [
                     {
-                        "name": "gcr.io/cloud-builders/gsutil",
+                        "name": "gcr.io/cloud-builders/gcloud",
                         "args": [
+                            "storage",
                             "cp",
                             "gs://mybucket/remotefile.zip",
                             "localfile.zip",
@@ -1633,6 +1671,57 @@ class Trigger(pulumi.CustomResource):
                 "repo_type": "GITHUB",
             })
         ```
+        ### Cloudbuild Trigger Developer Connect Pull
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        developer_connect_trigger_pull = gcp.cloudbuild.Trigger("developer-connect-trigger-pull",
+            location="us-central1",
+            developer_connect_event_config={
+                "git_repository_link": "projects/cryptic-tower-286020/locations/us-central1/connections/prod-bbs-push/gitRepositoryLinks/cbprob-prod-us-central1-push1",
+                "pull_request": {
+                    "branch": "^master$",
+                    "invert_regex": False,
+                    "comment_control": "COMMENTS_ENABLED",
+                },
+            },
+            filename="cloudbuild.yaml")
+        ```
+        ### Cloudbuild Trigger Developer Connect Push
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        developer_connect_trigger_push = gcp.cloudbuild.Trigger("developer-connect-trigger-push",
+            location="us-central1",
+            developer_connect_event_config={
+                "git_repository_link": "projects/cryptic-tower-286020/locations/us-central1/connections/prod-bbs-push/gitRepositoryLinks/cbprob-prod-us-central1-push1",
+                "push": {
+                    "tag": "^0.1.*",
+                    "invert_regex": True,
+                },
+            },
+            filename="cloudbuild.yaml")
+        ```
+        ### Cloudbuild Trigger Developer Connect Push Branch
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dc_trigger_regular_push_branch = gcp.cloudbuild.Trigger("dc-trigger-regular-push-branch",
+            location="us-central1",
+            developer_connect_event_config={
+                "git_repository_link": "projects/cryptic-tower-286020/locations/us-central1/connections/prod-bbs-push/gitRepositoryLinks/cbprob-prod-us-central1-push1",
+                "push": {
+                    "branch": "main",
+                },
+            },
+            filename="cloudbuild.yaml")
+        ```
 
         ## Import
 
@@ -1675,6 +1764,8 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[Union['TriggerBuildArgs', 'TriggerBuildArgsDict']] build: Contents of the build template. Either a filename or build template must be provided.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: Human-readable description of the trigger.
+        :param pulumi.Input[Union['TriggerDeveloperConnectEventConfigArgs', 'TriggerDeveloperConnectEventConfigArgsDict']] developer_connect_event_config: Configuration for triggers that respond to Developer Connect events.
+               Structure is documented below.
         :param pulumi.Input[_builtins.bool] disabled: Whether the trigger is disabled or not. If true, the trigger will never result in a build.
         :param pulumi.Input[_builtins.str] filename: Path, from the source root, to a file whose contents is used for the template.
                Either a filename or build template must be provided. Set this only when using trigger_template or github.
@@ -1793,8 +1884,9 @@ class Trigger(pulumi.CustomResource):
             build={
                 "steps": [
                     {
-                        "name": "gcr.io/cloud-builders/gsutil",
+                        "name": "gcr.io/cloud-builders/gcloud",
                         "args": [
+                            "storage",
                             "cp",
                             "gs://mybucket/remotefile.zip",
                             "localfile.zip",
@@ -2347,6 +2439,57 @@ class Trigger(pulumi.CustomResource):
                 "repo_type": "GITHUB",
             })
         ```
+        ### Cloudbuild Trigger Developer Connect Pull
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        developer_connect_trigger_pull = gcp.cloudbuild.Trigger("developer-connect-trigger-pull",
+            location="us-central1",
+            developer_connect_event_config={
+                "git_repository_link": "projects/cryptic-tower-286020/locations/us-central1/connections/prod-bbs-push/gitRepositoryLinks/cbprob-prod-us-central1-push1",
+                "pull_request": {
+                    "branch": "^master$",
+                    "invert_regex": False,
+                    "comment_control": "COMMENTS_ENABLED",
+                },
+            },
+            filename="cloudbuild.yaml")
+        ```
+        ### Cloudbuild Trigger Developer Connect Push
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        developer_connect_trigger_push = gcp.cloudbuild.Trigger("developer-connect-trigger-push",
+            location="us-central1",
+            developer_connect_event_config={
+                "git_repository_link": "projects/cryptic-tower-286020/locations/us-central1/connections/prod-bbs-push/gitRepositoryLinks/cbprob-prod-us-central1-push1",
+                "push": {
+                    "tag": "^0.1.*",
+                    "invert_regex": True,
+                },
+            },
+            filename="cloudbuild.yaml")
+        ```
+        ### Cloudbuild Trigger Developer Connect Push Branch
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dc_trigger_regular_push_branch = gcp.cloudbuild.Trigger("dc-trigger-regular-push-branch",
+            location="us-central1",
+            developer_connect_event_config={
+                "git_repository_link": "projects/cryptic-tower-286020/locations/us-central1/connections/prod-bbs-push/gitRepositoryLinks/cbprob-prod-us-central1-push1",
+                "push": {
+                    "branch": "main",
+                },
+            },
+            filename="cloudbuild.yaml")
+        ```
 
         ## Import
 
@@ -2397,6 +2540,7 @@ class Trigger(pulumi.CustomResource):
                  bitbucket_server_trigger_config: Optional[pulumi.Input[Union['TriggerBitbucketServerTriggerConfigArgs', 'TriggerBitbucketServerTriggerConfigArgsDict']]] = None,
                  build: Optional[pulumi.Input[Union['TriggerBuildArgs', 'TriggerBuildArgsDict']]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 developer_connect_event_config: Optional[pulumi.Input[Union['TriggerDeveloperConnectEventConfigArgs', 'TriggerDeveloperConnectEventConfigArgsDict']]] = None,
                  disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  filename: Optional[pulumi.Input[_builtins.str]] = None,
                  filter: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2429,6 +2573,7 @@ class Trigger(pulumi.CustomResource):
             __props__.__dict__["bitbucket_server_trigger_config"] = bitbucket_server_trigger_config
             __props__.__dict__["build"] = build
             __props__.__dict__["description"] = description
+            __props__.__dict__["developer_connect_event_config"] = developer_connect_event_config
             __props__.__dict__["disabled"] = disabled
             __props__.__dict__["filename"] = filename
             __props__.__dict__["filter"] = filter
@@ -2465,6 +2610,7 @@ class Trigger(pulumi.CustomResource):
             build: Optional[pulumi.Input[Union['TriggerBuildArgs', 'TriggerBuildArgsDict']]] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
+            developer_connect_event_config: Optional[pulumi.Input[Union['TriggerDeveloperConnectEventConfigArgs', 'TriggerDeveloperConnectEventConfigArgsDict']]] = None,
             disabled: Optional[pulumi.Input[_builtins.bool]] = None,
             filename: Optional[pulumi.Input[_builtins.str]] = None,
             filter: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2502,6 +2648,8 @@ class Trigger(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Time when the trigger was created.
         :param pulumi.Input[_builtins.str] description: Human-readable description of the trigger.
+        :param pulumi.Input[Union['TriggerDeveloperConnectEventConfigArgs', 'TriggerDeveloperConnectEventConfigArgsDict']] developer_connect_event_config: Configuration for triggers that respond to Developer Connect events.
+               Structure is documented below.
         :param pulumi.Input[_builtins.bool] disabled: Whether the trigger is disabled or not. If true, the trigger will never result in a build.
         :param pulumi.Input[_builtins.str] filename: Path, from the source root, to a file whose contents is used for the template.
                Either a filename or build template must be provided. Set this only when using trigger_template or github.
@@ -2577,6 +2725,7 @@ class Trigger(pulumi.CustomResource):
         __props__.__dict__["build"] = build
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
+        __props__.__dict__["developer_connect_event_config"] = developer_connect_event_config
         __props__.__dict__["disabled"] = disabled
         __props__.__dict__["filename"] = filename
         __props__.__dict__["filter"] = filter
@@ -2643,6 +2792,15 @@ class Trigger(pulumi.CustomResource):
         Human-readable description of the trigger.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="developerConnectEventConfig")
+    def developer_connect_event_config(self) -> pulumi.Output[Optional['outputs.TriggerDeveloperConnectEventConfig']]:
+        """
+        Configuration for triggers that respond to Developer Connect events.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "developer_connect_event_config")
 
     @_builtins.property
     @pulumi.getter

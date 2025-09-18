@@ -173,7 +173,7 @@ import * as utilities from "../utilities";
  * $ pulumi import gcp:bigquery/appProfile:AppProfile default {{instance}}/{{app_profile_id}}
  * ```
  *
- * @deprecated gcp.bigquery/appprofile.AppProfile has been deprecated in favor of gcp.bigtable/appprofile.AppProfile
+ * @deprecated gcp.bigquery.AppProfile has been deprecated in favor of gcp.bigtable.AppProfile
  */
 export class AppProfile extends pulumi.CustomResource {
     /**
@@ -186,7 +186,7 @@ export class AppProfile extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AppProfileState, opts?: pulumi.CustomResourceOptions): AppProfile {
-        pulumi.log.warn("AppProfile is deprecated: gcp.bigquery/appprofile.AppProfile has been deprecated in favor of gcp.bigtable/appprofile.AppProfile")
+        pulumi.log.warn("AppProfile is deprecated: gcp.bigquery.AppProfile has been deprecated in favor of gcp.bigtable.AppProfile")
         return new AppProfile(name, <any>state, { ...opts, id: id });
     }
 
@@ -266,11 +266,11 @@ export class AppProfile extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    /** @deprecated gcp.bigquery/appprofile.AppProfile has been deprecated in favor of gcp.bigtable/appprofile.AppProfile */
+    /** @deprecated gcp.bigquery.AppProfile has been deprecated in favor of gcp.bigtable.AppProfile */
     constructor(name: string, args: AppProfileArgs, opts?: pulumi.CustomResourceOptions)
-    /** @deprecated gcp.bigquery/appprofile.AppProfile has been deprecated in favor of gcp.bigtable/appprofile.AppProfile */
+    /** @deprecated gcp.bigquery.AppProfile has been deprecated in favor of gcp.bigtable.AppProfile */
     constructor(name: string, argsOrState?: AppProfileArgs | AppProfileState, opts?: pulumi.CustomResourceOptions) {
-        pulumi.log.warn("AppProfile is deprecated: gcp.bigquery/appprofile.AppProfile has been deprecated in favor of gcp.bigtable/appprofile.AppProfile")
+        pulumi.log.warn("AppProfile is deprecated: gcp.bigquery.AppProfile has been deprecated in favor of gcp.bigtable.AppProfile")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
@@ -306,8 +306,6 @@ export class AppProfile extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "gcp:bigquery/appProfile:AppProfile" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AppProfile.__pulumiType, name, resourceInputs, opts);
     }
 }

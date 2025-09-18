@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceBinaryAuthorizationArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceBuildConfigArgs;
+import com.pulumi.gcp.cloudrunv2.inputs.ServiceMultiRegionSettingsArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceScalingArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTrafficArgs;
@@ -276,6 +277,23 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Settings for creating a Multi-Region Service. Make sure to use region = &#39;global&#39; when using them. For more information, visit https://cloud.google.com/run/docs/multiple-regions#deploy
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="multiRegionSettings")
+    private @Nullable Output<ServiceMultiRegionSettingsArgs> multiRegionSettings;
+
+    /**
+     * @return Settings for creating a Multi-Region Service. Make sure to use region = &#39;global&#39; when using them. For more information, visit https://cloud.google.com/run/docs/multiple-regions#deploy
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ServiceMultiRegionSettingsArgs>> multiRegionSettings() {
+        return Optional.ofNullable(this.multiRegionSettings);
+    }
+
+    /**
      * Name of the Service.
      * 
      */
@@ -376,6 +394,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         this.labels = $.labels;
         this.launchStage = $.launchStage;
         this.location = $.location;
+        this.multiRegionSettings = $.multiRegionSettings;
         this.name = $.name;
         this.project = $.project;
         this.scaling = $.scaling;
@@ -747,6 +766,29 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder location(String location) {
             return location(Output.of(location));
+        }
+
+        /**
+         * @param multiRegionSettings Settings for creating a Multi-Region Service. Make sure to use region = &#39;global&#39; when using them. For more information, visit https://cloud.google.com/run/docs/multiple-regions#deploy
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multiRegionSettings(@Nullable Output<ServiceMultiRegionSettingsArgs> multiRegionSettings) {
+            $.multiRegionSettings = multiRegionSettings;
+            return this;
+        }
+
+        /**
+         * @param multiRegionSettings Settings for creating a Multi-Region Service. Make sure to use region = &#39;global&#39; when using them. For more information, visit https://cloud.google.com/run/docs/multiple-regions#deploy
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multiRegionSettings(ServiceMultiRegionSettingsArgs multiRegionSettings) {
+            return multiRegionSettings(Output.of(multiRegionSettings));
         }
 
         /**

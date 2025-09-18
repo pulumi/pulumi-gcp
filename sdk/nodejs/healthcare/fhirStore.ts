@@ -120,6 +120,45 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * ### Healthcare Fhir Store Consent Config
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const topic = new gcp.pubsub.Topic("topic", {name: "fhir-notifications"});
+ * const dataset = new gcp.healthcare.Dataset("dataset", {
+ *     name: "example-dataset",
+ *     location: "us-central1",
+ * });
+ * const _default = new gcp.healthcare.FhirStore("default", {
+ *     name: "example-fhir-store",
+ *     dataset: dataset.id,
+ *     version: "R4",
+ *     complexDataTypeReferenceParsing: "DISABLED",
+ *     enableUpdateCreate: false,
+ *     disableReferentialIntegrity: false,
+ *     disableResourceVersioning: false,
+ *     enableHistoryImport: false,
+ *     defaultSearchHandlingStrict: false,
+ *     notificationConfigs: [{
+ *         pubsubTopic: topic.id,
+ *     }],
+ *     labels: {
+ *         label1: "labelvalue1",
+ *     },
+ *     consentConfig: {
+ *         version: "V1",
+ *         accessEnforced: true,
+ *         consentHeaderHandling: {
+ *             profile: "REQUIRED_ON_READ",
+ *         },
+ *         accessDeterminationLogConfig: {
+ *             logLevel: "VERBOSE",
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -172,6 +211,11 @@ export class FhirStore extends pulumi.CustomResource {
      * Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
      */
     declare public readonly complexDataTypeReferenceParsing: pulumi.Output<string>;
+    /**
+     * Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
+     * Structure is documented below.
+     */
+    declare public readonly consentConfig: pulumi.Output<outputs.healthcare.FhirStoreConsentConfig | undefined>;
     /**
      * Identifies the dataset addressed by this request. Must be in the format
      * 'projects/{project}/locations/{location}/datasets/{dataset}'
@@ -302,6 +346,7 @@ export class FhirStore extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as FhirStoreState | undefined;
             resourceInputs["complexDataTypeReferenceParsing"] = state?.complexDataTypeReferenceParsing;
+            resourceInputs["consentConfig"] = state?.consentConfig;
             resourceInputs["dataset"] = state?.dataset;
             resourceInputs["defaultSearchHandlingStrict"] = state?.defaultSearchHandlingStrict;
             resourceInputs["disableReferentialIntegrity"] = state?.disableReferentialIntegrity;
@@ -324,6 +369,7 @@ export class FhirStore extends pulumi.CustomResource {
                 throw new Error("Missing required property 'dataset'");
             }
             resourceInputs["complexDataTypeReferenceParsing"] = args?.complexDataTypeReferenceParsing;
+            resourceInputs["consentConfig"] = args?.consentConfig;
             resourceInputs["dataset"] = args?.dataset;
             resourceInputs["defaultSearchHandlingStrict"] = args?.defaultSearchHandlingStrict;
             resourceInputs["disableReferentialIntegrity"] = args?.disableReferentialIntegrity;
@@ -357,6 +403,11 @@ export interface FhirStoreState {
      * Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
      */
     complexDataTypeReferenceParsing?: pulumi.Input<string>;
+    /**
+     * Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
+     * Structure is documented below.
+     */
+    consentConfig?: pulumi.Input<inputs.healthcare.FhirStoreConsentConfig>;
     /**
      * Identifies the dataset addressed by this request. Must be in the format
      * 'projects/{project}/locations/{location}/datasets/{dataset}'
@@ -483,6 +534,11 @@ export interface FhirStoreArgs {
      * Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
      */
     complexDataTypeReferenceParsing?: pulumi.Input<string>;
+    /**
+     * Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
+     * Structure is documented below.
+     */
+    consentConfig?: pulumi.Input<inputs.healthcare.FhirStoreConsentConfig>;
     /**
      * Identifies the dataset addressed by this request. Must be in the format
      * 'projects/{project}/locations/{location}/datasets/{dataset}'

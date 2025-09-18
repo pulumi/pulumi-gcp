@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,8 +29,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/oracledatabase"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -76,8 +76,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/oracledatabase"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -143,7 +143,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/oracledatabase"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -182,7 +182,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/oracledatabase"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -281,11 +281,11 @@ type AutonomousDatabase struct {
 	// projects/{project}/locations/{location}/odbNetworks/{odb_network}
 	// It is optional but if specified, this should match the parent ODBNetwork of
 	// the odbSubnet and backup_odb_subnet.
-	OdbNetwork pulumi.StringPtrOutput `pulumi:"odbNetwork"`
+	OdbNetwork pulumi.StringOutput `pulumi:"odbNetwork"`
 	// The name of the OdbSubnet associated with the Autonomous Database for
 	// IP allocation. Format:
 	// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
-	OdbSubnet pulumi.StringPtrOutput `pulumi:"odbSubnet"`
+	OdbSubnet pulumi.StringOutput `pulumi:"odbSubnet"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -721,15 +721,15 @@ func (o AutonomousDatabaseOutput) Network() pulumi.StringPtrOutput {
 // projects/{project}/locations/{location}/odbNetworks/{odb_network}
 // It is optional but if specified, this should match the parent ODBNetwork of
 // the odbSubnet and backup_odb_subnet.
-func (o AutonomousDatabaseOutput) OdbNetwork() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AutonomousDatabase) pulumi.StringPtrOutput { return v.OdbNetwork }).(pulumi.StringPtrOutput)
+func (o AutonomousDatabaseOutput) OdbNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v *AutonomousDatabase) pulumi.StringOutput { return v.OdbNetwork }).(pulumi.StringOutput)
 }
 
 // The name of the OdbSubnet associated with the Autonomous Database for
 // IP allocation. Format:
 // projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
-func (o AutonomousDatabaseOutput) OdbSubnet() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AutonomousDatabase) pulumi.StringPtrOutput { return v.OdbSubnet }).(pulumi.StringPtrOutput)
+func (o AutonomousDatabaseOutput) OdbSubnet() pulumi.StringOutput {
+	return o.ApplyT(func(v *AutonomousDatabase) pulumi.StringOutput { return v.OdbSubnet }).(pulumi.StringOutput)
 }
 
 // The ID of the project in which the resource belongs.

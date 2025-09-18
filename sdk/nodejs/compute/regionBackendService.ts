@@ -759,6 +759,11 @@ export class RegionBackendService extends pulumi.CustomResource {
      */
     declare public readonly outlierDetection: pulumi.Output<outputs.compute.RegionBackendServiceOutlierDetection | undefined>;
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    declare public readonly params: pulumi.Output<outputs.compute.RegionBackendServiceParams | undefined>;
+    /**
      * A named port on a backend instance group representing the port for
      * communication to the backend VMs in that group. Required when the
      * loadBalancingScheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
@@ -856,6 +861,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["network"] = state?.network;
             resourceInputs["outlierDetection"] = state?.outlierDetection;
+            resourceInputs["params"] = state?.params;
             resourceInputs["portName"] = state?.portName;
             resourceInputs["project"] = state?.project;
             resourceInputs["protocol"] = state?.protocol;
@@ -890,6 +896,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["network"] = args?.network;
             resourceInputs["outlierDetection"] = args?.outlierDetection;
+            resourceInputs["params"] = args?.params;
             resourceInputs["portName"] = args?.portName;
             resourceInputs["project"] = args?.project;
             resourceInputs["protocol"] = args?.protocol;
@@ -1120,6 +1127,11 @@ export interface RegionBackendServiceState {
      * Structure is documented below.
      */
     outlierDetection?: pulumi.Input<inputs.compute.RegionBackendServiceOutlierDetection>;
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.RegionBackendServiceParams>;
     /**
      * A named port on a backend instance group representing the port for
      * communication to the backend VMs in that group. Required when the
@@ -1379,6 +1391,11 @@ export interface RegionBackendServiceArgs {
      * Structure is documented below.
      */
     outlierDetection?: pulumi.Input<inputs.compute.RegionBackendServiceOutlierDetection>;
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.RegionBackendServiceParams>;
     /**
      * A named port on a backend instance group representing the port for
      * communication to the backend VMs in that group. Required when the

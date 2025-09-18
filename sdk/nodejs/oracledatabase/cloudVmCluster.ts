@@ -223,7 +223,7 @@ export class CloudVmCluster extends pulumi.CustomResource {
      * Format:
      * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
      */
-    declare public readonly backupOdbSubnet: pulumi.Output<string | undefined>;
+    declare public readonly backupOdbSubnet: pulumi.Output<string>;
     /**
      * CIDR range of the backup subnet.
      */
@@ -290,13 +290,13 @@ export class CloudVmCluster extends pulumi.CustomResource {
      * It is optional but if specified, this should match the parent ODBNetwork of
      * the odbSubnet and backup_odb_subnet.
      */
-    declare public readonly odbNetwork: pulumi.Output<string | undefined>;
+    declare public readonly odbNetwork: pulumi.Output<string>;
     /**
      * The name of the OdbSubnet associated with the VM Cluster for
      * IP allocation. Format:
      * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
      */
-    declare public readonly odbSubnet: pulumi.Output<string | undefined>;
+    declare public readonly odbSubnet: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

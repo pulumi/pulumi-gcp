@@ -60,7 +60,6 @@ import javax.annotation.Nullable;
  *         var playIntegrity = new Service("playIntegrity", ServiceArgs.builder()
  *             .project("my-project-name")
  *             .service("playintegrity.googleapis.com")
- *             .disableOnDestroy(false)
  *             .build());
  * 
  *         var default_ = new AndroidApp("default", AndroidAppArgs.builder()
@@ -125,7 +124,6 @@ import javax.annotation.Nullable;
  *         var playIntegrity = new Service("playIntegrity", ServiceArgs.builder()
  *             .project("my-project-name")
  *             .service("playintegrity.googleapis.com")
- *             .disableOnDestroy(false)
  *             .build());
  * 
  *         var default_ = new AndroidApp("default", AndroidAppArgs.builder()

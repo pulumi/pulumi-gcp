@@ -32,6 +32,21 @@ public final class ServiceScalingArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Combined maximum number of instances for all revisions receiving traffic.
+     * 
+     */
+    @Import(name="maxInstanceCount")
+    private @Nullable Output<Integer> maxInstanceCount;
+
+    /**
+     * @return Combined maximum number of instances for all revisions receiving traffic.
+     * 
+     */
+    public Optional<Output<Integer>> maxInstanceCount() {
+        return Optional.ofNullable(this.maxInstanceCount);
+    }
+
+    /**
      * Minimum number of instances for the service, to be divided among all revisions receiving traffic.
      * 
      */
@@ -67,6 +82,7 @@ public final class ServiceScalingArgs extends com.pulumi.resources.ResourceArgs 
 
     private ServiceScalingArgs(ServiceScalingArgs $) {
         this.manualInstanceCount = $.manualInstanceCount;
+        this.maxInstanceCount = $.maxInstanceCount;
         this.minInstanceCount = $.minInstanceCount;
         this.scalingMode = $.scalingMode;
     }
@@ -108,6 +124,27 @@ public final class ServiceScalingArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder manualInstanceCount(Integer manualInstanceCount) {
             return manualInstanceCount(Output.of(manualInstanceCount));
+        }
+
+        /**
+         * @param maxInstanceCount Combined maximum number of instances for all revisions receiving traffic.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxInstanceCount(@Nullable Output<Integer> maxInstanceCount) {
+            $.maxInstanceCount = maxInstanceCount;
+            return this;
+        }
+
+        /**
+         * @param maxInstanceCount Combined maximum number of instances for all revisions receiving traffic.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxInstanceCount(Integer maxInstanceCount) {
+            return maxInstanceCount(Output.of(maxInstanceCount));
         }
 
         /**

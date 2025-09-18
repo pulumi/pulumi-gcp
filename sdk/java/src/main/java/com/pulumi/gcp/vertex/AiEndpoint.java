@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  * 
  * To get more information about Endpoint, see:
  * 
- * * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.endpoints)
+ * * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.endpoints)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
  * 
@@ -178,7 +178,6 @@ import javax.annotation.Nullable;
  *             .privateServiceConnectConfig(AiEndpointPrivateServiceConnectConfigArgs.builder()
  *                 .enablePrivateServiceConnect(true)
  *                 .projectAllowlists(project.projectId())
- *                 .enableSecurePrivateServiceConnect(false)
  *                 .build())
  *             .build());
  * 

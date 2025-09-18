@@ -7,10 +7,17 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A Google Cloud Firebase Apple application configuration
+//
+// To get more information about iosApp, see:
+//
+// * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.iosApps)
+// * How-to Guides
+//   - [Official Documentation](https://firebase.google.com/)
 func GetAppleAppConfig(ctx *pulumi.Context, args *GetAppleAppConfigArgs, opts ...pulumi.InvokeOption) (*GetAppleAppConfigResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAppleAppConfigResult

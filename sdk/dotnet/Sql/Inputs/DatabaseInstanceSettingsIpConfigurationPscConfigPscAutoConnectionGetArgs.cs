@@ -19,10 +19,28 @@ namespace Pulumi.Gcp.Sql.Inputs
         public Input<string> ConsumerNetwork { get; set; } = null!;
 
         /// <summary>
+        /// (Output) The connection policy status of the consumer network.
+        /// </summary>
+        [Input("consumerNetworkStatus")]
+        public Input<string>? ConsumerNetworkStatus { get; set; }
+
+        /// <summary>
         /// The project ID of consumer service project of this consumer endpoint.
         /// </summary>
         [Input("consumerServiceProjectId")]
         public Input<string>? ConsumerServiceProjectId { get; set; }
+
+        /// <summary>
+        /// (Output) The IP address of the consumer endpoint.
+        /// </summary>
+        [Input("ipAddress")]
+        public Input<string>? IpAddress { get; set; }
+
+        /// <summary>
+        /// (Output) The connection status of the consumer endpoint.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         public DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionGetArgs()
         {

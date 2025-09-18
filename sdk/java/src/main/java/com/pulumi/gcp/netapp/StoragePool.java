@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.netapp.StoragePoolArgs;
 import com.pulumi.gcp.netapp.inputs.StoragePoolState;
 import java.lang.Boolean;
+import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -158,6 +159,20 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> allowAutoTiering() {
         return Codegen.optional(this.allowAutoTiering);
+    }
+    /**
+     * Available throughput of the storage pool (in MiB/s).
+     * 
+     */
+    @Export(name="availableThroughputMibps", refs={Double.class}, tree="[0]")
+    private Output<Double> availableThroughputMibps;
+
+    /**
+     * @return Available throughput of the storage pool (in MiB/s).
+     * 
+     */
+    public Output<Double> availableThroughputMibps() {
+        return this.availableThroughputMibps;
     }
     /**
      * Capacity of the storage pool (in GiB).
@@ -388,6 +403,24 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
         return this.pulumiLabels;
     }
     /**
+     * QoS (Quality of Service) type of the storage pool.
+     * Possible values are: AUTO, MANUAL.
+     * Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
+     * 
+     */
+    @Export(name="qosType", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> qosType;
+
+    /**
+     * @return QoS (Quality of Service) type of the storage pool.
+     * Possible values are: AUTO, MANUAL.
+     * Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
+     * 
+     */
+    public Output<Optional<String>> qosType() {
+        return Codegen.optional(this.qosType);
+    }
+    /**
      * Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
      * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
      * 
@@ -424,28 +457,28 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="totalIops", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> totalIops;
+    private Output<String> totalIops;
 
     /**
      * @return Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
      * 
      */
-    public Output<Optional<String>> totalIops() {
-        return Codegen.optional(this.totalIops);
+    public Output<String> totalIops() {
+        return this.totalIops;
     }
     /**
      * Optional. Custom Performance Total Throughput of the pool (in MiB/s).
      * 
      */
     @Export(name="totalThroughputMibps", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> totalThroughputMibps;
+    private Output<String> totalThroughputMibps;
 
     /**
      * @return Optional. Custom Performance Total Throughput of the pool (in MiB/s).
      * 
      */
-    public Output<Optional<String>> totalThroughputMibps() {
-        return Codegen.optional(this.totalThroughputMibps);
+    public Output<String> totalThroughputMibps() {
+        return this.totalThroughputMibps;
     }
     /**
      * Size allocated to volumes in the storage pool (in GiB).

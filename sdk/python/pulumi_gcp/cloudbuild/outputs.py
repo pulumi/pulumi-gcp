@@ -39,6 +39,9 @@ __all__ = [
     'TriggerBuildSourceStorageSource',
     'TriggerBuildStep',
     'TriggerBuildStepVolume',
+    'TriggerDeveloperConnectEventConfig',
+    'TriggerDeveloperConnectEventConfigPullRequest',
+    'TriggerDeveloperConnectEventConfigPush',
     'TriggerGitFileSource',
     'TriggerGithub',
     'TriggerGithubPullRequest',
@@ -74,6 +77,9 @@ __all__ = [
     'GetTriggerBuildSourceStorageSourceResult',
     'GetTriggerBuildStepResult',
     'GetTriggerBuildStepVolumeResult',
+    'GetTriggerDeveloperConnectEventConfigResult',
+    'GetTriggerDeveloperConnectEventConfigPullRequestResult',
+    'GetTriggerDeveloperConnectEventConfigPushResult',
     'GetTriggerGitFileSourceResult',
     'GetTriggerGithubResult',
     'GetTriggerGithubPullRequestResult',
@@ -356,8 +362,7 @@ class TriggerBitbucketServerTriggerConfigPullRequest(dict):
                  invert_regex: Optional[_builtins.bool] = None):
         """
         :param _builtins.str branch: Regex of branches to match.
-               The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
-        :param _builtins.str comment_control: Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
+        :param _builtins.str comment_control: Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
                Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
         :param _builtins.bool invert_regex: If true, branches that do NOT match the git_ref will trigger a build.
         """
@@ -372,7 +377,6 @@ class TriggerBitbucketServerTriggerConfigPullRequest(dict):
     def branch(self) -> _builtins.str:
         """
         Regex of branches to match.
-        The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
         """
         return pulumi.get(self, "branch")
 
@@ -380,7 +384,7 @@ class TriggerBitbucketServerTriggerConfigPullRequest(dict):
     @pulumi.getter(name="commentControl")
     def comment_control(self) -> Optional[_builtins.str]:
         """
-        Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
+        Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
         Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
         """
         return pulumi.get(self, "comment_control")
@@ -418,9 +422,9 @@ class TriggerBitbucketServerTriggerConfigPush(dict):
                  invert_regex: Optional[_builtins.bool] = None,
                  tag: Optional[_builtins.str] = None):
         """
-        :param _builtins.str branch: Regex of branches to match.  Specify only one of branch or tag.
-        :param _builtins.bool invert_regex: When true, only trigger a build if the revision regex does NOT match the gitRef regex.
-        :param _builtins.str tag: Regex of tags to match.  Specify only one of branch or tag.
+        :param _builtins.str branch: Regex of branches to match.
+        :param _builtins.bool invert_regex: If true, only trigger a build if the revision regex does NOT match the git_ref regex.
+        :param _builtins.str tag: Regex of tags to match.
         """
         if branch is not None:
             pulumi.set(__self__, "branch", branch)
@@ -433,7 +437,7 @@ class TriggerBitbucketServerTriggerConfigPush(dict):
     @pulumi.getter
     def branch(self) -> Optional[_builtins.str]:
         """
-        Regex of branches to match.  Specify only one of branch or tag.
+        Regex of branches to match.
         """
         return pulumi.get(self, "branch")
 
@@ -441,7 +445,7 @@ class TriggerBitbucketServerTriggerConfigPush(dict):
     @pulumi.getter(name="invertRegex")
     def invert_regex(self) -> Optional[_builtins.bool]:
         """
-        When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+        If true, only trigger a build if the revision regex does NOT match the git_ref regex.
         """
         return pulumi.get(self, "invert_regex")
 
@@ -449,7 +453,7 @@ class TriggerBitbucketServerTriggerConfigPush(dict):
     @pulumi.getter
     def tag(self) -> Optional[_builtins.str]:
         """
-        Regex of tags to match.  Specify only one of branch or tag.
+        Regex of tags to match.
         """
         return pulumi.get(self, "tag")
 
@@ -2071,6 +2075,211 @@ class TriggerBuildStepVolume(dict):
 
 
 @pulumi.output_type
+class TriggerDeveloperConnectEventConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gitRepositoryLink":
+            suggest = "git_repository_link"
+        elif key == "gitRepositoryLinkType":
+            suggest = "git_repository_link_type"
+        elif key == "pullRequest":
+            suggest = "pull_request"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TriggerDeveloperConnectEventConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TriggerDeveloperConnectEventConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TriggerDeveloperConnectEventConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 git_repository_link: _builtins.str,
+                 git_repository_link_type: Optional[_builtins.str] = None,
+                 pull_request: Optional['outputs.TriggerDeveloperConnectEventConfigPullRequest'] = None,
+                 push: Optional['outputs.TriggerDeveloperConnectEventConfigPush'] = None):
+        """
+        :param _builtins.str git_repository_link: The Developer Connect Git repository link, formatted as `projects/*/locations/*/connections/*/gitRepositoryLink/*`.
+        :param _builtins.str git_repository_link_type: (Output)
+               The type of DeveloperConnect GitRepositoryLink.
+        :param 'TriggerDeveloperConnectEventConfigPullRequestArgs' pull_request: Filter to match changes in pull requests.
+               Structure is documented below.
+        :param 'TriggerDeveloperConnectEventConfigPushArgs' push: Filter to match changes in refs like branches and tags.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "git_repository_link", git_repository_link)
+        if git_repository_link_type is not None:
+            pulumi.set(__self__, "git_repository_link_type", git_repository_link_type)
+        if pull_request is not None:
+            pulumi.set(__self__, "pull_request", pull_request)
+        if push is not None:
+            pulumi.set(__self__, "push", push)
+
+    @_builtins.property
+    @pulumi.getter(name="gitRepositoryLink")
+    def git_repository_link(self) -> _builtins.str:
+        """
+        The Developer Connect Git repository link, formatted as `projects/*/locations/*/connections/*/gitRepositoryLink/*`.
+        """
+        return pulumi.get(self, "git_repository_link")
+
+    @_builtins.property
+    @pulumi.getter(name="gitRepositoryLinkType")
+    def git_repository_link_type(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The type of DeveloperConnect GitRepositoryLink.
+        """
+        return pulumi.get(self, "git_repository_link_type")
+
+    @_builtins.property
+    @pulumi.getter(name="pullRequest")
+    def pull_request(self) -> Optional['outputs.TriggerDeveloperConnectEventConfigPullRequest']:
+        """
+        Filter to match changes in pull requests.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "pull_request")
+
+    @_builtins.property
+    @pulumi.getter
+    def push(self) -> Optional['outputs.TriggerDeveloperConnectEventConfigPush']:
+        """
+        Filter to match changes in refs like branches and tags.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "push")
+
+
+@pulumi.output_type
+class TriggerDeveloperConnectEventConfigPullRequest(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "commentControl":
+            suggest = "comment_control"
+        elif key == "invertRegex":
+            suggest = "invert_regex"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TriggerDeveloperConnectEventConfigPullRequest. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TriggerDeveloperConnectEventConfigPullRequest.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TriggerDeveloperConnectEventConfigPullRequest.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 branch: Optional[_builtins.str] = None,
+                 comment_control: Optional[_builtins.str] = None,
+                 invert_regex: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str branch: Regex of branches to match.
+        :param _builtins.str comment_control: Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
+               Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+        :param _builtins.bool invert_regex: If true, branches that do NOT match the git_ref will trigger a build.
+        """
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if comment_control is not None:
+            pulumi.set(__self__, "comment_control", comment_control)
+        if invert_regex is not None:
+            pulumi.set(__self__, "invert_regex", invert_regex)
+
+    @_builtins.property
+    @pulumi.getter
+    def branch(self) -> Optional[_builtins.str]:
+        """
+        Regex of branches to match.
+        """
+        return pulumi.get(self, "branch")
+
+    @_builtins.property
+    @pulumi.getter(name="commentControl")
+    def comment_control(self) -> Optional[_builtins.str]:
+        """
+        Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
+        Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+        """
+        return pulumi.get(self, "comment_control")
+
+    @_builtins.property
+    @pulumi.getter(name="invertRegex")
+    def invert_regex(self) -> Optional[_builtins.bool]:
+        """
+        If true, branches that do NOT match the git_ref will trigger a build.
+        """
+        return pulumi.get(self, "invert_regex")
+
+
+@pulumi.output_type
+class TriggerDeveloperConnectEventConfigPush(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "invertRegex":
+            suggest = "invert_regex"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TriggerDeveloperConnectEventConfigPush. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TriggerDeveloperConnectEventConfigPush.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TriggerDeveloperConnectEventConfigPush.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 branch: Optional[_builtins.str] = None,
+                 invert_regex: Optional[_builtins.bool] = None,
+                 tag: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str branch: Regex of branches to match.
+        :param _builtins.bool invert_regex: If true, only trigger a build if the revision regex does NOT match the git_ref regex.
+        :param _builtins.str tag: Regex of tags to match.
+        """
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if invert_regex is not None:
+            pulumi.set(__self__, "invert_regex", invert_regex)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
+
+    @_builtins.property
+    @pulumi.getter
+    def branch(self) -> Optional[_builtins.str]:
+        """
+        Regex of branches to match.
+        """
+        return pulumi.get(self, "branch")
+
+    @_builtins.property
+    @pulumi.getter(name="invertRegex")
+    def invert_regex(self) -> Optional[_builtins.bool]:
+        """
+        If true, only trigger a build if the revision regex does NOT match the git_ref regex.
+        """
+        return pulumi.get(self, "invert_regex")
+
+    @_builtins.property
+    @pulumi.getter
+    def tag(self) -> Optional[_builtins.str]:
+        """
+        Regex of tags to match.
+        """
+        return pulumi.get(self, "tag")
+
+
+@pulumi.output_type
 class TriggerGitFileSource(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -2319,8 +2528,7 @@ class TriggerGithubPullRequest(dict):
                  invert_regex: Optional[_builtins.bool] = None):
         """
         :param _builtins.str branch: Regex of branches to match.
-               The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
-        :param _builtins.str comment_control: Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
+        :param _builtins.str comment_control: Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
                Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
         :param _builtins.bool invert_regex: If true, branches that do NOT match the git_ref will trigger a build.
         """
@@ -2335,7 +2543,6 @@ class TriggerGithubPullRequest(dict):
     def branch(self) -> _builtins.str:
         """
         Regex of branches to match.
-        The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
         """
         return pulumi.get(self, "branch")
 
@@ -2343,7 +2550,7 @@ class TriggerGithubPullRequest(dict):
     @pulumi.getter(name="commentControl")
     def comment_control(self) -> Optional[_builtins.str]:
         """
-        Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
+        Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
         Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
         """
         return pulumi.get(self, "comment_control")
@@ -2381,9 +2588,9 @@ class TriggerGithubPush(dict):
                  invert_regex: Optional[_builtins.bool] = None,
                  tag: Optional[_builtins.str] = None):
         """
-        :param _builtins.str branch: Regex of branches to match.  Specify only one of branch or tag.
-        :param _builtins.bool invert_regex: When true, only trigger a build if the revision regex does NOT match the gitRef regex.
-        :param _builtins.str tag: Regex of tags to match.  Specify only one of branch or tag.
+        :param _builtins.str branch: Regex of branches to match.
+        :param _builtins.bool invert_regex: If true, only trigger a build if the revision regex does NOT match the git_ref regex.
+        :param _builtins.str tag: Regex of tags to match.
         """
         if branch is not None:
             pulumi.set(__self__, "branch", branch)
@@ -2396,7 +2603,7 @@ class TriggerGithubPush(dict):
     @pulumi.getter
     def branch(self) -> Optional[_builtins.str]:
         """
-        Regex of branches to match.  Specify only one of branch or tag.
+        Regex of branches to match.
         """
         return pulumi.get(self, "branch")
 
@@ -2404,7 +2611,7 @@ class TriggerGithubPush(dict):
     @pulumi.getter(name="invertRegex")
     def invert_regex(self) -> Optional[_builtins.bool]:
         """
-        When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+        If true, only trigger a build if the revision regex does NOT match the git_ref regex.
         """
         return pulumi.get(self, "invert_regex")
 
@@ -2412,7 +2619,7 @@ class TriggerGithubPush(dict):
     @pulumi.getter
     def tag(self) -> Optional[_builtins.str]:
         """
-        Regex of tags to match.  Specify only one of branch or tag.
+        Regex of tags to match.
         """
         return pulumi.get(self, "tag")
 
@@ -2585,8 +2792,7 @@ class TriggerRepositoryEventConfigPullRequest(dict):
                  invert_regex: Optional[_builtins.bool] = None):
         """
         :param _builtins.str branch: Regex of branches to match.
-               The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
-        :param _builtins.str comment_control: Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
+        :param _builtins.str comment_control: Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
                Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
         :param _builtins.bool invert_regex: If true, branches that do NOT match the git_ref will trigger a build.
         """
@@ -2602,7 +2808,6 @@ class TriggerRepositoryEventConfigPullRequest(dict):
     def branch(self) -> Optional[_builtins.str]:
         """
         Regex of branches to match.
-        The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
         """
         return pulumi.get(self, "branch")
 
@@ -2610,7 +2815,7 @@ class TriggerRepositoryEventConfigPullRequest(dict):
     @pulumi.getter(name="commentControl")
     def comment_control(self) -> Optional[_builtins.str]:
         """
-        Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
+        Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
         Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
         """
         return pulumi.get(self, "comment_control")
@@ -2648,9 +2853,9 @@ class TriggerRepositoryEventConfigPush(dict):
                  invert_regex: Optional[_builtins.bool] = None,
                  tag: Optional[_builtins.str] = None):
         """
-        :param _builtins.str branch: Regex of branches to match.  Specify only one of branch or tag.
-        :param _builtins.bool invert_regex: When true, only trigger a build if the revision regex does NOT match the gitRef regex.
-        :param _builtins.str tag: Regex of tags to match.  Specify only one of branch or tag.
+        :param _builtins.str branch: Regex of branches to match.
+        :param _builtins.bool invert_regex: If true, only trigger a build if the revision regex does NOT match the git_ref regex.
+        :param _builtins.str tag: Regex of tags to match.
         """
         if branch is not None:
             pulumi.set(__self__, "branch", branch)
@@ -2663,7 +2868,7 @@ class TriggerRepositoryEventConfigPush(dict):
     @pulumi.getter
     def branch(self) -> Optional[_builtins.str]:
         """
-        Regex of branches to match.  Specify only one of branch or tag.
+        Regex of branches to match.
         """
         return pulumi.get(self, "branch")
 
@@ -2671,7 +2876,7 @@ class TriggerRepositoryEventConfigPush(dict):
     @pulumi.getter(name="invertRegex")
     def invert_regex(self) -> Optional[_builtins.bool]:
         """
-        When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+        If true, only trigger a build if the revision regex does NOT match the git_ref regex.
         """
         return pulumi.get(self, "invert_regex")
 
@@ -2679,7 +2884,7 @@ class TriggerRepositoryEventConfigPush(dict):
     @pulumi.getter
     def tag(self) -> Optional[_builtins.str]:
         """
-        Regex of tags to match.  Specify only one of branch or tag.
+        Regex of tags to match.
         """
         return pulumi.get(self, "tag")
 
@@ -3061,6 +3266,8 @@ class WorkerPoolWorkerConfig(dict):
         suggest = None
         if key == "diskSizeGb":
             suggest = "disk_size_gb"
+        elif key == "enableNestedVirtualization":
+            suggest = "enable_nested_virtualization"
         elif key == "machineType":
             suggest = "machine_type"
         elif key == "noExternalIp":
@@ -3079,15 +3286,19 @@ class WorkerPoolWorkerConfig(dict):
 
     def __init__(__self__, *,
                  disk_size_gb: Optional[_builtins.int] = None,
+                 enable_nested_virtualization: Optional[_builtins.bool] = None,
                  machine_type: Optional[_builtins.str] = None,
                  no_external_ip: Optional[_builtins.bool] = None):
         """
         :param _builtins.int disk_size_gb: Size of the disk attached to the worker, in GB. See [diskSizeGb](https://cloud.google.com/build/docs/private-pools/private-pool-config-file-schema#disksizegb). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+        :param _builtins.bool enable_nested_virtualization: Enable nested virtualization on the worker, if supported by the machine type. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will set this to false.
         :param _builtins.str machine_type: Machine type of a worker, such as `n1-standard-1`. See [machineType](https://cloud.google.com/build/docs/private-pools/private-pool-config-file-schema#machinetype). If left blank, Cloud Build will use `n1-standard-1`.
         :param _builtins.bool no_external_ip: If true, workers are created without any public address, which prevents network egress to public IPs.
         """
         if disk_size_gb is not None:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if enable_nested_virtualization is not None:
+            pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
         if machine_type is not None:
             pulumi.set(__self__, "machine_type", machine_type)
         if no_external_ip is not None:
@@ -3100,6 +3311,14 @@ class WorkerPoolWorkerConfig(dict):
         Size of the disk attached to the worker, in GB. See [diskSizeGb](https://cloud.google.com/build/docs/private-pools/private-pool-config-file-schema#disksizegb). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
         """
         return pulumi.get(self, "disk_size_gb")
+
+    @_builtins.property
+    @pulumi.getter(name="enableNestedVirtualization")
+    def enable_nested_virtualization(self) -> Optional[_builtins.bool]:
+        """
+        Enable nested virtualization on the worker, if supported by the machine type. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will set this to false.
+        """
+        return pulumi.get(self, "enable_nested_virtualization")
 
     @_builtins.property
     @pulumi.getter(name="machineType")
@@ -4604,6 +4823,137 @@ class GetTriggerBuildStepVolumeResult(dict):
         the same build step or with certain reserved volume paths.
         """
         return pulumi.get(self, "path")
+
+
+@pulumi.output_type
+class GetTriggerDeveloperConnectEventConfigResult(dict):
+    def __init__(__self__, *,
+                 git_repository_link: _builtins.str,
+                 git_repository_link_type: _builtins.str,
+                 pull_requests: Sequence['outputs.GetTriggerDeveloperConnectEventConfigPullRequestResult'],
+                 pushes: Sequence['outputs.GetTriggerDeveloperConnectEventConfigPushResult']):
+        """
+        :param _builtins.str git_repository_link: The Developer Connect Git repository link, formatted as 'projects/*/locations/*/connections/*/gitRepositoryLink/*'.
+        :param _builtins.str git_repository_link_type: The type of DeveloperConnect GitRepositoryLink.
+        :param Sequence['GetTriggerDeveloperConnectEventConfigPullRequestArgs'] pull_requests: Filter to match changes in pull requests.
+        :param Sequence['GetTriggerDeveloperConnectEventConfigPushArgs'] pushes: Filter to match changes in refs like branches and tags.
+        """
+        pulumi.set(__self__, "git_repository_link", git_repository_link)
+        pulumi.set(__self__, "git_repository_link_type", git_repository_link_type)
+        pulumi.set(__self__, "pull_requests", pull_requests)
+        pulumi.set(__self__, "pushes", pushes)
+
+    @_builtins.property
+    @pulumi.getter(name="gitRepositoryLink")
+    def git_repository_link(self) -> _builtins.str:
+        """
+        The Developer Connect Git repository link, formatted as 'projects/*/locations/*/connections/*/gitRepositoryLink/*'.
+        """
+        return pulumi.get(self, "git_repository_link")
+
+    @_builtins.property
+    @pulumi.getter(name="gitRepositoryLinkType")
+    def git_repository_link_type(self) -> _builtins.str:
+        """
+        The type of DeveloperConnect GitRepositoryLink.
+        """
+        return pulumi.get(self, "git_repository_link_type")
+
+    @_builtins.property
+    @pulumi.getter(name="pullRequests")
+    def pull_requests(self) -> Sequence['outputs.GetTriggerDeveloperConnectEventConfigPullRequestResult']:
+        """
+        Filter to match changes in pull requests.
+        """
+        return pulumi.get(self, "pull_requests")
+
+    @_builtins.property
+    @pulumi.getter
+    def pushes(self) -> Sequence['outputs.GetTriggerDeveloperConnectEventConfigPushResult']:
+        """
+        Filter to match changes in refs like branches and tags.
+        """
+        return pulumi.get(self, "pushes")
+
+
+@pulumi.output_type
+class GetTriggerDeveloperConnectEventConfigPullRequestResult(dict):
+    def __init__(__self__, *,
+                 branch: _builtins.str,
+                 comment_control: _builtins.str,
+                 invert_regex: _builtins.bool):
+        """
+        :param _builtins.str branch: Regex of branches to match.
+        :param _builtins.str comment_control: Configure builds to run whether a repository owner or collaborator need to comment '/gcbrun'. Possible values: ["COMMENTS_DISABLED", "COMMENTS_ENABLED", "COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY"]
+        :param _builtins.bool invert_regex: If true, branches that do NOT match the git_ref will trigger a build.
+        """
+        pulumi.set(__self__, "branch", branch)
+        pulumi.set(__self__, "comment_control", comment_control)
+        pulumi.set(__self__, "invert_regex", invert_regex)
+
+    @_builtins.property
+    @pulumi.getter
+    def branch(self) -> _builtins.str:
+        """
+        Regex of branches to match.
+        """
+        return pulumi.get(self, "branch")
+
+    @_builtins.property
+    @pulumi.getter(name="commentControl")
+    def comment_control(self) -> _builtins.str:
+        """
+        Configure builds to run whether a repository owner or collaborator need to comment '/gcbrun'. Possible values: ["COMMENTS_DISABLED", "COMMENTS_ENABLED", "COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY"]
+        """
+        return pulumi.get(self, "comment_control")
+
+    @_builtins.property
+    @pulumi.getter(name="invertRegex")
+    def invert_regex(self) -> _builtins.bool:
+        """
+        If true, branches that do NOT match the git_ref will trigger a build.
+        """
+        return pulumi.get(self, "invert_regex")
+
+
+@pulumi.output_type
+class GetTriggerDeveloperConnectEventConfigPushResult(dict):
+    def __init__(__self__, *,
+                 branch: _builtins.str,
+                 invert_regex: _builtins.bool,
+                 tag: _builtins.str):
+        """
+        :param _builtins.str branch: Regex of branches to match.
+        :param _builtins.bool invert_regex: If true, only trigger a build if the revision regex does NOT match the git_ref regex.
+        :param _builtins.str tag: Regex of tags to match.
+        """
+        pulumi.set(__self__, "branch", branch)
+        pulumi.set(__self__, "invert_regex", invert_regex)
+        pulumi.set(__self__, "tag", tag)
+
+    @_builtins.property
+    @pulumi.getter
+    def branch(self) -> _builtins.str:
+        """
+        Regex of branches to match.
+        """
+        return pulumi.get(self, "branch")
+
+    @_builtins.property
+    @pulumi.getter(name="invertRegex")
+    def invert_regex(self) -> _builtins.bool:
+        """
+        If true, only trigger a build if the revision regex does NOT match the git_ref regex.
+        """
+        return pulumi.get(self, "invert_regex")
+
+    @_builtins.property
+    @pulumi.getter
+    def tag(self) -> _builtins.str:
+        """
+        Regex of tags to match.
+        """
+        return pulumi.get(self, "tag")
 
 
 @pulumi.output_type

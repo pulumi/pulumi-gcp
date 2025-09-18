@@ -113,6 +113,10 @@ export class StoragePool extends pulumi.CustomResource {
      */
     declare public readonly allowAutoTiering: pulumi.Output<boolean | undefined>;
     /**
+     * Available throughput of the storage pool (in MiB/s).
+     */
+    declare public /*out*/ readonly availableThroughputMibps: pulumi.Output<number>;
+    /**
      * Capacity of the storage pool (in GiB).
      */
     declare public readonly capacityGib: pulumi.Output<string>;
@@ -182,6 +186,12 @@ export class StoragePool extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
+     * QoS (Quality of Service) type of the storage pool.
+     * Possible values are: AUTO, MANUAL.
+     * Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
+     */
+    declare public readonly qosType: pulumi.Output<string | undefined>;
+    /**
      * Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
      * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
      */
@@ -194,11 +204,11 @@ export class StoragePool extends pulumi.CustomResource {
     /**
      * Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
      */
-    declare public readonly totalIops: pulumi.Output<string | undefined>;
+    declare public readonly totalIops: pulumi.Output<string>;
     /**
      * Optional. Custom Performance Total Throughput of the pool (in MiB/s).
      */
-    declare public readonly totalThroughputMibps: pulumi.Output<string | undefined>;
+    declare public readonly totalThroughputMibps: pulumi.Output<string>;
     /**
      * Size allocated to volumes in the storage pool (in GiB).
      */
@@ -229,6 +239,7 @@ export class StoragePool extends pulumi.CustomResource {
             const state = argsOrState as StoragePoolState | undefined;
             resourceInputs["activeDirectory"] = state?.activeDirectory;
             resourceInputs["allowAutoTiering"] = state?.allowAutoTiering;
+            resourceInputs["availableThroughputMibps"] = state?.availableThroughputMibps;
             resourceInputs["capacityGib"] = state?.capacityGib;
             resourceInputs["customPerformanceEnabled"] = state?.customPerformanceEnabled;
             resourceInputs["description"] = state?.description;
@@ -244,6 +255,7 @@ export class StoragePool extends pulumi.CustomResource {
             resourceInputs["network"] = state?.network;
             resourceInputs["project"] = state?.project;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["qosType"] = state?.qosType;
             resourceInputs["replicaZone"] = state?.replicaZone;
             resourceInputs["serviceLevel"] = state?.serviceLevel;
             resourceInputs["totalIops"] = state?.totalIops;
@@ -279,11 +291,13 @@ export class StoragePool extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["network"] = args?.network;
             resourceInputs["project"] = args?.project;
+            resourceInputs["qosType"] = args?.qosType;
             resourceInputs["replicaZone"] = args?.replicaZone;
             resourceInputs["serviceLevel"] = args?.serviceLevel;
             resourceInputs["totalIops"] = args?.totalIops;
             resourceInputs["totalThroughputMibps"] = args?.totalThroughputMibps;
             resourceInputs["zone"] = args?.zone;
+            resourceInputs["availableThroughputMibps"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["encryptionType"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
@@ -311,6 +325,10 @@ export interface StoragePoolState {
      * Auto-tiering can be enabled after storage pool creation but it can't be disabled once enabled.
      */
     allowAutoTiering?: pulumi.Input<boolean>;
+    /**
+     * Available throughput of the storage pool (in MiB/s).
+     */
+    availableThroughputMibps?: pulumi.Input<number>;
     /**
      * Capacity of the storage pool (in GiB).
      */
@@ -380,6 +398,12 @@ export interface StoragePoolState {
      * and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * QoS (Quality of Service) type of the storage pool.
+     * Possible values are: AUTO, MANUAL.
+     * Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
+     */
+    qosType?: pulumi.Input<string>;
     /**
      * Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
      * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
@@ -484,6 +508,12 @@ export interface StoragePoolArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * QoS (Quality of Service) type of the storage pool.
+     * Possible values are: AUTO, MANUAL.
+     * Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
+     */
+    qosType?: pulumi.Input<string>;
     /**
      * Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
      * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).

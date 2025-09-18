@@ -215,7 +215,6 @@ import javax.annotation.Nullable;
  *             .authorizationMode("AUTH_DISABLED")
  *             .kmsKey("my-key")
  *             .engineConfigs(Map.of("maxmemory-policy", "volatile-ttl"))
- *             .allowFewerZonesDeployment(true)
  *             .zoneDistributionConfig(InstanceZoneDistributionConfigArgs.builder()
  *                 .mode("SINGLE_ZONE")
  *                 .zone("us-central1-b")
@@ -526,26 +525,6 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:memorystore/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
     /**
-     * Allows customers to specify if they are okay with deploying a multi-zone
-     * instance in less than 3 zones. Once set, if there is a zonal outage during
-     * the instance creation, the instance will only be deployed in 2 zones, and
-     * stay within the 2 zones for its lifecycle.
-     * 
-     */
-    @Export(name="allowFewerZonesDeployment", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> allowFewerZonesDeployment;
-
-    /**
-     * @return Allows customers to specify if they are okay with deploying a multi-zone
-     * instance in less than 3 zones. Once set, if there is a zonal outage during
-     * the instance creation, the instance will only be deployed in 2 zones, and
-     * stay within the 2 zones for its lifecycle.
-     * 
-     */
-    public Output<Optional<Boolean>> allowFewerZonesDeployment() {
-        return Codegen.optional(this.allowFewerZonesDeployment);
-    }
-    /**
      * Optional. Immutable. Authorization mode of the instance. Possible values:
      * AUTH_DISABLED
      * IAM_AUTH
@@ -654,18 +633,18 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.desiredAutoCreatedEndpoints);
     }
     /**
-     * `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
+     * `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
      * 
      * @deprecated
-     * `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
+     * `desired_psc_auto_connections` is deprecated. Use `desired_auto_created_endpoints` instead. `terraform import` will only work with desired_auto_created_endpoints`.
      * 
      */
-    @Deprecated /* `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead. */
+    @Deprecated /* `desired_psc_auto_connections` is deprecated. Use `desired_auto_created_endpoints` instead. `terraform import` will only work with desired_auto_created_endpoints`. */
     @Export(name="desiredPscAutoConnections", refs={List.class,InstanceDesiredPscAutoConnection.class}, tree="[0,1]")
     private Output</* @Nullable */ List<InstanceDesiredPscAutoConnection>> desiredPscAutoConnections;
 
     /**
-     * @return `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead.
+     * @return `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
      * 
      */
     public Output<Optional<List<InstanceDesiredPscAutoConnection>>> desiredPscAutoConnections() {

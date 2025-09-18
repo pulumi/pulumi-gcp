@@ -20,7 +20,6 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
      * Beta
      * If `true`, the usage of the service to be disabled will be checked and an error
      * will be returned if the service to be disabled has usage in last 30 days.
-     * Defaults to `false`.
      * 
      */
     @Import(name="checkIfServiceHasUsageOnDestroy")
@@ -30,7 +29,6 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
      * @return Beta
      * If `true`, the usage of the service to be disabled will be checked and an error
      * will be returned if the service to be disabled has usage in last 30 days.
-     * Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> checkIfServiceHasUsageOnDestroy() {
@@ -129,7 +127,6 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
          * @param checkIfServiceHasUsageOnDestroy Beta
          * If `true`, the usage of the service to be disabled will be checked and an error
          * will be returned if the service to be disabled has usage in last 30 days.
-         * Defaults to `false`.
          * 
          * @return builder
          * 
@@ -143,7 +140,6 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
          * @param checkIfServiceHasUsageOnDestroy Beta
          * If `true`, the usage of the service to be disabled will be checked and an error
          * will be returned if the service to be disabled has usage in last 30 days.
-         * Defaults to `false`.
          * 
          * @return builder
          * 

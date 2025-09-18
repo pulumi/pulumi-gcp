@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,8 +29,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigtable"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigtable"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -51,10 +51,10 @@ import (
 //				return err
 //			}
 //			_, err = bigtable.NewTableIamPolicy(ctx, "editor", &bigtable.TableIamPolicyArgs{
-//				Project:    pulumi.String("your-project"),
-//				Instance:   pulumi.String("your-bigtable-instance"),
-//				Table:      pulumi.String("your-bigtable-table"),
-//				PolicyData: pulumi.String(admin.PolicyData),
+//				Project:      pulumi.String("your-project"),
+//				InstanceName: pulumi.String("your-bigtable-instance"),
+//				Table:        pulumi.String("your-bigtable-table"),
+//				PolicyData:   pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -72,7 +72,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigtable"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigtable"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -80,9 +80,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := bigtable.NewTableIamBinding(ctx, "editor", &bigtable.TableIamBindingArgs{
-//				Table:    pulumi.String("your-bigtable-table"),
-//				Instance: pulumi.String("your-bigtable-instance"),
-//				Role:     pulumi.String("roles/bigtable.user"),
+//				Table:        pulumi.String("your-bigtable-table"),
+//				InstanceName: pulumi.String("your-bigtable-instance"),
+//				Role:         pulumi.String("roles/bigtable.user"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
 //				},
@@ -103,7 +103,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigtable"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigtable"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -111,10 +111,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := bigtable.NewTableIamMember(ctx, "editor", &bigtable.TableIamMemberArgs{
-//				Table:    pulumi.String("your-bigtable-table"),
-//				Instance: pulumi.String("your-bigtable-instance"),
-//				Role:     pulumi.String("roles/bigtable.user"),
-//				Member:   pulumi.String("user:jane@example.com"),
+//				Table:        pulumi.String("your-bigtable-table"),
+//				InstanceName: pulumi.String("your-bigtable-instance"),
+//				Role:         pulumi.String("roles/bigtable.user"),
+//				Member:       pulumi.String("user:jane@example.com"),
 //			})
 //			if err != nil {
 //				return err
@@ -132,8 +132,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigtable"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigtable"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -154,10 +154,10 @@ import (
 //				return err
 //			}
 //			_, err = bigtable.NewTableIamPolicy(ctx, "editor", &bigtable.TableIamPolicyArgs{
-//				Project:    pulumi.String("your-project"),
-//				Instance:   pulumi.String("your-bigtable-instance"),
-//				Table:      pulumi.String("your-bigtable-table"),
-//				PolicyData: pulumi.String(admin.PolicyData),
+//				Project:      pulumi.String("your-project"),
+//				InstanceName: pulumi.String("your-bigtable-instance"),
+//				Table:        pulumi.String("your-bigtable-table"),
+//				PolicyData:   pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -175,7 +175,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigtable"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigtable"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -183,9 +183,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := bigtable.NewTableIamBinding(ctx, "editor", &bigtable.TableIamBindingArgs{
-//				Table:    pulumi.String("your-bigtable-table"),
-//				Instance: pulumi.String("your-bigtable-instance"),
-//				Role:     pulumi.String("roles/bigtable.user"),
+//				Table:        pulumi.String("your-bigtable-table"),
+//				InstanceName: pulumi.String("your-bigtable-instance"),
+//				Role:         pulumi.String("roles/bigtable.user"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
 //				},
@@ -206,7 +206,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigtable"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigtable"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -214,10 +214,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := bigtable.NewTableIamMember(ctx, "editor", &bigtable.TableIamMemberArgs{
-//				Table:    pulumi.String("your-bigtable-table"),
-//				Instance: pulumi.String("your-bigtable-instance"),
-//				Role:     pulumi.String("roles/bigtable.user"),
-//				Member:   pulumi.String("user:jane@example.com"),
+//				Table:        pulumi.String("your-bigtable-table"),
+//				InstanceName: pulumi.String("your-bigtable-instance"),
+//				Role:         pulumi.String("roles/bigtable.user"),
+//				Member:       pulumi.String("user:jane@example.com"),
 //			})
 //			if err != nil {
 //				return err
@@ -260,7 +260,7 @@ type TableIamBinding struct {
 	// (Computed) The etag of the tables's IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The name or relative resource id of the instance that owns the table.
-	Instance pulumi.StringOutput `pulumi:"instance"`
+	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -292,8 +292,8 @@ func NewTableIamBinding(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Instance == nil {
-		return nil, errors.New("invalid value for required argument 'Instance'")
+	if args.InstanceName == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceName'")
 	}
 	if args.Members == nil {
 		return nil, errors.New("invalid value for required argument 'Members'")
@@ -331,7 +331,7 @@ type tableIamBindingState struct {
 	// (Computed) The etag of the tables's IAM policy.
 	Etag *string `pulumi:"etag"`
 	// The name or relative resource id of the instance that owns the table.
-	Instance *string `pulumi:"instance"`
+	InstanceName *string `pulumi:"instanceName"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -361,7 +361,7 @@ type TableIamBindingState struct {
 	// (Computed) The etag of the tables's IAM policy.
 	Etag pulumi.StringPtrInput
 	// The name or relative resource id of the instance that owns the table.
-	Instance pulumi.StringPtrInput
+	InstanceName pulumi.StringPtrInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -393,7 +393,7 @@ func (TableIamBindingState) ElementType() reflect.Type {
 type tableIamBindingArgs struct {
 	Condition *TableIamBindingCondition `pulumi:"condition"`
 	// The name or relative resource id of the instance that owns the table.
-	Instance string `pulumi:"instance"`
+	InstanceName string `pulumi:"instanceName"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -422,7 +422,7 @@ type tableIamBindingArgs struct {
 type TableIamBindingArgs struct {
 	Condition TableIamBindingConditionPtrInput
 	// The name or relative resource id of the instance that owns the table.
-	Instance pulumi.StringInput
+	InstanceName pulumi.StringInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -544,8 +544,8 @@ func (o TableIamBindingOutput) Etag() pulumi.StringOutput {
 }
 
 // The name or relative resource id of the instance that owns the table.
-func (o TableIamBindingOutput) Instance() pulumi.StringOutput {
-	return o.ApplyT(func(v *TableIamBinding) pulumi.StringOutput { return v.Instance }).(pulumi.StringOutput)
+func (o TableIamBindingOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *TableIamBinding) pulumi.StringOutput { return v.InstanceName }).(pulumi.StringOutput)
 }
 
 // Identities that will be granted the privilege in `role`.

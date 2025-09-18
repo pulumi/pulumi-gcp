@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -121,7 +121,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -337,7 +337,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -492,7 +492,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -601,7 +601,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -732,7 +732,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -828,7 +828,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -944,7 +944,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -1170,7 +1170,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -1252,7 +1252,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -1334,7 +1334,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -1416,7 +1416,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -1559,6 +1559,12 @@ type RegionUrlMap struct {
 	// Fingerprint of this resource. This field is used internally during
 	// updates of this resource.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
+	// Specifies changes to request and response headers that need to take effect for the selected backendService.
+	// headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+	// headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+	// Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+	// Structure is documented below.
+	HeaderAction RegionUrlMapHeaderActionPtrOutput `pulumi:"headerAction"`
 	// The list of HostRules to use against the URL.
 	// Structure is documented below.
 	HostRules RegionUrlMapHostRuleArrayOutput `pulumi:"hostRules"`
@@ -1646,6 +1652,12 @@ type regionUrlMapState struct {
 	// Fingerprint of this resource. This field is used internally during
 	// updates of this resource.
 	Fingerprint *string `pulumi:"fingerprint"`
+	// Specifies changes to request and response headers that need to take effect for the selected backendService.
+	// headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+	// headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+	// Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+	// Structure is documented below.
+	HeaderAction *RegionUrlMapHeaderAction `pulumi:"headerAction"`
 	// The list of HostRules to use against the URL.
 	// Structure is documented below.
 	HostRules []RegionUrlMapHostRule `pulumi:"hostRules"`
@@ -1704,6 +1716,12 @@ type RegionUrlMapState struct {
 	// Fingerprint of this resource. This field is used internally during
 	// updates of this resource.
 	Fingerprint pulumi.StringPtrInput
+	// Specifies changes to request and response headers that need to take effect for the selected backendService.
+	// headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+	// headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+	// Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+	// Structure is documented below.
+	HeaderAction RegionUrlMapHeaderActionPtrInput
 	// The list of HostRules to use against the URL.
 	// Structure is documented below.
 	HostRules RegionUrlMapHostRuleArrayInput
@@ -1761,6 +1779,12 @@ type regionUrlMapArgs struct {
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
 	Description *string `pulumi:"description"`
+	// Specifies changes to request and response headers that need to take effect for the selected backendService.
+	// headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+	// headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+	// Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+	// Structure is documented below.
+	HeaderAction *RegionUrlMapHeaderAction `pulumi:"headerAction"`
 	// The list of HostRules to use against the URL.
 	// Structure is documented below.
 	HostRules []RegionUrlMapHostRule `pulumi:"hostRules"`
@@ -1811,6 +1835,12 @@ type RegionUrlMapArgs struct {
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
 	Description pulumi.StringPtrInput
+	// Specifies changes to request and response headers that need to take effect for the selected backendService.
+	// headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+	// headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+	// Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+	// Structure is documented below.
+	HeaderAction RegionUrlMapHeaderActionPtrInput
 	// The list of HostRules to use against the URL.
 	// Structure is documented below.
 	HostRules RegionUrlMapHostRuleArrayInput
@@ -1967,6 +1997,15 @@ func (o RegionUrlMapOutput) Description() pulumi.StringPtrOutput {
 // updates of this resource.
 func (o RegionUrlMapOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionUrlMap) pulumi.StringOutput { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+// Specifies changes to request and response headers that need to take effect for the selected backendService.
+// headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+// headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+// Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+// Structure is documented below.
+func (o RegionUrlMapOutput) HeaderAction() RegionUrlMapHeaderActionPtrOutput {
+	return o.ApplyT(func(v *RegionUrlMap) RegionUrlMapHeaderActionPtrOutput { return v.HeaderAction }).(RegionUrlMapHeaderActionPtrOutput)
 }
 
 // The list of HostRules to use against the URL.

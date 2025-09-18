@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,8 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "gcp:tpu/node:Node":
-		r = &Node{}
 	case "gcp:tpu/v2QueuedResource:V2QueuedResource":
 		r = &V2QueuedResource{}
 	case "gcp:tpu/v2Vm:V2Vm":
@@ -40,11 +38,6 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
-	pulumi.RegisterResourceModule(
-		"gcp",
-		"tpu/node",
-		&module{version},
-	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"tpu/v2QueuedResource",

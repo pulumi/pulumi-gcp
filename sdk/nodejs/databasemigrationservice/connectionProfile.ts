@@ -405,6 +405,7 @@ import * as utilities from "../utilities";
  *         user: "destination-alloydb",
  *         password: "destination-alloydb",
  *     },
+ *     deletionProtection: false,
  * });
  * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
  *     name: "destination-alloydb",

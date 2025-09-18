@@ -4,9 +4,10 @@
 package com.pulumi.gcp.chronicle.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.chronicle.outputs.ReferenceListScopeInfoReferenceListScope;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ReferenceListScopeInfo {
@@ -15,7 +16,7 @@ public final class ReferenceListScopeInfo {
      * Structure is documented below.
      * 
      */
-    private ReferenceListScopeInfoReferenceListScope referenceListScope;
+    private @Nullable ReferenceListScopeInfoReferenceListScope referenceListScope;
 
     private ReferenceListScopeInfo() {}
     /**
@@ -23,8 +24,8 @@ public final class ReferenceListScopeInfo {
      * Structure is documented below.
      * 
      */
-    public ReferenceListScopeInfoReferenceListScope referenceListScope() {
-        return this.referenceListScope;
+    public Optional<ReferenceListScopeInfoReferenceListScope> referenceListScope() {
+        return Optional.ofNullable(this.referenceListScope);
     }
 
     public static Builder builder() {
@@ -36,7 +37,7 @@ public final class ReferenceListScopeInfo {
     }
     @CustomType.Builder
     public static final class Builder {
-        private ReferenceListScopeInfoReferenceListScope referenceListScope;
+        private @Nullable ReferenceListScopeInfoReferenceListScope referenceListScope;
         public Builder() {}
         public Builder(ReferenceListScopeInfo defaults) {
     	      Objects.requireNonNull(defaults);
@@ -44,10 +45,8 @@ public final class ReferenceListScopeInfo {
         }
 
         @CustomType.Setter
-        public Builder referenceListScope(ReferenceListScopeInfoReferenceListScope referenceListScope) {
-            if (referenceListScope == null) {
-              throw new MissingRequiredPropertyException("ReferenceListScopeInfo", "referenceListScope");
-            }
+        public Builder referenceListScope(@Nullable ReferenceListScopeInfoReferenceListScope referenceListScope) {
+
             this.referenceListScope = referenceListScope;
             return this;
         }

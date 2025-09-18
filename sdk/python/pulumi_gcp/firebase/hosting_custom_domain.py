@@ -582,6 +582,16 @@ class HostingCustomDomain(pulumi.CustomResource):
                  wait_dns_verification: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
+        Manages Custom Domains for Firebase Hosting. Custom Domains link your
+        domain names with Firebase Hosting sites, allowing Hosting to serve content
+        on those domain names.
+
+        To get more information about CustomDomain, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/hosting/rest/v1beta1/projects.sites.customDomains)
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/docs/hosting)
+
         ## Example Usage
 
         ### Firebasehosting Customdomain Basic
@@ -706,6 +716,16 @@ class HostingCustomDomain(pulumi.CustomResource):
                  args: HostingCustomDomainArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manages Custom Domains for Firebase Hosting. Custom Domains link your
+        domain names with Firebase Hosting sites, allowing Hosting to serve content
+        on those domain names.
+
+        To get more information about CustomDomain, see:
+
+        * [API documentation](https://firebase.google.com/docs/reference/hosting/rest/v1beta1/projects.sites.customDomains)
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/docs/hosting)
+
         ## Example Usage
 
         ### Firebasehosting Customdomain Basic

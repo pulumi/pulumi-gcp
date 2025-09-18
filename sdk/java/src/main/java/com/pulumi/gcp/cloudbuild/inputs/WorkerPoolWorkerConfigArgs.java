@@ -33,6 +33,21 @@ public final class WorkerPoolWorkerConfigArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * Enable nested virtualization on the worker, if supported by the machine type. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will set this to false.
+     * 
+     */
+    @Import(name="enableNestedVirtualization")
+    private @Nullable Output<Boolean> enableNestedVirtualization;
+
+    /**
+     * @return Enable nested virtualization on the worker, if supported by the machine type. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will set this to false.
+     * 
+     */
+    public Optional<Output<Boolean>> enableNestedVirtualization() {
+        return Optional.ofNullable(this.enableNestedVirtualization);
+    }
+
+    /**
      * Machine type of a worker, such as `n1-standard-1`. See [machineType](https://cloud.google.com/build/docs/private-pools/private-pool-config-file-schema#machinetype). If left blank, Cloud Build will use `n1-standard-1`.
      * 
      */
@@ -66,6 +81,7 @@ public final class WorkerPoolWorkerConfigArgs extends com.pulumi.resources.Resou
 
     private WorkerPoolWorkerConfigArgs(WorkerPoolWorkerConfigArgs $) {
         this.diskSizeGb = $.diskSizeGb;
+        this.enableNestedVirtualization = $.enableNestedVirtualization;
         this.machineType = $.machineType;
         this.noExternalIp = $.noExternalIp;
     }
@@ -107,6 +123,27 @@ public final class WorkerPoolWorkerConfigArgs extends com.pulumi.resources.Resou
          */
         public Builder diskSizeGb(Integer diskSizeGb) {
             return diskSizeGb(Output.of(diskSizeGb));
+        }
+
+        /**
+         * @param enableNestedVirtualization Enable nested virtualization on the worker, if supported by the machine type. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will set this to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableNestedVirtualization(@Nullable Output<Boolean> enableNestedVirtualization) {
+            $.enableNestedVirtualization = enableNestedVirtualization;
+            return this;
+        }
+
+        /**
+         * @param enableNestedVirtualization Enable nested virtualization on the worker, if supported by the machine type. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will set this to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableNestedVirtualization(Boolean enableNestedVirtualization) {
+            return enableNestedVirtualization(Output.of(enableNestedVirtualization));
         }
 
         /**

@@ -20,7 +20,6 @@ public final class RepositoryRemoteRepositoryConfigMavenRepository {
     private @Nullable RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository customRepository;
     /**
      * @return Address of the remote repository.
-     * Default value is `MAVEN_CENTRAL`.
      * Possible values are: `MAVEN_CENTRAL`.
      * 
      */
@@ -37,7 +36,6 @@ public final class RepositoryRemoteRepositoryConfigMavenRepository {
     }
     /**
      * @return Address of the remote repository.
-     * Default value is `MAVEN_CENTRAL`.
      * Possible values are: `MAVEN_CENTRAL`.
      * 
      */

@@ -76,7 +76,7 @@ export class KeystoresAliasesKeyCertFile extends pulumi.CustomResource {
      * Chain of certificates under this alias.
      * Structure is documented below.
      */
-    declare public readonly certsInfo: pulumi.Output<outputs.apigee.KeystoresAliasesKeyCertFileCertsInfo>;
+    declare public /*out*/ readonly certsInfos: pulumi.Output<outputs.apigee.KeystoresAliasesKeyCertFileCertsInfo[]>;
     /**
      * Environment associated with the alias
      */
@@ -97,6 +97,7 @@ export class KeystoresAliasesKeyCertFile extends pulumi.CustomResource {
      * Password for the Private Key if it's encrypted
      */
     declare public readonly password: pulumi.Output<string | undefined>;
+    declare public readonly timeouts: pulumi.Output<outputs.apigee.KeystoresAliasesKeyCertFileTimeouts | undefined>;
     /**
      * Optional.Type of Alias
      */
@@ -117,12 +118,13 @@ export class KeystoresAliasesKeyCertFile extends pulumi.CustomResource {
             const state = argsOrState as KeystoresAliasesKeyCertFileState | undefined;
             resourceInputs["alias"] = state?.alias;
             resourceInputs["cert"] = state?.cert;
-            resourceInputs["certsInfo"] = state?.certsInfo;
+            resourceInputs["certsInfos"] = state?.certsInfos;
             resourceInputs["environment"] = state?.environment;
             resourceInputs["key"] = state?.key;
             resourceInputs["keystore"] = state?.keystore;
             resourceInputs["orgId"] = state?.orgId;
             resourceInputs["password"] = state?.password;
+            resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as KeystoresAliasesKeyCertFileArgs | undefined;
@@ -143,12 +145,13 @@ export class KeystoresAliasesKeyCertFile extends pulumi.CustomResource {
             }
             resourceInputs["alias"] = args?.alias;
             resourceInputs["cert"] = args?.cert;
-            resourceInputs["certsInfo"] = args?.certsInfo;
             resourceInputs["environment"] = args?.environment;
             resourceInputs["key"] = args?.key ? pulumi.secret(args.key) : undefined;
             resourceInputs["keystore"] = args?.keystore;
             resourceInputs["orgId"] = args?.orgId;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
+            resourceInputs["timeouts"] = args?.timeouts;
+            resourceInputs["certsInfos"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -177,7 +180,7 @@ export interface KeystoresAliasesKeyCertFileState {
      * Chain of certificates under this alias.
      * Structure is documented below.
      */
-    certsInfo?: pulumi.Input<inputs.apigee.KeystoresAliasesKeyCertFileCertsInfo>;
+    certsInfos?: pulumi.Input<pulumi.Input<inputs.apigee.KeystoresAliasesKeyCertFileCertsInfo>[]>;
     /**
      * Environment associated with the alias
      */
@@ -198,6 +201,7 @@ export interface KeystoresAliasesKeyCertFileState {
      * Password for the Private Key if it's encrypted
      */
     password?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.apigee.KeystoresAliasesKeyCertFileTimeouts>;
     /**
      * Optional.Type of Alias
      */
@@ -220,11 +224,6 @@ export interface KeystoresAliasesKeyCertFileArgs {
      */
     cert: pulumi.Input<string>;
     /**
-     * Chain of certificates under this alias.
-     * Structure is documented below.
-     */
-    certsInfo?: pulumi.Input<inputs.apigee.KeystoresAliasesKeyCertFileCertsInfo>;
-    /**
      * Environment associated with the alias
      */
     environment: pulumi.Input<string>;
@@ -244,4 +243,5 @@ export interface KeystoresAliasesKeyCertFileArgs {
      * Password for the Private Key if it's encrypted
      */
     password?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.apigee.KeystoresAliasesKeyCertFileTimeouts>;
 }

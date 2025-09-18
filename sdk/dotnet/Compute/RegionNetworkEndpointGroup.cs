@@ -357,7 +357,6 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             ProducerPort = "88",
     ///         },
-    ///         Network = @default.SelfLink,
     ///         Subnetwork = defaultSubnetwork.SelfLink,
     ///     });
     /// 
@@ -530,7 +529,7 @@ namespace Pulumi.Gcp.Compute
         /// "default" project network if unspecified.
         /// </summary>
         [Output("network")]
-        public Output<string?> Network { get; private set; } = null!;
+        public Output<string> Network { get; private set; } = null!;
 
         /// <summary>
         /// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.

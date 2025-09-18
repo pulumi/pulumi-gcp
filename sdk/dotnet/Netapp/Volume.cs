@@ -343,6 +343,12 @@ namespace Pulumi.Gcp.Netapp
         public Output<string> StoragePool { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+        /// </summary>
+        [Output("throughputMibps")]
+        public Output<double> ThroughputMibps { get; private set; } = null!;
+
+        /// <summary>
         /// Tiering policy for the volume.
         /// Structure is documented below.
         /// </summary>
@@ -592,6 +598,12 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Input("storagePool", required: true)]
         public Input<string> StoragePool { get; set; } = null!;
+
+        /// <summary>
+        /// Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+        /// </summary>
+        [Input("throughputMibps")]
+        public Input<double>? ThroughputMibps { get; set; }
 
         /// <summary>
         /// Tiering policy for the volume.
@@ -912,6 +924,12 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Input("storagePool")]
         public Input<string>? StoragePool { get; set; }
+
+        /// <summary>
+        /// Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+        /// </summary>
+        [Input("throughputMibps")]
+        public Input<double>? ThroughputMibps { get; set; }
 
         /// <summary>
         /// Tiering policy for the volume.

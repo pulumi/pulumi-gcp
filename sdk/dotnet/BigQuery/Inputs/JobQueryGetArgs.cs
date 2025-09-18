@@ -20,6 +20,21 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         [Input("allowLargeResults")]
         public Input<bool>? AllowLargeResults { get; set; }
 
+        [Input("connectionProperties")]
+        private InputList<Inputs.JobQueryConnectionPropertyGetArgs>? _connectionProperties;
+
+        /// <summary>
+        /// Connection properties to customize query behavior. Under JDBC, these correspond
+        /// directly to connection properties passed to the DriverManager. Under ODBC, these
+        /// correspond to properties in the connection string.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.JobQueryConnectionPropertyGetArgs> ConnectionProperties
+        {
+            get => _connectionProperties ?? (_connectionProperties = new InputList<Inputs.JobQueryConnectionPropertyGetArgs>());
+            set => _connectionProperties = value;
+        }
+
         /// <summary>
         /// Whether to run the query as continuous or a regular query.
         /// </summary>

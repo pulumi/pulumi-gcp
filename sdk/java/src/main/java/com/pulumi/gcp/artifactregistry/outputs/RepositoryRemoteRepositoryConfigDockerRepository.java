@@ -20,7 +20,6 @@ public final class RepositoryRemoteRepositoryConfigDockerRepository {
     private @Nullable RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository customRepository;
     /**
      * @return Address of the remote repository.
-     * Default value is `DOCKER_HUB`.
      * Possible values are: `DOCKER_HUB`.
      * 
      */
@@ -37,7 +36,6 @@ public final class RepositoryRemoteRepositoryConfigDockerRepository {
     }
     /**
      * @return Address of the remote repository.
-     * Default value is `DOCKER_HUB`.
      * Possible values are: `DOCKER_HUB`.
      * 
      */

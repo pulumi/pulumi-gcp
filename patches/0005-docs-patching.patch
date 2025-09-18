@@ -4,96 +4,6 @@ Date: Wed, 15 Jan 2025 15:45:41 +0200
 Subject: [PATCH] docs patching
 
 
-diff --git a/website/docs/r/api_gateway_api.html.markdown b/website/docs/r/api_gateway_api.html.markdown
-index 336cd2f5f..6f79b8729 100644
---- a/website/docs/r/api_gateway_api.html.markdown
-+++ b/website/docs/r/api_gateway_api.html.markdown
-@@ -23,9 +23,6 @@ description: |-
- 
- A consumable API that can be used by multiple Gateways.
- 
--~> **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
--See [Provider Versions](https://terraform.io/docs/providers/google/guides/provider_versions.html) for more details on beta resources.
--
- To get more information about Api, see:
- 
- * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis)
-diff --git a/website/docs/r/api_gateway_api_config.html.markdown b/website/docs/r/api_gateway_api_config.html.markdown
-index dc4f93b07..9eb8f47d8 100644
---- a/website/docs/r/api_gateway_api_config.html.markdown
-+++ b/website/docs/r/api_gateway_api_config.html.markdown
-@@ -23,9 +23,6 @@ description: |-
- 
- An API Configuration is an association of an API Controller Config and a Gateway Config
- 
--~> **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
--See [Provider Versions](https://terraform.io/docs/providers/google/guides/provider_versions.html) for more details on beta resources.
--
- To get more information about ApiConfig, see:
- 
- * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis.configs)
-diff --git a/website/docs/r/api_gateway_api_config_iam.html.markdown b/website/docs/r/api_gateway_api_config_iam.html.markdown
-index 503bba070..745376fcc 100644
---- a/website/docs/r/api_gateway_api_config_iam.html.markdown
-+++ b/website/docs/r/api_gateway_api_config_iam.html.markdown
-@@ -36,10 +36,8 @@ A data source can be used to retrieve policy data in advent you do not need crea
- ~> **Note:** `google_api_gateway_api_config_iam_binding` resources **can be** used in conjunction with `google_api_gateway_api_config_iam_member` resources **only if** they do not grant privilege to the same role.
- 
- 
--~> **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
--See [Provider Versions](https://terraform.io/docs/providers/google/guides/provider_versions.html) for more details on beta resources.
- 
--## google_api_gateway_api_config_iam_policy
-+## google\_api\_gateway\_api\_config\_iam\_policy
- 
- ```hcl
- data "google_iam_policy" "admin" {
-diff --git a/website/docs/r/api_gateway_api_iam.html.markdown b/website/docs/r/api_gateway_api_iam.html.markdown
-index cf4a465aa..e715b9ea0 100644
---- a/website/docs/r/api_gateway_api_iam.html.markdown
-+++ b/website/docs/r/api_gateway_api_iam.html.markdown
-@@ -36,10 +36,8 @@ A data source can be used to retrieve policy data in advent you do not need crea
- ~> **Note:** `google_api_gateway_api_iam_binding` resources **can be** used in conjunction with `google_api_gateway_api_iam_member` resources **only if** they do not grant privilege to the same role.
- 
- 
--~> **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
--See [Provider Versions](https://terraform.io/docs/providers/google/guides/provider_versions.html) for more details on beta resources.
- 
--## google_api_gateway_api_iam_policy
-+## google\_api\_gateway\_api\_iam\_policy
- 
- ```hcl
- data "google_iam_policy" "admin" {
-diff --git a/website/docs/r/api_gateway_gateway.html.markdown b/website/docs/r/api_gateway_gateway.html.markdown
-index f6e0ca29a..2f3f2dda7 100644
---- a/website/docs/r/api_gateway_gateway.html.markdown
-+++ b/website/docs/r/api_gateway_gateway.html.markdown
-@@ -23,9 +23,6 @@ description: |-
- 
- A consumable API that can be used by multiple Gateways.
- 
--~> **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
--See [Provider Versions](https://terraform.io/docs/providers/google/guides/provider_versions.html) for more details on beta resources.
--
- To get more information about Gateway, see:
- 
- * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis)
-diff --git a/website/docs/r/api_gateway_gateway_iam.html.markdown b/website/docs/r/api_gateway_gateway_iam.html.markdown
-index 3e783707a..a424f130c 100644
---- a/website/docs/r/api_gateway_gateway_iam.html.markdown
-+++ b/website/docs/r/api_gateway_gateway_iam.html.markdown
-@@ -36,10 +36,7 @@ A data source can be used to retrieve policy data in advent you do not need crea
- ~> **Note:** `google_api_gateway_gateway_iam_binding` resources **can be** used in conjunction with `google_api_gateway_gateway_iam_member` resources **only if** they do not grant privilege to the same role.
- 
- 
--~> **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
--See [Provider Versions](https://terraform.io/docs/providers/google/guides/provider_versions.html) for more details on beta resources.
--
--## google_api_gateway_gateway_iam_policy
-+## google\_api\_gateway\_gateway\_iam\_policy
- 
- ```hcl
- data "google_iam_policy" "admin" {
 diff --git a/website/docs/r/apigee_instance.html.markdown b/website/docs/r/apigee_instance.html.markdown
 index 5771639fb..5cf46ae5d 100644
 --- a/website/docs/r/apigee_instance.html.markdown
@@ -160,10 +70,10 @@ index be5b80ea5..64eee9cbe 100644
  * `default_expiration` -
    (Optional)
 diff --git a/website/docs/r/bigquery_job.html.markdown b/website/docs/r/bigquery_job.html.markdown
-index 567c69380..55790d062 100644
+index 1ba9d9d4b..991a0a0f6 100644
 --- a/website/docs/r/bigquery_job.html.markdown
 +++ b/website/docs/r/bigquery_job.html.markdown
-@@ -757,8 +757,8 @@ The following arguments are supported:
+@@ -779,8 +779,8 @@ The following arguments are supported:
  
  * `null_marker` -
    (Optional)
@@ -175,7 +85,7 @@ index 567c69380..55790d062 100644
    an empty value.
  
 diff --git a/website/docs/r/bigquery_table.html.markdown b/website/docs/r/bigquery_table.html.markdown
-index 4e906bce1..9534e841f 100644
+index 9c4ee8805..3d912d6c5 100644
 --- a/website/docs/r/bigquery_table.html.markdown
 +++ b/website/docs/r/bigquery_table.html.markdown
 @@ -25,7 +25,7 @@ Creates a table resource in a dataset for Google BigQuery. For more information
@@ -315,7 +225,7 @@ index eb93b2b75..c034b9b3d 100644
  
  * `column_family` - (Optional) A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
 diff --git a/website/docs/r/bigtable_table_iam.html.markdown b/website/docs/r/bigtable_table_iam.html.markdown
-index 5f149b073..afe1c9e37 100644
+index 7ddcf65cf..ba72b1e45 100644
 --- a/website/docs/r/bigtable_table_iam.html.markdown
 +++ b/website/docs/r/bigtable_table_iam.html.markdown
 @@ -103,7 +103,7 @@ For `google_bigtable_table_iam_member` or `google_bigtable_table_iam_binding`:
@@ -599,7 +509,7 @@ index 8c5f02037..ead4fc8ea 100644
  ## Example Usage - Backend Bucket Signed Url Key
  
 diff --git a/website/docs/r/compute_backend_service.html.markdown b/website/docs/r/compute_backend_service.html.markdown
-index bf3d3d70b..4e9cbf6ba 100644
+index b3e15f257..80b928f4e 100644
 --- a/website/docs/r/compute_backend_service.html.markdown
 +++ b/website/docs/r/compute_backend_service.html.markdown
 @@ -41,7 +41,6 @@ To get more information about BackendService, see:
@@ -734,22 +644,10 @@ index e446141ea..fe14db4ac 100644
  * `min_cpu_platform` - (Optional) Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
  `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
 diff --git a/website/docs/r/compute_instance_from_machine_image.html.markdown b/website/docs/r/compute_instance_from_machine_image.html.markdown
-index 3b447513a..c42dd0ef4 100644
+index 3b447513a..92c0b5700 100644
 --- a/website/docs/r/compute_instance_from_machine_image.html.markdown
 +++ b/website/docs/r/compute_instance_from_machine_image.html.markdown
-@@ -18,10 +18,7 @@ description: |-
-   Manages a VM instance resource within GCE.
- ---
- 
--~> **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
--See [Provider Versions](https://terraform.io/docs/providers/google/guides/provider_versions.html) for more details on beta resources.
--
--# google_compute_instance_from_machine_image
-+# google\_compute\_instance\_from\_machine\_image
- 
- Manages a VM instance resource within GCE. For more information see
- [the official documentation](https://cloud.google.com/compute/docs/instances)
-@@ -75,8 +72,6 @@ from `google_compute_instance` are likewise exported here.
+@@ -75,8 +75,6 @@ from `google_compute_instance` are likewise exported here.
  ## Attributes Reference
  
  All exported attributes from `google_compute_instance` are exported here.
@@ -847,7 +745,7 @@ index 471b19e39..3f536efc3 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance_template.html.markdown b/website/docs/r/compute_instance_template.html.markdown
-index 3a9a31c7c..b98d8f475 100644
+index 18a3ce687..9882a2bf7 100644
 --- a/website/docs/r/compute_instance_template.html.markdown
 +++ b/website/docs/r/compute_instance_template.html.markdown
 @@ -197,12 +197,11 @@ resource "google_compute_instance_template" "foobar" {
@@ -911,7 +809,7 @@ index 3a9a31c7c..b98d8f475 100644
  
  * `name_prefix` - (Optional) Creates a unique name beginning with the specified
    prefix. Conflicts with `name`. Max length is 54 characters.
-@@ -600,7 +600,7 @@ The following arguments are supported:
+@@ -599,7 +599,7 @@ The following arguments are supported:
  * `access_config` - (Optional) Access configurations, i.e. IPs via which this
      instance can be accessed via the Internet. Omit to ensure that the instance
      is not accessible from the Internet (this means that ssh provisioners will
@@ -920,38 +818,11 @@ index 3a9a31c7c..b98d8f475 100644
      network (e.g. via tunnel or because it is running on another cloud instance
      on that network). This block can be specified once per `network_interface`. Structure [documented below](#nested_access_config).
  
-diff --git a/website/docs/r/compute_machine_image.html.markdown b/website/docs/r/compute_machine_image.html.markdown
-index 5e74467ae..3f89eade0 100644
---- a/website/docs/r/compute_machine_image.html.markdown
-+++ b/website/docs/r/compute_machine_image.html.markdown
-@@ -25,9 +25,6 @@ Represents a Machine Image resource. Machine images store all the configuration,
- metadata, permissions, and data from one or more disks required to create a
- Virtual machine (VM) instance.
- 
--~> **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
--See [Provider Versions](https://terraform.io/docs/providers/google/guides/provider_versions.html) for more details on beta resources.
--
- To get more information about MachineImage, see:
- 
- * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/machineImages)
 diff --git a/website/docs/r/compute_machine_image_iam.html.markdown b/website/docs/r/compute_machine_image_iam.html.markdown
-index 6e55e0068..a973379ed 100644
+index 6e55e0068..890f195b3 100644
 --- a/website/docs/r/compute_machine_image_iam.html.markdown
 +++ b/website/docs/r/compute_machine_image_iam.html.markdown
-@@ -36,11 +36,7 @@ A data source can be used to retrieve policy data in advent you do not need crea
- ~> **Note:** `google_compute_machine_image_iam_binding` resources **can be** used in conjunction with `google_compute_machine_image_iam_member` resources **only if** they do not grant privilege to the same role.
- 
- ~> **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
--
--~> **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
--See [Provider Versions](https://terraform.io/docs/providers/google/guides/provider_versions.html) for more details on beta resources.
--
--## google_compute_machine_image_iam_policy
-+## google\_compute\_machine\_image\_iam\_policy
- 
- ```hcl
- data "google_iam_policy" "admin" {
-@@ -191,9 +187,6 @@ The `condition` block supports:
+@@ -191,9 +191,6 @@ The `condition` block supports:
  
  * `description` - (Optional) An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
  
@@ -1000,20 +871,10 @@ index 0b0ddf4e9..9cf71f60b 100644
    maintenance_window {
      start_time = "08:00"
 diff --git a/website/docs/r/compute_organization_security_policy.html.markdown b/website/docs/r/compute_organization_security_policy.html.markdown
-index 0b97b934b..4460d92a4 100644
+index 364e2f7c6..9eb790bbb 100644
 --- a/website/docs/r/compute_organization_security_policy.html.markdown
 +++ b/website/docs/r/compute_organization_security_policy.html.markdown
-@@ -23,9 +23,6 @@ description: |-
- 
- Organization security policies are used to control incoming/outgoing traffic.
- 
--~> **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
--See [Provider Versions](https://terraform.io/docs/providers/google/guides/provider_versions.html) for more details on beta resources.
--
- To get more information about OrganizationSecurityPolicy, see:
- 
- * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies)
-@@ -38,7 +35,7 @@ To get more information about OrganizationSecurityPolicy, see:
+@@ -38,7 +38,7 @@ To get more information about OrganizationSecurityPolicy, see:
  ```hcl
  resource "google_compute_organization_security_policy" "policy" {
    provider = google-beta
@@ -1023,20 +884,10 @@ index 0b97b934b..4460d92a4 100644
  }
  ```
 diff --git a/website/docs/r/compute_organization_security_policy_association.html.markdown b/website/docs/r/compute_organization_security_policy_association.html.markdown
-index 77bf7bb65..5b83b1251 100644
+index 77bf7bb65..84d26a787 100644
 --- a/website/docs/r/compute_organization_security_policy_association.html.markdown
 +++ b/website/docs/r/compute_organization_security_policy_association.html.markdown
-@@ -23,9 +23,6 @@ description: |-
- 
- An association for the OrganizationSecurityPolicy.
- 
--~> **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
--See [Provider Versions](https://terraform.io/docs/providers/google/guides/provider_versions.html) for more details on beta resources.
--
- To get more information about OrganizationSecurityPolicyAssociation, see:
- 
- * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies/addAssociation)
-@@ -38,14 +35,14 @@ To get more information about OrganizationSecurityPolicyAssociation, see:
+@@ -38,14 +38,14 @@ To get more information about OrganizationSecurityPolicyAssociation, see:
  ```hcl
  resource "google_folder" "security_policy_target" {
    provider     = google-beta
@@ -1053,7 +904,7 @@ index 77bf7bb65..5b83b1251 100644
    parent       = google_folder.security_policy_target.name
  }
  
-@@ -73,7 +70,7 @@ resource "google_compute_organization_security_policy_rule" "policy" {
+@@ -73,7 +73,7 @@ resource "google_compute_organization_security_policy_rule" "policy" {
  
  resource "google_compute_organization_security_policy_association" "policy" {
    provider = google-beta
@@ -1063,20 +914,10 @@ index 77bf7bb65..5b83b1251 100644
    policy_id     = google_compute_organization_security_policy.policy.id
  }
 diff --git a/website/docs/r/compute_organization_security_policy_rule.html.markdown b/website/docs/r/compute_organization_security_policy_rule.html.markdown
-index f45b26373..9a98776da 100644
+index f45b26373..af28fb4bd 100644
 --- a/website/docs/r/compute_organization_security_policy_rule.html.markdown
 +++ b/website/docs/r/compute_organization_security_policy_rule.html.markdown
-@@ -23,9 +23,6 @@ description: |-
- 
- A rule for the OrganizationSecurityPolicy.
- 
--~> **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
--See [Provider Versions](https://terraform.io/docs/providers/google/guides/provider_versions.html) for more details on beta resources.
--
- To get more information about OrganizationSecurityPolicyRule, see:
- 
- * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies/addRule)
-@@ -38,7 +35,7 @@ To get more information about OrganizationSecurityPolicyRule, see:
+@@ -38,7 +38,7 @@ To get more information about OrganizationSecurityPolicyRule, see:
  ```hcl
  resource "google_compute_organization_security_policy" "policy" {
    provider = google-beta
@@ -1162,7 +1003,7 @@ index 08533fafb..2971e6e07 100644
  
  * `wait_for_instances_status` - (Optional) When used with `wait_for_instances` it specifies the status to wait for.
 diff --git a/website/docs/r/compute_region_network_endpoint_group.html.markdown b/website/docs/r/compute_region_network_endpoint_group.html.markdown
-index 04b0a5c75..5bb20cf69 100644
+index 7621b1266..7c4871eab 100644
 --- a/website/docs/r/compute_region_network_endpoint_group.html.markdown
 +++ b/website/docs/r/compute_region_network_endpoint_group.html.markdown
 @@ -25,15 +25,6 @@ description: |-
@@ -1550,7 +1391,7 @@ index f78621541..4052832f2 100644
  resource "google_compute_ssl_certificate" "default" {
    name_prefix = "my-certificate-"
 diff --git a/website/docs/r/compute_subnetwork.html.markdown b/website/docs/r/compute_subnetwork.html.markdown
-index ed7053242..4f2f84e56 100644
+index 8ee438dae..b1171c70a 100644
 --- a/website/docs/r/compute_subnetwork.html.markdown
 +++ b/website/docs/r/compute_subnetwork.html.markdown
 @@ -391,9 +391,6 @@ The following arguments are supported:
@@ -1608,7 +1449,7 @@ index d88864517..9095d5782 100644
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=vpn_tunnel_basic&open_in_editor=main.tf" target="_blank">
 diff --git a/website/docs/r/container_cluster.html.markdown b/website/docs/r/container_cluster.html.markdown
-index 86a68ebf9..da9603b4a 100644
+index 3db03838a..c54082df2 100644
 --- a/website/docs/r/container_cluster.html.markdown
 +++ b/website/docs/r/container_cluster.html.markdown
 @@ -27,15 +27,12 @@ To get more information about GKE clusters, see:
@@ -1699,7 +1540,7 @@ index 86a68ebf9..da9603b4a 100644
  release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
  channel. Structure is [documented below](#nested_release_channel).
  
-@@ -965,10 +983,6 @@ gvnic {
+@@ -967,10 +985,6 @@ gvnic {
  
  * `guest_accelerator` - (Optional) List of the type and count of accelerator cards attached to the instance.
      Structure [documented below](#nested_guest_accelerator).
@@ -1710,7 +1551,7 @@ index 86a68ebf9..da9603b4a 100644
  
  * `image_type` - (Optional) The image type to use for this node. Note that changing the image type
      will delete and recreate all nodes in the node pool.
-@@ -995,7 +1009,7 @@ gvnic {
+@@ -997,7 +1011,7 @@ gvnic {
  * `metadata` - (Optional) The metadata key/value pairs assigned to instances in
      the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
      `true` by the API; if `metadata` is set but that default value is not
@@ -1719,7 +1560,7 @@ index 86a68ebf9..da9603b4a 100644
      value in your config.
  
  * `min_cpu_platform` - (Optional) Minimum CPU platform to be used by this instance.
-@@ -1020,10 +1034,7 @@ gvnic {
+@@ -1022,10 +1036,7 @@ gvnic {
      See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
      for more information. Defaults to false.
  
@@ -1731,7 +1572,7 @@ index 86a68ebf9..da9603b4a 100644
  
  * `service_account` - (Optional) The service account to be used by the Node VMs.
      If not specified, the "default" service account is used.
-@@ -1037,13 +1048,14 @@ gvnic {
+@@ -1039,13 +1050,14 @@ gvnic {
  
  * `resource_manager_tags` - (Optional) A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
  
@@ -1753,7 +1594,7 @@ index 86a68ebf9..da9603b4a 100644
  
  * `workload_metadata_config` - (Optional) Metadata configuration to expose to workloads on the node pool.
      Structure is [documented below](#nested_workload_metadata_config).
-@@ -1353,7 +1365,7 @@ for more details. This field only applies to private clusters, when
+@@ -1355,7 +1367,7 @@ for more details. This field only applies to private clusters, when
  * `private_endpoint_subnetwork` - (Optional) Subnetwork in cluster's network where master's endpoint will be provisioned.
  
  * `master_global_access_config` (Optional) - Controls cluster master global
@@ -1762,7 +1603,7 @@ index 86a68ebf9..da9603b4a 100644
  not modify the previously-set value. Structure is [documented below](#nested_master_global_access_config).
  
  In addition, the `private_cluster_config` allows access to the following read-only fields:
-@@ -1461,9 +1473,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
+@@ -1463,9 +1475,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
  
  * `mode` (Required) How to expose the node metadata to the workload running on the node.
      Accepted values are:
@@ -2137,20 +1978,6 @@ index 8d9e7ad0f..509577d86 100644
  
  * `dns64_config` -
    (Optional)
-diff --git a/website/docs/r/firebase_project.html.markdown b/website/docs/r/firebase_project.html.markdown
-index 1bc0b1bda..5f7603f28 100644
---- a/website/docs/r/firebase_project.html.markdown
-+++ b/website/docs/r/firebase_project.html.markdown
-@@ -26,9 +26,6 @@ Since a FirebaseProject is actually also a GCP Project, a FirebaseProject uses u
- identifiers (most importantly, the projectId) as its own for easy interop with GCP APIs.
- Once Firebase has been added to a Google Project it cannot be removed.
- 
--~> **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
--See [Provider Versions](https://terraform.io/docs/providers/google/guides/provider_versions.html) for more details on beta resources.
--
- To get more information about Project, see:
- 
- * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects)
 diff --git a/website/docs/r/firebase_project_location.html.markdown b/website/docs/r/firebase_project_location.html.markdown
 new file mode 100644
 index 000000000..665a0f154
@@ -2269,20 +2096,6 @@ index 000000000..665a0f154
 +## User Project Overrides
 +
 +This resource supports [User Project Overrides](https://registry.terraform.io/providers/hashicorp/google/latest/docs/guides/provider_reference#user_project_override).
-diff --git a/website/docs/r/firebase_web_app.html.markdown b/website/docs/r/firebase_web_app.html.markdown
-index 629c6e719..8cf3fe83c 100644
---- a/website/docs/r/firebase_web_app.html.markdown
-+++ b/website/docs/r/firebase_web_app.html.markdown
-@@ -23,9 +23,6 @@ description: |-
- 
- A Google Cloud Firebase web application instance
- 
--~> **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
--See [Provider Versions](https://terraform.io/docs/providers/google/guides/provider_versions.html) for more details on beta resources.
--
- To get more information about WebApp, see:
- 
- * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps)
 diff --git a/website/docs/r/google_billing_subaccount.html.markdown b/website/docs/r/google_billing_subaccount.html.markdown
 index a9a1871e6..a9081e790 100644
 --- a/website/docs/r/google_billing_subaccount.html.markdown
@@ -2743,10 +2556,10 @@ index 602e15c69..f124e5525 100644
  ## Example Usage
  
 diff --git a/website/docs/r/google_project_service.html.markdown b/website/docs/r/google_project_service.html.markdown
-index e6f20b8c8..6968f5c3b 100644
+index ae4506e17..1c66a7f48 100644
 --- a/website/docs/r/google_project_service.html.markdown
 +++ b/website/docs/r/google_project_service.html.markdown
-@@ -69,8 +69,8 @@ that manage the `google_project` resource itself.
+@@ -66,8 +66,8 @@ be `true` or unset in configurations that manage the `google_project` resource i
  
  * `disable_dependent_services` - (Optional) If `true`, services that are enabled
  and which depend on this service should also be disabled when this service is
@@ -3340,20 +3153,6 @@ index 20c2cb77d..4f99b12c2 100644
    }
    container_image {
      repository = "gcr.io/deeplearning-platform-release/base-cpu"
-diff --git a/website/docs/r/os_config_guest_policies.html.markdown b/website/docs/r/os_config_guest_policies.html.markdown
-index 62822a9bd..3eb8b0784 100644
---- a/website/docs/r/os_config_guest_policies.html.markdown
-+++ b/website/docs/r/os_config_guest_policies.html.markdown
-@@ -25,9 +25,6 @@ An OS Config resource representing a guest configuration policy. These policies
- the desired state for VM instance guest environments including packages to install or remove,
- package repository configurations, and software to install.
- 
--~> **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
--See [Provider Versions](https://terraform.io/docs/providers/google/guides/provider_versions.html) for more details on beta resources.
--
- To get more information about GuestPolicies, see:
- 
- * [API documentation](https://cloud.google.com/compute/docs/osconfig/rest)
 diff --git a/website/docs/r/project_service_identity.html.markdown b/website/docs/r/project_service_identity.html.markdown
 index bc1d673a0..a19ec47e2 100644
 --- a/website/docs/r/project_service_identity.html.markdown
@@ -3413,19 +3212,10 @@ index 8b0d0f579..01a877d8d 100644
  ~> **Note:**  All arguments marked as write-only values will not be stored in the state: `payload.secret_data_wo`.
  [Read more about Write-only Attributes](https://developer.hashicorp.com/terraform/plugin/sdkv2/resources/write-only-arguments).
 diff --git a/website/docs/r/security_scanner_scan_config.html.markdown b/website/docs/r/security_scanner_scan_config.html.markdown
-index 7971e6136..d66292900 100644
+index 7971e6136..87700c82b 100644
 --- a/website/docs/r/security_scanner_scan_config.html.markdown
 +++ b/website/docs/r/security_scanner_scan_config.html.markdown
-@@ -23,18 +23,13 @@ description: |-
- 
- A ScanConfig resource contains the configurations to launch a scan.
- 
--~> **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
--See [Provider Versions](https://terraform.io/docs/providers/google/guides/provider_versions.html) for more details on beta resources.
--
- To get more information about ScanConfig, see:
- 
- * [API documentation](https://cloud.google.com/security-scanner/docs/reference/rest/v1beta/projects.scanConfigs)
+@@ -32,9 +32,7 @@ To get more information about ScanConfig, see:
  * How-to Guides
      * [Using Cloud Security Scanner](https://cloud.google.com/security-scanner/docs/scanning)
  
@@ -3436,7 +3226,7 @@ index 7971e6136..d66292900 100644
  
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=scan_config_basic&open_in_editor=main.tf" target="_blank">
-@@ -52,7 +47,7 @@ resource "google_compute_address" "scanner_static_ip" {
+@@ -52,7 +50,7 @@ resource "google_compute_address" "scanner_static_ip" {
  
  resource "google_security_scanner_scan_config" "scan-config" {
    provider         = google-beta
@@ -3445,96 +3235,6 @@ index 7971e6136..d66292900 100644
    starting_urls    = ["http://${google_compute_address.scanner_static_ip.address}"]
    target_platforms = ["COMPUTE"]
  }
-diff --git a/website/docs/r/service_directory_endpoint.html.markdown b/website/docs/r/service_directory_endpoint.html.markdown
-index ef50f675f..907e3cb4c 100644
---- a/website/docs/r/service_directory_endpoint.html.markdown
-+++ b/website/docs/r/service_directory_endpoint.html.markdown
-@@ -23,9 +23,6 @@ description: |-
- 
- An individual endpoint that provides a service.
- 
--~> **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
--See [Provider Versions](https://terraform.io/docs/providers/google/guides/provider_versions.html) for more details on beta resources.
--
- To get more information about Endpoint, see:
- 
- * [API documentation](https://cloud.google.com/service-directory/docs/reference/rest/v1beta1/projects.locations.namespaces.services.endpoints)
-diff --git a/website/docs/r/service_directory_namespace.html.markdown b/website/docs/r/service_directory_namespace.html.markdown
-index 394862da3..8ca4ab603 100644
---- a/website/docs/r/service_directory_namespace.html.markdown
-+++ b/website/docs/r/service_directory_namespace.html.markdown
-@@ -24,9 +24,6 @@ description: |-
- A container for `services`. Namespaces allow administrators to group services
- together and define permissions for a collection of services.
- 
--~> **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
--See [Provider Versions](https://terraform.io/docs/providers/google/guides/provider_versions.html) for more details on beta resources.
--
- To get more information about Namespace, see:
- 
- * [API documentation](https://cloud.google.com/service-directory/docs/reference/rest/v1beta1/projects.locations.namespaces)
-diff --git a/website/docs/r/service_directory_namespace_iam.html.markdown b/website/docs/r/service_directory_namespace_iam.html.markdown
-index 47cf15102..49c9e830c 100644
---- a/website/docs/r/service_directory_namespace_iam.html.markdown
-+++ b/website/docs/r/service_directory_namespace_iam.html.markdown
-@@ -35,11 +35,7 @@ A data source can be used to retrieve policy data in advent you do not need crea
- 
- ~> **Note:** `google_service_directory_namespace_iam_binding` resources **can be** used in conjunction with `google_service_directory_namespace_iam_member` resources **only if** they do not grant privilege to the same role.
- 
--
--~> **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
--See [Provider Versions](https://terraform.io/docs/providers/google/guides/provider_versions.html) for more details on beta resources.
--
--## google_service_directory_namespace_iam_policy
-+## google\_service\_directory\_namespace\_iam\_policy
- 
- ```hcl
- data "google_iam_policy" "admin" {
-diff --git a/website/docs/r/service_directory_service.html.markdown b/website/docs/r/service_directory_service.html.markdown
-index 238710ea0..712ffdcfa 100644
---- a/website/docs/r/service_directory_service.html.markdown
-+++ b/website/docs/r/service_directory_service.html.markdown
-@@ -23,9 +23,6 @@ description: |-
- 
- An individual service. A service contains a name and optional metadata.
- 
--~> **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
--See [Provider Versions](https://terraform.io/docs/providers/google/guides/provider_versions.html) for more details on beta resources.
--
- To get more information about Service, see:
- 
- * [API documentation](https://cloud.google.com/service-directory/docs/reference/rest/v1beta1/projects.locations.namespaces.services)
-diff --git a/website/docs/r/service_directory_service_iam.html.markdown b/website/docs/r/service_directory_service_iam.html.markdown
-index 4cf946b27..0db49cfae 100644
---- a/website/docs/r/service_directory_service_iam.html.markdown
-+++ b/website/docs/r/service_directory_service_iam.html.markdown
-@@ -35,11 +35,7 @@ A data source can be used to retrieve policy data in advent you do not need crea
- 
- ~> **Note:** `google_service_directory_service_iam_binding` resources **can be** used in conjunction with `google_service_directory_service_iam_member` resources **only if** they do not grant privilege to the same role.
- 
--
--~> **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
--See [Provider Versions](https://terraform.io/docs/providers/google/guides/provider_versions.html) for more details on beta resources.
--
--## google_service_directory_service_iam_policy
-+## google\_service\_directory\_service\_iam\_policy
- 
- ```hcl
- data "google_iam_policy" "admin" {
-diff --git a/website/docs/r/service_usage_consumer_quota_override.html.markdown b/website/docs/r/service_usage_consumer_quota_override.html.markdown
-index f223033bb..dccc5adae 100644
---- a/website/docs/r/service_usage_consumer_quota_override.html.markdown
-+++ b/website/docs/r/service_usage_consumer_quota_override.html.markdown
-@@ -25,9 +25,6 @@ A consumer override is applied to the consumer on its own authority to limit its
- Consumer overrides cannot be used to grant more quota than would be allowed by admin overrides,
- producer overrides, or the default limit of the service.
- 
--~> **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
--See [Provider Versions](https://terraform.io/docs/providers/google/guides/provider_versions.html) for more details on beta resources.
--
- To get more information about ConsumerQuotaOverride, see:
- * How-to Guides
-     * [Managing Service Quota](https://cloud.google.com/service-usage/docs/manage-quota )
 diff --git a/website/docs/r/spanner_database.html.markdown b/website/docs/r/spanner_database.html.markdown
 index 94c3db9d4..091d0e9ac 100644
 --- a/website/docs/r/spanner_database.html.markdown
@@ -3570,7 +3270,7 @@ index 94c3db9d4..091d0e9ac 100644
  * `default_time_zone` - (Optional) The default time zone for the database. The default time zone must be a valid name
  from the tz database. Default value is "America/Los_angeles".
 diff --git a/website/docs/r/sql_database_instance.html.markdown b/website/docs/r/sql_database_instance.html.markdown
-index 8a3712588..117dcd9ee 100644
+index 1f57d83db..0f675d26f 100644
 --- a/website/docs/r/sql_database_instance.html.markdown
 +++ b/website/docs/r/sql_database_instance.html.markdown
 @@ -24,12 +24,12 @@ Creates a new Google SQL Database Instance. For more information, see the [offic
@@ -3606,7 +3306,7 @@ index 8a3712588..117dcd9ee 100644
      The provided key must be in the same region as the SQL instance.  In order
      to use this feature, a special kind of service account must be created and
      granted permission on this key.  This step can currently only be done
-@@ -336,20 +336,16 @@ includes an up-to-date reference of supported versions.
+@@ -336,18 +336,14 @@ includes an up-to-date reference of supported versions.
      That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
      key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
  
@@ -3614,16 +3314,22 @@ index 8a3712588..117dcd9ee 100644
 -    When the field is set to true or unset in Terraform state, a `terraform apply`
 -    or `terraform destroy` that would delete the instance will fail.
 -    When the field is set to false, deleting the instance is allowed.
--
--  ~> **NOTE:** This flag only protects instances from deletion within Terraform. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Terraform), use the API flag `settings.deletion_protection_enabled`.
 +* `deletion_protection` - (Optional) Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 +in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
  
+ * `final_backup_description` - (Optional) The description of final backup. Only set this field when `final_backup_config.enabled` is true.
+ 
+-  ~> **NOTE:** This flag only protects instances from deletion within Terraform. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Terraform), use the API flag `settings.deletion_protection_enabled`.
+-
  * `restore_backup_context` - (optional) The context needed to restore the database to a backup run. This field will
 -    cause Terraform to trigger the database to restore from the backup run indicated. The configuration is detailed below.
 -    **NOTE:** Restoring from a backup is an imperative action and not recommended via Terraform. Adding or modifying this
 +    cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
 +    **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
+     block during resource creation/update will trigger the restore action after the resource is created/updated.
+ 
+ *  `backupdr_backup` - (optional) The backupdr_backup needed to restore the database to a backup run. This field will
+@@ -356,7 +352,7 @@ includes an up-to-date reference of supported versions.
      block during resource creation/update will trigger the restore action after the resource is created/updated.
  
  * `clone` - (Optional) The context needed to create this instance as a clone of another instance. When this field is set during
@@ -3632,7 +3338,7 @@ index 8a3712588..117dcd9ee 100644
      configuration is detailed below.
  
  The `settings` block supports:
-@@ -619,7 +615,7 @@ The optional `clone` block supports:
+@@ -632,7 +628,7 @@ The optional `clone` block supports:
  * `allocated_ip_range` -  (Optional) The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?.
  
  The optional `restore_backup_context` block supports:
@@ -3641,7 +3347,7 @@ index 8a3712588..117dcd9ee 100644
  block during resource creation/update will trigger the restore action after the resource is created/updated.
  
  * `backup_run_id` - (Required) The ID of the backup run to restore from.
-@@ -685,21 +681,13 @@ instance.
+@@ -698,21 +694,13 @@ instance.
  
    * A `PRIVATE` address is an address for an instance which has been configured to use private networking see: [Private IP](https://cloud.google.com/sql/docs/mysql/private-ip).
  
@@ -3694,7 +3400,7 @@ index d3e4a7bb3..48878d436 100644
  ## Example Usage
  
 diff --git a/website/docs/r/storage_bucket.html.markdown b/website/docs/r/storage_bucket.html.markdown
-index c1c78fa36..0ff8caf8a 100644
+index 85bd81f3c..5364f85f8 100644
 --- a/website/docs/r/storage_bucket.html.markdown
 +++ b/website/docs/r/storage_bucket.html.markdown
 @@ -143,7 +143,7 @@ The following arguments are supported:
@@ -3761,7 +3467,7 @@ index 548939a08..8217b9e28 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/storage_bucket_object.html.markdown b/website/docs/r/storage_bucket_object.html.markdown
-index 7601b45bb..019113e51 100644
+index 4cf3bdb01..b1814c778 100644
 --- a/website/docs/r/storage_bucket_object.html.markdown
 +++ b/website/docs/r/storage_bucket_object.html.markdown
 @@ -66,7 +66,7 @@ The following arguments are supported:
@@ -3818,16 +3524,3 @@ index b2b089dd9..03ce6cc14 100644
  ## Attributes Reference
  
  Only the arguments listed above are exposed as attributes.
-diff --git a/website/docs/r/tpu_node.html.markdown b/website/docs/r/tpu_node.html.markdown
-index 564a2d3c2..6c8d9f001 100644
---- a/website/docs/r/tpu_node.html.markdown
-+++ b/website/docs/r/tpu_node.html.markdown
-@@ -62,7 +62,7 @@ resource "google_tpu_node" "tpu" {
- 
-   tensorflow_version = data.google_tpu_tensorflow_versions.available.versions[0]
- 
--  description = "Terraform Google Provider test TPU"
-+  description = "Google Provider test TPU"
-   use_service_networking = true
- network = google_service_networking_connection.private_service_connection.network
- 

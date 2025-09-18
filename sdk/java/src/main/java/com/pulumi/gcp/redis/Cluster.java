@@ -561,7 +561,6 @@ import javax.annotation.Nullable;
  *             .authorizationMode("AUTH_MODE_DISABLED")
  *             .redisConfigs(Map.of("maxmemory-policy", "volatile-ttl"))
  *             .deletionProtectionEnabled(true)
- *             .allowFewerZonesDeployment(true)
  *             .zoneDistributionConfig(ClusterZoneDistributionConfigArgs.builder()
  *                 .mode("MULTI_ZONE")
  *                 .build())
@@ -702,26 +701,6 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:redis/cluster:Cluster")
 public class Cluster extends com.pulumi.resources.CustomResource {
-    /**
-     * Allows customers to specify if they are okay with deploying a multi-zone
-     * cluster in less than 3 zones. Once set, if there is a zonal outage during
-     * the cluster creation, the cluster will only be deployed in 2 zones, and
-     * stay within the 2 zones for its lifecycle.
-     * 
-     */
-    @Export(name="allowFewerZonesDeployment", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> allowFewerZonesDeployment;
-
-    /**
-     * @return Allows customers to specify if they are okay with deploying a multi-zone
-     * cluster in less than 3 zones. Once set, if there is a zonal outage during
-     * the cluster creation, the cluster will only be deployed in 2 zones, and
-     * stay within the 2 zones for its lifecycle.
-     * 
-     */
-    public Output<Optional<Boolean>> allowFewerZonesDeployment() {
-        return Codegen.optional(this.allowFewerZonesDeployment);
-    }
     /**
      * Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
      * Default value is `AUTH_MODE_DISABLED`.

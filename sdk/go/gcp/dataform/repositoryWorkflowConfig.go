@@ -8,10 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A resource represents a Dataform workflow configuration
+//
+// To get more information about RepositoryWorkflowConfig, see:
+//
+// * [API documentation](https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories.workflowConfigs)
+// * How-to Guides
+//   - [Official Documentation](https://cloud.google.com/dataform/docs/workflow-configurations)
+//
 // ## Example Usage
 //
 // ### Dataform Repository Workflow Config
@@ -21,10 +29,10 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/dataform"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/secretmanager"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/serviceaccount"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/sourcerepo"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataform"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sourcerepo"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )

@@ -202,6 +202,10 @@ export class TransferJob extends pulumi.CustomResource {
      */
     declare public readonly schedule: pulumi.Output<outputs.storage.TransferJobSchedule | undefined>;
     /**
+     * The user-managed service account to run the job. If this field is specified, the given service account is granted the necessary permissions to all applicable resources (e.g. GCS buckets) required by the job.
+     */
+    declare public readonly serviceAccount: pulumi.Output<string | undefined>;
+    /**
      * Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
      */
     declare public readonly status: pulumi.Output<string | undefined>;
@@ -234,6 +238,7 @@ export class TransferJob extends pulumi.CustomResource {
             resourceInputs["project"] = state?.project;
             resourceInputs["replicationSpec"] = state?.replicationSpec;
             resourceInputs["schedule"] = state?.schedule;
+            resourceInputs["serviceAccount"] = state?.serviceAccount;
             resourceInputs["status"] = state?.status;
             resourceInputs["transferSpec"] = state?.transferSpec;
         } else {
@@ -249,6 +254,7 @@ export class TransferJob extends pulumi.CustomResource {
             resourceInputs["project"] = args?.project;
             resourceInputs["replicationSpec"] = args?.replicationSpec;
             resourceInputs["schedule"] = args?.schedule;
+            resourceInputs["serviceAccount"] = args?.serviceAccount;
             resourceInputs["status"] = args?.status;
             resourceInputs["transferSpec"] = args?.transferSpec;
             resourceInputs["creationTime"] = undefined /*out*/;
@@ -312,6 +318,10 @@ export interface TransferJobState {
      */
     schedule?: pulumi.Input<inputs.storage.TransferJobSchedule>;
     /**
+     * The user-managed service account to run the job. If this field is specified, the given service account is granted the necessary permissions to all applicable resources (e.g. GCS buckets) required by the job.
+     */
+    serviceAccount?: pulumi.Input<string>;
+    /**
      * Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
      */
     status?: pulumi.Input<string>;
@@ -360,6 +370,10 @@ export interface TransferJobArgs {
      * Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `eventStream` must be set.
      */
     schedule?: pulumi.Input<inputs.storage.TransferJobSchedule>;
+    /**
+     * The user-managed service account to run the job. If this field is specified, the given service account is granted the necessary permissions to all applicable resources (e.g. GCS buckets) required by the job.
+     */
+    serviceAccount?: pulumi.Input<string>;
     /**
      * Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
      */

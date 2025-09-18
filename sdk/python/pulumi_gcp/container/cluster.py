@@ -163,7 +163,7 @@ class ClusterArgs:
         :param pulumi.Input[_builtins.bool] enable_shielded_nodes: Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
         :param pulumi.Input[_builtins.bool] enable_tpu: Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
-        :param pulumi.Input['ClusterEnterpriseConfigArgs'] enterprise_config: Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+        :param pulumi.Input['ClusterEnterpriseConfigArgs'] enterprise_config: (DEPRECATED) Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
         :param pulumi.Input['ClusterFleetArgs'] fleet: Fleet configuration for the cluster. Structure is documented below.
         :param pulumi.Input['ClusterGatewayApiConfigArgs'] gateway_api_config: Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
         :param pulumi.Input['ClusterGkeAutoUpgradeConfigArgs'] gke_auto_upgrade_config: Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
@@ -384,6 +384,9 @@ class ClusterArgs:
             pulumi.set(__self__, "enable_shielded_nodes", enable_shielded_nodes)
         if enable_tpu is not None:
             pulumi.set(__self__, "enable_tpu", enable_tpu)
+        if enterprise_config is not None:
+            warnings.warn("""GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release""", DeprecationWarning)
+            pulumi.log.warn("""enterprise_config is deprecated: GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release""")
         if enterprise_config is not None:
             pulumi.set(__self__, "enterprise_config", enterprise_config)
         if fleet is not None:
@@ -875,9 +878,10 @@ class ClusterArgs:
 
     @_builtins.property
     @pulumi.getter(name="enterpriseConfig")
+    @_utilities.deprecated("""GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release""")
     def enterprise_config(self) -> Optional[pulumi.Input['ClusterEnterpriseConfigArgs']]:
         """
-        Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+        (DEPRECATED) Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
         """
         return pulumi.get(self, "enterprise_config")
 
@@ -1740,7 +1744,7 @@ class _ClusterState:
         :param pulumi.Input[_builtins.bool] enable_tpu: Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
         :param pulumi.Input[_builtins.str] endpoint: The IP address of this cluster's Kubernetes master.
-        :param pulumi.Input['ClusterEnterpriseConfigArgs'] enterprise_config: Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+        :param pulumi.Input['ClusterEnterpriseConfigArgs'] enterprise_config: (DEPRECATED) Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
         :param pulumi.Input['ClusterFleetArgs'] fleet: Fleet configuration for the cluster. Structure is documented below.
         :param pulumi.Input['ClusterGatewayApiConfigArgs'] gateway_api_config: Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
         :param pulumi.Input['ClusterGkeAutoUpgradeConfigArgs'] gke_auto_upgrade_config: Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
@@ -1978,6 +1982,9 @@ class _ClusterState:
             pulumi.set(__self__, "enable_tpu", enable_tpu)
         if endpoint is not None:
             pulumi.set(__self__, "endpoint", endpoint)
+        if enterprise_config is not None:
+            warnings.warn("""GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release""", DeprecationWarning)
+            pulumi.log.warn("""enterprise_config is deprecated: GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release""")
         if enterprise_config is not None:
             pulumi.set(__self__, "enterprise_config", enterprise_config)
         if fleet is not None:
@@ -2507,9 +2514,10 @@ class _ClusterState:
 
     @_builtins.property
     @pulumi.getter(name="enterpriseConfig")
+    @_utilities.deprecated("""GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release""")
     def enterprise_config(self) -> Optional[pulumi.Input['ClusterEnterpriseConfigArgs']]:
         """
-        Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+        (DEPRECATED) Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
         """
         return pulumi.get(self, "enterprise_config")
 
@@ -3574,7 +3582,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enable_shielded_nodes: Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
         :param pulumi.Input[_builtins.bool] enable_tpu: Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
-        :param pulumi.Input[Union['ClusterEnterpriseConfigArgs', 'ClusterEnterpriseConfigArgsDict']] enterprise_config: Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+        :param pulumi.Input[Union['ClusterEnterpriseConfigArgs', 'ClusterEnterpriseConfigArgsDict']] enterprise_config: (DEPRECATED) Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
         :param pulumi.Input[Union['ClusterFleetArgs', 'ClusterFleetArgsDict']] fleet: Fleet configuration for the cluster. Structure is documented below.
         :param pulumi.Input[Union['ClusterGatewayApiConfigArgs', 'ClusterGatewayApiConfigArgsDict']] gateway_api_config: Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
         :param pulumi.Input[Union['ClusterGkeAutoUpgradeConfigArgs', 'ClusterGkeAutoUpgradeConfigArgsDict']] gke_auto_upgrade_config: Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
@@ -4225,7 +4233,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enable_tpu: Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
         :param pulumi.Input[_builtins.str] endpoint: The IP address of this cluster's Kubernetes master.
-        :param pulumi.Input[Union['ClusterEnterpriseConfigArgs', 'ClusterEnterpriseConfigArgsDict']] enterprise_config: Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+        :param pulumi.Input[Union['ClusterEnterpriseConfigArgs', 'ClusterEnterpriseConfigArgsDict']] enterprise_config: (DEPRECATED) Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
         :param pulumi.Input[Union['ClusterFleetArgs', 'ClusterFleetArgsDict']] fleet: Fleet configuration for the cluster. Structure is documented below.
         :param pulumi.Input[Union['ClusterGatewayApiConfigArgs', 'ClusterGatewayApiConfigArgsDict']] gateway_api_config: Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
         :param pulumi.Input[Union['ClusterGkeAutoUpgradeConfigArgs', 'ClusterGkeAutoUpgradeConfigArgsDict']] gke_auto_upgrade_config: Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
@@ -4780,9 +4788,10 @@ class Cluster(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="enterpriseConfig")
+    @_utilities.deprecated("""GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release""")
     def enterprise_config(self) -> pulumi.Output['outputs.ClusterEnterpriseConfig']:
         """
-        Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+        (DEPRECATED) Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
         """
         return pulumi.get(self, "enterprise_config")
 

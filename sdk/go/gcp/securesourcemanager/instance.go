@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/securesourcemanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securesourcemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -61,9 +61,9 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/kms"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/securesourcemanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securesourcemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -107,9 +107,9 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/certificateauthority"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/securesourcemanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securesourcemanager"
 //	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -217,11 +217,11 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/certificateauthority"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/dns"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/securesourcemanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securesourcemanager"
 //	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -469,11 +469,11 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/certificateauthority"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/dns"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/securesourcemanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securesourcemanager"
 //	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -678,7 +678,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/securesourcemanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securesourcemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -740,7 +740,7 @@ type Instance struct {
 	// to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
 	// and all its contents. Setting `PREVENT` prevents the resource from accidental
 	// deletion by erroring out during plan.
-	// Default is `DELETE`.  Possible values are:
+	// Default is `PREVENT`.  Possible values are:
 	// * DELETE
 	// * PREVENT
 	// * ABANDON
@@ -831,7 +831,7 @@ type instanceState struct {
 	// to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
 	// and all its contents. Setting `PREVENT` prevents the resource from accidental
 	// deletion by erroring out during plan.
-	// Default is `DELETE`.  Possible values are:
+	// Default is `PREVENT`.  Possible values are:
 	// * DELETE
 	// * PREVENT
 	// * ABANDON
@@ -882,7 +882,7 @@ type InstanceState struct {
 	// to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
 	// and all its contents. Setting `PREVENT` prevents the resource from accidental
 	// deletion by erroring out during plan.
-	// Default is `DELETE`.  Possible values are:
+	// Default is `PREVENT`.  Possible values are:
 	// * DELETE
 	// * PREVENT
 	// * ABANDON
@@ -935,7 +935,7 @@ type instanceArgs struct {
 	// to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
 	// and all its contents. Setting `PREVENT` prevents the resource from accidental
 	// deletion by erroring out during plan.
-	// Default is `DELETE`.  Possible values are:
+	// Default is `PREVENT`.  Possible values are:
 	// * DELETE
 	// * PREVENT
 	// * ABANDON
@@ -969,7 +969,7 @@ type InstanceArgs struct {
 	// to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
 	// and all its contents. Setting `PREVENT` prevents the resource from accidental
 	// deletion by erroring out during plan.
-	// Default is `DELETE`.  Possible values are:
+	// Default is `PREVENT`.  Possible values are:
 	// * DELETE
 	// * PREVENT
 	// * ABANDON
@@ -1093,7 +1093,7 @@ func (o InstanceOutput) CreateTime() pulumi.StringOutput {
 // to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
 // and all its contents. Setting `PREVENT` prevents the resource from accidental
 // deletion by erroring out during plan.
-// Default is `DELETE`.  Possible values are:
+// Default is `PREVENT`.  Possible values are:
 // * DELETE
 // * PREVENT
 // * ABANDON

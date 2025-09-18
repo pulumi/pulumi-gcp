@@ -13,6 +13,7 @@ import com.pulumi.gcp.cloudrunv2.inputs.ServiceState;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceBinaryAuthorization;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceBuildConfig;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceCondition;
+import com.pulumi.gcp.cloudrunv2.outputs.ServiceMultiRegionSettings;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceScaling;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplate;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTerminalCondition;
@@ -47,6 +48,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.cloudrunv2.Service;
  * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceScalingArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -66,6 +68,9 @@ import javax.annotation.Nullable;
  *             .location("us-central1")
  *             .deletionProtection(false)
  *             .ingress("INGRESS_TRAFFIC_ALL")
+ *             .scaling(ServiceScalingArgs.builder()
+ *                 .maxInstanceCount(100)
+ *                 .build())
  *             .template(ServiceTemplateArgs.builder()
  *                 .containers(ServiceTemplateContainerArgs.builder()
  *                     .image("us-docker.pkg.dev/cloudrun/container/hello")
@@ -144,8 +149,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
  * import com.pulumi.gcp.cloudrunv2.Service;
  * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceScalingArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
- * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateScalingArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTrafficArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
@@ -193,10 +198,10 @@ import javax.annotation.Nullable;
  *             .location("us-central1")
  *             .deletionProtection(false)
  *             .ingress("INGRESS_TRAFFIC_ALL")
+ *             .scaling(ServiceScalingArgs.builder()
+ *                 .maxInstanceCount(2)
+ *                 .build())
  *             .template(ServiceTemplateArgs.builder()
- *                 .scaling(ServiceTemplateScalingArgs.builder()
- *                     .maxInstanceCount(2)
- *                     .build())
  *                 .volumes(ServiceTemplateVolumeArgs.builder()
  *                     .name("cloudsql")
  *                     .cloudSqlInstance(ServiceTemplateVolumeCloudSqlInstanceArgs.builder()
@@ -386,9 +391,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.cloudrunv2.Service;
  * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceScalingArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateNodeSelectorArgs;
- * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateScalingArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -407,6 +412,9 @@ import javax.annotation.Nullable;
  *             .location("us-central1")
  *             .deletionProtection(false)
  *             .ingress("INGRESS_TRAFFIC_ALL")
+ *             .scaling(ServiceScalingArgs.builder()
+ *                 .maxInstanceCount(1)
+ *                 .build())
  *             .template(ServiceTemplateArgs.builder()
  *                 .containers(ServiceTemplateContainerArgs.builder()
  *                     .image("us-docker.pkg.dev/cloudrun/container/hello")
@@ -423,9 +431,6 @@ import javax.annotation.Nullable;
  *                     .accelerator("nvidia-l4")
  *                     .build())
  *                 .gpuZonalRedundancyDisabled(true)
- *                 .scaling(ServiceTemplateScalingArgs.builder()
- *                     .maxInstanceCount(1)
- *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -1468,6 +1473,22 @@ public class Service extends com.pulumi.resources.CustomResource {
      */
     public Output<String> location() {
         return this.location;
+    }
+    /**
+     * Settings for creating a Multi-Region Service. Make sure to use region = &#39;global&#39; when using them. For more information, visit https://cloud.google.com/run/docs/multiple-regions#deploy
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="multiRegionSettings", refs={ServiceMultiRegionSettings.class}, tree="[0]")
+    private Output</* @Nullable */ ServiceMultiRegionSettings> multiRegionSettings;
+
+    /**
+     * @return Settings for creating a Multi-Region Service. Make sure to use region = &#39;global&#39; when using them. For more information, visit https://cloud.google.com/run/docs/multiple-regions#deploy
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ServiceMultiRegionSettings>> multiRegionSettings() {
+        return Codegen.optional(this.multiRegionSettings);
     }
     /**
      * Name of the Service.

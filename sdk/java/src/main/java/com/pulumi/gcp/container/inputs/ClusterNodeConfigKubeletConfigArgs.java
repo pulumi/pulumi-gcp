@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigKubeletConfigEvictionMinimumReclaimArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigKubeletConfigEvictionSoftArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArgs;
+import com.pulumi.gcp.container.inputs.ClusterNodeConfigKubeletConfigMemoryManagerArgs;
+import com.pulumi.gcp.container.inputs.ClusterNodeConfigKubeletConfigTopologyManagerArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -286,6 +288,25 @@ public final class ClusterNodeConfigKubeletConfigArgs extends com.pulumi.resourc
     }
 
     /**
+     * Configuration for the [memory manager](https://kubernetes.io/docs/tasks/administer-cluster/memory-manager/) on the node.
+     * The memory manager optimizes memory and hugepages allocation for pods, especially
+     * those in the Guaranteed QoS class, by influencing NUMA affinity. Structure is documented below.
+     * 
+     */
+    @Import(name="memoryManager")
+    private @Nullable Output<ClusterNodeConfigKubeletConfigMemoryManagerArgs> memoryManager;
+
+    /**
+     * @return Configuration for the [memory manager](https://kubernetes.io/docs/tasks/administer-cluster/memory-manager/) on the node.
+     * The memory manager optimizes memory and hugepages allocation for pods, especially
+     * those in the Guaranteed QoS class, by influencing NUMA affinity. Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterNodeConfigKubeletConfigMemoryManagerArgs>> memoryManager() {
+        return Optional.ofNullable(this.memoryManager);
+    }
+
+    /**
      * Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
      * 
      */
@@ -315,6 +336,21 @@ public final class ClusterNodeConfigKubeletConfigArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.singleProcessOomKill);
     }
 
+    /**
+     * These settings control the kubelet&#39;s [Topology Manager policy](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/#topology-manager-policies), which coordinates the set of components responsible for performance optimizations related to CPU isolation, memory, and device locality. Structure is documented below.
+     * 
+     */
+    @Import(name="topologyManager")
+    private @Nullable Output<ClusterNodeConfigKubeletConfigTopologyManagerArgs> topologyManager;
+
+    /**
+     * @return These settings control the kubelet&#39;s [Topology Manager policy](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/#topology-manager-policies), which coordinates the set of components responsible for performance optimizations related to CPU isolation, memory, and device locality. Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterNodeConfigKubeletConfigTopologyManagerArgs>> topologyManager() {
+        return Optional.ofNullable(this.topologyManager);
+    }
+
     private ClusterNodeConfigKubeletConfigArgs() {}
 
     private ClusterNodeConfigKubeletConfigArgs(ClusterNodeConfigKubeletConfigArgs $) {
@@ -334,8 +370,10 @@ public final class ClusterNodeConfigKubeletConfigArgs extends com.pulumi.resourc
         this.imageMinimumGcAge = $.imageMinimumGcAge;
         this.insecureKubeletReadonlyPortEnabled = $.insecureKubeletReadonlyPortEnabled;
         this.maxParallelImagePulls = $.maxParallelImagePulls;
+        this.memoryManager = $.memoryManager;
         this.podPidsLimit = $.podPidsLimit;
         this.singleProcessOomKill = $.singleProcessOomKill;
+        this.topologyManager = $.topologyManager;
     }
 
     public static Builder builder() {
@@ -727,6 +765,31 @@ public final class ClusterNodeConfigKubeletConfigArgs extends com.pulumi.resourc
         }
 
         /**
+         * @param memoryManager Configuration for the [memory manager](https://kubernetes.io/docs/tasks/administer-cluster/memory-manager/) on the node.
+         * The memory manager optimizes memory and hugepages allocation for pods, especially
+         * those in the Guaranteed QoS class, by influencing NUMA affinity. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder memoryManager(@Nullable Output<ClusterNodeConfigKubeletConfigMemoryManagerArgs> memoryManager) {
+            $.memoryManager = memoryManager;
+            return this;
+        }
+
+        /**
+         * @param memoryManager Configuration for the [memory manager](https://kubernetes.io/docs/tasks/administer-cluster/memory-manager/) on the node.
+         * The memory manager optimizes memory and hugepages allocation for pods, especially
+         * those in the Guaranteed QoS class, by influencing NUMA affinity. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder memoryManager(ClusterNodeConfigKubeletConfigMemoryManagerArgs memoryManager) {
+            return memoryManager(Output.of(memoryManager));
+        }
+
+        /**
          * @param podPidsLimit Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
          * 
          * @return builder
@@ -766,6 +829,27 @@ public final class ClusterNodeConfigKubeletConfigArgs extends com.pulumi.resourc
          */
         public Builder singleProcessOomKill(Boolean singleProcessOomKill) {
             return singleProcessOomKill(Output.of(singleProcessOomKill));
+        }
+
+        /**
+         * @param topologyManager These settings control the kubelet&#39;s [Topology Manager policy](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/#topology-manager-policies), which coordinates the set of components responsible for performance optimizations related to CPU isolation, memory, and device locality. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder topologyManager(@Nullable Output<ClusterNodeConfigKubeletConfigTopologyManagerArgs> topologyManager) {
+            $.topologyManager = topologyManager;
+            return this;
+        }
+
+        /**
+         * @param topologyManager These settings control the kubelet&#39;s [Topology Manager policy](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/#topology-manager-policies), which coordinates the set of components responsible for performance optimizations related to CPU isolation, memory, and device locality. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder topologyManager(ClusterNodeConfigKubeletConfigTopologyManagerArgs topologyManager) {
+            return topologyManager(Output.of(topologyManager));
         }
 
         public ClusterNodeConfigKubeletConfigArgs build() {

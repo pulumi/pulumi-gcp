@@ -15,6 +15,7 @@ import com.pulumi.gcp.chronicle.outputs.ReferenceListScopeInfo;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -37,9 +38,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.chronicle.DataAccessScope;
+ * import com.pulumi.gcp.chronicle.DataAccessScopeArgs;
+ * import com.pulumi.gcp.chronicle.inputs.DataAccessScopeAllowedDataAccessLabelArgs;
  * import com.pulumi.gcp.chronicle.ReferenceList;
  * import com.pulumi.gcp.chronicle.ReferenceListArgs;
  * import com.pulumi.gcp.chronicle.inputs.ReferenceListEntryArgs;
+ * import com.pulumi.gcp.chronicle.inputs.ReferenceListScopeInfoArgs;
+ * import com.pulumi.gcp.chronicle.inputs.ReferenceListScopeInfoReferenceListScopeArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -53,6 +59,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var testScope = new DataAccessScope("testScope", DataAccessScopeArgs.builder()
+ *             .location("us")
+ *             .instance("00000000-0000-0000-0000-000000000000")
+ *             .dataAccessScopeId("scope-id")
+ *             .description("test scope description")
+ *             .allowedDataAccessLabels(DataAccessScopeAllowedDataAccessLabelArgs.builder()
+ *                 .logType("GCP_CLOUDAUDIT")
+ *                 .build())
+ *             .build());
+ * 
  *         var example = new ReferenceList("example", ReferenceListArgs.builder()
  *             .location("us")
  *             .instance("00000000-0000-0000-0000-000000000000")
@@ -62,6 +78,11 @@ import javax.annotation.Nullable;
  *                 .value("referencelist-entry-value")
  *                 .build())
  *             .syntaxType("REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING")
+ *             .scopeInfos(ReferenceListScopeInfoArgs.builder()
+ *                 .referenceListScope(ReferenceListScopeInfoReferenceListScopeArgs.builder()
+ *                     .scopeNames(testScope.name())
+ *                     .build())
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -286,15 +307,15 @@ public class ReferenceList extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="scopeInfos", refs={List.class,ReferenceListScopeInfo.class}, tree="[0,1]")
-    private Output<List<ReferenceListScopeInfo>> scopeInfos;
+    private Output</* @Nullable */ List<ReferenceListScopeInfo>> scopeInfos;
 
     /**
      * @return ScopeInfo specifies the scope info of the reference list.
      * Structure is documented below.
      * 
      */
-    public Output<List<ReferenceListScopeInfo>> scopeInfos() {
-        return this.scopeInfos;
+    public Output<Optional<List<ReferenceListScopeInfo>>> scopeInfos() {
+        return Codegen.optional(this.scopeInfos);
     }
     /**
      * Possible values:

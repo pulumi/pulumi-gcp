@@ -13,19 +13,19 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
     public sealed class TriggerRepositoryEventConfigPushArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Regex of branches to match.  Specify only one of branch or tag.
+        /// Regex of branches to match.
         /// </summary>
         [Input("branch")]
         public Input<string>? Branch { get; set; }
 
         /// <summary>
-        /// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+        /// If true, only trigger a build if the revision regex does NOT match the git_ref regex.
         /// </summary>
         [Input("invertRegex")]
         public Input<bool>? InvertRegex { get; set; }
 
         /// <summary>
-        /// Regex of tags to match.  Specify only one of branch or tag.
+        /// Regex of tags to match.
         /// </summary>
         [Input("tag")]
         public Input<string>? Tag { get; set; }

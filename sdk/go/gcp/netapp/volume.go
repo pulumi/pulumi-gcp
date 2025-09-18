@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,8 +34,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/netapp"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/netapp"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -201,6 +201,8 @@ type Volume struct {
 	StateDetails pulumi.StringOutput `pulumi:"stateDetails"`
 	// Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
 	StoragePool pulumi.StringOutput `pulumi:"storagePool"`
+	// Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+	ThroughputMibps pulumi.Float64Output `pulumi:"throughputMibps"`
 	// Tiering policy for the volume.
 	// Structure is documented below.
 	TieringPolicy VolumeTieringPolicyPtrOutput `pulumi:"tieringPolicy"`
@@ -359,6 +361,8 @@ type volumeState struct {
 	StateDetails *string `pulumi:"stateDetails"`
 	// Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
 	StoragePool *string `pulumi:"storagePool"`
+	// Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+	ThroughputMibps *float64 `pulumi:"throughputMibps"`
 	// Tiering policy for the volume.
 	// Structure is documented below.
 	TieringPolicy *VolumeTieringPolicy `pulumi:"tieringPolicy"`
@@ -468,6 +472,8 @@ type VolumeState struct {
 	StateDetails pulumi.StringPtrInput
 	// Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
 	StoragePool pulumi.StringPtrInput
+	// Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+	ThroughputMibps pulumi.Float64PtrInput
 	// Tiering policy for the volume.
 	// Structure is documented below.
 	TieringPolicy VolumeTieringPolicyPtrInput
@@ -547,6 +553,8 @@ type volumeArgs struct {
 	SnapshotPolicy *VolumeSnapshotPolicy `pulumi:"snapshotPolicy"`
 	// Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
 	StoragePool string `pulumi:"storagePool"`
+	// Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+	ThroughputMibps *float64 `pulumi:"throughputMibps"`
 	// Tiering policy for the volume.
 	// Structure is documented below.
 	TieringPolicy *VolumeTieringPolicy `pulumi:"tieringPolicy"`
@@ -619,6 +627,8 @@ type VolumeArgs struct {
 	SnapshotPolicy VolumeSnapshotPolicyPtrInput
 	// Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
 	StoragePool pulumi.StringInput
+	// Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+	ThroughputMibps pulumi.Float64PtrInput
 	// Tiering policy for the volume.
 	// Structure is documented below.
 	TieringPolicy VolumeTieringPolicyPtrInput
@@ -922,6 +932,11 @@ func (o VolumeOutput) StateDetails() pulumi.StringOutput {
 // Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
 func (o VolumeOutput) StoragePool() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.StoragePool }).(pulumi.StringOutput)
+}
+
+// Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+func (o VolumeOutput) ThroughputMibps() pulumi.Float64Output {
+	return o.ApplyT(func(v *Volume) pulumi.Float64Output { return v.ThroughputMibps }).(pulumi.Float64Output)
 }
 
 // Tiering policy for the volume.

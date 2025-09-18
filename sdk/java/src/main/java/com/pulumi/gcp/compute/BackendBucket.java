@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.BackendBucketArgs;
 import com.pulumi.gcp.compute.inputs.BackendBucketState;
 import com.pulumi.gcp.compute.outputs.BackendBucketCdnPolicy;
+import com.pulumi.gcp.compute.outputs.BackendBucketParams;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -359,6 +360,7 @@ public class BackendBucket extends com.pulumi.resources.CustomResource {
     }
     /**
      * If true, enable Cloud CDN for this BackendBucket.
+     * Note: This cannot be set to true when loadBalancingScheme is set to INTERNAL_MANAGED.
      * 
      */
     @Export(name="enableCdn", refs={Boolean.class}, tree="[0]")
@@ -366,6 +368,7 @@ public class BackendBucket extends com.pulumi.resources.CustomResource {
 
     /**
      * @return If true, enable Cloud CDN for this BackendBucket.
+     * Note: This cannot be set to true when loadBalancingScheme is set to INTERNAL_MANAGED.
      * 
      */
     public Output<Optional<Boolean>> enableCdn() {
@@ -374,6 +377,7 @@ public class BackendBucket extends com.pulumi.resources.CustomResource {
     /**
      * The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
      * If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+     * Important: CDN cannot be enabled (enableCdn cannot be set to true) when loadBalancingScheme is set to INTERNAL_MANAGED.
      * Possible values are: `INTERNAL_MANAGED`.
      * 
      */
@@ -383,6 +387,7 @@ public class BackendBucket extends com.pulumi.resources.CustomResource {
     /**
      * @return The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
      * If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+     * Important: CDN cannot be enabled (enableCdn cannot be set to true) when loadBalancingScheme is set to INTERNAL_MANAGED.
      * Possible values are: `INTERNAL_MANAGED`.
      * 
      */
@@ -414,6 +419,22 @@ public class BackendBucket extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="params", refs={BackendBucketParams.class}, tree="[0]")
+    private Output</* @Nullable */ BackendBucketParams> params;
+
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<BackendBucketParams>> params() {
+        return Codegen.optional(this.params);
     }
     /**
      * The ID of the project in which the resource belongs.

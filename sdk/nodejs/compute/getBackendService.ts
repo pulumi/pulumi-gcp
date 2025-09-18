@@ -109,6 +109,7 @@ export interface GetBackendServiceResult {
     readonly name: string;
     readonly networkPassThroughLbTrafficPolicies: outputs.compute.GetBackendServiceNetworkPassThroughLbTrafficPolicy[];
     readonly outlierDetections: outputs.compute.GetBackendServiceOutlierDetection[];
+    readonly params: outputs.compute.GetBackendServiceParam[];
     /**
      * The name of a service that has been added to an instance group in this backend.
      */

@@ -8,10 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages Custom Domains for Firebase Hosting. Custom Domains link your
+// domain names with Firebase Hosting sites, allowing Hosting to serve content
+// on those domain names.
+//
+// To get more information about CustomDomain, see:
+//
+// * [API documentation](https://firebase.google.com/docs/reference/hosting/rest/v1beta1/projects.sites.customDomains)
+// * How-to Guides
+//   - [Official Documentation](https://firebase.google.com/docs/hosting)
+//
 // ## Example Usage
 //
 // ### Firebasehosting Customdomain Basic
@@ -21,7 +31,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/firebase"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -48,7 +58,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/firebase"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -85,8 +95,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrunv2"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/firebase"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )

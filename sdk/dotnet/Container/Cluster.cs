@@ -400,7 +400,7 @@ namespace Pulumi.Gcp.Container
         public Output<string> Endpoint { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+        /// (DEPRECATED) Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
         /// </summary>
         [Output("enterpriseConfig")]
         public Output<Outputs.ClusterEnterpriseConfig> EnterpriseConfig { get; private set; } = null!;
@@ -1115,7 +1115,7 @@ namespace Pulumi.Gcp.Container
         public Input<bool>? EnableTpu { get; set; }
 
         /// <summary>
-        /// Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+        /// (DEPRECATED) Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
         /// </summary>
         [Input("enterpriseConfig")]
         public Input<Inputs.ClusterEnterpriseConfigArgs>? EnterpriseConfig { get; set; }
@@ -1781,7 +1781,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Endpoint { get; set; }
 
         /// <summary>
-        /// Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+        /// (DEPRECATED) Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
         /// </summary>
         [Input("enterpriseConfig")]
         public Input<Inputs.ClusterEnterpriseConfigGetArgs>? EnterpriseConfig { get; set; }

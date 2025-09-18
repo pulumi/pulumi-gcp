@@ -245,20 +245,14 @@ public final class RegionInstanceTemplateDiskArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Indicates how many IOPS to provision for the disk. This
-     * sets the number of I/O operations per second that the disk can handle.
-     * Values must be between 10,000 and 120,000. For more details, see the
-     * [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+     * Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. For more details, see the [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk) or the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks) depending on the selected disk_type.
      * 
      */
     @Import(name="provisionedIops")
     private @Nullable Output<Integer> provisionedIops;
 
     /**
-     * @return Indicates how many IOPS to provision for the disk. This
-     * sets the number of I/O operations per second that the disk can handle.
-     * Values must be between 10,000 and 120,000. For more details, see the
-     * [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+     * @return Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. For more details, see the [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk) or the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks) depending on the selected disk_type.
      * 
      */
     public Optional<Output<Integer>> provisionedIops() {
@@ -788,10 +782,7 @@ public final class RegionInstanceTemplateDiskArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param provisionedIops Indicates how many IOPS to provision for the disk. This
-         * sets the number of I/O operations per second that the disk can handle.
-         * Values must be between 10,000 and 120,000. For more details, see the
-         * [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+         * @param provisionedIops Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. For more details, see the [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk) or the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks) depending on the selected disk_type.
          * 
          * @return builder
          * 
@@ -802,10 +793,7 @@ public final class RegionInstanceTemplateDiskArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param provisionedIops Indicates how many IOPS to provision for the disk. This
-         * sets the number of I/O operations per second that the disk can handle.
-         * Values must be between 10,000 and 120,000. For more details, see the
-         * [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+         * @param provisionedIops Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. For more details, see the [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk) or the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks) depending on the selected disk_type.
          * 
          * @return builder
          * 

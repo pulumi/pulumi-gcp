@@ -42,6 +42,21 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The name of the BackupDR backup to restore from.
+     * 
+     */
+    @Import(name="backupdrBackup")
+    private @Nullable Output<String> backupdrBackup;
+
+    /**
+     * @return The name of the BackupDR backup to restore from.
+     * 
+     */
+    public Optional<Output<String>> backupdrBackup() {
+        return Optional.ofNullable(this.backupdrBackup);
+    }
+
+    /**
      * The context needed to create this instance as a clone of another instance. When this field is set during
      * resource creation, this provider will attempt to clone another instance as indicated in the context. The
      * configuration is detailed below.
@@ -182,6 +197,21 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<String>> encryptionKeyName() {
         return Optional.ofNullable(this.encryptionKeyName);
+    }
+
+    /**
+     * The description of final backup. Only set this field when `final_backup_config.enabled` is true.
+     * 
+     */
+    @Import(name="finalBackupDescription")
+    private @Nullable Output<String> finalBackupDescription;
+
+    /**
+     * @return The description of final backup. Only set this field when `final_backup_config.enabled` is true.
+     * 
+     */
+    public Optional<Output<String>> finalBackupDescription() {
+        return Optional.ofNullable(this.finalBackupDescription);
     }
 
     /**
@@ -517,6 +547,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
 
     private DatabaseInstanceState(DatabaseInstanceState $) {
         this.availableMaintenanceVersions = $.availableMaintenanceVersions;
+        this.backupdrBackup = $.backupdrBackup;
         this.clone = $.clone;
         this.connectionName = $.connectionName;
         this.databaseVersion = $.databaseVersion;
@@ -524,6 +555,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         this.dnsName = $.dnsName;
         this.dnsNames = $.dnsNames;
         this.encryptionKeyName = $.encryptionKeyName;
+        this.finalBackupDescription = $.finalBackupDescription;
         this.firstIpAddress = $.firstIpAddress;
         this.instanceType = $.instanceType;
         this.ipAddresses = $.ipAddresses;
@@ -594,6 +626,27 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
          */
         public Builder availableMaintenanceVersions(String... availableMaintenanceVersions) {
             return availableMaintenanceVersions(List.of(availableMaintenanceVersions));
+        }
+
+        /**
+         * @param backupdrBackup The name of the BackupDR backup to restore from.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupdrBackup(@Nullable Output<String> backupdrBackup) {
+            $.backupdrBackup = backupdrBackup;
+            return this;
+        }
+
+        /**
+         * @param backupdrBackup The name of the BackupDR backup to restore from.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupdrBackup(String backupdrBackup) {
+            return backupdrBackup(Output.of(backupdrBackup));
         }
 
         /**
@@ -789,6 +842,27 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
          */
         public Builder encryptionKeyName(String encryptionKeyName) {
             return encryptionKeyName(Output.of(encryptionKeyName));
+        }
+
+        /**
+         * @param finalBackupDescription The description of final backup. Only set this field when `final_backup_config.enabled` is true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder finalBackupDescription(@Nullable Output<String> finalBackupDescription) {
+            $.finalBackupDescription = finalBackupDescription;
+            return this;
+        }
+
+        /**
+         * @param finalBackupDescription The description of final backup. Only set this field when `final_backup_config.enabled` is true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder finalBackupDescription(String finalBackupDescription) {
+            return finalBackupDescription(Output.of(finalBackupDescription));
         }
 
         /**

@@ -6,7 +6,7 @@ package com.pulumi.gcp.storage.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -19,10 +19,10 @@ public final class BucketRetentionPolicy {
      */
     private @Nullable Boolean isLocked;
     /**
-     * @return The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 2,147,483,647 seconds.
+     * @return The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
      * 
      */
-    private Integer retentionPeriod;
+    private String retentionPeriod;
 
     private BucketRetentionPolicy() {}
     /**
@@ -33,10 +33,10 @@ public final class BucketRetentionPolicy {
         return Optional.ofNullable(this.isLocked);
     }
     /**
-     * @return The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 2,147,483,647 seconds.
+     * @return The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
      * 
      */
-    public Integer retentionPeriod() {
+    public String retentionPeriod() {
         return this.retentionPeriod;
     }
 
@@ -50,7 +50,7 @@ public final class BucketRetentionPolicy {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean isLocked;
-        private Integer retentionPeriod;
+        private String retentionPeriod;
         public Builder() {}
         public Builder(BucketRetentionPolicy defaults) {
     	      Objects.requireNonNull(defaults);
@@ -65,7 +65,7 @@ public final class BucketRetentionPolicy {
             return this;
         }
         @CustomType.Setter
-        public Builder retentionPeriod(Integer retentionPeriod) {
+        public Builder retentionPeriod(String retentionPeriod) {
             if (retentionPeriod == null) {
               throw new MissingRequiredPropertyException("BucketRetentionPolicy", "retentionPeriod");
             }

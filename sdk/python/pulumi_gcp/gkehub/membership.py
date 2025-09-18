@@ -23,7 +23,6 @@ class MembershipArgs:
     def __init__(__self__, *,
                  membership_id: pulumi.Input[_builtins.str],
                  authority: Optional[pulumi.Input['MembershipAuthorityArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
                  endpoint: Optional[pulumi.Input['MembershipEndpointArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
@@ -35,9 +34,6 @@ class MembershipArgs:
                See the workload identity documentation for more details:
                https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] description: The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
-               
-               > **Warning:** `description` is deprecated and will be removed in a future major release.
         :param pulumi.Input['MembershipEndpointArgs'] endpoint: If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels to apply to this membership.
@@ -52,11 +48,6 @@ class MembershipArgs:
         pulumi.set(__self__, "membership_id", membership_id)
         if authority is not None:
             pulumi.set(__self__, "authority", authority)
-        if description is not None:
-            warnings.warn("""`description` is deprecated and will be removed in a future major release.""", DeprecationWarning)
-            pulumi.log.warn("""description is deprecated: `description` is deprecated and will be removed in a future major release.""")
-        if description is not None:
-            pulumi.set(__self__, "description", description)
         if endpoint is not None:
             pulumi.set(__self__, "endpoint", endpoint)
         if labels is not None:
@@ -92,21 +83,6 @@ class MembershipArgs:
     @authority.setter
     def authority(self, value: Optional[pulumi.Input['MembershipAuthorityArgs']]):
         pulumi.set(self, "authority", value)
-
-    @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""`description` is deprecated and will be removed in a future major release.""")
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
-
-        > **Warning:** `description` is deprecated and will be removed in a future major release.
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
@@ -167,7 +143,6 @@ class MembershipArgs:
 class _MembershipState:
     def __init__(__self__, *,
                  authority: Optional[pulumi.Input['MembershipAuthorityArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  endpoint: Optional[pulumi.Input['MembershipEndpointArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -182,9 +157,6 @@ class _MembershipState:
                See the workload identity documentation for more details:
                https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] description: The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
-               
-               > **Warning:** `description` is deprecated and will be removed in a future major release.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input['MembershipEndpointArgs'] endpoint: If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
                Structure is documented below.
@@ -203,11 +175,6 @@ class _MembershipState:
         """
         if authority is not None:
             pulumi.set(__self__, "authority", authority)
-        if description is not None:
-            warnings.warn("""`description` is deprecated and will be removed in a future major release.""", DeprecationWarning)
-            pulumi.log.warn("""description is deprecated: `description` is deprecated and will be removed in a future major release.""")
-        if description is not None:
-            pulumi.set(__self__, "description", description)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if endpoint is not None:
@@ -239,21 +206,6 @@ class _MembershipState:
     @authority.setter
     def authority(self, value: Optional[pulumi.Input['MembershipAuthorityArgs']]):
         pulumi.set(self, "authority", value)
-
-    @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""`description` is deprecated and will be removed in a future major release.""")
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
-
-        > **Warning:** `description` is deprecated and will be removed in a future major release.
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
@@ -366,7 +318,6 @@ class Membership(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authority: Optional[pulumi.Input[Union['MembershipAuthorityArgs', 'MembershipAuthorityArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
                  endpoint: Optional[pulumi.Input[Union['MembershipEndpointArgs', 'MembershipEndpointArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
@@ -488,9 +439,6 @@ class Membership(pulumi.CustomResource):
                See the workload identity documentation for more details:
                https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] description: The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
-               
-               > **Warning:** `description` is deprecated and will be removed in a future major release.
         :param pulumi.Input[Union['MembershipEndpointArgs', 'MembershipEndpointArgsDict']] endpoint: If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels to apply to this membership.
@@ -634,7 +582,6 @@ class Membership(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authority: Optional[pulumi.Input[Union['MembershipAuthorityArgs', 'MembershipAuthorityArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
                  endpoint: Optional[pulumi.Input[Union['MembershipEndpointArgs', 'MembershipEndpointArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
@@ -650,7 +597,6 @@ class Membership(pulumi.CustomResource):
             __props__ = MembershipArgs.__new__(MembershipArgs)
 
             __props__.__dict__["authority"] = authority
-            __props__.__dict__["description"] = description
             __props__.__dict__["endpoint"] = endpoint
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
@@ -674,7 +620,6 @@ class Membership(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             authority: Optional[pulumi.Input[Union['MembershipAuthorityArgs', 'MembershipAuthorityArgsDict']]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             endpoint: Optional[pulumi.Input[Union['MembershipEndpointArgs', 'MembershipEndpointArgsDict']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -694,9 +639,6 @@ class Membership(pulumi.CustomResource):
                See the workload identity documentation for more details:
                https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] description: The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
-               
-               > **Warning:** `description` is deprecated and will be removed in a future major release.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Union['MembershipEndpointArgs', 'MembershipEndpointArgsDict']] endpoint: If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
                Structure is documented below.
@@ -718,7 +660,6 @@ class Membership(pulumi.CustomResource):
         __props__ = _MembershipState.__new__(_MembershipState)
 
         __props__.__dict__["authority"] = authority
-        __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["endpoint"] = endpoint
         __props__.__dict__["labels"] = labels
@@ -739,17 +680,6 @@ class Membership(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "authority")
-
-    @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""`description` is deprecated and will be removed in a future major release.""")
-    def description(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
-
-        > **Warning:** `description` is deprecated and will be removed in a future major release.
-        """
-        return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")

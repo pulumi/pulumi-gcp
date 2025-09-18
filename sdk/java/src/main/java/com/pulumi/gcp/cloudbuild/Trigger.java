@@ -13,6 +13,7 @@ import com.pulumi.gcp.cloudbuild.inputs.TriggerState;
 import com.pulumi.gcp.cloudbuild.outputs.TriggerApprovalConfig;
 import com.pulumi.gcp.cloudbuild.outputs.TriggerBitbucketServerTriggerConfig;
 import com.pulumi.gcp.cloudbuild.outputs.TriggerBuild;
+import com.pulumi.gcp.cloudbuild.outputs.TriggerDeveloperConnectEventConfig;
 import com.pulumi.gcp.cloudbuild.outputs.TriggerGitFileSource;
 import com.pulumi.gcp.cloudbuild.outputs.TriggerGithub;
 import com.pulumi.gcp.cloudbuild.outputs.TriggerPubsubConfig;
@@ -124,8 +125,9 @@ import javax.annotation.Nullable;
  *             .build(TriggerBuildArgs.builder()
  *                 .steps(                
  *                     TriggerBuildStepArgs.builder()
- *                         .name("gcr.io/cloud-builders/gsutil")
+ *                         .name("gcr.io/cloud-builders/gcloud")
  *                         .args(                        
+ *                             "storage",
  *                             "cp",
  *                             "gs://mybucket/remotefile.zip",
  *                             "localfile.zip")
@@ -1100,6 +1102,132 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Cloudbuild Trigger Developer Connect Pull
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudbuild.Trigger;
+ * import com.pulumi.gcp.cloudbuild.TriggerArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerDeveloperConnectEventConfigArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerDeveloperConnectEventConfigPullRequestArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var developer_connect_trigger_pull = new Trigger("developer-connect-trigger-pull", TriggerArgs.builder()
+ *             .location("us-central1")
+ *             .developerConnectEventConfig(TriggerDeveloperConnectEventConfigArgs.builder()
+ *                 .gitRepositoryLink("projects/cryptic-tower-286020/locations/us-central1/connections/prod-bbs-push/gitRepositoryLinks/cbprob-prod-us-central1-push1")
+ *                 .pullRequest(TriggerDeveloperConnectEventConfigPullRequestArgs.builder()
+ *                     .branch("^master$")
+ *                     .invertRegex(false)
+ *                     .commentControl("COMMENTS_ENABLED")
+ *                     .build())
+ *                 .build())
+ *             .filename("cloudbuild.yaml")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Cloudbuild Trigger Developer Connect Push
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudbuild.Trigger;
+ * import com.pulumi.gcp.cloudbuild.TriggerArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerDeveloperConnectEventConfigArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerDeveloperConnectEventConfigPushArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var developer_connect_trigger_push = new Trigger("developer-connect-trigger-push", TriggerArgs.builder()
+ *             .location("us-central1")
+ *             .developerConnectEventConfig(TriggerDeveloperConnectEventConfigArgs.builder()
+ *                 .gitRepositoryLink("projects/cryptic-tower-286020/locations/us-central1/connections/prod-bbs-push/gitRepositoryLinks/cbprob-prod-us-central1-push1")
+ *                 .push(TriggerDeveloperConnectEventConfigPushArgs.builder()
+ *                     .tag("^0.1.*")
+ *                     .invertRegex(true)
+ *                     .build())
+ *                 .build())
+ *             .filename("cloudbuild.yaml")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Cloudbuild Trigger Developer Connect Push Branch
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudbuild.Trigger;
+ * import com.pulumi.gcp.cloudbuild.TriggerArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerDeveloperConnectEventConfigArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerDeveloperConnectEventConfigPushArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var dc_trigger_regular_push_branch = new Trigger("dc-trigger-regular-push-branch", TriggerArgs.builder()
+ *             .location("us-central1")
+ *             .developerConnectEventConfig(TriggerDeveloperConnectEventConfigArgs.builder()
+ *                 .gitRepositoryLink("projects/cryptic-tower-286020/locations/us-central1/connections/prod-bbs-push/gitRepositoryLinks/cbprob-prod-us-central1-push1")
+ *                 .push(TriggerDeveloperConnectEventConfigPushArgs.builder()
+ *                     .branch("main")
+ *                     .build())
+ *                 .build())
+ *             .filename("cloudbuild.yaml")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -1213,6 +1341,22 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * Configuration for triggers that respond to Developer Connect events.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="developerConnectEventConfig", refs={TriggerDeveloperConnectEventConfig.class}, tree="[0]")
+    private Output</* @Nullable */ TriggerDeveloperConnectEventConfig> developerConnectEventConfig;
+
+    /**
+     * @return Configuration for triggers that respond to Developer Connect events.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<TriggerDeveloperConnectEventConfig>> developerConnectEventConfig() {
+        return Codegen.optional(this.developerConnectEventConfig);
     }
     /**
      * Whether the trigger is disabled or not. If true, the trigger will never result in a build.

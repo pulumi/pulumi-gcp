@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryResult> CustomRepositories;
         /// <summary>
-        /// Address of the remote repository. Default value: "PYPI" Possible values: ["PYPI"]
+        /// Address of the remote repository. Possible values: ["PYPI"]
         /// </summary>
         public readonly string PublicRepository;
 

@@ -37,6 +37,7 @@ class ServiceArgs:
                  invoker_iam_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  launch_stage: Optional[pulumi.Input[_builtins.str]] = None,
+                 multi_region_settings: Optional[pulumi.Input['ServiceMultiRegionSettingsArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  scaling: Optional[pulumi.Input['ServiceScalingArgs']] = None,
@@ -76,6 +77,8 @@ class ServiceArgs:
                If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
                For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
                Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
+        :param pulumi.Input['ServiceMultiRegionSettingsArgs'] multi_region_settings: Settings for creating a Multi-Region Service. Make sure to use region = 'global' when using them. For more information, visit https://cloud.google.com/run/docs/multiple-regions#deploy
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the Service.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -114,6 +117,8 @@ class ServiceArgs:
             pulumi.set(__self__, "labels", labels)
         if launch_stage is not None:
             pulumi.set(__self__, "launch_stage", launch_stage)
+        if multi_region_settings is not None:
+            pulumi.set(__self__, "multi_region_settings", multi_region_settings)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -331,6 +336,19 @@ class ServiceArgs:
         pulumi.set(self, "launch_stage", value)
 
     @_builtins.property
+    @pulumi.getter(name="multiRegionSettings")
+    def multi_region_settings(self) -> Optional[pulumi.Input['ServiceMultiRegionSettingsArgs']]:
+        """
+        Settings for creating a Multi-Region Service. Make sure to use region = 'global' when using them. For more information, visit https://cloud.google.com/run/docs/multiple-regions#deploy
+        Structure is documented below.
+        """
+        return pulumi.get(self, "multi_region_settings")
+
+    @multi_region_settings.setter
+    def multi_region_settings(self, value: Optional[pulumi.Input['ServiceMultiRegionSettingsArgs']]):
+        pulumi.set(self, "multi_region_settings", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -412,6 +430,7 @@ class _ServiceState:
                  latest_ready_revision: Optional[pulumi.Input[_builtins.str]] = None,
                  launch_stage: Optional[pulumi.Input[_builtins.str]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
+                 multi_region_settings: Optional[pulumi.Input['ServiceMultiRegionSettingsArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  observed_generation: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -471,6 +490,8 @@ class _ServiceState:
                For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
                Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
         :param pulumi.Input[_builtins.str] location: The location of the cloud run service
+        :param pulumi.Input['ServiceMultiRegionSettingsArgs'] multi_region_settings: Settings for creating a Multi-Region Service. Make sure to use region = 'global' when using them. For more information, visit https://cloud.google.com/run/docs/multiple-regions#deploy
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the Service.
         :param pulumi.Input[_builtins.str] observed_generation: The generation of this Service currently serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -551,6 +572,8 @@ class _ServiceState:
             pulumi.set(__self__, "launch_stage", launch_stage)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if multi_region_settings is not None:
+            pulumi.set(__self__, "multi_region_settings", multi_region_settings)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if observed_generation is not None:
@@ -917,6 +940,19 @@ class _ServiceState:
         pulumi.set(self, "location", value)
 
     @_builtins.property
+    @pulumi.getter(name="multiRegionSettings")
+    def multi_region_settings(self) -> Optional[pulumi.Input['ServiceMultiRegionSettingsArgs']]:
+        """
+        Settings for creating a Multi-Region Service. Make sure to use region = 'global' when using them. For more information, visit https://cloud.google.com/run/docs/multiple-regions#deploy
+        Structure is documented below.
+        """
+        return pulumi.get(self, "multi_region_settings")
+
+    @multi_region_settings.setter
+    def multi_region_settings(self, value: Optional[pulumi.Input['ServiceMultiRegionSettingsArgs']]):
+        pulumi.set(self, "multi_region_settings", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -1117,6 +1153,7 @@ class Service(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  launch_stage: Optional[pulumi.Input[_builtins.str]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
+                 multi_region_settings: Optional[pulumi.Input[Union['ServiceMultiRegionSettingsArgs', 'ServiceMultiRegionSettingsArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  scaling: Optional[pulumi.Input[Union['ServiceScalingArgs', 'ServiceScalingArgsDict']]] = None,
@@ -1145,6 +1182,9 @@ class Service(pulumi.CustomResource):
             location="us-central1",
             deletion_protection=False,
             ingress="INGRESS_TRAFFIC_ALL",
+            scaling={
+                "max_instance_count": 100,
+            },
             template={
                 "containers": [{
                     "image": "us-docker.pkg.dev/cloudrun/container/hello",
@@ -1201,10 +1241,10 @@ class Service(pulumi.CustomResource):
             location="us-central1",
             deletion_protection=False,
             ingress="INGRESS_TRAFFIC_ALL",
+            scaling={
+                "max_instance_count": 2,
+            },
             template={
-                "scaling": {
-                    "max_instance_count": 2,
-                },
                 "volumes": [{
                     "name": "cloudsql",
                     "cloud_sql_instance": {
@@ -1322,6 +1362,9 @@ class Service(pulumi.CustomResource):
             location="us-central1",
             deletion_protection=False,
             ingress="INGRESS_TRAFFIC_ALL",
+            scaling={
+                "max_instance_count": 1,
+            },
             template={
                 "containers": [{
                     "image": "us-docker.pkg.dev/cloudrun/container/hello",
@@ -1338,9 +1381,6 @@ class Service(pulumi.CustomResource):
                     "accelerator": "nvidia-l4",
                 },
                 "gpu_zonal_redundancy_disabled": True,
-                "scaling": {
-                    "max_instance_count": 1,
-                },
             })
         ```
         ### Cloudrunv2 Service Probes
@@ -1724,6 +1764,8 @@ class Service(pulumi.CustomResource):
                For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
                Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
         :param pulumi.Input[_builtins.str] location: The location of the cloud run service
+        :param pulumi.Input[Union['ServiceMultiRegionSettingsArgs', 'ServiceMultiRegionSettingsArgsDict']] multi_region_settings: Settings for creating a Multi-Region Service. Make sure to use region = 'global' when using them. For more information, visit https://cloud.google.com/run/docs/multiple-regions#deploy
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the Service.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1762,6 +1804,9 @@ class Service(pulumi.CustomResource):
             location="us-central1",
             deletion_protection=False,
             ingress="INGRESS_TRAFFIC_ALL",
+            scaling={
+                "max_instance_count": 100,
+            },
             template={
                 "containers": [{
                     "image": "us-docker.pkg.dev/cloudrun/container/hello",
@@ -1818,10 +1863,10 @@ class Service(pulumi.CustomResource):
             location="us-central1",
             deletion_protection=False,
             ingress="INGRESS_TRAFFIC_ALL",
+            scaling={
+                "max_instance_count": 2,
+            },
             template={
-                "scaling": {
-                    "max_instance_count": 2,
-                },
                 "volumes": [{
                     "name": "cloudsql",
                     "cloud_sql_instance": {
@@ -1939,6 +1984,9 @@ class Service(pulumi.CustomResource):
             location="us-central1",
             deletion_protection=False,
             ingress="INGRESS_TRAFFIC_ALL",
+            scaling={
+                "max_instance_count": 1,
+            },
             template={
                 "containers": [{
                     "image": "us-docker.pkg.dev/cloudrun/container/hello",
@@ -1955,9 +2003,6 @@ class Service(pulumi.CustomResource):
                     "accelerator": "nvidia-l4",
                 },
                 "gpu_zonal_redundancy_disabled": True,
-                "scaling": {
-                    "max_instance_count": 1,
-                },
             })
         ```
         ### Cloudrunv2 Service Probes
@@ -2338,6 +2383,7 @@ class Service(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  launch_stage: Optional[pulumi.Input[_builtins.str]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
+                 multi_region_settings: Optional[pulumi.Input[Union['ServiceMultiRegionSettingsArgs', 'ServiceMultiRegionSettingsArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  scaling: Optional[pulumi.Input[Union['ServiceScalingArgs', 'ServiceScalingArgsDict']]] = None,
@@ -2369,6 +2415,7 @@ class Service(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
+            __props__.__dict__["multi_region_settings"] = multi_region_settings
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["scaling"] = scaling
@@ -2436,6 +2483,7 @@ class Service(pulumi.CustomResource):
             latest_ready_revision: Optional[pulumi.Input[_builtins.str]] = None,
             launch_stage: Optional[pulumi.Input[_builtins.str]] = None,
             location: Optional[pulumi.Input[_builtins.str]] = None,
+            multi_region_settings: Optional[pulumi.Input[Union['ServiceMultiRegionSettingsArgs', 'ServiceMultiRegionSettingsArgsDict']]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             observed_generation: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2500,6 +2548,8 @@ class Service(pulumi.CustomResource):
                For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
                Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
         :param pulumi.Input[_builtins.str] location: The location of the cloud run service
+        :param pulumi.Input[Union['ServiceMultiRegionSettingsArgs', 'ServiceMultiRegionSettingsArgsDict']] multi_region_settings: Settings for creating a Multi-Region Service. Make sure to use region = 'global' when using them. For more information, visit https://cloud.google.com/run/docs/multiple-regions#deploy
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the Service.
         :param pulumi.Input[_builtins.str] observed_generation: The generation of this Service currently serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -2557,6 +2607,7 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["latest_ready_revision"] = latest_ready_revision
         __props__.__dict__["launch_stage"] = launch_stage
         __props__.__dict__["location"] = location
+        __props__.__dict__["multi_region_settings"] = multi_region_settings
         __props__.__dict__["name"] = name
         __props__.__dict__["observed_generation"] = observed_generation
         __props__.__dict__["project"] = project
@@ -2800,6 +2851,15 @@ class Service(pulumi.CustomResource):
         The location of the cloud run service
         """
         return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter(name="multiRegionSettings")
+    def multi_region_settings(self) -> pulumi.Output[Optional['outputs.ServiceMultiRegionSettings']]:
+        """
+        Settings for creating a Multi-Region Service. Make sure to use region = 'global' when using them. For more information, visit https://cloud.google.com/run/docs/multiple-regions#deploy
+        Structure is documented below.
+        """
+        return pulumi.get(self, "multi_region_settings")
 
     @_builtins.property
     @pulumi.getter

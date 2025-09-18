@@ -1074,7 +1074,7 @@ class WorkerPool(pulumi.CustomResource):
             name="cloudrun-worker-pool",
             location="us-central1",
             deletion_protection=False,
-            launch_stage="ALPHA",
+            launch_stage="BETA",
             template={
                 "containers": [{
                     "image": "us-docker.pkg.dev/cloudrun/container/worker-pool",
@@ -1497,7 +1497,7 @@ class WorkerPool(pulumi.CustomResource):
             name="cloudrun-worker-pool",
             location="us-central1",
             deletion_protection=False,
-            launch_stage="ALPHA",
+            launch_stage="BETA",
             template={
                 "containers": [{
                     "image": "us-docker.pkg.dev/cloudrun/container/worker-pool",

@@ -150,7 +150,7 @@ export class CertificateMapEntry extends pulumi.CustomResource {
      */
     declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * A map entry that is inputted into the cetrificate map
+     * A map entry that is inputted into the certificate map
      */
     declare public readonly map: pulumi.Output<string>;
     /**
@@ -279,7 +279,7 @@ export interface CertificateMapEntryState {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * A map entry that is inputted into the cetrificate map
+     * A map entry that is inputted into the certificate map
      */
     map?: pulumi.Input<string>;
     /**
@@ -344,7 +344,7 @@ export interface CertificateMapEntryArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * A map entry that is inputted into the cetrificate map
+     * A map entry that is inputted into the certificate map
      */
     map: pulumi.Input<string>;
     /**

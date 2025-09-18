@@ -5,11 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export { GetTensorflowVersionsArgs, GetTensorflowVersionsResult, GetTensorflowVersionsOutputArgs } from "./getTensorflowVersions";
-export const getTensorflowVersions: typeof import("./getTensorflowVersions").getTensorflowVersions = null as any;
-export const getTensorflowVersionsOutput: typeof import("./getTensorflowVersions").getTensorflowVersionsOutput = null as any;
-utilities.lazyLoad(exports, ["getTensorflowVersions","getTensorflowVersionsOutput"], () => require("./getTensorflowVersions"));
-
 export { GetV2AcceleratorTypesArgs, GetV2AcceleratorTypesResult, GetV2AcceleratorTypesOutputArgs } from "./getV2AcceleratorTypes";
 export const getV2AcceleratorTypes: typeof import("./getV2AcceleratorTypes").getV2AcceleratorTypes = null as any;
 export const getV2AcceleratorTypesOutput: typeof import("./getV2AcceleratorTypes").getV2AcceleratorTypesOutput = null as any;
@@ -19,11 +14,6 @@ export { GetV2RuntimeVersionsArgs, GetV2RuntimeVersionsResult, GetV2RuntimeVersi
 export const getV2RuntimeVersions: typeof import("./getV2RuntimeVersions").getV2RuntimeVersions = null as any;
 export const getV2RuntimeVersionsOutput: typeof import("./getV2RuntimeVersions").getV2RuntimeVersionsOutput = null as any;
 utilities.lazyLoad(exports, ["getV2RuntimeVersions","getV2RuntimeVersionsOutput"], () => require("./getV2RuntimeVersions"));
-
-export { NodeArgs, NodeState } from "./node";
-export type Node = import("./node").Node;
-export const Node: typeof import("./node").Node = null as any;
-utilities.lazyLoad(exports, ["Node"], () => require("./node"));
 
 export { V2QueuedResourceArgs, V2QueuedResourceState } from "./v2queuedResource";
 export type V2QueuedResource = import("./v2queuedResource").V2QueuedResource;
@@ -40,8 +30,6 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "gcp:tpu/node:Node":
-                return new Node(name, <any>undefined, { urn })
             case "gcp:tpu/v2QueuedResource:V2QueuedResource":
                 return new V2QueuedResource(name, <any>undefined, { urn })
             case "gcp:tpu/v2Vm:V2Vm":
@@ -51,6 +39,5 @@ const _module = {
         }
     },
 };
-pulumi.runtime.registerResourceModule("gcp", "tpu/node", _module)
 pulumi.runtime.registerResourceModule("gcp", "tpu/v2QueuedResource", _module)
 pulumi.runtime.registerResourceModule("gcp", "tpu/v2Vm", _module)

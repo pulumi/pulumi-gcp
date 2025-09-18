@@ -16,6 +16,8 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'AclConfigIdpConfig',
+    'AclConfigIdpConfigExternalIdpConfig',
     'ChatEngineChatEngineConfig',
     'ChatEngineChatEngineConfigAgentCreationConfig',
     'ChatEngineChatEngineMetadata',
@@ -45,6 +47,96 @@ __all__ = [
     'TargetSiteFailureReasonQuotaFailure',
     'TargetSiteSiteVerificationInfo',
 ]
+
+@pulumi.output_type
+class AclConfigIdpConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "externalIdpConfig":
+            suggest = "external_idp_config"
+        elif key == "idpType":
+            suggest = "idp_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AclConfigIdpConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AclConfigIdpConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AclConfigIdpConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 external_idp_config: Optional['outputs.AclConfigIdpConfigExternalIdpConfig'] = None,
+                 idp_type: Optional[_builtins.str] = None):
+        """
+        :param 'AclConfigIdpConfigExternalIdpConfigArgs' external_idp_config: External third party identity provider config.
+               Structure is documented below.
+        :param _builtins.str idp_type: Identity provider type.
+               Possible values are: `GSUITE`, `THIRD_PARTY`.
+        """
+        if external_idp_config is not None:
+            pulumi.set(__self__, "external_idp_config", external_idp_config)
+        if idp_type is not None:
+            pulumi.set(__self__, "idp_type", idp_type)
+
+    @_builtins.property
+    @pulumi.getter(name="externalIdpConfig")
+    def external_idp_config(self) -> Optional['outputs.AclConfigIdpConfigExternalIdpConfig']:
+        """
+        External third party identity provider config.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "external_idp_config")
+
+    @_builtins.property
+    @pulumi.getter(name="idpType")
+    def idp_type(self) -> Optional[_builtins.str]:
+        """
+        Identity provider type.
+        Possible values are: `GSUITE`, `THIRD_PARTY`.
+        """
+        return pulumi.get(self, "idp_type")
+
+
+@pulumi.output_type
+class AclConfigIdpConfigExternalIdpConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "workforcePoolName":
+            suggest = "workforce_pool_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AclConfigIdpConfigExternalIdpConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AclConfigIdpConfigExternalIdpConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AclConfigIdpConfigExternalIdpConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 workforce_pool_name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str workforce_pool_name: Workforce pool name: "locations/global/workforcePools/pool_id"
+        """
+        if workforce_pool_name is not None:
+            pulumi.set(__self__, "workforce_pool_name", workforce_pool_name)
+
+    @_builtins.property
+    @pulumi.getter(name="workforcePoolName")
+    def workforce_pool_name(self) -> Optional[_builtins.str]:
+        """
+        Workforce pool name: "locations/global/workforcePools/pool_id"
+        """
+        return pulumi.get(self, "workforce_pool_name")
+
 
 @pulumi.output_type
 class ChatEngineChatEngineConfig(dict):

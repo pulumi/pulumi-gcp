@@ -314,6 +314,21 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The repository endpoint, for example: us-docker.pkg.dev/my-proj/my-repo.
+     * 
+     */
+    @Import(name="registryUri")
+    private @Nullable Output<String> registryUri;
+
+    /**
+     * @return The repository endpoint, for example: us-docker.pkg.dev/my-proj/my-repo.
+     * 
+     */
+    public Optional<Output<String>> registryUri() {
+        return Optional.ofNullable(this.registryUri);
+    }
+
+    /**
      * Configuration specific for a Remote Repository.
      * Structure is documented below.
      * 
@@ -414,6 +429,7 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
+        this.registryUri = $.registryUri;
         this.remoteRepositoryConfig = $.remoteRepositoryConfig;
         this.repositoryId = $.repositoryId;
         this.updateTime = $.updateTime;
@@ -830,6 +846,27 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
             return pulumiLabels(Output.of(pulumiLabels));
+        }
+
+        /**
+         * @param registryUri The repository endpoint, for example: us-docker.pkg.dev/my-proj/my-repo.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder registryUri(@Nullable Output<String> registryUri) {
+            $.registryUri = registryUri;
+            return this;
+        }
+
+        /**
+         * @param registryUri The repository endpoint, for example: us-docker.pkg.dev/my-proj/my-repo.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder registryUri(String registryUri) {
+            return registryUri(Output.of(registryUri));
         }
 
         /**

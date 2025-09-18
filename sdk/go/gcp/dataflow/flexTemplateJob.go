@@ -8,10 +8,15 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Creates a [Flex Template](https://cloud.google.com/dataflow/docs/guides/templates/using-flex-templates)
+// job on Dataflow, which is an implementation of Apache Beam running on Google
+// Compute Engine. For more information see the official documentation for [Beam](https://beam.apache.org)
+// and [Dataflow](https://cloud.google.com/dataflow/).
+//
 // ## Example Usage
 //
 // ```go
@@ -19,7 +24,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/dataflow"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataflow"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -78,7 +83,7 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/dataflow"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataflow"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"

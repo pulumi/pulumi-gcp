@@ -358,7 +358,7 @@ public class AiIndex extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="metadata", refs={AiIndexMetadata.class}, tree="[0]")
-    private Output</* @Nullable */ AiIndexMetadata> metadata;
+    private Output<AiIndexMetadata> metadata;
 
     /**
      * @return Additional information about the Index.
@@ -367,8 +367,8 @@ public class AiIndex extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    public Output<Optional<AiIndexMetadata>> metadata() {
-        return Codegen.optional(this.metadata);
+    public Output<AiIndexMetadata> metadata() {
+        return this.metadata;
     }
     /**
      * Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific to it. Unset if the Index does not have any additional information.

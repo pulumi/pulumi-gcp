@@ -75,7 +75,7 @@ class GatewayArgs:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] routing_mode: The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
-               Possible values are: `NEXT_HOP_ROUTING_MODE`.
+               Possible values are: `NEXT_HOP_ROUTING_MODE`, `EXPLICIT_ROUTING_MODE`.
         :param pulumi.Input[_builtins.str] scope: Immutable. Scope determines how configuration across multiple Gateway instances are merged.
                The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer.
                Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
@@ -313,7 +313,7 @@ class GatewayArgs:
     def routing_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
-        Possible values are: `NEXT_HOP_ROUTING_MODE`.
+        Possible values are: `NEXT_HOP_ROUTING_MODE`, `EXPLICIT_ROUTING_MODE`.
         """
         return pulumi.get(self, "routing_mode")
 
@@ -428,7 +428,7 @@ class _GatewayState:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] routing_mode: The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
-               Possible values are: `NEXT_HOP_ROUTING_MODE`.
+               Possible values are: `NEXT_HOP_ROUTING_MODE`, `EXPLICIT_ROUTING_MODE`.
         :param pulumi.Input[_builtins.str] scope: Immutable. Scope determines how configuration across multiple Gateway instances are merged.
                The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer.
                Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
@@ -706,7 +706,7 @@ class _GatewayState:
     def routing_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
-        Possible values are: `NEXT_HOP_ROUTING_MODE`.
+        Possible values are: `NEXT_HOP_ROUTING_MODE`, `EXPLICIT_ROUTING_MODE`.
         """
         return pulumi.get(self, "routing_mode")
 
@@ -1045,7 +1045,7 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] routing_mode: The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
-               Possible values are: `NEXT_HOP_ROUTING_MODE`.
+               Possible values are: `NEXT_HOP_ROUTING_MODE`, `EXPLICIT_ROUTING_MODE`.
         :param pulumi.Input[_builtins.str] scope: Immutable. Scope determines how configuration across multiple Gateway instances are merged.
                The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer.
                Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
@@ -1403,7 +1403,7 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] routing_mode: The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
-               Possible values are: `NEXT_HOP_ROUTING_MODE`.
+               Possible values are: `NEXT_HOP_ROUTING_MODE`, `EXPLICIT_ROUTING_MODE`.
         :param pulumi.Input[_builtins.str] scope: Immutable. Scope determines how configuration across multiple Gateway instances are merged.
                The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer.
                Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
@@ -1599,7 +1599,7 @@ class Gateway(pulumi.CustomResource):
     def routing_mode(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
-        Possible values are: `NEXT_HOP_ROUTING_MODE`.
+        Possible values are: `NEXT_HOP_ROUTING_MODE`, `EXPLICIT_ROUTING_MODE`.
         """
         return pulumi.get(self, "routing_mode")
 

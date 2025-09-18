@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceBinaryAuthorization;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceBuildConfig;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceCondition;
+import com.pulumi.gcp.cloudrunv2.outputs.GetServiceMultiRegionSetting;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceScaling;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplate;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTerminalCondition;
@@ -55,6 +56,7 @@ public final class GetServiceResult {
     private String latestReadyRevision;
     private String launchStage;
     private @Nullable String location;
+    private List<GetServiceMultiRegionSetting> multiRegionSettings;
     private String name;
     private String observedGeneration;
     private @Nullable String project;
@@ -159,6 +161,9 @@ public final class GetServiceResult {
     public Optional<String> location() {
         return Optional.ofNullable(this.location);
     }
+    public List<GetServiceMultiRegionSetting> multiRegionSettings() {
+        return this.multiRegionSettings;
+    }
     public String name() {
         return this.name;
     }
@@ -239,6 +244,7 @@ public final class GetServiceResult {
         private String latestReadyRevision;
         private String launchStage;
         private @Nullable String location;
+        private List<GetServiceMultiRegionSetting> multiRegionSettings;
         private String name;
         private String observedGeneration;
         private @Nullable String project;
@@ -284,6 +290,7 @@ public final class GetServiceResult {
     	      this.latestReadyRevision = defaults.latestReadyRevision;
     	      this.launchStage = defaults.launchStage;
     	      this.location = defaults.location;
+    	      this.multiRegionSettings = defaults.multiRegionSettings;
     	      this.name = defaults.name;
     	      this.observedGeneration = defaults.observedGeneration;
     	      this.project = defaults.project;
@@ -535,6 +542,17 @@ public final class GetServiceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder multiRegionSettings(List<GetServiceMultiRegionSetting> multiRegionSettings) {
+            if (multiRegionSettings == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "multiRegionSettings");
+            }
+            this.multiRegionSettings = multiRegionSettings;
+            return this;
+        }
+        public Builder multiRegionSettings(GetServiceMultiRegionSetting... multiRegionSettings) {
+            return multiRegionSettings(List.of(multiRegionSettings));
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetServiceResult", "name");
@@ -692,6 +710,7 @@ public final class GetServiceResult {
             _resultValue.latestReadyRevision = latestReadyRevision;
             _resultValue.launchStage = launchStage;
             _resultValue.location = location;
+            _resultValue.multiRegionSettings = multiRegionSettings;
             _resultValue.name = name;
             _resultValue.observedGeneration = observedGeneration;
             _resultValue.project = project;

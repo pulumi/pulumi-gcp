@@ -130,6 +130,7 @@ namespace Pulumi.Gcp.Sql
     public sealed class GetDatabaseInstanceResult
     {
         public readonly ImmutableArray<string> AvailableMaintenanceVersions;
+        public readonly string BackupdrBackup;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceCloneResult> Clones;
         public readonly string ConnectionName;
         public readonly string DatabaseVersion;
@@ -137,6 +138,7 @@ namespace Pulumi.Gcp.Sql
         public readonly string DnsName;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceDnsNameResult> DnsNames;
         public readonly string EncryptionKeyName;
+        public readonly string FinalBackupDescription;
         public readonly string FirstIpAddress;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -167,6 +169,8 @@ namespace Pulumi.Gcp.Sql
         private GetDatabaseInstanceResult(
             ImmutableArray<string> availableMaintenanceVersions,
 
+            string backupdrBackup,
+
             ImmutableArray<Outputs.GetDatabaseInstanceCloneResult> clones,
 
             string connectionName,
@@ -180,6 +184,8 @@ namespace Pulumi.Gcp.Sql
             ImmutableArray<Outputs.GetDatabaseInstanceDnsNameResult> dnsNames,
 
             string encryptionKeyName,
+
+            string finalBackupDescription,
 
             string firstIpAddress,
 
@@ -226,6 +232,7 @@ namespace Pulumi.Gcp.Sql
             ImmutableArray<Outputs.GetDatabaseInstanceSettingResult> settings)
         {
             AvailableMaintenanceVersions = availableMaintenanceVersions;
+            BackupdrBackup = backupdrBackup;
             Clones = clones;
             ConnectionName = connectionName;
             DatabaseVersion = databaseVersion;
@@ -233,6 +240,7 @@ namespace Pulumi.Gcp.Sql
             DnsName = dnsName;
             DnsNames = dnsNames;
             EncryptionKeyName = encryptionKeyName;
+            FinalBackupDescription = finalBackupDescription;
             FirstIpAddress = firstIpAddress;
             Id = id;
             InstanceType = instanceType;

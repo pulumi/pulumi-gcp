@@ -40,11 +40,6 @@ export type InstanceIamPolicy = import("./instanceIamPolicy").InstanceIamPolicy;
 export const InstanceIamPolicy: typeof import("./instanceIamPolicy").InstanceIamPolicy = null as any;
 utilities.lazyLoad(exports, ["InstanceIamPolicy"], () => require("./instanceIamPolicy"));
 
-export { LocationArgs, LocationState } from "./location";
-export type Location = import("./location").Location;
-export const Location: typeof import("./location").Location = null as any;
-utilities.lazyLoad(exports, ["Location"], () => require("./location"));
-
 export { RuntimeArgs, RuntimeState } from "./runtime";
 export type Runtime = import("./runtime").Runtime;
 export const Runtime: typeof import("./runtime").Runtime = null as any;
@@ -80,8 +75,6 @@ const _module = {
                 return new InstanceIamMember(name, <any>undefined, { urn })
             case "gcp:notebooks/instanceIamPolicy:InstanceIamPolicy":
                 return new InstanceIamPolicy(name, <any>undefined, { urn })
-            case "gcp:notebooks/location:Location":
-                return new Location(name, <any>undefined, { urn })
             case "gcp:notebooks/runtime:Runtime":
                 return new Runtime(name, <any>undefined, { urn })
             case "gcp:notebooks/runtimeIamBinding:RuntimeIamBinding":
@@ -100,7 +93,6 @@ pulumi.runtime.registerResourceModule("gcp", "notebooks/instance", _module)
 pulumi.runtime.registerResourceModule("gcp", "notebooks/instanceIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "notebooks/instanceIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "notebooks/instanceIamPolicy", _module)
-pulumi.runtime.registerResourceModule("gcp", "notebooks/location", _module)
 pulumi.runtime.registerResourceModule("gcp", "notebooks/runtime", _module)
 pulumi.runtime.registerResourceModule("gcp", "notebooks/runtimeIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "notebooks/runtimeIamMember", _module)

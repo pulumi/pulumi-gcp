@@ -17,6 +17,11 @@ public final class GetServiceScaling {
      */
     private Integer manualInstanceCount;
     /**
+     * @return Combined maximum number of instances for all revisions receiving traffic.
+     * 
+     */
+    private Integer maxInstanceCount;
+    /**
      * @return Minimum number of instances for the service, to be divided among all revisions receiving traffic.
      * 
      */
@@ -34,6 +39,13 @@ public final class GetServiceScaling {
      */
     public Integer manualInstanceCount() {
         return this.manualInstanceCount;
+    }
+    /**
+     * @return Combined maximum number of instances for all revisions receiving traffic.
+     * 
+     */
+    public Integer maxInstanceCount() {
+        return this.maxInstanceCount;
     }
     /**
      * @return Minimum number of instances for the service, to be divided among all revisions receiving traffic.
@@ -60,12 +72,14 @@ public final class GetServiceScaling {
     @CustomType.Builder
     public static final class Builder {
         private Integer manualInstanceCount;
+        private Integer maxInstanceCount;
         private Integer minInstanceCount;
         private String scalingMode;
         public Builder() {}
         public Builder(GetServiceScaling defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.manualInstanceCount = defaults.manualInstanceCount;
+    	      this.maxInstanceCount = defaults.maxInstanceCount;
     	      this.minInstanceCount = defaults.minInstanceCount;
     	      this.scalingMode = defaults.scalingMode;
         }
@@ -76,6 +90,14 @@ public final class GetServiceScaling {
               throw new MissingRequiredPropertyException("GetServiceScaling", "manualInstanceCount");
             }
             this.manualInstanceCount = manualInstanceCount;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maxInstanceCount(Integer maxInstanceCount) {
+            if (maxInstanceCount == null) {
+              throw new MissingRequiredPropertyException("GetServiceScaling", "maxInstanceCount");
+            }
+            this.maxInstanceCount = maxInstanceCount;
             return this;
         }
         @CustomType.Setter
@@ -97,6 +119,7 @@ public final class GetServiceScaling {
         public GetServiceScaling build() {
             final var _resultValue = new GetServiceScaling();
             _resultValue.manualInstanceCount = manualInstanceCount;
+            _resultValue.maxInstanceCount = maxInstanceCount;
             _resultValue.minInstanceCount = minInstanceCount;
             _resultValue.scalingMode = scalingMode;
             return _resultValue;

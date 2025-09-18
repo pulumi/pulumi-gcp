@@ -136,6 +136,14 @@ class Capability(pulumi.CustomResource):
                  value: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
+        An app-enabled folder is a folder within the Google Cloud resource hierarchy that has been configured for application management. This folder lets you define and manage App Hub applications. These applications are functional groupings of services and workloads that span multiple projects within that folder and its descendant projects.
+
+        To get more information about Capability, see:
+
+        * [API documentation](https://cloud.google.com/resource-manager/reference/rest)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/resource-manager/docs/manage-applications)
+
         ## Example Usage
 
         ### Resource Manager Capability
@@ -189,6 +197,14 @@ class Capability(pulumi.CustomResource):
                  args: CapabilityArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        An app-enabled folder is a folder within the Google Cloud resource hierarchy that has been configured for application management. This folder lets you define and manage App Hub applications. These applications are functional groupings of services and workloads that span multiple projects within that folder and its descendant projects.
+
+        To get more information about Capability, see:
+
+        * [API documentation](https://cloud.google.com/resource-manager/reference/rest)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/resource-manager/docs/manage-applications)
+
         ## Example Usage
 
         ### Resource Manager Capability

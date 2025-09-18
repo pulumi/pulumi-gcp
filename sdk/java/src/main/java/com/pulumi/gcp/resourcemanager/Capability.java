@@ -15,6 +15,14 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * An app-enabled folder is a folder within the Google Cloud resource hierarchy that has been configured for application management. This folder lets you define and manage App Hub applications. These applications are functional groupings of services and workloads that span multiple projects within that folder and its descendant projects.
+ * 
+ * To get more information about Capability, see:
+ * 
+ * * [API documentation](https://cloud.google.com/resource-manager/reference/rest)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/resource-manager/docs/manage-applications)
+ * 
  * ## Example Usage
  * 
  * ### Resource Manager Capability

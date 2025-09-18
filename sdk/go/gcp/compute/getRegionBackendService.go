@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,7 +22,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -91,6 +91,7 @@ type LookupRegionBackendServiceResult struct {
 	Name                         string                                              `pulumi:"name"`
 	Network                      string                                              `pulumi:"network"`
 	OutlierDetections            []GetRegionBackendServiceOutlierDetection           `pulumi:"outlierDetections"`
+	Params                       []GetRegionBackendServiceParam                      `pulumi:"params"`
 	PortName                     string                                              `pulumi:"portName"`
 	Project                      *string                                             `pulumi:"project"`
 	Protocol                     string                                              `pulumi:"protocol"`
@@ -257,6 +258,10 @@ func (o LookupRegionBackendServiceResultOutput) OutlierDetections() GetRegionBac
 	return o.ApplyT(func(v LookupRegionBackendServiceResult) []GetRegionBackendServiceOutlierDetection {
 		return v.OutlierDetections
 	}).(GetRegionBackendServiceOutlierDetectionArrayOutput)
+}
+
+func (o LookupRegionBackendServiceResultOutput) Params() GetRegionBackendServiceParamArrayOutput {
+	return o.ApplyT(func(v LookupRegionBackendServiceResult) []GetRegionBackendServiceParam { return v.Params }).(GetRegionBackendServiceParamArrayOutput)
 }
 
 func (o LookupRegionBackendServiceResultOutput) PortName() pulumi.StringOutput {

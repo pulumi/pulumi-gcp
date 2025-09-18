@@ -29,6 +29,7 @@ class TransferJobArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  replication_spec: Optional[pulumi.Input['TransferJobReplicationSpecArgs']] = None,
                  schedule: Optional[pulumi.Input['TransferJobScheduleArgs']] = None,
+                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  transfer_spec: Optional[pulumi.Input['TransferJobTransferSpecArgs']] = None):
         """
@@ -44,6 +45,7 @@ class TransferJobArgs:
                
                - - -
         :param pulumi.Input['TransferJobScheduleArgs'] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
+        :param pulumi.Input[_builtins.str] service_account: The user-managed service account to run the job. If this field is specified, the given service account is granted the necessary permissions to all applicable resources (e.g. GCS buckets) required by the job.
         :param pulumi.Input[_builtins.str] status: Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
         :param pulumi.Input['TransferJobTransferSpecArgs'] transfer_spec: Transfer specification. Structure documented below. One of `transfer_spec`, or `replication_spec` can be specified.
         """
@@ -62,6 +64,8 @@ class TransferJobArgs:
             pulumi.set(__self__, "replication_spec", replication_spec)
         if schedule is not None:
             pulumi.set(__self__, "schedule", schedule)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if transfer_spec is not None:
@@ -167,6 +171,18 @@ class TransferJobArgs:
         pulumi.set(self, "schedule", value)
 
     @_builtins.property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The user-managed service account to run the job. If this field is specified, the given service account is granted the necessary permissions to all applicable resources (e.g. GCS buckets) required by the job.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "service_account", value)
+
+    @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -205,6 +221,7 @@ class _TransferJobState:
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  replication_spec: Optional[pulumi.Input['TransferJobReplicationSpecArgs']] = None,
                  schedule: Optional[pulumi.Input['TransferJobScheduleArgs']] = None,
+                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  transfer_spec: Optional[pulumi.Input['TransferJobTransferSpecArgs']] = None):
         """
@@ -223,6 +240,7 @@ class _TransferJobState:
                
                - - -
         :param pulumi.Input['TransferJobScheduleArgs'] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
+        :param pulumi.Input[_builtins.str] service_account: The user-managed service account to run the job. If this field is specified, the given service account is granted the necessary permissions to all applicable resources (e.g. GCS buckets) required by the job.
         :param pulumi.Input[_builtins.str] status: Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
         :param pulumi.Input['TransferJobTransferSpecArgs'] transfer_spec: Transfer specification. Structure documented below. One of `transfer_spec`, or `replication_spec` can be specified.
         """
@@ -248,6 +266,8 @@ class _TransferJobState:
             pulumi.set(__self__, "replication_spec", replication_spec)
         if schedule is not None:
             pulumi.set(__self__, "schedule", schedule)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if transfer_spec is not None:
@@ -389,6 +409,18 @@ class _TransferJobState:
         pulumi.set(self, "schedule", value)
 
     @_builtins.property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The user-managed service account to run the job. If this field is specified, the given service account is granted the necessary permissions to all applicable resources (e.g. GCS buckets) required by the job.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "service_account", value)
+
+    @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -427,6 +459,7 @@ class TransferJob(pulumi.CustomResource):
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  replication_spec: Optional[pulumi.Input[Union['TransferJobReplicationSpecArgs', 'TransferJobReplicationSpecArgsDict']]] = None,
                  schedule: Optional[pulumi.Input[Union['TransferJobScheduleArgs', 'TransferJobScheduleArgsDict']]] = None,
+                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  transfer_spec: Optional[pulumi.Input[Union['TransferJobTransferSpecArgs', 'TransferJobTransferSpecArgsDict']]] = None,
                  __props__=None):
@@ -555,6 +588,7 @@ class TransferJob(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[Union['TransferJobScheduleArgs', 'TransferJobScheduleArgsDict']] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
+        :param pulumi.Input[_builtins.str] service_account: The user-managed service account to run the job. If this field is specified, the given service account is granted the necessary permissions to all applicable resources (e.g. GCS buckets) required by the job.
         :param pulumi.Input[_builtins.str] status: Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
         :param pulumi.Input[Union['TransferJobTransferSpecArgs', 'TransferJobTransferSpecArgsDict']] transfer_spec: Transfer specification. Structure documented below. One of `transfer_spec`, or `replication_spec` can be specified.
         """
@@ -699,6 +733,7 @@ class TransferJob(pulumi.CustomResource):
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  replication_spec: Optional[pulumi.Input[Union['TransferJobReplicationSpecArgs', 'TransferJobReplicationSpecArgsDict']]] = None,
                  schedule: Optional[pulumi.Input[Union['TransferJobScheduleArgs', 'TransferJobScheduleArgsDict']]] = None,
+                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  transfer_spec: Optional[pulumi.Input[Union['TransferJobTransferSpecArgs', 'TransferJobTransferSpecArgsDict']]] = None,
                  __props__=None):
@@ -720,6 +755,7 @@ class TransferJob(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["replication_spec"] = replication_spec
             __props__.__dict__["schedule"] = schedule
+            __props__.__dict__["service_account"] = service_account
             __props__.__dict__["status"] = status
             __props__.__dict__["transfer_spec"] = transfer_spec
             __props__.__dict__["creation_time"] = None
@@ -746,6 +782,7 @@ class TransferJob(pulumi.CustomResource):
             project: Optional[pulumi.Input[_builtins.str]] = None,
             replication_spec: Optional[pulumi.Input[Union['TransferJobReplicationSpecArgs', 'TransferJobReplicationSpecArgsDict']]] = None,
             schedule: Optional[pulumi.Input[Union['TransferJobScheduleArgs', 'TransferJobScheduleArgsDict']]] = None,
+            service_account: Optional[pulumi.Input[_builtins.str]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
             transfer_spec: Optional[pulumi.Input[Union['TransferJobTransferSpecArgs', 'TransferJobTransferSpecArgsDict']]] = None) -> 'TransferJob':
         """
@@ -769,6 +806,7 @@ class TransferJob(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[Union['TransferJobScheduleArgs', 'TransferJobScheduleArgsDict']] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
+        :param pulumi.Input[_builtins.str] service_account: The user-managed service account to run the job. If this field is specified, the given service account is granted the necessary permissions to all applicable resources (e.g. GCS buckets) required by the job.
         :param pulumi.Input[_builtins.str] status: Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
         :param pulumi.Input[Union['TransferJobTransferSpecArgs', 'TransferJobTransferSpecArgsDict']] transfer_spec: Transfer specification. Structure documented below. One of `transfer_spec`, or `replication_spec` can be specified.
         """
@@ -787,6 +825,7 @@ class TransferJob(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["replication_spec"] = replication_spec
         __props__.__dict__["schedule"] = schedule
+        __props__.__dict__["service_account"] = service_account
         __props__.__dict__["status"] = status
         __props__.__dict__["transfer_spec"] = transfer_spec
         return TransferJob(resource_name, opts=opts, __props__=__props__)
@@ -881,6 +920,14 @@ class TransferJob(pulumi.CustomResource):
         Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
         """
         return pulumi.get(self, "schedule")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The user-managed service account to run the job. If this field is specified, the given service account is granted the necessary permissions to all applicable resources (e.g. GCS buckets) required by the job.
+        """
+        return pulumi.get(self, "service_account")
 
     @_builtins.property
     @pulumi.getter

@@ -32,6 +32,21 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnec
     }
 
     /**
+     * (Output) The connection policy status of the consumer network.
+     * 
+     */
+    @Import(name="consumerNetworkStatus")
+    private @Nullable Output<String> consumerNetworkStatus;
+
+    /**
+     * @return (Output) The connection policy status of the consumer network.
+     * 
+     */
+    public Optional<Output<String>> consumerNetworkStatus() {
+        return Optional.ofNullable(this.consumerNetworkStatus);
+    }
+
+    /**
      * The project ID of consumer service project of this consumer endpoint.
      * 
      */
@@ -46,11 +61,44 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnec
         return Optional.ofNullable(this.consumerServiceProjectId);
     }
 
+    /**
+     * (Output) The IP address of the consumer endpoint.
+     * 
+     */
+    @Import(name="ipAddress")
+    private @Nullable Output<String> ipAddress;
+
+    /**
+     * @return (Output) The IP address of the consumer endpoint.
+     * 
+     */
+    public Optional<Output<String>> ipAddress() {
+        return Optional.ofNullable(this.ipAddress);
+    }
+
+    /**
+     * (Output) The connection status of the consumer endpoint.
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return (Output) The connection status of the consumer endpoint.
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
+    }
+
     private DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs() {}
 
     private DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs(DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs $) {
         this.consumerNetwork = $.consumerNetwork;
+        this.consumerNetworkStatus = $.consumerNetworkStatus;
         this.consumerServiceProjectId = $.consumerServiceProjectId;
+        this.ipAddress = $.ipAddress;
+        this.status = $.status;
     }
 
     public static Builder builder() {
@@ -93,6 +141,27 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnec
         }
 
         /**
+         * @param consumerNetworkStatus (Output) The connection policy status of the consumer network.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder consumerNetworkStatus(@Nullable Output<String> consumerNetworkStatus) {
+            $.consumerNetworkStatus = consumerNetworkStatus;
+            return this;
+        }
+
+        /**
+         * @param consumerNetworkStatus (Output) The connection policy status of the consumer network.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder consumerNetworkStatus(String consumerNetworkStatus) {
+            return consumerNetworkStatus(Output.of(consumerNetworkStatus));
+        }
+
+        /**
          * @param consumerServiceProjectId The project ID of consumer service project of this consumer endpoint.
          * 
          * @return builder
@@ -111,6 +180,48 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnec
          */
         public Builder consumerServiceProjectId(String consumerServiceProjectId) {
             return consumerServiceProjectId(Output.of(consumerServiceProjectId));
+        }
+
+        /**
+         * @param ipAddress (Output) The IP address of the consumer endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipAddress(@Nullable Output<String> ipAddress) {
+            $.ipAddress = ipAddress;
+            return this;
+        }
+
+        /**
+         * @param ipAddress (Output) The IP address of the consumer endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipAddress(String ipAddress) {
+            return ipAddress(Output.of(ipAddress));
+        }
+
+        /**
+         * @param status (Output) The connection status of the consumer endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status (Output) The connection status of the consumer endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
         }
 
         public DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs build() {

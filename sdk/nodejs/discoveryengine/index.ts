@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AclConfigArgs, AclConfigState } from "./aclConfig";
+export type AclConfig = import("./aclConfig").AclConfig;
+export const AclConfig: typeof import("./aclConfig").AclConfig = null as any;
+utilities.lazyLoad(exports, ["AclConfig"], () => require("./aclConfig"));
+
 export { ChatEngineArgs, ChatEngineState } from "./chatEngine";
 export type ChatEngine = import("./chatEngine").ChatEngine;
 export const ChatEngine: typeof import("./chatEngine").ChatEngine = null as any;
@@ -50,6 +55,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:discoveryengine/aclConfig:AclConfig":
+                return new AclConfig(name, <any>undefined, { urn })
             case "gcp:discoveryengine/chatEngine:ChatEngine":
                 return new ChatEngine(name, <any>undefined, { urn })
             case "gcp:discoveryengine/cmekConfig:CmekConfig":
@@ -71,6 +78,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "discoveryengine/aclConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/chatEngine", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/cmekConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/dataStore", _module)

@@ -1202,7 +1202,7 @@ class CloudVmCluster(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="backupOdbSubnet")
-    def backup_odb_subnet(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def backup_odb_subnet(self) -> pulumi.Output[_builtins.str]:
         """
         The name of the backup OdbSubnet associated with the VM Cluster.
         Format:
@@ -1323,7 +1323,7 @@ class CloudVmCluster(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="odbNetwork")
-    def odb_network(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def odb_network(self) -> pulumi.Output[_builtins.str]:
         """
         The name of the OdbNetwork associated with the VM Cluster.
         Format:
@@ -1335,7 +1335,7 @@ class CloudVmCluster(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="odbSubnet")
-    def odb_subnet(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def odb_subnet(self) -> pulumi.Output[_builtins.str]:
         """
         The name of the OdbSubnet associated with the VM Cluster for
         IP allocation. Format:

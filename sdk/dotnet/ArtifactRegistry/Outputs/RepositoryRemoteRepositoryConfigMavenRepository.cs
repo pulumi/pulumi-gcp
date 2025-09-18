@@ -20,7 +20,6 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
         public readonly Outputs.RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository? CustomRepository;
         /// <summary>
         /// Address of the remote repository.
-        /// Default value is `MAVEN_CENTRAL`.
         /// Possible values are: `MAVEN_CENTRAL`.
         /// </summary>
         public readonly string? PublicRepository;

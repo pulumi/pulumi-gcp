@@ -22,6 +22,10 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Outputs
         /// </summary>
         public readonly string BackupVaultId;
         /// <summary>
+        /// The time when the backup was created.
+        /// </summary>
+        public readonly string CreateTime;
+        /// <summary>
         /// The ID of the Data Source in which the Backup belongs.
         /// </summary>
         public readonly string DataSourceId;
@@ -40,6 +44,8 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Outputs
 
             string backupVaultId,
 
+            string createTime,
+
             string dataSourceId,
 
             string location,
@@ -48,6 +54,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Outputs
         {
             BackupId = backupId;
             BackupVaultId = backupVaultId;
+            CreateTime = createTime;
             DataSourceId = dataSourceId;
             Location = location;
             Name = name;

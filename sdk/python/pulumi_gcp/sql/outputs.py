@@ -33,6 +33,7 @@ __all__ = [
     'DatabaseInstanceSettingsDataCacheConfig',
     'DatabaseInstanceSettingsDatabaseFlag',
     'DatabaseInstanceSettingsDenyMaintenancePeriod',
+    'DatabaseInstanceSettingsFinalBackupConfig',
     'DatabaseInstanceSettingsInsightsConfig',
     'DatabaseInstanceSettingsIpConfiguration',
     'DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork',
@@ -63,6 +64,7 @@ __all__ = [
     'GetDatabaseInstanceSettingDataCacheConfigResult',
     'GetDatabaseInstanceSettingDatabaseFlagResult',
     'GetDatabaseInstanceSettingDenyMaintenancePeriodResult',
+    'GetDatabaseInstanceSettingFinalBackupConfigResult',
     'GetDatabaseInstanceSettingInsightsConfigResult',
     'GetDatabaseInstanceSettingIpConfigurationResult',
     'GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkResult',
@@ -90,6 +92,7 @@ __all__ = [
     'GetDatabaseInstancesInstanceSettingDataCacheConfigResult',
     'GetDatabaseInstancesInstanceSettingDatabaseFlagResult',
     'GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodResult',
+    'GetDatabaseInstancesInstanceSettingFinalBackupConfigResult',
     'GetDatabaseInstancesInstanceSettingInsightsConfigResult',
     'GetDatabaseInstancesInstanceSettingIpConfigurationResult',
     'GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkResult',
@@ -806,6 +809,8 @@ class DatabaseInstanceSettings(dict):
             suggest = "enable_dataplex_integration"
         elif key == "enableGoogleMlIntegration":
             suggest = "enable_google_ml_integration"
+        elif key == "finalBackupConfig":
+            suggest = "final_backup_config"
         elif key == "insightsConfig":
             suggest = "insights_config"
         elif key == "ipConfiguration":
@@ -862,6 +867,7 @@ class DatabaseInstanceSettings(dict):
                  effective_availability_type: Optional[_builtins.str] = None,
                  enable_dataplex_integration: Optional[_builtins.bool] = None,
                  enable_google_ml_integration: Optional[_builtins.bool] = None,
+                 final_backup_config: Optional['outputs.DatabaseInstanceSettingsFinalBackupConfig'] = None,
                  insights_config: Optional['outputs.DatabaseInstanceSettingsInsightsConfig'] = None,
                  ip_configuration: Optional['outputs.DatabaseInstanceSettingsIpConfiguration'] = None,
                  location_preference: Optional['outputs.DatabaseInstanceSettingsLocationPreference'] = None,
@@ -906,6 +912,7 @@ class DatabaseInstanceSettings(dict):
                `settings.0.availability_type`).
         :param _builtins.bool enable_dataplex_integration: Enables [Cloud SQL instance integration with Dataplex](https://cloud.google.com/sql/docs/mysql/dataplex-catalog-integration). MySQL, Postgres and SQL Server instances are supported for this feature. Defaults to `false`.
         :param _builtins.bool enable_google_ml_integration: Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
+        :param 'DatabaseInstanceSettingsFinalBackupConfigArgs' final_backup_config: Config used to determine the final backup settings for the instance
         :param 'DatabaseInstanceSettingsInsightsConfigArgs' insights_config: Configuration of Query Insights.
         :param 'DatabaseInstanceSettingsMaintenanceWindowArgs' maintenance_window: Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
         :param _builtins.str pricing_plan: Pricing plan for this instance, can only be `PER_USE`.
@@ -960,6 +967,8 @@ class DatabaseInstanceSettings(dict):
             pulumi.set(__self__, "enable_dataplex_integration", enable_dataplex_integration)
         if enable_google_ml_integration is not None:
             pulumi.set(__self__, "enable_google_ml_integration", enable_google_ml_integration)
+        if final_backup_config is not None:
+            pulumi.set(__self__, "final_backup_config", final_backup_config)
         if insights_config is not None:
             pulumi.set(__self__, "insights_config", insights_config)
         if ip_configuration is not None:
@@ -1165,6 +1174,14 @@ class DatabaseInstanceSettings(dict):
         Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
         """
         return pulumi.get(self, "enable_google_ml_integration")
+
+    @_builtins.property
+    @pulumi.getter(name="finalBackupConfig")
+    def final_backup_config(self) -> Optional['outputs.DatabaseInstanceSettingsFinalBackupConfig']:
+        """
+        Config used to determine the final backup settings for the instance
+        """
+        return pulumi.get(self, "final_backup_config")
 
     @_builtins.property
     @pulumi.getter(name="insightsConfig")
@@ -1673,6 +1690,54 @@ class DatabaseInstanceSettingsDenyMaintenancePeriod(dict):
 
 
 @pulumi.output_type
+class DatabaseInstanceSettingsFinalBackupConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "retentionDays":
+            suggest = "retention_days"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseInstanceSettingsFinalBackupConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseInstanceSettingsFinalBackupConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseInstanceSettingsFinalBackupConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None,
+                 retention_days: Optional[_builtins.int] = None):
+        """
+        :param _builtins.bool enabled: True if enabled final backup.
+        :param _builtins.int retention_days: The number of days we retain the final backup after instance deletion. The valid range is between 1 and 365. For instances managed by BackupDR, the valid range is between 1 day and 99 years.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if retention_days is not None:
+            pulumi.set(__self__, "retention_days", retention_days)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        True if enabled final backup.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="retentionDays")
+    def retention_days(self) -> Optional[_builtins.int]:
+        """
+        The number of days we retain the final backup after instance deletion. The valid range is between 1 and 365. For instances managed by BackupDR, the valid range is between 1 day and 99 years.
+        """
+        return pulumi.get(self, "retention_days")
+
+
+@pulumi.output_type
 class DatabaseInstanceSettingsInsightsConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -2084,8 +2149,12 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection(dict):
         suggest = None
         if key == "consumerNetwork":
             suggest = "consumer_network"
+        elif key == "consumerNetworkStatus":
+            suggest = "consumer_network_status"
         elif key == "consumerServiceProjectId":
             suggest = "consumer_service_project_id"
+        elif key == "ipAddress":
+            suggest = "ip_address"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection. Access the value via the '{suggest}' property getter instead.")
@@ -2100,14 +2169,26 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection(dict):
 
     def __init__(__self__, *,
                  consumer_network: _builtins.str,
-                 consumer_service_project_id: Optional[_builtins.str] = None):
+                 consumer_network_status: Optional[_builtins.str] = None,
+                 consumer_service_project_id: Optional[_builtins.str] = None,
+                 ip_address: Optional[_builtins.str] = None,
+                 status: Optional[_builtins.str] = None):
         """
         :param _builtins.str consumer_network: "The consumer network of this consumer endpoint. This must be a resource path that includes both the host project and the network name. For example, `projects/project1/global/networks/network1`. The consumer host project of this network might be different from the consumer service project."
+        :param _builtins.str consumer_network_status: (Output) The connection policy status of the consumer network.
         :param _builtins.str consumer_service_project_id: The project ID of consumer service project of this consumer endpoint.
+        :param _builtins.str ip_address: (Output) The IP address of the consumer endpoint.
+        :param _builtins.str status: (Output) The connection status of the consumer endpoint.
         """
         pulumi.set(__self__, "consumer_network", consumer_network)
+        if consumer_network_status is not None:
+            pulumi.set(__self__, "consumer_network_status", consumer_network_status)
         if consumer_service_project_id is not None:
             pulumi.set(__self__, "consumer_service_project_id", consumer_service_project_id)
+        if ip_address is not None:
+            pulumi.set(__self__, "ip_address", ip_address)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
 
     @_builtins.property
     @pulumi.getter(name="consumerNetwork")
@@ -2118,12 +2199,36 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection(dict):
         return pulumi.get(self, "consumer_network")
 
     @_builtins.property
+    @pulumi.getter(name="consumerNetworkStatus")
+    def consumer_network_status(self) -> Optional[_builtins.str]:
+        """
+        (Output) The connection policy status of the consumer network.
+        """
+        return pulumi.get(self, "consumer_network_status")
+
+    @_builtins.property
     @pulumi.getter(name="consumerServiceProjectId")
     def consumer_service_project_id(self) -> Optional[_builtins.str]:
         """
         The project ID of consumer service project of this consumer endpoint.
         """
         return pulumi.get(self, "consumer_service_project_id")
+
+    @_builtins.property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> Optional[_builtins.str]:
+        """
+        (Output) The IP address of the consumer endpoint.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[_builtins.str]:
+        """
+        (Output) The connection status of the consumer endpoint.
+        """
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type
@@ -3087,6 +3192,7 @@ class GetDatabaseInstanceSettingResult(dict):
                  effective_availability_type: _builtins.str,
                  enable_dataplex_integration: _builtins.bool,
                  enable_google_ml_integration: _builtins.bool,
+                 final_backup_configs: Sequence['outputs.GetDatabaseInstanceSettingFinalBackupConfigResult'],
                  insights_configs: Sequence['outputs.GetDatabaseInstanceSettingInsightsConfigResult'],
                  ip_configurations: Sequence['outputs.GetDatabaseInstanceSettingIpConfigurationResult'],
                  location_preferences: Sequence['outputs.GetDatabaseInstanceSettingLocationPreferenceResult'],
@@ -3126,6 +3232,7 @@ class GetDatabaseInstanceSettingResult(dict):
                API (for read pools, effective_availability_type may differ from availability_type).
         :param _builtins.bool enable_dataplex_integration: Enables Dataplex Integration.
         :param _builtins.bool enable_google_ml_integration: Enables Vertex AI Integration.
+        :param Sequence['GetDatabaseInstanceSettingFinalBackupConfigArgs'] final_backup_configs: Config used to determine the final backup settings for the instance
         :param Sequence['GetDatabaseInstanceSettingInsightsConfigArgs'] insights_configs: Configuration of Query Insights.
         :param Sequence['GetDatabaseInstanceSettingMaintenanceWindowArgs'] maintenance_windows: Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
         :param _builtins.str pricing_plan: Pricing plan for this instance, can only be PER_USE.
@@ -3157,6 +3264,7 @@ class GetDatabaseInstanceSettingResult(dict):
         pulumi.set(__self__, "effective_availability_type", effective_availability_type)
         pulumi.set(__self__, "enable_dataplex_integration", enable_dataplex_integration)
         pulumi.set(__self__, "enable_google_ml_integration", enable_google_ml_integration)
+        pulumi.set(__self__, "final_backup_configs", final_backup_configs)
         pulumi.set(__self__, "insights_configs", insights_configs)
         pulumi.set(__self__, "ip_configurations", ip_configurations)
         pulumi.set(__self__, "location_preferences", location_preferences)
@@ -3339,6 +3447,14 @@ class GetDatabaseInstanceSettingResult(dict):
         Enables Vertex AI Integration.
         """
         return pulumi.get(self, "enable_google_ml_integration")
+
+    @_builtins.property
+    @pulumi.getter(name="finalBackupConfigs")
+    def final_backup_configs(self) -> Sequence['outputs.GetDatabaseInstanceSettingFinalBackupConfigResult']:
+        """
+        Config used to determine the final backup settings for the instance
+        """
+        return pulumi.get(self, "final_backup_configs")
 
     @_builtins.property
     @pulumi.getter(name="insightsConfigs")
@@ -3716,6 +3832,35 @@ class GetDatabaseInstanceSettingDenyMaintenancePeriodResult(dict):
 
 
 @pulumi.output_type
+class GetDatabaseInstanceSettingFinalBackupConfigResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 retention_days: _builtins.int):
+        """
+        :param _builtins.bool enabled: When this parameter is set to true, the final backup is enabled for the instance
+        :param _builtins.int retention_days: The number of days to retain the final backup after the instance deletion. The valid range is between 1 and 365. For instances managed by BackupDR, the valid range is between 1 day and 99 years. The final backup will be purged at (time_of_instance_deletion + retention_days).
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "retention_days", retention_days)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        When this parameter is set to true, the final backup is enabled for the instance
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="retentionDays")
+    def retention_days(self) -> _builtins.int:
+        """
+        The number of days to retain the final backup after the instance deletion. The valid range is between 1 and 365. For instances managed by BackupDR, the valid range is between 1 day and 99 years. The final backup will be purged at (time_of_instance_deletion + retention_days).
+        """
+        return pulumi.get(self, "retention_days")
+
+
+@pulumi.output_type
 class GetDatabaseInstanceSettingInsightsConfigResult(dict):
     def __init__(__self__, *,
                  query_insights_enabled: _builtins.bool,
@@ -3977,13 +4122,22 @@ class GetDatabaseInstanceSettingIpConfigurationPscConfigResult(dict):
 class GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionResult(dict):
     def __init__(__self__, *,
                  consumer_network: _builtins.str,
-                 consumer_service_project_id: _builtins.str):
+                 consumer_network_status: _builtins.str,
+                 consumer_service_project_id: _builtins.str,
+                 ip_address: _builtins.str,
+                 status: _builtins.str):
         """
         :param _builtins.str consumer_network: The consumer network of this consumer endpoint. This must be a resource path that includes both the host project and the network name. The consumer host project of this network might be different from the consumer service project.
+        :param _builtins.str consumer_network_status: The connection policy status of the consumer network.
         :param _builtins.str consumer_service_project_id: The project ID of consumer service project of this consumer endpoint.
+        :param _builtins.str ip_address: The IP address of the consumer endpoint.
+        :param _builtins.str status: The connection status of the consumer endpoint.
         """
         pulumi.set(__self__, "consumer_network", consumer_network)
+        pulumi.set(__self__, "consumer_network_status", consumer_network_status)
         pulumi.set(__self__, "consumer_service_project_id", consumer_service_project_id)
+        pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "status", status)
 
     @_builtins.property
     @pulumi.getter(name="consumerNetwork")
@@ -3994,12 +4148,36 @@ class GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionResult(
         return pulumi.get(self, "consumer_network")
 
     @_builtins.property
+    @pulumi.getter(name="consumerNetworkStatus")
+    def consumer_network_status(self) -> _builtins.str:
+        """
+        The connection policy status of the consumer network.
+        """
+        return pulumi.get(self, "consumer_network_status")
+
+    @_builtins.property
     @pulumi.getter(name="consumerServiceProjectId")
     def consumer_service_project_id(self) -> _builtins.str:
         """
         The project ID of consumer service project of this consumer endpoint.
         """
         return pulumi.get(self, "consumer_service_project_id")
+
+    @_builtins.property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> _builtins.str:
+        """
+        The IP address of the consumer endpoint.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The connection status of the consumer endpoint.
+        """
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type
@@ -4199,6 +4377,7 @@ class GetDatabaseInstanceSettingSqlServerAuditConfigResult(dict):
 class GetDatabaseInstancesInstanceResult(dict):
     def __init__(__self__, *,
                  available_maintenance_versions: Sequence[_builtins.str],
+                 backupdr_backup: _builtins.str,
                  clones: Sequence['outputs.GetDatabaseInstancesInstanceCloneResult'],
                  connection_name: _builtins.str,
                  database_version: _builtins.str,
@@ -4206,6 +4385,7 @@ class GetDatabaseInstancesInstanceResult(dict):
                  dns_name: _builtins.str,
                  dns_names: Sequence['outputs.GetDatabaseInstancesInstanceDnsNameResult'],
                  encryption_key_name: _builtins.str,
+                 final_backup_description: _builtins.str,
                  first_ip_address: _builtins.str,
                  instance_type: _builtins.str,
                  ip_addresses: Sequence['outputs.GetDatabaseInstancesInstanceIpAddressResult'],
@@ -4229,11 +4409,13 @@ class GetDatabaseInstancesInstanceResult(dict):
                  settings: Sequence['outputs.GetDatabaseInstancesInstanceSettingResult']):
         """
         :param Sequence[_builtins.str] available_maintenance_versions: Available Maintenance versions.
+        :param _builtins.str backupdr_backup: The name of the BackupDR backup to restore from.
         :param Sequence['GetDatabaseInstancesInstanceCloneArgs'] clones: Configuration for creating a new instance as a clone of another instance.
         :param _builtins.str connection_name: The connection name of the instance to be used in connection strings. For example, when connecting with Cloud SQL Proxy.
         :param _builtins.str database_version: To filter out the Cloud SQL instances which are of the specified database version.
         :param _builtins.str dns_name: The instance-level dns name of the instance for PSC instances or public IP CAS instances.
         :param Sequence['GetDatabaseInstancesInstanceDnsNameArgs'] dns_names: The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
+        :param _builtins.str final_backup_description: The description of final backup if instance enable create final backup during instance deletion.
         :param _builtins.str instance_type: The type of the instance. See https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType for supported values.
         :param _builtins.str maintenance_version: Maintenance version.
         :param _builtins.str master_instance_name: The name of the instance that will act as the master in the replication setup. Note, this requires the master to have binary_log_enabled set, as well as existing backups.
@@ -4250,6 +4432,7 @@ class GetDatabaseInstancesInstanceResult(dict):
         :param Sequence['GetDatabaseInstancesInstanceSettingArgs'] settings: The settings to use for the database. The configuration is detailed below.
         """
         pulumi.set(__self__, "available_maintenance_versions", available_maintenance_versions)
+        pulumi.set(__self__, "backupdr_backup", backupdr_backup)
         pulumi.set(__self__, "clones", clones)
         pulumi.set(__self__, "connection_name", connection_name)
         pulumi.set(__self__, "database_version", database_version)
@@ -4257,6 +4440,7 @@ class GetDatabaseInstancesInstanceResult(dict):
         pulumi.set(__self__, "dns_name", dns_name)
         pulumi.set(__self__, "dns_names", dns_names)
         pulumi.set(__self__, "encryption_key_name", encryption_key_name)
+        pulumi.set(__self__, "final_backup_description", final_backup_description)
         pulumi.set(__self__, "first_ip_address", first_ip_address)
         pulumi.set(__self__, "instance_type", instance_type)
         pulumi.set(__self__, "ip_addresses", ip_addresses)
@@ -4286,6 +4470,14 @@ class GetDatabaseInstancesInstanceResult(dict):
         Available Maintenance versions.
         """
         return pulumi.get(self, "available_maintenance_versions")
+
+    @_builtins.property
+    @pulumi.getter(name="backupdrBackup")
+    def backupdr_backup(self) -> _builtins.str:
+        """
+        The name of the BackupDR backup to restore from.
+        """
+        return pulumi.get(self, "backupdr_backup")
 
     @_builtins.property
     @pulumi.getter
@@ -4336,6 +4528,14 @@ class GetDatabaseInstancesInstanceResult(dict):
     @pulumi.getter(name="encryptionKeyName")
     def encryption_key_name(self) -> _builtins.str:
         return pulumi.get(self, "encryption_key_name")
+
+    @_builtins.property
+    @pulumi.getter(name="finalBackupDescription")
+    def final_backup_description(self) -> _builtins.str:
+        """
+        The description of final backup if instance enable create final backup during instance deletion.
+        """
+        return pulumi.get(self, "final_backup_description")
 
     @_builtins.property
     @pulumi.getter(name="firstIpAddress")
@@ -4905,6 +5105,7 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
                  effective_availability_type: _builtins.str,
                  enable_dataplex_integration: _builtins.bool,
                  enable_google_ml_integration: _builtins.bool,
+                 final_backup_configs: Sequence['outputs.GetDatabaseInstancesInstanceSettingFinalBackupConfigResult'],
                  insights_configs: Sequence['outputs.GetDatabaseInstancesInstanceSettingInsightsConfigResult'],
                  ip_configurations: Sequence['outputs.GetDatabaseInstancesInstanceSettingIpConfigurationResult'],
                  location_preferences: Sequence['outputs.GetDatabaseInstancesInstanceSettingLocationPreferenceResult'],
@@ -4944,6 +5145,7 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
                API (for read pools, effective_availability_type may differ from availability_type).
         :param _builtins.bool enable_dataplex_integration: Enables Dataplex Integration.
         :param _builtins.bool enable_google_ml_integration: Enables Vertex AI Integration.
+        :param Sequence['GetDatabaseInstancesInstanceSettingFinalBackupConfigArgs'] final_backup_configs: Config used to determine the final backup settings for the instance
         :param Sequence['GetDatabaseInstancesInstanceSettingInsightsConfigArgs'] insights_configs: Configuration of Query Insights.
         :param Sequence['GetDatabaseInstancesInstanceSettingMaintenanceWindowArgs'] maintenance_windows: Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
         :param _builtins.str pricing_plan: Pricing plan for this instance, can only be PER_USE.
@@ -4975,6 +5177,7 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
         pulumi.set(__self__, "effective_availability_type", effective_availability_type)
         pulumi.set(__self__, "enable_dataplex_integration", enable_dataplex_integration)
         pulumi.set(__self__, "enable_google_ml_integration", enable_google_ml_integration)
+        pulumi.set(__self__, "final_backup_configs", final_backup_configs)
         pulumi.set(__self__, "insights_configs", insights_configs)
         pulumi.set(__self__, "ip_configurations", ip_configurations)
         pulumi.set(__self__, "location_preferences", location_preferences)
@@ -5157,6 +5360,14 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
         Enables Vertex AI Integration.
         """
         return pulumi.get(self, "enable_google_ml_integration")
+
+    @_builtins.property
+    @pulumi.getter(name="finalBackupConfigs")
+    def final_backup_configs(self) -> Sequence['outputs.GetDatabaseInstancesInstanceSettingFinalBackupConfigResult']:
+        """
+        Config used to determine the final backup settings for the instance
+        """
+        return pulumi.get(self, "final_backup_configs")
 
     @_builtins.property
     @pulumi.getter(name="insightsConfigs")
@@ -5534,6 +5745,35 @@ class GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodResult(dict):
 
 
 @pulumi.output_type
+class GetDatabaseInstancesInstanceSettingFinalBackupConfigResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 retention_days: _builtins.int):
+        """
+        :param _builtins.bool enabled: When this parameter is set to true, the final backup is enabled for the instance
+        :param _builtins.int retention_days: The number of days to retain the final backup after the instance deletion. The valid range is between 1 and 365. For instances managed by BackupDR, the valid range is between 1 day and 99 years. The final backup will be purged at (time_of_instance_deletion + retention_days).
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "retention_days", retention_days)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        When this parameter is set to true, the final backup is enabled for the instance
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="retentionDays")
+    def retention_days(self) -> _builtins.int:
+        """
+        The number of days to retain the final backup after the instance deletion. The valid range is between 1 and 365. For instances managed by BackupDR, the valid range is between 1 day and 99 years. The final backup will be purged at (time_of_instance_deletion + retention_days).
+        """
+        return pulumi.get(self, "retention_days")
+
+
+@pulumi.output_type
 class GetDatabaseInstancesInstanceSettingInsightsConfigResult(dict):
     def __init__(__self__, *,
                  query_insights_enabled: _builtins.bool,
@@ -5789,13 +6029,22 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigResult(dict):
 class GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionResult(dict):
     def __init__(__self__, *,
                  consumer_network: _builtins.str,
-                 consumer_service_project_id: _builtins.str):
+                 consumer_network_status: _builtins.str,
+                 consumer_service_project_id: _builtins.str,
+                 ip_address: _builtins.str,
+                 status: _builtins.str):
         """
         :param _builtins.str consumer_network: The consumer network of this consumer endpoint. This must be a resource path that includes both the host project and the network name. The consumer host project of this network might be different from the consumer service project.
+        :param _builtins.str consumer_network_status: The connection policy status of the consumer network.
         :param _builtins.str consumer_service_project_id: The project ID of consumer service project of this consumer endpoint.
+        :param _builtins.str ip_address: The IP address of the consumer endpoint.
+        :param _builtins.str status: The connection status of the consumer endpoint.
         """
         pulumi.set(__self__, "consumer_network", consumer_network)
+        pulumi.set(__self__, "consumer_network_status", consumer_network_status)
         pulumi.set(__self__, "consumer_service_project_id", consumer_service_project_id)
+        pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "status", status)
 
     @_builtins.property
     @pulumi.getter(name="consumerNetwork")
@@ -5806,12 +6055,36 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnecti
         return pulumi.get(self, "consumer_network")
 
     @_builtins.property
+    @pulumi.getter(name="consumerNetworkStatus")
+    def consumer_network_status(self) -> _builtins.str:
+        """
+        The connection policy status of the consumer network.
+        """
+        return pulumi.get(self, "consumer_network_status")
+
+    @_builtins.property
     @pulumi.getter(name="consumerServiceProjectId")
     def consumer_service_project_id(self) -> _builtins.str:
         """
         The project ID of consumer service project of this consumer endpoint.
         """
         return pulumi.get(self, "consumer_service_project_id")
+
+    @_builtins.property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> _builtins.str:
+        """
+        The IP address of the consumer endpoint.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The connection status of the consumer endpoint.
+        """
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type

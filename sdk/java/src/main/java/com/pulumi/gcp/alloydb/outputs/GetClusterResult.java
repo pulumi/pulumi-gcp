@@ -39,6 +39,7 @@ public final class GetClusterResult {
     private List<GetClusterContinuousBackupInfo> continuousBackupInfos;
     private String databaseVersion;
     private String deletionPolicy;
+    private Boolean deletionProtection;
     private String displayName;
     private Map<String,String> effectiveAnnotations;
     private Map<String,String> effectiveLabels;
@@ -97,6 +98,9 @@ public final class GetClusterResult {
     }
     public String deletionPolicy() {
         return this.deletionPolicy;
+    }
+    public Boolean deletionProtection() {
+        return this.deletionProtection;
     }
     public String displayName() {
         return this.displayName;
@@ -199,6 +203,7 @@ public final class GetClusterResult {
         private List<GetClusterContinuousBackupInfo> continuousBackupInfos;
         private String databaseVersion;
         private String deletionPolicy;
+        private Boolean deletionProtection;
         private String displayName;
         private Map<String,String> effectiveAnnotations;
         private Map<String,String> effectiveLabels;
@@ -237,6 +242,7 @@ public final class GetClusterResult {
     	      this.continuousBackupInfos = defaults.continuousBackupInfos;
     	      this.databaseVersion = defaults.databaseVersion;
     	      this.deletionPolicy = defaults.deletionPolicy;
+    	      this.deletionProtection = defaults.deletionProtection;
     	      this.displayName = defaults.displayName;
     	      this.effectiveAnnotations = defaults.effectiveAnnotations;
     	      this.effectiveLabels = defaults.effectiveLabels;
@@ -347,6 +353,14 @@ public final class GetClusterResult {
               throw new MissingRequiredPropertyException("GetClusterResult", "deletionPolicy");
             }
             this.deletionPolicy = deletionPolicy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionProtection(Boolean deletionProtection) {
+            if (deletionProtection == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "deletionProtection");
+            }
+            this.deletionProtection = deletionProtection;
             return this;
         }
         @CustomType.Setter
@@ -597,6 +611,7 @@ public final class GetClusterResult {
             _resultValue.continuousBackupInfos = continuousBackupInfos;
             _resultValue.databaseVersion = databaseVersion;
             _resultValue.deletionPolicy = deletionPolicy;
+            _resultValue.deletionProtection = deletionProtection;
             _resultValue.displayName = displayName;
             _resultValue.effectiveAnnotations = effectiveAnnotations;
             _resultValue.effectiveLabels = effectiveLabels;

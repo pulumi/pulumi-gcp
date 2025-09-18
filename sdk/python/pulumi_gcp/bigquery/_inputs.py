@@ -111,6 +111,8 @@ __all__ = [
     'JobLoadTimePartitioningArgsDict',
     'JobQueryArgs',
     'JobQueryArgsDict',
+    'JobQueryConnectionPropertyArgs',
+    'JobQueryConnectionPropertyArgsDict',
     'JobQueryDefaultDatasetArgs',
     'JobQueryDefaultDatasetArgsDict',
     'JobQueryDestinationEncryptionConfigurationArgs',
@@ -1406,18 +1408,26 @@ if not MYPY:
         """
         The Secret Access Key of the AWS account transferring data from.
         """
+        secret_access_key_wo_version: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+        """
 elif False:
     DataTransferConfigSensitiveParamsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DataTransferConfigSensitiveParamsArgs:
     def __init__(__self__, *,
-                 secret_access_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 secret_access_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 secret_access_key_wo_version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] secret_access_key: The Secret Access Key of the AWS account transferring data from.
+        :param pulumi.Input[_builtins.int] secret_access_key_wo_version: The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
         """
         if secret_access_key is not None:
             pulumi.set(__self__, "secret_access_key", secret_access_key)
+        if secret_access_key_wo_version is not None:
+            pulumi.set(__self__, "secret_access_key_wo_version", secret_access_key_wo_version)
 
     @_builtins.property
     @pulumi.getter(name="secretAccessKey")
@@ -1430,6 +1440,18 @@ class DataTransferConfigSensitiveParamsArgs:
     @secret_access_key.setter
     def secret_access_key(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "secret_access_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secretAccessKeyWoVersion")
+    def secret_access_key_wo_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+        """
+        return pulumi.get(self, "secret_access_key_wo_version")
+
+    @secret_access_key_wo_version.setter
+    def secret_access_key_wo_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "secret_access_key_wo_version", value)
 
 
 if not MYPY:
@@ -4097,6 +4119,13 @@ if not MYPY:
         Requires destinationTable to be set. For standard SQL queries, this flag is ignored and large results are always allowed.
         However, you must still set destinationTable when result size exceeds the allowed maximum response size.
         """
+        connection_properties: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobQueryConnectionPropertyArgsDict']]]]
+        """
+        Connection properties to customize query behavior. Under JDBC, these correspond
+        directly to connection properties passed to the DriverManager. Under ODBC, these
+        correspond to properties in the connection string.
+        Structure is documented below.
+        """
         continuous: NotRequired[pulumi.Input[_builtins.bool]]
         """
         Whether to run the query as continuous or a regular query.
@@ -4202,6 +4231,7 @@ class JobQueryArgs:
     def __init__(__self__, *,
                  query: pulumi.Input[_builtins.str],
                  allow_large_results: Optional[pulumi.Input[_builtins.bool]] = None,
+                 connection_properties: Optional[pulumi.Input[Sequence[pulumi.Input['JobQueryConnectionPropertyArgs']]]] = None,
                  continuous: Optional[pulumi.Input[_builtins.bool]] = None,
                  create_disposition: Optional[pulumi.Input[_builtins.str]] = None,
                  default_dataset: Optional[pulumi.Input['JobQueryDefaultDatasetArgs']] = None,
@@ -4225,6 +4255,10 @@ class JobQueryArgs:
         :param pulumi.Input[_builtins.bool] allow_large_results: If true and query uses legacy SQL dialect, allows the query to produce arbitrarily large result tables at a slight cost in performance.
                Requires destinationTable to be set. For standard SQL queries, this flag is ignored and large results are always allowed.
                However, you must still set destinationTable when result size exceeds the allowed maximum response size.
+        :param pulumi.Input[Sequence[pulumi.Input['JobQueryConnectionPropertyArgs']]] connection_properties: Connection properties to customize query behavior. Under JDBC, these correspond
+               directly to connection properties passed to the DriverManager. Under ODBC, these
+               correspond to properties in the connection string.
+               Structure is documented below.
         :param pulumi.Input[_builtins.bool] continuous: Whether to run the query as continuous or a regular query.
         :param pulumi.Input[_builtins.str] create_disposition: Specifies whether the job is allowed to create new tables. The following values are supported:
                CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
@@ -4278,6 +4312,8 @@ class JobQueryArgs:
         pulumi.set(__self__, "query", query)
         if allow_large_results is not None:
             pulumi.set(__self__, "allow_large_results", allow_large_results)
+        if connection_properties is not None:
+            pulumi.set(__self__, "connection_properties", connection_properties)
         if continuous is not None:
             pulumi.set(__self__, "continuous", continuous)
         if create_disposition is not None:
@@ -4338,6 +4374,21 @@ class JobQueryArgs:
     @allow_large_results.setter
     def allow_large_results(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "allow_large_results", value)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionProperties")
+    def connection_properties(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobQueryConnectionPropertyArgs']]]]:
+        """
+        Connection properties to customize query behavior. Under JDBC, these correspond
+        directly to connection properties passed to the DriverManager. Under ODBC, these
+        correspond to properties in the connection string.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "connection_properties")
+
+    @connection_properties.setter
+    def connection_properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobQueryConnectionPropertyArgs']]]]):
+        pulumi.set(self, "connection_properties", value)
 
     @_builtins.property
     @pulumi.getter
@@ -4563,6 +4614,56 @@ class JobQueryArgs:
     @write_disposition.setter
     def write_disposition(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "write_disposition", value)
+
+
+if not MYPY:
+    class JobQueryConnectionPropertyArgsDict(TypedDict):
+        key: pulumi.Input[_builtins.str]
+        """
+        The key of the property to set. Currently supported connection properties:
+        """
+        value: pulumi.Input[_builtins.str]
+        """
+        The value of the property to set.
+        """
+elif False:
+    JobQueryConnectionPropertyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobQueryConnectionPropertyArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[_builtins.str],
+                 value: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] key: The key of the property to set. Currently supported connection properties:
+        :param pulumi.Input[_builtins.str] value: The value of the property to set.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[_builtins.str]:
+        """
+        The key of the property to set. Currently supported connection properties:
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[_builtins.str]:
+        """
+        The value of the property to set.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "value", value)
 
 
 if not MYPY:
@@ -8386,7 +8487,10 @@ if not MYPY:
         use_legacy_sql: NotRequired[pulumi.Input[_builtins.bool]]
         """
         Specifies whether to use BigQuery's legacy SQL for this view.
-        The default value is true. If set to false, the view will use BigQuery's standard SQL.
+        If set to `false`, the view will use BigQuery's standard SQL. If set to
+        `true`, the view will use BigQuery's legacy SQL. If unset, the API will
+        interpret it as a `true` and assumes the legacy SQL dialect for its query
+        according to the [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#ViewDefinition).
         > **Note**: Starting in provider version `7.0.0`, no default value is
         provided for this field unless explicitly set in the configuration.
         """
@@ -8401,7 +8505,10 @@ class TableViewArgs:
         """
         :param pulumi.Input[_builtins.str] query: A query that BigQuery executes when the view is referenced.
         :param pulumi.Input[_builtins.bool] use_legacy_sql: Specifies whether to use BigQuery's legacy SQL for this view.
-               The default value is true. If set to false, the view will use BigQuery's standard SQL.
+               If set to `false`, the view will use BigQuery's standard SQL. If set to
+               `true`, the view will use BigQuery's legacy SQL. If unset, the API will
+               interpret it as a `true` and assumes the legacy SQL dialect for its query
+               according to the [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#ViewDefinition).
                > **Note**: Starting in provider version `7.0.0`, no default value is
                provided for this field unless explicitly set in the configuration.
         """
@@ -8426,7 +8533,10 @@ class TableViewArgs:
     def use_legacy_sql(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Specifies whether to use BigQuery's legacy SQL for this view.
-        The default value is true. If set to false, the view will use BigQuery's standard SQL.
+        If set to `false`, the view will use BigQuery's standard SQL. If set to
+        `true`, the view will use BigQuery's legacy SQL. If unset, the API will
+        interpret it as a `true` and assumes the legacy SQL dialect for its query
+        according to the [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#ViewDefinition).
         > **Note**: Starting in provider version `7.0.0`, no default value is
         provided for this field unless explicitly set in the configuration.
         """

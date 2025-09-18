@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.servicedirectory.NamespaceIamBinding` resources **can be** used in conjunction with `gcp.servicedirectory.NamespaceIamMember` resources **only if** they do not grant privilege to the same role.
  * 
- * ## google\_service\_directory\_namespace\_iam\_policy
+ * ## gcp.servicedirectory.NamespaceIamPolicy
  * 
  * <pre>
  * {@code
@@ -162,7 +162,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.servicedirectory.NamespaceIamBinding` resources **can be** used in conjunction with `gcp.servicedirectory.NamespaceIamMember` resources **only if** they do not grant privilege to the same role.
  * 
- * ## google\_service\_directory\_namespace\_iam\_policy
+ * ## gcp.servicedirectory.NamespaceIamPolicy
  * 
  * <pre>
  * {@code

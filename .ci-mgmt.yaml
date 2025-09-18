@@ -1,6 +1,6 @@
 provider: gcp
 gcp: true
-major-version: 8
+major-version: 9
 parallel: 2
 providerVersion: "github.com/hashicorp/terraform-provider-google-beta/version.ProviderVersion"
 esc:

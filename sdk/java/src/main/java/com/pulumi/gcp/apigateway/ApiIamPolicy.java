@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.apigateway.ApiIamBinding` resources **can be** used in conjunction with `gcp.apigateway.ApiIamMember` resources **only if** they do not grant privilege to the same role.
  * 
- * ## google\_api\_gateway\_api\_iam\_policy
+ * ## gcp.apigateway.ApiIamPolicy
  * 
  * <pre>
  * {@code
@@ -164,7 +164,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.apigateway.ApiIamBinding` resources **can be** used in conjunction with `gcp.apigateway.ApiIamMember` resources **only if** they do not grant privilege to the same role.
  * 
- * ## google\_api\_gateway\_api\_iam\_policy
+ * ## gcp.apigateway.ApiIamPolicy
  * 
  * <pre>
  * {@code

@@ -506,7 +506,7 @@ export class Instance extends pulumi.CustomResource {
      * to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
      * and all its contents. Setting `PREVENT` prevents the resource from accidental
      * deletion by erroring out during plan.
-     * Default is `DELETE`.  Possible values are:
+     * Default is `PREVENT`.  Possible values are:
      * * DELETE
      * * PREVENT
      * * ABANDON
@@ -652,7 +652,7 @@ export interface InstanceState {
      * to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
      * and all its contents. Setting `PREVENT` prevents the resource from accidental
      * deletion by erroring out during plan.
-     * Default is `DELETE`.  Possible values are:
+     * Default is `PREVENT`.  Possible values are:
      * * DELETE
      * * PREVENT
      * * ABANDON
@@ -734,7 +734,7 @@ export interface InstanceArgs {
      * to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
      * and all its contents. Setting `PREVENT` prevents the resource from accidental
      * deletion by erroring out during plan.
-     * Default is `DELETE`.  Possible values are:
+     * Default is `PREVENT`.  Possible values are:
      * * DELETE
      * * PREVENT
      * * ABANDON

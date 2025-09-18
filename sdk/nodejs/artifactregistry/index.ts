@@ -20,10 +20,20 @@ export const getLocations: typeof import("./getLocations").getLocations = null a
 export const getLocationsOutput: typeof import("./getLocations").getLocationsOutput = null as any;
 utilities.lazyLoad(exports, ["getLocations","getLocationsOutput"], () => require("./getLocations"));
 
+export { GetNpmPackageArgs, GetNpmPackageResult, GetNpmPackageOutputArgs } from "./getNpmPackage";
+export const getNpmPackage: typeof import("./getNpmPackage").getNpmPackage = null as any;
+export const getNpmPackageOutput: typeof import("./getNpmPackage").getNpmPackageOutput = null as any;
+utilities.lazyLoad(exports, ["getNpmPackage","getNpmPackageOutput"], () => require("./getNpmPackage"));
+
 export { GetPackageArgs, GetPackageResult, GetPackageOutputArgs } from "./getPackage";
 export const getPackage: typeof import("./getPackage").getPackage = null as any;
 export const getPackageOutput: typeof import("./getPackage").getPackageOutput = null as any;
 utilities.lazyLoad(exports, ["getPackage","getPackageOutput"], () => require("./getPackage"));
+
+export { GetPythonPackageArgs, GetPythonPackageResult, GetPythonPackageOutputArgs } from "./getPythonPackage";
+export const getPythonPackage: typeof import("./getPythonPackage").getPythonPackage = null as any;
+export const getPythonPackageOutput: typeof import("./getPythonPackage").getPythonPackageOutput = null as any;
+utilities.lazyLoad(exports, ["getPythonPackage","getPythonPackageOutput"], () => require("./getPythonPackage"));
 
 export { GetRepositoriesArgs, GetRepositoriesResult, GetRepositoriesOutputArgs } from "./getRepositories";
 export const getRepositories: typeof import("./getRepositories").getRepositories = null as any;

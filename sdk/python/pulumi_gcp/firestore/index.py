@@ -28,7 +28,8 @@ class IndexArgs:
                  density: Optional[pulumi.Input[_builtins.str]] = None,
                  multikey: Optional[pulumi.Input[_builtins.bool]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
-                 query_scope: Optional[pulumi.Input[_builtins.str]] = None):
+                 query_scope: Optional[pulumi.Input[_builtins.str]] = None,
+                 unique: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Index resource.
         :param pulumi.Input[_builtins.str] collection: The collection being indexed.
@@ -51,6 +52,7 @@ class IndexArgs:
         :param pulumi.Input[_builtins.str] query_scope: The scope at which a query is run.
                Default value is `COLLECTION`.
                Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
+        :param pulumi.Input[_builtins.bool] unique: Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
         """
         pulumi.set(__self__, "collection", collection)
         pulumi.set(__self__, "fields", fields)
@@ -66,6 +68,8 @@ class IndexArgs:
             pulumi.set(__self__, "project", project)
         if query_scope is not None:
             pulumi.set(__self__, "query_scope", query_scope)
+        if unique is not None:
+            pulumi.set(__self__, "unique", unique)
 
     @_builtins.property
     @pulumi.getter
@@ -175,6 +179,18 @@ class IndexArgs:
     def query_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "query_scope", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def unique(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
+        """
+        return pulumi.get(self, "unique")
+
+    @unique.setter
+    def unique(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "unique", value)
+
 
 @pulumi.input_type
 class _IndexState:
@@ -187,7 +203,8 @@ class _IndexState:
                  multikey: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
-                 query_scope: Optional[pulumi.Input[_builtins.str]] = None):
+                 query_scope: Optional[pulumi.Input[_builtins.str]] = None,
+                 unique: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Index resources.
         :param pulumi.Input[_builtins.str] api_scope: The API scope at which a query is run.
@@ -212,6 +229,7 @@ class _IndexState:
         :param pulumi.Input[_builtins.str] query_scope: The scope at which a query is run.
                Default value is `COLLECTION`.
                Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
+        :param pulumi.Input[_builtins.bool] unique: Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
         """
         if api_scope is not None:
             pulumi.set(__self__, "api_scope", api_scope)
@@ -231,6 +249,8 @@ class _IndexState:
             pulumi.set(__self__, "project", project)
         if query_scope is not None:
             pulumi.set(__self__, "query_scope", query_scope)
+        if unique is not None:
+            pulumi.set(__self__, "unique", unique)
 
     @_builtins.property
     @pulumi.getter(name="apiScope")
@@ -353,6 +373,18 @@ class _IndexState:
     def query_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "query_scope", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def unique(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
+        """
+        return pulumi.get(self, "unique")
+
+    @unique.setter
+    def unique(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "unique", value)
+
 
 @pulumi.type_token("gcp:firestore/index:Index")
 class Index(pulumi.CustomResource):
@@ -368,6 +400,7 @@ class Index(pulumi.CustomResource):
                  multikey: Optional[pulumi.Input[_builtins.bool]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  query_scope: Optional[pulumi.Input[_builtins.str]] = None,
+                 unique: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
         Cloud Firestore indexes enable simple and complex queries against documents in a database.
@@ -572,6 +605,40 @@ class Index(pulumi.CustomResource):
                 },
             ])
         ```
+        ### Firestore Index Unique
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.firestore.Database("database",
+            project="my-project-name",
+            name="database-id-unique",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            database_edition="ENTERPRISE",
+            delete_protection_state="DELETE_PROTECTION_DISABLED",
+            deletion_policy="DELETE")
+        my_index = gcp.firestore.Index("my-index",
+            project="my-project-name",
+            database=database.name,
+            collection="atestcollection",
+            api_scope="MONGODB_COMPATIBLE_API",
+            query_scope="COLLECTION_GROUP",
+            multikey=True,
+            density="DENSE",
+            unique=True,
+            fields=[
+                {
+                    "field_path": "name",
+                    "order": "ASCENDING",
+                },
+                {
+                    "field_path": "description",
+                    "order": "DESCENDING",
+                },
+            ])
+        ```
 
         ## Import
 
@@ -607,6 +674,7 @@ class Index(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] query_scope: The scope at which a query is run.
                Default value is `COLLECTION`.
                Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
+        :param pulumi.Input[_builtins.bool] unique: Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
         """
         ...
     @overload
@@ -817,6 +885,40 @@ class Index(pulumi.CustomResource):
                 },
             ])
         ```
+        ### Firestore Index Unique
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.firestore.Database("database",
+            project="my-project-name",
+            name="database-id-unique",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            database_edition="ENTERPRISE",
+            delete_protection_state="DELETE_PROTECTION_DISABLED",
+            deletion_policy="DELETE")
+        my_index = gcp.firestore.Index("my-index",
+            project="my-project-name",
+            database=database.name,
+            collection="atestcollection",
+            api_scope="MONGODB_COMPATIBLE_API",
+            query_scope="COLLECTION_GROUP",
+            multikey=True,
+            density="DENSE",
+            unique=True,
+            fields=[
+                {
+                    "field_path": "name",
+                    "order": "ASCENDING",
+                },
+                {
+                    "field_path": "description",
+                    "order": "DESCENDING",
+                },
+            ])
+        ```
 
         ## Import
 
@@ -853,6 +955,7 @@ class Index(pulumi.CustomResource):
                  multikey: Optional[pulumi.Input[_builtins.bool]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  query_scope: Optional[pulumi.Input[_builtins.str]] = None,
+                 unique: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -874,6 +977,7 @@ class Index(pulumi.CustomResource):
             __props__.__dict__["multikey"] = multikey
             __props__.__dict__["project"] = project
             __props__.__dict__["query_scope"] = query_scope
+            __props__.__dict__["unique"] = unique
             __props__.__dict__["name"] = None
         super(Index, __self__).__init__(
             'gcp:firestore/index:Index',
@@ -893,7 +997,8 @@ class Index(pulumi.CustomResource):
             multikey: Optional[pulumi.Input[_builtins.bool]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
-            query_scope: Optional[pulumi.Input[_builtins.str]] = None) -> 'Index':
+            query_scope: Optional[pulumi.Input[_builtins.str]] = None,
+            unique: Optional[pulumi.Input[_builtins.bool]] = None) -> 'Index':
         """
         Get an existing Index resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -923,6 +1028,7 @@ class Index(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] query_scope: The scope at which a query is run.
                Default value is `COLLECTION`.
                Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
+        :param pulumi.Input[_builtins.bool] unique: Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -937,6 +1043,7 @@ class Index(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["query_scope"] = query_scope
+        __props__.__dict__["unique"] = unique
         return Index(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -1023,4 +1130,12 @@ class Index(pulumi.CustomResource):
         Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
         """
         return pulumi.get(self, "query_scope")
+
+    @_builtins.property
+    @pulumi.getter
+    def unique(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
+        """
+        return pulumi.get(self, "unique")
 

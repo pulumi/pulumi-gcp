@@ -1,19 +1,9 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
-From: Daniel Bradley <daniel@pulumi.com>
-Date: Tue, 7 Mar 2023 11:16:06 +0000
-Subject: [PATCH] website/docs/d tweaks
+From: guineveresaenger <guinevere@pulumi.com>
+Date: Mon, 8 Sep 2025 17:43:45 -0700
+Subject: [PATCH] website-docs-d-tweaks
 
 
-diff --git a/website/docs/d/cloud_run_service.html.markdown b/website/docs/d/cloud_run_service.html.markdown
-index c2f61c00c..100252f08 100644
---- a/website/docs/d/cloud_run_service.html.markdown
-+++ b/website/docs/d/cloud_run_service.html.markdown
-@@ -48,4 +48,4 @@ The following arguments are supported:
- 
- ## Attributes Reference
- 
--See [google_cloud_run_service](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/cloud_run_service#argument-reference) resource for details of the available attributes.
-+See google_cloud_run_service resource for details of the available attributes.
 diff --git a/website/docs/d/composer_environment.html.markdown b/website/docs/d/composer_environment.html.markdown
 index 9c6fa017f..4ab1614dc 100644
 --- a/website/docs/d/composer_environment.html.markdown
@@ -26,26 +16,6 @@ index 9c6fa017f..4ab1614dc 100644
  
      * `config.0.gke_cluster` -
      The Kubernetes Engine cluster used to run the environment.
-diff --git a/website/docs/d/compute_forwarding_rule.html.markdown b/website/docs/d/compute_forwarding_rule.html.markdown
-index a6ab599cf..092b05ce8 100644
---- a/website/docs/d/compute_forwarding_rule.html.markdown
-+++ b/website/docs/d/compute_forwarding_rule.html.markdown
-@@ -46,4 +46,4 @@ The following arguments are supported:
-     is not provided, the project region is used.
- 
- ## Attributes Reference
--See [google_compute_forwarding_rule](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_forwarding_rule) resource for details of the available attributes.
-+See google_compute_forwarding_rule resource for details of the available attributes.
-diff --git a/website/docs/d/compute_global_forwarding_rule.html.markdown b/website/docs/d/compute_global_forwarding_rule.html.markdown
-index fffa30c3b..ce18554e0 100644
---- a/website/docs/d/compute_global_forwarding_rule.html.markdown
-+++ b/website/docs/d/compute_global_forwarding_rule.html.markdown
-@@ -42,4 +42,4 @@ The following arguments are supported:
-     is not provided, the provider project is used.
- 
- ## Attributes Reference
--See [google_compute_global_forwarding_rule](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_global_forwarding_rule) resource for details of the available attributes.
-+See google_compute_global_forwarding_rule resource for details of the available attributes.
 diff --git a/website/docs/d/compute_instance.html.markdown b/website/docs/d/compute_instance.html.markdown
 index 7aec44a33..97593bce8 100644
 --- a/website/docs/d/compute_instance.html.markdown
@@ -133,50 +103,6 @@ index 9bee4e57b..ed187d6f9 100644
    region    = "us-central1"
    node_type = data.google_compute_node_types.types.names[0]
  }
-diff --git a/website/docs/d/compute_region_ssl_certificate.html.markdown b/website/docs/d/compute_region_ssl_certificate.html.markdown
-index 438f6371c..e5d43db85 100644
---- a/website/docs/d/compute_region_ssl_certificate.html.markdown
-+++ b/website/docs/d/compute_region_ssl_certificate.html.markdown
-@@ -58,4 +58,4 @@ The following arguments are supported:
- 
- ## Attributes Reference
- 
--See [google_compute_region_ssl_certificate](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_region_ssl_certificate) resource for details of the available attributes.
-+See `google_compute_region_ssl_certificate` resource for details of the available attributes.
-diff --git a/website/docs/d/compute_resource_policy.html.markdown b/website/docs/d/compute_resource_policy.html.markdown
-index dc7c6117f..8bfb08964 100644
---- a/website/docs/d/compute_resource_policy.html.markdown
-+++ b/website/docs/d/compute_resource_policy.html.markdown
-@@ -22,9 +22,6 @@ description: |-
- 
- Provide access to a Resource Policy's attributes. For more information see [the official documentation](https://cloud.google.com/compute/docs/disks/scheduled-snapshots) or the [API](https://cloud.google.com/compute/docs/reference/rest/beta/resourcePolicies).
- 
--~> **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
--See [Provider Versions](https://terraform.io/docs/providers/google/guides/provider_versions.html) for more details on beta resources.
--
- ```hcl
- provider "google-beta" {
-   region = "us-central1"
-diff --git a/website/docs/d/compute_router.html.markdown b/website/docs/d/compute_router.html.markdown
-index e05cb7ccd..0238e8cd6 100644
---- a/website/docs/d/compute_router.html.markdown
-+++ b/website/docs/d/compute_router.html.markdown
-@@ -48,4 +48,4 @@ The following arguments are supported:
- 
- ## Attributes Reference
- 
--See [google_compute_router](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_router) resource for details of the available attributes.
-+See `google_compute_router` resource for details of the available attributes.
-diff --git a/website/docs/d/compute_ssl_certificate.html.markdown b/website/docs/d/compute_ssl_certificate.html.markdown
-index c38585737..81fe913e9 100644
---- a/website/docs/d/compute_ssl_certificate.html.markdown
-+++ b/website/docs/d/compute_ssl_certificate.html.markdown
-@@ -55,4 +55,4 @@ The following arguments are supported:
- 
- ## Attributes Reference
- 
--See [google_compute_ssl_certificate](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_ssl_certificate) resource for details of the available attributes.
-+See `google_compute_ssl_certificate` resource for details of the available attributes.
 diff --git a/website/docs/d/compute_zones.html.markdown b/website/docs/d/compute_zones.html.markdown
 index 18db0b208..ae02f2613 100644
 --- a/website/docs/d/compute_zones.html.markdown
@@ -190,16 +116,6 @@ index 18db0b208..ae02f2613 100644
    instance_template  = google_compute_instance_template.foobar.self_link
    base_instance_name = "foobar-${count.index}"
    zone               = data.google_compute_zones.available.names[count.index]
-diff --git a/website/docs/d/container_cluster.html.markdown b/website/docs/d/container_cluster.html.markdown
-index b74348a5f..6a1d260f5 100644
---- a/website/docs/d/container_cluster.html.markdown
-+++ b/website/docs/d/container_cluster.html.markdown
-@@ -70,4 +70,4 @@ in favour of `location`.
- 
- ## Attributes Reference
- 
--See [google_container_cluster](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/container_cluster) resource for details of the available attributes.
-+See `google_container_cluster` resource for details of the available attributes.
 diff --git a/website/docs/d/container_engine_versions.html.markdown b/website/docs/d/container_engine_versions.html.markdown
 index e3cf0ee23..7d5958b90 100644
 --- a/website/docs/d/container_engine_versions.html.markdown
@@ -271,18 +187,8 @@ index a873e5ebc..a35733b20 100644
 -  call projects.addGoogleAnalytics.
 \ No newline at end of file
 +  call projects.addGoogleAnalytics.
-diff --git a/website/docs/d/folder_organization_policy.html.markdown b/website/docs/d/folder_organization_policy.html.markdown
-index e955f28f6..b4ae83627 100644
---- a/website/docs/d/folder_organization_policy.html.markdown
-+++ b/website/docs/d/folder_organization_policy.html.markdown
-@@ -48,4 +48,4 @@ The following arguments are supported:
- 
- ## Attributes Reference
- 
--See [google_folder_organization_policy](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/google_folder_organization_policy) resource for details of the available attributes.
-+See `google_folder_organization_policy` resource for details of the available attributes.
 diff --git a/website/docs/d/iam_workload_identity_pool.html.markdown b/website/docs/d/iam_workload_identity_pool.html.markdown
-index b6654af32..2a3192887 100644
+index b6654af32..dfe2f9f83 100644
 --- a/website/docs/d/iam_workload_identity_pool.html.markdown
 +++ b/website/docs/d/iam_workload_identity_pool.html.markdown
 @@ -21,12 +21,7 @@ description: |-
@@ -298,14 +204,8 @@ index b6654af32..2a3192887 100644
  ## Example Usage
  
  ```tf
-@@ -48,4 +43,4 @@ The following arguments are supported:
-     is not provided, the provider project is used.
- 
- ## Attributes Reference
--See [google_iam_workload_identity_pool](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/iam_workload_identity_pool) resource for details of all the available attributes.
-+See google_iam_workload_identity_pool resource for details of all the available attributes.
 diff --git a/website/docs/d/iam_workload_identity_pool_provider.html.markdown b/website/docs/d/iam_workload_identity_pool_provider.html.markdown
-index 06e60fb0f..738ec1722 100644
+index 06e60fb0f..2c08ff1c4 100644
 --- a/website/docs/d/iam_workload_identity_pool_provider.html.markdown
 +++ b/website/docs/d/iam_workload_identity_pool_provider.html.markdown
 @@ -22,9 +22,6 @@ description: |-
@@ -318,97 +218,10 @@ index 06e60fb0f..738ec1722 100644
  ## Example Usage
  
  ```tf
-@@ -49,4 +46,4 @@ The following arguments are supported:
-     is not provided, the provider project is used.
- 
- ## Attributes Reference
--See [google_iam_workload_identity_pool_provider](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/iam_workload_identity_pool_provider) resource for details of all the available attributes.
-+See google_iam_workload_identity_pool_provider resource for details of all the available attributes.
-diff --git a/website/docs/d/iap_client.html.markdown b/website/docs/d/iap_client.html.markdown
-index 7f00a220f..201f4a10e 100644
---- a/website/docs/d/iap_client.html.markdown
-+++ b/website/docs/d/iap_client.html.markdown
-@@ -45,4 +45,4 @@ The following arguments are supported:
- 
- ## Attributes Reference
- 
--See [google_iap_client](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/iap_client) resource for details of the available attributes.
-+See google_iap_client resource for details of the available attributes.
-diff --git a/website/docs/d/project.html.markdown b/website/docs/d/project.html.markdown
-index a609b1167..3574cf492 100644
---- a/website/docs/d/project.html.markdown
-+++ b/website/docs/d/project.html.markdown
-@@ -48,5 +48,5 @@ The following attributes are exported:
- 
- * `number` - The numeric identifier of the project.
- 
--See [google_project](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/google_project) resource for details of the available attributes.
-+See `google_project` resource for details of the available attributes.
- 
-diff --git a/website/docs/d/project_organization_policy.html.markdown b/website/docs/d/project_organization_policy.html.markdown
-index 1184f4895..58c5b8684 100644
---- a/website/docs/d/project_organization_policy.html.markdown
-+++ b/website/docs/d/project_organization_policy.html.markdown
-@@ -48,5 +48,5 @@ The following arguments are supported:
- 
- ## Attributes Reference
- 
--See [google_project_organization_policy](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/google_project_organization_policy) resource for details of the available attributes.
-+See `google_project_organization_policy` resource for details of the available attributes.
- 
-diff --git a/website/docs/d/pubsub_topic.html.markdown b/website/docs/d/pubsub_topic.html.markdown
-index 2432f52c2..87f849329 100644
---- a/website/docs/d/pubsub_topic.html.markdown
-+++ b/website/docs/d/pubsub_topic.html.markdown
-@@ -45,4 +45,4 @@ The following arguments are supported:
- 
- ## Attributes Reference
- 
--See [google_pubsub_topic](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/pubsub_topic#argument-reference) resource for details of the available attributes.
-+See google_pubsub_topic resource for details of the available attributes.
-diff --git a/website/docs/d/redis_instance.html.markdown b/website/docs/d/redis_instance.html.markdown
-index c8e51c67a..d93870ac0 100644
---- a/website/docs/d/redis_instance.html.markdown
-+++ b/website/docs/d/redis_instance.html.markdown
-@@ -58,4 +58,4 @@ The following arguments are supported:
- 
- ## Attributes Reference
- 
--See [google_redis_instance](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/redis_instance) resource for details of the available attributes.
-+See google_redis_instance resource for details of the available attributes.
-diff --git a/website/docs/d/runtimeconfig_config.html.markdown b/website/docs/d/runtimeconfig_config.html.markdown
-index b36416859..7a57edea1 100644
---- a/website/docs/d/runtimeconfig_config.html.markdown
-+++ b/website/docs/d/runtimeconfig_config.html.markdown
-@@ -50,4 +50,4 @@ The following arguments are supported:
- 
- ## Attributes Reference
- 
--See [google_runtimeconfig_config](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/runtimeconfig_config#argument-reference) resource for details of the available attributes.
-+See google_runtimeconfig_config resource for details of the available attributes.
-diff --git a/website/docs/d/runtimeconfig_variable.html.markdown b/website/docs/d/runtimeconfig_variable.html.markdown
-index 55d59eb7a..881aa85a1 100644
---- a/website/docs/d/runtimeconfig_variable.html.markdown
-+++ b/website/docs/d/runtimeconfig_variable.html.markdown
-@@ -52,4 +52,4 @@ The following arguments are supported:
- 
- ## Attributes Reference
- 
--See [google_runtimeconfig_variable](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/runtimeconfig_variable#argument-reference) resource for details of the available attributes.
-+See google_runtimeconfig_variable resource for details of the available attributes.
 diff --git a/website/docs/d/service_account_id_token.html.markdown b/website/docs/d/service_account_id_token.html.markdown
-index 459d7e17e..80bb09621 100644
+index 459d7e17e..a7cd3be82 100644
 --- a/website/docs/d/service_account_id_token.html.markdown
 +++ b/website/docs/d/service_account_id_token.html.markdown
-@@ -26,7 +26,7 @@ For more information see
- [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#IDToken).
- 
- ## Example Usage - ServiceAccount JSON credential file.
--  `google_service_account_id_token` will use the configured [provider credentials](https://registry.terraform.io/providers/hashicorp/google/latest/docs/guides/provider_reference#credentials-1)
-+  `google_service_account_id_token` will use the configured provider credentials
- 
-   ```hcl
-   data "google_service_account_id_token" "oidc" {
 @@ -39,7 +39,7 @@ For more information see
    ```
  
@@ -427,26 +240,6 @@ index 459d7e17e..80bb09621 100644
  
  ```hcl
  
-diff --git a/website/docs/d/spanner_instance.html.markdown b/website/docs/d/spanner_instance.html.markdown
-index b80503a5d..d38de15db 100644
---- a/website/docs/d/spanner_instance.html.markdown
-+++ b/website/docs/d/spanner_instance.html.markdown
-@@ -42,4 +42,4 @@ The following arguments are supported:
-     is not provided, the provider project is used.
- 
- ## Attributes Reference
--See [google_spanner_instance](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/spanner_instance) resource for details of all the available attributes.
-+See google_spanner_instance resource for details of all the available attributes.
-diff --git a/website/docs/d/sql_database_instance.html.markdown b/website/docs/d/sql_database_instance.html.markdown
-index cf14651bf..afbf422f5 100644
---- a/website/docs/d/sql_database_instance.html.markdown
-+++ b/website/docs/d/sql_database_instance.html.markdown
-@@ -40,4 +40,4 @@ The following arguments are supported:
- * `project` - (optional) The ID of the project in which the resource belongs.
- 
- ## Attributes Reference
--See [google_sql_database_instance](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance) resource for details of all the available attributes.
-+See google_sql_database_instance resource for details of all the available attributes.
 diff --git a/website/docs/d/storage_project_service_account.html.markdown b/website/docs/d/storage_project_service_account.html.markdown
 index eb8148fe2..c811e04af 100644
 --- a/website/docs/d/storage_project_service_account.html.markdown

@@ -494,9 +494,7 @@ class BitbucketServerConfig(pulumi.CustomResource):
         import pulumi_std as std
 
         project = gcp.organizations.get_project()
-        servicenetworking = gcp.projects.Service("servicenetworking",
-            service="servicenetworking.googleapis.com",
-            disable_on_destroy=False)
+        servicenetworking = gcp.projects.Service("servicenetworking", service="servicenetworking.googleapis.com")
         vpc_network = gcp.compute.Network("vpc_network", name="vpc-network",
         opts = pulumi.ResourceOptions(depends_on=[servicenetworking]))
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
@@ -648,9 +646,7 @@ class BitbucketServerConfig(pulumi.CustomResource):
         import pulumi_std as std
 
         project = gcp.organizations.get_project()
-        servicenetworking = gcp.projects.Service("servicenetworking",
-            service="servicenetworking.googleapis.com",
-            disable_on_destroy=False)
+        servicenetworking = gcp.projects.Service("servicenetworking", service="servicenetworking.googleapis.com")
         vpc_network = gcp.compute.Network("vpc_network", name="vpc-network",
         opts = pulumi.ResourceOptions(depends_on=[servicenetworking]))
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",

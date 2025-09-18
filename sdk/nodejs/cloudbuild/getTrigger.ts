@@ -64,6 +64,7 @@ export interface GetTriggerResult {
     readonly builds: outputs.cloudbuild.GetTriggerBuild[];
     readonly createTime: string;
     readonly description: string;
+    readonly developerConnectEventConfigs: outputs.cloudbuild.GetTriggerDeveloperConnectEventConfig[];
     readonly disabled: boolean;
     readonly filename: string;
     readonly filter: string;

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/backupdisasterrecovery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/backupdisasterrecovery"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -67,6 +67,7 @@ type GetBackupArgs struct {
 type GetBackupResult struct {
 	BackupVaultId string            `pulumi:"backupVaultId"`
 	Backups       []GetBackupBackup `pulumi:"backups"`
+	CreateTime    string            `pulumi:"createTime"`
 	DataSourceId  string            `pulumi:"dataSourceId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id       string `pulumi:"id"`
@@ -121,6 +122,10 @@ func (o GetBackupResultOutput) BackupVaultId() pulumi.StringOutput {
 
 func (o GetBackupResultOutput) Backups() GetBackupBackupArrayOutput {
 	return o.ApplyT(func(v GetBackupResult) []GetBackupBackup { return v.Backups }).(GetBackupBackupArrayOutput)
+}
+
+func (o GetBackupResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 func (o GetBackupResultOutput) DataSourceId() pulumi.StringOutput {

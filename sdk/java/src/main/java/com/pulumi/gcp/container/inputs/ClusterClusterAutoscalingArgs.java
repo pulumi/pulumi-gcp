@@ -79,6 +79,21 @@ public final class ClusterClusterAutoscalingArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * Specifies whether default compute class behaviour is enabled. If enabled, cluster autoscaler will use Compute Class with name default for all the workloads, if not overriden.
+     * 
+     */
+    @Import(name="defaultComputeClassEnabled")
+    private @Nullable Output<Boolean> defaultComputeClassEnabled;
+
+    /**
+     * @return Specifies whether default compute class behaviour is enabled. If enabled, cluster autoscaler will use Compute Class with name default for all the workloads, if not overriden.
+     * 
+     */
+    public Optional<Output<Boolean>> defaultComputeClassEnabled() {
+        return Optional.ofNullable(this.defaultComputeClassEnabled);
+    }
+
+    /**
      * Whether node auto-provisioning is enabled. Must be supplied for GKE Standard clusters, `true` is implied
      * for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
      * 
@@ -122,6 +137,7 @@ public final class ClusterClusterAutoscalingArgs extends com.pulumi.resources.Re
         this.autoProvisioningDefaults = $.autoProvisioningDefaults;
         this.autoProvisioningLocations = $.autoProvisioningLocations;
         this.autoscalingProfile = $.autoscalingProfile;
+        this.defaultComputeClassEnabled = $.defaultComputeClassEnabled;
         this.enabled = $.enabled;
         this.resourceLimits = $.resourceLimits;
     }
@@ -231,6 +247,27 @@ public final class ClusterClusterAutoscalingArgs extends com.pulumi.resources.Re
          */
         public Builder autoscalingProfile(String autoscalingProfile) {
             return autoscalingProfile(Output.of(autoscalingProfile));
+        }
+
+        /**
+         * @param defaultComputeClassEnabled Specifies whether default compute class behaviour is enabled. If enabled, cluster autoscaler will use Compute Class with name default for all the workloads, if not overriden.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultComputeClassEnabled(@Nullable Output<Boolean> defaultComputeClassEnabled) {
+            $.defaultComputeClassEnabled = defaultComputeClassEnabled;
+            return this;
+        }
+
+        /**
+         * @param defaultComputeClassEnabled Specifies whether default compute class behaviour is enabled. If enabled, cluster autoscaler will use Compute Class with name default for all the workloads, if not overriden.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultComputeClassEnabled(Boolean defaultComputeClassEnabled) {
+            return defaultComputeClassEnabled(Output.of(defaultComputeClassEnabled));
         }
 
         /**

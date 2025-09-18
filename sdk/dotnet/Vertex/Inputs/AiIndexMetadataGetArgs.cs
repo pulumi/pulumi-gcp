@@ -16,8 +16,8 @@ namespace Pulumi.Gcp.Vertex.Inputs
         /// The configuration of the Matching Engine Index.
         /// Structure is documented below.
         /// </summary>
-        [Input("config")]
-        public Input<Inputs.AiIndexMetadataConfigGetArgs>? Config { get; set; }
+        [Input("config", required: true)]
+        public Input<Inputs.AiIndexMetadataConfigGetArgs> Config { get; set; } = null!;
 
         /// <summary>
         /// Allows inserting, updating  or deleting the contents of the Matching Engine Index.

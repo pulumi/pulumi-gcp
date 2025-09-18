@@ -52,7 +52,6 @@ namespace Pulumi.Gcp.Kms
     ///     {
     ///         ServiceName = "cloudkms.googleapis.com",
     ///         Project = keyProject.ProjectId,
-    ///         DisableOnDestroy = false,
     ///         DisableDependentServices = true,
     ///     }, new CustomResourceOptions
     ///     {

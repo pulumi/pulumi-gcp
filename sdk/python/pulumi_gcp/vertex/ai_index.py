@@ -22,15 +22,19 @@ __all__ = ['AiIndexArgs', 'AiIndex']
 class AiIndexArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[_builtins.str],
+                 metadata: pulumi.Input['AiIndexMetadataArgs'],
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  index_update_method: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 metadata: Optional[pulumi.Input['AiIndexMetadataArgs']] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AiIndex resource.
         :param pulumi.Input[_builtins.str] display_name: The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+        :param pulumi.Input['AiIndexMetadataArgs'] metadata: Additional information about the Index.
+               Although this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.
+               Attempts to create an Index without this field will result in an API error.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] description: The description of the Index.
         :param pulumi.Input[_builtins.str] index_update_method: The update method to use with this Index. The value must be the followings. If not set, BATCH_UPDATE will be used by default.
                * BATCH_UPDATE: user can call indexes.patch with files on Cloud Storage of datapoints to update.
@@ -38,23 +42,18 @@ class AiIndexArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels with user-defined metadata to organize your Indexes.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input['AiIndexMetadataArgs'] metadata: Additional information about the Index.
-               Although this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.
-               Attempts to create an Index without this field will result in an API error.
-               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region of the index. eg us-central1
         """
         pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "metadata", metadata)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if index_update_method is not None:
             pulumi.set(__self__, "index_update_method", index_update_method)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
-        if metadata is not None:
-            pulumi.set(__self__, "metadata", metadata)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if region is not None:
@@ -71,6 +70,21 @@ class AiIndexArgs:
     @display_name.setter
     def display_name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def metadata(self) -> pulumi.Input['AiIndexMetadataArgs']:
+        """
+        Additional information about the Index.
+        Although this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.
+        Attempts to create an Index without this field will result in an API error.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: pulumi.Input['AiIndexMetadataArgs']):
+        pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter
@@ -111,21 +125,6 @@ class AiIndexArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input['AiIndexMetadataArgs']]:
-        """
-        Additional information about the Index.
-        Although this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.
-        Attempts to create an Index without this field will result in an API error.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "metadata")
-
-    @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input['AiIndexMetadataArgs']]):
-        pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter
@@ -756,6 +755,8 @@ class AiIndex(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["index_update_method"] = index_update_method
             __props__.__dict__["labels"] = labels
+            if metadata is None and not opts.urn:
+                raise TypeError("Missing required property 'metadata'")
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
@@ -933,7 +934,7 @@ class AiIndex(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> pulumi.Output[Optional['outputs.AiIndexMetadata']]:
+    def metadata(self) -> pulumi.Output['outputs.AiIndexMetadata']:
         """
         Additional information about the Index.
         Although this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.

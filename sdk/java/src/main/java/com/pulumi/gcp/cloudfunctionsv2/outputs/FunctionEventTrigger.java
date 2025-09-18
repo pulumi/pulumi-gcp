@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudfunctionsv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudfunctionsv2.outputs.FunctionEventTriggerEventFilter;
 import java.lang.String;
 import java.util.List;
@@ -23,7 +24,7 @@ public final class FunctionEventTrigger {
      * @return Required. The type of event to observe.
      * 
      */
-    private @Nullable String eventType;
+    private String eventType;
     /**
      * @return The name of a Pub/Sub topic in the same project that will be used
      * as the transport topic for the event delivery.
@@ -72,8 +73,8 @@ public final class FunctionEventTrigger {
      * @return Required. The type of event to observe.
      * 
      */
-    public Optional<String> eventType() {
-        return Optional.ofNullable(this.eventType);
+    public String eventType() {
+        return this.eventType;
     }
     /**
      * @return The name of a Pub/Sub topic in the same project that will be used
@@ -130,7 +131,7 @@ public final class FunctionEventTrigger {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<FunctionEventTriggerEventFilter> eventFilters;
-        private @Nullable String eventType;
+        private String eventType;
         private @Nullable String pubsubTopic;
         private @Nullable String retryPolicy;
         private @Nullable String serviceAccountEmail;
@@ -158,8 +159,10 @@ public final class FunctionEventTrigger {
             return eventFilters(List.of(eventFilters));
         }
         @CustomType.Setter
-        public Builder eventType(@Nullable String eventType) {
-
+        public Builder eventType(String eventType) {
+            if (eventType == null) {
+              throw new MissingRequiredPropertyException("FunctionEventTrigger", "eventType");
+            }
             this.eventType = eventType;
             return this;
         }

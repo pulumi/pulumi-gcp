@@ -257,7 +257,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         public Output<string> ResourceType { get; private set; } = null!;
 
         /// <summary>
-        /// The list of all resource types to which the 'BackupPlan' can be applied.
+        /// The list of all resource types to which the `BackupPlan` can be applied.
         /// </summary>
         [Output("supportedResourceTypes")]
         public Output<ImmutableArray<string>> SupportedResourceTypes { get; private set; } = null!;
@@ -458,7 +458,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         private InputList<string>? _supportedResourceTypes;
 
         /// <summary>
-        /// The list of all resource types to which the 'BackupPlan' can be applied.
+        /// The list of all resource types to which the `BackupPlan` can be applied.
         /// </summary>
         public InputList<string> SupportedResourceTypes
         {

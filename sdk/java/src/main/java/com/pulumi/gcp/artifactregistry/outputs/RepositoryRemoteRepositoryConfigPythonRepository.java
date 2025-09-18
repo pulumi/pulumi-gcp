@@ -20,7 +20,6 @@ public final class RepositoryRemoteRepositoryConfigPythonRepository {
     private @Nullable RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository customRepository;
     /**
      * @return Address of the remote repository.
-     * Default value is `PYPI`.
      * Possible values are: `PYPI`.
      * 
      */
@@ -37,7 +36,6 @@ public final class RepositoryRemoteRepositoryConfigPythonRepository {
     }
     /**
      * @return Address of the remote repository.
-     * Default value is `PYPI`.
      * Possible values are: `PYPI`.
      * 
      */

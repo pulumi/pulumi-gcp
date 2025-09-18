@@ -24,7 +24,6 @@ class SubnetworkArgs:
                  network: pulumi.Input[_builtins.str],
                  allow_subnet_cidr_routes_overlap: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_flow_logs: Optional[pulumi.Input[_builtins.bool]] = None,
                  external_ipv6_prefix: Optional[pulumi.Input[_builtins.str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[_builtins.str]] = None,
                  ip_collection: Optional[pulumi.Input[_builtins.str]] = None,
@@ -53,13 +52,6 @@ class SubnetworkArgs:
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
                you create the resource. This field can be set only at resource
                creation time.
-        :param pulumi.Input[_builtins.bool] enable_flow_logs: (Optional, Deprecated)
-               Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
-               it will not appear in get listings. If not set the default behavior is determined by the
-               org policy, if there is no org policy specified, then it will default to disabled.
-               This field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
-               
-               > **Warning:** This field is being removed in favor of log_config. If log_config is present, flow logs are enabled.
         :param pulumi.Input[_builtins.str] external_ipv6_prefix: The range of external IPv6 addresses that are owned by this subnetwork.
         :param pulumi.Input[_builtins.str] ip_cidr_range: The range of internal addresses that are owned by this subnetwork.
                Provide this property when you create the subnetwork. For example,
@@ -135,11 +127,6 @@ class SubnetworkArgs:
             pulumi.set(__self__, "allow_subnet_cidr_routes_overlap", allow_subnet_cidr_routes_overlap)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if enable_flow_logs is not None:
-            warnings.warn("""This field is being removed in favor of log_config. If log_config is present, flow logs are enabled.""", DeprecationWarning)
-            pulumi.log.warn("""enable_flow_logs is deprecated: This field is being removed in favor of log_config. If log_config is present, flow logs are enabled.""")
-        if enable_flow_logs is not None:
-            pulumi.set(__self__, "enable_flow_logs", enable_flow_logs)
         if external_ipv6_prefix is not None:
             pulumi.set(__self__, "external_ipv6_prefix", external_ipv6_prefix)
         if ip_cidr_range is not None:
@@ -216,25 +203,6 @@ class SubnetworkArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
-
-    @_builtins.property
-    @pulumi.getter(name="enableFlowLogs")
-    @_utilities.deprecated("""This field is being removed in favor of log_config. If log_config is present, flow logs are enabled.""")
-    def enable_flow_logs(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        (Optional, Deprecated)
-        Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
-        it will not appear in get listings. If not set the default behavior is determined by the
-        org policy, if there is no org policy specified, then it will default to disabled.
-        This field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
-
-        > **Warning:** This field is being removed in favor of log_config. If log_config is present, flow logs are enabled.
-        """
-        return pulumi.get(self, "enable_flow_logs")
-
-    @enable_flow_logs.setter
-    def enable_flow_logs(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "enable_flow_logs", value)
 
     @_builtins.property
     @pulumi.getter(name="externalIpv6Prefix")
@@ -499,7 +467,6 @@ class _SubnetworkState:
                  allow_subnet_cidr_routes_overlap: Optional[pulumi.Input[_builtins.bool]] = None,
                  creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_flow_logs: Optional[pulumi.Input[_builtins.bool]] = None,
                  external_ipv6_prefix: Optional[pulumi.Input[_builtins.str]] = None,
                  fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
                  gateway_address: Optional[pulumi.Input[_builtins.str]] = None,
@@ -536,13 +503,6 @@ class _SubnetworkState:
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
                you create the resource. This field can be set only at resource
                creation time.
-        :param pulumi.Input[_builtins.bool] enable_flow_logs: (Optional, Deprecated)
-               Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
-               it will not appear in get listings. If not set the default behavior is determined by the
-               org policy, if there is no org policy specified, then it will default to disabled.
-               This field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
-               
-               > **Warning:** This field is being removed in favor of log_config. If log_config is present, flow logs are enabled.
         :param pulumi.Input[_builtins.str] external_ipv6_prefix: The range of external IPv6 addresses that are owned by this subnetwork.
         :param pulumi.Input[_builtins.str] fingerprint: Fingerprint of this resource. This field is used internally during updates of this resource.
         :param pulumi.Input[_builtins.str] gateway_address: The gateway address for default routes to reach destination addresses
@@ -637,11 +597,6 @@ class _SubnetworkState:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if enable_flow_logs is not None:
-            warnings.warn("""This field is being removed in favor of log_config. If log_config is present, flow logs are enabled.""", DeprecationWarning)
-            pulumi.log.warn("""enable_flow_logs is deprecated: This field is being removed in favor of log_config. If log_config is present, flow logs are enabled.""")
-        if enable_flow_logs is not None:
-            pulumi.set(__self__, "enable_flow_logs", enable_flow_logs)
         if external_ipv6_prefix is not None:
             pulumi.set(__self__, "external_ipv6_prefix", external_ipv6_prefix)
         if fingerprint is not None:
@@ -738,25 +693,6 @@ class _SubnetworkState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
-
-    @_builtins.property
-    @pulumi.getter(name="enableFlowLogs")
-    @_utilities.deprecated("""This field is being removed in favor of log_config. If log_config is present, flow logs are enabled.""")
-    def enable_flow_logs(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        (Optional, Deprecated)
-        Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
-        it will not appear in get listings. If not set the default behavior is determined by the
-        org policy, if there is no org policy specified, then it will default to disabled.
-        This field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
-
-        > **Warning:** This field is being removed in favor of log_config. If log_config is present, flow logs are enabled.
-        """
-        return pulumi.get(self, "enable_flow_logs")
-
-    @enable_flow_logs.setter
-    def enable_flow_logs(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "enable_flow_logs", value)
 
     @_builtins.property
     @pulumi.getter(name="externalIpv6Prefix")
@@ -1141,7 +1077,6 @@ class Subnetwork(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_subnet_cidr_routes_overlap: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_flow_logs: Optional[pulumi.Input[_builtins.bool]] = None,
                  external_ipv6_prefix: Optional[pulumi.Input[_builtins.str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[_builtins.str]] = None,
                  ip_collection: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1412,13 +1347,6 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
                you create the resource. This field can be set only at resource
                creation time.
-        :param pulumi.Input[_builtins.bool] enable_flow_logs: (Optional, Deprecated)
-               Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
-               it will not appear in get listings. If not set the default behavior is determined by the
-               org policy, if there is no org policy specified, then it will default to disabled.
-               This field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
-               
-               > **Warning:** This field is being removed in favor of log_config. If log_config is present, flow logs are enabled.
         :param pulumi.Input[_builtins.str] external_ipv6_prefix: The range of external IPv6 addresses that are owned by this subnetwork.
         :param pulumi.Input[_builtins.str] ip_cidr_range: The range of internal addresses that are owned by this subnetwork.
                Provide this property when you create the subnetwork. For example,
@@ -1756,7 +1684,6 @@ class Subnetwork(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_subnet_cidr_routes_overlap: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_flow_logs: Optional[pulumi.Input[_builtins.bool]] = None,
                  external_ipv6_prefix: Optional[pulumi.Input[_builtins.str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[_builtins.str]] = None,
                  ip_collection: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1786,7 +1713,6 @@ class Subnetwork(pulumi.CustomResource):
 
             __props__.__dict__["allow_subnet_cidr_routes_overlap"] = allow_subnet_cidr_routes_overlap
             __props__.__dict__["description"] = description
-            __props__.__dict__["enable_flow_logs"] = enable_flow_logs
             __props__.__dict__["external_ipv6_prefix"] = external_ipv6_prefix
             __props__.__dict__["ip_cidr_range"] = ip_cidr_range
             __props__.__dict__["ip_collection"] = ip_collection
@@ -1829,7 +1755,6 @@ class Subnetwork(pulumi.CustomResource):
             allow_subnet_cidr_routes_overlap: Optional[pulumi.Input[_builtins.bool]] = None,
             creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_flow_logs: Optional[pulumi.Input[_builtins.bool]] = None,
             external_ipv6_prefix: Optional[pulumi.Input[_builtins.str]] = None,
             fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
             gateway_address: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1871,13 +1796,6 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
                you create the resource. This field can be set only at resource
                creation time.
-        :param pulumi.Input[_builtins.bool] enable_flow_logs: (Optional, Deprecated)
-               Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
-               it will not appear in get listings. If not set the default behavior is determined by the
-               org policy, if there is no org policy specified, then it will default to disabled.
-               This field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
-               
-               > **Warning:** This field is being removed in favor of log_config. If log_config is present, flow logs are enabled.
         :param pulumi.Input[_builtins.str] external_ipv6_prefix: The range of external IPv6 addresses that are owned by this subnetwork.
         :param pulumi.Input[_builtins.str] fingerprint: Fingerprint of this resource. This field is used internally during updates of this resource.
         :param pulumi.Input[_builtins.str] gateway_address: The gateway address for default routes to reach destination addresses
@@ -1973,7 +1891,6 @@ class Subnetwork(pulumi.CustomResource):
         __props__.__dict__["allow_subnet_cidr_routes_overlap"] = allow_subnet_cidr_routes_overlap
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["description"] = description
-        __props__.__dict__["enable_flow_logs"] = enable_flow_logs
         __props__.__dict__["external_ipv6_prefix"] = external_ipv6_prefix
         __props__.__dict__["fingerprint"] = fingerprint
         __props__.__dict__["gateway_address"] = gateway_address
@@ -2030,21 +1947,6 @@ class Subnetwork(pulumi.CustomResource):
         creation time.
         """
         return pulumi.get(self, "description")
-
-    @_builtins.property
-    @pulumi.getter(name="enableFlowLogs")
-    @_utilities.deprecated("""This field is being removed in favor of log_config. If log_config is present, flow logs are enabled.""")
-    def enable_flow_logs(self) -> pulumi.Output[_builtins.bool]:
-        """
-        (Optional, Deprecated)
-        Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
-        it will not appear in get listings. If not set the default behavior is determined by the
-        org policy, if there is no org policy specified, then it will default to disabled.
-        This field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
-
-        > **Warning:** This field is being removed in favor of log_config. If log_config is present, flow logs are enabled.
-        """
-        return pulumi.get(self, "enable_flow_logs")
 
     @_builtins.property
     @pulumi.getter(name="externalIpv6Prefix")

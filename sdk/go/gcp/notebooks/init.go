@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,8 +31,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &InstanceIamMember{}
 	case "gcp:notebooks/instanceIamPolicy:InstanceIamPolicy":
 		r = &InstanceIamPolicy{}
-	case "gcp:notebooks/location:Location":
-		r = &Location{}
 	case "gcp:notebooks/runtime:Runtime":
 		r = &Runtime{}
 	case "gcp:notebooks/runtimeIamBinding:RuntimeIamBinding":
@@ -77,11 +75,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"notebooks/instanceIamPolicy",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"gcp",
-		"notebooks/location",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

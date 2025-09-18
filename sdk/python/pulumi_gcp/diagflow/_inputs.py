@@ -97,12 +97,18 @@ __all__ = [
     'CxAgentAdvancedSettingsLoggingSettingsArgsDict',
     'CxAgentAdvancedSettingsSpeechSettingsArgs',
     'CxAgentAdvancedSettingsSpeechSettingsArgsDict',
+    'CxAgentAnswerFeedbackSettingsArgs',
+    'CxAgentAnswerFeedbackSettingsArgsDict',
+    'CxAgentClientCertificateSettingsArgs',
+    'CxAgentClientCertificateSettingsArgsDict',
     'CxAgentGenAppBuilderSettingsArgs',
     'CxAgentGenAppBuilderSettingsArgsDict',
     'CxAgentGitIntegrationSettingsArgs',
     'CxAgentGitIntegrationSettingsArgsDict',
     'CxAgentGitIntegrationSettingsGithubSettingsArgs',
     'CxAgentGitIntegrationSettingsGithubSettingsArgsDict',
+    'CxAgentPersonalizationSettingsArgs',
+    'CxAgentPersonalizationSettingsArgsDict',
     'CxAgentSpeechToTextSettingsArgs',
     'CxAgentSpeechToTextSettingsArgsDict',
     'CxAgentTextToSpeechSettingsArgs',
@@ -3513,6 +3519,111 @@ class CxAgentAdvancedSettingsSpeechSettingsArgs:
 
 
 if not MYPY:
+    class CxAgentAnswerFeedbackSettingsArgsDict(TypedDict):
+        enable_answer_feedback: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        If enabled, end users will be able to provide [answer feedback](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.sessions/submitAnswerFeedback#body.AnswerFeedback)
+        to Dialogflow responses. Feature works only if interaction logging is enabled in the Dialogflow agent.
+        """
+elif False:
+    CxAgentAnswerFeedbackSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CxAgentAnswerFeedbackSettingsArgs:
+    def __init__(__self__, *,
+                 enable_answer_feedback: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enable_answer_feedback: If enabled, end users will be able to provide [answer feedback](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.sessions/submitAnswerFeedback#body.AnswerFeedback)
+               to Dialogflow responses. Feature works only if interaction logging is enabled in the Dialogflow agent.
+        """
+        if enable_answer_feedback is not None:
+            pulumi.set(__self__, "enable_answer_feedback", enable_answer_feedback)
+
+    @_builtins.property
+    @pulumi.getter(name="enableAnswerFeedback")
+    def enable_answer_feedback(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If enabled, end users will be able to provide [answer feedback](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.sessions/submitAnswerFeedback#body.AnswerFeedback)
+        to Dialogflow responses. Feature works only if interaction logging is enabled in the Dialogflow agent.
+        """
+        return pulumi.get(self, "enable_answer_feedback")
+
+    @enable_answer_feedback.setter
+    def enable_answer_feedback(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_answer_feedback", value)
+
+
+if not MYPY:
+    class CxAgentClientCertificateSettingsArgsDict(TypedDict):
+        private_key: pulumi.Input[_builtins.str]
+        """
+        The name of the SecretManager secret version resource storing the private key encoded in PEM format. Format: **projects/{project}/secrets/{secret}/versions/{version}**
+        """
+        ssl_certificate: pulumi.Input[_builtins.str]
+        """
+        The ssl certificate encoded in PEM format. This string must include the begin header and end footer lines.
+        """
+        passphrase: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The name of the SecretManager secret version resource storing the passphrase. 'passphrase' should be left unset if the private key is not encrypted. Format: **projects/{project}/secrets/{secret}/versions/{version}**
+        """
+elif False:
+    CxAgentClientCertificateSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CxAgentClientCertificateSettingsArgs:
+    def __init__(__self__, *,
+                 private_key: pulumi.Input[_builtins.str],
+                 ssl_certificate: pulumi.Input[_builtins.str],
+                 passphrase: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] private_key: The name of the SecretManager secret version resource storing the private key encoded in PEM format. Format: **projects/{project}/secrets/{secret}/versions/{version}**
+        :param pulumi.Input[_builtins.str] ssl_certificate: The ssl certificate encoded in PEM format. This string must include the begin header and end footer lines.
+        :param pulumi.Input[_builtins.str] passphrase: The name of the SecretManager secret version resource storing the passphrase. 'passphrase' should be left unset if the private key is not encrypted. Format: **projects/{project}/secrets/{secret}/versions/{version}**
+        """
+        pulumi.set(__self__, "private_key", private_key)
+        pulumi.set(__self__, "ssl_certificate", ssl_certificate)
+        if passphrase is not None:
+            pulumi.set(__self__, "passphrase", passphrase)
+
+    @_builtins.property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the SecretManager secret version resource storing the private key encoded in PEM format. Format: **projects/{project}/secrets/{secret}/versions/{version}**
+        """
+        return pulumi.get(self, "private_key")
+
+    @private_key.setter
+    def private_key(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "private_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sslCertificate")
+    def ssl_certificate(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ssl certificate encoded in PEM format. This string must include the begin header and end footer lines.
+        """
+        return pulumi.get(self, "ssl_certificate")
+
+    @ssl_certificate.setter
+    def ssl_certificate(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "ssl_certificate", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def passphrase(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the SecretManager secret version resource storing the passphrase. 'passphrase' should be left unset if the private key is not encrypted. Format: **projects/{project}/secrets/{secret}/versions/{version}**
+        """
+        return pulumi.get(self, "passphrase")
+
+    @passphrase.setter
+    def passphrase(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "passphrase", value)
+
+
+if not MYPY:
     class CxAgentGenAppBuilderSettingsArgsDict(TypedDict):
         engine: pulumi.Input[_builtins.str]
         """
@@ -3694,6 +3805,47 @@ class CxAgentGitIntegrationSettingsGithubSettingsArgs:
     @tracking_branch.setter
     def tracking_branch(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "tracking_branch", value)
+
+
+if not MYPY:
+    class CxAgentPersonalizationSettingsArgsDict(TypedDict):
+        default_end_user_metadata: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Default end user metadata, used when processing DetectIntent requests. Recommended to be filled as a template instead of hard-coded value, for example { "age": "$session.params.age" }.
+        The data will be merged with the [QueryParameters.end_user_metadata](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/QueryParameters#FIELDS.end_user_metadata)
+        in [DetectIntentRequest.query_params](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.sessions/detectIntent#body.request_body.FIELDS.query_params) during query processing.
+        This field uses JSON data as a string. The value provided must be a valid JSON representation documented in [Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct).
+        """
+elif False:
+    CxAgentPersonalizationSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CxAgentPersonalizationSettingsArgs:
+    def __init__(__self__, *,
+                 default_end_user_metadata: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] default_end_user_metadata: Default end user metadata, used when processing DetectIntent requests. Recommended to be filled as a template instead of hard-coded value, for example { "age": "$session.params.age" }.
+               The data will be merged with the [QueryParameters.end_user_metadata](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/QueryParameters#FIELDS.end_user_metadata)
+               in [DetectIntentRequest.query_params](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.sessions/detectIntent#body.request_body.FIELDS.query_params) during query processing.
+               This field uses JSON data as a string. The value provided must be a valid JSON representation documented in [Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct).
+        """
+        if default_end_user_metadata is not None:
+            pulumi.set(__self__, "default_end_user_metadata", default_end_user_metadata)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultEndUserMetadata")
+    def default_end_user_metadata(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Default end user metadata, used when processing DetectIntent requests. Recommended to be filled as a template instead of hard-coded value, for example { "age": "$session.params.age" }.
+        The data will be merged with the [QueryParameters.end_user_metadata](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/QueryParameters#FIELDS.end_user_metadata)
+        in [DetectIntentRequest.query_params](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.sessions/detectIntent#body.request_body.FIELDS.query_params) during query processing.
+        This field uses JSON data as a string. The value provided must be a valid JSON representation documented in [Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct).
+        """
+        return pulumi.get(self, "default_end_user_metadata")
+
+    @default_end_user_metadata.setter
+    def default_end_user_metadata(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "default_end_user_metadata", value)
 
 
 if not MYPY:

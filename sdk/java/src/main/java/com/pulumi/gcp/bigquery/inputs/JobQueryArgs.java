@@ -6,6 +6,7 @@ package com.pulumi.gcp.bigquery.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.bigquery.inputs.JobQueryConnectionPropertyArgs;
 import com.pulumi.gcp.bigquery.inputs.JobQueryDefaultDatasetArgs;
 import com.pulumi.gcp.bigquery.inputs.JobQueryDestinationEncryptionConfigurationArgs;
 import com.pulumi.gcp.bigquery.inputs.JobQueryDestinationTableArgs;
@@ -41,6 +42,27 @@ public final class JobQueryArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> allowLargeResults() {
         return Optional.ofNullable(this.allowLargeResults);
+    }
+
+    /**
+     * Connection properties to customize query behavior. Under JDBC, these correspond
+     * directly to connection properties passed to the DriverManager. Under ODBC, these
+     * correspond to properties in the connection string.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="connectionProperties")
+    private @Nullable Output<List<JobQueryConnectionPropertyArgs>> connectionProperties;
+
+    /**
+     * @return Connection properties to customize query behavior. Under JDBC, these correspond
+     * directly to connection properties passed to the DriverManager. Under ODBC, these
+     * correspond to properties in the connection string.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<JobQueryConnectionPropertyArgs>>> connectionProperties() {
+        return Optional.ofNullable(this.connectionProperties);
     }
 
     /**
@@ -372,6 +394,7 @@ public final class JobQueryArgs extends com.pulumi.resources.ResourceArgs {
 
     private JobQueryArgs(JobQueryArgs $) {
         this.allowLargeResults = $.allowLargeResults;
+        this.connectionProperties = $.connectionProperties;
         this.continuous = $.continuous;
         this.createDisposition = $.createDisposition;
         this.defaultDataset = $.defaultDataset;
@@ -432,6 +455,46 @@ public final class JobQueryArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder allowLargeResults(Boolean allowLargeResults) {
             return allowLargeResults(Output.of(allowLargeResults));
+        }
+
+        /**
+         * @param connectionProperties Connection properties to customize query behavior. Under JDBC, these correspond
+         * directly to connection properties passed to the DriverManager. Under ODBC, these
+         * correspond to properties in the connection string.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionProperties(@Nullable Output<List<JobQueryConnectionPropertyArgs>> connectionProperties) {
+            $.connectionProperties = connectionProperties;
+            return this;
+        }
+
+        /**
+         * @param connectionProperties Connection properties to customize query behavior. Under JDBC, these correspond
+         * directly to connection properties passed to the DriverManager. Under ODBC, these
+         * correspond to properties in the connection string.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionProperties(List<JobQueryConnectionPropertyArgs> connectionProperties) {
+            return connectionProperties(Output.of(connectionProperties));
+        }
+
+        /**
+         * @param connectionProperties Connection properties to customize query behavior. Under JDBC, these correspond
+         * directly to connection properties passed to the DriverManager. Under ODBC, these
+         * correspond to properties in the connection string.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionProperties(JobQueryConnectionPropertyArgs... connectionProperties) {
+            return connectionProperties(List.of(connectionProperties));
         }
 
         /**

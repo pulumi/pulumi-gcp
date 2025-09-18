@@ -75,9 +75,10 @@ namespace Pulumi.Gcp.CloudBuild
     ///             {
     ///                 new Gcp.CloudBuild.Inputs.TriggerBuildStepArgs
     ///                 {
-    ///                     Name = "gcr.io/cloud-builders/gsutil",
+    ///                     Name = "gcr.io/cloud-builders/gcloud",
     ///                     Args = new[]
     ///                     {
+    ///                         "storage",
     ///                         "cp",
     ///                         "gs://mybucket/remotefile.zip",
     ///                         "localfile.zip",
@@ -980,6 +981,87 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
+    /// ### Cloudbuild Trigger Developer Connect Pull
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var developer_connect_trigger_pull = new Gcp.CloudBuild.Trigger("developer-connect-trigger-pull", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         DeveloperConnectEventConfig = new Gcp.CloudBuild.Inputs.TriggerDeveloperConnectEventConfigArgs
+    ///         {
+    ///             GitRepositoryLink = "projects/cryptic-tower-286020/locations/us-central1/connections/prod-bbs-push/gitRepositoryLinks/cbprob-prod-us-central1-push1",
+    ///             PullRequest = new Gcp.CloudBuild.Inputs.TriggerDeveloperConnectEventConfigPullRequestArgs
+    ///             {
+    ///                 Branch = "^master$",
+    ///                 InvertRegex = false,
+    ///                 CommentControl = "COMMENTS_ENABLED",
+    ///             },
+    ///         },
+    ///         Filename = "cloudbuild.yaml",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudbuild Trigger Developer Connect Push
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var developer_connect_trigger_push = new Gcp.CloudBuild.Trigger("developer-connect-trigger-push", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         DeveloperConnectEventConfig = new Gcp.CloudBuild.Inputs.TriggerDeveloperConnectEventConfigArgs
+    ///         {
+    ///             GitRepositoryLink = "projects/cryptic-tower-286020/locations/us-central1/connections/prod-bbs-push/gitRepositoryLinks/cbprob-prod-us-central1-push1",
+    ///             Push = new Gcp.CloudBuild.Inputs.TriggerDeveloperConnectEventConfigPushArgs
+    ///             {
+    ///                 Tag = "^0.1.*",
+    ///                 InvertRegex = true,
+    ///             },
+    ///         },
+    ///         Filename = "cloudbuild.yaml",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudbuild Trigger Developer Connect Push Branch
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var dc_trigger_regular_push_branch = new Gcp.CloudBuild.Trigger("dc-trigger-regular-push-branch", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         DeveloperConnectEventConfig = new Gcp.CloudBuild.Inputs.TriggerDeveloperConnectEventConfigArgs
+    ///         {
+    ///             GitRepositoryLink = "projects/cryptic-tower-286020/locations/us-central1/connections/prod-bbs-push/gitRepositoryLinks/cbprob-prod-us-central1-push1",
+    ///             Push = new Gcp.CloudBuild.Inputs.TriggerDeveloperConnectEventConfigPushArgs
+    ///             {
+    ///                 Branch = "main",
+    ///             },
+    ///         },
+    ///         Filename = "cloudbuild.yaml",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -1048,6 +1130,13 @@ namespace Pulumi.Gcp.CloudBuild
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for triggers that respond to Developer Connect events.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("developerConnectEventConfig")]
+        public Output<Outputs.TriggerDeveloperConnectEventConfig?> DeveloperConnectEventConfig { get; private set; } = null!;
 
         /// <summary>
         /// Whether the trigger is disabled or not. If true, the trigger will never result in a build.
@@ -1290,6 +1379,13 @@ namespace Pulumi.Gcp.CloudBuild
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Configuration for triggers that respond to Developer Connect events.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("developerConnectEventConfig")]
+        public Input<Inputs.TriggerDeveloperConnectEventConfigArgs>? DeveloperConnectEventConfig { get; set; }
+
+        /// <summary>
         /// Whether the trigger is disabled or not. If true, the trigger will never result in a build.
         /// </summary>
         [Input("disabled")]
@@ -1514,6 +1610,13 @@ namespace Pulumi.Gcp.CloudBuild
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Configuration for triggers that respond to Developer Connect events.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("developerConnectEventConfig")]
+        public Input<Inputs.TriggerDeveloperConnectEventConfigGetArgs>? DeveloperConnectEventConfig { get; set; }
 
         /// <summary>
         /// Whether the trigger is disabled or not. If true, the trigger will never result in a build.

@@ -43,15 +43,15 @@ public final class TableIamBindingState extends com.pulumi.resources.ResourceArg
      * The name or relative resource id of the instance that owns the table.
      * 
      */
-    @Import(name="instance")
-    private @Nullable Output<String> instance;
+    @Import(name="instanceName")
+    private @Nullable Output<String> instanceName;
 
     /**
      * @return The name or relative resource id of the instance that owns the table.
      * 
      */
-    public Optional<Output<String>> instance() {
-        return Optional.ofNullable(this.instance);
+    public Optional<Output<String>> instanceName() {
+        return Optional.ofNullable(this.instanceName);
     }
 
     /**
@@ -147,7 +147,7 @@ public final class TableIamBindingState extends com.pulumi.resources.ResourceArg
     private TableIamBindingState(TableIamBindingState $) {
         this.condition = $.condition;
         this.etag = $.etag;
-        this.instance = $.instance;
+        this.instanceName = $.instanceName;
         this.members = $.members;
         this.project = $.project;
         this.role = $.role;
@@ -203,24 +203,24 @@ public final class TableIamBindingState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param instance The name or relative resource id of the instance that owns the table.
+         * @param instanceName The name or relative resource id of the instance that owns the table.
          * 
          * @return builder
          * 
          */
-        public Builder instance(@Nullable Output<String> instance) {
-            $.instance = instance;
+        public Builder instanceName(@Nullable Output<String> instanceName) {
+            $.instanceName = instanceName;
             return this;
         }
 
         /**
-         * @param instance The name or relative resource id of the instance that owns the table.
+         * @param instanceName The name or relative resource id of the instance that owns the table.
          * 
          * @return builder
          * 
          */
-        public Builder instance(String instance) {
-            return instance(Output.of(instance));
+        public Builder instanceName(String instanceName) {
+            return instanceName(Output.of(instanceName));
         }
 
         /**

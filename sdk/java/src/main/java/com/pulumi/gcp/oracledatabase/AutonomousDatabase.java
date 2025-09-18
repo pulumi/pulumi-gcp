@@ -479,7 +479,7 @@ public class AutonomousDatabase extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="odbNetwork", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> odbNetwork;
+    private Output<String> odbNetwork;
 
     /**
      * @return The name of the OdbNetwork associated with the Autonomous Database.
@@ -489,8 +489,8 @@ public class AutonomousDatabase extends com.pulumi.resources.CustomResource {
      * the odb_subnet and backup_odb_subnet.
      * 
      */
-    public Output<Optional<String>> odbNetwork() {
-        return Codegen.optional(this.odbNetwork);
+    public Output<String> odbNetwork() {
+        return this.odbNetwork;
     }
     /**
      * The name of the OdbSubnet associated with the Autonomous Database for
@@ -499,7 +499,7 @@ public class AutonomousDatabase extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="odbSubnet", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> odbSubnet;
+    private Output<String> odbSubnet;
 
     /**
      * @return The name of the OdbSubnet associated with the Autonomous Database for
@@ -507,8 +507,8 @@ public class AutonomousDatabase extends com.pulumi.resources.CustomResource {
      * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
      * 
      */
-    public Output<Optional<String>> odbSubnet() {
-        return Codegen.optional(this.odbSubnet);
+    public Output<String> odbSubnet() {
+        return this.odbSubnet;
     }
     /**
      * The ID of the project in which the resource belongs.

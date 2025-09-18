@@ -36,6 +36,10 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         Location = "us-central1",
     ///         DeletionProtection = false,
     ///         Ingress = "INGRESS_TRAFFIC_ALL",
+    ///         Scaling = new Gcp.CloudRunV2.Inputs.ServiceScalingArgs
+    ///         {
+    ///             MaxInstanceCount = 100,
+    ///         },
     ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
     ///         {
     ///             Containers = new[]
@@ -131,12 +135,12 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         Location = "us-central1",
     ///         DeletionProtection = false,
     ///         Ingress = "INGRESS_TRAFFIC_ALL",
+    ///         Scaling = new Gcp.CloudRunV2.Inputs.ServiceScalingArgs
+    ///         {
+    ///             MaxInstanceCount = 2,
+    ///         },
     ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
     ///         {
-    ///             Scaling = new Gcp.CloudRunV2.Inputs.ServiceTemplateScalingArgs
-    ///             {
-    ///                 MaxInstanceCount = 2,
-    ///             },
     ///             Volumes = new[]
     ///             {
     ///                 new Gcp.CloudRunV2.Inputs.ServiceTemplateVolumeArgs
@@ -344,6 +348,10 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         Location = "us-central1",
     ///         DeletionProtection = false,
     ///         Ingress = "INGRESS_TRAFFIC_ALL",
+    ///         Scaling = new Gcp.CloudRunV2.Inputs.ServiceScalingArgs
+    ///         {
+    ///             MaxInstanceCount = 1,
+    ///         },
     ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
     ///         {
     ///             Containers = new[]
@@ -368,10 +376,6 @@ namespace Pulumi.Gcp.CloudRunV2
     ///                 Accelerator = "nvidia-l4",
     ///             },
     ///             GpuZonalRedundancyDisabled = true,
-    ///             Scaling = new Gcp.CloudRunV2.Inputs.ServiceTemplateScalingArgs
-    ///             {
-    ///                 MaxInstanceCount = 1,
-    ///             },
     ///         },
     ///     });
     /// 
@@ -1155,6 +1159,13 @@ namespace Pulumi.Gcp.CloudRunV2
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
+        /// Settings for creating a Multi-Region Service. Make sure to use region = 'global' when using them. For more information, visit https://cloud.google.com/run/docs/multiple-regions#deploy
+        /// Structure is documented below.
+        /// </summary>
+        [Output("multiRegionSettings")]
+        public Output<Outputs.ServiceMultiRegionSettings?> MultiRegionSettings { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the Service.
         /// </summary>
         [Output("name")]
@@ -1423,6 +1434,13 @@ namespace Pulumi.Gcp.CloudRunV2
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
+        /// Settings for creating a Multi-Region Service. Make sure to use region = 'global' when using them. For more information, visit https://cloud.google.com/run/docs/multiple-regions#deploy
+        /// Structure is documented below.
+        /// </summary>
+        [Input("multiRegionSettings")]
+        public Input<Inputs.ServiceMultiRegionSettingsArgs>? MultiRegionSettings { get; set; }
+
+        /// <summary>
         /// Name of the Service.
         /// </summary>
         [Input("name")]
@@ -1682,6 +1700,13 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// Settings for creating a Multi-Region Service. Make sure to use region = 'global' when using them. For more information, visit https://cloud.google.com/run/docs/multiple-regions#deploy
+        /// Structure is documented below.
+        /// </summary>
+        [Input("multiRegionSettings")]
+        public Input<Inputs.ServiceMultiRegionSettingsGetArgs>? MultiRegionSettings { get; set; }
 
         /// <summary>
         /// Name of the Service.

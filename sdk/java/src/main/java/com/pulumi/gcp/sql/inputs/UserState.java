@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.sql.inputs.UserPasswordPolicyArgs;
 import com.pulumi.gcp.sql.inputs.UserSqlServerUserDetailArgs;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -123,6 +124,25 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
+     * 
+     * ***
+     * 
+     */
+    @Import(name="passwordWoVersion")
+    private @Nullable Output<Integer> passwordWoVersion;
+
+    /**
+     * @return The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
+     * 
+     * ***
+     * 
+     */
+    public Optional<Output<Integer>> passwordWoVersion() {
+        return Optional.ofNullable(this.passwordWoVersion);
+    }
+
+    /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      * 
@@ -180,6 +200,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.password = $.password;
         this.passwordPolicy = $.passwordPolicy;
+        this.passwordWoVersion = $.passwordWoVersion;
         this.project = $.project;
         this.sqlServerUserDetails = $.sqlServerUserDetails;
         this.type = $.type;
@@ -337,6 +358,31 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
 
         public Builder passwordPolicy(UserPasswordPolicyArgs passwordPolicy) {
             return passwordPolicy(Output.of(passwordPolicy));
+        }
+
+        /**
+         * @param passwordWoVersion The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWoVersion(@Nullable Output<Integer> passwordWoVersion) {
+            $.passwordWoVersion = passwordWoVersion;
+            return this;
+        }
+
+        /**
+         * @param passwordWoVersion The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWoVersion(Integer passwordWoVersion) {
+            return passwordWoVersion(Output.of(passwordWoVersion));
         }
 
         /**

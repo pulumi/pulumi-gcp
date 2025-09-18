@@ -747,6 +747,11 @@ export class BackendService extends pulumi.CustomResource {
      */
     declare public readonly outlierDetection: pulumi.Output<outputs.compute.BackendServiceOutlierDetection | undefined>;
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    declare public readonly params: pulumi.Output<outputs.compute.BackendServiceParams | undefined>;
+    /**
      * Name of backend port. The same name should appear in the instance
      * groups referenced by this service. Required when the load balancing
      * scheme is EXTERNAL.
@@ -854,6 +859,7 @@ export class BackendService extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["networkPassThroughLbTrafficPolicy"] = state?.networkPassThroughLbTrafficPolicy;
             resourceInputs["outlierDetection"] = state?.outlierDetection;
+            resourceInputs["params"] = state?.params;
             resourceInputs["portName"] = state?.portName;
             resourceInputs["project"] = state?.project;
             resourceInputs["protocol"] = state?.protocol;
@@ -894,6 +900,7 @@ export class BackendService extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["networkPassThroughLbTrafficPolicy"] = args?.networkPassThroughLbTrafficPolicy;
             resourceInputs["outlierDetection"] = args?.outlierDetection;
+            resourceInputs["params"] = args?.params;
             resourceInputs["portName"] = args?.portName;
             resourceInputs["project"] = args?.project;
             resourceInputs["protocol"] = args?.protocol;
@@ -1166,6 +1173,11 @@ export interface BackendServiceState {
      * Structure is documented below.
      */
     outlierDetection?: pulumi.Input<inputs.compute.BackendServiceOutlierDetection>;
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.BackendServiceParams>;
     /**
      * Name of backend port. The same name should appear in the instance
      * groups referenced by this service. Required when the load balancing
@@ -1471,6 +1483,11 @@ export interface BackendServiceArgs {
      * Structure is documented below.
      */
     outlierDetection?: pulumi.Input<inputs.compute.BackendServiceOutlierDetection>;
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.BackendServiceParams>;
     /**
      * Name of backend port. The same name should appear in the instance
      * groups referenced by this service. Required when the load balancing

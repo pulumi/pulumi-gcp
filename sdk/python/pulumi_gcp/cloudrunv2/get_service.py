@@ -27,7 +27,7 @@ class GetServiceResult:
     """
     A collection of values returned by getService.
     """
-    def __init__(__self__, annotations=None, binary_authorizations=None, build_configs=None, client=None, client_version=None, conditions=None, create_time=None, creator=None, custom_audiences=None, default_uri_disabled=None, delete_time=None, deletion_protection=None, description=None, effective_annotations=None, effective_labels=None, etag=None, expire_time=None, generation=None, iap_enabled=None, id=None, ingress=None, invoker_iam_disabled=None, labels=None, last_modifier=None, latest_created_revision=None, latest_ready_revision=None, launch_stage=None, location=None, name=None, observed_generation=None, project=None, pulumi_labels=None, reconciling=None, scalings=None, templates=None, terminal_conditions=None, traffic_statuses=None, traffics=None, uid=None, update_time=None, uri=None, urls=None):
+    def __init__(__self__, annotations=None, binary_authorizations=None, build_configs=None, client=None, client_version=None, conditions=None, create_time=None, creator=None, custom_audiences=None, default_uri_disabled=None, delete_time=None, deletion_protection=None, description=None, effective_annotations=None, effective_labels=None, etag=None, expire_time=None, generation=None, iap_enabled=None, id=None, ingress=None, invoker_iam_disabled=None, labels=None, last_modifier=None, latest_created_revision=None, latest_ready_revision=None, launch_stage=None, location=None, multi_region_settings=None, name=None, observed_generation=None, project=None, pulumi_labels=None, reconciling=None, scalings=None, templates=None, terminal_conditions=None, traffic_statuses=None, traffics=None, uid=None, update_time=None, uri=None, urls=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -112,6 +112,9 @@ class GetServiceResult:
         if location and not isinstance(location, str):
             raise TypeError("Expected argument 'location' to be a str")
         pulumi.set(__self__, "location", location)
+        if multi_region_settings and not isinstance(multi_region_settings, list):
+            raise TypeError("Expected argument 'multi_region_settings' to be a list")
+        pulumi.set(__self__, "multi_region_settings", multi_region_settings)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -299,6 +302,11 @@ class GetServiceResult:
         return pulumi.get(self, "location")
 
     @_builtins.property
+    @pulumi.getter(name="multiRegionSettings")
+    def multi_region_settings(self) -> Sequence['outputs.GetServiceMultiRegionSettingResult']:
+        return pulumi.get(self, "multi_region_settings")
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
         return pulumi.get(self, "name")
@@ -403,6 +411,7 @@ class AwaitableGetServiceResult(GetServiceResult):
             latest_ready_revision=self.latest_ready_revision,
             launch_stage=self.launch_stage,
             location=self.location,
+            multi_region_settings=self.multi_region_settings,
             name=self.name,
             observed_generation=self.observed_generation,
             project=self.project,
@@ -482,6 +491,7 @@ def get_service(location: Optional[_builtins.str] = None,
         latest_ready_revision=pulumi.get(__ret__, 'latest_ready_revision'),
         launch_stage=pulumi.get(__ret__, 'launch_stage'),
         location=pulumi.get(__ret__, 'location'),
+        multi_region_settings=pulumi.get(__ret__, 'multi_region_settings'),
         name=pulumi.get(__ret__, 'name'),
         observed_generation=pulumi.get(__ret__, 'observed_generation'),
         project=pulumi.get(__ret__, 'project'),
@@ -558,6 +568,7 @@ def get_service_output(location: Optional[pulumi.Input[Optional[_builtins.str]]]
         latest_ready_revision=pulumi.get(__response__, 'latest_ready_revision'),
         launch_stage=pulumi.get(__response__, 'launch_stage'),
         location=pulumi.get(__response__, 'location'),
+        multi_region_settings=pulumi.get(__response__, 'multi_region_settings'),
         name=pulumi.get(__response__, 'name'),
         observed_generation=pulumi.get(__response__, 'observed_generation'),
         project=pulumi.get(__response__, 'project'),

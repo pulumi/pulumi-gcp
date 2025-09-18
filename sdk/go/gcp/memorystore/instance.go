@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,10 +29,10 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/memorystore"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/networkconnectivity"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/memorystore"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -116,10 +116,10 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/memorystore"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/networkconnectivity"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/memorystore"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -179,7 +179,6 @@ import (
 //				EngineConfigs: pulumi.StringMap{
 //					"maxmemory-policy": pulumi.String("volatile-ttl"),
 //				},
-//				AllowFewerZonesDeployment: pulumi.Bool(true),
 //				ZoneDistributionConfig: &memorystore.InstanceZoneDistributionConfigArgs{
 //					Mode: pulumi.String("SINGLE_ZONE"),
 //					Zone: pulumi.String("us-central1-b"),
@@ -228,10 +227,10 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/memorystore"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/networkconnectivity"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/memorystore"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -308,10 +307,10 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/memorystore"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/networkconnectivity"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/memorystore"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -500,11 +499,6 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
-	// Allows customers to specify if they are okay with deploying a multi-zone
-	// instance in less than 3 zones. Once set, if there is a zonal outage during
-	// the instance creation, the instance will only be deployed in 2 zones, and
-	// stay within the 2 zones for its lifecycle.
-	AllowFewerZonesDeployment pulumi.BoolPtrOutput `pulumi:"allowFewerZonesDeployment"`
 	// Optional. Immutable. Authorization mode of the instance. Possible values:
 	// AUTH_DISABLED
 	// IAM_AUTH
@@ -524,9 +518,9 @@ type Instance struct {
 	DeletionProtectionEnabled pulumi.BoolPtrOutput `pulumi:"deletionProtectionEnabled"`
 	// Immutable. User inputs for the auto-created endpoints connections.
 	DesiredAutoCreatedEndpoints InstanceDesiredAutoCreatedEndpointArrayOutput `pulumi:"desiredAutoCreatedEndpoints"`
-	// `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead.
+	// `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead `pulumi import` will only work with desiredAutoCreatedEndpoints`.
 	//
-	// Deprecated: `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead.
+	// Deprecated: `desiredPscAutoConnections` is deprecated. Use `desiredAutoCreatedEndpoints` instead. `terraform import` will only work with desiredAutoCreatedEndpoints`.
 	DesiredPscAutoConnections InstanceDesiredPscAutoConnectionArrayOutput `pulumi:"desiredPscAutoConnections"`
 	// (Deprecated)
 	// Deprecated. Output only. Endpoints clients can connect to the instance through.
@@ -684,11 +678,6 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
-	// Allows customers to specify if they are okay with deploying a multi-zone
-	// instance in less than 3 zones. Once set, if there is a zonal outage during
-	// the instance creation, the instance will only be deployed in 2 zones, and
-	// stay within the 2 zones for its lifecycle.
-	AllowFewerZonesDeployment *bool `pulumi:"allowFewerZonesDeployment"`
 	// Optional. Immutable. Authorization mode of the instance. Possible values:
 	// AUTH_DISABLED
 	// IAM_AUTH
@@ -708,9 +697,9 @@ type instanceState struct {
 	DeletionProtectionEnabled *bool `pulumi:"deletionProtectionEnabled"`
 	// Immutable. User inputs for the auto-created endpoints connections.
 	DesiredAutoCreatedEndpoints []InstanceDesiredAutoCreatedEndpoint `pulumi:"desiredAutoCreatedEndpoints"`
-	// `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead.
+	// `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead `pulumi import` will only work with desiredAutoCreatedEndpoints`.
 	//
-	// Deprecated: `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead.
+	// Deprecated: `desiredPscAutoConnections` is deprecated. Use `desiredAutoCreatedEndpoints` instead. `terraform import` will only work with desiredAutoCreatedEndpoints`.
 	DesiredPscAutoConnections []InstanceDesiredPscAutoConnection `pulumi:"desiredPscAutoConnections"`
 	// (Deprecated)
 	// Deprecated. Output only. Endpoints clients can connect to the instance through.
@@ -825,11 +814,6 @@ type instanceState struct {
 }
 
 type InstanceState struct {
-	// Allows customers to specify if they are okay with deploying a multi-zone
-	// instance in less than 3 zones. Once set, if there is a zonal outage during
-	// the instance creation, the instance will only be deployed in 2 zones, and
-	// stay within the 2 zones for its lifecycle.
-	AllowFewerZonesDeployment pulumi.BoolPtrInput
 	// Optional. Immutable. Authorization mode of the instance. Possible values:
 	// AUTH_DISABLED
 	// IAM_AUTH
@@ -849,9 +833,9 @@ type InstanceState struct {
 	DeletionProtectionEnabled pulumi.BoolPtrInput
 	// Immutable. User inputs for the auto-created endpoints connections.
 	DesiredAutoCreatedEndpoints InstanceDesiredAutoCreatedEndpointArrayInput
-	// `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead.
+	// `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead `pulumi import` will only work with desiredAutoCreatedEndpoints`.
 	//
-	// Deprecated: `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead.
+	// Deprecated: `desiredPscAutoConnections` is deprecated. Use `desiredAutoCreatedEndpoints` instead. `terraform import` will only work with desiredAutoCreatedEndpoints`.
 	DesiredPscAutoConnections InstanceDesiredPscAutoConnectionArrayInput
 	// (Deprecated)
 	// Deprecated. Output only. Endpoints clients can connect to the instance through.
@@ -970,11 +954,6 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
-	// Allows customers to specify if they are okay with deploying a multi-zone
-	// instance in less than 3 zones. Once set, if there is a zonal outage during
-	// the instance creation, the instance will only be deployed in 2 zones, and
-	// stay within the 2 zones for its lifecycle.
-	AllowFewerZonesDeployment *bool `pulumi:"allowFewerZonesDeployment"`
 	// Optional. Immutable. Authorization mode of the instance. Possible values:
 	// AUTH_DISABLED
 	// IAM_AUTH
@@ -989,9 +968,9 @@ type instanceArgs struct {
 	DeletionProtectionEnabled *bool `pulumi:"deletionProtectionEnabled"`
 	// Immutable. User inputs for the auto-created endpoints connections.
 	DesiredAutoCreatedEndpoints []InstanceDesiredAutoCreatedEndpoint `pulumi:"desiredAutoCreatedEndpoints"`
-	// `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead.
+	// `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead `pulumi import` will only work with desiredAutoCreatedEndpoints`.
 	//
-	// Deprecated: `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead.
+	// Deprecated: `desiredPscAutoConnections` is deprecated. Use `desiredAutoCreatedEndpoints` instead. `terraform import` will only work with desiredAutoCreatedEndpoints`.
 	DesiredPscAutoConnections []InstanceDesiredPscAutoConnection `pulumi:"desiredPscAutoConnections"`
 	// Optional. User-provided engine configurations for the instance.
 	EngineConfigs map[string]string `pulumi:"engineConfigs"`
@@ -1058,11 +1037,6 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
-	// Allows customers to specify if they are okay with deploying a multi-zone
-	// instance in less than 3 zones. Once set, if there is a zonal outage during
-	// the instance creation, the instance will only be deployed in 2 zones, and
-	// stay within the 2 zones for its lifecycle.
-	AllowFewerZonesDeployment pulumi.BoolPtrInput
 	// Optional. Immutable. Authorization mode of the instance. Possible values:
 	// AUTH_DISABLED
 	// IAM_AUTH
@@ -1077,9 +1051,9 @@ type InstanceArgs struct {
 	DeletionProtectionEnabled pulumi.BoolPtrInput
 	// Immutable. User inputs for the auto-created endpoints connections.
 	DesiredAutoCreatedEndpoints InstanceDesiredAutoCreatedEndpointArrayInput
-	// `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead.
+	// `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead `pulumi import` will only work with desiredAutoCreatedEndpoints`.
 	//
-	// Deprecated: `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead.
+	// Deprecated: `desiredPscAutoConnections` is deprecated. Use `desiredAutoCreatedEndpoints` instead. `terraform import` will only work with desiredAutoCreatedEndpoints`.
 	DesiredPscAutoConnections InstanceDesiredPscAutoConnectionArrayInput
 	// Optional. User-provided engine configurations for the instance.
 	EngineConfigs pulumi.StringMapInput
@@ -1231,14 +1205,6 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
-// Allows customers to specify if they are okay with deploying a multi-zone
-// instance in less than 3 zones. Once set, if there is a zonal outage during
-// the instance creation, the instance will only be deployed in 2 zones, and
-// stay within the 2 zones for its lifecycle.
-func (o InstanceOutput) AllowFewerZonesDeployment() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.AllowFewerZonesDeployment }).(pulumi.BoolPtrOutput)
-}
-
 // Optional. Immutable. Authorization mode of the instance. Possible values:
 // AUTH_DISABLED
 // IAM_AUTH
@@ -1281,9 +1247,9 @@ func (o InstanceOutput) DesiredAutoCreatedEndpoints() InstanceDesiredAutoCreated
 	return o.ApplyT(func(v *Instance) InstanceDesiredAutoCreatedEndpointArrayOutput { return v.DesiredAutoCreatedEndpoints }).(InstanceDesiredAutoCreatedEndpointArrayOutput)
 }
 
-// `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead.
+// `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead `pulumi import` will only work with desiredAutoCreatedEndpoints`.
 //
-// Deprecated: `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead.
+// Deprecated: `desiredPscAutoConnections` is deprecated. Use `desiredAutoCreatedEndpoints` instead. `terraform import` will only work with desiredAutoCreatedEndpoints`.
 func (o InstanceOutput) DesiredPscAutoConnections() InstanceDesiredPscAutoConnectionArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceDesiredPscAutoConnectionArrayOutput { return v.DesiredPscAutoConnections }).(InstanceDesiredPscAutoConnectionArrayOutput)
 }

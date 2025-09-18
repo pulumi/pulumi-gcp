@@ -99,6 +99,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly bool? EnableGoogleMlIntegration;
         /// <summary>
+        /// Config used to determine the final backup settings for the instance
+        /// </summary>
+        public readonly Outputs.DatabaseInstanceSettingsFinalBackupConfig? FinalBackupConfig;
+        /// <summary>
         /// Configuration of Query Insights.
         /// </summary>
         public readonly Outputs.DatabaseInstanceSettingsInsightsConfig? InsightsConfig;
@@ -184,6 +188,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             bool? enableGoogleMlIntegration,
 
+            Outputs.DatabaseInstanceSettingsFinalBackupConfig? finalBackupConfig,
+
             Outputs.DatabaseInstanceSettingsInsightsConfig? insightsConfig,
 
             Outputs.DatabaseInstanceSettingsIpConfiguration? ipConfiguration,
@@ -230,6 +236,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             EffectiveAvailabilityType = effectiveAvailabilityType;
             EnableDataplexIntegration = enableDataplexIntegration;
             EnableGoogleMlIntegration = enableGoogleMlIntegration;
+            FinalBackupConfig = finalBackupConfig;
             InsightsConfig = insightsConfig;
             IpConfiguration = ipConfiguration;
             LocationPreference = locationPreference;

@@ -361,6 +361,12 @@ namespace Pulumi.Gcp.Sql
         public Output<ImmutableArray<string>> AvailableMaintenanceVersions { get; private set; } = null!;
 
         /// <summary>
+        /// The name of the BackupDR backup to restore from.
+        /// </summary>
+        [Output("backupdrBackup")]
+        public Output<string?> BackupdrBackup { get; private set; } = null!;
+
+        /// <summary>
         /// The context needed to create this instance as a clone of another instance. When this field is set during
         /// resource creation, this provider will attempt to clone another instance as indicated in the context. The
         /// configuration is detailed below.
@@ -420,6 +426,12 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Output("encryptionKeyName")]
         public Output<string> EncryptionKeyName { get; private set; } = null!;
+
+        /// <summary>
+        /// The description of final backup. Only set this field when `final_backup_config.enabled` is true.
+        /// </summary>
+        [Output("finalBackupDescription")]
+        public Output<string?> FinalBackupDescription { get; private set; } = null!;
 
         /// <summary>
         /// The first IPv4 address of any type assigned.
@@ -609,6 +621,12 @@ namespace Pulumi.Gcp.Sql
     public sealed class DatabaseInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The name of the BackupDR backup to restore from.
+        /// </summary>
+        [Input("backupdrBackup")]
+        public Input<string>? BackupdrBackup { get; set; }
+
+        /// <summary>
         /// The context needed to create this instance as a clone of another instance. When this field is set during
         /// resource creation, this provider will attempt to clone another instance as indicated in the context. The
         /// configuration is detailed below.
@@ -649,6 +667,12 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Input("encryptionKeyName")]
         public Input<string>? EncryptionKeyName { get; set; }
+
+        /// <summary>
+        /// The description of final backup. Only set this field when `final_backup_config.enabled` is true.
+        /// </summary>
+        [Input("finalBackupDescription")]
+        public Input<string>? FinalBackupDescription { get; set; }
 
         /// <summary>
         /// The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
@@ -789,6 +813,12 @@ namespace Pulumi.Gcp.Sql
         }
 
         /// <summary>
+        /// The name of the BackupDR backup to restore from.
+        /// </summary>
+        [Input("backupdrBackup")]
+        public Input<string>? BackupdrBackup { get; set; }
+
+        /// <summary>
         /// The context needed to create this instance as a clone of another instance. When this field is set during
         /// resource creation, this provider will attempt to clone another instance as indicated in the context. The
         /// configuration is detailed below.
@@ -854,6 +884,12 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Input("encryptionKeyName")]
         public Input<string>? EncryptionKeyName { get; set; }
+
+        /// <summary>
+        /// The description of final backup. Only set this field when `final_backup_config.enabled` is true.
+        /// </summary>
+        [Input("finalBackupDescription")]
+        public Input<string>? FinalBackupDescription { get; set; }
 
         /// <summary>
         /// The first IPv4 address of any type assigned.

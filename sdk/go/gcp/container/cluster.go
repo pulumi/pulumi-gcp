@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,8 +34,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -92,8 +92,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -141,8 +141,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -298,7 +298,9 @@ type Cluster struct {
 	EnableTpu pulumi.BoolOutput `pulumi:"enableTpu"`
 	// The IP address of this cluster's Kubernetes master.
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
-	// Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+	// (DEPRECATED) Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
+	//
+	// Deprecated: GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
 	EnterpriseConfig ClusterEnterpriseConfigOutput `pulumi:"enterpriseConfig"`
 	// Fleet configuration for the cluster. Structure is documented below.
 	Fleet ClusterFleetPtrOutput `pulumi:"fleet"`
@@ -659,7 +661,9 @@ type clusterState struct {
 	EnableTpu *bool `pulumi:"enableTpu"`
 	// The IP address of this cluster's Kubernetes master.
 	Endpoint *string `pulumi:"endpoint"`
-	// Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+	// (DEPRECATED) Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
+	//
+	// Deprecated: GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
 	EnterpriseConfig *ClusterEnterpriseConfig `pulumi:"enterpriseConfig"`
 	// Fleet configuration for the cluster. Structure is documented below.
 	Fleet *ClusterFleet `pulumi:"fleet"`
@@ -986,7 +990,9 @@ type ClusterState struct {
 	EnableTpu pulumi.BoolPtrInput
 	// The IP address of this cluster's Kubernetes master.
 	Endpoint pulumi.StringPtrInput
-	// Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+	// (DEPRECATED) Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
+	//
+	// Deprecated: GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
 	EnterpriseConfig ClusterEnterpriseConfigPtrInput
 	// Fleet configuration for the cluster. Structure is documented below.
 	Fleet ClusterFleetPtrInput
@@ -1313,7 +1319,9 @@ type clusterArgs struct {
 	// Whether to enable Cloud TPU resources in this cluster.
 	// See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
 	EnableTpu *bool `pulumi:"enableTpu"`
-	// Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+	// (DEPRECATED) Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
+	//
+	// Deprecated: GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
 	EnterpriseConfig *ClusterEnterpriseConfig `pulumi:"enterpriseConfig"`
 	// Fleet configuration for the cluster. Structure is documented below.
 	Fleet *ClusterFleet `pulumi:"fleet"`
@@ -1617,7 +1625,9 @@ type ClusterArgs struct {
 	// Whether to enable Cloud TPU resources in this cluster.
 	// See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
 	EnableTpu pulumi.BoolPtrInput
-	// Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+	// (DEPRECATED) Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
+	//
+	// Deprecated: GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
 	EnterpriseConfig ClusterEnterpriseConfigPtrInput
 	// Fleet configuration for the cluster. Structure is documented below.
 	Fleet ClusterFleetPtrInput
@@ -2106,7 +2116,9 @@ func (o ClusterOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Endpoint }).(pulumi.StringOutput)
 }
 
-// Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+// (DEPRECATED) Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
+//
+// Deprecated: GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
 func (o ClusterOutput) EnterpriseConfig() ClusterEnterpriseConfigOutput {
 	return o.ApplyT(func(v *Cluster) ClusterEnterpriseConfigOutput { return v.EnterpriseConfig }).(ClusterEnterpriseConfigOutput)
 }

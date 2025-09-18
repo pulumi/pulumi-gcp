@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,14 +29,28 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/chronicle"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := chronicle.NewReferenceList(ctx, "example", &chronicle.ReferenceListArgs{
+//			testScope, err := chronicle.NewDataAccessScope(ctx, "test_scope", &chronicle.DataAccessScopeArgs{
+//				Location:          pulumi.String("us"),
+//				Instance:          pulumi.String("00000000-0000-0000-0000-000000000000"),
+//				DataAccessScopeId: pulumi.String("scope-id"),
+//				Description:       pulumi.String("test scope description"),
+//				AllowedDataAccessLabels: chronicle.DataAccessScopeAllowedDataAccessLabelArray{
+//					&chronicle.DataAccessScopeAllowedDataAccessLabelArgs{
+//						LogType: pulumi.String("GCP_CLOUDAUDIT"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = chronicle.NewReferenceList(ctx, "example", &chronicle.ReferenceListArgs{
 //				Location:        pulumi.String("us"),
 //				Instance:        pulumi.String("00000000-0000-0000-0000-000000000000"),
 //				ReferenceListId: pulumi.String("reference_list_id"),
@@ -47,6 +61,15 @@ import (
 //					},
 //				},
 //				SyntaxType: pulumi.String("REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING"),
+//				ScopeInfos: chronicle.ReferenceListScopeInfoArray{
+//					&chronicle.ReferenceListScopeInfoArgs{
+//						ReferenceListScope: &chronicle.ReferenceListScopeInfoReferenceListScopeArgs{
+//							ScopeNames: pulumi.StringArray{
+//								testScope.Name,
+//							},
+//						},
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -301,6 +324,9 @@ type referenceListArgs struct {
 	// - Has length < 256.
 	// - Must be unique.
 	ReferenceListId string `pulumi:"referenceListId"`
+	// ScopeInfo specifies the scope info of the reference list.
+	// Structure is documented below.
+	ScopeInfos []ReferenceListScopeInfo `pulumi:"scopeInfos"`
 	// Possible values:
 	// REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING
 	// REFERENCE_LIST_SYNTAX_TYPE_REGEX
@@ -333,6 +359,9 @@ type ReferenceListArgs struct {
 	// - Has length < 256.
 	// - Must be unique.
 	ReferenceListId pulumi.StringInput
+	// ScopeInfo specifies the scope info of the reference list.
+	// Structure is documented below.
+	ScopeInfos ReferenceListScopeInfoArrayInput
 	// Possible values:
 	// REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING
 	// REFERENCE_LIST_SYNTAX_TYPE_REGEX

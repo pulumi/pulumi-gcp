@@ -601,16 +601,24 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+     * (DEPRECATED) Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
+     * 
+     * @deprecated
+     * GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
      * 
      */
+    @Deprecated /* GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release */
     @Import(name="enterpriseConfig")
     private @Nullable Output<ClusterEnterpriseConfigArgs> enterpriseConfig;
 
     /**
-     * @return Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+     * @return (DEPRECATED) Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
+     * 
+     * @deprecated
+     * GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
      * 
      */
+    @Deprecated /* GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release */
     public Optional<Output<ClusterEnterpriseConfigArgs>> enterpriseConfig() {
         return Optional.ofNullable(this.enterpriseConfig);
     }
@@ -2516,22 +2524,30 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enterpriseConfig Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+         * @param enterpriseConfig (DEPRECATED) Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
          * 
          * @return builder
          * 
+         * @deprecated
+         * GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
+         * 
          */
+        @Deprecated /* GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release */
         public Builder enterpriseConfig(@Nullable Output<ClusterEnterpriseConfigArgs> enterpriseConfig) {
             $.enterpriseConfig = enterpriseConfig;
             return this;
         }
 
         /**
-         * @param enterpriseConfig Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+         * @param enterpriseConfig (DEPRECATED) Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
          * 
          * @return builder
          * 
+         * @deprecated
+         * GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
+         * 
          */
+        @Deprecated /* GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release */
         public Builder enterpriseConfig(ClusterEnterpriseConfigArgs enterpriseConfig) {
             return enterpriseConfig(Output.of(enterpriseConfig));
         }

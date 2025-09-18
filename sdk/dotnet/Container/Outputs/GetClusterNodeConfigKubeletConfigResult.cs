@@ -78,6 +78,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly int MaxParallelImagePulls;
         /// <summary>
+        /// Configuration for the Memory Manager on the node. The memory manager optimizes memory and hugepages allocation for pods, especially those in the Guaranteed QoS class, by influencing NUMA affinity.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClusterNodeConfigKubeletConfigMemoryManagerResult> MemoryManagers;
+        /// <summary>
         /// Controls the maximum number of processes allowed to run in a pod.
         /// </summary>
         public readonly int PodPidsLimit;
@@ -85,6 +89,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// Defines whether to enable single process OOM killer.
         /// </summary>
         public readonly bool SingleProcessOomKill;
+        /// <summary>
+        /// Configuration for the Topology Manager on the node. The Topology Manager aligns CPU, memory, and device resources on a node to optimize performance, especially for NUMA-aware workloads, by ensuring resource co-location.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClusterNodeConfigKubeletConfigTopologyManagerResult> TopologyManagers;
 
         [OutputConstructor]
         private GetClusterNodeConfigKubeletConfigResult(
@@ -120,9 +128,13 @@ namespace Pulumi.Gcp.Container.Outputs
 
             int maxParallelImagePulls,
 
+            ImmutableArray<Outputs.GetClusterNodeConfigKubeletConfigMemoryManagerResult> memoryManagers,
+
             int podPidsLimit,
 
-            bool singleProcessOomKill)
+            bool singleProcessOomKill,
+
+            ImmutableArray<Outputs.GetClusterNodeConfigKubeletConfigTopologyManagerResult> topologyManagers)
         {
             AllowedUnsafeSysctls = allowedUnsafeSysctls;
             ContainerLogMaxFiles = containerLogMaxFiles;
@@ -140,8 +152,10 @@ namespace Pulumi.Gcp.Container.Outputs
             ImageMinimumGcAge = imageMinimumGcAge;
             InsecureKubeletReadonlyPortEnabled = insecureKubeletReadonlyPortEnabled;
             MaxParallelImagePulls = maxParallelImagePulls;
+            MemoryManagers = memoryManagers;
             PodPidsLimit = podPidsLimit;
             SingleProcessOomKill = singleProcessOomKill;
+            TopologyManagers = topologyManagers;
         }
     }
 }

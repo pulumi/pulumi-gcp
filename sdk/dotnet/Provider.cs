@@ -474,6 +474,9 @@ namespace Pulumi.Gcp
         [Output("runtimeconfigCustomEndpoint")]
         public Output<string?> RuntimeconfigCustomEndpoint { get; private set; } = null!;
 
+        [Output("saasRuntimeCustomEndpoint")]
+        public Output<string?> SaasRuntimeCustomEndpoint { get; private set; } = null!;
+
         [Output("secretManagerCustomEndpoint")]
         public Output<string?> SecretManagerCustomEndpoint { get; private set; } = null!;
 
@@ -542,9 +545,6 @@ namespace Pulumi.Gcp
 
         [Output("tagsLocationCustomEndpoint")]
         public Output<string?> TagsLocationCustomEndpoint { get; private set; } = null!;
-
-        [Output("tpuCustomEndpoint")]
-        public Output<string?> TpuCustomEndpoint { get; private set; } = null!;
 
         [Output("tpuV2CustomEndpoint")]
         public Output<string?> TpuV2CustomEndpoint { get; private set; } = null!;
@@ -1107,6 +1107,9 @@ namespace Pulumi.Gcp
         [Input("runtimeconfigCustomEndpoint")]
         public Input<string>? RuntimeconfigCustomEndpoint { get; set; }
 
+        [Input("saasRuntimeCustomEndpoint")]
+        public Input<string>? SaasRuntimeCustomEndpoint { get; set; }
+
         [Input("scopes", json: true)]
         private InputList<string>? _scopes;
         public InputList<string> Scopes
@@ -1183,9 +1186,6 @@ namespace Pulumi.Gcp
 
         [Input("tagsLocationCustomEndpoint")]
         public Input<string>? TagsLocationCustomEndpoint { get; set; }
-
-        [Input("tpuCustomEndpoint")]
-        public Input<string>? TpuCustomEndpoint { get; set; }
 
         [Input("tpuV2CustomEndpoint")]
         public Input<string>? TpuV2CustomEndpoint { get; set; }

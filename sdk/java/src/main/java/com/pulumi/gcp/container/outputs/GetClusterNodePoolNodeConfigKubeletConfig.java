@@ -8,6 +8,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigKubeletConfigEvictionMinimumReclaim;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigKubeletConfigEvictionSoft;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigKubeletConfigEvictionSoftGracePeriod;
+import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigKubeletConfigMemoryManager;
+import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigKubeletConfigTopologyManager;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -97,6 +99,11 @@ public final class GetClusterNodePoolNodeConfigKubeletConfig {
      */
     private Integer maxParallelImagePulls;
     /**
+     * @return Configuration for the Memory Manager on the node. The memory manager optimizes memory and hugepages allocation for pods, especially those in the Guaranteed QoS class, by influencing NUMA affinity.
+     * 
+     */
+    private List<GetClusterNodePoolNodeConfigKubeletConfigMemoryManager> memoryManagers;
+    /**
      * @return Controls the maximum number of processes allowed to run in a pod.
      * 
      */
@@ -106,6 +113,11 @@ public final class GetClusterNodePoolNodeConfigKubeletConfig {
      * 
      */
     private Boolean singleProcessOomKill;
+    /**
+     * @return Configuration for the Topology Manager on the node. The Topology Manager aligns CPU, memory, and device resources on a node to optimize performance, especially for NUMA-aware workloads, by ensuring resource co-location.
+     * 
+     */
+    private List<GetClusterNodePoolNodeConfigKubeletConfigTopologyManager> topologyManagers;
 
     private GetClusterNodePoolNodeConfigKubeletConfig() {}
     /**
@@ -221,6 +233,13 @@ public final class GetClusterNodePoolNodeConfigKubeletConfig {
         return this.maxParallelImagePulls;
     }
     /**
+     * @return Configuration for the Memory Manager on the node. The memory manager optimizes memory and hugepages allocation for pods, especially those in the Guaranteed QoS class, by influencing NUMA affinity.
+     * 
+     */
+    public List<GetClusterNodePoolNodeConfigKubeletConfigMemoryManager> memoryManagers() {
+        return this.memoryManagers;
+    }
+    /**
      * @return Controls the maximum number of processes allowed to run in a pod.
      * 
      */
@@ -233,6 +252,13 @@ public final class GetClusterNodePoolNodeConfigKubeletConfig {
      */
     public Boolean singleProcessOomKill() {
         return this.singleProcessOomKill;
+    }
+    /**
+     * @return Configuration for the Topology Manager on the node. The Topology Manager aligns CPU, memory, and device resources on a node to optimize performance, especially for NUMA-aware workloads, by ensuring resource co-location.
+     * 
+     */
+    public List<GetClusterNodePoolNodeConfigKubeletConfigTopologyManager> topologyManagers() {
+        return this.topologyManagers;
     }
 
     public static Builder builder() {
@@ -260,8 +286,10 @@ public final class GetClusterNodePoolNodeConfigKubeletConfig {
         private String imageMinimumGcAge;
         private String insecureKubeletReadonlyPortEnabled;
         private Integer maxParallelImagePulls;
+        private List<GetClusterNodePoolNodeConfigKubeletConfigMemoryManager> memoryManagers;
         private Integer podPidsLimit;
         private Boolean singleProcessOomKill;
+        private List<GetClusterNodePoolNodeConfigKubeletConfigTopologyManager> topologyManagers;
         public Builder() {}
         public Builder(GetClusterNodePoolNodeConfigKubeletConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -281,8 +309,10 @@ public final class GetClusterNodePoolNodeConfigKubeletConfig {
     	      this.imageMinimumGcAge = defaults.imageMinimumGcAge;
     	      this.insecureKubeletReadonlyPortEnabled = defaults.insecureKubeletReadonlyPortEnabled;
     	      this.maxParallelImagePulls = defaults.maxParallelImagePulls;
+    	      this.memoryManagers = defaults.memoryManagers;
     	      this.podPidsLimit = defaults.podPidsLimit;
     	      this.singleProcessOomKill = defaults.singleProcessOomKill;
+    	      this.topologyManagers = defaults.topologyManagers;
         }
 
         @CustomType.Setter
@@ -426,6 +456,17 @@ public final class GetClusterNodePoolNodeConfigKubeletConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder memoryManagers(List<GetClusterNodePoolNodeConfigKubeletConfigMemoryManager> memoryManagers) {
+            if (memoryManagers == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfigKubeletConfig", "memoryManagers");
+            }
+            this.memoryManagers = memoryManagers;
+            return this;
+        }
+        public Builder memoryManagers(GetClusterNodePoolNodeConfigKubeletConfigMemoryManager... memoryManagers) {
+            return memoryManagers(List.of(memoryManagers));
+        }
+        @CustomType.Setter
         public Builder podPidsLimit(Integer podPidsLimit) {
             if (podPidsLimit == null) {
               throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfigKubeletConfig", "podPidsLimit");
@@ -440,6 +481,17 @@ public final class GetClusterNodePoolNodeConfigKubeletConfig {
             }
             this.singleProcessOomKill = singleProcessOomKill;
             return this;
+        }
+        @CustomType.Setter
+        public Builder topologyManagers(List<GetClusterNodePoolNodeConfigKubeletConfigTopologyManager> topologyManagers) {
+            if (topologyManagers == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfigKubeletConfig", "topologyManagers");
+            }
+            this.topologyManagers = topologyManagers;
+            return this;
+        }
+        public Builder topologyManagers(GetClusterNodePoolNodeConfigKubeletConfigTopologyManager... topologyManagers) {
+            return topologyManagers(List.of(topologyManagers));
         }
         public GetClusterNodePoolNodeConfigKubeletConfig build() {
             final var _resultValue = new GetClusterNodePoolNodeConfigKubeletConfig();
@@ -459,8 +511,10 @@ public final class GetClusterNodePoolNodeConfigKubeletConfig {
             _resultValue.imageMinimumGcAge = imageMinimumGcAge;
             _resultValue.insecureKubeletReadonlyPortEnabled = insecureKubeletReadonlyPortEnabled;
             _resultValue.maxParallelImagePulls = maxParallelImagePulls;
+            _resultValue.memoryManagers = memoryManagers;
             _resultValue.podPidsLimit = podPidsLimit;
             _resultValue.singleProcessOomKill = singleProcessOomKill;
+            _resultValue.topologyManagers = topologyManagers;
             return _resultValue;
         }
     }

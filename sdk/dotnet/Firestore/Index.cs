@@ -299,6 +299,54 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
+    /// ### Firestore Index Unique
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var database = new Gcp.Firestore.Database("database", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Name = "database-id-unique",
+    ///         LocationId = "nam5",
+    ///         Type = "FIRESTORE_NATIVE",
+    ///         DatabaseEdition = "ENTERPRISE",
+    ///         DeleteProtectionState = "DELETE_PROTECTION_DISABLED",
+    ///         DeletionPolicy = "DELETE",
+    ///     });
+    /// 
+    ///     var my_index = new Gcp.Firestore.Index("my-index", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Database = database.Name,
+    ///         Collection = "atestcollection",
+    ///         ApiScope = "MONGODB_COMPATIBLE_API",
+    ///         QueryScope = "COLLECTION_GROUP",
+    ///         Multikey = true,
+    ///         Density = "DENSE",
+    ///         Unique = true,
+    ///         Fields = new[]
+    ///         {
+    ///             new Gcp.Firestore.Inputs.IndexFieldArgs
+    ///             {
+    ///                 FieldPath = "name",
+    ///                 Order = "ASCENDING",
+    ///             },
+    ///             new Gcp.Firestore.Inputs.IndexFieldArgs
+    ///             {
+    ///                 FieldPath = "description",
+    ///                 Order = "DESCENDING",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -381,6 +429,12 @@ namespace Pulumi.Gcp.Firestore
         /// </summary>
         [Output("queryScope")]
         public Output<string?> QueryScope { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
+        /// </summary>
+        [Output("unique")]
+        public Output<bool> Unique { get; private set; } = null!;
 
 
         /// <summary>
@@ -494,6 +548,12 @@ namespace Pulumi.Gcp.Firestore
         [Input("queryScope")]
         public Input<string>? QueryScope { get; set; }
 
+        /// <summary>
+        /// Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
+        /// </summary>
+        [Input("unique")]
+        public Input<bool>? Unique { get; set; }
+
         public IndexArgs()
         {
         }
@@ -574,6 +634,12 @@ namespace Pulumi.Gcp.Firestore
         /// </summary>
         [Input("queryScope")]
         public Input<string>? QueryScope { get; set; }
+
+        /// <summary>
+        /// Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
+        /// </summary>
+        [Input("unique")]
+        public Input<bool>? Unique { get; set; }
 
         public IndexState()
         {

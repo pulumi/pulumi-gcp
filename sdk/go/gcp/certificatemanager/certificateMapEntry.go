@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -24,7 +24,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/certificatemanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificatemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -147,7 +147,7 @@ type CertificateMapEntry struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// A map entry that is inputted into the cetrificate map
+	// A map entry that is inputted into the certificate map
 	Map pulumi.StringOutput `pulumi:"map"`
 	// A predefined matcher for particular cases, other than SNI selection
 	Matcher pulumi.StringPtrOutput `pulumi:"matcher"`
@@ -233,7 +233,7 @@ type certificateMapEntryState struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// A map entry that is inputted into the cetrificate map
+	// A map entry that is inputted into the certificate map
 	Map *string `pulumi:"map"`
 	// A predefined matcher for particular cases, other than SNI selection
 	Matcher *string `pulumi:"matcher"`
@@ -279,7 +279,7 @@ type CertificateMapEntryState struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// A map entry that is inputted into the cetrificate map
+	// A map entry that is inputted into the certificate map
 	Map pulumi.StringPtrInput
 	// A predefined matcher for particular cases, other than SNI selection
 	Matcher pulumi.StringPtrInput
@@ -323,7 +323,7 @@ type certificateMapEntryArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// A map entry that is inputted into the cetrificate map
+	// A map entry that is inputted into the certificate map
 	Map string `pulumi:"map"`
 	// A predefined matcher for particular cases, other than SNI selection
 	Matcher *string `pulumi:"matcher"`
@@ -355,7 +355,7 @@ type CertificateMapEntryArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// A map entry that is inputted into the cetrificate map
+	// A map entry that is inputted into the certificate map
 	Map pulumi.StringInput
 	// A predefined matcher for particular cases, other than SNI selection
 	Matcher pulumi.StringPtrInput
@@ -496,7 +496,7 @@ func (o CertificateMapEntryOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// A map entry that is inputted into the cetrificate map
+// A map entry that is inputted into the certificate map
 func (o CertificateMapEntryOutput) Map() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringOutput { return v.Map }).(pulumi.StringOutput)
 }

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -32,8 +32,8 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/pubsub"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -193,6 +193,8 @@ type TransferJob struct {
 	ReplicationSpec TransferJobReplicationSpecPtrOutput `pulumi:"replicationSpec"`
 	// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `eventStream` must be set.
 	Schedule TransferJobSchedulePtrOutput `pulumi:"schedule"`
+	// The user-managed service account to run the job. If this field is specified, the given service account is granted the necessary permissions to all applicable resources (e.g. GCS buckets) required by the job.
+	ServiceAccount pulumi.StringPtrOutput `pulumi:"serviceAccount"`
 	// Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
 	Status pulumi.StringPtrOutput `pulumi:"status"`
 	// Transfer specification. Structure documented below. One of `transferSpec`, or `replicationSpec` can be specified.
@@ -257,6 +259,8 @@ type transferJobState struct {
 	ReplicationSpec *TransferJobReplicationSpec `pulumi:"replicationSpec"`
 	// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `eventStream` must be set.
 	Schedule *TransferJobSchedule `pulumi:"schedule"`
+	// The user-managed service account to run the job. If this field is specified, the given service account is granted the necessary permissions to all applicable resources (e.g. GCS buckets) required by the job.
+	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
 	Status *string `pulumi:"status"`
 	// Transfer specification. Structure documented below. One of `transferSpec`, or `replicationSpec` can be specified.
@@ -289,6 +293,8 @@ type TransferJobState struct {
 	ReplicationSpec TransferJobReplicationSpecPtrInput
 	// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `eventStream` must be set.
 	Schedule TransferJobSchedulePtrInput
+	// The user-managed service account to run the job. If this field is specified, the given service account is granted the necessary permissions to all applicable resources (e.g. GCS buckets) required by the job.
+	ServiceAccount pulumi.StringPtrInput
 	// Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
 	Status pulumi.StringPtrInput
 	// Transfer specification. Structure documented below. One of `transferSpec`, or `replicationSpec` can be specified.
@@ -319,6 +325,8 @@ type transferJobArgs struct {
 	ReplicationSpec *TransferJobReplicationSpec `pulumi:"replicationSpec"`
 	// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `eventStream` must be set.
 	Schedule *TransferJobSchedule `pulumi:"schedule"`
+	// The user-managed service account to run the job. If this field is specified, the given service account is granted the necessary permissions to all applicable resources (e.g. GCS buckets) required by the job.
+	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
 	Status *string `pulumi:"status"`
 	// Transfer specification. Structure documented below. One of `transferSpec`, or `replicationSpec` can be specified.
@@ -346,6 +354,8 @@ type TransferJobArgs struct {
 	ReplicationSpec TransferJobReplicationSpecPtrInput
 	// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `eventStream` must be set.
 	Schedule TransferJobSchedulePtrInput
+	// The user-managed service account to run the job. If this field is specified, the given service account is granted the necessary permissions to all applicable resources (e.g. GCS buckets) required by the job.
+	ServiceAccount pulumi.StringPtrInput
 	// Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
 	Status pulumi.StringPtrInput
 	// Transfer specification. Structure documented below. One of `transferSpec`, or `replicationSpec` can be specified.
@@ -495,6 +505,11 @@ func (o TransferJobOutput) ReplicationSpec() TransferJobReplicationSpecPtrOutput
 // Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `eventStream` must be set.
 func (o TransferJobOutput) Schedule() TransferJobSchedulePtrOutput {
 	return o.ApplyT(func(v *TransferJob) TransferJobSchedulePtrOutput { return v.Schedule }).(TransferJobSchedulePtrOutput)
+}
+
+// The user-managed service account to run the job. If this field is specified, the given service account is granted the necessary permissions to all applicable resources (e.g. GCS buckets) required by the job.
+func (o TransferJobOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJob) pulumi.StringPtrOutput { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
 
 // Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**

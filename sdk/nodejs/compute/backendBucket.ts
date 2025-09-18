@@ -193,11 +193,13 @@ export class BackendBucket extends pulumi.CustomResource {
     declare public readonly edgeSecurityPolicy: pulumi.Output<string | undefined>;
     /**
      * If true, enable Cloud CDN for this BackendBucket.
+     * Note: This cannot be set to true when loadBalancingScheme is set to INTERNAL_MANAGED.
      */
     declare public readonly enableCdn: pulumi.Output<boolean | undefined>;
     /**
      * The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
      * If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+     * Important: CDN cannot be enabled (enableCdn cannot be set to true) when loadBalancingScheme is set to INTERNAL_MANAGED.
      * Possible values are: `INTERNAL_MANAGED`.
      */
     declare public readonly loadBalancingScheme: pulumi.Output<string | undefined>;
@@ -211,6 +213,11 @@ export class BackendBucket extends pulumi.CustomResource {
      * last character, which cannot be a dash.
      */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    declare public readonly params: pulumi.Output<outputs.compute.BackendBucketParams | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -244,6 +251,7 @@ export class BackendBucket extends pulumi.CustomResource {
             resourceInputs["enableCdn"] = state?.enableCdn;
             resourceInputs["loadBalancingScheme"] = state?.loadBalancingScheme;
             resourceInputs["name"] = state?.name;
+            resourceInputs["params"] = state?.params;
             resourceInputs["project"] = state?.project;
             resourceInputs["selfLink"] = state?.selfLink;
         } else {
@@ -260,6 +268,7 @@ export class BackendBucket extends pulumi.CustomResource {
             resourceInputs["enableCdn"] = args?.enableCdn;
             resourceInputs["loadBalancingScheme"] = args?.loadBalancingScheme;
             resourceInputs["name"] = args?.name;
+            resourceInputs["params"] = args?.params;
             resourceInputs["project"] = args?.project;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
@@ -306,11 +315,13 @@ export interface BackendBucketState {
     edgeSecurityPolicy?: pulumi.Input<string>;
     /**
      * If true, enable Cloud CDN for this BackendBucket.
+     * Note: This cannot be set to true when loadBalancingScheme is set to INTERNAL_MANAGED.
      */
     enableCdn?: pulumi.Input<boolean>;
     /**
      * The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
      * If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+     * Important: CDN cannot be enabled (enableCdn cannot be set to true) when loadBalancingScheme is set to INTERNAL_MANAGED.
      * Possible values are: `INTERNAL_MANAGED`.
      */
     loadBalancingScheme?: pulumi.Input<string>;
@@ -324,6 +335,11 @@ export interface BackendBucketState {
      * last character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.BackendBucketParams>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -368,11 +384,13 @@ export interface BackendBucketArgs {
     edgeSecurityPolicy?: pulumi.Input<string>;
     /**
      * If true, enable Cloud CDN for this BackendBucket.
+     * Note: This cannot be set to true when loadBalancingScheme is set to INTERNAL_MANAGED.
      */
     enableCdn?: pulumi.Input<boolean>;
     /**
      * The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
      * If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+     * Important: CDN cannot be enabled (enableCdn cannot be set to true) when loadBalancingScheme is set to INTERNAL_MANAGED.
      * Possible values are: `INTERNAL_MANAGED`.
      */
     loadBalancingScheme?: pulumi.Input<string>;
@@ -386,6 +404,11 @@ export interface BackendBucketArgs {
      * last character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.BackendBucketParams>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

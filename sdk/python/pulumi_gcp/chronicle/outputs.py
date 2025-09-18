@@ -390,16 +390,17 @@ class ReferenceListScopeInfo(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 reference_list_scope: 'outputs.ReferenceListScopeInfoReferenceListScope'):
+                 reference_list_scope: Optional['outputs.ReferenceListScopeInfoReferenceListScope'] = None):
         """
         :param 'ReferenceListScopeInfoReferenceListScopeArgs' reference_list_scope: ReferenceListScope specifies the list of scope names of the reference list.
                Structure is documented below.
         """
-        pulumi.set(__self__, "reference_list_scope", reference_list_scope)
+        if reference_list_scope is not None:
+            pulumi.set(__self__, "reference_list_scope", reference_list_scope)
 
     @_builtins.property
     @pulumi.getter(name="referenceListScope")
-    def reference_list_scope(self) -> 'outputs.ReferenceListScopeInfoReferenceListScope':
+    def reference_list_scope(self) -> Optional['outputs.ReferenceListScopeInfoReferenceListScope']:
         """
         ReferenceListScope specifies the list of scope names of the reference list.
         Structure is documented below.

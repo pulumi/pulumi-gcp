@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,7 +22,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -86,29 +86,30 @@ type LookupServiceResult struct {
 	Generation           string                          `pulumi:"generation"`
 	IapEnabled           bool                            `pulumi:"iapEnabled"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                    string                        `pulumi:"id"`
-	Ingress               string                        `pulumi:"ingress"`
-	InvokerIamDisabled    bool                          `pulumi:"invokerIamDisabled"`
-	Labels                map[string]string             `pulumi:"labels"`
-	LastModifier          string                        `pulumi:"lastModifier"`
-	LatestCreatedRevision string                        `pulumi:"latestCreatedRevision"`
-	LatestReadyRevision   string                        `pulumi:"latestReadyRevision"`
-	LaunchStage           string                        `pulumi:"launchStage"`
-	Location              *string                       `pulumi:"location"`
-	Name                  string                        `pulumi:"name"`
-	ObservedGeneration    string                        `pulumi:"observedGeneration"`
-	Project               *string                       `pulumi:"project"`
-	PulumiLabels          map[string]string             `pulumi:"pulumiLabels"`
-	Reconciling           bool                          `pulumi:"reconciling"`
-	Scalings              []GetServiceScaling           `pulumi:"scalings"`
-	Templates             []GetServiceTemplate          `pulumi:"templates"`
-	TerminalConditions    []GetServiceTerminalCondition `pulumi:"terminalConditions"`
-	TrafficStatuses       []GetServiceTrafficStatus     `pulumi:"trafficStatuses"`
-	Traffics              []GetServiceTraffic           `pulumi:"traffics"`
-	Uid                   string                        `pulumi:"uid"`
-	UpdateTime            string                        `pulumi:"updateTime"`
-	Uri                   string                        `pulumi:"uri"`
-	Urls                  []string                      `pulumi:"urls"`
+	Id                    string                         `pulumi:"id"`
+	Ingress               string                         `pulumi:"ingress"`
+	InvokerIamDisabled    bool                           `pulumi:"invokerIamDisabled"`
+	Labels                map[string]string              `pulumi:"labels"`
+	LastModifier          string                         `pulumi:"lastModifier"`
+	LatestCreatedRevision string                         `pulumi:"latestCreatedRevision"`
+	LatestReadyRevision   string                         `pulumi:"latestReadyRevision"`
+	LaunchStage           string                         `pulumi:"launchStage"`
+	Location              *string                        `pulumi:"location"`
+	MultiRegionSettings   []GetServiceMultiRegionSetting `pulumi:"multiRegionSettings"`
+	Name                  string                         `pulumi:"name"`
+	ObservedGeneration    string                         `pulumi:"observedGeneration"`
+	Project               *string                        `pulumi:"project"`
+	PulumiLabels          map[string]string              `pulumi:"pulumiLabels"`
+	Reconciling           bool                           `pulumi:"reconciling"`
+	Scalings              []GetServiceScaling            `pulumi:"scalings"`
+	Templates             []GetServiceTemplate           `pulumi:"templates"`
+	TerminalConditions    []GetServiceTerminalCondition  `pulumi:"terminalConditions"`
+	TrafficStatuses       []GetServiceTrafficStatus      `pulumi:"trafficStatuses"`
+	Traffics              []GetServiceTraffic            `pulumi:"traffics"`
+	Uid                   string                         `pulumi:"uid"`
+	UpdateTime            string                         `pulumi:"updateTime"`
+	Uri                   string                         `pulumi:"uri"`
+	Urls                  []string                       `pulumi:"urls"`
 }
 
 func LookupServiceOutput(ctx *pulumi.Context, args LookupServiceOutputArgs, opts ...pulumi.InvokeOption) LookupServiceResultOutput {
@@ -263,6 +264,10 @@ func (o LookupServiceResultOutput) LaunchStage() pulumi.StringOutput {
 
 func (o LookupServiceResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServiceResult) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupServiceResultOutput) MultiRegionSettings() GetServiceMultiRegionSettingArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []GetServiceMultiRegionSetting { return v.MultiRegionSettings }).(GetServiceMultiRegionSettingArrayOutput)
 }
 
 func (o LookupServiceResultOutput) Name() pulumi.StringOutput {

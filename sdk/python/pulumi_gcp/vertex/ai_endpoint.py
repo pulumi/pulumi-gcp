@@ -651,7 +651,7 @@ class AiEndpoint(pulumi.CustomResource):
 
         To get more information about Endpoint, see:
 
-        * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.endpoints)
+        * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.endpoints)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
 
@@ -730,7 +730,6 @@ class AiEndpoint(pulumi.CustomResource):
             private_service_connect_config={
                 "enable_private_service_connect": True,
                 "project_allowlists": [project.project_id],
-                "enable_secure_private_service_connect": False,
             })
         ```
         ### Vertex Ai Endpoint Dedicated Endpoint
@@ -814,7 +813,7 @@ class AiEndpoint(pulumi.CustomResource):
 
         To get more information about Endpoint, see:
 
-        * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.endpoints)
+        * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.endpoints)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
 
@@ -893,7 +892,6 @@ class AiEndpoint(pulumi.CustomResource):
             private_service_connect_config={
                 "enable_private_service_connect": True,
                 "project_allowlists": [project.project_id],
-                "enable_secure_private_service_connect": False,
             })
         ```
         ### Vertex Ai Endpoint Dedicated Endpoint

@@ -40,33 +40,6 @@ public final class MembershipState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
-     * 
-     * &gt; **Warning:** `description` is deprecated and will be removed in a future major release.
-     * 
-     * @deprecated
-     * `description` is deprecated and will be removed in a future major release.
-     * 
-     */
-    @Deprecated /* `description` is deprecated and will be removed in a future major release. */
-    @Import(name="description")
-    private @Nullable Output<String> description;
-
-    /**
-     * @return The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
-     * 
-     * &gt; **Warning:** `description` is deprecated and will be removed in a future major release.
-     * 
-     * @deprecated
-     * `description` is deprecated and will be removed in a future major release.
-     * 
-     */
-    @Deprecated /* `description` is deprecated and will be removed in a future major release. */
-    public Optional<Output<String>> description() {
-        return Optional.ofNullable(this.description);
-    }
-
-    /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
      */
@@ -204,7 +177,6 @@ public final class MembershipState extends com.pulumi.resources.ResourceArgs {
 
     private MembershipState(MembershipState $) {
         this.authority = $.authority;
-        this.description = $.description;
         this.effectiveLabels = $.effectiveLabels;
         this.endpoint = $.endpoint;
         this.labels = $.labels;
@@ -258,39 +230,6 @@ public final class MembershipState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder authority(MembershipAuthorityArgs authority) {
             return authority(Output.of(authority));
-        }
-
-        /**
-         * @param description The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
-         * 
-         * &gt; **Warning:** `description` is deprecated and will be removed in a future major release.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `description` is deprecated and will be removed in a future major release.
-         * 
-         */
-        @Deprecated /* `description` is deprecated and will be removed in a future major release. */
-        public Builder description(@Nullable Output<String> description) {
-            $.description = description;
-            return this;
-        }
-
-        /**
-         * @param description The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
-         * 
-         * &gt; **Warning:** `description` is deprecated and will be removed in a future major release.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `description` is deprecated and will be removed in a future major release.
-         * 
-         */
-        @Deprecated /* `description` is deprecated and will be removed in a future major release. */
-        public Builder description(String description) {
-            return description(Output.of(description));
         }
 
         /**

@@ -493,6 +493,9 @@ public final class Config {
     public Optional<String> runtimeconfigCustomEndpoint() {
         return Codegen.stringProp("runtimeconfigCustomEndpoint").config(config).get();
     }
+    public Optional<String> saasRuntimeCustomEndpoint() {
+        return Codegen.stringProp("saasRuntimeCustomEndpoint").config(config).get();
+    }
     public Optional<List<String>> scopes() {
         return Codegen.objectProp("scopes", TypeShape.<List<String>>builder(List.class).addParameter(String.class).build()).config(config).get();
     }
@@ -567,9 +570,6 @@ public final class Config {
     }
     public Optional<String> tagsLocationCustomEndpoint() {
         return Codegen.stringProp("tagsLocationCustomEndpoint").config(config).get();
-    }
-    public Optional<String> tpuCustomEndpoint() {
-        return Codegen.stringProp("tpuCustomEndpoint").config(config).get();
     }
     public Optional<String> tpuV2CustomEndpoint() {
         return Codegen.stringProp("tpuV2CustomEndpoint").config(config).get();

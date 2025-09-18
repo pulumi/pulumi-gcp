@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -70,7 +70,7 @@ type LbTrafficExtension struct {
 	// For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
 	// [Supported application load balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs).
 	// Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
-	LoadBalancingScheme pulumi.StringPtrOutput `pulumi:"loadBalancingScheme"`
+	LoadBalancingScheme pulumi.StringOutput `pulumi:"loadBalancingScheme"`
 	// The location of the traffic extension
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Name of the LbTrafficExtension resource in the following format: projects/{project}/locations/{location}/lbTrafficExtensions/{lbTrafficExtension}.
@@ -95,6 +95,9 @@ func NewLbTrafficExtension(ctx *pulumi.Context,
 	}
 	if args.ForwardingRules == nil {
 		return nil, errors.New("invalid value for required argument 'ForwardingRules'")
+	}
+	if args.LoadBalancingScheme == nil {
+		return nil, errors.New("invalid value for required argument 'LoadBalancingScheme'")
 	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
@@ -223,7 +226,7 @@ type lbTrafficExtensionArgs struct {
 	// For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
 	// [Supported application load balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs).
 	// Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
-	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
+	LoadBalancingScheme string `pulumi:"loadBalancingScheme"`
 	// The location of the traffic extension
 	Location string `pulumi:"location"`
 	// Name of the LbTrafficExtension resource in the following format: projects/{project}/locations/{location}/lbTrafficExtensions/{lbTrafficExtension}.
@@ -255,7 +258,7 @@ type LbTrafficExtensionArgs struct {
 	// For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
 	// [Supported application load balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs).
 	// Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
-	LoadBalancingScheme pulumi.StringPtrInput
+	LoadBalancingScheme pulumi.StringInput
 	// The location of the traffic extension
 	Location pulumi.StringInput
 	// Name of the LbTrafficExtension resource in the following format: projects/{project}/locations/{location}/lbTrafficExtensions/{lbTrafficExtension}.
@@ -389,8 +392,8 @@ func (o LbTrafficExtensionOutput) Labels() pulumi.StringMapOutput {
 // For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
 // [Supported application load balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs).
 // Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
-func (o LbTrafficExtensionOutput) LoadBalancingScheme() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LbTrafficExtension) pulumi.StringPtrOutput { return v.LoadBalancingScheme }).(pulumi.StringPtrOutput)
+func (o LbTrafficExtensionOutput) LoadBalancingScheme() pulumi.StringOutput {
+	return o.ApplyT(func(v *LbTrafficExtension) pulumi.StringOutput { return v.LoadBalancingScheme }).(pulumi.StringOutput)
 }
 
 // The location of the traffic extension

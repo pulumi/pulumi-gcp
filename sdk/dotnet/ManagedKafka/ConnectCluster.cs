@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.ManagedKafka
 {
     /// <summary>
+    /// A Managed Service for Kafka Connect cluster.
+    /// 
     /// ## Example Usage
     /// 
     /// ### Managedkafka Connect Cluster Basic

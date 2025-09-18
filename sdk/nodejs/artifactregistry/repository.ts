@@ -737,6 +737,10 @@ export class Repository extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
+     * The repository endpoint, for example: us-docker.pkg.dev/my-proj/my-repo.
+     */
+    declare public /*out*/ readonly registryUri: pulumi.Output<string>;
+    /**
      * Configuration specific for a Remote Repository.
      * Structure is documented below.
      */
@@ -789,6 +793,7 @@ export class Repository extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["registryUri"] = state?.registryUri;
             resourceInputs["remoteRepositoryConfig"] = state?.remoteRepositoryConfig;
             resourceInputs["repositoryId"] = state?.repositoryId;
             resourceInputs["updateTime"] = state?.updateTime;
@@ -821,6 +826,7 @@ export class Repository extends pulumi.CustomResource {
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
+            resourceInputs["registryUri"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -926,6 +932,10 @@ export interface RepositoryState {
      * and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The repository endpoint, for example: us-docker.pkg.dev/my-proj/my-repo.
+     */
+    registryUri?: pulumi.Input<string>;
     /**
      * Configuration specific for a Remote Repository.
      * Structure is documented below.

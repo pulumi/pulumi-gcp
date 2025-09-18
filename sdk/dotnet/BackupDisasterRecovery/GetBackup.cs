@@ -164,6 +164,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     {
         public readonly string BackupVaultId;
         public readonly ImmutableArray<Outputs.GetBackupBackupResult> Backups;
+        public readonly string CreateTime;
         public readonly string DataSourceId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -179,6 +180,8 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
 
             ImmutableArray<Outputs.GetBackupBackupResult> backups,
 
+            string createTime,
+
             string dataSourceId,
 
             string id,
@@ -191,6 +194,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         {
             BackupVaultId = backupVaultId;
             Backups = backups;
+            CreateTime = createTime;
             DataSourceId = dataSourceId;
             Id = id;
             Location = location;

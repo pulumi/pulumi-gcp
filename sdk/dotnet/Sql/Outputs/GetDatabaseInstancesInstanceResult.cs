@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AvailableMaintenanceVersions;
         /// <summary>
+        /// The name of the BackupDR backup to restore from.
+        /// </summary>
+        public readonly string BackupdrBackup;
+        /// <summary>
         /// Configuration for creating a new instance as a clone of another instance.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceCloneResult> Clones;
@@ -39,6 +43,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceDnsNameResult> DnsNames;
         public readonly string EncryptionKeyName;
+        /// <summary>
+        /// The description of final backup if instance enable create final backup during instance deletion.
+        /// </summary>
+        public readonly string FinalBackupDescription;
         public readonly string FirstIpAddress;
         /// <summary>
         /// The type of the instance. See https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType for supported values.
@@ -107,6 +115,8 @@ namespace Pulumi.Gcp.Sql.Outputs
         private GetDatabaseInstancesInstanceResult(
             ImmutableArray<string> availableMaintenanceVersions,
 
+            string backupdrBackup,
+
             ImmutableArray<Outputs.GetDatabaseInstancesInstanceCloneResult> clones,
 
             string connectionName,
@@ -120,6 +130,8 @@ namespace Pulumi.Gcp.Sql.Outputs
             ImmutableArray<Outputs.GetDatabaseInstancesInstanceDnsNameResult> dnsNames,
 
             string encryptionKeyName,
+
+            string finalBackupDescription,
 
             string firstIpAddress,
 
@@ -164,6 +176,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingResult> settings)
         {
             AvailableMaintenanceVersions = availableMaintenanceVersions;
+            BackupdrBackup = backupdrBackup;
             Clones = clones;
             ConnectionName = connectionName;
             DatabaseVersion = databaseVersion;
@@ -171,6 +184,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             DnsName = dnsName;
             DnsNames = dnsNames;
             EncryptionKeyName = encryptionKeyName;
+            FinalBackupDescription = finalBackupDescription;
             FirstIpAddress = firstIpAddress;
             InstanceType = instanceType;
             IpAddresses = ipAddresses;

@@ -117,9 +117,6 @@ export class BucketObject extends pulumi.CustomResource {
      */
     declare public readonly customerEncryption: pulumi.Output<outputs.storage.BucketObjectCustomerEncryption | undefined>;
     declare public readonly deletionPolicy: pulumi.Output<string | undefined>;
-    /**
-     * @deprecated `detectMd5hash` is deprecated and will be removed in future release. Start using `sourceMd5hash` instead
-     */
     declare public readonly detectMd5hash: pulumi.Output<string | undefined>;
     /**
      * Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
@@ -317,9 +314,6 @@ export interface BucketObjectState {
      */
     customerEncryption?: pulumi.Input<inputs.storage.BucketObjectCustomerEncryption>;
     deletionPolicy?: pulumi.Input<string>;
-    /**
-     * @deprecated `detectMd5hash` is deprecated and will be removed in future release. Start using `sourceMd5hash` instead
-     */
     detectMd5hash?: pulumi.Input<string>;
     /**
      * Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
@@ -434,9 +428,6 @@ export interface BucketObjectArgs {
      */
     customerEncryption?: pulumi.Input<inputs.storage.BucketObjectCustomerEncryption>;
     deletionPolicy?: pulumi.Input<string>;
-    /**
-     * @deprecated `detectMd5hash` is deprecated and will be removed in future release. Start using `sourceMd5hash` instead
-     */
     detectMd5hash?: pulumi.Input<string>;
     /**
      * Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).

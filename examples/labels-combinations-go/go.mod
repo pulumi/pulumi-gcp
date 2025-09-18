@@ -5,11 +5,11 @@ go 1.23.11
 toolchain go1.24.1
 
 require (
-	github.com/pulumi/pulumi-gcp/sdk/v8 v8.0.0-alpha.0
+	github.com/pulumi/pulumi-gcp/sdk/v9 v9.0.0-alpha.0
 	github.com/pulumi/pulumi/sdk/v3 v3.190.0
 )
 
-replace github.com/pulumi/pulumi-gcp/sdk/v8 => ../../sdk
+replace github.com/pulumi/pulumi-gcp/sdk/v9 => ../../sdk
 
 require (
 	dario.cat/mergo v1.0.0 // indirect

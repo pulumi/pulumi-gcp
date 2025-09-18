@@ -34,7 +34,6 @@ namespace Pulumi.Gcp.Firebase
     ///     {
     ///         Project = "my-project-name",
     ///         ServiceName = "firebaseappcheck.googleapis.com",
-    ///         DisableOnDestroy = false,
     ///     });
     /// 
     ///     var @default = new Gcp.Firebase.AppCheckServiceConfig("default", new()
@@ -65,7 +64,6 @@ namespace Pulumi.Gcp.Firebase
     ///     {
     ///         Project = "my-project-name",
     ///         ServiceName = "firebaseappcheck.googleapis.com",
-    ///         DisableOnDestroy = false,
     ///     });
     /// 
     ///     var @default = new Gcp.Firebase.AppCheckServiceConfig("default", new()
@@ -97,7 +95,6 @@ namespace Pulumi.Gcp.Firebase
     ///     {
     ///         Project = "my-project-name",
     ///         ServiceName = "firebaseappcheck.googleapis.com",
-    ///         DisableOnDestroy = false,
     ///     });
     /// 
     ///     var @default = new Gcp.Firebase.AppCheckServiceConfig("default", new()

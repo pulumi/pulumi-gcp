@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -196,6 +198,13 @@ export class PublicDelegatedPrefix extends pulumi.CustomResource {
      */
     declare public readonly project: pulumi.Output<string>;
     /**
+     * List of sub public delegated fixes for BYO IP functionality.
+     * Each item in this array represents a sub prefix that can be
+     * used to create addresses or further allocations.
+     * Structure is documented below.
+     */
+    declare public /*out*/ readonly publicDelegatedSubPrefixs: pulumi.Output<outputs.compute.PublicDelegatedPrefixPublicDelegatedSubPrefix[]>;
+    /**
      * A region where the prefix will reside.
      */
     declare public readonly region: pulumi.Output<string>;
@@ -225,6 +234,7 @@ export class PublicDelegatedPrefix extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["parentPrefix"] = state?.parentPrefix;
             resourceInputs["project"] = state?.project;
+            resourceInputs["publicDelegatedSubPrefixs"] = state?.publicDelegatedSubPrefixs;
             resourceInputs["region"] = state?.region;
             resourceInputs["selfLink"] = state?.selfLink;
         } else {
@@ -247,6 +257,7 @@ export class PublicDelegatedPrefix extends pulumi.CustomResource {
             resourceInputs["parentPrefix"] = args?.parentPrefix;
             resourceInputs["project"] = args?.project;
             resourceInputs["region"] = args?.region;
+            resourceInputs["publicDelegatedSubPrefixs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -298,6 +309,13 @@ export interface PublicDelegatedPrefixState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * List of sub public delegated fixes for BYO IP functionality.
+     * Each item in this array represents a sub prefix that can be
+     * used to create addresses or further allocations.
+     * Structure is documented below.
+     */
+    publicDelegatedSubPrefixs?: pulumi.Input<pulumi.Input<inputs.compute.PublicDelegatedPrefixPublicDelegatedSubPrefix>[]>;
     /**
      * A region where the prefix will reside.
      */

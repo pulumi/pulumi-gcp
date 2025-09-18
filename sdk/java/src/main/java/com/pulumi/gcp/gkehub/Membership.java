@@ -238,28 +238,6 @@ public class Membership extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.authority);
     }
     /**
-     * The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
-     * 
-     * &gt; **Warning:** `description` is deprecated and will be removed in a future major release.
-     * 
-     * @deprecated
-     * `description` is deprecated and will be removed in a future major release.
-     * 
-     */
-    @Deprecated /* `description` is deprecated and will be removed in a future major release. */
-    @Export(name="description", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> description;
-
-    /**
-     * @return The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
-     * 
-     * &gt; **Warning:** `description` is deprecated and will be removed in a future major release.
-     * 
-     */
-    public Output<Optional<String>> description() {
-        return Codegen.optional(this.description);
-    }
-    /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
      */

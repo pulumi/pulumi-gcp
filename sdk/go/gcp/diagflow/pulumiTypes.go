@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -7203,6 +7203,322 @@ func (o CxAgentAdvancedSettingsSpeechSettingsPtrOutput) UseTimeoutBasedEndpointi
 	}).(pulumi.BoolPtrOutput)
 }
 
+type CxAgentAnswerFeedbackSettings struct {
+	// If enabled, end users will be able to provide [answer feedback](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.sessions/submitAnswerFeedback#body.AnswerFeedback)
+	// to Dialogflow responses. Feature works only if interaction logging is enabled in the Dialogflow agent.
+	EnableAnswerFeedback *bool `pulumi:"enableAnswerFeedback"`
+}
+
+// CxAgentAnswerFeedbackSettingsInput is an input type that accepts CxAgentAnswerFeedbackSettingsArgs and CxAgentAnswerFeedbackSettingsOutput values.
+// You can construct a concrete instance of `CxAgentAnswerFeedbackSettingsInput` via:
+//
+//	CxAgentAnswerFeedbackSettingsArgs{...}
+type CxAgentAnswerFeedbackSettingsInput interface {
+	pulumi.Input
+
+	ToCxAgentAnswerFeedbackSettingsOutput() CxAgentAnswerFeedbackSettingsOutput
+	ToCxAgentAnswerFeedbackSettingsOutputWithContext(context.Context) CxAgentAnswerFeedbackSettingsOutput
+}
+
+type CxAgentAnswerFeedbackSettingsArgs struct {
+	// If enabled, end users will be able to provide [answer feedback](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.sessions/submitAnswerFeedback#body.AnswerFeedback)
+	// to Dialogflow responses. Feature works only if interaction logging is enabled in the Dialogflow agent.
+	EnableAnswerFeedback pulumi.BoolPtrInput `pulumi:"enableAnswerFeedback"`
+}
+
+func (CxAgentAnswerFeedbackSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxAgentAnswerFeedbackSettings)(nil)).Elem()
+}
+
+func (i CxAgentAnswerFeedbackSettingsArgs) ToCxAgentAnswerFeedbackSettingsOutput() CxAgentAnswerFeedbackSettingsOutput {
+	return i.ToCxAgentAnswerFeedbackSettingsOutputWithContext(context.Background())
+}
+
+func (i CxAgentAnswerFeedbackSettingsArgs) ToCxAgentAnswerFeedbackSettingsOutputWithContext(ctx context.Context) CxAgentAnswerFeedbackSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxAgentAnswerFeedbackSettingsOutput)
+}
+
+func (i CxAgentAnswerFeedbackSettingsArgs) ToCxAgentAnswerFeedbackSettingsPtrOutput() CxAgentAnswerFeedbackSettingsPtrOutput {
+	return i.ToCxAgentAnswerFeedbackSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CxAgentAnswerFeedbackSettingsArgs) ToCxAgentAnswerFeedbackSettingsPtrOutputWithContext(ctx context.Context) CxAgentAnswerFeedbackSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxAgentAnswerFeedbackSettingsOutput).ToCxAgentAnswerFeedbackSettingsPtrOutputWithContext(ctx)
+}
+
+// CxAgentAnswerFeedbackSettingsPtrInput is an input type that accepts CxAgentAnswerFeedbackSettingsArgs, CxAgentAnswerFeedbackSettingsPtr and CxAgentAnswerFeedbackSettingsPtrOutput values.
+// You can construct a concrete instance of `CxAgentAnswerFeedbackSettingsPtrInput` via:
+//
+//	        CxAgentAnswerFeedbackSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxAgentAnswerFeedbackSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCxAgentAnswerFeedbackSettingsPtrOutput() CxAgentAnswerFeedbackSettingsPtrOutput
+	ToCxAgentAnswerFeedbackSettingsPtrOutputWithContext(context.Context) CxAgentAnswerFeedbackSettingsPtrOutput
+}
+
+type cxAgentAnswerFeedbackSettingsPtrType CxAgentAnswerFeedbackSettingsArgs
+
+func CxAgentAnswerFeedbackSettingsPtr(v *CxAgentAnswerFeedbackSettingsArgs) CxAgentAnswerFeedbackSettingsPtrInput {
+	return (*cxAgentAnswerFeedbackSettingsPtrType)(v)
+}
+
+func (*cxAgentAnswerFeedbackSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxAgentAnswerFeedbackSettings)(nil)).Elem()
+}
+
+func (i *cxAgentAnswerFeedbackSettingsPtrType) ToCxAgentAnswerFeedbackSettingsPtrOutput() CxAgentAnswerFeedbackSettingsPtrOutput {
+	return i.ToCxAgentAnswerFeedbackSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *cxAgentAnswerFeedbackSettingsPtrType) ToCxAgentAnswerFeedbackSettingsPtrOutputWithContext(ctx context.Context) CxAgentAnswerFeedbackSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxAgentAnswerFeedbackSettingsPtrOutput)
+}
+
+type CxAgentAnswerFeedbackSettingsOutput struct{ *pulumi.OutputState }
+
+func (CxAgentAnswerFeedbackSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxAgentAnswerFeedbackSettings)(nil)).Elem()
+}
+
+func (o CxAgentAnswerFeedbackSettingsOutput) ToCxAgentAnswerFeedbackSettingsOutput() CxAgentAnswerFeedbackSettingsOutput {
+	return o
+}
+
+func (o CxAgentAnswerFeedbackSettingsOutput) ToCxAgentAnswerFeedbackSettingsOutputWithContext(ctx context.Context) CxAgentAnswerFeedbackSettingsOutput {
+	return o
+}
+
+func (o CxAgentAnswerFeedbackSettingsOutput) ToCxAgentAnswerFeedbackSettingsPtrOutput() CxAgentAnswerFeedbackSettingsPtrOutput {
+	return o.ToCxAgentAnswerFeedbackSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CxAgentAnswerFeedbackSettingsOutput) ToCxAgentAnswerFeedbackSettingsPtrOutputWithContext(ctx context.Context) CxAgentAnswerFeedbackSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxAgentAnswerFeedbackSettings) *CxAgentAnswerFeedbackSettings {
+		return &v
+	}).(CxAgentAnswerFeedbackSettingsPtrOutput)
+}
+
+// If enabled, end users will be able to provide [answer feedback](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.sessions/submitAnswerFeedback#body.AnswerFeedback)
+// to Dialogflow responses. Feature works only if interaction logging is enabled in the Dialogflow agent.
+func (o CxAgentAnswerFeedbackSettingsOutput) EnableAnswerFeedback() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxAgentAnswerFeedbackSettings) *bool { return v.EnableAnswerFeedback }).(pulumi.BoolPtrOutput)
+}
+
+type CxAgentAnswerFeedbackSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CxAgentAnswerFeedbackSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxAgentAnswerFeedbackSettings)(nil)).Elem()
+}
+
+func (o CxAgentAnswerFeedbackSettingsPtrOutput) ToCxAgentAnswerFeedbackSettingsPtrOutput() CxAgentAnswerFeedbackSettingsPtrOutput {
+	return o
+}
+
+func (o CxAgentAnswerFeedbackSettingsPtrOutput) ToCxAgentAnswerFeedbackSettingsPtrOutputWithContext(ctx context.Context) CxAgentAnswerFeedbackSettingsPtrOutput {
+	return o
+}
+
+func (o CxAgentAnswerFeedbackSettingsPtrOutput) Elem() CxAgentAnswerFeedbackSettingsOutput {
+	return o.ApplyT(func(v *CxAgentAnswerFeedbackSettings) CxAgentAnswerFeedbackSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CxAgentAnswerFeedbackSettings
+		return ret
+	}).(CxAgentAnswerFeedbackSettingsOutput)
+}
+
+// If enabled, end users will be able to provide [answer feedback](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.sessions/submitAnswerFeedback#body.AnswerFeedback)
+// to Dialogflow responses. Feature works only if interaction logging is enabled in the Dialogflow agent.
+func (o CxAgentAnswerFeedbackSettingsPtrOutput) EnableAnswerFeedback() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxAgentAnswerFeedbackSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableAnswerFeedback
+	}).(pulumi.BoolPtrOutput)
+}
+
+type CxAgentClientCertificateSettings struct {
+	// The name of the SecretManager secret version resource storing the passphrase. 'passphrase' should be left unset if the private key is not encrypted. Format: **projects/{project}/secrets/{secret}/versions/{version}**
+	Passphrase *string `pulumi:"passphrase"`
+	// The name of the SecretManager secret version resource storing the private key encoded in PEM format. Format: **projects/{project}/secrets/{secret}/versions/{version}**
+	PrivateKey string `pulumi:"privateKey"`
+	// The ssl certificate encoded in PEM format. This string must include the begin header and end footer lines.
+	SslCertificate string `pulumi:"sslCertificate"`
+}
+
+// CxAgentClientCertificateSettingsInput is an input type that accepts CxAgentClientCertificateSettingsArgs and CxAgentClientCertificateSettingsOutput values.
+// You can construct a concrete instance of `CxAgentClientCertificateSettingsInput` via:
+//
+//	CxAgentClientCertificateSettingsArgs{...}
+type CxAgentClientCertificateSettingsInput interface {
+	pulumi.Input
+
+	ToCxAgentClientCertificateSettingsOutput() CxAgentClientCertificateSettingsOutput
+	ToCxAgentClientCertificateSettingsOutputWithContext(context.Context) CxAgentClientCertificateSettingsOutput
+}
+
+type CxAgentClientCertificateSettingsArgs struct {
+	// The name of the SecretManager secret version resource storing the passphrase. 'passphrase' should be left unset if the private key is not encrypted. Format: **projects/{project}/secrets/{secret}/versions/{version}**
+	Passphrase pulumi.StringPtrInput `pulumi:"passphrase"`
+	// The name of the SecretManager secret version resource storing the private key encoded in PEM format. Format: **projects/{project}/secrets/{secret}/versions/{version}**
+	PrivateKey pulumi.StringInput `pulumi:"privateKey"`
+	// The ssl certificate encoded in PEM format. This string must include the begin header and end footer lines.
+	SslCertificate pulumi.StringInput `pulumi:"sslCertificate"`
+}
+
+func (CxAgentClientCertificateSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxAgentClientCertificateSettings)(nil)).Elem()
+}
+
+func (i CxAgentClientCertificateSettingsArgs) ToCxAgentClientCertificateSettingsOutput() CxAgentClientCertificateSettingsOutput {
+	return i.ToCxAgentClientCertificateSettingsOutputWithContext(context.Background())
+}
+
+func (i CxAgentClientCertificateSettingsArgs) ToCxAgentClientCertificateSettingsOutputWithContext(ctx context.Context) CxAgentClientCertificateSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxAgentClientCertificateSettingsOutput)
+}
+
+func (i CxAgentClientCertificateSettingsArgs) ToCxAgentClientCertificateSettingsPtrOutput() CxAgentClientCertificateSettingsPtrOutput {
+	return i.ToCxAgentClientCertificateSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CxAgentClientCertificateSettingsArgs) ToCxAgentClientCertificateSettingsPtrOutputWithContext(ctx context.Context) CxAgentClientCertificateSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxAgentClientCertificateSettingsOutput).ToCxAgentClientCertificateSettingsPtrOutputWithContext(ctx)
+}
+
+// CxAgentClientCertificateSettingsPtrInput is an input type that accepts CxAgentClientCertificateSettingsArgs, CxAgentClientCertificateSettingsPtr and CxAgentClientCertificateSettingsPtrOutput values.
+// You can construct a concrete instance of `CxAgentClientCertificateSettingsPtrInput` via:
+//
+//	        CxAgentClientCertificateSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxAgentClientCertificateSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCxAgentClientCertificateSettingsPtrOutput() CxAgentClientCertificateSettingsPtrOutput
+	ToCxAgentClientCertificateSettingsPtrOutputWithContext(context.Context) CxAgentClientCertificateSettingsPtrOutput
+}
+
+type cxAgentClientCertificateSettingsPtrType CxAgentClientCertificateSettingsArgs
+
+func CxAgentClientCertificateSettingsPtr(v *CxAgentClientCertificateSettingsArgs) CxAgentClientCertificateSettingsPtrInput {
+	return (*cxAgentClientCertificateSettingsPtrType)(v)
+}
+
+func (*cxAgentClientCertificateSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxAgentClientCertificateSettings)(nil)).Elem()
+}
+
+func (i *cxAgentClientCertificateSettingsPtrType) ToCxAgentClientCertificateSettingsPtrOutput() CxAgentClientCertificateSettingsPtrOutput {
+	return i.ToCxAgentClientCertificateSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *cxAgentClientCertificateSettingsPtrType) ToCxAgentClientCertificateSettingsPtrOutputWithContext(ctx context.Context) CxAgentClientCertificateSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxAgentClientCertificateSettingsPtrOutput)
+}
+
+type CxAgentClientCertificateSettingsOutput struct{ *pulumi.OutputState }
+
+func (CxAgentClientCertificateSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxAgentClientCertificateSettings)(nil)).Elem()
+}
+
+func (o CxAgentClientCertificateSettingsOutput) ToCxAgentClientCertificateSettingsOutput() CxAgentClientCertificateSettingsOutput {
+	return o
+}
+
+func (o CxAgentClientCertificateSettingsOutput) ToCxAgentClientCertificateSettingsOutputWithContext(ctx context.Context) CxAgentClientCertificateSettingsOutput {
+	return o
+}
+
+func (o CxAgentClientCertificateSettingsOutput) ToCxAgentClientCertificateSettingsPtrOutput() CxAgentClientCertificateSettingsPtrOutput {
+	return o.ToCxAgentClientCertificateSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CxAgentClientCertificateSettingsOutput) ToCxAgentClientCertificateSettingsPtrOutputWithContext(ctx context.Context) CxAgentClientCertificateSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxAgentClientCertificateSettings) *CxAgentClientCertificateSettings {
+		return &v
+	}).(CxAgentClientCertificateSettingsPtrOutput)
+}
+
+// The name of the SecretManager secret version resource storing the passphrase. 'passphrase' should be left unset if the private key is not encrypted. Format: **projects/{project}/secrets/{secret}/versions/{version}**
+func (o CxAgentClientCertificateSettingsOutput) Passphrase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxAgentClientCertificateSettings) *string { return v.Passphrase }).(pulumi.StringPtrOutput)
+}
+
+// The name of the SecretManager secret version resource storing the private key encoded in PEM format. Format: **projects/{project}/secrets/{secret}/versions/{version}**
+func (o CxAgentClientCertificateSettingsOutput) PrivateKey() pulumi.StringOutput {
+	return o.ApplyT(func(v CxAgentClientCertificateSettings) string { return v.PrivateKey }).(pulumi.StringOutput)
+}
+
+// The ssl certificate encoded in PEM format. This string must include the begin header and end footer lines.
+func (o CxAgentClientCertificateSettingsOutput) SslCertificate() pulumi.StringOutput {
+	return o.ApplyT(func(v CxAgentClientCertificateSettings) string { return v.SslCertificate }).(pulumi.StringOutput)
+}
+
+type CxAgentClientCertificateSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CxAgentClientCertificateSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxAgentClientCertificateSettings)(nil)).Elem()
+}
+
+func (o CxAgentClientCertificateSettingsPtrOutput) ToCxAgentClientCertificateSettingsPtrOutput() CxAgentClientCertificateSettingsPtrOutput {
+	return o
+}
+
+func (o CxAgentClientCertificateSettingsPtrOutput) ToCxAgentClientCertificateSettingsPtrOutputWithContext(ctx context.Context) CxAgentClientCertificateSettingsPtrOutput {
+	return o
+}
+
+func (o CxAgentClientCertificateSettingsPtrOutput) Elem() CxAgentClientCertificateSettingsOutput {
+	return o.ApplyT(func(v *CxAgentClientCertificateSettings) CxAgentClientCertificateSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CxAgentClientCertificateSettings
+		return ret
+	}).(CxAgentClientCertificateSettingsOutput)
+}
+
+// The name of the SecretManager secret version resource storing the passphrase. 'passphrase' should be left unset if the private key is not encrypted. Format: **projects/{project}/secrets/{secret}/versions/{version}**
+func (o CxAgentClientCertificateSettingsPtrOutput) Passphrase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxAgentClientCertificateSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Passphrase
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the SecretManager secret version resource storing the private key encoded in PEM format. Format: **projects/{project}/secrets/{secret}/versions/{version}**
+func (o CxAgentClientCertificateSettingsPtrOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxAgentClientCertificateSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrivateKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ssl certificate encoded in PEM format. This string must include the begin header and end footer lines.
+func (o CxAgentClientCertificateSettingsPtrOutput) SslCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxAgentClientCertificateSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SslCertificate
+	}).(pulumi.StringPtrOutput)
+}
+
 type CxAgentGenAppBuilderSettings struct {
 	// The full name of the Gen App Builder engine related to this agent if there is one.
 	// Format: projects/{Project ID}/locations/{Location ID}/collections/{Collection ID}/engines/{Engine ID}
@@ -7701,6 +8017,155 @@ func (o CxAgentGitIntegrationSettingsGithubSettingsPtrOutput) TrackingBranch() p
 			return nil
 		}
 		return v.TrackingBranch
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxAgentPersonalizationSettings struct {
+	// Default end user metadata, used when processing DetectIntent requests. Recommended to be filled as a template instead of hard-coded value, for example { "age": "$session.params.age" }.
+	// The data will be merged with the [QueryParameters.end_user_metadata](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/QueryParameters#FIELDS.end_user_metadata)
+	// in [DetectIntentRequest.query_params](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.sessions/detectIntent#body.request_body.FIELDS.query_params) during query processing.
+	// This field uses JSON data as a string. The value provided must be a valid JSON representation documented in [Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct).
+	DefaultEndUserMetadata *string `pulumi:"defaultEndUserMetadata"`
+}
+
+// CxAgentPersonalizationSettingsInput is an input type that accepts CxAgentPersonalizationSettingsArgs and CxAgentPersonalizationSettingsOutput values.
+// You can construct a concrete instance of `CxAgentPersonalizationSettingsInput` via:
+//
+//	CxAgentPersonalizationSettingsArgs{...}
+type CxAgentPersonalizationSettingsInput interface {
+	pulumi.Input
+
+	ToCxAgentPersonalizationSettingsOutput() CxAgentPersonalizationSettingsOutput
+	ToCxAgentPersonalizationSettingsOutputWithContext(context.Context) CxAgentPersonalizationSettingsOutput
+}
+
+type CxAgentPersonalizationSettingsArgs struct {
+	// Default end user metadata, used when processing DetectIntent requests. Recommended to be filled as a template instead of hard-coded value, for example { "age": "$session.params.age" }.
+	// The data will be merged with the [QueryParameters.end_user_metadata](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/QueryParameters#FIELDS.end_user_metadata)
+	// in [DetectIntentRequest.query_params](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.sessions/detectIntent#body.request_body.FIELDS.query_params) during query processing.
+	// This field uses JSON data as a string. The value provided must be a valid JSON representation documented in [Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct).
+	DefaultEndUserMetadata pulumi.StringPtrInput `pulumi:"defaultEndUserMetadata"`
+}
+
+func (CxAgentPersonalizationSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxAgentPersonalizationSettings)(nil)).Elem()
+}
+
+func (i CxAgentPersonalizationSettingsArgs) ToCxAgentPersonalizationSettingsOutput() CxAgentPersonalizationSettingsOutput {
+	return i.ToCxAgentPersonalizationSettingsOutputWithContext(context.Background())
+}
+
+func (i CxAgentPersonalizationSettingsArgs) ToCxAgentPersonalizationSettingsOutputWithContext(ctx context.Context) CxAgentPersonalizationSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxAgentPersonalizationSettingsOutput)
+}
+
+func (i CxAgentPersonalizationSettingsArgs) ToCxAgentPersonalizationSettingsPtrOutput() CxAgentPersonalizationSettingsPtrOutput {
+	return i.ToCxAgentPersonalizationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CxAgentPersonalizationSettingsArgs) ToCxAgentPersonalizationSettingsPtrOutputWithContext(ctx context.Context) CxAgentPersonalizationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxAgentPersonalizationSettingsOutput).ToCxAgentPersonalizationSettingsPtrOutputWithContext(ctx)
+}
+
+// CxAgentPersonalizationSettingsPtrInput is an input type that accepts CxAgentPersonalizationSettingsArgs, CxAgentPersonalizationSettingsPtr and CxAgentPersonalizationSettingsPtrOutput values.
+// You can construct a concrete instance of `CxAgentPersonalizationSettingsPtrInput` via:
+//
+//	        CxAgentPersonalizationSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxAgentPersonalizationSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCxAgentPersonalizationSettingsPtrOutput() CxAgentPersonalizationSettingsPtrOutput
+	ToCxAgentPersonalizationSettingsPtrOutputWithContext(context.Context) CxAgentPersonalizationSettingsPtrOutput
+}
+
+type cxAgentPersonalizationSettingsPtrType CxAgentPersonalizationSettingsArgs
+
+func CxAgentPersonalizationSettingsPtr(v *CxAgentPersonalizationSettingsArgs) CxAgentPersonalizationSettingsPtrInput {
+	return (*cxAgentPersonalizationSettingsPtrType)(v)
+}
+
+func (*cxAgentPersonalizationSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxAgentPersonalizationSettings)(nil)).Elem()
+}
+
+func (i *cxAgentPersonalizationSettingsPtrType) ToCxAgentPersonalizationSettingsPtrOutput() CxAgentPersonalizationSettingsPtrOutput {
+	return i.ToCxAgentPersonalizationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *cxAgentPersonalizationSettingsPtrType) ToCxAgentPersonalizationSettingsPtrOutputWithContext(ctx context.Context) CxAgentPersonalizationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxAgentPersonalizationSettingsPtrOutput)
+}
+
+type CxAgentPersonalizationSettingsOutput struct{ *pulumi.OutputState }
+
+func (CxAgentPersonalizationSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxAgentPersonalizationSettings)(nil)).Elem()
+}
+
+func (o CxAgentPersonalizationSettingsOutput) ToCxAgentPersonalizationSettingsOutput() CxAgentPersonalizationSettingsOutput {
+	return o
+}
+
+func (o CxAgentPersonalizationSettingsOutput) ToCxAgentPersonalizationSettingsOutputWithContext(ctx context.Context) CxAgentPersonalizationSettingsOutput {
+	return o
+}
+
+func (o CxAgentPersonalizationSettingsOutput) ToCxAgentPersonalizationSettingsPtrOutput() CxAgentPersonalizationSettingsPtrOutput {
+	return o.ToCxAgentPersonalizationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CxAgentPersonalizationSettingsOutput) ToCxAgentPersonalizationSettingsPtrOutputWithContext(ctx context.Context) CxAgentPersonalizationSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxAgentPersonalizationSettings) *CxAgentPersonalizationSettings {
+		return &v
+	}).(CxAgentPersonalizationSettingsPtrOutput)
+}
+
+// Default end user metadata, used when processing DetectIntent requests. Recommended to be filled as a template instead of hard-coded value, for example { "age": "$session.params.age" }.
+// The data will be merged with the [QueryParameters.end_user_metadata](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/QueryParameters#FIELDS.end_user_metadata)
+// in [DetectIntentRequest.query_params](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.sessions/detectIntent#body.request_body.FIELDS.query_params) during query processing.
+// This field uses JSON data as a string. The value provided must be a valid JSON representation documented in [Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct).
+func (o CxAgentPersonalizationSettingsOutput) DefaultEndUserMetadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxAgentPersonalizationSettings) *string { return v.DefaultEndUserMetadata }).(pulumi.StringPtrOutput)
+}
+
+type CxAgentPersonalizationSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CxAgentPersonalizationSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxAgentPersonalizationSettings)(nil)).Elem()
+}
+
+func (o CxAgentPersonalizationSettingsPtrOutput) ToCxAgentPersonalizationSettingsPtrOutput() CxAgentPersonalizationSettingsPtrOutput {
+	return o
+}
+
+func (o CxAgentPersonalizationSettingsPtrOutput) ToCxAgentPersonalizationSettingsPtrOutputWithContext(ctx context.Context) CxAgentPersonalizationSettingsPtrOutput {
+	return o
+}
+
+func (o CxAgentPersonalizationSettingsPtrOutput) Elem() CxAgentPersonalizationSettingsOutput {
+	return o.ApplyT(func(v *CxAgentPersonalizationSettings) CxAgentPersonalizationSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CxAgentPersonalizationSettings
+		return ret
+	}).(CxAgentPersonalizationSettingsOutput)
+}
+
+// Default end user metadata, used when processing DetectIntent requests. Recommended to be filled as a template instead of hard-coded value, for example { "age": "$session.params.age" }.
+// The data will be merged with the [QueryParameters.end_user_metadata](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/QueryParameters#FIELDS.end_user_metadata)
+// in [DetectIntentRequest.query_params](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.sessions/detectIntent#body.request_body.FIELDS.query_params) during query processing.
+// This field uses JSON data as a string. The value provided must be a valid JSON representation documented in [Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct).
+func (o CxAgentPersonalizationSettingsPtrOutput) DefaultEndUserMetadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxAgentPersonalizationSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultEndUserMetadata
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -41094,12 +41559,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentAdvancedSettingsLoggingSettingsPtrInput)(nil)).Elem(), CxAgentAdvancedSettingsLoggingSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentAdvancedSettingsSpeechSettingsInput)(nil)).Elem(), CxAgentAdvancedSettingsSpeechSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentAdvancedSettingsSpeechSettingsPtrInput)(nil)).Elem(), CxAgentAdvancedSettingsSpeechSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentAnswerFeedbackSettingsInput)(nil)).Elem(), CxAgentAnswerFeedbackSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentAnswerFeedbackSettingsPtrInput)(nil)).Elem(), CxAgentAnswerFeedbackSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentClientCertificateSettingsInput)(nil)).Elem(), CxAgentClientCertificateSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentClientCertificateSettingsPtrInput)(nil)).Elem(), CxAgentClientCertificateSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentGenAppBuilderSettingsInput)(nil)).Elem(), CxAgentGenAppBuilderSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentGenAppBuilderSettingsPtrInput)(nil)).Elem(), CxAgentGenAppBuilderSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentGitIntegrationSettingsInput)(nil)).Elem(), CxAgentGitIntegrationSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentGitIntegrationSettingsPtrInput)(nil)).Elem(), CxAgentGitIntegrationSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentGitIntegrationSettingsGithubSettingsInput)(nil)).Elem(), CxAgentGitIntegrationSettingsGithubSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentGitIntegrationSettingsGithubSettingsPtrInput)(nil)).Elem(), CxAgentGitIntegrationSettingsGithubSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentPersonalizationSettingsInput)(nil)).Elem(), CxAgentPersonalizationSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentPersonalizationSettingsPtrInput)(nil)).Elem(), CxAgentPersonalizationSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentSpeechToTextSettingsInput)(nil)).Elem(), CxAgentSpeechToTextSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentSpeechToTextSettingsPtrInput)(nil)).Elem(), CxAgentSpeechToTextSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentTextToSpeechSettingsInput)(nil)).Elem(), CxAgentTextToSpeechSettingsArgs{})
@@ -41584,12 +42055,18 @@ func init() {
 	pulumi.RegisterOutputType(CxAgentAdvancedSettingsLoggingSettingsPtrOutput{})
 	pulumi.RegisterOutputType(CxAgentAdvancedSettingsSpeechSettingsOutput{})
 	pulumi.RegisterOutputType(CxAgentAdvancedSettingsSpeechSettingsPtrOutput{})
+	pulumi.RegisterOutputType(CxAgentAnswerFeedbackSettingsOutput{})
+	pulumi.RegisterOutputType(CxAgentAnswerFeedbackSettingsPtrOutput{})
+	pulumi.RegisterOutputType(CxAgentClientCertificateSettingsOutput{})
+	pulumi.RegisterOutputType(CxAgentClientCertificateSettingsPtrOutput{})
 	pulumi.RegisterOutputType(CxAgentGenAppBuilderSettingsOutput{})
 	pulumi.RegisterOutputType(CxAgentGenAppBuilderSettingsPtrOutput{})
 	pulumi.RegisterOutputType(CxAgentGitIntegrationSettingsOutput{})
 	pulumi.RegisterOutputType(CxAgentGitIntegrationSettingsPtrOutput{})
 	pulumi.RegisterOutputType(CxAgentGitIntegrationSettingsGithubSettingsOutput{})
 	pulumi.RegisterOutputType(CxAgentGitIntegrationSettingsGithubSettingsPtrOutput{})
+	pulumi.RegisterOutputType(CxAgentPersonalizationSettingsOutput{})
+	pulumi.RegisterOutputType(CxAgentPersonalizationSettingsPtrOutput{})
 	pulumi.RegisterOutputType(CxAgentSpeechToTextSettingsOutput{})
 	pulumi.RegisterOutputType(CxAgentSpeechToTextSettingsPtrOutput{})
 	pulumi.RegisterOutputType(CxAgentTextToSpeechSettingsOutput{})

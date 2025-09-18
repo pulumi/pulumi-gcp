@@ -43,6 +43,7 @@ class VolumeArgs:
                  smb_settings: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  snapshot_directory: Optional[pulumi.Input[_builtins.bool]] = None,
                  snapshot_policy: Optional[pulumi.Input['VolumeSnapshotPolicyArgs']] = None,
+                 throughput_mibps: Optional[pulumi.Input[_builtins.float]] = None,
                  tiering_policy: Optional[pulumi.Input['VolumeTieringPolicyArgs']] = None,
                  unix_permissions: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -88,6 +89,7 @@ class VolumeArgs:
         :param pulumi.Input['VolumeSnapshotPolicyArgs'] snapshot_policy: Snapshot policy defines the schedule for automatic snapshot creation.
                To disable automatic snapshot creation you have to remove the whole snapshot_policy block.
                Structure is documented below.
+        :param pulumi.Input[_builtins.float] throughput_mibps: Optional. Custom Performance Total Throughput of the pool (in MiB/s).
         :param pulumi.Input['VolumeTieringPolicyArgs'] tiering_policy: Tiering policy for the volume.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] unix_permissions: Unix permission the mount point will be created with. Default is 0770. Applicable for UNIX security style volumes only.
@@ -131,6 +133,8 @@ class VolumeArgs:
             pulumi.set(__self__, "snapshot_directory", snapshot_directory)
         if snapshot_policy is not None:
             pulumi.set(__self__, "snapshot_policy", snapshot_policy)
+        if throughput_mibps is not None:
+            pulumi.set(__self__, "throughput_mibps", throughput_mibps)
         if tiering_policy is not None:
             pulumi.set(__self__, "tiering_policy", tiering_policy)
         if unix_permissions is not None:
@@ -420,6 +424,18 @@ class VolumeArgs:
         pulumi.set(self, "snapshot_policy", value)
 
     @_builtins.property
+    @pulumi.getter(name="throughputMibps")
+    def throughput_mibps(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+        """
+        return pulumi.get(self, "throughput_mibps")
+
+    @throughput_mibps.setter
+    def throughput_mibps(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "throughput_mibps", value)
+
+    @_builtins.property
     @pulumi.getter(name="tieringPolicy")
     def tiering_policy(self) -> Optional[pulumi.Input['VolumeTieringPolicyArgs']]:
         """
@@ -486,6 +502,7 @@ class _VolumeState:
                  state: Optional[pulumi.Input[_builtins.str]] = None,
                  state_details: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_pool: Optional[pulumi.Input[_builtins.str]] = None,
+                 throughput_mibps: Optional[pulumi.Input[_builtins.float]] = None,
                  tiering_policy: Optional[pulumi.Input['VolumeTieringPolicyArgs']] = None,
                  unix_permissions: Optional[pulumi.Input[_builtins.str]] = None,
                  used_gib: Optional[pulumi.Input[_builtins.str]] = None,
@@ -551,6 +568,7 @@ class _VolumeState:
         :param pulumi.Input[_builtins.str] state: State of the volume.
         :param pulumi.Input[_builtins.str] state_details: State details of the volume.
         :param pulumi.Input[_builtins.str] storage_pool: Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
+        :param pulumi.Input[_builtins.float] throughput_mibps: Optional. Custom Performance Total Throughput of the pool (in MiB/s).
         :param pulumi.Input['VolumeTieringPolicyArgs'] tiering_policy: Tiering policy for the volume.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] unix_permissions: Unix permission the mount point will be created with. Default is 0770. Applicable for UNIX security style volumes only.
@@ -633,6 +651,8 @@ class _VolumeState:
             pulumi.set(__self__, "state_details", state_details)
         if storage_pool is not None:
             pulumi.set(__self__, "storage_pool", storage_pool)
+        if throughput_mibps is not None:
+            pulumi.set(__self__, "throughput_mibps", throughput_mibps)
         if tiering_policy is not None:
             pulumi.set(__self__, "tiering_policy", tiering_policy)
         if unix_permissions is not None:
@@ -1120,6 +1140,18 @@ class _VolumeState:
         pulumi.set(self, "storage_pool", value)
 
     @_builtins.property
+    @pulumi.getter(name="throughputMibps")
+    def throughput_mibps(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+        """
+        return pulumi.get(self, "throughput_mibps")
+
+    @throughput_mibps.setter
+    def throughput_mibps(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "throughput_mibps", value)
+
+    @_builtins.property
     @pulumi.getter(name="tieringPolicy")
     def tiering_policy(self) -> Optional[pulumi.Input['VolumeTieringPolicyArgs']]:
         """
@@ -1197,6 +1229,7 @@ class Volume(pulumi.CustomResource):
                  snapshot_directory: Optional[pulumi.Input[_builtins.bool]] = None,
                  snapshot_policy: Optional[pulumi.Input[Union['VolumeSnapshotPolicyArgs', 'VolumeSnapshotPolicyArgsDict']]] = None,
                  storage_pool: Optional[pulumi.Input[_builtins.str]] = None,
+                 throughput_mibps: Optional[pulumi.Input[_builtins.float]] = None,
                  tiering_policy: Optional[pulumi.Input[Union['VolumeTieringPolicyArgs', 'VolumeTieringPolicyArgsDict']]] = None,
                  unix_permissions: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -1306,6 +1339,7 @@ class Volume(pulumi.CustomResource):
                To disable automatic snapshot creation you have to remove the whole snapshot_policy block.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] storage_pool: Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
+        :param pulumi.Input[_builtins.float] throughput_mibps: Optional. Custom Performance Total Throughput of the pool (in MiB/s).
         :param pulumi.Input[Union['VolumeTieringPolicyArgs', 'VolumeTieringPolicyArgsDict']] tiering_policy: Tiering policy for the volume.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] unix_permissions: Unix permission the mount point will be created with. Default is 0770. Applicable for UNIX security style volumes only.
@@ -1416,6 +1450,7 @@ class Volume(pulumi.CustomResource):
                  snapshot_directory: Optional[pulumi.Input[_builtins.bool]] = None,
                  snapshot_policy: Optional[pulumi.Input[Union['VolumeSnapshotPolicyArgs', 'VolumeSnapshotPolicyArgsDict']]] = None,
                  storage_pool: Optional[pulumi.Input[_builtins.str]] = None,
+                 throughput_mibps: Optional[pulumi.Input[_builtins.float]] = None,
                  tiering_policy: Optional[pulumi.Input[Union['VolumeTieringPolicyArgs', 'VolumeTieringPolicyArgsDict']]] = None,
                  unix_permissions: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -1459,6 +1494,7 @@ class Volume(pulumi.CustomResource):
             if storage_pool is None and not opts.urn:
                 raise TypeError("Missing required property 'storage_pool'")
             __props__.__dict__["storage_pool"] = storage_pool
+            __props__.__dict__["throughput_mibps"] = throughput_mibps
             __props__.__dict__["tiering_policy"] = tiering_policy
             __props__.__dict__["unix_permissions"] = unix_permissions
             __props__.__dict__["active_directory"] = None
@@ -1529,6 +1565,7 @@ class Volume(pulumi.CustomResource):
             state: Optional[pulumi.Input[_builtins.str]] = None,
             state_details: Optional[pulumi.Input[_builtins.str]] = None,
             storage_pool: Optional[pulumi.Input[_builtins.str]] = None,
+            throughput_mibps: Optional[pulumi.Input[_builtins.float]] = None,
             tiering_policy: Optional[pulumi.Input[Union['VolumeTieringPolicyArgs', 'VolumeTieringPolicyArgsDict']]] = None,
             unix_permissions: Optional[pulumi.Input[_builtins.str]] = None,
             used_gib: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1599,6 +1636,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] state: State of the volume.
         :param pulumi.Input[_builtins.str] state_details: State details of the volume.
         :param pulumi.Input[_builtins.str] storage_pool: Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
+        :param pulumi.Input[_builtins.float] throughput_mibps: Optional. Custom Performance Total Throughput of the pool (in MiB/s).
         :param pulumi.Input[Union['VolumeTieringPolicyArgs', 'VolumeTieringPolicyArgsDict']] tiering_policy: Tiering policy for the volume.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] unix_permissions: Unix permission the mount point will be created with. Default is 0770. Applicable for UNIX security style volumes only.
@@ -1647,6 +1685,7 @@ class Volume(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         __props__.__dict__["state_details"] = state_details
         __props__.__dict__["storage_pool"] = storage_pool
+        __props__.__dict__["throughput_mibps"] = throughput_mibps
         __props__.__dict__["tiering_policy"] = tiering_policy
         __props__.__dict__["unix_permissions"] = unix_permissions
         __props__.__dict__["used_gib"] = used_gib
@@ -1977,6 +2016,14 @@ class Volume(pulumi.CustomResource):
         Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
         """
         return pulumi.get(self, "storage_pool")
+
+    @_builtins.property
+    @pulumi.getter(name="throughputMibps")
+    def throughput_mibps(self) -> pulumi.Output[_builtins.float]:
+        """
+        Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+        """
+        return pulumi.get(self, "throughput_mibps")
 
     @_builtins.property
     @pulumi.getter(name="tieringPolicy")

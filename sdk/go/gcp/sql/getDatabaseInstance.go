@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/sql"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -59,6 +59,7 @@ type LookupDatabaseInstanceArgs struct {
 // A collection of values returned by getDatabaseInstance.
 type LookupDatabaseInstanceResult struct {
 	AvailableMaintenanceVersions []string                     `pulumi:"availableMaintenanceVersions"`
+	BackupdrBackup               string                       `pulumi:"backupdrBackup"`
 	Clones                       []GetDatabaseInstanceClone   `pulumi:"clones"`
 	ConnectionName               string                       `pulumi:"connectionName"`
 	DatabaseVersion              string                       `pulumi:"databaseVersion"`
@@ -66,6 +67,7 @@ type LookupDatabaseInstanceResult struct {
 	DnsName                      string                       `pulumi:"dnsName"`
 	DnsNames                     []GetDatabaseInstanceDnsName `pulumi:"dnsNames"`
 	EncryptionKeyName            string                       `pulumi:"encryptionKeyName"`
+	FinalBackupDescription       string                       `pulumi:"finalBackupDescription"`
 	FirstIpAddress               string                       `pulumi:"firstIpAddress"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                         string                                    `pulumi:"id"`
@@ -131,6 +133,10 @@ func (o LookupDatabaseInstanceResultOutput) AvailableMaintenanceVersions() pulum
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) []string { return v.AvailableMaintenanceVersions }).(pulumi.StringArrayOutput)
 }
 
+func (o LookupDatabaseInstanceResultOutput) BackupdrBackup() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.BackupdrBackup }).(pulumi.StringOutput)
+}
+
 func (o LookupDatabaseInstanceResultOutput) Clones() GetDatabaseInstanceCloneArrayOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) []GetDatabaseInstanceClone { return v.Clones }).(GetDatabaseInstanceCloneArrayOutput)
 }
@@ -157,6 +163,10 @@ func (o LookupDatabaseInstanceResultOutput) DnsNames() GetDatabaseInstanceDnsNam
 
 func (o LookupDatabaseInstanceResultOutput) EncryptionKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.EncryptionKeyName }).(pulumi.StringOutput)
+}
+
+func (o LookupDatabaseInstanceResultOutput) FinalBackupDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.FinalBackupDescription }).(pulumi.StringOutput)
 }
 
 func (o LookupDatabaseInstanceResultOutput) FirstIpAddress() pulumi.StringOutput {

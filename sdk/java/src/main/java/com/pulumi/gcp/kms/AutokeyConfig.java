@@ -76,7 +76,6 @@ import javax.annotation.Nullable;
  *         var kmsApiService = new Service("kmsApiService", ServiceArgs.builder()
  *             .service("cloudkms.googleapis.com")
  *             .project(keyProject.projectId())
- *             .disableOnDestroy(false)
  *             .disableDependentServices(true)
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(keyProject)

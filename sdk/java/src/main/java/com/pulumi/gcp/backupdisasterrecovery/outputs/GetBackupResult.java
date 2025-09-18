@@ -14,6 +14,7 @@ import java.util.Objects;
 public final class GetBackupResult {
     private String backupVaultId;
     private List<GetBackupBackup> backups;
+    private String createTime;
     private String dataSourceId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -30,6 +31,9 @@ public final class GetBackupResult {
     }
     public List<GetBackupBackup> backups() {
         return this.backups;
+    }
+    public String createTime() {
+        return this.createTime;
     }
     public String dataSourceId() {
         return this.dataSourceId;
@@ -62,6 +66,7 @@ public final class GetBackupResult {
     public static final class Builder {
         private String backupVaultId;
         private List<GetBackupBackup> backups;
+        private String createTime;
         private String dataSourceId;
         private String id;
         private String location;
@@ -72,6 +77,7 @@ public final class GetBackupResult {
     	      Objects.requireNonNull(defaults);
     	      this.backupVaultId = defaults.backupVaultId;
     	      this.backups = defaults.backups;
+    	      this.createTime = defaults.createTime;
     	      this.dataSourceId = defaults.dataSourceId;
     	      this.id = defaults.id;
     	      this.location = defaults.location;
@@ -97,6 +103,14 @@ public final class GetBackupResult {
         }
         public Builder backups(GetBackupBackup... backups) {
             return backups(List.of(backups));
+        }
+        @CustomType.Setter
+        public Builder createTime(String createTime) {
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetBackupResult", "createTime");
+            }
+            this.createTime = createTime;
+            return this;
         }
         @CustomType.Setter
         public Builder dataSourceId(String dataSourceId) {
@@ -142,6 +156,7 @@ public final class GetBackupResult {
             final var _resultValue = new GetBackupResult();
             _resultValue.backupVaultId = backupVaultId;
             _resultValue.backups = backups;
+            _resultValue.createTime = createTime;
             _resultValue.dataSourceId = dataSourceId;
             _resultValue.id = id;
             _resultValue.location = location;

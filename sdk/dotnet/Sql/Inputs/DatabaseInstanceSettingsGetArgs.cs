@@ -153,6 +153,12 @@ namespace Pulumi.Gcp.Sql.Inputs
         public Input<bool>? EnableGoogleMlIntegration { get; set; }
 
         /// <summary>
+        /// Config used to determine the final backup settings for the instance
+        /// </summary>
+        [Input("finalBackupConfig")]
+        public Input<Inputs.DatabaseInstanceSettingsFinalBackupConfigGetArgs>? FinalBackupConfig { get; set; }
+
+        /// <summary>
         /// Configuration of Query Insights.
         /// </summary>
         [Input("insightsConfig")]

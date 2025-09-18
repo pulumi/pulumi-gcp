@@ -95,18 +95,18 @@ public class OrganizationSecurityPolicy extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.description);
     }
     /**
-     * A textual name of the security policy.
+     * User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
      * 
      */
     @Export(name="displayName", refs={String.class}, tree="[0]")
-    private Output<String> displayName;
+    private Output</* @Nullable */ String> displayName;
 
     /**
-     * @return A textual name of the security policy.
+     * @return User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
      * 
      */
-    public Output<String> displayName() {
-        return this.displayName;
+    public Output<Optional<String>> displayName() {
+        return Codegen.optional(this.displayName);
     }
     /**
      * Fingerprint of this resource. This field is used internally during
@@ -155,22 +155,32 @@ public class OrganizationSecurityPolicy extends com.pulumi.resources.CustomResou
         return this.policyId;
     }
     /**
-     * The type indicates the intended use of the security policy.
-     * For organization security policies, the only supported type
-     * is &#34;FIREWALL&#34;.
+     * User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is CLOUD_ARMOR.
+     * 
+     */
+    @Export(name="shortName", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> shortName;
+
+    /**
+     * @return User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is CLOUD_ARMOR.
+     * 
+     */
+    public Output<Optional<String>> shortName() {
+        return Codegen.optional(this.shortName);
+    }
+    /**
+     * The type indicates the intended use of the security policy. This field can be set only at resource creation time.
      * Default value is `FIREWALL`.
-     * Possible values are: `FIREWALL`.
+     * Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
-     * @return The type indicates the intended use of the security policy.
-     * For organization security policies, the only supported type
-     * is &#34;FIREWALL&#34;.
+     * @return The type indicates the intended use of the security policy. This field can be set only at resource creation time.
      * Default value is `FIREWALL`.
-     * Possible values are: `FIREWALL`.
+     * Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
      * 
      */
     public Output<Optional<String>> type() {

@@ -111,7 +111,7 @@ export class OrganizationSink extends pulumi.CustomResource {
      */
     declare public readonly filter: pulumi.Output<string | undefined>;
     /**
-     * Whether or not to include children organizations in the sink export. If true, logs
+     * Whether or not to include child folders or projects in the sink export. If true, logs
      * associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
      */
     declare public readonly includeChildren: pulumi.Output<boolean | undefined>;
@@ -222,7 +222,7 @@ export interface OrganizationSinkState {
      */
     filter?: pulumi.Input<string>;
     /**
-     * Whether or not to include children organizations in the sink export. If true, logs
+     * Whether or not to include child folders or projects in the sink export. If true, logs
      * associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
      */
     includeChildren?: pulumi.Input<boolean>;
@@ -285,7 +285,7 @@ export interface OrganizationSinkArgs {
      */
     filter?: pulumi.Input<string>;
     /**
-     * Whether or not to include children organizations in the sink export. If true, logs
+     * Whether or not to include child folders or projects in the sink export. If true, logs
      * associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
      */
     includeChildren?: pulumi.Input<boolean>;

@@ -31,7 +31,6 @@ __all__ = [
     'RuntimeTemplateShieldedVmConfig',
     'RuntimeTemplateSoftwareConfig',
     'RuntimeTemplateSoftwareConfigEnv',
-    'RuntimeTemplateSoftwareConfigPostStartupScriptConfig',
     'ScheduleCreateNotebookExecutionJobRequest',
     'ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob',
     'ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource',
@@ -544,39 +543,14 @@ class RuntimeTemplateShieldedVmConfig(dict):
 
 @pulumi.output_type
 class RuntimeTemplateSoftwareConfig(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "postStartupScriptConfig":
-            suggest = "post_startup_script_config"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RuntimeTemplateSoftwareConfig. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RuntimeTemplateSoftwareConfig.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RuntimeTemplateSoftwareConfig.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
-                 envs: Optional[Sequence['outputs.RuntimeTemplateSoftwareConfigEnv']] = None,
-                 post_startup_script_config: Optional['outputs.RuntimeTemplateSoftwareConfigPostStartupScriptConfig'] = None):
+                 envs: Optional[Sequence['outputs.RuntimeTemplateSoftwareConfigEnv']] = None):
         """
         :param Sequence['RuntimeTemplateSoftwareConfigEnvArgs'] envs: Environment variables to be passed to the container.
                Structure is documented below.
-        :param 'RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs' post_startup_script_config: (Optional, Deprecated)
-               Post startup script config.
-               Structure is documented below.
-               
-               > **Warning:** `post_startup_script_config` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
         """
         if envs is not None:
             pulumi.set(__self__, "envs", envs)
-        if post_startup_script_config is not None:
-            pulumi.set(__self__, "post_startup_script_config", post_startup_script_config)
 
     @_builtins.property
     @pulumi.getter
@@ -586,19 +560,6 @@ class RuntimeTemplateSoftwareConfig(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "envs")
-
-    @_builtins.property
-    @pulumi.getter(name="postStartupScriptConfig")
-    @_utilities.deprecated("""`post_startup_script_config` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.""")
-    def post_startup_script_config(self) -> Optional['outputs.RuntimeTemplateSoftwareConfigPostStartupScriptConfig']:
-        """
-        (Optional, Deprecated)
-        Post startup script config.
-        Structure is documented below.
-
-        > **Warning:** `post_startup_script_config` is deprecated and will be removed in a future major release. New resource creation with this field is unavailable at this time.
-        """
-        return pulumi.get(self, "post_startup_script_config")
 
 
 @pulumi.output_type
@@ -630,72 +591,6 @@ class RuntimeTemplateSoftwareConfigEnv(dict):
         Variables that reference a $(VAR_NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not.
         """
         return pulumi.get(self, "value")
-
-
-@pulumi.output_type
-class RuntimeTemplateSoftwareConfigPostStartupScriptConfig(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "postStartupScript":
-            suggest = "post_startup_script"
-        elif key == "postStartupScriptBehavior":
-            suggest = "post_startup_script_behavior"
-        elif key == "postStartupScriptUrl":
-            suggest = "post_startup_script_url"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RuntimeTemplateSoftwareConfigPostStartupScriptConfig. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        RuntimeTemplateSoftwareConfigPostStartupScriptConfig.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        RuntimeTemplateSoftwareConfigPostStartupScriptConfig.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 post_startup_script: Optional[_builtins.str] = None,
-                 post_startup_script_behavior: Optional[_builtins.str] = None,
-                 post_startup_script_url: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str post_startup_script: Post startup script to run after runtime is started.
-        :param _builtins.str post_startup_script_behavior: Post startup script behavior that defines download and execution behavior.
-               Possible values are: `RUN_ONCE`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
-        :param _builtins.str post_startup_script_url: Post startup script url to download. Example: https://bucket/script.sh.
-        """
-        if post_startup_script is not None:
-            pulumi.set(__self__, "post_startup_script", post_startup_script)
-        if post_startup_script_behavior is not None:
-            pulumi.set(__self__, "post_startup_script_behavior", post_startup_script_behavior)
-        if post_startup_script_url is not None:
-            pulumi.set(__self__, "post_startup_script_url", post_startup_script_url)
-
-    @_builtins.property
-    @pulumi.getter(name="postStartupScript")
-    def post_startup_script(self) -> Optional[_builtins.str]:
-        """
-        Post startup script to run after runtime is started.
-        """
-        return pulumi.get(self, "post_startup_script")
-
-    @_builtins.property
-    @pulumi.getter(name="postStartupScriptBehavior")
-    def post_startup_script_behavior(self) -> Optional[_builtins.str]:
-        """
-        Post startup script behavior that defines download and execution behavior.
-        Possible values are: `RUN_ONCE`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
-        """
-        return pulumi.get(self, "post_startup_script_behavior")
-
-    @_builtins.property
-    @pulumi.getter(name="postStartupScriptUrl")
-    def post_startup_script_url(self) -> Optional[_builtins.str]:
-        """
-        Post startup script url to download. Example: https://bucket/script.sh.
-        """
-        return pulumi.get(self, "post_startup_script_url")
 
 
 @pulumi.output_type

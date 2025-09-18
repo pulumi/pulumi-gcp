@@ -179,6 +179,21 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.queryScope);
     }
 
+    /**
+     * Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
+     * 
+     */
+    @Import(name="unique")
+    private @Nullable Output<Boolean> unique;
+
+    /**
+     * @return Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
+     * 
+     */
+    public Optional<Output<Boolean>> unique() {
+        return Optional.ofNullable(this.unique);
+    }
+
     private IndexState() {}
 
     private IndexState(IndexState $) {
@@ -191,6 +206,7 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.project = $.project;
         this.queryScope = $.queryScope;
+        this.unique = $.unique;
     }
 
     public static Builder builder() {
@@ -440,6 +456,27 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder queryScope(String queryScope) {
             return queryScope(Output.of(queryScope));
+        }
+
+        /**
+         * @param unique Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder unique(@Nullable Output<Boolean> unique) {
+            $.unique = unique;
+            return this;
+        }
+
+        /**
+         * @param unique Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder unique(Boolean unique) {
+            return unique(Output.of(unique));
         }
 
         public IndexState build() {

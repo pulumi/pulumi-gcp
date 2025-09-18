@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -71,8 +71,8 @@ type OrganizationSecurityPolicy struct {
 
 	// A textual description for the organization security policy.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// A textual name of the security policy.
-	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
+	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// Fingerprint of this resource. This field is used internally during
 	// updates of this resource.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
@@ -81,11 +81,11 @@ type OrganizationSecurityPolicy struct {
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// The unique identifier for the resource. This identifier is defined by the server.
 	PolicyId pulumi.StringOutput `pulumi:"policyId"`
-	// The type indicates the intended use of the security policy.
-	// For organization security policies, the only supported type
-	// is "FIREWALL".
+	// User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is CLOUD_ARMOR.
+	ShortName pulumi.StringPtrOutput `pulumi:"shortName"`
+	// The type indicates the intended use of the security policy. This field can be set only at resource creation time.
 	// Default value is `FIREWALL`.
-	// Possible values are: `FIREWALL`.
+	// Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
 
@@ -96,9 +96,6 @@ func NewOrganizationSecurityPolicy(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.DisplayName == nil {
-		return nil, errors.New("invalid value for required argument 'DisplayName'")
-	}
 	if args.Parent == nil {
 		return nil, errors.New("invalid value for required argument 'Parent'")
 	}
@@ -127,7 +124,7 @@ func GetOrganizationSecurityPolicy(ctx *pulumi.Context,
 type organizationSecurityPolicyState struct {
 	// A textual description for the organization security policy.
 	Description *string `pulumi:"description"`
-	// A textual name of the security policy.
+	// User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
 	DisplayName *string `pulumi:"displayName"`
 	// Fingerprint of this resource. This field is used internally during
 	// updates of this resource.
@@ -137,18 +134,18 @@ type organizationSecurityPolicyState struct {
 	Parent *string `pulumi:"parent"`
 	// The unique identifier for the resource. This identifier is defined by the server.
 	PolicyId *string `pulumi:"policyId"`
-	// The type indicates the intended use of the security policy.
-	// For organization security policies, the only supported type
-	// is "FIREWALL".
+	// User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is CLOUD_ARMOR.
+	ShortName *string `pulumi:"shortName"`
+	// The type indicates the intended use of the security policy. This field can be set only at resource creation time.
 	// Default value is `FIREWALL`.
-	// Possible values are: `FIREWALL`.
+	// Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
 	Type *string `pulumi:"type"`
 }
 
 type OrganizationSecurityPolicyState struct {
 	// A textual description for the organization security policy.
 	Description pulumi.StringPtrInput
-	// A textual name of the security policy.
+	// User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
 	DisplayName pulumi.StringPtrInput
 	// Fingerprint of this resource. This field is used internally during
 	// updates of this resource.
@@ -158,11 +155,11 @@ type OrganizationSecurityPolicyState struct {
 	Parent pulumi.StringPtrInput
 	// The unique identifier for the resource. This identifier is defined by the server.
 	PolicyId pulumi.StringPtrInput
-	// The type indicates the intended use of the security policy.
-	// For organization security policies, the only supported type
-	// is "FIREWALL".
+	// User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is CLOUD_ARMOR.
+	ShortName pulumi.StringPtrInput
+	// The type indicates the intended use of the security policy. This field can be set only at resource creation time.
 	// Default value is `FIREWALL`.
-	// Possible values are: `FIREWALL`.
+	// Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
 	Type pulumi.StringPtrInput
 }
 
@@ -173,16 +170,16 @@ func (OrganizationSecurityPolicyState) ElementType() reflect.Type {
 type organizationSecurityPolicyArgs struct {
 	// A textual description for the organization security policy.
 	Description *string `pulumi:"description"`
-	// A textual name of the security policy.
-	DisplayName string `pulumi:"displayName"`
+	// User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
+	DisplayName *string `pulumi:"displayName"`
 	// The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
 	// Format: organizations/{organization_id} or folders/{folder_id}
 	Parent string `pulumi:"parent"`
-	// The type indicates the intended use of the security policy.
-	// For organization security policies, the only supported type
-	// is "FIREWALL".
+	// User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is CLOUD_ARMOR.
+	ShortName *string `pulumi:"shortName"`
+	// The type indicates the intended use of the security policy. This field can be set only at resource creation time.
 	// Default value is `FIREWALL`.
-	// Possible values are: `FIREWALL`.
+	// Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
 	Type *string `pulumi:"type"`
 }
 
@@ -190,16 +187,16 @@ type organizationSecurityPolicyArgs struct {
 type OrganizationSecurityPolicyArgs struct {
 	// A textual description for the organization security policy.
 	Description pulumi.StringPtrInput
-	// A textual name of the security policy.
-	DisplayName pulumi.StringInput
+	// User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
+	DisplayName pulumi.StringPtrInput
 	// The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
 	// Format: organizations/{organization_id} or folders/{folder_id}
 	Parent pulumi.StringInput
-	// The type indicates the intended use of the security policy.
-	// For organization security policies, the only supported type
-	// is "FIREWALL".
+	// User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is CLOUD_ARMOR.
+	ShortName pulumi.StringPtrInput
+	// The type indicates the intended use of the security policy. This field can be set only at resource creation time.
 	// Default value is `FIREWALL`.
-	// Possible values are: `FIREWALL`.
+	// Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
 	Type pulumi.StringPtrInput
 }
 
@@ -295,9 +292,9 @@ func (o OrganizationSecurityPolicyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OrganizationSecurityPolicy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// A textual name of the security policy.
-func (o OrganizationSecurityPolicyOutput) DisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v *OrganizationSecurityPolicy) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+// User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
+func (o OrganizationSecurityPolicyOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrganizationSecurityPolicy) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
 // Fingerprint of this resource. This field is used internally during
@@ -317,11 +314,14 @@ func (o OrganizationSecurityPolicyOutput) PolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationSecurityPolicy) pulumi.StringOutput { return v.PolicyId }).(pulumi.StringOutput)
 }
 
-// The type indicates the intended use of the security policy.
-// For organization security policies, the only supported type
-// is "FIREWALL".
+// User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is CLOUD_ARMOR.
+func (o OrganizationSecurityPolicyOutput) ShortName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrganizationSecurityPolicy) pulumi.StringPtrOutput { return v.ShortName }).(pulumi.StringPtrOutput)
+}
+
+// The type indicates the intended use of the security policy. This field can be set only at resource creation time.
 // Default value is `FIREWALL`.
-// Possible values are: `FIREWALL`.
+// Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
 func (o OrganizationSecurityPolicyOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OrganizationSecurityPolicy) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,7 +22,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/artifactregistry"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -83,6 +83,7 @@ type LookupRepositoryResult struct {
 	Name                         string                                     `pulumi:"name"`
 	Project                      *string                                    `pulumi:"project"`
 	PulumiLabels                 map[string]string                          `pulumi:"pulumiLabels"`
+	RegistryUri                  string                                     `pulumi:"registryUri"`
 	RemoteRepositoryConfigs      []GetRepositoryRemoteRepositoryConfig      `pulumi:"remoteRepositoryConfigs"`
 	RepositoryId                 string                                     `pulumi:"repositoryId"`
 	UpdateTime                   string                                     `pulumi:"updateTime"`
@@ -194,6 +195,10 @@ func (o LookupRepositoryResultOutput) Project() pulumi.StringPtrOutput {
 
 func (o LookupRepositoryResultOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupRepositoryResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+func (o LookupRepositoryResultOutput) RegistryUri() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRepositoryResult) string { return v.RegistryUri }).(pulumi.StringOutput)
 }
 
 func (o LookupRepositoryResultOutput) RemoteRepositoryConfigs() GetRepositoryRemoteRepositoryConfigArrayOutput {

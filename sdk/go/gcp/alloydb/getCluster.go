@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/alloydb"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/alloydb"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -70,6 +70,7 @@ type LookupClusterResult struct {
 	ContinuousBackupInfos   []GetClusterContinuousBackupInfo   `pulumi:"continuousBackupInfos"`
 	DatabaseVersion         string                             `pulumi:"databaseVersion"`
 	DeletionPolicy          string                             `pulumi:"deletionPolicy"`
+	DeletionProtection      bool                               `pulumi:"deletionProtection"`
 	DisplayName             string                             `pulumi:"displayName"`
 	EffectiveAnnotations    map[string]string                  `pulumi:"effectiveAnnotations"`
 	EffectiveLabels         map[string]string                  `pulumi:"effectiveLabels"`
@@ -174,6 +175,10 @@ func (o LookupClusterResultOutput) DatabaseVersion() pulumi.StringOutput {
 
 func (o LookupClusterResultOutput) DeletionPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) DeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupClusterResult) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
 
 func (o LookupClusterResultOutput) DisplayName() pulumi.StringOutput {

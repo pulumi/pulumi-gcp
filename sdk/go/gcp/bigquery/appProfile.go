@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,7 +27,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigtable"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigtable"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -82,7 +82,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigtable"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigtable"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -128,7 +128,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigtable"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigtable"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -187,7 +187,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigtable"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigtable"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -254,7 +254,7 @@ import (
 // $ pulumi import gcp:bigquery/appProfile:AppProfile default {{instance}}/{{app_profile_id}}
 // ```
 //
-// Deprecated: gcp.bigquery/appprofile.AppProfile has been deprecated in favor of gcp.bigtable/appprofile.AppProfile
+// Deprecated: gcp.bigquery.AppProfile has been deprecated in favor of gcp.bigtable.AppProfile
 type AppProfile struct {
 	pulumi.CustomResourceState
 
@@ -300,12 +300,6 @@ func NewAppProfile(ctx *pulumi.Context,
 	if args.AppProfileId == nil {
 		return nil, errors.New("invalid value for required argument 'AppProfileId'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("gcp:bigquery/appProfile:AppProfile"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AppProfile
 	err := ctx.RegisterResource("gcp:bigquery/appProfile:AppProfile", name, args, &resource, opts...)

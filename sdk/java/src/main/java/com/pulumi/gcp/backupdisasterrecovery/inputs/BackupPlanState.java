@@ -190,14 +190,14 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The list of all resource types to which the &#39;BackupPlan&#39; can be applied.
+     * The list of all resource types to which the `BackupPlan` can be applied.
      * 
      */
     @Import(name="supportedResourceTypes")
     private @Nullable Output<List<String>> supportedResourceTypes;
 
     /**
-     * @return The list of all resource types to which the &#39;BackupPlan&#39; can be applied.
+     * @return The list of all resource types to which the `BackupPlan` can be applied.
      * 
      */
     public Optional<Output<List<String>>> supportedResourceTypes() {
@@ -504,7 +504,7 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param supportedResourceTypes The list of all resource types to which the &#39;BackupPlan&#39; can be applied.
+         * @param supportedResourceTypes The list of all resource types to which the `BackupPlan` can be applied.
          * 
          * @return builder
          * 
@@ -515,7 +515,7 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param supportedResourceTypes The list of all resource types to which the &#39;BackupPlan&#39; can be applied.
+         * @param supportedResourceTypes The list of all resource types to which the `BackupPlan` can be applied.
          * 
          * @return builder
          * 
@@ -525,7 +525,7 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param supportedResourceTypes The list of all resource types to which the &#39;BackupPlan&#39; can be applied.
+         * @param supportedResourceTypes The list of all resource types to which the `BackupPlan` can be applied.
          * 
          * @return builder
          * 

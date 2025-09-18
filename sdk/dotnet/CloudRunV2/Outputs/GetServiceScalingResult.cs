@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly int ManualInstanceCount;
         /// <summary>
+        /// Combined maximum number of instances for all revisions receiving traffic.
+        /// </summary>
+        public readonly int MaxInstanceCount;
+        /// <summary>
         /// Minimum number of instances for the service, to be divided among all revisions receiving traffic.
         /// </summary>
         public readonly int MinInstanceCount;
@@ -30,11 +34,14 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         private GetServiceScalingResult(
             int manualInstanceCount,
 
+            int maxInstanceCount,
+
             int minInstanceCount,
 
             string scalingMode)
         {
             ManualInstanceCount = manualInstanceCount;
+            MaxInstanceCount = maxInstanceCount;
             MinInstanceCount = minInstanceCount;
             ScalingMode = scalingMode;
         }

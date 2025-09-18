@@ -27,10 +27,13 @@ class GetDatabaseInstanceResult:
     """
     A collection of values returned by getDatabaseInstance.
     """
-    def __init__(__self__, available_maintenance_versions=None, clones=None, connection_name=None, database_version=None, deletion_protection=None, dns_name=None, dns_names=None, encryption_key_name=None, first_ip_address=None, id=None, instance_type=None, ip_addresses=None, maintenance_version=None, master_instance_name=None, name=None, node_count=None, private_ip_address=None, project=None, psc_service_attachment_link=None, public_ip_address=None, region=None, replica_configurations=None, replica_names=None, replication_clusters=None, restore_backup_contexts=None, root_password=None, self_link=None, server_ca_certs=None, service_account_email_address=None, settings=None):
+    def __init__(__self__, available_maintenance_versions=None, backupdr_backup=None, clones=None, connection_name=None, database_version=None, deletion_protection=None, dns_name=None, dns_names=None, encryption_key_name=None, final_backup_description=None, first_ip_address=None, id=None, instance_type=None, ip_addresses=None, maintenance_version=None, master_instance_name=None, name=None, node_count=None, private_ip_address=None, project=None, psc_service_attachment_link=None, public_ip_address=None, region=None, replica_configurations=None, replica_names=None, replication_clusters=None, restore_backup_contexts=None, root_password=None, self_link=None, server_ca_certs=None, service_account_email_address=None, settings=None):
         if available_maintenance_versions and not isinstance(available_maintenance_versions, list):
             raise TypeError("Expected argument 'available_maintenance_versions' to be a list")
         pulumi.set(__self__, "available_maintenance_versions", available_maintenance_versions)
+        if backupdr_backup and not isinstance(backupdr_backup, str):
+            raise TypeError("Expected argument 'backupdr_backup' to be a str")
+        pulumi.set(__self__, "backupdr_backup", backupdr_backup)
         if clones and not isinstance(clones, list):
             raise TypeError("Expected argument 'clones' to be a list")
         pulumi.set(__self__, "clones", clones)
@@ -52,6 +55,9 @@ class GetDatabaseInstanceResult:
         if encryption_key_name and not isinstance(encryption_key_name, str):
             raise TypeError("Expected argument 'encryption_key_name' to be a str")
         pulumi.set(__self__, "encryption_key_name", encryption_key_name)
+        if final_backup_description and not isinstance(final_backup_description, str):
+            raise TypeError("Expected argument 'final_backup_description' to be a str")
+        pulumi.set(__self__, "final_backup_description", final_backup_description)
         if first_ip_address and not isinstance(first_ip_address, str):
             raise TypeError("Expected argument 'first_ip_address' to be a str")
         pulumi.set(__self__, "first_ip_address", first_ip_address)
@@ -125,6 +131,11 @@ class GetDatabaseInstanceResult:
         return pulumi.get(self, "available_maintenance_versions")
 
     @_builtins.property
+    @pulumi.getter(name="backupdrBackup")
+    def backupdr_backup(self) -> _builtins.str:
+        return pulumi.get(self, "backupdr_backup")
+
+    @_builtins.property
     @pulumi.getter
     def clones(self) -> Sequence['outputs.GetDatabaseInstanceCloneResult']:
         return pulumi.get(self, "clones")
@@ -158,6 +169,11 @@ class GetDatabaseInstanceResult:
     @pulumi.getter(name="encryptionKeyName")
     def encryption_key_name(self) -> _builtins.str:
         return pulumi.get(self, "encryption_key_name")
+
+    @_builtins.property
+    @pulumi.getter(name="finalBackupDescription")
+    def final_backup_description(self) -> _builtins.str:
+        return pulumi.get(self, "final_backup_description")
 
     @_builtins.property
     @pulumi.getter(name="firstIpAddress")
@@ -280,6 +296,7 @@ class AwaitableGetDatabaseInstanceResult(GetDatabaseInstanceResult):
             yield self
         return GetDatabaseInstanceResult(
             available_maintenance_versions=self.available_maintenance_versions,
+            backupdr_backup=self.backupdr_backup,
             clones=self.clones,
             connection_name=self.connection_name,
             database_version=self.database_version,
@@ -287,6 +304,7 @@ class AwaitableGetDatabaseInstanceResult(GetDatabaseInstanceResult):
             dns_name=self.dns_name,
             dns_names=self.dns_names,
             encryption_key_name=self.encryption_key_name,
+            final_backup_description=self.final_backup_description,
             first_ip_address=self.first_ip_address,
             id=self.id,
             instance_type=self.instance_type,
@@ -338,6 +356,7 @@ def get_database_instance(name: Optional[_builtins.str] = None,
 
     return AwaitableGetDatabaseInstanceResult(
         available_maintenance_versions=pulumi.get(__ret__, 'available_maintenance_versions'),
+        backupdr_backup=pulumi.get(__ret__, 'backupdr_backup'),
         clones=pulumi.get(__ret__, 'clones'),
         connection_name=pulumi.get(__ret__, 'connection_name'),
         database_version=pulumi.get(__ret__, 'database_version'),
@@ -345,6 +364,7 @@ def get_database_instance(name: Optional[_builtins.str] = None,
         dns_name=pulumi.get(__ret__, 'dns_name'),
         dns_names=pulumi.get(__ret__, 'dns_names'),
         encryption_key_name=pulumi.get(__ret__, 'encryption_key_name'),
+        final_backup_description=pulumi.get(__ret__, 'final_backup_description'),
         first_ip_address=pulumi.get(__ret__, 'first_ip_address'),
         id=pulumi.get(__ret__, 'id'),
         instance_type=pulumi.get(__ret__, 'instance_type'),
@@ -393,6 +413,7 @@ def get_database_instance_output(name: Optional[pulumi.Input[_builtins.str]] = N
     __ret__ = pulumi.runtime.invoke_output('gcp:sql/getDatabaseInstance:getDatabaseInstance', __args__, opts=opts, typ=GetDatabaseInstanceResult)
     return __ret__.apply(lambda __response__: GetDatabaseInstanceResult(
         available_maintenance_versions=pulumi.get(__response__, 'available_maintenance_versions'),
+        backupdr_backup=pulumi.get(__response__, 'backupdr_backup'),
         clones=pulumi.get(__response__, 'clones'),
         connection_name=pulumi.get(__response__, 'connection_name'),
         database_version=pulumi.get(__response__, 'database_version'),
@@ -400,6 +421,7 @@ def get_database_instance_output(name: Optional[pulumi.Input[_builtins.str]] = N
         dns_name=pulumi.get(__response__, 'dns_name'),
         dns_names=pulumi.get(__response__, 'dns_names'),
         encryption_key_name=pulumi.get(__response__, 'encryption_key_name'),
+        final_backup_description=pulumi.get(__response__, 'final_backup_description'),
         first_ip_address=pulumi.get(__response__, 'first_ip_address'),
         id=pulumi.get(__response__, 'id'),
         instance_type=pulumi.get(__response__, 'instance_type'),

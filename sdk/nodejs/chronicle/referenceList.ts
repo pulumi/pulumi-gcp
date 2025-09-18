@@ -23,6 +23,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const testScope = new gcp.chronicle.DataAccessScope("test_scope", {
+ *     location: "us",
+ *     instance: "00000000-0000-0000-0000-000000000000",
+ *     dataAccessScopeId: "scope-id",
+ *     description: "test scope description",
+ *     allowedDataAccessLabels: [{
+ *         logType: "GCP_CLOUDAUDIT",
+ *     }],
+ * });
  * const example = new gcp.chronicle.ReferenceList("example", {
  *     location: "us",
  *     instance: "00000000-0000-0000-0000-000000000000",
@@ -32,6 +41,11 @@ import * as utilities from "../utilities";
  *         value: "referencelist-entry-value",
  *     }],
  *     syntaxType: "REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING",
+ *     scopeInfos: [{
+ *         referenceListScope: {
+ *             scopeNames: [testScope.name],
+ *         },
+ *     }],
  * });
  * ```
  *
@@ -150,7 +164,7 @@ export class ReferenceList extends pulumi.CustomResource {
      * ScopeInfo specifies the scope info of the reference list.
      * Structure is documented below.
      */
-    declare public /*out*/ readonly scopeInfos: pulumi.Output<outputs.chronicle.ReferenceListScopeInfo[]>;
+    declare public readonly scopeInfos: pulumi.Output<outputs.chronicle.ReferenceListScopeInfo[] | undefined>;
     /**
      * Possible values:
      * REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING
@@ -211,13 +225,13 @@ export class ReferenceList extends pulumi.CustomResource {
             resourceInputs["location"] = args?.location;
             resourceInputs["project"] = args?.project;
             resourceInputs["referenceListId"] = args?.referenceListId;
+            resourceInputs["scopeInfos"] = args?.scopeInfos;
             resourceInputs["syntaxType"] = args?.syntaxType;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["revisionCreateTime"] = undefined /*out*/;
             resourceInputs["ruleAssociationsCount"] = undefined /*out*/;
             resourceInputs["rules"] = undefined /*out*/;
-            resourceInputs["scopeInfos"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ReferenceList.__pulumiType, name, resourceInputs, opts);
@@ -340,6 +354,11 @@ export interface ReferenceListArgs {
      * - Must be unique.
      */
     referenceListId: pulumi.Input<string>;
+    /**
+     * ScopeInfo specifies the scope info of the reference list.
+     * Structure is documented below.
+     */
+    scopeInfos?: pulumi.Input<pulumi.Input<inputs.chronicle.ReferenceListScopeInfo>[]>;
     /**
      * Possible values:
      * REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING

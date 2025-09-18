@@ -16,8 +16,6 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
-    'NodeNetworkEndpoint',
-    'NodeSchedulingConfig',
     'V2QueuedResourceTpu',
     'V2QueuedResourceTpuNodeSpec',
     'V2QueuedResourceTpuNodeSpecNode',
@@ -32,76 +30,6 @@ __all__ = [
     'V2VmShieldedInstanceConfig',
     'V2VmSymptom',
 ]
-
-@pulumi.output_type
-class NodeNetworkEndpoint(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "ipAddress":
-            suggest = "ip_address"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NodeNetworkEndpoint. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NodeNetworkEndpoint.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NodeNetworkEndpoint.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 ip_address: Optional[_builtins.str] = None,
-                 port: Optional[_builtins.int] = None):
-        """
-        :param _builtins.str ip_address: (Output)
-               The IP address of this network endpoint.
-        :param _builtins.int port: (Output)
-               The port of this network endpoint.
-        """
-        if ip_address is not None:
-            pulumi.set(__self__, "ip_address", ip_address)
-        if port is not None:
-            pulumi.set(__self__, "port", port)
-
-    @_builtins.property
-    @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[_builtins.str]:
-        """
-        (Output)
-        The IP address of this network endpoint.
-        """
-        return pulumi.get(self, "ip_address")
-
-    @_builtins.property
-    @pulumi.getter
-    def port(self) -> Optional[_builtins.int]:
-        """
-        (Output)
-        The port of this network endpoint.
-        """
-        return pulumi.get(self, "port")
-
-
-@pulumi.output_type
-class NodeSchedulingConfig(dict):
-    def __init__(__self__, *,
-                 preemptible: _builtins.bool):
-        """
-        :param _builtins.bool preemptible: Defines whether the TPU instance is preemptible.
-        """
-        pulumi.set(__self__, "preemptible", preemptible)
-
-    @_builtins.property
-    @pulumi.getter
-    def preemptible(self) -> _builtins.bool:
-        """
-        Defines whether the TPU instance is preemptible.
-        """
-        return pulumi.get(self, "preemptible")
-
 
 @pulumi.output_type
 class V2QueuedResourceTpu(dict):

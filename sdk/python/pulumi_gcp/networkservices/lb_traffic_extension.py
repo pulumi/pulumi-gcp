@@ -23,10 +23,10 @@ class LbTrafficExtensionArgs:
     def __init__(__self__, *,
                  extension_chains: pulumi.Input[Sequence[pulumi.Input['LbTrafficExtensionExtensionChainArgs']]],
                  forwarding_rules: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 load_balancing_scheme: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 load_balancing_scheme: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -39,28 +39,27 @@ class LbTrafficExtensionArgs:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] forwarding_rules: A list of references to the forwarding rules to which this service extension is attached to.
                At least one forwarding rule is required. There can be only one LBTrafficExtension resource per forwarding rule.
+        :param pulumi.Input[_builtins.str] load_balancing_scheme: All backend services and forwarding rules referenced by this extension must share the same load balancing scheme.
+               For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
+               [Supported application load balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs).
+               Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
         :param pulumi.Input[_builtins.str] location: The location of the traffic extension
         :param pulumi.Input[_builtins.str] description: A human-readable description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Set of labels associated with the LbTrafficExtension resource.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[_builtins.str] load_balancing_scheme: All backend services and forwarding rules referenced by this extension must share the same load balancing scheme.
-               For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
-               [Supported application load balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs).
-               Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
         :param pulumi.Input[_builtins.str] name: Name of the LbTrafficExtension resource in the following format: projects/{project}/locations/{location}/lbTrafficExtensions/{lbTrafficExtension}.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "extension_chains", extension_chains)
         pulumi.set(__self__, "forwarding_rules", forwarding_rules)
+        pulumi.set(__self__, "load_balancing_scheme", load_balancing_scheme)
         pulumi.set(__self__, "location", location)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
-        if load_balancing_scheme is not None:
-            pulumi.set(__self__, "load_balancing_scheme", load_balancing_scheme)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -95,6 +94,21 @@ class LbTrafficExtensionArgs:
     @forwarding_rules.setter
     def forwarding_rules(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
         pulumi.set(self, "forwarding_rules", value)
+
+    @_builtins.property
+    @pulumi.getter(name="loadBalancingScheme")
+    def load_balancing_scheme(self) -> pulumi.Input[_builtins.str]:
+        """
+        All backend services and forwarding rules referenced by this extension must share the same load balancing scheme.
+        For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
+        [Supported application load balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs).
+        Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
+        """
+        return pulumi.get(self, "load_balancing_scheme")
+
+    @load_balancing_scheme.setter
+    def load_balancing_scheme(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "load_balancing_scheme", value)
 
     @_builtins.property
     @pulumi.getter
@@ -133,21 +147,6 @@ class LbTrafficExtensionArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
-
-    @_builtins.property
-    @pulumi.getter(name="loadBalancingScheme")
-    def load_balancing_scheme(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        All backend services and forwarding rules referenced by this extension must share the same load balancing scheme.
-        For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
-        [Supported application load balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs).
-        Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
-        """
-        return pulumi.get(self, "load_balancing_scheme")
-
-    @load_balancing_scheme.setter
-    def load_balancing_scheme(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "load_balancing_scheme", value)
 
     @_builtins.property
     @pulumi.getter
@@ -523,6 +522,8 @@ class LbTrafficExtension(pulumi.CustomResource):
                 raise TypeError("Missing required property 'forwarding_rules'")
             __props__.__dict__["forwarding_rules"] = forwarding_rules
             __props__.__dict__["labels"] = labels
+            if load_balancing_scheme is None and not opts.urn:
+                raise TypeError("Missing required property 'load_balancing_scheme'")
             __props__.__dict__["load_balancing_scheme"] = load_balancing_scheme
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -650,7 +651,7 @@ class LbTrafficExtension(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="loadBalancingScheme")
-    def load_balancing_scheme(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def load_balancing_scheme(self) -> pulumi.Output[_builtins.str]:
         """
         All backend services and forwarding rules referenced by this extension must share the same load balancing scheme.
         For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
