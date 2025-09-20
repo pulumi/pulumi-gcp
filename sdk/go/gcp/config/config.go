@@ -80,6 +80,9 @@ func GetBigqueryDataTransferCustomEndpoint(ctx *pulumi.Context) string {
 func GetBigqueryDatapolicyCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:bigqueryDatapolicyCustomEndpoint")
 }
+func GetBigqueryDatapolicyv2CustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:bigqueryDatapolicyv2CustomEndpoint")
+}
 func GetBigqueryReservationCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:bigqueryReservationCustomEndpoint")
 }

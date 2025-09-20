@@ -1240,6 +1240,110 @@ class Stream(pulumi.CustomResource):
             backfill_none={},
             opts = pulumi.ResourceOptions(depends_on=[bigquery_key_user]))
         ```
+        ### Datastream Stream Bigquery Cross Project Source Hierachy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+        import pulumi_time as time
+
+        project = gcp.organizations.get_project()
+        cross_project_dataset = gcp.organizations.Project("cross-project-dataset",
+            project_id="tf-test_79169",
+            name="tf-test_56529",
+            org_id="123456789",
+            billing_account="000000-0000000-0000000-000000",
+            deletion_policy="DELETE")
+        wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s,
+        opts = pulumi.ResourceOptions(depends_on=[cross_project_dataset]))
+        bigquery = gcp.projects.Service("bigquery",
+            project=cross_project_dataset.project_id,
+            service="bigquery.googleapis.com",
+            disable_on_destroy=False,
+            opts = pulumi.ResourceOptions(depends_on=[wait60_seconds]))
+        datastream_bigquery_admin = gcp.projects.IAMMember("datastream_bigquery_admin",
+            project=cross_project_dataset.project_id,
+            role="roles/bigquery.admin",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-datastream.iam.gserviceaccount.com",
+            opts = pulumi.ResourceOptions(depends_on=[wait60_seconds]))
+        instance = gcp.sql.DatabaseInstance("instance",
+            name="my-instance",
+            database_version="MYSQL_8_0",
+            region="us-central1",
+            settings={
+                "tier": "db-f1-micro",
+                "backup_configuration": {
+                    "enabled": True,
+                    "binary_log_enabled": True,
+                },
+                "ip_configuration": {
+                    "authorized_networks": [
+                        {
+                            "value": "34.71.242.81",
+                        },
+                        {
+                            "value": "34.72.28.29",
+                        },
+                        {
+                            "value": "34.67.6.157",
+                        },
+                        {
+                            "value": "34.67.234.134",
+                        },
+                        {
+                            "value": "34.72.239.218",
+                        },
+                    ],
+                },
+            },
+            deletion_protection=True)
+        db = gcp.sql.Database("db",
+            instance=instance.name,
+            name="db")
+        pwd = random.RandomPassword("pwd",
+            length=16,
+            special=False)
+        user = gcp.sql.User("user",
+            name="user",
+            instance=instance.name,
+            host="%",
+            password=pwd.result)
+        source_connection_profile = gcp.datastream.ConnectionProfile("source_connection_profile",
+            display_name="Source connection profile",
+            location="us-central1",
+            connection_profile_id="source-profile",
+            mysql_profile={
+                "hostname": instance.public_ip_address,
+                "username": user.name,
+                "password": user.password,
+            })
+        destination_connection_profile = gcp.datastream.ConnectionProfile("destination_connection_profile",
+            display_name="Connection profile",
+            location="us-central1",
+            connection_profile_id="destination-profile",
+            bigquery_profile={})
+        default = gcp.datastream.Stream("default",
+            stream_id="my-stream",
+            location="us-central1",
+            display_name="my stream",
+            source_config={
+                "source_connection_profile": source_connection_profile.id,
+                "mysql_source_config": {},
+            },
+            destination_config={
+                "destination_connection_profile": destination_connection_profile.id,
+                "bigquery_destination_config": {
+                    "source_hierarchy_datasets": {
+                        "dataset_template": {
+                            "location": "us-central1",
+                        },
+                        "project_id": cross_project_dataset.project_id,
+                    },
+                },
+            },
+            backfill_none={})
+        ```
         ### Datastream Stream Bigquery Append Only
 
         ```python
@@ -2189,6 +2293,110 @@ class Stream(pulumi.CustomResource):
             },
             backfill_none={},
             opts = pulumi.ResourceOptions(depends_on=[bigquery_key_user]))
+        ```
+        ### Datastream Stream Bigquery Cross Project Source Hierachy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+        import pulumi_time as time
+
+        project = gcp.organizations.get_project()
+        cross_project_dataset = gcp.organizations.Project("cross-project-dataset",
+            project_id="tf-test_79169",
+            name="tf-test_56529",
+            org_id="123456789",
+            billing_account="000000-0000000-0000000-000000",
+            deletion_policy="DELETE")
+        wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s,
+        opts = pulumi.ResourceOptions(depends_on=[cross_project_dataset]))
+        bigquery = gcp.projects.Service("bigquery",
+            project=cross_project_dataset.project_id,
+            service="bigquery.googleapis.com",
+            disable_on_destroy=False,
+            opts = pulumi.ResourceOptions(depends_on=[wait60_seconds]))
+        datastream_bigquery_admin = gcp.projects.IAMMember("datastream_bigquery_admin",
+            project=cross_project_dataset.project_id,
+            role="roles/bigquery.admin",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-datastream.iam.gserviceaccount.com",
+            opts = pulumi.ResourceOptions(depends_on=[wait60_seconds]))
+        instance = gcp.sql.DatabaseInstance("instance",
+            name="my-instance",
+            database_version="MYSQL_8_0",
+            region="us-central1",
+            settings={
+                "tier": "db-f1-micro",
+                "backup_configuration": {
+                    "enabled": True,
+                    "binary_log_enabled": True,
+                },
+                "ip_configuration": {
+                    "authorized_networks": [
+                        {
+                            "value": "34.71.242.81",
+                        },
+                        {
+                            "value": "34.72.28.29",
+                        },
+                        {
+                            "value": "34.67.6.157",
+                        },
+                        {
+                            "value": "34.67.234.134",
+                        },
+                        {
+                            "value": "34.72.239.218",
+                        },
+                    ],
+                },
+            },
+            deletion_protection=True)
+        db = gcp.sql.Database("db",
+            instance=instance.name,
+            name="db")
+        pwd = random.RandomPassword("pwd",
+            length=16,
+            special=False)
+        user = gcp.sql.User("user",
+            name="user",
+            instance=instance.name,
+            host="%",
+            password=pwd.result)
+        source_connection_profile = gcp.datastream.ConnectionProfile("source_connection_profile",
+            display_name="Source connection profile",
+            location="us-central1",
+            connection_profile_id="source-profile",
+            mysql_profile={
+                "hostname": instance.public_ip_address,
+                "username": user.name,
+                "password": user.password,
+            })
+        destination_connection_profile = gcp.datastream.ConnectionProfile("destination_connection_profile",
+            display_name="Connection profile",
+            location="us-central1",
+            connection_profile_id="destination-profile",
+            bigquery_profile={})
+        default = gcp.datastream.Stream("default",
+            stream_id="my-stream",
+            location="us-central1",
+            display_name="my stream",
+            source_config={
+                "source_connection_profile": source_connection_profile.id,
+                "mysql_source_config": {},
+            },
+            destination_config={
+                "destination_connection_profile": destination_connection_profile.id,
+                "bigquery_destination_config": {
+                    "source_hierarchy_datasets": {
+                        "dataset_template": {
+                            "location": "us-central1",
+                        },
+                        "project_id": cross_project_dataset.project_id,
+                    },
+                },
+            },
+            backfill_none={})
         ```
         ### Datastream Stream Bigquery Append Only
 

@@ -35,6 +35,11 @@ export const getBackupPlanAssociation: typeof import("./getBackupPlanAssociation
 export const getBackupPlanAssociationOutput: typeof import("./getBackupPlanAssociation").getBackupPlanAssociationOutput = null as any;
 utilities.lazyLoad(exports, ["getBackupPlanAssociation","getBackupPlanAssociationOutput"], () => require("./getBackupPlanAssociation"));
 
+export { GetBackupPlanAssociationsArgs, GetBackupPlanAssociationsResult, GetBackupPlanAssociationsOutputArgs } from "./getBackupPlanAssociations";
+export const getBackupPlanAssociations: typeof import("./getBackupPlanAssociations").getBackupPlanAssociations = null as any;
+export const getBackupPlanAssociationsOutput: typeof import("./getBackupPlanAssociations").getBackupPlanAssociationsOutput = null as any;
+utilities.lazyLoad(exports, ["getBackupPlanAssociations","getBackupPlanAssociationsOutput"], () => require("./getBackupPlanAssociations"));
+
 export { GetBackupVaultArgs, GetBackupVaultResult, GetBackupVaultOutputArgs } from "./getBackupVault";
 export const getBackupVault: typeof import("./getBackupVault").getBackupVault = null as any;
 export const getBackupVaultOutput: typeof import("./getBackupVault").getBackupVaultOutput = null as any;
@@ -44,6 +49,11 @@ export { GetDataSourceArgs, GetDataSourceResult, GetDataSourceOutputArgs } from 
 export const getDataSource: typeof import("./getDataSource").getDataSource = null as any;
 export const getDataSourceOutput: typeof import("./getDataSource").getDataSourceOutput = null as any;
 utilities.lazyLoad(exports, ["getDataSource","getDataSourceOutput"], () => require("./getDataSource"));
+
+export { GetDataSourceReferenceArgs, GetDataSourceReferenceResult, GetDataSourceReferenceOutputArgs } from "./getDataSourceReference";
+export const getDataSourceReference: typeof import("./getDataSourceReference").getDataSourceReference = null as any;
+export const getDataSourceReferenceOutput: typeof import("./getDataSourceReference").getDataSourceReferenceOutput = null as any;
+utilities.lazyLoad(exports, ["getDataSourceReference","getDataSourceReferenceOutput"], () => require("./getDataSourceReference"));
 
 export { GetDataSourceReferencesArgs, GetDataSourceReferencesResult, GetDataSourceReferencesOutputArgs } from "./getDataSourceReferences";
 export const getDataSourceReferences: typeof import("./getDataSourceReferences").getDataSourceReferences = null as any;

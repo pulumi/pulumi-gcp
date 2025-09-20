@@ -61,6 +61,8 @@ bigqueryDataTransferCustomEndpoint: Optional[str]
 
 bigqueryDatapolicyCustomEndpoint: Optional[str]
 
+bigqueryDatapolicyv2CustomEndpoint: Optional[str]
+
 bigqueryReservationCustomEndpoint: Optional[str]
 
 bigtableCustomEndpoint: Optional[str]

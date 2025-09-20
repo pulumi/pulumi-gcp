@@ -174,13 +174,17 @@ namespace Pulumi.Gcp.Compute
         public readonly ImmutableArray<Outputs.GetSecurityPolicyAdaptiveProtectionConfigResult> AdaptiveProtectionConfigs;
         public readonly ImmutableArray<Outputs.GetSecurityPolicyAdvancedOptionsConfigResult> AdvancedOptionsConfigs;
         public readonly string Description;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string Fingerprint;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string LabelFingerprint;
+        public readonly ImmutableDictionary<string, string> Labels;
         public readonly string? Name;
         public readonly string? Project;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly ImmutableArray<Outputs.GetSecurityPolicyRecaptchaOptionsConfigResult> RecaptchaOptionsConfigs;
         public readonly ImmutableArray<Outputs.GetSecurityPolicyRuleResult> Rules;
         public readonly string? SelfLink;
@@ -194,13 +198,21 @@ namespace Pulumi.Gcp.Compute
 
             string description,
 
+            ImmutableDictionary<string, string> effectiveLabels,
+
             string fingerprint,
 
             string id,
 
+            string labelFingerprint,
+
+            ImmutableDictionary<string, string> labels,
+
             string? name,
 
             string? project,
+
+            ImmutableDictionary<string, string> pulumiLabels,
 
             ImmutableArray<Outputs.GetSecurityPolicyRecaptchaOptionsConfigResult> recaptchaOptionsConfigs,
 
@@ -213,10 +225,14 @@ namespace Pulumi.Gcp.Compute
             AdaptiveProtectionConfigs = adaptiveProtectionConfigs;
             AdvancedOptionsConfigs = advancedOptionsConfigs;
             Description = description;
+            EffectiveLabels = effectiveLabels;
             Fingerprint = fingerprint;
             Id = id;
+            LabelFingerprint = labelFingerprint;
+            Labels = labels;
             Name = name;
             Project = project;
+            PulumiLabels = pulumiLabels;
             RecaptchaOptionsConfigs = recaptchaOptionsConfigs;
             Rules = rules;
             SelfLink = selfLink;

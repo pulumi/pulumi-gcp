@@ -13,6 +13,688 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ReleaseBlueprint struct {
+	Engine *string `pulumi:"engine"`
+	// URI to a blueprint used by the Unit (required unless unitKind or release is
+	// set).
+	Package *string `pulumi:"package"`
+	// (Output)
+	// Version metadata if present on the blueprint.
+	Version *string `pulumi:"version"`
+}
+
+// ReleaseBlueprintInput is an input type that accepts ReleaseBlueprintArgs and ReleaseBlueprintOutput values.
+// You can construct a concrete instance of `ReleaseBlueprintInput` via:
+//
+//	ReleaseBlueprintArgs{...}
+type ReleaseBlueprintInput interface {
+	pulumi.Input
+
+	ToReleaseBlueprintOutput() ReleaseBlueprintOutput
+	ToReleaseBlueprintOutputWithContext(context.Context) ReleaseBlueprintOutput
+}
+
+type ReleaseBlueprintArgs struct {
+	Engine pulumi.StringPtrInput `pulumi:"engine"`
+	// URI to a blueprint used by the Unit (required unless unitKind or release is
+	// set).
+	Package pulumi.StringPtrInput `pulumi:"package"`
+	// (Output)
+	// Version metadata if present on the blueprint.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (ReleaseBlueprintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseBlueprint)(nil)).Elem()
+}
+
+func (i ReleaseBlueprintArgs) ToReleaseBlueprintOutput() ReleaseBlueprintOutput {
+	return i.ToReleaseBlueprintOutputWithContext(context.Background())
+}
+
+func (i ReleaseBlueprintArgs) ToReleaseBlueprintOutputWithContext(ctx context.Context) ReleaseBlueprintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseBlueprintOutput)
+}
+
+func (i ReleaseBlueprintArgs) ToReleaseBlueprintPtrOutput() ReleaseBlueprintPtrOutput {
+	return i.ToReleaseBlueprintPtrOutputWithContext(context.Background())
+}
+
+func (i ReleaseBlueprintArgs) ToReleaseBlueprintPtrOutputWithContext(ctx context.Context) ReleaseBlueprintPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseBlueprintOutput).ToReleaseBlueprintPtrOutputWithContext(ctx)
+}
+
+// ReleaseBlueprintPtrInput is an input type that accepts ReleaseBlueprintArgs, ReleaseBlueprintPtr and ReleaseBlueprintPtrOutput values.
+// You can construct a concrete instance of `ReleaseBlueprintPtrInput` via:
+//
+//	        ReleaseBlueprintArgs{...}
+//
+//	or:
+//
+//	        nil
+type ReleaseBlueprintPtrInput interface {
+	pulumi.Input
+
+	ToReleaseBlueprintPtrOutput() ReleaseBlueprintPtrOutput
+	ToReleaseBlueprintPtrOutputWithContext(context.Context) ReleaseBlueprintPtrOutput
+}
+
+type releaseBlueprintPtrType ReleaseBlueprintArgs
+
+func ReleaseBlueprintPtr(v *ReleaseBlueprintArgs) ReleaseBlueprintPtrInput {
+	return (*releaseBlueprintPtrType)(v)
+}
+
+func (*releaseBlueprintPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseBlueprint)(nil)).Elem()
+}
+
+func (i *releaseBlueprintPtrType) ToReleaseBlueprintPtrOutput() ReleaseBlueprintPtrOutput {
+	return i.ToReleaseBlueprintPtrOutputWithContext(context.Background())
+}
+
+func (i *releaseBlueprintPtrType) ToReleaseBlueprintPtrOutputWithContext(ctx context.Context) ReleaseBlueprintPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseBlueprintPtrOutput)
+}
+
+type ReleaseBlueprintOutput struct{ *pulumi.OutputState }
+
+func (ReleaseBlueprintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseBlueprint)(nil)).Elem()
+}
+
+func (o ReleaseBlueprintOutput) ToReleaseBlueprintOutput() ReleaseBlueprintOutput {
+	return o
+}
+
+func (o ReleaseBlueprintOutput) ToReleaseBlueprintOutputWithContext(ctx context.Context) ReleaseBlueprintOutput {
+	return o
+}
+
+func (o ReleaseBlueprintOutput) ToReleaseBlueprintPtrOutput() ReleaseBlueprintPtrOutput {
+	return o.ToReleaseBlueprintPtrOutputWithContext(context.Background())
+}
+
+func (o ReleaseBlueprintOutput) ToReleaseBlueprintPtrOutputWithContext(ctx context.Context) ReleaseBlueprintPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReleaseBlueprint) *ReleaseBlueprint {
+		return &v
+	}).(ReleaseBlueprintPtrOutput)
+}
+
+func (o ReleaseBlueprintOutput) Engine() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseBlueprint) *string { return v.Engine }).(pulumi.StringPtrOutput)
+}
+
+// URI to a blueprint used by the Unit (required unless unitKind or release is
+// set).
+func (o ReleaseBlueprintOutput) Package() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseBlueprint) *string { return v.Package }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Version metadata if present on the blueprint.
+func (o ReleaseBlueprintOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseBlueprint) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type ReleaseBlueprintPtrOutput struct{ *pulumi.OutputState }
+
+func (ReleaseBlueprintPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseBlueprint)(nil)).Elem()
+}
+
+func (o ReleaseBlueprintPtrOutput) ToReleaseBlueprintPtrOutput() ReleaseBlueprintPtrOutput {
+	return o
+}
+
+func (o ReleaseBlueprintPtrOutput) ToReleaseBlueprintPtrOutputWithContext(ctx context.Context) ReleaseBlueprintPtrOutput {
+	return o
+}
+
+func (o ReleaseBlueprintPtrOutput) Elem() ReleaseBlueprintOutput {
+	return o.ApplyT(func(v *ReleaseBlueprint) ReleaseBlueprint {
+		if v != nil {
+			return *v
+		}
+		var ret ReleaseBlueprint
+		return ret
+	}).(ReleaseBlueprintOutput)
+}
+
+func (o ReleaseBlueprintPtrOutput) Engine() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseBlueprint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Engine
+	}).(pulumi.StringPtrOutput)
+}
+
+// URI to a blueprint used by the Unit (required unless unitKind or release is
+// set).
+func (o ReleaseBlueprintPtrOutput) Package() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseBlueprint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Package
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Version metadata if present on the blueprint.
+func (o ReleaseBlueprintPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseBlueprint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type ReleaseInputVariable struct {
+	// Name of a supported variable type. Supported types are STRING, INT, BOOL.
+	// Possible values are: `TYPE_UNSPECIFIED`, `STRING`, `INT`, `BOOL`.
+	Type *string `pulumi:"type"`
+	// String encoded value for the variable.
+	Value *string `pulumi:"value"`
+	// Name of the variable from actuation configs.
+	Variable string `pulumi:"variable"`
+}
+
+// ReleaseInputVariableInput is an input type that accepts ReleaseInputVariableArgs and ReleaseInputVariableOutput values.
+// You can construct a concrete instance of `ReleaseInputVariableInput` via:
+//
+//	ReleaseInputVariableArgs{...}
+type ReleaseInputVariableInput interface {
+	pulumi.Input
+
+	ToReleaseInputVariableOutput() ReleaseInputVariableOutput
+	ToReleaseInputVariableOutputWithContext(context.Context) ReleaseInputVariableOutput
+}
+
+type ReleaseInputVariableArgs struct {
+	// Name of a supported variable type. Supported types are STRING, INT, BOOL.
+	// Possible values are: `TYPE_UNSPECIFIED`, `STRING`, `INT`, `BOOL`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// String encoded value for the variable.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+	// Name of the variable from actuation configs.
+	Variable pulumi.StringInput `pulumi:"variable"`
+}
+
+func (ReleaseInputVariableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseInputVariable)(nil)).Elem()
+}
+
+func (i ReleaseInputVariableArgs) ToReleaseInputVariableOutput() ReleaseInputVariableOutput {
+	return i.ToReleaseInputVariableOutputWithContext(context.Background())
+}
+
+func (i ReleaseInputVariableArgs) ToReleaseInputVariableOutputWithContext(ctx context.Context) ReleaseInputVariableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseInputVariableOutput)
+}
+
+// ReleaseInputVariableArrayInput is an input type that accepts ReleaseInputVariableArray and ReleaseInputVariableArrayOutput values.
+// You can construct a concrete instance of `ReleaseInputVariableArrayInput` via:
+//
+//	ReleaseInputVariableArray{ ReleaseInputVariableArgs{...} }
+type ReleaseInputVariableArrayInput interface {
+	pulumi.Input
+
+	ToReleaseInputVariableArrayOutput() ReleaseInputVariableArrayOutput
+	ToReleaseInputVariableArrayOutputWithContext(context.Context) ReleaseInputVariableArrayOutput
+}
+
+type ReleaseInputVariableArray []ReleaseInputVariableInput
+
+func (ReleaseInputVariableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReleaseInputVariable)(nil)).Elem()
+}
+
+func (i ReleaseInputVariableArray) ToReleaseInputVariableArrayOutput() ReleaseInputVariableArrayOutput {
+	return i.ToReleaseInputVariableArrayOutputWithContext(context.Background())
+}
+
+func (i ReleaseInputVariableArray) ToReleaseInputVariableArrayOutputWithContext(ctx context.Context) ReleaseInputVariableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseInputVariableArrayOutput)
+}
+
+type ReleaseInputVariableOutput struct{ *pulumi.OutputState }
+
+func (ReleaseInputVariableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseInputVariable)(nil)).Elem()
+}
+
+func (o ReleaseInputVariableOutput) ToReleaseInputVariableOutput() ReleaseInputVariableOutput {
+	return o
+}
+
+func (o ReleaseInputVariableOutput) ToReleaseInputVariableOutputWithContext(ctx context.Context) ReleaseInputVariableOutput {
+	return o
+}
+
+// Name of a supported variable type. Supported types are STRING, INT, BOOL.
+// Possible values are: `TYPE_UNSPECIFIED`, `STRING`, `INT`, `BOOL`.
+func (o ReleaseInputVariableOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseInputVariable) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// String encoded value for the variable.
+func (o ReleaseInputVariableOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseInputVariable) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+// Name of the variable from actuation configs.
+func (o ReleaseInputVariableOutput) Variable() pulumi.StringOutput {
+	return o.ApplyT(func(v ReleaseInputVariable) string { return v.Variable }).(pulumi.StringOutput)
+}
+
+type ReleaseInputVariableArrayOutput struct{ *pulumi.OutputState }
+
+func (ReleaseInputVariableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReleaseInputVariable)(nil)).Elem()
+}
+
+func (o ReleaseInputVariableArrayOutput) ToReleaseInputVariableArrayOutput() ReleaseInputVariableArrayOutput {
+	return o
+}
+
+func (o ReleaseInputVariableArrayOutput) ToReleaseInputVariableArrayOutputWithContext(ctx context.Context) ReleaseInputVariableArrayOutput {
+	return o
+}
+
+func (o ReleaseInputVariableArrayOutput) Index(i pulumi.IntInput) ReleaseInputVariableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReleaseInputVariable {
+		return vs[0].([]ReleaseInputVariable)[vs[1].(int)]
+	}).(ReleaseInputVariableOutput)
+}
+
+type ReleaseInputVariableDefault struct {
+	// Name of a supported variable type. Supported types are STRING, INT, BOOL.
+	// Possible values are: `TYPE_UNSPECIFIED`, `STRING`, `INT`, `BOOL`.
+	Type *string `pulumi:"type"`
+	// String encoded value for the variable.
+	Value *string `pulumi:"value"`
+	// Name of the variable from actuation configs.
+	Variable string `pulumi:"variable"`
+}
+
+// ReleaseInputVariableDefaultInput is an input type that accepts ReleaseInputVariableDefaultArgs and ReleaseInputVariableDefaultOutput values.
+// You can construct a concrete instance of `ReleaseInputVariableDefaultInput` via:
+//
+//	ReleaseInputVariableDefaultArgs{...}
+type ReleaseInputVariableDefaultInput interface {
+	pulumi.Input
+
+	ToReleaseInputVariableDefaultOutput() ReleaseInputVariableDefaultOutput
+	ToReleaseInputVariableDefaultOutputWithContext(context.Context) ReleaseInputVariableDefaultOutput
+}
+
+type ReleaseInputVariableDefaultArgs struct {
+	// Name of a supported variable type. Supported types are STRING, INT, BOOL.
+	// Possible values are: `TYPE_UNSPECIFIED`, `STRING`, `INT`, `BOOL`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// String encoded value for the variable.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+	// Name of the variable from actuation configs.
+	Variable pulumi.StringInput `pulumi:"variable"`
+}
+
+func (ReleaseInputVariableDefaultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseInputVariableDefault)(nil)).Elem()
+}
+
+func (i ReleaseInputVariableDefaultArgs) ToReleaseInputVariableDefaultOutput() ReleaseInputVariableDefaultOutput {
+	return i.ToReleaseInputVariableDefaultOutputWithContext(context.Background())
+}
+
+func (i ReleaseInputVariableDefaultArgs) ToReleaseInputVariableDefaultOutputWithContext(ctx context.Context) ReleaseInputVariableDefaultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseInputVariableDefaultOutput)
+}
+
+// ReleaseInputVariableDefaultArrayInput is an input type that accepts ReleaseInputVariableDefaultArray and ReleaseInputVariableDefaultArrayOutput values.
+// You can construct a concrete instance of `ReleaseInputVariableDefaultArrayInput` via:
+//
+//	ReleaseInputVariableDefaultArray{ ReleaseInputVariableDefaultArgs{...} }
+type ReleaseInputVariableDefaultArrayInput interface {
+	pulumi.Input
+
+	ToReleaseInputVariableDefaultArrayOutput() ReleaseInputVariableDefaultArrayOutput
+	ToReleaseInputVariableDefaultArrayOutputWithContext(context.Context) ReleaseInputVariableDefaultArrayOutput
+}
+
+type ReleaseInputVariableDefaultArray []ReleaseInputVariableDefaultInput
+
+func (ReleaseInputVariableDefaultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReleaseInputVariableDefault)(nil)).Elem()
+}
+
+func (i ReleaseInputVariableDefaultArray) ToReleaseInputVariableDefaultArrayOutput() ReleaseInputVariableDefaultArrayOutput {
+	return i.ToReleaseInputVariableDefaultArrayOutputWithContext(context.Background())
+}
+
+func (i ReleaseInputVariableDefaultArray) ToReleaseInputVariableDefaultArrayOutputWithContext(ctx context.Context) ReleaseInputVariableDefaultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseInputVariableDefaultArrayOutput)
+}
+
+type ReleaseInputVariableDefaultOutput struct{ *pulumi.OutputState }
+
+func (ReleaseInputVariableDefaultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseInputVariableDefault)(nil)).Elem()
+}
+
+func (o ReleaseInputVariableDefaultOutput) ToReleaseInputVariableDefaultOutput() ReleaseInputVariableDefaultOutput {
+	return o
+}
+
+func (o ReleaseInputVariableDefaultOutput) ToReleaseInputVariableDefaultOutputWithContext(ctx context.Context) ReleaseInputVariableDefaultOutput {
+	return o
+}
+
+// Name of a supported variable type. Supported types are STRING, INT, BOOL.
+// Possible values are: `TYPE_UNSPECIFIED`, `STRING`, `INT`, `BOOL`.
+func (o ReleaseInputVariableDefaultOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseInputVariableDefault) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// String encoded value for the variable.
+func (o ReleaseInputVariableDefaultOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseInputVariableDefault) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+// Name of the variable from actuation configs.
+func (o ReleaseInputVariableDefaultOutput) Variable() pulumi.StringOutput {
+	return o.ApplyT(func(v ReleaseInputVariableDefault) string { return v.Variable }).(pulumi.StringOutput)
+}
+
+type ReleaseInputVariableDefaultArrayOutput struct{ *pulumi.OutputState }
+
+func (ReleaseInputVariableDefaultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReleaseInputVariableDefault)(nil)).Elem()
+}
+
+func (o ReleaseInputVariableDefaultArrayOutput) ToReleaseInputVariableDefaultArrayOutput() ReleaseInputVariableDefaultArrayOutput {
+	return o
+}
+
+func (o ReleaseInputVariableDefaultArrayOutput) ToReleaseInputVariableDefaultArrayOutputWithContext(ctx context.Context) ReleaseInputVariableDefaultArrayOutput {
+	return o
+}
+
+func (o ReleaseInputVariableDefaultArrayOutput) Index(i pulumi.IntInput) ReleaseInputVariableDefaultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReleaseInputVariableDefault {
+		return vs[0].([]ReleaseInputVariableDefault)[vs[1].(int)]
+	}).(ReleaseInputVariableDefaultOutput)
+}
+
+type ReleaseOutputVariable struct {
+	// Name of a supported variable type. Supported types are STRING, INT, BOOL.
+	// Possible values are: `TYPE_UNSPECIFIED`, `STRING`, `INT`, `BOOL`.
+	Type *string `pulumi:"type"`
+	// String encoded value for the variable.
+	Value *string `pulumi:"value"`
+	// Name of the variable from actuation configs.
+	Variable string `pulumi:"variable"`
+}
+
+// ReleaseOutputVariableInput is an input type that accepts ReleaseOutputVariableArgs and ReleaseOutputVariableOutput values.
+// You can construct a concrete instance of `ReleaseOutputVariableInput` via:
+//
+//	ReleaseOutputVariableArgs{...}
+type ReleaseOutputVariableInput interface {
+	pulumi.Input
+
+	ToReleaseOutputVariableOutput() ReleaseOutputVariableOutput
+	ToReleaseOutputVariableOutputWithContext(context.Context) ReleaseOutputVariableOutput
+}
+
+type ReleaseOutputVariableArgs struct {
+	// Name of a supported variable type. Supported types are STRING, INT, BOOL.
+	// Possible values are: `TYPE_UNSPECIFIED`, `STRING`, `INT`, `BOOL`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// String encoded value for the variable.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+	// Name of the variable from actuation configs.
+	Variable pulumi.StringInput `pulumi:"variable"`
+}
+
+func (ReleaseOutputVariableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseOutputVariable)(nil)).Elem()
+}
+
+func (i ReleaseOutputVariableArgs) ToReleaseOutputVariableOutput() ReleaseOutputVariableOutput {
+	return i.ToReleaseOutputVariableOutputWithContext(context.Background())
+}
+
+func (i ReleaseOutputVariableArgs) ToReleaseOutputVariableOutputWithContext(ctx context.Context) ReleaseOutputVariableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseOutputVariableOutput)
+}
+
+// ReleaseOutputVariableArrayInput is an input type that accepts ReleaseOutputVariableArray and ReleaseOutputVariableArrayOutput values.
+// You can construct a concrete instance of `ReleaseOutputVariableArrayInput` via:
+//
+//	ReleaseOutputVariableArray{ ReleaseOutputVariableArgs{...} }
+type ReleaseOutputVariableArrayInput interface {
+	pulumi.Input
+
+	ToReleaseOutputVariableArrayOutput() ReleaseOutputVariableArrayOutput
+	ToReleaseOutputVariableArrayOutputWithContext(context.Context) ReleaseOutputVariableArrayOutput
+}
+
+type ReleaseOutputVariableArray []ReleaseOutputVariableInput
+
+func (ReleaseOutputVariableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReleaseOutputVariable)(nil)).Elem()
+}
+
+func (i ReleaseOutputVariableArray) ToReleaseOutputVariableArrayOutput() ReleaseOutputVariableArrayOutput {
+	return i.ToReleaseOutputVariableArrayOutputWithContext(context.Background())
+}
+
+func (i ReleaseOutputVariableArray) ToReleaseOutputVariableArrayOutputWithContext(ctx context.Context) ReleaseOutputVariableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseOutputVariableArrayOutput)
+}
+
+type ReleaseOutputVariableOutput struct{ *pulumi.OutputState }
+
+func (ReleaseOutputVariableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseOutputVariable)(nil)).Elem()
+}
+
+func (o ReleaseOutputVariableOutput) ToReleaseOutputVariableOutput() ReleaseOutputVariableOutput {
+	return o
+}
+
+func (o ReleaseOutputVariableOutput) ToReleaseOutputVariableOutputWithContext(ctx context.Context) ReleaseOutputVariableOutput {
+	return o
+}
+
+// Name of a supported variable type. Supported types are STRING, INT, BOOL.
+// Possible values are: `TYPE_UNSPECIFIED`, `STRING`, `INT`, `BOOL`.
+func (o ReleaseOutputVariableOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseOutputVariable) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// String encoded value for the variable.
+func (o ReleaseOutputVariableOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseOutputVariable) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+// Name of the variable from actuation configs.
+func (o ReleaseOutputVariableOutput) Variable() pulumi.StringOutput {
+	return o.ApplyT(func(v ReleaseOutputVariable) string { return v.Variable }).(pulumi.StringOutput)
+}
+
+type ReleaseOutputVariableArrayOutput struct{ *pulumi.OutputState }
+
+func (ReleaseOutputVariableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReleaseOutputVariable)(nil)).Elem()
+}
+
+func (o ReleaseOutputVariableArrayOutput) ToReleaseOutputVariableArrayOutput() ReleaseOutputVariableArrayOutput {
+	return o
+}
+
+func (o ReleaseOutputVariableArrayOutput) ToReleaseOutputVariableArrayOutputWithContext(ctx context.Context) ReleaseOutputVariableArrayOutput {
+	return o
+}
+
+func (o ReleaseOutputVariableArrayOutput) Index(i pulumi.IntInput) ReleaseOutputVariableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReleaseOutputVariable {
+		return vs[0].([]ReleaseOutputVariable)[vs[1].(int)]
+	}).(ReleaseOutputVariableOutput)
+}
+
+type ReleaseReleaseRequirements struct {
+	// A list of releases from which a unit can be upgraded to this one
+	// (optional). If left empty no constraints will be applied. When provided,
+	// unit upgrade requests to this release will check and enforce this
+	// constraint.
+	UpgradeableFromReleases []string `pulumi:"upgradeableFromReleases"`
+}
+
+// ReleaseReleaseRequirementsInput is an input type that accepts ReleaseReleaseRequirementsArgs and ReleaseReleaseRequirementsOutput values.
+// You can construct a concrete instance of `ReleaseReleaseRequirementsInput` via:
+//
+//	ReleaseReleaseRequirementsArgs{...}
+type ReleaseReleaseRequirementsInput interface {
+	pulumi.Input
+
+	ToReleaseReleaseRequirementsOutput() ReleaseReleaseRequirementsOutput
+	ToReleaseReleaseRequirementsOutputWithContext(context.Context) ReleaseReleaseRequirementsOutput
+}
+
+type ReleaseReleaseRequirementsArgs struct {
+	// A list of releases from which a unit can be upgraded to this one
+	// (optional). If left empty no constraints will be applied. When provided,
+	// unit upgrade requests to this release will check and enforce this
+	// constraint.
+	UpgradeableFromReleases pulumi.StringArrayInput `pulumi:"upgradeableFromReleases"`
+}
+
+func (ReleaseReleaseRequirementsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseReleaseRequirements)(nil)).Elem()
+}
+
+func (i ReleaseReleaseRequirementsArgs) ToReleaseReleaseRequirementsOutput() ReleaseReleaseRequirementsOutput {
+	return i.ToReleaseReleaseRequirementsOutputWithContext(context.Background())
+}
+
+func (i ReleaseReleaseRequirementsArgs) ToReleaseReleaseRequirementsOutputWithContext(ctx context.Context) ReleaseReleaseRequirementsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseReleaseRequirementsOutput)
+}
+
+func (i ReleaseReleaseRequirementsArgs) ToReleaseReleaseRequirementsPtrOutput() ReleaseReleaseRequirementsPtrOutput {
+	return i.ToReleaseReleaseRequirementsPtrOutputWithContext(context.Background())
+}
+
+func (i ReleaseReleaseRequirementsArgs) ToReleaseReleaseRequirementsPtrOutputWithContext(ctx context.Context) ReleaseReleaseRequirementsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseReleaseRequirementsOutput).ToReleaseReleaseRequirementsPtrOutputWithContext(ctx)
+}
+
+// ReleaseReleaseRequirementsPtrInput is an input type that accepts ReleaseReleaseRequirementsArgs, ReleaseReleaseRequirementsPtr and ReleaseReleaseRequirementsPtrOutput values.
+// You can construct a concrete instance of `ReleaseReleaseRequirementsPtrInput` via:
+//
+//	        ReleaseReleaseRequirementsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ReleaseReleaseRequirementsPtrInput interface {
+	pulumi.Input
+
+	ToReleaseReleaseRequirementsPtrOutput() ReleaseReleaseRequirementsPtrOutput
+	ToReleaseReleaseRequirementsPtrOutputWithContext(context.Context) ReleaseReleaseRequirementsPtrOutput
+}
+
+type releaseReleaseRequirementsPtrType ReleaseReleaseRequirementsArgs
+
+func ReleaseReleaseRequirementsPtr(v *ReleaseReleaseRequirementsArgs) ReleaseReleaseRequirementsPtrInput {
+	return (*releaseReleaseRequirementsPtrType)(v)
+}
+
+func (*releaseReleaseRequirementsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseReleaseRequirements)(nil)).Elem()
+}
+
+func (i *releaseReleaseRequirementsPtrType) ToReleaseReleaseRequirementsPtrOutput() ReleaseReleaseRequirementsPtrOutput {
+	return i.ToReleaseReleaseRequirementsPtrOutputWithContext(context.Background())
+}
+
+func (i *releaseReleaseRequirementsPtrType) ToReleaseReleaseRequirementsPtrOutputWithContext(ctx context.Context) ReleaseReleaseRequirementsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseReleaseRequirementsPtrOutput)
+}
+
+type ReleaseReleaseRequirementsOutput struct{ *pulumi.OutputState }
+
+func (ReleaseReleaseRequirementsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseReleaseRequirements)(nil)).Elem()
+}
+
+func (o ReleaseReleaseRequirementsOutput) ToReleaseReleaseRequirementsOutput() ReleaseReleaseRequirementsOutput {
+	return o
+}
+
+func (o ReleaseReleaseRequirementsOutput) ToReleaseReleaseRequirementsOutputWithContext(ctx context.Context) ReleaseReleaseRequirementsOutput {
+	return o
+}
+
+func (o ReleaseReleaseRequirementsOutput) ToReleaseReleaseRequirementsPtrOutput() ReleaseReleaseRequirementsPtrOutput {
+	return o.ToReleaseReleaseRequirementsPtrOutputWithContext(context.Background())
+}
+
+func (o ReleaseReleaseRequirementsOutput) ToReleaseReleaseRequirementsPtrOutputWithContext(ctx context.Context) ReleaseReleaseRequirementsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReleaseReleaseRequirements) *ReleaseReleaseRequirements {
+		return &v
+	}).(ReleaseReleaseRequirementsPtrOutput)
+}
+
+// A list of releases from which a unit can be upgraded to this one
+// (optional). If left empty no constraints will be applied. When provided,
+// unit upgrade requests to this release will check and enforce this
+// constraint.
+func (o ReleaseReleaseRequirementsOutput) UpgradeableFromReleases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ReleaseReleaseRequirements) []string { return v.UpgradeableFromReleases }).(pulumi.StringArrayOutput)
+}
+
+type ReleaseReleaseRequirementsPtrOutput struct{ *pulumi.OutputState }
+
+func (ReleaseReleaseRequirementsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseReleaseRequirements)(nil)).Elem()
+}
+
+func (o ReleaseReleaseRequirementsPtrOutput) ToReleaseReleaseRequirementsPtrOutput() ReleaseReleaseRequirementsPtrOutput {
+	return o
+}
+
+func (o ReleaseReleaseRequirementsPtrOutput) ToReleaseReleaseRequirementsPtrOutputWithContext(ctx context.Context) ReleaseReleaseRequirementsPtrOutput {
+	return o
+}
+
+func (o ReleaseReleaseRequirementsPtrOutput) Elem() ReleaseReleaseRequirementsOutput {
+	return o.ApplyT(func(v *ReleaseReleaseRequirements) ReleaseReleaseRequirements {
+		if v != nil {
+			return *v
+		}
+		var ret ReleaseReleaseRequirements
+		return ret
+	}).(ReleaseReleaseRequirementsOutput)
+}
+
+// A list of releases from which a unit can be upgraded to this one
+// (optional). If left empty no constraints will be applied. When provided,
+// unit upgrade requests to this release will check and enforce this
+// constraint.
+func (o ReleaseReleaseRequirementsPtrOutput) UpgradeableFromReleases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ReleaseReleaseRequirements) []string {
+		if v == nil {
+			return nil
+		}
+		return v.UpgradeableFromReleases
+	}).(pulumi.StringArrayOutput)
+}
+
 type SaaSLocation struct {
 	// Name of location.
 	Name *string `pulumi:"name"`
@@ -1121,6 +1803,16 @@ func (o UnitKindOutputVariableMappingToPtrOutput) InputVariable() pulumi.StringP
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseBlueprintInput)(nil)).Elem(), ReleaseBlueprintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseBlueprintPtrInput)(nil)).Elem(), ReleaseBlueprintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseInputVariableInput)(nil)).Elem(), ReleaseInputVariableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseInputVariableArrayInput)(nil)).Elem(), ReleaseInputVariableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseInputVariableDefaultInput)(nil)).Elem(), ReleaseInputVariableDefaultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseInputVariableDefaultArrayInput)(nil)).Elem(), ReleaseInputVariableDefaultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseOutputVariableInput)(nil)).Elem(), ReleaseOutputVariableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseOutputVariableArrayInput)(nil)).Elem(), ReleaseOutputVariableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseReleaseRequirementsInput)(nil)).Elem(), ReleaseReleaseRequirementsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseReleaseRequirementsPtrInput)(nil)).Elem(), ReleaseReleaseRequirementsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SaaSLocationInput)(nil)).Elem(), SaaSLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SaaSLocationArrayInput)(nil)).Elem(), SaaSLocationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UnitKindDependencyInput)(nil)).Elem(), UnitKindDependencyArgs{})
@@ -1137,6 +1829,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*UnitKindOutputVariableMappingFromPtrInput)(nil)).Elem(), UnitKindOutputVariableMappingFromArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UnitKindOutputVariableMappingToInput)(nil)).Elem(), UnitKindOutputVariableMappingToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UnitKindOutputVariableMappingToPtrInput)(nil)).Elem(), UnitKindOutputVariableMappingToArgs{})
+	pulumi.RegisterOutputType(ReleaseBlueprintOutput{})
+	pulumi.RegisterOutputType(ReleaseBlueprintPtrOutput{})
+	pulumi.RegisterOutputType(ReleaseInputVariableOutput{})
+	pulumi.RegisterOutputType(ReleaseInputVariableArrayOutput{})
+	pulumi.RegisterOutputType(ReleaseInputVariableDefaultOutput{})
+	pulumi.RegisterOutputType(ReleaseInputVariableDefaultArrayOutput{})
+	pulumi.RegisterOutputType(ReleaseOutputVariableOutput{})
+	pulumi.RegisterOutputType(ReleaseOutputVariableArrayOutput{})
+	pulumi.RegisterOutputType(ReleaseReleaseRequirementsOutput{})
+	pulumi.RegisterOutputType(ReleaseReleaseRequirementsPtrOutput{})
 	pulumi.RegisterOutputType(SaaSLocationOutput{})
 	pulumi.RegisterOutputType(SaaSLocationArrayOutput{})
 	pulumi.RegisterOutputType(UnitKindDependencyOutput{})

@@ -1066,6 +1066,28 @@ class DatabaseInstance(pulumi.CustomResource):
             })
         ```
 
+        ### Cloud SQL Instance with Managed Connection Pooling
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.sql.DatabaseInstance("instance",
+            name="mcp-enabled-main-instance",
+            region="us-central1",
+            database_version="POSTGRES_16",
+            settings={
+                "tier": "db-perf-optimized-N-2",
+                "edition": "ENTERPRISE_PLUS",
+                "connection_pool_configs": [{
+                    "connection_pooling_enabled": True,
+                    "flags": [{
+                        "name": "max_client_connections",
+                        "value": "1980",
+                    }],
+                }],
+            })
+        ```
+
         ### Cloud SQL Instance with PSC connectivity
 
         ```python
@@ -1356,6 +1378,28 @@ class DatabaseInstance(pulumi.CustomResource):
                 "data_cache_config": {
                     "data_cache_enabled": True,
                 },
+            })
+        ```
+
+        ### Cloud SQL Instance with Managed Connection Pooling
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.sql.DatabaseInstance("instance",
+            name="mcp-enabled-main-instance",
+            region="us-central1",
+            database_version="POSTGRES_16",
+            settings={
+                "tier": "db-perf-optimized-N-2",
+                "edition": "ENTERPRISE_PLUS",
+                "connection_pool_configs": [{
+                    "connection_pooling_enabled": True,
+                    "flags": [{
+                        "name": "max_client_connections",
+                        "value": "1980",
+                    }],
+                }],
             })
         ```
 

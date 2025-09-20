@@ -280,6 +280,68 @@ import (
 //	}
 //
 // ```
+// ### Healthcare Fhir Store Validation Config
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			topic, err := pubsub.NewTopic(ctx, "topic", &pubsub.TopicArgs{
+//				Name: pulumi.String("fhir-notifications"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			dataset, err := healthcare.NewDataset(ctx, "dataset", &healthcare.DatasetArgs{
+//				Name:     pulumi.String("example-dataset"),
+//				Location: pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = healthcare.NewFhirStore(ctx, "default", &healthcare.FhirStoreArgs{
+//				Name:                            pulumi.String("example-fhir-store"),
+//				Dataset:                         dataset.ID(),
+//				Version:                         pulumi.String("R4"),
+//				ComplexDataTypeReferenceParsing: pulumi.String("DISABLED"),
+//				EnableUpdateCreate:              pulumi.Bool(false),
+//				DisableReferentialIntegrity:     pulumi.Bool(false),
+//				DisableResourceVersioning:       pulumi.Bool(false),
+//				EnableHistoryImport:             pulumi.Bool(false),
+//				DefaultSearchHandlingStrict:     pulumi.Bool(false),
+//				NotificationConfigs: healthcare.FhirStoreNotificationConfigArray{
+//					&healthcare.FhirStoreNotificationConfigArgs{
+//						PubsubTopic: topic.ID(),
+//					},
+//				},
+//				Labels: pulumi.StringMap{
+//					"label1": pulumi.String("labelvalue1"),
+//				},
+//				ValidationConfig: &healthcare.FhirStoreValidationConfigArgs{
+//					DisableProfileValidation:       pulumi.Bool(true),
+//					EnabledImplementationGuides:    pulumi.StringArray{},
+//					DisableRequiredFieldValidation: pulumi.Bool(true),
+//					DisableReferenceTypeValidation: pulumi.Bool(true),
+//					DisableFhirpathValidation:      pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -386,6 +448,9 @@ type FhirStore struct {
 	// the order of dozens of seconds) is expected before the results show up in the streaming destination.
 	// Structure is documented below.
 	StreamConfigs FhirStoreStreamConfigArrayOutput `pulumi:"streamConfigs"`
+	// Configuration for how to validate incoming FHIR resources against configured profiles.
+	// Structure is documented below.
+	ValidationConfig FhirStoreValidationConfigPtrOutput `pulumi:"validationConfig"`
 	// The FHIR specification version.
 	// Default value is `STU3`.
 	// Possible values are: `DSTU2`, `STU3`, `R4`.
@@ -515,6 +580,9 @@ type fhirStoreState struct {
 	// the order of dozens of seconds) is expected before the results show up in the streaming destination.
 	// Structure is documented below.
 	StreamConfigs []FhirStoreStreamConfig `pulumi:"streamConfigs"`
+	// Configuration for how to validate incoming FHIR resources against configured profiles.
+	// Structure is documented below.
+	ValidationConfig *FhirStoreValidationConfig `pulumi:"validationConfig"`
 	// The FHIR specification version.
 	// Default value is `STU3`.
 	// Possible values are: `DSTU2`, `STU3`, `R4`.
@@ -607,6 +675,9 @@ type FhirStoreState struct {
 	// the order of dozens of seconds) is expected before the results show up in the streaming destination.
 	// Structure is documented below.
 	StreamConfigs FhirStoreStreamConfigArrayInput
+	// Configuration for how to validate incoming FHIR resources against configured profiles.
+	// Structure is documented below.
+	ValidationConfig FhirStoreValidationConfigPtrInput
 	// The FHIR specification version.
 	// Default value is `STU3`.
 	// Possible values are: `DSTU2`, `STU3`, `R4`.
@@ -696,6 +767,9 @@ type fhirStoreArgs struct {
 	// the order of dozens of seconds) is expected before the results show up in the streaming destination.
 	// Structure is documented below.
 	StreamConfigs []FhirStoreStreamConfig `pulumi:"streamConfigs"`
+	// Configuration for how to validate incoming FHIR resources against configured profiles.
+	// Structure is documented below.
+	ValidationConfig *FhirStoreValidationConfig `pulumi:"validationConfig"`
 	// The FHIR specification version.
 	// Default value is `STU3`.
 	// Possible values are: `DSTU2`, `STU3`, `R4`.
@@ -782,6 +856,9 @@ type FhirStoreArgs struct {
 	// the order of dozens of seconds) is expected before the results show up in the streaming destination.
 	// Structure is documented below.
 	StreamConfigs FhirStoreStreamConfigArrayInput
+	// Configuration for how to validate incoming FHIR resources against configured profiles.
+	// Structure is documented below.
+	ValidationConfig FhirStoreValidationConfigPtrInput
 	// The FHIR specification version.
 	// Default value is `STU3`.
 	// Possible values are: `DSTU2`, `STU3`, `R4`.
@@ -1009,6 +1086,12 @@ func (o FhirStoreOutput) SelfLink() pulumi.StringOutput {
 // Structure is documented below.
 func (o FhirStoreOutput) StreamConfigs() FhirStoreStreamConfigArrayOutput {
 	return o.ApplyT(func(v *FhirStore) FhirStoreStreamConfigArrayOutput { return v.StreamConfigs }).(FhirStoreStreamConfigArrayOutput)
+}
+
+// Configuration for how to validate incoming FHIR resources against configured profiles.
+// Structure is documented below.
+func (o FhirStoreOutput) ValidationConfig() FhirStoreValidationConfigPtrOutput {
+	return o.ApplyT(func(v *FhirStore) FhirStoreValidationConfigPtrOutput { return v.ValidationConfig }).(FhirStoreValidationConfigPtrOutput)
 }
 
 // The FHIR specification version.

@@ -5,6 +5,7 @@ package com.pulumi.gcp.iam.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderExtendedAttributesOauth2ClientArgs;
 import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderExtraAttributesOauth2ClientArgs;
 import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderOidcArgs;
 import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderSamlArgs;
@@ -182,6 +183,41 @@ public final class WorkforcePoolProviderState extends com.pulumi.resources.Resou
     }
 
     /**
+     * The configuration for OAuth 2.0 client used to get the extended group
+     * memberships for user identities. Only the `AZURE_AD_GROUPS_ID` attribute
+     * type is supported. Extended groups supports a subset of Google Cloud
+     * services. When the user accesses these services, extended group memberships
+     * override the mapped `google.groups` attribute. Extended group memberships
+     * cannot be used in attribute mapping or attribute condition expressions.
+     * To keep extended group memberships up to date, extended groups are
+     * retrieved when the user signs in and at regular intervals during the user&#39;s
+     * active session. Each user identity in the workforce identity pool must map
+     * to a unique Microsoft Entra ID user.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="extendedAttributesOauth2Client")
+    private @Nullable Output<WorkforcePoolProviderExtendedAttributesOauth2ClientArgs> extendedAttributesOauth2Client;
+
+    /**
+     * @return The configuration for OAuth 2.0 client used to get the extended group
+     * memberships for user identities. Only the `AZURE_AD_GROUPS_ID` attribute
+     * type is supported. Extended groups supports a subset of Google Cloud
+     * services. When the user accesses these services, extended group memberships
+     * override the mapped `google.groups` attribute. Extended group memberships
+     * cannot be used in attribute mapping or attribute condition expressions.
+     * To keep extended group memberships up to date, extended groups are
+     * retrieved when the user signs in and at regular intervals during the user&#39;s
+     * active session. Each user identity in the workforce identity pool must map
+     * to a unique Microsoft Entra ID user.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<WorkforcePoolProviderExtendedAttributesOauth2ClientArgs>> extendedAttributesOauth2Client() {
+        return Optional.ofNullable(this.extendedAttributesOauth2Client);
+    }
+
+    /**
      * The configuration for OAuth 2.0 client used to get the additional user
      * attributes. This should be used when users can&#39;t get the desired claims
      * in authentication credentials. Currently this configuration is only
@@ -343,6 +379,7 @@ public final class WorkforcePoolProviderState extends com.pulumi.resources.Resou
         this.description = $.description;
         this.disabled = $.disabled;
         this.displayName = $.displayName;
+        this.extendedAttributesOauth2Client = $.extendedAttributesOauth2Client;
         this.extraAttributesOauth2Client = $.extraAttributesOauth2Client;
         this.location = $.location;
         this.name = $.name;
@@ -560,6 +597,47 @@ public final class WorkforcePoolProviderState extends com.pulumi.resources.Resou
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param extendedAttributesOauth2Client The configuration for OAuth 2.0 client used to get the extended group
+         * memberships for user identities. Only the `AZURE_AD_GROUPS_ID` attribute
+         * type is supported. Extended groups supports a subset of Google Cloud
+         * services. When the user accesses these services, extended group memberships
+         * override the mapped `google.groups` attribute. Extended group memberships
+         * cannot be used in attribute mapping or attribute condition expressions.
+         * To keep extended group memberships up to date, extended groups are
+         * retrieved when the user signs in and at regular intervals during the user&#39;s
+         * active session. Each user identity in the workforce identity pool must map
+         * to a unique Microsoft Entra ID user.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder extendedAttributesOauth2Client(@Nullable Output<WorkforcePoolProviderExtendedAttributesOauth2ClientArgs> extendedAttributesOauth2Client) {
+            $.extendedAttributesOauth2Client = extendedAttributesOauth2Client;
+            return this;
+        }
+
+        /**
+         * @param extendedAttributesOauth2Client The configuration for OAuth 2.0 client used to get the extended group
+         * memberships for user identities. Only the `AZURE_AD_GROUPS_ID` attribute
+         * type is supported. Extended groups supports a subset of Google Cloud
+         * services. When the user accesses these services, extended group memberships
+         * override the mapped `google.groups` attribute. Extended group memberships
+         * cannot be used in attribute mapping or attribute condition expressions.
+         * To keep extended group memberships up to date, extended groups are
+         * retrieved when the user signs in and at regular intervals during the user&#39;s
+         * active session. Each user identity in the workforce identity pool must map
+         * to a unique Microsoft Entra ID user.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder extendedAttributesOauth2Client(WorkforcePoolProviderExtendedAttributesOauth2ClientArgs extendedAttributesOauth2Client) {
+            return extendedAttributesOauth2Client(Output.of(extendedAttributesOauth2Client));
         }
 
         /**

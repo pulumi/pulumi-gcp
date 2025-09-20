@@ -5,6 +5,7 @@ package com.pulumi.gcp.certificateauthority.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.certificateauthority.inputs.CaPoolEncryptionSpecArgs;
 import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyArgs;
 import com.pulumi.gcp.certificateauthority.inputs.CaPoolPublishingOptionsArgs;
 import java.lang.String;
@@ -31,6 +32,27 @@ public final class CaPoolState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Map<String,String>>> effectiveLabels() {
         return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
+     * Used when customer would like to encrypt data at rest. The customer-provided key will be used
+     * to encrypt the Subject, SubjectAltNames and PEM-encoded certificate fields. When unspecified,
+     * customer data will remain unencrypted.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="encryptionSpec")
+    private @Nullable Output<CaPoolEncryptionSpecArgs> encryptionSpec;
+
+    /**
+     * @return Used when customer would like to encrypt data at rest. The customer-provided key will be used
+     * to encrypt the Subject, SubjectAltNames and PEM-encoded certificate fields. When unspecified,
+     * customer data will remain unencrypted.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<CaPoolEncryptionSpecArgs>> encryptionSpec() {
+        return Optional.ofNullable(this.encryptionSpec);
     }
 
     /**
@@ -179,6 +201,7 @@ public final class CaPoolState extends com.pulumi.resources.ResourceArgs {
 
     private CaPoolState(CaPoolState $) {
         this.effectiveLabels = $.effectiveLabels;
+        this.encryptionSpec = $.encryptionSpec;
         this.issuancePolicy = $.issuancePolicy;
         this.labels = $.labels;
         this.location = $.location;
@@ -226,6 +249,33 @@ public final class CaPoolState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
             return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
+         * @param encryptionSpec Used when customer would like to encrypt data at rest. The customer-provided key will be used
+         * to encrypt the Subject, SubjectAltNames and PEM-encoded certificate fields. When unspecified,
+         * customer data will remain unencrypted.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionSpec(@Nullable Output<CaPoolEncryptionSpecArgs> encryptionSpec) {
+            $.encryptionSpec = encryptionSpec;
+            return this;
+        }
+
+        /**
+         * @param encryptionSpec Used when customer would like to encrypt data at rest. The customer-provided key will be used
+         * to encrypt the Subject, SubjectAltNames and PEM-encoded certificate fields. When unspecified,
+         * customer data will remain unencrypted.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionSpec(CaPoolEncryptionSpecArgs encryptionSpec) {
+            return encryptionSpec(Output.of(encryptionSpec));
         }
 
         /**

@@ -95,6 +95,29 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ### Cloud SQL Instance with Managed Connection Pooling
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.sql.DatabaseInstance("instance", {
+ *     name: "mcp-enabled-main-instance",
+ *     region: "us-central1",
+ *     databaseVersion: "POSTGRES_16",
+ *     settings: {
+ *         tier: "db-perf-optimized-N-2",
+ *         edition: "ENTERPRISE_PLUS",
+ *         connectionPoolConfigs: [{
+ *             connectionPoolingEnabled: true,
+ *             flags: [{
+ *                 name: "max_client_connections",
+ *                 value: "1980",
+ *             }],
+ *         }],
+ *     },
+ * });
+ * ```
+ *
  * ### Cloud SQL Instance with PSC connectivity
  *
  * ```typescript

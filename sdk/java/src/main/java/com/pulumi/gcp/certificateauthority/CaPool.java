@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.certificateauthority.CaPoolArgs;
 import com.pulumi.gcp.certificateauthority.inputs.CaPoolState;
+import com.pulumi.gcp.certificateauthority.outputs.CaPoolEncryptionSpec;
 import com.pulumi.gcp.certificateauthority.outputs.CaPoolIssuancePolicy;
 import com.pulumi.gcp.certificateauthority.outputs.CaPoolPublishingOptions;
 import java.lang.String;
@@ -80,9 +81,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.projects.ServiceIdentity;
+ * import com.pulumi.gcp.projects.ServiceIdentityArgs;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
  * import com.pulumi.gcp.certificateauthority.CaPool;
  * import com.pulumi.gcp.certificateauthority.CaPoolArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.CaPoolPublishingOptionsArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CaPoolEncryptionSpecArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyAllowedIssuanceModesArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyIdentityConstraintsArgs;
@@ -93,6 +99,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -106,9 +113,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var privatecaSa = new ServiceIdentity("privatecaSa", ServiceIdentityArgs.builder()
+ *             .service("privateca.googleapis.com")
+ *             .build());
+ * 
+ *         var privatecaSaKeyuserEncrypterdecrypter = new CryptoKeyIAMMember("privatecaSaKeyuserEncrypterdecrypter", CryptoKeyIAMMemberArgs.builder()
+ *             .cryptoKeyId("projects/keys-project/locations/asia-east1/keyRings/key-ring/cryptoKeys/crypto-key")
+ *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+ *             .member(privatecaSa.member())
+ *             .build());
+ * 
  *         var default_ = new CaPool("default", CaPoolArgs.builder()
  *             .name("my-pool")
- *             .location("us-central1")
+ *             .location("asia-east1")
  *             .tier("ENTERPRISE")
  *             .publishingOptions(CaPoolPublishingOptionsArgs.builder()
  *                 .publishCaCert(false)
@@ -116,6 +133,9 @@ import javax.annotation.Nullable;
  *                 .encodingFormat("PEM")
  *                 .build())
  *             .labels(Map.of("foo", "bar"))
+ *             .encryptionSpec(CaPoolEncryptionSpecArgs.builder()
+ *                 .cloudKmsKey("projects/keys-project/locations/asia-east1/keyRings/key-ring/cryptoKeys/crypto-key")
+ *                 .build())
  *             .issuancePolicy(CaPoolIssuancePolicyArgs.builder()
  *                 .allowedKeyTypes(                
  *                     CaPoolIssuancePolicyAllowedKeyTypeArgs.builder()
@@ -218,7 +238,9 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(privatecaSaKeyuserEncrypterdecrypter)
+ *                 .build());
  * 
  *     }
  * }
@@ -265,6 +287,26 @@ public class CaPool extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
+    }
+    /**
+     * Used when customer would like to encrypt data at rest. The customer-provided key will be used
+     * to encrypt the Subject, SubjectAltNames and PEM-encoded certificate fields. When unspecified,
+     * customer data will remain unencrypted.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="encryptionSpec", refs={CaPoolEncryptionSpec.class}, tree="[0]")
+    private Output</* @Nullable */ CaPoolEncryptionSpec> encryptionSpec;
+
+    /**
+     * @return Used when customer would like to encrypt data at rest. The customer-provided key will be used
+     * to encrypt the Subject, SubjectAltNames and PEM-encoded certificate fields. When unspecified,
+     * customer data will remain unencrypted.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<CaPoolEncryptionSpec>> encryptionSpec() {
+        return Codegen.optional(this.encryptionSpec);
     }
     /**
      * The IssuancePolicy to control how Certificates will be issued from this CaPool.

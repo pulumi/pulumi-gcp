@@ -13,6 +13,155 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type HookPushOption struct {
+	// Trigger hook for matching branches only.
+	// Specified as glob pattern. If empty or *, events for all branches are
+	// reported. Examples: main, {main,release*}.
+	// See https://pkg.go.dev/github.com/gobwas/glob documentation.
+	BranchFilter *string `pulumi:"branchFilter"`
+}
+
+// HookPushOptionInput is an input type that accepts HookPushOptionArgs and HookPushOptionOutput values.
+// You can construct a concrete instance of `HookPushOptionInput` via:
+//
+//	HookPushOptionArgs{...}
+type HookPushOptionInput interface {
+	pulumi.Input
+
+	ToHookPushOptionOutput() HookPushOptionOutput
+	ToHookPushOptionOutputWithContext(context.Context) HookPushOptionOutput
+}
+
+type HookPushOptionArgs struct {
+	// Trigger hook for matching branches only.
+	// Specified as glob pattern. If empty or *, events for all branches are
+	// reported. Examples: main, {main,release*}.
+	// See https://pkg.go.dev/github.com/gobwas/glob documentation.
+	BranchFilter pulumi.StringPtrInput `pulumi:"branchFilter"`
+}
+
+func (HookPushOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HookPushOption)(nil)).Elem()
+}
+
+func (i HookPushOptionArgs) ToHookPushOptionOutput() HookPushOptionOutput {
+	return i.ToHookPushOptionOutputWithContext(context.Background())
+}
+
+func (i HookPushOptionArgs) ToHookPushOptionOutputWithContext(ctx context.Context) HookPushOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HookPushOptionOutput)
+}
+
+func (i HookPushOptionArgs) ToHookPushOptionPtrOutput() HookPushOptionPtrOutput {
+	return i.ToHookPushOptionPtrOutputWithContext(context.Background())
+}
+
+func (i HookPushOptionArgs) ToHookPushOptionPtrOutputWithContext(ctx context.Context) HookPushOptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HookPushOptionOutput).ToHookPushOptionPtrOutputWithContext(ctx)
+}
+
+// HookPushOptionPtrInput is an input type that accepts HookPushOptionArgs, HookPushOptionPtr and HookPushOptionPtrOutput values.
+// You can construct a concrete instance of `HookPushOptionPtrInput` via:
+//
+//	        HookPushOptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type HookPushOptionPtrInput interface {
+	pulumi.Input
+
+	ToHookPushOptionPtrOutput() HookPushOptionPtrOutput
+	ToHookPushOptionPtrOutputWithContext(context.Context) HookPushOptionPtrOutput
+}
+
+type hookPushOptionPtrType HookPushOptionArgs
+
+func HookPushOptionPtr(v *HookPushOptionArgs) HookPushOptionPtrInput {
+	return (*hookPushOptionPtrType)(v)
+}
+
+func (*hookPushOptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HookPushOption)(nil)).Elem()
+}
+
+func (i *hookPushOptionPtrType) ToHookPushOptionPtrOutput() HookPushOptionPtrOutput {
+	return i.ToHookPushOptionPtrOutputWithContext(context.Background())
+}
+
+func (i *hookPushOptionPtrType) ToHookPushOptionPtrOutputWithContext(ctx context.Context) HookPushOptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HookPushOptionPtrOutput)
+}
+
+type HookPushOptionOutput struct{ *pulumi.OutputState }
+
+func (HookPushOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HookPushOption)(nil)).Elem()
+}
+
+func (o HookPushOptionOutput) ToHookPushOptionOutput() HookPushOptionOutput {
+	return o
+}
+
+func (o HookPushOptionOutput) ToHookPushOptionOutputWithContext(ctx context.Context) HookPushOptionOutput {
+	return o
+}
+
+func (o HookPushOptionOutput) ToHookPushOptionPtrOutput() HookPushOptionPtrOutput {
+	return o.ToHookPushOptionPtrOutputWithContext(context.Background())
+}
+
+func (o HookPushOptionOutput) ToHookPushOptionPtrOutputWithContext(ctx context.Context) HookPushOptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HookPushOption) *HookPushOption {
+		return &v
+	}).(HookPushOptionPtrOutput)
+}
+
+// Trigger hook for matching branches only.
+// Specified as glob pattern. If empty or *, events for all branches are
+// reported. Examples: main, {main,release*}.
+// See https://pkg.go.dev/github.com/gobwas/glob documentation.
+func (o HookPushOptionOutput) BranchFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HookPushOption) *string { return v.BranchFilter }).(pulumi.StringPtrOutput)
+}
+
+type HookPushOptionPtrOutput struct{ *pulumi.OutputState }
+
+func (HookPushOptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HookPushOption)(nil)).Elem()
+}
+
+func (o HookPushOptionPtrOutput) ToHookPushOptionPtrOutput() HookPushOptionPtrOutput {
+	return o
+}
+
+func (o HookPushOptionPtrOutput) ToHookPushOptionPtrOutputWithContext(ctx context.Context) HookPushOptionPtrOutput {
+	return o
+}
+
+func (o HookPushOptionPtrOutput) Elem() HookPushOptionOutput {
+	return o.ApplyT(func(v *HookPushOption) HookPushOption {
+		if v != nil {
+			return *v
+		}
+		var ret HookPushOption
+		return ret
+	}).(HookPushOptionOutput)
+}
+
+// Trigger hook for matching branches only.
+// Specified as glob pattern. If empty or *, events for all branches are
+// reported. Examples: main, {main,release*}.
+// See https://pkg.go.dev/github.com/gobwas/glob documentation.
+func (o HookPushOptionPtrOutput) BranchFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HookPushOption) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BranchFilter
+	}).(pulumi.StringPtrOutput)
+}
+
 type InstanceHostConfig struct {
 	// (Output)
 	// API hostname.
@@ -1471,6 +1620,8 @@ func (o RepositoryUriArrayOutput) Index(i pulumi.IntInput) RepositoryUriOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*HookPushOptionInput)(nil)).Elem(), HookPushOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HookPushOptionPtrInput)(nil)).Elem(), HookPushOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceHostConfigInput)(nil)).Elem(), InstanceHostConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceHostConfigArrayInput)(nil)).Elem(), InstanceHostConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIamBindingConditionInput)(nil)).Elem(), InstanceIamBindingConditionArgs{})
@@ -1489,6 +1640,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryInitialConfigPtrInput)(nil)).Elem(), RepositoryInitialConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryUriInput)(nil)).Elem(), RepositoryUriArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryUriArrayInput)(nil)).Elem(), RepositoryUriArray{})
+	pulumi.RegisterOutputType(HookPushOptionOutput{})
+	pulumi.RegisterOutputType(HookPushOptionPtrOutput{})
 	pulumi.RegisterOutputType(InstanceHostConfigOutput{})
 	pulumi.RegisterOutputType(InstanceHostConfigArrayOutput{})
 	pulumi.RegisterOutputType(InstanceIamBindingConditionOutput{})

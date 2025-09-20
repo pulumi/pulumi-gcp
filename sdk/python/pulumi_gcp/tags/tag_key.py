@@ -32,7 +32,7 @@ class TagKeyArgs:
         :param pulumi.Input[_builtins.str] description: User-assigned description of the TagKey. Must not exceed 256 characters.
         :param pulumi.Input[_builtins.str] purpose: Optional. A purpose cannot be changed once set.
                A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
-               Possible values are: `GCE_FIREWALL`.
+               Possible values are: `GCE_FIREWALL`, `DATA_GOVERNANCE`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] purpose_data: Optional. Purpose data cannot be changed once set.
                Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = "<project-name>/<vpc-name>"`.
         """
@@ -88,7 +88,7 @@ class TagKeyArgs:
         """
         Optional. A purpose cannot be changed once set.
         A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
-        Possible values are: `GCE_FIREWALL`.
+        Possible values are: `GCE_FIREWALL`, `DATA_GOVERNANCE`.
         """
         return pulumi.get(self, "purpose")
 
@@ -132,7 +132,7 @@ class _TagKeyState:
         :param pulumi.Input[_builtins.str] parent: Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id} or projects/{project_id_or_number}.
         :param pulumi.Input[_builtins.str] purpose: Optional. A purpose cannot be changed once set.
                A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
-               Possible values are: `GCE_FIREWALL`.
+               Possible values are: `GCE_FIREWALL`, `DATA_GOVERNANCE`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] purpose_data: Optional. Purpose data cannot be changed once set.
                Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = "<project-name>/<vpc-name>"`.
         :param pulumi.Input[_builtins.str] short_name: Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
@@ -226,7 +226,7 @@ class _TagKeyState:
         """
         Optional. A purpose cannot be changed once set.
         A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
-        Possible values are: `GCE_FIREWALL`.
+        Possible values are: `GCE_FIREWALL`, `DATA_GOVERNANCE`.
         """
         return pulumi.get(self, "purpose")
 
@@ -333,7 +333,7 @@ class TagKey(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] parent: Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id} or projects/{project_id_or_number}.
         :param pulumi.Input[_builtins.str] purpose: Optional. A purpose cannot be changed once set.
                A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
-               Possible values are: `GCE_FIREWALL`.
+               Possible values are: `GCE_FIREWALL`, `DATA_GOVERNANCE`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] purpose_data: Optional. Purpose data cannot be changed once set.
                Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = "<project-name>/<vpc-name>"`.
         :param pulumi.Input[_builtins.str] short_name: Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
@@ -462,7 +462,7 @@ class TagKey(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] parent: Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id} or projects/{project_id_or_number}.
         :param pulumi.Input[_builtins.str] purpose: Optional. A purpose cannot be changed once set.
                A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
-               Possible values are: `GCE_FIREWALL`.
+               Possible values are: `GCE_FIREWALL`, `DATA_GOVERNANCE`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] purpose_data: Optional. Purpose data cannot be changed once set.
                Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = "<project-name>/<vpc-name>"`.
         :param pulumi.Input[_builtins.str] short_name: Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
@@ -532,7 +532,7 @@ class TagKey(pulumi.CustomResource):
         """
         Optional. A purpose cannot be changed once set.
         A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
-        Possible values are: `GCE_FIREWALL`.
+        Possible values are: `GCE_FIREWALL`, `DATA_GOVERNANCE`.
         """
         return pulumi.get(self, "purpose")
 

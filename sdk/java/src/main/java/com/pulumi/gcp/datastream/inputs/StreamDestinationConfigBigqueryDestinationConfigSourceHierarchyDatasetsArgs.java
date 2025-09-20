@@ -7,7 +7,10 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs;
+import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs extends com.pulumi.resources.ResourceArgs {
@@ -31,10 +34,26 @@ public final class StreamDestinationConfigBigqueryDestinationConfigSourceHierarc
         return this.datasetTemplate;
     }
 
+    /**
+     * Optional. The project id of the BigQuery dataset. If not specified, the project will be inferred from the stream resource.
+     * 
+     */
+    @Import(name="projectId")
+    private @Nullable Output<String> projectId;
+
+    /**
+     * @return Optional. The project id of the BigQuery dataset. If not specified, the project will be inferred from the stream resource.
+     * 
+     */
+    public Optional<Output<String>> projectId() {
+        return Optional.ofNullable(this.projectId);
+    }
+
     private StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs() {}
 
     private StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs $) {
         this.datasetTemplate = $.datasetTemplate;
+        this.projectId = $.projectId;
     }
 
     public static Builder builder() {
@@ -76,6 +95,27 @@ public final class StreamDestinationConfigBigqueryDestinationConfigSourceHierarc
          */
         public Builder datasetTemplate(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs datasetTemplate) {
             return datasetTemplate(Output.of(datasetTemplate));
+        }
+
+        /**
+         * @param projectId Optional. The project id of the BigQuery dataset. If not specified, the project will be inferred from the stream resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(@Nullable Output<String> projectId) {
+            $.projectId = projectId;
+            return this;
+        }
+
+        /**
+         * @param projectId Optional. The project id of the BigQuery dataset. If not specified, the project will be inferred from the stream resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(String projectId) {
+            return projectId(Output.of(projectId));
         }
 
         public StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs build() {

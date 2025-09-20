@@ -15,6 +15,8 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'HookPushOptionArgs',
+    'HookPushOptionArgsDict',
     'InstanceHostConfigArgs',
     'InstanceHostConfigArgsDict',
     'InstanceIamBindingConditionArgs',
@@ -36,6 +38,47 @@ __all__ = [
 ]
 
 MYPY = False
+
+if not MYPY:
+    class HookPushOptionArgsDict(TypedDict):
+        branch_filter: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Trigger hook for matching branches only.
+        Specified as glob pattern. If empty or *, events for all branches are
+        reported. Examples: main, {main,release*}.
+        See https://pkg.go.dev/github.com/gobwas/glob documentation.
+        """
+elif False:
+    HookPushOptionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class HookPushOptionArgs:
+    def __init__(__self__, *,
+                 branch_filter: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] branch_filter: Trigger hook for matching branches only.
+               Specified as glob pattern. If empty or *, events for all branches are
+               reported. Examples: main, {main,release*}.
+               See https://pkg.go.dev/github.com/gobwas/glob documentation.
+        """
+        if branch_filter is not None:
+            pulumi.set(__self__, "branch_filter", branch_filter)
+
+    @_builtins.property
+    @pulumi.getter(name="branchFilter")
+    def branch_filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Trigger hook for matching branches only.
+        Specified as glob pattern. If empty or *, events for all branches are
+        reported. Examples: main, {main,release*}.
+        See https://pkg.go.dev/github.com/gobwas/glob documentation.
+        """
+        return pulumi.get(self, "branch_filter")
+
+    @branch_filter.setter
+    def branch_filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "branch_filter", value)
+
 
 if not MYPY:
     class InstanceHostConfigArgsDict(TypedDict):

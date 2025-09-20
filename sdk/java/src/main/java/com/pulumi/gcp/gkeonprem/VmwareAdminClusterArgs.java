@@ -15,6 +15,7 @@ import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterLoadBalancerArgs;
 import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterNetworkConfigArgs;
 import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterPlatformConfigArgs;
 import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterPrivateRegistryConfigArgs;
+import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterProxyArgs;
 import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterVcenterArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -341,6 +342,23 @@ public final class VmwareAdminClusterArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Configuration for proxy.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="proxy")
+    private @Nullable Output<VmwareAdminClusterProxyArgs> proxy;
+
+    /**
+     * @return Configuration for proxy.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<VmwareAdminClusterProxyArgs>> proxy() {
+        return Optional.ofNullable(this.proxy);
+    }
+
+    /**
      * Specifies vCenter config for the admin cluster.
      * Structure is documented below.
      * 
@@ -378,6 +396,7 @@ public final class VmwareAdminClusterArgs extends com.pulumi.resources.ResourceA
         this.platformConfig = $.platformConfig;
         this.privateRegistryConfig = $.privateRegistryConfig;
         this.project = $.project;
+        this.proxy = $.proxy;
         this.vcenter = $.vcenter;
     }
 
@@ -817,6 +836,29 @@ public final class VmwareAdminClusterArgs extends com.pulumi.resources.ResourceA
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param proxy Configuration for proxy.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder proxy(@Nullable Output<VmwareAdminClusterProxyArgs> proxy) {
+            $.proxy = proxy;
+            return this;
+        }
+
+        /**
+         * @param proxy Configuration for proxy.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder proxy(VmwareAdminClusterProxyArgs proxy) {
+            return proxy(Output.of(proxy));
         }
 
         /**

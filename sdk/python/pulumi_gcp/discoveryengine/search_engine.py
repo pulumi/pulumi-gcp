@@ -27,6 +27,7 @@ class SearchEngineArgs:
                  engine_id: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  search_engine_config: pulumi.Input['SearchEngineSearchEngineConfigArgs'],
+                 app_type: Optional[pulumi.Input[_builtins.str]] = None,
                  common_config: Optional[pulumi.Input['SearchEngineCommonConfigArgs']] = None,
                  industry_vertical: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None):
@@ -39,6 +40,8 @@ class SearchEngineArgs:
         :param pulumi.Input[_builtins.str] location: Location.
         :param pulumi.Input['SearchEngineSearchEngineConfigArgs'] search_engine_config: Configurations for a Search Engine.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] app_type: This is the application type this engine resource represents.
+               The supported values: 'APP_TYPE_UNSPECIFIED', 'APP_TYPE_INTRANET'.
         :param pulumi.Input['SearchEngineCommonConfigArgs'] common_config: Common config spec that specifies the metadata of the engine.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] industry_vertical: The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
@@ -53,6 +56,8 @@ class SearchEngineArgs:
         pulumi.set(__self__, "engine_id", engine_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "search_engine_config", search_engine_config)
+        if app_type is not None:
+            pulumi.set(__self__, "app_type", app_type)
         if common_config is not None:
             pulumi.set(__self__, "common_config", common_config)
         if industry_vertical is not None:
@@ -134,6 +139,19 @@ class SearchEngineArgs:
         pulumi.set(self, "search_engine_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="appType")
+    def app_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        This is the application type this engine resource represents.
+        The supported values: 'APP_TYPE_UNSPECIFIED', 'APP_TYPE_INTRANET'.
+        """
+        return pulumi.get(self, "app_type")
+
+    @app_type.setter
+    def app_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "app_type", value)
+
+    @_builtins.property
     @pulumi.getter(name="commonConfig")
     def common_config(self) -> Optional[pulumi.Input['SearchEngineCommonConfigArgs']]:
         """
@@ -177,6 +195,7 @@ class SearchEngineArgs:
 @pulumi.input_type
 class _SearchEngineState:
     def __init__(__self__, *,
+                 app_type: Optional[pulumi.Input[_builtins.str]] = None,
                  collection_id: Optional[pulumi.Input[_builtins.str]] = None,
                  common_config: Optional[pulumi.Input['SearchEngineCommonConfigArgs']] = None,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
@@ -191,6 +210,8 @@ class _SearchEngineState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SearchEngine resources.
+        :param pulumi.Input[_builtins.str] app_type: This is the application type this engine resource represents.
+               The supported values: 'APP_TYPE_UNSPECIFIED', 'APP_TYPE_INTRANET'.
         :param pulumi.Input[_builtins.str] collection_id: The collection ID.
         :param pulumi.Input['SearchEngineCommonConfigArgs'] common_config: Common config spec that specifies the metadata of the engine.
                Structure is documented below.
@@ -212,6 +233,8 @@ class _SearchEngineState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: Timestamp the Engine was last updated.
         """
+        if app_type is not None:
+            pulumi.set(__self__, "app_type", app_type)
         if collection_id is not None:
             pulumi.set(__self__, "collection_id", collection_id)
         if common_config is not None:
@@ -236,6 +259,19 @@ class _SearchEngineState:
             pulumi.set(__self__, "search_engine_config", search_engine_config)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter(name="appType")
+    def app_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        This is the application type this engine resource represents.
+        The supported values: 'APP_TYPE_UNSPECIFIED', 'APP_TYPE_INTRANET'.
+        """
+        return pulumi.get(self, "app_type")
+
+    @app_type.setter
+    def app_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "app_type", value)
 
     @_builtins.property
     @pulumi.getter(name="collectionId")
@@ -396,6 +432,7 @@ class SearchEngine(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 app_type: Optional[pulumi.Input[_builtins.str]] = None,
                  collection_id: Optional[pulumi.Input[_builtins.str]] = None,
                  common_config: Optional[pulumi.Input[Union['SearchEngineCommonConfigArgs', 'SearchEngineCommonConfigArgsDict']]] = None,
                  data_store_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -439,6 +476,29 @@ class SearchEngine(pulumi.CustomResource):
             data_store_ids=[basic.data_store_id],
             search_engine_config={})
         ```
+        ### Discoveryengine Searchengine Agentspace Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        agentspace_basic = gcp.discoveryengine.DataStore("agentspace_basic",
+            location="global",
+            data_store_id="example-datastore-id",
+            display_name="tf-test-structured-datastore",
+            industry_vertical="GENERIC",
+            content_config="NO_CONTENT",
+            solution_types=["SOLUTION_TYPE_SEARCH"],
+            create_advanced_site_search=False)
+        agentspace_basic_search_engine = gcp.discoveryengine.SearchEngine("agentspace_basic",
+            engine_id="example-engine-id",
+            collection_id="default_collection",
+            location=agentspace_basic.location,
+            display_name="tf-test-agentspace-search-engine",
+            data_store_ids=[agentspace_basic.data_store_id],
+            industry_vertical="GENERIC",
+            search_engine_config={})
+        ```
 
         ## Import
 
@@ -466,6 +526,8 @@ class SearchEngine(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] app_type: This is the application type this engine resource represents.
+               The supported values: 'APP_TYPE_UNSPECIFIED', 'APP_TYPE_INTRANET'.
         :param pulumi.Input[_builtins.str] collection_id: The collection ID.
         :param pulumi.Input[Union['SearchEngineCommonConfigArgs', 'SearchEngineCommonConfigArgsDict']] common_config: Common config spec that specifies the metadata of the engine.
                Structure is documented below.
@@ -520,6 +582,29 @@ class SearchEngine(pulumi.CustomResource):
             data_store_ids=[basic.data_store_id],
             search_engine_config={})
         ```
+        ### Discoveryengine Searchengine Agentspace Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        agentspace_basic = gcp.discoveryengine.DataStore("agentspace_basic",
+            location="global",
+            data_store_id="example-datastore-id",
+            display_name="tf-test-structured-datastore",
+            industry_vertical="GENERIC",
+            content_config="NO_CONTENT",
+            solution_types=["SOLUTION_TYPE_SEARCH"],
+            create_advanced_site_search=False)
+        agentspace_basic_search_engine = gcp.discoveryengine.SearchEngine("agentspace_basic",
+            engine_id="example-engine-id",
+            collection_id="default_collection",
+            location=agentspace_basic.location,
+            display_name="tf-test-agentspace-search-engine",
+            data_store_ids=[agentspace_basic.data_store_id],
+            industry_vertical="GENERIC",
+            search_engine_config={})
+        ```
 
         ## Import
 
@@ -560,6 +645,7 @@ class SearchEngine(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 app_type: Optional[pulumi.Input[_builtins.str]] = None,
                  collection_id: Optional[pulumi.Input[_builtins.str]] = None,
                  common_config: Optional[pulumi.Input[Union['SearchEngineCommonConfigArgs', 'SearchEngineCommonConfigArgsDict']]] = None,
                  data_store_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -578,6 +664,7 @@ class SearchEngine(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SearchEngineArgs.__new__(SearchEngineArgs)
 
+            __props__.__dict__["app_type"] = app_type
             if collection_id is None and not opts.urn:
                 raise TypeError("Missing required property 'collection_id'")
             __props__.__dict__["collection_id"] = collection_id
@@ -612,6 +699,7 @@ class SearchEngine(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            app_type: Optional[pulumi.Input[_builtins.str]] = None,
             collection_id: Optional[pulumi.Input[_builtins.str]] = None,
             common_config: Optional[pulumi.Input[Union['SearchEngineCommonConfigArgs', 'SearchEngineCommonConfigArgsDict']]] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
@@ -631,6 +719,8 @@ class SearchEngine(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] app_type: This is the application type this engine resource represents.
+               The supported values: 'APP_TYPE_UNSPECIFIED', 'APP_TYPE_INTRANET'.
         :param pulumi.Input[_builtins.str] collection_id: The collection ID.
         :param pulumi.Input[Union['SearchEngineCommonConfigArgs', 'SearchEngineCommonConfigArgsDict']] common_config: Common config spec that specifies the metadata of the engine.
                Structure is documented below.
@@ -656,6 +746,7 @@ class SearchEngine(pulumi.CustomResource):
 
         __props__ = _SearchEngineState.__new__(_SearchEngineState)
 
+        __props__.__dict__["app_type"] = app_type
         __props__.__dict__["collection_id"] = collection_id
         __props__.__dict__["common_config"] = common_config
         __props__.__dict__["create_time"] = create_time
@@ -669,6 +760,15 @@ class SearchEngine(pulumi.CustomResource):
         __props__.__dict__["search_engine_config"] = search_engine_config
         __props__.__dict__["update_time"] = update_time
         return SearchEngine(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="appType")
+    def app_type(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        This is the application type this engine resource represents.
+        The supported values: 'APP_TYPE_UNSPECIFIED', 'APP_TYPE_INTRANET'.
+        """
+        return pulumi.get(self, "app_type")
 
     @_builtins.property
     @pulumi.getter(name="collectionId")

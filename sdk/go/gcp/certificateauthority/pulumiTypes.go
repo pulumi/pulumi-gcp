@@ -3650,6 +3650,147 @@ func (o AuthorityUserDefinedAccessUrlsPtrOutput) CrlAccessUrls() pulumi.StringAr
 	}).(pulumi.StringArrayOutput)
 }
 
+type CaPoolEncryptionSpec struct {
+	// The resource name for an existing Cloud KMS key in the format
+	// `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+	CloudKmsKey *string `pulumi:"cloudKmsKey"`
+}
+
+// CaPoolEncryptionSpecInput is an input type that accepts CaPoolEncryptionSpecArgs and CaPoolEncryptionSpecOutput values.
+// You can construct a concrete instance of `CaPoolEncryptionSpecInput` via:
+//
+//	CaPoolEncryptionSpecArgs{...}
+type CaPoolEncryptionSpecInput interface {
+	pulumi.Input
+
+	ToCaPoolEncryptionSpecOutput() CaPoolEncryptionSpecOutput
+	ToCaPoolEncryptionSpecOutputWithContext(context.Context) CaPoolEncryptionSpecOutput
+}
+
+type CaPoolEncryptionSpecArgs struct {
+	// The resource name for an existing Cloud KMS key in the format
+	// `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+	CloudKmsKey pulumi.StringPtrInput `pulumi:"cloudKmsKey"`
+}
+
+func (CaPoolEncryptionSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CaPoolEncryptionSpec)(nil)).Elem()
+}
+
+func (i CaPoolEncryptionSpecArgs) ToCaPoolEncryptionSpecOutput() CaPoolEncryptionSpecOutput {
+	return i.ToCaPoolEncryptionSpecOutputWithContext(context.Background())
+}
+
+func (i CaPoolEncryptionSpecArgs) ToCaPoolEncryptionSpecOutputWithContext(ctx context.Context) CaPoolEncryptionSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CaPoolEncryptionSpecOutput)
+}
+
+func (i CaPoolEncryptionSpecArgs) ToCaPoolEncryptionSpecPtrOutput() CaPoolEncryptionSpecPtrOutput {
+	return i.ToCaPoolEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i CaPoolEncryptionSpecArgs) ToCaPoolEncryptionSpecPtrOutputWithContext(ctx context.Context) CaPoolEncryptionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CaPoolEncryptionSpecOutput).ToCaPoolEncryptionSpecPtrOutputWithContext(ctx)
+}
+
+// CaPoolEncryptionSpecPtrInput is an input type that accepts CaPoolEncryptionSpecArgs, CaPoolEncryptionSpecPtr and CaPoolEncryptionSpecPtrOutput values.
+// You can construct a concrete instance of `CaPoolEncryptionSpecPtrInput` via:
+//
+//	        CaPoolEncryptionSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type CaPoolEncryptionSpecPtrInput interface {
+	pulumi.Input
+
+	ToCaPoolEncryptionSpecPtrOutput() CaPoolEncryptionSpecPtrOutput
+	ToCaPoolEncryptionSpecPtrOutputWithContext(context.Context) CaPoolEncryptionSpecPtrOutput
+}
+
+type caPoolEncryptionSpecPtrType CaPoolEncryptionSpecArgs
+
+func CaPoolEncryptionSpecPtr(v *CaPoolEncryptionSpecArgs) CaPoolEncryptionSpecPtrInput {
+	return (*caPoolEncryptionSpecPtrType)(v)
+}
+
+func (*caPoolEncryptionSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CaPoolEncryptionSpec)(nil)).Elem()
+}
+
+func (i *caPoolEncryptionSpecPtrType) ToCaPoolEncryptionSpecPtrOutput() CaPoolEncryptionSpecPtrOutput {
+	return i.ToCaPoolEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *caPoolEncryptionSpecPtrType) ToCaPoolEncryptionSpecPtrOutputWithContext(ctx context.Context) CaPoolEncryptionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CaPoolEncryptionSpecPtrOutput)
+}
+
+type CaPoolEncryptionSpecOutput struct{ *pulumi.OutputState }
+
+func (CaPoolEncryptionSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CaPoolEncryptionSpec)(nil)).Elem()
+}
+
+func (o CaPoolEncryptionSpecOutput) ToCaPoolEncryptionSpecOutput() CaPoolEncryptionSpecOutput {
+	return o
+}
+
+func (o CaPoolEncryptionSpecOutput) ToCaPoolEncryptionSpecOutputWithContext(ctx context.Context) CaPoolEncryptionSpecOutput {
+	return o
+}
+
+func (o CaPoolEncryptionSpecOutput) ToCaPoolEncryptionSpecPtrOutput() CaPoolEncryptionSpecPtrOutput {
+	return o.ToCaPoolEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (o CaPoolEncryptionSpecOutput) ToCaPoolEncryptionSpecPtrOutputWithContext(ctx context.Context) CaPoolEncryptionSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CaPoolEncryptionSpec) *CaPoolEncryptionSpec {
+		return &v
+	}).(CaPoolEncryptionSpecPtrOutput)
+}
+
+// The resource name for an existing Cloud KMS key in the format
+// `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+func (o CaPoolEncryptionSpecOutput) CloudKmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CaPoolEncryptionSpec) *string { return v.CloudKmsKey }).(pulumi.StringPtrOutput)
+}
+
+type CaPoolEncryptionSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (CaPoolEncryptionSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CaPoolEncryptionSpec)(nil)).Elem()
+}
+
+func (o CaPoolEncryptionSpecPtrOutput) ToCaPoolEncryptionSpecPtrOutput() CaPoolEncryptionSpecPtrOutput {
+	return o
+}
+
+func (o CaPoolEncryptionSpecPtrOutput) ToCaPoolEncryptionSpecPtrOutputWithContext(ctx context.Context) CaPoolEncryptionSpecPtrOutput {
+	return o
+}
+
+func (o CaPoolEncryptionSpecPtrOutput) Elem() CaPoolEncryptionSpecOutput {
+	return o.ApplyT(func(v *CaPoolEncryptionSpec) CaPoolEncryptionSpec {
+		if v != nil {
+			return *v
+		}
+		var ret CaPoolEncryptionSpec
+		return ret
+	}).(CaPoolEncryptionSpecOutput)
+}
+
+// The resource name for an existing Cloud KMS key in the format
+// `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+func (o CaPoolEncryptionSpecPtrOutput) CloudKmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CaPoolEncryptionSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudKmsKey
+	}).(pulumi.StringPtrOutput)
+}
+
 type CaPoolIamBindingCondition struct {
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
@@ -18869,6 +19010,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthoritySubordinateConfigPemIssuerChainPtrInput)(nil)).Elem(), AuthoritySubordinateConfigPemIssuerChainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityUserDefinedAccessUrlsInput)(nil)).Elem(), AuthorityUserDefinedAccessUrlsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityUserDefinedAccessUrlsPtrInput)(nil)).Elem(), AuthorityUserDefinedAccessUrlsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolEncryptionSpecInput)(nil)).Elem(), CaPoolEncryptionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolEncryptionSpecPtrInput)(nil)).Elem(), CaPoolEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolIamBindingConditionInput)(nil)).Elem(), CaPoolIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolIamBindingConditionPtrInput)(nil)).Elem(), CaPoolIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolIamMemberConditionInput)(nil)).Elem(), CaPoolIamMemberConditionArgs{})
@@ -19091,6 +19234,8 @@ func init() {
 	pulumi.RegisterOutputType(AuthoritySubordinateConfigPemIssuerChainPtrOutput{})
 	pulumi.RegisterOutputType(AuthorityUserDefinedAccessUrlsOutput{})
 	pulumi.RegisterOutputType(AuthorityUserDefinedAccessUrlsPtrOutput{})
+	pulumi.RegisterOutputType(CaPoolEncryptionSpecOutput{})
+	pulumi.RegisterOutputType(CaPoolEncryptionSpecPtrOutput{})
 	pulumi.RegisterOutputType(CaPoolIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(CaPoolIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(CaPoolIamMemberConditionOutput{})

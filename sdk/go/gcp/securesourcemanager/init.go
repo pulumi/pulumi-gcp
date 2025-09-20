@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:securesourcemanager/branchRule:BranchRule":
 		r = &BranchRule{}
+	case "gcp:securesourcemanager/hook:Hook":
+		r = &Hook{}
 	case "gcp:securesourcemanager/instance:Instance":
 		r = &Instance{}
 	case "gcp:securesourcemanager/instanceIamBinding:InstanceIamBinding":
@@ -55,6 +57,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"securesourcemanager/branchRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"securesourcemanager/hook",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

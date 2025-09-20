@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { ReleaseArgs, ReleaseState } from "./release";
+export type Release = import("./release").Release;
+export const Release: typeof import("./release").Release = null as any;
+utilities.lazyLoad(exports, ["Release"], () => require("./release"));
+
 export { SaaSArgs, SaaSState } from "./saaS";
 export type SaaS = import("./saaS").SaaS;
 export const SaaS: typeof import("./saaS").SaaS = null as any;
@@ -20,6 +25,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:saasruntime/release:Release":
+                return new Release(name, <any>undefined, { urn })
             case "gcp:saasruntime/saaS:SaaS":
                 return new SaaS(name, <any>undefined, { urn })
             case "gcp:saasruntime/unitKind:UnitKind":
@@ -29,5 +36,6 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "saasruntime/release", _module)
 pulumi.runtime.registerResourceModule("gcp", "saasruntime/saaS", _module)
 pulumi.runtime.registerResourceModule("gcp", "saasruntime/unitKind", _module)

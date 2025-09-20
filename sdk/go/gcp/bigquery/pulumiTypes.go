@@ -3356,6 +3356,532 @@ func (o DataTransferConfigSensitiveParamsPtrOutput) SecretAccessKeyWoVersion() p
 	}).(pulumi.IntPtrOutput)
 }
 
+type Datapolicyv2DataPolicyDataMaskingPolicy struct {
+	// A predefined masking expression.
+	// Possible values:
+	// SHA256
+	// ALWAYS_NULL
+	// DEFAULT_MASKING_VALUE
+	// LAST_FOUR_CHARACTERS
+	// FIRST_FOUR_CHARACTERS
+	// EMAIL_MASK
+	// DATE_YEAR_MASK
+	// RANDOM_HASH
+	PredefinedExpression *string `pulumi:"predefinedExpression"`
+	// The name of the BigQuery routine that contains the custom masking
+	// routine, in the format of
+	// `projects/{project_number}/datasets/{dataset_id}/routines/{routine_id}`.
+	Routine *string `pulumi:"routine"`
+}
+
+// Datapolicyv2DataPolicyDataMaskingPolicyInput is an input type that accepts Datapolicyv2DataPolicyDataMaskingPolicyArgs and Datapolicyv2DataPolicyDataMaskingPolicyOutput values.
+// You can construct a concrete instance of `Datapolicyv2DataPolicyDataMaskingPolicyInput` via:
+//
+//	Datapolicyv2DataPolicyDataMaskingPolicyArgs{...}
+type Datapolicyv2DataPolicyDataMaskingPolicyInput interface {
+	pulumi.Input
+
+	ToDatapolicyv2DataPolicyDataMaskingPolicyOutput() Datapolicyv2DataPolicyDataMaskingPolicyOutput
+	ToDatapolicyv2DataPolicyDataMaskingPolicyOutputWithContext(context.Context) Datapolicyv2DataPolicyDataMaskingPolicyOutput
+}
+
+type Datapolicyv2DataPolicyDataMaskingPolicyArgs struct {
+	// A predefined masking expression.
+	// Possible values:
+	// SHA256
+	// ALWAYS_NULL
+	// DEFAULT_MASKING_VALUE
+	// LAST_FOUR_CHARACTERS
+	// FIRST_FOUR_CHARACTERS
+	// EMAIL_MASK
+	// DATE_YEAR_MASK
+	// RANDOM_HASH
+	PredefinedExpression pulumi.StringPtrInput `pulumi:"predefinedExpression"`
+	// The name of the BigQuery routine that contains the custom masking
+	// routine, in the format of
+	// `projects/{project_number}/datasets/{dataset_id}/routines/{routine_id}`.
+	Routine pulumi.StringPtrInput `pulumi:"routine"`
+}
+
+func (Datapolicyv2DataPolicyDataMaskingPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Datapolicyv2DataPolicyDataMaskingPolicy)(nil)).Elem()
+}
+
+func (i Datapolicyv2DataPolicyDataMaskingPolicyArgs) ToDatapolicyv2DataPolicyDataMaskingPolicyOutput() Datapolicyv2DataPolicyDataMaskingPolicyOutput {
+	return i.ToDatapolicyv2DataPolicyDataMaskingPolicyOutputWithContext(context.Background())
+}
+
+func (i Datapolicyv2DataPolicyDataMaskingPolicyArgs) ToDatapolicyv2DataPolicyDataMaskingPolicyOutputWithContext(ctx context.Context) Datapolicyv2DataPolicyDataMaskingPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Datapolicyv2DataPolicyDataMaskingPolicyOutput)
+}
+
+func (i Datapolicyv2DataPolicyDataMaskingPolicyArgs) ToDatapolicyv2DataPolicyDataMaskingPolicyPtrOutput() Datapolicyv2DataPolicyDataMaskingPolicyPtrOutput {
+	return i.ToDatapolicyv2DataPolicyDataMaskingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i Datapolicyv2DataPolicyDataMaskingPolicyArgs) ToDatapolicyv2DataPolicyDataMaskingPolicyPtrOutputWithContext(ctx context.Context) Datapolicyv2DataPolicyDataMaskingPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Datapolicyv2DataPolicyDataMaskingPolicyOutput).ToDatapolicyv2DataPolicyDataMaskingPolicyPtrOutputWithContext(ctx)
+}
+
+// Datapolicyv2DataPolicyDataMaskingPolicyPtrInput is an input type that accepts Datapolicyv2DataPolicyDataMaskingPolicyArgs, Datapolicyv2DataPolicyDataMaskingPolicyPtr and Datapolicyv2DataPolicyDataMaskingPolicyPtrOutput values.
+// You can construct a concrete instance of `Datapolicyv2DataPolicyDataMaskingPolicyPtrInput` via:
+//
+//	        Datapolicyv2DataPolicyDataMaskingPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type Datapolicyv2DataPolicyDataMaskingPolicyPtrInput interface {
+	pulumi.Input
+
+	ToDatapolicyv2DataPolicyDataMaskingPolicyPtrOutput() Datapolicyv2DataPolicyDataMaskingPolicyPtrOutput
+	ToDatapolicyv2DataPolicyDataMaskingPolicyPtrOutputWithContext(context.Context) Datapolicyv2DataPolicyDataMaskingPolicyPtrOutput
+}
+
+type datapolicyv2DataPolicyDataMaskingPolicyPtrType Datapolicyv2DataPolicyDataMaskingPolicyArgs
+
+func Datapolicyv2DataPolicyDataMaskingPolicyPtr(v *Datapolicyv2DataPolicyDataMaskingPolicyArgs) Datapolicyv2DataPolicyDataMaskingPolicyPtrInput {
+	return (*datapolicyv2DataPolicyDataMaskingPolicyPtrType)(v)
+}
+
+func (*datapolicyv2DataPolicyDataMaskingPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Datapolicyv2DataPolicyDataMaskingPolicy)(nil)).Elem()
+}
+
+func (i *datapolicyv2DataPolicyDataMaskingPolicyPtrType) ToDatapolicyv2DataPolicyDataMaskingPolicyPtrOutput() Datapolicyv2DataPolicyDataMaskingPolicyPtrOutput {
+	return i.ToDatapolicyv2DataPolicyDataMaskingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *datapolicyv2DataPolicyDataMaskingPolicyPtrType) ToDatapolicyv2DataPolicyDataMaskingPolicyPtrOutputWithContext(ctx context.Context) Datapolicyv2DataPolicyDataMaskingPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Datapolicyv2DataPolicyDataMaskingPolicyPtrOutput)
+}
+
+type Datapolicyv2DataPolicyDataMaskingPolicyOutput struct{ *pulumi.OutputState }
+
+func (Datapolicyv2DataPolicyDataMaskingPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Datapolicyv2DataPolicyDataMaskingPolicy)(nil)).Elem()
+}
+
+func (o Datapolicyv2DataPolicyDataMaskingPolicyOutput) ToDatapolicyv2DataPolicyDataMaskingPolicyOutput() Datapolicyv2DataPolicyDataMaskingPolicyOutput {
+	return o
+}
+
+func (o Datapolicyv2DataPolicyDataMaskingPolicyOutput) ToDatapolicyv2DataPolicyDataMaskingPolicyOutputWithContext(ctx context.Context) Datapolicyv2DataPolicyDataMaskingPolicyOutput {
+	return o
+}
+
+func (o Datapolicyv2DataPolicyDataMaskingPolicyOutput) ToDatapolicyv2DataPolicyDataMaskingPolicyPtrOutput() Datapolicyv2DataPolicyDataMaskingPolicyPtrOutput {
+	return o.ToDatapolicyv2DataPolicyDataMaskingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o Datapolicyv2DataPolicyDataMaskingPolicyOutput) ToDatapolicyv2DataPolicyDataMaskingPolicyPtrOutputWithContext(ctx context.Context) Datapolicyv2DataPolicyDataMaskingPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Datapolicyv2DataPolicyDataMaskingPolicy) *Datapolicyv2DataPolicyDataMaskingPolicy {
+		return &v
+	}).(Datapolicyv2DataPolicyDataMaskingPolicyPtrOutput)
+}
+
+// A predefined masking expression.
+// Possible values:
+// SHA256
+// ALWAYS_NULL
+// DEFAULT_MASKING_VALUE
+// LAST_FOUR_CHARACTERS
+// FIRST_FOUR_CHARACTERS
+// EMAIL_MASK
+// DATE_YEAR_MASK
+// RANDOM_HASH
+func (o Datapolicyv2DataPolicyDataMaskingPolicyOutput) PredefinedExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Datapolicyv2DataPolicyDataMaskingPolicy) *string { return v.PredefinedExpression }).(pulumi.StringPtrOutput)
+}
+
+// The name of the BigQuery routine that contains the custom masking
+// routine, in the format of
+// `projects/{project_number}/datasets/{dataset_id}/routines/{routine_id}`.
+func (o Datapolicyv2DataPolicyDataMaskingPolicyOutput) Routine() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Datapolicyv2DataPolicyDataMaskingPolicy) *string { return v.Routine }).(pulumi.StringPtrOutput)
+}
+
+type Datapolicyv2DataPolicyDataMaskingPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (Datapolicyv2DataPolicyDataMaskingPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Datapolicyv2DataPolicyDataMaskingPolicy)(nil)).Elem()
+}
+
+func (o Datapolicyv2DataPolicyDataMaskingPolicyPtrOutput) ToDatapolicyv2DataPolicyDataMaskingPolicyPtrOutput() Datapolicyv2DataPolicyDataMaskingPolicyPtrOutput {
+	return o
+}
+
+func (o Datapolicyv2DataPolicyDataMaskingPolicyPtrOutput) ToDatapolicyv2DataPolicyDataMaskingPolicyPtrOutputWithContext(ctx context.Context) Datapolicyv2DataPolicyDataMaskingPolicyPtrOutput {
+	return o
+}
+
+func (o Datapolicyv2DataPolicyDataMaskingPolicyPtrOutput) Elem() Datapolicyv2DataPolicyDataMaskingPolicyOutput {
+	return o.ApplyT(func(v *Datapolicyv2DataPolicyDataMaskingPolicy) Datapolicyv2DataPolicyDataMaskingPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret Datapolicyv2DataPolicyDataMaskingPolicy
+		return ret
+	}).(Datapolicyv2DataPolicyDataMaskingPolicyOutput)
+}
+
+// A predefined masking expression.
+// Possible values:
+// SHA256
+// ALWAYS_NULL
+// DEFAULT_MASKING_VALUE
+// LAST_FOUR_CHARACTERS
+// FIRST_FOUR_CHARACTERS
+// EMAIL_MASK
+// DATE_YEAR_MASK
+// RANDOM_HASH
+func (o Datapolicyv2DataPolicyDataMaskingPolicyPtrOutput) PredefinedExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Datapolicyv2DataPolicyDataMaskingPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PredefinedExpression
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the BigQuery routine that contains the custom masking
+// routine, in the format of
+// `projects/{project_number}/datasets/{dataset_id}/routines/{routine_id}`.
+func (o Datapolicyv2DataPolicyDataMaskingPolicyPtrOutput) Routine() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Datapolicyv2DataPolicyDataMaskingPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Routine
+	}).(pulumi.StringPtrOutput)
+}
+
+type Datapolicyv2DataPolicyIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// Datapolicyv2DataPolicyIamBindingConditionInput is an input type that accepts Datapolicyv2DataPolicyIamBindingConditionArgs and Datapolicyv2DataPolicyIamBindingConditionOutput values.
+// You can construct a concrete instance of `Datapolicyv2DataPolicyIamBindingConditionInput` via:
+//
+//	Datapolicyv2DataPolicyIamBindingConditionArgs{...}
+type Datapolicyv2DataPolicyIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToDatapolicyv2DataPolicyIamBindingConditionOutput() Datapolicyv2DataPolicyIamBindingConditionOutput
+	ToDatapolicyv2DataPolicyIamBindingConditionOutputWithContext(context.Context) Datapolicyv2DataPolicyIamBindingConditionOutput
+}
+
+type Datapolicyv2DataPolicyIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (Datapolicyv2DataPolicyIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Datapolicyv2DataPolicyIamBindingCondition)(nil)).Elem()
+}
+
+func (i Datapolicyv2DataPolicyIamBindingConditionArgs) ToDatapolicyv2DataPolicyIamBindingConditionOutput() Datapolicyv2DataPolicyIamBindingConditionOutput {
+	return i.ToDatapolicyv2DataPolicyIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i Datapolicyv2DataPolicyIamBindingConditionArgs) ToDatapolicyv2DataPolicyIamBindingConditionOutputWithContext(ctx context.Context) Datapolicyv2DataPolicyIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Datapolicyv2DataPolicyIamBindingConditionOutput)
+}
+
+func (i Datapolicyv2DataPolicyIamBindingConditionArgs) ToDatapolicyv2DataPolicyIamBindingConditionPtrOutput() Datapolicyv2DataPolicyIamBindingConditionPtrOutput {
+	return i.ToDatapolicyv2DataPolicyIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i Datapolicyv2DataPolicyIamBindingConditionArgs) ToDatapolicyv2DataPolicyIamBindingConditionPtrOutputWithContext(ctx context.Context) Datapolicyv2DataPolicyIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Datapolicyv2DataPolicyIamBindingConditionOutput).ToDatapolicyv2DataPolicyIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// Datapolicyv2DataPolicyIamBindingConditionPtrInput is an input type that accepts Datapolicyv2DataPolicyIamBindingConditionArgs, Datapolicyv2DataPolicyIamBindingConditionPtr and Datapolicyv2DataPolicyIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `Datapolicyv2DataPolicyIamBindingConditionPtrInput` via:
+//
+//	        Datapolicyv2DataPolicyIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type Datapolicyv2DataPolicyIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToDatapolicyv2DataPolicyIamBindingConditionPtrOutput() Datapolicyv2DataPolicyIamBindingConditionPtrOutput
+	ToDatapolicyv2DataPolicyIamBindingConditionPtrOutputWithContext(context.Context) Datapolicyv2DataPolicyIamBindingConditionPtrOutput
+}
+
+type datapolicyv2DataPolicyIamBindingConditionPtrType Datapolicyv2DataPolicyIamBindingConditionArgs
+
+func Datapolicyv2DataPolicyIamBindingConditionPtr(v *Datapolicyv2DataPolicyIamBindingConditionArgs) Datapolicyv2DataPolicyIamBindingConditionPtrInput {
+	return (*datapolicyv2DataPolicyIamBindingConditionPtrType)(v)
+}
+
+func (*datapolicyv2DataPolicyIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Datapolicyv2DataPolicyIamBindingCondition)(nil)).Elem()
+}
+
+func (i *datapolicyv2DataPolicyIamBindingConditionPtrType) ToDatapolicyv2DataPolicyIamBindingConditionPtrOutput() Datapolicyv2DataPolicyIamBindingConditionPtrOutput {
+	return i.ToDatapolicyv2DataPolicyIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *datapolicyv2DataPolicyIamBindingConditionPtrType) ToDatapolicyv2DataPolicyIamBindingConditionPtrOutputWithContext(ctx context.Context) Datapolicyv2DataPolicyIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Datapolicyv2DataPolicyIamBindingConditionPtrOutput)
+}
+
+type Datapolicyv2DataPolicyIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (Datapolicyv2DataPolicyIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Datapolicyv2DataPolicyIamBindingCondition)(nil)).Elem()
+}
+
+func (o Datapolicyv2DataPolicyIamBindingConditionOutput) ToDatapolicyv2DataPolicyIamBindingConditionOutput() Datapolicyv2DataPolicyIamBindingConditionOutput {
+	return o
+}
+
+func (o Datapolicyv2DataPolicyIamBindingConditionOutput) ToDatapolicyv2DataPolicyIamBindingConditionOutputWithContext(ctx context.Context) Datapolicyv2DataPolicyIamBindingConditionOutput {
+	return o
+}
+
+func (o Datapolicyv2DataPolicyIamBindingConditionOutput) ToDatapolicyv2DataPolicyIamBindingConditionPtrOutput() Datapolicyv2DataPolicyIamBindingConditionPtrOutput {
+	return o.ToDatapolicyv2DataPolicyIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o Datapolicyv2DataPolicyIamBindingConditionOutput) ToDatapolicyv2DataPolicyIamBindingConditionPtrOutputWithContext(ctx context.Context) Datapolicyv2DataPolicyIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Datapolicyv2DataPolicyIamBindingCondition) *Datapolicyv2DataPolicyIamBindingCondition {
+		return &v
+	}).(Datapolicyv2DataPolicyIamBindingConditionPtrOutput)
+}
+
+func (o Datapolicyv2DataPolicyIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Datapolicyv2DataPolicyIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o Datapolicyv2DataPolicyIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v Datapolicyv2DataPolicyIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o Datapolicyv2DataPolicyIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v Datapolicyv2DataPolicyIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type Datapolicyv2DataPolicyIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (Datapolicyv2DataPolicyIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Datapolicyv2DataPolicyIamBindingCondition)(nil)).Elem()
+}
+
+func (o Datapolicyv2DataPolicyIamBindingConditionPtrOutput) ToDatapolicyv2DataPolicyIamBindingConditionPtrOutput() Datapolicyv2DataPolicyIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o Datapolicyv2DataPolicyIamBindingConditionPtrOutput) ToDatapolicyv2DataPolicyIamBindingConditionPtrOutputWithContext(ctx context.Context) Datapolicyv2DataPolicyIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o Datapolicyv2DataPolicyIamBindingConditionPtrOutput) Elem() Datapolicyv2DataPolicyIamBindingConditionOutput {
+	return o.ApplyT(func(v *Datapolicyv2DataPolicyIamBindingCondition) Datapolicyv2DataPolicyIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret Datapolicyv2DataPolicyIamBindingCondition
+		return ret
+	}).(Datapolicyv2DataPolicyIamBindingConditionOutput)
+}
+
+func (o Datapolicyv2DataPolicyIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Datapolicyv2DataPolicyIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o Datapolicyv2DataPolicyIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Datapolicyv2DataPolicyIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o Datapolicyv2DataPolicyIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Datapolicyv2DataPolicyIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type Datapolicyv2DataPolicyIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// Datapolicyv2DataPolicyIamMemberConditionInput is an input type that accepts Datapolicyv2DataPolicyIamMemberConditionArgs and Datapolicyv2DataPolicyIamMemberConditionOutput values.
+// You can construct a concrete instance of `Datapolicyv2DataPolicyIamMemberConditionInput` via:
+//
+//	Datapolicyv2DataPolicyIamMemberConditionArgs{...}
+type Datapolicyv2DataPolicyIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToDatapolicyv2DataPolicyIamMemberConditionOutput() Datapolicyv2DataPolicyIamMemberConditionOutput
+	ToDatapolicyv2DataPolicyIamMemberConditionOutputWithContext(context.Context) Datapolicyv2DataPolicyIamMemberConditionOutput
+}
+
+type Datapolicyv2DataPolicyIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (Datapolicyv2DataPolicyIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Datapolicyv2DataPolicyIamMemberCondition)(nil)).Elem()
+}
+
+func (i Datapolicyv2DataPolicyIamMemberConditionArgs) ToDatapolicyv2DataPolicyIamMemberConditionOutput() Datapolicyv2DataPolicyIamMemberConditionOutput {
+	return i.ToDatapolicyv2DataPolicyIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i Datapolicyv2DataPolicyIamMemberConditionArgs) ToDatapolicyv2DataPolicyIamMemberConditionOutputWithContext(ctx context.Context) Datapolicyv2DataPolicyIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Datapolicyv2DataPolicyIamMemberConditionOutput)
+}
+
+func (i Datapolicyv2DataPolicyIamMemberConditionArgs) ToDatapolicyv2DataPolicyIamMemberConditionPtrOutput() Datapolicyv2DataPolicyIamMemberConditionPtrOutput {
+	return i.ToDatapolicyv2DataPolicyIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i Datapolicyv2DataPolicyIamMemberConditionArgs) ToDatapolicyv2DataPolicyIamMemberConditionPtrOutputWithContext(ctx context.Context) Datapolicyv2DataPolicyIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Datapolicyv2DataPolicyIamMemberConditionOutput).ToDatapolicyv2DataPolicyIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// Datapolicyv2DataPolicyIamMemberConditionPtrInput is an input type that accepts Datapolicyv2DataPolicyIamMemberConditionArgs, Datapolicyv2DataPolicyIamMemberConditionPtr and Datapolicyv2DataPolicyIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `Datapolicyv2DataPolicyIamMemberConditionPtrInput` via:
+//
+//	        Datapolicyv2DataPolicyIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type Datapolicyv2DataPolicyIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToDatapolicyv2DataPolicyIamMemberConditionPtrOutput() Datapolicyv2DataPolicyIamMemberConditionPtrOutput
+	ToDatapolicyv2DataPolicyIamMemberConditionPtrOutputWithContext(context.Context) Datapolicyv2DataPolicyIamMemberConditionPtrOutput
+}
+
+type datapolicyv2DataPolicyIamMemberConditionPtrType Datapolicyv2DataPolicyIamMemberConditionArgs
+
+func Datapolicyv2DataPolicyIamMemberConditionPtr(v *Datapolicyv2DataPolicyIamMemberConditionArgs) Datapolicyv2DataPolicyIamMemberConditionPtrInput {
+	return (*datapolicyv2DataPolicyIamMemberConditionPtrType)(v)
+}
+
+func (*datapolicyv2DataPolicyIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Datapolicyv2DataPolicyIamMemberCondition)(nil)).Elem()
+}
+
+func (i *datapolicyv2DataPolicyIamMemberConditionPtrType) ToDatapolicyv2DataPolicyIamMemberConditionPtrOutput() Datapolicyv2DataPolicyIamMemberConditionPtrOutput {
+	return i.ToDatapolicyv2DataPolicyIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *datapolicyv2DataPolicyIamMemberConditionPtrType) ToDatapolicyv2DataPolicyIamMemberConditionPtrOutputWithContext(ctx context.Context) Datapolicyv2DataPolicyIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Datapolicyv2DataPolicyIamMemberConditionPtrOutput)
+}
+
+type Datapolicyv2DataPolicyIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (Datapolicyv2DataPolicyIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Datapolicyv2DataPolicyIamMemberCondition)(nil)).Elem()
+}
+
+func (o Datapolicyv2DataPolicyIamMemberConditionOutput) ToDatapolicyv2DataPolicyIamMemberConditionOutput() Datapolicyv2DataPolicyIamMemberConditionOutput {
+	return o
+}
+
+func (o Datapolicyv2DataPolicyIamMemberConditionOutput) ToDatapolicyv2DataPolicyIamMemberConditionOutputWithContext(ctx context.Context) Datapolicyv2DataPolicyIamMemberConditionOutput {
+	return o
+}
+
+func (o Datapolicyv2DataPolicyIamMemberConditionOutput) ToDatapolicyv2DataPolicyIamMemberConditionPtrOutput() Datapolicyv2DataPolicyIamMemberConditionPtrOutput {
+	return o.ToDatapolicyv2DataPolicyIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o Datapolicyv2DataPolicyIamMemberConditionOutput) ToDatapolicyv2DataPolicyIamMemberConditionPtrOutputWithContext(ctx context.Context) Datapolicyv2DataPolicyIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Datapolicyv2DataPolicyIamMemberCondition) *Datapolicyv2DataPolicyIamMemberCondition {
+		return &v
+	}).(Datapolicyv2DataPolicyIamMemberConditionPtrOutput)
+}
+
+func (o Datapolicyv2DataPolicyIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Datapolicyv2DataPolicyIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o Datapolicyv2DataPolicyIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v Datapolicyv2DataPolicyIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o Datapolicyv2DataPolicyIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v Datapolicyv2DataPolicyIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type Datapolicyv2DataPolicyIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (Datapolicyv2DataPolicyIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Datapolicyv2DataPolicyIamMemberCondition)(nil)).Elem()
+}
+
+func (o Datapolicyv2DataPolicyIamMemberConditionPtrOutput) ToDatapolicyv2DataPolicyIamMemberConditionPtrOutput() Datapolicyv2DataPolicyIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o Datapolicyv2DataPolicyIamMemberConditionPtrOutput) ToDatapolicyv2DataPolicyIamMemberConditionPtrOutputWithContext(ctx context.Context) Datapolicyv2DataPolicyIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o Datapolicyv2DataPolicyIamMemberConditionPtrOutput) Elem() Datapolicyv2DataPolicyIamMemberConditionOutput {
+	return o.ApplyT(func(v *Datapolicyv2DataPolicyIamMemberCondition) Datapolicyv2DataPolicyIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret Datapolicyv2DataPolicyIamMemberCondition
+		return ret
+	}).(Datapolicyv2DataPolicyIamMemberConditionOutput)
+}
+
+func (o Datapolicyv2DataPolicyIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Datapolicyv2DataPolicyIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o Datapolicyv2DataPolicyIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Datapolicyv2DataPolicyIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o Datapolicyv2DataPolicyIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Datapolicyv2DataPolicyIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type DatasetAccessType struct {
 	// Condition for the binding. If CEL expression in this field is true, this
 	// access binding will be considered.
@@ -21688,6 +22214,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DataTransferConfigScheduleOptionsPtrInput)(nil)).Elem(), DataTransferConfigScheduleOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataTransferConfigSensitiveParamsInput)(nil)).Elem(), DataTransferConfigSensitiveParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataTransferConfigSensitiveParamsPtrInput)(nil)).Elem(), DataTransferConfigSensitiveParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Datapolicyv2DataPolicyDataMaskingPolicyInput)(nil)).Elem(), Datapolicyv2DataPolicyDataMaskingPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Datapolicyv2DataPolicyDataMaskingPolicyPtrInput)(nil)).Elem(), Datapolicyv2DataPolicyDataMaskingPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Datapolicyv2DataPolicyIamBindingConditionInput)(nil)).Elem(), Datapolicyv2DataPolicyIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Datapolicyv2DataPolicyIamBindingConditionPtrInput)(nil)).Elem(), Datapolicyv2DataPolicyIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Datapolicyv2DataPolicyIamMemberConditionInput)(nil)).Elem(), Datapolicyv2DataPolicyIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Datapolicyv2DataPolicyIamMemberConditionPtrInput)(nil)).Elem(), Datapolicyv2DataPolicyIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessTypeInput)(nil)).Elem(), DatasetAccessTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessTypeArrayInput)(nil)).Elem(), DatasetAccessTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessAuthorizedDatasetInput)(nil)).Elem(), DatasetAccessAuthorizedDatasetArgs{})
@@ -21942,6 +22474,12 @@ func init() {
 	pulumi.RegisterOutputType(DataTransferConfigScheduleOptionsPtrOutput{})
 	pulumi.RegisterOutputType(DataTransferConfigSensitiveParamsOutput{})
 	pulumi.RegisterOutputType(DataTransferConfigSensitiveParamsPtrOutput{})
+	pulumi.RegisterOutputType(Datapolicyv2DataPolicyDataMaskingPolicyOutput{})
+	pulumi.RegisterOutputType(Datapolicyv2DataPolicyDataMaskingPolicyPtrOutput{})
+	pulumi.RegisterOutputType(Datapolicyv2DataPolicyIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(Datapolicyv2DataPolicyIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(Datapolicyv2DataPolicyIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(Datapolicyv2DataPolicyIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(DatasetAccessTypeOutput{})
 	pulumi.RegisterOutputType(DatasetAccessTypeArrayOutput{})
 	pulumi.RegisterOutputType(DatasetAccessAuthorizedDatasetOutput{})

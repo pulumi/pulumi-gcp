@@ -11,6 +11,8 @@ import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.bigquery.inputs.GetConnectionIamPolicyArgs;
 import com.pulumi.gcp.bigquery.inputs.GetConnectionIamPolicyPlainArgs;
+import com.pulumi.gcp.bigquery.inputs.GetDatapolicyv2DataPolicyIamPolicyArgs;
+import com.pulumi.gcp.bigquery.inputs.GetDatapolicyv2DataPolicyIamPolicyPlainArgs;
 import com.pulumi.gcp.bigquery.inputs.GetDatasetArgs;
 import com.pulumi.gcp.bigquery.inputs.GetDatasetIamPolicyArgs;
 import com.pulumi.gcp.bigquery.inputs.GetDatasetIamPolicyPlainArgs;
@@ -26,6 +28,7 @@ import com.pulumi.gcp.bigquery.inputs.GetTablePlainArgs;
 import com.pulumi.gcp.bigquery.inputs.GetTablesArgs;
 import com.pulumi.gcp.bigquery.inputs.GetTablesPlainArgs;
 import com.pulumi.gcp.bigquery.outputs.GetConnectionIamPolicyResult;
+import com.pulumi.gcp.bigquery.outputs.GetDatapolicyv2DataPolicyIamPolicyResult;
 import com.pulumi.gcp.bigquery.outputs.GetDatasetIamPolicyResult;
 import com.pulumi.gcp.bigquery.outputs.GetDatasetResult;
 import com.pulumi.gcp.bigquery.outputs.GetDatasetsResult;
@@ -245,6 +248,216 @@ public final class BigqueryFunctions {
      */
     public static CompletableFuture<GetConnectionIamPolicyResult> getConnectionIamPolicyPlain(GetConnectionIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:bigquery/getConnectionIamPolicy:getConnectionIamPolicy", TypeShape.of(GetConnectionIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for datapolicy
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.bigquery.BigqueryFunctions;
+     * import com.pulumi.gcp.bigquery.inputs.GetDatapolicyv2DataPolicyIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = BigqueryFunctions.getDatapolicyv2DataPolicyIamPolicy(GetDatapolicyv2DataPolicyIamPolicyArgs.builder()
+     *             .project(basicDataPolicy.project())
+     *             .location(basicDataPolicy.location())
+     *             .dataPolicyId(basicDataPolicy.dataPolicyId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDatapolicyv2DataPolicyIamPolicyResult> getDatapolicyv2DataPolicyIamPolicy(GetDatapolicyv2DataPolicyIamPolicyArgs args) {
+        return getDatapolicyv2DataPolicyIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for datapolicy
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.bigquery.BigqueryFunctions;
+     * import com.pulumi.gcp.bigquery.inputs.GetDatapolicyv2DataPolicyIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = BigqueryFunctions.getDatapolicyv2DataPolicyIamPolicy(GetDatapolicyv2DataPolicyIamPolicyArgs.builder()
+     *             .project(basicDataPolicy.project())
+     *             .location(basicDataPolicy.location())
+     *             .dataPolicyId(basicDataPolicy.dataPolicyId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDatapolicyv2DataPolicyIamPolicyResult> getDatapolicyv2DataPolicyIamPolicyPlain(GetDatapolicyv2DataPolicyIamPolicyPlainArgs args) {
+        return getDatapolicyv2DataPolicyIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for datapolicy
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.bigquery.BigqueryFunctions;
+     * import com.pulumi.gcp.bigquery.inputs.GetDatapolicyv2DataPolicyIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = BigqueryFunctions.getDatapolicyv2DataPolicyIamPolicy(GetDatapolicyv2DataPolicyIamPolicyArgs.builder()
+     *             .project(basicDataPolicy.project())
+     *             .location(basicDataPolicy.location())
+     *             .dataPolicyId(basicDataPolicy.dataPolicyId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDatapolicyv2DataPolicyIamPolicyResult> getDatapolicyv2DataPolicyIamPolicy(GetDatapolicyv2DataPolicyIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:bigquery/getDatapolicyv2DataPolicyIamPolicy:getDatapolicyv2DataPolicyIamPolicy", TypeShape.of(GetDatapolicyv2DataPolicyIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for datapolicy
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.bigquery.BigqueryFunctions;
+     * import com.pulumi.gcp.bigquery.inputs.GetDatapolicyv2DataPolicyIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = BigqueryFunctions.getDatapolicyv2DataPolicyIamPolicy(GetDatapolicyv2DataPolicyIamPolicyArgs.builder()
+     *             .project(basicDataPolicy.project())
+     *             .location(basicDataPolicy.location())
+     *             .dataPolicyId(basicDataPolicy.dataPolicyId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDatapolicyv2DataPolicyIamPolicyResult> getDatapolicyv2DataPolicyIamPolicy(GetDatapolicyv2DataPolicyIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:bigquery/getDatapolicyv2DataPolicyIamPolicy:getDatapolicyv2DataPolicyIamPolicy", TypeShape.of(GetDatapolicyv2DataPolicyIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for datapolicy
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.bigquery.BigqueryFunctions;
+     * import com.pulumi.gcp.bigquery.inputs.GetDatapolicyv2DataPolicyIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = BigqueryFunctions.getDatapolicyv2DataPolicyIamPolicy(GetDatapolicyv2DataPolicyIamPolicyArgs.builder()
+     *             .project(basicDataPolicy.project())
+     *             .location(basicDataPolicy.location())
+     *             .dataPolicyId(basicDataPolicy.dataPolicyId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDatapolicyv2DataPolicyIamPolicyResult> getDatapolicyv2DataPolicyIamPolicyPlain(GetDatapolicyv2DataPolicyIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:bigquery/getDatapolicyv2DataPolicyIamPolicy:getDatapolicyv2DataPolicyIamPolicy", TypeShape.of(GetDatapolicyv2DataPolicyIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get information about a BigQuery dataset. For more information see
