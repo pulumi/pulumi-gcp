@@ -59,6 +59,46 @@ namespace Pulumi.Gcp.DiscoveryEngine
     /// 
     /// });
     /// ```
+    /// ### Discoveryengine Searchengine Agentspace Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var agentspaceBasic = new Gcp.DiscoveryEngine.DataStore("agentspace_basic", new()
+    ///     {
+    ///         Location = "global",
+    ///         DataStoreId = "example-datastore-id",
+    ///         DisplayName = "tf-test-structured-datastore",
+    ///         IndustryVertical = "GENERIC",
+    ///         ContentConfig = "NO_CONTENT",
+    ///         SolutionTypes = new[]
+    ///         {
+    ///             "SOLUTION_TYPE_SEARCH",
+    ///         },
+    ///         CreateAdvancedSiteSearch = false,
+    ///     });
+    /// 
+    ///     var agentspaceBasicSearchEngine = new Gcp.DiscoveryEngine.SearchEngine("agentspace_basic", new()
+    ///     {
+    ///         EngineId = "example-engine-id",
+    ///         CollectionId = "default_collection",
+    ///         Location = agentspaceBasic.Location,
+    ///         DisplayName = "tf-test-agentspace-search-engine",
+    ///         DataStoreIds = new[]
+    ///         {
+    ///             agentspaceBasic.DataStoreId,
+    ///         },
+    ///         IndustryVertical = "GENERIC",
+    ///         SearchEngineConfig = null,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -87,6 +127,13 @@ namespace Pulumi.Gcp.DiscoveryEngine
     [GcpResourceType("gcp:discoveryengine/searchEngine:SearchEngine")]
     public partial class SearchEngine : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// This is the application type this engine resource represents.
+        /// The supported values: 'APP_TYPE_UNSPECIFIED', 'APP_TYPE_INTRANET'.
+        /// </summary>
+        [Output("appType")]
+        public Output<string?> AppType { get; private set; } = null!;
+
         /// <summary>
         /// The collection ID.
         /// </summary>
@@ -214,6 +261,13 @@ namespace Pulumi.Gcp.DiscoveryEngine
     public sealed class SearchEngineArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// This is the application type this engine resource represents.
+        /// The supported values: 'APP_TYPE_UNSPECIFIED', 'APP_TYPE_INTRANET'.
+        /// </summary>
+        [Input("appType")]
+        public Input<string>? AppType { get; set; }
+
+        /// <summary>
         /// The collection ID.
         /// </summary>
         [Input("collectionId", required: true)]
@@ -286,6 +340,13 @@ namespace Pulumi.Gcp.DiscoveryEngine
 
     public sealed class SearchEngineState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// This is the application type this engine resource represents.
+        /// The supported values: 'APP_TYPE_UNSPECIFIED', 'APP_TYPE_INTRANET'.
+        /// </summary>
+        [Input("appType")]
+        public Input<string>? AppType { get; set; }
+
         /// <summary>
         /// The collection ID.
         /// </summary>

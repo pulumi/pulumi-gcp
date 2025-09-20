@@ -63,13 +63,17 @@ export interface GetSecurityPolicyResult {
     readonly adaptiveProtectionConfigs: outputs.compute.GetSecurityPolicyAdaptiveProtectionConfig[];
     readonly advancedOptionsConfigs: outputs.compute.GetSecurityPolicyAdvancedOptionsConfig[];
     readonly description: string;
+    readonly effectiveLabels: {[key: string]: string};
     readonly fingerprint: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly labelFingerprint: string;
+    readonly labels: {[key: string]: string};
     readonly name?: string;
     readonly project?: string;
+    readonly pulumiLabels: {[key: string]: string};
     readonly recaptchaOptionsConfigs: outputs.compute.GetSecurityPolicyRecaptchaOptionsConfig[];
     readonly rules: outputs.compute.GetSecurityPolicyRule[];
     readonly selfLink?: string;

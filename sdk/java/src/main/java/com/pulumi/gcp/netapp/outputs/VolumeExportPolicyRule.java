@@ -5,6 +5,7 @@ package com.pulumi.gcp.netapp.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -23,6 +24,11 @@ public final class VolumeExportPolicyRule {
      * 
      */
     private @Nullable String allowedClients;
+    /**
+     * @return An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squash_mode` is `ROOT_SQUASH` or `ALL_SQUASH`.
+     * 
+     */
+    private @Nullable Integer anonUid;
     /**
      * @return If enabled, the root user (UID = 0) of the specified clients doesn&#39;t get mapped to nobody (UID = 65534). This is also known as no_root_squash.
      * 
@@ -68,6 +74,12 @@ public final class VolumeExportPolicyRule {
      * 
      */
     private @Nullable Boolean nfsv4;
+    /**
+     * @return SquashMode defines how remote user privileges are restricted when accessing an NFS export. It controls how the user identities (like root) are mapped to anonymous users to limit access and enforce security.
+     * Possible values are: `NO_ROOT_SQUASH`, `ROOT_SQUASH`, `ALL_SQUASH`.
+     * 
+     */
+    private @Nullable String squashMode;
 
     private VolumeExportPolicyRule() {}
     /**
@@ -84,6 +96,13 @@ public final class VolumeExportPolicyRule {
      */
     public Optional<String> allowedClients() {
         return Optional.ofNullable(this.allowedClients);
+    }
+    /**
+     * @return An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squash_mode` is `ROOT_SQUASH` or `ALL_SQUASH`.
+     * 
+     */
+    public Optional<Integer> anonUid() {
+        return Optional.ofNullable(this.anonUid);
     }
     /**
      * @return If enabled, the root user (UID = 0) of the specified clients doesn&#39;t get mapped to nobody (UID = 65534). This is also known as no_root_squash.
@@ -148,6 +167,14 @@ public final class VolumeExportPolicyRule {
     public Optional<Boolean> nfsv4() {
         return Optional.ofNullable(this.nfsv4);
     }
+    /**
+     * @return SquashMode defines how remote user privileges are restricted when accessing an NFS export. It controls how the user identities (like root) are mapped to anonymous users to limit access and enforce security.
+     * Possible values are: `NO_ROOT_SQUASH`, `ROOT_SQUASH`, `ALL_SQUASH`.
+     * 
+     */
+    public Optional<String> squashMode() {
+        return Optional.ofNullable(this.squashMode);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -160,6 +187,7 @@ public final class VolumeExportPolicyRule {
     public static final class Builder {
         private @Nullable String accessType;
         private @Nullable String allowedClients;
+        private @Nullable Integer anonUid;
         private @Nullable String hasRootAccess;
         private @Nullable Boolean kerberos5ReadOnly;
         private @Nullable Boolean kerberos5ReadWrite;
@@ -169,11 +197,13 @@ public final class VolumeExportPolicyRule {
         private @Nullable Boolean kerberos5pReadWrite;
         private @Nullable Boolean nfsv3;
         private @Nullable Boolean nfsv4;
+        private @Nullable String squashMode;
         public Builder() {}
         public Builder(VolumeExportPolicyRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessType = defaults.accessType;
     	      this.allowedClients = defaults.allowedClients;
+    	      this.anonUid = defaults.anonUid;
     	      this.hasRootAccess = defaults.hasRootAccess;
     	      this.kerberos5ReadOnly = defaults.kerberos5ReadOnly;
     	      this.kerberos5ReadWrite = defaults.kerberos5ReadWrite;
@@ -183,6 +213,7 @@ public final class VolumeExportPolicyRule {
     	      this.kerberos5pReadWrite = defaults.kerberos5pReadWrite;
     	      this.nfsv3 = defaults.nfsv3;
     	      this.nfsv4 = defaults.nfsv4;
+    	      this.squashMode = defaults.squashMode;
         }
 
         @CustomType.Setter
@@ -195,6 +226,12 @@ public final class VolumeExportPolicyRule {
         public Builder allowedClients(@Nullable String allowedClients) {
 
             this.allowedClients = allowedClients;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder anonUid(@Nullable Integer anonUid) {
+
+            this.anonUid = anonUid;
             return this;
         }
         @CustomType.Setter
@@ -251,10 +288,17 @@ public final class VolumeExportPolicyRule {
             this.nfsv4 = nfsv4;
             return this;
         }
+        @CustomType.Setter
+        public Builder squashMode(@Nullable String squashMode) {
+
+            this.squashMode = squashMode;
+            return this;
+        }
         public VolumeExportPolicyRule build() {
             final var _resultValue = new VolumeExportPolicyRule();
             _resultValue.accessType = accessType;
             _resultValue.allowedClients = allowedClients;
+            _resultValue.anonUid = anonUid;
             _resultValue.hasRootAccess = hasRootAccess;
             _resultValue.kerberos5ReadOnly = kerberos5ReadOnly;
             _resultValue.kerberos5ReadWrite = kerberos5ReadWrite;
@@ -264,6 +308,7 @@ public final class VolumeExportPolicyRule {
             _resultValue.kerberos5pReadWrite = kerberos5pReadWrite;
             _resultValue.nfsv3 = nfsv3;
             _resultValue.nfsv4 = nfsv4;
+            _resultValue.squashMode = squashMode;
             return _resultValue;
         }
     }

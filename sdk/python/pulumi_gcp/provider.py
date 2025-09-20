@@ -43,6 +43,7 @@ class ProviderArgs:
                  bigquery_connection_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  bigquery_data_transfer_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  bigquery_datapolicy_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 bigquery_datapolicyv2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  bigquery_reservation_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  bigtable_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  billing_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -263,6 +264,8 @@ class ProviderArgs:
             pulumi.set(__self__, "bigquery_data_transfer_custom_endpoint", bigquery_data_transfer_custom_endpoint)
         if bigquery_datapolicy_custom_endpoint is not None:
             pulumi.set(__self__, "bigquery_datapolicy_custom_endpoint", bigquery_datapolicy_custom_endpoint)
+        if bigquery_datapolicyv2_custom_endpoint is not None:
+            pulumi.set(__self__, "bigquery_datapolicyv2_custom_endpoint", bigquery_datapolicyv2_custom_endpoint)
         if bigquery_reservation_custom_endpoint is not None:
             pulumi.set(__self__, "bigquery_reservation_custom_endpoint", bigquery_reservation_custom_endpoint)
         if bigtable_custom_endpoint is not None:
@@ -818,6 +821,15 @@ class ProviderArgs:
     @bigquery_datapolicy_custom_endpoint.setter
     def bigquery_datapolicy_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "bigquery_datapolicy_custom_endpoint", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bigqueryDatapolicyv2CustomEndpoint")
+    def bigquery_datapolicyv2_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "bigquery_datapolicyv2_custom_endpoint")
+
+    @bigquery_datapolicyv2_custom_endpoint.setter
+    def bigquery_datapolicyv2_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "bigquery_datapolicyv2_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="bigqueryReservationCustomEndpoint")
@@ -2388,6 +2400,7 @@ class Provider(pulumi.ProviderResource):
                  bigquery_connection_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  bigquery_data_transfer_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  bigquery_datapolicy_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 bigquery_datapolicyv2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  bigquery_reservation_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  bigtable_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  billing_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2619,6 +2632,7 @@ class Provider(pulumi.ProviderResource):
                  bigquery_connection_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  bigquery_data_transfer_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  bigquery_datapolicy_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 bigquery_datapolicyv2_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  bigquery_reservation_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  bigtable_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  billing_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2822,6 +2836,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["bigquery_connection_custom_endpoint"] = bigquery_connection_custom_endpoint
             __props__.__dict__["bigquery_data_transfer_custom_endpoint"] = bigquery_data_transfer_custom_endpoint
             __props__.__dict__["bigquery_datapolicy_custom_endpoint"] = bigquery_datapolicy_custom_endpoint
+            __props__.__dict__["bigquery_datapolicyv2_custom_endpoint"] = bigquery_datapolicyv2_custom_endpoint
             __props__.__dict__["bigquery_reservation_custom_endpoint"] = bigquery_reservation_custom_endpoint
             __props__.__dict__["bigtable_custom_endpoint"] = bigtable_custom_endpoint
             __props__.__dict__["billing_custom_endpoint"] = billing_custom_endpoint
@@ -3111,6 +3126,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="bigqueryDatapolicyCustomEndpoint")
     def bigquery_datapolicy_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "bigquery_datapolicy_custom_endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="bigqueryDatapolicyv2CustomEndpoint")
+    def bigquery_datapolicyv2_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "bigquery_datapolicyv2_custom_endpoint")
 
     @_builtins.property
     @pulumi.getter(name="bigqueryReservationCustomEndpoint")

@@ -21,15 +21,22 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// The name of the Cloud Run v2 Service.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Path within the volume from which the container's volume should be mounted.
+        /// </summary>
+        public readonly string SubPath;
 
         [OutputConstructor]
         private GetServiceTemplateContainerVolumeMountResult(
             string mountPath,
 
-            string name)
+            string name,
+
+            string subPath)
         {
             MountPath = mountPath;
             Name = name;
+            SubPath = subPath;
         }
     }
 }

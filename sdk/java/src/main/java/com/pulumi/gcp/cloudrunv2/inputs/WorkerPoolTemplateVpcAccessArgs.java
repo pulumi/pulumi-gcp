@@ -18,6 +18,21 @@ public final class WorkerPoolTemplateVpcAccessArgs extends com.pulumi.resources.
     public static final WorkerPoolTemplateVpcAccessArgs Empty = new WorkerPoolTemplateVpcAccessArgs();
 
     /**
+     * VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+     * 
+     */
+    @Import(name="connector")
+    private @Nullable Output<String> connector;
+
+    /**
+     * @return VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+     * 
+     */
+    public Optional<Output<String>> connector() {
+        return Optional.ofNullable(this.connector);
+    }
+
+    /**
      * Traffic VPC egress settings.
      * Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
      * 
@@ -54,6 +69,7 @@ public final class WorkerPoolTemplateVpcAccessArgs extends com.pulumi.resources.
     private WorkerPoolTemplateVpcAccessArgs() {}
 
     private WorkerPoolTemplateVpcAccessArgs(WorkerPoolTemplateVpcAccessArgs $) {
+        this.connector = $.connector;
         this.egress = $.egress;
         this.networkInterfaces = $.networkInterfaces;
     }
@@ -74,6 +90,27 @@ public final class WorkerPoolTemplateVpcAccessArgs extends com.pulumi.resources.
 
         public Builder(WorkerPoolTemplateVpcAccessArgs defaults) {
             $ = new WorkerPoolTemplateVpcAccessArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param connector VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connector(@Nullable Output<String> connector) {
+            $.connector = connector;
+            return this;
+        }
+
+        /**
+         * @param connector VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connector(String connector) {
+            return connector(Output.of(connector));
         }
 
         /**

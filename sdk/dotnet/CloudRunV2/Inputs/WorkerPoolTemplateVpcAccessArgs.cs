@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
     public sealed class WorkerPoolTemplateVpcAccessArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+        /// </summary>
+        [Input("connector")]
+        public Input<string>? Connector { get; set; }
+
+        /// <summary>
         /// Traffic VPC egress settings.
         /// Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
         /// </summary>

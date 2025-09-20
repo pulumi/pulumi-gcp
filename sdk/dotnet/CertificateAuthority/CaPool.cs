@@ -60,10 +60,22 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var privatecaSa = new Gcp.Projects.ServiceIdentity("privateca_sa", new()
+    ///     {
+    ///         Service = "privateca.googleapis.com",
+    ///     });
+    /// 
+    ///     var privatecaSaKeyuserEncrypterdecrypter = new Gcp.Kms.CryptoKeyIAMMember("privateca_sa_keyuser_encrypterdecrypter", new()
+    ///     {
+    ///         CryptoKeyId = "projects/keys-project/locations/asia-east1/keyRings/key-ring/cryptoKeys/crypto-key",
+    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+    ///         Member = privatecaSa.Member,
+    ///     });
+    /// 
     ///     var @default = new Gcp.CertificateAuthority.CaPool("default", new()
     ///     {
     ///         Name = "my-pool",
-    ///         Location = "us-central1",
+    ///         Location = "asia-east1",
     ///         Tier = "ENTERPRISE",
     ///         PublishingOptions = new Gcp.CertificateAuthority.Inputs.CaPoolPublishingOptionsArgs
     ///         {
@@ -74,6 +86,10 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
+    ///         },
+    ///         EncryptionSpec = new Gcp.CertificateAuthority.Inputs.CaPoolEncryptionSpecArgs
+    ///         {
+    ///             CloudKmsKey = "projects/keys-project/locations/asia-east1/keyRings/key-ring/cryptoKeys/crypto-key",
     ///         },
     ///         IssuancePolicy = new Gcp.CertificateAuthority.Inputs.CaPoolIssuancePolicyArgs
     ///         {
@@ -227,6 +243,12 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///                 },
     ///             },
     ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             privatecaSaKeyuserEncrypterdecrypter,
+    ///         },
     ///     });
     /// 
     /// });
@@ -264,6 +286,15 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// </summary>
         [Output("effectiveLabels")]
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
+        /// Used when customer would like to encrypt data at rest. The customer-provided key will be used
+        /// to encrypt the Subject, SubjectAltNames and PEM-encoded certificate fields. When unspecified,
+        /// customer data will remain unencrypted.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("encryptionSpec")]
+        public Output<Outputs.CaPoolEncryptionSpec?> EncryptionSpec { get; private set; } = null!;
 
         /// <summary>
         /// The IssuancePolicy to control how Certificates will be issued from this CaPool.
@@ -376,6 +407,15 @@ namespace Pulumi.Gcp.CertificateAuthority
     public sealed class CaPoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Used when customer would like to encrypt data at rest. The customer-provided key will be used
+        /// to encrypt the Subject, SubjectAltNames and PEM-encoded certificate fields. When unspecified,
+        /// customer data will remain unencrypted.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("encryptionSpec")]
+        public Input<Inputs.CaPoolEncryptionSpecArgs>? EncryptionSpec { get; set; }
+
+        /// <summary>
         /// The IssuancePolicy to control how Certificates will be issued from this CaPool.
         /// Structure is documented below.
         /// </summary>
@@ -456,6 +496,15 @@ namespace Pulumi.Gcp.CertificateAuthority
                 _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// Used when customer would like to encrypt data at rest. The customer-provided key will be used
+        /// to encrypt the Subject, SubjectAltNames and PEM-encoded certificate fields. When unspecified,
+        /// customer data will remain unencrypted.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("encryptionSpec")]
+        public Input<Inputs.CaPoolEncryptionSpecGetArgs>? EncryptionSpec { get; set; }
 
         /// <summary>
         /// The IssuancePolicy to control how Certificates will be issued from this CaPool.

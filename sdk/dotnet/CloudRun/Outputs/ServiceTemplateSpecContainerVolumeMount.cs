@@ -22,15 +22,22 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// This must match the Name of a Volume.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Path within the volume from which the container's volume should be mounted.
+        /// </summary>
+        public readonly string? SubPath;
 
         [OutputConstructor]
         private ServiceTemplateSpecContainerVolumeMount(
             string mountPath,
 
-            string name)
+            string name,
+
+            string? subPath)
         {
             MountPath = mountPath;
             Name = name;
+            SubPath = subPath;
         }
     }
 }

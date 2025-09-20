@@ -15,6 +15,7 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'HookPushOption',
     'InstanceHostConfig',
     'InstanceIamBindingCondition',
     'InstanceIamMemberCondition',
@@ -25,6 +26,48 @@ __all__ = [
     'RepositoryInitialConfig',
     'RepositoryUri',
 ]
+
+@pulumi.output_type
+class HookPushOption(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "branchFilter":
+            suggest = "branch_filter"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HookPushOption. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HookPushOption.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HookPushOption.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 branch_filter: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str branch_filter: Trigger hook for matching branches only.
+               Specified as glob pattern. If empty or *, events for all branches are
+               reported. Examples: main, {main,release*}.
+               See https://pkg.go.dev/github.com/gobwas/glob documentation.
+        """
+        if branch_filter is not None:
+            pulumi.set(__self__, "branch_filter", branch_filter)
+
+    @_builtins.property
+    @pulumi.getter(name="branchFilter")
+    def branch_filter(self) -> Optional[_builtins.str]:
+        """
+        Trigger hook for matching branches only.
+        Specified as glob pattern. If empty or *, events for all branches are
+        reported. Examples: main, {main,release*}.
+        See https://pkg.go.dev/github.com/gobwas/glob documentation.
+        """
+        return pulumi.get(self, "branch_filter")
+
 
 @pulumi.output_type
 class InstanceHostConfig(dict):

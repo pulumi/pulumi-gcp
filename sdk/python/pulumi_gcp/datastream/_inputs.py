@@ -3552,18 +3552,26 @@ if not MYPY:
         Dataset template used for dynamic dataset creation.
         Structure is documented below.
         """
+        project_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Optional. The project id of the BigQuery dataset. If not specified, the project will be inferred from the stream resource.
+        """
 elif False:
     StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs:
     def __init__(__self__, *,
-                 dataset_template: pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs']):
+                 dataset_template: pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs'],
+                 project_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs'] dataset_template: Dataset template used for dynamic dataset creation.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] project_id: Optional. The project id of the BigQuery dataset. If not specified, the project will be inferred from the stream resource.
         """
         pulumi.set(__self__, "dataset_template", dataset_template)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
 
     @_builtins.property
     @pulumi.getter(name="datasetTemplate")
@@ -3577,6 +3585,18 @@ class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArg
     @dataset_template.setter
     def dataset_template(self, value: pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs']):
         pulumi.set(self, "dataset_template", value)
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional. The project id of the BigQuery dataset. If not specified, the project will be inferred from the stream resource.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "project_id", value)
 
 
 if not MYPY:

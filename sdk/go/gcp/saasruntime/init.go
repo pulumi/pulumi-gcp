@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:saasruntime/release:Release":
+		r = &Release{}
 	case "gcp:saasruntime/saaS:SaaS":
 		r = &SaaS{}
 	case "gcp:saasruntime/unitKind:UnitKind":
@@ -38,6 +40,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"saasruntime/release",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"saasruntime/saaS",

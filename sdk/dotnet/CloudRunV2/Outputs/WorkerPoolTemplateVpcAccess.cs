@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
     public sealed class WorkerPoolTemplateVpcAccess
     {
         /// <summary>
+        /// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+        /// </summary>
+        public readonly string? Connector;
+        /// <summary>
         /// Traffic VPC egress settings.
         /// Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
         /// </summary>
@@ -26,10 +30,13 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
 
         [OutputConstructor]
         private WorkerPoolTemplateVpcAccess(
+            string? connector,
+
             string? egress,
 
             ImmutableArray<Outputs.WorkerPoolTemplateVpcAccessNetworkInterface> networkInterfaces)
         {
+            Connector = connector;
             Egress = egress;
             NetworkInterfaces = networkInterfaces;
         }

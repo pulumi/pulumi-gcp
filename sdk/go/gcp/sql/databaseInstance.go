@@ -169,6 +169,48 @@ import (
 //
 // ```
 //
+// ### Cloud SQL Instance with Managed Connection Pooling
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
+//				Name:            pulumi.String("mcp-enabled-main-instance"),
+//				Region:          pulumi.String("us-central1"),
+//				DatabaseVersion: pulumi.String("POSTGRES_16"),
+//				Settings: &sql.DatabaseInstanceSettingsArgs{
+//					Tier:    pulumi.String("db-perf-optimized-N-2"),
+//					Edition: pulumi.String("ENTERPRISE_PLUS"),
+//					ConnectionPoolConfigs: sql.DatabaseInstanceSettingsConnectionPoolConfigArray{
+//						&sql.DatabaseInstanceSettingsConnectionPoolConfigArgs{
+//							ConnectionPoolingEnabled: pulumi.Bool(true),
+//							Flags: sql.DatabaseInstanceSettingsConnectionPoolConfigFlagArray{
+//								&sql.DatabaseInstanceSettingsConnectionPoolConfigFlagArgs{
+//									Name:  pulumi.String("max_client_connections"),
+//									Value: pulumi.String("1980"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ### Cloud SQL Instance with PSC connectivity
 //
 // ```go

@@ -2766,6 +2766,8 @@ class ServiceTemplateSpecContainerVolumeMount(dict):
         suggest = None
         if key == "mountPath":
             suggest = "mount_path"
+        elif key == "subPath":
+            suggest = "sub_path"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ServiceTemplateSpecContainerVolumeMount. Access the value via the '{suggest}' property getter instead.")
@@ -2780,14 +2782,18 @@ class ServiceTemplateSpecContainerVolumeMount(dict):
 
     def __init__(__self__, *,
                  mount_path: _builtins.str,
-                 name: _builtins.str):
+                 name: _builtins.str,
+                 sub_path: Optional[_builtins.str] = None):
         """
         :param _builtins.str mount_path: Path within the container at which the volume should be mounted.  Must
                not contain ':'.
         :param _builtins.str name: This must match the Name of a Volume.
+        :param _builtins.str sub_path: Path within the volume from which the container's volume should be mounted.
         """
         pulumi.set(__self__, "mount_path", mount_path)
         pulumi.set(__self__, "name", name)
+        if sub_path is not None:
+            pulumi.set(__self__, "sub_path", sub_path)
 
     @_builtins.property
     @pulumi.getter(name="mountPath")
@@ -2805,6 +2811,14 @@ class ServiceTemplateSpecContainerVolumeMount(dict):
         This must match the Name of a Volume.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="subPath")
+    def sub_path(self) -> Optional[_builtins.str]:
+        """
+        Path within the volume from which the container's volume should be mounted.
+        """
+        return pulumi.get(self, "sub_path")
 
 
 @pulumi.output_type
@@ -4805,14 +4819,17 @@ class GetServiceTemplateSpecContainerStartupProbeTcpSocketResult(dict):
 class GetServiceTemplateSpecContainerVolumeMountResult(dict):
     def __init__(__self__, *,
                  mount_path: _builtins.str,
-                 name: _builtins.str):
+                 name: _builtins.str,
+                 sub_path: _builtins.str):
         """
         :param _builtins.str mount_path: Path within the container at which the volume should be mounted.  Must
                not contain ':'.
         :param _builtins.str name: The name of the Cloud Run Service.
+        :param _builtins.str sub_path: Path within the volume from which the container's volume should be mounted.
         """
         pulumi.set(__self__, "mount_path", mount_path)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "sub_path", sub_path)
 
     @_builtins.property
     @pulumi.getter(name="mountPath")
@@ -4830,6 +4847,14 @@ class GetServiceTemplateSpecContainerVolumeMountResult(dict):
         The name of the Cloud Run Service.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="subPath")
+    def sub_path(self) -> _builtins.str:
+        """
+        Path within the volume from which the container's volume should be mounted.
+        """
+        return pulumi.get(self, "sub_path")
 
 
 @pulumi.output_type

@@ -74,11 +74,15 @@ type LookupSecurityPolicyResult struct {
 	AdaptiveProtectionConfigs []GetSecurityPolicyAdaptiveProtectionConfig `pulumi:"adaptiveProtectionConfigs"`
 	AdvancedOptionsConfigs    []GetSecurityPolicyAdvancedOptionsConfig    `pulumi:"advancedOptionsConfigs"`
 	Description               string                                      `pulumi:"description"`
+	EffectiveLabels           map[string]string                           `pulumi:"effectiveLabels"`
 	Fingerprint               string                                      `pulumi:"fingerprint"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                      string                                    `pulumi:"id"`
+	LabelFingerprint        string                                    `pulumi:"labelFingerprint"`
+	Labels                  map[string]string                         `pulumi:"labels"`
 	Name                    *string                                   `pulumi:"name"`
 	Project                 *string                                   `pulumi:"project"`
+	PulumiLabels            map[string]string                         `pulumi:"pulumiLabels"`
 	RecaptchaOptionsConfigs []GetSecurityPolicyRecaptchaOptionsConfig `pulumi:"recaptchaOptionsConfigs"`
 	Rules                   []GetSecurityPolicyRuleType               `pulumi:"rules"`
 	SelfLink                *string                                   `pulumi:"selfLink"`
@@ -139,6 +143,10 @@ func (o LookupSecurityPolicyResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityPolicyResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+func (o LookupSecurityPolicyResultOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupSecurityPolicyResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 func (o LookupSecurityPolicyResultOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityPolicyResult) string { return v.Fingerprint }).(pulumi.StringOutput)
 }
@@ -148,12 +156,24 @@ func (o LookupSecurityPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+func (o LookupSecurityPolicyResultOutput) LabelFingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecurityPolicyResult) string { return v.LabelFingerprint }).(pulumi.StringOutput)
+}
+
+func (o LookupSecurityPolicyResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupSecurityPolicyResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
 func (o LookupSecurityPolicyResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecurityPolicyResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupSecurityPolicyResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecurityPolicyResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupSecurityPolicyResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupSecurityPolicyResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupSecurityPolicyResultOutput) RecaptchaOptionsConfigs() GetSecurityPolicyRecaptchaOptionsConfigArrayOutput {

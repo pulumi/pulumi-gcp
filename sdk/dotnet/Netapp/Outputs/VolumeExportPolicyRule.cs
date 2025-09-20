@@ -23,6 +23,10 @@ namespace Pulumi.Gcp.Netapp.Outputs
         /// </summary>
         public readonly string? AllowedClients;
         /// <summary>
+        /// An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squash_mode` is `ROOT_SQUASH` or `ALL_SQUASH`.
+        /// </summary>
+        public readonly int? AnonUid;
+        /// <summary>
         /// If enabled, the root user (UID = 0) of the specified clients doesn't get mapped to nobody (UID = 65534). This is also known as no_root_squash.
         /// </summary>
         public readonly string? HasRootAccess;
@@ -58,12 +62,19 @@ namespace Pulumi.Gcp.Netapp.Outputs
         /// Enable to apply the export rule to NFSV4.1 clients.
         /// </summary>
         public readonly bool? Nfsv4;
+        /// <summary>
+        /// SquashMode defines how remote user privileges are restricted when accessing an NFS export. It controls how the user identities (like root) are mapped to anonymous users to limit access and enforce security.
+        /// Possible values are: `NO_ROOT_SQUASH`, `ROOT_SQUASH`, `ALL_SQUASH`.
+        /// </summary>
+        public readonly string? SquashMode;
 
         [OutputConstructor]
         private VolumeExportPolicyRule(
             string? accessType,
 
             string? allowedClients,
+
+            int? anonUid,
 
             string? hasRootAccess,
 
@@ -81,10 +92,13 @@ namespace Pulumi.Gcp.Netapp.Outputs
 
             bool? nfsv3,
 
-            bool? nfsv4)
+            bool? nfsv4,
+
+            string? squashMode)
         {
             AccessType = accessType;
             AllowedClients = allowedClients;
+            AnonUid = anonUid;
             HasRootAccess = hasRootAccess;
             Kerberos5ReadOnly = kerberos5ReadOnly;
             Kerberos5ReadWrite = kerberos5ReadWrite;
@@ -94,6 +108,7 @@ namespace Pulumi.Gcp.Netapp.Outputs
             Kerberos5pReadWrite = kerberos5pReadWrite;
             Nfsv3 = nfsv3;
             Nfsv4 = nfsv4;
+            SquashMode = squashMode;
         }
     }
 }

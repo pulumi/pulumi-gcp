@@ -37,6 +37,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ConnectionIamPolicy{}
 	case "gcp:bigquery/dataTransferConfig:DataTransferConfig":
 		r = &DataTransferConfig{}
+	case "gcp:bigquery/datapolicyv2DataPolicy:Datapolicyv2DataPolicy":
+		r = &Datapolicyv2DataPolicy{}
+	case "gcp:bigquery/datapolicyv2DataPolicyIamBinding:Datapolicyv2DataPolicyIamBinding":
+		r = &Datapolicyv2DataPolicyIamBinding{}
+	case "gcp:bigquery/datapolicyv2DataPolicyIamMember:Datapolicyv2DataPolicyIamMember":
+		r = &Datapolicyv2DataPolicyIamMember{}
+	case "gcp:bigquery/datapolicyv2DataPolicyIamPolicy:Datapolicyv2DataPolicyIamPolicy":
+		r = &Datapolicyv2DataPolicyIamPolicy{}
 	case "gcp:bigquery/dataset:Dataset":
 		r = &Dataset{}
 	case "gcp:bigquery/datasetAccess:DatasetAccess":
@@ -116,6 +124,26 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"bigquery/dataTransferConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"bigquery/datapolicyv2DataPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"bigquery/datapolicyv2DataPolicyIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"bigquery/datapolicyv2DataPolicyIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"bigquery/datapolicyv2DataPolicyIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

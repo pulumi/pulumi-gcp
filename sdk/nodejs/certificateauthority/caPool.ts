@@ -44,9 +44,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const privatecaSa = new gcp.projects.ServiceIdentity("privateca_sa", {service: "privateca.googleapis.com"});
+ * const privatecaSaKeyuserEncrypterdecrypter = new gcp.kms.CryptoKeyIAMMember("privateca_sa_keyuser_encrypterdecrypter", {
+ *     cryptoKeyId: "projects/keys-project/locations/asia-east1/keyRings/key-ring/cryptoKeys/crypto-key",
+ *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+ *     member: privatecaSa.member,
+ * });
  * const _default = new gcp.certificateauthority.CaPool("default", {
  *     name: "my-pool",
- *     location: "us-central1",
+ *     location: "asia-east1",
  *     tier: "ENTERPRISE",
  *     publishingOptions: {
  *         publishCaCert: false,
@@ -55,6 +61,9 @@ import * as utilities from "../utilities";
  *     },
  *     labels: {
  *         foo: "bar",
+ *     },
+ *     encryptionSpec: {
+ *         cloudKmsKey: "projects/keys-project/locations/asia-east1/keyRings/key-ring/cryptoKeys/crypto-key",
  *     },
  *     issuancePolicy: {
  *         allowedKeyTypes: [
@@ -171,6 +180,8 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     },
+ * }, {
+ *     dependsOn: [privatecaSaKeyuserEncrypterdecrypter],
  * });
  * ```
  *
@@ -231,6 +242,13 @@ export class CaPool extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
+     * Used when customer would like to encrypt data at rest. The customer-provided key will be used
+     * to encrypt the Subject, SubjectAltNames and PEM-encoded certificate fields. When unspecified,
+     * customer data will remain unencrypted.
+     * Structure is documented below.
+     */
+    declare public readonly encryptionSpec: pulumi.Output<outputs.certificateauthority.CaPoolEncryptionSpec | undefined>;
+    /**
      * The IssuancePolicy to control how Certificates will be issued from this CaPool.
      * Structure is documented below.
      */
@@ -288,6 +306,7 @@ export class CaPool extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as CaPoolState | undefined;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["encryptionSpec"] = state?.encryptionSpec;
             resourceInputs["issuancePolicy"] = state?.issuancePolicy;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["location"] = state?.location;
@@ -304,6 +323,7 @@ export class CaPool extends pulumi.CustomResource {
             if (args?.tier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tier'");
             }
+            resourceInputs["encryptionSpec"] = args?.encryptionSpec;
             resourceInputs["issuancePolicy"] = args?.issuancePolicy;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
@@ -329,6 +349,13 @@ export interface CaPoolState {
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Used when customer would like to encrypt data at rest. The customer-provided key will be used
+     * to encrypt the Subject, SubjectAltNames and PEM-encoded certificate fields. When unspecified,
+     * customer data will remain unencrypted.
+     * Structure is documented below.
+     */
+    encryptionSpec?: pulumi.Input<inputs.certificateauthority.CaPoolEncryptionSpec>;
     /**
      * The IssuancePolicy to control how Certificates will be issued from this CaPool.
      * Structure is documented below.
@@ -378,6 +405,13 @@ export interface CaPoolState {
  * The set of arguments for constructing a CaPool resource.
  */
 export interface CaPoolArgs {
+    /**
+     * Used when customer would like to encrypt data at rest. The customer-provided key will be used
+     * to encrypt the Subject, SubjectAltNames and PEM-encoded certificate fields. When unspecified,
+     * customer data will remain unencrypted.
+     * Structure is documented below.
+     */
+    encryptionSpec?: pulumi.Input<inputs.certificateauthority.CaPoolEncryptionSpec>;
     /**
      * The IssuancePolicy to control how Certificates will be issued from this CaPool.
      * Structure is documented below.

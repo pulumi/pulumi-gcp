@@ -45,6 +45,26 @@ export type DataTransferConfig = import("./dataTransferConfig").DataTransferConf
 export const DataTransferConfig: typeof import("./dataTransferConfig").DataTransferConfig = null as any;
 utilities.lazyLoad(exports, ["DataTransferConfig"], () => require("./dataTransferConfig"));
 
+export { Datapolicyv2DataPolicyArgs, Datapolicyv2DataPolicyState } from "./datapolicyv2DataPolicy";
+export type Datapolicyv2DataPolicy = import("./datapolicyv2DataPolicy").Datapolicyv2DataPolicy;
+export const Datapolicyv2DataPolicy: typeof import("./datapolicyv2DataPolicy").Datapolicyv2DataPolicy = null as any;
+utilities.lazyLoad(exports, ["Datapolicyv2DataPolicy"], () => require("./datapolicyv2DataPolicy"));
+
+export { Datapolicyv2DataPolicyIamBindingArgs, Datapolicyv2DataPolicyIamBindingState } from "./datapolicyv2DataPolicyIamBinding";
+export type Datapolicyv2DataPolicyIamBinding = import("./datapolicyv2DataPolicyIamBinding").Datapolicyv2DataPolicyIamBinding;
+export const Datapolicyv2DataPolicyIamBinding: typeof import("./datapolicyv2DataPolicyIamBinding").Datapolicyv2DataPolicyIamBinding = null as any;
+utilities.lazyLoad(exports, ["Datapolicyv2DataPolicyIamBinding"], () => require("./datapolicyv2DataPolicyIamBinding"));
+
+export { Datapolicyv2DataPolicyIamMemberArgs, Datapolicyv2DataPolicyIamMemberState } from "./datapolicyv2DataPolicyIamMember";
+export type Datapolicyv2DataPolicyIamMember = import("./datapolicyv2DataPolicyIamMember").Datapolicyv2DataPolicyIamMember;
+export const Datapolicyv2DataPolicyIamMember: typeof import("./datapolicyv2DataPolicyIamMember").Datapolicyv2DataPolicyIamMember = null as any;
+utilities.lazyLoad(exports, ["Datapolicyv2DataPolicyIamMember"], () => require("./datapolicyv2DataPolicyIamMember"));
+
+export { Datapolicyv2DataPolicyIamPolicyArgs, Datapolicyv2DataPolicyIamPolicyState } from "./datapolicyv2DataPolicyIamPolicy";
+export type Datapolicyv2DataPolicyIamPolicy = import("./datapolicyv2DataPolicyIamPolicy").Datapolicyv2DataPolicyIamPolicy;
+export const Datapolicyv2DataPolicyIamPolicy: typeof import("./datapolicyv2DataPolicyIamPolicy").Datapolicyv2DataPolicyIamPolicy = null as any;
+utilities.lazyLoad(exports, ["Datapolicyv2DataPolicyIamPolicy"], () => require("./datapolicyv2DataPolicyIamPolicy"));
+
 export { DatasetArgs, DatasetState } from "./dataset";
 export type Dataset = import("./dataset").Dataset;
 export const Dataset: typeof import("./dataset").Dataset = null as any;
@@ -74,6 +94,11 @@ export { GetConnectionIamPolicyArgs, GetConnectionIamPolicyResult, GetConnection
 export const getConnectionIamPolicy: typeof import("./getConnectionIamPolicy").getConnectionIamPolicy = null as any;
 export const getConnectionIamPolicyOutput: typeof import("./getConnectionIamPolicy").getConnectionIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getConnectionIamPolicy","getConnectionIamPolicyOutput"], () => require("./getConnectionIamPolicy"));
+
+export { GetDatapolicyv2DataPolicyIamPolicyArgs, GetDatapolicyv2DataPolicyIamPolicyResult, GetDatapolicyv2DataPolicyIamPolicyOutputArgs } from "./getDatapolicyv2DataPolicyIamPolicy";
+export const getDatapolicyv2DataPolicyIamPolicy: typeof import("./getDatapolicyv2DataPolicyIamPolicy").getDatapolicyv2DataPolicyIamPolicy = null as any;
+export const getDatapolicyv2DataPolicyIamPolicyOutput: typeof import("./getDatapolicyv2DataPolicyIamPolicy").getDatapolicyv2DataPolicyIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getDatapolicyv2DataPolicyIamPolicy","getDatapolicyv2DataPolicyIamPolicyOutput"], () => require("./getDatapolicyv2DataPolicyIamPolicy"));
 
 export { GetDatasetArgs, GetDatasetResult, GetDatasetOutputArgs } from "./getDataset";
 export const getDataset: typeof import("./getDataset").getDataset = null as any;
@@ -176,6 +201,14 @@ const _module = {
                 return new ConnectionIamPolicy(name, <any>undefined, { urn })
             case "gcp:bigquery/dataTransferConfig:DataTransferConfig":
                 return new DataTransferConfig(name, <any>undefined, { urn })
+            case "gcp:bigquery/datapolicyv2DataPolicy:Datapolicyv2DataPolicy":
+                return new Datapolicyv2DataPolicy(name, <any>undefined, { urn })
+            case "gcp:bigquery/datapolicyv2DataPolicyIamBinding:Datapolicyv2DataPolicyIamBinding":
+                return new Datapolicyv2DataPolicyIamBinding(name, <any>undefined, { urn })
+            case "gcp:bigquery/datapolicyv2DataPolicyIamMember:Datapolicyv2DataPolicyIamMember":
+                return new Datapolicyv2DataPolicyIamMember(name, <any>undefined, { urn })
+            case "gcp:bigquery/datapolicyv2DataPolicyIamPolicy:Datapolicyv2DataPolicyIamPolicy":
+                return new Datapolicyv2DataPolicyIamPolicy(name, <any>undefined, { urn })
             case "gcp:bigquery/dataset:Dataset":
                 return new Dataset(name, <any>undefined, { urn })
             case "gcp:bigquery/datasetAccess:DatasetAccess":
@@ -217,6 +250,10 @@ pulumi.runtime.registerResourceModule("gcp", "bigquery/connectionIamBinding", _m
 pulumi.runtime.registerResourceModule("gcp", "bigquery/connectionIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigquery/connectionIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigquery/dataTransferConfig", _module)
+pulumi.runtime.registerResourceModule("gcp", "bigquery/datapolicyv2DataPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "bigquery/datapolicyv2DataPolicyIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "bigquery/datapolicyv2DataPolicyIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "bigquery/datapolicyv2DataPolicyIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigquery/dataset", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigquery/datasetAccess", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigquery/datasetIamBinding", _module)

@@ -95,7 +95,7 @@ namespace Pulumi.Gcp.Tags
         /// <summary>
         /// Optional. A purpose cannot be changed once set.
         /// A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
-        /// Possible values are: `GCE_FIREWALL`.
+        /// Possible values are: `GCE_FIREWALL`, `DATA_GOVERNANCE`.
         /// </summary>
         [Output("purpose")]
         public Output<string?> Purpose { get; private set; } = null!;
@@ -182,7 +182,7 @@ namespace Pulumi.Gcp.Tags
         /// <summary>
         /// Optional. A purpose cannot be changed once set.
         /// A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
-        /// Possible values are: `GCE_FIREWALL`.
+        /// Possible values are: `GCE_FIREWALL`, `DATA_GOVERNANCE`.
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }
@@ -249,7 +249,7 @@ namespace Pulumi.Gcp.Tags
         /// <summary>
         /// Optional. A purpose cannot be changed once set.
         /// A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
-        /// Possible values are: `GCE_FIREWALL`.
+        /// Possible values are: `GCE_FIREWALL`, `DATA_GOVERNANCE`.
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }

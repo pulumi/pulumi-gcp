@@ -3847,6 +3847,10 @@ if not MYPY:
         """
         This must match the Name of a Volume.
         """
+        sub_path: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Path within the volume from which the container's volume should be mounted.
+        """
 elif False:
     ServiceTemplateSpecContainerVolumeMountArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -3854,14 +3858,18 @@ elif False:
 class ServiceTemplateSpecContainerVolumeMountArgs:
     def __init__(__self__, *,
                  mount_path: pulumi.Input[_builtins.str],
-                 name: pulumi.Input[_builtins.str]):
+                 name: pulumi.Input[_builtins.str],
+                 sub_path: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] mount_path: Path within the container at which the volume should be mounted.  Must
                not contain ':'.
         :param pulumi.Input[_builtins.str] name: This must match the Name of a Volume.
+        :param pulumi.Input[_builtins.str] sub_path: Path within the volume from which the container's volume should be mounted.
         """
         pulumi.set(__self__, "mount_path", mount_path)
         pulumi.set(__self__, "name", name)
+        if sub_path is not None:
+            pulumi.set(__self__, "sub_path", sub_path)
 
     @_builtins.property
     @pulumi.getter(name="mountPath")
@@ -3887,6 +3895,18 @@ class ServiceTemplateSpecContainerVolumeMountArgs:
     @name.setter
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="subPath")
+    def sub_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Path within the volume from which the container's volume should be mounted.
+        """
+        return pulumi.get(self, "sub_path")
+
+    @sub_path.setter
+    def sub_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "sub_path", value)
 
 
 if not MYPY:

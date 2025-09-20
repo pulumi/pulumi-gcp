@@ -239,6 +239,11 @@ namespace Pulumi.Gcp.GkeOnPrem
     ///             Address = "test-address",
     ///             CaCert = "test-ca-cert",
     ///         },
+    ///         Proxy = new Gcp.GkeOnPrem.Inputs.VmwareAdminClusterProxyArgs
+    ///         {
+    ///             Url = "http://my-proxy.example.local:80",
+    ///             NoProxy = "10.151.222.0/24,my-host.example.local,10.151.2.1",
+    ///         },
     ///     });
     /// 
     /// });
@@ -309,6 +314,11 @@ namespace Pulumi.Gcp.GkeOnPrem
     ///         {
     ///             Address = "test-address",
     ///             CaCert = "test-ca-cert",
+    ///         },
+    ///         Proxy = new Gcp.GkeOnPrem.Inputs.VmwareAdminClusterProxyArgs
+    ///         {
+    ///             Url = "http://my-proxy.example.local:80",
+    ///             NoProxy = "10.151.222.0/24,my-host.example.local,10.151.2.1",
     ///         },
     ///     });
     /// 
@@ -517,6 +527,13 @@ namespace Pulumi.Gcp.GkeOnPrem
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for proxy.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("proxy")]
+        public Output<Outputs.VmwareAdminClusterProxy?> Proxy { get; private set; } = null!;
 
         /// <summary>
         /// If set, there are currently changes in flight to the VMware admin cluster.
@@ -739,6 +756,13 @@ namespace Pulumi.Gcp.GkeOnPrem
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// Configuration for proxy.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("proxy")]
+        public Input<Inputs.VmwareAdminClusterProxyArgs>? Proxy { get; set; }
+
+        /// <summary>
         /// Specifies vCenter config for the admin cluster.
         /// Structure is documented below.
         /// </summary>
@@ -945,6 +969,13 @@ namespace Pulumi.Gcp.GkeOnPrem
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Configuration for proxy.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("proxy")]
+        public Input<Inputs.VmwareAdminClusterProxyGetArgs>? Proxy { get; set; }
 
         /// <summary>
         /// If set, there are currently changes in flight to the VMware admin cluster.

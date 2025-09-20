@@ -68,6 +68,53 @@ import (
 //	}
 //
 // ```
+// ### Discoveryengine Searchengine Agentspace Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			agentspaceBasic, err := discoveryengine.NewDataStore(ctx, "agentspace_basic", &discoveryengine.DataStoreArgs{
+//				Location:         pulumi.String("global"),
+//				DataStoreId:      pulumi.String("example-datastore-id"),
+//				DisplayName:      pulumi.String("tf-test-structured-datastore"),
+//				IndustryVertical: pulumi.String("GENERIC"),
+//				ContentConfig:    pulumi.String("NO_CONTENT"),
+//				SolutionTypes: pulumi.StringArray{
+//					pulumi.String("SOLUTION_TYPE_SEARCH"),
+//				},
+//				CreateAdvancedSiteSearch: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = discoveryengine.NewSearchEngine(ctx, "agentspace_basic", &discoveryengine.SearchEngineArgs{
+//				EngineId:     pulumi.String("example-engine-id"),
+//				CollectionId: pulumi.String("default_collection"),
+//				Location:     agentspaceBasic.Location,
+//				DisplayName:  pulumi.String("tf-test-agentspace-search-engine"),
+//				DataStoreIds: pulumi.StringArray{
+//					agentspaceBasic.DataStoreId,
+//				},
+//				IndustryVertical:   pulumi.String("GENERIC"),
+//				SearchEngineConfig: &discoveryengine.SearchEngineSearchEngineConfigArgs{},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -95,6 +142,9 @@ import (
 type SearchEngine struct {
 	pulumi.CustomResourceState
 
+	// This is the application type this engine resource represents.
+	// The supported values: 'APP_TYPE_UNSPECIFIED', 'APP_TYPE_INTRANET'.
+	AppType pulumi.StringPtrOutput `pulumi:"appType"`
 	// The collection ID.
 	CollectionId pulumi.StringOutput `pulumi:"collectionId"`
 	// Common config spec that specifies the metadata of the engine.
@@ -177,6 +227,9 @@ func GetSearchEngine(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SearchEngine resources.
 type searchEngineState struct {
+	// This is the application type this engine resource represents.
+	// The supported values: 'APP_TYPE_UNSPECIFIED', 'APP_TYPE_INTRANET'.
+	AppType *string `pulumi:"appType"`
 	// The collection ID.
 	CollectionId *string `pulumi:"collectionId"`
 	// Common config spec that specifies the metadata of the engine.
@@ -212,6 +265,9 @@ type searchEngineState struct {
 }
 
 type SearchEngineState struct {
+	// This is the application type this engine resource represents.
+	// The supported values: 'APP_TYPE_UNSPECIFIED', 'APP_TYPE_INTRANET'.
+	AppType pulumi.StringPtrInput
 	// The collection ID.
 	CollectionId pulumi.StringPtrInput
 	// Common config spec that specifies the metadata of the engine.
@@ -251,6 +307,9 @@ func (SearchEngineState) ElementType() reflect.Type {
 }
 
 type searchEngineArgs struct {
+	// This is the application type this engine resource represents.
+	// The supported values: 'APP_TYPE_UNSPECIFIED', 'APP_TYPE_INTRANET'.
+	AppType *string `pulumi:"appType"`
 	// The collection ID.
 	CollectionId string `pulumi:"collectionId"`
 	// Common config spec that specifies the metadata of the engine.
@@ -278,6 +337,9 @@ type searchEngineArgs struct {
 
 // The set of arguments for constructing a SearchEngine resource.
 type SearchEngineArgs struct {
+	// This is the application type this engine resource represents.
+	// The supported values: 'APP_TYPE_UNSPECIFIED', 'APP_TYPE_INTRANET'.
+	AppType pulumi.StringPtrInput
 	// The collection ID.
 	CollectionId pulumi.StringInput
 	// Common config spec that specifies the metadata of the engine.
@@ -388,6 +450,12 @@ func (o SearchEngineOutput) ToSearchEngineOutput() SearchEngineOutput {
 
 func (o SearchEngineOutput) ToSearchEngineOutputWithContext(ctx context.Context) SearchEngineOutput {
 	return o
+}
+
+// This is the application type this engine resource represents.
+// The supported values: 'APP_TYPE_UNSPECIFIED', 'APP_TYPE_INTRANET'.
+func (o SearchEngineOutput) AppType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SearchEngine) pulumi.StringPtrOutput { return v.AppType }).(pulumi.StringPtrOutput)
 }
 
 // The collection ID.

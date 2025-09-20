@@ -1937,6 +1937,10 @@ if not MYPY:
         """
         This must match the Name of a Volume.
         """
+        sub_path: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Path within the volume from which the container's volume should be mounted.
+        """
 elif False:
     JobTemplateTemplateContainerVolumeMountArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -1944,13 +1948,17 @@ elif False:
 class JobTemplateTemplateContainerVolumeMountArgs:
     def __init__(__self__, *,
                  mount_path: pulumi.Input[_builtins.str],
-                 name: pulumi.Input[_builtins.str]):
+                 name: pulumi.Input[_builtins.str],
+                 sub_path: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] mount_path: Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
         :param pulumi.Input[_builtins.str] name: This must match the Name of a Volume.
+        :param pulumi.Input[_builtins.str] sub_path: Path within the volume from which the container's volume should be mounted.
         """
         pulumi.set(__self__, "mount_path", mount_path)
         pulumi.set(__self__, "name", name)
+        if sub_path is not None:
+            pulumi.set(__self__, "sub_path", sub_path)
 
     @_builtins.property
     @pulumi.getter(name="mountPath")
@@ -1975,6 +1983,18 @@ class JobTemplateTemplateContainerVolumeMountArgs:
     @name.setter
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="subPath")
+    def sub_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Path within the volume from which the container's volume should be mounted.
+        """
+        return pulumi.get(self, "sub_path")
+
+    @sub_path.setter
+    def sub_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "sub_path", value)
 
 
 if not MYPY:
@@ -5431,6 +5451,10 @@ if not MYPY:
         """
         This must match the Name of a Volume.
         """
+        sub_path: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Path within the volume from which the container's volume should be mounted.
+        """
 elif False:
     ServiceTemplateContainerVolumeMountArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -5438,13 +5462,17 @@ elif False:
 class ServiceTemplateContainerVolumeMountArgs:
     def __init__(__self__, *,
                  mount_path: pulumi.Input[_builtins.str],
-                 name: pulumi.Input[_builtins.str]):
+                 name: pulumi.Input[_builtins.str],
+                 sub_path: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] mount_path: Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
         :param pulumi.Input[_builtins.str] name: This must match the Name of a Volume.
+        :param pulumi.Input[_builtins.str] sub_path: Path within the volume from which the container's volume should be mounted.
         """
         pulumi.set(__self__, "mount_path", mount_path)
         pulumi.set(__self__, "name", name)
+        if sub_path is not None:
+            pulumi.set(__self__, "sub_path", sub_path)
 
     @_builtins.property
     @pulumi.getter(name="mountPath")
@@ -5469,6 +5497,18 @@ class ServiceTemplateContainerVolumeMountArgs:
     @name.setter
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="subPath")
+    def sub_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Path within the volume from which the container's volume should be mounted.
+        """
+        return pulumi.get(self, "sub_path")
+
+    @sub_path.setter
+    def sub_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "sub_path", value)
 
 
 if not MYPY:
@@ -7980,6 +8020,10 @@ if not MYPY:
         """
         This must match the Name of a Volume.
         """
+        sub_path: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Path within the volume from which the container's volume should be mounted.
+        """
 elif False:
     WorkerPoolTemplateContainerVolumeMountArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -7987,13 +8031,17 @@ elif False:
 class WorkerPoolTemplateContainerVolumeMountArgs:
     def __init__(__self__, *,
                  mount_path: pulumi.Input[_builtins.str],
-                 name: pulumi.Input[_builtins.str]):
+                 name: pulumi.Input[_builtins.str],
+                 sub_path: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] mount_path: Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
         :param pulumi.Input[_builtins.str] name: This must match the Name of a Volume.
+        :param pulumi.Input[_builtins.str] sub_path: Path within the volume from which the container's volume should be mounted.
         """
         pulumi.set(__self__, "mount_path", mount_path)
         pulumi.set(__self__, "name", name)
+        if sub_path is not None:
+            pulumi.set(__self__, "sub_path", sub_path)
 
     @_builtins.property
     @pulumi.getter(name="mountPath")
@@ -8018,6 +8066,18 @@ class WorkerPoolTemplateContainerVolumeMountArgs:
     @name.setter
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="subPath")
+    def sub_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Path within the volume from which the container's volume should be mounted.
+        """
+        return pulumi.get(self, "sub_path")
+
+    @sub_path.setter
+    def sub_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "sub_path", value)
 
 
 if not MYPY:
@@ -8578,6 +8638,10 @@ class WorkerPoolTemplateVolumeSecretItemArgs:
 
 if not MYPY:
     class WorkerPoolTemplateVpcAccessArgsDict(TypedDict):
+        connector: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+        """
         egress: NotRequired[pulumi.Input[_builtins.str]]
         """
         Traffic VPC egress settings.
@@ -8594,18 +8658,34 @@ elif False:
 @pulumi.input_type
 class WorkerPoolTemplateVpcAccessArgs:
     def __init__(__self__, *,
+                 connector: Optional[pulumi.Input[_builtins.str]] = None,
                  egress: Optional[pulumi.Input[_builtins.str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolTemplateVpcAccessNetworkInterfaceArgs']]]] = None):
         """
+        :param pulumi.Input[_builtins.str] connector: VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
         :param pulumi.Input[_builtins.str] egress: Traffic VPC egress settings.
                Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
         :param pulumi.Input[Sequence[pulumi.Input['WorkerPoolTemplateVpcAccessNetworkInterfaceArgs']]] network_interfaces: Direct VPC egress settings. Currently only single network interface is supported.
                Structure is documented below.
         """
+        if connector is not None:
+            pulumi.set(__self__, "connector", connector)
         if egress is not None:
             pulumi.set(__self__, "egress", egress)
         if network_interfaces is not None:
             pulumi.set(__self__, "network_interfaces", network_interfaces)
+
+    @_builtins.property
+    @pulumi.getter
+    def connector(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+        """
+        return pulumi.get(self, "connector")
+
+    @connector.setter
+    def connector(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "connector", value)
 
     @_builtins.property
     @pulumi.getter

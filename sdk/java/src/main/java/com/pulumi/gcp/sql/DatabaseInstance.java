@@ -201,6 +201,52 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ### Cloud SQL Instance with Managed Connection Pooling
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.sql.DatabaseInstance;
+ * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()
+ *             .name("mcp-enabled-main-instance")
+ *             .region("us-central1")
+ *             .databaseVersion("POSTGRES_16")
+ *             .settings(DatabaseInstanceSettingsArgs.builder()
+ *                 .tier("db-perf-optimized-N-2")
+ *                 .edition("ENTERPRISE_PLUS")
+ *                 .connectionPoolConfigs(DatabaseInstanceSettingsConnectionPoolConfigArgs.builder()
+ *                     .connectionPoolingEnabled(true)
+ *                     .flags(DatabaseInstanceSettingsConnectionPoolConfigFlagArgs.builder()
+ *                         .name("max_client_connections")
+ *                         .value("1980")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ### Cloud SQL Instance with PSC connectivity
  * 
  * <pre>

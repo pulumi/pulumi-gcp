@@ -758,6 +758,123 @@ import * as utilities from "../utilities";
  *     dependsOn: [bigqueryKeyUser],
  * });
  * ```
+ * ### Datastream Stream Bigquery Cross Project Source Hierachy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as random from "@pulumi/random";
+ * import * as time from "@pulumiverse/time";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const cross_project_dataset = new gcp.organizations.Project("cross-project-dataset", {
+ *     projectId: "tf-test_79169",
+ *     name: "tf-test_56529",
+ *     orgId: "123456789",
+ *     billingAccount: "000000-0000000-0000000-000000",
+ *     deletionPolicy: "DELETE",
+ * });
+ * const wait60Seconds = new time.index.Sleep("wait_60_seconds", {createDuration: "60s"}, {
+ *     dependsOn: [cross_project_dataset],
+ * });
+ * const bigquery = new gcp.projects.Service("bigquery", {
+ *     project: cross_project_dataset.projectId,
+ *     service: "bigquery.googleapis.com",
+ *     disableOnDestroy: false,
+ * }, {
+ *     dependsOn: [wait60Seconds],
+ * });
+ * const datastreamBigqueryAdmin = new gcp.projects.IAMMember("datastream_bigquery_admin", {
+ *     project: cross_project_dataset.projectId,
+ *     role: "roles/bigquery.admin",
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-datastream.iam.gserviceaccount.com`),
+ * }, {
+ *     dependsOn: [wait60Seconds],
+ * });
+ * const instance = new gcp.sql.DatabaseInstance("instance", {
+ *     name: "my-instance",
+ *     databaseVersion: "MYSQL_8_0",
+ *     region: "us-central1",
+ *     settings: {
+ *         tier: "db-f1-micro",
+ *         backupConfiguration: {
+ *             enabled: true,
+ *             binaryLogEnabled: true,
+ *         },
+ *         ipConfiguration: {
+ *             authorizedNetworks: [
+ *                 {
+ *                     value: "34.71.242.81",
+ *                 },
+ *                 {
+ *                     value: "34.72.28.29",
+ *                 },
+ *                 {
+ *                     value: "34.67.6.157",
+ *                 },
+ *                 {
+ *                     value: "34.67.234.134",
+ *                 },
+ *                 {
+ *                     value: "34.72.239.218",
+ *                 },
+ *             ],
+ *         },
+ *     },
+ *     deletionProtection: true,
+ * });
+ * const db = new gcp.sql.Database("db", {
+ *     instance: instance.name,
+ *     name: "db",
+ * });
+ * const pwd = new random.RandomPassword("pwd", {
+ *     length: 16,
+ *     special: false,
+ * });
+ * const user = new gcp.sql.User("user", {
+ *     name: "user",
+ *     instance: instance.name,
+ *     host: "%",
+ *     password: pwd.result,
+ * });
+ * const sourceConnectionProfile = new gcp.datastream.ConnectionProfile("source_connection_profile", {
+ *     displayName: "Source connection profile",
+ *     location: "us-central1",
+ *     connectionProfileId: "source-profile",
+ *     mysqlProfile: {
+ *         hostname: instance.publicIpAddress,
+ *         username: user.name,
+ *         password: user.password,
+ *     },
+ * });
+ * const destinationConnectionProfile = new gcp.datastream.ConnectionProfile("destination_connection_profile", {
+ *     displayName: "Connection profile",
+ *     location: "us-central1",
+ *     connectionProfileId: "destination-profile",
+ *     bigqueryProfile: {},
+ * });
+ * const _default = new gcp.datastream.Stream("default", {
+ *     streamId: "my-stream",
+ *     location: "us-central1",
+ *     displayName: "my stream",
+ *     sourceConfig: {
+ *         sourceConnectionProfile: sourceConnectionProfile.id,
+ *         mysqlSourceConfig: {},
+ *     },
+ *     destinationConfig: {
+ *         destinationConnectionProfile: destinationConnectionProfile.id,
+ *         bigqueryDestinationConfig: {
+ *             sourceHierarchyDatasets: {
+ *                 datasetTemplate: {
+ *                     location: "us-central1",
+ *                 },
+ *                 projectId: cross_project_dataset.projectId,
+ *             },
+ *         },
+ *     },
+ *     backfillNone: {},
+ * });
+ * ```
  * ### Datastream Stream Bigquery Append Only
  *
  * ```typescript

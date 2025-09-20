@@ -36,6 +36,9 @@ __all__ = [
     'DataTransferConfigEncryptionConfiguration',
     'DataTransferConfigScheduleOptions',
     'DataTransferConfigSensitiveParams',
+    'Datapolicyv2DataPolicyDataMaskingPolicy',
+    'Datapolicyv2DataPolicyIamBindingCondition',
+    'Datapolicyv2DataPolicyIamMemberCondition',
     'DatasetAccess',
     'DatasetAccessAuthorizedDataset',
     'DatasetAccessAuthorizedDatasetDataset',
@@ -1196,6 +1199,130 @@ class DataTransferConfigSensitiveParams(dict):
         The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
         """
         return pulumi.get(self, "secret_access_key_wo_version")
+
+
+@pulumi.output_type
+class Datapolicyv2DataPolicyDataMaskingPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "predefinedExpression":
+            suggest = "predefined_expression"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in Datapolicyv2DataPolicyDataMaskingPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        Datapolicyv2DataPolicyDataMaskingPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        Datapolicyv2DataPolicyDataMaskingPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 predefined_expression: Optional[_builtins.str] = None,
+                 routine: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str predefined_expression: A predefined masking expression.
+               Possible values:
+               SHA256
+               ALWAYS_NULL
+               DEFAULT_MASKING_VALUE
+               LAST_FOUR_CHARACTERS
+               FIRST_FOUR_CHARACTERS
+               EMAIL_MASK
+               DATE_YEAR_MASK
+               RANDOM_HASH
+        :param _builtins.str routine: The name of the BigQuery routine that contains the custom masking
+               routine, in the format of
+               `projects/{project_number}/datasets/{dataset_id}/routines/{routine_id}`.
+        """
+        if predefined_expression is not None:
+            pulumi.set(__self__, "predefined_expression", predefined_expression)
+        if routine is not None:
+            pulumi.set(__self__, "routine", routine)
+
+    @_builtins.property
+    @pulumi.getter(name="predefinedExpression")
+    def predefined_expression(self) -> Optional[_builtins.str]:
+        """
+        A predefined masking expression.
+        Possible values:
+        SHA256
+        ALWAYS_NULL
+        DEFAULT_MASKING_VALUE
+        LAST_FOUR_CHARACTERS
+        FIRST_FOUR_CHARACTERS
+        EMAIL_MASK
+        DATE_YEAR_MASK
+        RANDOM_HASH
+        """
+        return pulumi.get(self, "predefined_expression")
+
+    @_builtins.property
+    @pulumi.getter
+    def routine(self) -> Optional[_builtins.str]:
+        """
+        The name of the BigQuery routine that contains the custom masking
+        routine, in the format of
+        `projects/{project_number}/datasets/{dataset_id}/routines/{routine_id}`.
+        """
+        return pulumi.get(self, "routine")
+
+
+@pulumi.output_type
+class Datapolicyv2DataPolicyIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: _builtins.str,
+                 title: _builtins.str,
+                 description: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> _builtins.str:
+        return pulumi.get(self, "expression")
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> _builtins.str:
+        return pulumi.get(self, "title")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class Datapolicyv2DataPolicyIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: _builtins.str,
+                 title: _builtins.str,
+                 description: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> _builtins.str:
+        return pulumi.get(self, "expression")
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> _builtins.str:
+        return pulumi.get(self, "title")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "description")
 
 
 @pulumi.output_type

@@ -85,6 +85,9 @@ public final class Config {
     public Optional<String> bigqueryDatapolicyCustomEndpoint() {
         return Codegen.stringProp("bigqueryDatapolicyCustomEndpoint").config(config).get();
     }
+    public Optional<String> bigqueryDatapolicyv2CustomEndpoint() {
+        return Codegen.stringProp("bigqueryDatapolicyv2CustomEndpoint").config(config).get();
+    }
     public Optional<String> bigqueryReservationCustomEndpoint() {
         return Codegen.stringProp("bigqueryReservationCustomEndpoint").config(config).get();
     }
