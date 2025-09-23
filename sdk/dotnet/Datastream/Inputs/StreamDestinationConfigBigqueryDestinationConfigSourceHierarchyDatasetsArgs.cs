@@ -19,6 +19,12 @@ namespace Pulumi.Gcp.Datastream.Inputs
         [Input("datasetTemplate", required: true)]
         public Input<Inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs> DatasetTemplate { get; set; } = null!;
 
+        /// <summary>
+        /// Optional. The project id of the BigQuery dataset. If not specified, the project will be inferred from the stream resource.
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
+
         public StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs()
         {
         }

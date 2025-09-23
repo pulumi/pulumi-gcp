@@ -23,6 +23,7 @@ class CaPoolArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
                  tier: pulumi.Input[_builtins.str],
+                 encryption_spec: Optional[pulumi.Input['CaPoolEncryptionSpecArgs']] = None,
                  issuance_policy: Optional[pulumi.Input['CaPoolIssuancePolicyArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -34,6 +35,10 @@ class CaPoolArgs:
                running `gcloud privateca locations list`.
         :param pulumi.Input[_builtins.str] tier: The Tier of this CaPool.
                Possible values are: `ENTERPRISE`, `DEVOPS`.
+        :param pulumi.Input['CaPoolEncryptionSpecArgs'] encryption_spec: Used when customer would like to encrypt data at rest. The customer-provided key will be used
+               to encrypt the Subject, SubjectAltNames and PEM-encoded certificate fields. When unspecified,
+               customer data will remain unencrypted.
+               Structure is documented below.
         :param pulumi.Input['CaPoolIssuancePolicyArgs'] issuance_policy: The IssuancePolicy to control how Certificates will be issued from this CaPool.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels with user-defined metadata.
@@ -50,6 +55,8 @@ class CaPoolArgs:
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "tier", tier)
+        if encryption_spec is not None:
+            pulumi.set(__self__, "encryption_spec", encryption_spec)
         if issuance_policy is not None:
             pulumi.set(__self__, "issuance_policy", issuance_policy)
         if labels is not None:
@@ -86,6 +93,21 @@ class CaPoolArgs:
     @tier.setter
     def tier(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "tier", value)
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionSpec")
+    def encryption_spec(self) -> Optional[pulumi.Input['CaPoolEncryptionSpecArgs']]:
+        """
+        Used when customer would like to encrypt data at rest. The customer-provided key will be used
+        to encrypt the Subject, SubjectAltNames and PEM-encoded certificate fields. When unspecified,
+        customer data will remain unencrypted.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_spec")
+
+    @encryption_spec.setter
+    def encryption_spec(self, value: Optional[pulumi.Input['CaPoolEncryptionSpecArgs']]):
+        pulumi.set(self, "encryption_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="issuancePolicy")
@@ -160,6 +182,7 @@ class CaPoolArgs:
 class _CaPoolState:
     def __init__(__self__, *,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 encryption_spec: Optional[pulumi.Input['CaPoolEncryptionSpecArgs']] = None,
                  issuance_policy: Optional[pulumi.Input['CaPoolIssuancePolicyArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
@@ -171,6 +194,10 @@ class _CaPoolState:
         """
         Input properties used for looking up and filtering CaPool resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input['CaPoolEncryptionSpecArgs'] encryption_spec: Used when customer would like to encrypt data at rest. The customer-provided key will be used
+               to encrypt the Subject, SubjectAltNames and PEM-encoded certificate fields. When unspecified,
+               customer data will remain unencrypted.
+               Structure is documented below.
         :param pulumi.Input['CaPoolIssuancePolicyArgs'] issuance_policy: The IssuancePolicy to control how Certificates will be issued from this CaPool.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels with user-defined metadata.
@@ -193,6 +220,8 @@ class _CaPoolState:
         """
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
+        if encryption_spec is not None:
+            pulumi.set(__self__, "encryption_spec", encryption_spec)
         if issuance_policy is not None:
             pulumi.set(__self__, "issuance_policy", issuance_policy)
         if labels is not None:
@@ -221,6 +250,21 @@ class _CaPoolState:
     @effective_labels.setter
     def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionSpec")
+    def encryption_spec(self) -> Optional[pulumi.Input['CaPoolEncryptionSpecArgs']]:
+        """
+        Used when customer would like to encrypt data at rest. The customer-provided key will be used
+        to encrypt the Subject, SubjectAltNames and PEM-encoded certificate fields. When unspecified,
+        customer data will remain unencrypted.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_spec")
+
+    @encryption_spec.setter
+    def encryption_spec(self, value: Optional[pulumi.Input['CaPoolEncryptionSpecArgs']]):
+        pulumi.set(self, "encryption_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="issuancePolicy")
@@ -336,6 +380,7 @@ class CaPool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 encryption_spec: Optional[pulumi.Input[Union['CaPoolEncryptionSpecArgs', 'CaPoolEncryptionSpecArgsDict']]] = None,
                  issuance_policy: Optional[pulumi.Input[Union['CaPoolIssuancePolicyArgs', 'CaPoolIssuancePolicyArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
@@ -381,9 +426,14 @@ class CaPool(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        privateca_sa = gcp.projects.ServiceIdentity("privateca_sa", service="privateca.googleapis.com")
+        privateca_sa_keyuser_encrypterdecrypter = gcp.kms.CryptoKeyIAMMember("privateca_sa_keyuser_encrypterdecrypter",
+            crypto_key_id="projects/keys-project/locations/asia-east1/keyRings/key-ring/cryptoKeys/crypto-key",
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=privateca_sa.member)
         default = gcp.certificateauthority.CaPool("default",
             name="my-pool",
-            location="us-central1",
+            location="asia-east1",
             tier="ENTERPRISE",
             publishing_options={
                 "publish_ca_cert": False,
@@ -392,6 +442,9 @@ class CaPool(pulumi.CustomResource):
             },
             labels={
                 "foo": "bar",
+            },
+            encryption_spec={
+                "cloud_kms_key": "projects/keys-project/locations/asia-east1/keyRings/key-ring/cryptoKeys/crypto-key",
             },
             issuance_policy={
                 "allowed_key_types": [
@@ -507,7 +560,8 @@ class CaPool(pulumi.CustomResource):
                         ],
                     },
                 },
-            })
+            },
+            opts = pulumi.ResourceOptions(depends_on=[privateca_sa_keyuser_encrypterdecrypter]))
         ```
 
         ## Import
@@ -536,6 +590,10 @@ class CaPool(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['CaPoolEncryptionSpecArgs', 'CaPoolEncryptionSpecArgsDict']] encryption_spec: Used when customer would like to encrypt data at rest. The customer-provided key will be used
+               to encrypt the Subject, SubjectAltNames and PEM-encoded certificate fields. When unspecified,
+               customer data will remain unencrypted.
+               Structure is documented below.
         :param pulumi.Input[Union['CaPoolIssuancePolicyArgs', 'CaPoolIssuancePolicyArgsDict']] issuance_policy: The IssuancePolicy to control how Certificates will be issued from this CaPool.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels with user-defined metadata.
@@ -597,9 +655,14 @@ class CaPool(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        privateca_sa = gcp.projects.ServiceIdentity("privateca_sa", service="privateca.googleapis.com")
+        privateca_sa_keyuser_encrypterdecrypter = gcp.kms.CryptoKeyIAMMember("privateca_sa_keyuser_encrypterdecrypter",
+            crypto_key_id="projects/keys-project/locations/asia-east1/keyRings/key-ring/cryptoKeys/crypto-key",
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=privateca_sa.member)
         default = gcp.certificateauthority.CaPool("default",
             name="my-pool",
-            location="us-central1",
+            location="asia-east1",
             tier="ENTERPRISE",
             publishing_options={
                 "publish_ca_cert": False,
@@ -608,6 +671,9 @@ class CaPool(pulumi.CustomResource):
             },
             labels={
                 "foo": "bar",
+            },
+            encryption_spec={
+                "cloud_kms_key": "projects/keys-project/locations/asia-east1/keyRings/key-ring/cryptoKeys/crypto-key",
             },
             issuance_policy={
                 "allowed_key_types": [
@@ -723,7 +789,8 @@ class CaPool(pulumi.CustomResource):
                         ],
                     },
                 },
-            })
+            },
+            opts = pulumi.ResourceOptions(depends_on=[privateca_sa_keyuser_encrypterdecrypter]))
         ```
 
         ## Import
@@ -765,6 +832,7 @@ class CaPool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 encryption_spec: Optional[pulumi.Input[Union['CaPoolEncryptionSpecArgs', 'CaPoolEncryptionSpecArgsDict']]] = None,
                  issuance_policy: Optional[pulumi.Input[Union['CaPoolIssuancePolicyArgs', 'CaPoolIssuancePolicyArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
@@ -781,6 +849,7 @@ class CaPool(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CaPoolArgs.__new__(CaPoolArgs)
 
+            __props__.__dict__["encryption_spec"] = encryption_spec
             __props__.__dict__["issuance_policy"] = issuance_policy
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
@@ -807,6 +876,7 @@ class CaPool(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            encryption_spec: Optional[pulumi.Input[Union['CaPoolEncryptionSpecArgs', 'CaPoolEncryptionSpecArgsDict']]] = None,
             issuance_policy: Optional[pulumi.Input[Union['CaPoolIssuancePolicyArgs', 'CaPoolIssuancePolicyArgsDict']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: Optional[pulumi.Input[_builtins.str]] = None,
@@ -823,6 +893,10 @@ class CaPool(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[Union['CaPoolEncryptionSpecArgs', 'CaPoolEncryptionSpecArgsDict']] encryption_spec: Used when customer would like to encrypt data at rest. The customer-provided key will be used
+               to encrypt the Subject, SubjectAltNames and PEM-encoded certificate fields. When unspecified,
+               customer data will remain unencrypted.
+               Structure is documented below.
         :param pulumi.Input[Union['CaPoolIssuancePolicyArgs', 'CaPoolIssuancePolicyArgsDict']] issuance_policy: The IssuancePolicy to control how Certificates will be issued from this CaPool.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels with user-defined metadata.
@@ -848,6 +922,7 @@ class CaPool(pulumi.CustomResource):
         __props__ = _CaPoolState.__new__(_CaPoolState)
 
         __props__.__dict__["effective_labels"] = effective_labels
+        __props__.__dict__["encryption_spec"] = encryption_spec
         __props__.__dict__["issuance_policy"] = issuance_policy
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
@@ -865,6 +940,17 @@ class CaPool(pulumi.CustomResource):
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionSpec")
+    def encryption_spec(self) -> pulumi.Output[Optional['outputs.CaPoolEncryptionSpec']]:
+        """
+        Used when customer would like to encrypt data at rest. The customer-provided key will be used
+        to encrypt the Subject, SubjectAltNames and PEM-encoded certificate fields. When unspecified,
+        customer data will remain unencrypted.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_spec")
 
     @_builtins.property
     @pulumi.getter(name="issuancePolicy")

@@ -11,6 +11,7 @@ import com.pulumi.gcp.compute.inputs.SecurityPolicyRecaptchaOptionsConfigArgs;
 import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleArgs;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -65,6 +66,25 @@ public final class SecurityPolicyArgs extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Labels to apply to this address. A list of key-&gt;value pairs.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
+     */
+    @Import(name="labels")
+    private @Nullable Output<Map<String,String>> labels;
+
+    /**
+     * @return Labels to apply to this address. A list of key-&gt;value pairs.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> labels() {
+        return Optional.ofNullable(this.labels);
     }
 
     /**
@@ -172,6 +192,7 @@ public final class SecurityPolicyArgs extends com.pulumi.resources.ResourceArgs 
         this.adaptiveProtectionConfig = $.adaptiveProtectionConfig;
         this.advancedOptionsConfig = $.advancedOptionsConfig;
         this.description = $.description;
+        this.labels = $.labels;
         this.name = $.name;
         this.project = $.project;
         this.recaptchaOptionsConfig = $.recaptchaOptionsConfig;
@@ -260,6 +281,31 @@ public final class SecurityPolicyArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param labels Labels to apply to this address. A list of key-&gt;value pairs.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(@Nullable Output<Map<String,String>> labels) {
+            $.labels = labels;
+            return this;
+        }
+
+        /**
+         * @param labels Labels to apply to this address. A list of key-&gt;value pairs.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(Map<String,String> labels) {
+            return labels(Output.of(labels));
         }
 
         /**

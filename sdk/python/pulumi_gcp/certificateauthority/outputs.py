@@ -36,6 +36,7 @@ __all__ = [
     'AuthoritySubordinateConfig',
     'AuthoritySubordinateConfigPemIssuerChain',
     'AuthorityUserDefinedAccessUrls',
+    'CaPoolEncryptionSpec',
     'CaPoolIamBindingCondition',
     'CaPoolIamMemberCondition',
     'CaPoolIssuancePolicy',
@@ -1623,6 +1624,44 @@ class AuthorityUserDefinedAccessUrls(dict):
         A list of URLs where this CertificateAuthority's CRLs are published that is specified by users.
         """
         return pulumi.get(self, "crl_access_urls")
+
+
+@pulumi.output_type
+class CaPoolEncryptionSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudKmsKey":
+            suggest = "cloud_kms_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CaPoolEncryptionSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CaPoolEncryptionSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CaPoolEncryptionSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cloud_kms_key: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str cloud_kms_key: The resource name for an existing Cloud KMS key in the format
+               `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        """
+        if cloud_kms_key is not None:
+            pulumi.set(__self__, "cloud_kms_key", cloud_kms_key)
+
+    @_builtins.property
+    @pulumi.getter(name="cloudKmsKey")
+    def cloud_kms_key(self) -> Optional[_builtins.str]:
+        """
+        The resource name for an existing Cloud KMS key in the format
+        `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        """
+        return pulumi.get(self, "cloud_kms_key")
 
 
 @pulumi.output_type

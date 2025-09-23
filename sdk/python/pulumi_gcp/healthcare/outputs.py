@@ -36,6 +36,7 @@ __all__ = [
     'FhirStoreStreamConfigBigqueryDestination',
     'FhirStoreStreamConfigBigqueryDestinationSchemaConfig',
     'FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig',
+    'FhirStoreValidationConfig',
     'Hl7StoreIamBindingCondition',
     'Hl7StoreIamMemberCondition',
     'Hl7StoreNotificationConfig',
@@ -933,6 +934,118 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionCo
         Number of milliseconds for which to keep the storage for a partition.
         """
         return pulumi.get(self, "expiration_ms")
+
+
+@pulumi.output_type
+class FhirStoreValidationConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "disableFhirpathValidation":
+            suggest = "disable_fhirpath_validation"
+        elif key == "disableProfileValidation":
+            suggest = "disable_profile_validation"
+        elif key == "disableReferenceTypeValidation":
+            suggest = "disable_reference_type_validation"
+        elif key == "disableRequiredFieldValidation":
+            suggest = "disable_required_field_validation"
+        elif key == "enabledImplementationGuides":
+            suggest = "enabled_implementation_guides"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FhirStoreValidationConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FhirStoreValidationConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FhirStoreValidationConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disable_fhirpath_validation: Optional[_builtins.bool] = None,
+                 disable_profile_validation: Optional[_builtins.bool] = None,
+                 disable_reference_type_validation: Optional[_builtins.bool] = None,
+                 disable_required_field_validation: Optional[_builtins.bool] = None,
+                 enabled_implementation_guides: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.bool disable_fhirpath_validation: Whether to disable FHIRPath validation for incoming resources. The default value is false. Set this to true to disable checking incoming resources for conformance against FHIRPath requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
+        :param _builtins.bool disable_profile_validation: Whether to disable profile validation for this FHIR store. The default value is false. Set this to true to disable checking incoming resources for conformance against structure definitions in this FHIR store.
+        :param _builtins.bool disable_reference_type_validation: Whether to disable reference type validation for incoming resources. The default value is false. Set this to true to disable checking incoming resources for conformance against reference type requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
+        :param _builtins.bool disable_required_field_validation: Whether to disable required fields validation for incoming resources. The default value is false. Set this to true to disable checking incoming resources for conformance against required fields requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
+        :param Sequence[_builtins.str] enabled_implementation_guides: A list of implementation guide URLs in this FHIR store that are used to configure the profiles to use for validation.
+               When a URL cannot be resolved (for example, in a type assertion), the server does not return an error.
+               For example, to use the US Core profiles for validation, set enabledImplementationGuides to ["http://hl7.org/fhir/us/core/ImplementationGuide/ig"]. If enabledImplementationGuides is empty or omitted, then incoming resources are only required to conform to the base FHIR profiles. Otherwise, a resource must conform to at least one profile listed in the global property of one of the enabled ImplementationGuides.
+               The Cloud Healthcare API does not currently enforce all of the rules in a StructureDefinition. The following rules are supported:
+               - min/max
+               - minValue/maxValue
+               - maxLength
+               - type
+               - fixed[x]
+               - pattern[x] on simple types
+               - slicing, when using "value" as the discriminator type
+        """
+        if disable_fhirpath_validation is not None:
+            pulumi.set(__self__, "disable_fhirpath_validation", disable_fhirpath_validation)
+        if disable_profile_validation is not None:
+            pulumi.set(__self__, "disable_profile_validation", disable_profile_validation)
+        if disable_reference_type_validation is not None:
+            pulumi.set(__self__, "disable_reference_type_validation", disable_reference_type_validation)
+        if disable_required_field_validation is not None:
+            pulumi.set(__self__, "disable_required_field_validation", disable_required_field_validation)
+        if enabled_implementation_guides is not None:
+            pulumi.set(__self__, "enabled_implementation_guides", enabled_implementation_guides)
+
+    @_builtins.property
+    @pulumi.getter(name="disableFhirpathValidation")
+    def disable_fhirpath_validation(self) -> Optional[_builtins.bool]:
+        """
+        Whether to disable FHIRPath validation for incoming resources. The default value is false. Set this to true to disable checking incoming resources for conformance against FHIRPath requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
+        """
+        return pulumi.get(self, "disable_fhirpath_validation")
+
+    @_builtins.property
+    @pulumi.getter(name="disableProfileValidation")
+    def disable_profile_validation(self) -> Optional[_builtins.bool]:
+        """
+        Whether to disable profile validation for this FHIR store. The default value is false. Set this to true to disable checking incoming resources for conformance against structure definitions in this FHIR store.
+        """
+        return pulumi.get(self, "disable_profile_validation")
+
+    @_builtins.property
+    @pulumi.getter(name="disableReferenceTypeValidation")
+    def disable_reference_type_validation(self) -> Optional[_builtins.bool]:
+        """
+        Whether to disable reference type validation for incoming resources. The default value is false. Set this to true to disable checking incoming resources for conformance against reference type requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
+        """
+        return pulumi.get(self, "disable_reference_type_validation")
+
+    @_builtins.property
+    @pulumi.getter(name="disableRequiredFieldValidation")
+    def disable_required_field_validation(self) -> Optional[_builtins.bool]:
+        """
+        Whether to disable required fields validation for incoming resources. The default value is false. Set this to true to disable checking incoming resources for conformance against required fields requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
+        """
+        return pulumi.get(self, "disable_required_field_validation")
+
+    @_builtins.property
+    @pulumi.getter(name="enabledImplementationGuides")
+    def enabled_implementation_guides(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        A list of implementation guide URLs in this FHIR store that are used to configure the profiles to use for validation.
+        When a URL cannot be resolved (for example, in a type assertion), the server does not return an error.
+        For example, to use the US Core profiles for validation, set enabledImplementationGuides to ["http://hl7.org/fhir/us/core/ImplementationGuide/ig"]. If enabledImplementationGuides is empty or omitted, then incoming resources are only required to conform to the base FHIR profiles. Otherwise, a resource must conform to at least one profile listed in the global property of one of the enabled ImplementationGuides.
+        The Cloud Healthcare API does not currently enforce all of the rules in a StructureDefinition. The following rules are supported:
+        - min/max
+        - minValue/maxValue
+        - maxLength
+        - type
+        - fixed[x]
+        - pattern[x] on simple types
+        - slicing, when using "value" as the discriminator type
+        """
+        return pulumi.get(self, "enabled_implementation_guides")
 
 
 @pulumi.output_type

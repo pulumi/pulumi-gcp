@@ -9,6 +9,7 @@ import typing
 from .branch_rule import *
 from .get_instance_iam_policy import *
 from .get_repository_iam_policy import *
+from .hook import *
 from .instance import *
 from .instance_iam_binding import *
 from .instance_iam_member import *

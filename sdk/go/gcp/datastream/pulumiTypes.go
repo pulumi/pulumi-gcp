@@ -6884,6 +6884,8 @@ type StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets str
 	// Dataset template used for dynamic dataset creation.
 	// Structure is documented below.
 	DatasetTemplate StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate `pulumi:"datasetTemplate"`
+	// Optional. The project id of the BigQuery dataset. If not specified, the project will be inferred from the stream resource.
+	ProjectId *string `pulumi:"projectId"`
 }
 
 // StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsInput is an input type that accepts StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs and StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsOutput values.
@@ -6901,6 +6903,8 @@ type StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs
 	// Dataset template used for dynamic dataset creation.
 	// Structure is documented below.
 	DatasetTemplate StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateInput `pulumi:"datasetTemplate"`
+	// Optional. The project id of the BigQuery dataset. If not specified, the project will be inferred from the stream resource.
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
 func (StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs) ElementType() reflect.Type {
@@ -6988,6 +6992,13 @@ func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsO
 	}).(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutput)
 }
 
+// Optional. The project id of the BigQuery dataset. If not specified, the project will be inferred from the stream resource.
+func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets) *string {
+		return v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
 type StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutput struct{ *pulumi.OutputState }
 
 func (StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutput) ElementType() reflect.Type {
@@ -7021,6 +7032,16 @@ func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsP
 		}
 		return &v.DatasetTemplate
 	}).(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput)
+}
+
+// Optional. The project id of the BigQuery dataset. If not specified, the project will be inferred from the stream resource.
+func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectId
+	}).(pulumi.StringPtrOutput)
 }
 
 type StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate struct {

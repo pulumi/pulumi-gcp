@@ -319,6 +319,8 @@ __all__ = [
     'VmwareAdminClusterPlatformConfigStatusConditionArgsDict',
     'VmwareAdminClusterPrivateRegistryConfigArgs',
     'VmwareAdminClusterPrivateRegistryConfigArgsDict',
+    'VmwareAdminClusterProxyArgs',
+    'VmwareAdminClusterProxyArgsDict',
     'VmwareAdminClusterStatusArgs',
     'VmwareAdminClusterStatusArgsDict',
     'VmwareAdminClusterStatusConditionArgs',
@@ -10657,6 +10659,60 @@ class VmwareAdminClusterPrivateRegistryConfigArgs:
     @ca_cert.setter
     def ca_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "ca_cert", value)
+
+
+if not MYPY:
+    class VmwareAdminClusterProxyArgsDict(TypedDict):
+        url: pulumi.Input[_builtins.str]
+        """
+        The proxy url.
+        """
+        no_proxy: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A comma-separated list of IP addresses, IP address ranges,
+        host names, and domain names that should not go through the proxy server.
+        """
+elif False:
+    VmwareAdminClusterProxyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VmwareAdminClusterProxyArgs:
+    def __init__(__self__, *,
+                 url: pulumi.Input[_builtins.str],
+                 no_proxy: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] url: The proxy url.
+        :param pulumi.Input[_builtins.str] no_proxy: A comma-separated list of IP addresses, IP address ranges,
+               host names, and domain names that should not go through the proxy server.
+        """
+        pulumi.set(__self__, "url", url)
+        if no_proxy is not None:
+            pulumi.set(__self__, "no_proxy", no_proxy)
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> pulumi.Input[_builtins.str]:
+        """
+        The proxy url.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "url", value)
+
+    @_builtins.property
+    @pulumi.getter(name="noProxy")
+    def no_proxy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A comma-separated list of IP addresses, IP address ranges,
+        host names, and domain names that should not go through the proxy server.
+        """
+        return pulumi.get(self, "no_proxy")
+
+    @no_proxy.setter
+    def no_proxy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "no_proxy", value)
 
 
 if not MYPY:

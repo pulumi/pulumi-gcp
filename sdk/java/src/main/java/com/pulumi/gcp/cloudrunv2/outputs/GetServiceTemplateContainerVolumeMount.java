@@ -20,6 +20,11 @@ public final class GetServiceTemplateContainerVolumeMount {
      * 
      */
     private String name;
+    /**
+     * @return Path within the volume from which the container&#39;s volume should be mounted.
+     * 
+     */
+    private String subPath;
 
     private GetServiceTemplateContainerVolumeMount() {}
     /**
@@ -36,6 +41,13 @@ public final class GetServiceTemplateContainerVolumeMount {
     public String name() {
         return this.name;
     }
+    /**
+     * @return Path within the volume from which the container&#39;s volume should be mounted.
+     * 
+     */
+    public String subPath() {
+        return this.subPath;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -48,11 +60,13 @@ public final class GetServiceTemplateContainerVolumeMount {
     public static final class Builder {
         private String mountPath;
         private String name;
+        private String subPath;
         public Builder() {}
         public Builder(GetServiceTemplateContainerVolumeMount defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.mountPath = defaults.mountPath;
     	      this.name = defaults.name;
+    	      this.subPath = defaults.subPath;
         }
 
         @CustomType.Setter
@@ -71,10 +85,19 @@ public final class GetServiceTemplateContainerVolumeMount {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
+        public Builder subPath(String subPath) {
+            if (subPath == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateContainerVolumeMount", "subPath");
+            }
+            this.subPath = subPath;
+            return this;
+        }
         public GetServiceTemplateContainerVolumeMount build() {
             final var _resultValue = new GetServiceTemplateContainerVolumeMount();
             _resultValue.mountPath = mountPath;
             _resultValue.name = name;
+            _resultValue.subPath = subPath;
             return _resultValue;
         }
     }

@@ -356,6 +356,130 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// ### Iam Workforce Pool Provider Extended Attributes Oauth2 Config Client Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var pool = new Gcp.Iam.WorkforcePool("pool", new()
+    ///     {
+    ///         WorkforcePoolId = "example-pool",
+    ///         Parent = "organizations/123456789",
+    ///         Location = "global",
+    ///     });
+    /// 
+    ///     var example = new Gcp.Iam.WorkforcePoolProvider("example", new()
+    ///     {
+    ///         WorkforcePoolId = pool.WorkforcePoolId,
+    ///         Location = pool.Location,
+    ///         ProviderId = "example-prvdr",
+    ///         AttributeMapping = 
+    ///         {
+    ///             { "google.subject", "assertion.sub" },
+    ///         },
+    ///         Oidc = new Gcp.Iam.Inputs.WorkforcePoolProviderOidcArgs
+    ///         {
+    ///             IssuerUri = "https://login.microsoftonline.com/826602fe-2101-470c-9d71-ee1343668989/v2.0",
+    ///             ClientId = "https://analysis.windows.net/powerbi/connector/GoogleBigQuery",
+    ///             WebSsoConfig = new Gcp.Iam.Inputs.WorkforcePoolProviderOidcWebSsoConfigArgs
+    ///             {
+    ///                 ResponseType = "CODE",
+    ///                 AssertionClaimsBehavior = "MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS",
+    ///             },
+    ///             ClientSecret = new Gcp.Iam.Inputs.WorkforcePoolProviderOidcClientSecretArgs
+    ///             {
+    ///                 Value = new Gcp.Iam.Inputs.WorkforcePoolProviderOidcClientSecretValueArgs
+    ///                 {
+    ///                     PlainText = "client-secret",
+    ///                 },
+    ///             },
+    ///         },
+    ///         ExtendedAttributesOauth2Client = new Gcp.Iam.Inputs.WorkforcePoolProviderExtendedAttributesOauth2ClientArgs
+    ///         {
+    ///             IssuerUri = "https://login.microsoftonline.com/826602fe-2101-470c-9d71-ee1343668989/v2.0",
+    ///             ClientId = "client-id",
+    ///             ClientSecret = new Gcp.Iam.Inputs.WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretArgs
+    ///             {
+    ///                 Value = new Gcp.Iam.Inputs.WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueArgs
+    ///                 {
+    ///                     PlainText = "client-secret",
+    ///                 },
+    ///             },
+    ///             AttributesType = "AZURE_AD_GROUPS_ID",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Iam Workforce Pool Provider Extended Attributes Oauth2 Config Client Full
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var pool = new Gcp.Iam.WorkforcePool("pool", new()
+    ///     {
+    ///         WorkforcePoolId = "example-pool",
+    ///         Parent = "organizations/123456789",
+    ///         Location = "global",
+    ///     });
+    /// 
+    ///     var example = new Gcp.Iam.WorkforcePoolProvider("example", new()
+    ///     {
+    ///         WorkforcePoolId = pool.WorkforcePoolId,
+    ///         Location = pool.Location,
+    ///         ProviderId = "example-prvdr",
+    ///         AttributeMapping = 
+    ///         {
+    ///             { "google.subject", "assertion.sub" },
+    ///         },
+    ///         Oidc = new Gcp.Iam.Inputs.WorkforcePoolProviderOidcArgs
+    ///         {
+    ///             IssuerUri = "https://login.microsoftonline.com/826602fe-2101-470c-9d71-ee1343668989/v2.0",
+    ///             ClientId = "https://analysis.windows.net/powerbi/connector/GoogleBigQuery",
+    ///             ClientSecret = new Gcp.Iam.Inputs.WorkforcePoolProviderOidcClientSecretArgs
+    ///             {
+    ///                 Value = new Gcp.Iam.Inputs.WorkforcePoolProviderOidcClientSecretValueArgs
+    ///                 {
+    ///                     PlainText = "client-secret",
+    ///                 },
+    ///             },
+    ///             WebSsoConfig = new Gcp.Iam.Inputs.WorkforcePoolProviderOidcWebSsoConfigArgs
+    ///             {
+    ///                 ResponseType = "CODE",
+    ///                 AssertionClaimsBehavior = "MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS",
+    ///             },
+    ///         },
+    ///         ExtendedAttributesOauth2Client = new Gcp.Iam.Inputs.WorkforcePoolProviderExtendedAttributesOauth2ClientArgs
+    ///         {
+    ///             IssuerUri = "https://login.microsoftonline.com/826602fe-2101-470c-9d71-ee1343668989/v2.0",
+    ///             ClientId = "client-id",
+    ///             ClientSecret = new Gcp.Iam.Inputs.WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretArgs
+    ///             {
+    ///                 Value = new Gcp.Iam.Inputs.WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueArgs
+    ///                 {
+    ///                     PlainText = "client-secret",
+    ///                 },
+    ///             },
+    ///             AttributesType = "AZURE_AD_GROUPS_ID",
+    ///             QueryParameters = new Gcp.Iam.Inputs.WorkforcePoolProviderExtendedAttributesOauth2ClientQueryParametersArgs
+    ///             {
+    ///                 Filter = "mail:gcp",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -453,6 +577,22 @@ namespace Pulumi.Gcp.Iam
         /// </summary>
         [Output("displayName")]
         public Output<string?> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// The configuration for OAuth 2.0 client used to get the extended group
+        /// memberships for user identities. Only the `AZURE_AD_GROUPS_ID` attribute
+        /// type is supported. Extended groups supports a subset of Google Cloud
+        /// services. When the user accesses these services, extended group memberships
+        /// override the mapped `google.groups` attribute. Extended group memberships
+        /// cannot be used in attribute mapping or attribute condition expressions.
+        /// To keep extended group memberships up to date, extended groups are
+        /// retrieved when the user signs in and at regular intervals during the user's
+        /// active session. Each user identity in the workforce identity pool must map
+        /// to a unique Microsoft Entra ID user.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("extendedAttributesOauth2Client")]
+        public Output<Outputs.WorkforcePoolProviderExtendedAttributesOauth2Client?> ExtendedAttributesOauth2Client { get; private set; } = null!;
 
         /// <summary>
         /// The configuration for OAuth 2.0 client used to get the additional user
@@ -648,6 +788,22 @@ namespace Pulumi.Gcp.Iam
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
+        /// The configuration for OAuth 2.0 client used to get the extended group
+        /// memberships for user identities. Only the `AZURE_AD_GROUPS_ID` attribute
+        /// type is supported. Extended groups supports a subset of Google Cloud
+        /// services. When the user accesses these services, extended group memberships
+        /// override the mapped `google.groups` attribute. Extended group memberships
+        /// cannot be used in attribute mapping or attribute condition expressions.
+        /// To keep extended group memberships up to date, extended groups are
+        /// retrieved when the user signs in and at regular intervals during the user's
+        /// active session. Each user identity in the workforce identity pool must map
+        /// to a unique Microsoft Entra ID user.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("extendedAttributesOauth2Client")]
+        public Input<Inputs.WorkforcePoolProviderExtendedAttributesOauth2ClientArgs>? ExtendedAttributesOauth2Client { get; set; }
+
+        /// <summary>
         /// The configuration for OAuth 2.0 client used to get the additional user
         /// attributes. This should be used when users can't get the desired claims
         /// in authentication credentials. Currently this configuration is only
@@ -783,6 +939,22 @@ namespace Pulumi.Gcp.Iam
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// The configuration for OAuth 2.0 client used to get the extended group
+        /// memberships for user identities. Only the `AZURE_AD_GROUPS_ID` attribute
+        /// type is supported. Extended groups supports a subset of Google Cloud
+        /// services. When the user accesses these services, extended group memberships
+        /// override the mapped `google.groups` attribute. Extended group memberships
+        /// cannot be used in attribute mapping or attribute condition expressions.
+        /// To keep extended group memberships up to date, extended groups are
+        /// retrieved when the user signs in and at regular intervals during the user's
+        /// active session. Each user identity in the workforce identity pool must map
+        /// to a unique Microsoft Entra ID user.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("extendedAttributesOauth2Client")]
+        public Input<Inputs.WorkforcePoolProviderExtendedAttributesOauth2ClientGetArgs>? ExtendedAttributesOauth2Client { get; set; }
 
         /// <summary>
         /// The configuration for OAuth 2.0 client used to get the additional user

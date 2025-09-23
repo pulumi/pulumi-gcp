@@ -193,6 +193,13 @@ namespace Pulumi.Gcp
             set => _bigqueryDatapolicyCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _bigqueryDatapolicyv2CustomEndpoint = new __Value<string?>(() => __config.Get("bigqueryDatapolicyv2CustomEndpoint"));
+        public static string? BigqueryDatapolicyv2CustomEndpoint
+        {
+            get => _bigqueryDatapolicyv2CustomEndpoint.Get();
+            set => _bigqueryDatapolicyv2CustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _bigqueryReservationCustomEndpoint = new __Value<string?>(() => __config.Get("bigqueryReservationCustomEndpoint"));
         public static string? BigqueryReservationCustomEndpoint
         {

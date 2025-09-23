@@ -149,6 +149,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> bigqueryDatapolicyCustomEndpoint() {
         return Codegen.optional(this.bigqueryDatapolicyCustomEndpoint);
     }
+    @Export(name="bigqueryDatapolicyv2CustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> bigqueryDatapolicyv2CustomEndpoint;
+
+    public Output<Optional<String>> bigqueryDatapolicyv2CustomEndpoint() {
+        return Codegen.optional(this.bigqueryDatapolicyv2CustomEndpoint);
+    }
     @Export(name="bigqueryReservationCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> bigqueryReservationCustomEndpoint;
 

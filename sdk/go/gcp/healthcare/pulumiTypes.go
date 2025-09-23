@@ -3048,6 +3048,259 @@ func (o FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartition
 	}).(pulumi.StringPtrOutput)
 }
 
+type FhirStoreValidationConfig struct {
+	// Whether to disable FHIRPath validation for incoming resources. The default value is false. Set this to true to disable checking incoming resources for conformance against FHIRPath requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
+	DisableFhirpathValidation *bool `pulumi:"disableFhirpathValidation"`
+	// Whether to disable profile validation for this FHIR store. The default value is false. Set this to true to disable checking incoming resources for conformance against structure definitions in this FHIR store.
+	DisableProfileValidation *bool `pulumi:"disableProfileValidation"`
+	// Whether to disable reference type validation for incoming resources. The default value is false. Set this to true to disable checking incoming resources for conformance against reference type requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
+	DisableReferenceTypeValidation *bool `pulumi:"disableReferenceTypeValidation"`
+	// Whether to disable required fields validation for incoming resources. The default value is false. Set this to true to disable checking incoming resources for conformance against required fields requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
+	DisableRequiredFieldValidation *bool `pulumi:"disableRequiredFieldValidation"`
+	// A list of implementation guide URLs in this FHIR store that are used to configure the profiles to use for validation.
+	// When a URL cannot be resolved (for example, in a type assertion), the server does not return an error.
+	// For example, to use the US Core profiles for validation, set enabledImplementationGuides to ["http://hl7.org/fhir/us/core/ImplementationGuide/ig"]. If enabledImplementationGuides is empty or omitted, then incoming resources are only required to conform to the base FHIR profiles. Otherwise, a resource must conform to at least one profile listed in the global property of one of the enabled ImplementationGuides.
+	// The Cloud Healthcare API does not currently enforce all of the rules in a StructureDefinition. The following rules are supported:
+	// - min/max
+	// - minValue/maxValue
+	// - maxLength
+	// - type
+	// - fixed[x]
+	// - pattern[x] on simple types
+	// - slicing, when using "value" as the discriminator type
+	EnabledImplementationGuides []string `pulumi:"enabledImplementationGuides"`
+}
+
+// FhirStoreValidationConfigInput is an input type that accepts FhirStoreValidationConfigArgs and FhirStoreValidationConfigOutput values.
+// You can construct a concrete instance of `FhirStoreValidationConfigInput` via:
+//
+//	FhirStoreValidationConfigArgs{...}
+type FhirStoreValidationConfigInput interface {
+	pulumi.Input
+
+	ToFhirStoreValidationConfigOutput() FhirStoreValidationConfigOutput
+	ToFhirStoreValidationConfigOutputWithContext(context.Context) FhirStoreValidationConfigOutput
+}
+
+type FhirStoreValidationConfigArgs struct {
+	// Whether to disable FHIRPath validation for incoming resources. The default value is false. Set this to true to disable checking incoming resources for conformance against FHIRPath requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
+	DisableFhirpathValidation pulumi.BoolPtrInput `pulumi:"disableFhirpathValidation"`
+	// Whether to disable profile validation for this FHIR store. The default value is false. Set this to true to disable checking incoming resources for conformance against structure definitions in this FHIR store.
+	DisableProfileValidation pulumi.BoolPtrInput `pulumi:"disableProfileValidation"`
+	// Whether to disable reference type validation for incoming resources. The default value is false. Set this to true to disable checking incoming resources for conformance against reference type requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
+	DisableReferenceTypeValidation pulumi.BoolPtrInput `pulumi:"disableReferenceTypeValidation"`
+	// Whether to disable required fields validation for incoming resources. The default value is false. Set this to true to disable checking incoming resources for conformance against required fields requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
+	DisableRequiredFieldValidation pulumi.BoolPtrInput `pulumi:"disableRequiredFieldValidation"`
+	// A list of implementation guide URLs in this FHIR store that are used to configure the profiles to use for validation.
+	// When a URL cannot be resolved (for example, in a type assertion), the server does not return an error.
+	// For example, to use the US Core profiles for validation, set enabledImplementationGuides to ["http://hl7.org/fhir/us/core/ImplementationGuide/ig"]. If enabledImplementationGuides is empty or omitted, then incoming resources are only required to conform to the base FHIR profiles. Otherwise, a resource must conform to at least one profile listed in the global property of one of the enabled ImplementationGuides.
+	// The Cloud Healthcare API does not currently enforce all of the rules in a StructureDefinition. The following rules are supported:
+	// - min/max
+	// - minValue/maxValue
+	// - maxLength
+	// - type
+	// - fixed[x]
+	// - pattern[x] on simple types
+	// - slicing, when using "value" as the discriminator type
+	EnabledImplementationGuides pulumi.StringArrayInput `pulumi:"enabledImplementationGuides"`
+}
+
+func (FhirStoreValidationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FhirStoreValidationConfig)(nil)).Elem()
+}
+
+func (i FhirStoreValidationConfigArgs) ToFhirStoreValidationConfigOutput() FhirStoreValidationConfigOutput {
+	return i.ToFhirStoreValidationConfigOutputWithContext(context.Background())
+}
+
+func (i FhirStoreValidationConfigArgs) ToFhirStoreValidationConfigOutputWithContext(ctx context.Context) FhirStoreValidationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreValidationConfigOutput)
+}
+
+func (i FhirStoreValidationConfigArgs) ToFhirStoreValidationConfigPtrOutput() FhirStoreValidationConfigPtrOutput {
+	return i.ToFhirStoreValidationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i FhirStoreValidationConfigArgs) ToFhirStoreValidationConfigPtrOutputWithContext(ctx context.Context) FhirStoreValidationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreValidationConfigOutput).ToFhirStoreValidationConfigPtrOutputWithContext(ctx)
+}
+
+// FhirStoreValidationConfigPtrInput is an input type that accepts FhirStoreValidationConfigArgs, FhirStoreValidationConfigPtr and FhirStoreValidationConfigPtrOutput values.
+// You can construct a concrete instance of `FhirStoreValidationConfigPtrInput` via:
+//
+//	        FhirStoreValidationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type FhirStoreValidationConfigPtrInput interface {
+	pulumi.Input
+
+	ToFhirStoreValidationConfigPtrOutput() FhirStoreValidationConfigPtrOutput
+	ToFhirStoreValidationConfigPtrOutputWithContext(context.Context) FhirStoreValidationConfigPtrOutput
+}
+
+type fhirStoreValidationConfigPtrType FhirStoreValidationConfigArgs
+
+func FhirStoreValidationConfigPtr(v *FhirStoreValidationConfigArgs) FhirStoreValidationConfigPtrInput {
+	return (*fhirStoreValidationConfigPtrType)(v)
+}
+
+func (*fhirStoreValidationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FhirStoreValidationConfig)(nil)).Elem()
+}
+
+func (i *fhirStoreValidationConfigPtrType) ToFhirStoreValidationConfigPtrOutput() FhirStoreValidationConfigPtrOutput {
+	return i.ToFhirStoreValidationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *fhirStoreValidationConfigPtrType) ToFhirStoreValidationConfigPtrOutputWithContext(ctx context.Context) FhirStoreValidationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreValidationConfigPtrOutput)
+}
+
+type FhirStoreValidationConfigOutput struct{ *pulumi.OutputState }
+
+func (FhirStoreValidationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FhirStoreValidationConfig)(nil)).Elem()
+}
+
+func (o FhirStoreValidationConfigOutput) ToFhirStoreValidationConfigOutput() FhirStoreValidationConfigOutput {
+	return o
+}
+
+func (o FhirStoreValidationConfigOutput) ToFhirStoreValidationConfigOutputWithContext(ctx context.Context) FhirStoreValidationConfigOutput {
+	return o
+}
+
+func (o FhirStoreValidationConfigOutput) ToFhirStoreValidationConfigPtrOutput() FhirStoreValidationConfigPtrOutput {
+	return o.ToFhirStoreValidationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o FhirStoreValidationConfigOutput) ToFhirStoreValidationConfigPtrOutputWithContext(ctx context.Context) FhirStoreValidationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FhirStoreValidationConfig) *FhirStoreValidationConfig {
+		return &v
+	}).(FhirStoreValidationConfigPtrOutput)
+}
+
+// Whether to disable FHIRPath validation for incoming resources. The default value is false. Set this to true to disable checking incoming resources for conformance against FHIRPath requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
+func (o FhirStoreValidationConfigOutput) DisableFhirpathValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FhirStoreValidationConfig) *bool { return v.DisableFhirpathValidation }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to disable profile validation for this FHIR store. The default value is false. Set this to true to disable checking incoming resources for conformance against structure definitions in this FHIR store.
+func (o FhirStoreValidationConfigOutput) DisableProfileValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FhirStoreValidationConfig) *bool { return v.DisableProfileValidation }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to disable reference type validation for incoming resources. The default value is false. Set this to true to disable checking incoming resources for conformance against reference type requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
+func (o FhirStoreValidationConfigOutput) DisableReferenceTypeValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FhirStoreValidationConfig) *bool { return v.DisableReferenceTypeValidation }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to disable required fields validation for incoming resources. The default value is false. Set this to true to disable checking incoming resources for conformance against required fields requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
+func (o FhirStoreValidationConfigOutput) DisableRequiredFieldValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FhirStoreValidationConfig) *bool { return v.DisableRequiredFieldValidation }).(pulumi.BoolPtrOutput)
+}
+
+// A list of implementation guide URLs in this FHIR store that are used to configure the profiles to use for validation.
+// When a URL cannot be resolved (for example, in a type assertion), the server does not return an error.
+// For example, to use the US Core profiles for validation, set enabledImplementationGuides to ["http://hl7.org/fhir/us/core/ImplementationGuide/ig"]. If enabledImplementationGuides is empty or omitted, then incoming resources are only required to conform to the base FHIR profiles. Otherwise, a resource must conform to at least one profile listed in the global property of one of the enabled ImplementationGuides.
+// The Cloud Healthcare API does not currently enforce all of the rules in a StructureDefinition. The following rules are supported:
+// - min/max
+// - minValue/maxValue
+// - maxLength
+// - type
+// - fixed[x]
+// - pattern[x] on simple types
+// - slicing, when using "value" as the discriminator type
+func (o FhirStoreValidationConfigOutput) EnabledImplementationGuides() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FhirStoreValidationConfig) []string { return v.EnabledImplementationGuides }).(pulumi.StringArrayOutput)
+}
+
+type FhirStoreValidationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (FhirStoreValidationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FhirStoreValidationConfig)(nil)).Elem()
+}
+
+func (o FhirStoreValidationConfigPtrOutput) ToFhirStoreValidationConfigPtrOutput() FhirStoreValidationConfigPtrOutput {
+	return o
+}
+
+func (o FhirStoreValidationConfigPtrOutput) ToFhirStoreValidationConfigPtrOutputWithContext(ctx context.Context) FhirStoreValidationConfigPtrOutput {
+	return o
+}
+
+func (o FhirStoreValidationConfigPtrOutput) Elem() FhirStoreValidationConfigOutput {
+	return o.ApplyT(func(v *FhirStoreValidationConfig) FhirStoreValidationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret FhirStoreValidationConfig
+		return ret
+	}).(FhirStoreValidationConfigOutput)
+}
+
+// Whether to disable FHIRPath validation for incoming resources. The default value is false. Set this to true to disable checking incoming resources for conformance against FHIRPath requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
+func (o FhirStoreValidationConfigPtrOutput) DisableFhirpathValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FhirStoreValidationConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableFhirpathValidation
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to disable profile validation for this FHIR store. The default value is false. Set this to true to disable checking incoming resources for conformance against structure definitions in this FHIR store.
+func (o FhirStoreValidationConfigPtrOutput) DisableProfileValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FhirStoreValidationConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableProfileValidation
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to disable reference type validation for incoming resources. The default value is false. Set this to true to disable checking incoming resources for conformance against reference type requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
+func (o FhirStoreValidationConfigPtrOutput) DisableReferenceTypeValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FhirStoreValidationConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableReferenceTypeValidation
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to disable required fields validation for incoming resources. The default value is false. Set this to true to disable checking incoming resources for conformance against required fields requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
+func (o FhirStoreValidationConfigPtrOutput) DisableRequiredFieldValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FhirStoreValidationConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableRequiredFieldValidation
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A list of implementation guide URLs in this FHIR store that are used to configure the profiles to use for validation.
+// When a URL cannot be resolved (for example, in a type assertion), the server does not return an error.
+// For example, to use the US Core profiles for validation, set enabledImplementationGuides to ["http://hl7.org/fhir/us/core/ImplementationGuide/ig"]. If enabledImplementationGuides is empty or omitted, then incoming resources are only required to conform to the base FHIR profiles. Otherwise, a resource must conform to at least one profile listed in the global property of one of the enabled ImplementationGuides.
+// The Cloud Healthcare API does not currently enforce all of the rules in a StructureDefinition. The following rules are supported:
+// - min/max
+// - minValue/maxValue
+// - maxLength
+// - type
+// - fixed[x]
+// - pattern[x] on simple types
+// - slicing, when using "value" as the discriminator type
+func (o FhirStoreValidationConfigPtrOutput) EnabledImplementationGuides() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FhirStoreValidationConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EnabledImplementationGuides
+	}).(pulumi.StringArrayOutput)
+}
+
 type Hl7StoreIamBindingCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
@@ -5463,6 +5716,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreStreamConfigBigqueryDestinationSchemaConfigInput)(nil)).Elem(), FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigInput)(nil)).Elem(), FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrInput)(nil)).Elem(), FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreValidationConfigInput)(nil)).Elem(), FhirStoreValidationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreValidationConfigPtrInput)(nil)).Elem(), FhirStoreValidationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Hl7StoreIamBindingConditionInput)(nil)).Elem(), Hl7StoreIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Hl7StoreIamBindingConditionPtrInput)(nil)).Elem(), Hl7StoreIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Hl7StoreIamMemberConditionInput)(nil)).Elem(), Hl7StoreIamMemberConditionArgs{})
@@ -5529,6 +5784,8 @@ func init() {
 	pulumi.RegisterOutputType(FhirStoreStreamConfigBigqueryDestinationSchemaConfigOutput{})
 	pulumi.RegisterOutputType(FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigOutput{})
 	pulumi.RegisterOutputType(FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutput{})
+	pulumi.RegisterOutputType(FhirStoreValidationConfigOutput{})
+	pulumi.RegisterOutputType(FhirStoreValidationConfigPtrOutput{})
 	pulumi.RegisterOutputType(Hl7StoreIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(Hl7StoreIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(Hl7StoreIamMemberConditionOutput{})

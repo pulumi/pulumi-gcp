@@ -23414,6 +23414,166 @@ func (o VmwareAdminClusterPrivateRegistryConfigPtrOutput) CaCert() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+type VmwareAdminClusterProxy struct {
+	// A comma-separated list of IP addresses, IP address ranges,
+	// host names, and domain names that should not go through the proxy server.
+	NoProxy *string `pulumi:"noProxy"`
+	// The proxy url.
+	Url string `pulumi:"url"`
+}
+
+// VmwareAdminClusterProxyInput is an input type that accepts VmwareAdminClusterProxyArgs and VmwareAdminClusterProxyOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterProxyInput` via:
+//
+//	VmwareAdminClusterProxyArgs{...}
+type VmwareAdminClusterProxyInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterProxyOutput() VmwareAdminClusterProxyOutput
+	ToVmwareAdminClusterProxyOutputWithContext(context.Context) VmwareAdminClusterProxyOutput
+}
+
+type VmwareAdminClusterProxyArgs struct {
+	// A comma-separated list of IP addresses, IP address ranges,
+	// host names, and domain names that should not go through the proxy server.
+	NoProxy pulumi.StringPtrInput `pulumi:"noProxy"`
+	// The proxy url.
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (VmwareAdminClusterProxyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterProxy)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterProxyArgs) ToVmwareAdminClusterProxyOutput() VmwareAdminClusterProxyOutput {
+	return i.ToVmwareAdminClusterProxyOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterProxyArgs) ToVmwareAdminClusterProxyOutputWithContext(ctx context.Context) VmwareAdminClusterProxyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterProxyOutput)
+}
+
+func (i VmwareAdminClusterProxyArgs) ToVmwareAdminClusterProxyPtrOutput() VmwareAdminClusterProxyPtrOutput {
+	return i.ToVmwareAdminClusterProxyPtrOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterProxyArgs) ToVmwareAdminClusterProxyPtrOutputWithContext(ctx context.Context) VmwareAdminClusterProxyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterProxyOutput).ToVmwareAdminClusterProxyPtrOutputWithContext(ctx)
+}
+
+// VmwareAdminClusterProxyPtrInput is an input type that accepts VmwareAdminClusterProxyArgs, VmwareAdminClusterProxyPtr and VmwareAdminClusterProxyPtrOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterProxyPtrInput` via:
+//
+//	        VmwareAdminClusterProxyArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmwareAdminClusterProxyPtrInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterProxyPtrOutput() VmwareAdminClusterProxyPtrOutput
+	ToVmwareAdminClusterProxyPtrOutputWithContext(context.Context) VmwareAdminClusterProxyPtrOutput
+}
+
+type vmwareAdminClusterProxyPtrType VmwareAdminClusterProxyArgs
+
+func VmwareAdminClusterProxyPtr(v *VmwareAdminClusterProxyArgs) VmwareAdminClusterProxyPtrInput {
+	return (*vmwareAdminClusterProxyPtrType)(v)
+}
+
+func (*vmwareAdminClusterProxyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareAdminClusterProxy)(nil)).Elem()
+}
+
+func (i *vmwareAdminClusterProxyPtrType) ToVmwareAdminClusterProxyPtrOutput() VmwareAdminClusterProxyPtrOutput {
+	return i.ToVmwareAdminClusterProxyPtrOutputWithContext(context.Background())
+}
+
+func (i *vmwareAdminClusterProxyPtrType) ToVmwareAdminClusterProxyPtrOutputWithContext(ctx context.Context) VmwareAdminClusterProxyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterProxyPtrOutput)
+}
+
+type VmwareAdminClusterProxyOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterProxyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterProxy)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterProxyOutput) ToVmwareAdminClusterProxyOutput() VmwareAdminClusterProxyOutput {
+	return o
+}
+
+func (o VmwareAdminClusterProxyOutput) ToVmwareAdminClusterProxyOutputWithContext(ctx context.Context) VmwareAdminClusterProxyOutput {
+	return o
+}
+
+func (o VmwareAdminClusterProxyOutput) ToVmwareAdminClusterProxyPtrOutput() VmwareAdminClusterProxyPtrOutput {
+	return o.ToVmwareAdminClusterProxyPtrOutputWithContext(context.Background())
+}
+
+func (o VmwareAdminClusterProxyOutput) ToVmwareAdminClusterProxyPtrOutputWithContext(ctx context.Context) VmwareAdminClusterProxyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmwareAdminClusterProxy) *VmwareAdminClusterProxy {
+		return &v
+	}).(VmwareAdminClusterProxyPtrOutput)
+}
+
+// A comma-separated list of IP addresses, IP address ranges,
+// host names, and domain names that should not go through the proxy server.
+func (o VmwareAdminClusterProxyOutput) NoProxy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterProxy) *string { return v.NoProxy }).(pulumi.StringPtrOutput)
+}
+
+// The proxy url.
+func (o VmwareAdminClusterProxyOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v VmwareAdminClusterProxy) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type VmwareAdminClusterProxyPtrOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterProxyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareAdminClusterProxy)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterProxyPtrOutput) ToVmwareAdminClusterProxyPtrOutput() VmwareAdminClusterProxyPtrOutput {
+	return o
+}
+
+func (o VmwareAdminClusterProxyPtrOutput) ToVmwareAdminClusterProxyPtrOutputWithContext(ctx context.Context) VmwareAdminClusterProxyPtrOutput {
+	return o
+}
+
+func (o VmwareAdminClusterProxyPtrOutput) Elem() VmwareAdminClusterProxyOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterProxy) VmwareAdminClusterProxy {
+		if v != nil {
+			return *v
+		}
+		var ret VmwareAdminClusterProxy
+		return ret
+	}).(VmwareAdminClusterProxyOutput)
+}
+
+// A comma-separated list of IP addresses, IP address ranges,
+// host names, and domain names that should not go through the proxy server.
+func (o VmwareAdminClusterProxyPtrOutput) NoProxy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterProxy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NoProxy
+	}).(pulumi.StringPtrOutput)
+}
+
+// The proxy url.
+func (o VmwareAdminClusterProxyPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterProxy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
 type VmwareAdminClusterStatus struct {
 	// (Output)
 	// ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
@@ -24286,6 +24446,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterPlatformConfigStatusConditionArrayInput)(nil)).Elem(), VmwareAdminClusterPlatformConfigStatusConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterPrivateRegistryConfigInput)(nil)).Elem(), VmwareAdminClusterPrivateRegistryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterPrivateRegistryConfigPtrInput)(nil)).Elem(), VmwareAdminClusterPrivateRegistryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterProxyInput)(nil)).Elem(), VmwareAdminClusterProxyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterProxyPtrInput)(nil)).Elem(), VmwareAdminClusterProxyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterStatusInput)(nil)).Elem(), VmwareAdminClusterStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterStatusArrayInput)(nil)).Elem(), VmwareAdminClusterStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterStatusConditionInput)(nil)).Elem(), VmwareAdminClusterStatusConditionArgs{})
@@ -24596,6 +24758,8 @@ func init() {
 	pulumi.RegisterOutputType(VmwareAdminClusterPlatformConfigStatusConditionArrayOutput{})
 	pulumi.RegisterOutputType(VmwareAdminClusterPrivateRegistryConfigOutput{})
 	pulumi.RegisterOutputType(VmwareAdminClusterPrivateRegistryConfigPtrOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterProxyOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterProxyPtrOutput{})
 	pulumi.RegisterOutputType(VmwareAdminClusterStatusOutput{})
 	pulumi.RegisterOutputType(VmwareAdminClusterStatusArrayOutput{})
 	pulumi.RegisterOutputType(VmwareAdminClusterStatusConditionOutput{})

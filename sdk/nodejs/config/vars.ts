@@ -193,6 +193,14 @@ Object.defineProperty(exports, "bigqueryDatapolicyCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const bigqueryDatapolicyv2CustomEndpoint: string | undefined;
+Object.defineProperty(exports, "bigqueryDatapolicyv2CustomEndpoint", {
+    get() {
+        return __config.get("bigqueryDatapolicyv2CustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const bigqueryReservationCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "bigqueryReservationCustomEndpoint", {
     get() {

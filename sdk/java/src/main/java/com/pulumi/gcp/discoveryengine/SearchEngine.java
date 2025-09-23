@@ -79,6 +79,58 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Discoveryengine Searchengine Agentspace Basic
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.discoveryengine.DataStore;
+ * import com.pulumi.gcp.discoveryengine.DataStoreArgs;
+ * import com.pulumi.gcp.discoveryengine.SearchEngine;
+ * import com.pulumi.gcp.discoveryengine.SearchEngineArgs;
+ * import com.pulumi.gcp.discoveryengine.inputs.SearchEngineSearchEngineConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var agentspaceBasic = new DataStore("agentspaceBasic", DataStoreArgs.builder()
+ *             .location("global")
+ *             .dataStoreId("example-datastore-id")
+ *             .displayName("tf-test-structured-datastore")
+ *             .industryVertical("GENERIC")
+ *             .contentConfig("NO_CONTENT")
+ *             .solutionTypes("SOLUTION_TYPE_SEARCH")
+ *             .createAdvancedSiteSearch(false)
+ *             .build());
+ * 
+ *         var agentspaceBasicSearchEngine = new SearchEngine("agentspaceBasicSearchEngine", SearchEngineArgs.builder()
+ *             .engineId("example-engine-id")
+ *             .collectionId("default_collection")
+ *             .location(agentspaceBasic.location())
+ *             .displayName("tf-test-agentspace-search-engine")
+ *             .dataStoreIds(agentspaceBasic.dataStoreId())
+ *             .industryVertical("GENERIC")
+ *             .searchEngineConfig(SearchEngineSearchEngineConfigArgs.builder()
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -107,6 +159,22 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:discoveryengine/searchEngine:SearchEngine")
 public class SearchEngine extends com.pulumi.resources.CustomResource {
+    /**
+     * This is the application type this engine resource represents.
+     * The supported values: &#39;APP_TYPE_UNSPECIFIED&#39;, &#39;APP_TYPE_INTRANET&#39;.
+     * 
+     */
+    @Export(name="appType", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> appType;
+
+    /**
+     * @return This is the application type this engine resource represents.
+     * The supported values: &#39;APP_TYPE_UNSPECIFIED&#39;, &#39;APP_TYPE_INTRANET&#39;.
+     * 
+     */
+    public Output<Optional<String>> appType() {
+        return Codegen.optional(this.appType);
+    }
     /**
      * The collection ID.
      * 

@@ -6,6 +6,7 @@ package com.pulumi.gcp.netapp.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -46,6 +47,21 @@ public final class VolumeExportPolicyRuleArgs extends com.pulumi.resources.Resou
      */
     public Optional<Output<String>> allowedClients() {
         return Optional.ofNullable(this.allowedClients);
+    }
+
+    /**
+     * An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squash_mode` is `ROOT_SQUASH` or `ALL_SQUASH`.
+     * 
+     */
+    @Import(name="anonUid")
+    private @Nullable Output<Integer> anonUid;
+
+    /**
+     * @return An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squash_mode` is `ROOT_SQUASH` or `ALL_SQUASH`.
+     * 
+     */
+    public Optional<Output<Integer>> anonUid() {
+        return Optional.ofNullable(this.anonUid);
     }
 
     /**
@@ -183,11 +199,29 @@ public final class VolumeExportPolicyRuleArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.nfsv4);
     }
 
+    /**
+     * SquashMode defines how remote user privileges are restricted when accessing an NFS export. It controls how the user identities (like root) are mapped to anonymous users to limit access and enforce security.
+     * Possible values are: `NO_ROOT_SQUASH`, `ROOT_SQUASH`, `ALL_SQUASH`.
+     * 
+     */
+    @Import(name="squashMode")
+    private @Nullable Output<String> squashMode;
+
+    /**
+     * @return SquashMode defines how remote user privileges are restricted when accessing an NFS export. It controls how the user identities (like root) are mapped to anonymous users to limit access and enforce security.
+     * Possible values are: `NO_ROOT_SQUASH`, `ROOT_SQUASH`, `ALL_SQUASH`.
+     * 
+     */
+    public Optional<Output<String>> squashMode() {
+        return Optional.ofNullable(this.squashMode);
+    }
+
     private VolumeExportPolicyRuleArgs() {}
 
     private VolumeExportPolicyRuleArgs(VolumeExportPolicyRuleArgs $) {
         this.accessType = $.accessType;
         this.allowedClients = $.allowedClients;
+        this.anonUid = $.anonUid;
         this.hasRootAccess = $.hasRootAccess;
         this.kerberos5ReadOnly = $.kerberos5ReadOnly;
         this.kerberos5ReadWrite = $.kerberos5ReadWrite;
@@ -197,6 +231,7 @@ public final class VolumeExportPolicyRuleArgs extends com.pulumi.resources.Resou
         this.kerberos5pReadWrite = $.kerberos5pReadWrite;
         this.nfsv3 = $.nfsv3;
         this.nfsv4 = $.nfsv4;
+        this.squashMode = $.squashMode;
     }
 
     public static Builder builder() {
@@ -259,6 +294,27 @@ public final class VolumeExportPolicyRuleArgs extends com.pulumi.resources.Resou
          */
         public Builder allowedClients(String allowedClients) {
             return allowedClients(Output.of(allowedClients));
+        }
+
+        /**
+         * @param anonUid An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squash_mode` is `ROOT_SQUASH` or `ALL_SQUASH`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder anonUid(@Nullable Output<Integer> anonUid) {
+            $.anonUid = anonUid;
+            return this;
+        }
+
+        /**
+         * @param anonUid An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squash_mode` is `ROOT_SQUASH` or `ALL_SQUASH`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder anonUid(Integer anonUid) {
+            return anonUid(Output.of(anonUid));
         }
 
         /**
@@ -448,6 +504,29 @@ public final class VolumeExportPolicyRuleArgs extends com.pulumi.resources.Resou
          */
         public Builder nfsv4(Boolean nfsv4) {
             return nfsv4(Output.of(nfsv4));
+        }
+
+        /**
+         * @param squashMode SquashMode defines how remote user privileges are restricted when accessing an NFS export. It controls how the user identities (like root) are mapped to anonymous users to limit access and enforce security.
+         * Possible values are: `NO_ROOT_SQUASH`, `ROOT_SQUASH`, `ALL_SQUASH`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder squashMode(@Nullable Output<String> squashMode) {
+            $.squashMode = squashMode;
+            return this;
+        }
+
+        /**
+         * @param squashMode SquashMode defines how remote user privileges are restricted when accessing an NFS export. It controls how the user identities (like root) are mapped to anonymous users to limit access and enforce security.
+         * Possible values are: `NO_ROOT_SQUASH`, `ROOT_SQUASH`, `ALL_SQUASH`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder squashMode(String squashMode) {
+            return squashMode(Output.of(squashMode));
         }
 
         public VolumeExportPolicyRuleArgs build() {

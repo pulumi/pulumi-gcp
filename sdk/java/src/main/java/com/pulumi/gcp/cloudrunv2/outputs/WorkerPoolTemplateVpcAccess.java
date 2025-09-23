@@ -14,6 +14,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WorkerPoolTemplateVpcAccess {
     /**
+     * @return VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+     * 
+     */
+    private @Nullable String connector;
+    /**
      * @return Traffic VPC egress settings.
      * Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
      * 
@@ -27,6 +32,13 @@ public final class WorkerPoolTemplateVpcAccess {
     private @Nullable List<WorkerPoolTemplateVpcAccessNetworkInterface> networkInterfaces;
 
     private WorkerPoolTemplateVpcAccess() {}
+    /**
+     * @return VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+     * 
+     */
+    public Optional<String> connector() {
+        return Optional.ofNullable(this.connector);
+    }
     /**
      * @return Traffic VPC egress settings.
      * Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
@@ -53,15 +65,23 @@ public final class WorkerPoolTemplateVpcAccess {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String connector;
         private @Nullable String egress;
         private @Nullable List<WorkerPoolTemplateVpcAccessNetworkInterface> networkInterfaces;
         public Builder() {}
         public Builder(WorkerPoolTemplateVpcAccess defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.connector = defaults.connector;
     	      this.egress = defaults.egress;
     	      this.networkInterfaces = defaults.networkInterfaces;
         }
 
+        @CustomType.Setter
+        public Builder connector(@Nullable String connector) {
+
+            this.connector = connector;
+            return this;
+        }
         @CustomType.Setter
         public Builder egress(@Nullable String egress) {
 
@@ -79,6 +99,7 @@ public final class WorkerPoolTemplateVpcAccess {
         }
         public WorkerPoolTemplateVpcAccess build() {
             final var _resultValue = new WorkerPoolTemplateVpcAccess();
+            _resultValue.connector = connector;
             _resultValue.egress = egress;
             _resultValue.networkInterfaces = networkInterfaces;
             return _resultValue;

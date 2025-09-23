@@ -227,9 +227,23 @@ export class SecurityPolicy extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     */
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
+    /**
      * Fingerprint of this resource.
      */
     declare public /*out*/ readonly fingerprint: pulumi.Output<string>;
+    /**
+     * The unique fingerprint of the labels.
+     */
+    declare public /*out*/ readonly labelFingerprint: pulumi.Output<string>;
+    /**
+     * Labels to apply to this address. A list of key->value pairs.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     */
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the security policy.
      *
@@ -241,6 +255,10 @@ export class SecurityPolicy extends pulumi.CustomResource {
      * is not provided, the provider project is used.
      */
     declare public readonly project: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
      */
@@ -283,9 +301,13 @@ export class SecurityPolicy extends pulumi.CustomResource {
             resourceInputs["adaptiveProtectionConfig"] = state?.adaptiveProtectionConfig;
             resourceInputs["advancedOptionsConfig"] = state?.advancedOptionsConfig;
             resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["fingerprint"] = state?.fingerprint;
+            resourceInputs["labelFingerprint"] = state?.labelFingerprint;
+            resourceInputs["labels"] = state?.labels;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["recaptchaOptionsConfig"] = state?.recaptchaOptionsConfig;
             resourceInputs["rules"] = state?.rules;
             resourceInputs["selfLink"] = state?.selfLink;
@@ -295,15 +317,21 @@ export class SecurityPolicy extends pulumi.CustomResource {
             resourceInputs["adaptiveProtectionConfig"] = args?.adaptiveProtectionConfig;
             resourceInputs["advancedOptionsConfig"] = args?.advancedOptionsConfig;
             resourceInputs["description"] = args?.description;
+            resourceInputs["labels"] = args?.labels;
             resourceInputs["name"] = args?.name;
             resourceInputs["project"] = args?.project;
             resourceInputs["recaptchaOptionsConfig"] = args?.recaptchaOptionsConfig;
             resourceInputs["rules"] = args?.rules;
             resourceInputs["type"] = args?.type;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["labelFingerprint"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(SecurityPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -326,9 +354,23 @@ export interface SecurityPolicyState {
      */
     description?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Fingerprint of this resource.
      */
     fingerprint?: pulumi.Input<string>;
+    /**
+     * The unique fingerprint of the labels.
+     */
+    labelFingerprint?: pulumi.Input<string>;
+    /**
+     * Labels to apply to this address. A list of key->value pairs.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the security policy.
      *
@@ -340,6 +382,10 @@ export interface SecurityPolicyState {
      * is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
      */
@@ -384,6 +430,12 @@ export interface SecurityPolicyArgs {
      * An optional description of this security policy. Max size is 2048.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Labels to apply to this address. A list of key->value pairs.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the security policy.
      *

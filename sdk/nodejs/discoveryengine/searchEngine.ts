@@ -41,6 +41,31 @@ import * as utilities from "../utilities";
  *     searchEngineConfig: {},
  * });
  * ```
+ * ### Discoveryengine Searchengine Agentspace Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const agentspaceBasic = new gcp.discoveryengine.DataStore("agentspace_basic", {
+ *     location: "global",
+ *     dataStoreId: "example-datastore-id",
+ *     displayName: "tf-test-structured-datastore",
+ *     industryVertical: "GENERIC",
+ *     contentConfig: "NO_CONTENT",
+ *     solutionTypes: ["SOLUTION_TYPE_SEARCH"],
+ *     createAdvancedSiteSearch: false,
+ * });
+ * const agentspaceBasicSearchEngine = new gcp.discoveryengine.SearchEngine("agentspace_basic", {
+ *     engineId: "example-engine-id",
+ *     collectionId: "default_collection",
+ *     location: agentspaceBasic.location,
+ *     displayName: "tf-test-agentspace-search-engine",
+ *     dataStoreIds: [agentspaceBasic.dataStoreId],
+ *     industryVertical: "GENERIC",
+ *     searchEngineConfig: {},
+ * });
+ * ```
  *
  * ## Import
  *
@@ -94,6 +119,11 @@ export class SearchEngine extends pulumi.CustomResource {
         return obj['__pulumiType'] === SearchEngine.__pulumiType;
     }
 
+    /**
+     * This is the application type this engine resource represents.
+     * The supported values: 'APP_TYPE_UNSPECIFIED', 'APP_TYPE_INTRANET'.
+     */
+    declare public readonly appType: pulumi.Output<string | undefined>;
     /**
      * The collection ID.
      */
@@ -164,6 +194,7 @@ export class SearchEngine extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SearchEngineState | undefined;
+            resourceInputs["appType"] = state?.appType;
             resourceInputs["collectionId"] = state?.collectionId;
             resourceInputs["commonConfig"] = state?.commonConfig;
             resourceInputs["createTime"] = state?.createTime;
@@ -196,6 +227,7 @@ export class SearchEngine extends pulumi.CustomResource {
             if (args?.searchEngineConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'searchEngineConfig'");
             }
+            resourceInputs["appType"] = args?.appType;
             resourceInputs["collectionId"] = args?.collectionId;
             resourceInputs["commonConfig"] = args?.commonConfig;
             resourceInputs["dataStoreIds"] = args?.dataStoreIds;
@@ -218,6 +250,11 @@ export class SearchEngine extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SearchEngine resources.
  */
 export interface SearchEngineState {
+    /**
+     * This is the application type this engine resource represents.
+     * The supported values: 'APP_TYPE_UNSPECIFIED', 'APP_TYPE_INTRANET'.
+     */
+    appType?: pulumi.Input<string>;
     /**
      * The collection ID.
      */
@@ -280,6 +317,11 @@ export interface SearchEngineState {
  * The set of arguments for constructing a SearchEngine resource.
  */
 export interface SearchEngineArgs {
+    /**
+     * This is the application type this engine resource represents.
+     * The supported values: 'APP_TYPE_UNSPECIFIED', 'APP_TYPE_INTRANET'.
+     */
+    appType?: pulumi.Input<string>;
     /**
      * The collection ID.
      */

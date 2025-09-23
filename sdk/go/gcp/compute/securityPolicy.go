@@ -276,8 +276,16 @@ type SecurityPolicy struct {
 	AdvancedOptionsConfig SecurityPolicyAdvancedOptionsConfigOutput `pulumi:"advancedOptionsConfig"`
 	// An optional description of this security policy. Max size is 2048.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Fingerprint of this resource.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
+	// The unique fingerprint of the labels.
+	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
+	// Labels to apply to this address. A list of key->value pairs.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the security policy.
 	//
 	// ***
@@ -285,6 +293,8 @@ type SecurityPolicy struct {
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
 	RecaptchaOptionsConfig SecurityPolicyRecaptchaOptionsConfigPtrOutput `pulumi:"recaptchaOptionsConfig"`
 	// The set of rules that belong to this policy. There must always be a default
@@ -311,6 +321,11 @@ func NewSecurityPolicy(ctx *pulumi.Context,
 		args = &SecurityPolicyArgs{}
 	}
 
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SecurityPolicy
 	err := ctx.RegisterResource("gcp:compute/securityPolicy:SecurityPolicy", name, args, &resource, opts...)
@@ -341,8 +356,16 @@ type securityPolicyState struct {
 	AdvancedOptionsConfig *SecurityPolicyAdvancedOptionsConfig `pulumi:"advancedOptionsConfig"`
 	// An optional description of this security policy. Max size is 2048.
 	Description *string `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Fingerprint of this resource.
 	Fingerprint *string `pulumi:"fingerprint"`
+	// The unique fingerprint of the labels.
+	LabelFingerprint *string `pulumi:"labelFingerprint"`
+	// Labels to apply to this address. A list of key->value pairs.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels map[string]string `pulumi:"labels"`
 	// The name of the security policy.
 	//
 	// ***
@@ -350,6 +373,8 @@ type securityPolicyState struct {
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
 	RecaptchaOptionsConfig *SecurityPolicyRecaptchaOptionsConfig `pulumi:"recaptchaOptionsConfig"`
 	// The set of rules that belong to this policy. There must always be a default
@@ -377,8 +402,16 @@ type SecurityPolicyState struct {
 	AdvancedOptionsConfig SecurityPolicyAdvancedOptionsConfigPtrInput
 	// An optional description of this security policy. Max size is 2048.
 	Description pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Fingerprint of this resource.
 	Fingerprint pulumi.StringPtrInput
+	// The unique fingerprint of the labels.
+	LabelFingerprint pulumi.StringPtrInput
+	// Labels to apply to this address. A list of key->value pairs.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels pulumi.StringMapInput
 	// The name of the security policy.
 	//
 	// ***
@@ -386,6 +419,8 @@ type SecurityPolicyState struct {
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
 	RecaptchaOptionsConfig SecurityPolicyRecaptchaOptionsConfigPtrInput
 	// The set of rules that belong to this policy. There must always be a default
@@ -417,6 +452,10 @@ type securityPolicyArgs struct {
 	AdvancedOptionsConfig *SecurityPolicyAdvancedOptionsConfig `pulumi:"advancedOptionsConfig"`
 	// An optional description of this security policy. Max size is 2048.
 	Description *string `pulumi:"description"`
+	// Labels to apply to this address. A list of key->value pairs.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels map[string]string `pulumi:"labels"`
 	// The name of the security policy.
 	//
 	// ***
@@ -450,6 +489,10 @@ type SecurityPolicyArgs struct {
 	AdvancedOptionsConfig SecurityPolicyAdvancedOptionsConfigPtrInput
 	// An optional description of this security policy. Max size is 2048.
 	Description pulumi.StringPtrInput
+	// Labels to apply to this address. A list of key->value pairs.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels pulumi.StringMapInput
 	// The name of the security policy.
 	//
 	// ***
@@ -579,9 +622,26 @@ func (o SecurityPolicyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityPolicy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+func (o SecurityPolicyOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SecurityPolicy) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Fingerprint of this resource.
 func (o SecurityPolicyOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityPolicy) pulumi.StringOutput { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+// The unique fingerprint of the labels.
+func (o SecurityPolicyOutput) LabelFingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityPolicy) pulumi.StringOutput { return v.LabelFingerprint }).(pulumi.StringOutput)
+}
+
+// Labels to apply to this address. A list of key->value pairs.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+func (o SecurityPolicyOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SecurityPolicy) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The name of the security policy.
@@ -595,6 +655,11 @@ func (o SecurityPolicyOutput) Name() pulumi.StringOutput {
 // is not provided, the provider project is used.
 func (o SecurityPolicyOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o SecurityPolicyOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SecurityPolicy) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.

@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class WorkerPoolTemplateContainerVolumeMount {
@@ -20,6 +22,11 @@ public final class WorkerPoolTemplateContainerVolumeMount {
      * 
      */
     private String name;
+    /**
+     * @return Path within the volume from which the container&#39;s volume should be mounted.
+     * 
+     */
+    private @Nullable String subPath;
 
     private WorkerPoolTemplateContainerVolumeMount() {}
     /**
@@ -36,6 +43,13 @@ public final class WorkerPoolTemplateContainerVolumeMount {
     public String name() {
         return this.name;
     }
+    /**
+     * @return Path within the volume from which the container&#39;s volume should be mounted.
+     * 
+     */
+    public Optional<String> subPath() {
+        return Optional.ofNullable(this.subPath);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -48,11 +62,13 @@ public final class WorkerPoolTemplateContainerVolumeMount {
     public static final class Builder {
         private String mountPath;
         private String name;
+        private @Nullable String subPath;
         public Builder() {}
         public Builder(WorkerPoolTemplateContainerVolumeMount defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.mountPath = defaults.mountPath;
     	      this.name = defaults.name;
+    	      this.subPath = defaults.subPath;
         }
 
         @CustomType.Setter
@@ -71,10 +87,17 @@ public final class WorkerPoolTemplateContainerVolumeMount {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
+        public Builder subPath(@Nullable String subPath) {
+
+            this.subPath = subPath;
+            return this;
+        }
         public WorkerPoolTemplateContainerVolumeMount build() {
             final var _resultValue = new WorkerPoolTemplateContainerVolumeMount();
             _resultValue.mountPath = mountPath;
             _resultValue.name = name;
+            _resultValue.subPath = subPath;
             return _resultValue;
         }
     }

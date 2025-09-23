@@ -81,6 +81,9 @@ namespace Pulumi.Gcp
         [Output("bigqueryDatapolicyCustomEndpoint")]
         public Output<string?> BigqueryDatapolicyCustomEndpoint { get; private set; } = null!;
 
+        [Output("bigqueryDatapolicyv2CustomEndpoint")]
+        public Output<string?> BigqueryDatapolicyv2CustomEndpoint { get; private set; } = null!;
+
         [Output("bigqueryReservationCustomEndpoint")]
         public Output<string?> BigqueryReservationCustomEndpoint { get; private set; } = null!;
 
@@ -691,6 +694,9 @@ namespace Pulumi.Gcp
 
         [Input("bigqueryDatapolicyCustomEndpoint")]
         public Input<string>? BigqueryDatapolicyCustomEndpoint { get; set; }
+
+        [Input("bigqueryDatapolicyv2CustomEndpoint")]
+        public Input<string>? BigqueryDatapolicyv2CustomEndpoint { get; set; }
 
         [Input("bigqueryReservationCustomEndpoint")]
         public Input<string>? BigqueryReservationCustomEndpoint { get; set; }
