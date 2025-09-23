@@ -307,7 +307,7 @@ index f4794cf4d..982b4019c 100644
    **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
    Please refer to the field `effective_annotations` for all of the annotations present on the resource.
 diff --git a/website/docs/r/cloud_run_service.html.markdown b/website/docs/r/cloud_run_service.html.markdown
-index c78432abc..f88c6585b 100644
+index 898b84bbc..d3971a4c7 100644
 --- a/website/docs/r/cloud_run_service.html.markdown
 +++ b/website/docs/r/cloud_run_service.html.markdown
 @@ -33,8 +33,63 @@ To get more information about Service, see:
@@ -403,7 +403,7 @@ index c78432abc..f88c6585b 100644
    Structure is [documented below](#nested_spec_template_spec_containers_containers_liveness_probe).
  
  
-@@ -1064,7 +1120,7 @@ this field is set to false, the revision name will still autogenerate.)
+@@ -1068,7 +1124,7 @@ this field is set to false, the revision name will still autogenerate.)
    may be set by external tools to store and retrieve arbitrary metadata.
    More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
    **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
@@ -1326,7 +1326,7 @@ index 000000000..62d6db522
 +
 +This resource supports [User Project Overrides](https://registry.terraform.io/providers/hashicorp/google/latest/docs/guides/provider_reference#user_project_override).
 diff --git a/website/docs/r/compute_security_policy.html.markdown b/website/docs/r/compute_security_policy.html.markdown
-index 591ba8e6c..69d26e749 100644
+index 50584521d..22390de09 100644
 --- a/website/docs/r/compute_security_policy.html.markdown
 +++ b/website/docs/r/compute_security_policy.html.markdown
 @@ -24,7 +24,7 @@ A Security Policy defines an IP blacklist or whitelist that protects load balanc
@@ -3270,7 +3270,7 @@ index 94c3db9d4..091d0e9ac 100644
  * `default_time_zone` - (Optional) The default time zone for the database. The default time zone must be a valid name
  from the tz database. Default value is "America/Los_angeles".
 diff --git a/website/docs/r/sql_database_instance.html.markdown b/website/docs/r/sql_database_instance.html.markdown
-index 1f57d83db..0f675d26f 100644
+index 19dd1d2df..355e22e16 100644
 --- a/website/docs/r/sql_database_instance.html.markdown
 +++ b/website/docs/r/sql_database_instance.html.markdown
 @@ -24,12 +24,12 @@ Creates a new Google SQL Database Instance. For more information, see the [offic
@@ -3288,7 +3288,7 @@ index 1f57d83db..0f675d26f 100644
  It is recommended to not set this field (or set it to true) until you're ready to destroy the instance and its databases.
  
  ## Example Usage
-@@ -306,7 +306,7 @@ SQL Server version to use. Supported values include `MYSQL_5_6`,
+@@ -307,7 +307,7 @@ SQL Server version to use. Supported values include `MYSQL_5_6`,
  includes an up-to-date reference of supported versions.
  
  * `name` - (Optional, Computed) The name of the instance. If the name is left
@@ -3297,7 +3297,7 @@ index 1f57d83db..0f675d26f 100644
      created. This is done because after a name is used, it cannot be reused for
      up to [one week](https://cloud.google.com/sql/docs/delete-instance).
  
-@@ -328,7 +328,7 @@ includes an up-to-date reference of supported versions.
+@@ -329,7 +329,7 @@ includes an up-to-date reference of supported versions.
  
  * `encryption_key_name` - (Optional)
      The full path to the encryption key used for the CMEK disk encryption.  Setting
@@ -3306,7 +3306,7 @@ index 1f57d83db..0f675d26f 100644
      The provided key must be in the same region as the SQL instance.  In order
      to use this feature, a special kind of service account must be created and
      granted permission on this key.  This step can currently only be done
-@@ -336,18 +336,14 @@ includes an up-to-date reference of supported versions.
+@@ -337,18 +337,14 @@ includes an up-to-date reference of supported versions.
      That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
      key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
  
@@ -3329,7 +3329,7 @@ index 1f57d83db..0f675d26f 100644
      block during resource creation/update will trigger the restore action after the resource is created/updated.
  
  *  `backupdr_backup` - (optional) The backupdr_backup needed to restore the database to a backup run. This field will
-@@ -356,7 +352,7 @@ includes an up-to-date reference of supported versions.
+@@ -357,7 +353,7 @@ includes an up-to-date reference of supported versions.
      block during resource creation/update will trigger the restore action after the resource is created/updated.
  
  * `clone` - (Optional) The context needed to create this instance as a clone of another instance. When this field is set during
@@ -3338,7 +3338,7 @@ index 1f57d83db..0f675d26f 100644
      configuration is detailed below.
  
  The `settings` block supports:
-@@ -632,7 +628,7 @@ The optional `clone` block supports:
+@@ -633,7 +629,7 @@ The optional `clone` block supports:
  * `allocated_ip_range` -  (Optional) The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?.
  
  The optional `restore_backup_context` block supports:
@@ -3347,7 +3347,7 @@ index 1f57d83db..0f675d26f 100644
  block during resource creation/update will trigger the restore action after the resource is created/updated.
  
  * `backup_run_id` - (Required) The ID of the backup run to restore from.
-@@ -698,21 +694,13 @@ instance.
+@@ -699,21 +695,13 @@ instance.
  
    * A `PRIVATE` address is an address for an instance which has been configured to use private networking see: [Private IP](https://cloud.google.com/sql/docs/mysql/private-ip).
  
