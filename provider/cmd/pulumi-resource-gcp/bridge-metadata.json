@@ -3179,6 +3179,43 @@
                 "current": "gcp:bigquerydatapolicy/dataPolicyIamPolicy:DataPolicyIamPolicy",
                 "majorVersion": 9
             },
+            "google_bigquery_datapolicyv2_data_policy": {
+                "current": "gcp:bigquery/datapolicyv2DataPolicy:Datapolicyv2DataPolicy",
+                "majorVersion": 9,
+                "fields": {
+                    "data_masking_policy": {
+                        "maxItemsOne": true
+                    },
+                    "grantees": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_bigquery_datapolicyv2_data_policy_iam_binding": {
+                "current": "gcp:bigquery/datapolicyv2DataPolicyIamBinding:Datapolicyv2DataPolicyIamBinding",
+                "majorVersion": 9,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_bigquery_datapolicyv2_data_policy_iam_member": {
+                "current": "gcp:bigquery/datapolicyv2DataPolicyIamMember:Datapolicyv2DataPolicyIamMember",
+                "majorVersion": 9,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_bigquery_datapolicyv2_data_policy_iam_policy": {
+                "current": "gcp:bigquery/datapolicyv2DataPolicyIamPolicy:Datapolicyv2DataPolicyIamPolicy",
+                "majorVersion": 9
+            },
             "google_bigquery_dataset": {
                 "current": "gcp:bigquery/dataset:Dataset",
                 "majorVersion": 9,
@@ -11673,6 +11710,12 @@
                     },
                     "nat_subnets": {
                         "maxItemsOne": false
+                    },
+                    "psc_service_attachment_id": {
+                        "maxItemsOne": false
+                    },
+                    "tunneling_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -13304,6 +13347,9 @@
                                             }
                                         }
                                     }
+                                },
+                                "auto_ipam_config": {
+                                    "maxItemsOne": true
                                 },
                                 "pod_cidr_overprovision_config": {
                                     "maxItemsOne": true
@@ -24027,6 +24073,9 @@
                     "private_registry_config": {
                         "maxItemsOne": true
                     },
+                    "proxy": {
+                        "maxItemsOne": true
+                    },
                     "status": {
                         "maxItemsOne": false,
                         "elem": {
@@ -24419,6 +24468,16 @@
                                 }
                             }
                         }
+                    },
+                    "validation_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "enabled_implementation_guides": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -24733,6 +24792,26 @@
                 "current": "gcp:iam/workforcePoolProvider:WorkforcePoolProvider",
                 "majorVersion": 9,
                 "fields": {
+                    "extended_attributes_oauth2_client": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "client_secret": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "value": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "query_parameters": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
                     "extra_attributes_oauth2_client": {
                         "maxItemsOne": true,
                         "elem": {
@@ -28760,6 +28839,21 @@
                     }
                 }
             },
+            "google_network_services_wasm_plugin": {
+                "current": "gcp:networkservices/wasmPlugin:WasmPlugin",
+                "majorVersion": 9,
+                "fields": {
+                    "log_config": {
+                        "maxItemsOne": true
+                    },
+                    "used_by": {
+                        "maxItemsOne": false
+                    },
+                    "versions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_notebooks_environment": {
                 "current": "gcp:notebooks/environment:Environment",
                 "majorVersion": 9,
@@ -30958,6 +31052,9 @@
                 "current": "gcp:certificateauthority/caPool:CaPool",
                 "majorVersion": 9,
                 "fields": {
+                    "encryption_spec": {
+                        "maxItemsOne": true
+                    },
                     "issuance_policy": {
                         "maxItemsOne": true,
                         "elem": {
@@ -32512,6 +32609,34 @@
                 "current": "gcp:runtimeconfig/variable:Variable",
                 "majorVersion": 9
             },
+            "google_saas_runtime_release": {
+                "current": "gcp:saasruntime/release:Release",
+                "majorVersion": 9,
+                "fields": {
+                    "blueprint": {
+                        "maxItemsOne": true
+                    },
+                    "input_variable_defaults": {
+                        "maxItemsOne": false
+                    },
+                    "input_variables": {
+                        "maxItemsOne": false
+                    },
+                    "output_variables": {
+                        "maxItemsOne": false
+                    },
+                    "release_requirements": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "upgradeable_from_releases": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_saas_runtime_saas": {
                 "current": "gcp:saasruntime/saaS:SaaS",
                 "majorVersion": 9,
@@ -33105,6 +33230,18 @@
             "google_secure_source_manager_branch_rule": {
                 "current": "gcp:securesourcemanager/branchRule:BranchRule",
                 "majorVersion": 9
+            },
+            "google_secure_source_manager_hook": {
+                "current": "gcp:securesourcemanager/hook:Hook",
+                "majorVersion": 9,
+                "fields": {
+                    "events": {
+                        "maxItemsOne": false
+                    },
+                    "push_option": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "google_secure_source_manager_instance": {
                 "current": "gcp:securesourcemanager/instance:Instance",
@@ -36628,6 +36765,10 @@
                     }
                 }
             },
+            "google_artifact_registry_maven_artifact": {
+                "current": "gcp:artifactregistry/getMavenArtifact:getMavenArtifact",
+                "majorVersion": 9
+            },
             "google_artifact_registry_npm_package": {
                 "current": "gcp:artifactregistry/getNpmPackage:getNpmPackage",
                 "majorVersion": 9,
@@ -36881,6 +37022,15 @@
                     }
                 }
             },
+            "google_backup_dr_backup_plan_associations": {
+                "current": "gcp:backupdisasterrecovery/getBackupPlanAssociations:getBackupPlanAssociations",
+                "majorVersion": 9,
+                "fields": {
+                    "associations": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_backup_dr_backup_vault": {
                 "current": "gcp:backupdisasterrecovery/getBackupVault:getBackupVault",
                 "majorVersion": 9
@@ -36923,6 +37073,10 @@
                         }
                     }
                 }
+            },
+            "google_backup_dr_data_source_reference": {
+                "current": "gcp:backupdisasterrecovery/getDataSourceReference:getDataSourceReference",
+                "majorVersion": 9
             },
             "google_backup_dr_data_source_references": {
                 "current": "gcp:backupdisasterrecovery/getDataSourceReferences:getDataSourceReferences",
@@ -37033,6 +37187,10 @@
             },
             "google_bigquery_datapolicy_data_policy_iam_policy": {
                 "current": "gcp:bigquerydatapolicy/getIamPolicy:getIamPolicy",
+                "majorVersion": 9
+            },
+            "google_bigquery_datapolicyv2_data_policy_iam_policy": {
+                "current": "gcp:bigquery/getDatapolicyv2DataPolicyIamPolicy:getDatapolicyv2DataPolicyIamPolicy",
                 "majorVersion": 9
             },
             "google_bigquery_dataset": {
@@ -39510,6 +39668,29 @@
                 "current": "gcp:compute/getInstantSnapshotIamPolicy:getInstantSnapshotIamPolicy",
                 "majorVersion": 9
             },
+            "google_compute_interconnect_location": {
+                "current": "gcp:compute/getInterconnectLocation:getInterconnectLocation",
+                "majorVersion": 9
+            },
+            "google_compute_interconnect_locations": {
+                "current": "gcp:compute/getInterconnectLocations:getInterconnectLocations",
+                "majorVersion": 9,
+                "fields": {
+                    "locations": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "available_features": {
+                                    "maxItemsOne": false
+                                },
+                                "available_link_types": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_compute_lb_ip_ranges": {
                 "current": "gcp:compute/getLBIPRanges:getLBIPRanges",
                 "majorVersion": 9,
@@ -40920,6 +41101,9 @@
                                             }
                                         }
                                     }
+                                },
+                                "auto_ipam_config": {
+                                    "maxItemsOne": false
                                 },
                                 "pod_cidr_overprovision_config": {
                                     "maxItemsOne": false
@@ -45778,6 +45962,10 @@
                 "effective_labels",
                 "terraform_labels"
             ],
+            "google_compute_security_policy": [
+                "effective_labels",
+                "terraform_labels"
+            ],
             "google_compute_snapshot": [
                 "effective_labels",
                 "terraform_labels"
@@ -46382,6 +46570,10 @@
                 "effective_labels",
                 "terraform_labels"
             ],
+            "google_network_services_wasm_plugin": [
+                "effective_labels",
+                "terraform_labels"
+            ],
             "google_notebooks_instance": [
                 "effective_labels",
                 "terraform_labels"
@@ -46467,6 +46659,10 @@
                 "terraform_labels"
             ],
             "google_redis_instance": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_saas_runtime_release": [
                 "effective_labels",
                 "terraform_labels"
             ],
@@ -46697,6 +46893,10 @@
                 "terraform_labels"
             ],
             "google_compute_region_instance_template": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_compute_security_policy": [
                 "effective_labels",
                 "terraform_labels"
             ],
@@ -46983,6 +47183,10 @@
             "gcp:bigquery/connectionIamMember:ConnectionIamMember": 0,
             "gcp:bigquery/connectionIamPolicy:ConnectionIamPolicy": 0,
             "gcp:bigquery/dataTransferConfig:DataTransferConfig": 0,
+            "gcp:bigquery/datapolicyv2DataPolicy:Datapolicyv2DataPolicy": 0,
+            "gcp:bigquery/datapolicyv2DataPolicyIamBinding:Datapolicyv2DataPolicyIamBinding": 0,
+            "gcp:bigquery/datapolicyv2DataPolicyIamMember:Datapolicyv2DataPolicyIamMember": 0,
+            "gcp:bigquery/datapolicyv2DataPolicyIamPolicy:Datapolicyv2DataPolicyIamPolicy": 0,
             "gcp:bigquery/dataset:Dataset": 0,
             "gcp:bigquery/datasetAccess:DatasetAccess": 0,
             "gcp:bigquery/datasetIamBinding:DatasetIamBinding": 0,
@@ -47805,6 +48009,7 @@
             "gcp:networkservices/serviceLbPolicies:ServiceLbPolicies": 0,
             "gcp:networkservices/tcpRoute:TcpRoute": 0,
             "gcp:networkservices/tlsRoute:TlsRoute": 0,
+            "gcp:networkservices/wasmPlugin:WasmPlugin": 0,
             "gcp:notebooks/environment:Environment": 0,
             "gcp:notebooks/instance:Instance": 0,
             "gcp:notebooks/instanceIamBinding:InstanceIamBinding": 0,
@@ -47882,6 +48087,7 @@
             "gcp:runtimeconfig/configIamMember:ConfigIamMember": 0,
             "gcp:runtimeconfig/configIamPolicy:ConfigIamPolicy": 0,
             "gcp:runtimeconfig/variable:Variable": 0,
+            "gcp:saasruntime/release:Release": 0,
             "gcp:saasruntime/saaS:SaaS": 0,
             "gcp:saasruntime/unitKind:UnitKind": 0,
             "gcp:secretmanager/regionalSecret:RegionalSecret": 0,
@@ -47895,6 +48101,7 @@
             "gcp:secretmanager/secretIamPolicy:SecretIamPolicy": 0,
             "gcp:secretmanager/secretVersion:SecretVersion": 0,
             "gcp:securesourcemanager/branchRule:BranchRule": 0,
+            "gcp:securesourcemanager/hook:Hook": 0,
             "gcp:securesourcemanager/instance:Instance": 0,
             "gcp:securesourcemanager/instanceIamBinding:InstanceIamBinding": 0,
             "gcp:securesourcemanager/instanceIamMember:InstanceIamMember": 0,
@@ -48102,6 +48309,7 @@
             "gcp:artifactregistry/getDockerImage:getDockerImage": 0,
             "gcp:artifactregistry/getDockerImages:getDockerImages": 0,
             "gcp:artifactregistry/getLocations:getLocations": 0,
+            "gcp:artifactregistry/getMavenArtifact:getMavenArtifact": 0,
             "gcp:artifactregistry/getNpmPackage:getNpmPackage": 0,
             "gcp:artifactregistry/getPackage:getPackage": 0,
             "gcp:artifactregistry/getPythonPackage:getPythonPackage": 0,
@@ -48114,8 +48322,10 @@
             "gcp:backupdisasterrecovery/getBackup:getBackup": 0,
             "gcp:backupdisasterrecovery/getBackupPlan:getBackupPlan": 0,
             "gcp:backupdisasterrecovery/getBackupPlanAssociation:getBackupPlanAssociation": 0,
+            "gcp:backupdisasterrecovery/getBackupPlanAssociations:getBackupPlanAssociations": 0,
             "gcp:backupdisasterrecovery/getBackupVault:getBackupVault": 0,
             "gcp:backupdisasterrecovery/getDataSource:getDataSource": 0,
+            "gcp:backupdisasterrecovery/getDataSourceReference:getDataSourceReference": 0,
             "gcp:backupdisasterrecovery/getDataSourceReferences:getDataSourceReferences": 0,
             "gcp:backupdisasterrecovery/getManagementServer:getManagementServer": 0,
             "gcp:beyondcorp/getAppConnection:getAppConnection": 0,
@@ -48125,6 +48335,7 @@
             "gcp:beyondcorp/getSecurityGatewayApplicationIamPolicy:getSecurityGatewayApplicationIamPolicy": 0,
             "gcp:beyondcorp/getSecurityGatewayIamPolicy:getSecurityGatewayIamPolicy": 0,
             "gcp:bigquery/getConnectionIamPolicy:getConnectionIamPolicy": 0,
+            "gcp:bigquery/getDatapolicyv2DataPolicyIamPolicy:getDatapolicyv2DataPolicyIamPolicy": 0,
             "gcp:bigquery/getDataset:getDataset": 0,
             "gcp:bigquery/getDatasetIamPolicy:getDatasetIamPolicy": 0,
             "gcp:bigquery/getDatasets:getDatasets": 0,
@@ -48205,6 +48416,8 @@
             "gcp:compute/getInstanceTemplate:getInstanceTemplate": 0,
             "gcp:compute/getInstanceTemplateIamPolicy:getInstanceTemplateIamPolicy": 0,
             "gcp:compute/getInstantSnapshotIamPolicy:getInstantSnapshotIamPolicy": 0,
+            "gcp:compute/getInterconnectLocation:getInterconnectLocation": 0,
+            "gcp:compute/getInterconnectLocations:getInterconnectLocations": 0,
             "gcp:compute/getLBIPRanges:getLBIPRanges": 0,
             "gcp:compute/getMachineImageIamPolicy:getMachineImageIamPolicy": 0,
             "gcp:compute/getMachineTypes:getMachineTypes": 0,
