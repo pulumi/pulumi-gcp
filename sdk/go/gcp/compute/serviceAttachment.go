@@ -495,6 +495,100 @@ import (
 //	}
 //
 // ```
+// ### Service Attachment Tunneling Config
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			producerServiceHealthCheck, err := compute.NewHealthCheck(ctx, "producer_service_health_check", &compute.HealthCheckArgs{
+//				Name:             pulumi.String("producer-service-health-check"),
+//				CheckIntervalSec: pulumi.Int(1),
+//				TimeoutSec:       pulumi.Int(1),
+//				TcpHealthCheck: &compute.HealthCheckTcpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			producerServiceBackend, err := compute.NewRegionBackendService(ctx, "producer_service_backend", &compute.RegionBackendServiceArgs{
+//				Name:         pulumi.String("producer-service"),
+//				Region:       pulumi.String("us-west2"),
+//				HealthChecks: producerServiceHealthCheck.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pscIlbNetwork, err := compute.NewNetwork(ctx, "psc_ilb_network", &compute.NetworkArgs{
+//				Name:                  pulumi.String("psc-ilb-network"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pscIlbProducerSubnetwork, err := compute.NewSubnetwork(ctx, "psc_ilb_producer_subnetwork", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("psc-ilb-producer-subnetwork"),
+//				Region:      pulumi.String("us-west2"),
+//				Network:     pscIlbNetwork.ID(),
+//				IpCidrRange: pulumi.String("10.0.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pscIlbTargetService, err := compute.NewForwardingRule(ctx, "psc_ilb_target_service", &compute.ForwardingRuleArgs{
+//				Name:                pulumi.String("producer-forwarding-rule"),
+//				Region:              pulumi.String("us-west2"),
+//				LoadBalancingScheme: pulumi.String("INTERNAL"),
+//				BackendService:      producerServiceBackend.ID(),
+//				AllPorts:            pulumi.Bool(true),
+//				Network:             pscIlbNetwork.Name,
+//				Subnetwork:          pscIlbProducerSubnetwork.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pscIlbNat, err := compute.NewSubnetwork(ctx, "psc_ilb_nat", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("psc-ilb-nat"),
+//				Region:      pulumi.String("us-west2"),
+//				Network:     pscIlbNetwork.ID(),
+//				Purpose:     pulumi.String("PRIVATE_SERVICE_CONNECT"),
+//				IpCidrRange: pulumi.String("10.1.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewServiceAttachment(ctx, "psc_ilb_service_attachment", &compute.ServiceAttachmentArgs{
+//				Name:                 pulumi.String("my-psc-ilb"),
+//				Region:               pulumi.String("us-west2"),
+//				Description:          pulumi.String("A service attachment configured with tunneling"),
+//				EnableProxyProtocol:  pulumi.Bool(false),
+//				ConnectionPreference: pulumi.String("ACCEPT_AUTOMATIC"),
+//				NatSubnets: pulumi.StringArray{
+//					pscIlbNat.ID(),
+//				},
+//				TargetService: pscIlbTargetService.ID(),
+//				TunnelingConfig: &compute.ServiceAttachmentTunnelingConfigArgs{
+//					RoutingMode:          pulumi.String("REGIONAL"),
+//					EncapsulationProfile: pulumi.String("IPV4"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Service Attachment Cross Region Ilb
 //
 // ```go
@@ -692,6 +786,9 @@ type ServiceAttachment struct {
 	// If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
 	// If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set `sendPropagatedConnectionLimitIfZero = true`.
 	PropagatedConnectionLimit pulumi.IntOutput `pulumi:"propagatedConnectionLimit"`
+	// An 128-bit global unique ID of the PSC service attachment.
+	// Structure is documented below.
+	PscServiceAttachmentIds ServiceAttachmentPscServiceAttachmentIdArrayOutput `pulumi:"pscServiceAttachmentIds"`
 	// This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
 	// If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
 	// If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
@@ -707,6 +804,9 @@ type ServiceAttachment struct {
 	SendPropagatedConnectionLimitIfZero pulumi.BoolPtrOutput `pulumi:"sendPropagatedConnectionLimitIfZero"`
 	// The URL of a service serving the endpoint identified by this service attachment.
 	TargetService pulumi.StringOutput `pulumi:"targetService"`
+	// Tunneling configuration for this service attachment.
+	// Structure is documented below.
+	TunnelingConfig ServiceAttachmentTunnelingConfigPtrOutput `pulumi:"tunnelingConfig"`
 }
 
 // NewServiceAttachment registers a new resource with the given unique name, arguments, and options.
@@ -797,6 +897,9 @@ type serviceAttachmentState struct {
 	// If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
 	// If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set `sendPropagatedConnectionLimitIfZero = true`.
 	PropagatedConnectionLimit *int `pulumi:"propagatedConnectionLimit"`
+	// An 128-bit global unique ID of the PSC service attachment.
+	// Structure is documented below.
+	PscServiceAttachmentIds []ServiceAttachmentPscServiceAttachmentId `pulumi:"pscServiceAttachmentIds"`
 	// This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
 	// If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
 	// If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
@@ -812,6 +915,9 @@ type serviceAttachmentState struct {
 	SendPropagatedConnectionLimitIfZero *bool `pulumi:"sendPropagatedConnectionLimitIfZero"`
 	// The URL of a service serving the endpoint identified by this service attachment.
 	TargetService *string `pulumi:"targetService"`
+	// Tunneling configuration for this service attachment.
+	// Structure is documented below.
+	TunnelingConfig *ServiceAttachmentTunnelingConfig `pulumi:"tunnelingConfig"`
 }
 
 type ServiceAttachmentState struct {
@@ -861,6 +967,9 @@ type ServiceAttachmentState struct {
 	// If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
 	// If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set `sendPropagatedConnectionLimitIfZero = true`.
 	PropagatedConnectionLimit pulumi.IntPtrInput
+	// An 128-bit global unique ID of the PSC service attachment.
+	// Structure is documented below.
+	PscServiceAttachmentIds ServiceAttachmentPscServiceAttachmentIdArrayInput
 	// This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
 	// If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
 	// If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
@@ -876,6 +985,9 @@ type ServiceAttachmentState struct {
 	SendPropagatedConnectionLimitIfZero pulumi.BoolPtrInput
 	// The URL of a service serving the endpoint identified by this service attachment.
 	TargetService pulumi.StringPtrInput
+	// Tunneling configuration for this service attachment.
+	// Structure is documented below.
+	TunnelingConfig ServiceAttachmentTunnelingConfigPtrInput
 }
 
 func (ServiceAttachmentState) ElementType() reflect.Type {
@@ -935,6 +1047,9 @@ type serviceAttachmentArgs struct {
 	SendPropagatedConnectionLimitIfZero *bool `pulumi:"sendPropagatedConnectionLimitIfZero"`
 	// The URL of a service serving the endpoint identified by this service attachment.
 	TargetService string `pulumi:"targetService"`
+	// Tunneling configuration for this service attachment.
+	// Structure is documented below.
+	TunnelingConfig *ServiceAttachmentTunnelingConfig `pulumi:"tunnelingConfig"`
 }
 
 // The set of arguments for constructing a ServiceAttachment resource.
@@ -991,6 +1106,9 @@ type ServiceAttachmentArgs struct {
 	SendPropagatedConnectionLimitIfZero pulumi.BoolPtrInput
 	// The URL of a service serving the endpoint identified by this service attachment.
 	TargetService pulumi.StringInput
+	// Tunneling configuration for this service attachment.
+	// Structure is documented below.
+	TunnelingConfig ServiceAttachmentTunnelingConfigPtrInput
 }
 
 func (ServiceAttachmentArgs) ElementType() reflect.Type {
@@ -1164,6 +1282,14 @@ func (o ServiceAttachmentOutput) PropagatedConnectionLimit() pulumi.IntOutput {
 	return o.ApplyT(func(v *ServiceAttachment) pulumi.IntOutput { return v.PropagatedConnectionLimit }).(pulumi.IntOutput)
 }
 
+// An 128-bit global unique ID of the PSC service attachment.
+// Structure is documented below.
+func (o ServiceAttachmentOutput) PscServiceAttachmentIds() ServiceAttachmentPscServiceAttachmentIdArrayOutput {
+	return o.ApplyT(func(v *ServiceAttachment) ServiceAttachmentPscServiceAttachmentIdArrayOutput {
+		return v.PscServiceAttachmentIds
+	}).(ServiceAttachmentPscServiceAttachmentIdArrayOutput)
+}
+
 // This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
 // If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
 // If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
@@ -1192,6 +1318,12 @@ func (o ServiceAttachmentOutput) SendPropagatedConnectionLimitIfZero() pulumi.Bo
 // The URL of a service serving the endpoint identified by this service attachment.
 func (o ServiceAttachmentOutput) TargetService() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceAttachment) pulumi.StringOutput { return v.TargetService }).(pulumi.StringOutput)
+}
+
+// Tunneling configuration for this service attachment.
+// Structure is documented below.
+func (o ServiceAttachmentOutput) TunnelingConfig() ServiceAttachmentTunnelingConfigPtrOutput {
+	return o.ApplyT(func(v *ServiceAttachment) ServiceAttachmentTunnelingConfigPtrOutput { return v.TunnelingConfig }).(ServiceAttachmentTunnelingConfigPtrOutput)
 }
 
 type ServiceAttachmentArrayOutput struct{ *pulumi.OutputState }

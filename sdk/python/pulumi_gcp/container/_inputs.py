@@ -251,6 +251,8 @@ __all__ = [
     'ClusterIpAllocationPolicyAdditionalIpRangesConfigArgsDict',
     'ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs',
     'ClusterIpAllocationPolicyAdditionalPodRangesConfigArgsDict',
+    'ClusterIpAllocationPolicyAutoIpamConfigArgs',
+    'ClusterIpAllocationPolicyAutoIpamConfigArgsDict',
     'ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs',
     'ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgsDict',
     'ClusterLoggingConfigArgs',
@@ -7437,6 +7439,12 @@ if not MYPY:
         the cluster level. Used for Autopilot clusters and Standard clusters with which control of the
         secondary Pod IP address assignment to node pools isn't needed. Structure is documented below.
         """
+        auto_ipam_config: NotRequired[pulumi.Input['ClusterIpAllocationPolicyAutoIpamConfigArgsDict']]
+        """
+        All the information related to Auto IPAM. Structure is documented below
+
+        <a name="nested_auto_ipam_config"></a>The auto ipam config supports:
+        """
         cluster_ipv4_cidr_block: NotRequired[pulumi.Input[_builtins.str]]
         """
         The IP address range for the cluster pod IPs.
@@ -7484,6 +7492,7 @@ class ClusterIpAllocationPolicyArgs:
     def __init__(__self__, *,
                  additional_ip_ranges_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterIpAllocationPolicyAdditionalIpRangesConfigArgs']]]] = None,
                  additional_pod_ranges_config: Optional[pulumi.Input['ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs']] = None,
+                 auto_ipam_config: Optional[pulumi.Input['ClusterIpAllocationPolicyAutoIpamConfigArgs']] = None,
                  cluster_ipv4_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
                  cluster_secondary_range_name: Optional[pulumi.Input[_builtins.str]] = None,
                  pod_cidr_overprovision_config: Optional[pulumi.Input['ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs']] = None,
@@ -7496,6 +7505,9 @@ class ClusterIpAllocationPolicyArgs:
         :param pulumi.Input['ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs'] additional_pod_ranges_config: The configuration for additional pod secondary ranges at
                the cluster level. Used for Autopilot clusters and Standard clusters with which control of the
                secondary Pod IP address assignment to node pools isn't needed. Structure is documented below.
+        :param pulumi.Input['ClusterIpAllocationPolicyAutoIpamConfigArgs'] auto_ipam_config: All the information related to Auto IPAM. Structure is documented below
+               
+               <a name="nested_auto_ipam_config"></a>The auto ipam config supports:
         :param pulumi.Input[_builtins.str] cluster_ipv4_cidr_block: The IP address range for the cluster pod IPs.
                Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
                to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14)
@@ -7522,6 +7534,8 @@ class ClusterIpAllocationPolicyArgs:
             pulumi.set(__self__, "additional_ip_ranges_configs", additional_ip_ranges_configs)
         if additional_pod_ranges_config is not None:
             pulumi.set(__self__, "additional_pod_ranges_config", additional_pod_ranges_config)
+        if auto_ipam_config is not None:
+            pulumi.set(__self__, "auto_ipam_config", auto_ipam_config)
         if cluster_ipv4_cidr_block is not None:
             pulumi.set(__self__, "cluster_ipv4_cidr_block", cluster_ipv4_cidr_block)
         if cluster_secondary_range_name is not None:
@@ -7561,6 +7575,20 @@ class ClusterIpAllocationPolicyArgs:
     @additional_pod_ranges_config.setter
     def additional_pod_ranges_config(self, value: Optional[pulumi.Input['ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs']]):
         pulumi.set(self, "additional_pod_ranges_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autoIpamConfig")
+    def auto_ipam_config(self) -> Optional[pulumi.Input['ClusterIpAllocationPolicyAutoIpamConfigArgs']]:
+        """
+        All the information related to Auto IPAM. Structure is documented below
+
+        <a name="nested_auto_ipam_config"></a>The auto ipam config supports:
+        """
+        return pulumi.get(self, "auto_ipam_config")
+
+    @auto_ipam_config.setter
+    def auto_ipam_config(self, value: Optional[pulumi.Input['ClusterIpAllocationPolicyAutoIpamConfigArgs']]):
+        pulumi.set(self, "auto_ipam_config", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterIpv4CidrBlock")
@@ -7730,6 +7758,37 @@ class ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs:
     @pod_range_names.setter
     def pod_range_names(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
         pulumi.set(self, "pod_range_names", value)
+
+
+if not MYPY:
+    class ClusterIpAllocationPolicyAutoIpamConfigArgsDict(TypedDict):
+        enabled: pulumi.Input[_builtins.bool]
+        """
+        The flag that enables Auto IPAM on this cluster.
+        """
+elif False:
+    ClusterIpAllocationPolicyAutoIpamConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterIpAllocationPolicyAutoIpamConfigArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[_builtins.bool]):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: The flag that enables Auto IPAM on this cluster.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        """
+        The flag that enables Auto IPAM on this cluster.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
 
 
 if not MYPY:

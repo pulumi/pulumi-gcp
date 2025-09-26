@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterIpAllocationPolicyAdditionalIpRangesConfig;
 import com.pulumi.gcp.container.outputs.GetClusterIpAllocationPolicyAdditionalPodRangesConfig;
+import com.pulumi.gcp.container.outputs.GetClusterIpAllocationPolicyAutoIpamConfig;
 import com.pulumi.gcp.container.outputs.GetClusterIpAllocationPolicyPodCidrOverprovisionConfig;
 import java.lang.String;
 import java.util.List;
@@ -24,6 +25,11 @@ public final class GetClusterIpAllocationPolicy {
      * 
      */
     private List<GetClusterIpAllocationPolicyAdditionalPodRangesConfig> additionalPodRangesConfigs;
+    /**
+     * @return AutoIpamConfig contains all information related to Auto IPAM.
+     * 
+     */
+    private List<GetClusterIpAllocationPolicyAutoIpamConfig> autoIpamConfigs;
     /**
      * @return The IP address range for the cluster pod IPs. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use.
      * 
@@ -69,6 +75,13 @@ public final class GetClusterIpAllocationPolicy {
      */
     public List<GetClusterIpAllocationPolicyAdditionalPodRangesConfig> additionalPodRangesConfigs() {
         return this.additionalPodRangesConfigs;
+    }
+    /**
+     * @return AutoIpamConfig contains all information related to Auto IPAM.
+     * 
+     */
+    public List<GetClusterIpAllocationPolicyAutoIpamConfig> autoIpamConfigs() {
+        return this.autoIpamConfigs;
     }
     /**
      * @return The IP address range for the cluster pod IPs. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use.
@@ -124,6 +137,7 @@ public final class GetClusterIpAllocationPolicy {
     public static final class Builder {
         private List<GetClusterIpAllocationPolicyAdditionalIpRangesConfig> additionalIpRangesConfigs;
         private List<GetClusterIpAllocationPolicyAdditionalPodRangesConfig> additionalPodRangesConfigs;
+        private List<GetClusterIpAllocationPolicyAutoIpamConfig> autoIpamConfigs;
         private String clusterIpv4CidrBlock;
         private String clusterSecondaryRangeName;
         private List<GetClusterIpAllocationPolicyPodCidrOverprovisionConfig> podCidrOverprovisionConfigs;
@@ -135,6 +149,7 @@ public final class GetClusterIpAllocationPolicy {
     	      Objects.requireNonNull(defaults);
     	      this.additionalIpRangesConfigs = defaults.additionalIpRangesConfigs;
     	      this.additionalPodRangesConfigs = defaults.additionalPodRangesConfigs;
+    	      this.autoIpamConfigs = defaults.autoIpamConfigs;
     	      this.clusterIpv4CidrBlock = defaults.clusterIpv4CidrBlock;
     	      this.clusterSecondaryRangeName = defaults.clusterSecondaryRangeName;
     	      this.podCidrOverprovisionConfigs = defaults.podCidrOverprovisionConfigs;
@@ -164,6 +179,17 @@ public final class GetClusterIpAllocationPolicy {
         }
         public Builder additionalPodRangesConfigs(GetClusterIpAllocationPolicyAdditionalPodRangesConfig... additionalPodRangesConfigs) {
             return additionalPodRangesConfigs(List.of(additionalPodRangesConfigs));
+        }
+        @CustomType.Setter
+        public Builder autoIpamConfigs(List<GetClusterIpAllocationPolicyAutoIpamConfig> autoIpamConfigs) {
+            if (autoIpamConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterIpAllocationPolicy", "autoIpamConfigs");
+            }
+            this.autoIpamConfigs = autoIpamConfigs;
+            return this;
+        }
+        public Builder autoIpamConfigs(GetClusterIpAllocationPolicyAutoIpamConfig... autoIpamConfigs) {
+            return autoIpamConfigs(List.of(autoIpamConfigs));
         }
         @CustomType.Setter
         public Builder clusterIpv4CidrBlock(String clusterIpv4CidrBlock) {
@@ -220,6 +246,7 @@ public final class GetClusterIpAllocationPolicy {
             final var _resultValue = new GetClusterIpAllocationPolicy();
             _resultValue.additionalIpRangesConfigs = additionalIpRangesConfigs;
             _resultValue.additionalPodRangesConfigs = additionalPodRangesConfigs;
+            _resultValue.autoIpamConfigs = autoIpamConfigs;
             _resultValue.clusterIpv4CidrBlock = clusterIpv4CidrBlock;
             _resultValue.clusterSecondaryRangeName = clusterSecondaryRangeName;
             _resultValue.podCidrOverprovisionConfigs = podCidrOverprovisionConfigs;

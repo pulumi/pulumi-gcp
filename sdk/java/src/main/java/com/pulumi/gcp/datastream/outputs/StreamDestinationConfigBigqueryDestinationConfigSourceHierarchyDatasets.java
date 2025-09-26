@@ -6,7 +6,10 @@ package com.pulumi.gcp.datastream.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.datastream.outputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate;
+import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets {
@@ -16,6 +19,11 @@ public final class StreamDestinationConfigBigqueryDestinationConfigSourceHierarc
      * 
      */
     private StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate datasetTemplate;
+    /**
+     * @return Optional. The project id of the BigQuery dataset. If not specified, the project will be inferred from the stream resource.
+     * 
+     */
+    private @Nullable String projectId;
 
     private StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets() {}
     /**
@@ -25,6 +33,13 @@ public final class StreamDestinationConfigBigqueryDestinationConfigSourceHierarc
      */
     public StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate datasetTemplate() {
         return this.datasetTemplate;
+    }
+    /**
+     * @return Optional. The project id of the BigQuery dataset. If not specified, the project will be inferred from the stream resource.
+     * 
+     */
+    public Optional<String> projectId() {
+        return Optional.ofNullable(this.projectId);
     }
 
     public static Builder builder() {
@@ -37,10 +52,12 @@ public final class StreamDestinationConfigBigqueryDestinationConfigSourceHierarc
     @CustomType.Builder
     public static final class Builder {
         private StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate datasetTemplate;
+        private @Nullable String projectId;
         public Builder() {}
         public Builder(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.datasetTemplate = defaults.datasetTemplate;
+    	      this.projectId = defaults.projectId;
         }
 
         @CustomType.Setter
@@ -51,9 +68,16 @@ public final class StreamDestinationConfigBigqueryDestinationConfigSourceHierarc
             this.datasetTemplate = datasetTemplate;
             return this;
         }
+        @CustomType.Setter
+        public Builder projectId(@Nullable String projectId) {
+
+            this.projectId = projectId;
+            return this;
+        }
         public StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets build() {
             final var _resultValue = new StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets();
             _resultValue.datasetTemplate = datasetTemplate;
+            _resultValue.projectId = projectId;
             return _resultValue;
         }
     }

@@ -297,6 +297,7 @@ type V2OrganizationSourceIamBinding struct {
 	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
 	Members      pulumi.StringArrayOutput `pulumi:"members"`
 	Organization pulumi.StringOutput      `pulumi:"organization"`
 	// The role that should be applied. Only one
@@ -363,6 +364,7 @@ type v2organizationSourceIamBindingState struct {
 	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
 	Members      []string `pulumi:"members"`
 	Organization *string  `pulumi:"organization"`
 	// The role that should be applied. Only one
@@ -388,6 +390,7 @@ type V2OrganizationSourceIamBindingState struct {
 	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
 	Members      pulumi.StringArrayInput
 	Organization pulumi.StringPtrInput
 	// The role that should be applied. Only one
@@ -415,6 +418,7 @@ type v2organizationSourceIamBindingArgs struct {
 	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
 	Members      []string `pulumi:"members"`
 	Organization string   `pulumi:"organization"`
 	// The role that should be applied. Only one
@@ -439,6 +443,7 @@ type V2OrganizationSourceIamBindingArgs struct {
 	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
 	Members      pulumi.StringArrayInput
 	Organization pulumi.StringInput
 	// The role that should be applied. Only one
@@ -558,6 +563,7 @@ func (o V2OrganizationSourceIamBindingOutput) Etag() pulumi.StringOutput {
 // * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 // * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 // * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
 func (o V2OrganizationSourceIamBindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *V2OrganizationSourceIamBinding) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
 }

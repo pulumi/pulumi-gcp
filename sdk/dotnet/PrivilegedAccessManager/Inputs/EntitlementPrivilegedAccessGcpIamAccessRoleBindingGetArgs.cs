@@ -20,6 +20,13 @@ namespace Pulumi.Gcp.PrivilegedAccessManager.Inputs
         public Input<string>? ConditionExpression { get; set; }
 
         /// <summary>
+        /// (Output, Beta)
+        /// Output Only. The ID corresponding to this role binding in the policy binding. This will be unique within an entitlement across time. Gets re-generated each time the entitlement is updated.
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        /// <summary>
         /// IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
         /// </summary>
         [Input("role", required: true)]

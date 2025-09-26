@@ -168,6 +168,7 @@ __all__ = [
     'VmwareAdminClusterPlatformConfigStatus',
     'VmwareAdminClusterPlatformConfigStatusCondition',
     'VmwareAdminClusterPrivateRegistryConfig',
+    'VmwareAdminClusterProxy',
     'VmwareAdminClusterStatus',
     'VmwareAdminClusterStatusCondition',
     'VmwareAdminClusterVcenter',
@@ -8276,6 +8277,55 @@ class VmwareAdminClusterPrivateRegistryConfig(dict):
         The CA certificate public key for private registry.
         """
         return pulumi.get(self, "ca_cert")
+
+
+@pulumi.output_type
+class VmwareAdminClusterProxy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "noProxy":
+            suggest = "no_proxy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VmwareAdminClusterProxy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VmwareAdminClusterProxy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VmwareAdminClusterProxy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 url: _builtins.str,
+                 no_proxy: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str url: The proxy url.
+        :param _builtins.str no_proxy: A comma-separated list of IP addresses, IP address ranges,
+               host names, and domain names that should not go through the proxy server.
+        """
+        pulumi.set(__self__, "url", url)
+        if no_proxy is not None:
+            pulumi.set(__self__, "no_proxy", no_proxy)
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> _builtins.str:
+        """
+        The proxy url.
+        """
+        return pulumi.get(self, "url")
+
+    @_builtins.property
+    @pulumi.getter(name="noProxy")
+    def no_proxy(self) -> Optional[_builtins.str]:
+        """
+        A comma-separated list of IP addresses, IP address ranges,
+        host names, and domain names that should not go through the proxy server.
+        """
+        return pulumi.get(self, "no_proxy")
 
 
 @pulumi.output_type

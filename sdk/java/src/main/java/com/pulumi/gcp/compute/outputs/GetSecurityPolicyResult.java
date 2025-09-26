@@ -11,6 +11,7 @@ import com.pulumi.gcp.compute.outputs.GetSecurityPolicyRecaptchaOptionsConfig;
 import com.pulumi.gcp.compute.outputs.GetSecurityPolicyRule;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -20,14 +21,18 @@ public final class GetSecurityPolicyResult {
     private List<GetSecurityPolicyAdaptiveProtectionConfig> adaptiveProtectionConfigs;
     private List<GetSecurityPolicyAdvancedOptionsConfig> advancedOptionsConfigs;
     private String description;
+    private Map<String,String> effectiveLabels;
     private String fingerprint;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    private String labelFingerprint;
+    private Map<String,String> labels;
     private @Nullable String name;
     private @Nullable String project;
+    private Map<String,String> pulumiLabels;
     private List<GetSecurityPolicyRecaptchaOptionsConfig> recaptchaOptionsConfigs;
     private List<GetSecurityPolicyRule> rules;
     private @Nullable String selfLink;
@@ -43,6 +48,9 @@ public final class GetSecurityPolicyResult {
     public String description() {
         return this.description;
     }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
+    }
     public String fingerprint() {
         return this.fingerprint;
     }
@@ -53,11 +61,20 @@ public final class GetSecurityPolicyResult {
     public String id() {
         return this.id;
     }
+    public String labelFingerprint() {
+        return this.labelFingerprint;
+    }
+    public Map<String,String> labels() {
+        return this.labels;
+    }
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
+    }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
     }
     public List<GetSecurityPolicyRecaptchaOptionsConfig> recaptchaOptionsConfigs() {
         return this.recaptchaOptionsConfigs;
@@ -84,10 +101,14 @@ public final class GetSecurityPolicyResult {
         private List<GetSecurityPolicyAdaptiveProtectionConfig> adaptiveProtectionConfigs;
         private List<GetSecurityPolicyAdvancedOptionsConfig> advancedOptionsConfigs;
         private String description;
+        private Map<String,String> effectiveLabels;
         private String fingerprint;
         private String id;
+        private String labelFingerprint;
+        private Map<String,String> labels;
         private @Nullable String name;
         private @Nullable String project;
+        private Map<String,String> pulumiLabels;
         private List<GetSecurityPolicyRecaptchaOptionsConfig> recaptchaOptionsConfigs;
         private List<GetSecurityPolicyRule> rules;
         private @Nullable String selfLink;
@@ -98,10 +119,14 @@ public final class GetSecurityPolicyResult {
     	      this.adaptiveProtectionConfigs = defaults.adaptiveProtectionConfigs;
     	      this.advancedOptionsConfigs = defaults.advancedOptionsConfigs;
     	      this.description = defaults.description;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.fingerprint = defaults.fingerprint;
     	      this.id = defaults.id;
+    	      this.labelFingerprint = defaults.labelFingerprint;
+    	      this.labels = defaults.labels;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.recaptchaOptionsConfigs = defaults.recaptchaOptionsConfigs;
     	      this.rules = defaults.rules;
     	      this.selfLink = defaults.selfLink;
@@ -139,6 +164,14 @@ public final class GetSecurityPolicyResult {
             return this;
         }
         @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            if (effectiveLabels == null) {
+              throw new MissingRequiredPropertyException("GetSecurityPolicyResult", "effectiveLabels");
+            }
+            this.effectiveLabels = effectiveLabels;
+            return this;
+        }
+        @CustomType.Setter
         public Builder fingerprint(String fingerprint) {
             if (fingerprint == null) {
               throw new MissingRequiredPropertyException("GetSecurityPolicyResult", "fingerprint");
@@ -155,6 +188,22 @@ public final class GetSecurityPolicyResult {
             return this;
         }
         @CustomType.Setter
+        public Builder labelFingerprint(String labelFingerprint) {
+            if (labelFingerprint == null) {
+              throw new MissingRequiredPropertyException("GetSecurityPolicyResult", "labelFingerprint");
+            }
+            this.labelFingerprint = labelFingerprint;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder labels(Map<String,String> labels) {
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetSecurityPolicyResult", "labels");
+            }
+            this.labels = labels;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
 
             this.name = name;
@@ -164,6 +213,14 @@ public final class GetSecurityPolicyResult {
         public Builder project(@Nullable String project) {
 
             this.project = project;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            if (pulumiLabels == null) {
+              throw new MissingRequiredPropertyException("GetSecurityPolicyResult", "pulumiLabels");
+            }
+            this.pulumiLabels = pulumiLabels;
             return this;
         }
         @CustomType.Setter
@@ -207,10 +264,14 @@ public final class GetSecurityPolicyResult {
             _resultValue.adaptiveProtectionConfigs = adaptiveProtectionConfigs;
             _resultValue.advancedOptionsConfigs = advancedOptionsConfigs;
             _resultValue.description = description;
+            _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.fingerprint = fingerprint;
             _resultValue.id = id;
+            _resultValue.labelFingerprint = labelFingerprint;
+            _resultValue.labels = labels;
             _resultValue.name = name;
             _resultValue.project = project;
+            _resultValue.pulumiLabels = pulumiLabels;
             _resultValue.recaptchaOptionsConfigs = recaptchaOptionsConfigs;
             _resultValue.rules = rules;
             _resultValue.selfLink = selfLink;

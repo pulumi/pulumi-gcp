@@ -178,7 +178,9 @@ class RegionBackendServiceArgs:
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] network: The URL of the network to which this backend service belongs.
-               This field can only be specified when the load balancing scheme is set to INTERNAL.
+               This field must be set for Internal Passthrough Network Load Balancers when the haPolicy is enabled, and for External Passthrough Network Load Balancers when the haPolicy fastIpMove is enabled.
+               This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
+               Changes to this field force recreation of the resource.
         :param pulumi.Input['RegionBackendServiceOutlierDetectionArgs'] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
                This field is applicable only when the `load_balancing_scheme` is set
                to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
@@ -626,7 +628,9 @@ class RegionBackendServiceArgs:
     def network(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The URL of the network to which this backend service belongs.
-        This field can only be specified when the load balancing scheme is set to INTERNAL.
+        This field must be set for Internal Passthrough Network Load Balancers when the haPolicy is enabled, and for External Passthrough Network Load Balancers when the haPolicy fastIpMove is enabled.
+        This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
+        Changes to this field force recreation of the resource.
         """
         return pulumi.get(self, "network")
 
@@ -958,7 +962,9 @@ class _RegionBackendServiceState:
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] network: The URL of the network to which this backend service belongs.
-               This field can only be specified when the load balancing scheme is set to INTERNAL.
+               This field must be set for Internal Passthrough Network Load Balancers when the haPolicy is enabled, and for External Passthrough Network Load Balancers when the haPolicy fastIpMove is enabled.
+               This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
+               Changes to this field force recreation of the resource.
         :param pulumi.Input['RegionBackendServiceOutlierDetectionArgs'] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
                This field is applicable only when the `load_balancing_scheme` is set
                to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
@@ -1452,7 +1458,9 @@ class _RegionBackendServiceState:
     def network(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The URL of the network to which this backend service belongs.
-        This field can only be specified when the load balancing scheme is set to INTERNAL.
+        This field must be set for Internal Passthrough Network Load Balancers when the haPolicy is enabled, and for External Passthrough Network Load Balancers when the haPolicy fastIpMove is enabled.
+        This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
+        Changes to this field force recreation of the resource.
         """
         return pulumi.get(self, "network")
 
@@ -2269,7 +2277,9 @@ class RegionBackendService(pulumi.CustomResource):
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] network: The URL of the network to which this backend service belongs.
-               This field can only be specified when the load balancing scheme is set to INTERNAL.
+               This field must be set for Internal Passthrough Network Load Balancers when the haPolicy is enabled, and for External Passthrough Network Load Balancers when the haPolicy fastIpMove is enabled.
+               This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
+               Changes to this field force recreation of the resource.
         :param pulumi.Input[Union['RegionBackendServiceOutlierDetectionArgs', 'RegionBackendServiceOutlierDetectionArgsDict']] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
                This field is applicable only when the `load_balancing_scheme` is set
                to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
@@ -3060,7 +3070,9 @@ class RegionBackendService(pulumi.CustomResource):
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] network: The URL of the network to which this backend service belongs.
-               This field can only be specified when the load balancing scheme is set to INTERNAL.
+               This field must be set for Internal Passthrough Network Load Balancers when the haPolicy is enabled, and for External Passthrough Network Load Balancers when the haPolicy fastIpMove is enabled.
+               This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
+               Changes to this field force recreation of the resource.
         :param pulumi.Input[Union['RegionBackendServiceOutlierDetectionArgs', 'RegionBackendServiceOutlierDetectionArgsDict']] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
                This field is applicable only when the `load_balancing_scheme` is set
                to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
@@ -3431,7 +3443,9 @@ class RegionBackendService(pulumi.CustomResource):
     def network(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The URL of the network to which this backend service belongs.
-        This field can only be specified when the load balancing scheme is set to INTERNAL.
+        This field must be set for Internal Passthrough Network Load Balancers when the haPolicy is enabled, and for External Passthrough Network Load Balancers when the haPolicy fastIpMove is enabled.
+        This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
+        Changes to this field force recreation of the resource.
         """
         return pulumi.get(self, "network")
 

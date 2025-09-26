@@ -19,6 +19,12 @@ public final class EntitlementPrivilegedAccessGcpIamAccessRoleBinding {
      */
     private @Nullable String conditionExpression;
     /**
+     * @return (Output, Beta)
+     * Output Only. The ID corresponding to this role binding in the policy binding. This will be unique within an entitlement across time. Gets re-generated each time the entitlement is updated.
+     * 
+     */
+    private @Nullable String id;
+    /**
      * @return IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
      * 
      */
@@ -32,6 +38,14 @@ public final class EntitlementPrivilegedAccessGcpIamAccessRoleBinding {
      */
     public Optional<String> conditionExpression() {
         return Optional.ofNullable(this.conditionExpression);
+    }
+    /**
+     * @return (Output, Beta)
+     * Output Only. The ID corresponding to this role binding in the policy binding. This will be unique within an entitlement across time. Gets re-generated each time the entitlement is updated.
+     * 
+     */
+    public Optional<String> id() {
+        return Optional.ofNullable(this.id);
     }
     /**
      * @return IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
@@ -51,11 +65,13 @@ public final class EntitlementPrivilegedAccessGcpIamAccessRoleBinding {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String conditionExpression;
+        private @Nullable String id;
         private String role;
         public Builder() {}
         public Builder(EntitlementPrivilegedAccessGcpIamAccessRoleBinding defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.conditionExpression = defaults.conditionExpression;
+    	      this.id = defaults.id;
     	      this.role = defaults.role;
         }
 
@@ -63,6 +79,12 @@ public final class EntitlementPrivilegedAccessGcpIamAccessRoleBinding {
         public Builder conditionExpression(@Nullable String conditionExpression) {
 
             this.conditionExpression = conditionExpression;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder id(@Nullable String id) {
+
+            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -76,6 +98,7 @@ public final class EntitlementPrivilegedAccessGcpIamAccessRoleBinding {
         public EntitlementPrivilegedAccessGcpIamAccessRoleBinding build() {
             final var _resultValue = new EntitlementPrivilegedAccessGcpIamAccessRoleBinding();
             _resultValue.conditionExpression = conditionExpression;
+            _resultValue.id = id;
             _resultValue.role = role;
             return _resultValue;
         }

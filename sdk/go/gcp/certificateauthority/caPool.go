@@ -66,15 +66,31 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := certificateauthority.NewCaPool(ctx, "default", &certificateauthority.CaPoolArgs{
+//			privatecaSa, err := projects.NewServiceIdentity(ctx, "privateca_sa", &projects.ServiceIdentityArgs{
+//				Service: pulumi.String("privateca.googleapis.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			privatecaSaKeyuserEncrypterdecrypter, err := kms.NewCryptoKeyIAMMember(ctx, "privateca_sa_keyuser_encrypterdecrypter", &kms.CryptoKeyIAMMemberArgs{
+//				CryptoKeyId: pulumi.String("projects/keys-project/locations/asia-east1/keyRings/key-ring/cryptoKeys/crypto-key"),
+//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+//				Member:      privatecaSa.Member,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = certificateauthority.NewCaPool(ctx, "default", &certificateauthority.CaPoolArgs{
 //				Name:     pulumi.String("my-pool"),
-//				Location: pulumi.String("us-central1"),
+//				Location: pulumi.String("asia-east1"),
 //				Tier:     pulumi.String("ENTERPRISE"),
 //				PublishingOptions: &certificateauthority.CaPoolPublishingOptionsArgs{
 //					PublishCaCert:  pulumi.Bool(false),
@@ -83,6 +99,9 @@ import (
 //				},
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
+//				},
+//				EncryptionSpec: &certificateauthority.CaPoolEncryptionSpecArgs{
+//					CloudKmsKey: pulumi.String("projects/keys-project/locations/asia-east1/keyRings/key-ring/cryptoKeys/crypto-key"),
 //				},
 //				IssuancePolicy: &certificateauthority.CaPoolIssuancePolicyArgs{
 //					AllowedKeyTypes: certificateauthority.CaPoolIssuancePolicyAllowedKeyTypeArray{
@@ -203,7 +222,9 @@ import (
 //						},
 //					},
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				privatecaSaKeyuserEncrypterdecrypter,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -241,6 +262,11 @@ type CaPool struct {
 
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// Used when customer would like to encrypt data at rest. The customer-provided key will be used
+	// to encrypt the Subject, SubjectAltNames and PEM-encoded certificate fields. When unspecified,
+	// customer data will remain unencrypted.
+	// Structure is documented below.
+	EncryptionSpec CaPoolEncryptionSpecPtrOutput `pulumi:"encryptionSpec"`
 	// The IssuancePolicy to control how Certificates will be issued from this CaPool.
 	// Structure is documented below.
 	IssuancePolicy CaPoolIssuancePolicyPtrOutput `pulumi:"issuancePolicy"`
@@ -313,6 +339,11 @@ func GetCaPool(ctx *pulumi.Context,
 type caPoolState struct {
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// Used when customer would like to encrypt data at rest. The customer-provided key will be used
+	// to encrypt the Subject, SubjectAltNames and PEM-encoded certificate fields. When unspecified,
+	// customer data will remain unencrypted.
+	// Structure is documented below.
+	EncryptionSpec *CaPoolEncryptionSpec `pulumi:"encryptionSpec"`
 	// The IssuancePolicy to control how Certificates will be issued from this CaPool.
 	// Structure is documented below.
 	IssuancePolicy *CaPoolIssuancePolicy `pulumi:"issuancePolicy"`
@@ -345,6 +376,11 @@ type caPoolState struct {
 type CaPoolState struct {
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
+	// Used when customer would like to encrypt data at rest. The customer-provided key will be used
+	// to encrypt the Subject, SubjectAltNames and PEM-encoded certificate fields. When unspecified,
+	// customer data will remain unencrypted.
+	// Structure is documented below.
+	EncryptionSpec CaPoolEncryptionSpecPtrInput
 	// The IssuancePolicy to control how Certificates will be issued from this CaPool.
 	// Structure is documented below.
 	IssuancePolicy CaPoolIssuancePolicyPtrInput
@@ -379,6 +415,11 @@ func (CaPoolState) ElementType() reflect.Type {
 }
 
 type caPoolArgs struct {
+	// Used when customer would like to encrypt data at rest. The customer-provided key will be used
+	// to encrypt the Subject, SubjectAltNames and PEM-encoded certificate fields. When unspecified,
+	// customer data will remain unencrypted.
+	// Structure is documented below.
+	EncryptionSpec *CaPoolEncryptionSpec `pulumi:"encryptionSpec"`
 	// The IssuancePolicy to control how Certificates will be issued from this CaPool.
 	// Structure is documented below.
 	IssuancePolicy *CaPoolIssuancePolicy `pulumi:"issuancePolicy"`
@@ -407,6 +448,11 @@ type caPoolArgs struct {
 
 // The set of arguments for constructing a CaPool resource.
 type CaPoolArgs struct {
+	// Used when customer would like to encrypt data at rest. The customer-provided key will be used
+	// to encrypt the Subject, SubjectAltNames and PEM-encoded certificate fields. When unspecified,
+	// customer data will remain unencrypted.
+	// Structure is documented below.
+	EncryptionSpec CaPoolEncryptionSpecPtrInput
 	// The IssuancePolicy to control how Certificates will be issued from this CaPool.
 	// Structure is documented below.
 	IssuancePolicy CaPoolIssuancePolicyPtrInput
@@ -523,6 +569,14 @@ func (o CaPoolOutput) ToCaPoolOutputWithContext(ctx context.Context) CaPoolOutpu
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o CaPoolOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CaPool) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+// Used when customer would like to encrypt data at rest. The customer-provided key will be used
+// to encrypt the Subject, SubjectAltNames and PEM-encoded certificate fields. When unspecified,
+// customer data will remain unencrypted.
+// Structure is documented below.
+func (o CaPoolOutput) EncryptionSpec() CaPoolEncryptionSpecPtrOutput {
+	return o.ApplyT(func(v *CaPool) CaPoolEncryptionSpecPtrOutput { return v.EncryptionSpec }).(CaPoolEncryptionSpecPtrOutput)
 }
 
 // The IssuancePolicy to control how Certificates will be issued from this CaPool.

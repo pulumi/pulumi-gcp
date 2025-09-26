@@ -25,6 +25,12 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterIpAllocationPolicyAdditionalPodRangesConfig? AdditionalPodRangesConfig;
         /// <summary>
+        /// All the information related to Auto IPAM. Structure is documented below
+        /// 
+        /// &lt;a name="nested_auto_ipam_config"&gt;&lt;/a&gt;The auto ipam config supports:
+        /// </summary>
+        public readonly Outputs.ClusterIpAllocationPolicyAutoIpamConfig? AutoIpamConfig;
+        /// <summary>
         /// The IP address range for the cluster pod IPs.
         /// Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
         /// to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14)
@@ -70,6 +76,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             Outputs.ClusterIpAllocationPolicyAdditionalPodRangesConfig? additionalPodRangesConfig,
 
+            Outputs.ClusterIpAllocationPolicyAutoIpamConfig? autoIpamConfig,
+
             string? clusterIpv4CidrBlock,
 
             string? clusterSecondaryRangeName,
@@ -84,6 +92,7 @@ namespace Pulumi.Gcp.Container.Outputs
         {
             AdditionalIpRangesConfigs = additionalIpRangesConfigs;
             AdditionalPodRangesConfig = additionalPodRangesConfig;
+            AutoIpamConfig = autoIpamConfig;
             ClusterIpv4CidrBlock = clusterIpv4CidrBlock;
             ClusterSecondaryRangeName = clusterSecondaryRangeName;
             PodCidrOverprovisionConfig = podCidrOverprovisionConfig;

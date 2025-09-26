@@ -999,7 +999,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The URL of the network to which this backend service belongs.
-        /// This field can only be specified when the load balancing scheme is set to INTERNAL.
+        /// This field must be set for Internal Passthrough Network Load Balancers when the haPolicy is enabled, and for External Passthrough Network Load Balancers when the haPolicy fastIpMove is enabled.
+        /// This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
+        /// Changes to this field force recreation of the resource.
         /// </summary>
         [Output("network")]
         public Output<string?> Network { get; private set; } = null!;
@@ -1381,7 +1383,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The URL of the network to which this backend service belongs.
-        /// This field can only be specified when the load balancing scheme is set to INTERNAL.
+        /// This field must be set for Internal Passthrough Network Load Balancers when the haPolicy is enabled, and for External Passthrough Network Load Balancers when the haPolicy fastIpMove is enabled.
+        /// This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
+        /// Changes to this field force recreation of the resource.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
@@ -1738,7 +1742,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The URL of the network to which this backend service belongs.
-        /// This field can only be specified when the load balancing scheme is set to INTERNAL.
+        /// This field must be set for Internal Passthrough Network Load Balancers when the haPolicy is enabled, and for External Passthrough Network Load Balancers when the haPolicy fastIpMove is enabled.
+        /// This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
+        /// Changes to this field force recreation of the resource.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }

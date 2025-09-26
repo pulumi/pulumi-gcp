@@ -55,6 +55,12 @@ __all__ = [
     'DataTransferConfigScheduleOptionsArgsDict',
     'DataTransferConfigSensitiveParamsArgs',
     'DataTransferConfigSensitiveParamsArgsDict',
+    'Datapolicyv2DataPolicyDataMaskingPolicyArgs',
+    'Datapolicyv2DataPolicyDataMaskingPolicyArgsDict',
+    'Datapolicyv2DataPolicyIamBindingConditionArgs',
+    'Datapolicyv2DataPolicyIamBindingConditionArgsDict',
+    'Datapolicyv2DataPolicyIamMemberConditionArgs',
+    'Datapolicyv2DataPolicyIamMemberConditionArgsDict',
     'DatasetAccessArgs',
     'DatasetAccessArgsDict',
     'DatasetAccessAuthorizedDatasetArgs',
@@ -1452,6 +1458,185 @@ class DataTransferConfigSensitiveParamsArgs:
     @secret_access_key_wo_version.setter
     def secret_access_key_wo_version(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "secret_access_key_wo_version", value)
+
+
+if not MYPY:
+    class Datapolicyv2DataPolicyDataMaskingPolicyArgsDict(TypedDict):
+        predefined_expression: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A predefined masking expression.
+        Possible values:
+        SHA256
+        ALWAYS_NULL
+        DEFAULT_MASKING_VALUE
+        LAST_FOUR_CHARACTERS
+        FIRST_FOUR_CHARACTERS
+        EMAIL_MASK
+        DATE_YEAR_MASK
+        RANDOM_HASH
+        """
+        routine: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The name of the BigQuery routine that contains the custom masking
+        routine, in the format of
+        `projects/{project_number}/datasets/{dataset_id}/routines/{routine_id}`.
+        """
+elif False:
+    Datapolicyv2DataPolicyDataMaskingPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class Datapolicyv2DataPolicyDataMaskingPolicyArgs:
+    def __init__(__self__, *,
+                 predefined_expression: Optional[pulumi.Input[_builtins.str]] = None,
+                 routine: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] predefined_expression: A predefined masking expression.
+               Possible values:
+               SHA256
+               ALWAYS_NULL
+               DEFAULT_MASKING_VALUE
+               LAST_FOUR_CHARACTERS
+               FIRST_FOUR_CHARACTERS
+               EMAIL_MASK
+               DATE_YEAR_MASK
+               RANDOM_HASH
+        :param pulumi.Input[_builtins.str] routine: The name of the BigQuery routine that contains the custom masking
+               routine, in the format of
+               `projects/{project_number}/datasets/{dataset_id}/routines/{routine_id}`.
+        """
+        if predefined_expression is not None:
+            pulumi.set(__self__, "predefined_expression", predefined_expression)
+        if routine is not None:
+            pulumi.set(__self__, "routine", routine)
+
+    @_builtins.property
+    @pulumi.getter(name="predefinedExpression")
+    def predefined_expression(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A predefined masking expression.
+        Possible values:
+        SHA256
+        ALWAYS_NULL
+        DEFAULT_MASKING_VALUE
+        LAST_FOUR_CHARACTERS
+        FIRST_FOUR_CHARACTERS
+        EMAIL_MASK
+        DATE_YEAR_MASK
+        RANDOM_HASH
+        """
+        return pulumi.get(self, "predefined_expression")
+
+    @predefined_expression.setter
+    def predefined_expression(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "predefined_expression", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def routine(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the BigQuery routine that contains the custom masking
+        routine, in the format of
+        `projects/{project_number}/datasets/{dataset_id}/routines/{routine_id}`.
+        """
+        return pulumi.get(self, "routine")
+
+    @routine.setter
+    def routine(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "routine", value)
+
+
+if not MYPY:
+    class Datapolicyv2DataPolicyIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[_builtins.str]
+        title: pulumi.Input[_builtins.str]
+        description: NotRequired[pulumi.Input[_builtins.str]]
+elif False:
+    Datapolicyv2DataPolicyIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class Datapolicyv2DataPolicyIamBindingConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[_builtins.str],
+                 title: pulumi.Input[_builtins.str],
+                 description: Optional[pulumi.Input[_builtins.str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "expression", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "title", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class Datapolicyv2DataPolicyIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[_builtins.str]
+        title: pulumi.Input[_builtins.str]
+        description: NotRequired[pulumi.Input[_builtins.str]]
+elif False:
+    Datapolicyv2DataPolicyIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class Datapolicyv2DataPolicyIamMemberConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[_builtins.str],
+                 title: pulumi.Input[_builtins.str],
+                 description: Optional[pulumi.Input[_builtins.str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "expression", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "title", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
 
 
 if not MYPY:

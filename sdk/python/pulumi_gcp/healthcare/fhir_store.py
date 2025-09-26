@@ -35,6 +35,7 @@ class FhirStoreArgs:
                  notification_config: Optional[pulumi.Input['FhirStoreNotificationConfigArgs']] = None,
                  notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input['FhirStoreNotificationConfigArgs']]]] = None,
                  stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input['FhirStoreStreamConfigArgs']]]] = None,
+                 validation_config: Optional[pulumi.Input['FhirStoreValidationConfigArgs']] = None,
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a FhirStore resource.
@@ -100,6 +101,8 @@ class FhirStoreArgs:
                bigquery.dataEditor role to your project's Cloud Healthcare Service Agent service account. Some lag (typically on
                the order of dozens of seconds) is expected before the results show up in the streaming destination.
                Structure is documented below.
+        :param pulumi.Input['FhirStoreValidationConfigArgs'] validation_config: Configuration for how to validate incoming FHIR resources against configured profiles.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] version: The FHIR specification version.
                Default value is `STU3`.
                Possible values are: `DSTU2`, `STU3`, `R4`.
@@ -134,6 +137,8 @@ class FhirStoreArgs:
             pulumi.set(__self__, "notification_configs", notification_configs)
         if stream_configs is not None:
             pulumi.set(__self__, "stream_configs", stream_configs)
+        if validation_config is not None:
+            pulumi.set(__self__, "validation_config", validation_config)
         if version is not None:
             pulumi.set(__self__, "version", version)
 
@@ -355,6 +360,19 @@ class FhirStoreArgs:
         pulumi.set(self, "stream_configs", value)
 
     @_builtins.property
+    @pulumi.getter(name="validationConfig")
+    def validation_config(self) -> Optional[pulumi.Input['FhirStoreValidationConfigArgs']]:
+        """
+        Configuration for how to validate incoming FHIR resources against configured profiles.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "validation_config")
+
+    @validation_config.setter
+    def validation_config(self, value: Optional[pulumi.Input['FhirStoreValidationConfigArgs']]):
+        pulumi.set(self, "validation_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -389,6 +407,7 @@ class _FhirStoreState:
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  self_link: Optional[pulumi.Input[_builtins.str]] = None,
                  stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input['FhirStoreStreamConfigArgs']]]] = None,
+                 validation_config: Optional[pulumi.Input['FhirStoreValidationConfigArgs']] = None,
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FhirStore resources.
@@ -458,6 +477,8 @@ class _FhirStoreState:
                bigquery.dataEditor role to your project's Cloud Healthcare Service Agent service account. Some lag (typically on
                the order of dozens of seconds) is expected before the results show up in the streaming destination.
                Structure is documented below.
+        :param pulumi.Input['FhirStoreValidationConfigArgs'] validation_config: Configuration for how to validate incoming FHIR resources against configured profiles.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] version: The FHIR specification version.
                Default value is `STU3`.
                Possible values are: `DSTU2`, `STU3`, `R4`.
@@ -499,6 +520,8 @@ class _FhirStoreState:
             pulumi.set(__self__, "self_link", self_link)
         if stream_configs is not None:
             pulumi.set(__self__, "stream_configs", stream_configs)
+        if validation_config is not None:
+            pulumi.set(__self__, "validation_config", validation_config)
         if version is not None:
             pulumi.set(__self__, "version", version)
 
@@ -757,6 +780,19 @@ class _FhirStoreState:
         pulumi.set(self, "stream_configs", value)
 
     @_builtins.property
+    @pulumi.getter(name="validationConfig")
+    def validation_config(self) -> Optional[pulumi.Input['FhirStoreValidationConfigArgs']]:
+        """
+        Configuration for how to validate incoming FHIR resources against configured profiles.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "validation_config")
+
+    @validation_config.setter
+    def validation_config(self, value: Optional[pulumi.Input['FhirStoreValidationConfigArgs']]):
+        pulumi.set(self, "validation_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -791,6 +827,7 @@ class FhirStore(pulumi.CustomResource):
                  notification_config: Optional[pulumi.Input[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict']]] = None,
                  notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict']]]]] = None,
                  stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FhirStoreStreamConfigArgs', 'FhirStoreStreamConfigArgsDict']]]]] = None,
+                 validation_config: Optional[pulumi.Input[Union['FhirStoreValidationConfigArgs', 'FhirStoreValidationConfigArgsDict']]] = None,
                  version: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -941,6 +978,40 @@ class FhirStore(pulumi.CustomResource):
                 },
             })
         ```
+        ### Healthcare Fhir Store Validation Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        topic = gcp.pubsub.Topic("topic", name="fhir-notifications")
+        dataset = gcp.healthcare.Dataset("dataset",
+            name="example-dataset",
+            location="us-central1")
+        default = gcp.healthcare.FhirStore("default",
+            name="example-fhir-store",
+            dataset=dataset.id,
+            version="R4",
+            complex_data_type_reference_parsing="DISABLED",
+            enable_update_create=False,
+            disable_referential_integrity=False,
+            disable_resource_versioning=False,
+            enable_history_import=False,
+            default_search_handling_strict=False,
+            notification_configs=[{
+                "pubsub_topic": topic.id,
+            }],
+            labels={
+                "label1": "labelvalue1",
+            },
+            validation_config={
+                "disable_profile_validation": True,
+                "enabled_implementation_guides": [],
+                "disable_required_field_validation": True,
+                "disable_reference_type_validation": True,
+                "disable_fhirpath_validation": True,
+            })
+        ```
 
         ## Import
 
@@ -1023,6 +1094,8 @@ class FhirStore(pulumi.CustomResource):
                from the list, the server stops streaming to that location. Before adding a new config, you must add the required
                bigquery.dataEditor role to your project's Cloud Healthcare Service Agent service account. Some lag (typically on
                the order of dozens of seconds) is expected before the results show up in the streaming destination.
+               Structure is documented below.
+        :param pulumi.Input[Union['FhirStoreValidationConfigArgs', 'FhirStoreValidationConfigArgsDict']] validation_config: Configuration for how to validate incoming FHIR resources against configured profiles.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] version: The FHIR specification version.
                Default value is `STU3`.
@@ -1182,6 +1255,40 @@ class FhirStore(pulumi.CustomResource):
                 },
             })
         ```
+        ### Healthcare Fhir Store Validation Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        topic = gcp.pubsub.Topic("topic", name="fhir-notifications")
+        dataset = gcp.healthcare.Dataset("dataset",
+            name="example-dataset",
+            location="us-central1")
+        default = gcp.healthcare.FhirStore("default",
+            name="example-fhir-store",
+            dataset=dataset.id,
+            version="R4",
+            complex_data_type_reference_parsing="DISABLED",
+            enable_update_create=False,
+            disable_referential_integrity=False,
+            disable_resource_versioning=False,
+            enable_history_import=False,
+            default_search_handling_strict=False,
+            notification_configs=[{
+                "pubsub_topic": topic.id,
+            }],
+            labels={
+                "label1": "labelvalue1",
+            },
+            validation_config={
+                "disable_profile_validation": True,
+                "enabled_implementation_guides": [],
+                "disable_required_field_validation": True,
+                "disable_reference_type_validation": True,
+                "disable_fhirpath_validation": True,
+            })
+        ```
 
         ## Import
 
@@ -1230,6 +1337,7 @@ class FhirStore(pulumi.CustomResource):
                  notification_config: Optional[pulumi.Input[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict']]] = None,
                  notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict']]]]] = None,
                  stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FhirStoreStreamConfigArgs', 'FhirStoreStreamConfigArgsDict']]]]] = None,
+                 validation_config: Optional[pulumi.Input[Union['FhirStoreValidationConfigArgs', 'FhirStoreValidationConfigArgsDict']]] = None,
                  version: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1256,6 +1364,7 @@ class FhirStore(pulumi.CustomResource):
             __props__.__dict__["notification_config"] = notification_config
             __props__.__dict__["notification_configs"] = notification_configs
             __props__.__dict__["stream_configs"] = stream_configs
+            __props__.__dict__["validation_config"] = validation_config
             __props__.__dict__["version"] = version
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["pulumi_labels"] = None
@@ -1289,6 +1398,7 @@ class FhirStore(pulumi.CustomResource):
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             self_link: Optional[pulumi.Input[_builtins.str]] = None,
             stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FhirStoreStreamConfigArgs', 'FhirStoreStreamConfigArgsDict']]]]] = None,
+            validation_config: Optional[pulumi.Input[Union['FhirStoreValidationConfigArgs', 'FhirStoreValidationConfigArgsDict']]] = None,
             version: Optional[pulumi.Input[_builtins.str]] = None) -> 'FhirStore':
         """
         Get an existing FhirStore resource's state with the given name, id, and optional extra
@@ -1363,6 +1473,8 @@ class FhirStore(pulumi.CustomResource):
                bigquery.dataEditor role to your project's Cloud Healthcare Service Agent service account. Some lag (typically on
                the order of dozens of seconds) is expected before the results show up in the streaming destination.
                Structure is documented below.
+        :param pulumi.Input[Union['FhirStoreValidationConfigArgs', 'FhirStoreValidationConfigArgsDict']] validation_config: Configuration for how to validate incoming FHIR resources against configured profiles.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] version: The FHIR specification version.
                Default value is `STU3`.
                Possible values are: `DSTU2`, `STU3`, `R4`.
@@ -1388,6 +1500,7 @@ class FhirStore(pulumi.CustomResource):
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["stream_configs"] = stream_configs
+        __props__.__dict__["validation_config"] = validation_config
         __props__.__dict__["version"] = version
         return FhirStore(resource_name, opts=opts, __props__=__props__)
 
@@ -1576,6 +1689,15 @@ class FhirStore(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "stream_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="validationConfig")
+    def validation_config(self) -> pulumi.Output[Optional['outputs.FhirStoreValidationConfig']]:
+        """
+        Configuration for how to validate incoming FHIR resources against configured profiles.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "validation_config")
 
     @_builtins.property
     @pulumi.getter

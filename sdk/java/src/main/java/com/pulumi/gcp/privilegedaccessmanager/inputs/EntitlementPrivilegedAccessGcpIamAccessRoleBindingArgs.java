@@ -34,6 +34,23 @@ public final class EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs extend
     }
 
     /**
+     * (Output, Beta)
+     * Output Only. The ID corresponding to this role binding in the policy binding. This will be unique within an entitlement across time. Gets re-generated each time the entitlement is updated.
+     * 
+     */
+    @Import(name="id")
+    private @Nullable Output<String> id;
+
+    /**
+     * @return (Output, Beta)
+     * Output Only. The ID corresponding to this role binding in the policy binding. This will be unique within an entitlement across time. Gets re-generated each time the entitlement is updated.
+     * 
+     */
+    public Optional<Output<String>> id() {
+        return Optional.ofNullable(this.id);
+    }
+
+    /**
      * IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
      * 
      */
@@ -52,6 +69,7 @@ public final class EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs extend
 
     private EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs(EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs $) {
         this.conditionExpression = $.conditionExpression;
+        this.id = $.id;
         this.role = $.role;
     }
 
@@ -94,6 +112,29 @@ public final class EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs extend
          */
         public Builder conditionExpression(String conditionExpression) {
             return conditionExpression(Output.of(conditionExpression));
+        }
+
+        /**
+         * @param id (Output, Beta)
+         * Output Only. The ID corresponding to this role binding in the policy binding. This will be unique within an entitlement across time. Gets re-generated each time the entitlement is updated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(@Nullable Output<String> id) {
+            $.id = id;
+            return this;
+        }
+
+        /**
+         * @param id (Output, Beta)
+         * Output Only. The ID corresponding to this role binding in the policy binding. This will be unique within an entitlement across time. Gets re-generated each time the entitlement is updated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(String id) {
+            return id(Output.of(id));
         }
 
         /**

@@ -55,6 +55,8 @@ __all__ = [
     'AuthoritySubordinateConfigPemIssuerChainArgsDict',
     'AuthorityUserDefinedAccessUrlsArgs',
     'AuthorityUserDefinedAccessUrlsArgsDict',
+    'CaPoolEncryptionSpecArgs',
+    'CaPoolEncryptionSpecArgsDict',
     'CaPoolIamBindingConditionArgs',
     'CaPoolIamBindingConditionArgsDict',
     'CaPoolIamMemberConditionArgs',
@@ -1989,6 +1991,41 @@ class AuthorityUserDefinedAccessUrlsArgs:
     @crl_access_urls.setter
     def crl_access_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "crl_access_urls", value)
+
+
+if not MYPY:
+    class CaPoolEncryptionSpecArgsDict(TypedDict):
+        cloud_kms_key: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The resource name for an existing Cloud KMS key in the format
+        `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        """
+elif False:
+    CaPoolEncryptionSpecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CaPoolEncryptionSpecArgs:
+    def __init__(__self__, *,
+                 cloud_kms_key: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] cloud_kms_key: The resource name for an existing Cloud KMS key in the format
+               `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        """
+        if cloud_kms_key is not None:
+            pulumi.set(__self__, "cloud_kms_key", cloud_kms_key)
+
+    @_builtins.property
+    @pulumi.getter(name="cloudKmsKey")
+    def cloud_kms_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The resource name for an existing Cloud KMS key in the format
+        `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        """
+        return pulumi.get(self, "cloud_kms_key")
+
+    @cloud_kms_key.setter
+    def cloud_kms_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "cloud_kms_key", value)
 
 
 if not MYPY:

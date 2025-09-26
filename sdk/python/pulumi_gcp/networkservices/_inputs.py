@@ -175,6 +175,12 @@ __all__ = [
     'TlsRouteRuleActionDestinationArgsDict',
     'TlsRouteRuleMatchArgs',
     'TlsRouteRuleMatchArgsDict',
+    'WasmPluginLogConfigArgs',
+    'WasmPluginLogConfigArgsDict',
+    'WasmPluginUsedByArgs',
+    'WasmPluginUsedByArgsDict',
+    'WasmPluginVersionArgs',
+    'WasmPluginVersionArgsDict',
 ]
 
 MYPY = False
@@ -5952,7 +5958,9 @@ if not MYPY:
         """
         service: pulumi.Input[_builtins.str]
         """
-        The reference to the service that runs the extension. Must be a reference to a backend service
+        The reference to the service that runs the extension.
+        * To configure a callout extension, service must be a fully-qualified reference to a backend service.
+        * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
         """
         authority: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -5994,7 +6002,9 @@ class LbRouteExtensionExtensionChainExtensionArgs:
                The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
                and can have a maximum length of 63 characters. Additionally, the first character must be a letter
                and the last a letter or a number.
-        :param pulumi.Input[_builtins.str] service: The reference to the service that runs the extension. Must be a reference to a backend service
+        :param pulumi.Input[_builtins.str] service: The reference to the service that runs the extension.
+               * To configure a callout extension, service must be a fully-qualified reference to a backend service.
+               * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
         :param pulumi.Input[_builtins.str] authority: The :authority header in the gRPC request sent from Envoy to the extension service.
         :param pulumi.Input[_builtins.bool] fail_open: Determines how the proxy behaves if the call to the extension fails or times out.
                When set to TRUE, request or response processing continues without error.
@@ -6037,7 +6047,9 @@ class LbRouteExtensionExtensionChainExtensionArgs:
     @pulumi.getter
     def service(self) -> pulumi.Input[_builtins.str]:
         """
-        The reference to the service that runs the extension. Must be a reference to a backend service
+        The reference to the service that runs the extension.
+        * To configure a callout extension, service must be a fully-qualified reference to a backend service.
+        * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
         """
         return pulumi.get(self, "service")
 
@@ -6236,7 +6248,9 @@ if not MYPY:
         """
         service: pulumi.Input[_builtins.str]
         """
-        The reference to the service that runs the extension. Must be a reference to a backend service
+        The reference to the service that runs the extension.
+        * To configure a callout extension, service must be a fully-qualified reference to a backend service.
+        * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
         """
         authority: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -6293,7 +6307,9 @@ class LbTrafficExtensionExtensionChainExtensionArgs:
                The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
                and can have a maximum length of 63 characters. Additionally, the first character must be a letter
                and the last a letter or a number.
-        :param pulumi.Input[_builtins.str] service: The reference to the service that runs the extension. Must be a reference to a backend service
+        :param pulumi.Input[_builtins.str] service: The reference to the service that runs the extension.
+               * To configure a callout extension, service must be a fully-qualified reference to a backend service.
+               * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
         :param pulumi.Input[_builtins.str] authority: The :authority header in the gRPC request sent from Envoy to the extension service.
         :param pulumi.Input[_builtins.bool] fail_open: Determines how the proxy behaves if the call to the extension fails or times out.
                When set to TRUE, request or response processing continues without error.
@@ -6347,7 +6363,9 @@ class LbTrafficExtensionExtensionChainExtensionArgs:
     @pulumi.getter
     def service(self) -> pulumi.Input[_builtins.str]:
         """
-        The reference to the service that runs the extension. Must be a reference to a backend service
+        The reference to the service that runs the extension.
+        * To configure a callout extension, service must be a fully-qualified reference to a backend service.
+        * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
         """
         return pulumi.get(self, "service")
 
@@ -6982,5 +7000,374 @@ class TlsRouteRuleMatchArgs:
     @sni_hosts.setter
     def sni_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "sni_hosts", value)
+
+
+if not MYPY:
+    class WasmPluginLogConfigArgsDict(TypedDict):
+        enable: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Optional. Specifies whether to enable logging for activity by this plugin.
+        """
+        min_log_level: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Non-empty default. Specificies the lowest level of the plugin logs that are exported to Cloud Logging. This setting relates to the logs generated by using logging statements in your Wasm code.
+        This field is can be set only if logging is enabled for the plugin.
+        If the field is not provided when logging is enabled, it is set to INFO by default.
+        Possible values are: `LOG_LEVEL_UNSPECIFIED`, `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, `CRITICAL`.
+        """
+        sample_rate: NotRequired[pulumi.Input[_builtins.float]]
+        """
+        Non-empty default. Configures the sampling rate of activity logs, where 1.0 means all logged activity is reported and 0.0 means no activity is reported.
+        A floating point value between 0.0 and 1.0 indicates that a percentage of log messages is stored.
+        The default value when logging is enabled is 1.0. The value of the field must be between 0 and 1 (inclusive).
+        This field can be specified only if logging is enabled for this plugin.
+        """
+elif False:
+    WasmPluginLogConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WasmPluginLogConfigArgs:
+    def __init__(__self__, *,
+                 enable: Optional[pulumi.Input[_builtins.bool]] = None,
+                 min_log_level: Optional[pulumi.Input[_builtins.str]] = None,
+                 sample_rate: Optional[pulumi.Input[_builtins.float]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enable: Optional. Specifies whether to enable logging for activity by this plugin.
+        :param pulumi.Input[_builtins.str] min_log_level: Non-empty default. Specificies the lowest level of the plugin logs that are exported to Cloud Logging. This setting relates to the logs generated by using logging statements in your Wasm code.
+               This field is can be set only if logging is enabled for the plugin.
+               If the field is not provided when logging is enabled, it is set to INFO by default.
+               Possible values are: `LOG_LEVEL_UNSPECIFIED`, `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, `CRITICAL`.
+        :param pulumi.Input[_builtins.float] sample_rate: Non-empty default. Configures the sampling rate of activity logs, where 1.0 means all logged activity is reported and 0.0 means no activity is reported.
+               A floating point value between 0.0 and 1.0 indicates that a percentage of log messages is stored.
+               The default value when logging is enabled is 1.0. The value of the field must be between 0 and 1 (inclusive).
+               This field can be specified only if logging is enabled for this plugin.
+        """
+        if enable is not None:
+            pulumi.set(__self__, "enable", enable)
+        if min_log_level is not None:
+            pulumi.set(__self__, "min_log_level", min_log_level)
+        if sample_rate is not None:
+            pulumi.set(__self__, "sample_rate", sample_rate)
+
+    @_builtins.property
+    @pulumi.getter
+    def enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Optional. Specifies whether to enable logging for activity by this plugin.
+        """
+        return pulumi.get(self, "enable")
+
+    @enable.setter
+    def enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable", value)
+
+    @_builtins.property
+    @pulumi.getter(name="minLogLevel")
+    def min_log_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Non-empty default. Specificies the lowest level of the plugin logs that are exported to Cloud Logging. This setting relates to the logs generated by using logging statements in your Wasm code.
+        This field is can be set only if logging is enabled for the plugin.
+        If the field is not provided when logging is enabled, it is set to INFO by default.
+        Possible values are: `LOG_LEVEL_UNSPECIFIED`, `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, `CRITICAL`.
+        """
+        return pulumi.get(self, "min_log_level")
+
+    @min_log_level.setter
+    def min_log_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "min_log_level", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sampleRate")
+    def sample_rate(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        Non-empty default. Configures the sampling rate of activity logs, where 1.0 means all logged activity is reported and 0.0 means no activity is reported.
+        A floating point value between 0.0 and 1.0 indicates that a percentage of log messages is stored.
+        The default value when logging is enabled is 1.0. The value of the field must be between 0 and 1 (inclusive).
+        This field can be specified only if logging is enabled for this plugin.
+        """
+        return pulumi.get(self, "sample_rate")
+
+    @sample_rate.setter
+    def sample_rate(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "sample_rate", value)
+
+
+if not MYPY:
+    class WasmPluginUsedByArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Identifier. Name of the WasmPlugin resource.
+        """
+elif False:
+    WasmPluginUsedByArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WasmPluginUsedByArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Identifier. Name of the WasmPlugin resource.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Identifier. Name of the WasmPlugin resource.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class WasmPluginVersionArgsDict(TypedDict):
+        version_name: pulumi.Input[_builtins.str]
+        """
+        The identifier for this object. Format specified above.
+        """
+        create_time: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        Output only. The timestamp when the resource was created.
+        """
+        description: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Optional. A human-readable description of the resource.
+        """
+        image_digest: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        Output only. The resolved digest for the image specified in the image field. The digest is resolved during the creation of WasmPluginVersion resource.
+        This field holds the digest value, regardless of whether a tag or digest was originally specified in the image field.
+        """
+        image_uri: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Optional. URI of the container image containing the plugin, stored in the Artifact Registry. When a new WasmPluginVersion resource is created, the digest of the container image is saved in the imageDigest field.
+        When downloading an image, the digest value is used instead of an image tag.
+        """
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+        """
+        Optional. Set of labels associated with the WasmPlugin resource.
+        """
+        plugin_config_data: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A base64-encoded string containing the configuration for the plugin. The configuration is provided to the plugin at runtime through the ON_CONFIGURE callback.
+        When a new WasmPluginVersion resource is created, the digest of the contents is saved in the pluginConfigDigest field.
+        Conflics with pluginConfigUri.
+        """
+        plugin_config_digest: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        Output only. This field holds the digest (usually checksum) value for the plugin configuration.
+        The value is calculated based on the contents of pluginConfigData or the container image defined by the pluginConfigUri field.
+        """
+        plugin_config_uri: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        URI of the plugin configuration stored in the Artifact Registry. The configuration is provided to the plugin at runtime through the ON_CONFIGURE callback.
+        The container image must contain only a single file with the name plugin.config.
+        When a new WasmPluginVersion resource is created, the digest of the container image is saved in the pluginConfigDigest field.
+        Conflics with pluginConfigData.
+        """
+        update_time: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        Output only. The timestamp when the resource was updated.
+        """
+elif False:
+    WasmPluginVersionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WasmPluginVersionArgs:
+    def __init__(__self__, *,
+                 version_name: pulumi.Input[_builtins.str],
+                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 image_digest: Optional[pulumi.Input[_builtins.str]] = None,
+                 image_uri: Optional[pulumi.Input[_builtins.str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 plugin_config_data: Optional[pulumi.Input[_builtins.str]] = None,
+                 plugin_config_digest: Optional[pulumi.Input[_builtins.str]] = None,
+                 plugin_config_uri: Optional[pulumi.Input[_builtins.str]] = None,
+                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] version_name: The identifier for this object. Format specified above.
+        :param pulumi.Input[_builtins.str] create_time: (Output)
+               Output only. The timestamp when the resource was created.
+        :param pulumi.Input[_builtins.str] description: Optional. A human-readable description of the resource.
+        :param pulumi.Input[_builtins.str] image_digest: (Output)
+               Output only. The resolved digest for the image specified in the image field. The digest is resolved during the creation of WasmPluginVersion resource.
+               This field holds the digest value, regardless of whether a tag or digest was originally specified in the image field.
+        :param pulumi.Input[_builtins.str] image_uri: Optional. URI of the container image containing the plugin, stored in the Artifact Registry. When a new WasmPluginVersion resource is created, the digest of the container image is saved in the imageDigest field.
+               When downloading an image, the digest value is used instead of an image tag.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. Set of labels associated with the WasmPlugin resource.
+        :param pulumi.Input[_builtins.str] plugin_config_data: A base64-encoded string containing the configuration for the plugin. The configuration is provided to the plugin at runtime through the ON_CONFIGURE callback.
+               When a new WasmPluginVersion resource is created, the digest of the contents is saved in the pluginConfigDigest field.
+               Conflics with pluginConfigUri.
+        :param pulumi.Input[_builtins.str] plugin_config_digest: (Output)
+               Output only. This field holds the digest (usually checksum) value for the plugin configuration.
+               The value is calculated based on the contents of pluginConfigData or the container image defined by the pluginConfigUri field.
+        :param pulumi.Input[_builtins.str] plugin_config_uri: URI of the plugin configuration stored in the Artifact Registry. The configuration is provided to the plugin at runtime through the ON_CONFIGURE callback.
+               The container image must contain only a single file with the name plugin.config.
+               When a new WasmPluginVersion resource is created, the digest of the container image is saved in the pluginConfigDigest field.
+               Conflics with pluginConfigData.
+        :param pulumi.Input[_builtins.str] update_time: (Output)
+               Output only. The timestamp when the resource was updated.
+        """
+        pulumi.set(__self__, "version_name", version_name)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if image_digest is not None:
+            pulumi.set(__self__, "image_digest", image_digest)
+        if image_uri is not None:
+            pulumi.set(__self__, "image_uri", image_uri)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if plugin_config_data is not None:
+            pulumi.set(__self__, "plugin_config_data", plugin_config_data)
+        if plugin_config_digest is not None:
+            pulumi.set(__self__, "plugin_config_digest", plugin_config_digest)
+        if plugin_config_uri is not None:
+            pulumi.set(__self__, "plugin_config_uri", plugin_config_uri)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter(name="versionName")
+    def version_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "version_name")
+
+    @version_name.setter
+    def version_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "version_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        Output only. The timestamp when the resource was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional. A human-readable description of the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="imageDigest")
+    def image_digest(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        Output only. The resolved digest for the image specified in the image field. The digest is resolved during the creation of WasmPluginVersion resource.
+        This field holds the digest value, regardless of whether a tag or digest was originally specified in the image field.
+        """
+        return pulumi.get(self, "image_digest")
+
+    @image_digest.setter
+    def image_digest(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "image_digest", value)
+
+    @_builtins.property
+    @pulumi.getter(name="imageUri")
+    def image_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional. URI of the container image containing the plugin, stored in the Artifact Registry. When a new WasmPluginVersion resource is created, the digest of the container image is saved in the imageDigest field.
+        When downloading an image, the digest value is used instead of an image tag.
+        """
+        return pulumi.get(self, "image_uri")
+
+    @image_uri.setter
+    def image_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "image_uri", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. Set of labels associated with the WasmPlugin resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pluginConfigData")
+    def plugin_config_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A base64-encoded string containing the configuration for the plugin. The configuration is provided to the plugin at runtime through the ON_CONFIGURE callback.
+        When a new WasmPluginVersion resource is created, the digest of the contents is saved in the pluginConfigDigest field.
+        Conflics with pluginConfigUri.
+        """
+        return pulumi.get(self, "plugin_config_data")
+
+    @plugin_config_data.setter
+    def plugin_config_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "plugin_config_data", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pluginConfigDigest")
+    def plugin_config_digest(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        Output only. This field holds the digest (usually checksum) value for the plugin configuration.
+        The value is calculated based on the contents of pluginConfigData or the container image defined by the pluginConfigUri field.
+        """
+        return pulumi.get(self, "plugin_config_digest")
+
+    @plugin_config_digest.setter
+    def plugin_config_digest(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "plugin_config_digest", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pluginConfigUri")
+    def plugin_config_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        URI of the plugin configuration stored in the Artifact Registry. The configuration is provided to the plugin at runtime through the ON_CONFIGURE callback.
+        The container image must contain only a single file with the name plugin.config.
+        When a new WasmPluginVersion resource is created, the digest of the container image is saved in the pluginConfigDigest field.
+        Conflics with pluginConfigData.
+        """
+        return pulumi.get(self, "plugin_config_uri")
+
+    @plugin_config_uri.setter
+    def plugin_config_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "plugin_config_uri", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        Output only. The timestamp when the resource was updated.
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "update_time", value)
 
 

@@ -34,6 +34,14 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<Inputs.ClusterIpAllocationPolicyAdditionalPodRangesConfigGetArgs>? AdditionalPodRangesConfig { get; set; }
 
         /// <summary>
+        /// All the information related to Auto IPAM. Structure is documented below
+        /// 
+        /// &lt;a name="nested_auto_ipam_config"&gt;&lt;/a&gt;The auto ipam config supports:
+        /// </summary>
+        [Input("autoIpamConfig")]
+        public Input<Inputs.ClusterIpAllocationPolicyAutoIpamConfigGetArgs>? AutoIpamConfig { get; set; }
+
+        /// <summary>
         /// The IP address range for the cluster pod IPs.
         /// Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
         /// to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14)

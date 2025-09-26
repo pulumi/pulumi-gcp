@@ -124,6 +124,12 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? ProvisioningModel { get; set; }
 
         /// <summary>
+        /// Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+        /// </summary>
+        [Input("skipGuestOsShutdown")]
+        public Input<bool>? SkipGuestOsShutdown { get; set; }
+
+        /// <summary>
         /// Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
         /// </summary>
         [Input("terminationTime")]

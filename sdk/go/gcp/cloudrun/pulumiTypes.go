@@ -6607,6 +6607,8 @@ type ServiceTemplateSpecContainerVolumeMount struct {
 	MountPath string `pulumi:"mountPath"`
 	// This must match the Name of a Volume.
 	Name string `pulumi:"name"`
+	// Path within the volume from which the container's volume should be mounted.
+	SubPath *string `pulumi:"subPath"`
 }
 
 // ServiceTemplateSpecContainerVolumeMountInput is an input type that accepts ServiceTemplateSpecContainerVolumeMountArgs and ServiceTemplateSpecContainerVolumeMountOutput values.
@@ -6626,6 +6628,8 @@ type ServiceTemplateSpecContainerVolumeMountArgs struct {
 	MountPath pulumi.StringInput `pulumi:"mountPath"`
 	// This must match the Name of a Volume.
 	Name pulumi.StringInput `pulumi:"name"`
+	// Path within the volume from which the container's volume should be mounted.
+	SubPath pulumi.StringPtrInput `pulumi:"subPath"`
 }
 
 func (ServiceTemplateSpecContainerVolumeMountArgs) ElementType() reflect.Type {
@@ -6688,6 +6692,11 @@ func (o ServiceTemplateSpecContainerVolumeMountOutput) MountPath() pulumi.String
 // This must match the Name of a Volume.
 func (o ServiceTemplateSpecContainerVolumeMountOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecContainerVolumeMount) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Path within the volume from which the container's volume should be mounted.
+func (o ServiceTemplateSpecContainerVolumeMountOutput) SubPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecContainerVolumeMount) *string { return v.SubPath }).(pulumi.StringPtrOutput)
 }
 
 type ServiceTemplateSpecContainerVolumeMountArrayOutput struct{ *pulumi.OutputState }
@@ -11506,6 +11515,8 @@ type GetServiceTemplateSpecContainerVolumeMount struct {
 	MountPath string `pulumi:"mountPath"`
 	// The name of the Cloud Run Service.
 	Name string `pulumi:"name"`
+	// Path within the volume from which the container's volume should be mounted.
+	SubPath string `pulumi:"subPath"`
 }
 
 // GetServiceTemplateSpecContainerVolumeMountInput is an input type that accepts GetServiceTemplateSpecContainerVolumeMountArgs and GetServiceTemplateSpecContainerVolumeMountOutput values.
@@ -11525,6 +11536,8 @@ type GetServiceTemplateSpecContainerVolumeMountArgs struct {
 	MountPath pulumi.StringInput `pulumi:"mountPath"`
 	// The name of the Cloud Run Service.
 	Name pulumi.StringInput `pulumi:"name"`
+	// Path within the volume from which the container's volume should be mounted.
+	SubPath pulumi.StringInput `pulumi:"subPath"`
 }
 
 func (GetServiceTemplateSpecContainerVolumeMountArgs) ElementType() reflect.Type {
@@ -11587,6 +11600,11 @@ func (o GetServiceTemplateSpecContainerVolumeMountOutput) MountPath() pulumi.Str
 // The name of the Cloud Run Service.
 func (o GetServiceTemplateSpecContainerVolumeMountOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateSpecContainerVolumeMount) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Path within the volume from which the container's volume should be mounted.
+func (o GetServiceTemplateSpecContainerVolumeMountOutput) SubPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateSpecContainerVolumeMount) string { return v.SubPath }).(pulumi.StringOutput)
 }
 
 type GetServiceTemplateSpecContainerVolumeMountArrayOutput struct{ *pulumi.OutputState }

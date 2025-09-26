@@ -13,6 +13,317 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetRegionInstanceGroupManagerStatusAllInstancesConfig struct {
+	// Current all-instances configuration revision. This value is in RFC3339 text format.
+	CurrentRevision string `pulumi:"currentRevision"`
+	// A bit indicating whether this configuration has been applied to all managed instances in the group.
+	Effective bool `pulumi:"effective"`
+}
+
+// GetRegionInstanceGroupManagerStatusAllInstancesConfigInput is an input type that accepts GetRegionInstanceGroupManagerStatusAllInstancesConfigArgs and GetRegionInstanceGroupManagerStatusAllInstancesConfigOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerStatusAllInstancesConfigInput` via:
+//
+//	GetRegionInstanceGroupManagerStatusAllInstancesConfigArgs{...}
+type GetRegionInstanceGroupManagerStatusAllInstancesConfigInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerStatusAllInstancesConfigOutput() GetRegionInstanceGroupManagerStatusAllInstancesConfigOutput
+	ToGetRegionInstanceGroupManagerStatusAllInstancesConfigOutputWithContext(context.Context) GetRegionInstanceGroupManagerStatusAllInstancesConfigOutput
+}
+
+type GetRegionInstanceGroupManagerStatusAllInstancesConfigArgs struct {
+	// Current all-instances configuration revision. This value is in RFC3339 text format.
+	CurrentRevision pulumi.StringInput `pulumi:"currentRevision"`
+	// A bit indicating whether this configuration has been applied to all managed instances in the group.
+	Effective pulumi.BoolInput `pulumi:"effective"`
+}
+
+func (GetRegionInstanceGroupManagerStatusAllInstancesConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerStatusAllInstancesConfig)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerStatusAllInstancesConfigArgs) ToGetRegionInstanceGroupManagerStatusAllInstancesConfigOutput() GetRegionInstanceGroupManagerStatusAllInstancesConfigOutput {
+	return i.ToGetRegionInstanceGroupManagerStatusAllInstancesConfigOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerStatusAllInstancesConfigArgs) ToGetRegionInstanceGroupManagerStatusAllInstancesConfigOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatusAllInstancesConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerStatusAllInstancesConfigOutput)
+}
+
+// GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayInput is an input type that accepts GetRegionInstanceGroupManagerStatusAllInstancesConfigArray and GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayInput` via:
+//
+//	GetRegionInstanceGroupManagerStatusAllInstancesConfigArray{ GetRegionInstanceGroupManagerStatusAllInstancesConfigArgs{...} }
+type GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutput() GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutput
+	ToGetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutputWithContext(context.Context) GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutput
+}
+
+type GetRegionInstanceGroupManagerStatusAllInstancesConfigArray []GetRegionInstanceGroupManagerStatusAllInstancesConfigInput
+
+func (GetRegionInstanceGroupManagerStatusAllInstancesConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerStatusAllInstancesConfig)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerStatusAllInstancesConfigArray) ToGetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutput() GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutput {
+	return i.ToGetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerStatusAllInstancesConfigArray) ToGetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerStatusAllInstancesConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerStatusAllInstancesConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerStatusAllInstancesConfig)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerStatusAllInstancesConfigOutput) ToGetRegionInstanceGroupManagerStatusAllInstancesConfigOutput() GetRegionInstanceGroupManagerStatusAllInstancesConfigOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatusAllInstancesConfigOutput) ToGetRegionInstanceGroupManagerStatusAllInstancesConfigOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatusAllInstancesConfigOutput {
+	return o
+}
+
+// Current all-instances configuration revision. This value is in RFC3339 text format.
+func (o GetRegionInstanceGroupManagerStatusAllInstancesConfigOutput) CurrentRevision() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerStatusAllInstancesConfig) string { return v.CurrentRevision }).(pulumi.StringOutput)
+}
+
+// A bit indicating whether this configuration has been applied to all managed instances in the group.
+func (o GetRegionInstanceGroupManagerStatusAllInstancesConfigOutput) Effective() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerStatusAllInstancesConfig) bool { return v.Effective }).(pulumi.BoolOutput)
+}
+
+type GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerStatusAllInstancesConfig)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutput) ToGetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutput() GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutput) ToGetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupManagerStatusAllInstancesConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerStatusAllInstancesConfig {
+		return vs[0].([]GetRegionInstanceGroupManagerStatusAllInstancesConfig)[vs[1].(int)]
+	}).(GetRegionInstanceGroupManagerStatusAllInstancesConfigOutput)
+}
+
+type GetRegionInstanceGroupManagerStatusStateful struct {
+	// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+	HasStatefulConfig bool `pulumi:"hasStatefulConfig"`
+	// Status of per-instance configs on the instances.
+	PerInstanceConfigs []GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfig `pulumi:"perInstanceConfigs"`
+}
+
+// GetRegionInstanceGroupManagerStatusStatefulInput is an input type that accepts GetRegionInstanceGroupManagerStatusStatefulArgs and GetRegionInstanceGroupManagerStatusStatefulOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerStatusStatefulInput` via:
+//
+//	GetRegionInstanceGroupManagerStatusStatefulArgs{...}
+type GetRegionInstanceGroupManagerStatusStatefulInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerStatusStatefulOutput() GetRegionInstanceGroupManagerStatusStatefulOutput
+	ToGetRegionInstanceGroupManagerStatusStatefulOutputWithContext(context.Context) GetRegionInstanceGroupManagerStatusStatefulOutput
+}
+
+type GetRegionInstanceGroupManagerStatusStatefulArgs struct {
+	// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+	HasStatefulConfig pulumi.BoolInput `pulumi:"hasStatefulConfig"`
+	// Status of per-instance configs on the instances.
+	PerInstanceConfigs GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayInput `pulumi:"perInstanceConfigs"`
+}
+
+func (GetRegionInstanceGroupManagerStatusStatefulArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerStatusStateful)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerStatusStatefulArgs) ToGetRegionInstanceGroupManagerStatusStatefulOutput() GetRegionInstanceGroupManagerStatusStatefulOutput {
+	return i.ToGetRegionInstanceGroupManagerStatusStatefulOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerStatusStatefulArgs) ToGetRegionInstanceGroupManagerStatusStatefulOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatusStatefulOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerStatusStatefulOutput)
+}
+
+// GetRegionInstanceGroupManagerStatusStatefulArrayInput is an input type that accepts GetRegionInstanceGroupManagerStatusStatefulArray and GetRegionInstanceGroupManagerStatusStatefulArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerStatusStatefulArrayInput` via:
+//
+//	GetRegionInstanceGroupManagerStatusStatefulArray{ GetRegionInstanceGroupManagerStatusStatefulArgs{...} }
+type GetRegionInstanceGroupManagerStatusStatefulArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerStatusStatefulArrayOutput() GetRegionInstanceGroupManagerStatusStatefulArrayOutput
+	ToGetRegionInstanceGroupManagerStatusStatefulArrayOutputWithContext(context.Context) GetRegionInstanceGroupManagerStatusStatefulArrayOutput
+}
+
+type GetRegionInstanceGroupManagerStatusStatefulArray []GetRegionInstanceGroupManagerStatusStatefulInput
+
+func (GetRegionInstanceGroupManagerStatusStatefulArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerStatusStateful)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerStatusStatefulArray) ToGetRegionInstanceGroupManagerStatusStatefulArrayOutput() GetRegionInstanceGroupManagerStatusStatefulArrayOutput {
+	return i.ToGetRegionInstanceGroupManagerStatusStatefulArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerStatusStatefulArray) ToGetRegionInstanceGroupManagerStatusStatefulArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatusStatefulArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerStatusStatefulArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerStatusStatefulOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerStatusStatefulOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerStatusStateful)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerStatusStatefulOutput) ToGetRegionInstanceGroupManagerStatusStatefulOutput() GetRegionInstanceGroupManagerStatusStatefulOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatusStatefulOutput) ToGetRegionInstanceGroupManagerStatusStatefulOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatusStatefulOutput {
+	return o
+}
+
+// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+func (o GetRegionInstanceGroupManagerStatusStatefulOutput) HasStatefulConfig() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerStatusStateful) bool { return v.HasStatefulConfig }).(pulumi.BoolOutput)
+}
+
+// Status of per-instance configs on the instances.
+func (o GetRegionInstanceGroupManagerStatusStatefulOutput) PerInstanceConfigs() GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerStatusStateful) []GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfig {
+		return v.PerInstanceConfigs
+	}).(GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerStatusStatefulArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerStatusStatefulArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerStatusStateful)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerStatusStatefulArrayOutput) ToGetRegionInstanceGroupManagerStatusStatefulArrayOutput() GetRegionInstanceGroupManagerStatusStatefulArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatusStatefulArrayOutput) ToGetRegionInstanceGroupManagerStatusStatefulArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatusStatefulArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatusStatefulArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupManagerStatusStatefulOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerStatusStateful {
+		return vs[0].([]GetRegionInstanceGroupManagerStatusStateful)[vs[1].(int)]
+	}).(GetRegionInstanceGroupManagerStatusStatefulOutput)
+}
+
+type GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfig struct {
+	// A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
+	AllEffective bool `pulumi:"allEffective"`
+}
+
+// GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigInput is an input type that accepts GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs and GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigInput` via:
+//
+//	GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs{...}
+type GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput() GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput
+	ToGetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutputWithContext(context.Context) GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput
+}
+
+type GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs struct {
+	// A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
+	AllEffective pulumi.BoolInput `pulumi:"allEffective"`
+}
+
+func (GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfig)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs) ToGetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput() GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput {
+	return i.ToGetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs) ToGetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput)
+}
+
+// GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayInput is an input type that accepts GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArray and GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayInput` via:
+//
+//	GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArray{ GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs{...} }
+type GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput() GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput
+	ToGetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutputWithContext(context.Context) GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput
+}
+
+type GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArray []GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigInput
+
+func (GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfig)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArray) ToGetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput() GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput {
+	return i.ToGetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArray) ToGetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfig)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput) ToGetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput() GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput) ToGetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput {
+	return o
+}
+
+// A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
+func (o GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput) AllEffective() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfig) bool { return v.AllEffective }).(pulumi.BoolOutput)
+}
+
+type GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfig)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput) ToGetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput() GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput) ToGetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfig {
+		return vs[0].([]GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfig)[vs[1].(int)]
+	}).(GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput)
+}
+
 type GetRegionInstanceGroupManagerStatusVersionTarget struct {
 	// A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
 	IsReached bool `pulumi:"isReached"`
@@ -2617,6 +2928,8 @@ type GetRegionInstanceTemplateScheduling struct {
 	Preemptible bool `pulumi:"preemptible"`
 	// Describe the type of preemptible VM.
 	ProvisioningModel string `pulumi:"provisioningModel"`
+	// Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+	SkipGuestOsShutdown bool `pulumi:"skipGuestOsShutdown"`
 	// Specifies the timestamp, when the instance will be terminated,
 	// in RFC3339 text format. If specified, the instance termination action
 	// will be performed at the termination time.
@@ -2675,6 +2988,8 @@ type GetRegionInstanceTemplateSchedulingArgs struct {
 	Preemptible pulumi.BoolInput `pulumi:"preemptible"`
 	// Describe the type of preemptible VM.
 	ProvisioningModel pulumi.StringInput `pulumi:"provisioningModel"`
+	// Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+	SkipGuestOsShutdown pulumi.BoolInput `pulumi:"skipGuestOsShutdown"`
 	// Specifies the timestamp, when the instance will be terminated,
 	// in RFC3339 text format. If specified, the instance termination action
 	// will be performed at the termination time.
@@ -2823,6 +3138,11 @@ func (o GetRegionInstanceTemplateSchedulingOutput) Preemptible() pulumi.BoolOutp
 // Describe the type of preemptible VM.
 func (o GetRegionInstanceTemplateSchedulingOutput) ProvisioningModel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateScheduling) string { return v.ProvisioningModel }).(pulumi.StringOutput)
+}
+
+// Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+func (o GetRegionInstanceTemplateSchedulingOutput) SkipGuestOsShutdown() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateScheduling) bool { return v.SkipGuestOsShutdown }).(pulumi.BoolOutput)
 }
 
 // Specifies the timestamp, when the instance will be terminated,
@@ -13965,6 +14285,12 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStatusAllInstancesConfigInput)(nil)).Elem(), GetRegionInstanceGroupManagerStatusAllInstancesConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerStatusAllInstancesConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStatusStatefulInput)(nil)).Elem(), GetRegionInstanceGroupManagerStatusStatefulArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStatusStatefulArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerStatusStatefulArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigInput)(nil)).Elem(), GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStatusVersionTargetInput)(nil)).Elem(), GetRegionInstanceGroupManagerStatusVersionTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStatusVersionTargetArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerStatusVersionTargetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerUpdatePolicyInput)(nil)).Elem(), GetRegionInstanceGroupManagerUpdatePolicyArgs{})
@@ -14177,6 +14503,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStatusAllInstancesConfigOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStatusStatefulOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStatusStatefulArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStatusVersionTargetOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStatusVersionTargetArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerUpdatePolicyOutput{})

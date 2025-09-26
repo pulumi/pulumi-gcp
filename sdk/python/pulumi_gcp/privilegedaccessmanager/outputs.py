@@ -414,15 +414,20 @@ class EntitlementPrivilegedAccessGcpIamAccessRoleBinding(dict):
 
     def __init__(__self__, *,
                  role: _builtins.str,
-                 condition_expression: Optional[_builtins.str] = None):
+                 condition_expression: Optional[_builtins.str] = None,
+                 id: Optional[_builtins.str] = None):
         """
         :param _builtins.str role: IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
         :param _builtins.str condition_expression: The expression field of the IAM condition to be associated with the role. If specified, a user with an active grant for this entitlement would be able to access the resource only if this condition evaluates to true for their request.
                https://cloud.google.com/iam/docs/conditions-overview#attributes.
+        :param _builtins.str id: (Output, Beta)
+               Output Only. The ID corresponding to this role binding in the policy binding. This will be unique within an entitlement across time. Gets re-generated each time the entitlement is updated.
         """
         pulumi.set(__self__, "role", role)
         if condition_expression is not None:
             pulumi.set(__self__, "condition_expression", condition_expression)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
 
     @_builtins.property
     @pulumi.getter
@@ -440,6 +445,15 @@ class EntitlementPrivilegedAccessGcpIamAccessRoleBinding(dict):
         https://cloud.google.com/iam/docs/conditions-overview#attributes.
         """
         return pulumi.get(self, "condition_expression")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        (Output, Beta)
+        Output Only. The ID corresponding to this role binding in the policy binding. This will be unique within an entitlement across time. Gets re-generated each time the entitlement is updated.
+        """
+        return pulumi.get(self, "id")
 
 
 @pulumi.output_type
@@ -734,13 +748,16 @@ class GetEntitlementPrivilegedAccessGcpIamAccessResult(dict):
 class GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingResult(dict):
     def __init__(__self__, *,
                  condition_expression: _builtins.str,
+                 id: _builtins.str,
                  role: _builtins.str):
         """
         :param _builtins.str condition_expression: The expression field of the IAM condition to be associated with the role. If specified, a user with an active grant for this entitlement would be able to access the resource only if this condition evaluates to true for their request.
                https://cloud.google.com/iam/docs/conditions-overview#attributes.
+        :param _builtins.str id: Output Only. The ID corresponding to this role binding in the policy binding. This will be unique within an entitlement across time. Gets re-generated each time the entitlement is updated.
         :param _builtins.str role: IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
         """
         pulumi.set(__self__, "condition_expression", condition_expression)
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "role", role)
 
     @_builtins.property
@@ -751,6 +768,14 @@ class GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingResult(dict):
         https://cloud.google.com/iam/docs/conditions-overview#attributes.
         """
         return pulumi.get(self, "condition_expression")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Output Only. The ID corresponding to this role binding in the policy binding. This will be unique within an entitlement across time. Gets re-generated each time the entitlement is updated.
+        """
+        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter

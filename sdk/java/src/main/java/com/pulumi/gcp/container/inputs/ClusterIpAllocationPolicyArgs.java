@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.container.inputs.ClusterIpAllocationPolicyAdditionalIpRangesConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterIpAllocationPolicyAutoIpamConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs;
 import java.lang.String;
 import java.util.List;
@@ -53,6 +54,25 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
      */
     public Optional<Output<ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs>> additionalPodRangesConfig() {
         return Optional.ofNullable(this.additionalPodRangesConfig);
+    }
+
+    /**
+     * All the information related to Auto IPAM. Structure is documented below
+     * 
+     * &lt;a name=&#34;nested_auto_ipam_config&#34;&gt;&lt;/a&gt;The auto ipam config supports:
+     * 
+     */
+    @Import(name="autoIpamConfig")
+    private @Nullable Output<ClusterIpAllocationPolicyAutoIpamConfigArgs> autoIpamConfig;
+
+    /**
+     * @return All the information related to Auto IPAM. Structure is documented below
+     * 
+     * &lt;a name=&#34;nested_auto_ipam_config&#34;&gt;&lt;/a&gt;The auto ipam config supports:
+     * 
+     */
+    public Optional<Output<ClusterIpAllocationPolicyAutoIpamConfigArgs>> autoIpamConfig() {
+        return Optional.ofNullable(this.autoIpamConfig);
     }
 
     /**
@@ -180,6 +200,7 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
     private ClusterIpAllocationPolicyArgs(ClusterIpAllocationPolicyArgs $) {
         this.additionalIpRangesConfigs = $.additionalIpRangesConfigs;
         this.additionalPodRangesConfig = $.additionalPodRangesConfig;
+        this.autoIpamConfig = $.autoIpamConfig;
         this.clusterIpv4CidrBlock = $.clusterIpv4CidrBlock;
         this.clusterSecondaryRangeName = $.clusterSecondaryRangeName;
         this.podCidrOverprovisionConfig = $.podCidrOverprovisionConfig;
@@ -263,6 +284,31 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
          */
         public Builder additionalPodRangesConfig(ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs additionalPodRangesConfig) {
             return additionalPodRangesConfig(Output.of(additionalPodRangesConfig));
+        }
+
+        /**
+         * @param autoIpamConfig All the information related to Auto IPAM. Structure is documented below
+         * 
+         * &lt;a name=&#34;nested_auto_ipam_config&#34;&gt;&lt;/a&gt;The auto ipam config supports:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoIpamConfig(@Nullable Output<ClusterIpAllocationPolicyAutoIpamConfigArgs> autoIpamConfig) {
+            $.autoIpamConfig = autoIpamConfig;
+            return this;
+        }
+
+        /**
+         * @param autoIpamConfig All the information related to Auto IPAM. Structure is documented below
+         * 
+         * &lt;a name=&#34;nested_auto_ipam_config&#34;&gt;&lt;/a&gt;The auto ipam config supports:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoIpamConfig(ClusterIpAllocationPolicyAutoIpamConfigArgs autoIpamConfig) {
+            return autoIpamConfig(Output.of(autoIpamConfig));
         }
 
         /**

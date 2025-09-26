@@ -89,6 +89,11 @@ public final class InstanceFromMachineImageScheduling {
      */
     private @Nullable String provisioningModel;
     /**
+     * @return Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+     * 
+     */
+    private @Nullable Boolean skipGuestOsShutdown;
+    /**
      * @return Specifies the timestamp, when the instance will be terminated,
      * in RFC3339 text format. If specified, the instance termination action
      * will be performed at the termination time.
@@ -195,6 +200,13 @@ public final class InstanceFromMachineImageScheduling {
         return Optional.ofNullable(this.provisioningModel);
     }
     /**
+     * @return Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+     * 
+     */
+    public Optional<Boolean> skipGuestOsShutdown() {
+        return Optional.ofNullable(this.skipGuestOsShutdown);
+    }
+    /**
      * @return Specifies the timestamp, when the instance will be terminated,
      * in RFC3339 text format. If specified, the instance termination action
      * will be performed at the termination time.
@@ -227,6 +239,7 @@ public final class InstanceFromMachineImageScheduling {
         private @Nullable InstanceFromMachineImageSchedulingOnInstanceStopAction onInstanceStopAction;
         private @Nullable Boolean preemptible;
         private @Nullable String provisioningModel;
+        private @Nullable Boolean skipGuestOsShutdown;
         private @Nullable String terminationTime;
         public Builder() {}
         public Builder(InstanceFromMachineImageScheduling defaults) {
@@ -245,6 +258,7 @@ public final class InstanceFromMachineImageScheduling {
     	      this.onInstanceStopAction = defaults.onInstanceStopAction;
     	      this.preemptible = defaults.preemptible;
     	      this.provisioningModel = defaults.provisioningModel;
+    	      this.skipGuestOsShutdown = defaults.skipGuestOsShutdown;
     	      this.terminationTime = defaults.terminationTime;
         }
 
@@ -336,6 +350,12 @@ public final class InstanceFromMachineImageScheduling {
             return this;
         }
         @CustomType.Setter
+        public Builder skipGuestOsShutdown(@Nullable Boolean skipGuestOsShutdown) {
+
+            this.skipGuestOsShutdown = skipGuestOsShutdown;
+            return this;
+        }
+        @CustomType.Setter
         public Builder terminationTime(@Nullable String terminationTime) {
 
             this.terminationTime = terminationTime;
@@ -357,6 +377,7 @@ public final class InstanceFromMachineImageScheduling {
             _resultValue.onInstanceStopAction = onInstanceStopAction;
             _resultValue.preemptible = preemptible;
             _resultValue.provisioningModel = provisioningModel;
+            _resultValue.skipGuestOsShutdown = skipGuestOsShutdown;
             _resultValue.terminationTime = terminationTime;
             return _resultValue;
         }

@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.container.outputs.ClusterIpAllocationPolicyAdditionalIpRangesConfig;
 import com.pulumi.gcp.container.outputs.ClusterIpAllocationPolicyAdditionalPodRangesConfig;
+import com.pulumi.gcp.container.outputs.ClusterIpAllocationPolicyAutoIpamConfig;
 import com.pulumi.gcp.container.outputs.ClusterIpAllocationPolicyPodCidrOverprovisionConfig;
 import java.lang.String;
 import java.util.List;
@@ -28,6 +29,13 @@ public final class ClusterIpAllocationPolicy {
      * 
      */
     private @Nullable ClusterIpAllocationPolicyAdditionalPodRangesConfig additionalPodRangesConfig;
+    /**
+     * @return All the information related to Auto IPAM. Structure is documented below
+     * 
+     * &lt;a name=&#34;nested_auto_ipam_config&#34;&gt;&lt;/a&gt;The auto ipam config supports:
+     * 
+     */
+    private @Nullable ClusterIpAllocationPolicyAutoIpamConfig autoIpamConfig;
     /**
      * @return The IP address range for the cluster pod IPs.
      * Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
@@ -91,6 +99,15 @@ public final class ClusterIpAllocationPolicy {
      */
     public Optional<ClusterIpAllocationPolicyAdditionalPodRangesConfig> additionalPodRangesConfig() {
         return Optional.ofNullable(this.additionalPodRangesConfig);
+    }
+    /**
+     * @return All the information related to Auto IPAM. Structure is documented below
+     * 
+     * &lt;a name=&#34;nested_auto_ipam_config&#34;&gt;&lt;/a&gt;The auto ipam config supports:
+     * 
+     */
+    public Optional<ClusterIpAllocationPolicyAutoIpamConfig> autoIpamConfig() {
+        return Optional.ofNullable(this.autoIpamConfig);
     }
     /**
      * @return The IP address range for the cluster pod IPs.
@@ -161,6 +178,7 @@ public final class ClusterIpAllocationPolicy {
     public static final class Builder {
         private @Nullable List<ClusterIpAllocationPolicyAdditionalIpRangesConfig> additionalIpRangesConfigs;
         private @Nullable ClusterIpAllocationPolicyAdditionalPodRangesConfig additionalPodRangesConfig;
+        private @Nullable ClusterIpAllocationPolicyAutoIpamConfig autoIpamConfig;
         private @Nullable String clusterIpv4CidrBlock;
         private @Nullable String clusterSecondaryRangeName;
         private @Nullable ClusterIpAllocationPolicyPodCidrOverprovisionConfig podCidrOverprovisionConfig;
@@ -172,6 +190,7 @@ public final class ClusterIpAllocationPolicy {
     	      Objects.requireNonNull(defaults);
     	      this.additionalIpRangesConfigs = defaults.additionalIpRangesConfigs;
     	      this.additionalPodRangesConfig = defaults.additionalPodRangesConfig;
+    	      this.autoIpamConfig = defaults.autoIpamConfig;
     	      this.clusterIpv4CidrBlock = defaults.clusterIpv4CidrBlock;
     	      this.clusterSecondaryRangeName = defaults.clusterSecondaryRangeName;
     	      this.podCidrOverprovisionConfig = defaults.podCidrOverprovisionConfig;
@@ -193,6 +212,12 @@ public final class ClusterIpAllocationPolicy {
         public Builder additionalPodRangesConfig(@Nullable ClusterIpAllocationPolicyAdditionalPodRangesConfig additionalPodRangesConfig) {
 
             this.additionalPodRangesConfig = additionalPodRangesConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder autoIpamConfig(@Nullable ClusterIpAllocationPolicyAutoIpamConfig autoIpamConfig) {
+
+            this.autoIpamConfig = autoIpamConfig;
             return this;
         }
         @CustomType.Setter
@@ -235,6 +260,7 @@ public final class ClusterIpAllocationPolicy {
             final var _resultValue = new ClusterIpAllocationPolicy();
             _resultValue.additionalIpRangesConfigs = additionalIpRangesConfigs;
             _resultValue.additionalPodRangesConfig = additionalPodRangesConfig;
+            _resultValue.autoIpamConfig = autoIpamConfig;
             _resultValue.clusterIpv4CidrBlock = clusterIpv4CidrBlock;
             _resultValue.clusterSecondaryRangeName = clusterSecondaryRangeName;
             _resultValue.podCidrOverprovisionConfig = podCidrOverprovisionConfig;

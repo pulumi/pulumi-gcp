@@ -76,6 +76,7 @@ public final class ImageIamBindingState extends com.pulumi.resources.ResourceArg
      * * **projectOwner:projectid**: Owners of the given project. For example, &#34;projectOwner:my-example-project&#34;
      * * **projectEditor:projectid**: Editors of the given project. For example, &#34;projectEditor:my-example-project&#34;
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
+     * * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, &#34;principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe{@literal @}example.com&#34;
      * 
      */
     @Import(name="members")
@@ -93,6 +94,7 @@ public final class ImageIamBindingState extends com.pulumi.resources.ResourceArg
      * * **projectOwner:projectid**: Owners of the given project. For example, &#34;projectOwner:my-example-project&#34;
      * * **projectEditor:projectid**: Editors of the given project. For example, &#34;projectEditor:my-example-project&#34;
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
+     * * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, &#34;principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe{@literal @}example.com&#34;
      * 
      */
     public Optional<Output<List<String>>> members() {
@@ -241,6 +243,7 @@ public final class ImageIamBindingState extends com.pulumi.resources.ResourceArg
          * * **projectOwner:projectid**: Owners of the given project. For example, &#34;projectOwner:my-example-project&#34;
          * * **projectEditor:projectid**: Editors of the given project. For example, &#34;projectEditor:my-example-project&#34;
          * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
+         * * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, &#34;principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe{@literal @}example.com&#34;
          * 
          * @return builder
          * 
@@ -262,6 +265,7 @@ public final class ImageIamBindingState extends com.pulumi.resources.ResourceArg
          * * **projectOwner:projectid**: Owners of the given project. For example, &#34;projectOwner:my-example-project&#34;
          * * **projectEditor:projectid**: Editors of the given project. For example, &#34;projectEditor:my-example-project&#34;
          * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
+         * * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, &#34;principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe{@literal @}example.com&#34;
          * 
          * @return builder
          * 
@@ -282,6 +286,7 @@ public final class ImageIamBindingState extends com.pulumi.resources.ResourceArg
          * * **projectOwner:projectid**: Owners of the given project. For example, &#34;projectOwner:my-example-project&#34;
          * * **projectEditor:projectid**: Editors of the given project. For example, &#34;projectEditor:my-example-project&#34;
          * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
+         * * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, &#34;principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe{@literal @}example.com&#34;
          * 
          * @return builder
          * 

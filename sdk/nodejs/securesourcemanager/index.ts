@@ -20,6 +20,11 @@ export const getRepositoryIamPolicy: typeof import("./getRepositoryIamPolicy").g
 export const getRepositoryIamPolicyOutput: typeof import("./getRepositoryIamPolicy").getRepositoryIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getRepositoryIamPolicy","getRepositoryIamPolicyOutput"], () => require("./getRepositoryIamPolicy"));
 
+export { HookArgs, HookState } from "./hook";
+export type Hook = import("./hook").Hook;
+export const Hook: typeof import("./hook").Hook = null as any;
+utilities.lazyLoad(exports, ["Hook"], () => require("./hook"));
+
 export { InstanceArgs, InstanceState } from "./instance";
 export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;
@@ -67,6 +72,8 @@ const _module = {
         switch (type) {
             case "gcp:securesourcemanager/branchRule:BranchRule":
                 return new BranchRule(name, <any>undefined, { urn })
+            case "gcp:securesourcemanager/hook:Hook":
+                return new Hook(name, <any>undefined, { urn })
             case "gcp:securesourcemanager/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
             case "gcp:securesourcemanager/instanceIamBinding:InstanceIamBinding":
@@ -89,6 +96,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "securesourcemanager/branchRule", _module)
+pulumi.runtime.registerResourceModule("gcp", "securesourcemanager/hook", _module)
 pulumi.runtime.registerResourceModule("gcp", "securesourcemanager/instance", _module)
 pulumi.runtime.registerResourceModule("gcp", "securesourcemanager/instanceIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "securesourcemanager/instanceIamMember", _module)

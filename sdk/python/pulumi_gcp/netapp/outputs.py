@@ -221,6 +221,8 @@ class VolumeExportPolicyRule(dict):
             suggest = "access_type"
         elif key == "allowedClients":
             suggest = "allowed_clients"
+        elif key == "anonUid":
+            suggest = "anon_uid"
         elif key == "hasRootAccess":
             suggest = "has_root_access"
         elif key == "kerberos5ReadOnly":
@@ -235,6 +237,8 @@ class VolumeExportPolicyRule(dict):
             suggest = "kerberos5p_read_only"
         elif key == "kerberos5pReadWrite":
             suggest = "kerberos5p_read_write"
+        elif key == "squashMode":
+            suggest = "squash_mode"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in VolumeExportPolicyRule. Access the value via the '{suggest}' property getter instead.")
@@ -250,6 +254,7 @@ class VolumeExportPolicyRule(dict):
     def __init__(__self__, *,
                  access_type: Optional[_builtins.str] = None,
                  allowed_clients: Optional[_builtins.str] = None,
+                 anon_uid: Optional[_builtins.int] = None,
                  has_root_access: Optional[_builtins.str] = None,
                  kerberos5_read_only: Optional[_builtins.bool] = None,
                  kerberos5_read_write: Optional[_builtins.bool] = None,
@@ -258,11 +263,13 @@ class VolumeExportPolicyRule(dict):
                  kerberos5p_read_only: Optional[_builtins.bool] = None,
                  kerberos5p_read_write: Optional[_builtins.bool] = None,
                  nfsv3: Optional[_builtins.bool] = None,
-                 nfsv4: Optional[_builtins.bool] = None):
+                 nfsv4: Optional[_builtins.bool] = None,
+                 squash_mode: Optional[_builtins.str] = None):
         """
         :param _builtins.str access_type: Defines the access type for clients matching the `allowedClients` specification.
                Possible values are: `READ_ONLY`, `READ_WRITE`, `READ_NONE`.
         :param _builtins.str allowed_clients: Defines the client ingress specification (allowed clients) as a comma separated list with IPv4 CIDRs or IPv4 host addresses.
+        :param _builtins.int anon_uid: An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squash_mode` is `ROOT_SQUASH` or `ALL_SQUASH`.
         :param _builtins.str has_root_access: If enabled, the root user (UID = 0) of the specified clients doesn't get mapped to nobody (UID = 65534). This is also known as no_root_squash.
         :param _builtins.bool kerberos5_read_only: If enabled (true) the rule defines a read only access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'authentication' kerberos security mode.
         :param _builtins.bool kerberos5_read_write: If enabled (true) the rule defines read and write access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'authentication' kerberos security mode. The 'kerberos5ReadOnly' value is ignored if this is enabled.
@@ -272,11 +279,15 @@ class VolumeExportPolicyRule(dict):
         :param _builtins.bool kerberos5p_read_write: If enabled (true) the rule defines read and write access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'privacy' kerberos security mode. The 'kerberos5pReadOnly' value is ignored if this is enabled.
         :param _builtins.bool nfsv3: Enable to apply the export rule to NFSV3 clients.
         :param _builtins.bool nfsv4: Enable to apply the export rule to NFSV4.1 clients.
+        :param _builtins.str squash_mode: SquashMode defines how remote user privileges are restricted when accessing an NFS export. It controls how the user identities (like root) are mapped to anonymous users to limit access and enforce security.
+               Possible values are: `NO_ROOT_SQUASH`, `ROOT_SQUASH`, `ALL_SQUASH`.
         """
         if access_type is not None:
             pulumi.set(__self__, "access_type", access_type)
         if allowed_clients is not None:
             pulumi.set(__self__, "allowed_clients", allowed_clients)
+        if anon_uid is not None:
+            pulumi.set(__self__, "anon_uid", anon_uid)
         if has_root_access is not None:
             pulumi.set(__self__, "has_root_access", has_root_access)
         if kerberos5_read_only is not None:
@@ -295,6 +306,8 @@ class VolumeExportPolicyRule(dict):
             pulumi.set(__self__, "nfsv3", nfsv3)
         if nfsv4 is not None:
             pulumi.set(__self__, "nfsv4", nfsv4)
+        if squash_mode is not None:
+            pulumi.set(__self__, "squash_mode", squash_mode)
 
     @_builtins.property
     @pulumi.getter(name="accessType")
@@ -312,6 +325,14 @@ class VolumeExportPolicyRule(dict):
         Defines the client ingress specification (allowed clients) as a comma separated list with IPv4 CIDRs or IPv4 host addresses.
         """
         return pulumi.get(self, "allowed_clients")
+
+    @_builtins.property
+    @pulumi.getter(name="anonUid")
+    def anon_uid(self) -> Optional[_builtins.int]:
+        """
+        An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squash_mode` is `ROOT_SQUASH` or `ALL_SQUASH`.
+        """
+        return pulumi.get(self, "anon_uid")
 
     @_builtins.property
     @pulumi.getter(name="hasRootAccess")
@@ -384,6 +405,15 @@ class VolumeExportPolicyRule(dict):
         Enable to apply the export rule to NFSV4.1 clients.
         """
         return pulumi.get(self, "nfsv4")
+
+    @_builtins.property
+    @pulumi.getter(name="squashMode")
+    def squash_mode(self) -> Optional[_builtins.str]:
+        """
+        SquashMode defines how remote user privileges are restricted when accessing an NFS export. It controls how the user identities (like root) are mapped to anonymous users to limit access and enforce security.
+        Possible values are: `NO_ROOT_SQUASH`, `ROOT_SQUASH`, `ALL_SQUASH`.
+        """
+        return pulumi.get(self, "squash_mode")
 
 
 @pulumi.output_type

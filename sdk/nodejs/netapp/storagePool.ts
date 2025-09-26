@@ -190,7 +190,7 @@ export class StoragePool extends pulumi.CustomResource {
      * Possible values are: AUTO, MANUAL.
      * Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
      */
-    declare public readonly qosType: pulumi.Output<string | undefined>;
+    declare public readonly qosType: pulumi.Output<string>;
     /**
      * Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
      * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).

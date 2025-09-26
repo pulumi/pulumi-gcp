@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.ServiceAttachmentConsumerAcceptListArgs;
+import com.pulumi.gcp.compute.inputs.ServiceAttachmentTunnelingConfigArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -278,6 +279,23 @@ public final class ServiceAttachmentArgs extends com.pulumi.resources.ResourceAr
         return this.targetService;
     }
 
+    /**
+     * Tunneling configuration for this service attachment.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="tunnelingConfig")
+    private @Nullable Output<ServiceAttachmentTunnelingConfigArgs> tunnelingConfig;
+
+    /**
+     * @return Tunneling configuration for this service attachment.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ServiceAttachmentTunnelingConfigArgs>> tunnelingConfig() {
+        return Optional.ofNullable(this.tunnelingConfig);
+    }
+
     private ServiceAttachmentArgs() {}
 
     private ServiceAttachmentArgs(ServiceAttachmentArgs $) {
@@ -295,6 +313,7 @@ public final class ServiceAttachmentArgs extends com.pulumi.resources.ResourceAr
         this.region = $.region;
         this.sendPropagatedConnectionLimitIfZero = $.sendPropagatedConnectionLimitIfZero;
         this.targetService = $.targetService;
+        this.tunnelingConfig = $.tunnelingConfig;
     }
 
     public static Builder builder() {
@@ -701,6 +720,29 @@ public final class ServiceAttachmentArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder targetService(String targetService) {
             return targetService(Output.of(targetService));
+        }
+
+        /**
+         * @param tunnelingConfig Tunneling configuration for this service attachment.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tunnelingConfig(@Nullable Output<ServiceAttachmentTunnelingConfigArgs> tunnelingConfig) {
+            $.tunnelingConfig = tunnelingConfig;
+            return this;
+        }
+
+        /**
+         * @param tunnelingConfig Tunneling configuration for this service attachment.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tunnelingConfig(ServiceAttachmentTunnelingConfigArgs tunnelingConfig) {
+            return tunnelingConfig(Output.of(tunnelingConfig));
         }
 
         public ServiceAttachmentArgs build() {

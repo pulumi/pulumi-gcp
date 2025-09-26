@@ -114,6 +114,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('bigqueryDatapolicyCustomEndpoint')
 
     @_builtins.property
+    def bigquery_datapolicyv2_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('bigqueryDatapolicyv2CustomEndpoint')
+
+    @_builtins.property
     def bigquery_reservation_custom_endpoint(self) -> Optional[str]:
         return __config__.get('bigqueryReservationCustomEndpoint')
 

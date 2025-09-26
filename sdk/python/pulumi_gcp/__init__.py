@@ -1409,6 +1409,38 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "bigquery/datapolicyv2DataPolicy",
+  "fqn": "pulumi_gcp.bigquery",
+  "classes": {
+   "gcp:bigquery/datapolicyv2DataPolicy:Datapolicyv2DataPolicy": "Datapolicyv2DataPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "bigquery/datapolicyv2DataPolicyIamBinding",
+  "fqn": "pulumi_gcp.bigquery",
+  "classes": {
+   "gcp:bigquery/datapolicyv2DataPolicyIamBinding:Datapolicyv2DataPolicyIamBinding": "Datapolicyv2DataPolicyIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "bigquery/datapolicyv2DataPolicyIamMember",
+  "fqn": "pulumi_gcp.bigquery",
+  "classes": {
+   "gcp:bigquery/datapolicyv2DataPolicyIamMember:Datapolicyv2DataPolicyIamMember": "Datapolicyv2DataPolicyIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "bigquery/datapolicyv2DataPolicyIamPolicy",
+  "fqn": "pulumi_gcp.bigquery",
+  "classes": {
+   "gcp:bigquery/datapolicyv2DataPolicyIamPolicy:Datapolicyv2DataPolicyIamPolicy": "Datapolicyv2DataPolicyIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "bigquery/dataset",
   "fqn": "pulumi_gcp.bigquery",
   "classes": {
@@ -7985,6 +8017,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "networkservices/wasmPlugin",
+  "fqn": "pulumi_gcp.networkservices",
+  "classes": {
+   "gcp:networkservices/wasmPlugin:WasmPlugin": "WasmPlugin"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "notebooks/environment",
   "fqn": "pulumi_gcp.notebooks",
   "classes": {
@@ -8601,6 +8641,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "saasruntime/release",
+  "fqn": "pulumi_gcp.saasruntime",
+  "classes": {
+   "gcp:saasruntime/release:Release": "Release"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "saasruntime/saaS",
   "fqn": "pulumi_gcp.saasruntime",
   "classes": {
@@ -8701,6 +8749,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.securesourcemanager",
   "classes": {
    "gcp:securesourcemanager/branchRule:BranchRule": "BranchRule"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securesourcemanager/hook",
+  "fqn": "pulumi_gcp.securesourcemanager",
+  "classes": {
+   "gcp:securesourcemanager/hook:Hook": "Hook"
   }
  },
  {

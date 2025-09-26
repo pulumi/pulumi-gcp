@@ -259,6 +259,95 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Iam Workforce Pool Provider Extended Attributes Oauth2 Config Client Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const pool = new gcp.iam.WorkforcePool("pool", {
+ *     workforcePoolId: "example-pool",
+ *     parent: "organizations/123456789",
+ *     location: "global",
+ * });
+ * const example = new gcp.iam.WorkforcePoolProvider("example", {
+ *     workforcePoolId: pool.workforcePoolId,
+ *     location: pool.location,
+ *     providerId: "example-prvdr",
+ *     attributeMapping: {
+ *         "google.subject": "assertion.sub",
+ *     },
+ *     oidc: {
+ *         issuerUri: "https://login.microsoftonline.com/826602fe-2101-470c-9d71-ee1343668989/v2.0",
+ *         clientId: "https://analysis.windows.net/powerbi/connector/GoogleBigQuery",
+ *         webSsoConfig: {
+ *             responseType: "CODE",
+ *             assertionClaimsBehavior: "MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS",
+ *         },
+ *         clientSecret: {
+ *             value: {
+ *                 plainText: "client-secret",
+ *             },
+ *         },
+ *     },
+ *     extendedAttributesOauth2Client: {
+ *         issuerUri: "https://login.microsoftonline.com/826602fe-2101-470c-9d71-ee1343668989/v2.0",
+ *         clientId: "client-id",
+ *         clientSecret: {
+ *             value: {
+ *                 plainText: "client-secret",
+ *             },
+ *         },
+ *         attributesType: "AZURE_AD_GROUPS_ID",
+ *     },
+ * });
+ * ```
+ * ### Iam Workforce Pool Provider Extended Attributes Oauth2 Config Client Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const pool = new gcp.iam.WorkforcePool("pool", {
+ *     workforcePoolId: "example-pool",
+ *     parent: "organizations/123456789",
+ *     location: "global",
+ * });
+ * const example = new gcp.iam.WorkforcePoolProvider("example", {
+ *     workforcePoolId: pool.workforcePoolId,
+ *     location: pool.location,
+ *     providerId: "example-prvdr",
+ *     attributeMapping: {
+ *         "google.subject": "assertion.sub",
+ *     },
+ *     oidc: {
+ *         issuerUri: "https://login.microsoftonline.com/826602fe-2101-470c-9d71-ee1343668989/v2.0",
+ *         clientId: "https://analysis.windows.net/powerbi/connector/GoogleBigQuery",
+ *         clientSecret: {
+ *             value: {
+ *                 plainText: "client-secret",
+ *             },
+ *         },
+ *         webSsoConfig: {
+ *             responseType: "CODE",
+ *             assertionClaimsBehavior: "MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS",
+ *         },
+ *     },
+ *     extendedAttributesOauth2Client: {
+ *         issuerUri: "https://login.microsoftonline.com/826602fe-2101-470c-9d71-ee1343668989/v2.0",
+ *         clientId: "client-id",
+ *         clientSecret: {
+ *             value: {
+ *                 plainText: "client-secret",
+ *             },
+ *         },
+ *         attributesType: "AZURE_AD_GROUPS_ID",
+ *         queryParameters: {
+ *             filter: "mail:gcp",
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -373,6 +462,20 @@ export class WorkforcePoolProvider extends pulumi.CustomResource {
      */
     declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
+     * The configuration for OAuth 2.0 client used to get the extended group
+     * memberships for user identities. Only the `AZURE_AD_GROUPS_ID` attribute
+     * type is supported. Extended groups supports a subset of Google Cloud
+     * services. When the user accesses these services, extended group memberships
+     * override the mapped `google.groups` attribute. Extended group memberships
+     * cannot be used in attribute mapping or attribute condition expressions.
+     * To keep extended group memberships up to date, extended groups are
+     * retrieved when the user signs in and at regular intervals during the user's
+     * active session. Each user identity in the workforce identity pool must map
+     * to a unique Microsoft Entra ID user.
+     * Structure is documented below.
+     */
+    declare public readonly extendedAttributesOauth2Client: pulumi.Output<outputs.iam.WorkforcePoolProviderExtendedAttributesOauth2Client | undefined>;
+    /**
      * The configuration for OAuth 2.0 client used to get the additional user
      * attributes. This should be used when users can't get the desired claims
      * in authentication credentials. Currently this configuration is only
@@ -440,6 +543,7 @@ export class WorkforcePoolProvider extends pulumi.CustomResource {
             resourceInputs["description"] = state?.description;
             resourceInputs["disabled"] = state?.disabled;
             resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["extendedAttributesOauth2Client"] = state?.extendedAttributesOauth2Client;
             resourceInputs["extraAttributesOauth2Client"] = state?.extraAttributesOauth2Client;
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
@@ -464,6 +568,7 @@ export class WorkforcePoolProvider extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["disabled"] = args?.disabled;
             resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["extendedAttributesOauth2Client"] = args?.extendedAttributesOauth2Client;
             resourceInputs["extraAttributesOauth2Client"] = args?.extraAttributesOauth2Client;
             resourceInputs["location"] = args?.location;
             resourceInputs["oidc"] = args?.oidc;
@@ -548,6 +653,20 @@ export interface WorkforcePoolProviderState {
      * A user-specified display name for the provider. Cannot exceed 32 characters.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * The configuration for OAuth 2.0 client used to get the extended group
+     * memberships for user identities. Only the `AZURE_AD_GROUPS_ID` attribute
+     * type is supported. Extended groups supports a subset of Google Cloud
+     * services. When the user accesses these services, extended group memberships
+     * override the mapped `google.groups` attribute. Extended group memberships
+     * cannot be used in attribute mapping or attribute condition expressions.
+     * To keep extended group memberships up to date, extended groups are
+     * retrieved when the user signs in and at regular intervals during the user's
+     * active session. Each user identity in the workforce identity pool must map
+     * to a unique Microsoft Entra ID user.
+     * Structure is documented below.
+     */
+    extendedAttributesOauth2Client?: pulumi.Input<inputs.iam.WorkforcePoolProviderExtendedAttributesOauth2Client>;
     /**
      * The configuration for OAuth 2.0 client used to get the additional user
      * attributes. This should be used when users can't get the desired claims
@@ -669,6 +788,20 @@ export interface WorkforcePoolProviderArgs {
      * A user-specified display name for the provider. Cannot exceed 32 characters.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * The configuration for OAuth 2.0 client used to get the extended group
+     * memberships for user identities. Only the `AZURE_AD_GROUPS_ID` attribute
+     * type is supported. Extended groups supports a subset of Google Cloud
+     * services. When the user accesses these services, extended group memberships
+     * override the mapped `google.groups` attribute. Extended group memberships
+     * cannot be used in attribute mapping or attribute condition expressions.
+     * To keep extended group memberships up to date, extended groups are
+     * retrieved when the user signs in and at regular intervals during the user's
+     * active session. Each user identity in the workforce identity pool must map
+     * to a unique Microsoft Entra ID user.
+     * Structure is documented below.
+     */
+    extendedAttributesOauth2Client?: pulumi.Input<inputs.iam.WorkforcePoolProviderExtendedAttributesOauth2Client>;
     /**
      * The configuration for OAuth 2.0 client used to get the additional user
      * attributes. This should be used when users can't get the desired claims

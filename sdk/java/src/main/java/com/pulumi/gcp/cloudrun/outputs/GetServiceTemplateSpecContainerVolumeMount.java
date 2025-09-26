@@ -21,6 +21,11 @@ public final class GetServiceTemplateSpecContainerVolumeMount {
      * 
      */
     private String name;
+    /**
+     * @return Path within the volume from which the container&#39;s volume should be mounted.
+     * 
+     */
+    private String subPath;
 
     private GetServiceTemplateSpecContainerVolumeMount() {}
     /**
@@ -38,6 +43,13 @@ public final class GetServiceTemplateSpecContainerVolumeMount {
     public String name() {
         return this.name;
     }
+    /**
+     * @return Path within the volume from which the container&#39;s volume should be mounted.
+     * 
+     */
+    public String subPath() {
+        return this.subPath;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -50,11 +62,13 @@ public final class GetServiceTemplateSpecContainerVolumeMount {
     public static final class Builder {
         private String mountPath;
         private String name;
+        private String subPath;
         public Builder() {}
         public Builder(GetServiceTemplateSpecContainerVolumeMount defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.mountPath = defaults.mountPath;
     	      this.name = defaults.name;
+    	      this.subPath = defaults.subPath;
         }
 
         @CustomType.Setter
@@ -73,10 +87,19 @@ public final class GetServiceTemplateSpecContainerVolumeMount {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
+        public Builder subPath(String subPath) {
+            if (subPath == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpecContainerVolumeMount", "subPath");
+            }
+            this.subPath = subPath;
+            return this;
+        }
         public GetServiceTemplateSpecContainerVolumeMount build() {
             final var _resultValue = new GetServiceTemplateSpecContainerVolumeMount();
             _resultValue.mountPath = mountPath;
             _resultValue.name = name;
+            _resultValue.subPath = subPath;
             return _resultValue;
         }
     }

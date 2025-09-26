@@ -44,7 +44,9 @@ public final class LbRouteExtensionExtensionChainExtension {
      */
     private String name;
     /**
-     * @return The reference to the service that runs the extension. Must be a reference to a backend service
+     * @return The reference to the service that runs the extension.
+     * * To configure a callout extension, service must be a fully-qualified reference to a backend service.
+     * * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
      * 
      */
     private String service;
@@ -94,7 +96,9 @@ public final class LbRouteExtensionExtensionChainExtension {
         return this.name;
     }
     /**
-     * @return The reference to the service that runs the extension. Must be a reference to a backend service
+     * @return The reference to the service that runs the extension.
+     * * To configure a callout extension, service must be a fully-qualified reference to a backend service.
+     * * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
      * 
      */
     public String service() {

@@ -51,6 +51,14 @@ __all__ = [
     'WorkforcePoolIamBindingConditionArgsDict',
     'WorkforcePoolIamMemberConditionArgs',
     'WorkforcePoolIamMemberConditionArgsDict',
+    'WorkforcePoolProviderExtendedAttributesOauth2ClientArgs',
+    'WorkforcePoolProviderExtendedAttributesOauth2ClientArgsDict',
+    'WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretArgs',
+    'WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretArgsDict',
+    'WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueArgs',
+    'WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueArgsDict',
+    'WorkforcePoolProviderExtendedAttributesOauth2ClientQueryParametersArgs',
+    'WorkforcePoolProviderExtendedAttributesOauth2ClientQueryParametersArgsDict',
     'WorkforcePoolProviderExtraAttributesOauth2ClientArgs',
     'WorkforcePoolProviderExtraAttributesOauth2ClientArgsDict',
     'WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs',
@@ -1379,6 +1387,265 @@ class WorkforcePoolIamMemberConditionArgs:
 
 
 if not MYPY:
+    class WorkforcePoolProviderExtendedAttributesOauth2ClientArgsDict(TypedDict):
+        attributes_type: pulumi.Input[_builtins.str]
+        """
+        Represents the IdP and type of claims that should be fetched.
+        * AZURE_AD_GROUPS_ID:  Used to get the user's group claims from the Azure AD identity provider
+        using configuration provided in ExtendedAttributesOAuth2Client and 'id'
+        property of the 'microsoft.graph.group' object is used for claim mapping. See
+        https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
+        for more details on 'microsoft.graph.group' properties. The
+        group IDs obtained from Azure AD are present in 'assertion.groups' for
+        OIDC providers and 'assertion.attributes.groups' for SAML providers for
+        attribute mapping. Possible values: ["AZURE_AD_GROUPS_ID"]
+        """
+        client_id: pulumi.Input[_builtins.str]
+        """
+        The OAuth 2.0 client ID for retrieving extended attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
+        """
+        client_secret: pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretArgsDict']
+        """
+        The OAuth 2.0 client secret for retrieving extended attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
+        """
+        issuer_uri: pulumi.Input[_builtins.str]
+        """
+        The OIDC identity provider's issuer URI. Must be a valid URI using the 'https' scheme. Required to get the OIDC discovery document.
+        """
+        query_parameters: NotRequired[pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientQueryParametersArgsDict']]
+        """
+        Represents the parameters to control which claims are fetched from an IdP.
+        """
+elif False:
+    WorkforcePoolProviderExtendedAttributesOauth2ClientArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkforcePoolProviderExtendedAttributesOauth2ClientArgs:
+    def __init__(__self__, *,
+                 attributes_type: pulumi.Input[_builtins.str],
+                 client_id: pulumi.Input[_builtins.str],
+                 client_secret: pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretArgs'],
+                 issuer_uri: pulumi.Input[_builtins.str],
+                 query_parameters: Optional[pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientQueryParametersArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] attributes_type: Represents the IdP and type of claims that should be fetched.
+               * AZURE_AD_GROUPS_ID:  Used to get the user's group claims from the Azure AD identity provider
+               using configuration provided in ExtendedAttributesOAuth2Client and 'id'
+               property of the 'microsoft.graph.group' object is used for claim mapping. See
+               https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
+               for more details on 'microsoft.graph.group' properties. The
+               group IDs obtained from Azure AD are present in 'assertion.groups' for
+               OIDC providers and 'assertion.attributes.groups' for SAML providers for
+               attribute mapping. Possible values: ["AZURE_AD_GROUPS_ID"]
+        :param pulumi.Input[_builtins.str] client_id: The OAuth 2.0 client ID for retrieving extended attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
+        :param pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretArgs'] client_secret: The OAuth 2.0 client secret for retrieving extended attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
+        :param pulumi.Input[_builtins.str] issuer_uri: The OIDC identity provider's issuer URI. Must be a valid URI using the 'https' scheme. Required to get the OIDC discovery document.
+        :param pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientQueryParametersArgs'] query_parameters: Represents the parameters to control which claims are fetched from an IdP.
+        """
+        pulumi.set(__self__, "attributes_type", attributes_type)
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "client_secret", client_secret)
+        pulumi.set(__self__, "issuer_uri", issuer_uri)
+        if query_parameters is not None:
+            pulumi.set(__self__, "query_parameters", query_parameters)
+
+    @_builtins.property
+    @pulumi.getter(name="attributesType")
+    def attributes_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        Represents the IdP and type of claims that should be fetched.
+        * AZURE_AD_GROUPS_ID:  Used to get the user's group claims from the Azure AD identity provider
+        using configuration provided in ExtendedAttributesOAuth2Client and 'id'
+        property of the 'microsoft.graph.group' object is used for claim mapping. See
+        https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties
+        for more details on 'microsoft.graph.group' properties. The
+        group IDs obtained from Azure AD are present in 'assertion.groups' for
+        OIDC providers and 'assertion.attributes.groups' for SAML providers for
+        attribute mapping. Possible values: ["AZURE_AD_GROUPS_ID"]
+        """
+        return pulumi.get(self, "attributes_type")
+
+    @attributes_type.setter
+    def attributes_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "attributes_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The OAuth 2.0 client ID for retrieving extended attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "client_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretArgs']:
+        """
+        The OAuth 2.0 client secret for retrieving extended attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretArgs']):
+        pulumi.set(self, "client_secret", value)
+
+    @_builtins.property
+    @pulumi.getter(name="issuerUri")
+    def issuer_uri(self) -> pulumi.Input[_builtins.str]:
+        """
+        The OIDC identity provider's issuer URI. Must be a valid URI using the 'https' scheme. Required to get the OIDC discovery document.
+        """
+        return pulumi.get(self, "issuer_uri")
+
+    @issuer_uri.setter
+    def issuer_uri(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "issuer_uri", value)
+
+    @_builtins.property
+    @pulumi.getter(name="queryParameters")
+    def query_parameters(self) -> Optional[pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientQueryParametersArgs']]:
+        """
+        Represents the parameters to control which claims are fetched from an IdP.
+        """
+        return pulumi.get(self, "query_parameters")
+
+    @query_parameters.setter
+    def query_parameters(self, value: Optional[pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientQueryParametersArgs']]):
+        pulumi.set(self, "query_parameters", value)
+
+
+if not MYPY:
+    class WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretArgsDict(TypedDict):
+        value: NotRequired[pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueArgsDict']]
+        """
+        The value of the client secret.
+        Structure is documented below.
+        """
+elif False:
+    WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretArgs:
+    def __init__(__self__, *,
+                 value: Optional[pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueArgs']] = None):
+        """
+        :param pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueArgs'] value: The value of the client secret.
+               Structure is documented below.
+        """
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueArgs']]:
+        """
+        The value of the client secret.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueArgs']]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueArgsDict(TypedDict):
+        plain_text: pulumi.Input[_builtins.str]
+        """
+        The plain text of the client secret value.
+        """
+        thumbprint: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        A thumbprint to represent the current client secret value.
+        """
+elif False:
+    WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueArgs:
+    def __init__(__self__, *,
+                 plain_text: pulumi.Input[_builtins.str],
+                 thumbprint: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] plain_text: The plain text of the client secret value.
+        :param pulumi.Input[_builtins.str] thumbprint: (Output)
+               A thumbprint to represent the current client secret value.
+        """
+        pulumi.set(__self__, "plain_text", plain_text)
+        if thumbprint is not None:
+            pulumi.set(__self__, "thumbprint", thumbprint)
+
+    @_builtins.property
+    @pulumi.getter(name="plainText")
+    def plain_text(self) -> pulumi.Input[_builtins.str]:
+        """
+        The plain text of the client secret value.
+        """
+        return pulumi.get(self, "plain_text")
+
+    @plain_text.setter
+    def plain_text(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "plain_text", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def thumbprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        A thumbprint to represent the current client secret value.
+        """
+        return pulumi.get(self, "thumbprint")
+
+    @thumbprint.setter
+    def thumbprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "thumbprint", value)
+
+
+if not MYPY:
+    class WorkforcePoolProviderExtendedAttributesOauth2ClientQueryParametersArgsDict(TypedDict):
+        filter: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_ID, it represents the
+        filter used to request specific groups for users from IdP. By default, all of the groups associated with the user are fetched. The
+        groups should be security enabled. See https://learn.microsoft.com/en-us/graph/search-query-parameter for more details.
+        """
+elif False:
+    WorkforcePoolProviderExtendedAttributesOauth2ClientQueryParametersArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkforcePoolProviderExtendedAttributesOauth2ClientQueryParametersArgs:
+    def __init__(__self__, *,
+                 filter: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] filter: The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_ID, it represents the
+               filter used to request specific groups for users from IdP. By default, all of the groups associated with the user are fetched. The
+               groups should be security enabled. See https://learn.microsoft.com/en-us/graph/search-query-parameter for more details.
+        """
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
+
+    @_builtins.property
+    @pulumi.getter
+    def filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_ID, it represents the
+        filter used to request specific groups for users from IdP. By default, all of the groups associated with the user are fetched. The
+        groups should be security enabled. See https://learn.microsoft.com/en-us/graph/search-query-parameter for more details.
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "filter", value)
+
+
+if not MYPY:
     class WorkforcePoolProviderExtraAttributesOauth2ClientArgsDict(TypedDict):
         attributes_type: pulumi.Input[_builtins.str]
         """
@@ -1615,7 +1882,7 @@ if not MYPY:
     class WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgsDict(TypedDict):
         filter: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_MAIL and AZURE_AD_GROUPS_ID, it represents the
+        The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_ID, it represents the
         filter used to request specific groups for users from IdP. By default, all of the groups associated with the user are fetched. The
         groups should be security enabled. See https://learn.microsoft.com/en-us/graph/search-query-parameter for more details.
         """
@@ -1627,7 +1894,7 @@ class WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs:
     def __init__(__self__, *,
                  filter: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] filter: The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_MAIL and AZURE_AD_GROUPS_ID, it represents the
+        :param pulumi.Input[_builtins.str] filter: The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_ID, it represents the
                filter used to request specific groups for users from IdP. By default, all of the groups associated with the user are fetched. The
                groups should be security enabled. See https://learn.microsoft.com/en-us/graph/search-query-parameter for more details.
         """
@@ -1638,7 +1905,7 @@ class WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs:
     @pulumi.getter
     def filter(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_MAIL and AZURE_AD_GROUPS_ID, it represents the
+        The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_ID, it represents the
         filter used to request specific groups for users from IdP. By default, all of the groups associated with the user are fetched. The
         groups should be security enabled. See https://learn.microsoft.com/en-us/graph/search-query-parameter for more details.
         """

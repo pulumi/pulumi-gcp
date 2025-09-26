@@ -29,6 +29,7 @@ class WorkforcePoolProviderArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 extended_attributes_oauth2_client: Optional[pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientArgs']] = None,
                  extra_attributes_oauth2_client: Optional[pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientArgs']] = None,
                  oidc: Optional[pulumi.Input['WorkforcePoolProviderOidcArgs']] = None,
                  saml: Optional[pulumi.Input['WorkforcePoolProviderSamlArgs']] = None):
@@ -93,6 +94,17 @@ class WorkforcePoolProviderArgs:
         :param pulumi.Input[_builtins.bool] disabled: Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
                However, existing tokens still grant access.
         :param pulumi.Input[_builtins.str] display_name: A user-specified display name for the provider. Cannot exceed 32 characters.
+        :param pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientArgs'] extended_attributes_oauth2_client: The configuration for OAuth 2.0 client used to get the extended group
+               memberships for user identities. Only the `AZURE_AD_GROUPS_ID` attribute
+               type is supported. Extended groups supports a subset of Google Cloud
+               services. When the user accesses these services, extended group memberships
+               override the mapped `google.groups` attribute. Extended group memberships
+               cannot be used in attribute mapping or attribute condition expressions.
+               To keep extended group memberships up to date, extended groups are
+               retrieved when the user signs in and at regular intervals during the user's
+               active session. Each user identity in the workforce identity pool must map
+               to a unique Microsoft Entra ID user.
+               Structure is documented below.
         :param pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientArgs'] extra_attributes_oauth2_client: The configuration for OAuth 2.0 client used to get the additional user
                attributes. This should be used when users can't get the desired claims
                in authentication credentials. Currently this configuration is only
@@ -116,6 +128,8 @@ class WorkforcePoolProviderArgs:
             pulumi.set(__self__, "disabled", disabled)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if extended_attributes_oauth2_client is not None:
+            pulumi.set(__self__, "extended_attributes_oauth2_client", extended_attributes_oauth2_client)
         if extra_attributes_oauth2_client is not None:
             pulumi.set(__self__, "extra_attributes_oauth2_client", extra_attributes_oauth2_client)
         if oidc is not None:
@@ -271,6 +285,28 @@ class WorkforcePoolProviderArgs:
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="extendedAttributesOauth2Client")
+    def extended_attributes_oauth2_client(self) -> Optional[pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientArgs']]:
+        """
+        The configuration for OAuth 2.0 client used to get the extended group
+        memberships for user identities. Only the `AZURE_AD_GROUPS_ID` attribute
+        type is supported. Extended groups supports a subset of Google Cloud
+        services. When the user accesses these services, extended group memberships
+        override the mapped `google.groups` attribute. Extended group memberships
+        cannot be used in attribute mapping or attribute condition expressions.
+        To keep extended group memberships up to date, extended groups are
+        retrieved when the user signs in and at regular intervals during the user's
+        active session. Each user identity in the workforce identity pool must map
+        to a unique Microsoft Entra ID user.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "extended_attributes_oauth2_client")
+
+    @extended_attributes_oauth2_client.setter
+    def extended_attributes_oauth2_client(self, value: Optional[pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientArgs']]):
+        pulumi.set(self, "extended_attributes_oauth2_client", value)
+
+    @_builtins.property
     @pulumi.getter(name="extraAttributesOauth2Client")
     def extra_attributes_oauth2_client(self) -> Optional[pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientArgs']]:
         """
@@ -321,6 +357,7 @@ class _WorkforcePoolProviderState:
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 extended_attributes_oauth2_client: Optional[pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientArgs']] = None,
                  extra_attributes_oauth2_client: Optional[pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientArgs']] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -382,6 +419,17 @@ class _WorkforcePoolProviderState:
         :param pulumi.Input[_builtins.bool] disabled: Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
                However, existing tokens still grant access.
         :param pulumi.Input[_builtins.str] display_name: A user-specified display name for the provider. Cannot exceed 32 characters.
+        :param pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientArgs'] extended_attributes_oauth2_client: The configuration for OAuth 2.0 client used to get the extended group
+               memberships for user identities. Only the `AZURE_AD_GROUPS_ID` attribute
+               type is supported. Extended groups supports a subset of Google Cloud
+               services. When the user accesses these services, extended group memberships
+               override the mapped `google.groups` attribute. Extended group memberships
+               cannot be used in attribute mapping or attribute condition expressions.
+               To keep extended group memberships up to date, extended groups are
+               retrieved when the user signs in and at regular intervals during the user's
+               active session. Each user identity in the workforce identity pool must map
+               to a unique Microsoft Entra ID user.
+               Structure is documented below.
         :param pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientArgs'] extra_attributes_oauth2_client: The configuration for OAuth 2.0 client used to get the additional user
                attributes. This should be used when users can't get the desired claims
                in authentication credentials. Currently this configuration is only
@@ -418,6 +466,8 @@ class _WorkforcePoolProviderState:
             pulumi.set(__self__, "disabled", disabled)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if extended_attributes_oauth2_client is not None:
+            pulumi.set(__self__, "extended_attributes_oauth2_client", extended_attributes_oauth2_client)
         if extra_attributes_oauth2_client is not None:
             pulumi.set(__self__, "extra_attributes_oauth2_client", extra_attributes_oauth2_client)
         if location is not None:
@@ -540,6 +590,28 @@ class _WorkforcePoolProviderState:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="extendedAttributesOauth2Client")
+    def extended_attributes_oauth2_client(self) -> Optional[pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientArgs']]:
+        """
+        The configuration for OAuth 2.0 client used to get the extended group
+        memberships for user identities. Only the `AZURE_AD_GROUPS_ID` attribute
+        type is supported. Extended groups supports a subset of Google Cloud
+        services. When the user accesses these services, extended group memberships
+        override the mapped `google.groups` attribute. Extended group memberships
+        cannot be used in attribute mapping or attribute condition expressions.
+        To keep extended group memberships up to date, extended groups are
+        retrieved when the user signs in and at regular intervals during the user's
+        active session. Each user identity in the workforce identity pool must map
+        to a unique Microsoft Entra ID user.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "extended_attributes_oauth2_client")
+
+    @extended_attributes_oauth2_client.setter
+    def extended_attributes_oauth2_client(self, value: Optional[pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientArgs']]):
+        pulumi.set(self, "extended_attributes_oauth2_client", value)
 
     @_builtins.property
     @pulumi.getter(name="extraAttributesOauth2Client")
@@ -666,6 +738,7 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 extended_attributes_oauth2_client: Optional[pulumi.Input[Union['WorkforcePoolProviderExtendedAttributesOauth2ClientArgs', 'WorkforcePoolProviderExtendedAttributesOauth2ClientArgsDict']]] = None,
                  extra_attributes_oauth2_client: Optional[pulumi.Input[Union['WorkforcePoolProviderExtraAttributesOauth2ClientArgs', 'WorkforcePoolProviderExtraAttributesOauth2ClientArgsDict']]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  oidc: Optional[pulumi.Input[Union['WorkforcePoolProviderOidcArgs', 'WorkforcePoolProviderOidcArgsDict']]] = None,
@@ -914,6 +987,91 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                 },
             })
         ```
+        ### Iam Workforce Pool Provider Extended Attributes Oauth2 Config Client Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        pool = gcp.iam.WorkforcePool("pool",
+            workforce_pool_id="example-pool",
+            parent="organizations/123456789",
+            location="global")
+        example = gcp.iam.WorkforcePoolProvider("example",
+            workforce_pool_id=pool.workforce_pool_id,
+            location=pool.location,
+            provider_id="example-prvdr",
+            attribute_mapping={
+                "google.subject": "assertion.sub",
+            },
+            oidc={
+                "issuer_uri": "https://login.microsoftonline.com/826602fe-2101-470c-9d71-ee1343668989/v2.0",
+                "client_id": "https://analysis.windows.net/powerbi/connector/GoogleBigQuery",
+                "web_sso_config": {
+                    "response_type": "CODE",
+                    "assertion_claims_behavior": "MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS",
+                },
+                "client_secret": {
+                    "value": {
+                        "plain_text": "client-secret",
+                    },
+                },
+            },
+            extended_attributes_oauth2_client={
+                "issuer_uri": "https://login.microsoftonline.com/826602fe-2101-470c-9d71-ee1343668989/v2.0",
+                "client_id": "client-id",
+                "client_secret": {
+                    "value": {
+                        "plain_text": "client-secret",
+                    },
+                },
+                "attributes_type": "AZURE_AD_GROUPS_ID",
+            })
+        ```
+        ### Iam Workforce Pool Provider Extended Attributes Oauth2 Config Client Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        pool = gcp.iam.WorkforcePool("pool",
+            workforce_pool_id="example-pool",
+            parent="organizations/123456789",
+            location="global")
+        example = gcp.iam.WorkforcePoolProvider("example",
+            workforce_pool_id=pool.workforce_pool_id,
+            location=pool.location,
+            provider_id="example-prvdr",
+            attribute_mapping={
+                "google.subject": "assertion.sub",
+            },
+            oidc={
+                "issuer_uri": "https://login.microsoftonline.com/826602fe-2101-470c-9d71-ee1343668989/v2.0",
+                "client_id": "https://analysis.windows.net/powerbi/connector/GoogleBigQuery",
+                "client_secret": {
+                    "value": {
+                        "plain_text": "client-secret",
+                    },
+                },
+                "web_sso_config": {
+                    "response_type": "CODE",
+                    "assertion_claims_behavior": "MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS",
+                },
+            },
+            extended_attributes_oauth2_client={
+                "issuer_uri": "https://login.microsoftonline.com/826602fe-2101-470c-9d71-ee1343668989/v2.0",
+                "client_id": "client-id",
+                "client_secret": {
+                    "value": {
+                        "plain_text": "client-secret",
+                    },
+                },
+                "attributes_type": "AZURE_AD_GROUPS_ID",
+                "query_parameters": {
+                    "filter": "mail:gcp",
+                },
+            })
+        ```
 
         ## Import
 
@@ -986,6 +1144,17 @@ class WorkforcePoolProvider(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] disabled: Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
                However, existing tokens still grant access.
         :param pulumi.Input[_builtins.str] display_name: A user-specified display name for the provider. Cannot exceed 32 characters.
+        :param pulumi.Input[Union['WorkforcePoolProviderExtendedAttributesOauth2ClientArgs', 'WorkforcePoolProviderExtendedAttributesOauth2ClientArgsDict']] extended_attributes_oauth2_client: The configuration for OAuth 2.0 client used to get the extended group
+               memberships for user identities. Only the `AZURE_AD_GROUPS_ID` attribute
+               type is supported. Extended groups supports a subset of Google Cloud
+               services. When the user accesses these services, extended group memberships
+               override the mapped `google.groups` attribute. Extended group memberships
+               cannot be used in attribute mapping or attribute condition expressions.
+               To keep extended group memberships up to date, extended groups are
+               retrieved when the user signs in and at regular intervals during the user's
+               active session. Each user identity in the workforce identity pool must map
+               to a unique Microsoft Entra ID user.
+               Structure is documented below.
         :param pulumi.Input[Union['WorkforcePoolProviderExtraAttributesOauth2ClientArgs', 'WorkforcePoolProviderExtraAttributesOauth2ClientArgsDict']] extra_attributes_oauth2_client: The configuration for OAuth 2.0 client used to get the additional user
                attributes. This should be used when users can't get the desired claims
                in authentication credentials. Currently this configuration is only
@@ -1251,6 +1420,91 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                 },
             })
         ```
+        ### Iam Workforce Pool Provider Extended Attributes Oauth2 Config Client Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        pool = gcp.iam.WorkforcePool("pool",
+            workforce_pool_id="example-pool",
+            parent="organizations/123456789",
+            location="global")
+        example = gcp.iam.WorkforcePoolProvider("example",
+            workforce_pool_id=pool.workforce_pool_id,
+            location=pool.location,
+            provider_id="example-prvdr",
+            attribute_mapping={
+                "google.subject": "assertion.sub",
+            },
+            oidc={
+                "issuer_uri": "https://login.microsoftonline.com/826602fe-2101-470c-9d71-ee1343668989/v2.0",
+                "client_id": "https://analysis.windows.net/powerbi/connector/GoogleBigQuery",
+                "web_sso_config": {
+                    "response_type": "CODE",
+                    "assertion_claims_behavior": "MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS",
+                },
+                "client_secret": {
+                    "value": {
+                        "plain_text": "client-secret",
+                    },
+                },
+            },
+            extended_attributes_oauth2_client={
+                "issuer_uri": "https://login.microsoftonline.com/826602fe-2101-470c-9d71-ee1343668989/v2.0",
+                "client_id": "client-id",
+                "client_secret": {
+                    "value": {
+                        "plain_text": "client-secret",
+                    },
+                },
+                "attributes_type": "AZURE_AD_GROUPS_ID",
+            })
+        ```
+        ### Iam Workforce Pool Provider Extended Attributes Oauth2 Config Client Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        pool = gcp.iam.WorkforcePool("pool",
+            workforce_pool_id="example-pool",
+            parent="organizations/123456789",
+            location="global")
+        example = gcp.iam.WorkforcePoolProvider("example",
+            workforce_pool_id=pool.workforce_pool_id,
+            location=pool.location,
+            provider_id="example-prvdr",
+            attribute_mapping={
+                "google.subject": "assertion.sub",
+            },
+            oidc={
+                "issuer_uri": "https://login.microsoftonline.com/826602fe-2101-470c-9d71-ee1343668989/v2.0",
+                "client_id": "https://analysis.windows.net/powerbi/connector/GoogleBigQuery",
+                "client_secret": {
+                    "value": {
+                        "plain_text": "client-secret",
+                    },
+                },
+                "web_sso_config": {
+                    "response_type": "CODE",
+                    "assertion_claims_behavior": "MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS",
+                },
+            },
+            extended_attributes_oauth2_client={
+                "issuer_uri": "https://login.microsoftonline.com/826602fe-2101-470c-9d71-ee1343668989/v2.0",
+                "client_id": "client-id",
+                "client_secret": {
+                    "value": {
+                        "plain_text": "client-secret",
+                    },
+                },
+                "attributes_type": "AZURE_AD_GROUPS_ID",
+                "query_parameters": {
+                    "filter": "mail:gcp",
+                },
+            })
+        ```
 
         ## Import
 
@@ -1290,6 +1544,7 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 extended_attributes_oauth2_client: Optional[pulumi.Input[Union['WorkforcePoolProviderExtendedAttributesOauth2ClientArgs', 'WorkforcePoolProviderExtendedAttributesOauth2ClientArgsDict']]] = None,
                  extra_attributes_oauth2_client: Optional[pulumi.Input[Union['WorkforcePoolProviderExtraAttributesOauth2ClientArgs', 'WorkforcePoolProviderExtraAttributesOauth2ClientArgsDict']]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  oidc: Optional[pulumi.Input[Union['WorkforcePoolProviderOidcArgs', 'WorkforcePoolProviderOidcArgsDict']]] = None,
@@ -1310,6 +1565,7 @@ class WorkforcePoolProvider(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["disabled"] = disabled
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["extended_attributes_oauth2_client"] = extended_attributes_oauth2_client
             __props__.__dict__["extra_attributes_oauth2_client"] = extra_attributes_oauth2_client
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -1339,6 +1595,7 @@ class WorkforcePoolProvider(pulumi.CustomResource):
             description: Optional[pulumi.Input[_builtins.str]] = None,
             disabled: Optional[pulumi.Input[_builtins.bool]] = None,
             display_name: Optional[pulumi.Input[_builtins.str]] = None,
+            extended_attributes_oauth2_client: Optional[pulumi.Input[Union['WorkforcePoolProviderExtendedAttributesOauth2ClientArgs', 'WorkforcePoolProviderExtendedAttributesOauth2ClientArgsDict']]] = None,
             extra_attributes_oauth2_client: Optional[pulumi.Input[Union['WorkforcePoolProviderExtraAttributesOauth2ClientArgs', 'WorkforcePoolProviderExtraAttributesOauth2ClientArgsDict']]] = None,
             location: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1405,6 +1662,17 @@ class WorkforcePoolProvider(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] disabled: Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
                However, existing tokens still grant access.
         :param pulumi.Input[_builtins.str] display_name: A user-specified display name for the provider. Cannot exceed 32 characters.
+        :param pulumi.Input[Union['WorkforcePoolProviderExtendedAttributesOauth2ClientArgs', 'WorkforcePoolProviderExtendedAttributesOauth2ClientArgsDict']] extended_attributes_oauth2_client: The configuration for OAuth 2.0 client used to get the extended group
+               memberships for user identities. Only the `AZURE_AD_GROUPS_ID` attribute
+               type is supported. Extended groups supports a subset of Google Cloud
+               services. When the user accesses these services, extended group memberships
+               override the mapped `google.groups` attribute. Extended group memberships
+               cannot be used in attribute mapping or attribute condition expressions.
+               To keep extended group memberships up to date, extended groups are
+               retrieved when the user signs in and at regular intervals during the user's
+               active session. Each user identity in the workforce identity pool must map
+               to a unique Microsoft Entra ID user.
+               Structure is documented below.
         :param pulumi.Input[Union['WorkforcePoolProviderExtraAttributesOauth2ClientArgs', 'WorkforcePoolProviderExtraAttributesOauth2ClientArgsDict']] extra_attributes_oauth2_client: The configuration for OAuth 2.0 client used to get the additional user
                attributes. This should be used when users can't get the desired claims
                in authentication credentials. Currently this configuration is only
@@ -1440,6 +1708,7 @@ class WorkforcePoolProvider(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["disabled"] = disabled
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["extended_attributes_oauth2_client"] = extended_attributes_oauth2_client
         __props__.__dict__["extra_attributes_oauth2_client"] = extra_attributes_oauth2_client
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
@@ -1535,6 +1804,24 @@ class WorkforcePoolProvider(pulumi.CustomResource):
         A user-specified display name for the provider. Cannot exceed 32 characters.
         """
         return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="extendedAttributesOauth2Client")
+    def extended_attributes_oauth2_client(self) -> pulumi.Output[Optional['outputs.WorkforcePoolProviderExtendedAttributesOauth2Client']]:
+        """
+        The configuration for OAuth 2.0 client used to get the extended group
+        memberships for user identities. Only the `AZURE_AD_GROUPS_ID` attribute
+        type is supported. Extended groups supports a subset of Google Cloud
+        services. When the user accesses these services, extended group memberships
+        override the mapped `google.groups` attribute. Extended group memberships
+        cannot be used in attribute mapping or attribute condition expressions.
+        To keep extended group memberships up to date, extended groups are
+        retrieved when the user signs in and at regular intervals during the user's
+        active session. Each user identity in the workforce identity pool must map
+        to a unique Microsoft Entra ID user.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "extended_attributes_oauth2_client")
 
     @_builtins.property
     @pulumi.getter(name="extraAttributesOauth2Client")

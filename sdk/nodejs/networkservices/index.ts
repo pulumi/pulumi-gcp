@@ -80,6 +80,11 @@ export type TlsRoute = import("./tlsRoute").TlsRoute;
 export const TlsRoute: typeof import("./tlsRoute").TlsRoute = null as any;
 utilities.lazyLoad(exports, ["TlsRoute"], () => require("./tlsRoute"));
 
+export { WasmPluginArgs, WasmPluginState } from "./wasmPlugin";
+export type WasmPlugin = import("./wasmPlugin").WasmPlugin;
+export const WasmPlugin: typeof import("./wasmPlugin").WasmPlugin = null as any;
+utilities.lazyLoad(exports, ["WasmPlugin"], () => require("./wasmPlugin"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -115,6 +120,8 @@ const _module = {
                 return new TcpRoute(name, <any>undefined, { urn })
             case "gcp:networkservices/tlsRoute:TlsRoute":
                 return new TlsRoute(name, <any>undefined, { urn })
+            case "gcp:networkservices/wasmPlugin:WasmPlugin":
+                return new WasmPlugin(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -135,3 +142,4 @@ pulumi.runtime.registerResourceModule("gcp", "networkservices/serviceBinding", _
 pulumi.runtime.registerResourceModule("gcp", "networkservices/serviceLbPolicies", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/tcpRoute", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/tlsRoute", _module)
+pulumi.runtime.registerResourceModule("gcp", "networkservices/wasmPlugin", _module)

@@ -65,6 +65,10 @@ import com.pulumi.gcp.compute.inputs.GetInstanceTemplateIamPolicyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetInstanceTemplatePlainArgs;
 import com.pulumi.gcp.compute.inputs.GetInstantSnapshotIamPolicyArgs;
 import com.pulumi.gcp.compute.inputs.GetInstantSnapshotIamPolicyPlainArgs;
+import com.pulumi.gcp.compute.inputs.GetInterconnectLocationArgs;
+import com.pulumi.gcp.compute.inputs.GetInterconnectLocationPlainArgs;
+import com.pulumi.gcp.compute.inputs.GetInterconnectLocationsArgs;
+import com.pulumi.gcp.compute.inputs.GetInterconnectLocationsPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetMachineImageIamPolicyArgs;
 import com.pulumi.gcp.compute.inputs.GetMachineImageIamPolicyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetMachineTypesArgs;
@@ -167,6 +171,8 @@ import com.pulumi.gcp.compute.outputs.GetInstanceSerialPortResult;
 import com.pulumi.gcp.compute.outputs.GetInstanceTemplateIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetInstanceTemplateResult;
 import com.pulumi.gcp.compute.outputs.GetInstantSnapshotIamPolicyResult;
+import com.pulumi.gcp.compute.outputs.GetInterconnectLocationResult;
+import com.pulumi.gcp.compute.outputs.GetInterconnectLocationsResult;
 import com.pulumi.gcp.compute.outputs.GetLBIPRangesResult;
 import com.pulumi.gcp.compute.outputs.GetMachineImageIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetMachineTypesResult;
@@ -7779,6 +7785,538 @@ public final class ComputeFunctions {
      */
     public static CompletableFuture<GetInstantSnapshotIamPolicyResult> getInstantSnapshotIamPolicyPlain(GetInstantSnapshotIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getInstantSnapshotIamPolicy:getInstantSnapshotIamPolicy", TypeShape.of(GetInstantSnapshotIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get the details of a single interconnect location. For more information see
+     * the official [API](https://cloud.google.com/compute/docs/reference/rest/v1/interconnectLocations/get) documentation.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInterconnectLocationArgs;
+     * import com.pulumi.gcp.compute.Interconnect;
+     * import com.pulumi.gcp.compute.InterconnectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = ComputeFunctions.getInterconnectLocation(GetInterconnectLocationArgs.builder()
+     *             .name("iad-zone1-1")
+     *             .build());
+     * 
+     *         var thisInterconnect = new Interconnect("thisInterconnect", InterconnectArgs.builder()
+     *             .project(this_.project())
+     *             .location(this_.selfLink())
+     *             .name("my-dedicated-connection-1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetInterconnectLocationResult> getInterconnectLocation(GetInterconnectLocationArgs args) {
+        return getInterconnectLocation(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get the details of a single interconnect location. For more information see
+     * the official [API](https://cloud.google.com/compute/docs/reference/rest/v1/interconnectLocations/get) documentation.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInterconnectLocationArgs;
+     * import com.pulumi.gcp.compute.Interconnect;
+     * import com.pulumi.gcp.compute.InterconnectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = ComputeFunctions.getInterconnectLocation(GetInterconnectLocationArgs.builder()
+     *             .name("iad-zone1-1")
+     *             .build());
+     * 
+     *         var thisInterconnect = new Interconnect("thisInterconnect", InterconnectArgs.builder()
+     *             .project(this_.project())
+     *             .location(this_.selfLink())
+     *             .name("my-dedicated-connection-1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetInterconnectLocationResult> getInterconnectLocationPlain(GetInterconnectLocationPlainArgs args) {
+        return getInterconnectLocationPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get the details of a single interconnect location. For more information see
+     * the official [API](https://cloud.google.com/compute/docs/reference/rest/v1/interconnectLocations/get) documentation.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInterconnectLocationArgs;
+     * import com.pulumi.gcp.compute.Interconnect;
+     * import com.pulumi.gcp.compute.InterconnectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = ComputeFunctions.getInterconnectLocation(GetInterconnectLocationArgs.builder()
+     *             .name("iad-zone1-1")
+     *             .build());
+     * 
+     *         var thisInterconnect = new Interconnect("thisInterconnect", InterconnectArgs.builder()
+     *             .project(this_.project())
+     *             .location(this_.selfLink())
+     *             .name("my-dedicated-connection-1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetInterconnectLocationResult> getInterconnectLocation(GetInterconnectLocationArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getInterconnectLocation:getInterconnectLocation", TypeShape.of(GetInterconnectLocationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get the details of a single interconnect location. For more information see
+     * the official [API](https://cloud.google.com/compute/docs/reference/rest/v1/interconnectLocations/get) documentation.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInterconnectLocationArgs;
+     * import com.pulumi.gcp.compute.Interconnect;
+     * import com.pulumi.gcp.compute.InterconnectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = ComputeFunctions.getInterconnectLocation(GetInterconnectLocationArgs.builder()
+     *             .name("iad-zone1-1")
+     *             .build());
+     * 
+     *         var thisInterconnect = new Interconnect("thisInterconnect", InterconnectArgs.builder()
+     *             .project(this_.project())
+     *             .location(this_.selfLink())
+     *             .name("my-dedicated-connection-1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetInterconnectLocationResult> getInterconnectLocation(GetInterconnectLocationArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getInterconnectLocation:getInterconnectLocation", TypeShape.of(GetInterconnectLocationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get the details of a single interconnect location. For more information see
+     * the official [API](https://cloud.google.com/compute/docs/reference/rest/v1/interconnectLocations/get) documentation.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInterconnectLocationArgs;
+     * import com.pulumi.gcp.compute.Interconnect;
+     * import com.pulumi.gcp.compute.InterconnectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = ComputeFunctions.getInterconnectLocation(GetInterconnectLocationArgs.builder()
+     *             .name("iad-zone1-1")
+     *             .build());
+     * 
+     *         var thisInterconnect = new Interconnect("thisInterconnect", InterconnectArgs.builder()
+     *             .project(this_.project())
+     *             .location(this_.selfLink())
+     *             .name("my-dedicated-connection-1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetInterconnectLocationResult> getInterconnectLocationPlain(GetInterconnectLocationPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getInterconnectLocation:getInterconnectLocation", TypeShape.of(GetInterconnectLocationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a list of interconnect locations. For more information see
+     * the official [API](https://cloud.google.com/compute/docs/reference/rest/v1/interconnectLocations/list) documentation.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInterconnectLocationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = ComputeFunctions.getInterconnectLocations(GetInterconnectLocationsArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("interconnectLocations", all.locations());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetInterconnectLocationsResult> getInterconnectLocations() {
+        return getInterconnectLocations(GetInterconnectLocationsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Get a list of interconnect locations. For more information see
+     * the official [API](https://cloud.google.com/compute/docs/reference/rest/v1/interconnectLocations/list) documentation.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInterconnectLocationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = ComputeFunctions.getInterconnectLocations(GetInterconnectLocationsArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("interconnectLocations", all.locations());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetInterconnectLocationsResult> getInterconnectLocationsPlain() {
+        return getInterconnectLocationsPlain(GetInterconnectLocationsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Get a list of interconnect locations. For more information see
+     * the official [API](https://cloud.google.com/compute/docs/reference/rest/v1/interconnectLocations/list) documentation.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInterconnectLocationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = ComputeFunctions.getInterconnectLocations(GetInterconnectLocationsArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("interconnectLocations", all.locations());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetInterconnectLocationsResult> getInterconnectLocations(GetInterconnectLocationsArgs args) {
+        return getInterconnectLocations(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get a list of interconnect locations. For more information see
+     * the official [API](https://cloud.google.com/compute/docs/reference/rest/v1/interconnectLocations/list) documentation.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInterconnectLocationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = ComputeFunctions.getInterconnectLocations(GetInterconnectLocationsArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("interconnectLocations", all.locations());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetInterconnectLocationsResult> getInterconnectLocationsPlain(GetInterconnectLocationsPlainArgs args) {
+        return getInterconnectLocationsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get a list of interconnect locations. For more information see
+     * the official [API](https://cloud.google.com/compute/docs/reference/rest/v1/interconnectLocations/list) documentation.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInterconnectLocationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = ComputeFunctions.getInterconnectLocations(GetInterconnectLocationsArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("interconnectLocations", all.locations());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetInterconnectLocationsResult> getInterconnectLocations(GetInterconnectLocationsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getInterconnectLocations:getInterconnectLocations", TypeShape.of(GetInterconnectLocationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a list of interconnect locations. For more information see
+     * the official [API](https://cloud.google.com/compute/docs/reference/rest/v1/interconnectLocations/list) documentation.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInterconnectLocationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = ComputeFunctions.getInterconnectLocations(GetInterconnectLocationsArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("interconnectLocations", all.locations());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetInterconnectLocationsResult> getInterconnectLocations(GetInterconnectLocationsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getInterconnectLocations:getInterconnectLocations", TypeShape.of(GetInterconnectLocationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a list of interconnect locations. For more information see
+     * the official [API](https://cloud.google.com/compute/docs/reference/rest/v1/interconnectLocations/list) documentation.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInterconnectLocationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = ComputeFunctions.getInterconnectLocations(GetInterconnectLocationsArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("interconnectLocations", all.locations());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetInterconnectLocationsResult> getInterconnectLocationsPlain(GetInterconnectLocationsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getInterconnectLocations:getInterconnectLocations", TypeShape.of(GetInterconnectLocationsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to access IP ranges in your firewall rules.

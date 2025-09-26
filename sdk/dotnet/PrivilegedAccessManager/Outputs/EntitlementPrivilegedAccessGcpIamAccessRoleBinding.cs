@@ -19,6 +19,11 @@ namespace Pulumi.Gcp.PrivilegedAccessManager.Outputs
         /// </summary>
         public readonly string? ConditionExpression;
         /// <summary>
+        /// (Output, Beta)
+        /// Output Only. The ID corresponding to this role binding in the policy binding. This will be unique within an entitlement across time. Gets re-generated each time the entitlement is updated.
+        /// </summary>
+        public readonly string? Id;
+        /// <summary>
         /// IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
         /// </summary>
         public readonly string Role;
@@ -27,9 +32,12 @@ namespace Pulumi.Gcp.PrivilegedAccessManager.Outputs
         private EntitlementPrivilegedAccessGcpIamAccessRoleBinding(
             string? conditionExpression,
 
+            string? id,
+
             string role)
         {
             ConditionExpression = conditionExpression;
+            Id = id;
             Role = role;
         }
     }

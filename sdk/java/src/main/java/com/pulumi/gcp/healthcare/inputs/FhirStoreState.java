@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.healthcare.inputs.FhirStoreConsentConfigArgs;
 import com.pulumi.gcp.healthcare.inputs.FhirStoreNotificationConfigArgs;
 import com.pulumi.gcp.healthcare.inputs.FhirStoreStreamConfigArgs;
+import com.pulumi.gcp.healthcare.inputs.FhirStoreValidationConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -383,6 +384,23 @@ public final class FhirStoreState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configuration for how to validate incoming FHIR resources against configured profiles.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="validationConfig")
+    private @Nullable Output<FhirStoreValidationConfigArgs> validationConfig;
+
+    /**
+     * @return Configuration for how to validate incoming FHIR resources against configured profiles.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<FhirStoreValidationConfigArgs>> validationConfig() {
+        return Optional.ofNullable(this.validationConfig);
+    }
+
+    /**
      * The FHIR specification version.
      * Default value is `STU3`.
      * Possible values are: `DSTU2`, `STU3`, `R4`.
@@ -421,6 +439,7 @@ public final class FhirStoreState extends com.pulumi.resources.ResourceArgs {
         this.pulumiLabels = $.pulumiLabels;
         this.selfLink = $.selfLink;
         this.streamConfigs = $.streamConfigs;
+        this.validationConfig = $.validationConfig;
         this.version = $.version;
     }
 
@@ -930,6 +949,29 @@ public final class FhirStoreState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder streamConfigs(FhirStoreStreamConfigArgs... streamConfigs) {
             return streamConfigs(List.of(streamConfigs));
+        }
+
+        /**
+         * @param validationConfig Configuration for how to validate incoming FHIR resources against configured profiles.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder validationConfig(@Nullable Output<FhirStoreValidationConfigArgs> validationConfig) {
+            $.validationConfig = validationConfig;
+            return this;
+        }
+
+        /**
+         * @param validationConfig Configuration for how to validate incoming FHIR resources against configured profiles.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder validationConfig(FhirStoreValidationConfigArgs validationConfig) {
+            return validationConfig(Output.of(validationConfig));
         }
 
         /**

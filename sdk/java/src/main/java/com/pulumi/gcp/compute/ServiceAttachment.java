@@ -12,6 +12,8 @@ import com.pulumi.gcp.compute.ServiceAttachmentArgs;
 import com.pulumi.gcp.compute.inputs.ServiceAttachmentState;
 import com.pulumi.gcp.compute.outputs.ServiceAttachmentConnectedEndpoint;
 import com.pulumi.gcp.compute.outputs.ServiceAttachmentConsumerAcceptList;
+import com.pulumi.gcp.compute.outputs.ServiceAttachmentPscServiceAttachmentId;
+import com.pulumi.gcp.compute.outputs.ServiceAttachmentTunnelingConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -498,6 +500,105 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Service Attachment Tunneling Config
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckTcpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.ForwardingRule;
+ * import com.pulumi.gcp.compute.ForwardingRuleArgs;
+ * import com.pulumi.gcp.compute.ServiceAttachment;
+ * import com.pulumi.gcp.compute.ServiceAttachmentArgs;
+ * import com.pulumi.gcp.compute.inputs.ServiceAttachmentTunnelingConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var producerServiceHealthCheck = new HealthCheck("producerServiceHealthCheck", HealthCheckArgs.builder()
+ *             .name("producer-service-health-check")
+ *             .checkIntervalSec(1)
+ *             .timeoutSec(1)
+ *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var producerServiceBackend = new RegionBackendService("producerServiceBackend", RegionBackendServiceArgs.builder()
+ *             .name("producer-service")
+ *             .region("us-west2")
+ *             .healthChecks(producerServiceHealthCheck.id())
+ *             .build());
+ * 
+ *         var pscIlbNetwork = new Network("pscIlbNetwork", NetworkArgs.builder()
+ *             .name("psc-ilb-network")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var pscIlbProducerSubnetwork = new Subnetwork("pscIlbProducerSubnetwork", SubnetworkArgs.builder()
+ *             .name("psc-ilb-producer-subnetwork")
+ *             .region("us-west2")
+ *             .network(pscIlbNetwork.id())
+ *             .ipCidrRange("10.0.0.0/16")
+ *             .build());
+ * 
+ *         var pscIlbTargetService = new ForwardingRule("pscIlbTargetService", ForwardingRuleArgs.builder()
+ *             .name("producer-forwarding-rule")
+ *             .region("us-west2")
+ *             .loadBalancingScheme("INTERNAL")
+ *             .backendService(producerServiceBackend.id())
+ *             .allPorts(true)
+ *             .network(pscIlbNetwork.name())
+ *             .subnetwork(pscIlbProducerSubnetwork.name())
+ *             .build());
+ * 
+ *         var pscIlbNat = new Subnetwork("pscIlbNat", SubnetworkArgs.builder()
+ *             .name("psc-ilb-nat")
+ *             .region("us-west2")
+ *             .network(pscIlbNetwork.id())
+ *             .purpose("PRIVATE_SERVICE_CONNECT")
+ *             .ipCidrRange("10.1.0.0/16")
+ *             .build());
+ * 
+ *         var pscIlbServiceAttachment = new ServiceAttachment("pscIlbServiceAttachment", ServiceAttachmentArgs.builder()
+ *             .name("my-psc-ilb")
+ *             .region("us-west2")
+ *             .description("A service attachment configured with tunneling")
+ *             .enableProxyProtocol(false)
+ *             .connectionPreference("ACCEPT_AUTOMATIC")
+ *             .natSubnets(pscIlbNat.id())
+ *             .targetService(pscIlbTargetService.id())
+ *             .tunnelingConfig(ServiceAttachmentTunnelingConfigArgs.builder()
+ *                 .routingMode("REGIONAL")
+ *                 .encapsulationProfile("IPV4")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Service Attachment Cross Region Ilb
  * 
  * <pre>
@@ -866,6 +967,22 @@ public class ServiceAttachment extends com.pulumi.resources.CustomResource {
         return this.propagatedConnectionLimit;
     }
     /**
+     * An 128-bit global unique ID of the PSC service attachment.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="pscServiceAttachmentIds", refs={List.class,ServiceAttachmentPscServiceAttachmentId.class}, tree="[0,1]")
+    private Output<List<ServiceAttachmentPscServiceAttachmentId>> pscServiceAttachmentIds;
+
+    /**
+     * @return An 128-bit global unique ID of the PSC service attachment.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<ServiceAttachmentPscServiceAttachmentId>> pscServiceAttachmentIds() {
+        return this.pscServiceAttachmentIds;
+    }
+    /**
      * This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
      * If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
      * If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
@@ -944,6 +1061,22 @@ public class ServiceAttachment extends com.pulumi.resources.CustomResource {
      */
     public Output<String> targetService() {
         return this.targetService;
+    }
+    /**
+     * Tunneling configuration for this service attachment.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="tunnelingConfig", refs={ServiceAttachmentTunnelingConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ServiceAttachmentTunnelingConfig> tunnelingConfig;
+
+    /**
+     * @return Tunneling configuration for this service attachment.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ServiceAttachmentTunnelingConfig>> tunnelingConfig() {
+        return Codegen.optional(this.tunnelingConfig);
     }
 
     /**

@@ -66,7 +66,9 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The reference to the service that runs the extension. Must be a reference to a backend service
+        /// The reference to the service that runs the extension.
+        /// * To configure a callout extension, service must be a fully-qualified reference to a backend service.
+        /// * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
         /// </summary>
         [Input("service", required: true)]
         public Input<string> Service { get; set; } = null!;

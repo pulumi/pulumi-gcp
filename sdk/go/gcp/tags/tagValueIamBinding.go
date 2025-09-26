@@ -295,6 +295,7 @@ type TagValueIamBinding struct {
 	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
 	Members pulumi.StringArrayOutput `pulumi:"members"`
 	// The role that should be applied. Only one
 	// `tags.TagValueIamBinding` can be used per role. Note that custom roles must be of the format
@@ -357,6 +358,7 @@ type tagValueIamBindingState struct {
 	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
 	Members []string `pulumi:"members"`
 	// The role that should be applied. Only one
 	// `tags.TagValueIamBinding` can be used per role. Note that custom roles must be of the format
@@ -381,6 +383,7 @@ type TagValueIamBindingState struct {
 	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
 	Members pulumi.StringArrayInput
 	// The role that should be applied. Only one
 	// `tags.TagValueIamBinding` can be used per role. Note that custom roles must be of the format
@@ -407,6 +410,7 @@ type tagValueIamBindingArgs struct {
 	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
 	Members []string `pulumi:"members"`
 	// The role that should be applied. Only one
 	// `tags.TagValueIamBinding` can be used per role. Note that custom roles must be of the format
@@ -430,6 +434,7 @@ type TagValueIamBindingArgs struct {
 	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
 	Members pulumi.StringArrayInput
 	// The role that should be applied. Only one
 	// `tags.TagValueIamBinding` can be used per role. Note that custom roles must be of the format
@@ -546,6 +551,7 @@ func (o TagValueIamBindingOutput) Etag() pulumi.StringOutput {
 // * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 // * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 // * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
 func (o TagValueIamBindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TagValueIamBinding) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
 }

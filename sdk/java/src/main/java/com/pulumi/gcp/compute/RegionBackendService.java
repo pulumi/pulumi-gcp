@@ -1527,7 +1527,9 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
     }
     /**
      * The URL of the network to which this backend service belongs.
-     * This field can only be specified when the load balancing scheme is set to INTERNAL.
+     * This field must be set for Internal Passthrough Network Load Balancers when the haPolicy is enabled, and for External Passthrough Network Load Balancers when the haPolicy fastIpMove is enabled.
+     * This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
+     * Changes to this field force recreation of the resource.
      * 
      */
     @Export(name="network", refs={String.class}, tree="[0]")
@@ -1535,7 +1537,9 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The URL of the network to which this backend service belongs.
-     * This field can only be specified when the load balancing scheme is set to INTERNAL.
+     * This field must be set for Internal Passthrough Network Load Balancers when the haPolicy is enabled, and for External Passthrough Network Load Balancers when the haPolicy fastIpMove is enabled.
+     * This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
+     * Changes to this field force recreation of the resource.
      * 
      */
     public Output<Optional<String>> network() {

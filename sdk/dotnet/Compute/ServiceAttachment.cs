@@ -448,6 +448,89 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Service Attachment Tunneling Config
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var producerServiceHealthCheck = new Gcp.Compute.HealthCheck("producer_service_health_check", new()
+    ///     {
+    ///         Name = "producer-service-health-check",
+    ///         CheckIntervalSec = 1,
+    ///         TimeoutSec = 1,
+    ///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var producerServiceBackend = new Gcp.Compute.RegionBackendService("producer_service_backend", new()
+    ///     {
+    ///         Name = "producer-service",
+    ///         Region = "us-west2",
+    ///         HealthChecks = producerServiceHealthCheck.Id,
+    ///     });
+    /// 
+    ///     var pscIlbNetwork = new Gcp.Compute.Network("psc_ilb_network", new()
+    ///     {
+    ///         Name = "psc-ilb-network",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var pscIlbProducerSubnetwork = new Gcp.Compute.Subnetwork("psc_ilb_producer_subnetwork", new()
+    ///     {
+    ///         Name = "psc-ilb-producer-subnetwork",
+    ///         Region = "us-west2",
+    ///         Network = pscIlbNetwork.Id,
+    ///         IpCidrRange = "10.0.0.0/16",
+    ///     });
+    /// 
+    ///     var pscIlbTargetService = new Gcp.Compute.ForwardingRule("psc_ilb_target_service", new()
+    ///     {
+    ///         Name = "producer-forwarding-rule",
+    ///         Region = "us-west2",
+    ///         LoadBalancingScheme = "INTERNAL",
+    ///         BackendService = producerServiceBackend.Id,
+    ///         AllPorts = true,
+    ///         Network = pscIlbNetwork.Name,
+    ///         Subnetwork = pscIlbProducerSubnetwork.Name,
+    ///     });
+    /// 
+    ///     var pscIlbNat = new Gcp.Compute.Subnetwork("psc_ilb_nat", new()
+    ///     {
+    ///         Name = "psc-ilb-nat",
+    ///         Region = "us-west2",
+    ///         Network = pscIlbNetwork.Id,
+    ///         Purpose = "PRIVATE_SERVICE_CONNECT",
+    ///         IpCidrRange = "10.1.0.0/16",
+    ///     });
+    /// 
+    ///     var pscIlbServiceAttachment = new Gcp.Compute.ServiceAttachment("psc_ilb_service_attachment", new()
+    ///     {
+    ///         Name = "my-psc-ilb",
+    ///         Region = "us-west2",
+    ///         Description = "A service attachment configured with tunneling",
+    ///         EnableProxyProtocol = false,
+    ///         ConnectionPreference = "ACCEPT_AUTOMATIC",
+    ///         NatSubnets = new[]
+    ///         {
+    ///             pscIlbNat.Id,
+    ///         },
+    ///         TargetService = pscIlbTargetService.Id,
+    ///         TunnelingConfig = new Gcp.Compute.Inputs.ServiceAttachmentTunnelingConfigArgs
+    ///         {
+    ///             RoutingMode = "REGIONAL",
+    ///             EncapsulationProfile = "IPV4",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Service Attachment Cross Region Ilb
     /// 
     /// ```csharp
@@ -684,6 +767,13 @@ namespace Pulumi.Gcp.Compute
         public Output<int> PropagatedConnectionLimit { get; private set; } = null!;
 
         /// <summary>
+        /// An 128-bit global unique ID of the PSC service attachment.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("pscServiceAttachmentIds")]
+        public Output<ImmutableArray<Outputs.ServiceAttachmentPscServiceAttachmentId>> PscServiceAttachmentIds { get; private set; } = null!;
+
+        /// <summary>
         /// This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
         /// If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
         /// If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
@@ -717,6 +807,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("targetService")]
         public Output<string> TargetService { get; private set; } = null!;
+
+        /// <summary>
+        /// Tunneling configuration for this service attachment.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("tunnelingConfig")]
+        public Output<Outputs.ServiceAttachmentTunnelingConfig?> TunnelingConfig { get; private set; } = null!;
 
 
         /// <summary>
@@ -896,6 +993,13 @@ namespace Pulumi.Gcp.Compute
         [Input("targetService", required: true)]
         public Input<string> TargetService { get; set; } = null!;
 
+        /// <summary>
+        /// Tunneling configuration for this service attachment.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("tunnelingConfig")]
+        public Input<Inputs.ServiceAttachmentTunnelingConfigArgs>? TunnelingConfig { get; set; }
+
         public ServiceAttachmentArgs()
         {
         }
@@ -1028,6 +1132,19 @@ namespace Pulumi.Gcp.Compute
         [Input("propagatedConnectionLimit")]
         public Input<int>? PropagatedConnectionLimit { get; set; }
 
+        [Input("pscServiceAttachmentIds")]
+        private InputList<Inputs.ServiceAttachmentPscServiceAttachmentIdGetArgs>? _pscServiceAttachmentIds;
+
+        /// <summary>
+        /// An 128-bit global unique ID of the PSC service attachment.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ServiceAttachmentPscServiceAttachmentIdGetArgs> PscServiceAttachmentIds
+        {
+            get => _pscServiceAttachmentIds ?? (_pscServiceAttachmentIds = new InputList<Inputs.ServiceAttachmentPscServiceAttachmentIdGetArgs>());
+            set => _pscServiceAttachmentIds = value;
+        }
+
         /// <summary>
         /// This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
         /// If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
@@ -1062,6 +1179,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("targetService")]
         public Input<string>? TargetService { get; set; }
+
+        /// <summary>
+        /// Tunneling configuration for this service attachment.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("tunnelingConfig")]
+        public Input<Inputs.ServiceAttachmentTunnelingConfigGetArgs>? TunnelingConfig { get; set; }
 
         public ServiceAttachmentState()
         {

@@ -82,6 +82,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string ProvisioningModel;
         /// <summary>
+        /// Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+        /// </summary>
+        public readonly bool SkipGuestOsShutdown;
+        /// <summary>
         /// Specifies the timestamp, when the instance will be terminated,
         /// in RFC3339 text format. If specified, the instance termination action
         /// will be performed at the termination time.
@@ -118,6 +122,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string provisioningModel,
 
+            bool skipGuestOsShutdown,
+
             string terminationTime)
         {
             AutomaticRestart = automaticRestart;
@@ -134,6 +140,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             OnInstanceStopActions = onInstanceStopActions;
             Preemptible = preemptible;
             ProvisioningModel = provisioningModel;
+            SkipGuestOsShutdown = skipGuestOsShutdown;
             TerminationTime = terminationTime;
         }
     }

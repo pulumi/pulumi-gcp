@@ -2705,6 +2705,8 @@ class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets(di
         suggest = None
         if key == "datasetTemplate":
             suggest = "dataset_template"
+        elif key == "projectId":
+            suggest = "project_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets. Access the value via the '{suggest}' property getter instead.")
@@ -2718,12 +2720,16 @@ class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets(di
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 dataset_template: 'outputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate'):
+                 dataset_template: 'outputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate',
+                 project_id: Optional[_builtins.str] = None):
         """
         :param 'StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs' dataset_template: Dataset template used for dynamic dataset creation.
                Structure is documented below.
+        :param _builtins.str project_id: Optional. The project id of the BigQuery dataset. If not specified, the project will be inferred from the stream resource.
         """
         pulumi.set(__self__, "dataset_template", dataset_template)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
 
     @_builtins.property
     @pulumi.getter(name="datasetTemplate")
@@ -2733,6 +2739,14 @@ class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets(di
         Structure is documented below.
         """
         return pulumi.get(self, "dataset_template")
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[_builtins.str]:
+        """
+        Optional. The project id of the BigQuery dataset. If not specified, the project will be inferred from the stream resource.
+        """
+        return pulumi.get(self, "project_id")
 
 
 @pulumi.output_type

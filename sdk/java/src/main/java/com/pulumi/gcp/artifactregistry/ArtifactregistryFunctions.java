@@ -15,6 +15,8 @@ import com.pulumi.gcp.artifactregistry.inputs.GetDockerImagesArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetDockerImagesPlainArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetLocationsArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetLocationsPlainArgs;
+import com.pulumi.gcp.artifactregistry.inputs.GetMavenArtifactArgs;
+import com.pulumi.gcp.artifactregistry.inputs.GetMavenArtifactPlainArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetNpmPackageArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetNpmPackagePlainArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetPackageArgs;
@@ -36,6 +38,7 @@ import com.pulumi.gcp.artifactregistry.inputs.GetVersionPlainArgs;
 import com.pulumi.gcp.artifactregistry.outputs.GetDockerImageResult;
 import com.pulumi.gcp.artifactregistry.outputs.GetDockerImagesResult;
 import com.pulumi.gcp.artifactregistry.outputs.GetLocationsResult;
+import com.pulumi.gcp.artifactregistry.outputs.GetMavenArtifactResult;
 import com.pulumi.gcp.artifactregistry.outputs.GetNpmPackageResult;
 import com.pulumi.gcp.artifactregistry.outputs.GetPackageResult;
 import com.pulumi.gcp.artifactregistry.outputs.GetPythonPackageResult;
@@ -1219,6 +1222,41 @@ public final class ArtifactregistryFunctions {
      */
     public static CompletableFuture<GetLocationsResult> getLocationsPlain(GetLocationsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:artifactregistry/getLocations:getLocations", TypeShape.of(GetLocationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source fetches information from a provided Artifact Registry repository, based on a the latest version of the artifact and optional version.
+     * 
+     */
+    public static Output<GetMavenArtifactResult> getMavenArtifact(GetMavenArtifactArgs args) {
+        return getMavenArtifact(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source fetches information from a provided Artifact Registry repository, based on a the latest version of the artifact and optional version.
+     * 
+     */
+    public static CompletableFuture<GetMavenArtifactResult> getMavenArtifactPlain(GetMavenArtifactPlainArgs args) {
+        return getMavenArtifactPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source fetches information from a provided Artifact Registry repository, based on a the latest version of the artifact and optional version.
+     * 
+     */
+    public static Output<GetMavenArtifactResult> getMavenArtifact(GetMavenArtifactArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:artifactregistry/getMavenArtifact:getMavenArtifact", TypeShape.of(GetMavenArtifactResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source fetches information from a provided Artifact Registry repository, based on a the latest version of the artifact and optional version.
+     * 
+     */
+    public static Output<GetMavenArtifactResult> getMavenArtifact(GetMavenArtifactArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:artifactregistry/getMavenArtifact:getMavenArtifact", TypeShape.of(GetMavenArtifactResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source fetches information from a provided Artifact Registry repository, based on a the latest version of the artifact and optional version.
+     * 
+     */
+    public static CompletableFuture<GetMavenArtifactResult> getMavenArtifactPlain(GetMavenArtifactPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:artifactregistry/getMavenArtifact:getMavenArtifact", TypeShape.of(GetMavenArtifactResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source fetches information from a provided Artifact Registry repository, based on a the latest version of the package and optional version.

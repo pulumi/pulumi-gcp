@@ -159,6 +159,42 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Healthcare Fhir Store Validation Config
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const topic = new gcp.pubsub.Topic("topic", {name: "fhir-notifications"});
+ * const dataset = new gcp.healthcare.Dataset("dataset", {
+ *     name: "example-dataset",
+ *     location: "us-central1",
+ * });
+ * const _default = new gcp.healthcare.FhirStore("default", {
+ *     name: "example-fhir-store",
+ *     dataset: dataset.id,
+ *     version: "R4",
+ *     complexDataTypeReferenceParsing: "DISABLED",
+ *     enableUpdateCreate: false,
+ *     disableReferentialIntegrity: false,
+ *     disableResourceVersioning: false,
+ *     enableHistoryImport: false,
+ *     defaultSearchHandlingStrict: false,
+ *     notificationConfigs: [{
+ *         pubsubTopic: topic.id,
+ *     }],
+ *     labels: {
+ *         label1: "labelvalue1",
+ *     },
+ *     validationConfig: {
+ *         disableProfileValidation: true,
+ *         enabledImplementationGuides: [],
+ *         disableRequiredFieldValidation: true,
+ *         disableReferenceTypeValidation: true,
+ *         disableFhirpathValidation: true,
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -326,6 +362,11 @@ export class FhirStore extends pulumi.CustomResource {
      */
     declare public readonly streamConfigs: pulumi.Output<outputs.healthcare.FhirStoreStreamConfig[] | undefined>;
     /**
+     * Configuration for how to validate incoming FHIR resources against configured profiles.
+     * Structure is documented below.
+     */
+    declare public readonly validationConfig: pulumi.Output<outputs.healthcare.FhirStoreValidationConfig | undefined>;
+    /**
      * The FHIR specification version.
      * Default value is `STU3`.
      * Possible values are: `DSTU2`, `STU3`, `R4`.
@@ -362,6 +403,7 @@ export class FhirStore extends pulumi.CustomResource {
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["selfLink"] = state?.selfLink;
             resourceInputs["streamConfigs"] = state?.streamConfigs;
+            resourceInputs["validationConfig"] = state?.validationConfig;
             resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as FhirStoreArgs | undefined;
@@ -382,6 +424,7 @@ export class FhirStore extends pulumi.CustomResource {
             resourceInputs["notificationConfig"] = args?.notificationConfig;
             resourceInputs["notificationConfigs"] = args?.notificationConfigs;
             resourceInputs["streamConfigs"] = args?.streamConfigs;
+            resourceInputs["validationConfig"] = args?.validationConfig;
             resourceInputs["version"] = args?.version;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
@@ -518,6 +561,11 @@ export interface FhirStoreState {
      */
     streamConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.FhirStoreStreamConfig>[]>;
     /**
+     * Configuration for how to validate incoming FHIR resources against configured profiles.
+     * Structure is documented below.
+     */
+    validationConfig?: pulumi.Input<inputs.healthcare.FhirStoreValidationConfig>;
+    /**
      * The FHIR specification version.
      * Default value is `STU3`.
      * Possible values are: `DSTU2`, `STU3`, `R4`.
@@ -635,6 +683,11 @@ export interface FhirStoreArgs {
      * Structure is documented below.
      */
     streamConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.FhirStoreStreamConfig>[]>;
+    /**
+     * Configuration for how to validate incoming FHIR resources against configured profiles.
+     * Structure is documented below.
+     */
+    validationConfig?: pulumi.Input<inputs.healthcare.FhirStoreValidationConfig>;
     /**
      * The FHIR specification version.
      * Default value is `STU3`.

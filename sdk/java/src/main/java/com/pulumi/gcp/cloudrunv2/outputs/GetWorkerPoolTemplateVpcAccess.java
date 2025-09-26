@@ -13,6 +13,11 @@ import java.util.Objects;
 @CustomType
 public final class GetWorkerPoolTemplateVpcAccess {
     /**
+     * @return VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+     * 
+     */
+    private String connector;
+    /**
      * @return Traffic VPC egress settings. Possible values: [&#34;ALL_TRAFFIC&#34;, &#34;PRIVATE_RANGES_ONLY&#34;]
      * 
      */
@@ -24,6 +29,13 @@ public final class GetWorkerPoolTemplateVpcAccess {
     private List<GetWorkerPoolTemplateVpcAccessNetworkInterface> networkInterfaces;
 
     private GetWorkerPoolTemplateVpcAccess() {}
+    /**
+     * @return VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+     * 
+     */
+    public String connector() {
+        return this.connector;
+    }
     /**
      * @return Traffic VPC egress settings. Possible values: [&#34;ALL_TRAFFIC&#34;, &#34;PRIVATE_RANGES_ONLY&#34;]
      * 
@@ -48,15 +60,25 @@ public final class GetWorkerPoolTemplateVpcAccess {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String connector;
         private String egress;
         private List<GetWorkerPoolTemplateVpcAccessNetworkInterface> networkInterfaces;
         public Builder() {}
         public Builder(GetWorkerPoolTemplateVpcAccess defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.connector = defaults.connector;
     	      this.egress = defaults.egress;
     	      this.networkInterfaces = defaults.networkInterfaces;
         }
 
+        @CustomType.Setter
+        public Builder connector(String connector) {
+            if (connector == null) {
+              throw new MissingRequiredPropertyException("GetWorkerPoolTemplateVpcAccess", "connector");
+            }
+            this.connector = connector;
+            return this;
+        }
         @CustomType.Setter
         public Builder egress(String egress) {
             if (egress == null) {
@@ -78,6 +100,7 @@ public final class GetWorkerPoolTemplateVpcAccess {
         }
         public GetWorkerPoolTemplateVpcAccess build() {
             final var _resultValue = new GetWorkerPoolTemplateVpcAccess();
+            _resultValue.connector = connector;
             _resultValue.egress = egress;
             _resultValue.networkInterfaces = networkInterfaces;
             return _resultValue;

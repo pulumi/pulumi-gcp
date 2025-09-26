@@ -20,6 +20,11 @@ export const getLocations: typeof import("./getLocations").getLocations = null a
 export const getLocationsOutput: typeof import("./getLocations").getLocationsOutput = null as any;
 utilities.lazyLoad(exports, ["getLocations","getLocationsOutput"], () => require("./getLocations"));
 
+export { GetMavenArtifactArgs, GetMavenArtifactResult, GetMavenArtifactOutputArgs } from "./getMavenArtifact";
+export const getMavenArtifact: typeof import("./getMavenArtifact").getMavenArtifact = null as any;
+export const getMavenArtifactOutput: typeof import("./getMavenArtifact").getMavenArtifactOutput = null as any;
+utilities.lazyLoad(exports, ["getMavenArtifact","getMavenArtifactOutput"], () => require("./getMavenArtifact"));
+
 export { GetNpmPackageArgs, GetNpmPackageResult, GetNpmPackageOutputArgs } from "./getNpmPackage";
 export const getNpmPackage: typeof import("./getNpmPackage").getNpmPackage = null as any;
 export const getNpmPackageOutput: typeof import("./getNpmPackage").getNpmPackageOutput = null as any;

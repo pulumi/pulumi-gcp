@@ -143,6 +143,45 @@ namespace Pulumi.Gcp.Sql
     /// });
     /// ```
     /// 
+    /// ### Cloud SQL Instance with Managed Connection Pooling
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
+    ///     {
+    ///         Name = "mcp-enabled-main-instance",
+    ///         Region = "us-central1",
+    ///         DatabaseVersion = "POSTGRES_16",
+    ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+    ///         {
+    ///             Tier = "db-perf-optimized-N-2",
+    ///             Edition = "ENTERPRISE_PLUS",
+    ///             ConnectionPoolConfigs = new[]
+    ///             {
+    ///                 new Gcp.Sql.Inputs.DatabaseInstanceSettingsConnectionPoolConfigArgs
+    ///                 {
+    ///                     ConnectionPoolingEnabled = true,
+    ///                     Flags = new[]
+    ///                     {
+    ///                         new Gcp.Sql.Inputs.DatabaseInstanceSettingsConnectionPoolConfigFlagArgs
+    ///                         {
+    ///                             Name = "max_client_connections",
+    ///                             Value = "1980",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ### Cloud SQL Instance with PSC connectivity
     /// 
     /// ```csharp

@@ -1425,6 +1425,118 @@ func (o GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutput) Index
 	}).(GetBackupPlanAssociationRulesConfigInfoLastBackupErrorOutput)
 }
 
+type GetBackupPlanAssociationsAssociation struct {
+	BackupPlan string `pulumi:"backupPlan"`
+	CreateTime string `pulumi:"createTime"`
+	Name       string `pulumi:"name"`
+	Resource   string `pulumi:"resource"`
+}
+
+// GetBackupPlanAssociationsAssociationInput is an input type that accepts GetBackupPlanAssociationsAssociationArgs and GetBackupPlanAssociationsAssociationOutput values.
+// You can construct a concrete instance of `GetBackupPlanAssociationsAssociationInput` via:
+//
+//	GetBackupPlanAssociationsAssociationArgs{...}
+type GetBackupPlanAssociationsAssociationInput interface {
+	pulumi.Input
+
+	ToGetBackupPlanAssociationsAssociationOutput() GetBackupPlanAssociationsAssociationOutput
+	ToGetBackupPlanAssociationsAssociationOutputWithContext(context.Context) GetBackupPlanAssociationsAssociationOutput
+}
+
+type GetBackupPlanAssociationsAssociationArgs struct {
+	BackupPlan pulumi.StringInput `pulumi:"backupPlan"`
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	Name       pulumi.StringInput `pulumi:"name"`
+	Resource   pulumi.StringInput `pulumi:"resource"`
+}
+
+func (GetBackupPlanAssociationsAssociationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupPlanAssociationsAssociation)(nil)).Elem()
+}
+
+func (i GetBackupPlanAssociationsAssociationArgs) ToGetBackupPlanAssociationsAssociationOutput() GetBackupPlanAssociationsAssociationOutput {
+	return i.ToGetBackupPlanAssociationsAssociationOutputWithContext(context.Background())
+}
+
+func (i GetBackupPlanAssociationsAssociationArgs) ToGetBackupPlanAssociationsAssociationOutputWithContext(ctx context.Context) GetBackupPlanAssociationsAssociationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackupPlanAssociationsAssociationOutput)
+}
+
+// GetBackupPlanAssociationsAssociationArrayInput is an input type that accepts GetBackupPlanAssociationsAssociationArray and GetBackupPlanAssociationsAssociationArrayOutput values.
+// You can construct a concrete instance of `GetBackupPlanAssociationsAssociationArrayInput` via:
+//
+//	GetBackupPlanAssociationsAssociationArray{ GetBackupPlanAssociationsAssociationArgs{...} }
+type GetBackupPlanAssociationsAssociationArrayInput interface {
+	pulumi.Input
+
+	ToGetBackupPlanAssociationsAssociationArrayOutput() GetBackupPlanAssociationsAssociationArrayOutput
+	ToGetBackupPlanAssociationsAssociationArrayOutputWithContext(context.Context) GetBackupPlanAssociationsAssociationArrayOutput
+}
+
+type GetBackupPlanAssociationsAssociationArray []GetBackupPlanAssociationsAssociationInput
+
+func (GetBackupPlanAssociationsAssociationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackupPlanAssociationsAssociation)(nil)).Elem()
+}
+
+func (i GetBackupPlanAssociationsAssociationArray) ToGetBackupPlanAssociationsAssociationArrayOutput() GetBackupPlanAssociationsAssociationArrayOutput {
+	return i.ToGetBackupPlanAssociationsAssociationArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackupPlanAssociationsAssociationArray) ToGetBackupPlanAssociationsAssociationArrayOutputWithContext(ctx context.Context) GetBackupPlanAssociationsAssociationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackupPlanAssociationsAssociationArrayOutput)
+}
+
+type GetBackupPlanAssociationsAssociationOutput struct{ *pulumi.OutputState }
+
+func (GetBackupPlanAssociationsAssociationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupPlanAssociationsAssociation)(nil)).Elem()
+}
+
+func (o GetBackupPlanAssociationsAssociationOutput) ToGetBackupPlanAssociationsAssociationOutput() GetBackupPlanAssociationsAssociationOutput {
+	return o
+}
+
+func (o GetBackupPlanAssociationsAssociationOutput) ToGetBackupPlanAssociationsAssociationOutputWithContext(ctx context.Context) GetBackupPlanAssociationsAssociationOutput {
+	return o
+}
+
+func (o GetBackupPlanAssociationsAssociationOutput) BackupPlan() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupPlanAssociationsAssociation) string { return v.BackupPlan }).(pulumi.StringOutput)
+}
+
+func (o GetBackupPlanAssociationsAssociationOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupPlanAssociationsAssociation) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o GetBackupPlanAssociationsAssociationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupPlanAssociationsAssociation) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetBackupPlanAssociationsAssociationOutput) Resource() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupPlanAssociationsAssociation) string { return v.Resource }).(pulumi.StringOutput)
+}
+
+type GetBackupPlanAssociationsAssociationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackupPlanAssociationsAssociationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackupPlanAssociationsAssociation)(nil)).Elem()
+}
+
+func (o GetBackupPlanAssociationsAssociationArrayOutput) ToGetBackupPlanAssociationsAssociationArrayOutput() GetBackupPlanAssociationsAssociationArrayOutput {
+	return o
+}
+
+func (o GetBackupPlanAssociationsAssociationArrayOutput) ToGetBackupPlanAssociationsAssociationArrayOutputWithContext(ctx context.Context) GetBackupPlanAssociationsAssociationArrayOutput {
+	return o
+}
+
+func (o GetBackupPlanAssociationsAssociationArrayOutput) Index(i pulumi.IntInput) GetBackupPlanAssociationsAssociationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackupPlanAssociationsAssociation {
+		return vs[0].([]GetBackupPlanAssociationsAssociation)[vs[1].(int)]
+	}).(GetBackupPlanAssociationsAssociationOutput)
+}
+
 type GetBackupPlanBackupRule struct {
 	// Configures the duration for which backup data will be kept. The value should be greater than or equal to minimum enforced retention of the backup vault.
 	BackupRetentionDays int `pulumi:"backupRetentionDays"`
@@ -3150,6 +3262,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanAssociationRulesConfigInfoArrayInput)(nil)).Elem(), GetBackupPlanAssociationRulesConfigInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanAssociationRulesConfigInfoLastBackupErrorInput)(nil)).Elem(), GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArrayInput)(nil)).Elem(), GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanAssociationsAssociationInput)(nil)).Elem(), GetBackupPlanAssociationsAssociationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanAssociationsAssociationArrayInput)(nil)).Elem(), GetBackupPlanAssociationsAssociationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanBackupRuleInput)(nil)).Elem(), GetBackupPlanBackupRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanBackupRuleArrayInput)(nil)).Elem(), GetBackupPlanBackupRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanBackupRuleStandardScheduleInput)(nil)).Elem(), GetBackupPlanBackupRuleStandardScheduleArgs{})
@@ -3197,6 +3311,8 @@ func init() {
 	pulumi.RegisterOutputType(GetBackupPlanAssociationRulesConfigInfoArrayOutput{})
 	pulumi.RegisterOutputType(GetBackupPlanAssociationRulesConfigInfoLastBackupErrorOutput{})
 	pulumi.RegisterOutputType(GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutput{})
+	pulumi.RegisterOutputType(GetBackupPlanAssociationsAssociationOutput{})
+	pulumi.RegisterOutputType(GetBackupPlanAssociationsAssociationArrayOutput{})
 	pulumi.RegisterOutputType(GetBackupPlanBackupRuleOutput{})
 	pulumi.RegisterOutputType(GetBackupPlanBackupRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetBackupPlanBackupRuleStandardScheduleOutput{})

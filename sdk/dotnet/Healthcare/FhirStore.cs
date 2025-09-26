@@ -250,6 +250,61 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// });
     /// ```
+    /// ### Healthcare Fhir Store Validation Config
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var topic = new Gcp.PubSub.Topic("topic", new()
+    ///     {
+    ///         Name = "fhir-notifications",
+    ///     });
+    /// 
+    ///     var dataset = new Gcp.Healthcare.Dataset("dataset", new()
+    ///     {
+    ///         Name = "example-dataset",
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Healthcare.FhirStore("default", new()
+    ///     {
+    ///         Name = "example-fhir-store",
+    ///         Dataset = dataset.Id,
+    ///         Version = "R4",
+    ///         ComplexDataTypeReferenceParsing = "DISABLED",
+    ///         EnableUpdateCreate = false,
+    ///         DisableReferentialIntegrity = false,
+    ///         DisableResourceVersioning = false,
+    ///         EnableHistoryImport = false,
+    ///         DefaultSearchHandlingStrict = false,
+    ///         NotificationConfigs = new[]
+    ///         {
+    ///             new Gcp.Healthcare.Inputs.FhirStoreNotificationConfigArgs
+    ///             {
+    ///                 PubsubTopic = topic.Id,
+    ///             },
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "label1", "labelvalue1" },
+    ///         },
+    ///         ValidationConfig = new Gcp.Healthcare.Inputs.FhirStoreValidationConfigArgs
+    ///         {
+    ///             DisableProfileValidation = true,
+    ///             EnabledImplementationGuides = new() { },
+    ///             DisableRequiredFieldValidation = true,
+    ///             DisableReferenceTypeValidation = true,
+    ///             DisableFhirpathValidation = true,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -422,6 +477,13 @@ namespace Pulumi.Gcp.Healthcare
         /// </summary>
         [Output("streamConfigs")]
         public Output<ImmutableArray<Outputs.FhirStoreStreamConfig>> StreamConfigs { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for how to validate incoming FHIR resources against configured profiles.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("validationConfig")]
+        public Output<Outputs.FhirStoreValidationConfig?> ValidationConfig { get; private set; } = null!;
 
         /// <summary>
         /// The FHIR specification version.
@@ -633,6 +695,13 @@ namespace Pulumi.Gcp.Healthcare
         }
 
         /// <summary>
+        /// Configuration for how to validate incoming FHIR resources against configured profiles.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("validationConfig")]
+        public Input<Inputs.FhirStoreValidationConfigArgs>? ValidationConfig { get; set; }
+
+        /// <summary>
         /// The FHIR specification version.
         /// Default value is `STU3`.
         /// Possible values are: `DSTU2`, `STU3`, `R4`.
@@ -836,6 +905,13 @@ namespace Pulumi.Gcp.Healthcare
             get => _streamConfigs ?? (_streamConfigs = new InputList<Inputs.FhirStoreStreamConfigGetArgs>());
             set => _streamConfigs = value;
         }
+
+        /// <summary>
+        /// Configuration for how to validate incoming FHIR resources against configured profiles.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("validationConfig")]
+        public Input<Inputs.FhirStoreValidationConfigGetArgs>? ValidationConfig { get; set; }
 
         /// <summary>
         /// The FHIR specification version.

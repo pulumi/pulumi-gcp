@@ -212,6 +212,10 @@ import (
 //					Address: pulumi.String("test-address"),
 //					CaCert:  pulumi.String("test-ca-cert"),
 //				},
+//				Proxy: &gkeonprem.VmwareAdminClusterProxyArgs{
+//					Url:     pulumi.String("http://my-proxy.example.local:80"),
+//					NoProxy: pulumi.String("10.151.222.0/24,my-host.example.local,10.151.2.1"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -280,6 +284,10 @@ import (
 //				PrivateRegistryConfig: &gkeonprem.VmwareAdminClusterPrivateRegistryConfigArgs{
 //					Address: pulumi.String("test-address"),
 //					CaCert:  pulumi.String("test-ca-cert"),
+//				},
+//				Proxy: &gkeonprem.VmwareAdminClusterProxyArgs{
+//					Url:     pulumi.String("http://my-proxy.example.local:80"),
+//					NoProxy: pulumi.String("10.151.222.0/24,my-host.example.local,10.151.2.1"),
 //				},
 //			})
 //			if err != nil {
@@ -399,6 +407,9 @@ type VmwareAdminCluster struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Configuration for proxy.
+	// Structure is documented below.
+	Proxy VmwareAdminClusterProxyPtrOutput `pulumi:"proxy"`
 	// If set, there are currently changes in flight to the VMware admin cluster.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
 	// (Output)
@@ -534,6 +545,9 @@ type vmwareAdminClusterState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Configuration for proxy.
+	// Structure is documented below.
+	Proxy *VmwareAdminClusterProxy `pulumi:"proxy"`
 	// If set, there are currently changes in flight to the VMware admin cluster.
 	Reconciling *bool `pulumi:"reconciling"`
 	// (Output)
@@ -634,6 +648,9 @@ type VmwareAdminClusterState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Configuration for proxy.
+	// Structure is documented below.
+	Proxy VmwareAdminClusterProxyPtrInput
 	// If set, there are currently changes in flight to the VMware admin cluster.
 	Reconciling pulumi.BoolPtrInput
 	// (Output)
@@ -713,6 +730,9 @@ type vmwareAdminClusterArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Configuration for proxy.
+	// Structure is documented below.
+	Proxy *VmwareAdminClusterProxy `pulumi:"proxy"`
 	// Specifies vCenter config for the admin cluster.
 	// Structure is documented below.
 	Vcenter *VmwareAdminClusterVcenter `pulumi:"vcenter"`
@@ -777,6 +797,9 @@ type VmwareAdminClusterArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Configuration for proxy.
+	// Structure is documented below.
+	Proxy VmwareAdminClusterProxyPtrInput
 	// Specifies vCenter config for the admin cluster.
 	// Structure is documented below.
 	Vcenter VmwareAdminClusterVcenterPtrInput
@@ -1023,6 +1046,12 @@ func (o VmwareAdminClusterOutput) PrivateRegistryConfig() VmwareAdminClusterPriv
 // If it is not provided, the provider project is used.
 func (o VmwareAdminClusterOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *VmwareAdminCluster) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Configuration for proxy.
+// Structure is documented below.
+func (o VmwareAdminClusterOutput) Proxy() VmwareAdminClusterProxyPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminCluster) VmwareAdminClusterProxyPtrOutput { return v.Proxy }).(VmwareAdminClusterProxyPtrOutput)
 }
 
 // If set, there are currently changes in flight to the VMware admin cluster.
