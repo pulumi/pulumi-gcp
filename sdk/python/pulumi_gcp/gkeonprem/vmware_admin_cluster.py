@@ -39,6 +39,7 @@ class VmwareAdminClusterArgs:
                  platform_config: Optional[pulumi.Input['VmwareAdminClusterPlatformConfigArgs']] = None,
                  private_registry_config: Optional[pulumi.Input['VmwareAdminClusterPrivateRegistryConfigArgs']] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 proxy: Optional[pulumi.Input['VmwareAdminClusterProxyArgs']] = None,
                  vcenter: Optional[pulumi.Input['VmwareAdminClusterVcenterArgs']] = None):
         """
         The set of arguments for constructing a VmwareAdminCluster resource.
@@ -81,6 +82,8 @@ class VmwareAdminClusterArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['VmwareAdminClusterProxyArgs'] proxy: Configuration for proxy.
+               Structure is documented below.
         :param pulumi.Input['VmwareAdminClusterVcenterArgs'] vcenter: Specifies vCenter config for the admin cluster.
                Structure is documented below.
         """
@@ -118,6 +121,8 @@ class VmwareAdminClusterArgs:
             pulumi.set(__self__, "private_registry_config", private_registry_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if proxy is not None:
+            pulumi.set(__self__, "proxy", proxy)
         if vcenter is not None:
             pulumi.set(__self__, "vcenter", vcenter)
 
@@ -360,6 +365,19 @@ class VmwareAdminClusterArgs:
 
     @_builtins.property
     @pulumi.getter
+    def proxy(self) -> Optional[pulumi.Input['VmwareAdminClusterProxyArgs']]:
+        """
+        Configuration for proxy.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "proxy")
+
+    @proxy.setter
+    def proxy(self, value: Optional[pulumi.Input['VmwareAdminClusterProxyArgs']]):
+        pulumi.set(self, "proxy", value)
+
+    @_builtins.property
+    @pulumi.getter
     def vcenter(self) -> Optional[pulumi.Input['VmwareAdminClusterVcenterArgs']]:
         """
         Specifies vCenter config for the admin cluster.
@@ -399,6 +417,7 @@ class _VmwareAdminClusterState:
                  platform_config: Optional[pulumi.Input['VmwareAdminClusterPlatformConfigArgs']] = None,
                  private_registry_config: Optional[pulumi.Input['VmwareAdminClusterPrivateRegistryConfigArgs']] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 proxy: Optional[pulumi.Input['VmwareAdminClusterProxyArgs']] = None,
                  reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
                  statuses: Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterStatusArgs']]]] = None,
@@ -465,6 +484,8 @@ class _VmwareAdminClusterState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['VmwareAdminClusterProxyArgs'] proxy: Configuration for proxy.
+               Structure is documented below.
         :param pulumi.Input[_builtins.bool] reconciling: If set, there are currently changes in flight to the VMware admin cluster.
         :param pulumi.Input[_builtins.str] state: (Output)
                The lifecycle state of the condition.
@@ -523,6 +544,8 @@ class _VmwareAdminClusterState:
             pulumi.set(__self__, "private_registry_config", private_registry_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if proxy is not None:
+            pulumi.set(__self__, "proxy", proxy)
         if reconciling is not None:
             pulumi.set(__self__, "reconciling", reconciling)
         if state is not None:
@@ -858,6 +881,19 @@ class _VmwareAdminClusterState:
 
     @_builtins.property
     @pulumi.getter
+    def proxy(self) -> Optional[pulumi.Input['VmwareAdminClusterProxyArgs']]:
+        """
+        Configuration for proxy.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "proxy")
+
+    @proxy.setter
+    def proxy(self, value: Optional[pulumi.Input['VmwareAdminClusterProxyArgs']]):
+        pulumi.set(self, "proxy", value)
+
+    @_builtins.property
+    @pulumi.getter
     def reconciling(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         If set, there are currently changes in flight to the VMware admin cluster.
@@ -956,6 +992,7 @@ class VmwareAdminCluster(pulumi.CustomResource):
                  platform_config: Optional[pulumi.Input[Union['VmwareAdminClusterPlatformConfigArgs', 'VmwareAdminClusterPlatformConfigArgsDict']]] = None,
                  private_registry_config: Optional[pulumi.Input[Union['VmwareAdminClusterPrivateRegistryConfigArgs', 'VmwareAdminClusterPrivateRegistryConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 proxy: Optional[pulumi.Input[Union['VmwareAdminClusterProxyArgs', 'VmwareAdminClusterProxyArgsDict']]] = None,
                  vcenter: Optional[pulumi.Input[Union['VmwareAdminClusterVcenterArgs', 'VmwareAdminClusterVcenterArgsDict']]] = None,
                  __props__=None):
         """
@@ -1112,6 +1149,10 @@ class VmwareAdminCluster(pulumi.CustomResource):
             private_registry_config={
                 "address": "test-address",
                 "ca_cert": "test-ca-cert",
+            },
+            proxy={
+                "url": "http://my-proxy.example.local:80",
+                "no_proxy": "10.151.222.0/24,my-host.example.local,10.151.2.1",
             })
         ```
         ### Gkeonprem Vmware Admin Cluster Metallb
@@ -1161,6 +1202,10 @@ class VmwareAdminCluster(pulumi.CustomResource):
             private_registry_config={
                 "address": "test-address",
                 "ca_cert": "test-ca-cert",
+            },
+            proxy={
+                "url": "http://my-proxy.example.local:80",
+                "no_proxy": "10.151.222.0/24,my-host.example.local,10.151.2.1",
             })
         ```
 
@@ -1229,6 +1274,8 @@ class VmwareAdminCluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Union['VmwareAdminClusterProxyArgs', 'VmwareAdminClusterProxyArgsDict']] proxy: Configuration for proxy.
+               Structure is documented below.
         :param pulumi.Input[Union['VmwareAdminClusterVcenterArgs', 'VmwareAdminClusterVcenterArgsDict']] vcenter: Specifies vCenter config for the admin cluster.
                Structure is documented below.
         """
@@ -1392,6 +1439,10 @@ class VmwareAdminCluster(pulumi.CustomResource):
             private_registry_config={
                 "address": "test-address",
                 "ca_cert": "test-ca-cert",
+            },
+            proxy={
+                "url": "http://my-proxy.example.local:80",
+                "no_proxy": "10.151.222.0/24,my-host.example.local,10.151.2.1",
             })
         ```
         ### Gkeonprem Vmware Admin Cluster Metallb
@@ -1441,6 +1492,10 @@ class VmwareAdminCluster(pulumi.CustomResource):
             private_registry_config={
                 "address": "test-address",
                 "ca_cert": "test-ca-cert",
+            },
+            proxy={
+                "url": "http://my-proxy.example.local:80",
+                "no_proxy": "10.151.222.0/24,my-host.example.local,10.151.2.1",
             })
         ```
 
@@ -1501,6 +1556,7 @@ class VmwareAdminCluster(pulumi.CustomResource):
                  platform_config: Optional[pulumi.Input[Union['VmwareAdminClusterPlatformConfigArgs', 'VmwareAdminClusterPlatformConfigArgsDict']]] = None,
                  private_registry_config: Optional[pulumi.Input[Union['VmwareAdminClusterPrivateRegistryConfigArgs', 'VmwareAdminClusterPrivateRegistryConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 proxy: Optional[pulumi.Input[Union['VmwareAdminClusterProxyArgs', 'VmwareAdminClusterProxyArgsDict']]] = None,
                  vcenter: Optional[pulumi.Input[Union['VmwareAdminClusterVcenterArgs', 'VmwareAdminClusterVcenterArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1533,6 +1589,7 @@ class VmwareAdminCluster(pulumi.CustomResource):
             __props__.__dict__["platform_config"] = platform_config
             __props__.__dict__["private_registry_config"] = private_registry_config
             __props__.__dict__["project"] = project
+            __props__.__dict__["proxy"] = proxy
             __props__.__dict__["vcenter"] = vcenter
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_annotations"] = None
@@ -1579,6 +1636,7 @@ class VmwareAdminCluster(pulumi.CustomResource):
             platform_config: Optional[pulumi.Input[Union['VmwareAdminClusterPlatformConfigArgs', 'VmwareAdminClusterPlatformConfigArgsDict']]] = None,
             private_registry_config: Optional[pulumi.Input[Union['VmwareAdminClusterPrivateRegistryConfigArgs', 'VmwareAdminClusterPrivateRegistryConfigArgsDict']]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
+            proxy: Optional[pulumi.Input[Union['VmwareAdminClusterProxyArgs', 'VmwareAdminClusterProxyArgsDict']]] = None,
             reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
             state: Optional[pulumi.Input[_builtins.str]] = None,
             statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VmwareAdminClusterStatusArgs', 'VmwareAdminClusterStatusArgsDict']]]]] = None,
@@ -1650,6 +1708,8 @@ class VmwareAdminCluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Union['VmwareAdminClusterProxyArgs', 'VmwareAdminClusterProxyArgsDict']] proxy: Configuration for proxy.
+               Structure is documented below.
         :param pulumi.Input[_builtins.bool] reconciling: If set, there are currently changes in flight to the VMware admin cluster.
         :param pulumi.Input[_builtins.str] state: (Output)
                The lifecycle state of the condition.
@@ -1688,6 +1748,7 @@ class VmwareAdminCluster(pulumi.CustomResource):
         __props__.__dict__["platform_config"] = platform_config
         __props__.__dict__["private_registry_config"] = private_registry_config
         __props__.__dict__["project"] = project
+        __props__.__dict__["proxy"] = proxy
         __props__.__dict__["reconciling"] = reconciling
         __props__.__dict__["state"] = state
         __props__.__dict__["statuses"] = statuses
@@ -1919,6 +1980,15 @@ class VmwareAdminCluster(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @_builtins.property
+    @pulumi.getter
+    def proxy(self) -> pulumi.Output[Optional['outputs.VmwareAdminClusterProxy']]:
+        """
+        Configuration for proxy.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "proxy")
 
     @_builtins.property
     @pulumi.getter

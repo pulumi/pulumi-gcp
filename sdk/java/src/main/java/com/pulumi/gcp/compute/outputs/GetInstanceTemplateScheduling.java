@@ -101,6 +101,11 @@ public final class GetInstanceTemplateScheduling {
      */
     private String provisioningModel;
     /**
+     * @return Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+     * 
+     */
+    private Boolean skipGuestOsShutdown;
+    /**
      * @return Specifies the timestamp, when the instance will be terminated,
      * in RFC3339 text format. If specified, the instance termination action
      * will be performed at the termination time.
@@ -220,6 +225,13 @@ public final class GetInstanceTemplateScheduling {
         return this.provisioningModel;
     }
     /**
+     * @return Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+     * 
+     */
+    public Boolean skipGuestOsShutdown() {
+        return this.skipGuestOsShutdown;
+    }
+    /**
      * @return Specifies the timestamp, when the instance will be terminated,
      * in RFC3339 text format. If specified, the instance termination action
      * will be performed at the termination time.
@@ -252,6 +264,7 @@ public final class GetInstanceTemplateScheduling {
         private List<GetInstanceTemplateSchedulingOnInstanceStopAction> onInstanceStopActions;
         private Boolean preemptible;
         private String provisioningModel;
+        private Boolean skipGuestOsShutdown;
         private String terminationTime;
         public Builder() {}
         public Builder(GetInstanceTemplateScheduling defaults) {
@@ -270,6 +283,7 @@ public final class GetInstanceTemplateScheduling {
     	      this.onInstanceStopActions = defaults.onInstanceStopActions;
     	      this.preemptible = defaults.preemptible;
     	      this.provisioningModel = defaults.provisioningModel;
+    	      this.skipGuestOsShutdown = defaults.skipGuestOsShutdown;
     	      this.terminationTime = defaults.terminationTime;
         }
 
@@ -401,6 +415,14 @@ public final class GetInstanceTemplateScheduling {
             return this;
         }
         @CustomType.Setter
+        public Builder skipGuestOsShutdown(Boolean skipGuestOsShutdown) {
+            if (skipGuestOsShutdown == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateScheduling", "skipGuestOsShutdown");
+            }
+            this.skipGuestOsShutdown = skipGuestOsShutdown;
+            return this;
+        }
+        @CustomType.Setter
         public Builder terminationTime(String terminationTime) {
             if (terminationTime == null) {
               throw new MissingRequiredPropertyException("GetInstanceTemplateScheduling", "terminationTime");
@@ -424,6 +446,7 @@ public final class GetInstanceTemplateScheduling {
             _resultValue.onInstanceStopActions = onInstanceStopActions;
             _resultValue.preemptible = preemptible;
             _resultValue.provisioningModel = provisioningModel;
+            _resultValue.skipGuestOsShutdown = skipGuestOsShutdown;
             _resultValue.terminationTime = terminationTime;
             return _resultValue;
         }

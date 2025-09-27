@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.ServiceAttachmentConnectedEndpointArgs;
 import com.pulumi.gcp.compute.inputs.ServiceAttachmentConsumerAcceptListArgs;
+import com.pulumi.gcp.compute.inputs.ServiceAttachmentPscServiceAttachmentIdArgs;
+import com.pulumi.gcp.compute.inputs.ServiceAttachmentTunnelingConfigArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -245,6 +247,23 @@ public final class ServiceAttachmentState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * An 128-bit global unique ID of the PSC service attachment.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="pscServiceAttachmentIds")
+    private @Nullable Output<List<ServiceAttachmentPscServiceAttachmentIdArgs>> pscServiceAttachmentIds;
+
+    /**
+     * @return An 128-bit global unique ID of the PSC service attachment.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<ServiceAttachmentPscServiceAttachmentIdArgs>>> pscServiceAttachmentIds() {
+        return Optional.ofNullable(this.pscServiceAttachmentIds);
+    }
+
+    /**
      * This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
      * If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
      * If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
@@ -329,6 +348,23 @@ public final class ServiceAttachmentState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.targetService);
     }
 
+    /**
+     * Tunneling configuration for this service attachment.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="tunnelingConfig")
+    private @Nullable Output<ServiceAttachmentTunnelingConfigArgs> tunnelingConfig;
+
+    /**
+     * @return Tunneling configuration for this service attachment.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ServiceAttachmentTunnelingConfigArgs>> tunnelingConfig() {
+        return Optional.ofNullable(this.tunnelingConfig);
+    }
+
     private ServiceAttachmentState() {}
 
     private ServiceAttachmentState(ServiceAttachmentState $) {
@@ -344,11 +380,13 @@ public final class ServiceAttachmentState extends com.pulumi.resources.ResourceA
         this.natSubnets = $.natSubnets;
         this.project = $.project;
         this.propagatedConnectionLimit = $.propagatedConnectionLimit;
+        this.pscServiceAttachmentIds = $.pscServiceAttachmentIds;
         this.reconcileConnections = $.reconcileConnections;
         this.region = $.region;
         this.selfLink = $.selfLink;
         this.sendPropagatedConnectionLimitIfZero = $.sendPropagatedConnectionLimitIfZero;
         this.targetService = $.targetService;
+        this.tunnelingConfig = $.tunnelingConfig;
     }
 
     public static Builder builder() {
@@ -724,6 +762,40 @@ public final class ServiceAttachmentState extends com.pulumi.resources.ResourceA
         }
 
         /**
+         * @param pscServiceAttachmentIds An 128-bit global unique ID of the PSC service attachment.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscServiceAttachmentIds(@Nullable Output<List<ServiceAttachmentPscServiceAttachmentIdArgs>> pscServiceAttachmentIds) {
+            $.pscServiceAttachmentIds = pscServiceAttachmentIds;
+            return this;
+        }
+
+        /**
+         * @param pscServiceAttachmentIds An 128-bit global unique ID of the PSC service attachment.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscServiceAttachmentIds(List<ServiceAttachmentPscServiceAttachmentIdArgs> pscServiceAttachmentIds) {
+            return pscServiceAttachmentIds(Output.of(pscServiceAttachmentIds));
+        }
+
+        /**
+         * @param pscServiceAttachmentIds An 128-bit global unique ID of the PSC service attachment.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscServiceAttachmentIds(ServiceAttachmentPscServiceAttachmentIdArgs... pscServiceAttachmentIds) {
+            return pscServiceAttachmentIds(List.of(pscServiceAttachmentIds));
+        }
+
+        /**
          * @param reconcileConnections This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
          * If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
          * If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
@@ -836,6 +908,29 @@ public final class ServiceAttachmentState extends com.pulumi.resources.ResourceA
          */
         public Builder targetService(String targetService) {
             return targetService(Output.of(targetService));
+        }
+
+        /**
+         * @param tunnelingConfig Tunneling configuration for this service attachment.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tunnelingConfig(@Nullable Output<ServiceAttachmentTunnelingConfigArgs> tunnelingConfig) {
+            $.tunnelingConfig = tunnelingConfig;
+            return this;
+        }
+
+        /**
+         * @param tunnelingConfig Tunneling configuration for this service attachment.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tunnelingConfig(ServiceAttachmentTunnelingConfigArgs tunnelingConfig) {
+            return tunnelingConfig(Output.of(tunnelingConfig));
         }
 
         public ServiceAttachmentState build() {

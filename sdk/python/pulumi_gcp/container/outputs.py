@@ -134,6 +134,7 @@ __all__ = [
     'ClusterIpAllocationPolicy',
     'ClusterIpAllocationPolicyAdditionalIpRangesConfig',
     'ClusterIpAllocationPolicyAdditionalPodRangesConfig',
+    'ClusterIpAllocationPolicyAutoIpamConfig',
     'ClusterIpAllocationPolicyPodCidrOverprovisionConfig',
     'ClusterLoggingConfig',
     'ClusterMaintenancePolicy',
@@ -367,6 +368,7 @@ __all__ = [
     'GetClusterIpAllocationPolicyResult',
     'GetClusterIpAllocationPolicyAdditionalIpRangesConfigResult',
     'GetClusterIpAllocationPolicyAdditionalPodRangesConfigResult',
+    'GetClusterIpAllocationPolicyAutoIpamConfigResult',
     'GetClusterIpAllocationPolicyPodCidrOverprovisionConfigResult',
     'GetClusterLoggingConfigResult',
     'GetClusterMaintenancePolicyResult',
@@ -6108,6 +6110,8 @@ class ClusterIpAllocationPolicy(dict):
             suggest = "additional_ip_ranges_configs"
         elif key == "additionalPodRangesConfig":
             suggest = "additional_pod_ranges_config"
+        elif key == "autoIpamConfig":
+            suggest = "auto_ipam_config"
         elif key == "clusterIpv4CidrBlock":
             suggest = "cluster_ipv4_cidr_block"
         elif key == "clusterSecondaryRangeName":
@@ -6135,6 +6139,7 @@ class ClusterIpAllocationPolicy(dict):
     def __init__(__self__, *,
                  additional_ip_ranges_configs: Optional[Sequence['outputs.ClusterIpAllocationPolicyAdditionalIpRangesConfig']] = None,
                  additional_pod_ranges_config: Optional['outputs.ClusterIpAllocationPolicyAdditionalPodRangesConfig'] = None,
+                 auto_ipam_config: Optional['outputs.ClusterIpAllocationPolicyAutoIpamConfig'] = None,
                  cluster_ipv4_cidr_block: Optional[_builtins.str] = None,
                  cluster_secondary_range_name: Optional[_builtins.str] = None,
                  pod_cidr_overprovision_config: Optional['outputs.ClusterIpAllocationPolicyPodCidrOverprovisionConfig'] = None,
@@ -6147,6 +6152,9 @@ class ClusterIpAllocationPolicy(dict):
         :param 'ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs' additional_pod_ranges_config: The configuration for additional pod secondary ranges at
                the cluster level. Used for Autopilot clusters and Standard clusters with which control of the
                secondary Pod IP address assignment to node pools isn't needed. Structure is documented below.
+        :param 'ClusterIpAllocationPolicyAutoIpamConfigArgs' auto_ipam_config: All the information related to Auto IPAM. Structure is documented below
+               
+               <a name="nested_auto_ipam_config"></a>The auto ipam config supports:
         :param _builtins.str cluster_ipv4_cidr_block: The IP address range for the cluster pod IPs.
                Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
                to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14)
@@ -6173,6 +6181,8 @@ class ClusterIpAllocationPolicy(dict):
             pulumi.set(__self__, "additional_ip_ranges_configs", additional_ip_ranges_configs)
         if additional_pod_ranges_config is not None:
             pulumi.set(__self__, "additional_pod_ranges_config", additional_pod_ranges_config)
+        if auto_ipam_config is not None:
+            pulumi.set(__self__, "auto_ipam_config", auto_ipam_config)
         if cluster_ipv4_cidr_block is not None:
             pulumi.set(__self__, "cluster_ipv4_cidr_block", cluster_ipv4_cidr_block)
         if cluster_secondary_range_name is not None:
@@ -6204,6 +6214,16 @@ class ClusterIpAllocationPolicy(dict):
         secondary Pod IP address assignment to node pools isn't needed. Structure is documented below.
         """
         return pulumi.get(self, "additional_pod_ranges_config")
+
+    @_builtins.property
+    @pulumi.getter(name="autoIpamConfig")
+    def auto_ipam_config(self) -> Optional['outputs.ClusterIpAllocationPolicyAutoIpamConfig']:
+        """
+        All the information related to Auto IPAM. Structure is documented below
+
+        <a name="nested_auto_ipam_config"></a>The auto ipam config supports:
+        """
+        return pulumi.get(self, "auto_ipam_config")
 
     @_builtins.property
     @pulumi.getter(name="clusterIpv4CidrBlock")
@@ -6349,6 +6369,24 @@ class ClusterIpAllocationPolicyAdditionalPodRangesConfig(dict):
         The names of the Pod ranges to add to the cluster.
         """
         return pulumi.get(self, "pod_range_names")
+
+
+@pulumi.output_type
+class ClusterIpAllocationPolicyAutoIpamConfig(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: The flag that enables Auto IPAM on this cluster.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        The flag that enables Auto IPAM on this cluster.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -20240,6 +20278,7 @@ class GetClusterIpAllocationPolicyResult(dict):
     def __init__(__self__, *,
                  additional_ip_ranges_configs: Sequence['outputs.GetClusterIpAllocationPolicyAdditionalIpRangesConfigResult'],
                  additional_pod_ranges_configs: Sequence['outputs.GetClusterIpAllocationPolicyAdditionalPodRangesConfigResult'],
+                 auto_ipam_configs: Sequence['outputs.GetClusterIpAllocationPolicyAutoIpamConfigResult'],
                  cluster_ipv4_cidr_block: _builtins.str,
                  cluster_secondary_range_name: _builtins.str,
                  pod_cidr_overprovision_configs: Sequence['outputs.GetClusterIpAllocationPolicyPodCidrOverprovisionConfigResult'],
@@ -20249,6 +20288,7 @@ class GetClusterIpAllocationPolicyResult(dict):
         """
         :param Sequence['GetClusterIpAllocationPolicyAdditionalIpRangesConfigArgs'] additional_ip_ranges_configs: AdditionalIPRangesConfig is the configuration for individual additional subnetworks attached to the cluster
         :param Sequence['GetClusterIpAllocationPolicyAdditionalPodRangesConfigArgs'] additional_pod_ranges_configs: AdditionalPodRangesConfig is the configuration for additional pod secondary ranges supporting the ClusterUpdate message.
+        :param Sequence['GetClusterIpAllocationPolicyAutoIpamConfigArgs'] auto_ipam_configs: AutoIpamConfig contains all information related to Auto IPAM.
         :param _builtins.str cluster_ipv4_cidr_block: The IP address range for the cluster pod IPs. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use.
         :param _builtins.str cluster_secondary_range_name: The name of the existing secondary range in the cluster's subnetwork to use for pod IP addresses. Alternatively, cluster_ipv4_cidr_block can be used to automatically create a GKE-managed one.
         :param Sequence['GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs'] pod_cidr_overprovision_configs: Configuration for cluster level pod cidr overprovision. Default is disabled=false.
@@ -20258,6 +20298,7 @@ class GetClusterIpAllocationPolicyResult(dict):
         """
         pulumi.set(__self__, "additional_ip_ranges_configs", additional_ip_ranges_configs)
         pulumi.set(__self__, "additional_pod_ranges_configs", additional_pod_ranges_configs)
+        pulumi.set(__self__, "auto_ipam_configs", auto_ipam_configs)
         pulumi.set(__self__, "cluster_ipv4_cidr_block", cluster_ipv4_cidr_block)
         pulumi.set(__self__, "cluster_secondary_range_name", cluster_secondary_range_name)
         pulumi.set(__self__, "pod_cidr_overprovision_configs", pod_cidr_overprovision_configs)
@@ -20280,6 +20321,14 @@ class GetClusterIpAllocationPolicyResult(dict):
         AdditionalPodRangesConfig is the configuration for additional pod secondary ranges supporting the ClusterUpdate message.
         """
         return pulumi.get(self, "additional_pod_ranges_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="autoIpamConfigs")
+    def auto_ipam_configs(self) -> Sequence['outputs.GetClusterIpAllocationPolicyAutoIpamConfigResult']:
+        """
+        AutoIpamConfig contains all information related to Auto IPAM.
+        """
+        return pulumi.get(self, "auto_ipam_configs")
 
     @_builtins.property
     @pulumi.getter(name="clusterIpv4CidrBlock")
@@ -20375,6 +20424,24 @@ class GetClusterIpAllocationPolicyAdditionalPodRangesConfigResult(dict):
         Name for pod secondary ipv4 range which has the actual range defined ahead.
         """
         return pulumi.get(self, "pod_range_names")
+
+
+@pulumi.output_type
+class GetClusterIpAllocationPolicyAutoIpamConfigResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: The flag that enables Auto IPAM on this cluster.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        The flag that enables Auto IPAM on this cluster.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type

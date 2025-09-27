@@ -162,6 +162,10 @@ import * as utilities from "../utilities";
  *         address: "test-address",
  *         caCert: "test-ca-cert",
  *     },
+ *     proxy: {
+ *         url: "http://my-proxy.example.local:80",
+ *         noProxy: "10.151.222.0/24,my-host.example.local,10.151.2.1",
+ *     },
  * });
  * ```
  * ### Gkeonprem Vmware Admin Cluster Metallb
@@ -211,6 +215,10 @@ import * as utilities from "../utilities";
  *     privateRegistryConfig: {
  *         address: "test-address",
  *         caCert: "test-ca-cert",
+ *     },
+ *     proxy: {
+ *         url: "http://my-proxy.example.local:80",
+ *         noProxy: "10.151.222.0/24,my-host.example.local,10.151.2.1",
  *     },
  * });
  * ```
@@ -396,6 +404,11 @@ export class VmwareAdminCluster extends pulumi.CustomResource {
      */
     declare public readonly project: pulumi.Output<string>;
     /**
+     * Configuration for proxy.
+     * Structure is documented below.
+     */
+    declare public readonly proxy: pulumi.Output<outputs.gkeonprem.VmwareAdminClusterProxy | undefined>;
+    /**
      * If set, there are currently changes in flight to the VMware admin cluster.
      */
     declare public /*out*/ readonly reconciling: pulumi.Output<boolean>;
@@ -460,6 +473,7 @@ export class VmwareAdminCluster extends pulumi.CustomResource {
             resourceInputs["platformConfig"] = state?.platformConfig;
             resourceInputs["privateRegistryConfig"] = state?.privateRegistryConfig;
             resourceInputs["project"] = state?.project;
+            resourceInputs["proxy"] = state?.proxy;
             resourceInputs["reconciling"] = state?.reconciling;
             resourceInputs["state"] = state?.state;
             resourceInputs["statuses"] = state?.statuses;
@@ -492,6 +506,7 @@ export class VmwareAdminCluster extends pulumi.CustomResource {
             resourceInputs["platformConfig"] = args?.platformConfig;
             resourceInputs["privateRegistryConfig"] = args?.privateRegistryConfig;
             resourceInputs["project"] = args?.project;
+            resourceInputs["proxy"] = args?.proxy;
             resourceInputs["vcenter"] = args?.vcenter;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;
@@ -643,6 +658,11 @@ export interface VmwareAdminClusterState {
      */
     project?: pulumi.Input<string>;
     /**
+     * Configuration for proxy.
+     * Structure is documented below.
+     */
+    proxy?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterProxy>;
+    /**
      * If set, there are currently changes in flight to the VMware admin cluster.
      */
     reconciling?: pulumi.Input<boolean>;
@@ -768,6 +788,11 @@ export interface VmwareAdminClusterArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Configuration for proxy.
+     * Structure is documented below.
+     */
+    proxy?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterProxy>;
     /**
      * Specifies vCenter config for the admin cluster.
      * Structure is documented below.

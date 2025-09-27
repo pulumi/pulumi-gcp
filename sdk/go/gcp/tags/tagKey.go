@@ -83,7 +83,7 @@ type TagKey struct {
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Optional. A purpose cannot be changed once set.
 	// A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
-	// Possible values are: `GCE_FIREWALL`.
+	// Possible values are: `GCE_FIREWALL`, `DATA_GOVERNANCE`.
 	Purpose pulumi.StringPtrOutput `pulumi:"purpose"`
 	// Optional. Purpose data cannot be changed once set.
 	// Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = "<project-name>/<vpc-name>"`.
@@ -145,7 +145,7 @@ type tagKeyState struct {
 	Parent *string `pulumi:"parent"`
 	// Optional. A purpose cannot be changed once set.
 	// A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
-	// Possible values are: `GCE_FIREWALL`.
+	// Possible values are: `GCE_FIREWALL`, `DATA_GOVERNANCE`.
 	Purpose *string `pulumi:"purpose"`
 	// Optional. Purpose data cannot be changed once set.
 	// Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = "<project-name>/<vpc-name>"`.
@@ -172,7 +172,7 @@ type TagKeyState struct {
 	Parent pulumi.StringPtrInput
 	// Optional. A purpose cannot be changed once set.
 	// A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
-	// Possible values are: `GCE_FIREWALL`.
+	// Possible values are: `GCE_FIREWALL`, `DATA_GOVERNANCE`.
 	Purpose pulumi.StringPtrInput
 	// Optional. Purpose data cannot be changed once set.
 	// Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = "<project-name>/<vpc-name>"`.
@@ -196,7 +196,7 @@ type tagKeyArgs struct {
 	Parent string `pulumi:"parent"`
 	// Optional. A purpose cannot be changed once set.
 	// A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
-	// Possible values are: `GCE_FIREWALL`.
+	// Possible values are: `GCE_FIREWALL`, `DATA_GOVERNANCE`.
 	Purpose *string `pulumi:"purpose"`
 	// Optional. Purpose data cannot be changed once set.
 	// Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = "<project-name>/<vpc-name>"`.
@@ -214,7 +214,7 @@ type TagKeyArgs struct {
 	Parent pulumi.StringInput
 	// Optional. A purpose cannot be changed once set.
 	// A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
-	// Possible values are: `GCE_FIREWALL`.
+	// Possible values are: `GCE_FIREWALL`, `DATA_GOVERNANCE`.
 	Purpose pulumi.StringPtrInput
 	// Optional. Purpose data cannot be changed once set.
 	// Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = "<project-name>/<vpc-name>"`.
@@ -339,7 +339,7 @@ func (o TagKeyOutput) Parent() pulumi.StringOutput {
 
 // Optional. A purpose cannot be changed once set.
 // A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
-// Possible values are: `GCE_FIREWALL`.
+// Possible values are: `GCE_FIREWALL`, `DATA_GOVERNANCE`.
 func (o TagKeyOutput) Purpose() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TagKey) pulumi.StringPtrOutput { return v.Purpose }).(pulumi.StringPtrOutput)
 }

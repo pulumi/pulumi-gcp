@@ -166,7 +166,7 @@ type StoragePool struct {
 	// QoS (Quality of Service) type of the storage pool.
 	// Possible values are: AUTO, MANUAL.
 	// Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
-	QosType pulumi.StringPtrOutput `pulumi:"qosType"`
+	QosType pulumi.StringOutput `pulumi:"qosType"`
 	// Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
 	// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
 	ReplicaZone pulumi.StringPtrOutput `pulumi:"replicaZone"`
@@ -691,8 +691,8 @@ func (o StoragePoolOutput) PulumiLabels() pulumi.StringMapOutput {
 // QoS (Quality of Service) type of the storage pool.
 // Possible values are: AUTO, MANUAL.
 // Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
-func (o StoragePoolOutput) QosType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StoragePool) pulumi.StringPtrOutput { return v.QosType }).(pulumi.StringPtrOutput)
+func (o StoragePoolOutput) QosType() pulumi.StringOutput {
+	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.QosType }).(pulumi.StringOutput)
 }
 
 // Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a

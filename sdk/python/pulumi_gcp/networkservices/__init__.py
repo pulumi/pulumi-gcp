@@ -21,5 +21,6 @@ from .service_binding import *
 from .service_lb_policies import *
 from .tcp_route import *
 from .tls_route import *
+from .wasm_plugin import *
 from ._inputs import *
 from . import outputs

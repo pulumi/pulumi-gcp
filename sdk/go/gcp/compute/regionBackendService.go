@@ -1003,7 +1003,9 @@ type RegionBackendService struct {
 	// character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The URL of the network to which this backend service belongs.
-	// This field can only be specified when the load balancing scheme is set to INTERNAL.
+	// This field must be set for Internal Passthrough Network Load Balancers when the haPolicy is enabled, and for External Passthrough Network Load Balancers when the haPolicy fastIpMove is enabled.
+	// This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
+	// Changes to this field force recreation of the resource.
 	Network pulumi.StringPtrOutput `pulumi:"network"`
 	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
 	// This field is applicable only when the `loadBalancingScheme` is set
@@ -1234,7 +1236,9 @@ type regionBackendServiceState struct {
 	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// The URL of the network to which this backend service belongs.
-	// This field can only be specified when the load balancing scheme is set to INTERNAL.
+	// This field must be set for Internal Passthrough Network Load Balancers when the haPolicy is enabled, and for External Passthrough Network Load Balancers when the haPolicy fastIpMove is enabled.
+	// This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
+	// Changes to this field force recreation of the resource.
 	Network *string `pulumi:"network"`
 	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
 	// This field is applicable only when the `loadBalancingScheme` is set
@@ -1436,7 +1440,9 @@ type RegionBackendServiceState struct {
 	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// The URL of the network to which this backend service belongs.
-	// This field can only be specified when the load balancing scheme is set to INTERNAL.
+	// This field must be set for Internal Passthrough Network Load Balancers when the haPolicy is enabled, and for External Passthrough Network Load Balancers when the haPolicy fastIpMove is enabled.
+	// This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
+	// Changes to this field force recreation of the resource.
 	Network pulumi.StringPtrInput
 	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
 	// This field is applicable only when the `loadBalancingScheme` is set
@@ -1635,7 +1641,9 @@ type regionBackendServiceArgs struct {
 	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// The URL of the network to which this backend service belongs.
-	// This field can only be specified when the load balancing scheme is set to INTERNAL.
+	// This field must be set for Internal Passthrough Network Load Balancers when the haPolicy is enabled, and for External Passthrough Network Load Balancers when the haPolicy fastIpMove is enabled.
+	// This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
+	// Changes to this field force recreation of the resource.
 	Network *string `pulumi:"network"`
 	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
 	// This field is applicable only when the `loadBalancingScheme` is set
@@ -1829,7 +1837,9 @@ type RegionBackendServiceArgs struct {
 	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// The URL of the network to which this backend service belongs.
-	// This field can only be specified when the load balancing scheme is set to INTERNAL.
+	// This field must be set for Internal Passthrough Network Load Balancers when the haPolicy is enabled, and for External Passthrough Network Load Balancers when the haPolicy fastIpMove is enabled.
+	// This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
+	// Changes to this field force recreation of the resource.
 	Network pulumi.StringPtrInput
 	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
 	// This field is applicable only when the `loadBalancingScheme` is set
@@ -2188,7 +2198,9 @@ func (o RegionBackendServiceOutput) Name() pulumi.StringOutput {
 }
 
 // The URL of the network to which this backend service belongs.
-// This field can only be specified when the load balancing scheme is set to INTERNAL.
+// This field must be set for Internal Passthrough Network Load Balancers when the haPolicy is enabled, and for External Passthrough Network Load Balancers when the haPolicy fastIpMove is enabled.
+// This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
+// Changes to this field force recreation of the resource.
 func (o RegionBackendServiceOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionBackendService) pulumi.StringPtrOutput { return v.Network }).(pulumi.StringPtrOutput)
 }

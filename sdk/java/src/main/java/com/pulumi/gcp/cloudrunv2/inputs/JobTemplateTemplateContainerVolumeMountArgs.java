@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class JobTemplateTemplateContainerVolumeMountArgs extends com.pulumi.resources.ResourceArgs {
@@ -44,11 +46,27 @@ public final class JobTemplateTemplateContainerVolumeMountArgs extends com.pulum
         return this.name;
     }
 
+    /**
+     * Path within the volume from which the container&#39;s volume should be mounted.
+     * 
+     */
+    @Import(name="subPath")
+    private @Nullable Output<String> subPath;
+
+    /**
+     * @return Path within the volume from which the container&#39;s volume should be mounted.
+     * 
+     */
+    public Optional<Output<String>> subPath() {
+        return Optional.ofNullable(this.subPath);
+    }
+
     private JobTemplateTemplateContainerVolumeMountArgs() {}
 
     private JobTemplateTemplateContainerVolumeMountArgs(JobTemplateTemplateContainerVolumeMountArgs $) {
         this.mountPath = $.mountPath;
         this.name = $.name;
+        this.subPath = $.subPath;
     }
 
     public static Builder builder() {
@@ -109,6 +127,27 @@ public final class JobTemplateTemplateContainerVolumeMountArgs extends com.pulum
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param subPath Path within the volume from which the container&#39;s volume should be mounted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subPath(@Nullable Output<String> subPath) {
+            $.subPath = subPath;
+            return this;
+        }
+
+        /**
+         * @param subPath Path within the volume from which the container&#39;s volume should be mounted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subPath(String subPath) {
+            return subPath(Output.of(subPath));
         }
 
         public JobTemplateTemplateContainerVolumeMountArgs build() {

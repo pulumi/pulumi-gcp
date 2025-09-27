@@ -307,7 +307,7 @@ index f4794cf4d..982b4019c 100644
    **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
    Please refer to the field `effective_annotations` for all of the annotations present on the resource.
 diff --git a/website/docs/r/cloud_run_service.html.markdown b/website/docs/r/cloud_run_service.html.markdown
-index c78432abc..f88c6585b 100644
+index 898b84bbc..d3971a4c7 100644
 --- a/website/docs/r/cloud_run_service.html.markdown
 +++ b/website/docs/r/cloud_run_service.html.markdown
 @@ -33,8 +33,63 @@ To get more information about Service, see:
@@ -403,7 +403,7 @@ index c78432abc..f88c6585b 100644
    Structure is [documented below](#nested_spec_template_spec_containers_containers_liveness_probe).
  
  
-@@ -1064,7 +1120,7 @@ this field is set to false, the revision name will still autogenerate.)
+@@ -1068,7 +1124,7 @@ this field is set to false, the revision name will still autogenerate.)
    may be set by external tools to store and retrieve arbitrary metadata.
    More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
    **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
@@ -586,10 +586,10 @@ index 7cb3f4be6..040254c1b 100644
  
  ```hcl
 diff --git a/website/docs/r/compute_image_iam.html.markdown b/website/docs/r/compute_image_iam.html.markdown
-index 2fdddfcd2..ecb38a790 100644
+index c761850a1..3cc5c8944 100644
 --- a/website/docs/r/compute_image_iam.html.markdown
 +++ b/website/docs/r/compute_image_iam.html.markdown
-@@ -181,8 +181,8 @@ The `condition` block supports:
+@@ -182,8 +182,8 @@ The `condition` block supports:
  
  * `description` - (Optional) An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
  
@@ -601,7 +601,7 @@ index 2fdddfcd2..ecb38a790 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance.html.markdown b/website/docs/r/compute_instance.html.markdown
-index e446141ea..fe14db4ac 100644
+index 9bd4841f5..2bbf68119 100644
 --- a/website/docs/r/compute_instance.html.markdown
 +++ b/website/docs/r/compute_instance.html.markdown
 @@ -154,7 +154,7 @@ The following arguments are supported:
@@ -730,10 +730,10 @@ index 368fd2b5c..e9c72d4e2 100644
  
  * `wait_for_instances_status` - (Optional) When used with `wait_for_instances` it specifies the status to wait for.
 diff --git a/website/docs/r/compute_instance_iam.html.markdown b/website/docs/r/compute_instance_iam.html.markdown
-index 471b19e39..3f536efc3 100644
+index 5938de616..7717ff951 100644
 --- a/website/docs/r/compute_instance_iam.html.markdown
 +++ b/website/docs/r/compute_instance_iam.html.markdown
-@@ -190,8 +190,8 @@ The `condition` block supports:
+@@ -191,8 +191,8 @@ The `condition` block supports:
  
  * `description` - (Optional) An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
  
@@ -745,7 +745,7 @@ index 471b19e39..3f536efc3 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance_template.html.markdown b/website/docs/r/compute_instance_template.html.markdown
-index 18a3ce687..9882a2bf7 100644
+index 0038f6389..61451d3dc 100644
 --- a/website/docs/r/compute_instance_template.html.markdown
 +++ b/website/docs/r/compute_instance_template.html.markdown
 @@ -197,12 +197,11 @@ resource "google_compute_instance_template" "foobar" {
@@ -819,10 +819,10 @@ index 18a3ce687..9882a2bf7 100644
      on that network). This block can be specified once per `network_interface`. Structure [documented below](#nested_access_config).
  
 diff --git a/website/docs/r/compute_machine_image_iam.html.markdown b/website/docs/r/compute_machine_image_iam.html.markdown
-index 6e55e0068..890f195b3 100644
+index 4a50878fe..0bca0f6c7 100644
 --- a/website/docs/r/compute_machine_image_iam.html.markdown
 +++ b/website/docs/r/compute_machine_image_iam.html.markdown
-@@ -191,9 +191,6 @@ The `condition` block supports:
+@@ -192,9 +192,6 @@ The `condition` block supports:
  
  * `description` - (Optional) An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
  
@@ -1326,7 +1326,7 @@ index 000000000..62d6db522
 +
 +This resource supports [User Project Overrides](https://registry.terraform.io/providers/hashicorp/google/latest/docs/guides/provider_reference#user_project_override).
 diff --git a/website/docs/r/compute_security_policy.html.markdown b/website/docs/r/compute_security_policy.html.markdown
-index 591ba8e6c..69d26e749 100644
+index 50584521d..22390de09 100644
 --- a/website/docs/r/compute_security_policy.html.markdown
 +++ b/website/docs/r/compute_security_policy.html.markdown
 @@ -24,7 +24,7 @@ A Security Policy defines an IP blacklist or whitelist that protects load balanc
@@ -1405,10 +1405,10 @@ index 8ee438dae..b1171c70a 100644
  
  * `private_ip_google_access` -
 diff --git a/website/docs/r/compute_subnetwork_iam.html.markdown b/website/docs/r/compute_subnetwork_iam.html.markdown
-index b7c79068c..d9ba75125 100644
+index 727680e57..ca13bfba4 100644
 --- a/website/docs/r/compute_subnetwork_iam.html.markdown
 +++ b/website/docs/r/compute_subnetwork_iam.html.markdown
-@@ -191,8 +191,8 @@ The `condition` block supports:
+@@ -192,8 +192,8 @@ The `condition` block supports:
  
  * `description` - (Optional) An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
  
@@ -1433,7 +1433,7 @@ index 7b99556ac..e7237015b 100644
  
  * `project` - (Optional) The ID of the project in which the resource belongs. If it
 diff --git a/website/docs/r/compute_vpn_tunnel.html.markdown b/website/docs/r/compute_vpn_tunnel.html.markdown
-index d88864517..9095d5782 100644
+index e02a993a9..52db61b4a 100644
 --- a/website/docs/r/compute_vpn_tunnel.html.markdown
 +++ b/website/docs/r/compute_vpn_tunnel.html.markdown
 @@ -31,9 +31,8 @@ To get more information about VpnTunnel, see:
@@ -1449,7 +1449,7 @@ index d88864517..9095d5782 100644
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=vpn_tunnel_basic&open_in_editor=main.tf" target="_blank">
 diff --git a/website/docs/r/container_cluster.html.markdown b/website/docs/r/container_cluster.html.markdown
-index 3db03838a..c54082df2 100644
+index 5404329fb..401b70aa4 100644
 --- a/website/docs/r/container_cluster.html.markdown
 +++ b/website/docs/r/container_cluster.html.markdown
 @@ -27,15 +27,12 @@ To get more information about GKE clusters, see:
@@ -1540,7 +1540,7 @@ index 3db03838a..c54082df2 100644
  release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
  channel. Structure is [documented below](#nested_release_channel).
  
-@@ -967,10 +985,6 @@ gvnic {
+@@ -973,10 +991,6 @@ gvnic {
  
  * `guest_accelerator` - (Optional) List of the type and count of accelerator cards attached to the instance.
      Structure [documented below](#nested_guest_accelerator).
@@ -1551,7 +1551,7 @@ index 3db03838a..c54082df2 100644
  
  * `image_type` - (Optional) The image type to use for this node. Note that changing the image type
      will delete and recreate all nodes in the node pool.
-@@ -997,7 +1011,7 @@ gvnic {
+@@ -1003,7 +1017,7 @@ gvnic {
  * `metadata` - (Optional) The metadata key/value pairs assigned to instances in
      the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
      `true` by the API; if `metadata` is set but that default value is not
@@ -1560,7 +1560,7 @@ index 3db03838a..c54082df2 100644
      value in your config.
  
  * `min_cpu_platform` - (Optional) Minimum CPU platform to be used by this instance.
-@@ -1022,10 +1036,7 @@ gvnic {
+@@ -1028,10 +1042,7 @@ gvnic {
      See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
      for more information. Defaults to false.
  
@@ -1572,7 +1572,7 @@ index 3db03838a..c54082df2 100644
  
  * `service_account` - (Optional) The service account to be used by the Node VMs.
      If not specified, the "default" service account is used.
-@@ -1039,13 +1050,14 @@ gvnic {
+@@ -1045,13 +1056,14 @@ gvnic {
  
  * `resource_manager_tags` - (Optional) A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
  
@@ -1594,7 +1594,7 @@ index 3db03838a..c54082df2 100644
  
  * `workload_metadata_config` - (Optional) Metadata configuration to expose to workloads on the node pool.
      Structure is [documented below](#nested_workload_metadata_config).
-@@ -1355,7 +1367,7 @@ for more details. This field only applies to private clusters, when
+@@ -1361,7 +1373,7 @@ for more details. This field only applies to private clusters, when
  * `private_endpoint_subnetwork` - (Optional) Subnetwork in cluster's network where master's endpoint will be provisioned.
  
  * `master_global_access_config` (Optional) - Controls cluster master global
@@ -1603,7 +1603,7 @@ index 3db03838a..c54082df2 100644
  not modify the previously-set value. Structure is [documented below](#nested_master_global_access_config).
  
  In addition, the `private_cluster_config` allows access to the following read-only fields:
-@@ -1463,9 +1475,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
+@@ -1469,9 +1481,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
  
  * `mode` (Required) How to expose the node metadata to the workload running on the node.
      Accepted values are:
@@ -2710,10 +2710,10 @@ index 8c2c5aea0..d0e0a9bb3 100644
  
  * `google_healthcare_hl7_v2_store_iam_policy`: Authoritative. Sets the IAM policy for the HL7v2 store and replaces any existing policy already attached.
 diff --git a/website/docs/r/iap_app_engine_service_iam.html.markdown b/website/docs/r/iap_app_engine_service_iam.html.markdown
-index d6e35f215..eaa0685b7 100644
+index dd50d89bb..2ef41795f 100644
 --- a/website/docs/r/iap_app_engine_service_iam.html.markdown
 +++ b/website/docs/r/iap_app_engine_service_iam.html.markdown
-@@ -188,8 +188,8 @@ The `condition` block supports:
+@@ -189,8 +189,8 @@ The `condition` block supports:
  
  * `description` - (Optional) An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
  
@@ -2725,10 +2725,10 @@ index d6e35f215..eaa0685b7 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/iap_app_engine_version_iam.html.markdown b/website/docs/r/iap_app_engine_version_iam.html.markdown
-index 9e8e23285..b5777b1bd 100644
+index d15349cea..98d6de8a5 100644
 --- a/website/docs/r/iap_app_engine_version_iam.html.markdown
 +++ b/website/docs/r/iap_app_engine_version_iam.html.markdown
-@@ -195,8 +195,8 @@ The `condition` block supports:
+@@ -196,8 +196,8 @@ The `condition` block supports:
  
  * `description` - (Optional) An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
  
@@ -2768,10 +2768,10 @@ index 52e7d1830..427b93822 100644
  ## Example Usage - Iap Client
  
 diff --git a/website/docs/r/iap_tunnel_iam.html.markdown b/website/docs/r/iap_tunnel_iam.html.markdown
-index ad174ec93..b83a2f3cf 100644
+index fd2577728..07294a779 100644
 --- a/website/docs/r/iap_tunnel_iam.html.markdown
 +++ b/website/docs/r/iap_tunnel_iam.html.markdown
-@@ -174,9 +174,6 @@ The `condition` block supports:
+@@ -175,9 +175,6 @@ The `condition` block supports:
  
  * `description` - (Optional) An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
  
@@ -2782,10 +2782,10 @@ index ad174ec93..b83a2f3cf 100644
  
  In addition to the arguments listed above, the following computed attributes are
 diff --git a/website/docs/r/iap_tunnel_instance_iam.html.markdown b/website/docs/r/iap_tunnel_instance_iam.html.markdown
-index 1e65de9b3..8947176e1 100644
+index fb772774a..0a5f212d6 100644
 --- a/website/docs/r/iap_tunnel_instance_iam.html.markdown
 +++ b/website/docs/r/iap_tunnel_instance_iam.html.markdown
-@@ -190,8 +190,8 @@ The `condition` block supports:
+@@ -191,8 +191,8 @@ The `condition` block supports:
  
  * `description` - (Optional) An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
  
@@ -2797,10 +2797,10 @@ index 1e65de9b3..8947176e1 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/iap_web_backend_service_iam.html.markdown b/website/docs/r/iap_web_backend_service_iam.html.markdown
-index 52c15c6ab..90576c43e 100644
+index 9cc362f6d..e89edfe12 100644
 --- a/website/docs/r/iap_web_backend_service_iam.html.markdown
 +++ b/website/docs/r/iap_web_backend_service_iam.html.markdown
-@@ -181,8 +181,8 @@ The `condition` block supports:
+@@ -182,8 +182,8 @@ The `condition` block supports:
  
  * `description` - (Optional) An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
  
@@ -2812,10 +2812,10 @@ index 52c15c6ab..90576c43e 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/iap_web_iam.html.markdown b/website/docs/r/iap_web_iam.html.markdown
-index b4a8631f3..ee84ac3f7 100644
+index 178c90856..5b86e6526 100644
 --- a/website/docs/r/iap_web_iam.html.markdown
 +++ b/website/docs/r/iap_web_iam.html.markdown
-@@ -174,8 +174,8 @@ The `condition` block supports:
+@@ -175,8 +175,8 @@ The `condition` block supports:
  
  * `description` - (Optional) An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
  
@@ -2827,10 +2827,10 @@ index b4a8631f3..ee84ac3f7 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/iap_web_type_app_engine_iam.html.markdown b/website/docs/r/iap_web_type_app_engine_iam.html.markdown
-index 090bf892c..d624adf0a 100644
+index c44a1530e..c6fa21ad3 100644
 --- a/website/docs/r/iap_web_type_app_engine_iam.html.markdown
 +++ b/website/docs/r/iap_web_type_app_engine_iam.html.markdown
-@@ -181,8 +181,8 @@ The `condition` block supports:
+@@ -182,8 +182,8 @@ The `condition` block supports:
  
  * `description` - (Optional) An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
  
@@ -2842,10 +2842,10 @@ index 090bf892c..d624adf0a 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/iap_web_type_compute_iam.html.markdown b/website/docs/r/iap_web_type_compute_iam.html.markdown
-index 2bb672f99..a8ec57fdf 100644
+index a35563903..6046d126e 100644
 --- a/website/docs/r/iap_web_type_compute_iam.html.markdown
 +++ b/website/docs/r/iap_web_type_compute_iam.html.markdown
-@@ -174,8 +174,8 @@ The `condition` block supports:
+@@ -175,8 +175,8 @@ The `condition` block supports:
  
  * `description` - (Optional) An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
  
@@ -3270,7 +3270,7 @@ index 94c3db9d4..091d0e9ac 100644
  * `default_time_zone` - (Optional) The default time zone for the database. The default time zone must be a valid name
  from the tz database. Default value is "America/Los_angeles".
 diff --git a/website/docs/r/sql_database_instance.html.markdown b/website/docs/r/sql_database_instance.html.markdown
-index 1f57d83db..0f675d26f 100644
+index 19dd1d2df..355e22e16 100644
 --- a/website/docs/r/sql_database_instance.html.markdown
 +++ b/website/docs/r/sql_database_instance.html.markdown
 @@ -24,12 +24,12 @@ Creates a new Google SQL Database Instance. For more information, see the [offic
@@ -3288,7 +3288,7 @@ index 1f57d83db..0f675d26f 100644
  It is recommended to not set this field (or set it to true) until you're ready to destroy the instance and its databases.
  
  ## Example Usage
-@@ -306,7 +306,7 @@ SQL Server version to use. Supported values include `MYSQL_5_6`,
+@@ -307,7 +307,7 @@ SQL Server version to use. Supported values include `MYSQL_5_6`,
  includes an up-to-date reference of supported versions.
  
  * `name` - (Optional, Computed) The name of the instance. If the name is left
@@ -3297,7 +3297,7 @@ index 1f57d83db..0f675d26f 100644
      created. This is done because after a name is used, it cannot be reused for
      up to [one week](https://cloud.google.com/sql/docs/delete-instance).
  
-@@ -328,7 +328,7 @@ includes an up-to-date reference of supported versions.
+@@ -329,7 +329,7 @@ includes an up-to-date reference of supported versions.
  
  * `encryption_key_name` - (Optional)
      The full path to the encryption key used for the CMEK disk encryption.  Setting
@@ -3306,7 +3306,7 @@ index 1f57d83db..0f675d26f 100644
      The provided key must be in the same region as the SQL instance.  In order
      to use this feature, a special kind of service account must be created and
      granted permission on this key.  This step can currently only be done
-@@ -336,18 +336,14 @@ includes an up-to-date reference of supported versions.
+@@ -337,18 +337,14 @@ includes an up-to-date reference of supported versions.
      That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
      key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
  
@@ -3329,7 +3329,7 @@ index 1f57d83db..0f675d26f 100644
      block during resource creation/update will trigger the restore action after the resource is created/updated.
  
  *  `backupdr_backup` - (optional) The backupdr_backup needed to restore the database to a backup run. This field will
-@@ -356,7 +352,7 @@ includes an up-to-date reference of supported versions.
+@@ -357,7 +353,7 @@ includes an up-to-date reference of supported versions.
      block during resource creation/update will trigger the restore action after the resource is created/updated.
  
  * `clone` - (Optional) The context needed to create this instance as a clone of another instance. When this field is set during
@@ -3338,7 +3338,7 @@ index 1f57d83db..0f675d26f 100644
      configuration is detailed below.
  
  The `settings` block supports:
-@@ -632,7 +628,7 @@ The optional `clone` block supports:
+@@ -633,7 +629,7 @@ The optional `clone` block supports:
  * `allocated_ip_range` -  (Optional) The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?.
  
  The optional `restore_backup_context` block supports:
@@ -3347,7 +3347,7 @@ index 1f57d83db..0f675d26f 100644
  block during resource creation/update will trigger the restore action after the resource is created/updated.
  
  * `backup_run_id` - (Required) The ID of the backup run to restore from.
-@@ -698,21 +694,13 @@ instance.
+@@ -699,21 +695,13 @@ instance.
  
    * A `PRIVATE` address is an address for an instance which has been configured to use private networking see: [Private IP](https://cloud.google.com/sql/docs/mysql/private-ip).
  
@@ -3452,10 +3452,10 @@ index 26118e891..e090d568a 100644
  Permissions can be granted either by ACLs or Cloud IAM policies. In general, permissions granted by Cloud IAM policies do not appear in ACLs, and permissions granted by ACLs do not appear in Cloud IAM policies. The only exception is for ACLs applied directly on a bucket and certain bucket-level Cloud IAM policies, as described in [Cloud IAM relation to ACLs](https://cloud.google.com/storage/docs/access-control/iam#acls).
  
 diff --git a/website/docs/r/storage_bucket_iam.html.markdown b/website/docs/r/storage_bucket_iam.html.markdown
-index 548939a08..8217b9e28 100644
+index 3e5ea5ef3..4648a2fa5 100644
 --- a/website/docs/r/storage_bucket_iam.html.markdown
 +++ b/website/docs/r/storage_bucket_iam.html.markdown
-@@ -170,8 +170,8 @@ The `condition` block supports:
+@@ -188,8 +188,8 @@ The `condition` block supports:
  
  * `description` - (Optional) An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
  

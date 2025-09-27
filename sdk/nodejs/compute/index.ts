@@ -290,6 +290,16 @@ export const getInstantSnapshotIamPolicy: typeof import("./getInstantSnapshotIam
 export const getInstantSnapshotIamPolicyOutput: typeof import("./getInstantSnapshotIamPolicy").getInstantSnapshotIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getInstantSnapshotIamPolicy","getInstantSnapshotIamPolicyOutput"], () => require("./getInstantSnapshotIamPolicy"));
 
+export { GetInterconnectLocationArgs, GetInterconnectLocationResult, GetInterconnectLocationOutputArgs } from "./getInterconnectLocation";
+export const getInterconnectLocation: typeof import("./getInterconnectLocation").getInterconnectLocation = null as any;
+export const getInterconnectLocationOutput: typeof import("./getInterconnectLocation").getInterconnectLocationOutput = null as any;
+utilities.lazyLoad(exports, ["getInterconnectLocation","getInterconnectLocationOutput"], () => require("./getInterconnectLocation"));
+
+export { GetInterconnectLocationsArgs, GetInterconnectLocationsResult, GetInterconnectLocationsOutputArgs } from "./getInterconnectLocations";
+export const getInterconnectLocations: typeof import("./getInterconnectLocations").getInterconnectLocations = null as any;
+export const getInterconnectLocationsOutput: typeof import("./getInterconnectLocations").getInterconnectLocationsOutput = null as any;
+utilities.lazyLoad(exports, ["getInterconnectLocations","getInterconnectLocationsOutput"], () => require("./getInterconnectLocations"));
+
 export { GetLBIPRangesResult } from "./getLBIPRanges";
 export const getLBIPRanges: typeof import("./getLBIPRanges").getLBIPRanges = null as any;
 export const getLBIPRangesOutput: typeof import("./getLBIPRanges").getLBIPRangesOutput = null as any;

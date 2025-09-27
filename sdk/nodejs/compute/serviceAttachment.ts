@@ -314,6 +314,65 @@ import * as utilities from "../utilities";
  *     reconcileConnections: false,
  * });
  * ```
+ * ### Service Attachment Tunneling Config
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const producerServiceHealthCheck = new gcp.compute.HealthCheck("producer_service_health_check", {
+ *     name: "producer-service-health-check",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ *     tcpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const producerServiceBackend = new gcp.compute.RegionBackendService("producer_service_backend", {
+ *     name: "producer-service",
+ *     region: "us-west2",
+ *     healthChecks: producerServiceHealthCheck.id,
+ * });
+ * const pscIlbNetwork = new gcp.compute.Network("psc_ilb_network", {
+ *     name: "psc-ilb-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const pscIlbProducerSubnetwork = new gcp.compute.Subnetwork("psc_ilb_producer_subnetwork", {
+ *     name: "psc-ilb-producer-subnetwork",
+ *     region: "us-west2",
+ *     network: pscIlbNetwork.id,
+ *     ipCidrRange: "10.0.0.0/16",
+ * });
+ * const pscIlbTargetService = new gcp.compute.ForwardingRule("psc_ilb_target_service", {
+ *     name: "producer-forwarding-rule",
+ *     region: "us-west2",
+ *     loadBalancingScheme: "INTERNAL",
+ *     backendService: producerServiceBackend.id,
+ *     allPorts: true,
+ *     network: pscIlbNetwork.name,
+ *     subnetwork: pscIlbProducerSubnetwork.name,
+ * });
+ * const pscIlbNat = new gcp.compute.Subnetwork("psc_ilb_nat", {
+ *     name: "psc-ilb-nat",
+ *     region: "us-west2",
+ *     network: pscIlbNetwork.id,
+ *     purpose: "PRIVATE_SERVICE_CONNECT",
+ *     ipCidrRange: "10.1.0.0/16",
+ * });
+ * const pscIlbServiceAttachment = new gcp.compute.ServiceAttachment("psc_ilb_service_attachment", {
+ *     name: "my-psc-ilb",
+ *     region: "us-west2",
+ *     description: "A service attachment configured with tunneling",
+ *     enableProxyProtocol: false,
+ *     connectionPreference: "ACCEPT_AUTOMATIC",
+ *     natSubnets: [pscIlbNat.id],
+ *     targetService: pscIlbTargetService.id,
+ *     tunnelingConfig: {
+ *         routingMode: "REGIONAL",
+ *         encapsulationProfile: "IPV4",
+ *     },
+ * });
+ * ```
  * ### Service Attachment Cross Region Ilb
  *
  * ```typescript
@@ -518,6 +577,11 @@ export class ServiceAttachment extends pulumi.CustomResource {
      */
     declare public readonly propagatedConnectionLimit: pulumi.Output<number>;
     /**
+     * An 128-bit global unique ID of the PSC service attachment.
+     * Structure is documented below.
+     */
+    declare public /*out*/ readonly pscServiceAttachmentIds: pulumi.Output<outputs.compute.ServiceAttachmentPscServiceAttachmentId[]>;
+    /**
      * This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
      * If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
      * If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
@@ -542,6 +606,11 @@ export class ServiceAttachment extends pulumi.CustomResource {
      * The URL of a service serving the endpoint identified by this service attachment.
      */
     declare public readonly targetService: pulumi.Output<string>;
+    /**
+     * Tunneling configuration for this service attachment.
+     * Structure is documented below.
+     */
+    declare public readonly tunnelingConfig: pulumi.Output<outputs.compute.ServiceAttachmentTunnelingConfig | undefined>;
 
     /**
      * Create a ServiceAttachment resource with the given unique name, arguments, and options.
@@ -568,11 +637,13 @@ export class ServiceAttachment extends pulumi.CustomResource {
             resourceInputs["natSubnets"] = state?.natSubnets;
             resourceInputs["project"] = state?.project;
             resourceInputs["propagatedConnectionLimit"] = state?.propagatedConnectionLimit;
+            resourceInputs["pscServiceAttachmentIds"] = state?.pscServiceAttachmentIds;
             resourceInputs["reconcileConnections"] = state?.reconcileConnections;
             resourceInputs["region"] = state?.region;
             resourceInputs["selfLink"] = state?.selfLink;
             resourceInputs["sendPropagatedConnectionLimitIfZero"] = state?.sendPropagatedConnectionLimitIfZero;
             resourceInputs["targetService"] = state?.targetService;
+            resourceInputs["tunnelingConfig"] = state?.tunnelingConfig;
         } else {
             const args = argsOrState as ServiceAttachmentArgs | undefined;
             if (args?.connectionPreference === undefined && !opts.urn) {
@@ -601,8 +672,10 @@ export class ServiceAttachment extends pulumi.CustomResource {
             resourceInputs["region"] = args?.region;
             resourceInputs["sendPropagatedConnectionLimitIfZero"] = args?.sendPropagatedConnectionLimitIfZero;
             resourceInputs["targetService"] = args?.targetService;
+            resourceInputs["tunnelingConfig"] = args?.tunnelingConfig;
             resourceInputs["connectedEndpoints"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["pscServiceAttachmentIds"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -685,6 +758,11 @@ export interface ServiceAttachmentState {
      */
     propagatedConnectionLimit?: pulumi.Input<number>;
     /**
+     * An 128-bit global unique ID of the PSC service attachment.
+     * Structure is documented below.
+     */
+    pscServiceAttachmentIds?: pulumi.Input<pulumi.Input<inputs.compute.ServiceAttachmentPscServiceAttachmentId>[]>;
+    /**
      * This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
      * If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
      * If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
@@ -709,6 +787,11 @@ export interface ServiceAttachmentState {
      * The URL of a service serving the endpoint identified by this service attachment.
      */
     targetService?: pulumi.Input<string>;
+    /**
+     * Tunneling configuration for this service attachment.
+     * Structure is documented below.
+     */
+    tunnelingConfig?: pulumi.Input<inputs.compute.ServiceAttachmentTunnelingConfig>;
 }
 
 /**
@@ -795,4 +878,9 @@ export interface ServiceAttachmentArgs {
      * The URL of a service serving the endpoint identified by this service attachment.
      */
     targetService: pulumi.Input<string>;
+    /**
+     * Tunneling configuration for this service attachment.
+     * Structure is documented below.
+     */
+    tunnelingConfig?: pulumi.Input<inputs.compute.ServiceAttachmentTunnelingConfig>;
 }

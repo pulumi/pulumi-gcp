@@ -409,7 +409,7 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="qosType", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> qosType;
+    private Output<String> qosType;
 
     /**
      * @return QoS (Quality of Service) type of the storage pool.
@@ -417,8 +417,8 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
      * Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
      * 
      */
-    public Output<Optional<String>> qosType() {
-        return Codegen.optional(this.qosType);
+    public Output<String> qosType() {
+        return this.qosType;
     }
     /**
      * Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a

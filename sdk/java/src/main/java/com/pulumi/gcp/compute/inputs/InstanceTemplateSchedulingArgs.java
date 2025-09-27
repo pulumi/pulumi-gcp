@@ -264,6 +264,21 @@ public final class InstanceTemplateSchedulingArgs extends com.pulumi.resources.R
     }
 
     /**
+     * Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+     * 
+     */
+    @Import(name="skipGuestOsShutdown")
+    private @Nullable Output<Boolean> skipGuestOsShutdown;
+
+    /**
+     * @return Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+     * 
+     */
+    public Optional<Output<Boolean>> skipGuestOsShutdown() {
+        return Optional.ofNullable(this.skipGuestOsShutdown);
+    }
+
+    /**
      * Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
      * 
      */
@@ -295,6 +310,7 @@ public final class InstanceTemplateSchedulingArgs extends com.pulumi.resources.R
         this.onInstanceStopAction = $.onInstanceStopAction;
         this.preemptible = $.preemptible;
         this.provisioningModel = $.provisioningModel;
+        this.skipGuestOsShutdown = $.skipGuestOsShutdown;
         this.terminationTime = $.terminationTime;
     }
 
@@ -665,6 +681,27 @@ public final class InstanceTemplateSchedulingArgs extends com.pulumi.resources.R
          */
         public Builder provisioningModel(String provisioningModel) {
             return provisioningModel(Output.of(provisioningModel));
+        }
+
+        /**
+         * @param skipGuestOsShutdown Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipGuestOsShutdown(@Nullable Output<Boolean> skipGuestOsShutdown) {
+            $.skipGuestOsShutdown = skipGuestOsShutdown;
+            return this;
+        }
+
+        /**
+         * @param skipGuestOsShutdown Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipGuestOsShutdown(Boolean skipGuestOsShutdown) {
+            return skipGuestOsShutdown(Output.of(skipGuestOsShutdown));
         }
 
         /**

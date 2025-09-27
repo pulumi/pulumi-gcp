@@ -216,6 +216,7 @@ export class BackendBucketIamBinding extends pulumi.CustomResource {
      * * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
      * * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+     * * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
      */
     declare public readonly members: pulumi.Output<string[]>;
     /**
@@ -294,6 +295,7 @@ export interface BackendBucketIamBindingState {
      * * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
      * * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+     * * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
      */
     members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -330,6 +332,7 @@ export interface BackendBucketIamBindingArgs {
      * * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
      * * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+     * * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
      */
     members: pulumi.Input<pulumi.Input<string>[]>;
     /**

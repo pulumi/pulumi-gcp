@@ -182,6 +182,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.bigqueryDatapolicyCustomEndpoint);
     }
 
+    @Import(name="bigqueryDatapolicyv2CustomEndpoint")
+    private @Nullable Output<String> bigqueryDatapolicyv2CustomEndpoint;
+
+    public Optional<Output<String>> bigqueryDatapolicyv2CustomEndpoint() {
+        return Optional.ofNullable(this.bigqueryDatapolicyv2CustomEndpoint);
+    }
+
     @Import(name="bigqueryReservationCustomEndpoint")
     private @Nullable Output<String> bigqueryReservationCustomEndpoint;
 
@@ -1405,6 +1412,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.bigqueryConnectionCustomEndpoint = $.bigqueryConnectionCustomEndpoint;
         this.bigqueryDataTransferCustomEndpoint = $.bigqueryDataTransferCustomEndpoint;
         this.bigqueryDatapolicyCustomEndpoint = $.bigqueryDatapolicyCustomEndpoint;
+        this.bigqueryDatapolicyv2CustomEndpoint = $.bigqueryDatapolicyv2CustomEndpoint;
         this.bigqueryReservationCustomEndpoint = $.bigqueryReservationCustomEndpoint;
         this.bigtableCustomEndpoint = $.bigtableCustomEndpoint;
         this.billingCustomEndpoint = $.billingCustomEndpoint;
@@ -1801,6 +1809,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder bigqueryDatapolicyCustomEndpoint(String bigqueryDatapolicyCustomEndpoint) {
             return bigqueryDatapolicyCustomEndpoint(Output.of(bigqueryDatapolicyCustomEndpoint));
+        }
+
+        public Builder bigqueryDatapolicyv2CustomEndpoint(@Nullable Output<String> bigqueryDatapolicyv2CustomEndpoint) {
+            $.bigqueryDatapolicyv2CustomEndpoint = bigqueryDatapolicyv2CustomEndpoint;
+            return this;
+        }
+
+        public Builder bigqueryDatapolicyv2CustomEndpoint(String bigqueryDatapolicyv2CustomEndpoint) {
+            return bigqueryDatapolicyv2CustomEndpoint(Output.of(bigqueryDatapolicyv2CustomEndpoint));
         }
 
         public Builder bigqueryReservationCustomEndpoint(@Nullable Output<String> bigqueryReservationCustomEndpoint) {

@@ -1390,7 +1390,7 @@ class StoragePool(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="qosType")
-    def qos_type(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def qos_type(self) -> pulumi.Output[_builtins.str]:
         """
         QoS (Quality of Service) type of the storage pool.
         Possible values are: AUTO, MANUAL.

@@ -20,6 +20,7 @@ import com.pulumi.gcp.gkeonprem.outputs.VmwareAdminClusterLoadBalancer;
 import com.pulumi.gcp.gkeonprem.outputs.VmwareAdminClusterNetworkConfig;
 import com.pulumi.gcp.gkeonprem.outputs.VmwareAdminClusterPlatformConfig;
 import com.pulumi.gcp.gkeonprem.outputs.VmwareAdminClusterPrivateRegistryConfig;
+import com.pulumi.gcp.gkeonprem.outputs.VmwareAdminClusterProxy;
 import com.pulumi.gcp.gkeonprem.outputs.VmwareAdminClusterStatus;
 import com.pulumi.gcp.gkeonprem.outputs.VmwareAdminClusterVcenter;
 import java.lang.Boolean;
@@ -147,6 +148,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterAutoRepairConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterPlatformConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterPrivateRegistryConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterProxyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -251,6 +253,10 @@ import javax.annotation.Nullable;
  *                 .address("test-address")
  *                 .caCert("test-ca-cert")
  *                 .build())
+ *             .proxy(VmwareAdminClusterProxyArgs.builder()
+ *                 .url("http://my-proxy.example.local:80")
+ *                 .noProxy("10.151.222.0/24,my-host.example.local,10.151.2.1")
+ *                 .build())
  *             .build());
  * 
  *     }}{@code
@@ -276,6 +282,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterLoadBalancerVipConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterLoadBalancerMetalLbConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterPrivateRegistryConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.VmwareAdminClusterProxyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -330,6 +337,10 @@ import javax.annotation.Nullable;
  *             .privateRegistryConfig(VmwareAdminClusterPrivateRegistryConfigArgs.builder()
  *                 .address("test-address")
  *                 .caCert("test-ca-cert")
+ *                 .build())
+ *             .proxy(VmwareAdminClusterProxyArgs.builder()
+ *                 .url("http://my-proxy.example.local:80")
+ *                 .noProxy("10.151.222.0/24,my-host.example.local,10.151.2.1")
  *                 .build())
  *             .build());
  * 
@@ -762,6 +773,22 @@ public class VmwareAdminCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * Configuration for proxy.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="proxy", refs={VmwareAdminClusterProxy.class}, tree="[0]")
+    private Output</* @Nullable */ VmwareAdminClusterProxy> proxy;
+
+    /**
+     * @return Configuration for proxy.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<VmwareAdminClusterProxy>> proxy() {
+        return Codegen.optional(this.proxy);
     }
     /**
      * If set, there are currently changes in flight to the VMware admin cluster.

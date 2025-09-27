@@ -27,6 +27,7 @@ __all__ = [
     'GetBackupBackupResult',
     'GetBackupPlanAssociationRulesConfigInfoResult',
     'GetBackupPlanAssociationRulesConfigInfoLastBackupErrorResult',
+    'GetBackupPlanAssociationsAssociationResult',
     'GetBackupPlanBackupRuleResult',
     'GetBackupPlanBackupRuleStandardScheduleResult',
     'GetBackupPlanBackupRuleStandardScheduleBackupWindowResult',
@@ -702,6 +703,39 @@ class GetBackupPlanAssociationRulesConfigInfoLastBackupErrorResult(dict):
         A developer-facing error message, which should be in English.
         """
         return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class GetBackupPlanAssociationsAssociationResult(dict):
+    def __init__(__self__, *,
+                 backup_plan: _builtins.str,
+                 create_time: _builtins.str,
+                 name: _builtins.str,
+                 resource: _builtins.str):
+        pulumi.set(__self__, "backup_plan", backup_plan)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource", resource)
+
+    @_builtins.property
+    @pulumi.getter(name="backupPlan")
+    def backup_plan(self) -> _builtins.str:
+        return pulumi.get(self, "backup_plan")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def resource(self) -> _builtins.str:
+        return pulumi.get(self, "resource")
 
 
 @pulumi.output_type

@@ -1102,6 +1102,9 @@ type EntitlementPrivilegedAccessGcpIamAccessRoleBinding struct {
 	// The expression field of the IAM condition to be associated with the role. If specified, a user with an active grant for this entitlement would be able to access the resource only if this condition evaluates to true for their request.
 	// https://cloud.google.com/iam/docs/conditions-overview#attributes.
 	ConditionExpression *string `pulumi:"conditionExpression"`
+	// (Output, Beta)
+	// Output Only. The ID corresponding to this role binding in the policy binding. This will be unique within an entitlement across time. Gets re-generated each time the entitlement is updated.
+	Id *string `pulumi:"id"`
 	// IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
 	Role string `pulumi:"role"`
 }
@@ -1121,6 +1124,9 @@ type EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs struct {
 	// The expression field of the IAM condition to be associated with the role. If specified, a user with an active grant for this entitlement would be able to access the resource only if this condition evaluates to true for their request.
 	// https://cloud.google.com/iam/docs/conditions-overview#attributes.
 	ConditionExpression pulumi.StringPtrInput `pulumi:"conditionExpression"`
+	// (Output, Beta)
+	// Output Only. The ID corresponding to this role binding in the policy binding. This will be unique within an entitlement across time. Gets re-generated each time the entitlement is updated.
+	Id pulumi.StringPtrInput `pulumi:"id"`
 	// IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
 	Role pulumi.StringInput `pulumi:"role"`
 }
@@ -1180,6 +1186,12 @@ func (o EntitlementPrivilegedAccessGcpIamAccessRoleBindingOutput) ToEntitlementP
 // https://cloud.google.com/iam/docs/conditions-overview#attributes.
 func (o EntitlementPrivilegedAccessGcpIamAccessRoleBindingOutput) ConditionExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EntitlementPrivilegedAccessGcpIamAccessRoleBinding) *string { return v.ConditionExpression }).(pulumi.StringPtrOutput)
+}
+
+// (Output, Beta)
+// Output Only. The ID corresponding to this role binding in the policy binding. This will be unique within an entitlement across time. Gets re-generated each time the entitlement is updated.
+func (o EntitlementPrivilegedAccessGcpIamAccessRoleBindingOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntitlementPrivilegedAccessGcpIamAccessRoleBinding) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
@@ -2474,6 +2486,8 @@ type GetEntitlementPrivilegedAccessGcpIamAccessRoleBinding struct {
 	// The expression field of the IAM condition to be associated with the role. If specified, a user with an active grant for this entitlement would be able to access the resource only if this condition evaluates to true for their request.
 	// https://cloud.google.com/iam/docs/conditions-overview#attributes.
 	ConditionExpression string `pulumi:"conditionExpression"`
+	// Output Only. The ID corresponding to this role binding in the policy binding. This will be unique within an entitlement across time. Gets re-generated each time the entitlement is updated.
+	Id string `pulumi:"id"`
 	// IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
 	Role string `pulumi:"role"`
 }
@@ -2493,6 +2507,8 @@ type GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs struct {
 	// The expression field of the IAM condition to be associated with the role. If specified, a user with an active grant for this entitlement would be able to access the resource only if this condition evaluates to true for their request.
 	// https://cloud.google.com/iam/docs/conditions-overview#attributes.
 	ConditionExpression pulumi.StringInput `pulumi:"conditionExpression"`
+	// Output Only. The ID corresponding to this role binding in the policy binding. This will be unique within an entitlement across time. Gets re-generated each time the entitlement is updated.
+	Id pulumi.StringInput `pulumi:"id"`
 	// IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
 	Role pulumi.StringInput `pulumi:"role"`
 }
@@ -2552,6 +2568,11 @@ func (o GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingOutput) ToGetEntitl
 // https://cloud.google.com/iam/docs/conditions-overview#attributes.
 func (o GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingOutput) ConditionExpression() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEntitlementPrivilegedAccessGcpIamAccessRoleBinding) string { return v.ConditionExpression }).(pulumi.StringOutput)
+}
+
+// Output Only. The ID corresponding to this role binding in the policy binding. This will be unique within an entitlement across time. Gets re-generated each time the entitlement is updated.
+func (o GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEntitlementPrivilegedAccessGcpIamAccessRoleBinding) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.

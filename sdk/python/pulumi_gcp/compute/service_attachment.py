@@ -34,7 +34,8 @@ class ServiceAttachmentArgs:
                  propagated_connection_limit: Optional[pulumi.Input[_builtins.int]] = None,
                  reconcile_connections: Optional[pulumi.Input[_builtins.bool]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
-                 send_propagated_connection_limit_if_zero: Optional[pulumi.Input[_builtins.bool]] = None):
+                 send_propagated_connection_limit_if_zero: Optional[pulumi.Input[_builtins.bool]] = None,
+                 tunneling_config: Optional[pulumi.Input['ServiceAttachmentTunnelingConfigArgs']] = None):
         """
         The set of arguments for constructing a ServiceAttachment resource.
         :param pulumi.Input[_builtins.str] connection_preference: The connection preference to use for this service attachment. Valid
@@ -75,6 +76,8 @@ class ServiceAttachmentArgs:
                When false, setting propagated_connection_limit to zero causes the provider to use to the API's default value.
                When true, the provider will set propagated_connection_limit to zero.
                Defaults to false.
+        :param pulumi.Input['ServiceAttachmentTunnelingConfigArgs'] tunneling_config: Tunneling configuration for this service attachment.
+               Structure is documented below.
         """
         pulumi.set(__self__, "connection_preference", connection_preference)
         pulumi.set(__self__, "enable_proxy_protocol", enable_proxy_protocol)
@@ -100,6 +103,8 @@ class ServiceAttachmentArgs:
             pulumi.set(__self__, "region", region)
         if send_propagated_connection_limit_if_zero is not None:
             pulumi.set(__self__, "send_propagated_connection_limit_if_zero", send_propagated_connection_limit_if_zero)
+        if tunneling_config is not None:
+            pulumi.set(__self__, "tunneling_config", tunneling_config)
 
     @_builtins.property
     @pulumi.getter(name="connectionPreference")
@@ -293,6 +298,19 @@ class ServiceAttachmentArgs:
     def send_propagated_connection_limit_if_zero(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "send_propagated_connection_limit_if_zero", value)
 
+    @_builtins.property
+    @pulumi.getter(name="tunnelingConfig")
+    def tunneling_config(self) -> Optional[pulumi.Input['ServiceAttachmentTunnelingConfigArgs']]:
+        """
+        Tunneling configuration for this service attachment.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tunneling_config")
+
+    @tunneling_config.setter
+    def tunneling_config(self, value: Optional[pulumi.Input['ServiceAttachmentTunnelingConfigArgs']]):
+        pulumi.set(self, "tunneling_config", value)
+
 
 @pulumi.input_type
 class _ServiceAttachmentState:
@@ -309,11 +327,13 @@ class _ServiceAttachmentState:
                  nat_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  propagated_connection_limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 psc_service_attachment_ids: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentPscServiceAttachmentIdArgs']]]] = None,
                  reconcile_connections: Optional[pulumi.Input[_builtins.bool]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  self_link: Optional[pulumi.Input[_builtins.str]] = None,
                  send_propagated_connection_limit_if_zero: Optional[pulumi.Input[_builtins.bool]] = None,
-                 target_service: Optional[pulumi.Input[_builtins.str]] = None):
+                 target_service: Optional[pulumi.Input[_builtins.str]] = None,
+                 tunneling_config: Optional[pulumi.Input['ServiceAttachmentTunnelingConfigArgs']] = None):
         """
         Input properties used for looking up and filtering ServiceAttachment resources.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConnectedEndpointArgs']]] connected_endpoints: An array of the consumer forwarding rules connected to this service
@@ -350,6 +370,8 @@ class _ServiceAttachmentState:
                If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
                If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
                If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set `send_propagated_connection_limit_if_zero = true`.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentPscServiceAttachmentIdArgs']]] psc_service_attachment_ids: An 128-bit global unique ID of the PSC service attachment.
+               Structure is documented below.
         :param pulumi.Input[_builtins.bool] reconcile_connections: This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
                If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
                If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
@@ -360,6 +382,8 @@ class _ServiceAttachmentState:
                When true, the provider will set propagated_connection_limit to zero.
                Defaults to false.
         :param pulumi.Input[_builtins.str] target_service: The URL of a service serving the endpoint identified by this service attachment.
+        :param pulumi.Input['ServiceAttachmentTunnelingConfigArgs'] tunneling_config: Tunneling configuration for this service attachment.
+               Structure is documented below.
         """
         if connected_endpoints is not None:
             pulumi.set(__self__, "connected_endpoints", connected_endpoints)
@@ -385,6 +409,8 @@ class _ServiceAttachmentState:
             pulumi.set(__self__, "project", project)
         if propagated_connection_limit is not None:
             pulumi.set(__self__, "propagated_connection_limit", propagated_connection_limit)
+        if psc_service_attachment_ids is not None:
+            pulumi.set(__self__, "psc_service_attachment_ids", psc_service_attachment_ids)
         if reconcile_connections is not None:
             pulumi.set(__self__, "reconcile_connections", reconcile_connections)
         if region is not None:
@@ -395,6 +421,8 @@ class _ServiceAttachmentState:
             pulumi.set(__self__, "send_propagated_connection_limit_if_zero", send_propagated_connection_limit_if_zero)
         if target_service is not None:
             pulumi.set(__self__, "target_service", target_service)
+        if tunneling_config is not None:
+            pulumi.set(__self__, "tunneling_config", tunneling_config)
 
     @_builtins.property
     @pulumi.getter(name="connectedEndpoints")
@@ -563,6 +591,19 @@ class _ServiceAttachmentState:
         pulumi.set(self, "propagated_connection_limit", value)
 
     @_builtins.property
+    @pulumi.getter(name="pscServiceAttachmentIds")
+    def psc_service_attachment_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentPscServiceAttachmentIdArgs']]]]:
+        """
+        An 128-bit global unique ID of the PSC service attachment.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_service_attachment_ids")
+
+    @psc_service_attachment_ids.setter
+    def psc_service_attachment_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentPscServiceAttachmentIdArgs']]]]):
+        pulumi.set(self, "psc_service_attachment_ids", value)
+
+    @_builtins.property
     @pulumi.getter(name="reconcileConnections")
     def reconcile_connections(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -627,6 +668,19 @@ class _ServiceAttachmentState:
     def target_service(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "target_service", value)
 
+    @_builtins.property
+    @pulumi.getter(name="tunnelingConfig")
+    def tunneling_config(self) -> Optional[pulumi.Input['ServiceAttachmentTunnelingConfigArgs']]:
+        """
+        Tunneling configuration for this service attachment.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tunneling_config")
+
+    @tunneling_config.setter
+    def tunneling_config(self, value: Optional[pulumi.Input['ServiceAttachmentTunnelingConfigArgs']]):
+        pulumi.set(self, "tunneling_config", value)
+
 
 @pulumi.type_token("gcp:compute/serviceAttachment:ServiceAttachment")
 class ServiceAttachment(pulumi.CustomResource):
@@ -648,6 +702,7 @@ class ServiceAttachment(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  send_propagated_connection_limit_if_zero: Optional[pulumi.Input[_builtins.bool]] = None,
                  target_service: Optional[pulumi.Input[_builtins.str]] = None,
+                 tunneling_config: Optional[pulumi.Input[Union['ServiceAttachmentTunnelingConfigArgs', 'ServiceAttachmentTunnelingConfigArgsDict']]] = None,
                  __props__=None):
         """
         Represents a ServiceAttachment resource.
@@ -921,6 +976,58 @@ class ServiceAttachment(pulumi.CustomResource):
             }],
             reconcile_connections=False)
         ```
+        ### Service Attachment Tunneling Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        producer_service_health_check = gcp.compute.HealthCheck("producer_service_health_check",
+            name="producer-service-health-check",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check={
+                "port": 80,
+            })
+        producer_service_backend = gcp.compute.RegionBackendService("producer_service_backend",
+            name="producer-service",
+            region="us-west2",
+            health_checks=producer_service_health_check.id)
+        psc_ilb_network = gcp.compute.Network("psc_ilb_network",
+            name="psc-ilb-network",
+            auto_create_subnetworks=False)
+        psc_ilb_producer_subnetwork = gcp.compute.Subnetwork("psc_ilb_producer_subnetwork",
+            name="psc-ilb-producer-subnetwork",
+            region="us-west2",
+            network=psc_ilb_network.id,
+            ip_cidr_range="10.0.0.0/16")
+        psc_ilb_target_service = gcp.compute.ForwardingRule("psc_ilb_target_service",
+            name="producer-forwarding-rule",
+            region="us-west2",
+            load_balancing_scheme="INTERNAL",
+            backend_service=producer_service_backend.id,
+            all_ports=True,
+            network=psc_ilb_network.name,
+            subnetwork=psc_ilb_producer_subnetwork.name)
+        psc_ilb_nat = gcp.compute.Subnetwork("psc_ilb_nat",
+            name="psc-ilb-nat",
+            region="us-west2",
+            network=psc_ilb_network.id,
+            purpose="PRIVATE_SERVICE_CONNECT",
+            ip_cidr_range="10.1.0.0/16")
+        psc_ilb_service_attachment = gcp.compute.ServiceAttachment("psc_ilb_service_attachment",
+            name="my-psc-ilb",
+            region="us-west2",
+            description="A service attachment configured with tunneling",
+            enable_proxy_protocol=False,
+            connection_preference="ACCEPT_AUTOMATIC",
+            nat_subnets=[psc_ilb_nat.id],
+            target_service=psc_ilb_target_service.id,
+            tunneling_config={
+                "routing_mode": "REGIONAL",
+                "encapsulation_profile": "IPV4",
+            })
+        ```
         ### Service Attachment Cross Region Ilb
 
         ```python
@@ -1055,6 +1162,8 @@ class ServiceAttachment(pulumi.CustomResource):
                When true, the provider will set propagated_connection_limit to zero.
                Defaults to false.
         :param pulumi.Input[_builtins.str] target_service: The URL of a service serving the endpoint identified by this service attachment.
+        :param pulumi.Input[Union['ServiceAttachmentTunnelingConfigArgs', 'ServiceAttachmentTunnelingConfigArgsDict']] tunneling_config: Tunneling configuration for this service attachment.
+               Structure is documented below.
         """
         ...
     @overload
@@ -1334,6 +1443,58 @@ class ServiceAttachment(pulumi.CustomResource):
             }],
             reconcile_connections=False)
         ```
+        ### Service Attachment Tunneling Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        producer_service_health_check = gcp.compute.HealthCheck("producer_service_health_check",
+            name="producer-service-health-check",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check={
+                "port": 80,
+            })
+        producer_service_backend = gcp.compute.RegionBackendService("producer_service_backend",
+            name="producer-service",
+            region="us-west2",
+            health_checks=producer_service_health_check.id)
+        psc_ilb_network = gcp.compute.Network("psc_ilb_network",
+            name="psc-ilb-network",
+            auto_create_subnetworks=False)
+        psc_ilb_producer_subnetwork = gcp.compute.Subnetwork("psc_ilb_producer_subnetwork",
+            name="psc-ilb-producer-subnetwork",
+            region="us-west2",
+            network=psc_ilb_network.id,
+            ip_cidr_range="10.0.0.0/16")
+        psc_ilb_target_service = gcp.compute.ForwardingRule("psc_ilb_target_service",
+            name="producer-forwarding-rule",
+            region="us-west2",
+            load_balancing_scheme="INTERNAL",
+            backend_service=producer_service_backend.id,
+            all_ports=True,
+            network=psc_ilb_network.name,
+            subnetwork=psc_ilb_producer_subnetwork.name)
+        psc_ilb_nat = gcp.compute.Subnetwork("psc_ilb_nat",
+            name="psc-ilb-nat",
+            region="us-west2",
+            network=psc_ilb_network.id,
+            purpose="PRIVATE_SERVICE_CONNECT",
+            ip_cidr_range="10.1.0.0/16")
+        psc_ilb_service_attachment = gcp.compute.ServiceAttachment("psc_ilb_service_attachment",
+            name="my-psc-ilb",
+            region="us-west2",
+            description="A service attachment configured with tunneling",
+            enable_proxy_protocol=False,
+            connection_preference="ACCEPT_AUTOMATIC",
+            nat_subnets=[psc_ilb_nat.id],
+            target_service=psc_ilb_target_service.id,
+            tunneling_config={
+                "routing_mode": "REGIONAL",
+                "encapsulation_profile": "IPV4",
+            })
+        ```
         ### Service Attachment Cross Region Ilb
 
         ```python
@@ -1457,6 +1618,7 @@ class ServiceAttachment(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  send_propagated_connection_limit_if_zero: Optional[pulumi.Input[_builtins.bool]] = None,
                  target_service: Optional[pulumi.Input[_builtins.str]] = None,
+                 tunneling_config: Optional[pulumi.Input[Union['ServiceAttachmentTunnelingConfigArgs', 'ServiceAttachmentTunnelingConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1488,8 +1650,10 @@ class ServiceAttachment(pulumi.CustomResource):
             if target_service is None and not opts.urn:
                 raise TypeError("Missing required property 'target_service'")
             __props__.__dict__["target_service"] = target_service
+            __props__.__dict__["tunneling_config"] = tunneling_config
             __props__.__dict__["connected_endpoints"] = None
             __props__.__dict__["fingerprint"] = None
+            __props__.__dict__["psc_service_attachment_ids"] = None
             __props__.__dict__["self_link"] = None
         super(ServiceAttachment, __self__).__init__(
             'gcp:compute/serviceAttachment:ServiceAttachment',
@@ -1513,11 +1677,13 @@ class ServiceAttachment(pulumi.CustomResource):
             nat_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             propagated_connection_limit: Optional[pulumi.Input[_builtins.int]] = None,
+            psc_service_attachment_ids: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceAttachmentPscServiceAttachmentIdArgs', 'ServiceAttachmentPscServiceAttachmentIdArgsDict']]]]] = None,
             reconcile_connections: Optional[pulumi.Input[_builtins.bool]] = None,
             region: Optional[pulumi.Input[_builtins.str]] = None,
             self_link: Optional[pulumi.Input[_builtins.str]] = None,
             send_propagated_connection_limit_if_zero: Optional[pulumi.Input[_builtins.bool]] = None,
-            target_service: Optional[pulumi.Input[_builtins.str]] = None) -> 'ServiceAttachment':
+            target_service: Optional[pulumi.Input[_builtins.str]] = None,
+            tunneling_config: Optional[pulumi.Input[Union['ServiceAttachmentTunnelingConfigArgs', 'ServiceAttachmentTunnelingConfigArgsDict']]] = None) -> 'ServiceAttachment':
         """
         Get an existing ServiceAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1559,6 +1725,8 @@ class ServiceAttachment(pulumi.CustomResource):
                If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
                If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
                If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set `send_propagated_connection_limit_if_zero = true`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceAttachmentPscServiceAttachmentIdArgs', 'ServiceAttachmentPscServiceAttachmentIdArgsDict']]]] psc_service_attachment_ids: An 128-bit global unique ID of the PSC service attachment.
+               Structure is documented below.
         :param pulumi.Input[_builtins.bool] reconcile_connections: This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
                If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
                If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
@@ -1569,6 +1737,8 @@ class ServiceAttachment(pulumi.CustomResource):
                When true, the provider will set propagated_connection_limit to zero.
                Defaults to false.
         :param pulumi.Input[_builtins.str] target_service: The URL of a service serving the endpoint identified by this service attachment.
+        :param pulumi.Input[Union['ServiceAttachmentTunnelingConfigArgs', 'ServiceAttachmentTunnelingConfigArgsDict']] tunneling_config: Tunneling configuration for this service attachment.
+               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1586,11 +1756,13 @@ class ServiceAttachment(pulumi.CustomResource):
         __props__.__dict__["nat_subnets"] = nat_subnets
         __props__.__dict__["project"] = project
         __props__.__dict__["propagated_connection_limit"] = propagated_connection_limit
+        __props__.__dict__["psc_service_attachment_ids"] = psc_service_attachment_ids
         __props__.__dict__["reconcile_connections"] = reconcile_connections
         __props__.__dict__["region"] = region
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["send_propagated_connection_limit_if_zero"] = send_propagated_connection_limit_if_zero
         __props__.__dict__["target_service"] = target_service
+        __props__.__dict__["tunneling_config"] = tunneling_config
         return ServiceAttachment(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -1712,6 +1884,15 @@ class ServiceAttachment(pulumi.CustomResource):
         return pulumi.get(self, "propagated_connection_limit")
 
     @_builtins.property
+    @pulumi.getter(name="pscServiceAttachmentIds")
+    def psc_service_attachment_ids(self) -> pulumi.Output[Sequence['outputs.ServiceAttachmentPscServiceAttachmentId']]:
+        """
+        An 128-bit global unique ID of the PSC service attachment.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_service_attachment_ids")
+
+    @_builtins.property
     @pulumi.getter(name="reconcileConnections")
     def reconcile_connections(self) -> pulumi.Output[_builtins.bool]:
         """
@@ -1755,4 +1936,13 @@ class ServiceAttachment(pulumi.CustomResource):
         The URL of a service serving the endpoint identified by this service attachment.
         """
         return pulumi.get(self, "target_service")
+
+    @_builtins.property
+    @pulumi.getter(name="tunnelingConfig")
+    def tunneling_config(self) -> pulumi.Output[Optional['outputs.ServiceAttachmentTunnelingConfig']]:
+        """
+        Tunneling configuration for this service attachment.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tunneling_config")
 

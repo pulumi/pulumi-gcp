@@ -26,6 +26,12 @@ namespace Pulumi.Gcp.Netapp.Inputs
         public Input<string>? AllowedClients { get; set; }
 
         /// <summary>
+        /// An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squash_mode` is `ROOT_SQUASH` or `ALL_SQUASH`.
+        /// </summary>
+        [Input("anonUid")]
+        public Input<int>? AnonUid { get; set; }
+
+        /// <summary>
         /// If enabled, the root user (UID = 0) of the specified clients doesn't get mapped to nobody (UID = 65534). This is also known as no_root_squash.
         /// </summary>
         [Input("hasRootAccess")]
@@ -78,6 +84,13 @@ namespace Pulumi.Gcp.Netapp.Inputs
         /// </summary>
         [Input("nfsv4")]
         public Input<bool>? Nfsv4 { get; set; }
+
+        /// <summary>
+        /// SquashMode defines how remote user privileges are restricted when accessing an NFS export. It controls how the user identities (like root) are mapped to anonymous users to limit access and enforce security.
+        /// Possible values are: `NO_ROOT_SQUASH`, `ROOT_SQUASH`, `ALL_SQUASH`.
+        /// </summary>
+        [Input("squashMode")]
+        public Input<string>? SquashMode { get; set; }
 
         public VolumeExportPolicyRuleGetArgs()
         {

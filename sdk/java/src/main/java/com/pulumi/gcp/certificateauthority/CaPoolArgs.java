@@ -6,6 +6,7 @@ package com.pulumi.gcp.certificateauthority;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.certificateauthority.inputs.CaPoolEncryptionSpecArgs;
 import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyArgs;
 import com.pulumi.gcp.certificateauthority.inputs.CaPoolPublishingOptionsArgs;
 import java.lang.String;
@@ -18,6 +19,27 @@ import javax.annotation.Nullable;
 public final class CaPoolArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final CaPoolArgs Empty = new CaPoolArgs();
+
+    /**
+     * Used when customer would like to encrypt data at rest. The customer-provided key will be used
+     * to encrypt the Subject, SubjectAltNames and PEM-encoded certificate fields. When unspecified,
+     * customer data will remain unencrypted.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="encryptionSpec")
+    private @Nullable Output<CaPoolEncryptionSpecArgs> encryptionSpec;
+
+    /**
+     * @return Used when customer would like to encrypt data at rest. The customer-provided key will be used
+     * to encrypt the Subject, SubjectAltNames and PEM-encoded certificate fields. When unspecified,
+     * customer data will remain unencrypted.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<CaPoolEncryptionSpecArgs>> encryptionSpec() {
+        return Optional.ofNullable(this.encryptionSpec);
+    }
 
     /**
      * The IssuancePolicy to control how Certificates will be issued from this CaPool.
@@ -147,6 +169,7 @@ public final class CaPoolArgs extends com.pulumi.resources.ResourceArgs {
     private CaPoolArgs() {}
 
     private CaPoolArgs(CaPoolArgs $) {
+        this.encryptionSpec = $.encryptionSpec;
         this.issuancePolicy = $.issuancePolicy;
         this.labels = $.labels;
         this.location = $.location;
@@ -172,6 +195,33 @@ public final class CaPoolArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(CaPoolArgs defaults) {
             $ = new CaPoolArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param encryptionSpec Used when customer would like to encrypt data at rest. The customer-provided key will be used
+         * to encrypt the Subject, SubjectAltNames and PEM-encoded certificate fields. When unspecified,
+         * customer data will remain unencrypted.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionSpec(@Nullable Output<CaPoolEncryptionSpecArgs> encryptionSpec) {
+            $.encryptionSpec = encryptionSpec;
+            return this;
+        }
+
+        /**
+         * @param encryptionSpec Used when customer would like to encrypt data at rest. The customer-provided key will be used
+         * to encrypt the Subject, SubjectAltNames and PEM-encoded certificate fields. When unspecified,
+         * customer data will remain unencrypted.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionSpec(CaPoolEncryptionSpecArgs encryptionSpec) {
+            return encryptionSpec(Output.of(encryptionSpec));
         }
 
         /**

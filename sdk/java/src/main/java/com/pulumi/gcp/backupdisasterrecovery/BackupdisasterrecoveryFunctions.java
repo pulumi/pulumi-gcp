@@ -14,19 +14,25 @@ import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupPlainArgs;
 import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupPlanArgs;
 import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupPlanAssociationArgs;
 import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupPlanAssociationPlainArgs;
+import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupPlanAssociationsArgs;
+import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupPlanAssociationsPlainArgs;
 import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupPlanPlainArgs;
 import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupVaultArgs;
 import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupVaultPlainArgs;
 import com.pulumi.gcp.backupdisasterrecovery.inputs.GetDataSourceArgs;
 import com.pulumi.gcp.backupdisasterrecovery.inputs.GetDataSourcePlainArgs;
+import com.pulumi.gcp.backupdisasterrecovery.inputs.GetDataSourceReferenceArgs;
+import com.pulumi.gcp.backupdisasterrecovery.inputs.GetDataSourceReferencePlainArgs;
 import com.pulumi.gcp.backupdisasterrecovery.inputs.GetDataSourceReferencesArgs;
 import com.pulumi.gcp.backupdisasterrecovery.inputs.GetDataSourceReferencesPlainArgs;
 import com.pulumi.gcp.backupdisasterrecovery.inputs.GetManagementServerArgs;
 import com.pulumi.gcp.backupdisasterrecovery.inputs.GetManagementServerPlainArgs;
 import com.pulumi.gcp.backupdisasterrecovery.outputs.GetBackupPlanAssociationResult;
+import com.pulumi.gcp.backupdisasterrecovery.outputs.GetBackupPlanAssociationsResult;
 import com.pulumi.gcp.backupdisasterrecovery.outputs.GetBackupPlanResult;
 import com.pulumi.gcp.backupdisasterrecovery.outputs.GetBackupResult;
 import com.pulumi.gcp.backupdisasterrecovery.outputs.GetBackupVaultResult;
+import com.pulumi.gcp.backupdisasterrecovery.outputs.GetDataSourceReferenceResult;
 import com.pulumi.gcp.backupdisasterrecovery.outputs.GetDataSourceReferencesResult;
 import com.pulumi.gcp.backupdisasterrecovery.outputs.GetDataSourceResult;
 import com.pulumi.gcp.backupdisasterrecovery.outputs.GetManagementServerResult;
@@ -469,6 +475,41 @@ public final class BackupdisasterrecoveryFunctions {
         return Deployment.getInstance().invokeAsync("gcp:backupdisasterrecovery/getBackupPlanAssociation:getBackupPlanAssociation", TypeShape.of(GetBackupPlanAssociationResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetBackupPlanAssociationsResult> getBackupPlanAssociations(GetBackupPlanAssociationsArgs args) {
+        return getBackupPlanAssociations(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetBackupPlanAssociationsResult> getBackupPlanAssociationsPlain(GetBackupPlanAssociationsPlainArgs args) {
+        return getBackupPlanAssociationsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetBackupPlanAssociationsResult> getBackupPlanAssociations(GetBackupPlanAssociationsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:backupdisasterrecovery/getBackupPlanAssociations:getBackupPlanAssociations", TypeShape.of(GetBackupPlanAssociationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetBackupPlanAssociationsResult> getBackupPlanAssociations(GetBackupPlanAssociationsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:backupdisasterrecovery/getBackupPlanAssociations:getBackupPlanAssociations", TypeShape.of(GetBackupPlanAssociationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetBackupPlanAssociationsResult> getBackupPlanAssociationsPlain(GetBackupPlanAssociationsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:backupdisasterrecovery/getBackupPlanAssociations:getBackupPlanAssociations", TypeShape.of(GetBackupPlanAssociationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * A Backup and DRBackupVault.
      * 
      * ## Example Usage
@@ -887,6 +928,41 @@ public final class BackupdisasterrecoveryFunctions {
      */
     public static CompletableFuture<GetDataSourceResult> getDataSourcePlain(GetDataSourcePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:backupdisasterrecovery/getDataSource:getDataSource", TypeShape.of(GetDataSourceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a specific Backup and DR data source reference.
+     * 
+     */
+    public static Output<GetDataSourceReferenceResult> getDataSourceReference(GetDataSourceReferenceArgs args) {
+        return getDataSourceReference(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a specific Backup and DR data source reference.
+     * 
+     */
+    public static CompletableFuture<GetDataSourceReferenceResult> getDataSourceReferencePlain(GetDataSourceReferencePlainArgs args) {
+        return getDataSourceReferencePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a specific Backup and DR data source reference.
+     * 
+     */
+    public static Output<GetDataSourceReferenceResult> getDataSourceReference(GetDataSourceReferenceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:backupdisasterrecovery/getDataSourceReference:getDataSourceReference", TypeShape.of(GetDataSourceReferenceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a specific Backup and DR data source reference.
+     * 
+     */
+    public static Output<GetDataSourceReferenceResult> getDataSourceReference(GetDataSourceReferenceArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:backupdisasterrecovery/getDataSourceReference:getDataSourceReference", TypeShape.of(GetDataSourceReferenceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a specific Backup and DR data source reference.
+     * 
+     */
+    public static CompletableFuture<GetDataSourceReferenceResult> getDataSourceReferencePlain(GetDataSourceReferencePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:backupdisasterrecovery/getDataSourceReference:getDataSourceReference", TypeShape.of(GetDataSourceReferenceResult.class), args, Utilities.withVersion(options));
     }
     /**
      * A list of Backup and DR data source references.

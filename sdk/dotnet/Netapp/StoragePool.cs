@@ -227,7 +227,7 @@ namespace Pulumi.Gcp.Netapp
         /// Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
         /// </summary>
         [Output("qosType")]
-        public Output<string?> QosType { get; private set; } = null!;
+        public Output<string> QosType { get; private set; } = null!;
 
         /// <summary>
         /// Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a

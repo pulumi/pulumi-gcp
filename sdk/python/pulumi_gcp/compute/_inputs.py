@@ -1377,6 +1377,10 @@ __all__ = [
     'ServiceAttachmentConnectedEndpointArgsDict',
     'ServiceAttachmentConsumerAcceptListArgs',
     'ServiceAttachmentConsumerAcceptListArgsDict',
+    'ServiceAttachmentPscServiceAttachmentIdArgs',
+    'ServiceAttachmentPscServiceAttachmentIdArgsDict',
+    'ServiceAttachmentTunnelingConfigArgs',
+    'ServiceAttachmentTunnelingConfigArgsDict',
     'SnapshotIamBindingConditionArgs',
     'SnapshotIamBindingConditionArgsDict',
     'SnapshotIamMemberConditionArgs',
@@ -18241,6 +18245,10 @@ if not MYPY:
         """
         Whether the instance is spot. If this is set as SPOT.
         """
+        skip_guest_os_shutdown: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+        """
         termination_time: NotRequired[pulumi.Input[_builtins.str]]
         """
         Specifies the timestamp, when the instance will be terminated,
@@ -18267,6 +18275,7 @@ class InstanceFromMachineImageSchedulingArgs:
                  on_instance_stop_action: Optional[pulumi.Input['InstanceFromMachineImageSchedulingOnInstanceStopActionArgs']] = None,
                  preemptible: Optional[pulumi.Input[_builtins.bool]] = None,
                  provisioning_model: Optional[pulumi.Input[_builtins.str]] = None,
+                 skip_guest_os_shutdown: Optional[pulumi.Input[_builtins.bool]] = None,
                  termination_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] automatic_restart: Specifies if the instance should be restarted if it was terminated by Compute Engine (not a user).
@@ -18285,6 +18294,7 @@ class InstanceFromMachineImageSchedulingArgs:
         :param pulumi.Input['InstanceFromMachineImageSchedulingOnInstanceStopActionArgs'] on_instance_stop_action: Defines the behaviour for instances with the instance_termination_action.
         :param pulumi.Input[_builtins.bool] preemptible: Whether the instance is preemptible.
         :param pulumi.Input[_builtins.str] provisioning_model: Whether the instance is spot. If this is set as SPOT.
+        :param pulumi.Input[_builtins.bool] skip_guest_os_shutdown: Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
         :param pulumi.Input[_builtins.str] termination_time: Specifies the timestamp, when the instance will be terminated,
                in RFC3339 text format. If specified, the instance termination action
                will be performed at the termination time.
@@ -18317,6 +18327,8 @@ class InstanceFromMachineImageSchedulingArgs:
             pulumi.set(__self__, "preemptible", preemptible)
         if provisioning_model is not None:
             pulumi.set(__self__, "provisioning_model", provisioning_model)
+        if skip_guest_os_shutdown is not None:
+            pulumi.set(__self__, "skip_guest_os_shutdown", skip_guest_os_shutdown)
         if termination_time is not None:
             pulumi.set(__self__, "termination_time", termination_time)
 
@@ -18487,6 +18499,18 @@ class InstanceFromMachineImageSchedulingArgs:
     @provisioning_model.setter
     def provisioning_model(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "provisioning_model", value)
+
+    @_builtins.property
+    @pulumi.getter(name="skipGuestOsShutdown")
+    def skip_guest_os_shutdown(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+        """
+        return pulumi.get(self, "skip_guest_os_shutdown")
+
+    @skip_guest_os_shutdown.setter
+    def skip_guest_os_shutdown(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "skip_guest_os_shutdown", value)
 
     @_builtins.property
     @pulumi.getter(name="terminationTime")
@@ -21224,6 +21248,10 @@ if not MYPY:
         """
         Whether the instance is spot. If this is set as SPOT.
         """
+        skip_guest_os_shutdown: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+        """
         termination_time: NotRequired[pulumi.Input[_builtins.str]]
         """
         Specifies the timestamp, when the instance will be terminated,
@@ -21250,6 +21278,7 @@ class InstanceFromTemplateSchedulingArgs:
                  on_instance_stop_action: Optional[pulumi.Input['InstanceFromTemplateSchedulingOnInstanceStopActionArgs']] = None,
                  preemptible: Optional[pulumi.Input[_builtins.bool]] = None,
                  provisioning_model: Optional[pulumi.Input[_builtins.str]] = None,
+                 skip_guest_os_shutdown: Optional[pulumi.Input[_builtins.bool]] = None,
                  termination_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] automatic_restart: Specifies if the instance should be restarted if it was terminated by Compute Engine (not a user).
@@ -21268,6 +21297,7 @@ class InstanceFromTemplateSchedulingArgs:
         :param pulumi.Input['InstanceFromTemplateSchedulingOnInstanceStopActionArgs'] on_instance_stop_action: Defines the behaviour for instances with the instance_termination_action.
         :param pulumi.Input[_builtins.bool] preemptible: Whether the instance is preemptible.
         :param pulumi.Input[_builtins.str] provisioning_model: Whether the instance is spot. If this is set as SPOT.
+        :param pulumi.Input[_builtins.bool] skip_guest_os_shutdown: Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
         :param pulumi.Input[_builtins.str] termination_time: Specifies the timestamp, when the instance will be terminated,
                in RFC3339 text format. If specified, the instance termination action
                will be performed at the termination time.
@@ -21300,6 +21330,8 @@ class InstanceFromTemplateSchedulingArgs:
             pulumi.set(__self__, "preemptible", preemptible)
         if provisioning_model is not None:
             pulumi.set(__self__, "provisioning_model", provisioning_model)
+        if skip_guest_os_shutdown is not None:
+            pulumi.set(__self__, "skip_guest_os_shutdown", skip_guest_os_shutdown)
         if termination_time is not None:
             pulumi.set(__self__, "termination_time", termination_time)
 
@@ -21470,6 +21502,18 @@ class InstanceFromTemplateSchedulingArgs:
     @provisioning_model.setter
     def provisioning_model(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "provisioning_model", value)
+
+    @_builtins.property
+    @pulumi.getter(name="skipGuestOsShutdown")
+    def skip_guest_os_shutdown(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+        """
+        return pulumi.get(self, "skip_guest_os_shutdown")
+
+    @skip_guest_os_shutdown.setter
+    def skip_guest_os_shutdown(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "skip_guest_os_shutdown", value)
 
     @_builtins.property
     @pulumi.getter(name="terminationTime")
@@ -24393,6 +24437,10 @@ if not MYPY:
         `false`. For more info about
         `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
         """
+        skip_guest_os_shutdown: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+        """
         termination_time: NotRequired[pulumi.Input[_builtins.str]]
         """
         Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
@@ -24417,6 +24465,7 @@ class InstanceSchedulingArgs:
                  on_instance_stop_action: Optional[pulumi.Input['InstanceSchedulingOnInstanceStopActionArgs']] = None,
                  preemptible: Optional[pulumi.Input[_builtins.bool]] = None,
                  provisioning_model: Optional[pulumi.Input[_builtins.str]] = None,
+                 skip_guest_os_shutdown: Optional[pulumi.Input[_builtins.bool]] = None,
                  termination_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] automatic_restart: Specifies if the instance should be
@@ -24449,6 +24498,7 @@ class InstanceSchedulingArgs:
                `preemptible` should be `true` and `automatic_restart` should be
                `false`. For more info about
                `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
+        :param pulumi.Input[_builtins.bool] skip_guest_os_shutdown: Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
         :param pulumi.Input[_builtins.str] termination_time: Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
         """
         if automatic_restart is not None:
@@ -24479,6 +24529,8 @@ class InstanceSchedulingArgs:
             pulumi.set(__self__, "preemptible", preemptible)
         if provisioning_model is not None:
             pulumi.set(__self__, "provisioning_model", provisioning_model)
+        if skip_guest_os_shutdown is not None:
+            pulumi.set(__self__, "skip_guest_os_shutdown", skip_guest_os_shutdown)
         if termination_time is not None:
             pulumi.set(__self__, "termination_time", termination_time)
 
@@ -24665,6 +24717,18 @@ class InstanceSchedulingArgs:
     @provisioning_model.setter
     def provisioning_model(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "provisioning_model", value)
+
+    @_builtins.property
+    @pulumi.getter(name="skipGuestOsShutdown")
+    def skip_guest_os_shutdown(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+        """
+        return pulumi.get(self, "skip_guest_os_shutdown")
+
+    @skip_guest_os_shutdown.setter
+    def skip_guest_os_shutdown(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "skip_guest_os_shutdown", value)
 
     @_builtins.property
     @pulumi.getter(name="terminationTime")
@@ -27345,6 +27409,10 @@ if not MYPY:
         `false`. For more info about
         `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
         """
+        skip_guest_os_shutdown: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+        """
         termination_time: NotRequired[pulumi.Input[_builtins.str]]
         """
         Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
@@ -27369,6 +27437,7 @@ class InstanceTemplateSchedulingArgs:
                  on_instance_stop_action: Optional[pulumi.Input['InstanceTemplateSchedulingOnInstanceStopActionArgs']] = None,
                  preemptible: Optional[pulumi.Input[_builtins.bool]] = None,
                  provisioning_model: Optional[pulumi.Input[_builtins.str]] = None,
+                 skip_guest_os_shutdown: Optional[pulumi.Input[_builtins.bool]] = None,
                  termination_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] automatic_restart: Specifies whether the instance should be
@@ -27400,6 +27469,7 @@ class InstanceTemplateSchedulingArgs:
                `preemptible` should be `true` and `automatic_restart` should be
                `false`. For more info about
                `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
+        :param pulumi.Input[_builtins.bool] skip_guest_os_shutdown: Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
         :param pulumi.Input[_builtins.str] termination_time: Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
         """
         if automatic_restart is not None:
@@ -27430,6 +27500,8 @@ class InstanceTemplateSchedulingArgs:
             pulumi.set(__self__, "preemptible", preemptible)
         if provisioning_model is not None:
             pulumi.set(__self__, "provisioning_model", provisioning_model)
+        if skip_guest_os_shutdown is not None:
+            pulumi.set(__self__, "skip_guest_os_shutdown", skip_guest_os_shutdown)
         if termination_time is not None:
             pulumi.set(__self__, "termination_time", termination_time)
 
@@ -27615,6 +27687,18 @@ class InstanceTemplateSchedulingArgs:
     @provisioning_model.setter
     def provisioning_model(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "provisioning_model", value)
+
+    @_builtins.property
+    @pulumi.getter(name="skipGuestOsShutdown")
+    def skip_guest_os_shutdown(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+        """
+        return pulumi.get(self, "skip_guest_os_shutdown")
+
+    @skip_guest_os_shutdown.setter
+    def skip_guest_os_shutdown(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "skip_guest_os_shutdown", value)
 
     @_builtins.property
     @pulumi.getter(name="terminationTime")
@@ -44424,6 +44508,10 @@ if not MYPY:
         `false`. For more info about
         `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
         """
+        skip_guest_os_shutdown: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+        """
         termination_time: NotRequired[pulumi.Input[_builtins.str]]
         """
         Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
@@ -44448,6 +44536,7 @@ class RegionInstanceTemplateSchedulingArgs:
                  on_instance_stop_action: Optional[pulumi.Input['RegionInstanceTemplateSchedulingOnInstanceStopActionArgs']] = None,
                  preemptible: Optional[pulumi.Input[_builtins.bool]] = None,
                  provisioning_model: Optional[pulumi.Input[_builtins.str]] = None,
+                 skip_guest_os_shutdown: Optional[pulumi.Input[_builtins.bool]] = None,
                  termination_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] automatic_restart: Specifies whether the instance should be
@@ -44479,6 +44568,7 @@ class RegionInstanceTemplateSchedulingArgs:
                `preemptible` should be `true` and `automatic_restart` should be
                `false`. For more info about
                `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
+        :param pulumi.Input[_builtins.bool] skip_guest_os_shutdown: Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
         :param pulumi.Input[_builtins.str] termination_time: Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
         """
         if automatic_restart is not None:
@@ -44509,6 +44599,8 @@ class RegionInstanceTemplateSchedulingArgs:
             pulumi.set(__self__, "preemptible", preemptible)
         if provisioning_model is not None:
             pulumi.set(__self__, "provisioning_model", provisioning_model)
+        if skip_guest_os_shutdown is not None:
+            pulumi.set(__self__, "skip_guest_os_shutdown", skip_guest_os_shutdown)
         if termination_time is not None:
             pulumi.set(__self__, "termination_time", termination_time)
 
@@ -44694,6 +44786,18 @@ class RegionInstanceTemplateSchedulingArgs:
     @provisioning_model.setter
     def provisioning_model(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "provisioning_model", value)
+
+    @_builtins.property
+    @pulumi.getter(name="skipGuestOsShutdown")
+    def skip_guest_os_shutdown(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+        """
+        return pulumi.get(self, "skip_guest_os_shutdown")
+
+    @skip_guest_os_shutdown.setter
+    def skip_guest_os_shutdown(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "skip_guest_os_shutdown", value)
 
     @_builtins.property
     @pulumi.getter(name="terminationTime")
@@ -67649,6 +67753,116 @@ class ServiceAttachmentConsumerAcceptListArgs:
     @project_id_or_num.setter
     def project_id_or_num(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "project_id_or_num", value)
+
+
+if not MYPY:
+    class ServiceAttachmentPscServiceAttachmentIdArgsDict(TypedDict):
+        high: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        The high 64 bits of the PSC service attachment ID.
+        """
+        low: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        The low 64 bits of the PSC service attachment ID.
+        """
+elif False:
+    ServiceAttachmentPscServiceAttachmentIdArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ServiceAttachmentPscServiceAttachmentIdArgs:
+    def __init__(__self__, *,
+                 high: Optional[pulumi.Input[_builtins.str]] = None,
+                 low: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] high: (Output)
+               The high 64 bits of the PSC service attachment ID.
+        :param pulumi.Input[_builtins.str] low: (Output)
+               The low 64 bits of the PSC service attachment ID.
+        """
+        if high is not None:
+            pulumi.set(__self__, "high", high)
+        if low is not None:
+            pulumi.set(__self__, "low", low)
+
+    @_builtins.property
+    @pulumi.getter
+    def high(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        The high 64 bits of the PSC service attachment ID.
+        """
+        return pulumi.get(self, "high")
+
+    @high.setter
+    def high(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "high", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def low(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        The low 64 bits of the PSC service attachment ID.
+        """
+        return pulumi.get(self, "low")
+
+    @low.setter
+    def low(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "low", value)
+
+
+if not MYPY:
+    class ServiceAttachmentTunnelingConfigArgsDict(TypedDict):
+        encapsulation_profile: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The encapsulation profile for tunneling traffic.
+        """
+        routing_mode: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The routing mode for tunneling traffic.
+        """
+elif False:
+    ServiceAttachmentTunnelingConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ServiceAttachmentTunnelingConfigArgs:
+    def __init__(__self__, *,
+                 encapsulation_profile: Optional[pulumi.Input[_builtins.str]] = None,
+                 routing_mode: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] encapsulation_profile: The encapsulation profile for tunneling traffic.
+        :param pulumi.Input[_builtins.str] routing_mode: The routing mode for tunneling traffic.
+        """
+        if encapsulation_profile is not None:
+            pulumi.set(__self__, "encapsulation_profile", encapsulation_profile)
+        if routing_mode is not None:
+            pulumi.set(__self__, "routing_mode", routing_mode)
+
+    @_builtins.property
+    @pulumi.getter(name="encapsulationProfile")
+    def encapsulation_profile(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The encapsulation profile for tunneling traffic.
+        """
+        return pulumi.get(self, "encapsulation_profile")
+
+    @encapsulation_profile.setter
+    def encapsulation_profile(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "encapsulation_profile", value)
+
+    @_builtins.property
+    @pulumi.getter(name="routingMode")
+    def routing_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The routing mode for tunneling traffic.
+        """
+        return pulumi.get(self, "routing_mode")
+
+    @routing_mode.setter
+    def routing_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "routing_mode", value)
 
 
 if not MYPY:

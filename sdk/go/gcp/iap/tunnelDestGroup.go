@@ -38,7 +38,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := iap.NewTunnelDestGroup(ctx, "dest_group", &iap.TunnelDestGroupArgs{
 //				Region:    pulumi.String("us-central1"),
-//				GroupName: pulumi.String("testgroup_9394"),
+//				GroupName: pulumi.String("testgroup_35305"),
 //				Cidrs: pulumi.StringArray{
 //					pulumi.String("10.1.0.0/16"),
 //					pulumi.String("192.168.10.0/24"),

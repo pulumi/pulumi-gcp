@@ -3176,6 +3176,8 @@ type JobTemplateTemplateContainerVolumeMount struct {
 	MountPath string `pulumi:"mountPath"`
 	// This must match the Name of a Volume.
 	Name string `pulumi:"name"`
+	// Path within the volume from which the container's volume should be mounted.
+	SubPath *string `pulumi:"subPath"`
 }
 
 // JobTemplateTemplateContainerVolumeMountInput is an input type that accepts JobTemplateTemplateContainerVolumeMountArgs and JobTemplateTemplateContainerVolumeMountOutput values.
@@ -3194,6 +3196,8 @@ type JobTemplateTemplateContainerVolumeMountArgs struct {
 	MountPath pulumi.StringInput `pulumi:"mountPath"`
 	// This must match the Name of a Volume.
 	Name pulumi.StringInput `pulumi:"name"`
+	// Path within the volume from which the container's volume should be mounted.
+	SubPath pulumi.StringPtrInput `pulumi:"subPath"`
 }
 
 func (JobTemplateTemplateContainerVolumeMountArgs) ElementType() reflect.Type {
@@ -3255,6 +3259,11 @@ func (o JobTemplateTemplateContainerVolumeMountOutput) MountPath() pulumi.String
 // This must match the Name of a Volume.
 func (o JobTemplateTemplateContainerVolumeMountOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTemplateTemplateContainerVolumeMount) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Path within the volume from which the container's volume should be mounted.
+func (o JobTemplateTemplateContainerVolumeMountOutput) SubPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTemplateTemplateContainerVolumeMount) *string { return v.SubPath }).(pulumi.StringPtrOutput)
 }
 
 type JobTemplateTemplateContainerVolumeMountArrayOutput struct{ *pulumi.OutputState }
@@ -9698,6 +9707,8 @@ type ServiceTemplateContainerVolumeMount struct {
 	MountPath string `pulumi:"mountPath"`
 	// This must match the Name of a Volume.
 	Name string `pulumi:"name"`
+	// Path within the volume from which the container's volume should be mounted.
+	SubPath *string `pulumi:"subPath"`
 }
 
 // ServiceTemplateContainerVolumeMountInput is an input type that accepts ServiceTemplateContainerVolumeMountArgs and ServiceTemplateContainerVolumeMountOutput values.
@@ -9716,6 +9727,8 @@ type ServiceTemplateContainerVolumeMountArgs struct {
 	MountPath pulumi.StringInput `pulumi:"mountPath"`
 	// This must match the Name of a Volume.
 	Name pulumi.StringInput `pulumi:"name"`
+	// Path within the volume from which the container's volume should be mounted.
+	SubPath pulumi.StringPtrInput `pulumi:"subPath"`
 }
 
 func (ServiceTemplateContainerVolumeMountArgs) ElementType() reflect.Type {
@@ -9777,6 +9790,11 @@ func (o ServiceTemplateContainerVolumeMountOutput) MountPath() pulumi.StringOutp
 // This must match the Name of a Volume.
 func (o ServiceTemplateContainerVolumeMountOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceTemplateContainerVolumeMount) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Path within the volume from which the container's volume should be mounted.
+func (o ServiceTemplateContainerVolumeMountOutput) SubPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateContainerVolumeMount) *string { return v.SubPath }).(pulumi.StringPtrOutput)
 }
 
 type ServiceTemplateContainerVolumeMountArrayOutput struct{ *pulumi.OutputState }
@@ -14361,6 +14379,8 @@ type WorkerPoolTemplateContainerVolumeMount struct {
 	MountPath string `pulumi:"mountPath"`
 	// This must match the Name of a Volume.
 	Name string `pulumi:"name"`
+	// Path within the volume from which the container's volume should be mounted.
+	SubPath *string `pulumi:"subPath"`
 }
 
 // WorkerPoolTemplateContainerVolumeMountInput is an input type that accepts WorkerPoolTemplateContainerVolumeMountArgs and WorkerPoolTemplateContainerVolumeMountOutput values.
@@ -14379,6 +14399,8 @@ type WorkerPoolTemplateContainerVolumeMountArgs struct {
 	MountPath pulumi.StringInput `pulumi:"mountPath"`
 	// This must match the Name of a Volume.
 	Name pulumi.StringInput `pulumi:"name"`
+	// Path within the volume from which the container's volume should be mounted.
+	SubPath pulumi.StringPtrInput `pulumi:"subPath"`
 }
 
 func (WorkerPoolTemplateContainerVolumeMountArgs) ElementType() reflect.Type {
@@ -14440,6 +14462,11 @@ func (o WorkerPoolTemplateContainerVolumeMountOutput) MountPath() pulumi.StringO
 // This must match the Name of a Volume.
 func (o WorkerPoolTemplateContainerVolumeMountOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkerPoolTemplateContainerVolumeMount) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Path within the volume from which the container's volume should be mounted.
+func (o WorkerPoolTemplateContainerVolumeMountOutput) SubPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerVolumeMount) *string { return v.SubPath }).(pulumi.StringPtrOutput)
 }
 
 type WorkerPoolTemplateContainerVolumeMountArrayOutput struct{ *pulumi.OutputState }
@@ -15706,6 +15733,8 @@ func (o WorkerPoolTemplateVolumeSecretItemArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type WorkerPoolTemplateVpcAccess struct {
+	// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+	Connector *string `pulumi:"connector"`
 	// Traffic VPC egress settings.
 	// Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
 	Egress *string `pulumi:"egress"`
@@ -15726,6 +15755,8 @@ type WorkerPoolTemplateVpcAccessInput interface {
 }
 
 type WorkerPoolTemplateVpcAccessArgs struct {
+	// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+	Connector pulumi.StringPtrInput `pulumi:"connector"`
 	// Traffic VPC egress settings.
 	// Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
 	Egress pulumi.StringPtrInput `pulumi:"egress"`
@@ -15811,6 +15842,11 @@ func (o WorkerPoolTemplateVpcAccessOutput) ToWorkerPoolTemplateVpcAccessPtrOutpu
 	}).(WorkerPoolTemplateVpcAccessPtrOutput)
 }
 
+// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+func (o WorkerPoolTemplateVpcAccessOutput) Connector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateVpcAccess) *string { return v.Connector }).(pulumi.StringPtrOutput)
+}
+
 // Traffic VPC egress settings.
 // Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
 func (o WorkerPoolTemplateVpcAccessOutput) Egress() pulumi.StringPtrOutput {
@@ -15847,6 +15883,16 @@ func (o WorkerPoolTemplateVpcAccessPtrOutput) Elem() WorkerPoolTemplateVpcAccess
 		var ret WorkerPoolTemplateVpcAccess
 		return ret
 	}).(WorkerPoolTemplateVpcAccessOutput)
+}
+
+// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+func (o WorkerPoolTemplateVpcAccessPtrOutput) Connector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateVpcAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Connector
+	}).(pulumi.StringPtrOutput)
 }
 
 // Traffic VPC egress settings.
@@ -18289,6 +18335,8 @@ type GetJobTemplateTemplateContainerVolumeMount struct {
 	MountPath string `pulumi:"mountPath"`
 	// The name of the Cloud Run v2 Job.
 	Name string `pulumi:"name"`
+	// Path within the volume from which the container's volume should be mounted.
+	SubPath string `pulumi:"subPath"`
 }
 
 // GetJobTemplateTemplateContainerVolumeMountInput is an input type that accepts GetJobTemplateTemplateContainerVolumeMountArgs and GetJobTemplateTemplateContainerVolumeMountOutput values.
@@ -18307,6 +18355,8 @@ type GetJobTemplateTemplateContainerVolumeMountArgs struct {
 	MountPath pulumi.StringInput `pulumi:"mountPath"`
 	// The name of the Cloud Run v2 Job.
 	Name pulumi.StringInput `pulumi:"name"`
+	// Path within the volume from which the container's volume should be mounted.
+	SubPath pulumi.StringInput `pulumi:"subPath"`
 }
 
 func (GetJobTemplateTemplateContainerVolumeMountArgs) ElementType() reflect.Type {
@@ -18368,6 +18418,11 @@ func (o GetJobTemplateTemplateContainerVolumeMountOutput) MountPath() pulumi.Str
 // The name of the Cloud Run v2 Job.
 func (o GetJobTemplateTemplateContainerVolumeMountOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateContainerVolumeMount) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Path within the volume from which the container's volume should be mounted.
+func (o GetJobTemplateTemplateContainerVolumeMountOutput) SubPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateContainerVolumeMount) string { return v.SubPath }).(pulumi.StringOutput)
 }
 
 type GetJobTemplateTemplateContainerVolumeMountArrayOutput struct{ *pulumi.OutputState }
@@ -22733,6 +22788,8 @@ type GetServiceTemplateContainerVolumeMount struct {
 	MountPath string `pulumi:"mountPath"`
 	// The name of the Cloud Run v2 Service.
 	Name string `pulumi:"name"`
+	// Path within the volume from which the container's volume should be mounted.
+	SubPath string `pulumi:"subPath"`
 }
 
 // GetServiceTemplateContainerVolumeMountInput is an input type that accepts GetServiceTemplateContainerVolumeMountArgs and GetServiceTemplateContainerVolumeMountOutput values.
@@ -22751,6 +22808,8 @@ type GetServiceTemplateContainerVolumeMountArgs struct {
 	MountPath pulumi.StringInput `pulumi:"mountPath"`
 	// The name of the Cloud Run v2 Service.
 	Name pulumi.StringInput `pulumi:"name"`
+	// Path within the volume from which the container's volume should be mounted.
+	SubPath pulumi.StringInput `pulumi:"subPath"`
 }
 
 func (GetServiceTemplateContainerVolumeMountArgs) ElementType() reflect.Type {
@@ -22812,6 +22871,11 @@ func (o GetServiceTemplateContainerVolumeMountOutput) MountPath() pulumi.StringO
 // The name of the Cloud Run v2 Service.
 func (o GetServiceTemplateContainerVolumeMountOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerVolumeMount) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Path within the volume from which the container's volume should be mounted.
+func (o GetServiceTemplateContainerVolumeMountOutput) SubPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerVolumeMount) string { return v.SubPath }).(pulumi.StringOutput)
 }
 
 type GetServiceTemplateContainerVolumeMountArrayOutput struct{ *pulumi.OutputState }
@@ -26058,6 +26122,8 @@ type GetWorkerPoolTemplateContainerVolumeMount struct {
 	MountPath string `pulumi:"mountPath"`
 	// The name of the Cloud Run v2 Worker Pool.
 	Name string `pulumi:"name"`
+	// Path within the volume from which the container's volume should be mounted.
+	SubPath string `pulumi:"subPath"`
 }
 
 // GetWorkerPoolTemplateContainerVolumeMountInput is an input type that accepts GetWorkerPoolTemplateContainerVolumeMountArgs and GetWorkerPoolTemplateContainerVolumeMountOutput values.
@@ -26076,6 +26142,8 @@ type GetWorkerPoolTemplateContainerVolumeMountArgs struct {
 	MountPath pulumi.StringInput `pulumi:"mountPath"`
 	// The name of the Cloud Run v2 Worker Pool.
 	Name pulumi.StringInput `pulumi:"name"`
+	// Path within the volume from which the container's volume should be mounted.
+	SubPath pulumi.StringInput `pulumi:"subPath"`
 }
 
 func (GetWorkerPoolTemplateContainerVolumeMountArgs) ElementType() reflect.Type {
@@ -26137,6 +26205,11 @@ func (o GetWorkerPoolTemplateContainerVolumeMountOutput) MountPath() pulumi.Stri
 // The name of the Cloud Run v2 Worker Pool.
 func (o GetWorkerPoolTemplateContainerVolumeMountOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkerPoolTemplateContainerVolumeMount) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Path within the volume from which the container's volume should be mounted.
+func (o GetWorkerPoolTemplateContainerVolumeMountOutput) SubPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateContainerVolumeMount) string { return v.SubPath }).(pulumi.StringOutput)
 }
 
 type GetWorkerPoolTemplateContainerVolumeMountArrayOutput struct{ *pulumi.OutputState }
@@ -27067,6 +27140,8 @@ func (o GetWorkerPoolTemplateVolumeSecretItemArrayOutput) Index(i pulumi.IntInpu
 }
 
 type GetWorkerPoolTemplateVpcAccess struct {
+	// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+	Connector string `pulumi:"connector"`
 	// Traffic VPC egress settings. Possible values: ["ALL_TRAFFIC", "PRIVATE_RANGES_ONLY"]
 	Egress string `pulumi:"egress"`
 	// Direct VPC egress settings. Currently only single network interface is supported.
@@ -27085,6 +27160,8 @@ type GetWorkerPoolTemplateVpcAccessInput interface {
 }
 
 type GetWorkerPoolTemplateVpcAccessArgs struct {
+	// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+	Connector pulumi.StringInput `pulumi:"connector"`
 	// Traffic VPC egress settings. Possible values: ["ALL_TRAFFIC", "PRIVATE_RANGES_ONLY"]
 	Egress pulumi.StringInput `pulumi:"egress"`
 	// Direct VPC egress settings. Currently only single network interface is supported.
@@ -27140,6 +27217,11 @@ func (o GetWorkerPoolTemplateVpcAccessOutput) ToGetWorkerPoolTemplateVpcAccessOu
 
 func (o GetWorkerPoolTemplateVpcAccessOutput) ToGetWorkerPoolTemplateVpcAccessOutputWithContext(ctx context.Context) GetWorkerPoolTemplateVpcAccessOutput {
 	return o
+}
+
+// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+func (o GetWorkerPoolTemplateVpcAccessOutput) Connector() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateVpcAccess) string { return v.Connector }).(pulumi.StringOutput)
 }
 
 // Traffic VPC egress settings. Possible values: ["ALL_TRAFFIC", "PRIVATE_RANGES_ONLY"]

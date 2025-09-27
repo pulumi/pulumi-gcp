@@ -14,12 +14,17 @@ from .connection_iam_binding import *
 from .connection_iam_member import *
 from .connection_iam_policy import *
 from .data_transfer_config import *
+from .datapolicyv2_data_policy import *
+from .datapolicyv2_data_policy_iam_binding import *
+from .datapolicyv2_data_policy_iam_member import *
+from .datapolicyv2_data_policy_iam_policy import *
 from .dataset import *
 from .dataset_access import *
 from .dataset_iam_binding import *
 from .dataset_iam_member import *
 from .dataset_iam_policy import *
 from .get_connection_iam_policy import *
+from .get_datapolicyv2_data_policy_iam_policy import *
 from .get_dataset import *
 from .get_dataset_iam_policy import *
 from .get_datasets import *

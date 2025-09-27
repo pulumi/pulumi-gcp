@@ -22,6 +22,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterIpAllocationPolicyAdditionalPodRangesConfigResult> AdditionalPodRangesConfigs;
         /// <summary>
+        /// AutoIpamConfig contains all information related to Auto IPAM.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClusterIpAllocationPolicyAutoIpamConfigResult> AutoIpamConfigs;
+        /// <summary>
         /// The IP address range for the cluster pod IPs. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use.
         /// </summary>
         public readonly string ClusterIpv4CidrBlock;
@@ -52,6 +56,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             ImmutableArray<Outputs.GetClusterIpAllocationPolicyAdditionalPodRangesConfigResult> additionalPodRangesConfigs,
 
+            ImmutableArray<Outputs.GetClusterIpAllocationPolicyAutoIpamConfigResult> autoIpamConfigs,
+
             string clusterIpv4CidrBlock,
 
             string clusterSecondaryRangeName,
@@ -66,6 +72,7 @@ namespace Pulumi.Gcp.Container.Outputs
         {
             AdditionalIpRangesConfigs = additionalIpRangesConfigs;
             AdditionalPodRangesConfigs = additionalPodRangesConfigs;
+            AutoIpamConfigs = autoIpamConfigs;
             ClusterIpv4CidrBlock = clusterIpv4CidrBlock;
             ClusterSecondaryRangeName = clusterSecondaryRangeName;
             PodCidrOverprovisionConfigs = podCidrOverprovisionConfigs;

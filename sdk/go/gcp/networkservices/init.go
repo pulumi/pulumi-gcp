@@ -51,6 +51,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &TcpRoute{}
 	case "gcp:networkservices/tlsRoute:TlsRoute":
 		r = &TlsRoute{}
+	case "gcp:networkservices/wasmPlugin:WasmPlugin":
+		r = &WasmPlugin{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -137,6 +139,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"networkservices/tlsRoute",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networkservices/wasmPlugin",
 		&module{version},
 	)
 }

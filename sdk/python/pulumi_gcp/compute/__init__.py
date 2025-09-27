@@ -63,6 +63,8 @@ from .get_instance_serial_port import *
 from .get_instance_template import *
 from .get_instance_template_iam_policy import *
 from .get_instant_snapshot_iam_policy import *
+from .get_interconnect_location import *
+from .get_interconnect_locations import *
 from .get_lbip_ranges import *
 from .get_machine_image_iam_policy import *
 from .get_machine_types import *

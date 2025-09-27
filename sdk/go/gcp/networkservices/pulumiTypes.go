@@ -11299,7 +11299,9 @@ type LbRouteExtensionExtensionChainExtension struct {
 	// and can have a maximum length of 63 characters. Additionally, the first character must be a letter
 	// and the last a letter or a number.
 	Name string `pulumi:"name"`
-	// The reference to the service that runs the extension. Must be a reference to a backend service
+	// The reference to the service that runs the extension.
+	// * To configure a callout extension, service must be a fully-qualified reference to a backend service.
+	// * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
 	Service string `pulumi:"service"`
 	// Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
 	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
@@ -11335,7 +11337,9 @@ type LbRouteExtensionExtensionChainExtensionArgs struct {
 	// and can have a maximum length of 63 characters. Additionally, the first character must be a letter
 	// and the last a letter or a number.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The reference to the service that runs the extension. Must be a reference to a backend service
+	// The reference to the service that runs the extension.
+	// * To configure a callout extension, service must be a fully-qualified reference to a backend service.
+	// * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
 	Service pulumi.StringInput `pulumi:"service"`
 	// Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
 	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
@@ -11422,7 +11426,9 @@ func (o LbRouteExtensionExtensionChainExtensionOutput) Name() pulumi.StringOutpu
 	return o.ApplyT(func(v LbRouteExtensionExtensionChainExtension) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The reference to the service that runs the extension. Must be a reference to a backend service
+// The reference to the service that runs the extension.
+// * To configure a callout extension, service must be a fully-qualified reference to a backend service.
+// * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
 func (o LbRouteExtensionExtensionChainExtensionOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v LbRouteExtensionExtensionChainExtension) string { return v.Service }).(pulumi.StringOutput)
 }
@@ -11670,7 +11676,9 @@ type LbTrafficExtensionExtensionChainExtension struct {
 	// and can have a maximum length of 63 characters. Additionally, the first character must be a letter
 	// and the last a letter or a number.
 	Name string `pulumi:"name"`
-	// The reference to the service that runs the extension. Must be a reference to a backend service
+	// The reference to the service that runs the extension.
+	// * To configure a callout extension, service must be a fully-qualified reference to a backend service.
+	// * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
 	Service string `pulumi:"service"`
 	// A set of events during request or response processing for which this extension is called.
 	// This field is required for the LbTrafficExtension resource. It's not relevant for the LbRouteExtension
@@ -11715,7 +11723,9 @@ type LbTrafficExtensionExtensionChainExtensionArgs struct {
 	// and can have a maximum length of 63 characters. Additionally, the first character must be a letter
 	// and the last a letter or a number.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The reference to the service that runs the extension. Must be a reference to a backend service
+	// The reference to the service that runs the extension.
+	// * To configure a callout extension, service must be a fully-qualified reference to a backend service.
+	// * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
 	Service pulumi.StringInput `pulumi:"service"`
 	// A set of events during request or response processing for which this extension is called.
 	// This field is required for the LbTrafficExtension resource. It's not relevant for the LbRouteExtension
@@ -11814,7 +11824,9 @@ func (o LbTrafficExtensionExtensionChainExtensionOutput) Name() pulumi.StringOut
 	return o.ApplyT(func(v LbTrafficExtensionExtensionChainExtension) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The reference to the service that runs the extension. Must be a reference to a backend service
+// The reference to the service that runs the extension.
+// * To configure a callout extension, service must be a fully-qualified reference to a backend service.
+// * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
 func (o LbTrafficExtensionExtensionChainExtensionOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v LbTrafficExtensionExtensionChainExtension) string { return v.Service }).(pulumi.StringOutput)
 }
@@ -12976,6 +12988,516 @@ func (o TlsRouteRuleMatchArrayOutput) Index(i pulumi.IntInput) TlsRouteRuleMatch
 	}).(TlsRouteRuleMatchOutput)
 }
 
+type WasmPluginLogConfig struct {
+	// Optional. Specifies whether to enable logging for activity by this plugin.
+	Enable *bool `pulumi:"enable"`
+	// Non-empty default. Specificies the lowest level of the plugin logs that are exported to Cloud Logging. This setting relates to the logs generated by using logging statements in your Wasm code.
+	// This field is can be set only if logging is enabled for the plugin.
+	// If the field is not provided when logging is enabled, it is set to INFO by default.
+	// Possible values are: `LOG_LEVEL_UNSPECIFIED`, `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, `CRITICAL`.
+	MinLogLevel *string `pulumi:"minLogLevel"`
+	// Non-empty default. Configures the sampling rate of activity logs, where 1.0 means all logged activity is reported and 0.0 means no activity is reported.
+	// A floating point value between 0.0 and 1.0 indicates that a percentage of log messages is stored.
+	// The default value when logging is enabled is 1.0. The value of the field must be between 0 and 1 (inclusive).
+	// This field can be specified only if logging is enabled for this plugin.
+	SampleRate *float64 `pulumi:"sampleRate"`
+}
+
+// WasmPluginLogConfigInput is an input type that accepts WasmPluginLogConfigArgs and WasmPluginLogConfigOutput values.
+// You can construct a concrete instance of `WasmPluginLogConfigInput` via:
+//
+//	WasmPluginLogConfigArgs{...}
+type WasmPluginLogConfigInput interface {
+	pulumi.Input
+
+	ToWasmPluginLogConfigOutput() WasmPluginLogConfigOutput
+	ToWasmPluginLogConfigOutputWithContext(context.Context) WasmPluginLogConfigOutput
+}
+
+type WasmPluginLogConfigArgs struct {
+	// Optional. Specifies whether to enable logging for activity by this plugin.
+	Enable pulumi.BoolPtrInput `pulumi:"enable"`
+	// Non-empty default. Specificies the lowest level of the plugin logs that are exported to Cloud Logging. This setting relates to the logs generated by using logging statements in your Wasm code.
+	// This field is can be set only if logging is enabled for the plugin.
+	// If the field is not provided when logging is enabled, it is set to INFO by default.
+	// Possible values are: `LOG_LEVEL_UNSPECIFIED`, `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, `CRITICAL`.
+	MinLogLevel pulumi.StringPtrInput `pulumi:"minLogLevel"`
+	// Non-empty default. Configures the sampling rate of activity logs, where 1.0 means all logged activity is reported and 0.0 means no activity is reported.
+	// A floating point value between 0.0 and 1.0 indicates that a percentage of log messages is stored.
+	// The default value when logging is enabled is 1.0. The value of the field must be between 0 and 1 (inclusive).
+	// This field can be specified only if logging is enabled for this plugin.
+	SampleRate pulumi.Float64PtrInput `pulumi:"sampleRate"`
+}
+
+func (WasmPluginLogConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WasmPluginLogConfig)(nil)).Elem()
+}
+
+func (i WasmPluginLogConfigArgs) ToWasmPluginLogConfigOutput() WasmPluginLogConfigOutput {
+	return i.ToWasmPluginLogConfigOutputWithContext(context.Background())
+}
+
+func (i WasmPluginLogConfigArgs) ToWasmPluginLogConfigOutputWithContext(ctx context.Context) WasmPluginLogConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WasmPluginLogConfigOutput)
+}
+
+func (i WasmPluginLogConfigArgs) ToWasmPluginLogConfigPtrOutput() WasmPluginLogConfigPtrOutput {
+	return i.ToWasmPluginLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WasmPluginLogConfigArgs) ToWasmPluginLogConfigPtrOutputWithContext(ctx context.Context) WasmPluginLogConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WasmPluginLogConfigOutput).ToWasmPluginLogConfigPtrOutputWithContext(ctx)
+}
+
+// WasmPluginLogConfigPtrInput is an input type that accepts WasmPluginLogConfigArgs, WasmPluginLogConfigPtr and WasmPluginLogConfigPtrOutput values.
+// You can construct a concrete instance of `WasmPluginLogConfigPtrInput` via:
+//
+//	        WasmPluginLogConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type WasmPluginLogConfigPtrInput interface {
+	pulumi.Input
+
+	ToWasmPluginLogConfigPtrOutput() WasmPluginLogConfigPtrOutput
+	ToWasmPluginLogConfigPtrOutputWithContext(context.Context) WasmPluginLogConfigPtrOutput
+}
+
+type wasmPluginLogConfigPtrType WasmPluginLogConfigArgs
+
+func WasmPluginLogConfigPtr(v *WasmPluginLogConfigArgs) WasmPluginLogConfigPtrInput {
+	return (*wasmPluginLogConfigPtrType)(v)
+}
+
+func (*wasmPluginLogConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WasmPluginLogConfig)(nil)).Elem()
+}
+
+func (i *wasmPluginLogConfigPtrType) ToWasmPluginLogConfigPtrOutput() WasmPluginLogConfigPtrOutput {
+	return i.ToWasmPluginLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *wasmPluginLogConfigPtrType) ToWasmPluginLogConfigPtrOutputWithContext(ctx context.Context) WasmPluginLogConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WasmPluginLogConfigPtrOutput)
+}
+
+type WasmPluginLogConfigOutput struct{ *pulumi.OutputState }
+
+func (WasmPluginLogConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WasmPluginLogConfig)(nil)).Elem()
+}
+
+func (o WasmPluginLogConfigOutput) ToWasmPluginLogConfigOutput() WasmPluginLogConfigOutput {
+	return o
+}
+
+func (o WasmPluginLogConfigOutput) ToWasmPluginLogConfigOutputWithContext(ctx context.Context) WasmPluginLogConfigOutput {
+	return o
+}
+
+func (o WasmPluginLogConfigOutput) ToWasmPluginLogConfigPtrOutput() WasmPluginLogConfigPtrOutput {
+	return o.ToWasmPluginLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WasmPluginLogConfigOutput) ToWasmPluginLogConfigPtrOutputWithContext(ctx context.Context) WasmPluginLogConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WasmPluginLogConfig) *WasmPluginLogConfig {
+		return &v
+	}).(WasmPluginLogConfigPtrOutput)
+}
+
+// Optional. Specifies whether to enable logging for activity by this plugin.
+func (o WasmPluginLogConfigOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WasmPluginLogConfig) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
+}
+
+// Non-empty default. Specificies the lowest level of the plugin logs that are exported to Cloud Logging. This setting relates to the logs generated by using logging statements in your Wasm code.
+// This field is can be set only if logging is enabled for the plugin.
+// If the field is not provided when logging is enabled, it is set to INFO by default.
+// Possible values are: `LOG_LEVEL_UNSPECIFIED`, `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, `CRITICAL`.
+func (o WasmPluginLogConfigOutput) MinLogLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WasmPluginLogConfig) *string { return v.MinLogLevel }).(pulumi.StringPtrOutput)
+}
+
+// Non-empty default. Configures the sampling rate of activity logs, where 1.0 means all logged activity is reported and 0.0 means no activity is reported.
+// A floating point value between 0.0 and 1.0 indicates that a percentage of log messages is stored.
+// The default value when logging is enabled is 1.0. The value of the field must be between 0 and 1 (inclusive).
+// This field can be specified only if logging is enabled for this plugin.
+func (o WasmPluginLogConfigOutput) SampleRate() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v WasmPluginLogConfig) *float64 { return v.SampleRate }).(pulumi.Float64PtrOutput)
+}
+
+type WasmPluginLogConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WasmPluginLogConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WasmPluginLogConfig)(nil)).Elem()
+}
+
+func (o WasmPluginLogConfigPtrOutput) ToWasmPluginLogConfigPtrOutput() WasmPluginLogConfigPtrOutput {
+	return o
+}
+
+func (o WasmPluginLogConfigPtrOutput) ToWasmPluginLogConfigPtrOutputWithContext(ctx context.Context) WasmPluginLogConfigPtrOutput {
+	return o
+}
+
+func (o WasmPluginLogConfigPtrOutput) Elem() WasmPluginLogConfigOutput {
+	return o.ApplyT(func(v *WasmPluginLogConfig) WasmPluginLogConfig {
+		if v != nil {
+			return *v
+		}
+		var ret WasmPluginLogConfig
+		return ret
+	}).(WasmPluginLogConfigOutput)
+}
+
+// Optional. Specifies whether to enable logging for activity by this plugin.
+func (o WasmPluginLogConfigPtrOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WasmPluginLogConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Non-empty default. Specificies the lowest level of the plugin logs that are exported to Cloud Logging. This setting relates to the logs generated by using logging statements in your Wasm code.
+// This field is can be set only if logging is enabled for the plugin.
+// If the field is not provided when logging is enabled, it is set to INFO by default.
+// Possible values are: `LOG_LEVEL_UNSPECIFIED`, `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, `CRITICAL`.
+func (o WasmPluginLogConfigPtrOutput) MinLogLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WasmPluginLogConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinLogLevel
+	}).(pulumi.StringPtrOutput)
+}
+
+// Non-empty default. Configures the sampling rate of activity logs, where 1.0 means all logged activity is reported and 0.0 means no activity is reported.
+// A floating point value between 0.0 and 1.0 indicates that a percentage of log messages is stored.
+// The default value when logging is enabled is 1.0. The value of the field must be between 0 and 1 (inclusive).
+// This field can be specified only if logging is enabled for this plugin.
+func (o WasmPluginLogConfigPtrOutput) SampleRate() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *WasmPluginLogConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.SampleRate
+	}).(pulumi.Float64PtrOutput)
+}
+
+type WasmPluginUsedBy struct {
+	// Identifier. Name of the WasmPlugin resource.
+	Name *string `pulumi:"name"`
+}
+
+// WasmPluginUsedByInput is an input type that accepts WasmPluginUsedByArgs and WasmPluginUsedByOutput values.
+// You can construct a concrete instance of `WasmPluginUsedByInput` via:
+//
+//	WasmPluginUsedByArgs{...}
+type WasmPluginUsedByInput interface {
+	pulumi.Input
+
+	ToWasmPluginUsedByOutput() WasmPluginUsedByOutput
+	ToWasmPluginUsedByOutputWithContext(context.Context) WasmPluginUsedByOutput
+}
+
+type WasmPluginUsedByArgs struct {
+	// Identifier. Name of the WasmPlugin resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (WasmPluginUsedByArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WasmPluginUsedBy)(nil)).Elem()
+}
+
+func (i WasmPluginUsedByArgs) ToWasmPluginUsedByOutput() WasmPluginUsedByOutput {
+	return i.ToWasmPluginUsedByOutputWithContext(context.Background())
+}
+
+func (i WasmPluginUsedByArgs) ToWasmPluginUsedByOutputWithContext(ctx context.Context) WasmPluginUsedByOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WasmPluginUsedByOutput)
+}
+
+// WasmPluginUsedByArrayInput is an input type that accepts WasmPluginUsedByArray and WasmPluginUsedByArrayOutput values.
+// You can construct a concrete instance of `WasmPluginUsedByArrayInput` via:
+//
+//	WasmPluginUsedByArray{ WasmPluginUsedByArgs{...} }
+type WasmPluginUsedByArrayInput interface {
+	pulumi.Input
+
+	ToWasmPluginUsedByArrayOutput() WasmPluginUsedByArrayOutput
+	ToWasmPluginUsedByArrayOutputWithContext(context.Context) WasmPluginUsedByArrayOutput
+}
+
+type WasmPluginUsedByArray []WasmPluginUsedByInput
+
+func (WasmPluginUsedByArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WasmPluginUsedBy)(nil)).Elem()
+}
+
+func (i WasmPluginUsedByArray) ToWasmPluginUsedByArrayOutput() WasmPluginUsedByArrayOutput {
+	return i.ToWasmPluginUsedByArrayOutputWithContext(context.Background())
+}
+
+func (i WasmPluginUsedByArray) ToWasmPluginUsedByArrayOutputWithContext(ctx context.Context) WasmPluginUsedByArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WasmPluginUsedByArrayOutput)
+}
+
+type WasmPluginUsedByOutput struct{ *pulumi.OutputState }
+
+func (WasmPluginUsedByOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WasmPluginUsedBy)(nil)).Elem()
+}
+
+func (o WasmPluginUsedByOutput) ToWasmPluginUsedByOutput() WasmPluginUsedByOutput {
+	return o
+}
+
+func (o WasmPluginUsedByOutput) ToWasmPluginUsedByOutputWithContext(ctx context.Context) WasmPluginUsedByOutput {
+	return o
+}
+
+// Identifier. Name of the WasmPlugin resource.
+func (o WasmPluginUsedByOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WasmPluginUsedBy) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type WasmPluginUsedByArrayOutput struct{ *pulumi.OutputState }
+
+func (WasmPluginUsedByArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WasmPluginUsedBy)(nil)).Elem()
+}
+
+func (o WasmPluginUsedByArrayOutput) ToWasmPluginUsedByArrayOutput() WasmPluginUsedByArrayOutput {
+	return o
+}
+
+func (o WasmPluginUsedByArrayOutput) ToWasmPluginUsedByArrayOutputWithContext(ctx context.Context) WasmPluginUsedByArrayOutput {
+	return o
+}
+
+func (o WasmPluginUsedByArrayOutput) Index(i pulumi.IntInput) WasmPluginUsedByOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WasmPluginUsedBy {
+		return vs[0].([]WasmPluginUsedBy)[vs[1].(int)]
+	}).(WasmPluginUsedByOutput)
+}
+
+type WasmPluginVersion struct {
+	// (Output)
+	// Output only. The timestamp when the resource was created.
+	CreateTime *string `pulumi:"createTime"`
+	// Optional. A human-readable description of the resource.
+	Description *string `pulumi:"description"`
+	// (Output)
+	// Output only. The resolved digest for the image specified in the image field. The digest is resolved during the creation of WasmPluginVersion resource.
+	// This field holds the digest value, regardless of whether a tag or digest was originally specified in the image field.
+	ImageDigest *string `pulumi:"imageDigest"`
+	// Optional. URI of the container image containing the plugin, stored in the Artifact Registry. When a new WasmPluginVersion resource is created, the digest of the container image is saved in the imageDigest field.
+	// When downloading an image, the digest value is used instead of an image tag.
+	ImageUri *string `pulumi:"imageUri"`
+	// Optional. Set of labels associated with the WasmPlugin resource.
+	Labels map[string]string `pulumi:"labels"`
+	// A base64-encoded string containing the configuration for the plugin. The configuration is provided to the plugin at runtime through the ON_CONFIGURE callback.
+	// When a new WasmPluginVersion resource is created, the digest of the contents is saved in the pluginConfigDigest field.
+	// Conflics with pluginConfigUri.
+	PluginConfigData *string `pulumi:"pluginConfigData"`
+	// (Output)
+	// Output only. This field holds the digest (usually checksum) value for the plugin configuration.
+	// The value is calculated based on the contents of pluginConfigData or the container image defined by the pluginConfigUri field.
+	PluginConfigDigest *string `pulumi:"pluginConfigDigest"`
+	// URI of the plugin configuration stored in the Artifact Registry. The configuration is provided to the plugin at runtime through the ON_CONFIGURE callback.
+	// The container image must contain only a single file with the name plugin.config.
+	// When a new WasmPluginVersion resource is created, the digest of the container image is saved in the pluginConfigDigest field.
+	// Conflics with pluginConfigData.
+	PluginConfigUri *string `pulumi:"pluginConfigUri"`
+	// (Output)
+	// Output only. The timestamp when the resource was updated.
+	UpdateTime *string `pulumi:"updateTime"`
+	// The identifier for this object. Format specified above.
+	VersionName string `pulumi:"versionName"`
+}
+
+// WasmPluginVersionInput is an input type that accepts WasmPluginVersionArgs and WasmPluginVersionOutput values.
+// You can construct a concrete instance of `WasmPluginVersionInput` via:
+//
+//	WasmPluginVersionArgs{...}
+type WasmPluginVersionInput interface {
+	pulumi.Input
+
+	ToWasmPluginVersionOutput() WasmPluginVersionOutput
+	ToWasmPluginVersionOutputWithContext(context.Context) WasmPluginVersionOutput
+}
+
+type WasmPluginVersionArgs struct {
+	// (Output)
+	// Output only. The timestamp when the resource was created.
+	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
+	// Optional. A human-readable description of the resource.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// (Output)
+	// Output only. The resolved digest for the image specified in the image field. The digest is resolved during the creation of WasmPluginVersion resource.
+	// This field holds the digest value, regardless of whether a tag or digest was originally specified in the image field.
+	ImageDigest pulumi.StringPtrInput `pulumi:"imageDigest"`
+	// Optional. URI of the container image containing the plugin, stored in the Artifact Registry. When a new WasmPluginVersion resource is created, the digest of the container image is saved in the imageDigest field.
+	// When downloading an image, the digest value is used instead of an image tag.
+	ImageUri pulumi.StringPtrInput `pulumi:"imageUri"`
+	// Optional. Set of labels associated with the WasmPlugin resource.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// A base64-encoded string containing the configuration for the plugin. The configuration is provided to the plugin at runtime through the ON_CONFIGURE callback.
+	// When a new WasmPluginVersion resource is created, the digest of the contents is saved in the pluginConfigDigest field.
+	// Conflics with pluginConfigUri.
+	PluginConfigData pulumi.StringPtrInput `pulumi:"pluginConfigData"`
+	// (Output)
+	// Output only. This field holds the digest (usually checksum) value for the plugin configuration.
+	// The value is calculated based on the contents of pluginConfigData or the container image defined by the pluginConfigUri field.
+	PluginConfigDigest pulumi.StringPtrInput `pulumi:"pluginConfigDigest"`
+	// URI of the plugin configuration stored in the Artifact Registry. The configuration is provided to the plugin at runtime through the ON_CONFIGURE callback.
+	// The container image must contain only a single file with the name plugin.config.
+	// When a new WasmPluginVersion resource is created, the digest of the container image is saved in the pluginConfigDigest field.
+	// Conflics with pluginConfigData.
+	PluginConfigUri pulumi.StringPtrInput `pulumi:"pluginConfigUri"`
+	// (Output)
+	// Output only. The timestamp when the resource was updated.
+	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
+	// The identifier for this object. Format specified above.
+	VersionName pulumi.StringInput `pulumi:"versionName"`
+}
+
+func (WasmPluginVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WasmPluginVersion)(nil)).Elem()
+}
+
+func (i WasmPluginVersionArgs) ToWasmPluginVersionOutput() WasmPluginVersionOutput {
+	return i.ToWasmPluginVersionOutputWithContext(context.Background())
+}
+
+func (i WasmPluginVersionArgs) ToWasmPluginVersionOutputWithContext(ctx context.Context) WasmPluginVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WasmPluginVersionOutput)
+}
+
+// WasmPluginVersionArrayInput is an input type that accepts WasmPluginVersionArray and WasmPluginVersionArrayOutput values.
+// You can construct a concrete instance of `WasmPluginVersionArrayInput` via:
+//
+//	WasmPluginVersionArray{ WasmPluginVersionArgs{...} }
+type WasmPluginVersionArrayInput interface {
+	pulumi.Input
+
+	ToWasmPluginVersionArrayOutput() WasmPluginVersionArrayOutput
+	ToWasmPluginVersionArrayOutputWithContext(context.Context) WasmPluginVersionArrayOutput
+}
+
+type WasmPluginVersionArray []WasmPluginVersionInput
+
+func (WasmPluginVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WasmPluginVersion)(nil)).Elem()
+}
+
+func (i WasmPluginVersionArray) ToWasmPluginVersionArrayOutput() WasmPluginVersionArrayOutput {
+	return i.ToWasmPluginVersionArrayOutputWithContext(context.Background())
+}
+
+func (i WasmPluginVersionArray) ToWasmPluginVersionArrayOutputWithContext(ctx context.Context) WasmPluginVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WasmPluginVersionArrayOutput)
+}
+
+type WasmPluginVersionOutput struct{ *pulumi.OutputState }
+
+func (WasmPluginVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WasmPluginVersion)(nil)).Elem()
+}
+
+func (o WasmPluginVersionOutput) ToWasmPluginVersionOutput() WasmPluginVersionOutput {
+	return o
+}
+
+func (o WasmPluginVersionOutput) ToWasmPluginVersionOutputWithContext(ctx context.Context) WasmPluginVersionOutput {
+	return o
+}
+
+// (Output)
+// Output only. The timestamp when the resource was created.
+func (o WasmPluginVersionOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WasmPluginVersion) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+}
+
+// Optional. A human-readable description of the resource.
+func (o WasmPluginVersionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WasmPluginVersion) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The resolved digest for the image specified in the image field. The digest is resolved during the creation of WasmPluginVersion resource.
+// This field holds the digest value, regardless of whether a tag or digest was originally specified in the image field.
+func (o WasmPluginVersionOutput) ImageDigest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WasmPluginVersion) *string { return v.ImageDigest }).(pulumi.StringPtrOutput)
+}
+
+// Optional. URI of the container image containing the plugin, stored in the Artifact Registry. When a new WasmPluginVersion resource is created, the digest of the container image is saved in the imageDigest field.
+// When downloading an image, the digest value is used instead of an image tag.
+func (o WasmPluginVersionOutput) ImageUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WasmPluginVersion) *string { return v.ImageUri }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Set of labels associated with the WasmPlugin resource.
+func (o WasmPluginVersionOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WasmPluginVersion) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// A base64-encoded string containing the configuration for the plugin. The configuration is provided to the plugin at runtime through the ON_CONFIGURE callback.
+// When a new WasmPluginVersion resource is created, the digest of the contents is saved in the pluginConfigDigest field.
+// Conflics with pluginConfigUri.
+func (o WasmPluginVersionOutput) PluginConfigData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WasmPluginVersion) *string { return v.PluginConfigData }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. This field holds the digest (usually checksum) value for the plugin configuration.
+// The value is calculated based on the contents of pluginConfigData or the container image defined by the pluginConfigUri field.
+func (o WasmPluginVersionOutput) PluginConfigDigest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WasmPluginVersion) *string { return v.PluginConfigDigest }).(pulumi.StringPtrOutput)
+}
+
+// URI of the plugin configuration stored in the Artifact Registry. The configuration is provided to the plugin at runtime through the ON_CONFIGURE callback.
+// The container image must contain only a single file with the name plugin.config.
+// When a new WasmPluginVersion resource is created, the digest of the container image is saved in the pluginConfigDigest field.
+// Conflics with pluginConfigData.
+func (o WasmPluginVersionOutput) PluginConfigUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WasmPluginVersion) *string { return v.PluginConfigUri }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The timestamp when the resource was updated.
+func (o WasmPluginVersionOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WasmPluginVersion) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+}
+
+// The identifier for this object. Format specified above.
+func (o WasmPluginVersionOutput) VersionName() pulumi.StringOutput {
+	return o.ApplyT(func(v WasmPluginVersion) string { return v.VersionName }).(pulumi.StringOutput)
+}
+
+type WasmPluginVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (WasmPluginVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WasmPluginVersion)(nil)).Elem()
+}
+
+func (o WasmPluginVersionArrayOutput) ToWasmPluginVersionArrayOutput() WasmPluginVersionArrayOutput {
+	return o
+}
+
+func (o WasmPluginVersionArrayOutput) ToWasmPluginVersionArrayOutputWithContext(ctx context.Context) WasmPluginVersionArrayOutput {
+	return o
+}
+
+func (o WasmPluginVersionArrayOutput) Index(i pulumi.IntInput) WasmPluginVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WasmPluginVersion {
+		return vs[0].([]WasmPluginVersion)[vs[1].(int)]
+	}).(WasmPluginVersionOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheKeysetPublicKeyInput)(nil)).Elem(), EdgeCacheKeysetPublicKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheKeysetPublicKeyArrayInput)(nil)).Elem(), EdgeCacheKeysetPublicKeyArray{})
@@ -13133,6 +13655,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TlsRouteRuleActionDestinationArrayInput)(nil)).Elem(), TlsRouteRuleActionDestinationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TlsRouteRuleMatchInput)(nil)).Elem(), TlsRouteRuleMatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TlsRouteRuleMatchArrayInput)(nil)).Elem(), TlsRouteRuleMatchArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WasmPluginLogConfigInput)(nil)).Elem(), WasmPluginLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WasmPluginLogConfigPtrInput)(nil)).Elem(), WasmPluginLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WasmPluginUsedByInput)(nil)).Elem(), WasmPluginUsedByArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WasmPluginUsedByArrayInput)(nil)).Elem(), WasmPluginUsedByArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WasmPluginVersionInput)(nil)).Elem(), WasmPluginVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WasmPluginVersionArrayInput)(nil)).Elem(), WasmPluginVersionArray{})
 	pulumi.RegisterOutputType(EdgeCacheKeysetPublicKeyOutput{})
 	pulumi.RegisterOutputType(EdgeCacheKeysetPublicKeyArrayOutput{})
 	pulumi.RegisterOutputType(EdgeCacheKeysetValidationSharedKeyOutput{})
@@ -13289,4 +13817,10 @@ func init() {
 	pulumi.RegisterOutputType(TlsRouteRuleActionDestinationArrayOutput{})
 	pulumi.RegisterOutputType(TlsRouteRuleMatchOutput{})
 	pulumi.RegisterOutputType(TlsRouteRuleMatchArrayOutput{})
+	pulumi.RegisterOutputType(WasmPluginLogConfigOutput{})
+	pulumi.RegisterOutputType(WasmPluginLogConfigPtrOutput{})
+	pulumi.RegisterOutputType(WasmPluginUsedByOutput{})
+	pulumi.RegisterOutputType(WasmPluginUsedByArrayOutput{})
+	pulumi.RegisterOutputType(WasmPluginVersionOutput{})
+	pulumi.RegisterOutputType(WasmPluginVersionArrayOutput{})
 }

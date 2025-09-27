@@ -25,6 +25,12 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// Path within the volume from which the container's volume should be mounted.
+        /// </summary>
+        [Input("subPath")]
+        public Input<string>? SubPath { get; set; }
+
         public ServiceTemplateSpecContainerVolumeMountGetArgs()
         {
         }

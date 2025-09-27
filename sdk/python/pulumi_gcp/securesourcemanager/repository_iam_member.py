@@ -40,6 +40,7 @@ class RepositoryIamMemberArgs:
                * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+               * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
         :param pulumi.Input[_builtins.str] repository_id: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[_builtins.str] role: The role that should be applied. Only one
                `securesourcemanager.RepositoryIamBinding` can be used per role. Note that custom roles must be of the format
@@ -76,6 +77,7 @@ class RepositoryIamMemberArgs:
         * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
         * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
         * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
         """
         return pulumi.get(self, "member")
 
@@ -175,6 +177,7 @@ class _RepositoryIamMemberState:
                * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+               * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
         :param pulumi.Input[_builtins.str] repository_id: Used to find the parent resource to bind the IAM policy to
@@ -248,6 +251,7 @@ class _RepositoryIamMemberState:
         * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
         * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
         * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
         """
         return pulumi.get(self, "member")
 
@@ -488,6 +492,7 @@ class RepositoryIamMember(pulumi.CustomResource):
                * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+               * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
         :param pulumi.Input[_builtins.str] repository_id: Used to find the parent resource to bind the IAM policy to
@@ -747,6 +752,7 @@ class RepositoryIamMember(pulumi.CustomResource):
                * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+               * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
         :param pulumi.Input[_builtins.str] repository_id: Used to find the parent resource to bind the IAM policy to
@@ -806,6 +812,7 @@ class RepositoryIamMember(pulumi.CustomResource):
         * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
         * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
         * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
         """
         return pulumi.get(self, "member")
 

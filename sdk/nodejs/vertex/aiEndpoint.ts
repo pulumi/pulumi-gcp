@@ -84,7 +84,7 @@ import * as utilities from "../utilities";
  *
  * const project = gcp.organizations.getProject({});
  * const endpoint = new gcp.vertex.AiEndpoint("endpoint", {
- *     name: "endpoint-name_20665",
+ *     name: "endpoint-name_92130",
  *     displayName: "sample-endpoint",
  *     description: "A sample vertex endpoint",
  *     location: "us-central1",
@@ -105,7 +105,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const endpoint = new gcp.vertex.AiEndpoint("endpoint", {
- *     name: "endpoint-name_85160",
+ *     name: "endpoint-name_16199",
  *     displayName: "sample-endpoint",
  *     description: "A sample vertex endpoint",
  *     location: "us-central1",

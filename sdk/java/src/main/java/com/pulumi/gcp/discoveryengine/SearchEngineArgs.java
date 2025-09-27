@@ -20,6 +20,23 @@ public final class SearchEngineArgs extends com.pulumi.resources.ResourceArgs {
     public static final SearchEngineArgs Empty = new SearchEngineArgs();
 
     /**
+     * This is the application type this engine resource represents.
+     * The supported values: &#39;APP_TYPE_UNSPECIFIED&#39;, &#39;APP_TYPE_INTRANET&#39;.
+     * 
+     */
+    @Import(name="appType")
+    private @Nullable Output<String> appType;
+
+    /**
+     * @return This is the application type this engine resource represents.
+     * The supported values: &#39;APP_TYPE_UNSPECIFIED&#39;, &#39;APP_TYPE_INTRANET&#39;.
+     * 
+     */
+    public Optional<Output<String>> appType() {
+        return Optional.ofNullable(this.appType);
+    }
+
+    /**
      * The collection ID.
      * 
      */
@@ -167,6 +184,7 @@ public final class SearchEngineArgs extends com.pulumi.resources.ResourceArgs {
     private SearchEngineArgs() {}
 
     private SearchEngineArgs(SearchEngineArgs $) {
+        this.appType = $.appType;
         this.collectionId = $.collectionId;
         this.commonConfig = $.commonConfig;
         this.dataStoreIds = $.dataStoreIds;
@@ -194,6 +212,29 @@ public final class SearchEngineArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(SearchEngineArgs defaults) {
             $ = new SearchEngineArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param appType This is the application type this engine resource represents.
+         * The supported values: &#39;APP_TYPE_UNSPECIFIED&#39;, &#39;APP_TYPE_INTRANET&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder appType(@Nullable Output<String> appType) {
+            $.appType = appType;
+            return this;
+        }
+
+        /**
+         * @param appType This is the application type this engine resource represents.
+         * The supported values: &#39;APP_TYPE_UNSPECIFIED&#39;, &#39;APP_TYPE_INTRANET&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder appType(String appType) {
+            return appType(Output.of(appType));
         }
 
         /**

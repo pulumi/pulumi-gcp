@@ -748,7 +748,9 @@ export class RegionBackendService extends pulumi.CustomResource {
     declare public readonly name: pulumi.Output<string>;
     /**
      * The URL of the network to which this backend service belongs.
-     * This field can only be specified when the load balancing scheme is set to INTERNAL.
+     * This field must be set for Internal Passthrough Network Load Balancers when the haPolicy is enabled, and for External Passthrough Network Load Balancers when the haPolicy fastIpMove is enabled.
+     * This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
+     * Changes to this field force recreation of the resource.
      */
     declare public readonly network: pulumi.Output<string | undefined>;
     /**
@@ -1117,7 +1119,9 @@ export interface RegionBackendServiceState {
     name?: pulumi.Input<string>;
     /**
      * The URL of the network to which this backend service belongs.
-     * This field can only be specified when the load balancing scheme is set to INTERNAL.
+     * This field must be set for Internal Passthrough Network Load Balancers when the haPolicy is enabled, and for External Passthrough Network Load Balancers when the haPolicy fastIpMove is enabled.
+     * This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
+     * Changes to this field force recreation of the resource.
      */
     network?: pulumi.Input<string>;
     /**
@@ -1381,7 +1385,9 @@ export interface RegionBackendServiceArgs {
     name?: pulumi.Input<string>;
     /**
      * The URL of the network to which this backend service belongs.
-     * This field can only be specified when the load balancing scheme is set to INTERNAL.
+     * This field must be set for Internal Passthrough Network Load Balancers when the haPolicy is enabled, and for External Passthrough Network Load Balancers when the haPolicy fastIpMove is enabled.
+     * This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
+     * Changes to this field force recreation of the resource.
      */
     network?: pulumi.Input<string>;
     /**

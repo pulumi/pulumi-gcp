@@ -18,11 +18,19 @@ namespace Pulumi.Gcp.Datastream.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate DatasetTemplate;
+        /// <summary>
+        /// Optional. The project id of the BigQuery dataset. If not specified, the project will be inferred from the stream resource.
+        /// </summary>
+        public readonly string? ProjectId;
 
         [OutputConstructor]
-        private StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets(Outputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate datasetTemplate)
+        private StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets(
+            Outputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate datasetTemplate,
+
+            string? projectId)
         {
             DatasetTemplate = datasetTemplate;
+            ProjectId = projectId;
         }
     }
 }

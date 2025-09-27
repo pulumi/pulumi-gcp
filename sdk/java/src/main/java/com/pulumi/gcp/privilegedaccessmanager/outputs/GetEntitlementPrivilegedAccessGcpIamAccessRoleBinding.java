@@ -17,6 +17,11 @@ public final class GetEntitlementPrivilegedAccessGcpIamAccessRoleBinding {
      */
     private String conditionExpression;
     /**
+     * @return Output Only. The ID corresponding to this role binding in the policy binding. This will be unique within an entitlement across time. Gets re-generated each time the entitlement is updated.
+     * 
+     */
+    private String id;
+    /**
      * @return IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
      * 
      */
@@ -30,6 +35,13 @@ public final class GetEntitlementPrivilegedAccessGcpIamAccessRoleBinding {
      */
     public String conditionExpression() {
         return this.conditionExpression;
+    }
+    /**
+     * @return Output Only. The ID corresponding to this role binding in the policy binding. This will be unique within an entitlement across time. Gets re-generated each time the entitlement is updated.
+     * 
+     */
+    public String id() {
+        return this.id;
     }
     /**
      * @return IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
@@ -49,11 +61,13 @@ public final class GetEntitlementPrivilegedAccessGcpIamAccessRoleBinding {
     @CustomType.Builder
     public static final class Builder {
         private String conditionExpression;
+        private String id;
         private String role;
         public Builder() {}
         public Builder(GetEntitlementPrivilegedAccessGcpIamAccessRoleBinding defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.conditionExpression = defaults.conditionExpression;
+    	      this.id = defaults.id;
     	      this.role = defaults.role;
         }
 
@@ -63,6 +77,14 @@ public final class GetEntitlementPrivilegedAccessGcpIamAccessRoleBinding {
               throw new MissingRequiredPropertyException("GetEntitlementPrivilegedAccessGcpIamAccessRoleBinding", "conditionExpression");
             }
             this.conditionExpression = conditionExpression;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEntitlementPrivilegedAccessGcpIamAccessRoleBinding", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -76,6 +98,7 @@ public final class GetEntitlementPrivilegedAccessGcpIamAccessRoleBinding {
         public GetEntitlementPrivilegedAccessGcpIamAccessRoleBinding build() {
             final var _resultValue = new GetEntitlementPrivilegedAccessGcpIamAccessRoleBinding();
             _resultValue.conditionExpression = conditionExpression;
+            _resultValue.id = id;
             _resultValue.role = role;
             return _resultValue;
         }
