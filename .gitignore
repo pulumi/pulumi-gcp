@@ -36,3 +36,7 @@ go.work.sum
 
 # Ignore local build tracking directory
 .make
+
+
+# Ignore local mise config
+mise.local.toml
