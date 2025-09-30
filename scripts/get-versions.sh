@@ -5,7 +5,12 @@ set -euo pipefail
 # e.g. go list -m -f '{{.GoVersion}}'
 
 module_path="github.com/pulumi/pulumi/pkg/v3"
-gomod="provider/go.mod"
+go_mod_path="provider"
+gomod="go.mod"
+
+if [[ "$go_mod_path" != "" && "$go_mod_path" != "." ]]; then
+  gomod="$go_mod_path/$gomod"
+fi
 
 if [[ ! -f "$gomod" ]]; then
   echo "missing $gomod" >&2
@@ -29,8 +34,8 @@ if [[ -z "${raw_version:-}" ]]; then
   exit 1
 fi
 
-echo "PULUMI_VERSION=$raw_version"
-export PULUMI_VERSION=$raw_version
+echo "MISE_PULUMI_VERSION=$raw_version"
+export MISE_PULUMI_VERSION=$raw_version
 
 # Prefer the toolchain directive if present, otherwise fall back to the `go` version line
 go_toolchain=$(awk '/^toolchain[[:space:]]+go[0-9]/{ print $2; exit }' "$gomod")
@@ -46,5 +51,5 @@ if [[ -z "${go_version:-}" ]]; then
   exit 1
 fi
 
-echo "GO_VERSION=$go_version"
-export GO_VERSION=$go_version
+echo "MISE_GO_VERSION=$go_version"
+export MISE_GO_VERSION=$go_version
