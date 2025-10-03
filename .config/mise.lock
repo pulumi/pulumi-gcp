@@ -65,6 +65,10 @@ checksum = "sha256:4eba5fbe1fb10753bc06e42f001a91c5cec16798b7764a3e9257adc59af47
 size = 47041607
 url = "https://nodejs.org/dist/v20.19.5/node-v20.19.5-linux-x64.tar.gz"
 
+[[tools."npm:yarn"]]
+version = "1.22.22"
+backend = "npm:yarn"
+
 [[tools.pulumi]]
 version = "3.190.0"
 backend = "aqua:pulumi/pulumi"
