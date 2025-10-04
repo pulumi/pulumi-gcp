@@ -20,7 +20,7 @@ public final class PreventionDiscoveryConfigTargetCloudStorageTargetFilter {
      */
     private @Nullable PreventionDiscoveryConfigTargetCloudStorageTargetFilterCloudStorageResourceReference cloudStorageResourceReference;
     /**
-     * @return A specific set of buckets for this filter to apply to.
+     * @return A collection of resources for this filter to apply to.
      * Structure is documented below.
      * 
      */
@@ -41,7 +41,7 @@ public final class PreventionDiscoveryConfigTargetCloudStorageTargetFilter {
         return Optional.ofNullable(this.cloudStorageResourceReference);
     }
     /**
-     * @return A specific set of buckets for this filter to apply to.
+     * @return A collection of resources for this filter to apply to.
      * Structure is documented below.
      * 
      */

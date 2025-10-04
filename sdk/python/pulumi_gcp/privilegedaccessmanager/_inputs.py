@@ -151,7 +151,7 @@ if not MYPY:
     class EntitlementApprovalWorkflowManualApprovalsArgsDict(TypedDict):
         steps: pulumi.Input[Sequence[pulumi.Input['EntitlementApprovalWorkflowManualApprovalsStepArgsDict']]]
         """
-        List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
+        List of approval steps in this workflow. These steps would be followed in the specified order sequentially.
         Structure is documented below.
         """
         require_approver_justification: NotRequired[pulumi.Input[_builtins.bool]]
@@ -167,7 +167,7 @@ class EntitlementApprovalWorkflowManualApprovalsArgs:
                  steps: pulumi.Input[Sequence[pulumi.Input['EntitlementApprovalWorkflowManualApprovalsStepArgs']]],
                  require_approver_justification: Optional[pulumi.Input[_builtins.bool]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['EntitlementApprovalWorkflowManualApprovalsStepArgs']]] steps: List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
+        :param pulumi.Input[Sequence[pulumi.Input['EntitlementApprovalWorkflowManualApprovalsStepArgs']]] steps: List of approval steps in this workflow. These steps would be followed in the specified order sequentially.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] require_approver_justification: Optional. Do the approvers need to provide a justification for their actions?
         """
@@ -179,7 +179,7 @@ class EntitlementApprovalWorkflowManualApprovalsArgs:
     @pulumi.getter
     def steps(self) -> pulumi.Input[Sequence[pulumi.Input['EntitlementApprovalWorkflowManualApprovalsStepArgs']]]:
         """
-        List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
+        List of approval steps in this workflow. These steps would be followed in the specified order sequentially.
         Structure is documented below.
         """
         return pulumi.get(self, "steps")
@@ -219,6 +219,11 @@ if not MYPY:
         """
         Optional. Additional email addresses to be notified when a grant is pending approval.
         """
+        id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output, Beta)
+        Output Only. The ID of the approval step.
+        """
 elif False:
     EntitlementApprovalWorkflowManualApprovalsStepArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -227,7 +232,8 @@ class EntitlementApprovalWorkflowManualApprovalsStepArgs:
     def __init__(__self__, *,
                  approvers: pulumi.Input['EntitlementApprovalWorkflowManualApprovalsStepApproversArgs'],
                  approvals_needed: Optional[pulumi.Input[_builtins.int]] = None,
-                 approver_email_recipients: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 approver_email_recipients: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input['EntitlementApprovalWorkflowManualApprovalsStepApproversArgs'] approvers: The potential set of approvers in this step. This list should contain at only one entry.
                Structure is documented below.
@@ -236,12 +242,16 @@ class EntitlementApprovalWorkflowManualApprovalsStepArgs:
                will indefinitely block. Should always be greater than 0. Currently 1 is the only
                supported value.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] approver_email_recipients: Optional. Additional email addresses to be notified when a grant is pending approval.
+        :param pulumi.Input[_builtins.str] id: (Output, Beta)
+               Output Only. The ID of the approval step.
         """
         pulumi.set(__self__, "approvers", approvers)
         if approvals_needed is not None:
             pulumi.set(__self__, "approvals_needed", approvals_needed)
         if approver_email_recipients is not None:
             pulumi.set(__self__, "approver_email_recipients", approver_email_recipients)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
 
     @_builtins.property
     @pulumi.getter
@@ -282,6 +292,19 @@ class EntitlementApprovalWorkflowManualApprovalsStepArgs:
     @approver_email_recipients.setter
     def approver_email_recipients(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "approver_email_recipients", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output, Beta)
+        Output Only. The ID of the approval step.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "id", value)
 
 
 if not MYPY:

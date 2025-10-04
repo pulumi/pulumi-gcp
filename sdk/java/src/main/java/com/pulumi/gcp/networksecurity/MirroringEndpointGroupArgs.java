@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -74,8 +75,8 @@ public final class MirroringEndpointGroupArgs extends com.pulumi.resources.Resou
      * See https://google.aip.dev/124.
      * 
      */
-    @Import(name="mirroringDeploymentGroup", required=true)
-    private Output<String> mirroringDeploymentGroup;
+    @Import(name="mirroringDeploymentGroup")
+    private @Nullable Output<String> mirroringDeploymentGroup;
 
     /**
      * @return The deployment group that this DIRECT endpoint group is connected to, for example:
@@ -83,8 +84,29 @@ public final class MirroringEndpointGroupArgs extends com.pulumi.resources.Resou
      * See https://google.aip.dev/124.
      * 
      */
-    public Output<String> mirroringDeploymentGroup() {
-        return this.mirroringDeploymentGroup;
+    public Optional<Output<String>> mirroringDeploymentGroup() {
+        return Optional.ofNullable(this.mirroringDeploymentGroup);
+    }
+
+    /**
+     * A list of the deployment groups that this BROKER endpoint group is
+     * connected to, for example:
+     * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+     * See https://google.aip.dev/124.
+     * 
+     */
+    @Import(name="mirroringDeploymentGroups")
+    private @Nullable Output<List<String>> mirroringDeploymentGroups;
+
+    /**
+     * @return A list of the deployment groups that this BROKER endpoint group is
+     * connected to, for example:
+     * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+     * See https://google.aip.dev/124.
+     * 
+     */
+    public Optional<Output<List<String>>> mirroringDeploymentGroups() {
+        return Optional.ofNullable(this.mirroringDeploymentGroups);
     }
 
     /**
@@ -121,6 +143,29 @@ public final class MirroringEndpointGroupArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * The type of the endpoint group.
+     * If left unspecified, defaults to DIRECT.
+     * Possible values:
+     * DIRECT
+     * BROKER
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    /**
+     * @return The type of the endpoint group.
+     * If left unspecified, defaults to DIRECT.
+     * Possible values:
+     * DIRECT
+     * BROKER
+     * 
+     */
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
+    }
+
     private MirroringEndpointGroupArgs() {}
 
     private MirroringEndpointGroupArgs(MirroringEndpointGroupArgs $) {
@@ -128,8 +173,10 @@ public final class MirroringEndpointGroupArgs extends com.pulumi.resources.Resou
         this.labels = $.labels;
         this.location = $.location;
         this.mirroringDeploymentGroup = $.mirroringDeploymentGroup;
+        this.mirroringDeploymentGroups = $.mirroringDeploymentGroups;
         this.mirroringEndpointGroupId = $.mirroringEndpointGroupId;
         this.project = $.project;
+        this.type = $.type;
     }
 
     public static Builder builder() {
@@ -227,7 +274,7 @@ public final class MirroringEndpointGroupArgs extends com.pulumi.resources.Resou
          * @return builder
          * 
          */
-        public Builder mirroringDeploymentGroup(Output<String> mirroringDeploymentGroup) {
+        public Builder mirroringDeploymentGroup(@Nullable Output<String> mirroringDeploymentGroup) {
             $.mirroringDeploymentGroup = mirroringDeploymentGroup;
             return this;
         }
@@ -242,6 +289,46 @@ public final class MirroringEndpointGroupArgs extends com.pulumi.resources.Resou
          */
         public Builder mirroringDeploymentGroup(String mirroringDeploymentGroup) {
             return mirroringDeploymentGroup(Output.of(mirroringDeploymentGroup));
+        }
+
+        /**
+         * @param mirroringDeploymentGroups A list of the deployment groups that this BROKER endpoint group is
+         * connected to, for example:
+         * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+         * See https://google.aip.dev/124.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mirroringDeploymentGroups(@Nullable Output<List<String>> mirroringDeploymentGroups) {
+            $.mirroringDeploymentGroups = mirroringDeploymentGroups;
+            return this;
+        }
+
+        /**
+         * @param mirroringDeploymentGroups A list of the deployment groups that this BROKER endpoint group is
+         * connected to, for example:
+         * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+         * See https://google.aip.dev/124.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mirroringDeploymentGroups(List<String> mirroringDeploymentGroups) {
+            return mirroringDeploymentGroups(Output.of(mirroringDeploymentGroups));
+        }
+
+        /**
+         * @param mirroringDeploymentGroups A list of the deployment groups that this BROKER endpoint group is
+         * connected to, for example:
+         * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+         * See https://google.aip.dev/124.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mirroringDeploymentGroups(String... mirroringDeploymentGroups) {
+            return mirroringDeploymentGroups(List.of(mirroringDeploymentGroups));
         }
 
         /**
@@ -290,12 +377,38 @@ public final class MirroringEndpointGroupArgs extends com.pulumi.resources.Resou
             return project(Output.of(project));
         }
 
+        /**
+         * @param type The type of the endpoint group.
+         * If left unspecified, defaults to DIRECT.
+         * Possible values:
+         * DIRECT
+         * BROKER
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type The type of the endpoint group.
+         * If left unspecified, defaults to DIRECT.
+         * Possible values:
+         * DIRECT
+         * BROKER
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
+        }
+
         public MirroringEndpointGroupArgs build() {
             if ($.location == null) {
                 throw new MissingRequiredPropertyException("MirroringEndpointGroupArgs", "location");
-            }
-            if ($.mirroringDeploymentGroup == null) {
-                throw new MissingRequiredPropertyException("MirroringEndpointGroupArgs", "mirroringDeploymentGroup");
             }
             if ($.mirroringEndpointGroupId == null) {
                 throw new MissingRequiredPropertyException("MirroringEndpointGroupArgs", "mirroringEndpointGroupId");

@@ -17,7 +17,7 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncl
     public static final PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesArgs Empty = new PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesArgs();
 
     /**
-     * The group of regular expression patterns to match against one or more file stores. Maximum of 100 entries. The sum of all lengths of regular expressions can&#39;t exceed 10 KiB.
+     * The group of regular expression patterns to match against one or more resources. Maximum of 100 entries. The sum of all lengths of regular expressions can&#39;t exceed 10 KiB.
      * Structure is documented below.
      * 
      */
@@ -25,7 +25,7 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncl
     private @Nullable Output<List<PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPatternArgs>> patterns;
 
     /**
-     * @return The group of regular expression patterns to match against one or more file stores. Maximum of 100 entries. The sum of all lengths of regular expressions can&#39;t exceed 10 KiB.
+     * @return The group of regular expression patterns to match against one or more resources. Maximum of 100 entries. The sum of all lengths of regular expressions can&#39;t exceed 10 KiB.
      * Structure is documented below.
      * 
      */
@@ -58,7 +58,7 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncl
         }
 
         /**
-         * @param patterns The group of regular expression patterns to match against one or more file stores. Maximum of 100 entries. The sum of all lengths of regular expressions can&#39;t exceed 10 KiB.
+         * @param patterns The group of regular expression patterns to match against one or more resources. Maximum of 100 entries. The sum of all lengths of regular expressions can&#39;t exceed 10 KiB.
          * Structure is documented below.
          * 
          * @return builder
@@ -70,7 +70,7 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncl
         }
 
         /**
-         * @param patterns The group of regular expression patterns to match against one or more file stores. Maximum of 100 entries. The sum of all lengths of regular expressions can&#39;t exceed 10 KiB.
+         * @param patterns The group of regular expression patterns to match against one or more resources. Maximum of 100 entries. The sum of all lengths of regular expressions can&#39;t exceed 10 KiB.
          * Structure is documented below.
          * 
          * @return builder
@@ -81,7 +81,7 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncl
         }
 
         /**
-         * @param patterns The group of regular expression patterns to match against one or more file stores. Maximum of 100 entries. The sum of all lengths of regular expressions can&#39;t exceed 10 KiB.
+         * @param patterns The group of regular expression patterns to match against one or more resources. Maximum of 100 entries. The sum of all lengths of regular expressions can&#39;t exceed 10 KiB.
          * Structure is documented below.
          * 
          * @return builder

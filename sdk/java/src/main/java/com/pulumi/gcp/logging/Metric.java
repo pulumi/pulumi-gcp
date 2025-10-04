@@ -213,7 +213,7 @@ import javax.annotation.Nullable;
  *         var loggingMetricMetric = new Metric("loggingMetricMetric", MetricArgs.builder()
  *             .name("my-(custom)/metric")
  *             .filter("resource.type=gae_app AND severity>=ERROR")
- *             .bucketName(loggingMetric.id())
+ *             .bucketName(loggingMetric.name())
  *             .build());
  * 
  *     }

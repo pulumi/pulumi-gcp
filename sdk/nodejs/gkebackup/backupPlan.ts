@@ -133,6 +133,44 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Gkebackup Backupplan Nslabels
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.container.Cluster("primary", {
+ *     name: "nslabels-cluster",
+ *     location: "us-central1",
+ *     initialNodeCount: 1,
+ *     workloadIdentityConfig: {
+ *         workloadPool: "my-project-name.svc.id.goog",
+ *     },
+ *     addonsConfig: {
+ *         gkeBackupAgentConfig: {
+ *             enabled: true,
+ *         },
+ *     },
+ *     deletionProtection: true,
+ *     network: "default",
+ *     subnetwork: "default",
+ * });
+ * const nslabels = new gcp.gkebackup.BackupPlan("nslabels", {
+ *     name: "nslabels-plan",
+ *     cluster: primary.id,
+ *     location: "us-central1",
+ *     backupConfig: {
+ *         includeVolumeData: true,
+ *         includeSecrets: true,
+ *         selectedNamespaceLabels: {
+ *             resourceLabels: [{
+ *                 key: "key1",
+ *                 value: "value1",
+ *             }],
+ *         },
+ *     },
+ * });
+ * ```
  * ### Gkebackup Backupplan Full
  *
  * ```typescript

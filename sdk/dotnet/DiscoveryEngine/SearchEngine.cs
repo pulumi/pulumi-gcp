@@ -172,6 +172,12 @@ namespace Pulumi.Gcp.DiscoveryEngine
         public Output<string> EngineId { get; private set; } = null!;
 
         /// <summary>
+        /// A map of the feature config for the engine to opt in or opt out of features.
+        /// </summary>
+        [Output("features")]
+        public Output<ImmutableDictionary<string, string>?> Features { get; private set; } = null!;
+
+        /// <summary>
         /// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
         /// Default value is `GENERIC`.
         /// Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
@@ -304,6 +310,18 @@ namespace Pulumi.Gcp.DiscoveryEngine
         [Input("engineId", required: true)]
         public Input<string> EngineId { get; set; } = null!;
 
+        [Input("features")]
+        private InputMap<string>? _features;
+
+        /// <summary>
+        /// A map of the feature config for the engine to opt in or opt out of features.
+        /// </summary>
+        public InputMap<string> Features
+        {
+            get => _features ?? (_features = new InputMap<string>());
+            set => _features = value;
+        }
+
         /// <summary>
         /// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
         /// Default value is `GENERIC`.
@@ -389,6 +407,18 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// </summary>
         [Input("engineId")]
         public Input<string>? EngineId { get; set; }
+
+        [Input("features")]
+        private InputMap<string>? _features;
+
+        /// <summary>
+        /// A map of the feature config for the engine to opt in or opt out of features.
+        /// </summary>
+        public InputMap<string> Features
+        {
+            get => _features ?? (_features = new InputMap<string>());
+            set => _features = value;
+        }
 
         /// <summary>
         /// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.

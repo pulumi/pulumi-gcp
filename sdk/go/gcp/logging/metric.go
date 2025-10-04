@@ -175,7 +175,7 @@ import (
 //			_, err = logging.NewMetric(ctx, "logging_metric", &logging.MetricArgs{
 //				Name:       pulumi.String("my-(custom)/metric"),
 //				Filter:     pulumi.String("resource.type=gae_app AND severity>=ERROR"),
-//				BucketName: loggingMetric.ID(),
+//				BucketName: loggingMetric.Name,
 //			})
 //			if err != nil {
 //				return err

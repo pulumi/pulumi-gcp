@@ -5,6 +5,7 @@ package com.pulumi.gcp.vertex.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.vertex.inputs.AiIndexEndpointEncryptionSpecArgs;
 import com.pulumi.gcp.vertex.inputs.AiIndexEndpointPrivateServiceConnectConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -76,6 +77,23 @@ public final class AiIndexEndpointState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<Map<String,String>>> effectiveLabels() {
         return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
+     * Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="encryptionSpec")
+    private @Nullable Output<AiIndexEndpointEncryptionSpecArgs> encryptionSpec;
+
+    /**
+     * @return Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AiIndexEndpointEncryptionSpecArgs>> encryptionSpec() {
+        return Optional.ofNullable(this.encryptionSpec);
     }
 
     /**
@@ -266,6 +284,7 @@ public final class AiIndexEndpointState extends com.pulumi.resources.ResourceArg
         this.description = $.description;
         this.displayName = $.displayName;
         this.effectiveLabels = $.effectiveLabels;
+        this.encryptionSpec = $.encryptionSpec;
         this.etag = $.etag;
         this.labels = $.labels;
         this.name = $.name;
@@ -379,6 +398,29 @@ public final class AiIndexEndpointState extends com.pulumi.resources.ResourceArg
          */
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
             return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
+         * @param encryptionSpec Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionSpec(@Nullable Output<AiIndexEndpointEncryptionSpecArgs> encryptionSpec) {
+            $.encryptionSpec = encryptionSpec;
+            return this;
+        }
+
+        /**
+         * @param encryptionSpec Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionSpec(AiIndexEndpointEncryptionSpecArgs encryptionSpec) {
+            return encryptionSpec(Output.of(encryptionSpec));
         }
 
         /**

@@ -37,6 +37,13 @@ namespace Pulumi.Gcp.Netapp.Inputs
 
         /// <summary>
         /// (Output)
+        /// IP Address.
+        /// </summary>
+        [Input("ipAddress")]
+        public Input<string>? IpAddress { get; set; }
+
+        /// <summary>
+        /// (Output)
         /// Protocol to mount with.
         /// </summary>
         [Input("protocol")]

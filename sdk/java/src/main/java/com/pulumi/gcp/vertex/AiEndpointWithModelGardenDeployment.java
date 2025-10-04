@@ -331,6 +331,122 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * ### Vertex Ai Deploy Psc Endpoint
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.vertex.AiEndpointWithModelGardenDeployment;
+ * import com.pulumi.gcp.vertex.AiEndpointWithModelGardenDeploymentArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiEndpointWithModelGardenDeploymentModelConfigArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiEndpointWithModelGardenDeploymentEndpointConfigArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var deploy = new AiEndpointWithModelGardenDeployment("deploy", AiEndpointWithModelGardenDeploymentArgs.builder()
+ *             .publisherModelName("publishers/google/models/paligemma}{@literal @}{@code paligemma-224-float32")
+ *             .location("us-central1")
+ *             .modelConfig(AiEndpointWithModelGardenDeploymentModelConfigArgs.builder()
+ *                 .acceptEula(true)
+ *                 .build())
+ *             .endpointConfig(AiEndpointWithModelGardenDeploymentEndpointConfigArgs.builder()
+ *                 .privateServiceConnectConfig(AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs.builder()
+ *                     .enablePrivateServiceConnect(true)
+ *                     .projectAllowlists("my-project-id")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * ### Vertex Ai Deploy Psc Endpoint Automated
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.vertex.AiEndpointWithModelGardenDeployment;
+ * import com.pulumi.gcp.vertex.AiEndpointWithModelGardenDeploymentArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiEndpointWithModelGardenDeploymentModelConfigArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiEndpointWithModelGardenDeploymentEndpointConfigArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var network = new Network("network", NetworkArgs.builder()
+ *             .name("network")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
+ * 
+ *         var deploy = new AiEndpointWithModelGardenDeployment("deploy", AiEndpointWithModelGardenDeploymentArgs.builder()
+ *             .publisherModelName("publishers/google/models/paligemma}{@literal @}{@code paligemma-224-float32")
+ *             .location("us-central1")
+ *             .modelConfig(AiEndpointWithModelGardenDeploymentModelConfigArgs.builder()
+ *                 .acceptEula(true)
+ *                 .build())
+ *             .endpointConfig(AiEndpointWithModelGardenDeploymentEndpointConfigArgs.builder()
+ *                 .privateServiceConnectConfig(AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs.builder()
+ *                     .enablePrivateServiceConnect(true)
+ *                     .projectAllowlists(project.id())
+ *                     .pscAutomationConfigs(AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsArgs.builder()
+ *                         .projectId(project.id())
+ *                         .network(network.id())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var subnetwork = new Subnetwork("subnetwork", SubnetworkArgs.builder()
+ *             .name("subnetwork")
+ *             .ipCidrRange("192.168.0.0/24")
+ *             .region("us-central1")
+ *             .network(network.id())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
  * 
  * ## Import
  * 

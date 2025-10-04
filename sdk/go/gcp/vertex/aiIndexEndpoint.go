@@ -203,6 +203,9 @@ type AiIndexEndpoint struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
+	// Structure is documented below.
+	EncryptionSpec AiIndexEndpointEncryptionSpecPtrOutput `pulumi:"encryptionSpec"`
 	// Used to perform consistent read-modify-write updates.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The labels with user-defined metadata to organize your Indexes.
@@ -281,6 +284,9 @@ type aiIndexEndpointState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
+	// Structure is documented below.
+	EncryptionSpec *AiIndexEndpointEncryptionSpec `pulumi:"encryptionSpec"`
 	// Used to perform consistent read-modify-write updates.
 	Etag *string `pulumi:"etag"`
 	// The labels with user-defined metadata to organize your Indexes.
@@ -322,6 +328,9 @@ type AiIndexEndpointState struct {
 	DisplayName pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
+	// Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
+	// Structure is documented below.
+	EncryptionSpec AiIndexEndpointEncryptionSpecPtrInput
 	// Used to perform consistent read-modify-write updates.
 	Etag pulumi.StringPtrInput
 	// The labels with user-defined metadata to organize your Indexes.
@@ -363,6 +372,9 @@ type aiIndexEndpointArgs struct {
 	Description *string `pulumi:"description"`
 	// The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
 	DisplayName string `pulumi:"displayName"`
+	// Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
+	// Structure is documented below.
+	EncryptionSpec *AiIndexEndpointEncryptionSpec `pulumi:"encryptionSpec"`
 	// The labels with user-defined metadata to organize your Indexes.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -390,6 +402,9 @@ type AiIndexEndpointArgs struct {
 	Description pulumi.StringPtrInput
 	// The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
 	DisplayName pulumi.StringInput
+	// Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
+	// Structure is documented below.
+	EncryptionSpec AiIndexEndpointEncryptionSpecPtrInput
 	// The labels with user-defined metadata to organize your Indexes.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -516,6 +531,12 @@ func (o AiIndexEndpointOutput) DisplayName() pulumi.StringOutput {
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o AiIndexEndpointOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AiIndexEndpoint) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+// Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
+// Structure is documented below.
+func (o AiIndexEndpointOutput) EncryptionSpec() AiIndexEndpointEncryptionSpecPtrOutput {
+	return o.ApplyT(func(v *AiIndexEndpoint) AiIndexEndpointEncryptionSpecPtrOutput { return v.EncryptionSpec }).(AiIndexEndpointEncryptionSpecPtrOutput)
 }
 
 // Used to perform consistent read-modify-write updates.

@@ -150,6 +150,10 @@ export class SearchEngine extends pulumi.CustomResource {
      */
     declare public readonly engineId: pulumi.Output<string>;
     /**
+     * A map of the feature config for the engine to opt in or opt out of features.
+     */
+    declare public readonly features: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
      * Default value is `GENERIC`.
      * Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
@@ -201,6 +205,7 @@ export class SearchEngine extends pulumi.CustomResource {
             resourceInputs["dataStoreIds"] = state?.dataStoreIds;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["engineId"] = state?.engineId;
+            resourceInputs["features"] = state?.features;
             resourceInputs["industryVertical"] = state?.industryVertical;
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
@@ -233,6 +238,7 @@ export class SearchEngine extends pulumi.CustomResource {
             resourceInputs["dataStoreIds"] = args?.dataStoreIds;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["engineId"] = args?.engineId;
+            resourceInputs["features"] = args?.features;
             resourceInputs["industryVertical"] = args?.industryVertical;
             resourceInputs["location"] = args?.location;
             resourceInputs["project"] = args?.project;
@@ -280,6 +286,10 @@ export interface SearchEngineState {
      * Unique ID to use for Search Engine App.
      */
     engineId?: pulumi.Input<string>;
+    /**
+     * A map of the feature config for the engine to opt in or opt out of features.
+     */
+    features?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
      * Default value is `GENERIC`.
@@ -343,6 +353,10 @@ export interface SearchEngineArgs {
      * Unique ID to use for Search Engine App.
      */
     engineId: pulumi.Input<string>;
+    /**
+     * A map of the feature config for the engine to opt in or opt out of features.
+     */
+    features?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
      * Default value is `GENERIC`.

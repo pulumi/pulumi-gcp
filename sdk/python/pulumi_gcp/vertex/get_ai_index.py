@@ -27,7 +27,7 @@ class GetAiIndexResult:
     """
     A collection of values returned by getAiIndex.
     """
-    def __init__(__self__, create_time=None, deployed_indexes=None, description=None, display_name=None, effective_labels=None, etag=None, id=None, index_stats=None, index_update_method=None, labels=None, metadata_schema_uri=None, metadatas=None, name=None, project=None, pulumi_labels=None, region=None, update_time=None):
+    def __init__(__self__, create_time=None, deployed_indexes=None, description=None, display_name=None, effective_labels=None, encryption_specs=None, etag=None, id=None, index_stats=None, index_update_method=None, labels=None, metadata_schema_uri=None, metadatas=None, name=None, project=None, pulumi_labels=None, region=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -43,6 +43,9 @@ class GetAiIndexResult:
         if effective_labels and not isinstance(effective_labels, dict):
             raise TypeError("Expected argument 'effective_labels' to be a dict")
         pulumi.set(__self__, "effective_labels", effective_labels)
+        if encryption_specs and not isinstance(encryption_specs, list):
+            raise TypeError("Expected argument 'encryption_specs' to be a list")
+        pulumi.set(__self__, "encryption_specs", encryption_specs)
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
@@ -104,6 +107,11 @@ class GetAiIndexResult:
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Mapping[str, _builtins.str]:
         return pulumi.get(self, "effective_labels")
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionSpecs")
+    def encryption_specs(self) -> Sequence['outputs.GetAiIndexEncryptionSpecResult']:
+        return pulumi.get(self, "encryption_specs")
 
     @_builtins.property
     @pulumi.getter
@@ -180,6 +188,7 @@ class AwaitableGetAiIndexResult(GetAiIndexResult):
             description=self.description,
             display_name=self.display_name,
             effective_labels=self.effective_labels,
+            encryption_specs=self.encryption_specs,
             etag=self.etag,
             id=self.id,
             index_stats=self.index_stats,
@@ -221,6 +230,7 @@ def get_ai_index(name: Optional[_builtins.str] = None,
         description=pulumi.get(__ret__, 'description'),
         display_name=pulumi.get(__ret__, 'display_name'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
+        encryption_specs=pulumi.get(__ret__, 'encryption_specs'),
         etag=pulumi.get(__ret__, 'etag'),
         id=pulumi.get(__ret__, 'id'),
         index_stats=pulumi.get(__ret__, 'index_stats'),
@@ -259,6 +269,7 @@ def get_ai_index_output(name: Optional[pulumi.Input[_builtins.str]] = None,
         description=pulumi.get(__response__, 'description'),
         display_name=pulumi.get(__response__, 'display_name'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),
+        encryption_specs=pulumi.get(__response__, 'encryption_specs'),
         etag=pulumi.get(__response__, 'etag'),
         id=pulumi.get(__response__, 'id'),
         index_stats=pulumi.get(__response__, 'index_stats'),

@@ -286,39 +286,19 @@ class Connector(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumi_time as time
 
-        project = gcp.organizations.Project("project",
-            project_id="tf-test_59033",
-            name="tf-test_32081",
-            org_id="123456789",
-            billing_account="000000-0000000-0000000-000000",
-            deletion_policy="DELETE")
-        wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s,
-        opts = pulumi.ResourceOptions(depends_on=[project]))
-        compute = gcp.projects.Service("compute",
-            project=project.project_id,
-            service="compute.googleapis.com",
-            opts = pulumi.ResourceOptions(depends_on=[wait60_seconds]))
-        managedkafka = gcp.projects.Service("managedkafka",
-            project=project.project_id,
-            service="managedkafka.googleapis.com",
-            opts = pulumi.ResourceOptions(depends_on=[compute]))
-        wait120_seconds = time.index.Sleep("wait_120_seconds", create_duration=120s,
-        opts = pulumi.ResourceOptions(depends_on=[managedkafka]))
+        project = gcp.organizations.get_project()
         mkc_secondary_subnet = gcp.compute.Subnetwork("mkc_secondary_subnet",
             project=project.project_id,
             name="my-secondary-subnetwork-00",
             ip_cidr_range="10.5.0.0/16",
             region="us-central1",
-            network="default",
-            opts = pulumi.ResourceOptions(depends_on=[wait120_seconds]))
+            network="default")
         cps_topic = gcp.pubsub.Topic("cps_topic",
             project=project.project_id,
             name="my-cps-topic",
             message_retention_duration="86600s")
         gmk_cluster = gcp.managedkafka.Cluster("gmk_cluster",
-            project=project.project_id,
             cluster_id="my-cluster",
             location="us-central1",
             capacity_config={
@@ -328,27 +308,19 @@ class Connector(pulumi.CustomResource):
             gcp_config={
                 "access_config": {
                     "network_configs": [{
-                        "subnet": project.project_id.apply(lambda project_id: f"projects/{project_id}/regions/us-central1/subnetworks/default"),
+                        "subnet": f"projects/{project.number}/regions/us-central1/subnetworks/default",
                     }],
                 },
-            },
-            opts = pulumi.ResourceOptions(depends_on=[managedkafka]))
+            })
         gmk_topic = gcp.managedkafka.Topic("gmk_topic",
-            project=project.project_id,
             topic_id="my-topic",
             cluster=gmk_cluster.cluster_id,
             location="us-central1",
             partition_count=2,
-            replication_factor=3,
-            opts = pulumi.ResourceOptions(depends_on=[managedkafka]))
+            replication_factor=3)
         mkc_cluster = gcp.managedkafka.ConnectCluster("mkc_cluster",
-            project=project.project_id,
             connect_cluster_id="my-connect-cluster",
-            kafka_cluster=pulumi.Output.all(
-                project_id=project.project_id,
-                cluster_id=gmk_cluster.cluster_id
-        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project_id']}/locations/us-central1/clusters/{resolved_outputs['cluster_id']}")
-        ,
+            kafka_cluster=gmk_cluster.cluster_id.apply(lambda cluster_id: f"projects/{project.project_id}/locations/us-central1/clusters/{cluster_id}"),
             location="us-central1",
             capacity_config={
                 "vcpu_count": "12",
@@ -357,29 +329,23 @@ class Connector(pulumi.CustomResource):
             gcp_config={
                 "access_config": {
                     "network_configs": [{
-                        "primary_subnet": project.project_id.apply(lambda project_id: f"projects/{project_id}/regions/us-central1/subnetworks/default"),
+                        "primary_subnet": f"projects/{project.number}/regions/us-central1/subnetworks/default",
                         "additional_subnets": [mkc_secondary_subnet.id],
-                        "dns_domain_names": [pulumi.Output.all(
-                            cluster_id=gmk_cluster.cluster_id,
-                            project_id=project.project_id
-        ).apply(lambda resolved_outputs: f"{resolved_outputs['cluster_id']}.us-central1.managedkafka.{resolved_outputs['project_id']}.cloud.goog")
-        ],
+                        "dns_domain_names": [gmk_cluster.cluster_id.apply(lambda cluster_id: f"{cluster_id}.us-central1.managedkafka.{project.project_id}.cloud.goog")],
                     }],
                 },
             },
             labels={
                 "key": "value",
-            },
-            opts = pulumi.ResourceOptions(depends_on=[managedkafka]))
+            })
         example = gcp.managedkafka.Connector("example",
-            project=project.project_id,
             connector_id="my-connector",
             connect_cluster=mkc_cluster.connect_cluster_id,
             location="us-central1",
             configs={
                 "connector.class": "com.google.pubsub.kafka.sink.CloudPubSubSinkConnector",
                 "name": "my-connector",
-                "tasks.max": "1",
+                "tasks.max": "3",
                 "topics": gmk_topic.topic_id,
                 "cps.topic": cps_topic.name,
                 "cps.project": project.project_id,
@@ -389,8 +355,7 @@ class Connector(pulumi.CustomResource):
             task_restart_policy={
                 "minimum_backoff": "60s",
                 "maximum_backoff": "1800s",
-            },
-            opts = pulumi.ResourceOptions(depends_on=[managedkafka]))
+            })
         ```
 
         ## Import
@@ -444,39 +409,19 @@ class Connector(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumi_time as time
 
-        project = gcp.organizations.Project("project",
-            project_id="tf-test_59033",
-            name="tf-test_32081",
-            org_id="123456789",
-            billing_account="000000-0000000-0000000-000000",
-            deletion_policy="DELETE")
-        wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s,
-        opts = pulumi.ResourceOptions(depends_on=[project]))
-        compute = gcp.projects.Service("compute",
-            project=project.project_id,
-            service="compute.googleapis.com",
-            opts = pulumi.ResourceOptions(depends_on=[wait60_seconds]))
-        managedkafka = gcp.projects.Service("managedkafka",
-            project=project.project_id,
-            service="managedkafka.googleapis.com",
-            opts = pulumi.ResourceOptions(depends_on=[compute]))
-        wait120_seconds = time.index.Sleep("wait_120_seconds", create_duration=120s,
-        opts = pulumi.ResourceOptions(depends_on=[managedkafka]))
+        project = gcp.organizations.get_project()
         mkc_secondary_subnet = gcp.compute.Subnetwork("mkc_secondary_subnet",
             project=project.project_id,
             name="my-secondary-subnetwork-00",
             ip_cidr_range="10.5.0.0/16",
             region="us-central1",
-            network="default",
-            opts = pulumi.ResourceOptions(depends_on=[wait120_seconds]))
+            network="default")
         cps_topic = gcp.pubsub.Topic("cps_topic",
             project=project.project_id,
             name="my-cps-topic",
             message_retention_duration="86600s")
         gmk_cluster = gcp.managedkafka.Cluster("gmk_cluster",
-            project=project.project_id,
             cluster_id="my-cluster",
             location="us-central1",
             capacity_config={
@@ -486,27 +431,19 @@ class Connector(pulumi.CustomResource):
             gcp_config={
                 "access_config": {
                     "network_configs": [{
-                        "subnet": project.project_id.apply(lambda project_id: f"projects/{project_id}/regions/us-central1/subnetworks/default"),
+                        "subnet": f"projects/{project.number}/regions/us-central1/subnetworks/default",
                     }],
                 },
-            },
-            opts = pulumi.ResourceOptions(depends_on=[managedkafka]))
+            })
         gmk_topic = gcp.managedkafka.Topic("gmk_topic",
-            project=project.project_id,
             topic_id="my-topic",
             cluster=gmk_cluster.cluster_id,
             location="us-central1",
             partition_count=2,
-            replication_factor=3,
-            opts = pulumi.ResourceOptions(depends_on=[managedkafka]))
+            replication_factor=3)
         mkc_cluster = gcp.managedkafka.ConnectCluster("mkc_cluster",
-            project=project.project_id,
             connect_cluster_id="my-connect-cluster",
-            kafka_cluster=pulumi.Output.all(
-                project_id=project.project_id,
-                cluster_id=gmk_cluster.cluster_id
-        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project_id']}/locations/us-central1/clusters/{resolved_outputs['cluster_id']}")
-        ,
+            kafka_cluster=gmk_cluster.cluster_id.apply(lambda cluster_id: f"projects/{project.project_id}/locations/us-central1/clusters/{cluster_id}"),
             location="us-central1",
             capacity_config={
                 "vcpu_count": "12",
@@ -515,29 +452,23 @@ class Connector(pulumi.CustomResource):
             gcp_config={
                 "access_config": {
                     "network_configs": [{
-                        "primary_subnet": project.project_id.apply(lambda project_id: f"projects/{project_id}/regions/us-central1/subnetworks/default"),
+                        "primary_subnet": f"projects/{project.number}/regions/us-central1/subnetworks/default",
                         "additional_subnets": [mkc_secondary_subnet.id],
-                        "dns_domain_names": [pulumi.Output.all(
-                            cluster_id=gmk_cluster.cluster_id,
-                            project_id=project.project_id
-        ).apply(lambda resolved_outputs: f"{resolved_outputs['cluster_id']}.us-central1.managedkafka.{resolved_outputs['project_id']}.cloud.goog")
-        ],
+                        "dns_domain_names": [gmk_cluster.cluster_id.apply(lambda cluster_id: f"{cluster_id}.us-central1.managedkafka.{project.project_id}.cloud.goog")],
                     }],
                 },
             },
             labels={
                 "key": "value",
-            },
-            opts = pulumi.ResourceOptions(depends_on=[managedkafka]))
+            })
         example = gcp.managedkafka.Connector("example",
-            project=project.project_id,
             connector_id="my-connector",
             connect_cluster=mkc_cluster.connect_cluster_id,
             location="us-central1",
             configs={
                 "connector.class": "com.google.pubsub.kafka.sink.CloudPubSubSinkConnector",
                 "name": "my-connector",
-                "tasks.max": "1",
+                "tasks.max": "3",
                 "topics": gmk_topic.topic_id,
                 "cps.topic": cps_topic.name,
                 "cps.project": project.project_id,
@@ -547,8 +478,7 @@ class Connector(pulumi.CustomResource):
             task_restart_policy={
                 "minimum_backoff": "60s",
                 "maximum_backoff": "1800s",
-            },
-            opts = pulumi.ResourceOptions(depends_on=[managedkafka]))
+            })
         ```
 
         ## Import

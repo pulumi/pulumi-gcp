@@ -21,6 +21,7 @@ __all__ = [
     'ReleaseInputVariableDefault',
     'ReleaseOutputVariable',
     'ReleaseReleaseRequirements',
+    'RolloutKindErrorBudget',
     'SaaSLocation',
     'UnitKindDependency',
     'UnitKindInputVariableMapping',
@@ -246,6 +247,60 @@ class ReleaseReleaseRequirements(dict):
         constraint.
         """
         return pulumi.get(self, "upgradeable_from_releases")
+
+
+@pulumi.output_type
+class RolloutKindErrorBudget(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedCount":
+            suggest = "allowed_count"
+        elif key == "allowedPercentage":
+            suggest = "allowed_percentage"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RolloutKindErrorBudget. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RolloutKindErrorBudget.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RolloutKindErrorBudget.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed_count: Optional[_builtins.int] = None,
+                 allowed_percentage: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int allowed_count: The maximum number of failed units allowed in a location without pausing
+               the rollout.
+        :param _builtins.int allowed_percentage: The maximum percentage of units allowed to fail (0, 100] within a location
+               without pausing the rollout.
+        """
+        if allowed_count is not None:
+            pulumi.set(__self__, "allowed_count", allowed_count)
+        if allowed_percentage is not None:
+            pulumi.set(__self__, "allowed_percentage", allowed_percentage)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedCount")
+    def allowed_count(self) -> Optional[_builtins.int]:
+        """
+        The maximum number of failed units allowed in a location without pausing
+        the rollout.
+        """
+        return pulumi.get(self, "allowed_count")
+
+    @_builtins.property
+    @pulumi.getter(name="allowedPercentage")
+    def allowed_percentage(self) -> Optional[_builtins.int]:
+        """
+        The maximum percentage of units allowed to fail (0, 100] within a location
+        without pausing the rollout.
+        """
+        return pulumi.get(self, "allowed_percentage")
 
 
 @pulumi.output_type

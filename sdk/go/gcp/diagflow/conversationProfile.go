@@ -69,6 +69,43 @@ import (
 //	}
 //
 // ```
+// ### Dialogflow Conversation Profile Recognition Result Notification
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			recognitionResultNotificationProfileTopic, err := pubsub.NewTopic(ctx, "recognition_result_notification_profile", &pubsub.TopicArgs{
+//				Name: pulumi.String("recognition-result-notification"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = diagflow.NewConversationProfile(ctx, "recognition_result_notification_profile", &diagflow.ConversationProfileArgs{
+//				DisplayName: pulumi.String("dialogflow-profile"),
+//				Location:    pulumi.String("global"),
+//				NewRecognitionResultNotificationConfig: &diagflow.ConversationProfileNewRecognitionResultNotificationConfigArgs{
+//					Topic:         recognitionResultNotificationProfileTopic.ID(),
+//					MessageFormat: pulumi.String("JSON"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -108,6 +145,9 @@ type ConversationProfile struct {
 	// Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
 	// Structure is documented below.
 	NewMessageEventNotificationConfig ConversationProfileNewMessageEventNotificationConfigPtrOutput `pulumi:"newMessageEventNotificationConfig"`
+	// Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - "participantId" - "participantRole" - "messageId"
+	// Structure is documented below.
+	NewRecognitionResultNotificationConfig ConversationProfileNewRecognitionResultNotificationConfigPtrOutput `pulumi:"newRecognitionResultNotificationConfig"`
 	// Pub/Sub topic on which to publish new agent assistant events.
 	// Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
 	// Structure is documented below.
@@ -187,6 +227,9 @@ type conversationProfileState struct {
 	// Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
 	// Structure is documented below.
 	NewMessageEventNotificationConfig *ConversationProfileNewMessageEventNotificationConfig `pulumi:"newMessageEventNotificationConfig"`
+	// Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - "participantId" - "participantRole" - "messageId"
+	// Structure is documented below.
+	NewRecognitionResultNotificationConfig *ConversationProfileNewRecognitionResultNotificationConfig `pulumi:"newRecognitionResultNotificationConfig"`
 	// Pub/Sub topic on which to publish new agent assistant events.
 	// Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
 	// Structure is documented below.
@@ -231,6 +274,9 @@ type ConversationProfileState struct {
 	// Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
 	// Structure is documented below.
 	NewMessageEventNotificationConfig ConversationProfileNewMessageEventNotificationConfigPtrInput
+	// Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - "participantId" - "participantRole" - "messageId"
+	// Structure is documented below.
+	NewRecognitionResultNotificationConfig ConversationProfileNewRecognitionResultNotificationConfigPtrInput
 	// Pub/Sub topic on which to publish new agent assistant events.
 	// Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
 	// Structure is documented below.
@@ -277,6 +323,9 @@ type conversationProfileArgs struct {
 	// Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
 	// Structure is documented below.
 	NewMessageEventNotificationConfig *ConversationProfileNewMessageEventNotificationConfig `pulumi:"newMessageEventNotificationConfig"`
+	// Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - "participantId" - "participantRole" - "messageId"
+	// Structure is documented below.
+	NewRecognitionResultNotificationConfig *ConversationProfileNewRecognitionResultNotificationConfig `pulumi:"newRecognitionResultNotificationConfig"`
 	// Pub/Sub topic on which to publish new agent assistant events.
 	// Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
 	// Structure is documented below.
@@ -320,6 +369,9 @@ type ConversationProfileArgs struct {
 	// Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
 	// Structure is documented below.
 	NewMessageEventNotificationConfig ConversationProfileNewMessageEventNotificationConfigPtrInput
+	// Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - "participantId" - "participantRole" - "messageId"
+	// Structure is documented below.
+	NewRecognitionResultNotificationConfig ConversationProfileNewRecognitionResultNotificationConfigPtrInput
 	// Pub/Sub topic on which to publish new agent assistant events.
 	// Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
 	// Structure is documented below.
@@ -483,6 +535,14 @@ func (o ConversationProfileOutput) NewMessageEventNotificationConfig() Conversat
 	return o.ApplyT(func(v *ConversationProfile) ConversationProfileNewMessageEventNotificationConfigPtrOutput {
 		return v.NewMessageEventNotificationConfig
 	}).(ConversationProfileNewMessageEventNotificationConfigPtrOutput)
+}
+
+// Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - "participantId" - "participantRole" - "messageId"
+// Structure is documented below.
+func (o ConversationProfileOutput) NewRecognitionResultNotificationConfig() ConversationProfileNewRecognitionResultNotificationConfigPtrOutput {
+	return o.ApplyT(func(v *ConversationProfile) ConversationProfileNewRecognitionResultNotificationConfigPtrOutput {
+		return v.NewRecognitionResultNotificationConfig
+	}).(ConversationProfileNewRecognitionResultNotificationConfigPtrOutput)
 }
 
 // Pub/Sub topic on which to publish new agent assistant events.

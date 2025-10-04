@@ -43,11 +43,17 @@ namespace Pulumi.Gcp.Netapp.Inputs
         [Input("peerClusterName")]
         public Input<string>? PeerClusterName { get; set; }
 
+        [Input("peerIpAddresses")]
+        private InputList<string>? _peerIpAddresses;
+
         /// <summary>
         /// Required. List of node ip addresses to be peered with.
         /// </summary>
-        [Input("peerIpAddresses")]
-        public Input<string>? PeerIpAddresses { get; set; }
+        public InputList<string> PeerIpAddresses
+        {
+            get => _peerIpAddresses ?? (_peerIpAddresses = new InputList<string>());
+            set => _peerIpAddresses = value;
+        }
 
         /// <summary>
         /// Required. Name of the user's local source vserver svm to be peered with the destination vserver svm.

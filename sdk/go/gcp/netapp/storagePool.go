@@ -126,6 +126,8 @@ type StoragePool struct {
 	AvailableThroughputMibps pulumi.Float64Output `pulumi:"availableThroughputMibps"`
 	// Capacity of the storage pool (in GiB).
 	CapacityGib pulumi.StringOutput `pulumi:"capacityGib"`
+	// Total cold tier data rounded down to the nearest GiB used by the storage pool.
+	ColdTierSizeUsedGib pulumi.StringOutput `pulumi:"coldTierSizeUsedGib"`
 	// Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
 	CustomPerformanceEnabled pulumi.BoolPtrOutput `pulumi:"customPerformanceEnabled"`
 	// An optional description of this resource.
@@ -140,6 +142,8 @@ type StoragePool struct {
 	// Total hot tier capacity for the Storage Pool. It is applicable only to Flex service level.
 	// It should be less than the minimum storage pool size and cannot be more than the current storage pool size. It cannot be decreased once set.
 	HotTierSizeGib pulumi.StringPtrOutput `pulumi:"hotTierSizeGib"`
+	// Total hot tier data rounded down to the nearest GiB used by the storage pool.
+	HotTierSizeUsedGib pulumi.StringOutput `pulumi:"hotTierSizeUsedGib"`
 	// Specifies the CMEK policy to be used for volume encryption. Format: `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}`.
 	// The policy needs to be in the same location as the storage pool.
 	KmsConfig pulumi.StringPtrOutput `pulumi:"kmsConfig"`
@@ -244,6 +248,8 @@ type storagePoolState struct {
 	AvailableThroughputMibps *float64 `pulumi:"availableThroughputMibps"`
 	// Capacity of the storage pool (in GiB).
 	CapacityGib *string `pulumi:"capacityGib"`
+	// Total cold tier data rounded down to the nearest GiB used by the storage pool.
+	ColdTierSizeUsedGib *string `pulumi:"coldTierSizeUsedGib"`
 	// Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
 	CustomPerformanceEnabled *bool `pulumi:"customPerformanceEnabled"`
 	// An optional description of this resource.
@@ -258,6 +264,8 @@ type storagePoolState struct {
 	// Total hot tier capacity for the Storage Pool. It is applicable only to Flex service level.
 	// It should be less than the minimum storage pool size and cannot be more than the current storage pool size. It cannot be decreased once set.
 	HotTierSizeGib *string `pulumi:"hotTierSizeGib"`
+	// Total hot tier data rounded down to the nearest GiB used by the storage pool.
+	HotTierSizeUsedGib *string `pulumi:"hotTierSizeUsedGib"`
 	// Specifies the CMEK policy to be used for volume encryption. Format: `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}`.
 	// The policy needs to be in the same location as the storage pool.
 	KmsConfig *string `pulumi:"kmsConfig"`
@@ -316,6 +324,8 @@ type StoragePoolState struct {
 	AvailableThroughputMibps pulumi.Float64PtrInput
 	// Capacity of the storage pool (in GiB).
 	CapacityGib pulumi.StringPtrInput
+	// Total cold tier data rounded down to the nearest GiB used by the storage pool.
+	ColdTierSizeUsedGib pulumi.StringPtrInput
 	// Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
 	CustomPerformanceEnabled pulumi.BoolPtrInput
 	// An optional description of this resource.
@@ -330,6 +340,8 @@ type StoragePoolState struct {
 	// Total hot tier capacity for the Storage Pool. It is applicable only to Flex service level.
 	// It should be less than the minimum storage pool size and cannot be more than the current storage pool size. It cannot be decreased once set.
 	HotTierSizeGib pulumi.StringPtrInput
+	// Total hot tier data rounded down to the nearest GiB used by the storage pool.
+	HotTierSizeUsedGib pulumi.StringPtrInput
 	// Specifies the CMEK policy to be used for volume encryption. Format: `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}`.
 	// The policy needs to be in the same location as the storage pool.
 	KmsConfig pulumi.StringPtrInput
@@ -609,6 +621,11 @@ func (o StoragePoolOutput) CapacityGib() pulumi.StringOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.CapacityGib }).(pulumi.StringOutput)
 }
 
+// Total cold tier data rounded down to the nearest GiB used by the storage pool.
+func (o StoragePoolOutput) ColdTierSizeUsedGib() pulumi.StringOutput {
+	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.ColdTierSizeUsedGib }).(pulumi.StringOutput)
+}
+
 // Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
 func (o StoragePoolOutput) CustomPerformanceEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.BoolPtrOutput { return v.CustomPerformanceEnabled }).(pulumi.BoolPtrOutput)
@@ -639,6 +656,11 @@ func (o StoragePoolOutput) EncryptionType() pulumi.StringOutput {
 // It should be less than the minimum storage pool size and cannot be more than the current storage pool size. It cannot be decreased once set.
 func (o StoragePoolOutput) HotTierSizeGib() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.StringPtrOutput { return v.HotTierSizeGib }).(pulumi.StringPtrOutput)
+}
+
+// Total hot tier data rounded down to the nearest GiB used by the storage pool.
+func (o StoragePoolOutput) HotTierSizeUsedGib() pulumi.StringOutput {
+	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.HotTierSizeUsedGib }).(pulumi.StringOutput)
 }
 
 // Specifies the CMEK policy to be used for volume encryption. Format: `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}`.

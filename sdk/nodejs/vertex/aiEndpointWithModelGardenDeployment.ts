@@ -191,6 +191,61 @@ import * as utilities from "../utilities";
  *     dependsOn: [deploy_qwen3_06b],
  * });
  * ```
+ * ### Vertex Ai Deploy Psc Endpoint
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const deploy = new gcp.vertex.AiEndpointWithModelGardenDeployment("deploy", {
+ *     publisherModelName: "publishers/google/models/paligemma@paligemma-224-float32",
+ *     location: "us-central1",
+ *     modelConfig: {
+ *         acceptEula: true,
+ *     },
+ *     endpointConfig: {
+ *         privateServiceConnectConfig: {
+ *             enablePrivateServiceConnect: true,
+ *             projectAllowlists: ["my-project-id"],
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Vertex Ai Deploy Psc Endpoint Automated
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const network = new gcp.compute.Network("network", {
+ *     name: "network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const project = gcp.organizations.getProject({});
+ * const deploy = new gcp.vertex.AiEndpointWithModelGardenDeployment("deploy", {
+ *     publisherModelName: "publishers/google/models/paligemma@paligemma-224-float32",
+ *     location: "us-central1",
+ *     modelConfig: {
+ *         acceptEula: true,
+ *     },
+ *     endpointConfig: {
+ *         privateServiceConnectConfig: {
+ *             enablePrivateServiceConnect: true,
+ *             projectAllowlists: [project.then(project => project.id)],
+ *             pscAutomationConfigs: {
+ *                 projectId: project.then(project => project.id),
+ *                 network: network.id,
+ *             },
+ *         },
+ *     },
+ * });
+ * const subnetwork = new gcp.compute.Subnetwork("subnetwork", {
+ *     name: "subnetwork",
+ *     ipCidrRange: "192.168.0.0/24",
+ *     region: "us-central1",
+ *     network: network.id,
+ * });
+ * ```
  *
  * ## Import
  *

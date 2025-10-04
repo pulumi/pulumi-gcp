@@ -27,7 +27,7 @@ class GetSubscriptionResult:
     """
     A collection of values returned by getSubscription.
     """
-    def __init__(__self__, ack_deadline_seconds=None, bigquery_configs=None, cloud_storage_configs=None, dead_letter_policies=None, effective_labels=None, enable_exactly_once_delivery=None, enable_message_ordering=None, expiration_policies=None, filter=None, id=None, labels=None, message_retention_duration=None, message_transforms=None, name=None, project=None, pulumi_labels=None, push_configs=None, retain_acked_messages=None, retry_policies=None, topic=None):
+    def __init__(__self__, ack_deadline_seconds=None, bigquery_configs=None, cloud_storage_configs=None, dead_letter_policies=None, effective_labels=None, enable_exactly_once_delivery=None, enable_message_ordering=None, expiration_policies=None, filter=None, id=None, labels=None, message_retention_duration=None, message_transforms=None, name=None, project=None, pulumi_labels=None, push_configs=None, retain_acked_messages=None, retry_policies=None, tags=None, topic=None):
         if ack_deadline_seconds and not isinstance(ack_deadline_seconds, int):
             raise TypeError("Expected argument 'ack_deadline_seconds' to be a int")
         pulumi.set(__self__, "ack_deadline_seconds", ack_deadline_seconds)
@@ -85,6 +85,9 @@ class GetSubscriptionResult:
         if retry_policies and not isinstance(retry_policies, list):
             raise TypeError("Expected argument 'retry_policies' to be a list")
         pulumi.set(__self__, "retry_policies", retry_policies)
+        if tags and not isinstance(tags, dict):
+            raise TypeError("Expected argument 'tags' to be a dict")
+        pulumi.set(__self__, "tags", tags)
         if topic and not isinstance(topic, str):
             raise TypeError("Expected argument 'topic' to be a str")
         pulumi.set(__self__, "topic", topic)
@@ -189,6 +192,11 @@ class GetSubscriptionResult:
 
     @_builtins.property
     @pulumi.getter
+    def tags(self) -> Mapping[str, _builtins.str]:
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter
     def topic(self) -> _builtins.str:
         return pulumi.get(self, "topic")
 
@@ -218,6 +226,7 @@ class AwaitableGetSubscriptionResult(GetSubscriptionResult):
             push_configs=self.push_configs,
             retain_acked_messages=self.retain_acked_messages,
             retry_policies=self.retry_policies,
+            tags=self.tags,
             topic=self.topic)
 
 
@@ -271,6 +280,7 @@ def get_subscription(name: Optional[_builtins.str] = None,
         push_configs=pulumi.get(__ret__, 'push_configs'),
         retain_acked_messages=pulumi.get(__ret__, 'retain_acked_messages'),
         retry_policies=pulumi.get(__ret__, 'retry_policies'),
+        tags=pulumi.get(__ret__, 'tags'),
         topic=pulumi.get(__ret__, 'topic'))
 def get_subscription_output(name: Optional[pulumi.Input[_builtins.str]] = None,
                             project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
@@ -321,4 +331,5 @@ def get_subscription_output(name: Optional[pulumi.Input[_builtins.str]] = None,
         push_configs=pulumi.get(__response__, 'push_configs'),
         retain_acked_messages=pulumi.get(__response__, 'retain_acked_messages'),
         retry_policies=pulumi.get(__response__, 'retry_policies'),
+        tags=pulumi.get(__response__, 'tags'),
         topic=pulumi.get(__response__, 'topic')))

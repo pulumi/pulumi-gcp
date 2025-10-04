@@ -18,7 +18,7 @@ public final class PreventionDiscoveryConfigTargetCloudSqlTargetFilterArgs exten
     public static final PreventionDiscoveryConfigTargetCloudSqlTargetFilterArgs Empty = new PreventionDiscoveryConfigTargetCloudSqlTargetFilterArgs();
 
     /**
-     * A specific set of buckets for this filter to apply to.
+     * A collection of resources for this filter to apply to.
      * Structure is documented below.
      * 
      */
@@ -26,7 +26,7 @@ public final class PreventionDiscoveryConfigTargetCloudSqlTargetFilterArgs exten
     private @Nullable Output<PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionArgs> collection;
 
     /**
-     * @return A specific set of buckets for this filter to apply to.
+     * @return A collection of resources for this filter to apply to.
      * Structure is documented below.
      * 
      */
@@ -93,7 +93,7 @@ public final class PreventionDiscoveryConfigTargetCloudSqlTargetFilterArgs exten
         }
 
         /**
-         * @param collection A specific set of buckets for this filter to apply to.
+         * @param collection A collection of resources for this filter to apply to.
          * Structure is documented below.
          * 
          * @return builder
@@ -105,7 +105,7 @@ public final class PreventionDiscoveryConfigTargetCloudSqlTargetFilterArgs exten
         }
 
         /**
-         * @param collection A specific set of buckets for this filter to apply to.
+         * @param collection A collection of resources for this filter to apply to.
          * Structure is documented below.
          * 
          * @return builder

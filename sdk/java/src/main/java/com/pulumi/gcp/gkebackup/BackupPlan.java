@@ -244,6 +244,74 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Gkebackup Backupplan Nslabels
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.container.Cluster;
+ * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
+ * import com.pulumi.gcp.gkebackup.BackupPlan;
+ * import com.pulumi.gcp.gkebackup.BackupPlanArgs;
+ * import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigArgs;
+ * import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigSelectedNamespaceLabelsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var primary = new Cluster("primary", ClusterArgs.builder()
+ *             .name("nslabels-cluster")
+ *             .location("us-central1")
+ *             .initialNodeCount(1)
+ *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
+ *                 .workloadPool("my-project-name.svc.id.goog")
+ *                 .build())
+ *             .addonsConfig(ClusterAddonsConfigArgs.builder()
+ *                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
+ *                     .enabled(true)
+ *                     .build())
+ *                 .build())
+ *             .deletionProtection(true)
+ *             .network("default")
+ *             .subnetwork("default")
+ *             .build());
+ * 
+ *         var nslabels = new BackupPlan("nslabels", BackupPlanArgs.builder()
+ *             .name("nslabels-plan")
+ *             .cluster(primary.id())
+ *             .location("us-central1")
+ *             .backupConfig(BackupPlanBackupConfigArgs.builder()
+ *                 .includeVolumeData(true)
+ *                 .includeSecrets(true)
+ *                 .selectedNamespaceLabels(BackupPlanBackupConfigSelectedNamespaceLabelsArgs.builder()
+ *                     .resourceLabels(BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArgs.builder()
+ *                         .key("key1")
+ *                         .value("value1")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Gkebackup Backupplan Full
  * 
  * <pre>

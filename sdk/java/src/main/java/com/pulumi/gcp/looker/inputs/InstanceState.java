@@ -184,6 +184,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Gemini enablement for Looker (Google Cloud Core).
+     * 
+     */
+    @Import(name="geminiEnabled")
+    private @Nullable Output<Boolean> geminiEnabled;
+
+    /**
+     * @return Gemini enablement for Looker (Google Cloud Core).
+     * 
+     */
+    public Optional<Output<Boolean>> geminiEnabled() {
+        return Optional.ofNullable(this.geminiEnabled);
+    }
+
+    /**
      * Private Ingress IP (IPv4).
      * 
      */
@@ -508,6 +523,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.egressPublicIp = $.egressPublicIp;
         this.encryptionConfig = $.encryptionConfig;
         this.fipsEnabled = $.fipsEnabled;
+        this.geminiEnabled = $.geminiEnabled;
         this.ingressPrivateIp = $.ingressPrivateIp;
         this.ingressPublicIp = $.ingressPublicIp;
         this.lookerUri = $.lookerUri;
@@ -756,6 +772,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder fipsEnabled(Boolean fipsEnabled) {
             return fipsEnabled(Output.of(fipsEnabled));
+        }
+
+        /**
+         * @param geminiEnabled Gemini enablement for Looker (Google Cloud Core).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder geminiEnabled(@Nullable Output<Boolean> geminiEnabled) {
+            $.geminiEnabled = geminiEnabled;
+            return this;
+        }
+
+        /**
+         * @param geminiEnabled Gemini enablement for Looker (Google Cloud Core).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder geminiEnabled(Boolean geminiEnabled) {
+            return geminiEnabled(Output.of(geminiEnabled));
         }
 
         /**

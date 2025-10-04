@@ -275,6 +275,93 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
+    /// ### Vertex Ai Deploy Psc Endpoint
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var deploy = new Gcp.Vertex.AiEndpointWithModelGardenDeployment("deploy", new()
+    ///     {
+    ///         PublisherModelName = "publishers/google/models/paligemma@paligemma-224-float32",
+    ///         Location = "us-central1",
+    ///         ModelConfig = new Gcp.Vertex.Inputs.AiEndpointWithModelGardenDeploymentModelConfigArgs
+    ///         {
+    ///             AcceptEula = true,
+    ///         },
+    ///         EndpointConfig = new Gcp.Vertex.Inputs.AiEndpointWithModelGardenDeploymentEndpointConfigArgs
+    ///         {
+    ///             PrivateServiceConnectConfig = new Gcp.Vertex.Inputs.AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs
+    ///             {
+    ///                 EnablePrivateServiceConnect = true,
+    ///                 ProjectAllowlists = new[]
+    ///                 {
+    ///                     "my-project-id",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Vertex Ai Deploy Psc Endpoint Automated
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var network = new Gcp.Compute.Network("network", new()
+    ///     {
+    ///         Name = "network",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var deploy = new Gcp.Vertex.AiEndpointWithModelGardenDeployment("deploy", new()
+    ///     {
+    ///         PublisherModelName = "publishers/google/models/paligemma@paligemma-224-float32",
+    ///         Location = "us-central1",
+    ///         ModelConfig = new Gcp.Vertex.Inputs.AiEndpointWithModelGardenDeploymentModelConfigArgs
+    ///         {
+    ///             AcceptEula = true,
+    ///         },
+    ///         EndpointConfig = new Gcp.Vertex.Inputs.AiEndpointWithModelGardenDeploymentEndpointConfigArgs
+    ///         {
+    ///             PrivateServiceConnectConfig = new Gcp.Vertex.Inputs.AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs
+    ///             {
+    ///                 EnablePrivateServiceConnect = true,
+    ///                 ProjectAllowlists = new[]
+    ///                 {
+    ///                     project.Apply(getProjectResult =&gt; getProjectResult.Id),
+    ///                 },
+    ///                 PscAutomationConfigs = new Gcp.Vertex.Inputs.AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsArgs
+    ///                 {
+    ///                     ProjectId = project.Apply(getProjectResult =&gt; getProjectResult.Id),
+    ///                     Network = network.Id,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var subnetwork = new Gcp.Compute.Subnetwork("subnetwork", new()
+    ///     {
+    ///         Name = "subnetwork",
+    ///         IpCidrRange = "192.168.0.0/24",
+    ///         Region = "us-central1",
+    ///         Network = network.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

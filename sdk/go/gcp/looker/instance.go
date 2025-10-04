@@ -74,6 +74,7 @@ import (
 //				PlatformEdition: pulumi.String("LOOKER_CORE_STANDARD_ANNUAL"),
 //				Region:          pulumi.String("us-central1"),
 //				PublicIpEnabled: pulumi.Bool(true),
+//				GeminiEnabled:   pulumi.Bool(true),
 //				AdminSettings: &looker.InstanceAdminSettingsArgs{
 //					AllowedEmailDomains: pulumi.StringArray{
 //						pulumi.String("google.com"),
@@ -204,6 +205,7 @@ import (
 //				Region:           pulumi.String("us-central1"),
 //				PrivateIpEnabled: pulumi.Bool(true),
 //				PublicIpEnabled:  pulumi.Bool(false),
+//				GeminiEnabled:    pulumi.Bool(true),
 //				ReservedRange:    lookerRange.Name,
 //				ConsumerNetwork:  lookerNetwork.ID(),
 //				AdminSettings: &looker.InstanceAdminSettingsArgs{
@@ -436,6 +438,8 @@ type Instance struct {
 	EncryptionConfig InstanceEncryptionConfigOutput `pulumi:"encryptionConfig"`
 	// FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
 	FipsEnabled pulumi.BoolPtrOutput `pulumi:"fipsEnabled"`
+	// Gemini enablement for Looker (Google Cloud Core).
+	GeminiEnabled pulumi.BoolPtrOutput `pulumi:"geminiEnabled"`
 	// Private Ingress IP (IPv4).
 	IngressPrivateIp pulumi.StringOutput `pulumi:"ingressPrivateIp"`
 	// Public Ingress IP (IPv4).
@@ -564,6 +568,8 @@ type instanceState struct {
 	EncryptionConfig *InstanceEncryptionConfig `pulumi:"encryptionConfig"`
 	// FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
 	FipsEnabled *bool `pulumi:"fipsEnabled"`
+	// Gemini enablement for Looker (Google Cloud Core).
+	GeminiEnabled *bool `pulumi:"geminiEnabled"`
 	// Private Ingress IP (IPv4).
 	IngressPrivateIp *string `pulumi:"ingressPrivateIp"`
 	// Public Ingress IP (IPv4).
@@ -660,6 +666,8 @@ type InstanceState struct {
 	EncryptionConfig InstanceEncryptionConfigPtrInput
 	// FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
 	FipsEnabled pulumi.BoolPtrInput
+	// Gemini enablement for Looker (Google Cloud Core).
+	GeminiEnabled pulumi.BoolPtrInput
 	// Private Ingress IP (IPv4).
 	IngressPrivateIp pulumi.StringPtrInput
 	// Public Ingress IP (IPv4).
@@ -755,6 +763,8 @@ type instanceArgs struct {
 	EncryptionConfig *InstanceEncryptionConfig `pulumi:"encryptionConfig"`
 	// FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
 	FipsEnabled *bool `pulumi:"fipsEnabled"`
+	// Gemini enablement for Looker (Google Cloud Core).
+	GeminiEnabled *bool `pulumi:"geminiEnabled"`
 	// Maintenance window for an instance.
 	// Maintenance of your instance takes place once a month, and will require
 	// your instance to be restarted during updates, which will temporarily
@@ -836,6 +846,8 @@ type InstanceArgs struct {
 	EncryptionConfig InstanceEncryptionConfigPtrInput
 	// FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
 	FipsEnabled pulumi.BoolPtrInput
+	// Gemini enablement for Looker (Google Cloud Core).
+	GeminiEnabled pulumi.BoolPtrInput
 	// Maintenance window for an instance.
 	// Maintenance of your instance takes place once a month, and will require
 	// your instance to be restarted during updates, which will temporarily
@@ -1032,6 +1044,11 @@ func (o InstanceOutput) EncryptionConfig() InstanceEncryptionConfigOutput {
 // FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
 func (o InstanceOutput) FipsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.FipsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Gemini enablement for Looker (Google Cloud Core).
+func (o InstanceOutput) GeminiEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.GeminiEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Private Ingress IP (IPv4).

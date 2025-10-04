@@ -138,6 +138,8 @@ type InsightsReportConfig struct {
 	CsvOptions InsightsReportConfigCsvOptionsPtrOutput `pulumi:"csvOptions"`
 	// The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// If set, all the inventory report details associated with this report configuration are deleted.
+	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
 	// Options for configuring how inventory reports are generated.
 	// Structure is documented below.
 	FrequencyOptions InsightsReportConfigFrequencyOptionsPtrOutput `pulumi:"frequencyOptions"`
@@ -194,6 +196,8 @@ type insightsReportConfigState struct {
 	CsvOptions *InsightsReportConfigCsvOptions `pulumi:"csvOptions"`
 	// The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
 	DisplayName *string `pulumi:"displayName"`
+	// If set, all the inventory report details associated with this report configuration are deleted.
+	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// Options for configuring how inventory reports are generated.
 	// Structure is documented below.
 	FrequencyOptions *InsightsReportConfigFrequencyOptions `pulumi:"frequencyOptions"`
@@ -218,6 +222,8 @@ type InsightsReportConfigState struct {
 	CsvOptions InsightsReportConfigCsvOptionsPtrInput
 	// The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
 	DisplayName pulumi.StringPtrInput
+	// If set, all the inventory report details associated with this report configuration are deleted.
+	ForceDestroy pulumi.BoolPtrInput
 	// Options for configuring how inventory reports are generated.
 	// Structure is documented below.
 	FrequencyOptions InsightsReportConfigFrequencyOptionsPtrInput
@@ -246,6 +252,8 @@ type insightsReportConfigArgs struct {
 	CsvOptions *InsightsReportConfigCsvOptions `pulumi:"csvOptions"`
 	// The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
 	DisplayName *string `pulumi:"displayName"`
+	// If set, all the inventory report details associated with this report configuration are deleted.
+	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// Options for configuring how inventory reports are generated.
 	// Structure is documented below.
 	FrequencyOptions *InsightsReportConfigFrequencyOptions `pulumi:"frequencyOptions"`
@@ -269,6 +277,8 @@ type InsightsReportConfigArgs struct {
 	CsvOptions InsightsReportConfigCsvOptionsPtrInput
 	// The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
 	DisplayName pulumi.StringPtrInput
+	// If set, all the inventory report details associated with this report configuration are deleted.
+	ForceDestroy pulumi.BoolPtrInput
 	// Options for configuring how inventory reports are generated.
 	// Structure is documented below.
 	FrequencyOptions InsightsReportConfigFrequencyOptionsPtrInput
@@ -381,6 +391,11 @@ func (o InsightsReportConfigOutput) CsvOptions() InsightsReportConfigCsvOptionsP
 // The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
 func (o InsightsReportConfigOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InsightsReportConfig) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// If set, all the inventory report details associated with this report configuration are deleted.
+func (o InsightsReportConfigOutput) ForceDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InsightsReportConfig) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
 }
 
 // Options for configuring how inventory reports are generated.

@@ -385,6 +385,64 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Cloudrunv2 Worker Pool Startup Liveness Probe
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const customTest = new gcp.compute.Network("custom_test", {
+ *     name: "wp-net",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const customTestSubnetwork = new gcp.compute.Subnetwork("custom_test", {
+ *     name: "wp-subnet",
+ *     ipCidrRange: "10.2.0.0/28",
+ *     region: "us-central1",
+ *     network: customTest.id,
+ * });
+ * const _default = new gcp.cloudrunv2.WorkerPool("default", {
+ *     name: "cloudrun-worker-pool",
+ *     location: "us-central1",
+ *     launchStage: "BETA",
+ *     deletionProtection: false,
+ *     template: {
+ *         annotations: {},
+ *         labels: {},
+ *         containers: [{
+ *             image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *             commands: [],
+ *             args: [],
+ *             startupProbe: {
+ *                 initialDelaySeconds: 0,
+ *                 timeoutSeconds: 1,
+ *                 periodSeconds: 3,
+ *                 failureThreshold: 3,
+ *                 tcpSocket: {
+ *                     port: 8080,
+ *                 },
+ *             },
+ *             livenessProbe: {
+ *                 initialDelaySeconds: 0,
+ *                 timeoutSeconds: 1,
+ *                 periodSeconds: 10,
+ *                 failureThreshold: 3,
+ *                 httpGet: {
+ *                     path: "/",
+ *                     port: 8080,
+ *                 },
+ *             },
+ *         }],
+ *         vpcAccess: {
+ *             networkInterfaces: [{
+ *                 network: customTest.id,
+ *                 subnetwork: customTestSubnetwork.id,
+ *                 tags: [],
+ *             }],
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

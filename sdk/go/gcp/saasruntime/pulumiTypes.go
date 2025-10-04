@@ -695,6 +695,170 @@ func (o ReleaseReleaseRequirementsPtrOutput) UpgradeableFromReleases() pulumi.St
 	}).(pulumi.StringArrayOutput)
 }
 
+type RolloutKindErrorBudget struct {
+	// The maximum number of failed units allowed in a location without pausing
+	// the rollout.
+	AllowedCount *int `pulumi:"allowedCount"`
+	// The maximum percentage of units allowed to fail (0, 100] within a location
+	// without pausing the rollout.
+	AllowedPercentage *int `pulumi:"allowedPercentage"`
+}
+
+// RolloutKindErrorBudgetInput is an input type that accepts RolloutKindErrorBudgetArgs and RolloutKindErrorBudgetOutput values.
+// You can construct a concrete instance of `RolloutKindErrorBudgetInput` via:
+//
+//	RolloutKindErrorBudgetArgs{...}
+type RolloutKindErrorBudgetInput interface {
+	pulumi.Input
+
+	ToRolloutKindErrorBudgetOutput() RolloutKindErrorBudgetOutput
+	ToRolloutKindErrorBudgetOutputWithContext(context.Context) RolloutKindErrorBudgetOutput
+}
+
+type RolloutKindErrorBudgetArgs struct {
+	// The maximum number of failed units allowed in a location without pausing
+	// the rollout.
+	AllowedCount pulumi.IntPtrInput `pulumi:"allowedCount"`
+	// The maximum percentage of units allowed to fail (0, 100] within a location
+	// without pausing the rollout.
+	AllowedPercentage pulumi.IntPtrInput `pulumi:"allowedPercentage"`
+}
+
+func (RolloutKindErrorBudgetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutKindErrorBudget)(nil)).Elem()
+}
+
+func (i RolloutKindErrorBudgetArgs) ToRolloutKindErrorBudgetOutput() RolloutKindErrorBudgetOutput {
+	return i.ToRolloutKindErrorBudgetOutputWithContext(context.Background())
+}
+
+func (i RolloutKindErrorBudgetArgs) ToRolloutKindErrorBudgetOutputWithContext(ctx context.Context) RolloutKindErrorBudgetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutKindErrorBudgetOutput)
+}
+
+func (i RolloutKindErrorBudgetArgs) ToRolloutKindErrorBudgetPtrOutput() RolloutKindErrorBudgetPtrOutput {
+	return i.ToRolloutKindErrorBudgetPtrOutputWithContext(context.Background())
+}
+
+func (i RolloutKindErrorBudgetArgs) ToRolloutKindErrorBudgetPtrOutputWithContext(ctx context.Context) RolloutKindErrorBudgetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutKindErrorBudgetOutput).ToRolloutKindErrorBudgetPtrOutputWithContext(ctx)
+}
+
+// RolloutKindErrorBudgetPtrInput is an input type that accepts RolloutKindErrorBudgetArgs, RolloutKindErrorBudgetPtr and RolloutKindErrorBudgetPtrOutput values.
+// You can construct a concrete instance of `RolloutKindErrorBudgetPtrInput` via:
+//
+//	        RolloutKindErrorBudgetArgs{...}
+//
+//	or:
+//
+//	        nil
+type RolloutKindErrorBudgetPtrInput interface {
+	pulumi.Input
+
+	ToRolloutKindErrorBudgetPtrOutput() RolloutKindErrorBudgetPtrOutput
+	ToRolloutKindErrorBudgetPtrOutputWithContext(context.Context) RolloutKindErrorBudgetPtrOutput
+}
+
+type rolloutKindErrorBudgetPtrType RolloutKindErrorBudgetArgs
+
+func RolloutKindErrorBudgetPtr(v *RolloutKindErrorBudgetArgs) RolloutKindErrorBudgetPtrInput {
+	return (*rolloutKindErrorBudgetPtrType)(v)
+}
+
+func (*rolloutKindErrorBudgetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutKindErrorBudget)(nil)).Elem()
+}
+
+func (i *rolloutKindErrorBudgetPtrType) ToRolloutKindErrorBudgetPtrOutput() RolloutKindErrorBudgetPtrOutput {
+	return i.ToRolloutKindErrorBudgetPtrOutputWithContext(context.Background())
+}
+
+func (i *rolloutKindErrorBudgetPtrType) ToRolloutKindErrorBudgetPtrOutputWithContext(ctx context.Context) RolloutKindErrorBudgetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutKindErrorBudgetPtrOutput)
+}
+
+type RolloutKindErrorBudgetOutput struct{ *pulumi.OutputState }
+
+func (RolloutKindErrorBudgetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutKindErrorBudget)(nil)).Elem()
+}
+
+func (o RolloutKindErrorBudgetOutput) ToRolloutKindErrorBudgetOutput() RolloutKindErrorBudgetOutput {
+	return o
+}
+
+func (o RolloutKindErrorBudgetOutput) ToRolloutKindErrorBudgetOutputWithContext(ctx context.Context) RolloutKindErrorBudgetOutput {
+	return o
+}
+
+func (o RolloutKindErrorBudgetOutput) ToRolloutKindErrorBudgetPtrOutput() RolloutKindErrorBudgetPtrOutput {
+	return o.ToRolloutKindErrorBudgetPtrOutputWithContext(context.Background())
+}
+
+func (o RolloutKindErrorBudgetOutput) ToRolloutKindErrorBudgetPtrOutputWithContext(ctx context.Context) RolloutKindErrorBudgetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RolloutKindErrorBudget) *RolloutKindErrorBudget {
+		return &v
+	}).(RolloutKindErrorBudgetPtrOutput)
+}
+
+// The maximum number of failed units allowed in a location without pausing
+// the rollout.
+func (o RolloutKindErrorBudgetOutput) AllowedCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RolloutKindErrorBudget) *int { return v.AllowedCount }).(pulumi.IntPtrOutput)
+}
+
+// The maximum percentage of units allowed to fail (0, 100] within a location
+// without pausing the rollout.
+func (o RolloutKindErrorBudgetOutput) AllowedPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RolloutKindErrorBudget) *int { return v.AllowedPercentage }).(pulumi.IntPtrOutput)
+}
+
+type RolloutKindErrorBudgetPtrOutput struct{ *pulumi.OutputState }
+
+func (RolloutKindErrorBudgetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutKindErrorBudget)(nil)).Elem()
+}
+
+func (o RolloutKindErrorBudgetPtrOutput) ToRolloutKindErrorBudgetPtrOutput() RolloutKindErrorBudgetPtrOutput {
+	return o
+}
+
+func (o RolloutKindErrorBudgetPtrOutput) ToRolloutKindErrorBudgetPtrOutputWithContext(ctx context.Context) RolloutKindErrorBudgetPtrOutput {
+	return o
+}
+
+func (o RolloutKindErrorBudgetPtrOutput) Elem() RolloutKindErrorBudgetOutput {
+	return o.ApplyT(func(v *RolloutKindErrorBudget) RolloutKindErrorBudget {
+		if v != nil {
+			return *v
+		}
+		var ret RolloutKindErrorBudget
+		return ret
+	}).(RolloutKindErrorBudgetOutput)
+}
+
+// The maximum number of failed units allowed in a location without pausing
+// the rollout.
+func (o RolloutKindErrorBudgetPtrOutput) AllowedCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RolloutKindErrorBudget) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum percentage of units allowed to fail (0, 100] within a location
+// without pausing the rollout.
+func (o RolloutKindErrorBudgetPtrOutput) AllowedPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RolloutKindErrorBudget) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedPercentage
+	}).(pulumi.IntPtrOutput)
+}
+
 type SaaSLocation struct {
 	// Name of location.
 	Name *string `pulumi:"name"`
@@ -1813,6 +1977,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseOutputVariableArrayInput)(nil)).Elem(), ReleaseOutputVariableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseReleaseRequirementsInput)(nil)).Elem(), ReleaseReleaseRequirementsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseReleaseRequirementsPtrInput)(nil)).Elem(), ReleaseReleaseRequirementsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutKindErrorBudgetInput)(nil)).Elem(), RolloutKindErrorBudgetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutKindErrorBudgetPtrInput)(nil)).Elem(), RolloutKindErrorBudgetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SaaSLocationInput)(nil)).Elem(), SaaSLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SaaSLocationArrayInput)(nil)).Elem(), SaaSLocationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UnitKindDependencyInput)(nil)).Elem(), UnitKindDependencyArgs{})
@@ -1839,6 +2005,8 @@ func init() {
 	pulumi.RegisterOutputType(ReleaseOutputVariableArrayOutput{})
 	pulumi.RegisterOutputType(ReleaseReleaseRequirementsOutput{})
 	pulumi.RegisterOutputType(ReleaseReleaseRequirementsPtrOutput{})
+	pulumi.RegisterOutputType(RolloutKindErrorBudgetOutput{})
+	pulumi.RegisterOutputType(RolloutKindErrorBudgetPtrOutput{})
 	pulumi.RegisterOutputType(SaaSLocationOutput{})
 	pulumi.RegisterOutputType(SaaSLocationArrayOutput{})
 	pulumi.RegisterOutputType(UnitKindDependencyOutput{})

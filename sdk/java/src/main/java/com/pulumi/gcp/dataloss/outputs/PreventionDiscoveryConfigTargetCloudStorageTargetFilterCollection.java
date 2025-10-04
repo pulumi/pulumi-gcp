@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollection {
     /**
-     * @return A collection of regular expressions to match a file store against.
+     * @return A collection of regular expressions to match a resource against.
      * Structure is documented below.
      * 
      */
@@ -20,7 +20,7 @@ public final class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollec
 
     private PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollection() {}
     /**
-     * @return A collection of regular expressions to match a file store against.
+     * @return A collection of regular expressions to match a resource against.
      * Structure is documented below.
      * 
      */

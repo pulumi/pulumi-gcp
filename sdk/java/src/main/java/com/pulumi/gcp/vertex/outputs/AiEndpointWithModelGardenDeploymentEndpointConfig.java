@@ -4,6 +4,7 @@
 package com.pulumi.gcp.vertex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.vertex.outputs.AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -28,6 +29,12 @@ public final class AiEndpointWithModelGardenDeploymentEndpointConfig {
      * 
      */
     private @Nullable String endpointDisplayName;
+    /**
+     * @return The configuration for Private Service Connect (PSC).
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig privateServiceConnectConfig;
 
     private AiEndpointWithModelGardenDeploymentEndpointConfig() {}
     /**
@@ -50,6 +57,14 @@ public final class AiEndpointWithModelGardenDeploymentEndpointConfig {
     public Optional<String> endpointDisplayName() {
         return Optional.ofNullable(this.endpointDisplayName);
     }
+    /**
+     * @return The configuration for Private Service Connect (PSC).
+     * Structure is documented below.
+     * 
+     */
+    public Optional<AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig> privateServiceConnectConfig() {
+        return Optional.ofNullable(this.privateServiceConnectConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -62,11 +77,13 @@ public final class AiEndpointWithModelGardenDeploymentEndpointConfig {
     public static final class Builder {
         private @Nullable Boolean dedicatedEndpointEnabled;
         private @Nullable String endpointDisplayName;
+        private @Nullable AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig privateServiceConnectConfig;
         public Builder() {}
         public Builder(AiEndpointWithModelGardenDeploymentEndpointConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dedicatedEndpointEnabled = defaults.dedicatedEndpointEnabled;
     	      this.endpointDisplayName = defaults.endpointDisplayName;
+    	      this.privateServiceConnectConfig = defaults.privateServiceConnectConfig;
         }
 
         @CustomType.Setter
@@ -81,10 +98,17 @@ public final class AiEndpointWithModelGardenDeploymentEndpointConfig {
             this.endpointDisplayName = endpointDisplayName;
             return this;
         }
+        @CustomType.Setter
+        public Builder privateServiceConnectConfig(@Nullable AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig privateServiceConnectConfig) {
+
+            this.privateServiceConnectConfig = privateServiceConnectConfig;
+            return this;
+        }
         public AiEndpointWithModelGardenDeploymentEndpointConfig build() {
             final var _resultValue = new AiEndpointWithModelGardenDeploymentEndpointConfig();
             _resultValue.dedicatedEndpointEnabled = dedicatedEndpointEnabled;
             _resultValue.endpointDisplayName = endpointDisplayName;
+            _resultValue.privateServiceConnectConfig = privateServiceConnectConfig;
             return _resultValue;
         }
     }

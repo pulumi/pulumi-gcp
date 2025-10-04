@@ -989,18 +989,32 @@ class Bucket(pulumi.CustomResource):
                 "main_page_suffix": "index.html",
                 "not_found_page": "404.html",
             },
-            cors=[{
-                "origins": ["http://image-store.com"],
-                "methods": [
-                    "GET",
-                    "HEAD",
-                    "PUT",
-                    "POST",
-                    "DELETE",
-                ],
-                "response_headers": ["*"],
-                "max_age_seconds": 3600,
-            }])
+            cors=[
+                {
+                    "origins": ["http://image-store.com"],
+                    "methods": [
+                        "GET",
+                        "HEAD",
+                        "PUT",
+                        "POST",
+                        "DELETE",
+                    ],
+                    "response_headers": ["*"],
+                    "max_age_seconds": 3600,
+                },
+                {
+                    "origins": ["http://image-store.com"],
+                    "methods": [
+                        "GET",
+                        "HEAD",
+                        "PUT",
+                        "POST",
+                        "DELETE",
+                    ],
+                    "response_headers": ["*"],
+                    "max_age_seconds": 0,
+                },
+            ])
         ```
 
         ### Life Cycle Settings For Storage Bucket Objects
@@ -1180,18 +1194,32 @@ class Bucket(pulumi.CustomResource):
                 "main_page_suffix": "index.html",
                 "not_found_page": "404.html",
             },
-            cors=[{
-                "origins": ["http://image-store.com"],
-                "methods": [
-                    "GET",
-                    "HEAD",
-                    "PUT",
-                    "POST",
-                    "DELETE",
-                ],
-                "response_headers": ["*"],
-                "max_age_seconds": 3600,
-            }])
+            cors=[
+                {
+                    "origins": ["http://image-store.com"],
+                    "methods": [
+                        "GET",
+                        "HEAD",
+                        "PUT",
+                        "POST",
+                        "DELETE",
+                    ],
+                    "response_headers": ["*"],
+                    "max_age_seconds": 3600,
+                },
+                {
+                    "origins": ["http://image-store.com"],
+                    "methods": [
+                        "GET",
+                        "HEAD",
+                        "PUT",
+                        "POST",
+                        "DELETE",
+                    ],
+                    "response_headers": ["*"],
+                    "max_age_seconds": 0,
+                },
+            ])
         ```
 
         ### Life Cycle Settings For Storage Bucket Objects

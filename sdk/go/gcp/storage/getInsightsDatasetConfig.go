@@ -65,12 +65,13 @@ type LookupInsightsDatasetConfigArgs struct {
 
 // A collection of values returned by getInsightsDatasetConfig.
 type LookupInsightsDatasetConfigResult struct {
-	CreateTime                   string                                                `pulumi:"createTime"`
-	DatasetConfigId              string                                                `pulumi:"datasetConfigId"`
-	DatasetConfigState           string                                                `pulumi:"datasetConfigState"`
-	Description                  string                                                `pulumi:"description"`
-	ExcludeCloudStorageBuckets   []GetInsightsDatasetConfigExcludeCloudStorageBucket   `pulumi:"excludeCloudStorageBuckets"`
-	ExcludeCloudStorageLocations []GetInsightsDatasetConfigExcludeCloudStorageLocation `pulumi:"excludeCloudStorageLocations"`
+	ActivityDataRetentionPeriodDays int                                                   `pulumi:"activityDataRetentionPeriodDays"`
+	CreateTime                      string                                                `pulumi:"createTime"`
+	DatasetConfigId                 string                                                `pulumi:"datasetConfigId"`
+	DatasetConfigState              string                                                `pulumi:"datasetConfigState"`
+	Description                     string                                                `pulumi:"description"`
+	ExcludeCloudStorageBuckets      []GetInsightsDatasetConfigExcludeCloudStorageBucket   `pulumi:"excludeCloudStorageBuckets"`
+	ExcludeCloudStorageLocations    []GetInsightsDatasetConfigExcludeCloudStorageLocation `pulumi:"excludeCloudStorageLocations"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                           string                                                `pulumi:"id"`
 	Identities                   []GetInsightsDatasetConfigIdentity                    `pulumi:"identities"`
@@ -127,6 +128,10 @@ func (o LookupInsightsDatasetConfigResultOutput) ToLookupInsightsDatasetConfigRe
 
 func (o LookupInsightsDatasetConfigResultOutput) ToLookupInsightsDatasetConfigResultOutputWithContext(ctx context.Context) LookupInsightsDatasetConfigResultOutput {
 	return o
+}
+
+func (o LookupInsightsDatasetConfigResultOutput) ActivityDataRetentionPeriodDays() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupInsightsDatasetConfigResult) int { return v.ActivityDataRetentionPeriodDays }).(pulumi.IntOutput)
 }
 
 func (o LookupInsightsDatasetConfigResultOutput) CreateTime() pulumi.StringOutput {

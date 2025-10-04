@@ -66,6 +66,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// For a read pool instance, the number of nodes in the read pool.
         /// </summary>
         public readonly int NodeCount;
+        /// <summary>
+        /// Configuration for creating a new instance using point-in-time-restore from backupdr backup.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstancePointInTimeRestoreContextResult> PointInTimeRestoreContexts;
         public readonly string PrivateIpAddress;
         /// <summary>
         /// The ID of the project in which the resources belong. If it is not provided, the provider project is used.
@@ -147,6 +151,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             int nodeCount,
 
+            ImmutableArray<Outputs.GetDatabaseInstancesInstancePointInTimeRestoreContextResult> pointInTimeRestoreContexts,
+
             string privateIpAddress,
 
             string project,
@@ -192,6 +198,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             MasterInstanceName = masterInstanceName;
             Name = name;
             NodeCount = nodeCount;
+            PointInTimeRestoreContexts = pointInTimeRestoreContexts;
             PrivateIpAddress = privateIpAddress;
             Project = project;
             PscServiceAttachmentLink = pscServiceAttachmentLink;

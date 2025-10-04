@@ -29,6 +29,10 @@ __all__ = [
     'ChatEngineCommonConfigArgsDict',
     'CmekConfigSingleRegionKeyArgs',
     'CmekConfigSingleRegionKeyArgsDict',
+    'DataConnectorEntityArgs',
+    'DataConnectorEntityArgsDict',
+    'DataConnectorErrorArgs',
+    'DataConnectorErrorArgsDict',
     'DataStoreAdvancedSiteSearchConfigArgs',
     'DataStoreAdvancedSiteSearchConfigArgsDict',
     'DataStoreDocumentProcessingConfigArgs',
@@ -460,6 +464,189 @@ class CmekConfigSingleRegionKeyArgs:
     @kms_key.setter
     def kms_key(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "kms_key", value)
+
+
+if not MYPY:
+    class DataConnectorEntityArgsDict(TypedDict):
+        data_store: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        The full resource name of the associated data store for the source
+        entity.
+        Format: `projects/*/locations/*/collections/*/dataStores/*`.
+        When the connector is initialized by the DataConnectorService.SetUpDataConnector
+        method, a DataStore is automatically created for each source entity.
+        """
+        entity_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The name of the entity. Supported values by data source:
+        * Salesforce: `Lead`, `Opportunity`, `Contact`, `Account`, `Case`, `Contract`, `Campaign`
+        * Jira: project, issue, attachment, comment, worklog
+        * Confluence: `Content`, `Space`
+        """
+        key_property_mappings: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+        """
+        Attributes for indexing.
+        Key: Field name.
+        Value: The key property to map a field to, such as `title`, and
+        `description`. Supported key properties:
+        """
+        params: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+        """
+        The parameters for the entity to facilitate data ingestion.
+        """
+elif False:
+    DataConnectorEntityArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DataConnectorEntityArgs:
+    def __init__(__self__, *,
+                 data_store: Optional[pulumi.Input[_builtins.str]] = None,
+                 entity_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 key_property_mappings: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 params: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] data_store: (Output)
+               The full resource name of the associated data store for the source
+               entity.
+               Format: `projects/*/locations/*/collections/*/dataStores/*`.
+               When the connector is initialized by the DataConnectorService.SetUpDataConnector
+               method, a DataStore is automatically created for each source entity.
+        :param pulumi.Input[_builtins.str] entity_name: The name of the entity. Supported values by data source:
+               * Salesforce: `Lead`, `Opportunity`, `Contact`, `Account`, `Case`, `Contract`, `Campaign`
+               * Jira: project, issue, attachment, comment, worklog
+               * Confluence: `Content`, `Space`
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] key_property_mappings: Attributes for indexing.
+               Key: Field name.
+               Value: The key property to map a field to, such as `title`, and
+               `description`. Supported key properties:
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] params: The parameters for the entity to facilitate data ingestion.
+        """
+        if data_store is not None:
+            pulumi.set(__self__, "data_store", data_store)
+        if entity_name is not None:
+            pulumi.set(__self__, "entity_name", entity_name)
+        if key_property_mappings is not None:
+            pulumi.set(__self__, "key_property_mappings", key_property_mappings)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
+
+    @_builtins.property
+    @pulumi.getter(name="dataStore")
+    def data_store(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        The full resource name of the associated data store for the source
+        entity.
+        Format: `projects/*/locations/*/collections/*/dataStores/*`.
+        When the connector is initialized by the DataConnectorService.SetUpDataConnector
+        method, a DataStore is automatically created for each source entity.
+        """
+        return pulumi.get(self, "data_store")
+
+    @data_store.setter
+    def data_store(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "data_store", value)
+
+    @_builtins.property
+    @pulumi.getter(name="entityName")
+    def entity_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the entity. Supported values by data source:
+        * Salesforce: `Lead`, `Opportunity`, `Contact`, `Account`, `Case`, `Contract`, `Campaign`
+        * Jira: project, issue, attachment, comment, worklog
+        * Confluence: `Content`, `Space`
+        """
+        return pulumi.get(self, "entity_name")
+
+    @entity_name.setter
+    def entity_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "entity_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="keyPropertyMappings")
+    def key_property_mappings(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Attributes for indexing.
+        Key: Field name.
+        Value: The key property to map a field to, such as `title`, and
+        `description`. Supported key properties:
+        """
+        return pulumi.get(self, "key_property_mappings")
+
+    @key_property_mappings.setter
+    def key_property_mappings(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "key_property_mappings", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def params(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The parameters for the entity to facilitate data ingestion.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "params", value)
+
+
+if not MYPY:
+    class DataConnectorErrorArgsDict(TypedDict):
+        code: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        (Output)
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        message: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        A developer-facing error message, which should be in English.
+        """
+elif False:
+    DataConnectorErrorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DataConnectorErrorArgs:
+    def __init__(__self__, *,
+                 code: Optional[pulumi.Input[_builtins.int]] = None,
+                 message: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] code: (Output)
+               The status code, which should be an enum value of google.rpc.Code.
+        :param pulumi.Input[_builtins.str] message: (Output)
+               A developer-facing error message, which should be in English.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        (Output)
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "code", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        A developer-facing error message, which should be in English.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "message", value)
 
 
 if not MYPY:

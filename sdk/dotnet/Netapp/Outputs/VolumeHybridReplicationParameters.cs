@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.Netapp.Outputs
         /// <summary>
         /// Required. List of node ip addresses to be peered with.
         /// </summary>
-        public readonly string? PeerIpAddresses;
+        public readonly ImmutableArray<string> PeerIpAddresses;
         /// <summary>
         /// Required. Name of the user's local source vserver svm to be peered with the destination vserver svm.
         /// </summary>
@@ -57,7 +57,7 @@ namespace Pulumi.Gcp.Netapp.Outputs
 
             string? peerClusterName,
 
-            string? peerIpAddresses,
+            ImmutableArray<string> peerIpAddresses,
 
             string? peerSvmName,
 

@@ -18,7 +18,7 @@ public final class GetEntitlementApprovalWorkflowManualApproval {
      */
     private Boolean requireApproverJustification;
     /**
-     * @return List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
+     * @return List of approval steps in this workflow. These steps would be followed in the specified order sequentially.
      * 
      */
     private List<GetEntitlementApprovalWorkflowManualApprovalStep> steps;
@@ -32,7 +32,7 @@ public final class GetEntitlementApprovalWorkflowManualApproval {
         return this.requireApproverJustification;
     }
     /**
-     * @return List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
+     * @return List of approval steps in this workflow. These steps would be followed in the specified order sequentially.
      * 
      */
     public List<GetEntitlementApprovalWorkflowManualApprovalStep> steps() {

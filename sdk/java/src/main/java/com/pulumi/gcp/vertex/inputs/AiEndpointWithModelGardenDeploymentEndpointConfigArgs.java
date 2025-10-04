@@ -5,6 +5,7 @@ package com.pulumi.gcp.vertex.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.vertex.inputs.AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -58,11 +59,29 @@ public final class AiEndpointWithModelGardenDeploymentEndpointConfigArgs extends
         return Optional.ofNullable(this.endpointDisplayName);
     }
 
+    /**
+     * The configuration for Private Service Connect (PSC).
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="privateServiceConnectConfig")
+    private @Nullable Output<AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs> privateServiceConnectConfig;
+
+    /**
+     * @return The configuration for Private Service Connect (PSC).
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs>> privateServiceConnectConfig() {
+        return Optional.ofNullable(this.privateServiceConnectConfig);
+    }
+
     private AiEndpointWithModelGardenDeploymentEndpointConfigArgs() {}
 
     private AiEndpointWithModelGardenDeploymentEndpointConfigArgs(AiEndpointWithModelGardenDeploymentEndpointConfigArgs $) {
         this.dedicatedEndpointEnabled = $.dedicatedEndpointEnabled;
         this.endpointDisplayName = $.endpointDisplayName;
+        this.privateServiceConnectConfig = $.privateServiceConnectConfig;
     }
 
     public static Builder builder() {
@@ -135,6 +154,29 @@ public final class AiEndpointWithModelGardenDeploymentEndpointConfigArgs extends
          */
         public Builder endpointDisplayName(String endpointDisplayName) {
             return endpointDisplayName(Output.of(endpointDisplayName));
+        }
+
+        /**
+         * @param privateServiceConnectConfig The configuration for Private Service Connect (PSC).
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateServiceConnectConfig(@Nullable Output<AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs> privateServiceConnectConfig) {
+            $.privateServiceConnectConfig = privateServiceConnectConfig;
+            return this;
+        }
+
+        /**
+         * @param privateServiceConnectConfig The configuration for Private Service Connect (PSC).
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateServiceConnectConfig(AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs privateServiceConnectConfig) {
+            return privateServiceConnectConfig(Output.of(privateServiceConnectConfig));
         }
 
         public AiEndpointWithModelGardenDeploymentEndpointConfigArgs build() {

@@ -29,6 +29,8 @@ import (
 //
 //	"fmt"
 //
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -37,6 +39,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			vertexaiSa, err := projects.NewServiceIdentity(ctx, "vertexai_sa", &projects.ServiceIdentityArgs{
+//				Service: pulumi.String("aiplatform.googleapis.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
 //				Name:                     pulumi.String("vertex-ai-index-test"),
 //				Location:                 pulumi.String("us-central1"),
@@ -51,6 +59,14 @@ import (
 //				Name:    pulumi.String("contents/data.json"),
 //				Bucket:  bucket.Name,
 //				Content: pulumi.String("{\"id\": \"42\", \"embedding\": [0.5, 1.0], \"restricts\": [{\"namespace\": \"class\", \"allow\": [\"cat\", \"pet\"]},{\"namespace\": \"category\", \"allow\": [\"feline\"]}]}\n{\"id\": \"43\", \"embedding\": [0.6, 1.0], \"restricts\": [{\"namespace\": \"class\", \"allow\": [\"dog\", \"pet\"]},{\"namespace\": \"category\", \"allow\": [\"canine\"]}]}\n"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vertexaiEncrypterdecrypter, err := kms.NewCryptoKeyIAMMember(ctx, "vertexai_encrypterdecrypter", &kms.CryptoKeyIAMMemberArgs{
+//				CryptoKeyId: pulumi.String("kms-name"),
+//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+//				Member:      vertexaiSa.Member,
 //			})
 //			if err != nil {
 //				return err
@@ -79,8 +95,13 @@ import (
 //						},
 //					},
 //				},
+//				EncryptionSpec: &vertex.AiIndexEncryptionSpecArgs{
+//					KmsKeyName: pulumi.String("kms-name"),
+//				},
 //				IndexUpdateMethod: pulumi.String("BATCH_UPDATE"),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				vertexaiEncrypterdecrypter,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -199,6 +220,9 @@ type AiIndex struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// Customer-managed encryption key spec for an Index. If set, this Index and all sub-resources of this Index will be secured by this key.
+	// Structure is documented below.
+	EncryptionSpec AiIndexEncryptionSpecPtrOutput `pulumi:"encryptionSpec"`
 	// Used to perform consistent read-modify-write updates.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Stats of the index resource.
@@ -285,6 +309,9 @@ type aiIndexState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// Customer-managed encryption key spec for an Index. If set, this Index and all sub-resources of this Index will be secured by this key.
+	// Structure is documented below.
+	EncryptionSpec *AiIndexEncryptionSpec `pulumi:"encryptionSpec"`
 	// Used to perform consistent read-modify-write updates.
 	Etag *string `pulumi:"etag"`
 	// Stats of the index resource.
@@ -331,6 +358,9 @@ type AiIndexState struct {
 	DisplayName pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
+	// Customer-managed encryption key spec for an Index. If set, this Index and all sub-resources of this Index will be secured by this key.
+	// Structure is documented below.
+	EncryptionSpec AiIndexEncryptionSpecPtrInput
 	// Used to perform consistent read-modify-write updates.
 	Etag pulumi.StringPtrInput
 	// Stats of the index resource.
@@ -374,6 +404,9 @@ type aiIndexArgs struct {
 	Description *string `pulumi:"description"`
 	// The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
 	DisplayName string `pulumi:"displayName"`
+	// Customer-managed encryption key spec for an Index. If set, this Index and all sub-resources of this Index will be secured by this key.
+	// Structure is documented below.
+	EncryptionSpec *AiIndexEncryptionSpec `pulumi:"encryptionSpec"`
 	// The update method to use with this Index. The value must be the followings. If not set, BATCH_UPDATE will be used by default.
 	// * BATCH_UPDATE: user can call indexes.patch with files on Cloud Storage of datapoints to update.
 	// * STREAM_UPDATE: user can call indexes.upsertDatapoints/DeleteDatapoints to update the Index and the updates will be applied in corresponding DeployedIndexes in nearly real-time.
@@ -400,6 +433,9 @@ type AiIndexArgs struct {
 	Description pulumi.StringPtrInput
 	// The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
 	DisplayName pulumi.StringInput
+	// Customer-managed encryption key spec for an Index. If set, this Index and all sub-resources of this Index will be secured by this key.
+	// Structure is documented below.
+	EncryptionSpec AiIndexEncryptionSpecPtrInput
 	// The update method to use with this Index. The value must be the followings. If not set, BATCH_UPDATE will be used by default.
 	// * BATCH_UPDATE: user can call indexes.patch with files on Cloud Storage of datapoints to update.
 	// * STREAM_UPDATE: user can call indexes.upsertDatapoints/DeleteDatapoints to update the Index and the updates will be applied in corresponding DeployedIndexes in nearly real-time.
@@ -531,6 +567,12 @@ func (o AiIndexOutput) DisplayName() pulumi.StringOutput {
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o AiIndexOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AiIndex) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+// Customer-managed encryption key spec for an Index. If set, this Index and all sub-resources of this Index will be secured by this key.
+// Structure is documented below.
+func (o AiIndexOutput) EncryptionSpec() AiIndexEncryptionSpecPtrOutput {
+	return o.ApplyT(func(v *AiIndex) AiIndexEncryptionSpecPtrOutput { return v.EncryptionSpec }).(AiIndexEncryptionSpecPtrOutput)
 }
 
 // Used to perform consistent read-modify-write updates.

@@ -53,8 +53,9 @@ import (
 //				Description:      pulumi.String("Example Wire Group"),
 //				CrossSiteNetwork: pulumi.String("test-cross-site-network"),
 //				WireProperties: &compute.WireGroupWirePropertiesArgs{
-//					BandwidthUnmetered: pulumi.Int(10),
-//					FaultResponse:      pulumi.String("NONE"),
+//					BandwidthUnmetered:  pulumi.Int(10),
+//					FaultResponse:       pulumi.String("NONE"),
+//					BandwidthAllocation: pulumi.String("ALLOCATE_PER_WIRE"),
 //				},
 //				WireGroupProperties: &compute.WireGroupWireGroupPropertiesArgs{
 //					Type: pulumi.String("WIRE"),

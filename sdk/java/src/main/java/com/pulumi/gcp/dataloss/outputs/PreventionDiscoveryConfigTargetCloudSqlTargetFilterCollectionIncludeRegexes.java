@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexes {
     /**
-     * @return The group of regular expression patterns to match against one or more file stores. Maximum of 100 entries. The sum of all lengths of regular expressions can&#39;t exceed 10 KiB.
+     * @return The group of regular expression patterns to match against one or more resources. Maximum of 100 entries. The sum of all lengths of regular expressions can&#39;t exceed 10 KiB.
      * Structure is documented below.
      * 
      */
@@ -20,7 +20,7 @@ public final class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection
 
     private PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexes() {}
     /**
-     * @return The group of regular expression patterns to match against one or more file stores. Maximum of 100 entries. The sum of all lengths of regular expressions can&#39;t exceed 10 KiB.
+     * @return The group of regular expression patterns to match against one or more resources. Maximum of 100 entries. The sum of all lengths of regular expressions can&#39;t exceed 10 KiB.
      * Structure is documented below.
      * 
      */

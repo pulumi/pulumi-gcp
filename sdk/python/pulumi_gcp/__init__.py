@@ -737,6 +737,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "apigee/apiDeployment",
+  "fqn": "pulumi_gcp.apigee",
+  "classes": {
+   "gcp:apigee/apiDeployment:ApiDeployment": "ApiDeployment"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "apigee/apiProduct",
   "fqn": "pulumi_gcp.apigee",
   "classes": {
@@ -5217,6 +5225,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "discoveryengine/dataConnector",
+  "fqn": "pulumi_gcp.discoveryengine",
+  "classes": {
+   "gcp:discoveryengine/dataConnector:DataConnector": "DataConnector"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "discoveryengine/dataStore",
   "fqn": "pulumi_gcp.discoveryengine",
   "classes": {
@@ -7161,6 +7177,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "kms/organizationKajPolicyConfig",
+  "fqn": "pulumi_gcp.kms",
+  "classes": {
+   "gcp:kms/organizationKajPolicyConfig:OrganizationKajPolicyConfig": "OrganizationKajPolicyConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "kms/secretCiphertext",
   "fqn": "pulumi_gcp.kms",
   "classes": {
@@ -8645,6 +8669,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.saasruntime",
   "classes": {
    "gcp:saasruntime/release:Release": "Release"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "saasruntime/rolloutKind",
+  "fqn": "pulumi_gcp.saasruntime",
+  "classes": {
+   "gcp:saasruntime/rolloutKind:RolloutKind": "RolloutKind"
   }
  },
  {

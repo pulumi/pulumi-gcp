@@ -78,6 +78,7 @@ import javax.annotation.Nullable;
  *             .wireProperties(WireGroupWirePropertiesArgs.builder()
  *                 .bandwidthUnmetered(10)
  *                 .faultResponse("NONE")
+ *                 .bandwidthAllocation("ALLOCATE_PER_WIRE")
  *                 .build())
  *             .wireGroupProperties(WireGroupWireGroupPropertiesArgs.builder()
  *                 .type("WIRE")

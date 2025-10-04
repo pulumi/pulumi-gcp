@@ -159,6 +159,11 @@ export class AiIndexEndpoint extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
+     * Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
+     * Structure is documented below.
+     */
+    declare public readonly encryptionSpec: pulumi.Output<outputs.vertex.AiIndexEndpointEncryptionSpec | undefined>;
+    /**
      * Used to perform consistent read-modify-write updates.
      */
     declare public /*out*/ readonly etag: pulumi.Output<string>;
@@ -228,6 +233,7 @@ export class AiIndexEndpoint extends pulumi.CustomResource {
             resourceInputs["description"] = state?.description;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["encryptionSpec"] = state?.encryptionSpec;
             resourceInputs["etag"] = state?.etag;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["name"] = state?.name;
@@ -246,6 +252,7 @@ export class AiIndexEndpoint extends pulumi.CustomResource {
             }
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["encryptionSpec"] = args?.encryptionSpec;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["network"] = args?.network;
             resourceInputs["privateServiceConnectConfig"] = args?.privateServiceConnectConfig;
@@ -287,6 +294,11 @@ export interface AiIndexEndpointState {
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
+     * Structure is documented below.
+     */
+    encryptionSpec?: pulumi.Input<inputs.vertex.AiIndexEndpointEncryptionSpec>;
     /**
      * Used to perform consistent read-modify-write updates.
      */
@@ -353,6 +365,11 @@ export interface AiIndexEndpointArgs {
      * The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
      */
     displayName: pulumi.Input<string>;
+    /**
+     * Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
+     * Structure is documented below.
+     */
+    encryptionSpec?: pulumi.Input<inputs.vertex.AiIndexEndpointEncryptionSpec>;
     /**
      * The labels with user-defined metadata to organize your Indexes.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.

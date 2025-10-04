@@ -16,7 +16,7 @@ public final class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection
     public static final PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionArgs Empty = new PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionArgs();
 
     /**
-     * A collection of regular expressions to match a file store against.
+     * A collection of regular expressions to match a resource against.
      * Structure is documented below.
      * 
      */
@@ -24,7 +24,7 @@ public final class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection
     private @Nullable Output<PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesArgs> includeRegexes;
 
     /**
-     * @return A collection of regular expressions to match a file store against.
+     * @return A collection of regular expressions to match a resource against.
      * Structure is documented below.
      * 
      */
@@ -57,7 +57,7 @@ public final class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection
         }
 
         /**
-         * @param includeRegexes A collection of regular expressions to match a file store against.
+         * @param includeRegexes A collection of regular expressions to match a resource against.
          * Structure is documented below.
          * 
          * @return builder
@@ -69,7 +69,7 @@ public final class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection
         }
 
         /**
-         * @param includeRegexes A collection of regular expressions to match a file store against.
+         * @param includeRegexes A collection of regular expressions to match a resource against.
          * Structure is documented below.
          * 
          * @return builder

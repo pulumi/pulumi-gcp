@@ -7,6 +7,7 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .release import *
+from .rollout_kind import *
 from .saa_s import *
 from .unit_kind import *
 from ._inputs import *

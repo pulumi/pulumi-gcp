@@ -153,6 +153,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Gemini enablement for Looker (Google Cloud Core).
+     * 
+     */
+    @Import(name="geminiEnabled")
+    private @Nullable Output<Boolean> geminiEnabled;
+
+    /**
+     * @return Gemini enablement for Looker (Google Cloud Core).
+     * 
+     */
+    public Optional<Output<Boolean>> geminiEnabled() {
+        return Optional.ofNullable(this.geminiEnabled);
+    }
+
+    /**
      * Maintenance window for an instance.
      * Maintenance of your instance takes place once a month, and will require
      * your instance to be restarted during updates, which will temporarily
@@ -398,6 +413,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.denyMaintenancePeriod = $.denyMaintenancePeriod;
         this.encryptionConfig = $.encryptionConfig;
         this.fipsEnabled = $.fipsEnabled;
+        this.geminiEnabled = $.geminiEnabled;
         this.maintenanceWindow = $.maintenanceWindow;
         this.name = $.name;
         this.oauthConfig = $.oauthConfig;
@@ -597,6 +613,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder fipsEnabled(Boolean fipsEnabled) {
             return fipsEnabled(Output.of(fipsEnabled));
+        }
+
+        /**
+         * @param geminiEnabled Gemini enablement for Looker (Google Cloud Core).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder geminiEnabled(@Nullable Output<Boolean> geminiEnabled) {
+            $.geminiEnabled = geminiEnabled;
+            return this;
+        }
+
+        /**
+         * @param geminiEnabled Gemini enablement for Looker (Google Cloud Core).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder geminiEnabled(Boolean geminiEnabled) {
+            return geminiEnabled(Output.of(geminiEnabled));
         }
 
         /**

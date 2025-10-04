@@ -496,7 +496,7 @@ import (
 //				CloudStorageConfig: &pubsub.SubscriptionCloudStorageConfigArgs{
 //					Bucket:                 example.Name,
 //					FilenamePrefix:         pulumi.String("pre-"),
-//					FilenameSuffix:         pulumi.String("-_15335"),
+//					FilenameSuffix:         pulumi.String("-_26032"),
 //					FilenameDatetimeFormat: pulumi.String("YYYY-MM-DD/hh_mm_ssZ"),
 //					MaxBytes:               pulumi.Int(1000),
 //					MaxDuration:            pulumi.String("300s"),
@@ -564,7 +564,7 @@ import (
 //				CloudStorageConfig: &pubsub.SubscriptionCloudStorageConfigArgs{
 //					Bucket:                 example.Name,
 //					FilenamePrefix:         pulumi.String("pre-"),
-//					FilenameSuffix:         pulumi.String("-_20665"),
+//					FilenameSuffix:         pulumi.String("-_8647"),
 //					FilenameDatetimeFormat: pulumi.String("YYYY-MM-DD/hh_mm_ssZ"),
 //					MaxBytes:               pulumi.Int(1000),
 //					MaxDuration:            pulumi.String("300s"),
@@ -642,7 +642,7 @@ import (
 //				CloudStorageConfig: &pubsub.SubscriptionCloudStorageConfigArgs{
 //					Bucket:                 example.Name,
 //					FilenamePrefix:         pulumi.String("pre-"),
-//					FilenameSuffix:         pulumi.String("-_85160"),
+//					FilenameSuffix:         pulumi.String("-_50610"),
 //					FilenameDatetimeFormat: pulumi.String("YYYY-MM-DD/hh_mm_ssZ"),
 //					MaxBytes:               pulumi.Int(1000),
 //					MaxDuration:            pulumi.String("300s"),
@@ -765,6 +765,64 @@ import (
 //		})
 //	}
 //
+// ```
+// ### Pubsub Subscription Tags
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tags"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// example, err := pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
+// Name: pulumi.String("example-topic"),
+// })
+// if err != nil {
+// return err
+// }
+// project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{
+// }, nil);
+// if err != nil {
+// return err
+// }
+// tagKey, err := tags.NewTagKey(ctx, "tag_key", &tags.TagKeyArgs{
+// Parent: pulumi.String(project.Id),
+// ShortName: pulumi.String("tag_key"),
+// })
+// if err != nil {
+// return err
+// }
+// tagValue, err := tags.NewTagValue(ctx, "tag_value", &tags.TagValueArgs{
+// Parent: tagKey.ID(),
+// ShortName: pulumi.String("tag_value"),
+// })
+// if err != nil {
+// return err
+// }
+// _, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
+// Name: pulumi.String("example-subscription"),
+// Topic: example.ID(),
+// Tags: pulumi.All(tagKey.NamespacedName,tagValue.ShortName).ApplyT(func(_args []interface{}) (map[string]string, error) {
+// namespacedName := _args[0].(string)
+// shortName := _args[1].(string)
+// return map[string]string{
+// namespacedName: shortName,
+// }, nil
+// }).(pulumi.Map[string]stringOutput),
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // ## Import
@@ -896,6 +954,15 @@ type Subscription struct {
 	// RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
 	// Structure is documented below.
 	RetryPolicy SubscriptionRetryPolicyPtrOutput `pulumi:"retryPolicy"`
+	// Input only. Resource manager tags to be bound to the subscription. Tag
+	// keys and values have the same definition as resource manager tags. Keys
+	// must be in the format tagKeys/{tag_key_id}, and values are in the format
+	// tagValues/456. The field is ignored when empty. The field is immutable and
+	// causes resource replacement when mutated. This field is only set at create
+	// time and modifying this field after creation will trigger recreation. To
+	// apply tags to an existing resource, see the `tags.TagValue`
+	// resource.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
 	// (as in the id property of a google_pubsub_topic), or just a topic name if
 	// the topic is in the same project as the subscription.
@@ -1043,6 +1110,15 @@ type subscriptionState struct {
 	// RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
 	// Structure is documented below.
 	RetryPolicy *SubscriptionRetryPolicy `pulumi:"retryPolicy"`
+	// Input only. Resource manager tags to be bound to the subscription. Tag
+	// keys and values have the same definition as resource manager tags. Keys
+	// must be in the format tagKeys/{tag_key_id}, and values are in the format
+	// tagValues/456. The field is ignored when empty. The field is immutable and
+	// causes resource replacement when mutated. This field is only set at create
+	// time and modifying this field after creation will trigger recreation. To
+	// apply tags to an existing resource, see the `tags.TagValue`
+	// resource.
+	Tags map[string]string `pulumi:"tags"`
 	// A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
 	// (as in the id property of a google_pubsub_topic), or just a topic name if
 	// the topic is in the same project as the subscription.
@@ -1153,6 +1229,15 @@ type SubscriptionState struct {
 	// RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
 	// Structure is documented below.
 	RetryPolicy SubscriptionRetryPolicyPtrInput
+	// Input only. Resource manager tags to be bound to the subscription. Tag
+	// keys and values have the same definition as resource manager tags. Keys
+	// must be in the format tagKeys/{tag_key_id}, and values are in the format
+	// tagValues/456. The field is ignored when empty. The field is immutable and
+	// causes resource replacement when mutated. This field is only set at create
+	// time and modifying this field after creation will trigger recreation. To
+	// apply tags to an existing resource, see the `tags.TagValue`
+	// resource.
+	Tags pulumi.StringMapInput
 	// A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
 	// (as in the id property of a google_pubsub_topic), or just a topic name if
 	// the topic is in the same project as the subscription.
@@ -1262,6 +1347,15 @@ type subscriptionArgs struct {
 	// RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
 	// Structure is documented below.
 	RetryPolicy *SubscriptionRetryPolicy `pulumi:"retryPolicy"`
+	// Input only. Resource manager tags to be bound to the subscription. Tag
+	// keys and values have the same definition as resource manager tags. Keys
+	// must be in the format tagKeys/{tag_key_id}, and values are in the format
+	// tagValues/456. The field is ignored when empty. The field is immutable and
+	// causes resource replacement when mutated. This field is only set at create
+	// time and modifying this field after creation will trigger recreation. To
+	// apply tags to an existing resource, see the `tags.TagValue`
+	// resource.
+	Tags map[string]string `pulumi:"tags"`
 	// A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
 	// (as in the id property of a google_pubsub_topic), or just a topic name if
 	// the topic is in the same project as the subscription.
@@ -1368,6 +1462,15 @@ type SubscriptionArgs struct {
 	// RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
 	// Structure is documented below.
 	RetryPolicy SubscriptionRetryPolicyPtrInput
+	// Input only. Resource manager tags to be bound to the subscription. Tag
+	// keys and values have the same definition as resource manager tags. Keys
+	// must be in the format tagKeys/{tag_key_id}, and values are in the format
+	// tagValues/456. The field is ignored when empty. The field is immutable and
+	// causes resource replacement when mutated. This field is only set at create
+	// time and modifying this field after creation will trigger recreation. To
+	// apply tags to an existing resource, see the `tags.TagValue`
+	// resource.
+	Tags pulumi.StringMapInput
 	// A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
 	// (as in the id property of a google_pubsub_topic), or just a topic name if
 	// the topic is in the same project as the subscription.
@@ -1616,6 +1719,18 @@ func (o SubscriptionOutput) RetainAckedMessages() pulumi.BoolPtrOutput {
 // Structure is documented below.
 func (o SubscriptionOutput) RetryPolicy() SubscriptionRetryPolicyPtrOutput {
 	return o.ApplyT(func(v *Subscription) SubscriptionRetryPolicyPtrOutput { return v.RetryPolicy }).(SubscriptionRetryPolicyPtrOutput)
+}
+
+// Input only. Resource manager tags to be bound to the subscription. Tag
+// keys and values have the same definition as resource manager tags. Keys
+// must be in the format tagKeys/{tag_key_id}, and values are in the format
+// tagValues/456. The field is ignored when empty. The field is immutable and
+// causes resource replacement when mutated. This field is only set at create
+// time and modifying this field after creation will trigger recreation. To
+// apply tags to an existing resource, see the `tags.TagValue`
+// resource.
+func (o SubscriptionOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Subscription) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // A reference to a Topic resource, of the form projects/{project}/topics/{{name}}

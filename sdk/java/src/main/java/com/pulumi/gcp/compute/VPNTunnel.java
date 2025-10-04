@@ -28,6 +28,9 @@ import javax.annotation.Nullable;
  *     * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
  *     * [Networks and Tunnel Routing](https://cloud.google.com/vpn/docs/concepts/choosing-networks-routing)
  * 
+ * &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `shared_secret_wo`.
+ * Read more about Write-only Attributes.
+ * 
  * ## Example Usage
  * 
  * ### Vpn Tunnel Basic
@@ -238,6 +241,17 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
+ * ## Ephemeral Attributes Reference
+ * 
+ * The following write-only attributes are supported:
+ * 
+ * * `shared_secret_wo` -
+ *   (Optional)
+ *   Shared secret used to set the secure session between the Cloud VPN
+ *   gateway and the peer VPN gateway.
+ *    Note: This property is write-only and will not be read from the API. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+ *   **Note**: This property is write-only and will not be read from the API.
  * 
  * ## Import
  * 
@@ -605,7 +619,7 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="sharedSecret", refs={String.class}, tree="[0]")
-    private Output<String> sharedSecret;
+    private Output</* @Nullable */ String> sharedSecret;
 
     /**
      * @return Shared secret used to set the secure session between the Cloud VPN
@@ -613,8 +627,8 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    public Output<String> sharedSecret() {
-        return this.sharedSecret;
+    public Output<Optional<String>> sharedSecret() {
+        return Codegen.optional(this.sharedSecret);
     }
     /**
      * Hash of the shared secret.
@@ -629,6 +643,20 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
      */
     public Output<String> sharedSecretHash() {
         return this.sharedSecretHash;
+    }
+    /**
+     * Triggers update of shared_secret_wo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     * 
+     */
+    @Export(name="sharedSecretWoVersion", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> sharedSecretWoVersion;
+
+    /**
+     * @return Triggers update of shared_secret_wo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     * 
+     */
+    public Output<Optional<String>> sharedSecretWoVersion() {
+        return Codegen.optional(this.sharedSecretWoVersion);
     }
     /**
      * URL of the Target VPN gateway with which this VPN tunnel is
@@ -705,7 +733,7 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public VPNTunnel(java.lang.String name, VPNTunnelArgs args) {
+    public VPNTunnel(java.lang.String name, @Nullable VPNTunnelArgs args) {
         this(name, args, null);
     }
     /**
@@ -714,7 +742,7 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public VPNTunnel(java.lang.String name, VPNTunnelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public VPNTunnel(java.lang.String name, @Nullable VPNTunnelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/vPNTunnel:VPNTunnel", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -722,7 +750,7 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
         super("gcp:compute/vPNTunnel:VPNTunnel", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static VPNTunnelArgs makeArgs(VPNTunnelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static VPNTunnelArgs makeArgs(@Nullable VPNTunnelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

@@ -23,6 +23,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInsightsDatasetConfigResult {
+    private Integer activityDataRetentionPeriodDays;
     private String createTime;
     private String datasetConfigId;
     private String datasetConfigState;
@@ -52,6 +53,9 @@ public final class GetInsightsDatasetConfigResult {
     private String updateTime;
 
     private GetInsightsDatasetConfigResult() {}
+    public Integer activityDataRetentionPeriodDays() {
+        return this.activityDataRetentionPeriodDays;
+    }
     public String createTime() {
         return this.createTime;
     }
@@ -135,6 +139,7 @@ public final class GetInsightsDatasetConfigResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Integer activityDataRetentionPeriodDays;
         private String createTime;
         private String datasetConfigId;
         private String datasetConfigState;
@@ -161,6 +166,7 @@ public final class GetInsightsDatasetConfigResult {
         public Builder() {}
         public Builder(GetInsightsDatasetConfigResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.activityDataRetentionPeriodDays = defaults.activityDataRetentionPeriodDays;
     	      this.createTime = defaults.createTime;
     	      this.datasetConfigId = defaults.datasetConfigId;
     	      this.datasetConfigState = defaults.datasetConfigState;
@@ -186,6 +192,14 @@ public final class GetInsightsDatasetConfigResult {
     	      this.updateTime = defaults.updateTime;
         }
 
+        @CustomType.Setter
+        public Builder activityDataRetentionPeriodDays(Integer activityDataRetentionPeriodDays) {
+            if (activityDataRetentionPeriodDays == null) {
+              throw new MissingRequiredPropertyException("GetInsightsDatasetConfigResult", "activityDataRetentionPeriodDays");
+            }
+            this.activityDataRetentionPeriodDays = activityDataRetentionPeriodDays;
+            return this;
+        }
         @CustomType.Setter
         public Builder createTime(String createTime) {
             if (createTime == null) {
@@ -394,6 +408,7 @@ public final class GetInsightsDatasetConfigResult {
         }
         public GetInsightsDatasetConfigResult build() {
             final var _resultValue = new GetInsightsDatasetConfigResult();
+            _resultValue.activityDataRetentionPeriodDays = activityDataRetentionPeriodDays;
             _resultValue.createTime = createTime;
             _resultValue.datasetConfigId = datasetConfigId;
             _resultValue.datasetConfigState = datasetConfigState;
