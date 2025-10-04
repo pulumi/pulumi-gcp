@@ -158,6 +158,8 @@ type SearchEngine struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Unique ID to use for Search Engine App.
 	EngineId pulumi.StringOutput `pulumi:"engineId"`
+	// A map of the feature config for the engine to opt in or opt out of features.
+	Features pulumi.StringMapOutput `pulumi:"features"`
 	// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
 	// Default value is `GENERIC`.
 	// Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
@@ -243,6 +245,8 @@ type searchEngineState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Unique ID to use for Search Engine App.
 	EngineId *string `pulumi:"engineId"`
+	// A map of the feature config for the engine to opt in or opt out of features.
+	Features map[string]string `pulumi:"features"`
 	// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
 	// Default value is `GENERIC`.
 	// Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
@@ -281,6 +285,8 @@ type SearchEngineState struct {
 	DisplayName pulumi.StringPtrInput
 	// Unique ID to use for Search Engine App.
 	EngineId pulumi.StringPtrInput
+	// A map of the feature config for the engine to opt in or opt out of features.
+	Features pulumi.StringMapInput
 	// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
 	// Default value is `GENERIC`.
 	// Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
@@ -321,6 +327,8 @@ type searchEngineArgs struct {
 	DisplayName string `pulumi:"displayName"`
 	// Unique ID to use for Search Engine App.
 	EngineId string `pulumi:"engineId"`
+	// A map of the feature config for the engine to opt in or opt out of features.
+	Features map[string]string `pulumi:"features"`
 	// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
 	// Default value is `GENERIC`.
 	// Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
@@ -351,6 +359,8 @@ type SearchEngineArgs struct {
 	DisplayName pulumi.StringInput
 	// Unique ID to use for Search Engine App.
 	EngineId pulumi.StringInput
+	// A map of the feature config for the engine to opt in or opt out of features.
+	Features pulumi.StringMapInput
 	// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
 	// Default value is `GENERIC`.
 	// Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
@@ -487,6 +497,11 @@ func (o SearchEngineOutput) DisplayName() pulumi.StringOutput {
 // Unique ID to use for Search Engine App.
 func (o SearchEngineOutput) EngineId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SearchEngine) pulumi.StringOutput { return v.EngineId }).(pulumi.StringOutput)
+}
+
+// A map of the feature config for the engine to opt in or opt out of features.
+func (o SearchEngineOutput) Features() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SearchEngine) pulumi.StringMapOutput { return v.Features }).(pulumi.StringMapOutput)
 }
 
 // The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.

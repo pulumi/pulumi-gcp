@@ -441,6 +441,57 @@ import (
 //	}
 //
 // ```
+// ### Pubsub Topic Tags
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tags"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{
+// }, nil);
+// if err != nil {
+// return err
+// }
+// tagKey, err := tags.NewTagKey(ctx, "tag_key", &tags.TagKeyArgs{
+// Parent: pulumi.String(project.Id),
+// ShortName: pulumi.String("tag_key"),
+// })
+// if err != nil {
+// return err
+// }
+// tagValue, err := tags.NewTagValue(ctx, "tag_value", &tags.TagValueArgs{
+// Parent: tagKey.ID(),
+// ShortName: pulumi.String("tag_value"),
+// })
+// if err != nil {
+// return err
+// }
+// _, err = pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
+// Name: pulumi.String("example-topic"),
+// Tags: pulumi.All(tagKey.NamespacedName,tagValue.ShortName).ApplyT(func(_args []interface{}) (map[string]string, error) {
+// namespacedName := _args[0].(string)
+// shortName := _args[1].(string)
+// return map[string]string{
+// namespacedName: shortName,
+// }, nil
+// }).(pulumi.Map[string]stringOutput),
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
 //
 // ## Import
 //
@@ -513,6 +564,15 @@ type Topic struct {
 	// Settings for validating messages published against a schema.
 	// Structure is documented below.
 	SchemaSettings TopicSchemaSettingsPtrOutput `pulumi:"schemaSettings"`
+	// Input only. Resource manager tags to be bound to the topic. Tag keys and
+	// values have the same definition as resource manager tags. Keys must be in
+	// the format tagKeys/{tag_key_id}, and values are in the format
+	// tagValues/456. The field is ignored when empty. The field is immutable and
+	// causes resource replacement when mutated. This field is only set at create
+	// time and modifying this field after creation will trigger recreation. To
+	// apply tags to an existing resource, see the `tags.TagValue`
+	// resource.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewTopic registers a new resource with the given unique name, arguments, and options.
@@ -595,6 +655,15 @@ type topicState struct {
 	// Settings for validating messages published against a schema.
 	// Structure is documented below.
 	SchemaSettings *TopicSchemaSettings `pulumi:"schemaSettings"`
+	// Input only. Resource manager tags to be bound to the topic. Tag keys and
+	// values have the same definition as resource manager tags. Keys must be in
+	// the format tagKeys/{tag_key_id}, and values are in the format
+	// tagValues/456. The field is ignored when empty. The field is immutable and
+	// causes resource replacement when mutated. This field is only set at create
+	// time and modifying this field after creation will trigger recreation. To
+	// apply tags to an existing resource, see the `tags.TagValue`
+	// resource.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type TopicState struct {
@@ -643,6 +712,15 @@ type TopicState struct {
 	// Settings for validating messages published against a schema.
 	// Structure is documented below.
 	SchemaSettings TopicSchemaSettingsPtrInput
+	// Input only. Resource manager tags to be bound to the topic. Tag keys and
+	// values have the same definition as resource manager tags. Keys must be in
+	// the format tagKeys/{tag_key_id}, and values are in the format
+	// tagValues/456. The field is ignored when empty. The field is immutable and
+	// causes resource replacement when mutated. This field is only set at create
+	// time and modifying this field after creation will trigger recreation. To
+	// apply tags to an existing resource, see the `tags.TagValue`
+	// resource.
+	Tags pulumi.StringMapInput
 }
 
 func (TopicState) ElementType() reflect.Type {
@@ -690,6 +768,15 @@ type topicArgs struct {
 	// Settings for validating messages published against a schema.
 	// Structure is documented below.
 	SchemaSettings *TopicSchemaSettings `pulumi:"schemaSettings"`
+	// Input only. Resource manager tags to be bound to the topic. Tag keys and
+	// values have the same definition as resource manager tags. Keys must be in
+	// the format tagKeys/{tag_key_id}, and values are in the format
+	// tagValues/456. The field is ignored when empty. The field is immutable and
+	// causes resource replacement when mutated. This field is only set at create
+	// time and modifying this field after creation will trigger recreation. To
+	// apply tags to an existing resource, see the `tags.TagValue`
+	// resource.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Topic resource.
@@ -734,6 +821,15 @@ type TopicArgs struct {
 	// Settings for validating messages published against a schema.
 	// Structure is documented below.
 	SchemaSettings TopicSchemaSettingsPtrInput
+	// Input only. Resource manager tags to be bound to the topic. Tag keys and
+	// values have the same definition as resource manager tags. Keys must be in
+	// the format tagKeys/{tag_key_id}, and values are in the format
+	// tagValues/456. The field is ignored when empty. The field is immutable and
+	// causes resource replacement when mutated. This field is only set at create
+	// time and modifying this field after creation will trigger recreation. To
+	// apply tags to an existing resource, see the `tags.TagValue`
+	// resource.
+	Tags pulumi.StringMapInput
 }
 
 func (TopicArgs) ElementType() reflect.Type {
@@ -899,6 +995,18 @@ func (o TopicOutput) PulumiLabels() pulumi.StringMapOutput {
 // Structure is documented below.
 func (o TopicOutput) SchemaSettings() TopicSchemaSettingsPtrOutput {
 	return o.ApplyT(func(v *Topic) TopicSchemaSettingsPtrOutput { return v.SchemaSettings }).(TopicSchemaSettingsPtrOutput)
+}
+
+// Input only. Resource manager tags to be bound to the topic. Tag keys and
+// values have the same definition as resource manager tags. Keys must be in
+// the format tagKeys/{tag_key_id}, and values are in the format
+// tagValues/456. The field is ignored when empty. The field is immutable and
+// causes resource replacement when mutated. This field is only set at create
+// time and modifying this field after creation will trigger recreation. To
+// apply tags to an existing resource, see the `tags.TagValue`
+// resource.
+func (o TopicOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type TopicArrayOutput struct{ *pulumi.OutputState }

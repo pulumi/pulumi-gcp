@@ -6,6 +6,7 @@ package com.pulumi.gcp.vertex.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vertex.outputs.GetAiIndexDeployedIndex;
+import com.pulumi.gcp.vertex.outputs.GetAiIndexEncryptionSpec;
 import com.pulumi.gcp.vertex.outputs.GetAiIndexIndexStat;
 import com.pulumi.gcp.vertex.outputs.GetAiIndexMetadata;
 import java.lang.String;
@@ -22,6 +23,7 @@ public final class GetAiIndexResult {
     private String description;
     private String displayName;
     private Map<String,String> effectiveLabels;
+    private List<GetAiIndexEncryptionSpec> encryptionSpecs;
     private String etag;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -54,6 +56,9 @@ public final class GetAiIndexResult {
     }
     public Map<String,String> effectiveLabels() {
         return this.effectiveLabels;
+    }
+    public List<GetAiIndexEncryptionSpec> encryptionSpecs() {
+        return this.encryptionSpecs;
     }
     public String etag() {
         return this.etag;
@@ -110,6 +115,7 @@ public final class GetAiIndexResult {
         private String description;
         private String displayName;
         private Map<String,String> effectiveLabels;
+        private List<GetAiIndexEncryptionSpec> encryptionSpecs;
         private String etag;
         private String id;
         private List<GetAiIndexIndexStat> indexStats;
@@ -130,6 +136,7 @@ public final class GetAiIndexResult {
     	      this.description = defaults.description;
     	      this.displayName = defaults.displayName;
     	      this.effectiveLabels = defaults.effectiveLabels;
+    	      this.encryptionSpecs = defaults.encryptionSpecs;
     	      this.etag = defaults.etag;
     	      this.id = defaults.id;
     	      this.indexStats = defaults.indexStats;
@@ -186,6 +193,17 @@ public final class GetAiIndexResult {
             }
             this.effectiveLabels = effectiveLabels;
             return this;
+        }
+        @CustomType.Setter
+        public Builder encryptionSpecs(List<GetAiIndexEncryptionSpec> encryptionSpecs) {
+            if (encryptionSpecs == null) {
+              throw new MissingRequiredPropertyException("GetAiIndexResult", "encryptionSpecs");
+            }
+            this.encryptionSpecs = encryptionSpecs;
+            return this;
+        }
+        public Builder encryptionSpecs(GetAiIndexEncryptionSpec... encryptionSpecs) {
+            return encryptionSpecs(List.of(encryptionSpecs));
         }
         @CustomType.Setter
         public Builder etag(String etag) {
@@ -294,6 +312,7 @@ public final class GetAiIndexResult {
             _resultValue.description = description;
             _resultValue.displayName = displayName;
             _resultValue.effectiveLabels = effectiveLabels;
+            _resultValue.encryptionSpecs = encryptionSpecs;
             _resultValue.etag = etag;
             _resultValue.id = id;
             _resultValue.indexStats = indexStats;

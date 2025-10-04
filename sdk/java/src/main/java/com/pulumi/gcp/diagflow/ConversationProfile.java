@@ -15,6 +15,7 @@ import com.pulumi.gcp.diagflow.outputs.ConversationProfileHumanAgentAssistantCon
 import com.pulumi.gcp.diagflow.outputs.ConversationProfileHumanAgentHandoffConfig;
 import com.pulumi.gcp.diagflow.outputs.ConversationProfileLoggingConfig;
 import com.pulumi.gcp.diagflow.outputs.ConversationProfileNewMessageEventNotificationConfig;
+import com.pulumi.gcp.diagflow.outputs.ConversationProfileNewRecognitionResultNotificationConfig;
 import com.pulumi.gcp.diagflow.outputs.ConversationProfileNotificationConfig;
 import com.pulumi.gcp.diagflow.outputs.ConversationProfileSttConfig;
 import com.pulumi.gcp.diagflow.outputs.ConversationProfileTtsConfig;
@@ -79,6 +80,50 @@ import javax.annotation.Nullable;
  *                     .enableEntityExtraction(true)
  *                     .enableSentimentAnalysis(true)
  *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Dialogflow Conversation Profile Recognition Result Notification
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
+ * import com.pulumi.gcp.diagflow.ConversationProfile;
+ * import com.pulumi.gcp.diagflow.ConversationProfileArgs;
+ * import com.pulumi.gcp.diagflow.inputs.ConversationProfileNewRecognitionResultNotificationConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var recognitionResultNotificationProfileTopic = new Topic("recognitionResultNotificationProfileTopic", TopicArgs.builder()
+ *             .name("recognition-result-notification")
+ *             .build());
+ * 
+ *         var recognitionResultNotificationProfile = new ConversationProfile("recognitionResultNotificationProfile", ConversationProfileArgs.builder()
+ *             .displayName("dialogflow-profile")
+ *             .location("global")
+ *             .newRecognitionResultNotificationConfig(ConversationProfileNewRecognitionResultNotificationConfigArgs.builder()
+ *                 .topic(recognitionResultNotificationProfileTopic.id())
+ *                 .messageFormat("JSON")
  *                 .build())
  *             .build());
  * 
@@ -239,6 +284,22 @@ public class ConversationProfile extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<ConversationProfileNewMessageEventNotificationConfig>> newMessageEventNotificationConfig() {
         return Codegen.optional(this.newMessageEventNotificationConfig);
+    }
+    /**
+     * Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - &#34;participant_id&#34; - &#34;participantRole&#34; - &#34;message_id&#34;
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="newRecognitionResultNotificationConfig", refs={ConversationProfileNewRecognitionResultNotificationConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ConversationProfileNewRecognitionResultNotificationConfig> newRecognitionResultNotificationConfig;
+
+    /**
+     * @return Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - &#34;participant_id&#34; - &#34;participantRole&#34; - &#34;message_id&#34;
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ConversationProfileNewRecognitionResultNotificationConfig>> newRecognitionResultNotificationConfig() {
+        return Codegen.optional(this.newRecognitionResultNotificationConfig);
     }
     /**
      * Pub/Sub topic on which to publish new agent assistant events.

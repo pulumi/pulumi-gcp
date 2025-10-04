@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.OracleDatabase
     /// 
     /// ## Example Usage
     /// 
-    /// ### Oracledatabase Odbnetwork
+    /// ### Oracledatabase Odbnetwork Basic
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -40,6 +40,38 @@ namespace Pulumi.Gcp.OracleDatabase
     ///         Location = "us-west3",
     ///         Project = "my-project",
     ///         Network = @default.Apply(@default =&gt; @default.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
+    ///         Labels = 
+    ///         {
+    ///             { "terraform_created", "true" },
+    ///         },
+    ///         DeletionProtection = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Oracledatabase Odbnetwork Full
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = Gcp.Compute.GetNetwork.Invoke(new()
+    ///     {
+    ///         Name = "new",
+    ///         Project = "my-project",
+    ///     });
+    /// 
+    ///     var my_odbnetwork = new Gcp.OracleDatabase.OdbNetwork("my-odbnetwork", new()
+    ///     {
+    ///         OdbNetworkId = "my-odbnetwork",
+    ///         Location = "us-west3",
+    ///         Project = "my-project",
+    ///         Network = @default.Apply(@default =&gt; @default.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
+    ///         GcpOracleZone = "us-west3-a-r1",
     ///         Labels = 
     ///         {
     ///             { "terraform_created", "true" },
@@ -97,6 +129,14 @@ namespace Pulumi.Gcp.OracleDatabase
         /// </summary>
         [Output("entitlementId")]
         public Output<string> EntitlementId { get; private set; } = null!;
+
+        /// <summary>
+        /// The GCP Oracle zone where OdbNetwork is hosted.
+        /// Example: us-east4-b-r2.
+        /// If not specified, the system will pick a zone based on availability.
+        /// </summary>
+        [Output("gcpOracleZone")]
+        public Output<string> GcpOracleZone { get; private set; } = null!;
 
         /// <summary>
         /// Labels or tags associated with the resource.
@@ -214,6 +254,14 @@ namespace Pulumi.Gcp.OracleDatabase
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
+        /// <summary>
+        /// The GCP Oracle zone where OdbNetwork is hosted.
+        /// Example: us-east4-b-r2.
+        /// If not specified, the system will pick a zone based on availability.
+        /// </summary>
+        [Input("gcpOracleZone")]
+        public Input<string>? GcpOracleZone { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -295,6 +343,14 @@ namespace Pulumi.Gcp.OracleDatabase
         /// </summary>
         [Input("entitlementId")]
         public Input<string>? EntitlementId { get; set; }
+
+        /// <summary>
+        /// The GCP Oracle zone where OdbNetwork is hosted.
+        /// Example: us-east4-b-r2.
+        /// If not specified, the system will pick a zone based on availability.
+        /// </summary>
+        [Input("gcpOracleZone")]
+        public Input<string>? GcpOracleZone { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

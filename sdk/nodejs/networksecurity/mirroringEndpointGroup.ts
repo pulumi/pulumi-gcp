@@ -46,6 +46,32 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Network Security Mirroring Endpoint Group Broker Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const network = new gcp.compute.Network("network", {
+ *     name: "example-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const deploymentGroup = new gcp.networksecurity.MirroringDeploymentGroup("deployment_group", {
+ *     mirroringDeploymentGroupId: "example-dg",
+ *     location: "global",
+ *     network: network.id,
+ * });
+ * const _default = new gcp.networksecurity.MirroringEndpointGroup("default", {
+ *     mirroringEndpointGroupId: "example-eg",
+ *     location: "global",
+ *     type: "BROKER",
+ *     mirroringDeploymentGroups: [deploymentGroup.id],
+ *     description: "some description",
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -139,7 +165,14 @@ export class MirroringEndpointGroup extends pulumi.CustomResource {
      * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
      * See https://google.aip.dev/124.
      */
-    declare public readonly mirroringDeploymentGroup: pulumi.Output<string>;
+    declare public readonly mirroringDeploymentGroup: pulumi.Output<string | undefined>;
+    /**
+     * A list of the deployment groups that this BROKER endpoint group is
+     * connected to, for example:
+     * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+     * See https://google.aip.dev/124.
+     */
+    declare public readonly mirroringDeploymentGroups: pulumi.Output<string[] | undefined>;
     /**
      * The ID to use for the endpoint group, which will become the final component
      * of the endpoint group's resource name.
@@ -179,6 +212,14 @@ export class MirroringEndpointGroup extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
+     * The type of the endpoint group.
+     * If left unspecified, defaults to DIRECT.
+     * Possible values:
+     * DIRECT
+     * BROKER
+     */
+    declare public readonly type: pulumi.Output<string | undefined>;
+    /**
      * The timestamp when the resource was most recently updated.
      * See https://google.aip.dev/148#timestamps.
      */
@@ -205,20 +246,19 @@ export class MirroringEndpointGroup extends pulumi.CustomResource {
             resourceInputs["labels"] = state?.labels;
             resourceInputs["location"] = state?.location;
             resourceInputs["mirroringDeploymentGroup"] = state?.mirroringDeploymentGroup;
+            resourceInputs["mirroringDeploymentGroups"] = state?.mirroringDeploymentGroups;
             resourceInputs["mirroringEndpointGroupId"] = state?.mirroringEndpointGroupId;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["reconciling"] = state?.reconciling;
             resourceInputs["state"] = state?.state;
+            resourceInputs["type"] = state?.type;
             resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as MirroringEndpointGroupArgs | undefined;
             if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
-            }
-            if (args?.mirroringDeploymentGroup === undefined && !opts.urn) {
-                throw new Error("Missing required property 'mirroringDeploymentGroup'");
             }
             if (args?.mirroringEndpointGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'mirroringEndpointGroupId'");
@@ -227,8 +267,10 @@ export class MirroringEndpointGroup extends pulumi.CustomResource {
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
             resourceInputs["mirroringDeploymentGroup"] = args?.mirroringDeploymentGroup;
+            resourceInputs["mirroringDeploymentGroups"] = args?.mirroringDeploymentGroups;
             resourceInputs["mirroringEndpointGroupId"] = args?.mirroringEndpointGroupId;
             resourceInputs["project"] = args?.project;
+            resourceInputs["type"] = args?.type;
             resourceInputs["associations"] = undefined /*out*/;
             resourceInputs["connectedDeploymentGroups"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -292,6 +334,13 @@ export interface MirroringEndpointGroupState {
      */
     mirroringDeploymentGroup?: pulumi.Input<string>;
     /**
+     * A list of the deployment groups that this BROKER endpoint group is
+     * connected to, for example:
+     * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+     * See https://google.aip.dev/124.
+     */
+    mirroringDeploymentGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The ID to use for the endpoint group, which will become the final component
      * of the endpoint group's resource name.
      */
@@ -330,6 +379,14 @@ export interface MirroringEndpointGroupState {
      */
     state?: pulumi.Input<string>;
     /**
+     * The type of the endpoint group.
+     * If left unspecified, defaults to DIRECT.
+     * Possible values:
+     * DIRECT
+     * BROKER
+     */
+    type?: pulumi.Input<string>;
+    /**
      * The timestamp when the resource was most recently updated.
      * See https://google.aip.dev/148#timestamps.
      */
@@ -360,7 +417,14 @@ export interface MirroringEndpointGroupArgs {
      * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
      * See https://google.aip.dev/124.
      */
-    mirroringDeploymentGroup: pulumi.Input<string>;
+    mirroringDeploymentGroup?: pulumi.Input<string>;
+    /**
+     * A list of the deployment groups that this BROKER endpoint group is
+     * connected to, for example:
+     * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+     * See https://google.aip.dev/124.
+     */
+    mirroringDeploymentGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID to use for the endpoint group, which will become the final component
      * of the endpoint group's resource name.
@@ -371,4 +435,12 @@ export interface MirroringEndpointGroupArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The type of the endpoint group.
+     * If left unspecified, defaults to DIRECT.
+     * Possible values:
+     * DIRECT
+     * BROKER
+     */
+    type?: pulumi.Input<string>;
 }

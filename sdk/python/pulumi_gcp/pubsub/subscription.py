@@ -37,7 +37,8 @@ class SubscriptionArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  push_config: Optional[pulumi.Input['SubscriptionPushConfigArgs']] = None,
                  retain_acked_messages: Optional[pulumi.Input[_builtins.bool]] = None,
-                 retry_policy: Optional[pulumi.Input['SubscriptionRetryPolicyArgs']] = None):
+                 retry_policy: Optional[pulumi.Input['SubscriptionRetryPolicyArgs']] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Subscription resource.
         :param pulumi.Input[_builtins.str] topic: A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
@@ -125,6 +126,14 @@ class SubscriptionArgs:
                If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers.
                RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Input only. Resource manager tags to be bound to the subscription. Tag
+               keys and values have the same definition as resource manager tags. Keys
+               must be in the format tagKeys/{tag_key_id}, and values are in the format
+               tagValues/456. The field is ignored when empty. The field is immutable and
+               causes resource replacement when mutated. This field is only set at create
+               time and modifying this field after creation will trigger recreation. To
+               apply tags to an existing resource, see the `tags.TagValue`
+               resource.
         """
         pulumi.set(__self__, "topic", topic)
         if ack_deadline_seconds is not None:
@@ -159,6 +168,8 @@ class SubscriptionArgs:
             pulumi.set(__self__, "retain_acked_messages", retain_acked_messages)
         if retry_policy is not None:
             pulumi.set(__self__, "retry_policy", retry_policy)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter
@@ -432,6 +443,25 @@ class SubscriptionArgs:
     def retry_policy(self, value: Optional[pulumi.Input['SubscriptionRetryPolicyArgs']]):
         pulumi.set(self, "retry_policy", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Input only. Resource manager tags to be bound to the subscription. Tag
+        keys and values have the same definition as resource manager tags. Keys
+        must be in the format tagKeys/{tag_key_id}, and values are in the format
+        tagValues/456. The field is ignored when empty. The field is immutable and
+        causes resource replacement when mutated. This field is only set at create
+        time and modifying this field after creation will trigger recreation. To
+        apply tags to an existing resource, see the `tags.TagValue`
+        resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
 
 @pulumi.input_type
 class _SubscriptionState:
@@ -454,6 +484,7 @@ class _SubscriptionState:
                  push_config: Optional[pulumi.Input['SubscriptionPushConfigArgs']] = None,
                  retain_acked_messages: Optional[pulumi.Input[_builtins.bool]] = None,
                  retry_policy: Optional[pulumi.Input['SubscriptionRetryPolicyArgs']] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  topic: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Subscription resources.
@@ -542,6 +573,14 @@ class _SubscriptionState:
                If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers.
                RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Input only. Resource manager tags to be bound to the subscription. Tag
+               keys and values have the same definition as resource manager tags. Keys
+               must be in the format tagKeys/{tag_key_id}, and values are in the format
+               tagValues/456. The field is ignored when empty. The field is immutable and
+               causes resource replacement when mutated. This field is only set at create
+               time and modifying this field after creation will trigger recreation. To
+               apply tags to an existing resource, see the `tags.TagValue`
+               resource.
         :param pulumi.Input[_builtins.str] topic: A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
                (as in the id property of a google_pubsub_topic), or just a topic name if
                the topic is in the same project as the subscription.
@@ -582,6 +621,8 @@ class _SubscriptionState:
             pulumi.set(__self__, "retain_acked_messages", retain_acked_messages)
         if retry_policy is not None:
             pulumi.set(__self__, "retry_policy", retry_policy)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if topic is not None:
             pulumi.set(__self__, "topic", topic)
 
@@ -870,6 +911,25 @@ class _SubscriptionState:
 
     @_builtins.property
     @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Input only. Resource manager tags to be bound to the subscription. Tag
+        keys and values have the same definition as resource manager tags. Keys
+        must be in the format tagKeys/{tag_key_id}, and values are in the format
+        tagValues/456. The field is ignored when empty. The field is immutable and
+        causes resource replacement when mutated. This field is only set at create
+        time and modifying this field after creation will trigger recreation. To
+        apply tags to an existing resource, see the `tags.TagValue`
+        resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter
     def topic(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
@@ -905,6 +965,7 @@ class Subscription(pulumi.CustomResource):
                  push_config: Optional[pulumi.Input[Union['SubscriptionPushConfigArgs', 'SubscriptionPushConfigArgsDict']]] = None,
                  retain_acked_messages: Optional[pulumi.Input[_builtins.bool]] = None,
                  retry_policy: Optional[pulumi.Input[Union['SubscriptionRetryPolicyArgs', 'SubscriptionRetryPolicyArgsDict']]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  topic: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -1143,7 +1204,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_15335",
+                "filename_suffix": "-_26032",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1176,7 +1237,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_20665",
+                "filename_suffix": "-_8647",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1215,7 +1276,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_85160",
+                "filename_suffix": "-_50610",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1289,6 +1350,31 @@ class Subscription(pulumi.CustomResource):
                     },
                 },
             ])
+        ```
+        ### Pubsub Subscription Tags
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.pubsub.Topic("example", name="example-topic")
+        project = gcp.organizations.get_project()
+        tag_key = gcp.tags.TagKey("tag_key",
+            parent=project.id,
+            short_name="tag_key")
+        tag_value = gcp.tags.TagValue("tag_value",
+            parent=tag_key.id,
+            short_name="tag_value")
+        example_subscription = gcp.pubsub.Subscription("example",
+            name="example-subscription",
+            topic=example.id,
+            tags=pulumi.Output.all(
+                namespaced_name=tag_key.namespaced_name,
+                short_name=tag_value.short_name
+        ).apply(lambda resolved_outputs: {
+                resolved_outputs['namespaced_name']: resolved_outputs['short_name'],
+            })
+        )
         ```
 
         ## Import
@@ -1399,6 +1485,14 @@ class Subscription(pulumi.CustomResource):
                If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers.
                RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Input only. Resource manager tags to be bound to the subscription. Tag
+               keys and values have the same definition as resource manager tags. Keys
+               must be in the format tagKeys/{tag_key_id}, and values are in the format
+               tagValues/456. The field is ignored when empty. The field is immutable and
+               causes resource replacement when mutated. This field is only set at create
+               time and modifying this field after creation will trigger recreation. To
+               apply tags to an existing resource, see the `tags.TagValue`
+               resource.
         :param pulumi.Input[_builtins.str] topic: A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
                (as in the id property of a google_pubsub_topic), or just a topic name if
                the topic is in the same project as the subscription.
@@ -1645,7 +1739,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_15335",
+                "filename_suffix": "-_26032",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1678,7 +1772,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_20665",
+                "filename_suffix": "-_8647",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1717,7 +1811,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_85160",
+                "filename_suffix": "-_50610",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1792,6 +1886,31 @@ class Subscription(pulumi.CustomResource):
                 },
             ])
         ```
+        ### Pubsub Subscription Tags
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.pubsub.Topic("example", name="example-topic")
+        project = gcp.organizations.get_project()
+        tag_key = gcp.tags.TagKey("tag_key",
+            parent=project.id,
+            short_name="tag_key")
+        tag_value = gcp.tags.TagValue("tag_value",
+            parent=tag_key.id,
+            short_name="tag_value")
+        example_subscription = gcp.pubsub.Subscription("example",
+            name="example-subscription",
+            topic=example.id,
+            tags=pulumi.Output.all(
+                namespaced_name=tag_key.namespaced_name,
+                short_name=tag_value.short_name
+        ).apply(lambda resolved_outputs: {
+                resolved_outputs['namespaced_name']: resolved_outputs['short_name'],
+            })
+        )
+        ```
 
         ## Import
 
@@ -1848,6 +1967,7 @@ class Subscription(pulumi.CustomResource):
                  push_config: Optional[pulumi.Input[Union['SubscriptionPushConfigArgs', 'SubscriptionPushConfigArgsDict']]] = None,
                  retain_acked_messages: Optional[pulumi.Input[_builtins.bool]] = None,
                  retry_policy: Optional[pulumi.Input[Union['SubscriptionRetryPolicyArgs', 'SubscriptionRetryPolicyArgsDict']]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  topic: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1874,6 +1994,7 @@ class Subscription(pulumi.CustomResource):
             __props__.__dict__["push_config"] = push_config
             __props__.__dict__["retain_acked_messages"] = retain_acked_messages
             __props__.__dict__["retry_policy"] = retry_policy
+            __props__.__dict__["tags"] = tags
             if topic is None and not opts.urn:
                 raise TypeError("Missing required property 'topic'")
             __props__.__dict__["topic"] = topic
@@ -1909,6 +2030,7 @@ class Subscription(pulumi.CustomResource):
             push_config: Optional[pulumi.Input[Union['SubscriptionPushConfigArgs', 'SubscriptionPushConfigArgsDict']]] = None,
             retain_acked_messages: Optional[pulumi.Input[_builtins.bool]] = None,
             retry_policy: Optional[pulumi.Input[Union['SubscriptionRetryPolicyArgs', 'SubscriptionRetryPolicyArgsDict']]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             topic: Optional[pulumi.Input[_builtins.str]] = None) -> 'Subscription':
         """
         Get an existing Subscription resource's state with the given name, id, and optional extra
@@ -2002,6 +2124,14 @@ class Subscription(pulumi.CustomResource):
                If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers.
                RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Input only. Resource manager tags to be bound to the subscription. Tag
+               keys and values have the same definition as resource manager tags. Keys
+               must be in the format tagKeys/{tag_key_id}, and values are in the format
+               tagValues/456. The field is ignored when empty. The field is immutable and
+               causes resource replacement when mutated. This field is only set at create
+               time and modifying this field after creation will trigger recreation. To
+               apply tags to an existing resource, see the `tags.TagValue`
+               resource.
         :param pulumi.Input[_builtins.str] topic: A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
                (as in the id property of a google_pubsub_topic), or just a topic name if
                the topic is in the same project as the subscription.
@@ -2028,6 +2158,7 @@ class Subscription(pulumi.CustomResource):
         __props__.__dict__["push_config"] = push_config
         __props__.__dict__["retain_acked_messages"] = retain_acked_messages
         __props__.__dict__["retry_policy"] = retry_policy
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["topic"] = topic
         return Subscription(resource_name, opts=opts, __props__=__props__)
 
@@ -2241,6 +2372,21 @@ class Subscription(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "retry_policy")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        Input only. Resource manager tags to be bound to the subscription. Tag
+        keys and values have the same definition as resource manager tags. Keys
+        must be in the format tagKeys/{tag_key_id}, and values are in the format
+        tagValues/456. The field is ignored when empty. The field is immutable and
+        causes resource replacement when mutated. This field is only set at create
+        time and modifying this field after creation will trigger recreation. To
+        apply tags to an existing resource, see the `tags.TagValue`
+        resource.
+        """
+        return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter

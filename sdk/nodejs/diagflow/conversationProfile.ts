@@ -42,6 +42,22 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Dialogflow Conversation Profile Recognition Result Notification
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const recognitionResultNotificationProfileTopic = new gcp.pubsub.Topic("recognition_result_notification_profile", {name: "recognition-result-notification"});
+ * const recognitionResultNotificationProfile = new gcp.diagflow.ConversationProfile("recognition_result_notification_profile", {
+ *     displayName: "dialogflow-profile",
+ *     location: "global",
+ *     newRecognitionResultNotificationConfig: {
+ *         topic: recognitionResultNotificationProfileTopic.id,
+ *         messageFormat: "JSON",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -126,6 +142,11 @@ export class ConversationProfile extends pulumi.CustomResource {
      */
     declare public readonly newMessageEventNotificationConfig: pulumi.Output<outputs.diagflow.ConversationProfileNewMessageEventNotificationConfig | undefined>;
     /**
+     * Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - "participantId" - "participantRole" - "messageId"
+     * Structure is documented below.
+     */
+    declare public readonly newRecognitionResultNotificationConfig: pulumi.Output<outputs.diagflow.ConversationProfileNewRecognitionResultNotificationConfig | undefined>;
+    /**
      * Pub/Sub topic on which to publish new agent assistant events.
      * Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
      * Structure is documented below.
@@ -177,6 +198,7 @@ export class ConversationProfile extends pulumi.CustomResource {
             resourceInputs["loggingConfig"] = state?.loggingConfig;
             resourceInputs["name"] = state?.name;
             resourceInputs["newMessageEventNotificationConfig"] = state?.newMessageEventNotificationConfig;
+            resourceInputs["newRecognitionResultNotificationConfig"] = state?.newRecognitionResultNotificationConfig;
             resourceInputs["notificationConfig"] = state?.notificationConfig;
             resourceInputs["project"] = state?.project;
             resourceInputs["securitySettings"] = state?.securitySettings;
@@ -199,6 +221,7 @@ export class ConversationProfile extends pulumi.CustomResource {
             resourceInputs["location"] = args?.location;
             resourceInputs["loggingConfig"] = args?.loggingConfig;
             resourceInputs["newMessageEventNotificationConfig"] = args?.newMessageEventNotificationConfig;
+            resourceInputs["newRecognitionResultNotificationConfig"] = args?.newRecognitionResultNotificationConfig;
             resourceInputs["notificationConfig"] = args?.notificationConfig;
             resourceInputs["project"] = args?.project;
             resourceInputs["securitySettings"] = args?.securitySettings;
@@ -258,6 +281,11 @@ export interface ConversationProfileState {
      * Structure is documented below.
      */
     newMessageEventNotificationConfig?: pulumi.Input<inputs.diagflow.ConversationProfileNewMessageEventNotificationConfig>;
+    /**
+     * Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - "participantId" - "participantRole" - "messageId"
+     * Structure is documented below.
+     */
+    newRecognitionResultNotificationConfig?: pulumi.Input<inputs.diagflow.ConversationProfileNewRecognitionResultNotificationConfig>;
     /**
      * Pub/Sub topic on which to publish new agent assistant events.
      * Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
@@ -331,6 +359,11 @@ export interface ConversationProfileArgs {
      * Structure is documented below.
      */
     newMessageEventNotificationConfig?: pulumi.Input<inputs.diagflow.ConversationProfileNewMessageEventNotificationConfig>;
+    /**
+     * Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - "participantId" - "participantRole" - "messageId"
+     * Structure is documented below.
+     */
+    newRecognitionResultNotificationConfig?: pulumi.Input<inputs.diagflow.ConversationProfileNewRecognitionResultNotificationConfig>;
     /**
      * Pub/Sub topic on which to publish new agent assistant events.
      * Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"

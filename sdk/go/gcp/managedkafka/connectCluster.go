@@ -28,72 +28,27 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/managedkafka"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-//	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
-//				ProjectId:      pulumi.String("tf-test_60365"),
-//				Name:           pulumi.String("tf-test_80215"),
-//				OrgId:          pulumi.String("123456789"),
-//				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
-//				DeletionPolicy: pulumi.String("DELETE"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			wait60Seconds, err := time.NewSleep(ctx, "wait_60_seconds", &time.SleepArgs{
-//				CreateDuration: "60s",
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				project,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			compute, err := projects.NewService(ctx, "compute", &projects.ServiceArgs{
-//				Project: project.ProjectId,
-//				Service: pulumi.String("compute.googleapis.com"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				wait60Seconds,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			managedkafka, err := projects.NewService(ctx, "managedkafka", &projects.ServiceArgs{
-//				Project: project.ProjectId,
-//				Service: pulumi.String("managedkafka.googleapis.com"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				compute,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			wait120Seconds, err := time.NewSleep(ctx, "wait_120_seconds", &time.SleepArgs{
-//				CreateDuration: "120s",
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				managedkafka,
-//			}))
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			mkcSecondarySubnet, err := compute.NewSubnetwork(ctx, "mkc_secondary_subnet", &compute.SubnetworkArgs{
-//				Project:     project.ProjectId,
+//				Project:     pulumi.String(project.ProjectId),
 //				Name:        pulumi.String("my-secondary-subnetwork"),
 //				IpCidrRange: pulumi.String("10.3.0.0/16"),
 //				Region:      pulumi.String("us-central1"),
 //				Network:     pulumi.String("default"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				wait120Seconds,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			gmkCluster, err := managedkafka.NewCluster(ctx, "gmk_cluster", &managedkafka.ClusterArgs{
-//				Project:   project.ProjectId,
+//			cluster, err := managedkafka.NewCluster(ctx, "cluster", &managedkafka.ClusterArgs{
 //				ClusterId: pulumi.String("my-cluster"),
 //				Location:  pulumi.String("us-central1"),
 //				CapacityConfig: &managedkafka.ClusterCapacityConfigArgs{
@@ -104,26 +59,19 @@ import (
 //					AccessConfig: &managedkafka.ClusterGcpConfigAccessConfigArgs{
 //						NetworkConfigs: managedkafka.ClusterGcpConfigAccessConfigNetworkConfigArray{
 //							&managedkafka.ClusterGcpConfigAccessConfigNetworkConfigArgs{
-//								Subnet: project.ProjectId.ApplyT(func(projectId string) (string, error) {
-//									return fmt.Sprintf("projects/%v/regions/us-central1/subnetworks/default", projectId), nil
-//								}).(pulumi.StringOutput),
+//								Subnet: pulumi.Sprintf("projects/%v/regions/us-central1/subnetworks/default", project.Number),
 //							},
 //						},
 //					},
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				managedkafka,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = managedkafka.NewConnectCluster(ctx, "example", &managedkafka.ConnectClusterArgs{
-//				Project:          project.ProjectId,
 //				ConnectClusterId: pulumi.String("my-connect-cluster"),
-//				KafkaCluster: pulumi.All(project.ProjectId, gmkCluster.ClusterId).ApplyT(func(_args []interface{}) (string, error) {
-//					projectId := _args[0].(string)
-//					clusterId := _args[1].(string)
-//					return fmt.Sprintf("projects/%v/locations/us-central1/clusters/%v", projectId, clusterId), nil
+//				KafkaCluster: cluster.ClusterId.ApplyT(func(clusterId string) (string, error) {
+//					return fmt.Sprintf("projects/%v/locations/us-central1/clusters/%v", project.ProjectId, clusterId), nil
 //				}).(pulumi.StringOutput),
 //				Location: pulumi.String("us-central1"),
 //				CapacityConfig: &managedkafka.ConnectClusterCapacityConfigArgs{
@@ -134,17 +82,13 @@ import (
 //					AccessConfig: &managedkafka.ConnectClusterGcpConfigAccessConfigArgs{
 //						NetworkConfigs: managedkafka.ConnectClusterGcpConfigAccessConfigNetworkConfigArray{
 //							&managedkafka.ConnectClusterGcpConfigAccessConfigNetworkConfigArgs{
-//								PrimarySubnet: project.ProjectId.ApplyT(func(projectId string) (string, error) {
-//									return fmt.Sprintf("projects/%v/regions/us-central1/subnetworks/default", projectId), nil
-//								}).(pulumi.StringOutput),
+//								PrimarySubnet: pulumi.Sprintf("projects/%v/regions/us-central1/subnetworks/default", project.Number),
 //								AdditionalSubnets: pulumi.StringArray{
 //									mkcSecondarySubnet.ID(),
 //								},
 //								DnsDomainNames: pulumi.StringArray{
-//									pulumi.All(gmkCluster.ClusterId, project.ProjectId).ApplyT(func(_args []interface{}) (string, error) {
-//										clusterId := _args[0].(string)
-//										projectId := _args[1].(string)
-//										return fmt.Sprintf("%v.us-central1.managedkafka.%v.cloud.goog", clusterId, projectId), nil
+//									cluster.ClusterId.ApplyT(func(clusterId string) (string, error) {
+//										return fmt.Sprintf("%v.us-central1.managedkafka.%v.cloud.goog", clusterId, project.ProjectId), nil
 //									}).(pulumi.StringOutput),
 //								},
 //							},
@@ -154,9 +98,7 @@ import (
 //				Labels: pulumi.StringMap{
 //					"key": pulumi.String("value"),
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				managedkafka,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}

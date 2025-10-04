@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.vertex.AiIndexEndpointArgs;
 import com.pulumi.gcp.vertex.inputs.AiIndexEndpointState;
+import com.pulumi.gcp.vertex.outputs.AiIndexEndpointEncryptionSpec;
 import com.pulumi.gcp.vertex.outputs.AiIndexEndpointPrivateServiceConnectConfig;
 import java.lang.Boolean;
 import java.lang.String;
@@ -265,6 +266,22 @@ public class AiIndexEndpoint extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
+    }
+    /**
+     * Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="encryptionSpec", refs={AiIndexEndpointEncryptionSpec.class}, tree="[0]")
+    private Output</* @Nullable */ AiIndexEndpointEncryptionSpec> encryptionSpec;
+
+    /**
+     * @return Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<AiIndexEndpointEncryptionSpec>> encryptionSpec() {
+        return Codegen.optional(this.encryptionSpec);
     }
     /**
      * Used to perform consistent read-modify-write updates.

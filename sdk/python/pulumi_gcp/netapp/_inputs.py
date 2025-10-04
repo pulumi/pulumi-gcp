@@ -570,7 +570,7 @@ if not MYPY:
         """
         Required. Name of the user's local source cluster to be peered with the destination cluster.
         """
-        peer_ip_addresses: NotRequired[pulumi.Input[_builtins.str]]
+        peer_ip_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
         Required. List of node ip addresses to be peered with.
         """
@@ -596,7 +596,7 @@ class VolumeHybridReplicationParametersArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  peer_cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_ip_addresses: Optional[pulumi.Input[_builtins.str]] = None,
+                 peer_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  peer_svm_name: Optional[pulumi.Input[_builtins.str]] = None,
                  peer_volume_name: Optional[pulumi.Input[_builtins.str]] = None,
                  replication: Optional[pulumi.Input[_builtins.str]] = None):
@@ -606,7 +606,7 @@ class VolumeHybridReplicationParametersArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. Labels to be added to the replication as the key value pairs.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[_builtins.str] peer_cluster_name: Required. Name of the user's local source cluster to be peered with the destination cluster.
-        :param pulumi.Input[_builtins.str] peer_ip_addresses: Required. List of node ip addresses to be peered with.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] peer_ip_addresses: Required. List of node ip addresses to be peered with.
         :param pulumi.Input[_builtins.str] peer_svm_name: Required. Name of the user's local source vserver svm to be peered with the destination vserver svm.
         :param pulumi.Input[_builtins.str] peer_volume_name: Required. Name of the user's local source volume to be peered with the destination volume.
         :param pulumi.Input[_builtins.str] replication: Required. Desired name for the replication of this volume.
@@ -679,14 +679,14 @@ class VolumeHybridReplicationParametersArgs:
 
     @_builtins.property
     @pulumi.getter(name="peerIpAddresses")
-    def peer_ip_addresses(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_ip_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Required. List of node ip addresses to be peered with.
         """
         return pulumi.get(self, "peer_ip_addresses")
 
     @peer_ip_addresses.setter
-    def peer_ip_addresses(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_ip_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "peer_ip_addresses", value)
 
     @_builtins.property
@@ -745,6 +745,11 @@ if not MYPY:
         (Output)
         Human-readable mount instructions.
         """
+        ip_address: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        IP Address.
+        """
         protocol: NotRequired[pulumi.Input[_builtins.str]]
         """
         (Output)
@@ -759,6 +764,7 @@ class VolumeMountOptionArgs:
                  export: Optional[pulumi.Input[_builtins.str]] = None,
                  export_full: Optional[pulumi.Input[_builtins.str]] = None,
                  instructions: Optional[pulumi.Input[_builtins.str]] = None,
+                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
                  protocol: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] export: (Output)
@@ -769,6 +775,8 @@ class VolumeMountOptionArgs:
                Format for SMB volumes: `\\\\\\\\netbios_prefix-four_random_hex_letters.domain_name\\\\shareName`
         :param pulumi.Input[_builtins.str] instructions: (Output)
                Human-readable mount instructions.
+        :param pulumi.Input[_builtins.str] ip_address: (Output)
+               IP Address.
         :param pulumi.Input[_builtins.str] protocol: (Output)
                Protocol to mount with.
         """
@@ -778,6 +786,8 @@ class VolumeMountOptionArgs:
             pulumi.set(__self__, "export_full", export_full)
         if instructions is not None:
             pulumi.set(__self__, "instructions", instructions)
+        if ip_address is not None:
+            pulumi.set(__self__, "ip_address", ip_address)
         if protocol is not None:
             pulumi.set(__self__, "protocol", protocol)
 
@@ -821,6 +831,19 @@ class VolumeMountOptionArgs:
     @instructions.setter
     def instructions(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "instructions", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        IP Address.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @ip_address.setter
+    def ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ip_address", value)
 
     @_builtins.property
     @pulumi.getter

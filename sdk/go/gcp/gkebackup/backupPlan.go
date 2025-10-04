@@ -202,6 +202,65 @@ import (
 //	}
 //
 // ```
+// ### Gkebackup Backupplan Nslabels
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkebackup"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
+//				Name:             pulumi.String("nslabels-cluster"),
+//				Location:         pulumi.String("us-central1"),
+//				InitialNodeCount: pulumi.Int(1),
+//				WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
+//					WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
+//				},
+//				AddonsConfig: &container.ClusterAddonsConfigArgs{
+//					GkeBackupAgentConfig: &container.ClusterAddonsConfigGkeBackupAgentConfigArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
+//				},
+//				DeletionProtection: pulumi.Bool(true),
+//				Network:            pulumi.String("default"),
+//				Subnetwork:         pulumi.String("default"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gkebackup.NewBackupPlan(ctx, "nslabels", &gkebackup.BackupPlanArgs{
+//				Name:     pulumi.String("nslabels-plan"),
+//				Cluster:  primary.ID(),
+//				Location: pulumi.String("us-central1"),
+//				BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
+//					IncludeVolumeData: pulumi.Bool(true),
+//					IncludeSecrets:    pulumi.Bool(true),
+//					SelectedNamespaceLabels: &gkebackup.BackupPlanBackupConfigSelectedNamespaceLabelsArgs{
+//						ResourceLabels: gkebackup.BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArray{
+//							&gkebackup.BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArgs{
+//								Key:   pulumi.String("key1"),
+//								Value: pulumi.String("value1"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Gkebackup Backupplan Full
 //
 // ```go

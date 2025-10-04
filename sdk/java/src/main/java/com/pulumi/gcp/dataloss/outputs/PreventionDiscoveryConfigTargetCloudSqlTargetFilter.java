@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PreventionDiscoveryConfigTargetCloudSqlTargetFilter {
     /**
-     * @return A specific set of buckets for this filter to apply to.
+     * @return A collection of resources for this filter to apply to.
      * Structure is documented below.
      * 
      */
@@ -33,7 +33,7 @@ public final class PreventionDiscoveryConfigTargetCloudSqlTargetFilter {
 
     private PreventionDiscoveryConfigTargetCloudSqlTargetFilter() {}
     /**
-     * @return A specific set of buckets for this filter to apply to.
+     * @return A collection of resources for this filter to apply to.
      * Structure is documented below.
      * 
      */

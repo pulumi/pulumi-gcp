@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
     public sealed class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection
     {
         /// <summary>
-        /// A collection of regular expressions to match a file store against.
+        /// A collection of regular expressions to match a resource against.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexes? IncludeRegexes;

@@ -4437,6 +4437,299 @@ func (o GetDockerImagesDockerImageArrayOutput) Index(i pulumi.IntInput) GetDocke
 	}).(GetDockerImagesDockerImageOutput)
 }
 
+type GetMavenArtifactsMavenArtifact struct {
+	// The name of the artifact to fetch.
+	ArtifactId string `pulumi:"artifactId"`
+	// The time the artifact was created.
+	CreateTime string `pulumi:"createTime"`
+	// Group ID for the artifact.
+	GroupId string `pulumi:"groupId"`
+	// The fully qualified name of the fetched artifact. Format:
+	Name string `pulumi:"name"`
+	// URL to access the pom file of the artifact.
+	PomUri string `pulumi:"pomUri"`
+	// The time the artifact was last updated.
+	UpdateTime string `pulumi:"updateTime"`
+	// The version of the Maven artifact.
+	Version string `pulumi:"version"`
+}
+
+// GetMavenArtifactsMavenArtifactInput is an input type that accepts GetMavenArtifactsMavenArtifactArgs and GetMavenArtifactsMavenArtifactOutput values.
+// You can construct a concrete instance of `GetMavenArtifactsMavenArtifactInput` via:
+//
+//	GetMavenArtifactsMavenArtifactArgs{...}
+type GetMavenArtifactsMavenArtifactInput interface {
+	pulumi.Input
+
+	ToGetMavenArtifactsMavenArtifactOutput() GetMavenArtifactsMavenArtifactOutput
+	ToGetMavenArtifactsMavenArtifactOutputWithContext(context.Context) GetMavenArtifactsMavenArtifactOutput
+}
+
+type GetMavenArtifactsMavenArtifactArgs struct {
+	// The name of the artifact to fetch.
+	ArtifactId pulumi.StringInput `pulumi:"artifactId"`
+	// The time the artifact was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Group ID for the artifact.
+	GroupId pulumi.StringInput `pulumi:"groupId"`
+	// The fully qualified name of the fetched artifact. Format:
+	Name pulumi.StringInput `pulumi:"name"`
+	// URL to access the pom file of the artifact.
+	PomUri pulumi.StringInput `pulumi:"pomUri"`
+	// The time the artifact was last updated.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+	// The version of the Maven artifact.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetMavenArtifactsMavenArtifactArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMavenArtifactsMavenArtifact)(nil)).Elem()
+}
+
+func (i GetMavenArtifactsMavenArtifactArgs) ToGetMavenArtifactsMavenArtifactOutput() GetMavenArtifactsMavenArtifactOutput {
+	return i.ToGetMavenArtifactsMavenArtifactOutputWithContext(context.Background())
+}
+
+func (i GetMavenArtifactsMavenArtifactArgs) ToGetMavenArtifactsMavenArtifactOutputWithContext(ctx context.Context) GetMavenArtifactsMavenArtifactOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMavenArtifactsMavenArtifactOutput)
+}
+
+// GetMavenArtifactsMavenArtifactArrayInput is an input type that accepts GetMavenArtifactsMavenArtifactArray and GetMavenArtifactsMavenArtifactArrayOutput values.
+// You can construct a concrete instance of `GetMavenArtifactsMavenArtifactArrayInput` via:
+//
+//	GetMavenArtifactsMavenArtifactArray{ GetMavenArtifactsMavenArtifactArgs{...} }
+type GetMavenArtifactsMavenArtifactArrayInput interface {
+	pulumi.Input
+
+	ToGetMavenArtifactsMavenArtifactArrayOutput() GetMavenArtifactsMavenArtifactArrayOutput
+	ToGetMavenArtifactsMavenArtifactArrayOutputWithContext(context.Context) GetMavenArtifactsMavenArtifactArrayOutput
+}
+
+type GetMavenArtifactsMavenArtifactArray []GetMavenArtifactsMavenArtifactInput
+
+func (GetMavenArtifactsMavenArtifactArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMavenArtifactsMavenArtifact)(nil)).Elem()
+}
+
+func (i GetMavenArtifactsMavenArtifactArray) ToGetMavenArtifactsMavenArtifactArrayOutput() GetMavenArtifactsMavenArtifactArrayOutput {
+	return i.ToGetMavenArtifactsMavenArtifactArrayOutputWithContext(context.Background())
+}
+
+func (i GetMavenArtifactsMavenArtifactArray) ToGetMavenArtifactsMavenArtifactArrayOutputWithContext(ctx context.Context) GetMavenArtifactsMavenArtifactArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMavenArtifactsMavenArtifactArrayOutput)
+}
+
+type GetMavenArtifactsMavenArtifactOutput struct{ *pulumi.OutputState }
+
+func (GetMavenArtifactsMavenArtifactOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMavenArtifactsMavenArtifact)(nil)).Elem()
+}
+
+func (o GetMavenArtifactsMavenArtifactOutput) ToGetMavenArtifactsMavenArtifactOutput() GetMavenArtifactsMavenArtifactOutput {
+	return o
+}
+
+func (o GetMavenArtifactsMavenArtifactOutput) ToGetMavenArtifactsMavenArtifactOutputWithContext(ctx context.Context) GetMavenArtifactsMavenArtifactOutput {
+	return o
+}
+
+// The name of the artifact to fetch.
+func (o GetMavenArtifactsMavenArtifactOutput) ArtifactId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMavenArtifactsMavenArtifact) string { return v.ArtifactId }).(pulumi.StringOutput)
+}
+
+// The time the artifact was created.
+func (o GetMavenArtifactsMavenArtifactOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMavenArtifactsMavenArtifact) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Group ID for the artifact.
+func (o GetMavenArtifactsMavenArtifactOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMavenArtifactsMavenArtifact) string { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// The fully qualified name of the fetched artifact. Format:
+func (o GetMavenArtifactsMavenArtifactOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMavenArtifactsMavenArtifact) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// URL to access the pom file of the artifact.
+func (o GetMavenArtifactsMavenArtifactOutput) PomUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMavenArtifactsMavenArtifact) string { return v.PomUri }).(pulumi.StringOutput)
+}
+
+// The time the artifact was last updated.
+func (o GetMavenArtifactsMavenArtifactOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMavenArtifactsMavenArtifact) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// The version of the Maven artifact.
+func (o GetMavenArtifactsMavenArtifactOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMavenArtifactsMavenArtifact) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetMavenArtifactsMavenArtifactArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMavenArtifactsMavenArtifactArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMavenArtifactsMavenArtifact)(nil)).Elem()
+}
+
+func (o GetMavenArtifactsMavenArtifactArrayOutput) ToGetMavenArtifactsMavenArtifactArrayOutput() GetMavenArtifactsMavenArtifactArrayOutput {
+	return o
+}
+
+func (o GetMavenArtifactsMavenArtifactArrayOutput) ToGetMavenArtifactsMavenArtifactArrayOutputWithContext(ctx context.Context) GetMavenArtifactsMavenArtifactArrayOutput {
+	return o
+}
+
+func (o GetMavenArtifactsMavenArtifactArrayOutput) Index(i pulumi.IntInput) GetMavenArtifactsMavenArtifactOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMavenArtifactsMavenArtifact {
+		return vs[0].([]GetMavenArtifactsMavenArtifact)[vs[1].(int)]
+	}).(GetMavenArtifactsMavenArtifactOutput)
+}
+
+type GetNpmPackagesNpmPackage struct {
+	// The time, as a RFC 3339 string, this package was created.
+	CreateTime string `pulumi:"createTime"`
+	// The fully qualified name of the fetched package.  This name has the form: `projects/{{project}}/locations/{{location}}/repository/{{repository_id}}/npmPackages/{{npmPackage}}`. For example, `projects/example-project/locations/us-central1/repository/example-repo/npmPackages/my-test-package:0.0.1`
+	Name string `pulumi:"name"`
+	// Extracted short name of the package (last part of `name`, without version). For example, from `.../my-test-package:0.0.1` → `my-test-package`.
+	PackageName string `pulumi:"packageName"`
+	// The tags associated with the Npm package.
+	Tags []string `pulumi:"tags"`
+	// The time, as a RFC 3339 string, this package was updated.
+	UpdateTime string `pulumi:"updateTime"`
+	// Version of this package.
+	Version string `pulumi:"version"`
+}
+
+// GetNpmPackagesNpmPackageInput is an input type that accepts GetNpmPackagesNpmPackageArgs and GetNpmPackagesNpmPackageOutput values.
+// You can construct a concrete instance of `GetNpmPackagesNpmPackageInput` via:
+//
+//	GetNpmPackagesNpmPackageArgs{...}
+type GetNpmPackagesNpmPackageInput interface {
+	pulumi.Input
+
+	ToGetNpmPackagesNpmPackageOutput() GetNpmPackagesNpmPackageOutput
+	ToGetNpmPackagesNpmPackageOutputWithContext(context.Context) GetNpmPackagesNpmPackageOutput
+}
+
+type GetNpmPackagesNpmPackageArgs struct {
+	// The time, as a RFC 3339 string, this package was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The fully qualified name of the fetched package.  This name has the form: `projects/{{project}}/locations/{{location}}/repository/{{repository_id}}/npmPackages/{{npmPackage}}`. For example, `projects/example-project/locations/us-central1/repository/example-repo/npmPackages/my-test-package:0.0.1`
+	Name pulumi.StringInput `pulumi:"name"`
+	// Extracted short name of the package (last part of `name`, without version). For example, from `.../my-test-package:0.0.1` → `my-test-package`.
+	PackageName pulumi.StringInput `pulumi:"packageName"`
+	// The tags associated with the Npm package.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// The time, as a RFC 3339 string, this package was updated.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+	// Version of this package.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetNpmPackagesNpmPackageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNpmPackagesNpmPackage)(nil)).Elem()
+}
+
+func (i GetNpmPackagesNpmPackageArgs) ToGetNpmPackagesNpmPackageOutput() GetNpmPackagesNpmPackageOutput {
+	return i.ToGetNpmPackagesNpmPackageOutputWithContext(context.Background())
+}
+
+func (i GetNpmPackagesNpmPackageArgs) ToGetNpmPackagesNpmPackageOutputWithContext(ctx context.Context) GetNpmPackagesNpmPackageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNpmPackagesNpmPackageOutput)
+}
+
+// GetNpmPackagesNpmPackageArrayInput is an input type that accepts GetNpmPackagesNpmPackageArray and GetNpmPackagesNpmPackageArrayOutput values.
+// You can construct a concrete instance of `GetNpmPackagesNpmPackageArrayInput` via:
+//
+//	GetNpmPackagesNpmPackageArray{ GetNpmPackagesNpmPackageArgs{...} }
+type GetNpmPackagesNpmPackageArrayInput interface {
+	pulumi.Input
+
+	ToGetNpmPackagesNpmPackageArrayOutput() GetNpmPackagesNpmPackageArrayOutput
+	ToGetNpmPackagesNpmPackageArrayOutputWithContext(context.Context) GetNpmPackagesNpmPackageArrayOutput
+}
+
+type GetNpmPackagesNpmPackageArray []GetNpmPackagesNpmPackageInput
+
+func (GetNpmPackagesNpmPackageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNpmPackagesNpmPackage)(nil)).Elem()
+}
+
+func (i GetNpmPackagesNpmPackageArray) ToGetNpmPackagesNpmPackageArrayOutput() GetNpmPackagesNpmPackageArrayOutput {
+	return i.ToGetNpmPackagesNpmPackageArrayOutputWithContext(context.Background())
+}
+
+func (i GetNpmPackagesNpmPackageArray) ToGetNpmPackagesNpmPackageArrayOutputWithContext(ctx context.Context) GetNpmPackagesNpmPackageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNpmPackagesNpmPackageArrayOutput)
+}
+
+type GetNpmPackagesNpmPackageOutput struct{ *pulumi.OutputState }
+
+func (GetNpmPackagesNpmPackageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNpmPackagesNpmPackage)(nil)).Elem()
+}
+
+func (o GetNpmPackagesNpmPackageOutput) ToGetNpmPackagesNpmPackageOutput() GetNpmPackagesNpmPackageOutput {
+	return o
+}
+
+func (o GetNpmPackagesNpmPackageOutput) ToGetNpmPackagesNpmPackageOutputWithContext(ctx context.Context) GetNpmPackagesNpmPackageOutput {
+	return o
+}
+
+// The time, as a RFC 3339 string, this package was created.
+func (o GetNpmPackagesNpmPackageOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNpmPackagesNpmPackage) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The fully qualified name of the fetched package.  This name has the form: `projects/{{project}}/locations/{{location}}/repository/{{repository_id}}/npmPackages/{{npmPackage}}`. For example, `projects/example-project/locations/us-central1/repository/example-repo/npmPackages/my-test-package:0.0.1`
+func (o GetNpmPackagesNpmPackageOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNpmPackagesNpmPackage) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Extracted short name of the package (last part of `name`, without version). For example, from `.../my-test-package:0.0.1` → `my-test-package`.
+func (o GetNpmPackagesNpmPackageOutput) PackageName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNpmPackagesNpmPackage) string { return v.PackageName }).(pulumi.StringOutput)
+}
+
+// The tags associated with the Npm package.
+func (o GetNpmPackagesNpmPackageOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNpmPackagesNpmPackage) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The time, as a RFC 3339 string, this package was updated.
+func (o GetNpmPackagesNpmPackageOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNpmPackagesNpmPackage) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Version of this package.
+func (o GetNpmPackagesNpmPackageOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNpmPackagesNpmPackage) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetNpmPackagesNpmPackageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNpmPackagesNpmPackageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNpmPackagesNpmPackage)(nil)).Elem()
+}
+
+func (o GetNpmPackagesNpmPackageArrayOutput) ToGetNpmPackagesNpmPackageArrayOutput() GetNpmPackagesNpmPackageArrayOutput {
+	return o
+}
+
+func (o GetNpmPackagesNpmPackageArrayOutput) ToGetNpmPackagesNpmPackageArrayOutputWithContext(ctx context.Context) GetNpmPackagesNpmPackageArrayOutput {
+	return o
+}
+
+func (o GetNpmPackagesNpmPackageArrayOutput) Index(i pulumi.IntInput) GetNpmPackagesNpmPackageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNpmPackagesNpmPackage {
+		return vs[0].([]GetNpmPackagesNpmPackage)[vs[1].(int)]
+	}).(GetNpmPackagesNpmPackageOutput)
+}
+
 type GetRepositoriesRepository struct {
 	// The time when the repository was created.
 	CreateTime string `pulumi:"createTime"`
@@ -7514,6 +7807,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryVulnerabilityScanningConfigPtrInput)(nil)).Elem(), RepositoryVulnerabilityScanningConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDockerImagesDockerImageInput)(nil)).Elem(), GetDockerImagesDockerImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDockerImagesDockerImageArrayInput)(nil)).Elem(), GetDockerImagesDockerImageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMavenArtifactsMavenArtifactInput)(nil)).Elem(), GetMavenArtifactsMavenArtifactArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMavenArtifactsMavenArtifactArrayInput)(nil)).Elem(), GetMavenArtifactsMavenArtifactArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNpmPackagesNpmPackageInput)(nil)).Elem(), GetNpmPackagesNpmPackageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNpmPackagesNpmPackageArrayInput)(nil)).Elem(), GetNpmPackagesNpmPackageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoriesRepositoryInput)(nil)).Elem(), GetRepositoriesRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoriesRepositoryArrayInput)(nil)).Elem(), GetRepositoriesRepositoryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryCleanupPolicyInput)(nil)).Elem(), GetRepositoryCleanupPolicyArgs{})
@@ -7622,6 +7919,10 @@ func init() {
 	pulumi.RegisterOutputType(RepositoryVulnerabilityScanningConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetDockerImagesDockerImageOutput{})
 	pulumi.RegisterOutputType(GetDockerImagesDockerImageArrayOutput{})
+	pulumi.RegisterOutputType(GetMavenArtifactsMavenArtifactOutput{})
+	pulumi.RegisterOutputType(GetMavenArtifactsMavenArtifactArrayOutput{})
+	pulumi.RegisterOutputType(GetNpmPackagesNpmPackageOutput{})
+	pulumi.RegisterOutputType(GetNpmPackagesNpmPackageArrayOutput{})
 	pulumi.RegisterOutputType(GetRepositoriesRepositoryOutput{})
 	pulumi.RegisterOutputType(GetRepositoriesRepositoryArrayOutput{})
 	pulumi.RegisterOutputType(GetRepositoryCleanupPolicyOutput{})

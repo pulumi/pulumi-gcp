@@ -56,6 +56,7 @@ export interface GetInsightsDatasetConfigArgs {
  * A collection of values returned by getInsightsDatasetConfig.
  */
 export interface GetInsightsDatasetConfigResult {
+    readonly activityDataRetentionPeriodDays: number;
     readonly createTime: string;
     readonly datasetConfigId: string;
     readonly datasetConfigState: string;

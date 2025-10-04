@@ -137,6 +137,10 @@ export class InsightsReportConfig extends pulumi.CustomResource {
      */
     declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
+     * If set, all the inventory report details associated with this report configuration are deleted.
+     */
+    declare public readonly forceDestroy: pulumi.Output<boolean | undefined>;
+    /**
      * Options for configuring how inventory reports are generated.
      * Structure is documented below.
      */
@@ -180,6 +184,7 @@ export class InsightsReportConfig extends pulumi.CustomResource {
             const state = argsOrState as InsightsReportConfigState | undefined;
             resourceInputs["csvOptions"] = state?.csvOptions;
             resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["forceDestroy"] = state?.forceDestroy;
             resourceInputs["frequencyOptions"] = state?.frequencyOptions;
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
@@ -193,6 +198,7 @@ export class InsightsReportConfig extends pulumi.CustomResource {
             }
             resourceInputs["csvOptions"] = args?.csvOptions;
             resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["forceDestroy"] = args?.forceDestroy;
             resourceInputs["frequencyOptions"] = args?.frequencyOptions;
             resourceInputs["location"] = args?.location;
             resourceInputs["objectMetadataReportOptions"] = args?.objectMetadataReportOptions;
@@ -218,6 +224,10 @@ export interface InsightsReportConfigState {
      * The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * If set, all the inventory report details associated with this report configuration are deleted.
+     */
+    forceDestroy?: pulumi.Input<boolean>;
     /**
      * Options for configuring how inventory reports are generated.
      * Structure is documented below.
@@ -261,6 +271,10 @@ export interface InsightsReportConfigArgs {
      * The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * If set, all the inventory report details associated with this report configuration are deleted.
+     */
+    forceDestroy?: pulumi.Input<boolean>;
     /**
      * Options for configuring how inventory reports are generated.
      * Structure is documented below.

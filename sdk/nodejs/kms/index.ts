@@ -165,6 +165,11 @@ export type KeyRingImportJob = import("./keyRingImportJob").KeyRingImportJob;
 export const KeyRingImportJob: typeof import("./keyRingImportJob").KeyRingImportJob = null as any;
 utilities.lazyLoad(exports, ["KeyRingImportJob"], () => require("./keyRingImportJob"));
 
+export { OrganizationKajPolicyConfigArgs, OrganizationKajPolicyConfigState } from "./organizationKajPolicyConfig";
+export type OrganizationKajPolicyConfig = import("./organizationKajPolicyConfig").OrganizationKajPolicyConfig;
+export const OrganizationKajPolicyConfig: typeof import("./organizationKajPolicyConfig").OrganizationKajPolicyConfig = null as any;
+utilities.lazyLoad(exports, ["OrganizationKajPolicyConfig"], () => require("./organizationKajPolicyConfig"));
+
 export { SecretCiphertextArgs, SecretCiphertextState } from "./secretCiphertext";
 export type SecretCiphertext = import("./secretCiphertext").SecretCiphertext;
 export const SecretCiphertext: typeof import("./secretCiphertext").SecretCiphertext = null as any;
@@ -207,6 +212,8 @@ const _module = {
                 return new KeyRingIAMPolicy(name, <any>undefined, { urn })
             case "gcp:kms/keyRingImportJob:KeyRingImportJob":
                 return new KeyRingImportJob(name, <any>undefined, { urn })
+            case "gcp:kms/organizationKajPolicyConfig:OrganizationKajPolicyConfig":
+                return new OrganizationKajPolicyConfig(name, <any>undefined, { urn })
             case "gcp:kms/secretCiphertext:SecretCiphertext":
                 return new SecretCiphertext(name, <any>undefined, { urn })
             default:
@@ -230,4 +237,5 @@ pulumi.runtime.registerResourceModule("gcp", "kms/keyRingIAMBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/keyRingIAMMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/keyRingIAMPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/keyRingImportJob", _module)
+pulumi.runtime.registerResourceModule("gcp", "kms/organizationKajPolicyConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/secretCiphertext", _module)

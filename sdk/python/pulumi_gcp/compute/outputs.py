@@ -61435,7 +61435,9 @@ class WireGroupWireProperties(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "bandwidthUnmetered":
+        if key == "bandwidthAllocation":
+            suggest = "bandwidth_allocation"
+        elif key == "bandwidthUnmetered":
             suggest = "bandwidth_unmetered"
         elif key == "faultResponse":
             suggest = "fault_response"
@@ -61452,18 +61454,35 @@ class WireGroupWireProperties(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 bandwidth_allocation: _builtins.str,
                  bandwidth_unmetered: Optional[_builtins.int] = None,
                  fault_response: Optional[_builtins.str] = None):
         """
+        :param _builtins.str bandwidth_allocation: The configuration of a wire's bandwidth allocation.
+               ALLOCATE_PER_WIRE: configures a separate unmetered bandwidth allocation (and associated charges) for each wire in the group.
+               SHARED_WITH_WIRE_GROUP: this is the default behavior, which configures one unmetered bandwidth allocation for the wire group. The unmetered bandwidth is divided equally across each wire in the group, but dynamic
+               throttling reallocates unused unmetered bandwidth from unused or underused wires to other wires in the group.
         :param _builtins.int bandwidth_unmetered: The unmetered bandwidth setting.
         :param _builtins.str fault_response: Response when a fault is detected in a pseudowire:
                NONE: default.
                DISABLE_PORT: set the port line protocol down when inline probes detect a fault. This setting is only permitted on port mode pseudowires.
         """
+        pulumi.set(__self__, "bandwidth_allocation", bandwidth_allocation)
         if bandwidth_unmetered is not None:
             pulumi.set(__self__, "bandwidth_unmetered", bandwidth_unmetered)
         if fault_response is not None:
             pulumi.set(__self__, "fault_response", fault_response)
+
+    @_builtins.property
+    @pulumi.getter(name="bandwidthAllocation")
+    def bandwidth_allocation(self) -> _builtins.str:
+        """
+        The configuration of a wire's bandwidth allocation.
+        ALLOCATE_PER_WIRE: configures a separate unmetered bandwidth allocation (and associated charges) for each wire in the group.
+        SHARED_WITH_WIRE_GROUP: this is the default behavior, which configures one unmetered bandwidth allocation for the wire group. The unmetered bandwidth is divided equally across each wire in the group, but dynamic
+        throttling reallocates unused unmetered bandwidth from unused or underused wires to other wires in the group.
+        """
+        return pulumi.get(self, "bandwidth_allocation")
 
     @_builtins.property
     @pulumi.getter(name="bandwidthUnmetered")

@@ -63,6 +63,9 @@ type PreventionDiscoveryConfig struct {
 	// A nested object resource.
 	// Structure is documented below.
 	OrgConfig PreventionDiscoveryConfigOrgConfigPtrOutput `pulumi:"orgConfig"`
+	// A nested object resource.
+	// Structure is documented below.
+	OtherCloudStartingLocation PreventionDiscoveryConfigOtherCloudStartingLocationPtrOutput `pulumi:"otherCloudStartingLocation"`
 	// The parent of the discovery config in any of the following formats:
 	// * `projects/{{project}}/locations/{{location}}`
 	// * `organizations/{{organization_id}}/locations/{{location}}`
@@ -134,6 +137,9 @@ type preventionDiscoveryConfigState struct {
 	// A nested object resource.
 	// Structure is documented below.
 	OrgConfig *PreventionDiscoveryConfigOrgConfig `pulumi:"orgConfig"`
+	// A nested object resource.
+	// Structure is documented below.
+	OtherCloudStartingLocation *PreventionDiscoveryConfigOtherCloudStartingLocation `pulumi:"otherCloudStartingLocation"`
 	// The parent of the discovery config in any of the following formats:
 	// * `projects/{{project}}/locations/{{location}}`
 	// * `organizations/{{organization_id}}/locations/{{location}}`
@@ -170,6 +176,9 @@ type PreventionDiscoveryConfigState struct {
 	// A nested object resource.
 	// Structure is documented below.
 	OrgConfig PreventionDiscoveryConfigOrgConfigPtrInput
+	// A nested object resource.
+	// Structure is documented below.
+	OtherCloudStartingLocation PreventionDiscoveryConfigOtherCloudStartingLocationPtrInput
 	// The parent of the discovery config in any of the following formats:
 	// * `projects/{{project}}/locations/{{location}}`
 	// * `organizations/{{organization_id}}/locations/{{location}}`
@@ -201,6 +210,9 @@ type preventionDiscoveryConfigArgs struct {
 	// A nested object resource.
 	// Structure is documented below.
 	OrgConfig *PreventionDiscoveryConfigOrgConfig `pulumi:"orgConfig"`
+	// A nested object resource.
+	// Structure is documented below.
+	OtherCloudStartingLocation *PreventionDiscoveryConfigOtherCloudStartingLocation `pulumi:"otherCloudStartingLocation"`
 	// The parent of the discovery config in any of the following formats:
 	// * `projects/{{project}}/locations/{{location}}`
 	// * `organizations/{{organization_id}}/locations/{{location}}`
@@ -227,6 +239,9 @@ type PreventionDiscoveryConfigArgs struct {
 	// A nested object resource.
 	// Structure is documented below.
 	OrgConfig PreventionDiscoveryConfigOrgConfigPtrInput
+	// A nested object resource.
+	// Structure is documented below.
+	OtherCloudStartingLocation PreventionDiscoveryConfigOtherCloudStartingLocationPtrInput
 	// The parent of the discovery config in any of the following formats:
 	// * `projects/{{project}}/locations/{{location}}`
 	// * `organizations/{{organization_id}}/locations/{{location}}`
@@ -372,6 +387,14 @@ func (o PreventionDiscoveryConfigOutput) Name() pulumi.StringOutput {
 // Structure is documented below.
 func (o PreventionDiscoveryConfigOutput) OrgConfig() PreventionDiscoveryConfigOrgConfigPtrOutput {
 	return o.ApplyT(func(v *PreventionDiscoveryConfig) PreventionDiscoveryConfigOrgConfigPtrOutput { return v.OrgConfig }).(PreventionDiscoveryConfigOrgConfigPtrOutput)
+}
+
+// A nested object resource.
+// Structure is documented below.
+func (o PreventionDiscoveryConfigOutput) OtherCloudStartingLocation() PreventionDiscoveryConfigOtherCloudStartingLocationPtrOutput {
+	return o.ApplyT(func(v *PreventionDiscoveryConfig) PreventionDiscoveryConfigOtherCloudStartingLocationPtrOutput {
+		return v.OtherCloudStartingLocation
+	}).(PreventionDiscoveryConfigOtherCloudStartingLocationPtrOutput)
 }
 
 // The parent of the discovery config in any of the following formats:

@@ -400,7 +400,7 @@ namespace Pulumi.Gcp.PubSub
     ///         {
     ///             Bucket = example.Name,
     ///             FilenamePrefix = "pre-",
-    ///             FilenameSuffix = "-_15335",
+    ///             FilenameSuffix = "-_26032",
     ///             FilenameDatetimeFormat = "YYYY-MM-DD/hh_mm_ssZ",
     ///             MaxBytes = 1000,
     ///             MaxDuration = "300s",
@@ -456,7 +456,7 @@ namespace Pulumi.Gcp.PubSub
     ///         {
     ///             Bucket = example.Name,
     ///             FilenamePrefix = "pre-",
-    ///             FilenameSuffix = "-_20665",
+    ///             FilenameSuffix = "-_8647",
     ///             FilenameDatetimeFormat = "YYYY-MM-DD/hh_mm_ssZ",
     ///             MaxBytes = 1000,
     ///             MaxDuration = "300s",
@@ -521,7 +521,7 @@ namespace Pulumi.Gcp.PubSub
     ///         {
     ///             Bucket = example.Name,
     ///             FilenamePrefix = "pre-",
-    ///             FilenameSuffix = "-_85160",
+    ///             FilenameSuffix = "-_50610",
     ///             FilenameDatetimeFormat = "YYYY-MM-DD/hh_mm_ssZ",
     ///             MaxBytes = 1000,
     ///             MaxDuration = "300s",
@@ -635,6 +635,52 @@ namespace Pulumi.Gcp.PubSub
     ///                 },
     ///             },
     ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Pubsub Subscription Tags
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Gcp.PubSub.Topic("example", new()
+    ///     {
+    ///         Name = "example-topic",
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var tagKey = new Gcp.Tags.TagKey("tag_key", new()
+    ///     {
+    ///         Parent = project.Apply(getProjectResult =&gt; getProjectResult.Id),
+    ///         ShortName = "tag_key",
+    ///     });
+    /// 
+    ///     var tagValue = new Gcp.Tags.TagValue("tag_value", new()
+    ///     {
+    ///         Parent = tagKey.Id,
+    ///         ShortName = "tag_value",
+    ///     });
+    /// 
+    ///     var exampleSubscription = new Gcp.PubSub.Subscription("example", new()
+    ///     {
+    ///         Name = "example-subscription",
+    ///         Topic = example.Id,
+    ///         Tags = Output.Tuple(tagKey.NamespacedName, tagValue.ShortName).Apply(values =&gt;
+    ///         {
+    ///             var namespacedName = values.Item1;
+    ///             var shortName = values.Item2;
+    ///             return 
+    ///             {
+    ///                 { namespacedName, shortName },
+    ///             };
+    ///         }),
     ///     });
     /// 
     /// });
@@ -841,6 +887,19 @@ namespace Pulumi.Gcp.PubSub
         /// </summary>
         [Output("retryPolicy")]
         public Output<Outputs.SubscriptionRetryPolicy?> RetryPolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// Input only. Resource manager tags to be bound to the subscription. Tag
+        /// keys and values have the same definition as resource manager tags. Keys
+        /// must be in the format tagKeys/{tag_key_id}, and values are in the format
+        /// tagValues/456. The field is ignored when empty. The field is immutable and
+        /// causes resource replacement when mutated. This field is only set at create
+        /// time and modifying this field after creation will trigger recreation. To
+        /// apply tags to an existing resource, see the `gcp.tags.TagValue`
+        /// resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
@@ -1075,6 +1134,25 @@ namespace Pulumi.Gcp.PubSub
         [Input("retryPolicy")]
         public Input<Inputs.SubscriptionRetryPolicyArgs>? RetryPolicy { get; set; }
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Input only. Resource manager tags to be bound to the subscription. Tag
+        /// keys and values have the same definition as resource manager tags. Keys
+        /// must be in the format tagKeys/{tag_key_id}, and values are in the format
+        /// tagValues/456. The field is ignored when empty. The field is immutable and
+        /// causes resource replacement when mutated. This field is only set at create
+        /// time and modifying this field after creation will trigger recreation. To
+        /// apply tags to an existing resource, see the `gcp.tags.TagValue`
+        /// resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
         /// (as in the id property of a google_pubsub_topic), or just a topic name if
@@ -1297,6 +1375,25 @@ namespace Pulumi.Gcp.PubSub
         /// </summary>
         [Input("retryPolicy")]
         public Input<Inputs.SubscriptionRetryPolicyGetArgs>? RetryPolicy { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Input only. Resource manager tags to be bound to the subscription. Tag
+        /// keys and values have the same definition as resource manager tags. Keys
+        /// must be in the format tagKeys/{tag_key_id}, and values are in the format
+        /// tagValues/456. The field is ignored when empty. The field is immutable and
+        /// causes resource replacement when mutated. This field is only set at create
+        /// time and modifying this field after creation will trigger recreation. To
+        /// apply tags to an existing resource, see the `gcp.tags.TagValue`
+        /// resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// A reference to a Topic resource, of the form projects/{project}/topics/{{name}}

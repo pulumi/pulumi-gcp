@@ -202,6 +202,21 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Total hot tier data rounded down to the nearest GiB used by the volume. This field is only used for flex Service Level
+     * 
+     */
+    @Import(name="hotTierSizeUsedGib")
+    private @Nullable Output<String> hotTierSizeUsedGib;
+
+    /**
+     * @return Total hot tier data rounded down to the nearest GiB used by the volume. This field is only used for flex Service Level
+     * 
+     */
+    public Optional<Output<String>> hotTierSizeUsedGib() {
+        return Optional.ofNullable(this.hotTierSizeUsedGib);
+    }
+
+    /**
      * The Hybrid Replication parameters for the volume.
      * Structure is documented below.
      * 
@@ -729,6 +744,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         this.encryptionType = $.encryptionType;
         this.exportPolicy = $.exportPolicy;
         this.hasReplication = $.hasReplication;
+        this.hotTierSizeUsedGib = $.hotTierSizeUsedGib;
         this.hybridReplicationParameters = $.hybridReplicationParameters;
         this.kerberosEnabled = $.kerberosEnabled;
         this.kmsConfig = $.kmsConfig;
@@ -1020,6 +1036,27 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder hasReplication(Boolean hasReplication) {
             return hasReplication(Output.of(hasReplication));
+        }
+
+        /**
+         * @param hotTierSizeUsedGib Total hot tier data rounded down to the nearest GiB used by the volume. This field is only used for flex Service Level
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hotTierSizeUsedGib(@Nullable Output<String> hotTierSizeUsedGib) {
+            $.hotTierSizeUsedGib = hotTierSizeUsedGib;
+            return this;
+        }
+
+        /**
+         * @param hotTierSizeUsedGib Total hot tier data rounded down to the nearest GiB used by the volume. This field is only used for flex Service Level
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hotTierSizeUsedGib(String hotTierSizeUsedGib) {
+            return hotTierSizeUsedGib(Output.of(hotTierSizeUsedGib));
         }
 
         /**

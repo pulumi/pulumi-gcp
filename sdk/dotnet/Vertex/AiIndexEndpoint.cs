@@ -195,6 +195,13 @@ namespace Pulumi.Gcp.Vertex
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
+        /// Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("encryptionSpec")]
+        public Output<Outputs.AiIndexEndpointEncryptionSpec?> EncryptionSpec { get; private set; } = null!;
+
+        /// <summary>
         /// Used to perform consistent read-modify-write updates.
         /// </summary>
         [Output("etag")]
@@ -331,6 +338,13 @@ namespace Pulumi.Gcp.Vertex
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
 
+        /// <summary>
+        /// Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("encryptionSpec")]
+        public Input<Inputs.AiIndexEndpointEncryptionSpecArgs>? EncryptionSpec { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -421,6 +435,13 @@ namespace Pulumi.Gcp.Vertex
                 _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("encryptionSpec")]
+        public Input<Inputs.AiIndexEndpointEncryptionSpecGetArgs>? EncryptionSpec { get; set; }
 
         /// <summary>
         /// Used to perform consistent read-modify-write updates.

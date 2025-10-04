@@ -6,7 +6,9 @@ package com.pulumi.gcp.cloudrunv2.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.outputs.WorkerPoolTemplateContainerEnv;
+import com.pulumi.gcp.cloudrunv2.outputs.WorkerPoolTemplateContainerLivenessProbe;
 import com.pulumi.gcp.cloudrunv2.outputs.WorkerPoolTemplateContainerResources;
+import com.pulumi.gcp.cloudrunv2.outputs.WorkerPoolTemplateContainerStartupProbe;
 import com.pulumi.gcp.cloudrunv2.outputs.WorkerPoolTemplateContainerVolumeMount;
 import java.lang.String;
 import java.util.List;
@@ -38,6 +40,12 @@ public final class WorkerPoolTemplateContainer {
      */
     private String image;
     /**
+     * @return Periodic probe of container liveness. Container will be restarted if the probe fails.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable WorkerPoolTemplateContainerLivenessProbe livenessProbe;
+    /**
      * @return Name of the container specified as a DNS_LABEL.
      * 
      */
@@ -48,6 +56,12 @@ public final class WorkerPoolTemplateContainer {
      * 
      */
     private @Nullable WorkerPoolTemplateContainerResources resources;
+    /**
+     * @return Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable WorkerPoolTemplateContainerStartupProbe startupProbe;
     /**
      * @return Volume to mount into the container&#39;s filesystem.
      * Structure is documented below.
@@ -91,6 +105,14 @@ public final class WorkerPoolTemplateContainer {
         return this.image;
     }
     /**
+     * @return Periodic probe of container liveness. Container will be restarted if the probe fails.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<WorkerPoolTemplateContainerLivenessProbe> livenessProbe() {
+        return Optional.ofNullable(this.livenessProbe);
+    }
+    /**
      * @return Name of the container specified as a DNS_LABEL.
      * 
      */
@@ -104,6 +126,14 @@ public final class WorkerPoolTemplateContainer {
      */
     public Optional<WorkerPoolTemplateContainerResources> resources() {
         return Optional.ofNullable(this.resources);
+    }
+    /**
+     * @return Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<WorkerPoolTemplateContainerStartupProbe> startupProbe() {
+        return Optional.ofNullable(this.startupProbe);
     }
     /**
      * @return Volume to mount into the container&#39;s filesystem.
@@ -134,8 +164,10 @@ public final class WorkerPoolTemplateContainer {
         private @Nullable List<String> commands;
         private @Nullable List<WorkerPoolTemplateContainerEnv> envs;
         private String image;
+        private @Nullable WorkerPoolTemplateContainerLivenessProbe livenessProbe;
         private @Nullable String name;
         private @Nullable WorkerPoolTemplateContainerResources resources;
+        private @Nullable WorkerPoolTemplateContainerStartupProbe startupProbe;
         private @Nullable List<WorkerPoolTemplateContainerVolumeMount> volumeMounts;
         private @Nullable String workingDir;
         public Builder() {}
@@ -145,8 +177,10 @@ public final class WorkerPoolTemplateContainer {
     	      this.commands = defaults.commands;
     	      this.envs = defaults.envs;
     	      this.image = defaults.image;
+    	      this.livenessProbe = defaults.livenessProbe;
     	      this.name = defaults.name;
     	      this.resources = defaults.resources;
+    	      this.startupProbe = defaults.startupProbe;
     	      this.volumeMounts = defaults.volumeMounts;
     	      this.workingDir = defaults.workingDir;
         }
@@ -187,6 +221,12 @@ public final class WorkerPoolTemplateContainer {
             return this;
         }
         @CustomType.Setter
+        public Builder livenessProbe(@Nullable WorkerPoolTemplateContainerLivenessProbe livenessProbe) {
+
+            this.livenessProbe = livenessProbe;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
 
             this.name = name;
@@ -196,6 +236,12 @@ public final class WorkerPoolTemplateContainer {
         public Builder resources(@Nullable WorkerPoolTemplateContainerResources resources) {
 
             this.resources = resources;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder startupProbe(@Nullable WorkerPoolTemplateContainerStartupProbe startupProbe) {
+
+            this.startupProbe = startupProbe;
             return this;
         }
         @CustomType.Setter
@@ -219,8 +265,10 @@ public final class WorkerPoolTemplateContainer {
             _resultValue.commands = commands;
             _resultValue.envs = envs;
             _resultValue.image = image;
+            _resultValue.livenessProbe = livenessProbe;
             _resultValue.name = name;
             _resultValue.resources = resources;
+            _resultValue.startupProbe = startupProbe;
             _resultValue.volumeMounts = volumeMounts;
             _resultValue.workingDir = workingDir;
             return _resultValue;

@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AddonsConfig{}
 	case "gcp:apigee/api:Api":
 		r = &Api{}
+	case "gcp:apigee/apiDeployment:ApiDeployment":
+		r = &ApiDeployment{}
 	case "gcp:apigee/apiProduct:ApiProduct":
 		r = &ApiProduct{}
 	case "gcp:apigee/appGroup:AppGroup":
@@ -110,6 +112,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"apigee/api",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"apigee/apiDeployment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

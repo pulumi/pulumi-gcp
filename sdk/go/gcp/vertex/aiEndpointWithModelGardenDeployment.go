@@ -283,6 +283,106 @@ import (
 //	}
 //
 // ```
+// ### Vertex Ai Deploy Psc Endpoint
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vertex.NewAiEndpointWithModelGardenDeployment(ctx, "deploy", &vertex.AiEndpointWithModelGardenDeploymentArgs{
+//				PublisherModelName: pulumi.String("publishers/google/models/paligemma@paligemma-224-float32"),
+//				Location:           pulumi.String("us-central1"),
+//				ModelConfig: &vertex.AiEndpointWithModelGardenDeploymentModelConfigArgs{
+//					AcceptEula: pulumi.Bool(true),
+//				},
+//				EndpointConfig: &vertex.AiEndpointWithModelGardenDeploymentEndpointConfigArgs{
+//					PrivateServiceConnectConfig: &vertex.AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs{
+//						EnablePrivateServiceConnect: pulumi.Bool(true),
+//						ProjectAllowlists: pulumi.StringArray{
+//							pulumi.String("my-project-id"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Vertex Ai Deploy Psc Endpoint Automated
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+//				Name:                  pulumi.String("network"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vertex.NewAiEndpointWithModelGardenDeployment(ctx, "deploy", &vertex.AiEndpointWithModelGardenDeploymentArgs{
+//				PublisherModelName: pulumi.String("publishers/google/models/paligemma@paligemma-224-float32"),
+//				Location:           pulumi.String("us-central1"),
+//				ModelConfig: &vertex.AiEndpointWithModelGardenDeploymentModelConfigArgs{
+//					AcceptEula: pulumi.Bool(true),
+//				},
+//				EndpointConfig: &vertex.AiEndpointWithModelGardenDeploymentEndpointConfigArgs{
+//					PrivateServiceConnectConfig: &vertex.AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs{
+//						EnablePrivateServiceConnect: pulumi.Bool(true),
+//						ProjectAllowlists: pulumi.StringArray{
+//							pulumi.String(project.Id),
+//						},
+//						PscAutomationConfigs: &vertex.AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsArgs{
+//							ProjectId: pulumi.String(project.Id),
+//							Network:   network.ID(),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewSubnetwork(ctx, "subnetwork", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("subnetwork"),
+//				IpCidrRange: pulumi.String("192.168.0.0/24"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     network.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

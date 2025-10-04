@@ -35,18 +35,32 @@ import * as utilities from "../utilities";
  *         mainPageSuffix: "index.html",
  *         notFoundPage: "404.html",
  *     },
- *     cors: [{
- *         origins: ["http://image-store.com"],
- *         methods: [
- *             "GET",
- *             "HEAD",
- *             "PUT",
- *             "POST",
- *             "DELETE",
- *         ],
- *         responseHeaders: ["*"],
- *         maxAgeSeconds: 3600,
- *     }],
+ *     cors: [
+ *         {
+ *             origins: ["http://image-store.com"],
+ *             methods: [
+ *                 "GET",
+ *                 "HEAD",
+ *                 "PUT",
+ *                 "POST",
+ *                 "DELETE",
+ *             ],
+ *             responseHeaders: ["*"],
+ *             maxAgeSeconds: 3600,
+ *         },
+ *         {
+ *             origins: ["http://image-store.com"],
+ *             methods: [
+ *                 "GET",
+ *                 "HEAD",
+ *                 "PUT",
+ *                 "POST",
+ *                 "DELETE",
+ *             ],
+ *             responseHeaders: ["*"],
+ *             maxAgeSeconds: 0,
+ *         },
+ *     ],
  * });
  * ```
  *

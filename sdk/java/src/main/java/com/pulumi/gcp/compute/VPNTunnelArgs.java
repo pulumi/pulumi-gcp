@@ -5,7 +5,6 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.VPNTunnelCipherSuiteArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -278,8 +277,8 @@ public final class VPNTunnelArgs extends com.pulumi.resources.ResourceArgs {
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    @Import(name="sharedSecret", required=true)
-    private Output<String> sharedSecret;
+    @Import(name="sharedSecret")
+    private @Nullable Output<String> sharedSecret;
 
     /**
      * @return Shared secret used to set the secure session between the Cloud VPN
@@ -287,8 +286,23 @@ public final class VPNTunnelArgs extends com.pulumi.resources.ResourceArgs {
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    public Output<String> sharedSecret() {
-        return this.sharedSecret;
+    public Optional<Output<String>> sharedSecret() {
+        return Optional.ofNullable(this.sharedSecret);
+    }
+
+    /**
+     * Triggers update of shared_secret_wo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     * 
+     */
+    @Import(name="sharedSecretWoVersion")
+    private @Nullable Output<String> sharedSecretWoVersion;
+
+    /**
+     * @return Triggers update of shared_secret_wo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     * 
+     */
+    public Optional<Output<String>> sharedSecretWoVersion() {
+        return Optional.ofNullable(this.sharedSecretWoVersion);
     }
 
     /**
@@ -360,6 +374,7 @@ public final class VPNTunnelArgs extends com.pulumi.resources.ResourceArgs {
         this.remoteTrafficSelectors = $.remoteTrafficSelectors;
         this.router = $.router;
         this.sharedSecret = $.sharedSecret;
+        this.sharedSecretWoVersion = $.sharedSecretWoVersion;
         this.targetVpnGateway = $.targetVpnGateway;
         this.vpnGateway = $.vpnGateway;
         this.vpnGatewayInterface = $.vpnGatewayInterface;
@@ -753,7 +768,7 @@ public final class VPNTunnelArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder sharedSecret(Output<String> sharedSecret) {
+        public Builder sharedSecret(@Nullable Output<String> sharedSecret) {
             $.sharedSecret = sharedSecret;
             return this;
         }
@@ -768,6 +783,27 @@ public final class VPNTunnelArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder sharedSecret(String sharedSecret) {
             return sharedSecret(Output.of(sharedSecret));
+        }
+
+        /**
+         * @param sharedSecretWoVersion Triggers update of shared_secret_wo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sharedSecretWoVersion(@Nullable Output<String> sharedSecretWoVersion) {
+            $.sharedSecretWoVersion = sharedSecretWoVersion;
+            return this;
+        }
+
+        /**
+         * @param sharedSecretWoVersion Triggers update of shared_secret_wo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sharedSecretWoVersion(String sharedSecretWoVersion) {
+            return sharedSecretWoVersion(Output.of(sharedSecretWoVersion));
         }
 
         /**
@@ -840,9 +876,6 @@ public final class VPNTunnelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public VPNTunnelArgs build() {
-            if ($.sharedSecret == null) {
-                throw new MissingRequiredPropertyException("VPNTunnelArgs", "sharedSecret");
-            }
             return $;
         }
     }

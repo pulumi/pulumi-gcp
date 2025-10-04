@@ -6,6 +6,7 @@ package com.pulumi.gcp.vertex;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.vertex.inputs.AiIndexEndpointEncryptionSpecArgs;
 import com.pulumi.gcp.vertex.inputs.AiIndexEndpointPrivateServiceConnectConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -47,6 +48,23 @@ public final class AiIndexEndpointArgs extends com.pulumi.resources.ResourceArgs
      */
     public Output<String> displayName() {
         return this.displayName;
+    }
+
+    /**
+     * Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="encryptionSpec")
+    private @Nullable Output<AiIndexEndpointEncryptionSpecArgs> encryptionSpec;
+
+    /**
+     * @return Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AiIndexEndpointEncryptionSpecArgs>> encryptionSpec() {
+        return Optional.ofNullable(this.encryptionSpec);
     }
 
     /**
@@ -158,6 +176,7 @@ public final class AiIndexEndpointArgs extends com.pulumi.resources.ResourceArgs
     private AiIndexEndpointArgs(AiIndexEndpointArgs $) {
         this.description = $.description;
         this.displayName = $.displayName;
+        this.encryptionSpec = $.encryptionSpec;
         this.labels = $.labels;
         this.network = $.network;
         this.privateServiceConnectConfig = $.privateServiceConnectConfig;
@@ -224,6 +243,29 @@ public final class AiIndexEndpointArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param encryptionSpec Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionSpec(@Nullable Output<AiIndexEndpointEncryptionSpecArgs> encryptionSpec) {
+            $.encryptionSpec = encryptionSpec;
+            return this;
+        }
+
+        /**
+         * @param encryptionSpec Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionSpec(AiIndexEndpointEncryptionSpecArgs encryptionSpec) {
+            return encryptionSpec(Output.of(encryptionSpec));
         }
 
         /**

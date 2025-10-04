@@ -27,6 +27,7 @@ class PreventionDiscoveryConfigArgs:
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  inspect_templates: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  org_config: Optional[pulumi.Input['PreventionDiscoveryConfigOrgConfigArgs']] = None,
+                 other_cloud_starting_location: Optional[pulumi.Input['PreventionDiscoveryConfigOtherCloudStartingLocationArgs']] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  targets: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetArgs']]]] = None):
         """
@@ -40,6 +41,8 @@ class PreventionDiscoveryConfigArgs:
         :param pulumi.Input[_builtins.str] display_name: Display Name (max 1000 Chars)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] inspect_templates: Detection logic for profile generation
         :param pulumi.Input['PreventionDiscoveryConfigOrgConfigArgs'] org_config: A nested object resource.
+               Structure is documented below.
+        :param pulumi.Input['PreventionDiscoveryConfigOtherCloudStartingLocationArgs'] other_cloud_starting_location: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] status: Required. A status for this configuration
                Possible values are: `RUNNING`, `PAUSED`.
@@ -56,6 +59,8 @@ class PreventionDiscoveryConfigArgs:
             pulumi.set(__self__, "inspect_templates", inspect_templates)
         if org_config is not None:
             pulumi.set(__self__, "org_config", org_config)
+        if other_cloud_starting_location is not None:
+            pulumi.set(__self__, "other_cloud_starting_location", other_cloud_starting_location)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if targets is not None:
@@ -138,6 +143,19 @@ class PreventionDiscoveryConfigArgs:
         pulumi.set(self, "org_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="otherCloudStartingLocation")
+    def other_cloud_starting_location(self) -> Optional[pulumi.Input['PreventionDiscoveryConfigOtherCloudStartingLocationArgs']]:
+        """
+        A nested object resource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "other_cloud_starting_location")
+
+    @other_cloud_starting_location.setter
+    def other_cloud_starting_location(self, value: Optional[pulumi.Input['PreventionDiscoveryConfigOtherCloudStartingLocationArgs']]):
+        pulumi.set(self, "other_cloud_starting_location", value)
+
+    @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -176,6 +194,7 @@ class _PreventionDiscoveryConfigState:
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  org_config: Optional[pulumi.Input['PreventionDiscoveryConfigOrgConfigArgs']] = None,
+                 other_cloud_starting_location: Optional[pulumi.Input['PreventionDiscoveryConfigOtherCloudStartingLocationArgs']] = None,
                  parent: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  targets: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetArgs']]]] = None,
@@ -193,6 +212,8 @@ class _PreventionDiscoveryConfigState:
         :param pulumi.Input[_builtins.str] location: Location to create the discovery config in.
         :param pulumi.Input[_builtins.str] name: Unique resource name for the DiscoveryConfig, assigned by the service when the DiscoveryConfig is created.
         :param pulumi.Input['PreventionDiscoveryConfigOrgConfigArgs'] org_config: A nested object resource.
+               Structure is documented below.
+        :param pulumi.Input['PreventionDiscoveryConfigOtherCloudStartingLocationArgs'] other_cloud_starting_location: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] parent: The parent of the discovery config in any of the following formats:
                * `projects/{{project}}/locations/{{location}}`
@@ -221,6 +242,8 @@ class _PreventionDiscoveryConfigState:
             pulumi.set(__self__, "name", name)
         if org_config is not None:
             pulumi.set(__self__, "org_config", org_config)
+        if other_cloud_starting_location is not None:
+            pulumi.set(__self__, "other_cloud_starting_location", other_cloud_starting_location)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
         if status is not None:
@@ -342,6 +365,19 @@ class _PreventionDiscoveryConfigState:
         pulumi.set(self, "org_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="otherCloudStartingLocation")
+    def other_cloud_starting_location(self) -> Optional[pulumi.Input['PreventionDiscoveryConfigOtherCloudStartingLocationArgs']]:
+        """
+        A nested object resource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "other_cloud_starting_location")
+
+    @other_cloud_starting_location.setter
+    def other_cloud_starting_location(self, value: Optional[pulumi.Input['PreventionDiscoveryConfigOtherCloudStartingLocationArgs']]):
+        pulumi.set(self, "other_cloud_starting_location", value)
+
+    @_builtins.property
     @pulumi.getter
     def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -405,6 +441,7 @@ class PreventionDiscoveryConfig(pulumi.CustomResource):
                  inspect_templates: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  org_config: Optional[pulumi.Input[Union['PreventionDiscoveryConfigOrgConfigArgs', 'PreventionDiscoveryConfigOrgConfigArgsDict']]] = None,
+                 other_cloud_starting_location: Optional[pulumi.Input[Union['PreventionDiscoveryConfigOtherCloudStartingLocationArgs', 'PreventionDiscoveryConfigOtherCloudStartingLocationArgsDict']]] = None,
                  parent: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  targets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PreventionDiscoveryConfigTargetArgs', 'PreventionDiscoveryConfigTargetArgsDict']]]]] = None,
@@ -446,6 +483,8 @@ class PreventionDiscoveryConfig(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] inspect_templates: Detection logic for profile generation
         :param pulumi.Input[_builtins.str] location: Location to create the discovery config in.
         :param pulumi.Input[Union['PreventionDiscoveryConfigOrgConfigArgs', 'PreventionDiscoveryConfigOrgConfigArgsDict']] org_config: A nested object resource.
+               Structure is documented below.
+        :param pulumi.Input[Union['PreventionDiscoveryConfigOtherCloudStartingLocationArgs', 'PreventionDiscoveryConfigOtherCloudStartingLocationArgsDict']] other_cloud_starting_location: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] parent: The parent of the discovery config in any of the following formats:
                * `projects/{{project}}/locations/{{location}}`
@@ -510,6 +549,7 @@ class PreventionDiscoveryConfig(pulumi.CustomResource):
                  inspect_templates: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  org_config: Optional[pulumi.Input[Union['PreventionDiscoveryConfigOrgConfigArgs', 'PreventionDiscoveryConfigOrgConfigArgsDict']]] = None,
+                 other_cloud_starting_location: Optional[pulumi.Input[Union['PreventionDiscoveryConfigOtherCloudStartingLocationArgs', 'PreventionDiscoveryConfigOtherCloudStartingLocationArgsDict']]] = None,
                  parent: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  targets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PreventionDiscoveryConfigTargetArgs', 'PreventionDiscoveryConfigTargetArgsDict']]]]] = None,
@@ -529,6 +569,7 @@ class PreventionDiscoveryConfig(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["org_config"] = org_config
+            __props__.__dict__["other_cloud_starting_location"] = other_cloud_starting_location
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
             __props__.__dict__["parent"] = parent
@@ -558,6 +599,7 @@ class PreventionDiscoveryConfig(pulumi.CustomResource):
             location: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             org_config: Optional[pulumi.Input[Union['PreventionDiscoveryConfigOrgConfigArgs', 'PreventionDiscoveryConfigOrgConfigArgsDict']]] = None,
+            other_cloud_starting_location: Optional[pulumi.Input[Union['PreventionDiscoveryConfigOtherCloudStartingLocationArgs', 'PreventionDiscoveryConfigOtherCloudStartingLocationArgsDict']]] = None,
             parent: Optional[pulumi.Input[_builtins.str]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
             targets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PreventionDiscoveryConfigTargetArgs', 'PreventionDiscoveryConfigTargetArgsDict']]]]] = None,
@@ -581,6 +623,8 @@ class PreventionDiscoveryConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Unique resource name for the DiscoveryConfig, assigned by the service when the DiscoveryConfig is created.
         :param pulumi.Input[Union['PreventionDiscoveryConfigOrgConfigArgs', 'PreventionDiscoveryConfigOrgConfigArgsDict']] org_config: A nested object resource.
                Structure is documented below.
+        :param pulumi.Input[Union['PreventionDiscoveryConfigOtherCloudStartingLocationArgs', 'PreventionDiscoveryConfigOtherCloudStartingLocationArgsDict']] other_cloud_starting_location: A nested object resource.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] parent: The parent of the discovery config in any of the following formats:
                * `projects/{{project}}/locations/{{location}}`
                * `organizations/{{organization_id}}/locations/{{location}}`
@@ -603,6 +647,7 @@ class PreventionDiscoveryConfig(pulumi.CustomResource):
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["org_config"] = org_config
+        __props__.__dict__["other_cloud_starting_location"] = other_cloud_starting_location
         __props__.__dict__["parent"] = parent
         __props__.__dict__["status"] = status
         __props__.__dict__["targets"] = targets
@@ -683,6 +728,15 @@ class PreventionDiscoveryConfig(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "org_config")
+
+    @_builtins.property
+    @pulumi.getter(name="otherCloudStartingLocation")
+    def other_cloud_starting_location(self) -> pulumi.Output[Optional['outputs.PreventionDiscoveryConfigOtherCloudStartingLocation']]:
+        """
+        A nested object resource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "other_cloud_starting_location")
 
     @_builtins.property
     @pulumi.getter

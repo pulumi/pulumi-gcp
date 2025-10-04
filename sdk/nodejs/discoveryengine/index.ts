@@ -20,6 +20,11 @@ export type CmekConfig = import("./cmekConfig").CmekConfig;
 export const CmekConfig: typeof import("./cmekConfig").CmekConfig = null as any;
 utilities.lazyLoad(exports, ["CmekConfig"], () => require("./cmekConfig"));
 
+export { DataConnectorArgs, DataConnectorState } from "./dataConnector";
+export type DataConnector = import("./dataConnector").DataConnector;
+export const DataConnector: typeof import("./dataConnector").DataConnector = null as any;
+utilities.lazyLoad(exports, ["DataConnector"], () => require("./dataConnector"));
+
 export { DataStoreArgs, DataStoreState } from "./dataStore";
 export type DataStore = import("./dataStore").DataStore;
 export const DataStore: typeof import("./dataStore").DataStore = null as any;
@@ -61,6 +66,8 @@ const _module = {
                 return new ChatEngine(name, <any>undefined, { urn })
             case "gcp:discoveryengine/cmekConfig:CmekConfig":
                 return new CmekConfig(name, <any>undefined, { urn })
+            case "gcp:discoveryengine/dataConnector:DataConnector":
+                return new DataConnector(name, <any>undefined, { urn })
             case "gcp:discoveryengine/dataStore:DataStore":
                 return new DataStore(name, <any>undefined, { urn })
             case "gcp:discoveryengine/recommendationEngine:RecommendationEngine":
@@ -81,6 +88,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/aclConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/chatEngine", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/cmekConfig", _module)
+pulumi.runtime.registerResourceModule("gcp", "discoveryengine/dataConnector", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/dataStore", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/recommendationEngine", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/schema", _module)

@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public Input<string>? CreatedAfter { get; set; }
 
         /// <summary>
-        /// Duration format. Minimum age a file store must have. If set, the value must be 1 hour or greater.
+        /// Duration format.  Minimum age a resource must be before a profile can be generated. Value must be 1 hour or greater. Minimum age is not supported for Azure Blob Storage containers.
         /// </summary>
         [Input("minAge")]
         public Input<string>? MinAge { get; set; }

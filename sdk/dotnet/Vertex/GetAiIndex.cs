@@ -96,6 +96,7 @@ namespace Pulumi.Gcp.Vertex
         public readonly string Description;
         public readonly string DisplayName;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
+        public readonly ImmutableArray<Outputs.GetAiIndexEncryptionSpecResult> EncryptionSpecs;
         public readonly string Etag;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -123,6 +124,8 @@ namespace Pulumi.Gcp.Vertex
             string displayName,
 
             ImmutableDictionary<string, string> effectiveLabels,
+
+            ImmutableArray<Outputs.GetAiIndexEncryptionSpecResult> encryptionSpecs,
 
             string etag,
 
@@ -153,6 +156,7 @@ namespace Pulumi.Gcp.Vertex
             Description = description;
             DisplayName = displayName;
             EffectiveLabels = effectiveLabels;
+            EncryptionSpecs = encryptionSpecs;
             Etag = etag;
             Id = id;
             IndexStats = indexStats;

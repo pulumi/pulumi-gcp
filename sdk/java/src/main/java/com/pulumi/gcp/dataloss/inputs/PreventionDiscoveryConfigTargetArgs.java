@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigTargetBigQueryTargetArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigTargetCloudSqlTargetArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigTargetCloudStorageTargetArgs;
+import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigTargetOtherCloudTargetArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigTargetSecretsTargetArgs;
 import java.util.Objects;
 import java.util.Optional;
@@ -70,6 +71,23 @@ public final class PreventionDiscoveryConfigTargetArgs extends com.pulumi.resour
     }
 
     /**
+     * Other clouds target for discovery. The first target to match a resource will be the one applied.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="otherCloudTarget")
+    private @Nullable Output<PreventionDiscoveryConfigTargetOtherCloudTargetArgs> otherCloudTarget;
+
+    /**
+     * @return Other clouds target for discovery. The first target to match a resource will be the one applied.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<PreventionDiscoveryConfigTargetOtherCloudTargetArgs>> otherCloudTarget() {
+        return Optional.ofNullable(this.otherCloudTarget);
+    }
+
+    /**
      * Discovery target that looks for credentials and secrets stored in cloud resource metadata and reports them as vulnerabilities to Security Command Center. Only one target of this type is allowed.
      * 
      */
@@ -90,6 +108,7 @@ public final class PreventionDiscoveryConfigTargetArgs extends com.pulumi.resour
         this.bigQueryTarget = $.bigQueryTarget;
         this.cloudSqlTarget = $.cloudSqlTarget;
         this.cloudStorageTarget = $.cloudStorageTarget;
+        this.otherCloudTarget = $.otherCloudTarget;
         this.secretsTarget = $.secretsTarget;
     }
 
@@ -178,6 +197,29 @@ public final class PreventionDiscoveryConfigTargetArgs extends com.pulumi.resour
          */
         public Builder cloudStorageTarget(PreventionDiscoveryConfigTargetCloudStorageTargetArgs cloudStorageTarget) {
             return cloudStorageTarget(Output.of(cloudStorageTarget));
+        }
+
+        /**
+         * @param otherCloudTarget Other clouds target for discovery. The first target to match a resource will be the one applied.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder otherCloudTarget(@Nullable Output<PreventionDiscoveryConfigTargetOtherCloudTargetArgs> otherCloudTarget) {
+            $.otherCloudTarget = otherCloudTarget;
+            return this;
+        }
+
+        /**
+         * @param otherCloudTarget Other clouds target for discovery. The first target to match a resource will be the one applied.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder otherCloudTarget(PreventionDiscoveryConfigTargetOtherCloudTargetArgs otherCloudTarget) {
+            return otherCloudTarget(Output.of(otherCloudTarget));
         }
 
         /**

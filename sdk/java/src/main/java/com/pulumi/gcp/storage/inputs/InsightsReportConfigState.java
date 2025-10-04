@@ -9,6 +9,7 @@ import com.pulumi.gcp.storage.inputs.InsightsReportConfigCsvOptionsArgs;
 import com.pulumi.gcp.storage.inputs.InsightsReportConfigFrequencyOptionsArgs;
 import com.pulumi.gcp.storage.inputs.InsightsReportConfigObjectMetadataReportOptionsArgs;
 import com.pulumi.gcp.storage.inputs.InsightsReportConfigParquetOptionsArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -49,6 +50,21 @@ public final class InsightsReportConfigState extends com.pulumi.resources.Resour
      */
     public Optional<Output<String>> displayName() {
         return Optional.ofNullable(this.displayName);
+    }
+
+    /**
+     * If set, all the inventory report details associated with this report configuration are deleted.
+     * 
+     */
+    @Import(name="forceDestroy")
+    private @Nullable Output<Boolean> forceDestroy;
+
+    /**
+     * @return If set, all the inventory report details associated with this report configuration are deleted.
+     * 
+     */
+    public Optional<Output<Boolean>> forceDestroy() {
+        return Optional.ofNullable(this.forceDestroy);
     }
 
     /**
@@ -154,6 +170,7 @@ public final class InsightsReportConfigState extends com.pulumi.resources.Resour
     private InsightsReportConfigState(InsightsReportConfigState $) {
         this.csvOptions = $.csvOptions;
         this.displayName = $.displayName;
+        this.forceDestroy = $.forceDestroy;
         this.frequencyOptions = $.frequencyOptions;
         this.location = $.location;
         this.name = $.name;
@@ -222,6 +239,27 @@ public final class InsightsReportConfigState extends com.pulumi.resources.Resour
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param forceDestroy If set, all the inventory report details associated with this report configuration are deleted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDestroy(@Nullable Output<Boolean> forceDestroy) {
+            $.forceDestroy = forceDestroy;
+            return this;
+        }
+
+        /**
+         * @param forceDestroy If set, all the inventory report details associated with this report configuration are deleted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDestroy(Boolean forceDestroy) {
+            return forceDestroy(Output.of(forceDestroy));
         }
 
         /**

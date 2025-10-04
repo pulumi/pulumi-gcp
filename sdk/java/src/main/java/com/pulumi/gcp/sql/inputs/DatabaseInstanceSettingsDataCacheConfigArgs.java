@@ -16,14 +16,14 @@ public final class DatabaseInstanceSettingsDataCacheConfigArgs extends com.pulum
     public static final DatabaseInstanceSettingsDataCacheConfigArgs Empty = new DatabaseInstanceSettingsDataCacheConfigArgs();
 
     /**
-     * Whether data cache is enabled for the instance. Defaults to `false`. Can be used with MYSQL and PostgreSQL only.
+     * Whether data cache is enabled for the instance. Defaults to `true` for MYSQL Enterprise Plus and PostgreSQL Enterprise Plus instances only. For SQL Server Enterprise Plus instances it defaults to `false`.
      * 
      */
     @Import(name="dataCacheEnabled")
     private @Nullable Output<Boolean> dataCacheEnabled;
 
     /**
-     * @return Whether data cache is enabled for the instance. Defaults to `false`. Can be used with MYSQL and PostgreSQL only.
+     * @return Whether data cache is enabled for the instance. Defaults to `true` for MYSQL Enterprise Plus and PostgreSQL Enterprise Plus instances only. For SQL Server Enterprise Plus instances it defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> dataCacheEnabled() {
@@ -55,7 +55,7 @@ public final class DatabaseInstanceSettingsDataCacheConfigArgs extends com.pulum
         }
 
         /**
-         * @param dataCacheEnabled Whether data cache is enabled for the instance. Defaults to `false`. Can be used with MYSQL and PostgreSQL only.
+         * @param dataCacheEnabled Whether data cache is enabled for the instance. Defaults to `true` for MYSQL Enterprise Plus and PostgreSQL Enterprise Plus instances only. For SQL Server Enterprise Plus instances it defaults to `false`.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class DatabaseInstanceSettingsDataCacheConfigArgs extends com.pulum
         }
 
         /**
-         * @param dataCacheEnabled Whether data cache is enabled for the instance. Defaults to `false`. Can be used with MYSQL and PostgreSQL only.
+         * @param dataCacheEnabled Whether data cache is enabled for the instance. Defaults to `true` for MYSQL Enterprise Plus and PostgreSQL Enterprise Plus instances only. For SQL Server Enterprise Plus instances it defaults to `false`.
          * 
          * @return builder
          * 

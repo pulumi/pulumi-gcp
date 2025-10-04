@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.PrivilegedAccessManager.Inputs
         private InputList<Inputs.EntitlementApprovalWorkflowManualApprovalsStepGetArgs>? _steps;
 
         /// <summary>
-        /// List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
+        /// List of approval steps in this workflow. These steps would be followed in the specified order sequentially.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.EntitlementApprovalWorkflowManualApprovalsStepGetArgs> Steps

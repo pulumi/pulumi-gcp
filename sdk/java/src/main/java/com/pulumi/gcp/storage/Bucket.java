@@ -79,17 +79,29 @@ import javax.annotation.Nullable;
  *                 .mainPageSuffix("index.html")
  *                 .notFoundPage("404.html")
  *                 .build())
- *             .cors(BucketCorArgs.builder()
- *                 .origins("http://image-store.com")
- *                 .methods(                
- *                     "GET",
- *                     "HEAD",
- *                     "PUT",
- *                     "POST",
- *                     "DELETE")
- *                 .responseHeaders("*")
- *                 .maxAgeSeconds(3600)
- *                 .build())
+ *             .cors(            
+ *                 BucketCorArgs.builder()
+ *                     .origins("http://image-store.com")
+ *                     .methods(                    
+ *                         "GET",
+ *                         "HEAD",
+ *                         "PUT",
+ *                         "POST",
+ *                         "DELETE")
+ *                     .responseHeaders("*")
+ *                     .maxAgeSeconds(3600)
+ *                     .build(),
+ *                 BucketCorArgs.builder()
+ *                     .origins("http://image-store.com")
+ *                     .methods(                    
+ *                         "GET",
+ *                         "HEAD",
+ *                         "PUT",
+ *                         "POST",
+ *                         "DELETE")
+ *                     .responseHeaders("*")
+ *                     .maxAgeSeconds(0)
+ *                     .build())
  *             .build());
  * 
  *     }

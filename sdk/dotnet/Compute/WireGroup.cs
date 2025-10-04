@@ -47,6 +47,7 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             BandwidthUnmetered = 10,
     ///             FaultResponse = "NONE",
+    ///             BandwidthAllocation = "ALLOCATE_PER_WIRE",
     ///         },
     ///         WireGroupProperties = new Gcp.Compute.Inputs.WireGroupWireGroupPropertiesArgs
     ///         {

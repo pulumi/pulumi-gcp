@@ -29,7 +29,8 @@ class TopicArgs:
                  message_transforms: Optional[pulumi.Input[Sequence[pulumi.Input['TopicMessageTransformArgs']]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema_settings: Optional[pulumi.Input['TopicSchemaSettingsArgs']] = None):
+                 schema_settings: Optional[pulumi.Input['TopicSchemaSettingsArgs']] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Topic resource.
         :param pulumi.Input['TopicIngestionDataSourceSettingsArgs'] ingestion_data_source_settings: Settings for ingestion from a data source into this topic.
@@ -63,6 +64,14 @@ class TopicArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input['TopicSchemaSettingsArgs'] schema_settings: Settings for validating messages published against a schema.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Input only. Resource manager tags to be bound to the topic. Tag keys and
+               values have the same definition as resource manager tags. Keys must be in
+               the format tagKeys/{tag_key_id}, and values are in the format
+               tagValues/456. The field is ignored when empty. The field is immutable and
+               causes resource replacement when mutated. This field is only set at create
+               time and modifying this field after creation will trigger recreation. To
+               apply tags to an existing resource, see the `tags.TagValue`
+               resource.
         """
         if ingestion_data_source_settings is not None:
             pulumi.set(__self__, "ingestion_data_source_settings", ingestion_data_source_settings)
@@ -82,6 +91,8 @@ class TopicArgs:
             pulumi.set(__self__, "project", project)
         if schema_settings is not None:
             pulumi.set(__self__, "schema_settings", schema_settings)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter(name="ingestionDataSourceSettings")
@@ -213,6 +224,25 @@ class TopicArgs:
     def schema_settings(self, value: Optional[pulumi.Input['TopicSchemaSettingsArgs']]):
         pulumi.set(self, "schema_settings", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Input only. Resource manager tags to be bound to the topic. Tag keys and
+        values have the same definition as resource manager tags. Keys must be in
+        the format tagKeys/{tag_key_id}, and values are in the format
+        tagValues/456. The field is ignored when empty. The field is immutable and
+        causes resource replacement when mutated. This field is only set at create
+        time and modifying this field after creation will trigger recreation. To
+        apply tags to an existing resource, see the `tags.TagValue`
+        resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
 
 @pulumi.input_type
 class _TopicState:
@@ -227,7 +257,8 @@ class _TopicState:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 schema_settings: Optional[pulumi.Input['TopicSchemaSettingsArgs']] = None):
+                 schema_settings: Optional[pulumi.Input['TopicSchemaSettingsArgs']] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Topic resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -264,6 +295,14 @@ class _TopicState:
                and default labels configured on the provider.
         :param pulumi.Input['TopicSchemaSettingsArgs'] schema_settings: Settings for validating messages published against a schema.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Input only. Resource manager tags to be bound to the topic. Tag keys and
+               values have the same definition as resource manager tags. Keys must be in
+               the format tagKeys/{tag_key_id}, and values are in the format
+               tagValues/456. The field is ignored when empty. The field is immutable and
+               causes resource replacement when mutated. This field is only set at create
+               time and modifying this field after creation will trigger recreation. To
+               apply tags to an existing resource, see the `tags.TagValue`
+               resource.
         """
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
@@ -287,6 +326,8 @@ class _TopicState:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if schema_settings is not None:
             pulumi.set(__self__, "schema_settings", schema_settings)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
@@ -443,6 +484,25 @@ class _TopicState:
     def schema_settings(self, value: Optional[pulumi.Input['TopicSchemaSettingsArgs']]):
         pulumi.set(self, "schema_settings", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Input only. Resource manager tags to be bound to the topic. Tag keys and
+        values have the same definition as resource manager tags. Keys must be in
+        the format tagKeys/{tag_key_id}, and values are in the format
+        tagValues/456. The field is ignored when empty. The field is immutable and
+        causes resource replacement when mutated. This field is only set at create
+        time and modifying this field after creation will trigger recreation. To
+        apply tags to an existing resource, see the `tags.TagValue`
+        resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
 
 @pulumi.type_token("gcp:pubsub/topic:Topic")
 class Topic(pulumi.CustomResource):
@@ -459,6 +519,7 @@ class Topic(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  schema_settings: Optional[pulumi.Input[Union['TopicSchemaSettingsArgs', 'TopicSchemaSettingsArgsDict']]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         A named resource to which messages are sent by publishers.
@@ -700,6 +761,29 @@ class Topic(pulumi.CustomResource):
                 },
             ])
         ```
+        ### Pubsub Topic Tags
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        tag_key = gcp.tags.TagKey("tag_key",
+            parent=project.id,
+            short_name="tag_key")
+        tag_value = gcp.tags.TagValue("tag_value",
+            parent=tag_key.id,
+            short_name="tag_value")
+        example = gcp.pubsub.Topic("example",
+            name="example-topic",
+            tags=pulumi.Output.all(
+                namespaced_name=tag_key.namespaced_name,
+                short_name=tag_value.short_name
+        ).apply(lambda resolved_outputs: {
+                resolved_outputs['namespaced_name']: resolved_outputs['short_name'],
+            })
+        )
+        ```
 
         ## Import
 
@@ -758,6 +842,14 @@ class Topic(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Union['TopicSchemaSettingsArgs', 'TopicSchemaSettingsArgsDict']] schema_settings: Settings for validating messages published against a schema.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Input only. Resource manager tags to be bound to the topic. Tag keys and
+               values have the same definition as resource manager tags. Keys must be in
+               the format tagKeys/{tag_key_id}, and values are in the format
+               tagValues/456. The field is ignored when empty. The field is immutable and
+               causes resource replacement when mutated. This field is only set at create
+               time and modifying this field after creation will trigger recreation. To
+               apply tags to an existing resource, see the `tags.TagValue`
+               resource.
         """
         ...
     @overload
@@ -1005,6 +1097,29 @@ class Topic(pulumi.CustomResource):
                 },
             ])
         ```
+        ### Pubsub Topic Tags
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        tag_key = gcp.tags.TagKey("tag_key",
+            parent=project.id,
+            short_name="tag_key")
+        tag_value = gcp.tags.TagValue("tag_value",
+            parent=tag_key.id,
+            short_name="tag_value")
+        example = gcp.pubsub.Topic("example",
+            name="example-topic",
+            tags=pulumi.Output.all(
+                namespaced_name=tag_key.namespaced_name,
+                short_name=tag_value.short_name
+        ).apply(lambda resolved_outputs: {
+                resolved_outputs['namespaced_name']: resolved_outputs['short_name'],
+            })
+        )
+        ```
 
         ## Import
 
@@ -1054,6 +1169,7 @@ class Topic(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  schema_settings: Optional[pulumi.Input[Union['TopicSchemaSettingsArgs', 'TopicSchemaSettingsArgsDict']]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1072,6 +1188,7 @@ class Topic(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["schema_settings"] = schema_settings
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["pulumi_labels"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
@@ -1096,7 +1213,8 @@ class Topic(pulumi.CustomResource):
             name: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            schema_settings: Optional[pulumi.Input[Union['TopicSchemaSettingsArgs', 'TopicSchemaSettingsArgsDict']]] = None) -> 'Topic':
+            schema_settings: Optional[pulumi.Input[Union['TopicSchemaSettingsArgs', 'TopicSchemaSettingsArgsDict']]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Topic':
         """
         Get an existing Topic resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1138,6 +1256,14 @@ class Topic(pulumi.CustomResource):
                and default labels configured on the provider.
         :param pulumi.Input[Union['TopicSchemaSettingsArgs', 'TopicSchemaSettingsArgsDict']] schema_settings: Settings for validating messages published against a schema.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Input only. Resource manager tags to be bound to the topic. Tag keys and
+               values have the same definition as resource manager tags. Keys must be in
+               the format tagKeys/{tag_key_id}, and values are in the format
+               tagValues/456. The field is ignored when empty. The field is immutable and
+               causes resource replacement when mutated. This field is only set at create
+               time and modifying this field after creation will trigger recreation. To
+               apply tags to an existing resource, see the `tags.TagValue`
+               resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1154,6 +1280,7 @@ class Topic(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["schema_settings"] = schema_settings
+        __props__.__dict__["tags"] = tags
         return Topic(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -1266,4 +1393,19 @@ class Topic(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "schema_settings")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        Input only. Resource manager tags to be bound to the topic. Tag keys and
+        values have the same definition as resource manager tags. Keys must be in
+        the format tagKeys/{tag_key_id}, and values are in the format
+        tagValues/456. The field is ignored when empty. The field is immutable and
+        causes resource replacement when mutated. This field is only set at create
+        time and modifying this field after creation will trigger recreation. To
+        apply tags to an existing resource, see the `tags.TagValue`
+        resource.
+        """
+        return pulumi.get(self, "tags")
 

@@ -45,6 +45,11 @@ namespace Pulumi.Gcp.GkeBackup.Outputs
         /// </summary>
         public readonly Outputs.BackupPlanBackupConfigSelectedApplications? SelectedApplications;
         /// <summary>
+        /// If set, include just the resources in the listed namespace Labels.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.BackupPlanBackupConfigSelectedNamespaceLabels? SelectedNamespaceLabels;
+        /// <summary>
         /// If set, include just the resources in the listed namespaces.
         /// Structure is documented below.
         /// </summary>
@@ -64,6 +69,8 @@ namespace Pulumi.Gcp.GkeBackup.Outputs
 
             Outputs.BackupPlanBackupConfigSelectedApplications? selectedApplications,
 
+            Outputs.BackupPlanBackupConfigSelectedNamespaceLabels? selectedNamespaceLabels,
+
             Outputs.BackupPlanBackupConfigSelectedNamespaces? selectedNamespaces)
         {
             AllNamespaces = allNamespaces;
@@ -72,6 +79,7 @@ namespace Pulumi.Gcp.GkeBackup.Outputs
             IncludeVolumeData = includeVolumeData;
             PermissiveMode = permissiveMode;
             SelectedApplications = selectedApplications;
+            SelectedNamespaceLabels = selectedNamespaceLabels;
             SelectedNamespaces = selectedNamespaces;
         }
     }

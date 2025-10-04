@@ -660,6 +660,42 @@ class BackupPlan(pulumi.CustomResource):
                 },
             })
         ```
+        ### Gkebackup Backupplan Nslabels
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            name="nslabels-cluster",
+            location="us-central1",
+            initial_node_count=1,
+            workload_identity_config={
+                "workload_pool": "my-project-name.svc.id.goog",
+            },
+            addons_config={
+                "gke_backup_agent_config": {
+                    "enabled": True,
+                },
+            },
+            deletion_protection=True,
+            network="default",
+            subnetwork="default")
+        nslabels = gcp.gkebackup.BackupPlan("nslabels",
+            name="nslabels-plan",
+            cluster=primary.id,
+            location="us-central1",
+            backup_config={
+                "include_volume_data": True,
+                "include_secrets": True,
+                "selected_namespace_labels": {
+                    "resource_labels": [{
+                        "key": "key1",
+                        "value": "value1",
+                    }],
+                },
+            })
+        ```
         ### Gkebackup Backupplan Full
 
         ```python
@@ -1074,6 +1110,42 @@ class BackupPlan(pulumi.CustomResource):
                 },
                 "encryption_key": {
                     "gcp_kms_encryption_key": crypto_key.id,
+                },
+            })
+        ```
+        ### Gkebackup Backupplan Nslabels
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            name="nslabels-cluster",
+            location="us-central1",
+            initial_node_count=1,
+            workload_identity_config={
+                "workload_pool": "my-project-name.svc.id.goog",
+            },
+            addons_config={
+                "gke_backup_agent_config": {
+                    "enabled": True,
+                },
+            },
+            deletion_protection=True,
+            network="default",
+            subnetwork="default")
+        nslabels = gcp.gkebackup.BackupPlan("nslabels",
+            name="nslabels-plan",
+            cluster=primary.id,
+            location="us-central1",
+            backup_config={
+                "include_volume_data": True,
+                "include_secrets": True,
+                "selected_namespace_labels": {
+                    "resource_labels": [{
+                        "key": "key1",
+                        "value": "value1",
+                    }],
                 },
             })
         ```

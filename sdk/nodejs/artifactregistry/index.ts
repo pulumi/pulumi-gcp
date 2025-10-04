@@ -25,10 +25,20 @@ export const getMavenArtifact: typeof import("./getMavenArtifact").getMavenArtif
 export const getMavenArtifactOutput: typeof import("./getMavenArtifact").getMavenArtifactOutput = null as any;
 utilities.lazyLoad(exports, ["getMavenArtifact","getMavenArtifactOutput"], () => require("./getMavenArtifact"));
 
+export { GetMavenArtifactsArgs, GetMavenArtifactsResult, GetMavenArtifactsOutputArgs } from "./getMavenArtifacts";
+export const getMavenArtifacts: typeof import("./getMavenArtifacts").getMavenArtifacts = null as any;
+export const getMavenArtifactsOutput: typeof import("./getMavenArtifacts").getMavenArtifactsOutput = null as any;
+utilities.lazyLoad(exports, ["getMavenArtifacts","getMavenArtifactsOutput"], () => require("./getMavenArtifacts"));
+
 export { GetNpmPackageArgs, GetNpmPackageResult, GetNpmPackageOutputArgs } from "./getNpmPackage";
 export const getNpmPackage: typeof import("./getNpmPackage").getNpmPackage = null as any;
 export const getNpmPackageOutput: typeof import("./getNpmPackage").getNpmPackageOutput = null as any;
 utilities.lazyLoad(exports, ["getNpmPackage","getNpmPackageOutput"], () => require("./getNpmPackage"));
+
+export { GetNpmPackagesArgs, GetNpmPackagesResult, GetNpmPackagesOutputArgs } from "./getNpmPackages";
+export const getNpmPackages: typeof import("./getNpmPackages").getNpmPackages = null as any;
+export const getNpmPackagesOutput: typeof import("./getNpmPackages").getNpmPackagesOutput = null as any;
+utilities.lazyLoad(exports, ["getNpmPackages","getNpmPackagesOutput"], () => require("./getNpmPackages"));
 
 export { GetPackageArgs, GetPackageResult, GetPackageOutputArgs } from "./getPackage";
 export const getPackage: typeof import("./getPackage").getPackage = null as any;

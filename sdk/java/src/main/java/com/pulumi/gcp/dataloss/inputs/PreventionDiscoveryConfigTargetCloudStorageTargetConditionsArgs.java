@@ -49,14 +49,14 @@ public final class PreventionDiscoveryConfigTargetCloudStorageTargetConditionsAr
     }
 
     /**
-     * Duration format. Minimum age a file store must have. If set, the value must be 1 hour or greater.
+     * Duration format.  Minimum age a resource must be before a profile can be generated. Value must be 1 hour or greater. Minimum age is not supported for Azure Blob Storage containers.
      * 
      */
     @Import(name="minAge")
     private @Nullable Output<String> minAge;
 
     /**
-     * @return Duration format. Minimum age a file store must have. If set, the value must be 1 hour or greater.
+     * @return Duration format.  Minimum age a resource must be before a profile can be generated. Value must be 1 hour or greater. Minimum age is not supported for Azure Blob Storage containers.
      * 
      */
     public Optional<Output<String>> minAge() {
@@ -134,7 +134,7 @@ public final class PreventionDiscoveryConfigTargetCloudStorageTargetConditionsAr
         }
 
         /**
-         * @param minAge Duration format. Minimum age a file store must have. If set, the value must be 1 hour or greater.
+         * @param minAge Duration format.  Minimum age a resource must be before a profile can be generated. Value must be 1 hour or greater. Minimum age is not supported for Azure Blob Storage containers.
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class PreventionDiscoveryConfigTargetCloudStorageTargetConditionsAr
         }
 
         /**
-         * @param minAge Duration format. Minimum age a file store must have. If set, the value must be 1 hour or greater.
+         * @param minAge Duration format.  Minimum age a resource must be before a profile can be generated. Value must be 1 hour or greater. Minimum age is not supported for Azure Blob Storage containers.
          * 
          * @return builder
          * 

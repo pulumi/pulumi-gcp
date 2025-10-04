@@ -73,6 +73,7 @@ export interface GetSubscriptionResult {
     readonly pushConfigs: outputs.pubsub.GetSubscriptionPushConfig[];
     readonly retainAckedMessages: boolean;
     readonly retryPolicies: outputs.pubsub.GetSubscriptionRetryPolicy[];
+    readonly tags: {[key: string]: string};
     readonly topic: string;
 }
 /**

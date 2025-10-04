@@ -28,73 +28,29 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/managedkafka"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
-//	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
-//				ProjectId:      pulumi.String("tf-test_59033"),
-//				Name:           pulumi.String("tf-test_32081"),
-//				OrgId:          pulumi.String("123456789"),
-//				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
-//				DeletionPolicy: pulumi.String("DELETE"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			wait60Seconds, err := time.NewSleep(ctx, "wait_60_seconds", &time.SleepArgs{
-//				CreateDuration: "60s",
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				project,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			compute, err := projects.NewService(ctx, "compute", &projects.ServiceArgs{
-//				Project: project.ProjectId,
-//				Service: pulumi.String("compute.googleapis.com"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				wait60Seconds,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			managedkafka, err := projects.NewService(ctx, "managedkafka", &projects.ServiceArgs{
-//				Project: project.ProjectId,
-//				Service: pulumi.String("managedkafka.googleapis.com"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				compute,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			wait120Seconds, err := time.NewSleep(ctx, "wait_120_seconds", &time.SleepArgs{
-//				CreateDuration: "120s",
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				managedkafka,
-//			}))
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			mkcSecondarySubnet, err := compute.NewSubnetwork(ctx, "mkc_secondary_subnet", &compute.SubnetworkArgs{
-//				Project:     project.ProjectId,
+//				Project:     pulumi.String(project.ProjectId),
 //				Name:        pulumi.String("my-secondary-subnetwork-00"),
 //				IpCidrRange: pulumi.String("10.5.0.0/16"),
 //				Region:      pulumi.String("us-central1"),
 //				Network:     pulumi.String("default"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				wait120Seconds,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			cpsTopic, err := pubsub.NewTopic(ctx, "cps_topic", &pubsub.TopicArgs{
-//				Project:                  project.ProjectId,
+//				Project:                  pulumi.String(project.ProjectId),
 //				Name:                     pulumi.String("my-cps-topic"),
 //				MessageRetentionDuration: pulumi.String("86600s"),
 //			})
@@ -102,7 +58,6 @@ import (
 //				return err
 //			}
 //			gmkCluster, err := managedkafka.NewCluster(ctx, "gmk_cluster", &managedkafka.ClusterArgs{
-//				Project:   project.ProjectId,
 //				ClusterId: pulumi.String("my-cluster"),
 //				Location:  pulumi.String("us-central1"),
 //				CapacityConfig: &managedkafka.ClusterCapacityConfigArgs{
@@ -113,39 +68,29 @@ import (
 //					AccessConfig: &managedkafka.ClusterGcpConfigAccessConfigArgs{
 //						NetworkConfigs: managedkafka.ClusterGcpConfigAccessConfigNetworkConfigArray{
 //							&managedkafka.ClusterGcpConfigAccessConfigNetworkConfigArgs{
-//								Subnet: project.ProjectId.ApplyT(func(projectId string) (string, error) {
-//									return fmt.Sprintf("projects/%v/regions/us-central1/subnetworks/default", projectId), nil
-//								}).(pulumi.StringOutput),
+//								Subnet: pulumi.Sprintf("projects/%v/regions/us-central1/subnetworks/default", project.Number),
 //							},
 //						},
 //					},
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				managedkafka,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			gmkTopic, err := managedkafka.NewTopic(ctx, "gmk_topic", &managedkafka.TopicArgs{
-//				Project:           project.ProjectId,
 //				TopicId:           pulumi.String("my-topic"),
 //				Cluster:           gmkCluster.ClusterId,
 //				Location:          pulumi.String("us-central1"),
 //				PartitionCount:    pulumi.Int(2),
 //				ReplicationFactor: pulumi.Int(3),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				managedkafka,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			mkcCluster, err := managedkafka.NewConnectCluster(ctx, "mkc_cluster", &managedkafka.ConnectClusterArgs{
-//				Project:          project.ProjectId,
 //				ConnectClusterId: pulumi.String("my-connect-cluster"),
-//				KafkaCluster: pulumi.All(project.ProjectId, gmkCluster.ClusterId).ApplyT(func(_args []interface{}) (string, error) {
-//					projectId := _args[0].(string)
-//					clusterId := _args[1].(string)
-//					return fmt.Sprintf("projects/%v/locations/us-central1/clusters/%v", projectId, clusterId), nil
+//				KafkaCluster: gmkCluster.ClusterId.ApplyT(func(clusterId string) (string, error) {
+//					return fmt.Sprintf("projects/%v/locations/us-central1/clusters/%v", project.ProjectId, clusterId), nil
 //				}).(pulumi.StringOutput),
 //				Location: pulumi.String("us-central1"),
 //				CapacityConfig: &managedkafka.ConnectClusterCapacityConfigArgs{
@@ -156,17 +101,13 @@ import (
 //					AccessConfig: &managedkafka.ConnectClusterGcpConfigAccessConfigArgs{
 //						NetworkConfigs: managedkafka.ConnectClusterGcpConfigAccessConfigNetworkConfigArray{
 //							&managedkafka.ConnectClusterGcpConfigAccessConfigNetworkConfigArgs{
-//								PrimarySubnet: project.ProjectId.ApplyT(func(projectId string) (string, error) {
-//									return fmt.Sprintf("projects/%v/regions/us-central1/subnetworks/default", projectId), nil
-//								}).(pulumi.StringOutput),
+//								PrimarySubnet: pulumi.Sprintf("projects/%v/regions/us-central1/subnetworks/default", project.Number),
 //								AdditionalSubnets: pulumi.StringArray{
 //									mkcSecondarySubnet.ID(),
 //								},
 //								DnsDomainNames: pulumi.StringArray{
-//									pulumi.All(gmkCluster.ClusterId, project.ProjectId).ApplyT(func(_args []interface{}) (string, error) {
-//										clusterId := _args[0].(string)
-//										projectId := _args[1].(string)
-//										return fmt.Sprintf("%v.us-central1.managedkafka.%v.cloud.goog", clusterId, projectId), nil
+//									gmkCluster.ClusterId.ApplyT(func(clusterId string) (string, error) {
+//										return fmt.Sprintf("%v.us-central1.managedkafka.%v.cloud.goog", clusterId, project.ProjectId), nil
 //									}).(pulumi.StringOutput),
 //								},
 //							},
@@ -176,24 +117,21 @@ import (
 //				Labels: pulumi.StringMap{
 //					"key": pulumi.String("value"),
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				managedkafka,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = managedkafka.NewConnector(ctx, "example", &managedkafka.ConnectorArgs{
-//				Project:        project.ProjectId,
 //				ConnectorId:    pulumi.String("my-connector"),
 //				ConnectCluster: mkcCluster.ConnectClusterId,
 //				Location:       pulumi.String("us-central1"),
 //				Configs: pulumi.StringMap{
 //					"connector.class": pulumi.String("com.google.pubsub.kafka.sink.CloudPubSubSinkConnector"),
 //					"name":            pulumi.String("my-connector"),
-//					"tasks.max":       pulumi.String("1"),
+//					"tasks.max":       pulumi.String("3"),
 //					"topics":          gmkTopic.TopicId,
 //					"cps.topic":       cpsTopic.Name,
-//					"cps.project":     project.ProjectId,
+//					"cps.project":     pulumi.String(project.ProjectId),
 //					"value.converter": pulumi.String("org.apache.kafka.connect.storage.StringConverter"),
 //					"key.converter":   pulumi.String("org.apache.kafka.connect.storage.StringConverter"),
 //				},
@@ -201,9 +139,7 @@ import (
 //					MinimumBackoff: pulumi.String("60s"),
 //					MaximumBackoff: pulumi.String("1800s"),
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				managedkafka,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}

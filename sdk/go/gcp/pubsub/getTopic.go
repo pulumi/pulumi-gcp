@@ -76,6 +76,7 @@ type LookupTopicResult struct {
 	Project                     *string                              `pulumi:"project"`
 	PulumiLabels                map[string]string                    `pulumi:"pulumiLabels"`
 	SchemaSettings              []GetTopicSchemaSetting              `pulumi:"schemaSettings"`
+	Tags                        map[string]string                    `pulumi:"tags"`
 }
 
 func LookupTopicOutput(ctx *pulumi.Context, args LookupTopicOutputArgs, opts ...pulumi.InvokeOption) LookupTopicResultOutput {
@@ -164,6 +165,10 @@ func (o LookupTopicResultOutput) PulumiLabels() pulumi.StringMapOutput {
 
 func (o LookupTopicResultOutput) SchemaSettings() GetTopicSchemaSettingArrayOutput {
 	return o.ApplyT(func(v LookupTopicResult) []GetTopicSchemaSetting { return v.SchemaSettings }).(GetTopicSchemaSettingArrayOutput)
+}
+
+func (o LookupTopicResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupTopicResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigEncryptionKeyArgs;
 import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigSelectedApplicationsArgs;
+import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigSelectedNamespaceLabelsArgs;
 import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigSelectedNamespacesArgs;
 import java.lang.Boolean;
 import java.util.Objects;
@@ -123,6 +124,23 @@ public final class BackupPlanBackupConfigArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * If set, include just the resources in the listed namespace Labels.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="selectedNamespaceLabels")
+    private @Nullable Output<BackupPlanBackupConfigSelectedNamespaceLabelsArgs> selectedNamespaceLabels;
+
+    /**
+     * @return If set, include just the resources in the listed namespace Labels.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<BackupPlanBackupConfigSelectedNamespaceLabelsArgs>> selectedNamespaceLabels() {
+        return Optional.ofNullable(this.selectedNamespaceLabels);
+    }
+
+    /**
      * If set, include just the resources in the listed namespaces.
      * Structure is documented below.
      * 
@@ -148,6 +166,7 @@ public final class BackupPlanBackupConfigArgs extends com.pulumi.resources.Resou
         this.includeVolumeData = $.includeVolumeData;
         this.permissiveMode = $.permissiveMode;
         this.selectedApplications = $.selectedApplications;
+        this.selectedNamespaceLabels = $.selectedNamespaceLabels;
         this.selectedNamespaces = $.selectedNamespaces;
     }
 
@@ -307,6 +326,29 @@ public final class BackupPlanBackupConfigArgs extends com.pulumi.resources.Resou
          */
         public Builder selectedApplications(BackupPlanBackupConfigSelectedApplicationsArgs selectedApplications) {
             return selectedApplications(Output.of(selectedApplications));
+        }
+
+        /**
+         * @param selectedNamespaceLabels If set, include just the resources in the listed namespace Labels.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder selectedNamespaceLabels(@Nullable Output<BackupPlanBackupConfigSelectedNamespaceLabelsArgs> selectedNamespaceLabels) {
+            $.selectedNamespaceLabels = selectedNamespaceLabels;
+            return this;
+        }
+
+        /**
+         * @param selectedNamespaceLabels If set, include just the resources in the listed namespace Labels.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder selectedNamespaceLabels(BackupPlanBackupConfigSelectedNamespaceLabelsArgs selectedNamespaceLabels) {
+            return selectedNamespaceLabels(Output.of(selectedNamespaceLabels));
         }
 
         /**

@@ -243,7 +243,7 @@ import * as utilities from "../utilities";
  *     cloudStorageConfig: {
  *         bucket: example.name,
  *         filenamePrefix: "pre-",
- *         filenameSuffix: "-_15335",
+ *         filenameSuffix: "-_26032",
  *         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
  *         maxBytes: 1000,
  *         maxDuration: "300s",
@@ -280,7 +280,7 @@ import * as utilities from "../utilities";
  *     cloudStorageConfig: {
  *         bucket: example.name,
  *         filenamePrefix: "pre-",
- *         filenameSuffix: "-_20665",
+ *         filenameSuffix: "-_8647",
  *         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
  *         maxBytes: 1000,
  *         maxDuration: "300s",
@@ -324,7 +324,7 @@ import * as utilities from "../utilities";
  *     cloudStorageConfig: {
  *         bucket: example.name,
  *         filenamePrefix: "pre-",
- *         filenameSuffix: "-_85160",
+ *         filenameSuffix: "-_50610",
  *         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
  *         maxBytes: 1000,
  *         maxDuration: "300s",
@@ -401,6 +401,30 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     ],
+ * });
+ * ```
+ * ### Pubsub Subscription Tags
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.pubsub.Topic("example", {name: "example-topic"});
+ * const project = gcp.organizations.getProject({});
+ * const tagKey = new gcp.tags.TagKey("tag_key", {
+ *     parent: project.then(project => project.id),
+ *     shortName: "tag_key",
+ * });
+ * const tagValue = new gcp.tags.TagValue("tag_value", {
+ *     parent: tagKey.id,
+ *     shortName: "tag_value",
+ * });
+ * const exampleSubscription = new gcp.pubsub.Subscription("example", {
+ *     name: "example-subscription",
+ *     topic: example.id,
+ *     tags: pulumi.all([tagKey.namespacedName, tagValue.shortName]).apply(([namespacedName, shortName]) => {
+ *         [namespacedName]: shortName,
+ *     }),
  * });
  * ```
  *
@@ -596,6 +620,17 @@ export class Subscription extends pulumi.CustomResource {
      */
     declare public readonly retryPolicy: pulumi.Output<outputs.pubsub.SubscriptionRetryPolicy | undefined>;
     /**
+     * Input only. Resource manager tags to be bound to the subscription. Tag
+     * keys and values have the same definition as resource manager tags. Keys
+     * must be in the format tagKeys/{tag_key_id}, and values are in the format
+     * tagValues/456. The field is ignored when empty. The field is immutable and
+     * causes resource replacement when mutated. This field is only set at create
+     * time and modifying this field after creation will trigger recreation. To
+     * apply tags to an existing resource, see the `gcp.tags.TagValue`
+     * resource.
+     */
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
      * (as in the id property of a google_pubsub_topic), or just a topic name if
      * the topic is in the same project as the subscription.
@@ -633,6 +668,7 @@ export class Subscription extends pulumi.CustomResource {
             resourceInputs["pushConfig"] = state?.pushConfig;
             resourceInputs["retainAckedMessages"] = state?.retainAckedMessages;
             resourceInputs["retryPolicy"] = state?.retryPolicy;
+            resourceInputs["tags"] = state?.tags;
             resourceInputs["topic"] = state?.topic;
         } else {
             const args = argsOrState as SubscriptionArgs | undefined;
@@ -655,6 +691,7 @@ export class Subscription extends pulumi.CustomResource {
             resourceInputs["pushConfig"] = args?.pushConfig;
             resourceInputs["retainAckedMessages"] = args?.retainAckedMessages;
             resourceInputs["retryPolicy"] = args?.retryPolicy;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["topic"] = args?.topic;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
@@ -810,6 +847,17 @@ export interface SubscriptionState {
      */
     retryPolicy?: pulumi.Input<inputs.pubsub.SubscriptionRetryPolicy>;
     /**
+     * Input only. Resource manager tags to be bound to the subscription. Tag
+     * keys and values have the same definition as resource manager tags. Keys
+     * must be in the format tagKeys/{tag_key_id}, and values are in the format
+     * tagValues/456. The field is ignored when empty. The field is immutable and
+     * causes resource replacement when mutated. This field is only set at create
+     * time and modifying this field after creation will trigger recreation. To
+     * apply tags to an existing resource, see the `gcp.tags.TagValue`
+     * resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
      * (as in the id property of a google_pubsub_topic), or just a topic name if
      * the topic is in the same project as the subscription.
@@ -951,6 +999,17 @@ export interface SubscriptionArgs {
      * Structure is documented below.
      */
     retryPolicy?: pulumi.Input<inputs.pubsub.SubscriptionRetryPolicy>;
+    /**
+     * Input only. Resource manager tags to be bound to the subscription. Tag
+     * keys and values have the same definition as resource manager tags. Keys
+     * must be in the format tagKeys/{tag_key_id}, and values are in the format
+     * tagValues/456. The field is ignored when empty. The field is immutable and
+     * causes resource replacement when mutated. This field is only set at create
+     * time and modifying this field after creation will trigger recreation. To
+     * apply tags to an existing resource, see the `gcp.tags.TagValue`
+     * resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
      * (as in the id property of a google_pubsub_topic), or just a topic name if

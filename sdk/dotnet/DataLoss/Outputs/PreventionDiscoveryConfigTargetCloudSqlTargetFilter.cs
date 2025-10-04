@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
     public sealed class PreventionDiscoveryConfigTargetCloudSqlTargetFilter
     {
         /// <summary>
-        /// A specific set of buckets for this filter to apply to.
+        /// A collection of resources for this filter to apply to.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection? Collection;

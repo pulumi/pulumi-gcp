@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
     public sealed class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A collection of regular expressions to match a file store against.
+        /// A collection of regular expressions to match a resource against.
         /// Structure is documented below.
         /// </summary>
         [Input("includeRegexes")]

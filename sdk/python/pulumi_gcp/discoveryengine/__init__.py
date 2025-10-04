@@ -9,6 +9,7 @@ import typing
 from .acl_config import *
 from .chat_engine import *
 from .cmek_config import *
+from .data_connector import *
 from .data_store import *
 from .recommendation_engine import *
 from .schema import *

@@ -84,6 +84,21 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Total cold tier data rounded down to the nearest GiB used by the storage pool.
+     * 
+     */
+    @Import(name="coldTierSizeUsedGib")
+    private @Nullable Output<String> coldTierSizeUsedGib;
+
+    /**
+     * @return Total cold tier data rounded down to the nearest GiB used by the storage pool.
+     * 
+     */
+    public Optional<Output<String>> coldTierSizeUsedGib() {
+        return Optional.ofNullable(this.coldTierSizeUsedGib);
+    }
+
+    /**
      * Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
      * 
      */
@@ -175,6 +190,21 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> hotTierSizeGib() {
         return Optional.ofNullable(this.hotTierSizeGib);
+    }
+
+    /**
+     * Total hot tier data rounded down to the nearest GiB used by the storage pool.
+     * 
+     */
+    @Import(name="hotTierSizeUsedGib")
+    private @Nullable Output<String> hotTierSizeUsedGib;
+
+    /**
+     * @return Total hot tier data rounded down to the nearest GiB used by the storage pool.
+     * 
+     */
+    public Optional<Output<String>> hotTierSizeUsedGib() {
+        return Optional.ofNullable(this.hotTierSizeUsedGib);
     }
 
     /**
@@ -450,12 +480,14 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
         this.allowAutoTiering = $.allowAutoTiering;
         this.availableThroughputMibps = $.availableThroughputMibps;
         this.capacityGib = $.capacityGib;
+        this.coldTierSizeUsedGib = $.coldTierSizeUsedGib;
         this.customPerformanceEnabled = $.customPerformanceEnabled;
         this.description = $.description;
         this.effectiveLabels = $.effectiveLabels;
         this.enableHotTierAutoResize = $.enableHotTierAutoResize;
         this.encryptionType = $.encryptionType;
         this.hotTierSizeGib = $.hotTierSizeGib;
+        this.hotTierSizeUsedGib = $.hotTierSizeUsedGib;
         this.kmsConfig = $.kmsConfig;
         this.labels = $.labels;
         this.ldapEnabled = $.ldapEnabled;
@@ -578,6 +610,27 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder capacityGib(String capacityGib) {
             return capacityGib(Output.of(capacityGib));
+        }
+
+        /**
+         * @param coldTierSizeUsedGib Total cold tier data rounded down to the nearest GiB used by the storage pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder coldTierSizeUsedGib(@Nullable Output<String> coldTierSizeUsedGib) {
+            $.coldTierSizeUsedGib = coldTierSizeUsedGib;
+            return this;
+        }
+
+        /**
+         * @param coldTierSizeUsedGib Total cold tier data rounded down to the nearest GiB used by the storage pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder coldTierSizeUsedGib(String coldTierSizeUsedGib) {
+            return coldTierSizeUsedGib(Output.of(coldTierSizeUsedGib));
         }
 
         /**
@@ -708,6 +761,27 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder hotTierSizeGib(String hotTierSizeGib) {
             return hotTierSizeGib(Output.of(hotTierSizeGib));
+        }
+
+        /**
+         * @param hotTierSizeUsedGib Total hot tier data rounded down to the nearest GiB used by the storage pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hotTierSizeUsedGib(@Nullable Output<String> hotTierSizeUsedGib) {
+            $.hotTierSizeUsedGib = hotTierSizeUsedGib;
+            return this;
+        }
+
+        /**
+         * @param hotTierSizeUsedGib Total hot tier data rounded down to the nearest GiB used by the storage pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hotTierSizeUsedGib(String hotTierSizeUsedGib) {
+            return hotTierSizeUsedGib(Output.of(hotTierSizeUsedGib));
         }
 
         /**

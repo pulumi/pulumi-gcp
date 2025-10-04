@@ -13,6 +13,15 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class WireGroupWirePropertiesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The configuration of a wire's bandwidth allocation.
+        /// ALLOCATE_PER_WIRE: configures a separate unmetered bandwidth allocation (and associated charges) for each wire in the group.
+        /// SHARED_WITH_WIRE_GROUP: this is the default behavior, which configures one unmetered bandwidth allocation for the wire group. The unmetered bandwidth is divided equally across each wire in the group, but dynamic
+        /// throttling reallocates unused unmetered bandwidth from unused or underused wires to other wires in the group.
+        /// </summary>
+        [Input("bandwidthAllocation", required: true)]
+        public Input<string> BandwidthAllocation { get; set; } = null!;
+
+        /// <summary>
         /// The unmetered bandwidth setting.
         /// </summary>
         [Input("bandwidthUnmetered")]

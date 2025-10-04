@@ -546,6 +546,62 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Pubsub Topic Tags
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.tags.TagKey;
+ * import com.pulumi.gcp.tags.TagKeyArgs;
+ * import com.pulumi.gcp.tags.TagValue;
+ * import com.pulumi.gcp.tags.TagValueArgs;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
+ * 
+ *         var tagKey = new TagKey("tagKey", TagKeyArgs.builder()
+ *             .parent(project.id())
+ *             .shortName("tag_key")
+ *             .build());
+ * 
+ *         var tagValue = new TagValue("tagValue", TagValueArgs.builder()
+ *             .parent(tagKey.id())
+ *             .shortName("tag_value")
+ *             .build());
+ * 
+ *         var example = new Topic("example", TopicArgs.builder()
+ *             .name("example-topic")
+ *             .tags(Output.tuple(tagKey.namespacedName(), tagValue.shortName()).applyValue(values -> {
+ *                 var namespacedName = values.t1;
+ *                 var shortName = values.t2;
+ *                 return Map.of(namespacedName, shortName);
+ *             }))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -773,6 +829,34 @@ public class Topic extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<TopicSchemaSettings>> schemaSettings() {
         return Codegen.optional(this.schemaSettings);
+    }
+    /**
+     * Input only. Resource manager tags to be bound to the topic. Tag keys and
+     * values have the same definition as resource manager tags. Keys must be in
+     * the format tagKeys/{tag_key_id}, and values are in the format
+     * tagValues/456. The field is ignored when empty. The field is immutable and
+     * causes resource replacement when mutated. This field is only set at create
+     * time and modifying this field after creation will trigger recreation. To
+     * apply tags to an existing resource, see the `gcp.tags.TagValue`
+     * resource.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return Input only. Resource manager tags to be bound to the topic. Tag keys and
+     * values have the same definition as resource manager tags. Keys must be in
+     * the format tagKeys/{tag_key_id}, and values are in the format
+     * tagValues/456. The field is ignored when empty. The field is immutable and
+     * causes resource replacement when mutated. This field is only set at create
+     * time and modifying this field after creation will trigger recreation. To
+     * apply tags to an existing resource, see the `gcp.tags.TagValue`
+     * resource.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
     }
 
     /**

@@ -29,6 +29,11 @@ namespace Pulumi.Gcp.PrivilegedAccessManager.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.EntitlementApprovalWorkflowManualApprovalsStepApprovers Approvers;
+        /// <summary>
+        /// (Output, Beta)
+        /// Output Only. The ID of the approval step.
+        /// </summary>
+        public readonly string? Id;
 
         [OutputConstructor]
         private EntitlementApprovalWorkflowManualApprovalsStep(
@@ -36,11 +41,14 @@ namespace Pulumi.Gcp.PrivilegedAccessManager.Outputs
 
             ImmutableArray<string> approverEmailRecipients,
 
-            Outputs.EntitlementApprovalWorkflowManualApprovalsStepApprovers approvers)
+            Outputs.EntitlementApprovalWorkflowManualApprovalsStepApprovers approvers,
+
+            string? id)
         {
             ApprovalsNeeded = approvalsNeeded;
             ApproverEmailRecipients = approverEmailRecipients;
             Approvers = approvers;
+            Id = id;
         }
     }
 }

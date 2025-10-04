@@ -182,6 +182,62 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     /// });
     /// ```
+    /// ### Gkebackup Backupplan Nslabels
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var primary = new Gcp.Container.Cluster("primary", new()
+    ///     {
+    ///         Name = "nslabels-cluster",
+    ///         Location = "us-central1",
+    ///         InitialNodeCount = 1,
+    ///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
+    ///         {
+    ///             WorkloadPool = "my-project-name.svc.id.goog",
+    ///         },
+    ///         AddonsConfig = new Gcp.Container.Inputs.ClusterAddonsConfigArgs
+    ///         {
+    ///             GkeBackupAgentConfig = new Gcp.Container.Inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             },
+    ///         },
+    ///         DeletionProtection = true,
+    ///         Network = "default",
+    ///         Subnetwork = "default",
+    ///     });
+    /// 
+    ///     var nslabels = new Gcp.GkeBackup.BackupPlan("nslabels", new()
+    ///     {
+    ///         Name = "nslabels-plan",
+    ///         Cluster = primary.Id,
+    ///         Location = "us-central1",
+    ///         BackupConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigArgs
+    ///         {
+    ///             IncludeVolumeData = true,
+    ///             IncludeSecrets = true,
+    ///             SelectedNamespaceLabels = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigSelectedNamespaceLabelsArgs
+    ///             {
+    ///                 ResourceLabels = new[]
+    ///                 {
+    ///                     new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArgs
+    ///                     {
+    ///                         Key = "key1",
+    ///                         Value = "value1",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Gkebackup Backupplan Full
     /// 
     /// ```csharp

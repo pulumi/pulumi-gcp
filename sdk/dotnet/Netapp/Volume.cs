@@ -165,6 +165,12 @@ namespace Pulumi.Gcp.Netapp
         public Output<bool> HasReplication { get; private set; } = null!;
 
         /// <summary>
+        /// Total hot tier data rounded down to the nearest GiB used by the volume. This field is only used for flex Service Level
+        /// </summary>
+        [Output("hotTierSizeUsedGib")]
+        public Output<string> HotTierSizeUsedGib { get; private set; } = null!;
+
+        /// <summary>
         /// The Hybrid Replication parameters for the volume.
         /// Structure is documented below.
         /// </summary>
@@ -706,6 +712,12 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Input("hasReplication")]
         public Input<bool>? HasReplication { get; set; }
+
+        /// <summary>
+        /// Total hot tier data rounded down to the nearest GiB used by the volume. This field is only used for flex Service Level
+        /// </summary>
+        [Input("hotTierSizeUsedGib")]
+        public Input<string>? HotTierSizeUsedGib { get; set; }
 
         /// <summary>
         /// The Hybrid Replication parameters for the volume.

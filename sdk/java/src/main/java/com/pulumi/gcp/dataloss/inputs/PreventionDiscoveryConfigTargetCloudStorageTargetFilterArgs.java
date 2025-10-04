@@ -35,7 +35,7 @@ public final class PreventionDiscoveryConfigTargetCloudStorageTargetFilterArgs e
     }
 
     /**
-     * A specific set of buckets for this filter to apply to.
+     * A collection of resources for this filter to apply to.
      * Structure is documented below.
      * 
      */
@@ -43,7 +43,7 @@ public final class PreventionDiscoveryConfigTargetCloudStorageTargetFilterArgs e
     private @Nullable Output<PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionArgs> collection;
 
     /**
-     * @return A specific set of buckets for this filter to apply to.
+     * @return A collection of resources for this filter to apply to.
      * Structure is documented below.
      * 
      */
@@ -116,7 +116,7 @@ public final class PreventionDiscoveryConfigTargetCloudStorageTargetFilterArgs e
         }
 
         /**
-         * @param collection A specific set of buckets for this filter to apply to.
+         * @param collection A collection of resources for this filter to apply to.
          * Structure is documented below.
          * 
          * @return builder
@@ -128,7 +128,7 @@ public final class PreventionDiscoveryConfigTargetCloudStorageTargetFilterArgs e
         }
 
         /**
-         * @param collection A specific set of buckets for this filter to apply to.
+         * @param collection A collection of resources for this filter to apply to.
          * Structure is documented below.
          * 
          * @return builder

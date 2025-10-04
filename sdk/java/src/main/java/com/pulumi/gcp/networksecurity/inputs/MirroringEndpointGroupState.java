@@ -159,6 +159,27 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
     }
 
     /**
+     * A list of the deployment groups that this BROKER endpoint group is
+     * connected to, for example:
+     * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+     * See https://google.aip.dev/124.
+     * 
+     */
+    @Import(name="mirroringDeploymentGroups")
+    private @Nullable Output<List<String>> mirroringDeploymentGroups;
+
+    /**
+     * @return A list of the deployment groups that this BROKER endpoint group is
+     * connected to, for example:
+     * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+     * See https://google.aip.dev/124.
+     * 
+     */
+    public Optional<Output<List<String>>> mirroringDeploymentGroups() {
+        return Optional.ofNullable(this.mirroringDeploymentGroups);
+    }
+
+    /**
      * The ID to use for the endpoint group, which will become the final component
      * of the endpoint group&#39;s resource name.
      * 
@@ -277,6 +298,29 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
     }
 
     /**
+     * The type of the endpoint group.
+     * If left unspecified, defaults to DIRECT.
+     * Possible values:
+     * DIRECT
+     * BROKER
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    /**
+     * @return The type of the endpoint group.
+     * If left unspecified, defaults to DIRECT.
+     * Possible values:
+     * DIRECT
+     * BROKER
+     * 
+     */
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
+    }
+
+    /**
      * The timestamp when the resource was most recently updated.
      * See https://google.aip.dev/148#timestamps.
      * 
@@ -304,12 +348,14 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
         this.labels = $.labels;
         this.location = $.location;
         this.mirroringDeploymentGroup = $.mirroringDeploymentGroup;
+        this.mirroringDeploymentGroups = $.mirroringDeploymentGroups;
         this.mirroringEndpointGroupId = $.mirroringEndpointGroupId;
         this.name = $.name;
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
         this.reconciling = $.reconciling;
         this.state = $.state;
+        this.type = $.type;
         this.updateTime = $.updateTime;
     }
 
@@ -541,6 +587,46 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
         }
 
         /**
+         * @param mirroringDeploymentGroups A list of the deployment groups that this BROKER endpoint group is
+         * connected to, for example:
+         * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+         * See https://google.aip.dev/124.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mirroringDeploymentGroups(@Nullable Output<List<String>> mirroringDeploymentGroups) {
+            $.mirroringDeploymentGroups = mirroringDeploymentGroups;
+            return this;
+        }
+
+        /**
+         * @param mirroringDeploymentGroups A list of the deployment groups that this BROKER endpoint group is
+         * connected to, for example:
+         * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+         * See https://google.aip.dev/124.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mirroringDeploymentGroups(List<String> mirroringDeploymentGroups) {
+            return mirroringDeploymentGroups(Output.of(mirroringDeploymentGroups));
+        }
+
+        /**
+         * @param mirroringDeploymentGroups A list of the deployment groups that this BROKER endpoint group is
+         * connected to, for example:
+         * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+         * See https://google.aip.dev/124.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mirroringDeploymentGroups(String... mirroringDeploymentGroups) {
+            return mirroringDeploymentGroups(List.of(mirroringDeploymentGroups));
+        }
+
+        /**
          * @param mirroringEndpointGroupId The ID to use for the endpoint group, which will become the final component
          * of the endpoint group&#39;s resource name.
          * 
@@ -692,6 +778,35 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
          */
         public Builder state(String state) {
             return state(Output.of(state));
+        }
+
+        /**
+         * @param type The type of the endpoint group.
+         * If left unspecified, defaults to DIRECT.
+         * Possible values:
+         * DIRECT
+         * BROKER
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type The type of the endpoint group.
+         * If left unspecified, defaults to DIRECT.
+         * Possible values:
+         * DIRECT
+         * BROKER
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
         }
 
         /**

@@ -19,6 +19,9 @@ namespace Pulumi.Gcp.Compute
     ///     * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
     ///     * [Networks and Tunnel Routing](https://cloud.google.com/vpn/docs/concepts/choosing-networks-routing)
     /// 
+    /// &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `shared_secret_wo`.
+    /// Read more about Write-only Attributes.
+    /// 
     /// ## Example Usage
     /// 
     /// ### Vpn Tunnel Basic
@@ -225,6 +228,17 @@ namespace Pulumi.Gcp.Compute
     /// });
     /// ```
     /// 
+    /// ## Ephemeral Attributes Reference
+    /// 
+    /// The following write-only attributes are supported:
+    /// 
+    /// * `shared_secret_wo` -
+    ///   (Optional)
+    ///   Shared secret used to set the secure session between the Cloud VPN
+    ///   gateway and the peer VPN gateway.
+    ///    Note: This property is write-only and will not be read from the API. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+    ///   **Note**: This property is write-only and will not be read from the API.
+    /// 
     /// ## Import
     /// 
     /// VpnTunnel can be imported using any of these accepted formats:
@@ -407,13 +421,19 @@ namespace Pulumi.Gcp.Compute
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         [Output("sharedSecret")]
-        public Output<string> SharedSecret { get; private set; } = null!;
+        public Output<string?> SharedSecret { get; private set; } = null!;
 
         /// <summary>
         /// Hash of the shared secret.
         /// </summary>
         [Output("sharedSecretHash")]
         public Output<string> SharedSecretHash { get; private set; } = null!;
+
+        /// <summary>
+        /// Triggers update of shared_secret_wo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+        /// </summary>
+        [Output("sharedSecretWoVersion")]
+        public Output<string?> SharedSecretWoVersion { get; private set; } = null!;
 
         /// <summary>
         /// URL of the Target VPN gateway with which this VPN tunnel is
@@ -450,7 +470,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public VPNTunnel(string name, VPNTunnelArgs args, CustomResourceOptions? options = null)
+        public VPNTunnel(string name, VPNTunnelArgs? args = null, CustomResourceOptions? options = null)
             : base("gcp:compute/vPNTunnel:VPNTunnel", name, args ?? new VPNTunnelArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -617,7 +637,7 @@ namespace Pulumi.Gcp.Compute
         [Input("router")]
         public Input<string>? Router { get; set; }
 
-        [Input("sharedSecret", required: true)]
+        [Input("sharedSecret")]
         private Input<string>? _sharedSecret;
 
         /// <summary>
@@ -634,6 +654,12 @@ namespace Pulumi.Gcp.Compute
                 _sharedSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        /// <summary>
+        /// Triggers update of shared_secret_wo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+        /// </summary>
+        [Input("sharedSecretWoVersion")]
+        public Input<string>? SharedSecretWoVersion { get; set; }
 
         /// <summary>
         /// URL of the Target VPN gateway with which this VPN tunnel is
@@ -868,6 +894,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("sharedSecretHash")]
         public Input<string>? SharedSecretHash { get; set; }
+
+        /// <summary>
+        /// Triggers update of shared_secret_wo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+        /// </summary>
+        [Input("sharedSecretWoVersion")]
+        public Input<string>? SharedSecretWoVersion { get; set; }
 
         /// <summary>
         /// URL of the Target VPN gateway with which this VPN tunnel is

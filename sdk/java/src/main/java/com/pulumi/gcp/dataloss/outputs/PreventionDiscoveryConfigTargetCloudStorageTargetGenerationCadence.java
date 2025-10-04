@@ -19,7 +19,7 @@ public final class PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCa
      */
     private @Nullable PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceInspectTemplateModifiedCadence inspectTemplateModifiedCadence;
     /**
-     * @return Data changes in Cloud Storage can&#39;t trigger reprofiling. If you set this field, profiles are refreshed at this frequency regardless of whether the underlying buckets have changes. Defaults to never.
+     * @return Frequency to update profiles regardless of whether the underlying resource has changes. Defaults to never.
      * Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
      * 
      */
@@ -35,7 +35,7 @@ public final class PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCa
         return Optional.ofNullable(this.inspectTemplateModifiedCadence);
     }
     /**
-     * @return Data changes in Cloud Storage can&#39;t trigger reprofiling. If you set this field, profiles are refreshed at this frequency regardless of whether the underlying buckets have changes. Defaults to never.
+     * @return Frequency to update profiles regardless of whether the underlying resource has changes. Defaults to never.
      * Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
      * 
      */

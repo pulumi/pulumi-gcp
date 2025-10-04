@@ -14,6 +14,7 @@ import com.pulumi.gcp.discoveryengine.outputs.SearchEngineCommonConfig;
 import com.pulumi.gcp.discoveryengine.outputs.SearchEngineSearchEngineConfig;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -260,6 +261,20 @@ public class SearchEngine extends com.pulumi.resources.CustomResource {
      */
     public Output<String> engineId() {
         return this.engineId;
+    }
+    /**
+     * A map of the feature config for the engine to opt in or opt out of features.
+     * 
+     */
+    @Export(name="features", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> features;
+
+    /**
+     * @return A map of the feature config for the engine to opt in or opt out of features.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> features() {
+        return Codegen.optional(this.features);
     }
     /**
      * The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.

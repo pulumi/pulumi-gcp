@@ -121,6 +121,10 @@ export class StoragePool extends pulumi.CustomResource {
      */
     declare public readonly capacityGib: pulumi.Output<string>;
     /**
+     * Total cold tier data rounded down to the nearest GiB used by the storage pool.
+     */
+    declare public /*out*/ readonly coldTierSizeUsedGib: pulumi.Output<string>;
+    /**
      * Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
      */
     declare public readonly customPerformanceEnabled: pulumi.Output<boolean | undefined>;
@@ -146,6 +150,10 @@ export class StoragePool extends pulumi.CustomResource {
      * It should be less than the minimum storage pool size and cannot be more than the current storage pool size. It cannot be decreased once set.
      */
     declare public readonly hotTierSizeGib: pulumi.Output<string | undefined>;
+    /**
+     * Total hot tier data rounded down to the nearest GiB used by the storage pool.
+     */
+    declare public /*out*/ readonly hotTierSizeUsedGib: pulumi.Output<string>;
     /**
      * Specifies the CMEK policy to be used for volume encryption. Format: `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}`.
      * The policy needs to be in the same location as the storage pool.
@@ -241,12 +249,14 @@ export class StoragePool extends pulumi.CustomResource {
             resourceInputs["allowAutoTiering"] = state?.allowAutoTiering;
             resourceInputs["availableThroughputMibps"] = state?.availableThroughputMibps;
             resourceInputs["capacityGib"] = state?.capacityGib;
+            resourceInputs["coldTierSizeUsedGib"] = state?.coldTierSizeUsedGib;
             resourceInputs["customPerformanceEnabled"] = state?.customPerformanceEnabled;
             resourceInputs["description"] = state?.description;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["enableHotTierAutoResize"] = state?.enableHotTierAutoResize;
             resourceInputs["encryptionType"] = state?.encryptionType;
             resourceInputs["hotTierSizeGib"] = state?.hotTierSizeGib;
+            resourceInputs["hotTierSizeUsedGib"] = state?.hotTierSizeUsedGib;
             resourceInputs["kmsConfig"] = state?.kmsConfig;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["ldapEnabled"] = state?.ldapEnabled;
@@ -298,8 +308,10 @@ export class StoragePool extends pulumi.CustomResource {
             resourceInputs["totalThroughputMibps"] = args?.totalThroughputMibps;
             resourceInputs["zone"] = args?.zone;
             resourceInputs["availableThroughputMibps"] = undefined /*out*/;
+            resourceInputs["coldTierSizeUsedGib"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["encryptionType"] = undefined /*out*/;
+            resourceInputs["hotTierSizeUsedGib"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["volumeCapacityGib"] = undefined /*out*/;
             resourceInputs["volumeCount"] = undefined /*out*/;
@@ -334,6 +346,10 @@ export interface StoragePoolState {
      */
     capacityGib?: pulumi.Input<string>;
     /**
+     * Total cold tier data rounded down to the nearest GiB used by the storage pool.
+     */
+    coldTierSizeUsedGib?: pulumi.Input<string>;
+    /**
      * Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
      */
     customPerformanceEnabled?: pulumi.Input<boolean>;
@@ -359,6 +375,10 @@ export interface StoragePoolState {
      * It should be less than the minimum storage pool size and cannot be more than the current storage pool size. It cannot be decreased once set.
      */
     hotTierSizeGib?: pulumi.Input<string>;
+    /**
+     * Total hot tier data rounded down to the nearest GiB used by the storage pool.
+     */
+    hotTierSizeUsedGib?: pulumi.Input<string>;
     /**
      * Specifies the CMEK policy to be used for volume encryption. Format: `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}`.
      * The policy needs to be in the same location as the storage pool.

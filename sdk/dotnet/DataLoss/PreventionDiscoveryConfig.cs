@@ -99,6 +99,13 @@ namespace Pulumi.Gcp.DataLoss
         public Output<Outputs.PreventionDiscoveryConfigOrgConfig?> OrgConfig { get; private set; } = null!;
 
         /// <summary>
+        /// A nested object resource.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("otherCloudStartingLocation")]
+        public Output<Outputs.PreventionDiscoveryConfigOtherCloudStartingLocation?> OtherCloudStartingLocation { get; private set; } = null!;
+
+        /// <summary>
         /// The parent of the discovery config in any of the following formats:
         /// * `projects/{{project}}/locations/{{location}}`
         /// * `organizations/{{organization_id}}/locations/{{location}}`
@@ -217,6 +224,13 @@ namespace Pulumi.Gcp.DataLoss
         public Input<Inputs.PreventionDiscoveryConfigOrgConfigArgs>? OrgConfig { get; set; }
 
         /// <summary>
+        /// A nested object resource.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("otherCloudStartingLocation")]
+        public Input<Inputs.PreventionDiscoveryConfigOtherCloudStartingLocationArgs>? OtherCloudStartingLocation { get; set; }
+
+        /// <summary>
         /// The parent of the discovery config in any of the following formats:
         /// * `projects/{{project}}/locations/{{location}}`
         /// * `organizations/{{organization_id}}/locations/{{location}}`
@@ -326,6 +340,13 @@ namespace Pulumi.Gcp.DataLoss
         /// </summary>
         [Input("orgConfig")]
         public Input<Inputs.PreventionDiscoveryConfigOrgConfigGetArgs>? OrgConfig { get; set; }
+
+        /// <summary>
+        /// A nested object resource.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("otherCloudStartingLocation")]
+        public Input<Inputs.PreventionDiscoveryConfigOtherCloudStartingLocationGetArgs>? OtherCloudStartingLocation { get; set; }
 
         /// <summary>
         /// The parent of the discovery config in any of the following formats:

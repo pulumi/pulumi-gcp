@@ -33,6 +33,9 @@ type BackupPlanBackupConfig struct {
 	// A list of namespaced Kubernetes Resources.
 	// Structure is documented below.
 	SelectedApplications *BackupPlanBackupConfigSelectedApplications `pulumi:"selectedApplications"`
+	// If set, include just the resources in the listed namespace Labels.
+	// Structure is documented below.
+	SelectedNamespaceLabels *BackupPlanBackupConfigSelectedNamespaceLabels `pulumi:"selectedNamespaceLabels"`
 	// If set, include just the resources in the listed namespaces.
 	// Structure is documented below.
 	SelectedNamespaces *BackupPlanBackupConfigSelectedNamespaces `pulumi:"selectedNamespaces"`
@@ -69,6 +72,9 @@ type BackupPlanBackupConfigArgs struct {
 	// A list of namespaced Kubernetes Resources.
 	// Structure is documented below.
 	SelectedApplications BackupPlanBackupConfigSelectedApplicationsPtrInput `pulumi:"selectedApplications"`
+	// If set, include just the resources in the listed namespace Labels.
+	// Structure is documented below.
+	SelectedNamespaceLabels BackupPlanBackupConfigSelectedNamespaceLabelsPtrInput `pulumi:"selectedNamespaceLabels"`
 	// If set, include just the resources in the listed namespaces.
 	// Structure is documented below.
 	SelectedNamespaces BackupPlanBackupConfigSelectedNamespacesPtrInput `pulumi:"selectedNamespaces"`
@@ -190,6 +196,14 @@ func (o BackupPlanBackupConfigOutput) SelectedApplications() BackupPlanBackupCon
 	}).(BackupPlanBackupConfigSelectedApplicationsPtrOutput)
 }
 
+// If set, include just the resources in the listed namespace Labels.
+// Structure is documented below.
+func (o BackupPlanBackupConfigOutput) SelectedNamespaceLabels() BackupPlanBackupConfigSelectedNamespaceLabelsPtrOutput {
+	return o.ApplyT(func(v BackupPlanBackupConfig) *BackupPlanBackupConfigSelectedNamespaceLabels {
+		return v.SelectedNamespaceLabels
+	}).(BackupPlanBackupConfigSelectedNamespaceLabelsPtrOutput)
+}
+
 // If set, include just the resources in the listed namespaces.
 // Structure is documented below.
 func (o BackupPlanBackupConfigOutput) SelectedNamespaces() BackupPlanBackupConfigSelectedNamespacesPtrOutput {
@@ -285,6 +299,17 @@ func (o BackupPlanBackupConfigPtrOutput) SelectedApplications() BackupPlanBackup
 		}
 		return v.SelectedApplications
 	}).(BackupPlanBackupConfigSelectedApplicationsPtrOutput)
+}
+
+// If set, include just the resources in the listed namespace Labels.
+// Structure is documented below.
+func (o BackupPlanBackupConfigPtrOutput) SelectedNamespaceLabels() BackupPlanBackupConfigSelectedNamespaceLabelsPtrOutput {
+	return o.ApplyT(func(v *BackupPlanBackupConfig) *BackupPlanBackupConfigSelectedNamespaceLabels {
+		if v == nil {
+			return nil
+		}
+		return v.SelectedNamespaceLabels
+	}).(BackupPlanBackupConfigSelectedNamespaceLabelsPtrOutput)
 }
 
 // If set, include just the resources in the listed namespaces.
@@ -682,6 +707,255 @@ func (o BackupPlanBackupConfigSelectedApplicationsNamespacedNameArrayOutput) Ind
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BackupPlanBackupConfigSelectedApplicationsNamespacedName {
 		return vs[0].([]BackupPlanBackupConfigSelectedApplicationsNamespacedName)[vs[1].(int)]
 	}).(BackupPlanBackupConfigSelectedApplicationsNamespacedNameOutput)
+}
+
+type BackupPlanBackupConfigSelectedNamespaceLabels struct {
+	// A list of Kubernetes Namespace labels.
+	// Structure is documented below.
+	ResourceLabels []BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabel `pulumi:"resourceLabels"`
+}
+
+// BackupPlanBackupConfigSelectedNamespaceLabelsInput is an input type that accepts BackupPlanBackupConfigSelectedNamespaceLabelsArgs and BackupPlanBackupConfigSelectedNamespaceLabelsOutput values.
+// You can construct a concrete instance of `BackupPlanBackupConfigSelectedNamespaceLabelsInput` via:
+//
+//	BackupPlanBackupConfigSelectedNamespaceLabelsArgs{...}
+type BackupPlanBackupConfigSelectedNamespaceLabelsInput interface {
+	pulumi.Input
+
+	ToBackupPlanBackupConfigSelectedNamespaceLabelsOutput() BackupPlanBackupConfigSelectedNamespaceLabelsOutput
+	ToBackupPlanBackupConfigSelectedNamespaceLabelsOutputWithContext(context.Context) BackupPlanBackupConfigSelectedNamespaceLabelsOutput
+}
+
+type BackupPlanBackupConfigSelectedNamespaceLabelsArgs struct {
+	// A list of Kubernetes Namespace labels.
+	// Structure is documented below.
+	ResourceLabels BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArrayInput `pulumi:"resourceLabels"`
+}
+
+func (BackupPlanBackupConfigSelectedNamespaceLabelsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPlanBackupConfigSelectedNamespaceLabels)(nil)).Elem()
+}
+
+func (i BackupPlanBackupConfigSelectedNamespaceLabelsArgs) ToBackupPlanBackupConfigSelectedNamespaceLabelsOutput() BackupPlanBackupConfigSelectedNamespaceLabelsOutput {
+	return i.ToBackupPlanBackupConfigSelectedNamespaceLabelsOutputWithContext(context.Background())
+}
+
+func (i BackupPlanBackupConfigSelectedNamespaceLabelsArgs) ToBackupPlanBackupConfigSelectedNamespaceLabelsOutputWithContext(ctx context.Context) BackupPlanBackupConfigSelectedNamespaceLabelsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupConfigSelectedNamespaceLabelsOutput)
+}
+
+func (i BackupPlanBackupConfigSelectedNamespaceLabelsArgs) ToBackupPlanBackupConfigSelectedNamespaceLabelsPtrOutput() BackupPlanBackupConfigSelectedNamespaceLabelsPtrOutput {
+	return i.ToBackupPlanBackupConfigSelectedNamespaceLabelsPtrOutputWithContext(context.Background())
+}
+
+func (i BackupPlanBackupConfigSelectedNamespaceLabelsArgs) ToBackupPlanBackupConfigSelectedNamespaceLabelsPtrOutputWithContext(ctx context.Context) BackupPlanBackupConfigSelectedNamespaceLabelsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupConfigSelectedNamespaceLabelsOutput).ToBackupPlanBackupConfigSelectedNamespaceLabelsPtrOutputWithContext(ctx)
+}
+
+// BackupPlanBackupConfigSelectedNamespaceLabelsPtrInput is an input type that accepts BackupPlanBackupConfigSelectedNamespaceLabelsArgs, BackupPlanBackupConfigSelectedNamespaceLabelsPtr and BackupPlanBackupConfigSelectedNamespaceLabelsPtrOutput values.
+// You can construct a concrete instance of `BackupPlanBackupConfigSelectedNamespaceLabelsPtrInput` via:
+//
+//	        BackupPlanBackupConfigSelectedNamespaceLabelsArgs{...}
+//
+//	or:
+//
+//	        nil
+type BackupPlanBackupConfigSelectedNamespaceLabelsPtrInput interface {
+	pulumi.Input
+
+	ToBackupPlanBackupConfigSelectedNamespaceLabelsPtrOutput() BackupPlanBackupConfigSelectedNamespaceLabelsPtrOutput
+	ToBackupPlanBackupConfigSelectedNamespaceLabelsPtrOutputWithContext(context.Context) BackupPlanBackupConfigSelectedNamespaceLabelsPtrOutput
+}
+
+type backupPlanBackupConfigSelectedNamespaceLabelsPtrType BackupPlanBackupConfigSelectedNamespaceLabelsArgs
+
+func BackupPlanBackupConfigSelectedNamespaceLabelsPtr(v *BackupPlanBackupConfigSelectedNamespaceLabelsArgs) BackupPlanBackupConfigSelectedNamespaceLabelsPtrInput {
+	return (*backupPlanBackupConfigSelectedNamespaceLabelsPtrType)(v)
+}
+
+func (*backupPlanBackupConfigSelectedNamespaceLabelsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupPlanBackupConfigSelectedNamespaceLabels)(nil)).Elem()
+}
+
+func (i *backupPlanBackupConfigSelectedNamespaceLabelsPtrType) ToBackupPlanBackupConfigSelectedNamespaceLabelsPtrOutput() BackupPlanBackupConfigSelectedNamespaceLabelsPtrOutput {
+	return i.ToBackupPlanBackupConfigSelectedNamespaceLabelsPtrOutputWithContext(context.Background())
+}
+
+func (i *backupPlanBackupConfigSelectedNamespaceLabelsPtrType) ToBackupPlanBackupConfigSelectedNamespaceLabelsPtrOutputWithContext(ctx context.Context) BackupPlanBackupConfigSelectedNamespaceLabelsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupConfigSelectedNamespaceLabelsPtrOutput)
+}
+
+type BackupPlanBackupConfigSelectedNamespaceLabelsOutput struct{ *pulumi.OutputState }
+
+func (BackupPlanBackupConfigSelectedNamespaceLabelsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPlanBackupConfigSelectedNamespaceLabels)(nil)).Elem()
+}
+
+func (o BackupPlanBackupConfigSelectedNamespaceLabelsOutput) ToBackupPlanBackupConfigSelectedNamespaceLabelsOutput() BackupPlanBackupConfigSelectedNamespaceLabelsOutput {
+	return o
+}
+
+func (o BackupPlanBackupConfigSelectedNamespaceLabelsOutput) ToBackupPlanBackupConfigSelectedNamespaceLabelsOutputWithContext(ctx context.Context) BackupPlanBackupConfigSelectedNamespaceLabelsOutput {
+	return o
+}
+
+func (o BackupPlanBackupConfigSelectedNamespaceLabelsOutput) ToBackupPlanBackupConfigSelectedNamespaceLabelsPtrOutput() BackupPlanBackupConfigSelectedNamespaceLabelsPtrOutput {
+	return o.ToBackupPlanBackupConfigSelectedNamespaceLabelsPtrOutputWithContext(context.Background())
+}
+
+func (o BackupPlanBackupConfigSelectedNamespaceLabelsOutput) ToBackupPlanBackupConfigSelectedNamespaceLabelsPtrOutputWithContext(ctx context.Context) BackupPlanBackupConfigSelectedNamespaceLabelsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupPlanBackupConfigSelectedNamespaceLabels) *BackupPlanBackupConfigSelectedNamespaceLabels {
+		return &v
+	}).(BackupPlanBackupConfigSelectedNamespaceLabelsPtrOutput)
+}
+
+// A list of Kubernetes Namespace labels.
+// Structure is documented below.
+func (o BackupPlanBackupConfigSelectedNamespaceLabelsOutput) ResourceLabels() BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArrayOutput {
+	return o.ApplyT(func(v BackupPlanBackupConfigSelectedNamespaceLabels) []BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabel {
+		return v.ResourceLabels
+	}).(BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArrayOutput)
+}
+
+type BackupPlanBackupConfigSelectedNamespaceLabelsPtrOutput struct{ *pulumi.OutputState }
+
+func (BackupPlanBackupConfigSelectedNamespaceLabelsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupPlanBackupConfigSelectedNamespaceLabels)(nil)).Elem()
+}
+
+func (o BackupPlanBackupConfigSelectedNamespaceLabelsPtrOutput) ToBackupPlanBackupConfigSelectedNamespaceLabelsPtrOutput() BackupPlanBackupConfigSelectedNamespaceLabelsPtrOutput {
+	return o
+}
+
+func (o BackupPlanBackupConfigSelectedNamespaceLabelsPtrOutput) ToBackupPlanBackupConfigSelectedNamespaceLabelsPtrOutputWithContext(ctx context.Context) BackupPlanBackupConfigSelectedNamespaceLabelsPtrOutput {
+	return o
+}
+
+func (o BackupPlanBackupConfigSelectedNamespaceLabelsPtrOutput) Elem() BackupPlanBackupConfigSelectedNamespaceLabelsOutput {
+	return o.ApplyT(func(v *BackupPlanBackupConfigSelectedNamespaceLabels) BackupPlanBackupConfigSelectedNamespaceLabels {
+		if v != nil {
+			return *v
+		}
+		var ret BackupPlanBackupConfigSelectedNamespaceLabels
+		return ret
+	}).(BackupPlanBackupConfigSelectedNamespaceLabelsOutput)
+}
+
+// A list of Kubernetes Namespace labels.
+// Structure is documented below.
+func (o BackupPlanBackupConfigSelectedNamespaceLabelsPtrOutput) ResourceLabels() BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArrayOutput {
+	return o.ApplyT(func(v *BackupPlanBackupConfigSelectedNamespaceLabels) []BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabel {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceLabels
+	}).(BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArrayOutput)
+}
+
+type BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabel struct {
+	// The key of the kubernetes label.
+	Key string `pulumi:"key"`
+	// The value of the Label.
+	Value string `pulumi:"value"`
+}
+
+// BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelInput is an input type that accepts BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArgs and BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelOutput values.
+// You can construct a concrete instance of `BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelInput` via:
+//
+//	BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArgs{...}
+type BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelInput interface {
+	pulumi.Input
+
+	ToBackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelOutput() BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelOutput
+	ToBackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelOutputWithContext(context.Context) BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelOutput
+}
+
+type BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArgs struct {
+	// The key of the kubernetes label.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The value of the Label.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabel)(nil)).Elem()
+}
+
+func (i BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArgs) ToBackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelOutput() BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelOutput {
+	return i.ToBackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelOutputWithContext(context.Background())
+}
+
+func (i BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArgs) ToBackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelOutputWithContext(ctx context.Context) BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelOutput)
+}
+
+// BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArrayInput is an input type that accepts BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArray and BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArrayOutput values.
+// You can construct a concrete instance of `BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArrayInput` via:
+//
+//	BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArray{ BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArgs{...} }
+type BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArrayInput interface {
+	pulumi.Input
+
+	ToBackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArrayOutput() BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArrayOutput
+	ToBackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArrayOutputWithContext(context.Context) BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArrayOutput
+}
+
+type BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArray []BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelInput
+
+func (BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabel)(nil)).Elem()
+}
+
+func (i BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArray) ToBackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArrayOutput() BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArrayOutput {
+	return i.ToBackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArrayOutputWithContext(context.Background())
+}
+
+func (i BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArray) ToBackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArrayOutputWithContext(ctx context.Context) BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArrayOutput)
+}
+
+type BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelOutput struct{ *pulumi.OutputState }
+
+func (BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabel)(nil)).Elem()
+}
+
+func (o BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelOutput) ToBackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelOutput() BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelOutput {
+	return o
+}
+
+func (o BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelOutput) ToBackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelOutputWithContext(ctx context.Context) BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelOutput {
+	return o
+}
+
+// The key of the kubernetes label.
+func (o BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabel) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The value of the Label.
+func (o BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabel) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabel)(nil)).Elem()
+}
+
+func (o BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArrayOutput) ToBackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArrayOutput() BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArrayOutput {
+	return o
+}
+
+func (o BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArrayOutput) ToBackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArrayOutputWithContext(ctx context.Context) BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArrayOutput {
+	return o
+}
+
+func (o BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArrayOutput) Index(i pulumi.IntInput) BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabel {
+		return vs[0].([]BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabel)[vs[1].(int)]
+	}).(BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelOutput)
 }
 
 type BackupPlanBackupConfigSelectedNamespaces struct {
@@ -5379,6 +5653,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupConfigSelectedApplicationsPtrInput)(nil)).Elem(), BackupPlanBackupConfigSelectedApplicationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupConfigSelectedApplicationsNamespacedNameInput)(nil)).Elem(), BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupConfigSelectedApplicationsNamespacedNameArrayInput)(nil)).Elem(), BackupPlanBackupConfigSelectedApplicationsNamespacedNameArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupConfigSelectedNamespaceLabelsInput)(nil)).Elem(), BackupPlanBackupConfigSelectedNamespaceLabelsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupConfigSelectedNamespaceLabelsPtrInput)(nil)).Elem(), BackupPlanBackupConfigSelectedNamespaceLabelsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelInput)(nil)).Elem(), BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArrayInput)(nil)).Elem(), BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupConfigSelectedNamespacesInput)(nil)).Elem(), BackupPlanBackupConfigSelectedNamespacesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupConfigSelectedNamespacesPtrInput)(nil)).Elem(), BackupPlanBackupConfigSelectedNamespacesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupScheduleInput)(nil)).Elem(), BackupPlanBackupScheduleArgs{})
@@ -5442,6 +5720,10 @@ func init() {
 	pulumi.RegisterOutputType(BackupPlanBackupConfigSelectedApplicationsPtrOutput{})
 	pulumi.RegisterOutputType(BackupPlanBackupConfigSelectedApplicationsNamespacedNameOutput{})
 	pulumi.RegisterOutputType(BackupPlanBackupConfigSelectedApplicationsNamespacedNameArrayOutput{})
+	pulumi.RegisterOutputType(BackupPlanBackupConfigSelectedNamespaceLabelsOutput{})
+	pulumi.RegisterOutputType(BackupPlanBackupConfigSelectedNamespaceLabelsPtrOutput{})
+	pulumi.RegisterOutputType(BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelOutput{})
+	pulumi.RegisterOutputType(BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArrayOutput{})
 	pulumi.RegisterOutputType(BackupPlanBackupConfigSelectedNamespacesOutput{})
 	pulumi.RegisterOutputType(BackupPlanBackupConfigSelectedNamespacesPtrOutput{})
 	pulumi.RegisterOutputType(BackupPlanBackupScheduleOutput{})

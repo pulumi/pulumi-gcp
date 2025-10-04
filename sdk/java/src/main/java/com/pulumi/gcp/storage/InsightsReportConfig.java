@@ -14,6 +14,7 @@ import com.pulumi.gcp.storage.outputs.InsightsReportConfigCsvOptions;
 import com.pulumi.gcp.storage.outputs.InsightsReportConfigFrequencyOptions;
 import com.pulumi.gcp.storage.outputs.InsightsReportConfigObjectMetadataReportOptions;
 import com.pulumi.gcp.storage.outputs.InsightsReportConfigParquetOptions;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -184,6 +185,20 @@ public class InsightsReportConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> displayName() {
         return Codegen.optional(this.displayName);
+    }
+    /**
+     * If set, all the inventory report details associated with this report configuration are deleted.
+     * 
+     */
+    @Export(name="forceDestroy", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> forceDestroy;
+
+    /**
+     * @return If set, all the inventory report details associated with this report configuration are deleted.
+     * 
+     */
+    public Output<Optional<Boolean>> forceDestroy() {
+        return Codegen.optional(this.forceDestroy);
     }
     /**
      * Options for configuring how inventory reports are generated.
