@@ -72,6 +72,23 @@ public final class VolumeMountOptionArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * (Output)
+     * IP Address.
+     * 
+     */
+    @Import(name="ipAddress")
+    private @Nullable Output<String> ipAddress;
+
+    /**
+     * @return (Output)
+     * IP Address.
+     * 
+     */
+    public Optional<Output<String>> ipAddress() {
+        return Optional.ofNullable(this.ipAddress);
+    }
+
+    /**
+     * (Output)
      * Protocol to mount with.
      * 
      */
@@ -93,6 +110,7 @@ public final class VolumeMountOptionArgs extends com.pulumi.resources.ResourceAr
         this.export = $.export;
         this.exportFull = $.exportFull;
         this.instructions = $.instructions;
+        this.ipAddress = $.ipAddress;
         this.protocol = $.protocol;
     }
 
@@ -185,6 +203,29 @@ public final class VolumeMountOptionArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder instructions(String instructions) {
             return instructions(Output.of(instructions));
+        }
+
+        /**
+         * @param ipAddress (Output)
+         * IP Address.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipAddress(@Nullable Output<String> ipAddress) {
+            $.ipAddress = ipAddress;
+            return this;
+        }
+
+        /**
+         * @param ipAddress (Output)
+         * IP Address.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipAddress(String ipAddress) {
+            return ipAddress(Output.of(ipAddress));
         }
 
         /**

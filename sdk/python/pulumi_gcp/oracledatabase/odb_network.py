@@ -23,6 +23,7 @@ class OdbNetworkArgs:
                  network: pulumi.Input[_builtins.str],
                  odb_network_id: pulumi.Input[_builtins.str],
                  deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
+                 gcp_oracle_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -34,6 +35,9 @@ class OdbNetworkArgs:
                to (^a-z?$) and must be a maximum of 63
                characters in length. The value must start with a letter and end with
                a letter or a number.
+        :param pulumi.Input[_builtins.str] gcp_oracle_zone: The GCP Oracle zone where OdbNetwork is hosted.
+               Example: us-east4-b-r2.
+               If not specified, the system will pick a zone based on availability.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels or tags associated with the resource.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -45,6 +49,8 @@ class OdbNetworkArgs:
         pulumi.set(__self__, "odb_network_id", odb_network_id)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if gcp_oracle_zone is not None:
+            pulumi.set(__self__, "gcp_oracle_zone", gcp_oracle_zone)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if project is not None:
@@ -100,6 +106,20 @@ class OdbNetworkArgs:
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
+    @pulumi.getter(name="gcpOracleZone")
+    def gcp_oracle_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The GCP Oracle zone where OdbNetwork is hosted.
+        Example: us-east4-b-r2.
+        If not specified, the system will pick a zone based on availability.
+        """
+        return pulumi.get(self, "gcp_oracle_zone")
+
+    @gcp_oracle_zone.setter
+    def gcp_oracle_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "gcp_oracle_zone", value)
+
+    @_builtins.property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -134,6 +154,7 @@ class _OdbNetworkState:
                  deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  entitlement_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 gcp_oracle_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -147,6 +168,9 @@ class _OdbNetworkState:
         :param pulumi.Input[_builtins.str] create_time: The date and time that the OdbNetwork was created.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] entitlement_id: The ID of the subscription entitlement associated with the OdbNetwork.
+        :param pulumi.Input[_builtins.str] gcp_oracle_zone: The GCP Oracle zone where OdbNetwork is hosted.
+               Example: us-east4-b-r2.
+               If not specified, the system will pick a zone based on availability.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels or tags associated with the resource.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -178,6 +202,8 @@ class _OdbNetworkState:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if entitlement_id is not None:
             pulumi.set(__self__, "entitlement_id", entitlement_id)
+        if gcp_oracle_zone is not None:
+            pulumi.set(__self__, "gcp_oracle_zone", gcp_oracle_zone)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -239,6 +265,20 @@ class _OdbNetworkState:
     @entitlement_id.setter
     def entitlement_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "entitlement_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gcpOracleZone")
+    def gcp_oracle_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The GCP Oracle zone where OdbNetwork is hosted.
+        Example: us-east4-b-r2.
+        If not specified, the system will pick a zone based on availability.
+        """
+        return pulumi.get(self, "gcp_oracle_zone")
+
+    @gcp_oracle_zone.setter
+    def gcp_oracle_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "gcp_oracle_zone", value)
 
     @_builtins.property
     @pulumi.getter
@@ -358,6 +398,7 @@ class OdbNetwork(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
+                 gcp_oracle_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  network: Optional[pulumi.Input[_builtins.str]] = None,
@@ -373,7 +414,7 @@ class OdbNetwork(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Oracledatabase Odbnetwork
+        ### Oracledatabase Odbnetwork Basic
 
         ```python
         import pulumi
@@ -386,6 +427,25 @@ class OdbNetwork(pulumi.CustomResource):
             location="us-west3",
             project="my-project",
             network=default.id,
+            labels={
+                "terraform_created": "true",
+            },
+            deletion_protection=True)
+        ```
+        ### Oracledatabase Odbnetwork Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.get_network(name="new",
+            project="my-project")
+        my_odbnetwork = gcp.oracledatabase.OdbNetwork("my-odbnetwork",
+            odb_network_id="my-odbnetwork",
+            location="us-west3",
+            project="my-project",
+            network=default.id,
+            gcp_oracle_zone="us-west3-a-r1",
             labels={
                 "terraform_created": "true",
             },
@@ -418,6 +478,9 @@ class OdbNetwork(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] gcp_oracle_zone: The GCP Oracle zone where OdbNetwork is hosted.
+               Example: us-east4-b-r2.
+               If not specified, the system will pick a zone based on availability.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels or tags associated with the resource.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -446,7 +509,7 @@ class OdbNetwork(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Oracledatabase Odbnetwork
+        ### Oracledatabase Odbnetwork Basic
 
         ```python
         import pulumi
@@ -459,6 +522,25 @@ class OdbNetwork(pulumi.CustomResource):
             location="us-west3",
             project="my-project",
             network=default.id,
+            labels={
+                "terraform_created": "true",
+            },
+            deletion_protection=True)
+        ```
+        ### Oracledatabase Odbnetwork Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.get_network(name="new",
+            project="my-project")
+        my_odbnetwork = gcp.oracledatabase.OdbNetwork("my-odbnetwork",
+            odb_network_id="my-odbnetwork",
+            location="us-west3",
+            project="my-project",
+            network=default.id,
+            gcp_oracle_zone="us-west3-a-r1",
             labels={
                 "terraform_created": "true",
             },
@@ -505,6 +587,7 @@ class OdbNetwork(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
+                 gcp_oracle_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  network: Optional[pulumi.Input[_builtins.str]] = None,
@@ -520,6 +603,7 @@ class OdbNetwork(pulumi.CustomResource):
             __props__ = OdbNetworkArgs.__new__(OdbNetworkArgs)
 
             __props__.__dict__["deletion_protection"] = deletion_protection
+            __props__.__dict__["gcp_oracle_zone"] = gcp_oracle_zone
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -553,6 +637,7 @@ class OdbNetwork(pulumi.CustomResource):
             deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             entitlement_id: Optional[pulumi.Input[_builtins.str]] = None,
+            gcp_oracle_zone: Optional[pulumi.Input[_builtins.str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -571,6 +656,9 @@ class OdbNetwork(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: The date and time that the OdbNetwork was created.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] entitlement_id: The ID of the subscription entitlement associated with the OdbNetwork.
+        :param pulumi.Input[_builtins.str] gcp_oracle_zone: The GCP Oracle zone where OdbNetwork is hosted.
+               Example: us-east4-b-r2.
+               If not specified, the system will pick a zone based on availability.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels or tags associated with the resource.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -602,6 +690,7 @@ class OdbNetwork(pulumi.CustomResource):
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["entitlement_id"] = entitlement_id
+        __props__.__dict__["gcp_oracle_zone"] = gcp_oracle_zone
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
@@ -640,6 +729,16 @@ class OdbNetwork(pulumi.CustomResource):
         The ID of the subscription entitlement associated with the OdbNetwork.
         """
         return pulumi.get(self, "entitlement_id")
+
+    @_builtins.property
+    @pulumi.getter(name="gcpOracleZone")
+    def gcp_oracle_zone(self) -> pulumi.Output[_builtins.str]:
+        """
+        The GCP Oracle zone where OdbNetwork is hosted.
+        Example: us-east4-b-r2.
+        If not specified, the system will pick a zone based on availability.
+        """
+        return pulumi.get(self, "gcp_oracle_zone")
 
     @_builtins.property
     @pulumi.getter

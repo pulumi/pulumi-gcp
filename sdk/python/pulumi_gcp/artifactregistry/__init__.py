@@ -10,7 +10,9 @@ from .get_docker_image import *
 from .get_docker_images import *
 from .get_locations import *
 from .get_maven_artifact import *
+from .get_maven_artifacts import *
 from .get_npm_package import *
+from .get_npm_packages import *
 from .get_package import *
 from .get_python_package import *
 from .get_repositories import *

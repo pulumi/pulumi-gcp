@@ -20,6 +20,8 @@ __all__ = [
     'BackupPlanBackupConfigEncryptionKey',
     'BackupPlanBackupConfigSelectedApplications',
     'BackupPlanBackupConfigSelectedApplicationsNamespacedName',
+    'BackupPlanBackupConfigSelectedNamespaceLabels',
+    'BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabel',
     'BackupPlanBackupConfigSelectedNamespaces',
     'BackupPlanBackupSchedule',
     'BackupPlanBackupScheduleRpoConfig',
@@ -68,6 +70,8 @@ class BackupPlanBackupConfig(dict):
             suggest = "permissive_mode"
         elif key == "selectedApplications":
             suggest = "selected_applications"
+        elif key == "selectedNamespaceLabels":
+            suggest = "selected_namespace_labels"
         elif key == "selectedNamespaces":
             suggest = "selected_namespaces"
 
@@ -89,6 +93,7 @@ class BackupPlanBackupConfig(dict):
                  include_volume_data: Optional[_builtins.bool] = None,
                  permissive_mode: Optional[_builtins.bool] = None,
                  selected_applications: Optional['outputs.BackupPlanBackupConfigSelectedApplications'] = None,
+                 selected_namespace_labels: Optional['outputs.BackupPlanBackupConfigSelectedNamespaceLabels'] = None,
                  selected_namespaces: Optional['outputs.BackupPlanBackupConfigSelectedNamespaces'] = None):
         """
         :param _builtins.bool all_namespaces: If True, include all namespaced resources.
@@ -103,6 +108,8 @@ class BackupPlanBackupConfig(dict):
                Backup for GKE detects Kubernetes configuration that is
                non-standard or requires additional setup to restore.
         :param 'BackupPlanBackupConfigSelectedApplicationsArgs' selected_applications: A list of namespaced Kubernetes Resources.
+               Structure is documented below.
+        :param 'BackupPlanBackupConfigSelectedNamespaceLabelsArgs' selected_namespace_labels: If set, include just the resources in the listed namespace Labels.
                Structure is documented below.
         :param 'BackupPlanBackupConfigSelectedNamespacesArgs' selected_namespaces: If set, include just the resources in the listed namespaces.
                Structure is documented below.
@@ -119,6 +126,8 @@ class BackupPlanBackupConfig(dict):
             pulumi.set(__self__, "permissive_mode", permissive_mode)
         if selected_applications is not None:
             pulumi.set(__self__, "selected_applications", selected_applications)
+        if selected_namespace_labels is not None:
+            pulumi.set(__self__, "selected_namespace_labels", selected_namespace_labels)
         if selected_namespaces is not None:
             pulumi.set(__self__, "selected_namespaces", selected_namespaces)
 
@@ -176,6 +185,15 @@ class BackupPlanBackupConfig(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "selected_applications")
+
+    @_builtins.property
+    @pulumi.getter(name="selectedNamespaceLabels")
+    def selected_namespace_labels(self) -> Optional['outputs.BackupPlanBackupConfigSelectedNamespaceLabels']:
+        """
+        If set, include just the resources in the listed namespace Labels.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "selected_namespace_labels")
 
     @_builtins.property
     @pulumi.getter(name="selectedNamespaces")
@@ -286,6 +304,72 @@ class BackupPlanBackupConfigSelectedApplicationsNamespacedName(dict):
         The namespace of a Kubernetes Resource.
         """
         return pulumi.get(self, "namespace")
+
+
+@pulumi.output_type
+class BackupPlanBackupConfigSelectedNamespaceLabels(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceLabels":
+            suggest = "resource_labels"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BackupPlanBackupConfigSelectedNamespaceLabels. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BackupPlanBackupConfigSelectedNamespaceLabels.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BackupPlanBackupConfigSelectedNamespaceLabels.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_labels: Sequence['outputs.BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabel']):
+        """
+        :param Sequence['BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabelArgs'] resource_labels: A list of Kubernetes Namespace labels.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "resource_labels", resource_labels)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceLabels")
+    def resource_labels(self) -> Sequence['outputs.BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabel']:
+        """
+        A list of Kubernetes Namespace labels.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "resource_labels")
+
+
+@pulumi.output_type
+class BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabel(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str key: The key of the kubernetes label.
+        :param _builtins.str value: The value of the Label.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        The key of the kubernetes label.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        The value of the Label.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

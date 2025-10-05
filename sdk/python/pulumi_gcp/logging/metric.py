@@ -564,7 +564,7 @@ class Metric(pulumi.CustomResource):
         logging_metric_metric = gcp.logging.Metric("logging_metric",
             name="my-(custom)/metric",
             filter="resource.type=gae_app AND severity>=ERROR",
-            bucket_name=logging_metric.id)
+            bucket_name=logging_metric.name)
         ```
         ### Logging Metric Disabled
 
@@ -744,7 +744,7 @@ class Metric(pulumi.CustomResource):
         logging_metric_metric = gcp.logging.Metric("logging_metric",
             name="my-(custom)/metric",
             filter="resource.type=gae_app AND severity>=ERROR",
-            bucket_name=logging_metric.id)
+            bucket_name=logging_metric.name)
         ```
         ### Logging Metric Disabled
 

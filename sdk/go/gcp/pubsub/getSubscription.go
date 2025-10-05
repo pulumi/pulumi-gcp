@@ -83,6 +83,7 @@ type LookupSubscriptionResult struct {
 	PushConfigs              []GetSubscriptionPushConfig       `pulumi:"pushConfigs"`
 	RetainAckedMessages      bool                              `pulumi:"retainAckedMessages"`
 	RetryPolicies            []GetSubscriptionRetryPolicy      `pulumi:"retryPolicies"`
+	Tags                     map[string]string                 `pulumi:"tags"`
 	Topic                    string                            `pulumi:"topic"`
 }
 
@@ -200,6 +201,10 @@ func (o LookupSubscriptionResultOutput) RetainAckedMessages() pulumi.BoolOutput 
 
 func (o LookupSubscriptionResultOutput) RetryPolicies() GetSubscriptionRetryPolicyArrayOutput {
 	return o.ApplyT(func(v LookupSubscriptionResult) []GetSubscriptionRetryPolicy { return v.RetryPolicies }).(GetSubscriptionRetryPolicyArrayOutput)
+}
+
+func (o LookupSubscriptionResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupSubscriptionResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o LookupSubscriptionResultOutput) Topic() pulumi.StringOutput {

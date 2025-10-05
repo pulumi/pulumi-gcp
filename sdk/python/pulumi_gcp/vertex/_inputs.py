@@ -59,6 +59,10 @@ __all__ = [
     'AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityArgsDict',
     'AiEndpointWithModelGardenDeploymentEndpointConfigArgs',
     'AiEndpointWithModelGardenDeploymentEndpointConfigArgsDict',
+    'AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs',
+    'AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgsDict',
+    'AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsArgs',
+    'AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsArgsDict',
     'AiEndpointWithModelGardenDeploymentModelConfigArgs',
     'AiEndpointWithModelGardenDeploymentModelConfigArgsDict',
     'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs',
@@ -173,6 +177,8 @@ __all__ = [
     'AiFeatureStoreOnlineServingConfigScalingArgsDict',
     'AiIndexDeployedIndexArgs',
     'AiIndexDeployedIndexArgsDict',
+    'AiIndexEncryptionSpecArgs',
+    'AiIndexEncryptionSpecArgsDict',
     'AiIndexEndpointDeployedIndexAutomaticResourcesArgs',
     'AiIndexEndpointDeployedIndexAutomaticResourcesArgsDict',
     'AiIndexEndpointDeployedIndexDedicatedResourcesArgs',
@@ -187,6 +193,8 @@ __all__ = [
     'AiIndexEndpointDeployedIndexPrivateEndpointArgsDict',
     'AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArgs',
     'AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArgsDict',
+    'AiIndexEndpointEncryptionSpecArgs',
+    'AiIndexEndpointEncryptionSpecArgsDict',
     'AiIndexEndpointPrivateServiceConnectConfigArgs',
     'AiIndexEndpointPrivateServiceConnectConfigArgsDict',
     'AiIndexIndexStatArgs',
@@ -2202,6 +2210,11 @@ if not MYPY:
         The user-specified display name of the endpoint. If not set, a
         default name will be used.
         """
+        private_service_connect_config: NotRequired[pulumi.Input['AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgsDict']]
+        """
+        The configuration for Private Service Connect (PSC).
+        Structure is documented below.
+        """
 elif False:
     AiEndpointWithModelGardenDeploymentEndpointConfigArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -2209,7 +2222,8 @@ elif False:
 class AiEndpointWithModelGardenDeploymentEndpointConfigArgs:
     def __init__(__self__, *,
                  dedicated_endpoint_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 endpoint_display_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 endpoint_display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 private_service_connect_config: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] dedicated_endpoint_enabled: If true, the endpoint will be exposed through a dedicated
                DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS
@@ -2219,11 +2233,15 @@ class AiEndpointWithModelGardenDeploymentEndpointConfigArgs:
                {region}-aiplatform.googleapis.com. The limitations will be removed soon.
         :param pulumi.Input[_builtins.str] endpoint_display_name: The user-specified display name of the endpoint. If not set, a
                default name will be used.
+        :param pulumi.Input['AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs'] private_service_connect_config: The configuration for Private Service Connect (PSC).
+               Structure is documented below.
         """
         if dedicated_endpoint_enabled is not None:
             pulumi.set(__self__, "dedicated_endpoint_enabled", dedicated_endpoint_enabled)
         if endpoint_display_name is not None:
             pulumi.set(__self__, "endpoint_display_name", endpoint_display_name)
+        if private_service_connect_config is not None:
+            pulumi.set(__self__, "private_service_connect_config", private_service_connect_config)
 
     @_builtins.property
     @pulumi.getter(name="dedicatedEndpointEnabled")
@@ -2254,6 +2272,264 @@ class AiEndpointWithModelGardenDeploymentEndpointConfigArgs:
     @endpoint_display_name.setter
     def endpoint_display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "endpoint_display_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="privateServiceConnectConfig")
+    def private_service_connect_config(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs']]:
+        """
+        The configuration for Private Service Connect (PSC).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "private_service_connect_config")
+
+    @private_service_connect_config.setter
+    def private_service_connect_config(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs']]):
+        pulumi.set(self, "private_service_connect_config", value)
+
+
+if not MYPY:
+    class AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgsDict(TypedDict):
+        enable_private_service_connect: pulumi.Input[_builtins.bool]
+        """
+        Required. If true, expose the IndexEndpoint via private service connect.
+        """
+        project_allowlists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        A list of Projects from which the forwarding rule will target the service attachment.
+        """
+        psc_automation_configs: NotRequired[pulumi.Input['AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsArgsDict']]
+        """
+        PSC config that is used to automatically create PSC endpoints in the user projects.
+        Structure is documented below.
+        """
+        service_attachment: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        Output only. The name of the generated service attachment resource.
+        This is only populated if the endpoint is deployed with PrivateServiceConnect.
+        """
+elif False:
+    AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs:
+    def __init__(__self__, *,
+                 enable_private_service_connect: pulumi.Input[_builtins.bool],
+                 project_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 psc_automation_configs: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsArgs']] = None,
+                 service_attachment: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enable_private_service_connect: Required. If true, expose the IndexEndpoint via private service connect.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] project_allowlists: A list of Projects from which the forwarding rule will target the service attachment.
+        :param pulumi.Input['AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsArgs'] psc_automation_configs: PSC config that is used to automatically create PSC endpoints in the user projects.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] service_attachment: (Output)
+               Output only. The name of the generated service attachment resource.
+               This is only populated if the endpoint is deployed with PrivateServiceConnect.
+        """
+        pulumi.set(__self__, "enable_private_service_connect", enable_private_service_connect)
+        if project_allowlists is not None:
+            pulumi.set(__self__, "project_allowlists", project_allowlists)
+        if psc_automation_configs is not None:
+            pulumi.set(__self__, "psc_automation_configs", psc_automation_configs)
+        if service_attachment is not None:
+            pulumi.set(__self__, "service_attachment", service_attachment)
+
+    @_builtins.property
+    @pulumi.getter(name="enablePrivateServiceConnect")
+    def enable_private_service_connect(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Required. If true, expose the IndexEndpoint via private service connect.
+        """
+        return pulumi.get(self, "enable_private_service_connect")
+
+    @enable_private_service_connect.setter
+    def enable_private_service_connect(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enable_private_service_connect", value)
+
+    @_builtins.property
+    @pulumi.getter(name="projectAllowlists")
+    def project_allowlists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of Projects from which the forwarding rule will target the service attachment.
+        """
+        return pulumi.get(self, "project_allowlists")
+
+    @project_allowlists.setter
+    def project_allowlists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "project_allowlists", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pscAutomationConfigs")
+    def psc_automation_configs(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsArgs']]:
+        """
+        PSC config that is used to automatically create PSC endpoints in the user projects.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_automation_configs")
+
+    @psc_automation_configs.setter
+    def psc_automation_configs(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsArgs']]):
+        pulumi.set(self, "psc_automation_configs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAttachment")
+    def service_attachment(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        Output only. The name of the generated service attachment resource.
+        This is only populated if the endpoint is deployed with PrivateServiceConnect.
+        """
+        return pulumi.get(self, "service_attachment")
+
+    @service_attachment.setter
+    def service_attachment(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "service_attachment", value)
+
+
+if not MYPY:
+    class AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsArgsDict(TypedDict):
+        network: pulumi.Input[_builtins.str]
+        """
+        Required. The full name of the Google Compute Engine network.
+        Format: projects/{project}/global/networks/{network}.
+        """
+        project_id: pulumi.Input[_builtins.str]
+        """
+        Required. Project id used to create forwarding rule.
+        """
+        error_message: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        Output only. Error message if the PSC service automation failed.
+        """
+        forwarding_rule: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        Output only. Forwarding rule created by the PSC service automation.
+        """
+        ip_address: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        Output only. IP address rule created by the PSC service automation.
+        """
+        state: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        Output only. The state of the PSC service automation.
+        """
+elif False:
+    AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsArgs:
+    def __init__(__self__, *,
+                 network: pulumi.Input[_builtins.str],
+                 project_id: pulumi.Input[_builtins.str],
+                 error_message: Optional[pulumi.Input[_builtins.str]] = None,
+                 forwarding_rule: Optional[pulumi.Input[_builtins.str]] = None,
+                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
+                 state: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] network: Required. The full name of the Google Compute Engine network.
+               Format: projects/{project}/global/networks/{network}.
+        :param pulumi.Input[_builtins.str] project_id: Required. Project id used to create forwarding rule.
+        :param pulumi.Input[_builtins.str] error_message: (Output)
+               Output only. Error message if the PSC service automation failed.
+        :param pulumi.Input[_builtins.str] forwarding_rule: (Output)
+               Output only. Forwarding rule created by the PSC service automation.
+        :param pulumi.Input[_builtins.str] ip_address: (Output)
+               Output only. IP address rule created by the PSC service automation.
+        :param pulumi.Input[_builtins.str] state: (Output)
+               Output only. The state of the PSC service automation.
+        """
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "project_id", project_id)
+        if error_message is not None:
+            pulumi.set(__self__, "error_message", error_message)
+        if forwarding_rule is not None:
+            pulumi.set(__self__, "forwarding_rule", forwarding_rule)
+        if ip_address is not None:
+            pulumi.set(__self__, "ip_address", ip_address)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. The full name of the Google Compute Engine network.
+        Format: projects/{project}/global/networks/{network}.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "network", value)
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. Project id used to create forwarding rule.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "project_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="errorMessage")
+    def error_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        Output only. Error message if the PSC service automation failed.
+        """
+        return pulumi.get(self, "error_message")
+
+    @error_message.setter
+    def error_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "error_message", value)
+
+    @_builtins.property
+    @pulumi.getter(name="forwardingRule")
+    def forwarding_rule(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        Output only. Forwarding rule created by the PSC service automation.
+        """
+        return pulumi.get(self, "forwarding_rule")
+
+    @forwarding_rule.setter
+    def forwarding_rule(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "forwarding_rule", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        Output only. IP address rule created by the PSC service automation.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @ip_address.setter
+    def ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ip_address", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        Output only. The state of the PSC service automation.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "state", value)
 
 
 if not MYPY:
@@ -6833,6 +7109,37 @@ class AiIndexDeployedIndexArgs:
 
 
 if not MYPY:
+    class AiIndexEncryptionSpecArgsDict(TypedDict):
+        kms_key_name: pulumi.Input[_builtins.str]
+        """
+        Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. The key needs to be in the same region as where the compute resource is created.
+        """
+elif False:
+    AiIndexEncryptionSpecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiIndexEncryptionSpecArgs:
+    def __init__(__self__, *,
+                 kms_key_name: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] kms_key_name: Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. The key needs to be in the same region as where the compute resource is created.
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. The key needs to be in the same region as where the compute resource is created.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "kms_key_name", value)
+
+
+if not MYPY:
     class AiIndexEndpointDeployedIndexAutomaticResourcesArgsDict(TypedDict):
         max_replica_count: NotRequired[pulumi.Input[_builtins.int]]
         """
@@ -7254,6 +7561,37 @@ class AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArgs:
     @project_id.setter
     def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "project_id", value)
+
+
+if not MYPY:
+    class AiIndexEndpointEncryptionSpecArgsDict(TypedDict):
+        kms_key_name: pulumi.Input[_builtins.str]
+        """
+        Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. The key needs to be in the same region as where the compute resource is created.
+        """
+elif False:
+    AiIndexEndpointEncryptionSpecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiIndexEndpointEncryptionSpecArgs:
+    def __init__(__self__, *,
+                 kms_key_name: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] kms_key_name: Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. The key needs to be in the same region as where the compute resource is created.
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. The key needs to be in the same region as where the compute resource is created.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "kms_key_name", value)
 
 
 if not MYPY:

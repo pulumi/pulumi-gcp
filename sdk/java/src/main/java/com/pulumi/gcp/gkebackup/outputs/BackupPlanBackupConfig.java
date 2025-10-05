@@ -6,6 +6,7 @@ package com.pulumi.gcp.gkebackup.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.gkebackup.outputs.BackupPlanBackupConfigEncryptionKey;
 import com.pulumi.gcp.gkebackup.outputs.BackupPlanBackupConfigSelectedApplications;
+import com.pulumi.gcp.gkebackup.outputs.BackupPlanBackupConfigSelectedNamespaceLabels;
 import com.pulumi.gcp.gkebackup.outputs.BackupPlanBackupConfigSelectedNamespaces;
 import java.lang.Boolean;
 import java.util.Objects;
@@ -51,6 +52,12 @@ public final class BackupPlanBackupConfig {
      * 
      */
     private @Nullable BackupPlanBackupConfigSelectedApplications selectedApplications;
+    /**
+     * @return If set, include just the resources in the listed namespace Labels.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable BackupPlanBackupConfigSelectedNamespaceLabels selectedNamespaceLabels;
     /**
      * @return If set, include just the resources in the listed namespaces.
      * Structure is documented below.
@@ -109,6 +116,14 @@ public final class BackupPlanBackupConfig {
         return Optional.ofNullable(this.selectedApplications);
     }
     /**
+     * @return If set, include just the resources in the listed namespace Labels.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<BackupPlanBackupConfigSelectedNamespaceLabels> selectedNamespaceLabels() {
+        return Optional.ofNullable(this.selectedNamespaceLabels);
+    }
+    /**
      * @return If set, include just the resources in the listed namespaces.
      * Structure is documented below.
      * 
@@ -132,6 +147,7 @@ public final class BackupPlanBackupConfig {
         private @Nullable Boolean includeVolumeData;
         private @Nullable Boolean permissiveMode;
         private @Nullable BackupPlanBackupConfigSelectedApplications selectedApplications;
+        private @Nullable BackupPlanBackupConfigSelectedNamespaceLabels selectedNamespaceLabels;
         private @Nullable BackupPlanBackupConfigSelectedNamespaces selectedNamespaces;
         public Builder() {}
         public Builder(BackupPlanBackupConfig defaults) {
@@ -142,6 +158,7 @@ public final class BackupPlanBackupConfig {
     	      this.includeVolumeData = defaults.includeVolumeData;
     	      this.permissiveMode = defaults.permissiveMode;
     	      this.selectedApplications = defaults.selectedApplications;
+    	      this.selectedNamespaceLabels = defaults.selectedNamespaceLabels;
     	      this.selectedNamespaces = defaults.selectedNamespaces;
         }
 
@@ -182,6 +199,12 @@ public final class BackupPlanBackupConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder selectedNamespaceLabels(@Nullable BackupPlanBackupConfigSelectedNamespaceLabels selectedNamespaceLabels) {
+
+            this.selectedNamespaceLabels = selectedNamespaceLabels;
+            return this;
+        }
+        @CustomType.Setter
         public Builder selectedNamespaces(@Nullable BackupPlanBackupConfigSelectedNamespaces selectedNamespaces) {
 
             this.selectedNamespaces = selectedNamespaces;
@@ -195,6 +218,7 @@ public final class BackupPlanBackupConfig {
             _resultValue.includeVolumeData = includeVolumeData;
             _resultValue.permissiveMode = permissiveMode;
             _resultValue.selectedApplications = selectedApplications;
+            _resultValue.selectedNamespaceLabels = selectedNamespaceLabels;
             _resultValue.selectedNamespaces = selectedNamespaces;
             return _resultValue;
         }

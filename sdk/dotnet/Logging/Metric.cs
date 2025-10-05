@@ -157,7 +157,7 @@ namespace Pulumi.Gcp.Logging
     ///     {
     ///         Name = "my-(custom)/metric",
     ///         Filter = "resource.type=gae_app AND severity&gt;=ERROR",
-    ///         BucketName = loggingMetric.Id,
+    ///         BucketName = loggingMetric.Name,
     ///     });
     /// 
     /// });

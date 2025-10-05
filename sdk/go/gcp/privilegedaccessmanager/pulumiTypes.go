@@ -339,7 +339,7 @@ func (o EntitlementApprovalWorkflowPtrOutput) ManualApprovals() EntitlementAppro
 type EntitlementApprovalWorkflowManualApprovals struct {
 	// Optional. Do the approvers need to provide a justification for their actions?
 	RequireApproverJustification *bool `pulumi:"requireApproverJustification"`
-	// List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
+	// List of approval steps in this workflow. These steps would be followed in the specified order sequentially.
 	// Structure is documented below.
 	Steps []EntitlementApprovalWorkflowManualApprovalsStep `pulumi:"steps"`
 }
@@ -358,7 +358,7 @@ type EntitlementApprovalWorkflowManualApprovalsInput interface {
 type EntitlementApprovalWorkflowManualApprovalsArgs struct {
 	// Optional. Do the approvers need to provide a justification for their actions?
 	RequireApproverJustification pulumi.BoolPtrInput `pulumi:"requireApproverJustification"`
-	// List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
+	// List of approval steps in this workflow. These steps would be followed in the specified order sequentially.
 	// Structure is documented below.
 	Steps EntitlementApprovalWorkflowManualApprovalsStepArrayInput `pulumi:"steps"`
 }
@@ -445,7 +445,7 @@ func (o EntitlementApprovalWorkflowManualApprovalsOutput) RequireApproverJustifi
 	return o.ApplyT(func(v EntitlementApprovalWorkflowManualApprovals) *bool { return v.RequireApproverJustification }).(pulumi.BoolPtrOutput)
 }
 
-// List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
+// List of approval steps in this workflow. These steps would be followed in the specified order sequentially.
 // Structure is documented below.
 func (o EntitlementApprovalWorkflowManualApprovalsOutput) Steps() EntitlementApprovalWorkflowManualApprovalsStepArrayOutput {
 	return o.ApplyT(func(v EntitlementApprovalWorkflowManualApprovals) []EntitlementApprovalWorkflowManualApprovalsStep {
@@ -487,7 +487,7 @@ func (o EntitlementApprovalWorkflowManualApprovalsPtrOutput) RequireApproverJust
 	}).(pulumi.BoolPtrOutput)
 }
 
-// List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
+// List of approval steps in this workflow. These steps would be followed in the specified order sequentially.
 // Structure is documented below.
 func (o EntitlementApprovalWorkflowManualApprovalsPtrOutput) Steps() EntitlementApprovalWorkflowManualApprovalsStepArrayOutput {
 	return o.ApplyT(func(v *EntitlementApprovalWorkflowManualApprovals) []EntitlementApprovalWorkflowManualApprovalsStep {
@@ -509,6 +509,9 @@ type EntitlementApprovalWorkflowManualApprovalsStep struct {
 	// The potential set of approvers in this step. This list should contain at only one entry.
 	// Structure is documented below.
 	Approvers EntitlementApprovalWorkflowManualApprovalsStepApprovers `pulumi:"approvers"`
+	// (Output, Beta)
+	// Output Only. The ID of the approval step.
+	Id *string `pulumi:"id"`
 }
 
 // EntitlementApprovalWorkflowManualApprovalsStepInput is an input type that accepts EntitlementApprovalWorkflowManualApprovalsStepArgs and EntitlementApprovalWorkflowManualApprovalsStepOutput values.
@@ -533,6 +536,9 @@ type EntitlementApprovalWorkflowManualApprovalsStepArgs struct {
 	// The potential set of approvers in this step. This list should contain at only one entry.
 	// Structure is documented below.
 	Approvers EntitlementApprovalWorkflowManualApprovalsStepApproversInput `pulumi:"approvers"`
+	// (Output, Beta)
+	// Output Only. The ID of the approval step.
+	Id pulumi.StringPtrInput `pulumi:"id"`
 }
 
 func (EntitlementApprovalWorkflowManualApprovalsStepArgs) ElementType() reflect.Type {
@@ -605,6 +611,12 @@ func (o EntitlementApprovalWorkflowManualApprovalsStepOutput) Approvers() Entitl
 	return o.ApplyT(func(v EntitlementApprovalWorkflowManualApprovalsStep) EntitlementApprovalWorkflowManualApprovalsStepApprovers {
 		return v.Approvers
 	}).(EntitlementApprovalWorkflowManualApprovalsStepApproversOutput)
+}
+
+// (Output, Beta)
+// Output Only. The ID of the approval step.
+func (o EntitlementApprovalWorkflowManualApprovalsStepOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntitlementApprovalWorkflowManualApprovalsStep) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 type EntitlementApprovalWorkflowManualApprovalsStepArrayOutput struct{ *pulumi.OutputState }
@@ -1841,7 +1853,7 @@ func (o GetEntitlementApprovalWorkflowArrayOutput) Index(i pulumi.IntInput) GetE
 type GetEntitlementApprovalWorkflowManualApproval struct {
 	// Optional. Do the approvers need to provide a justification for their actions?
 	RequireApproverJustification bool `pulumi:"requireApproverJustification"`
-	// List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
+	// List of approval steps in this workflow. These steps would be followed in the specified order sequentially.
 	Steps []GetEntitlementApprovalWorkflowManualApprovalStep `pulumi:"steps"`
 }
 
@@ -1859,7 +1871,7 @@ type GetEntitlementApprovalWorkflowManualApprovalInput interface {
 type GetEntitlementApprovalWorkflowManualApprovalArgs struct {
 	// Optional. Do the approvers need to provide a justification for their actions?
 	RequireApproverJustification pulumi.BoolInput `pulumi:"requireApproverJustification"`
-	// List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
+	// List of approval steps in this workflow. These steps would be followed in the specified order sequentially.
 	Steps GetEntitlementApprovalWorkflowManualApprovalStepArrayInput `pulumi:"steps"`
 }
 
@@ -1919,7 +1931,7 @@ func (o GetEntitlementApprovalWorkflowManualApprovalOutput) RequireApproverJusti
 	return o.ApplyT(func(v GetEntitlementApprovalWorkflowManualApproval) bool { return v.RequireApproverJustification }).(pulumi.BoolOutput)
 }
 
-// List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
+// List of approval steps in this workflow. These steps would be followed in the specified order sequentially.
 func (o GetEntitlementApprovalWorkflowManualApprovalOutput) Steps() GetEntitlementApprovalWorkflowManualApprovalStepArrayOutput {
 	return o.ApplyT(func(v GetEntitlementApprovalWorkflowManualApproval) []GetEntitlementApprovalWorkflowManualApprovalStep {
 		return v.Steps
@@ -1956,6 +1968,8 @@ type GetEntitlementApprovalWorkflowManualApprovalStep struct {
 	ApproverEmailRecipients []string `pulumi:"approverEmailRecipients"`
 	// The potential set of approvers in this step. This list should contain at only one entry.
 	Approvers []GetEntitlementApprovalWorkflowManualApprovalStepApprover `pulumi:"approvers"`
+	// Output Only. The ID of the approval step.
+	Id string `pulumi:"id"`
 }
 
 // GetEntitlementApprovalWorkflowManualApprovalStepInput is an input type that accepts GetEntitlementApprovalWorkflowManualApprovalStepArgs and GetEntitlementApprovalWorkflowManualApprovalStepOutput values.
@@ -1979,6 +1993,8 @@ type GetEntitlementApprovalWorkflowManualApprovalStepArgs struct {
 	ApproverEmailRecipients pulumi.StringArrayInput `pulumi:"approverEmailRecipients"`
 	// The potential set of approvers in this step. This list should contain at only one entry.
 	Approvers GetEntitlementApprovalWorkflowManualApprovalStepApproverArrayInput `pulumi:"approvers"`
+	// Output Only. The ID of the approval step.
+	Id pulumi.StringInput `pulumi:"id"`
 }
 
 func (GetEntitlementApprovalWorkflowManualApprovalStepArgs) ElementType() reflect.Type {
@@ -2050,6 +2066,11 @@ func (o GetEntitlementApprovalWorkflowManualApprovalStepOutput) Approvers() GetE
 	return o.ApplyT(func(v GetEntitlementApprovalWorkflowManualApprovalStep) []GetEntitlementApprovalWorkflowManualApprovalStepApprover {
 		return v.Approvers
 	}).(GetEntitlementApprovalWorkflowManualApprovalStepApproverArrayOutput)
+}
+
+// Output Only. The ID of the approval step.
+func (o GetEntitlementApprovalWorkflowManualApprovalStepOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEntitlementApprovalWorkflowManualApprovalStep) string { return v.Id }).(pulumi.StringOutput)
 }
 
 type GetEntitlementApprovalWorkflowManualApprovalStepArrayOutput struct{ *pulumi.OutputState }

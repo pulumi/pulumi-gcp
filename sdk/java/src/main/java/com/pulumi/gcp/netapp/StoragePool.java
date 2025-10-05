@@ -189,6 +189,20 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
         return this.capacityGib;
     }
     /**
+     * Total cold tier data rounded down to the nearest GiB used by the storage pool.
+     * 
+     */
+    @Export(name="coldTierSizeUsedGib", refs={String.class}, tree="[0]")
+    private Output<String> coldTierSizeUsedGib;
+
+    /**
+     * @return Total cold tier data rounded down to the nearest GiB used by the storage pool.
+     * 
+     */
+    public Output<String> coldTierSizeUsedGib() {
+        return this.coldTierSizeUsedGib;
+    }
+    /**
      * Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
      * 
      */
@@ -275,6 +289,20 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> hotTierSizeGib() {
         return Codegen.optional(this.hotTierSizeGib);
+    }
+    /**
+     * Total hot tier data rounded down to the nearest GiB used by the storage pool.
+     * 
+     */
+    @Export(name="hotTierSizeUsedGib", refs={String.class}, tree="[0]")
+    private Output<String> hotTierSizeUsedGib;
+
+    /**
+     * @return Total hot tier data rounded down to the nearest GiB used by the storage pool.
+     * 
+     */
+    public Output<String> hotTierSizeUsedGib() {
+        return this.hotTierSizeUsedGib;
     }
     /**
      * Specifies the CMEK policy to be used for volume encryption. Format: `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}`.

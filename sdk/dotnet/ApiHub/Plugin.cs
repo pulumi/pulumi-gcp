@@ -158,7 +158,7 @@ namespace Pulumi.Gcp.ApiHub
         /// Structure is documented below.
         /// </summary>
         [Output("configTemplate")]
-        public Output<Outputs.PluginConfigTemplate?> ConfigTemplate { get; private set; } = null!;
+        public Output<Outputs.PluginConfigTemplate> ConfigTemplate { get; private set; } = null!;
 
         /// <summary>
         /// Timestamp indicating when the plugin was created.

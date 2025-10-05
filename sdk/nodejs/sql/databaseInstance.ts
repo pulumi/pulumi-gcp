@@ -389,6 +389,10 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     declare public readonly nodeCount: pulumi.Output<number>;
     /**
+     * Configuration for creating a new instance using point-in-time-restore from backupdr backup.
+     */
+    declare public readonly pointInTimeRestoreContext: pulumi.Output<outputs.sql.DatabaseInstancePointInTimeRestoreContext | undefined>;
+    /**
      * The first private (`PRIVATE`) IPv4 address assigned.
      */
     declare public /*out*/ readonly privateIpAddress: pulumi.Output<string>;
@@ -482,6 +486,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["masterInstanceName"] = state?.masterInstanceName;
             resourceInputs["name"] = state?.name;
             resourceInputs["nodeCount"] = state?.nodeCount;
+            resourceInputs["pointInTimeRestoreContext"] = state?.pointInTimeRestoreContext;
             resourceInputs["privateIpAddress"] = state?.privateIpAddress;
             resourceInputs["project"] = state?.project;
             resourceInputs["pscServiceAttachmentLink"] = state?.pscServiceAttachmentLink;
@@ -512,6 +517,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["masterInstanceName"] = args?.masterInstanceName;
             resourceInputs["name"] = args?.name;
             resourceInputs["nodeCount"] = args?.nodeCount;
+            resourceInputs["pointInTimeRestoreContext"] = args?.pointInTimeRestoreContext;
             resourceInputs["project"] = args?.project;
             resourceInputs["region"] = args?.region;
             resourceInputs["replicaConfiguration"] = args?.replicaConfiguration ? pulumi.secret(args.replicaConfiguration) : undefined;
@@ -633,6 +639,10 @@ export interface DatabaseInstanceState {
      * For a read pool instance, the number of nodes in the read pool.
      */
     nodeCount?: pulumi.Input<number>;
+    /**
+     * Configuration for creating a new instance using point-in-time-restore from backupdr backup.
+     */
+    pointInTimeRestoreContext?: pulumi.Input<inputs.sql.DatabaseInstancePointInTimeRestoreContext>;
     /**
      * The first private (`PRIVATE`) IPv4 address assigned.
      */
@@ -769,6 +779,10 @@ export interface DatabaseInstanceArgs {
      * For a read pool instance, the number of nodes in the read pool.
      */
     nodeCount?: pulumi.Input<number>;
+    /**
+     * Configuration for creating a new instance using point-in-time-restore from backupdr backup.
+     */
+    pointInTimeRestoreContext?: pulumi.Input<inputs.sql.DatabaseInstancePointInTimeRestoreContext>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.

@@ -10,6 +10,11 @@ export type Release = import("./release").Release;
 export const Release: typeof import("./release").Release = null as any;
 utilities.lazyLoad(exports, ["Release"], () => require("./release"));
 
+export { RolloutKindArgs, RolloutKindState } from "./rolloutKind";
+export type RolloutKind = import("./rolloutKind").RolloutKind;
+export const RolloutKind: typeof import("./rolloutKind").RolloutKind = null as any;
+utilities.lazyLoad(exports, ["RolloutKind"], () => require("./rolloutKind"));
+
 export { SaaSArgs, SaaSState } from "./saaS";
 export type SaaS = import("./saaS").SaaS;
 export const SaaS: typeof import("./saaS").SaaS = null as any;
@@ -27,6 +32,8 @@ const _module = {
         switch (type) {
             case "gcp:saasruntime/release:Release":
                 return new Release(name, <any>undefined, { urn })
+            case "gcp:saasruntime/rolloutKind:RolloutKind":
+                return new RolloutKind(name, <any>undefined, { urn })
             case "gcp:saasruntime/saaS:SaaS":
                 return new SaaS(name, <any>undefined, { urn })
             case "gcp:saasruntime/unitKind:UnitKind":
@@ -37,5 +44,6 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "saasruntime/release", _module)
+pulumi.runtime.registerResourceModule("gcp", "saasruntime/rolloutKind", _module)
 pulumi.runtime.registerResourceModule("gcp", "saasruntime/saaS", _module)
 pulumi.runtime.registerResourceModule("gcp", "saasruntime/unitKind", _module)

@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### Oracledatabase Odbnetwork
+ * ### Oracledatabase Odbnetwork Basic
  * 
  * <pre>
  * {@code
@@ -62,6 +62,51 @@ import javax.annotation.Nullable;
  *             .location("us-west3")
  *             .project("my-project")
  *             .network(default_.id())
+ *             .labels(Map.of("terraform_created", "true"))
+ *             .deletionProtection(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Oracledatabase Odbnetwork Full
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
+ * import com.pulumi.gcp.oracledatabase.OdbNetwork;
+ * import com.pulumi.gcp.oracledatabase.OdbNetworkArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var default = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
+ *             .name("new")
+ *             .project("my-project")
+ *             .build());
+ * 
+ *         var my_odbnetwork = new OdbNetwork("my-odbnetwork", OdbNetworkArgs.builder()
+ *             .odbNetworkId("my-odbnetwork")
+ *             .location("us-west3")
+ *             .project("my-project")
+ *             .network(default_.id())
+ *             .gcpOracleZone("us-west3-a-r1")
  *             .labels(Map.of("terraform_created", "true"))
  *             .deletionProtection(true)
  *             .build());
@@ -145,6 +190,24 @@ public class OdbNetwork extends com.pulumi.resources.CustomResource {
      */
     public Output<String> entitlementId() {
         return this.entitlementId;
+    }
+    /**
+     * The GCP Oracle zone where OdbNetwork is hosted.
+     * Example: us-east4-b-r2.
+     * If not specified, the system will pick a zone based on availability.
+     * 
+     */
+    @Export(name="gcpOracleZone", refs={String.class}, tree="[0]")
+    private Output<String> gcpOracleZone;
+
+    /**
+     * @return The GCP Oracle zone where OdbNetwork is hosted.
+     * Example: us-east4-b-r2.
+     * If not specified, the system will pick a zone based on availability.
+     * 
+     */
+    public Output<String> gcpOracleZone() {
+        return this.gcpOracleZone;
     }
     /**
      * Labels or tags associated with the resource.

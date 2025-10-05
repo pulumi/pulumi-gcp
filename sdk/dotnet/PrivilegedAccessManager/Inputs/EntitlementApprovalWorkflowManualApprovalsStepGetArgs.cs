@@ -40,6 +40,13 @@ namespace Pulumi.Gcp.PrivilegedAccessManager.Inputs
         [Input("approvers", required: true)]
         public Input<Inputs.EntitlementApprovalWorkflowManualApprovalsStepApproversGetArgs> Approvers { get; set; } = null!;
 
+        /// <summary>
+        /// (Output, Beta)
+        /// Output Only. The ID of the approval step.
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
         public EntitlementApprovalWorkflowManualApprovalsStepGetArgs()
         {
         }

@@ -24,6 +24,7 @@ class AiIndexArgs:
                  display_name: pulumi.Input[_builtins.str],
                  metadata: pulumi.Input['AiIndexMetadataArgs'],
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 encryption_spec: Optional[pulumi.Input['AiIndexEncryptionSpecArgs']] = None,
                  index_update_method: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -36,6 +37,8 @@ class AiIndexArgs:
                Attempts to create an Index without this field will result in an API error.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: The description of the Index.
+        :param pulumi.Input['AiIndexEncryptionSpecArgs'] encryption_spec: Customer-managed encryption key spec for an Index. If set, this Index and all sub-resources of this Index will be secured by this key.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] index_update_method: The update method to use with this Index. The value must be the followings. If not set, BATCH_UPDATE will be used by default.
                * BATCH_UPDATE: user can call indexes.patch with files on Cloud Storage of datapoints to update.
                * STREAM_UPDATE: user can call indexes.upsertDatapoints/DeleteDatapoints to update the Index and the updates will be applied in corresponding DeployedIndexes in nearly real-time.
@@ -50,6 +53,8 @@ class AiIndexArgs:
         pulumi.set(__self__, "metadata", metadata)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if encryption_spec is not None:
+            pulumi.set(__self__, "encryption_spec", encryption_spec)
         if index_update_method is not None:
             pulumi.set(__self__, "index_update_method", index_update_method)
         if labels is not None:
@@ -97,6 +102,19 @@ class AiIndexArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionSpec")
+    def encryption_spec(self) -> Optional[pulumi.Input['AiIndexEncryptionSpecArgs']]:
+        """
+        Customer-managed encryption key spec for an Index. If set, this Index and all sub-resources of this Index will be secured by this key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_spec")
+
+    @encryption_spec.setter
+    def encryption_spec(self, value: Optional[pulumi.Input['AiIndexEncryptionSpecArgs']]):
+        pulumi.set(self, "encryption_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="indexUpdateMethod")
@@ -160,6 +178,7 @@ class _AiIndexState:
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 encryption_spec: Optional[pulumi.Input['AiIndexEncryptionSpecArgs']] = None,
                  etag: Optional[pulumi.Input[_builtins.str]] = None,
                  index_stats: Optional[pulumi.Input[Sequence[pulumi.Input['AiIndexIndexStatArgs']]]] = None,
                  index_update_method: Optional[pulumi.Input[_builtins.str]] = None,
@@ -179,6 +198,8 @@ class _AiIndexState:
         :param pulumi.Input[_builtins.str] description: The description of the Index.
         :param pulumi.Input[_builtins.str] display_name: The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input['AiIndexEncryptionSpecArgs'] encryption_spec: Customer-managed encryption key spec for an Index. If set, this Index and all sub-resources of this Index will be secured by this key.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: Used to perform consistent read-modify-write updates.
         :param pulumi.Input[Sequence[pulumi.Input['AiIndexIndexStatArgs']]] index_stats: Stats of the index resource.
                Structure is documented below.
@@ -211,6 +232,8 @@ class _AiIndexState:
             pulumi.set(__self__, "display_name", display_name)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
+        if encryption_spec is not None:
+            pulumi.set(__self__, "encryption_spec", encryption_spec)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if index_stats is not None:
@@ -294,6 +317,19 @@ class _AiIndexState:
     @effective_labels.setter
     def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionSpec")
+    def encryption_spec(self) -> Optional[pulumi.Input['AiIndexEncryptionSpecArgs']]:
+        """
+        Customer-managed encryption key spec for an Index. If set, this Index and all sub-resources of this Index will be secured by this key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_spec")
+
+    @encryption_spec.setter
+    def encryption_spec(self, value: Optional[pulumi.Input['AiIndexEncryptionSpecArgs']]):
+        pulumi.set(self, "encryption_spec", value)
 
     @_builtins.property
     @pulumi.getter
@@ -446,6 +482,7 @@ class AiIndex(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 encryption_spec: Optional[pulumi.Input[Union['AiIndexEncryptionSpecArgs', 'AiIndexEncryptionSpecArgsDict']]] = None,
                  index_update_method: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  metadata: Optional[pulumi.Input[Union['AiIndexMetadataArgs', 'AiIndexMetadataArgsDict']]] = None,
@@ -467,6 +504,7 @@ class AiIndex(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        vertexai_sa = gcp.projects.ServiceIdentity("vertexai_sa", service="aiplatform.googleapis.com")
         bucket = gcp.storage.Bucket("bucket",
             name="vertex-ai-index-test",
             location="us-central1",
@@ -479,6 +517,10 @@ class AiIndex(pulumi.CustomResource):
             content=\"\"\"{"id": "42", "embedding": [0.5, 1.0], "restricts": [{"namespace": "class", "allow": ["cat", "pet"]},{"namespace": "category", "allow": ["feline"]}]}
         {"id": "43", "embedding": [0.6, 1.0], "restricts": [{"namespace": "class", "allow": ["dog", "pet"]},{"namespace": "category", "allow": ["canine"]}]}
         \"\"\")
+        vertexai_encrypterdecrypter = gcp.kms.CryptoKeyIAMMember("vertexai_encrypterdecrypter",
+            crypto_key_id="kms-name",
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=vertexai_sa.member)
         index = gcp.vertex.AiIndex("index",
             labels={
                 "foo": "bar",
@@ -501,7 +543,11 @@ class AiIndex(pulumi.CustomResource):
                     },
                 },
             },
-            index_update_method="BATCH_UPDATE")
+            encryption_spec={
+                "kms_key_name": "kms-name",
+            },
+            index_update_method="BATCH_UPDATE",
+            opts = pulumi.ResourceOptions(depends_on=[vertexai_encrypterdecrypter]))
         ```
         ### Vertex Ai Index Streaming
 
@@ -577,6 +623,8 @@ class AiIndex(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the Index.
         :param pulumi.Input[_builtins.str] display_name: The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+        :param pulumi.Input[Union['AiIndexEncryptionSpecArgs', 'AiIndexEncryptionSpecArgsDict']] encryption_spec: Customer-managed encryption key spec for an Index. If set, this Index and all sub-resources of this Index will be secured by this key.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] index_update_method: The update method to use with this Index. The value must be the followings. If not set, BATCH_UPDATE will be used by default.
                * BATCH_UPDATE: user can call indexes.patch with files on Cloud Storage of datapoints to update.
                * STREAM_UPDATE: user can call indexes.upsertDatapoints/DeleteDatapoints to update the Index and the updates will be applied in corresponding DeployedIndexes in nearly real-time.
@@ -612,6 +660,7 @@ class AiIndex(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        vertexai_sa = gcp.projects.ServiceIdentity("vertexai_sa", service="aiplatform.googleapis.com")
         bucket = gcp.storage.Bucket("bucket",
             name="vertex-ai-index-test",
             location="us-central1",
@@ -624,6 +673,10 @@ class AiIndex(pulumi.CustomResource):
             content=\"\"\"{"id": "42", "embedding": [0.5, 1.0], "restricts": [{"namespace": "class", "allow": ["cat", "pet"]},{"namespace": "category", "allow": ["feline"]}]}
         {"id": "43", "embedding": [0.6, 1.0], "restricts": [{"namespace": "class", "allow": ["dog", "pet"]},{"namespace": "category", "allow": ["canine"]}]}
         \"\"\")
+        vertexai_encrypterdecrypter = gcp.kms.CryptoKeyIAMMember("vertexai_encrypterdecrypter",
+            crypto_key_id="kms-name",
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=vertexai_sa.member)
         index = gcp.vertex.AiIndex("index",
             labels={
                 "foo": "bar",
@@ -646,7 +699,11 @@ class AiIndex(pulumi.CustomResource):
                     },
                 },
             },
-            index_update_method="BATCH_UPDATE")
+            encryption_spec={
+                "kms_key_name": "kms-name",
+            },
+            index_update_method="BATCH_UPDATE",
+            opts = pulumi.ResourceOptions(depends_on=[vertexai_encrypterdecrypter]))
         ```
         ### Vertex Ai Index Streaming
 
@@ -735,6 +792,7 @@ class AiIndex(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 encryption_spec: Optional[pulumi.Input[Union['AiIndexEncryptionSpecArgs', 'AiIndexEncryptionSpecArgsDict']]] = None,
                  index_update_method: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  metadata: Optional[pulumi.Input[Union['AiIndexMetadataArgs', 'AiIndexMetadataArgsDict']]] = None,
@@ -753,6 +811,7 @@ class AiIndex(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["encryption_spec"] = encryption_spec
             __props__.__dict__["index_update_method"] = index_update_method
             __props__.__dict__["labels"] = labels
             if metadata is None and not opts.urn:
@@ -786,6 +845,7 @@ class AiIndex(pulumi.CustomResource):
             description: Optional[pulumi.Input[_builtins.str]] = None,
             display_name: Optional[pulumi.Input[_builtins.str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            encryption_spec: Optional[pulumi.Input[Union['AiIndexEncryptionSpecArgs', 'AiIndexEncryptionSpecArgsDict']]] = None,
             etag: Optional[pulumi.Input[_builtins.str]] = None,
             index_stats: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AiIndexIndexStatArgs', 'AiIndexIndexStatArgsDict']]]]] = None,
             index_update_method: Optional[pulumi.Input[_builtins.str]] = None,
@@ -810,6 +870,8 @@ class AiIndex(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the Index.
         :param pulumi.Input[_builtins.str] display_name: The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[Union['AiIndexEncryptionSpecArgs', 'AiIndexEncryptionSpecArgsDict']] encryption_spec: Customer-managed encryption key spec for an Index. If set, this Index and all sub-resources of this Index will be secured by this key.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: Used to perform consistent read-modify-write updates.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AiIndexIndexStatArgs', 'AiIndexIndexStatArgsDict']]]] index_stats: Stats of the index resource.
                Structure is documented below.
@@ -841,6 +903,7 @@ class AiIndex(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_labels"] = effective_labels
+        __props__.__dict__["encryption_spec"] = encryption_spec
         __props__.__dict__["etag"] = etag
         __props__.__dict__["index_stats"] = index_stats
         __props__.__dict__["index_update_method"] = index_update_method
@@ -894,6 +957,15 @@ class AiIndex(pulumi.CustomResource):
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionSpec")
+    def encryption_spec(self) -> pulumi.Output[Optional['outputs.AiIndexEncryptionSpec']]:
+        """
+        Customer-managed encryption key spec for an Index. If set, this Index and all sub-resources of this Index will be secured by this key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_spec")
 
     @_builtins.property
     @pulumi.getter

@@ -32,6 +32,7 @@ class DatabaseInstanceArgs:
                  master_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  node_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 point_in_time_restore_context: Optional[pulumi.Input['DatabaseInstancePointInTimeRestoreContextArgs']] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  replica_configuration: Optional[pulumi.Input['DatabaseInstanceReplicaConfigurationArgs']] = None,
@@ -76,6 +77,7 @@ class DatabaseInstanceArgs:
                created. This is done because after a name is used, it cannot be reused for
                up to [one week](https://cloud.google.com/sql/docs/delete-instance).
         :param pulumi.Input[_builtins.int] node_count: For a read pool instance, the number of nodes in the read pool.
+        :param pulumi.Input['DatabaseInstancePointInTimeRestoreContextArgs'] point_in_time_restore_context: Configuration for creating a new instance using point-in-time-restore from backupdr backup.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region the instance will sit in. If a region is not provided in the resource definition,
@@ -115,6 +117,8 @@ class DatabaseInstanceArgs:
             pulumi.set(__self__, "name", name)
         if node_count is not None:
             pulumi.set(__self__, "node_count", node_count)
+        if point_in_time_restore_context is not None:
+            pulumi.set(__self__, "point_in_time_restore_context", point_in_time_restore_context)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if region is not None:
@@ -288,6 +292,18 @@ class DatabaseInstanceArgs:
         pulumi.set(self, "node_count", value)
 
     @_builtins.property
+    @pulumi.getter(name="pointInTimeRestoreContext")
+    def point_in_time_restore_context(self) -> Optional[pulumi.Input['DatabaseInstancePointInTimeRestoreContextArgs']]:
+        """
+        Configuration for creating a new instance using point-in-time-restore from backupdr backup.
+        """
+        return pulumi.get(self, "point_in_time_restore_context")
+
+    @point_in_time_restore_context.setter
+    def point_in_time_restore_context(self, value: Optional[pulumi.Input['DatabaseInstancePointInTimeRestoreContextArgs']]):
+        pulumi.set(self, "point_in_time_restore_context", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -413,6 +429,7 @@ class _DatabaseInstanceState:
                  master_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  node_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 point_in_time_restore_context: Optional[pulumi.Input['DatabaseInstancePointInTimeRestoreContextArgs']] = None,
                  private_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  psc_service_attachment_link: Optional[pulumi.Input[_builtins.str]] = None,
@@ -469,6 +486,7 @@ class _DatabaseInstanceState:
                created. This is done because after a name is used, it cannot be reused for
                up to [one week](https://cloud.google.com/sql/docs/delete-instance).
         :param pulumi.Input[_builtins.int] node_count: For a read pool instance, the number of nodes in the read pool.
+        :param pulumi.Input['DatabaseInstancePointInTimeRestoreContextArgs'] point_in_time_restore_context: Configuration for creating a new instance using point-in-time-restore from backupdr backup.
         :param pulumi.Input[_builtins.str] private_ip_address: The first private (`PRIVATE`) IPv4 address assigned.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
@@ -527,6 +545,8 @@ class _DatabaseInstanceState:
             pulumi.set(__self__, "name", name)
         if node_count is not None:
             pulumi.set(__self__, "node_count", node_count)
+        if point_in_time_restore_context is not None:
+            pulumi.set(__self__, "point_in_time_restore_context", point_in_time_restore_context)
         if private_ip_address is not None:
             pulumi.set(__self__, "private_ip_address", private_ip_address)
         if project is not None:
@@ -782,6 +802,18 @@ class _DatabaseInstanceState:
         pulumi.set(self, "node_count", value)
 
     @_builtins.property
+    @pulumi.getter(name="pointInTimeRestoreContext")
+    def point_in_time_restore_context(self) -> Optional[pulumi.Input['DatabaseInstancePointInTimeRestoreContextArgs']]:
+        """
+        Configuration for creating a new instance using point-in-time-restore from backupdr backup.
+        """
+        return pulumi.get(self, "point_in_time_restore_context")
+
+    @point_in_time_restore_context.setter
+    def point_in_time_restore_context(self, value: Optional[pulumi.Input['DatabaseInstancePointInTimeRestoreContextArgs']]):
+        pulumi.set(self, "point_in_time_restore_context", value)
+
+    @_builtins.property
     @pulumi.getter(name="privateIpAddress")
     def private_ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -974,6 +1006,7 @@ class DatabaseInstance(pulumi.CustomResource):
                  master_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  node_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 point_in_time_restore_context: Optional[pulumi.Input[Union['DatabaseInstancePointInTimeRestoreContextArgs', 'DatabaseInstancePointInTimeRestoreContextArgsDict']]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  replica_configuration: Optional[pulumi.Input[Union['DatabaseInstanceReplicaConfigurationArgs', 'DatabaseInstanceReplicaConfigurationArgsDict']]] = None,
@@ -1274,6 +1307,7 @@ class DatabaseInstance(pulumi.CustomResource):
                created. This is done because after a name is used, it cannot be reused for
                up to [one week](https://cloud.google.com/sql/docs/delete-instance).
         :param pulumi.Input[_builtins.int] node_count: For a read pool instance, the number of nodes in the read pool.
+        :param pulumi.Input[Union['DatabaseInstancePointInTimeRestoreContextArgs', 'DatabaseInstancePointInTimeRestoreContextArgsDict']] point_in_time_restore_context: Configuration for creating a new instance using point-in-time-restore from backupdr backup.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region the instance will sit in. If a region is not provided in the resource definition,
@@ -1579,6 +1613,7 @@ class DatabaseInstance(pulumi.CustomResource):
                  master_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  node_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 point_in_time_restore_context: Optional[pulumi.Input[Union['DatabaseInstancePointInTimeRestoreContextArgs', 'DatabaseInstancePointInTimeRestoreContextArgsDict']]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  replica_configuration: Optional[pulumi.Input[Union['DatabaseInstanceReplicaConfigurationArgs', 'DatabaseInstanceReplicaConfigurationArgsDict']]] = None,
@@ -1609,6 +1644,7 @@ class DatabaseInstance(pulumi.CustomResource):
             __props__.__dict__["master_instance_name"] = master_instance_name
             __props__.__dict__["name"] = name
             __props__.__dict__["node_count"] = node_count
+            __props__.__dict__["point_in_time_restore_context"] = point_in_time_restore_context
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
             __props__.__dict__["replica_configuration"] = None if replica_configuration is None else pulumi.Output.secret(replica_configuration)
@@ -1658,6 +1694,7 @@ class DatabaseInstance(pulumi.CustomResource):
             master_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             node_count: Optional[pulumi.Input[_builtins.int]] = None,
+            point_in_time_restore_context: Optional[pulumi.Input[Union['DatabaseInstancePointInTimeRestoreContextArgs', 'DatabaseInstancePointInTimeRestoreContextArgsDict']]] = None,
             private_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             psc_service_attachment_link: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1719,6 +1756,7 @@ class DatabaseInstance(pulumi.CustomResource):
                created. This is done because after a name is used, it cannot be reused for
                up to [one week](https://cloud.google.com/sql/docs/delete-instance).
         :param pulumi.Input[_builtins.int] node_count: For a read pool instance, the number of nodes in the read pool.
+        :param pulumi.Input[Union['DatabaseInstancePointInTimeRestoreContextArgs', 'DatabaseInstancePointInTimeRestoreContextArgsDict']] point_in_time_restore_context: Configuration for creating a new instance using point-in-time-restore from backupdr backup.
         :param pulumi.Input[_builtins.str] private_ip_address: The first private (`PRIVATE`) IPv4 address assigned.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
@@ -1764,6 +1802,7 @@ class DatabaseInstance(pulumi.CustomResource):
         __props__.__dict__["master_instance_name"] = master_instance_name
         __props__.__dict__["name"] = name
         __props__.__dict__["node_count"] = node_count
+        __props__.__dict__["point_in_time_restore_context"] = point_in_time_restore_context
         __props__.__dict__["private_ip_address"] = private_ip_address
         __props__.__dict__["project"] = project
         __props__.__dict__["psc_service_attachment_link"] = psc_service_attachment_link
@@ -1936,6 +1975,14 @@ class DatabaseInstance(pulumi.CustomResource):
         For a read pool instance, the number of nodes in the read pool.
         """
         return pulumi.get(self, "node_count")
+
+    @_builtins.property
+    @pulumi.getter(name="pointInTimeRestoreContext")
+    def point_in_time_restore_context(self) -> pulumi.Output[Optional['outputs.DatabaseInstancePointInTimeRestoreContext']]:
+        """
+        Configuration for creating a new instance using point-in-time-restore from backupdr backup.
+        """
+        return pulumi.get(self, "point_in_time_restore_context")
 
     @_builtins.property
     @pulumi.getter(name="privateIpAddress")

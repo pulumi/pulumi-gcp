@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigActionArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigOrgConfigArgs;
+import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigOtherCloudStartingLocationArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigTargetArgs;
 import java.lang.String;
 import java.util.List;
@@ -100,6 +101,23 @@ public final class PreventionDiscoveryConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * A nested object resource.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="otherCloudStartingLocation")
+    private @Nullable Output<PreventionDiscoveryConfigOtherCloudStartingLocationArgs> otherCloudStartingLocation;
+
+    /**
+     * @return A nested object resource.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<PreventionDiscoveryConfigOtherCloudStartingLocationArgs>> otherCloudStartingLocation() {
+        return Optional.ofNullable(this.otherCloudStartingLocation);
+    }
+
+    /**
      * The parent of the discovery config in any of the following formats:
      * * `projects/{{project}}/locations/{{location}}`
      * * `organizations/{{organization_id}}/locations/{{location}}`
@@ -160,6 +178,7 @@ public final class PreventionDiscoveryConfigArgs extends com.pulumi.resources.Re
         this.inspectTemplates = $.inspectTemplates;
         this.location = $.location;
         this.orgConfig = $.orgConfig;
+        this.otherCloudStartingLocation = $.otherCloudStartingLocation;
         this.parent = $.parent;
         this.status = $.status;
         this.targets = $.targets;
@@ -311,6 +330,29 @@ public final class PreventionDiscoveryConfigArgs extends com.pulumi.resources.Re
          */
         public Builder orgConfig(PreventionDiscoveryConfigOrgConfigArgs orgConfig) {
             return orgConfig(Output.of(orgConfig));
+        }
+
+        /**
+         * @param otherCloudStartingLocation A nested object resource.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder otherCloudStartingLocation(@Nullable Output<PreventionDiscoveryConfigOtherCloudStartingLocationArgs> otherCloudStartingLocation) {
+            $.otherCloudStartingLocation = otherCloudStartingLocation;
+            return this;
+        }
+
+        /**
+         * @param otherCloudStartingLocation A nested object resource.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder otherCloudStartingLocation(PreventionDiscoveryConfigOtherCloudStartingLocationArgs otherCloudStartingLocation) {
+            return otherCloudStartingLocation(Output.of(otherCloudStartingLocation));
         }
 
         /**

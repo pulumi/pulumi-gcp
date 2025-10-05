@@ -73,6 +73,56 @@ import (
 //	}
 //
 // ```
+// ### Network Security Mirroring Endpoint Group Broker Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+//				Name:                  pulumi.String("example-network"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			deploymentGroup, err := networksecurity.NewMirroringDeploymentGroup(ctx, "deployment_group", &networksecurity.MirroringDeploymentGroupArgs{
+//				MirroringDeploymentGroupId: pulumi.String("example-dg"),
+//				Location:                   pulumi.String("global"),
+//				Network:                    network.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networksecurity.NewMirroringEndpointGroup(ctx, "default", &networksecurity.MirroringEndpointGroupArgs{
+//				MirroringEndpointGroupId: pulumi.String("example-eg"),
+//				Location:                 pulumi.String("global"),
+//				Type:                     pulumi.String("BROKER"),
+//				MirroringDeploymentGroups: pulumi.StringArray{
+//					deploymentGroup.ID(),
+//				},
+//				Description: pulumi.String("some description"),
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -124,7 +174,12 @@ type MirroringEndpointGroup struct {
 	// The deployment group that this DIRECT endpoint group is connected to, for example:
 	// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
 	// See https://google.aip.dev/124.
-	MirroringDeploymentGroup pulumi.StringOutput `pulumi:"mirroringDeploymentGroup"`
+	MirroringDeploymentGroup pulumi.StringPtrOutput `pulumi:"mirroringDeploymentGroup"`
+	// A list of the deployment groups that this BROKER endpoint group is
+	// connected to, for example:
+	// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+	// See https://google.aip.dev/124.
+	MirroringDeploymentGroups pulumi.StringArrayOutput `pulumi:"mirroringDeploymentGroups"`
 	// The ID to use for the endpoint group, which will become the final component
 	// of the endpoint group's resource name.
 	MirroringEndpointGroupId pulumi.StringOutput `pulumi:"mirroringEndpointGroupId"`
@@ -151,6 +206,12 @@ type MirroringEndpointGroup struct {
 	// ACTIVE
 	// OUT_OF_SYNC
 	State pulumi.StringOutput `pulumi:"state"`
+	// The type of the endpoint group.
+	// If left unspecified, defaults to DIRECT.
+	// Possible values:
+	// DIRECT
+	// BROKER
+	Type pulumi.StringPtrOutput `pulumi:"type"`
 	// The timestamp when the resource was most recently updated.
 	// See https://google.aip.dev/148#timestamps.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -165,9 +226,6 @@ func NewMirroringEndpointGroup(ctx *pulumi.Context,
 
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
-	}
-	if args.MirroringDeploymentGroup == nil {
-		return nil, errors.New("invalid value for required argument 'MirroringDeploymentGroup'")
 	}
 	if args.MirroringEndpointGroupId == nil {
 		return nil, errors.New("invalid value for required argument 'MirroringEndpointGroupId'")
@@ -225,6 +283,11 @@ type mirroringEndpointGroupState struct {
 	// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
 	// See https://google.aip.dev/124.
 	MirroringDeploymentGroup *string `pulumi:"mirroringDeploymentGroup"`
+	// A list of the deployment groups that this BROKER endpoint group is
+	// connected to, for example:
+	// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+	// See https://google.aip.dev/124.
+	MirroringDeploymentGroups []string `pulumi:"mirroringDeploymentGroups"`
 	// The ID to use for the endpoint group, which will become the final component
 	// of the endpoint group's resource name.
 	MirroringEndpointGroupId *string `pulumi:"mirroringEndpointGroupId"`
@@ -251,6 +314,12 @@ type mirroringEndpointGroupState struct {
 	// ACTIVE
 	// OUT_OF_SYNC
 	State *string `pulumi:"state"`
+	// The type of the endpoint group.
+	// If left unspecified, defaults to DIRECT.
+	// Possible values:
+	// DIRECT
+	// BROKER
+	Type *string `pulumi:"type"`
 	// The timestamp when the resource was most recently updated.
 	// See https://google.aip.dev/148#timestamps.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -282,6 +351,11 @@ type MirroringEndpointGroupState struct {
 	// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
 	// See https://google.aip.dev/124.
 	MirroringDeploymentGroup pulumi.StringPtrInput
+	// A list of the deployment groups that this BROKER endpoint group is
+	// connected to, for example:
+	// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+	// See https://google.aip.dev/124.
+	MirroringDeploymentGroups pulumi.StringArrayInput
 	// The ID to use for the endpoint group, which will become the final component
 	// of the endpoint group's resource name.
 	MirroringEndpointGroupId pulumi.StringPtrInput
@@ -308,6 +382,12 @@ type MirroringEndpointGroupState struct {
 	// ACTIVE
 	// OUT_OF_SYNC
 	State pulumi.StringPtrInput
+	// The type of the endpoint group.
+	// If left unspecified, defaults to DIRECT.
+	// Possible values:
+	// DIRECT
+	// BROKER
+	Type pulumi.StringPtrInput
 	// The timestamp when the resource was most recently updated.
 	// See https://google.aip.dev/148#timestamps.
 	UpdateTime pulumi.StringPtrInput
@@ -330,13 +410,24 @@ type mirroringEndpointGroupArgs struct {
 	// The deployment group that this DIRECT endpoint group is connected to, for example:
 	// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
 	// See https://google.aip.dev/124.
-	MirroringDeploymentGroup string `pulumi:"mirroringDeploymentGroup"`
+	MirroringDeploymentGroup *string `pulumi:"mirroringDeploymentGroup"`
+	// A list of the deployment groups that this BROKER endpoint group is
+	// connected to, for example:
+	// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+	// See https://google.aip.dev/124.
+	MirroringDeploymentGroups []string `pulumi:"mirroringDeploymentGroups"`
 	// The ID to use for the endpoint group, which will become the final component
 	// of the endpoint group's resource name.
 	MirroringEndpointGroupId string `pulumi:"mirroringEndpointGroupId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The type of the endpoint group.
+	// If left unspecified, defaults to DIRECT.
+	// Possible values:
+	// DIRECT
+	// BROKER
+	Type *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a MirroringEndpointGroup resource.
@@ -353,13 +444,24 @@ type MirroringEndpointGroupArgs struct {
 	// The deployment group that this DIRECT endpoint group is connected to, for example:
 	// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
 	// See https://google.aip.dev/124.
-	MirroringDeploymentGroup pulumi.StringInput
+	MirroringDeploymentGroup pulumi.StringPtrInput
+	// A list of the deployment groups that this BROKER endpoint group is
+	// connected to, for example:
+	// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+	// See https://google.aip.dev/124.
+	MirroringDeploymentGroups pulumi.StringArrayInput
 	// The ID to use for the endpoint group, which will become the final component
 	// of the endpoint group's resource name.
 	MirroringEndpointGroupId pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The type of the endpoint group.
+	// If left unspecified, defaults to DIRECT.
+	// Possible values:
+	// DIRECT
+	// BROKER
+	Type pulumi.StringPtrInput
 }
 
 func (MirroringEndpointGroupArgs) ElementType() reflect.Type {
@@ -498,8 +600,16 @@ func (o MirroringEndpointGroupOutput) Location() pulumi.StringOutput {
 // The deployment group that this DIRECT endpoint group is connected to, for example:
 // `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
 // See https://google.aip.dev/124.
-func (o MirroringEndpointGroupOutput) MirroringDeploymentGroup() pulumi.StringOutput {
-	return o.ApplyT(func(v *MirroringEndpointGroup) pulumi.StringOutput { return v.MirroringDeploymentGroup }).(pulumi.StringOutput)
+func (o MirroringEndpointGroupOutput) MirroringDeploymentGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MirroringEndpointGroup) pulumi.StringPtrOutput { return v.MirroringDeploymentGroup }).(pulumi.StringPtrOutput)
+}
+
+// A list of the deployment groups that this BROKER endpoint group is
+// connected to, for example:
+// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+// See https://google.aip.dev/124.
+func (o MirroringEndpointGroupOutput) MirroringDeploymentGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MirroringEndpointGroup) pulumi.StringArrayOutput { return v.MirroringDeploymentGroups }).(pulumi.StringArrayOutput)
 }
 
 // The ID to use for the endpoint group, which will become the final component
@@ -544,6 +654,15 @@ func (o MirroringEndpointGroupOutput) Reconciling() pulumi.BoolOutput {
 // OUT_OF_SYNC
 func (o MirroringEndpointGroupOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *MirroringEndpointGroup) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The type of the endpoint group.
+// If left unspecified, defaults to DIRECT.
+// Possible values:
+// DIRECT
+// BROKER
+func (o MirroringEndpointGroupOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MirroringEndpointGroup) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 // The timestamp when the resource was most recently updated.

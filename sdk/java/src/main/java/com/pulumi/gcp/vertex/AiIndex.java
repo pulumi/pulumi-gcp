@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.vertex.AiIndexArgs;
 import com.pulumi.gcp.vertex.inputs.AiIndexState;
 import com.pulumi.gcp.vertex.outputs.AiIndexDeployedIndex;
+import com.pulumi.gcp.vertex.outputs.AiIndexEncryptionSpec;
 import com.pulumi.gcp.vertex.outputs.AiIndexIndexStat;
 import com.pulumi.gcp.vertex.outputs.AiIndexMetadata;
 import java.lang.String;
@@ -37,16 +38,22 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.projects.ServiceIdentity;
+ * import com.pulumi.gcp.projects.ServiceIdentityArgs;
  * import com.pulumi.gcp.storage.Bucket;
  * import com.pulumi.gcp.storage.BucketArgs;
  * import com.pulumi.gcp.storage.BucketObject;
  * import com.pulumi.gcp.storage.BucketObjectArgs;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
  * import com.pulumi.gcp.vertex.AiIndex;
  * import com.pulumi.gcp.vertex.AiIndexArgs;
  * import com.pulumi.gcp.vertex.inputs.AiIndexMetadataArgs;
  * import com.pulumi.gcp.vertex.inputs.AiIndexMetadataConfigArgs;
  * import com.pulumi.gcp.vertex.inputs.AiIndexMetadataConfigAlgorithmConfigArgs;
  * import com.pulumi.gcp.vertex.inputs.AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiIndexEncryptionSpecArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -60,6 +67,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var vertexaiSa = new ServiceIdentity("vertexaiSa", ServiceIdentityArgs.builder()
+ *             .service("aiplatform.googleapis.com")
+ *             .build());
+ * 
  *         var bucket = new Bucket("bucket", BucketArgs.builder()
  *             .name("vertex-ai-index-test")
  *             .location("us-central1")
@@ -75,6 +86,12 @@ import javax.annotation.Nullable;
  * {"id": "42", "embedding": [0.5, 1.0], "restricts": [{"namespace": "class", "allow": ["cat", "pet"]},{"namespace": "category", "allow": ["feline"]}]}
  * {"id": "43", "embedding": [0.6, 1.0], "restricts": [{"namespace": "class", "allow": ["dog", "pet"]},{"namespace": "category", "allow": ["canine"]}]}
  *             """)
+ *             .build());
+ * 
+ *         var vertexaiEncrypterdecrypter = new CryptoKeyIAMMember("vertexaiEncrypterdecrypter", CryptoKeyIAMMemberArgs.builder()
+ *             .cryptoKeyId("kms-name")
+ *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+ *             .member(vertexaiSa.member())
  *             .build());
  * 
  *         var index = new AiIndex("index", AiIndexArgs.builder()
@@ -97,8 +114,13 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
+ *             .encryptionSpec(AiIndexEncryptionSpecArgs.builder()
+ *                 .kmsKeyName("kms-name")
+ *                 .build())
  *             .indexUpdateMethod("BATCH_UPDATE")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(vertexaiEncrypterdecrypter)
+ *                 .build());
  * 
  *     }
  * }
@@ -283,6 +305,22 @@ public class AiIndex extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
+    }
+    /**
+     * Customer-managed encryption key spec for an Index. If set, this Index and all sub-resources of this Index will be secured by this key.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="encryptionSpec", refs={AiIndexEncryptionSpec.class}, tree="[0]")
+    private Output</* @Nullable */ AiIndexEncryptionSpec> encryptionSpec;
+
+    /**
+     * @return Customer-managed encryption key spec for an Index. If set, this Index and all sub-resources of this Index will be secured by this key.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<AiIndexEncryptionSpec>> encryptionSpec() {
+        return Codegen.optional(this.encryptionSpec);
     }
     /**
      * Used to perform consistent read-modify-write updates.

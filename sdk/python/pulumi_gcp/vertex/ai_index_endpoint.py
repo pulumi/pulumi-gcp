@@ -23,6 +23,7 @@ class AiIndexEndpointArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[_builtins.str],
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 encryption_spec: Optional[pulumi.Input['AiIndexEndpointEncryptionSpecArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  network: Optional[pulumi.Input[_builtins.str]] = None,
                  private_service_connect_config: Optional[pulumi.Input['AiIndexEndpointPrivateServiceConnectConfigArgs']] = None,
@@ -33,6 +34,8 @@ class AiIndexEndpointArgs:
         The set of arguments for constructing a AiIndexEndpoint resource.
         :param pulumi.Input[_builtins.str] display_name: The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
         :param pulumi.Input[_builtins.str] description: The description of the Index.
+        :param pulumi.Input['AiIndexEndpointEncryptionSpecArgs'] encryption_spec: Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels with user-defined metadata to organize your Indexes.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -50,6 +53,8 @@ class AiIndexEndpointArgs:
         pulumi.set(__self__, "display_name", display_name)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if encryption_spec is not None:
+            pulumi.set(__self__, "encryption_spec", encryption_spec)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if network is not None:
@@ -86,6 +91,19 @@ class AiIndexEndpointArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionSpec")
+    def encryption_spec(self) -> Optional[pulumi.Input['AiIndexEndpointEncryptionSpecArgs']]:
+        """
+        Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_spec")
+
+    @encryption_spec.setter
+    def encryption_spec(self, value: Optional[pulumi.Input['AiIndexEndpointEncryptionSpecArgs']]):
+        pulumi.set(self, "encryption_spec", value)
 
     @_builtins.property
     @pulumi.getter
@@ -174,6 +192,7 @@ class _AiIndexEndpointState:
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 encryption_spec: Optional[pulumi.Input['AiIndexEndpointEncryptionSpecArgs']] = None,
                  etag: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -191,6 +210,8 @@ class _AiIndexEndpointState:
         :param pulumi.Input[_builtins.str] description: The description of the Index.
         :param pulumi.Input[_builtins.str] display_name: The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input['AiIndexEndpointEncryptionSpecArgs'] encryption_spec: Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: Used to perform consistent read-modify-write updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels with user-defined metadata to organize your Indexes.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -219,6 +240,8 @@ class _AiIndexEndpointState:
             pulumi.set(__self__, "display_name", display_name)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
+        if encryption_spec is not None:
+            pulumi.set(__self__, "encryption_spec", encryption_spec)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if labels is not None:
@@ -289,6 +312,19 @@ class _AiIndexEndpointState:
     @effective_labels.setter
     def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionSpec")
+    def encryption_spec(self) -> Optional[pulumi.Input['AiIndexEndpointEncryptionSpecArgs']]:
+        """
+        Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_spec")
+
+    @encryption_spec.setter
+    def encryption_spec(self, value: Optional[pulumi.Input['AiIndexEndpointEncryptionSpecArgs']]):
+        pulumi.set(self, "encryption_spec", value)
 
     @_builtins.property
     @pulumi.getter
@@ -439,6 +475,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 encryption_spec: Optional[pulumi.Input[Union['AiIndexEndpointEncryptionSpecArgs', 'AiIndexEndpointEncryptionSpecArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  network: Optional[pulumi.Input[_builtins.str]] = None,
                  private_service_connect_config: Optional[pulumi.Input[Union['AiIndexEndpointPrivateServiceConnectConfigArgs', 'AiIndexEndpointPrivateServiceConnectConfigArgsDict']]] = None,
@@ -552,6 +589,8 @@ class AiIndexEndpoint(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the Index.
         :param pulumi.Input[_builtins.str] display_name: The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+        :param pulumi.Input[Union['AiIndexEndpointEncryptionSpecArgs', 'AiIndexEndpointEncryptionSpecArgsDict']] encryption_spec: Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels with user-defined metadata to organize your Indexes.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -691,6 +730,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 encryption_spec: Optional[pulumi.Input[Union['AiIndexEndpointEncryptionSpecArgs', 'AiIndexEndpointEncryptionSpecArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  network: Optional[pulumi.Input[_builtins.str]] = None,
                  private_service_connect_config: Optional[pulumi.Input[Union['AiIndexEndpointPrivateServiceConnectConfigArgs', 'AiIndexEndpointPrivateServiceConnectConfigArgsDict']]] = None,
@@ -710,6 +750,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["encryption_spec"] = encryption_spec
             __props__.__dict__["labels"] = labels
             __props__.__dict__["network"] = network
             __props__.__dict__["private_service_connect_config"] = private_service_connect_config
@@ -739,6 +780,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
             description: Optional[pulumi.Input[_builtins.str]] = None,
             display_name: Optional[pulumi.Input[_builtins.str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            encryption_spec: Optional[pulumi.Input[Union['AiIndexEndpointEncryptionSpecArgs', 'AiIndexEndpointEncryptionSpecArgsDict']]] = None,
             etag: Optional[pulumi.Input[_builtins.str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -761,6 +803,8 @@ class AiIndexEndpoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the Index.
         :param pulumi.Input[_builtins.str] display_name: The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[Union['AiIndexEndpointEncryptionSpecArgs', 'AiIndexEndpointEncryptionSpecArgsDict']] encryption_spec: Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: Used to perform consistent read-modify-write updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels with user-defined metadata to organize your Indexes.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -789,6 +833,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_labels"] = effective_labels
+        __props__.__dict__["encryption_spec"] = encryption_spec
         __props__.__dict__["etag"] = etag
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
@@ -833,6 +878,15 @@ class AiIndexEndpoint(pulumi.CustomResource):
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionSpec")
+    def encryption_spec(self) -> pulumi.Output[Optional['outputs.AiIndexEndpointEncryptionSpec']]:
+        """
+        Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_spec")
 
     @_builtins.property
     @pulumi.getter

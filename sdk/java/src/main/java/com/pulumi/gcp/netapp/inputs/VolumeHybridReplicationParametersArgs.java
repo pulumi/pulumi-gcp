@@ -6,6 +6,7 @@ package com.pulumi.gcp.netapp.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -83,13 +84,13 @@ public final class VolumeHybridReplicationParametersArgs extends com.pulumi.reso
      * 
      */
     @Import(name="peerIpAddresses")
-    private @Nullable Output<String> peerIpAddresses;
+    private @Nullable Output<List<String>> peerIpAddresses;
 
     /**
      * @return Required. List of node ip addresses to be peered with.
      * 
      */
-    public Optional<Output<String>> peerIpAddresses() {
+    public Optional<Output<List<String>>> peerIpAddresses() {
         return Optional.ofNullable(this.peerIpAddresses);
     }
 
@@ -261,7 +262,7 @@ public final class VolumeHybridReplicationParametersArgs extends com.pulumi.reso
          * @return builder
          * 
          */
-        public Builder peerIpAddresses(@Nullable Output<String> peerIpAddresses) {
+        public Builder peerIpAddresses(@Nullable Output<List<String>> peerIpAddresses) {
             $.peerIpAddresses = peerIpAddresses;
             return this;
         }
@@ -272,8 +273,18 @@ public final class VolumeHybridReplicationParametersArgs extends com.pulumi.reso
          * @return builder
          * 
          */
-        public Builder peerIpAddresses(String peerIpAddresses) {
+        public Builder peerIpAddresses(List<String> peerIpAddresses) {
             return peerIpAddresses(Output.of(peerIpAddresses));
+        }
+
+        /**
+         * @param peerIpAddresses Required. List of node ip addresses to be peered with.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder peerIpAddresses(String... peerIpAddresses) {
+            return peerIpAddresses(List.of(peerIpAddresses));
         }
 
         /**

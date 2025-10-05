@@ -34,6 +34,7 @@ public final class GetTopicResult {
     private @Nullable String project;
     private Map<String,String> pulumiLabels;
     private List<GetTopicSchemaSetting> schemaSettings;
+    private Map<String,String> tags;
 
     private GetTopicResult() {}
     public Map<String,String> effectiveLabels() {
@@ -76,6 +77,9 @@ public final class GetTopicResult {
     public List<GetTopicSchemaSetting> schemaSettings() {
         return this.schemaSettings;
     }
+    public Map<String,String> tags() {
+        return this.tags;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -98,6 +102,7 @@ public final class GetTopicResult {
         private @Nullable String project;
         private Map<String,String> pulumiLabels;
         private List<GetTopicSchemaSetting> schemaSettings;
+        private Map<String,String> tags;
         public Builder() {}
         public Builder(GetTopicResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -113,6 +118,7 @@ public final class GetTopicResult {
     	      this.project = defaults.project;
     	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.schemaSettings = defaults.schemaSettings;
+    	      this.tags = defaults.tags;
         }
 
         @CustomType.Setter
@@ -221,6 +227,14 @@ public final class GetTopicResult {
         public Builder schemaSettings(GetTopicSchemaSetting... schemaSettings) {
             return schemaSettings(List.of(schemaSettings));
         }
+        @CustomType.Setter
+        public Builder tags(Map<String,String> tags) {
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetTopicResult", "tags");
+            }
+            this.tags = tags;
+            return this;
+        }
         public GetTopicResult build() {
             final var _resultValue = new GetTopicResult();
             _resultValue.effectiveLabels = effectiveLabels;
@@ -235,6 +249,7 @@ public final class GetTopicResult {
             _resultValue.project = project;
             _resultValue.pulumiLabels = pulumiLabels;
             _resultValue.schemaSettings = schemaSettings;
+            _resultValue.tags = tags;
             return _resultValue;
         }
     }

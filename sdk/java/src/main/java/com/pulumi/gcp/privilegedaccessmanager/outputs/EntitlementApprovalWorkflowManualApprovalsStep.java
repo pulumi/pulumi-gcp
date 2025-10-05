@@ -34,6 +34,12 @@ public final class EntitlementApprovalWorkflowManualApprovalsStep {
      * 
      */
     private EntitlementApprovalWorkflowManualApprovalsStepApprovers approvers;
+    /**
+     * @return (Output, Beta)
+     * Output Only. The ID of the approval step.
+     * 
+     */
+    private @Nullable String id;
 
     private EntitlementApprovalWorkflowManualApprovalsStep() {}
     /**
@@ -61,6 +67,14 @@ public final class EntitlementApprovalWorkflowManualApprovalsStep {
     public EntitlementApprovalWorkflowManualApprovalsStepApprovers approvers() {
         return this.approvers;
     }
+    /**
+     * @return (Output, Beta)
+     * Output Only. The ID of the approval step.
+     * 
+     */
+    public Optional<String> id() {
+        return Optional.ofNullable(this.id);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -74,12 +88,14 @@ public final class EntitlementApprovalWorkflowManualApprovalsStep {
         private @Nullable Integer approvalsNeeded;
         private @Nullable List<String> approverEmailRecipients;
         private EntitlementApprovalWorkflowManualApprovalsStepApprovers approvers;
+        private @Nullable String id;
         public Builder() {}
         public Builder(EntitlementApprovalWorkflowManualApprovalsStep defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.approvalsNeeded = defaults.approvalsNeeded;
     	      this.approverEmailRecipients = defaults.approverEmailRecipients;
     	      this.approvers = defaults.approvers;
+    	      this.id = defaults.id;
         }
 
         @CustomType.Setter
@@ -105,11 +121,18 @@ public final class EntitlementApprovalWorkflowManualApprovalsStep {
             this.approvers = approvers;
             return this;
         }
+        @CustomType.Setter
+        public Builder id(@Nullable String id) {
+
+            this.id = id;
+            return this;
+        }
         public EntitlementApprovalWorkflowManualApprovalsStep build() {
             final var _resultValue = new EntitlementApprovalWorkflowManualApprovalsStep();
             _resultValue.approvalsNeeded = approvalsNeeded;
             _resultValue.approverEmailRecipients = approverEmailRecipients;
             _resultValue.approvers = approvers;
+            _resultValue.id = id;
             return _resultValue;
         }
     }

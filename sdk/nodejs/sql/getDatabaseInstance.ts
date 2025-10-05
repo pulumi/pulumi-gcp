@@ -67,6 +67,7 @@ export interface GetDatabaseInstanceResult {
     readonly masterInstanceName: string;
     readonly name: string;
     readonly nodeCount: number;
+    readonly pointInTimeRestoreContexts: outputs.sql.GetDatabaseInstancePointInTimeRestoreContext[];
     readonly privateIpAddress: string;
     readonly project?: string;
     readonly pscServiceAttachmentLink: string;

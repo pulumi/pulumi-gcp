@@ -29,6 +29,7 @@ class SearchEngineArgs:
                  search_engine_config: pulumi.Input['SearchEngineSearchEngineConfigArgs'],
                  app_type: Optional[pulumi.Input[_builtins.str]] = None,
                  common_config: Optional[pulumi.Input['SearchEngineCommonConfigArgs']] = None,
+                 features: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  industry_vertical: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -44,6 +45,7 @@ class SearchEngineArgs:
                The supported values: 'APP_TYPE_UNSPECIFIED', 'APP_TYPE_INTRANET'.
         :param pulumi.Input['SearchEngineCommonConfigArgs'] common_config: Common config spec that specifies the metadata of the engine.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] features: A map of the feature config for the engine to opt in or opt out of features.
         :param pulumi.Input[_builtins.str] industry_vertical: The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
                Default value is `GENERIC`.
                Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
@@ -60,6 +62,8 @@ class SearchEngineArgs:
             pulumi.set(__self__, "app_type", app_type)
         if common_config is not None:
             pulumi.set(__self__, "common_config", common_config)
+        if features is not None:
+            pulumi.set(__self__, "features", features)
         if industry_vertical is not None:
             pulumi.set(__self__, "industry_vertical", industry_vertical)
         if project is not None:
@@ -165,6 +169,18 @@ class SearchEngineArgs:
         pulumi.set(self, "common_config", value)
 
     @_builtins.property
+    @pulumi.getter
+    def features(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A map of the feature config for the engine to opt in or opt out of features.
+        """
+        return pulumi.get(self, "features")
+
+    @features.setter
+    def features(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "features", value)
+
+    @_builtins.property
     @pulumi.getter(name="industryVertical")
     def industry_vertical(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -202,6 +218,7 @@ class _SearchEngineState:
                  data_store_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  engine_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 features: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  industry_vertical: Optional[pulumi.Input[_builtins.str]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -219,6 +236,7 @@ class _SearchEngineState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_store_ids: The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
         :param pulumi.Input[_builtins.str] display_name: Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
         :param pulumi.Input[_builtins.str] engine_id: Unique ID to use for Search Engine App.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] features: A map of the feature config for the engine to opt in or opt out of features.
         :param pulumi.Input[_builtins.str] industry_vertical: The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
                Default value is `GENERIC`.
                Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
@@ -247,6 +265,8 @@ class _SearchEngineState:
             pulumi.set(__self__, "display_name", display_name)
         if engine_id is not None:
             pulumi.set(__self__, "engine_id", engine_id)
+        if features is not None:
+            pulumi.set(__self__, "features", features)
         if industry_vertical is not None:
             pulumi.set(__self__, "industry_vertical", industry_vertical)
         if location is not None:
@@ -347,6 +367,18 @@ class _SearchEngineState:
         pulumi.set(self, "engine_id", value)
 
     @_builtins.property
+    @pulumi.getter
+    def features(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A map of the feature config for the engine to opt in or opt out of features.
+        """
+        return pulumi.get(self, "features")
+
+    @features.setter
+    def features(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "features", value)
+
+    @_builtins.property
     @pulumi.getter(name="industryVertical")
     def industry_vertical(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -438,6 +470,7 @@ class SearchEngine(pulumi.CustomResource):
                  data_store_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  engine_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 features: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  industry_vertical: Optional[pulumi.Input[_builtins.str]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -534,6 +567,7 @@ class SearchEngine(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_store_ids: The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
         :param pulumi.Input[_builtins.str] display_name: Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
         :param pulumi.Input[_builtins.str] engine_id: Unique ID to use for Search Engine App.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] features: A map of the feature config for the engine to opt in or opt out of features.
         :param pulumi.Input[_builtins.str] industry_vertical: The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
                Default value is `GENERIC`.
                Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
@@ -651,6 +685,7 @@ class SearchEngine(pulumi.CustomResource):
                  data_store_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  engine_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 features: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  industry_vertical: Optional[pulumi.Input[_builtins.str]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -678,6 +713,7 @@ class SearchEngine(pulumi.CustomResource):
             if engine_id is None and not opts.urn:
                 raise TypeError("Missing required property 'engine_id'")
             __props__.__dict__["engine_id"] = engine_id
+            __props__.__dict__["features"] = features
             __props__.__dict__["industry_vertical"] = industry_vertical
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -706,6 +742,7 @@ class SearchEngine(pulumi.CustomResource):
             data_store_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             display_name: Optional[pulumi.Input[_builtins.str]] = None,
             engine_id: Optional[pulumi.Input[_builtins.str]] = None,
+            features: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             industry_vertical: Optional[pulumi.Input[_builtins.str]] = None,
             location: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -728,6 +765,7 @@ class SearchEngine(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_store_ids: The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
         :param pulumi.Input[_builtins.str] display_name: Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
         :param pulumi.Input[_builtins.str] engine_id: Unique ID to use for Search Engine App.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] features: A map of the feature config for the engine to opt in or opt out of features.
         :param pulumi.Input[_builtins.str] industry_vertical: The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
                Default value is `GENERIC`.
                Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
@@ -753,6 +791,7 @@ class SearchEngine(pulumi.CustomResource):
         __props__.__dict__["data_store_ids"] = data_store_ids
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["engine_id"] = engine_id
+        __props__.__dict__["features"] = features
         __props__.__dict__["industry_vertical"] = industry_vertical
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
@@ -818,6 +857,14 @@ class SearchEngine(pulumi.CustomResource):
         Unique ID to use for Search Engine App.
         """
         return pulumi.get(self, "engine_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def features(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        A map of the feature config for the engine to opt in or opt out of features.
+        """
+        return pulumi.get(self, "features")
 
     @_builtins.property
     @pulumi.getter(name="industryVertical")

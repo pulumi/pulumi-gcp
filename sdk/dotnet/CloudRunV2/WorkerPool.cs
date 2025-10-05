@@ -634,6 +634,89 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// });
     /// ```
+    /// ### Cloudrunv2 Worker Pool Startup Liveness Probe
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var customTest = new Gcp.Compute.Network("custom_test", new()
+    ///     {
+    ///         Name = "wp-net",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var customTestSubnetwork = new Gcp.Compute.Subnetwork("custom_test", new()
+    ///     {
+    ///         Name = "wp-subnet",
+    ///         IpCidrRange = "10.2.0.0/28",
+    ///         Region = "us-central1",
+    ///         Network = customTest.Id,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.CloudRunV2.WorkerPool("default", new()
+    ///     {
+    ///         Name = "cloudrun-worker-pool",
+    ///         Location = "us-central1",
+    ///         LaunchStage = "BETA",
+    ///         DeletionProtection = false,
+    ///         Template = new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateArgs
+    ///         {
+    ///             Annotations = null,
+    ///             Labels = null,
+    ///             Containers = new[]
+    ///             {
+    ///                 new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateContainerArgs
+    ///                 {
+    ///                     Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                     Commands = new() { },
+    ///                     Args = new() { },
+    ///                     StartupProbe = new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateContainerStartupProbeArgs
+    ///                     {
+    ///                         InitialDelaySeconds = 0,
+    ///                         TimeoutSeconds = 1,
+    ///                         PeriodSeconds = 3,
+    ///                         FailureThreshold = 3,
+    ///                         TcpSocket = new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateContainerStartupProbeTcpSocketArgs
+    ///                         {
+    ///                             Port = 8080,
+    ///                         },
+    ///                     },
+    ///                     LivenessProbe = new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateContainerLivenessProbeArgs
+    ///                     {
+    ///                         InitialDelaySeconds = 0,
+    ///                         TimeoutSeconds = 1,
+    ///                         PeriodSeconds = 10,
+    ///                         FailureThreshold = 3,
+    ///                         HttpGet = new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateContainerLivenessProbeHttpGetArgs
+    ///                         {
+    ///                             Path = "/",
+    ///                             Port = 8080,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             VpcAccess = new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateVpcAccessArgs
+    ///             {
+    ///                 NetworkInterfaces = new[]
+    ///                 {
+    ///                     new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateVpcAccessNetworkInterfaceArgs
+    ///                     {
+    ///                         Network = customTest.Id,
+    ///                         Subnetwork = customTestSubnetwork.Id,
+    ///                         Tags = new() { },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

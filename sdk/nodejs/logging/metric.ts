@@ -112,7 +112,7 @@ import * as utilities from "../utilities";
  * const loggingMetricMetric = new gcp.logging.Metric("logging_metric", {
  *     name: "my-(custom)/metric",
  *     filter: "resource.type=gae_app AND severity>=ERROR",
- *     bucketName: loggingMetric.id,
+ *     bucketName: loggingMetric.name,
  * });
  * ```
  * ### Logging Metric Disabled

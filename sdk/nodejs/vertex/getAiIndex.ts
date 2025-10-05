@@ -47,6 +47,7 @@ export interface GetAiIndexResult {
     readonly description: string;
     readonly displayName: string;
     readonly effectiveLabels: {[key: string]: string};
+    readonly encryptionSpecs: outputs.vertex.GetAiIndexEncryptionSpec[];
     readonly etag: string;
     /**
      * The provider-assigned unique ID for this managed resource.

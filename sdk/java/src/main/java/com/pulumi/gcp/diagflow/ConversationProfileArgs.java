@@ -11,6 +11,7 @@ import com.pulumi.gcp.diagflow.inputs.ConversationProfileHumanAgentAssistantConf
 import com.pulumi.gcp.diagflow.inputs.ConversationProfileHumanAgentHandoffConfigArgs;
 import com.pulumi.gcp.diagflow.inputs.ConversationProfileLoggingConfigArgs;
 import com.pulumi.gcp.diagflow.inputs.ConversationProfileNewMessageEventNotificationConfigArgs;
+import com.pulumi.gcp.diagflow.inputs.ConversationProfileNewRecognitionResultNotificationConfigArgs;
 import com.pulumi.gcp.diagflow.inputs.ConversationProfileNotificationConfigArgs;
 import com.pulumi.gcp.diagflow.inputs.ConversationProfileSttConfigArgs;
 import com.pulumi.gcp.diagflow.inputs.ConversationProfileTtsConfigArgs;
@@ -157,6 +158,23 @@ public final class ConversationProfileArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - &#34;participant_id&#34; - &#34;participantRole&#34; - &#34;message_id&#34;
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="newRecognitionResultNotificationConfig")
+    private @Nullable Output<ConversationProfileNewRecognitionResultNotificationConfigArgs> newRecognitionResultNotificationConfig;
+
+    /**
+     * @return Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - &#34;participant_id&#34; - &#34;participantRole&#34; - &#34;message_id&#34;
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ConversationProfileNewRecognitionResultNotificationConfigArgs>> newRecognitionResultNotificationConfig() {
+        return Optional.ofNullable(this.newRecognitionResultNotificationConfig);
+    }
+
+    /**
      * Pub/Sub topic on which to publish new agent assistant events.
      * Expects the format &#34;projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/topics/&lt;Topic ID&gt;&#34;
      * Structure is documented below.
@@ -267,6 +285,7 @@ public final class ConversationProfileArgs extends com.pulumi.resources.Resource
         this.location = $.location;
         this.loggingConfig = $.loggingConfig;
         this.newMessageEventNotificationConfig = $.newMessageEventNotificationConfig;
+        this.newRecognitionResultNotificationConfig = $.newRecognitionResultNotificationConfig;
         this.notificationConfig = $.notificationConfig;
         this.project = $.project;
         this.securitySettings = $.securitySettings;
@@ -471,6 +490,29 @@ public final class ConversationProfileArgs extends com.pulumi.resources.Resource
          */
         public Builder newMessageEventNotificationConfig(ConversationProfileNewMessageEventNotificationConfigArgs newMessageEventNotificationConfig) {
             return newMessageEventNotificationConfig(Output.of(newMessageEventNotificationConfig));
+        }
+
+        /**
+         * @param newRecognitionResultNotificationConfig Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - &#34;participant_id&#34; - &#34;participantRole&#34; - &#34;message_id&#34;
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder newRecognitionResultNotificationConfig(@Nullable Output<ConversationProfileNewRecognitionResultNotificationConfigArgs> newRecognitionResultNotificationConfig) {
+            $.newRecognitionResultNotificationConfig = newRecognitionResultNotificationConfig;
+            return this;
+        }
+
+        /**
+         * @param newRecognitionResultNotificationConfig Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - &#34;participant_id&#34; - &#34;participantRole&#34; - &#34;message_id&#34;
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder newRecognitionResultNotificationConfig(ConversationProfileNewRecognitionResultNotificationConfigArgs newRecognitionResultNotificationConfig) {
+            return newRecognitionResultNotificationConfig(Output.of(newRecognitionResultNotificationConfig));
         }
 
         /**

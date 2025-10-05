@@ -13,6 +13,7 @@ import com.pulumi.gcp.sql.inputs.DatabaseInstanceState;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceClone;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceDnsName;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceIpAddress;
+import com.pulumi.gcp.sql.outputs.DatabaseInstancePointInTimeRestoreContext;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceReplicaConfiguration;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceReplicationCluster;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceRestoreBackupContext;
@@ -755,6 +756,20 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> nodeCount() {
         return this.nodeCount;
+    }
+    /**
+     * Configuration for creating a new instance using point-in-time-restore from backupdr backup.
+     * 
+     */
+    @Export(name="pointInTimeRestoreContext", refs={DatabaseInstancePointInTimeRestoreContext.class}, tree="[0]")
+    private Output</* @Nullable */ DatabaseInstancePointInTimeRestoreContext> pointInTimeRestoreContext;
+
+    /**
+     * @return Configuration for creating a new instance using point-in-time-restore from backupdr backup.
+     * 
+     */
+    public Output<Optional<DatabaseInstancePointInTimeRestoreContext>> pointInTimeRestoreContext() {
+        return Codegen.optional(this.pointInTimeRestoreContext);
     }
     /**
      * The first private (`PRIVATE`) IPv4 address assigned.

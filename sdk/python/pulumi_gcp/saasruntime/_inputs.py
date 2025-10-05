@@ -25,6 +25,8 @@ __all__ = [
     'ReleaseOutputVariableArgsDict',
     'ReleaseReleaseRequirementsArgs',
     'ReleaseReleaseRequirementsArgsDict',
+    'RolloutKindErrorBudgetArgs',
+    'RolloutKindErrorBudgetArgsDict',
     'SaaSLocationArgs',
     'SaaSLocationArgsDict',
     'UnitKindDependencyArgs',
@@ -377,6 +379,64 @@ class ReleaseReleaseRequirementsArgs:
     @upgradeable_from_releases.setter
     def upgradeable_from_releases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "upgradeable_from_releases", value)
+
+
+if not MYPY:
+    class RolloutKindErrorBudgetArgsDict(TypedDict):
+        allowed_count: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The maximum number of failed units allowed in a location without pausing
+        the rollout.
+        """
+        allowed_percentage: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The maximum percentage of units allowed to fail (0, 100] within a location
+        without pausing the rollout.
+        """
+elif False:
+    RolloutKindErrorBudgetArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RolloutKindErrorBudgetArgs:
+    def __init__(__self__, *,
+                 allowed_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 allowed_percentage: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] allowed_count: The maximum number of failed units allowed in a location without pausing
+               the rollout.
+        :param pulumi.Input[_builtins.int] allowed_percentage: The maximum percentage of units allowed to fail (0, 100] within a location
+               without pausing the rollout.
+        """
+        if allowed_count is not None:
+            pulumi.set(__self__, "allowed_count", allowed_count)
+        if allowed_percentage is not None:
+            pulumi.set(__self__, "allowed_percentage", allowed_percentage)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedCount")
+    def allowed_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The maximum number of failed units allowed in a location without pausing
+        the rollout.
+        """
+        return pulumi.get(self, "allowed_count")
+
+    @allowed_count.setter
+    def allowed_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "allowed_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedPercentage")
+    def allowed_percentage(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The maximum percentage of units allowed to fail (0, 100] within a location
+        without pausing the rollout.
+        """
+        return pulumi.get(self, "allowed_percentage")
+
+    @allowed_percentage.setter
+    def allowed_percentage(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "allowed_percentage", value)
 
 
 if not MYPY:

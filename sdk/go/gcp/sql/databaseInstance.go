@@ -483,6 +483,8 @@ type DatabaseInstance struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// For a read pool instance, the number of nodes in the read pool.
 	NodeCount pulumi.IntOutput `pulumi:"nodeCount"`
+	// Configuration for creating a new instance using point-in-time-restore from backupdr backup.
+	PointInTimeRestoreContext DatabaseInstancePointInTimeRestoreContextPtrOutput `pulumi:"pointInTimeRestoreContext"`
 	// The first private (`PRIVATE`) IPv4 address assigned.
 	PrivateIpAddress pulumi.StringOutput `pulumi:"privateIpAddress"`
 	// The ID of the project in which the resource belongs. If it
@@ -624,6 +626,8 @@ type databaseInstanceState struct {
 	Name *string `pulumi:"name"`
 	// For a read pool instance, the number of nodes in the read pool.
 	NodeCount *int `pulumi:"nodeCount"`
+	// Configuration for creating a new instance using point-in-time-restore from backupdr backup.
+	PointInTimeRestoreContext *DatabaseInstancePointInTimeRestoreContext `pulumi:"pointInTimeRestoreContext"`
 	// The first private (`PRIVATE`) IPv4 address assigned.
 	PrivateIpAddress *string `pulumi:"privateIpAddress"`
 	// The ID of the project in which the resource belongs. If it
@@ -721,6 +725,8 @@ type DatabaseInstanceState struct {
 	Name pulumi.StringPtrInput
 	// For a read pool instance, the number of nodes in the read pool.
 	NodeCount pulumi.IntPtrInput
+	// Configuration for creating a new instance using point-in-time-restore from backupdr backup.
+	PointInTimeRestoreContext DatabaseInstancePointInTimeRestoreContextPtrInput
 	// The first private (`PRIVATE`) IPv4 address assigned.
 	PrivateIpAddress pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it
@@ -810,6 +816,8 @@ type databaseInstanceArgs struct {
 	Name *string `pulumi:"name"`
 	// For a read pool instance, the number of nodes in the read pool.
 	NodeCount *int `pulumi:"nodeCount"`
+	// Configuration for creating a new instance using point-in-time-restore from backupdr backup.
+	PointInTimeRestoreContext *DatabaseInstancePointInTimeRestoreContext `pulumi:"pointInTimeRestoreContext"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -884,6 +892,8 @@ type DatabaseInstanceArgs struct {
 	Name pulumi.StringPtrInput
 	// For a read pool instance, the number of nodes in the read pool.
 	NodeCount pulumi.IntPtrInput
+	// Configuration for creating a new instance using point-in-time-restore from backupdr backup.
+	PointInTimeRestoreContext DatabaseInstancePointInTimeRestoreContextPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -1104,6 +1114,13 @@ func (o DatabaseInstanceOutput) Name() pulumi.StringOutput {
 // For a read pool instance, the number of nodes in the read pool.
 func (o DatabaseInstanceOutput) NodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.IntOutput { return v.NodeCount }).(pulumi.IntOutput)
+}
+
+// Configuration for creating a new instance using point-in-time-restore from backupdr backup.
+func (o DatabaseInstanceOutput) PointInTimeRestoreContext() DatabaseInstancePointInTimeRestoreContextPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstance) DatabaseInstancePointInTimeRestoreContextPtrOutput {
+		return v.PointInTimeRestoreContext
+	}).(DatabaseInstancePointInTimeRestoreContextPtrOutput)
 }
 
 // The first private (`PRIVATE`) IPv4 address assigned.

@@ -46,6 +46,7 @@ import * as utilities from "../utilities";
  *     platformEdition: "LOOKER_CORE_STANDARD_ANNUAL",
  *     region: "us-central1",
  *     publicIpEnabled: true,
+ *     geminiEnabled: true,
  *     adminSettings: {
  *         allowedEmailDomains: ["google.com"],
  *     },
@@ -125,6 +126,7 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  *     privateIpEnabled: true,
  *     publicIpEnabled: false,
+ *     geminiEnabled: true,
  *     reservedRange: lookerRange.name,
  *     consumerNetwork: lookerNetwork.id,
  *     adminSettings: {
@@ -340,6 +342,10 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly fipsEnabled: pulumi.Output<boolean | undefined>;
     /**
+     * Gemini enablement for Looker (Google Cloud Core).
+     */
+    declare public readonly geminiEnabled: pulumi.Output<boolean | undefined>;
+    /**
      * Private Ingress IP (IPv4).
      */
     declare public /*out*/ readonly ingressPrivateIp: pulumi.Output<string>;
@@ -459,6 +465,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["egressPublicIp"] = state?.egressPublicIp;
             resourceInputs["encryptionConfig"] = state?.encryptionConfig;
             resourceInputs["fipsEnabled"] = state?.fipsEnabled;
+            resourceInputs["geminiEnabled"] = state?.geminiEnabled;
             resourceInputs["ingressPrivateIp"] = state?.ingressPrivateIp;
             resourceInputs["ingressPublicIp"] = state?.ingressPublicIp;
             resourceInputs["lookerUri"] = state?.lookerUri;
@@ -488,6 +495,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["denyMaintenancePeriod"] = args?.denyMaintenancePeriod;
             resourceInputs["encryptionConfig"] = args?.encryptionConfig;
             resourceInputs["fipsEnabled"] = args?.fipsEnabled;
+            resourceInputs["geminiEnabled"] = args?.geminiEnabled;
             resourceInputs["maintenanceWindow"] = args?.maintenanceWindow;
             resourceInputs["name"] = args?.name;
             resourceInputs["oauthConfig"] = args?.oauthConfig;
@@ -565,6 +573,10 @@ export interface InstanceState {
      * FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
      */
     fipsEnabled?: pulumi.Input<boolean>;
+    /**
+     * Gemini enablement for Looker (Google Cloud Core).
+     */
+    geminiEnabled?: pulumi.Input<boolean>;
     /**
      * Private Ingress IP (IPv4).
      */
@@ -707,6 +719,10 @@ export interface InstanceArgs {
      * FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
      */
     fipsEnabled?: pulumi.Input<boolean>;
+    /**
+     * Gemini enablement for Looker (Google Cloud Core).
+     */
+    geminiEnabled?: pulumi.Input<boolean>;
     /**
      * Maintenance window for an instance.
      * Maintenance of your instance takes place once a month, and will require

@@ -27,7 +27,7 @@ class GetDatabaseInstanceResult:
     """
     A collection of values returned by getDatabaseInstance.
     """
-    def __init__(__self__, available_maintenance_versions=None, backupdr_backup=None, clones=None, connection_name=None, database_version=None, deletion_protection=None, dns_name=None, dns_names=None, encryption_key_name=None, final_backup_description=None, first_ip_address=None, id=None, instance_type=None, ip_addresses=None, maintenance_version=None, master_instance_name=None, name=None, node_count=None, private_ip_address=None, project=None, psc_service_attachment_link=None, public_ip_address=None, region=None, replica_configurations=None, replica_names=None, replication_clusters=None, restore_backup_contexts=None, root_password=None, self_link=None, server_ca_certs=None, service_account_email_address=None, settings=None):
+    def __init__(__self__, available_maintenance_versions=None, backupdr_backup=None, clones=None, connection_name=None, database_version=None, deletion_protection=None, dns_name=None, dns_names=None, encryption_key_name=None, final_backup_description=None, first_ip_address=None, id=None, instance_type=None, ip_addresses=None, maintenance_version=None, master_instance_name=None, name=None, node_count=None, point_in_time_restore_contexts=None, private_ip_address=None, project=None, psc_service_attachment_link=None, public_ip_address=None, region=None, replica_configurations=None, replica_names=None, replication_clusters=None, restore_backup_contexts=None, root_password=None, self_link=None, server_ca_certs=None, service_account_email_address=None, settings=None):
         if available_maintenance_versions and not isinstance(available_maintenance_versions, list):
             raise TypeError("Expected argument 'available_maintenance_versions' to be a list")
         pulumi.set(__self__, "available_maintenance_versions", available_maintenance_versions)
@@ -82,6 +82,9 @@ class GetDatabaseInstanceResult:
         if node_count and not isinstance(node_count, int):
             raise TypeError("Expected argument 'node_count' to be a int")
         pulumi.set(__self__, "node_count", node_count)
+        if point_in_time_restore_contexts and not isinstance(point_in_time_restore_contexts, list):
+            raise TypeError("Expected argument 'point_in_time_restore_contexts' to be a list")
+        pulumi.set(__self__, "point_in_time_restore_contexts", point_in_time_restore_contexts)
         if private_ip_address and not isinstance(private_ip_address, str):
             raise TypeError("Expected argument 'private_ip_address' to be a str")
         pulumi.set(__self__, "private_ip_address", private_ip_address)
@@ -219,6 +222,11 @@ class GetDatabaseInstanceResult:
         return pulumi.get(self, "node_count")
 
     @_builtins.property
+    @pulumi.getter(name="pointInTimeRestoreContexts")
+    def point_in_time_restore_contexts(self) -> Sequence['outputs.GetDatabaseInstancePointInTimeRestoreContextResult']:
+        return pulumi.get(self, "point_in_time_restore_contexts")
+
+    @_builtins.property
     @pulumi.getter(name="privateIpAddress")
     def private_ip_address(self) -> _builtins.str:
         return pulumi.get(self, "private_ip_address")
@@ -313,6 +321,7 @@ class AwaitableGetDatabaseInstanceResult(GetDatabaseInstanceResult):
             master_instance_name=self.master_instance_name,
             name=self.name,
             node_count=self.node_count,
+            point_in_time_restore_contexts=self.point_in_time_restore_contexts,
             private_ip_address=self.private_ip_address,
             project=self.project,
             psc_service_attachment_link=self.psc_service_attachment_link,
@@ -373,6 +382,7 @@ def get_database_instance(name: Optional[_builtins.str] = None,
         master_instance_name=pulumi.get(__ret__, 'master_instance_name'),
         name=pulumi.get(__ret__, 'name'),
         node_count=pulumi.get(__ret__, 'node_count'),
+        point_in_time_restore_contexts=pulumi.get(__ret__, 'point_in_time_restore_contexts'),
         private_ip_address=pulumi.get(__ret__, 'private_ip_address'),
         project=pulumi.get(__ret__, 'project'),
         psc_service_attachment_link=pulumi.get(__ret__, 'psc_service_attachment_link'),
@@ -430,6 +440,7 @@ def get_database_instance_output(name: Optional[pulumi.Input[_builtins.str]] = N
         master_instance_name=pulumi.get(__response__, 'master_instance_name'),
         name=pulumi.get(__response__, 'name'),
         node_count=pulumi.get(__response__, 'node_count'),
+        point_in_time_restore_contexts=pulumi.get(__response__, 'point_in_time_restore_contexts'),
         private_ip_address=pulumi.get(__response__, 'private_ip_address'),
         project=pulumi.get(__response__, 'project'),
         psc_service_attachment_link=pulumi.get(__response__, 'psc_service_attachment_link'),

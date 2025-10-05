@@ -49,6 +49,8 @@ __all__ = [
     'KeyRingImportJobAttestationArgsDict',
     'KeyRingImportJobPublicKeyArgs',
     'KeyRingImportJobPublicKeyArgsDict',
+    'OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs',
+    'OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgsDict',
 ]
 
 MYPY = False
@@ -1348,5 +1350,46 @@ class KeyRingImportJobPublicKeyArgs:
     @pem.setter
     def pem(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "pem", value)
+
+
+if not MYPY:
+    class OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgsDict(TypedDict):
+        allowed_access_reasons: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        A KeyAccessJustificationsPolicy specifies zero or more allowed
+        AccessReason values for encrypt, decrypt, and sign operations on a
+        CryptoKey.
+        Each value may be one of: `CUSTOMER_INITIATED_SUPPORT`, `GOOGLE_INITIATED_SERVICE`, `THIRD_PARTY_DATA_REQUEST`, `GOOGLE_INITIATED_REVIEW`, `CUSTOMER_INITIATED_ACCESS`, `GOOGLE_INITIATED_SYSTEM_OPERATION`, `REASON_NOT_EXPECTED`, `MODIFIED_CUSTOMER_INITIATED_ACCESS`, `MODIFIED_GOOGLE_INITIATED_SYSTEM_OPERATION`, `GOOGLE_RESPONSE_TO_PRODUCTION_ALERT`, `CUSTOMER_AUTHORIZED_WORKFLOW_SERVICING`.
+        """
+elif False:
+    OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs:
+    def __init__(__self__, *,
+                 allowed_access_reasons: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_access_reasons: A KeyAccessJustificationsPolicy specifies zero or more allowed
+               AccessReason values for encrypt, decrypt, and sign operations on a
+               CryptoKey.
+               Each value may be one of: `CUSTOMER_INITIATED_SUPPORT`, `GOOGLE_INITIATED_SERVICE`, `THIRD_PARTY_DATA_REQUEST`, `GOOGLE_INITIATED_REVIEW`, `CUSTOMER_INITIATED_ACCESS`, `GOOGLE_INITIATED_SYSTEM_OPERATION`, `REASON_NOT_EXPECTED`, `MODIFIED_CUSTOMER_INITIATED_ACCESS`, `MODIFIED_GOOGLE_INITIATED_SYSTEM_OPERATION`, `GOOGLE_RESPONSE_TO_PRODUCTION_ALERT`, `CUSTOMER_AUTHORIZED_WORKFLOW_SERVICING`.
+        """
+        if allowed_access_reasons is not None:
+            pulumi.set(__self__, "allowed_access_reasons", allowed_access_reasons)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedAccessReasons")
+    def allowed_access_reasons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A KeyAccessJustificationsPolicy specifies zero or more allowed
+        AccessReason values for encrypt, decrypt, and sign operations on a
+        CryptoKey.
+        Each value may be one of: `CUSTOMER_INITIATED_SUPPORT`, `GOOGLE_INITIATED_SERVICE`, `THIRD_PARTY_DATA_REQUEST`, `GOOGLE_INITIATED_REVIEW`, `CUSTOMER_INITIATED_ACCESS`, `GOOGLE_INITIATED_SYSTEM_OPERATION`, `REASON_NOT_EXPECTED`, `MODIFIED_CUSTOMER_INITIATED_ACCESS`, `MODIFIED_GOOGLE_INITIATED_SYSTEM_OPERATION`, `GOOGLE_RESPONSE_TO_PRODUCTION_ALERT`, `CUSTOMER_AUTHORIZED_WORKFLOW_SERVICING`.
+        """
+        return pulumi.get(self, "allowed_access_reasons")
+
+    @allowed_access_reasons.setter
+    def allowed_access_reasons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "allowed_access_reasons", value)
 
 

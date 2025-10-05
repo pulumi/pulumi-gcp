@@ -24,7 +24,7 @@ public final class PreventionDiscoveryConfigTargetCloudStorageTargetConditions {
      */
     private @Nullable String createdAfter;
     /**
-     * @return Duration format. Minimum age a file store must have. If set, the value must be 1 hour or greater.
+     * @return Duration format.  Minimum age a resource must be before a profile can be generated. Value must be 1 hour or greater. Minimum age is not supported for Azure Blob Storage containers.
      * 
      */
     private @Nullable String minAge;
@@ -46,7 +46,7 @@ public final class PreventionDiscoveryConfigTargetCloudStorageTargetConditions {
         return Optional.ofNullable(this.createdAfter);
     }
     /**
-     * @return Duration format. Minimum age a file store must have. If set, the value must be 1 hour or greater.
+     * @return Duration format.  Minimum age a resource must be before a profile can be generated. Value must be 1 hour or greater. Minimum age is not supported for Azure Blob Storage containers.
      * 
      */
     public Optional<String> minAge() {

@@ -33,6 +33,12 @@ public final class VolumeMountOption {
     private @Nullable String instructions;
     /**
      * @return (Output)
+     * IP Address.
+     * 
+     */
+    private @Nullable String ipAddress;
+    /**
+     * @return (Output)
      * Protocol to mount with.
      * 
      */
@@ -67,6 +73,14 @@ public final class VolumeMountOption {
     }
     /**
      * @return (Output)
+     * IP Address.
+     * 
+     */
+    public Optional<String> ipAddress() {
+        return Optional.ofNullable(this.ipAddress);
+    }
+    /**
+     * @return (Output)
      * Protocol to mount with.
      * 
      */
@@ -86,6 +100,7 @@ public final class VolumeMountOption {
         private @Nullable String export;
         private @Nullable String exportFull;
         private @Nullable String instructions;
+        private @Nullable String ipAddress;
         private @Nullable String protocol;
         public Builder() {}
         public Builder(VolumeMountOption defaults) {
@@ -93,6 +108,7 @@ public final class VolumeMountOption {
     	      this.export = defaults.export;
     	      this.exportFull = defaults.exportFull;
     	      this.instructions = defaults.instructions;
+    	      this.ipAddress = defaults.ipAddress;
     	      this.protocol = defaults.protocol;
         }
 
@@ -115,6 +131,12 @@ public final class VolumeMountOption {
             return this;
         }
         @CustomType.Setter
+        public Builder ipAddress(@Nullable String ipAddress) {
+
+            this.ipAddress = ipAddress;
+            return this;
+        }
+        @CustomType.Setter
         public Builder protocol(@Nullable String protocol) {
 
             this.protocol = protocol;
@@ -125,6 +147,7 @@ public final class VolumeMountOption {
             _resultValue.export = export;
             _resultValue.exportFull = exportFull;
             _resultValue.instructions = instructions;
+            _resultValue.ipAddress = ipAddress;
             _resultValue.protocol = protocol;
             return _resultValue;
         }

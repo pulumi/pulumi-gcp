@@ -2712,6 +2712,157 @@ func (o KeyRingImportJobPublicKeyArrayOutput) Index(i pulumi.IntInput) KeyRingIm
 	}).(KeyRingImportJobPublicKeyOutput)
 }
 
+type OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy struct {
+	// A KeyAccessJustificationsPolicy specifies zero or more allowed
+	// AccessReason values for encrypt, decrypt, and sign operations on a
+	// CryptoKey.
+	// Each value may be one of: `CUSTOMER_INITIATED_SUPPORT`, `GOOGLE_INITIATED_SERVICE`, `THIRD_PARTY_DATA_REQUEST`, `GOOGLE_INITIATED_REVIEW`, `CUSTOMER_INITIATED_ACCESS`, `GOOGLE_INITIATED_SYSTEM_OPERATION`, `REASON_NOT_EXPECTED`, `MODIFIED_CUSTOMER_INITIATED_ACCESS`, `MODIFIED_GOOGLE_INITIATED_SYSTEM_OPERATION`, `GOOGLE_RESPONSE_TO_PRODUCTION_ALERT`, `CUSTOMER_AUTHORIZED_WORKFLOW_SERVICING`.
+	AllowedAccessReasons []string `pulumi:"allowedAccessReasons"`
+}
+
+// OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyInput is an input type that accepts OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs and OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput values.
+// You can construct a concrete instance of `OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyInput` via:
+//
+//	OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs{...}
+type OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyInput interface {
+	pulumi.Input
+
+	ToOrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput() OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput
+	ToOrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyOutputWithContext(context.Context) OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput
+}
+
+type OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs struct {
+	// A KeyAccessJustificationsPolicy specifies zero or more allowed
+	// AccessReason values for encrypt, decrypt, and sign operations on a
+	// CryptoKey.
+	// Each value may be one of: `CUSTOMER_INITIATED_SUPPORT`, `GOOGLE_INITIATED_SERVICE`, `THIRD_PARTY_DATA_REQUEST`, `GOOGLE_INITIATED_REVIEW`, `CUSTOMER_INITIATED_ACCESS`, `GOOGLE_INITIATED_SYSTEM_OPERATION`, `REASON_NOT_EXPECTED`, `MODIFIED_CUSTOMER_INITIATED_ACCESS`, `MODIFIED_GOOGLE_INITIATED_SYSTEM_OPERATION`, `GOOGLE_RESPONSE_TO_PRODUCTION_ALERT`, `CUSTOMER_AUTHORIZED_WORKFLOW_SERVICING`.
+	AllowedAccessReasons pulumi.StringArrayInput `pulumi:"allowedAccessReasons"`
+}
+
+func (OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy)(nil)).Elem()
+}
+
+func (i OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs) ToOrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput() OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput {
+	return i.ToOrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyOutputWithContext(context.Background())
+}
+
+func (i OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs) ToOrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyOutputWithContext(ctx context.Context) OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput)
+}
+
+func (i OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs) ToOrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput() OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput {
+	return i.ToOrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs) ToOrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutputWithContext(ctx context.Context) OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput).ToOrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutputWithContext(ctx)
+}
+
+// OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrInput is an input type that accepts OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs, OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtr and OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput values.
+// You can construct a concrete instance of `OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrInput` via:
+//
+//	        OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrInput interface {
+	pulumi.Input
+
+	ToOrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput() OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput
+	ToOrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutputWithContext(context.Context) OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput
+}
+
+type organizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrType OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs
+
+func OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtr(v *OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs) OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrInput {
+	return (*organizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrType)(v)
+}
+
+func (*organizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy)(nil)).Elem()
+}
+
+func (i *organizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrType) ToOrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput() OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput {
+	return i.ToOrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *organizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrType) ToOrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutputWithContext(ctx context.Context) OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput)
+}
+
+type OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput struct{ *pulumi.OutputState }
+
+func (OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy)(nil)).Elem()
+}
+
+func (o OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput) ToOrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput() OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput {
+	return o
+}
+
+func (o OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput) ToOrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyOutputWithContext(ctx context.Context) OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput {
+	return o
+}
+
+func (o OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput) ToOrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput() OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput {
+	return o.ToOrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput) ToOrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutputWithContext(ctx context.Context) OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy) *OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy {
+		return &v
+	}).(OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput)
+}
+
+// A KeyAccessJustificationsPolicy specifies zero or more allowed
+// AccessReason values for encrypt, decrypt, and sign operations on a
+// CryptoKey.
+// Each value may be one of: `CUSTOMER_INITIATED_SUPPORT`, `GOOGLE_INITIATED_SERVICE`, `THIRD_PARTY_DATA_REQUEST`, `GOOGLE_INITIATED_REVIEW`, `CUSTOMER_INITIATED_ACCESS`, `GOOGLE_INITIATED_SYSTEM_OPERATION`, `REASON_NOT_EXPECTED`, `MODIFIED_CUSTOMER_INITIATED_ACCESS`, `MODIFIED_GOOGLE_INITIATED_SYSTEM_OPERATION`, `GOOGLE_RESPONSE_TO_PRODUCTION_ALERT`, `CUSTOMER_AUTHORIZED_WORKFLOW_SERVICING`.
+func (o OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput) AllowedAccessReasons() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy) []string {
+		return v.AllowedAccessReasons
+	}).(pulumi.StringArrayOutput)
+}
+
+type OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy)(nil)).Elem()
+}
+
+func (o OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput) ToOrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput() OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput {
+	return o
+}
+
+func (o OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput) ToOrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutputWithContext(ctx context.Context) OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput {
+	return o
+}
+
+func (o OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput) Elem() OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput {
+	return o.ApplyT(func(v *OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy) OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy
+		return ret
+	}).(OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput)
+}
+
+// A KeyAccessJustificationsPolicy specifies zero or more allowed
+// AccessReason values for encrypt, decrypt, and sign operations on a
+// CryptoKey.
+// Each value may be one of: `CUSTOMER_INITIATED_SUPPORT`, `GOOGLE_INITIATED_SERVICE`, `THIRD_PARTY_DATA_REQUEST`, `GOOGLE_INITIATED_REVIEW`, `CUSTOMER_INITIATED_ACCESS`, `GOOGLE_INITIATED_SYSTEM_OPERATION`, `REASON_NOT_EXPECTED`, `MODIFIED_CUSTOMER_INITIATED_ACCESS`, `MODIFIED_GOOGLE_INITIATED_SYSTEM_OPERATION`, `GOOGLE_RESPONSE_TO_PRODUCTION_ALERT`, `CUSTOMER_AUTHORIZED_WORKFLOW_SERVICING`.
+func (o OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput) AllowedAccessReasons() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedAccessReasons
+	}).(pulumi.StringArrayOutput)
+}
+
 type GetCryptoKeyLatestVersionPublicKey struct {
 	// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
 	Algorithm string `pulumi:"algorithm"`
@@ -4465,6 +4616,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingImportJobAttestationArrayInput)(nil)).Elem(), KeyRingImportJobAttestationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingImportJobPublicKeyInput)(nil)).Elem(), KeyRingImportJobPublicKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingImportJobPublicKeyArrayInput)(nil)).Elem(), KeyRingImportJobPublicKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyInput)(nil)).Elem(), OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrInput)(nil)).Elem(), OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCryptoKeyLatestVersionPublicKeyInput)(nil)).Elem(), GetCryptoKeyLatestVersionPublicKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCryptoKeyLatestVersionPublicKeyArrayInput)(nil)).Elem(), GetCryptoKeyLatestVersionPublicKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCryptoKeyVersionsPublicKeyInput)(nil)).Elem(), GetCryptoKeyVersionsPublicKeyArgs{})
@@ -4527,6 +4680,8 @@ func init() {
 	pulumi.RegisterOutputType(KeyRingImportJobAttestationArrayOutput{})
 	pulumi.RegisterOutputType(KeyRingImportJobPublicKeyOutput{})
 	pulumi.RegisterOutputType(KeyRingImportJobPublicKeyArrayOutput{})
+	pulumi.RegisterOutputType(OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyOutput{})
+	pulumi.RegisterOutputType(OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(GetCryptoKeyLatestVersionPublicKeyOutput{})
 	pulumi.RegisterOutputType(GetCryptoKeyLatestVersionPublicKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetCryptoKeyVersionsPublicKeyOutput{})

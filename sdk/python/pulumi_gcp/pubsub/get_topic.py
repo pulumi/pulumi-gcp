@@ -27,7 +27,7 @@ class GetTopicResult:
     """
     A collection of values returned by getTopic.
     """
-    def __init__(__self__, effective_labels=None, id=None, ingestion_data_source_settings=None, kms_key_name=None, labels=None, message_retention_duration=None, message_storage_policies=None, message_transforms=None, name=None, project=None, pulumi_labels=None, schema_settings=None):
+    def __init__(__self__, effective_labels=None, id=None, ingestion_data_source_settings=None, kms_key_name=None, labels=None, message_retention_duration=None, message_storage_policies=None, message_transforms=None, name=None, project=None, pulumi_labels=None, schema_settings=None, tags=None):
         if effective_labels and not isinstance(effective_labels, dict):
             raise TypeError("Expected argument 'effective_labels' to be a dict")
         pulumi.set(__self__, "effective_labels", effective_labels)
@@ -64,6 +64,9 @@ class GetTopicResult:
         if schema_settings and not isinstance(schema_settings, list):
             raise TypeError("Expected argument 'schema_settings' to be a list")
         pulumi.set(__self__, "schema_settings", schema_settings)
+        if tags and not isinstance(tags, dict):
+            raise TypeError("Expected argument 'tags' to be a dict")
+        pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
@@ -128,6 +131,11 @@ class GetTopicResult:
     def schema_settings(self) -> Sequence['outputs.GetTopicSchemaSettingResult']:
         return pulumi.get(self, "schema_settings")
 
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, _builtins.str]:
+        return pulumi.get(self, "tags")
+
 
 class AwaitableGetTopicResult(GetTopicResult):
     # pylint: disable=using-constant-test
@@ -146,7 +154,8 @@ class AwaitableGetTopicResult(GetTopicResult):
             name=self.name,
             project=self.project,
             pulumi_labels=self.pulumi_labels,
-            schema_settings=self.schema_settings)
+            schema_settings=self.schema_settings,
+            tags=self.tags)
 
 
 def get_topic(name: Optional[_builtins.str] = None,
@@ -191,7 +200,8 @@ def get_topic(name: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
-        schema_settings=pulumi.get(__ret__, 'schema_settings'))
+        schema_settings=pulumi.get(__ret__, 'schema_settings'),
+        tags=pulumi.get(__ret__, 'tags'))
 def get_topic_output(name: Optional[pulumi.Input[_builtins.str]] = None,
                      project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTopicResult]:
@@ -233,4 +243,5 @@ def get_topic_output(name: Optional[pulumi.Input[_builtins.str]] = None,
         name=pulumi.get(__response__, 'name'),
         project=pulumi.get(__response__, 'project'),
         pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
-        schema_settings=pulumi.get(__response__, 'schema_settings')))
+        schema_settings=pulumi.get(__response__, 'schema_settings'),
+        tags=pulumi.get(__response__, 'tags')))
