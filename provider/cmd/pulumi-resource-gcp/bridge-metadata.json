@@ -1380,6 +1380,10 @@
                     }
                 }
             },
+            "google_apigee_api_deployment": {
+                "current": "gcp:apigee/apiDeployment:ApiDeployment",
+                "majorVersion": 9
+            },
             "google_apigee_api_product": {
                 "current": "gcp:apigee/apiProduct:ApiProduct",
                 "majorVersion": 9,
@@ -5115,8 +5119,54 @@
                                                     }
                                                 }
                                             },
+                                            "liveness_probe": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "grpc": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "http_get": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "http_headers": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "tcp_socket": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "resources": {
                                                 "maxItemsOne": true
+                                            },
+                                            "startup_probe": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "grpc": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "http_get": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "http_headers": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "tcp_socket": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
                                             },
                                             "volume_mounts": {
                                                 "maxItemsOne": false
@@ -15580,6 +15630,16 @@
                             }
                         }
                     },
+                    "other_cloud_starting_location": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "aws_location": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
                     "targets": {
                         "maxItemsOne": false,
                         "elem": {
@@ -15807,6 +15867,107 @@
                                                         },
                                                         "others": {
                                                             "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "generation_cadence": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "inspect_template_modified_cadence": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "other_cloud_target": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "conditions": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "amazon_s3_bucket_conditions": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "bucket_types": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "object_storage_classes": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "data_source_type": {
+                                                "maxItemsOne": true
+                                            },
+                                            "disabled": {
+                                                "maxItemsOne": true
+                                            },
+                                            "filter": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "collection": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "include_regexes": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "patterns": {
+                                                                                    "maxItemsOne": false,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "amazon_s3_bucket_regex": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "aws_account_regex": {
+                                                                                                            "maxItemsOne": true
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "others": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "single_resource": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "amazon_s3_bucket": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "aws_account": {
+                                                                                    "maxItemsOne": true
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
                                                         }
                                                     }
                                                 }
@@ -19792,6 +19953,9 @@
                     "new_message_event_notification_config": {
                         "maxItemsOne": true
                     },
+                    "new_recognition_result_notification_config": {
+                        "maxItemsOne": true
+                    },
                     "notification_config": {
                         "maxItemsOne": true
                     },
@@ -20996,6 +21160,24 @@
                 "majorVersion": 9,
                 "fields": {
                     "single_region_keys": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_discovery_engine_data_connector": {
+                "current": "gcp:discoveryengine/dataConnector:DataConnector",
+                "majorVersion": 9,
+                "fields": {
+                    "blocking_reasons": {
+                        "maxItemsOne": false
+                    },
+                    "entities": {
+                        "maxItemsOne": false
+                    },
+                    "errors": {
+                        "maxItemsOne": false
+                    },
+                    "static_ip_addresses": {
                         "maxItemsOne": false
                     }
                 }
@@ -22741,6 +22923,16 @@
                                     "elem": {
                                         "fields": {
                                             "namespaced_names": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "selected_namespace_labels": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "resource_labels": {
                                                 "maxItemsOne": false
                                             }
                                         }
@@ -26126,6 +26318,22 @@
                     }
                 }
             },
+            "google_kms_organization_kaj_policy_config": {
+                "current": "gcp:kms/organizationKajPolicyConfig:OrganizationKajPolicyConfig",
+                "majorVersion": 9,
+                "fields": {
+                    "default_key_access_justification_policy": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "allowed_access_reasons": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_kms_secret_ciphertext": {
                 "current": "gcp:kms/secretCiphertext:SecretCiphertext",
                 "majorVersion": 9
@@ -27374,7 +27582,14 @@
                         }
                     },
                     "hybrid_replication_parameters": {
-                        "maxItemsOne": true
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "peer_ip_addresses": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "mount_options": {
                         "maxItemsOne": false
@@ -28083,6 +28298,9 @@
                                 }
                             }
                         }
+                    },
+                    "mirroring_deployment_groups": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -32637,6 +32855,15 @@
                     }
                 }
             },
+            "google_saas_runtime_rollout_kind": {
+                "current": "gcp:saasruntime/rolloutKind:RolloutKind",
+                "majorVersion": 9,
+                "fields": {
+                    "error_budget": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "google_saas_runtime_saas": {
                 "current": "gcp:saasruntime/saaS:SaaS",
                 "majorVersion": 9,
@@ -33892,6 +34119,9 @@
                     },
                     "ip_address": {
                         "maxItemsOne": false
+                    },
+                    "point_in_time_restore_context": {
+                        "maxItemsOne": true
                     },
                     "replica_configuration": {
                         "maxItemsOne": true
@@ -35397,7 +35627,24 @@
                         }
                     },
                     "endpoint_config": {
-                        "maxItemsOne": true
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "private_service_connect_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "project_allowlist": {
+                                                "maxItemsOne": false
+                                            },
+                                            "psc_automation_configs": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     },
                     "model_config": {
                         "maxItemsOne": true,
@@ -35823,6 +36070,9 @@
                     "deployed_indexes": {
                         "maxItemsOne": false
                     },
+                    "encryption_spec": {
+                        "maxItemsOne": true
+                    },
                     "index_stats": {
                         "maxItemsOne": false
                     },
@@ -35859,6 +36109,9 @@
                 "current": "gcp:vertex/aiIndexEndpoint:AiIndexEndpoint",
                 "majorVersion": 9,
                 "fields": {
+                    "encryption_spec": {
+                        "maxItemsOne": true
+                    },
                     "private_service_connect_config": {
                         "maxItemsOne": true,
                         "elem": {
@@ -36769,12 +37022,37 @@
                 "current": "gcp:artifactregistry/getMavenArtifact:getMavenArtifact",
                 "majorVersion": 9
             },
+            "google_artifact_registry_maven_artifacts": {
+                "current": "gcp:artifactregistry/getMavenArtifacts:getMavenArtifacts",
+                "majorVersion": 9,
+                "fields": {
+                    "maven_artifacts": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_artifact_registry_npm_package": {
                 "current": "gcp:artifactregistry/getNpmPackage:getNpmPackage",
                 "majorVersion": 9,
                 "fields": {
                     "tags": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "google_artifact_registry_npm_packages": {
+                "current": "gcp:artifactregistry/getNpmPackages:getNpmPackages",
+                "majorVersion": 9,
+                "fields": {
+                    "npm_packages": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -38303,8 +38581,54 @@
                                                     }
                                                 }
                                             },
+                                            "liveness_probe": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "grpc": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "http_get": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "http_headers": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "tcp_socket": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "resources": {
                                                 "maxItemsOne": false
+                                            },
+                                            "startup_probe": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "grpc": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "http_get": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "http_headers": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "tcp_socket": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
                                             },
                                             "volume_mounts": {
                                                 "maxItemsOne": false
@@ -44704,6 +45028,9 @@
                     "ip_address": {
                         "maxItemsOne": false
                     },
+                    "point_in_time_restore_context": {
+                        "maxItemsOne": false
+                    },
                     "replica_configuration": {
                         "maxItemsOne": false
                     },
@@ -44836,6 +45163,9 @@
                                     "maxItemsOne": false
                                 },
                                 "ip_address": {
+                                    "maxItemsOne": false
+                                },
+                                "point_in_time_restore_context": {
                                     "maxItemsOne": false
                                 },
                                 "replica_configuration": {
@@ -45474,6 +45804,9 @@
                 "majorVersion": 9,
                 "fields": {
                     "deployed_indexes": {
+                        "maxItemsOne": false
+                    },
+                    "encryption_spec": {
                         "maxItemsOne": false
                     },
                     "index_stats": {
@@ -46666,6 +46999,10 @@
                 "effective_labels",
                 "terraform_labels"
             ],
+            "google_saas_runtime_rollout_kind": [
+                "effective_labels",
+                "terraform_labels"
+            ],
             "google_saas_runtime_saas": [
                 "effective_labels",
                 "terraform_labels"
@@ -47099,6 +47436,7 @@
             "gcp:apigateway/gatewayIamPolicy:GatewayIamPolicy": 0,
             "gcp:apigee/addonsConfig:AddonsConfig": 0,
             "gcp:apigee/api:Api": 0,
+            "gcp:apigee/apiDeployment:ApiDeployment": 0,
             "gcp:apigee/apiProduct:ApiProduct": 0,
             "gcp:apigee/appGroup:AppGroup": 0,
             "gcp:apigee/controlPlaneAccess:ControlPlaneAccess": 0,
@@ -47659,6 +47997,7 @@
             "gcp:discoveryengine/aclConfig:AclConfig": 0,
             "gcp:discoveryengine/chatEngine:ChatEngine": 0,
             "gcp:discoveryengine/cmekConfig:CmekConfig": 0,
+            "gcp:discoveryengine/dataConnector:DataConnector": 0,
             "gcp:discoveryengine/dataStore:DataStore": 0,
             "gcp:discoveryengine/recommendationEngine:RecommendationEngine": 0,
             "gcp:discoveryengine/schema:Schema": 0,
@@ -47902,6 +48241,7 @@
             "gcp:kms/keyRingIAMMember:KeyRingIAMMember": 0,
             "gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy": 0,
             "gcp:kms/keyRingImportJob:KeyRingImportJob": 0,
+            "gcp:kms/organizationKajPolicyConfig:OrganizationKajPolicyConfig": 0,
             "gcp:kms/secretCiphertext:SecretCiphertext": 0,
             "gcp:logging/billingAccountBucketConfig:BillingAccountBucketConfig": 0,
             "gcp:logging/billingAccountExclusion:BillingAccountExclusion": 0,
@@ -48088,6 +48428,7 @@
             "gcp:runtimeconfig/configIamPolicy:ConfigIamPolicy": 0,
             "gcp:runtimeconfig/variable:Variable": 0,
             "gcp:saasruntime/release:Release": 0,
+            "gcp:saasruntime/rolloutKind:RolloutKind": 0,
             "gcp:saasruntime/saaS:SaaS": 0,
             "gcp:saasruntime/unitKind:UnitKind": 0,
             "gcp:secretmanager/regionalSecret:RegionalSecret": 0,
@@ -48310,7 +48651,9 @@
             "gcp:artifactregistry/getDockerImages:getDockerImages": 0,
             "gcp:artifactregistry/getLocations:getLocations": 0,
             "gcp:artifactregistry/getMavenArtifact:getMavenArtifact": 0,
+            "gcp:artifactregistry/getMavenArtifacts:getMavenArtifacts": 0,
             "gcp:artifactregistry/getNpmPackage:getNpmPackage": 0,
+            "gcp:artifactregistry/getNpmPackages:getNpmPackages": 0,
             "gcp:artifactregistry/getPackage:getPackage": 0,
             "gcp:artifactregistry/getPythonPackage:getPythonPackage": 0,
             "gcp:artifactregistry/getRepositories:getRepositories": 0,
