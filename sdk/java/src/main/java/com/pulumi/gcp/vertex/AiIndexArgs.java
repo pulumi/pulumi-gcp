@@ -6,6 +6,7 @@ package com.pulumi.gcp.vertex;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.vertex.inputs.AiIndexEncryptionSpecArgs;
 import com.pulumi.gcp.vertex.inputs.AiIndexMetadataArgs;
 import java.lang.String;
 import java.util.Map;
@@ -46,6 +47,23 @@ public final class AiIndexArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Output<String> displayName() {
         return this.displayName;
+    }
+
+    /**
+     * Customer-managed encryption key spec for an Index. If set, this Index and all sub-resources of this Index will be secured by this key.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="encryptionSpec")
+    private @Nullable Output<AiIndexEncryptionSpecArgs> encryptionSpec;
+
+    /**
+     * @return Customer-managed encryption key spec for an Index. If set, this Index and all sub-resources of this Index will be secured by this key.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AiIndexEncryptionSpecArgs>> encryptionSpec() {
+        return Optional.ofNullable(this.encryptionSpec);
     }
 
     /**
@@ -144,6 +162,7 @@ public final class AiIndexArgs extends com.pulumi.resources.ResourceArgs {
     private AiIndexArgs(AiIndexArgs $) {
         this.description = $.description;
         this.displayName = $.displayName;
+        this.encryptionSpec = $.encryptionSpec;
         this.indexUpdateMethod = $.indexUpdateMethod;
         this.labels = $.labels;
         this.metadata = $.metadata;
@@ -209,6 +228,29 @@ public final class AiIndexArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param encryptionSpec Customer-managed encryption key spec for an Index. If set, this Index and all sub-resources of this Index will be secured by this key.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionSpec(@Nullable Output<AiIndexEncryptionSpecArgs> encryptionSpec) {
+            $.encryptionSpec = encryptionSpec;
+            return this;
+        }
+
+        /**
+         * @param encryptionSpec Customer-managed encryption key spec for an Index. If set, this Index and all sub-resources of this Index will be secured by this key.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionSpec(AiIndexEncryptionSpecArgs encryptionSpec) {
+            return encryptionSpec(Output.of(encryptionSpec));
         }
 
         /**

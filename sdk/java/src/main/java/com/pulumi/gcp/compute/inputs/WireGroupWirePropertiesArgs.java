@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -15,6 +16,27 @@ import javax.annotation.Nullable;
 public final class WireGroupWirePropertiesArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final WireGroupWirePropertiesArgs Empty = new WireGroupWirePropertiesArgs();
+
+    /**
+     * The configuration of a wire&#39;s bandwidth allocation.
+     * ALLOCATE_PER_WIRE: configures a separate unmetered bandwidth allocation (and associated charges) for each wire in the group.
+     * SHARED_WITH_WIRE_GROUP: this is the default behavior, which configures one unmetered bandwidth allocation for the wire group. The unmetered bandwidth is divided equally across each wire in the group, but dynamic
+     * throttling reallocates unused unmetered bandwidth from unused or underused wires to other wires in the group.
+     * 
+     */
+    @Import(name="bandwidthAllocation", required=true)
+    private Output<String> bandwidthAllocation;
+
+    /**
+     * @return The configuration of a wire&#39;s bandwidth allocation.
+     * ALLOCATE_PER_WIRE: configures a separate unmetered bandwidth allocation (and associated charges) for each wire in the group.
+     * SHARED_WITH_WIRE_GROUP: this is the default behavior, which configures one unmetered bandwidth allocation for the wire group. The unmetered bandwidth is divided equally across each wire in the group, but dynamic
+     * throttling reallocates unused unmetered bandwidth from unused or underused wires to other wires in the group.
+     * 
+     */
+    public Output<String> bandwidthAllocation() {
+        return this.bandwidthAllocation;
+    }
 
     /**
      * The unmetered bandwidth setting.
@@ -53,6 +75,7 @@ public final class WireGroupWirePropertiesArgs extends com.pulumi.resources.Reso
     private WireGroupWirePropertiesArgs() {}
 
     private WireGroupWirePropertiesArgs(WireGroupWirePropertiesArgs $) {
+        this.bandwidthAllocation = $.bandwidthAllocation;
         this.bandwidthUnmetered = $.bandwidthUnmetered;
         this.faultResponse = $.faultResponse;
     }
@@ -73,6 +96,33 @@ public final class WireGroupWirePropertiesArgs extends com.pulumi.resources.Reso
 
         public Builder(WireGroupWirePropertiesArgs defaults) {
             $ = new WireGroupWirePropertiesArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param bandwidthAllocation The configuration of a wire&#39;s bandwidth allocation.
+         * ALLOCATE_PER_WIRE: configures a separate unmetered bandwidth allocation (and associated charges) for each wire in the group.
+         * SHARED_WITH_WIRE_GROUP: this is the default behavior, which configures one unmetered bandwidth allocation for the wire group. The unmetered bandwidth is divided equally across each wire in the group, but dynamic
+         * throttling reallocates unused unmetered bandwidth from unused or underused wires to other wires in the group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bandwidthAllocation(Output<String> bandwidthAllocation) {
+            $.bandwidthAllocation = bandwidthAllocation;
+            return this;
+        }
+
+        /**
+         * @param bandwidthAllocation The configuration of a wire&#39;s bandwidth allocation.
+         * ALLOCATE_PER_WIRE: configures a separate unmetered bandwidth allocation (and associated charges) for each wire in the group.
+         * SHARED_WITH_WIRE_GROUP: this is the default behavior, which configures one unmetered bandwidth allocation for the wire group. The unmetered bandwidth is divided equally across each wire in the group, but dynamic
+         * throttling reallocates unused unmetered bandwidth from unused or underused wires to other wires in the group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bandwidthAllocation(String bandwidthAllocation) {
+            return bandwidthAllocation(Output.of(bandwidthAllocation));
         }
 
         /**
@@ -122,6 +172,9 @@ public final class WireGroupWirePropertiesArgs extends com.pulumi.resources.Reso
         }
 
         public WireGroupWirePropertiesArgs build() {
+            if ($.bandwidthAllocation == null) {
+                throw new MissingRequiredPropertyException("WireGroupWirePropertiesArgs", "bandwidthAllocation");
+            }
             return $;
         }
     }

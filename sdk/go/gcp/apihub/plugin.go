@@ -144,7 +144,7 @@ type Plugin struct {
 	ActionsConfigs PluginActionsConfigArrayOutput `pulumi:"actionsConfigs"`
 	// ConfigTemplate represents the configuration template for a plugin.
 	// Structure is documented below.
-	ConfigTemplate PluginConfigTemplatePtrOutput `pulumi:"configTemplate"`
+	ConfigTemplate PluginConfigTemplateOutput `pulumi:"configTemplate"`
 	// Timestamp indicating when the plugin was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The plugin description. Max length is 2000 characters (Unicode code
@@ -562,8 +562,8 @@ func (o PluginOutput) ActionsConfigs() PluginActionsConfigArrayOutput {
 
 // ConfigTemplate represents the configuration template for a plugin.
 // Structure is documented below.
-func (o PluginOutput) ConfigTemplate() PluginConfigTemplatePtrOutput {
-	return o.ApplyT(func(v *Plugin) PluginConfigTemplatePtrOutput { return v.ConfigTemplate }).(PluginConfigTemplatePtrOutput)
+func (o PluginOutput) ConfigTemplate() PluginConfigTemplateOutput {
+	return o.ApplyT(func(v *Plugin) PluginConfigTemplateOutput { return v.ConfigTemplate }).(PluginConfigTemplateOutput)
 }
 
 // Timestamp indicating when the plugin was created.

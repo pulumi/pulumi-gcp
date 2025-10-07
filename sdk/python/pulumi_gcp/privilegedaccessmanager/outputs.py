@@ -164,7 +164,7 @@ class EntitlementApprovalWorkflowManualApprovals(dict):
                  steps: Sequence['outputs.EntitlementApprovalWorkflowManualApprovalsStep'],
                  require_approver_justification: Optional[_builtins.bool] = None):
         """
-        :param Sequence['EntitlementApprovalWorkflowManualApprovalsStepArgs'] steps: List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
+        :param Sequence['EntitlementApprovalWorkflowManualApprovalsStepArgs'] steps: List of approval steps in this workflow. These steps would be followed in the specified order sequentially.
                Structure is documented below.
         :param _builtins.bool require_approver_justification: Optional. Do the approvers need to provide a justification for their actions?
         """
@@ -176,7 +176,7 @@ class EntitlementApprovalWorkflowManualApprovals(dict):
     @pulumi.getter
     def steps(self) -> Sequence['outputs.EntitlementApprovalWorkflowManualApprovalsStep']:
         """
-        List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
+        List of approval steps in this workflow. These steps would be followed in the specified order sequentially.
         Structure is documented below.
         """
         return pulumi.get(self, "steps")
@@ -214,7 +214,8 @@ class EntitlementApprovalWorkflowManualApprovalsStep(dict):
     def __init__(__self__, *,
                  approvers: 'outputs.EntitlementApprovalWorkflowManualApprovalsStepApprovers',
                  approvals_needed: Optional[_builtins.int] = None,
-                 approver_email_recipients: Optional[Sequence[_builtins.str]] = None):
+                 approver_email_recipients: Optional[Sequence[_builtins.str]] = None,
+                 id: Optional[_builtins.str] = None):
         """
         :param 'EntitlementApprovalWorkflowManualApprovalsStepApproversArgs' approvers: The potential set of approvers in this step. This list should contain at only one entry.
                Structure is documented below.
@@ -223,12 +224,16 @@ class EntitlementApprovalWorkflowManualApprovalsStep(dict):
                will indefinitely block. Should always be greater than 0. Currently 1 is the only
                supported value.
         :param Sequence[_builtins.str] approver_email_recipients: Optional. Additional email addresses to be notified when a grant is pending approval.
+        :param _builtins.str id: (Output, Beta)
+               Output Only. The ID of the approval step.
         """
         pulumi.set(__self__, "approvers", approvers)
         if approvals_needed is not None:
             pulumi.set(__self__, "approvals_needed", approvals_needed)
         if approver_email_recipients is not None:
             pulumi.set(__self__, "approver_email_recipients", approver_email_recipients)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
 
     @_builtins.property
     @pulumi.getter
@@ -257,6 +262,15 @@ class EntitlementApprovalWorkflowManualApprovalsStep(dict):
         Optional. Additional email addresses to be notified when a grant is pending approval.
         """
         return pulumi.get(self, "approver_email_recipients")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        (Output, Beta)
+        Output Only. The ID of the approval step.
+        """
+        return pulumi.get(self, "id")
 
 
 @pulumi.output_type
@@ -582,7 +596,7 @@ class GetEntitlementApprovalWorkflowManualApprovalResult(dict):
                  steps: Sequence['outputs.GetEntitlementApprovalWorkflowManualApprovalStepResult']):
         """
         :param _builtins.bool require_approver_justification: Optional. Do the approvers need to provide a justification for their actions?
-        :param Sequence['GetEntitlementApprovalWorkflowManualApprovalStepArgs'] steps: List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
+        :param Sequence['GetEntitlementApprovalWorkflowManualApprovalStepArgs'] steps: List of approval steps in this workflow. These steps would be followed in the specified order sequentially.
         """
         pulumi.set(__self__, "require_approver_justification", require_approver_justification)
         pulumi.set(__self__, "steps", steps)
@@ -599,7 +613,7 @@ class GetEntitlementApprovalWorkflowManualApprovalResult(dict):
     @pulumi.getter
     def steps(self) -> Sequence['outputs.GetEntitlementApprovalWorkflowManualApprovalStepResult']:
         """
-        List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
+        List of approval steps in this workflow. These steps would be followed in the specified order sequentially.
         """
         return pulumi.get(self, "steps")
 
@@ -609,7 +623,8 @@ class GetEntitlementApprovalWorkflowManualApprovalStepResult(dict):
     def __init__(__self__, *,
                  approvals_needed: _builtins.int,
                  approver_email_recipients: Sequence[_builtins.str],
-                 approvers: Sequence['outputs.GetEntitlementApprovalWorkflowManualApprovalStepApproverResult']):
+                 approvers: Sequence['outputs.GetEntitlementApprovalWorkflowManualApprovalStepApproverResult'],
+                 id: _builtins.str):
         """
         :param _builtins.int approvals_needed: How many users from the above list need to approve.
                If there are not enough distinct users in the list above then the workflow
@@ -617,10 +632,12 @@ class GetEntitlementApprovalWorkflowManualApprovalStepResult(dict):
                supported value.
         :param Sequence[_builtins.str] approver_email_recipients: Optional. Additional email addresses to be notified when a grant is pending approval.
         :param Sequence['GetEntitlementApprovalWorkflowManualApprovalStepApproverArgs'] approvers: The potential set of approvers in this step. This list should contain at only one entry.
+        :param _builtins.str id: Output Only. The ID of the approval step.
         """
         pulumi.set(__self__, "approvals_needed", approvals_needed)
         pulumi.set(__self__, "approver_email_recipients", approver_email_recipients)
         pulumi.set(__self__, "approvers", approvers)
+        pulumi.set(__self__, "id", id)
 
     @_builtins.property
     @pulumi.getter(name="approvalsNeeded")
@@ -648,6 +665,14 @@ class GetEntitlementApprovalWorkflowManualApprovalStepResult(dict):
         The potential set of approvers in this step. This list should contain at only one entry.
         """
         return pulumi.get(self, "approvers")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Output Only. The ID of the approval step.
+        """
+        return pulumi.get(self, "id")
 
 
 @pulumi.output_type

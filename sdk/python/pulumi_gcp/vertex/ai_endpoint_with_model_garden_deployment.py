@@ -531,6 +531,57 @@ class AiEndpointWithModelGardenDeployment(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[deploy_qwen3_06b]))
         ```
+        ### Vertex Ai Deploy Psc Endpoint
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        deploy = gcp.vertex.AiEndpointWithModelGardenDeployment("deploy",
+            publisher_model_name="publishers/google/models/paligemma@paligemma-224-float32",
+            location="us-central1",
+            model_config={
+                "accept_eula": True,
+            },
+            endpoint_config={
+                "private_service_connect_config": {
+                    "enable_private_service_connect": True,
+                    "project_allowlists": ["my-project-id"],
+                },
+            })
+        ```
+        ### Vertex Ai Deploy Psc Endpoint Automated
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network",
+            name="network",
+            auto_create_subnetworks=False)
+        project = gcp.organizations.get_project()
+        deploy = gcp.vertex.AiEndpointWithModelGardenDeployment("deploy",
+            publisher_model_name="publishers/google/models/paligemma@paligemma-224-float32",
+            location="us-central1",
+            model_config={
+                "accept_eula": True,
+            },
+            endpoint_config={
+                "private_service_connect_config": {
+                    "enable_private_service_connect": True,
+                    "project_allowlists": [project.id],
+                    "psc_automation_configs": {
+                        "project_id": project.id,
+                        "network": network.id,
+                    },
+                },
+            })
+        subnetwork = gcp.compute.Subnetwork("subnetwork",
+            name="subnetwork",
+            ip_cidr_range="192.168.0.0/24",
+            region="us-central1",
+            network=network.id)
+        ```
 
         ## Import
 
@@ -733,6 +784,57 @@ class AiEndpointWithModelGardenDeployment(pulumi.CustomResource):
                 },
             },
             opts = pulumi.ResourceOptions(depends_on=[deploy_qwen3_06b]))
+        ```
+        ### Vertex Ai Deploy Psc Endpoint
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        deploy = gcp.vertex.AiEndpointWithModelGardenDeployment("deploy",
+            publisher_model_name="publishers/google/models/paligemma@paligemma-224-float32",
+            location="us-central1",
+            model_config={
+                "accept_eula": True,
+            },
+            endpoint_config={
+                "private_service_connect_config": {
+                    "enable_private_service_connect": True,
+                    "project_allowlists": ["my-project-id"],
+                },
+            })
+        ```
+        ### Vertex Ai Deploy Psc Endpoint Automated
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network",
+            name="network",
+            auto_create_subnetworks=False)
+        project = gcp.organizations.get_project()
+        deploy = gcp.vertex.AiEndpointWithModelGardenDeployment("deploy",
+            publisher_model_name="publishers/google/models/paligemma@paligemma-224-float32",
+            location="us-central1",
+            model_config={
+                "accept_eula": True,
+            },
+            endpoint_config={
+                "private_service_connect_config": {
+                    "enable_private_service_connect": True,
+                    "project_allowlists": [project.id],
+                    "psc_automation_configs": {
+                        "project_id": project.id,
+                        "network": network.id,
+                    },
+                },
+            })
+        subnetwork = gcp.compute.Subnetwork("subnetwork",
+            name="subnetwork",
+            ip_cidr_range="192.168.0.0/24",
+            region="us-central1",
+            network=network.id)
         ```
 
         ## Import

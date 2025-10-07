@@ -7,7 +7,9 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerEnvArgs;
+import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerLivenessProbeArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerResourcesArgs;
+import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerStartupProbeArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerVolumeMountArgs;
 import java.lang.String;
 import java.util.List;
@@ -83,6 +85,23 @@ public final class WorkerPoolTemplateContainerArgs extends com.pulumi.resources.
     }
 
     /**
+     * Periodic probe of container liveness. Container will be restarted if the probe fails.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="livenessProbe")
+    private @Nullable Output<WorkerPoolTemplateContainerLivenessProbeArgs> livenessProbe;
+
+    /**
+     * @return Periodic probe of container liveness. Container will be restarted if the probe fails.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<WorkerPoolTemplateContainerLivenessProbeArgs>> livenessProbe() {
+        return Optional.ofNullable(this.livenessProbe);
+    }
+
+    /**
      * Name of the container specified as a DNS_LABEL.
      * 
      */
@@ -112,6 +131,23 @@ public final class WorkerPoolTemplateContainerArgs extends com.pulumi.resources.
      */
     public Optional<Output<WorkerPoolTemplateContainerResourcesArgs>> resources() {
         return Optional.ofNullable(this.resources);
+    }
+
+    /**
+     * Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="startupProbe")
+    private @Nullable Output<WorkerPoolTemplateContainerStartupProbeArgs> startupProbe;
+
+    /**
+     * @return Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<WorkerPoolTemplateContainerStartupProbeArgs>> startupProbe() {
+        return Optional.ofNullable(this.startupProbe);
     }
 
     /**
@@ -153,8 +189,10 @@ public final class WorkerPoolTemplateContainerArgs extends com.pulumi.resources.
         this.commands = $.commands;
         this.envs = $.envs;
         this.image = $.image;
+        this.livenessProbe = $.livenessProbe;
         this.name = $.name;
         this.resources = $.resources;
+        this.startupProbe = $.startupProbe;
         this.volumeMounts = $.volumeMounts;
         this.workingDir = $.workingDir;
     }
@@ -295,6 +333,29 @@ public final class WorkerPoolTemplateContainerArgs extends com.pulumi.resources.
         }
 
         /**
+         * @param livenessProbe Periodic probe of container liveness. Container will be restarted if the probe fails.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder livenessProbe(@Nullable Output<WorkerPoolTemplateContainerLivenessProbeArgs> livenessProbe) {
+            $.livenessProbe = livenessProbe;
+            return this;
+        }
+
+        /**
+         * @param livenessProbe Periodic probe of container liveness. Container will be restarted if the probe fails.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder livenessProbe(WorkerPoolTemplateContainerLivenessProbeArgs livenessProbe) {
+            return livenessProbe(Output.of(livenessProbe));
+        }
+
+        /**
          * @param name Name of the container specified as a DNS_LABEL.
          * 
          * @return builder
@@ -336,6 +397,29 @@ public final class WorkerPoolTemplateContainerArgs extends com.pulumi.resources.
          */
         public Builder resources(WorkerPoolTemplateContainerResourcesArgs resources) {
             return resources(Output.of(resources));
+        }
+
+        /**
+         * @param startupProbe Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startupProbe(@Nullable Output<WorkerPoolTemplateContainerStartupProbeArgs> startupProbe) {
+            $.startupProbe = startupProbe;
+            return this;
+        }
+
+        /**
+         * @param startupProbe Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startupProbe(WorkerPoolTemplateContainerStartupProbeArgs startupProbe) {
+            return startupProbe(Output.of(startupProbe));
         }
 
         /**

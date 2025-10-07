@@ -48,6 +48,7 @@ __all__ = [
     'ConversationProfileHumanAgentHandoffConfigLivePersonConfig',
     'ConversationProfileLoggingConfig',
     'ConversationProfileNewMessageEventNotificationConfig',
+    'ConversationProfileNewRecognitionResultNotificationConfig',
     'ConversationProfileNotificationConfig',
     'ConversationProfileSttConfig',
     'ConversationProfileTtsConfig',
@@ -2125,6 +2126,62 @@ class ConversationProfileNewMessageEventNotificationConfig(dict):
     def topic(self) -> Optional[_builtins.str]:
         """
         Name of the Pub/Sub topic to publish conversation events
+        """
+        return pulumi.get(self, "topic")
+
+
+@pulumi.output_type
+class ConversationProfileNewRecognitionResultNotificationConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "messageFormat":
+            suggest = "message_format"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConversationProfileNewRecognitionResultNotificationConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConversationProfileNewRecognitionResultNotificationConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConversationProfileNewRecognitionResultNotificationConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 message_format: Optional[_builtins.str] = None,
+                 topic: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str message_format: Format of message.
+               Possible values are: `MESSAGE_FORMAT_UNSPECIFIED`, `PROTO`, `JSON`.
+        :param _builtins.str topic: Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos.
+               For telephony integration to receive notification, make sure either this topic is in the same project as the conversation or you grant service-<Conversation Project Number>@gcp-sa-dialogflow.iam.gserviceaccount.com the Dialogflow Service Agent role in the topic project.
+               For chat integration to receive notification, make sure API caller has been granted the Dialogflow Service Agent role for the topic.
+               Format: projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>.
+        """
+        if message_format is not None:
+            pulumi.set(__self__, "message_format", message_format)
+        if topic is not None:
+            pulumi.set(__self__, "topic", topic)
+
+    @_builtins.property
+    @pulumi.getter(name="messageFormat")
+    def message_format(self) -> Optional[_builtins.str]:
+        """
+        Format of message.
+        Possible values are: `MESSAGE_FORMAT_UNSPECIFIED`, `PROTO`, `JSON`.
+        """
+        return pulumi.get(self, "message_format")
+
+    @_builtins.property
+    @pulumi.getter
+    def topic(self) -> Optional[_builtins.str]:
+        """
+        Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos.
+        For telephony integration to receive notification, make sure either this topic is in the same project as the conversation or you grant service-<Conversation Project Number>@gcp-sa-dialogflow.iam.gserviceaccount.com the Dialogflow Service Agent role in the topic project.
+        For chat integration to receive notification, make sure API caller has been granted the Dialogflow Service Agent role for the topic.
+        Format: projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>.
         """
         return pulumi.get(self, "topic")
 

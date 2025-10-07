@@ -475,6 +475,7 @@ class _VolumeState:
                  encryption_type: Optional[pulumi.Input[_builtins.str]] = None,
                  export_policy: Optional[pulumi.Input['VolumeExportPolicyArgs']] = None,
                  has_replication: Optional[pulumi.Input[_builtins.bool]] = None,
+                 hot_tier_size_used_gib: Optional[pulumi.Input[_builtins.str]] = None,
                  hybrid_replication_parameters: Optional[pulumi.Input['VolumeHybridReplicationParametersArgs']] = None,
                  kerberos_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  kms_config: Optional[pulumi.Input[_builtins.str]] = None,
@@ -525,6 +526,7 @@ class _VolumeState:
         :param pulumi.Input['VolumeExportPolicyArgs'] export_policy: Export policy of the volume for NFSV3 and/or NFSV4.1 access.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] has_replication: Indicates whether the volume is part of a volume replication relationship.
+        :param pulumi.Input[_builtins.str] hot_tier_size_used_gib: Total hot tier data rounded down to the nearest GiB used by the volume. This field is only used for flex Service Level
         :param pulumi.Input['VolumeHybridReplicationParametersArgs'] hybrid_replication_parameters: The Hybrid Replication parameters for the volume.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] kerberos_enabled: Flag indicating if the volume is a kerberos volume or not, export policy rules control kerberos security modes (krb5, krb5i, krb5p).
@@ -597,6 +599,8 @@ class _VolumeState:
             pulumi.set(__self__, "export_policy", export_policy)
         if has_replication is not None:
             pulumi.set(__self__, "has_replication", has_replication)
+        if hot_tier_size_used_gib is not None:
+            pulumi.set(__self__, "hot_tier_size_used_gib", hot_tier_size_used_gib)
         if hybrid_replication_parameters is not None:
             pulumi.set(__self__, "hybrid_replication_parameters", hybrid_replication_parameters)
         if kerberos_enabled is not None:
@@ -798,6 +802,18 @@ class _VolumeState:
     @has_replication.setter
     def has_replication(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "has_replication", value)
+
+    @_builtins.property
+    @pulumi.getter(name="hotTierSizeUsedGib")
+    def hot_tier_size_used_gib(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Total hot tier data rounded down to the nearest GiB used by the volume. This field is only used for flex Service Level
+        """
+        return pulumi.get(self, "hot_tier_size_used_gib")
+
+    @hot_tier_size_used_gib.setter
+    def hot_tier_size_used_gib(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "hot_tier_size_used_gib", value)
 
     @_builtins.property
     @pulumi.getter(name="hybridReplicationParameters")
@@ -1503,6 +1519,7 @@ class Volume(pulumi.CustomResource):
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["encryption_type"] = None
             __props__.__dict__["has_replication"] = None
+            __props__.__dict__["hot_tier_size_used_gib"] = None
             __props__.__dict__["kms_config"] = None
             __props__.__dict__["ldap_enabled"] = None
             __props__.__dict__["mount_options"] = None
@@ -1538,6 +1555,7 @@ class Volume(pulumi.CustomResource):
             encryption_type: Optional[pulumi.Input[_builtins.str]] = None,
             export_policy: Optional[pulumi.Input[Union['VolumeExportPolicyArgs', 'VolumeExportPolicyArgsDict']]] = None,
             has_replication: Optional[pulumi.Input[_builtins.bool]] = None,
+            hot_tier_size_used_gib: Optional[pulumi.Input[_builtins.str]] = None,
             hybrid_replication_parameters: Optional[pulumi.Input[Union['VolumeHybridReplicationParametersArgs', 'VolumeHybridReplicationParametersArgsDict']]] = None,
             kerberos_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             kms_config: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1593,6 +1611,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[Union['VolumeExportPolicyArgs', 'VolumeExportPolicyArgsDict']] export_policy: Export policy of the volume for NFSV3 and/or NFSV4.1 access.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] has_replication: Indicates whether the volume is part of a volume replication relationship.
+        :param pulumi.Input[_builtins.str] hot_tier_size_used_gib: Total hot tier data rounded down to the nearest GiB used by the volume. This field is only used for flex Service Level
         :param pulumi.Input[Union['VolumeHybridReplicationParametersArgs', 'VolumeHybridReplicationParametersArgsDict']] hybrid_replication_parameters: The Hybrid Replication parameters for the volume.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] kerberos_enabled: Flag indicating if the volume is a kerberos volume or not, export policy rules control kerberos security modes (krb5, krb5i, krb5p).
@@ -1658,6 +1677,7 @@ class Volume(pulumi.CustomResource):
         __props__.__dict__["encryption_type"] = encryption_type
         __props__.__dict__["export_policy"] = export_policy
         __props__.__dict__["has_replication"] = has_replication
+        __props__.__dict__["hot_tier_size_used_gib"] = hot_tier_size_used_gib
         __props__.__dict__["hybrid_replication_parameters"] = hybrid_replication_parameters
         __props__.__dict__["kerberos_enabled"] = kerberos_enabled
         __props__.__dict__["kms_config"] = kms_config
@@ -1784,6 +1804,14 @@ class Volume(pulumi.CustomResource):
         Indicates whether the volume is part of a volume replication relationship.
         """
         return pulumi.get(self, "has_replication")
+
+    @_builtins.property
+    @pulumi.getter(name="hotTierSizeUsedGib")
+    def hot_tier_size_used_gib(self) -> pulumi.Output[_builtins.str]:
+        """
+        Total hot tier data rounded down to the nearest GiB used by the volume. This field is only used for flex Service Level
+        """
+        return pulumi.get(self, "hot_tier_size_used_gib")
 
     @_builtins.property
     @pulumi.getter(name="hybridReplicationParameters")

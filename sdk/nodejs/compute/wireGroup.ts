@@ -35,6 +35,7 @@ import * as utilities from "../utilities";
  *     wireProperties: {
  *         bandwidthUnmetered: 10,
  *         faultResponse: "NONE",
+ *         bandwidthAllocation: "ALLOCATE_PER_WIRE",
  *     },
  *     wireGroupProperties: {
  *         type: "WIRE",

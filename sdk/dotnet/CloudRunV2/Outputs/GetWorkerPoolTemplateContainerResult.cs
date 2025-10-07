@@ -30,6 +30,10 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly string Image;
         /// <summary>
+        /// Periodic probe of container liveness. Container will be restarted if the probe fails.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetWorkerPoolTemplateContainerLivenessProbeResult> LivenessProbes;
+        /// <summary>
         /// The name of the Cloud Run v2 Worker Pool.
         /// </summary>
         public readonly string Name;
@@ -37,6 +41,10 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
         /// </summary>
         public readonly ImmutableArray<Outputs.GetWorkerPoolTemplateContainerResourceResult> Resources;
+        /// <summary>
+        /// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetWorkerPoolTemplateContainerStartupProbeResult> StartupProbes;
         /// <summary>
         /// Volume to mount into the container's filesystem.
         /// </summary>
@@ -56,9 +64,13 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
 
             string image,
 
+            ImmutableArray<Outputs.GetWorkerPoolTemplateContainerLivenessProbeResult> livenessProbes,
+
             string name,
 
             ImmutableArray<Outputs.GetWorkerPoolTemplateContainerResourceResult> resources,
+
+            ImmutableArray<Outputs.GetWorkerPoolTemplateContainerStartupProbeResult> startupProbes,
 
             ImmutableArray<Outputs.GetWorkerPoolTemplateContainerVolumeMountResult> volumeMounts,
 
@@ -68,8 +80,10 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
             Commands = commands;
             Envs = envs;
             Image = image;
+            LivenessProbes = livenessProbes;
             Name = name;
             Resources = resources;
+            StartupProbes = startupProbes;
             VolumeMounts = volumeMounts;
             WorkingDir = workingDir;
         }

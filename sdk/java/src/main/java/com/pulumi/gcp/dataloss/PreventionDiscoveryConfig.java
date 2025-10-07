@@ -13,6 +13,7 @@ import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigState;
 import com.pulumi.gcp.dataloss.outputs.PreventionDiscoveryConfigAction;
 import com.pulumi.gcp.dataloss.outputs.PreventionDiscoveryConfigError;
 import com.pulumi.gcp.dataloss.outputs.PreventionDiscoveryConfigOrgConfig;
+import com.pulumi.gcp.dataloss.outputs.PreventionDiscoveryConfigOtherCloudStartingLocation;
 import com.pulumi.gcp.dataloss.outputs.PreventionDiscoveryConfigTarget;
 import java.lang.String;
 import java.util.List;
@@ -182,6 +183,22 @@ public class PreventionDiscoveryConfig extends com.pulumi.resources.CustomResour
      */
     public Output<Optional<PreventionDiscoveryConfigOrgConfig>> orgConfig() {
         return Codegen.optional(this.orgConfig);
+    }
+    /**
+     * A nested object resource.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="otherCloudStartingLocation", refs={PreventionDiscoveryConfigOtherCloudStartingLocation.class}, tree="[0]")
+    private Output</* @Nullable */ PreventionDiscoveryConfigOtherCloudStartingLocation> otherCloudStartingLocation;
+
+    /**
+     * @return A nested object resource.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<PreventionDiscoveryConfigOtherCloudStartingLocation>> otherCloudStartingLocation() {
+        return Codegen.optional(this.otherCloudStartingLocation);
     }
     /**
      * The parent of the discovery config in any of the following formats:

@@ -57,6 +57,34 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// });
     /// ```
+    /// ### Dialogflow Conversation Profile Recognition Result Notification
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var recognitionResultNotificationProfileTopic = new Gcp.PubSub.Topic("recognition_result_notification_profile", new()
+    ///     {
+    ///         Name = "recognition-result-notification",
+    ///     });
+    /// 
+    ///     var recognitionResultNotificationProfile = new Gcp.Diagflow.ConversationProfile("recognition_result_notification_profile", new()
+    ///     {
+    ///         DisplayName = "dialogflow-profile",
+    ///         Location = "global",
+    ///         NewRecognitionResultNotificationConfig = new Gcp.Diagflow.Inputs.ConversationProfileNewRecognitionResultNotificationConfigArgs
+    ///         {
+    ///             Topic = recognitionResultNotificationProfileTopic.Id,
+    ///             MessageFormat = "JSON",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -132,6 +160,13 @@ namespace Pulumi.Gcp.Diagflow
         /// </summary>
         [Output("newMessageEventNotificationConfig")]
         public Output<Outputs.ConversationProfileNewMessageEventNotificationConfig?> NewMessageEventNotificationConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - "participant_id" - "participantRole" - "message_id"
+        /// Structure is documented below.
+        /// </summary>
+        [Output("newRecognitionResultNotificationConfig")]
+        public Output<Outputs.ConversationProfileNewRecognitionResultNotificationConfig?> NewRecognitionResultNotificationConfig { get; private set; } = null!;
 
         /// <summary>
         /// Pub/Sub topic on which to publish new agent assistant events.
@@ -275,6 +310,13 @@ namespace Pulumi.Gcp.Diagflow
         public Input<Inputs.ConversationProfileNewMessageEventNotificationConfigArgs>? NewMessageEventNotificationConfig { get; set; }
 
         /// <summary>
+        /// Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - "participant_id" - "participantRole" - "message_id"
+        /// Structure is documented below.
+        /// </summary>
+        [Input("newRecognitionResultNotificationConfig")]
+        public Input<Inputs.ConversationProfileNewRecognitionResultNotificationConfigArgs>? NewRecognitionResultNotificationConfig { get; set; }
+
+        /// <summary>
         /// Pub/Sub topic on which to publish new agent assistant events.
         /// Expects the format "projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/topics/&lt;Topic ID&gt;"
         /// Structure is documented below.
@@ -382,6 +424,13 @@ namespace Pulumi.Gcp.Diagflow
         /// </summary>
         [Input("newMessageEventNotificationConfig")]
         public Input<Inputs.ConversationProfileNewMessageEventNotificationConfigGetArgs>? NewMessageEventNotificationConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - "participant_id" - "participantRole" - "message_id"
+        /// Structure is documented below.
+        /// </summary>
+        [Input("newRecognitionResultNotificationConfig")]
+        public Input<Inputs.ConversationProfileNewRecognitionResultNotificationConfigGetArgs>? NewRecognitionResultNotificationConfig { get; set; }
 
         /// <summary>
         /// Pub/Sub topic on which to publish new agent assistant events.

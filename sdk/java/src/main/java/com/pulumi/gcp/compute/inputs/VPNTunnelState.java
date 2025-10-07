@@ -400,6 +400,21 @@ public final class VPNTunnelState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Triggers update of shared_secret_wo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     * 
+     */
+    @Import(name="sharedSecretWoVersion")
+    private @Nullable Output<String> sharedSecretWoVersion;
+
+    /**
+     * @return Triggers update of shared_secret_wo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     * 
+     */
+    public Optional<Output<String>> sharedSecretWoVersion() {
+        return Optional.ofNullable(this.sharedSecretWoVersion);
+    }
+
+    /**
      * URL of the Target VPN gateway with which this VPN tunnel is
      * associated.
      * 
@@ -490,6 +505,7 @@ public final class VPNTunnelState extends com.pulumi.resources.ResourceArgs {
         this.selfLink = $.selfLink;
         this.sharedSecret = $.sharedSecret;
         this.sharedSecretHash = $.sharedSecretHash;
+        this.sharedSecretWoVersion = $.sharedSecretWoVersion;
         this.targetVpnGateway = $.targetVpnGateway;
         this.tunnelId = $.tunnelId;
         this.vpnGateway = $.vpnGateway;
@@ -1050,6 +1066,27 @@ public final class VPNTunnelState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder sharedSecretHash(String sharedSecretHash) {
             return sharedSecretHash(Output.of(sharedSecretHash));
+        }
+
+        /**
+         * @param sharedSecretWoVersion Triggers update of shared_secret_wo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sharedSecretWoVersion(@Nullable Output<String> sharedSecretWoVersion) {
+            $.sharedSecretWoVersion = sharedSecretWoVersion;
+            return this;
+        }
+
+        /**
+         * @param sharedSecretWoVersion Triggers update of shared_secret_wo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sharedSecretWoVersion(String sharedSecretWoVersion) {
+            return sharedSecretWoVersion(Output.of(sharedSecretWoVersion));
         }
 
         /**

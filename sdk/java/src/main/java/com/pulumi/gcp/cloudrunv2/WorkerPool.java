@@ -680,6 +680,96 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Cloudrunv2 Worker Pool Startup Liveness Probe
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.cloudrunv2.WorkerPool;
+ * import com.pulumi.gcp.cloudrunv2.WorkerPoolArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateVpcAccessArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var customTest = new Network("customTest", NetworkArgs.builder()
+ *             .name("wp-net")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var customTestSubnetwork = new Subnetwork("customTestSubnetwork", SubnetworkArgs.builder()
+ *             .name("wp-subnet")
+ *             .ipCidrRange("10.2.0.0/28")
+ *             .region("us-central1")
+ *             .network(customTest.id())
+ *             .build());
+ * 
+ *         var default_ = new WorkerPool("default", WorkerPoolArgs.builder()
+ *             .name("cloudrun-worker-pool")
+ *             .location("us-central1")
+ *             .launchStage("BETA")
+ *             .deletionProtection(false)
+ *             .template(WorkerPoolTemplateArgs.builder()
+ *                 .annotations(Map.ofEntries(
+ *                 ))
+ *                 .labels(Map.ofEntries(
+ *                 ))
+ *                 .containers(WorkerPoolTemplateContainerArgs.builder()
+ *                     .image("us-docker.pkg.dev/cloudrun/container/hello")
+ *                     .commands()
+ *                     .args()
+ *                     .startupProbe(WorkerPoolTemplateContainerStartupProbeArgs.builder()
+ *                         .initialDelaySeconds(0)
+ *                         .timeoutSeconds(1)
+ *                         .periodSeconds(3)
+ *                         .failureThreshold(3)
+ *                         .tcpSocket(WorkerPoolTemplateContainerStartupProbeTcpSocketArgs.builder()
+ *                             .port(8080)
+ *                             .build())
+ *                         .build())
+ *                     .livenessProbe(WorkerPoolTemplateContainerLivenessProbeArgs.builder()
+ *                         .initialDelaySeconds(0)
+ *                         .timeoutSeconds(1)
+ *                         .periodSeconds(10)
+ *                         .failureThreshold(3)
+ *                         .httpGet(WorkerPoolTemplateContainerLivenessProbeHttpGetArgs.builder()
+ *                             .path("/")
+ *                             .port(8080)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .vpcAccess(WorkerPoolTemplateVpcAccessArgs.builder()
+ *                     .networkInterfaces(WorkerPoolTemplateVpcAccessNetworkInterfaceArgs.builder()
+ *                         .network(customTest.id())
+ *                         .subnetwork(customTestSubnetwork.id())
+ *                         .tags()
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 

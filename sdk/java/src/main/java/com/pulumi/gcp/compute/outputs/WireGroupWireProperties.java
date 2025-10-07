@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -12,6 +13,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class WireGroupWireProperties {
+    /**
+     * @return The configuration of a wire&#39;s bandwidth allocation.
+     * ALLOCATE_PER_WIRE: configures a separate unmetered bandwidth allocation (and associated charges) for each wire in the group.
+     * SHARED_WITH_WIRE_GROUP: this is the default behavior, which configures one unmetered bandwidth allocation for the wire group. The unmetered bandwidth is divided equally across each wire in the group, but dynamic
+     * throttling reallocates unused unmetered bandwidth from unused or underused wires to other wires in the group.
+     * 
+     */
+    private String bandwidthAllocation;
     /**
      * @return The unmetered bandwidth setting.
      * 
@@ -26,6 +35,16 @@ public final class WireGroupWireProperties {
     private @Nullable String faultResponse;
 
     private WireGroupWireProperties() {}
+    /**
+     * @return The configuration of a wire&#39;s bandwidth allocation.
+     * ALLOCATE_PER_WIRE: configures a separate unmetered bandwidth allocation (and associated charges) for each wire in the group.
+     * SHARED_WITH_WIRE_GROUP: this is the default behavior, which configures one unmetered bandwidth allocation for the wire group. The unmetered bandwidth is divided equally across each wire in the group, but dynamic
+     * throttling reallocates unused unmetered bandwidth from unused or underused wires to other wires in the group.
+     * 
+     */
+    public String bandwidthAllocation() {
+        return this.bandwidthAllocation;
+    }
     /**
      * @return The unmetered bandwidth setting.
      * 
@@ -52,15 +71,25 @@ public final class WireGroupWireProperties {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String bandwidthAllocation;
         private @Nullable Integer bandwidthUnmetered;
         private @Nullable String faultResponse;
         public Builder() {}
         public Builder(WireGroupWireProperties defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.bandwidthAllocation = defaults.bandwidthAllocation;
     	      this.bandwidthUnmetered = defaults.bandwidthUnmetered;
     	      this.faultResponse = defaults.faultResponse;
         }
 
+        @CustomType.Setter
+        public Builder bandwidthAllocation(String bandwidthAllocation) {
+            if (bandwidthAllocation == null) {
+              throw new MissingRequiredPropertyException("WireGroupWireProperties", "bandwidthAllocation");
+            }
+            this.bandwidthAllocation = bandwidthAllocation;
+            return this;
+        }
         @CustomType.Setter
         public Builder bandwidthUnmetered(@Nullable Integer bandwidthUnmetered) {
 
@@ -75,6 +104,7 @@ public final class WireGroupWireProperties {
         }
         public WireGroupWireProperties build() {
             final var _resultValue = new WireGroupWireProperties();
+            _resultValue.bandwidthAllocation = bandwidthAllocation;
             _resultValue.bandwidthUnmetered = bandwidthUnmetered;
             _resultValue.faultResponse = faultResponse;
             return _resultValue;

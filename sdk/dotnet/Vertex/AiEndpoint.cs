@@ -136,7 +136,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     ///     var endpoint = new Gcp.Vertex.AiEndpoint("endpoint", new()
     ///     {
-    ///         Name = "endpoint-name_92130",
+    ///         Name = "endpoint-name_77124",
     ///         DisplayName = "sample-endpoint",
     ///         Description = "A sample vertex endpoint",
     ///         Location = "us-central1",
@@ -169,7 +169,7 @@ namespace Pulumi.Gcp.Vertex
     /// {
     ///     var endpoint = new Gcp.Vertex.AiEndpoint("endpoint", new()
     ///     {
-    ///         Name = "endpoint-name_16199",
+    ///         Name = "endpoint-name_15335",
     ///         DisplayName = "sample-endpoint",
     ///         Description = "A sample vertex endpoint",
     ///         Location = "us-central1",

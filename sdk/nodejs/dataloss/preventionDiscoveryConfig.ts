@@ -103,6 +103,11 @@ export class PreventionDiscoveryConfig extends pulumi.CustomResource {
      */
     declare public readonly orgConfig: pulumi.Output<outputs.dataloss.PreventionDiscoveryConfigOrgConfig | undefined>;
     /**
+     * A nested object resource.
+     * Structure is documented below.
+     */
+    declare public readonly otherCloudStartingLocation: pulumi.Output<outputs.dataloss.PreventionDiscoveryConfigOtherCloudStartingLocation | undefined>;
+    /**
      * The parent of the discovery config in any of the following formats:
      * * `projects/{{project}}/locations/{{location}}`
      * * `organizations/{{organization_id}}/locations/{{location}}`
@@ -145,6 +150,7 @@ export class PreventionDiscoveryConfig extends pulumi.CustomResource {
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
             resourceInputs["orgConfig"] = state?.orgConfig;
+            resourceInputs["otherCloudStartingLocation"] = state?.otherCloudStartingLocation;
             resourceInputs["parent"] = state?.parent;
             resourceInputs["status"] = state?.status;
             resourceInputs["targets"] = state?.targets;
@@ -162,6 +168,7 @@ export class PreventionDiscoveryConfig extends pulumi.CustomResource {
             resourceInputs["inspectTemplates"] = args?.inspectTemplates;
             resourceInputs["location"] = args?.location;
             resourceInputs["orgConfig"] = args?.orgConfig;
+            resourceInputs["otherCloudStartingLocation"] = args?.otherCloudStartingLocation;
             resourceInputs["parent"] = args?.parent;
             resourceInputs["status"] = args?.status;
             resourceInputs["targets"] = args?.targets;
@@ -220,6 +227,11 @@ export interface PreventionDiscoveryConfigState {
      */
     orgConfig?: pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigOrgConfig>;
     /**
+     * A nested object resource.
+     * Structure is documented below.
+     */
+    otherCloudStartingLocation?: pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigOtherCloudStartingLocation>;
+    /**
      * The parent of the discovery config in any of the following formats:
      * * `projects/{{project}}/locations/{{location}}`
      * * `organizations/{{organization_id}}/locations/{{location}}`
@@ -267,6 +279,11 @@ export interface PreventionDiscoveryConfigArgs {
      * Structure is documented below.
      */
     orgConfig?: pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigOrgConfig>;
+    /**
+     * A nested object resource.
+     * Structure is documented below.
+     */
+    otherCloudStartingLocation?: pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigOtherCloudStartingLocation>;
     /**
      * The parent of the discovery config in any of the following formats:
      * * `projects/{{project}}/locations/{{location}}`

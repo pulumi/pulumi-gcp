@@ -980,7 +980,7 @@ class Plugin(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="configTemplate")
-    def config_template(self) -> pulumi.Output[Optional['outputs.PluginConfigTemplate']]:
+    def config_template(self) -> pulumi.Output['outputs.PluginConfigTemplate']:
         """
         ConfigTemplate represents the configuration template for a plugin.
         Structure is documented below.

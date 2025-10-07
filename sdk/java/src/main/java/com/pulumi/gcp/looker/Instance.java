@@ -112,6 +112,7 @@ import javax.annotation.Nullable;
  *             .platformEdition("LOOKER_CORE_STANDARD_ANNUAL")
  *             .region("us-central1")
  *             .publicIpEnabled(true)
+ *             .geminiEnabled(true)
  *             .adminSettings(InstanceAdminSettingsArgs.builder()
  *                 .allowedEmailDomains("google.com")
  *                 .build())
@@ -261,6 +262,7 @@ import javax.annotation.Nullable;
  *             .region("us-central1")
  *             .privateIpEnabled(true)
  *             .publicIpEnabled(false)
+ *             .geminiEnabled(true)
  *             .reservedRange(lookerRange.name())
  *             .consumerNetwork(lookerNetwork.id())
  *             .adminSettings(InstanceAdminSettingsArgs.builder()
@@ -629,6 +631,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> fipsEnabled() {
         return Codegen.optional(this.fipsEnabled);
+    }
+    /**
+     * Gemini enablement for Looker (Google Cloud Core).
+     * 
+     */
+    @Export(name="geminiEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> geminiEnabled;
+
+    /**
+     * @return Gemini enablement for Looker (Google Cloud Core).
+     * 
+     */
+    public Output<Optional<Boolean>> geminiEnabled() {
+        return Codegen.optional(this.geminiEnabled);
     }
     /**
      * Private Ingress IP (IPv4).

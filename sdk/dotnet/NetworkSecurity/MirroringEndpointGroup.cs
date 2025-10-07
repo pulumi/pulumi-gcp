@@ -61,6 +61,47 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// ### Network Security Mirroring Endpoint Group Broker Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var network = new Gcp.Compute.Network("network", new()
+    ///     {
+    ///         Name = "example-network",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var deploymentGroup = new Gcp.NetworkSecurity.MirroringDeploymentGroup("deployment_group", new()
+    ///     {
+    ///         MirroringDeploymentGroupId = "example-dg",
+    ///         Location = "global",
+    ///         Network = network.Id,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.NetworkSecurity.MirroringEndpointGroup("default", new()
+    ///     {
+    ///         MirroringEndpointGroupId = "example-eg",
+    ///         Location = "global",
+    ///         Type = "BROKER",
+    ///         MirroringDeploymentGroups = new[]
+    ///         {
+    ///             deploymentGroup.Id,
+    ///         },
+    ///         Description = "some description",
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -144,7 +185,16 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// See https://google.aip.dev/124.
         /// </summary>
         [Output("mirroringDeploymentGroup")]
-        public Output<string> MirroringDeploymentGroup { get; private set; } = null!;
+        public Output<string?> MirroringDeploymentGroup { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of the deployment groups that this BROKER endpoint group is
+        /// connected to, for example:
+        /// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+        /// See https://google.aip.dev/124.
+        /// </summary>
+        [Output("mirroringDeploymentGroups")]
+        public Output<ImmutableArray<string>> MirroringDeploymentGroups { get; private set; } = null!;
 
         /// <summary>
         /// The ID to use for the endpoint group, which will become the final component
@@ -195,6 +245,16 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of the endpoint group.
+        /// If left unspecified, defaults to DIRECT.
+        /// Possible values:
+        /// DIRECT
+        /// BROKER
+        /// </summary>
+        [Output("type")]
+        public Output<string?> Type { get; private set; } = null!;
 
         /// <summary>
         /// The timestamp when the resource was most recently updated.
@@ -286,8 +346,23 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
         /// See https://google.aip.dev/124.
         /// </summary>
-        [Input("mirroringDeploymentGroup", required: true)]
-        public Input<string> MirroringDeploymentGroup { get; set; } = null!;
+        [Input("mirroringDeploymentGroup")]
+        public Input<string>? MirroringDeploymentGroup { get; set; }
+
+        [Input("mirroringDeploymentGroups")]
+        private InputList<string>? _mirroringDeploymentGroups;
+
+        /// <summary>
+        /// A list of the deployment groups that this BROKER endpoint group is
+        /// connected to, for example:
+        /// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+        /// See https://google.aip.dev/124.
+        /// </summary>
+        public InputList<string> MirroringDeploymentGroups
+        {
+            get => _mirroringDeploymentGroups ?? (_mirroringDeploymentGroups = new InputList<string>());
+            set => _mirroringDeploymentGroups = value;
+        }
 
         /// <summary>
         /// The ID to use for the endpoint group, which will become the final component
@@ -302,6 +377,16 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The type of the endpoint group.
+        /// If left unspecified, defaults to DIRECT.
+        /// Possible values:
+        /// DIRECT
+        /// BROKER
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         public MirroringEndpointGroupArgs()
         {
@@ -396,6 +481,21 @@ namespace Pulumi.Gcp.NetworkSecurity
         [Input("mirroringDeploymentGroup")]
         public Input<string>? MirroringDeploymentGroup { get; set; }
 
+        [Input("mirroringDeploymentGroups")]
+        private InputList<string>? _mirroringDeploymentGroups;
+
+        /// <summary>
+        /// A list of the deployment groups that this BROKER endpoint group is
+        /// connected to, for example:
+        /// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+        /// See https://google.aip.dev/124.
+        /// </summary>
+        public InputList<string> MirroringDeploymentGroups
+        {
+            get => _mirroringDeploymentGroups ?? (_mirroringDeploymentGroups = new InputList<string>());
+            set => _mirroringDeploymentGroups = value;
+        }
+
         /// <summary>
         /// The ID to use for the endpoint group, which will become the final component
         /// of the endpoint group's resource name.
@@ -455,6 +555,16 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        /// <summary>
+        /// The type of the endpoint group.
+        /// If left unspecified, defaults to DIRECT.
+        /// Possible values:
+        /// DIRECT
+        /// BROKER
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         /// <summary>
         /// The timestamp when the resource was most recently updated.

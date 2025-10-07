@@ -288,6 +288,20 @@ public class Volume extends com.pulumi.resources.CustomResource {
         return this.hasReplication;
     }
     /**
+     * Total hot tier data rounded down to the nearest GiB used by the volume. This field is only used for flex Service Level
+     * 
+     */
+    @Export(name="hotTierSizeUsedGib", refs={String.class}, tree="[0]")
+    private Output<String> hotTierSizeUsedGib;
+
+    /**
+     * @return Total hot tier data rounded down to the nearest GiB used by the volume. This field is only used for flex Service Level
+     * 
+     */
+    public Output<String> hotTierSizeUsedGib() {
+        return this.hotTierSizeUsedGib;
+    }
+    /**
      * The Hybrid Replication parameters for the volume.
      * Structure is documented below.
      * 

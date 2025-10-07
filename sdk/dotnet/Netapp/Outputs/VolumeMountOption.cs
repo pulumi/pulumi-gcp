@@ -32,6 +32,11 @@ namespace Pulumi.Gcp.Netapp.Outputs
         public readonly string? Instructions;
         /// <summary>
         /// (Output)
+        /// IP Address.
+        /// </summary>
+        public readonly string? IpAddress;
+        /// <summary>
+        /// (Output)
         /// Protocol to mount with.
         /// </summary>
         public readonly string? Protocol;
@@ -44,11 +49,14 @@ namespace Pulumi.Gcp.Netapp.Outputs
 
             string? instructions,
 
+            string? ipAddress,
+
             string? protocol)
         {
             Export = export;
             ExportFull = exportFull;
             Instructions = instructions;
+            IpAddress = ipAddress;
             Protocol = protocol;
         }
     }

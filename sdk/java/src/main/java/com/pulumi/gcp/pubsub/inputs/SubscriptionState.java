@@ -431,6 +431,35 @@ public final class SubscriptionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Input only. Resource manager tags to be bound to the subscription. Tag
+     * keys and values have the same definition as resource manager tags. Keys
+     * must be in the format tagKeys/{tag_key_id}, and values are in the format
+     * tagValues/456. The field is ignored when empty. The field is immutable and
+     * causes resource replacement when mutated. This field is only set at create
+     * time and modifying this field after creation will trigger recreation. To
+     * apply tags to an existing resource, see the `gcp.tags.TagValue`
+     * resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return Input only. Resource manager tags to be bound to the subscription. Tag
+     * keys and values have the same definition as resource manager tags. Keys
+     * must be in the format tagKeys/{tag_key_id}, and values are in the format
+     * tagValues/456. The field is ignored when empty. The field is immutable and
+     * causes resource replacement when mutated. This field is only set at create
+     * time and modifying this field after creation will trigger recreation. To
+     * apply tags to an existing resource, see the `gcp.tags.TagValue`
+     * resource.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
      * A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
      * (as in the id property of a google_pubsub_topic), or just a topic name if
      * the topic is in the same project as the subscription.
@@ -470,6 +499,7 @@ public final class SubscriptionState extends com.pulumi.resources.ResourceArgs {
         this.pushConfig = $.pushConfig;
         this.retainAckedMessages = $.retainAckedMessages;
         this.retryPolicy = $.retryPolicy;
+        this.tags = $.tags;
         this.topic = $.topic;
     }
 
@@ -1013,6 +1043,41 @@ public final class SubscriptionState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder retryPolicy(SubscriptionRetryPolicyArgs retryPolicy) {
             return retryPolicy(Output.of(retryPolicy));
+        }
+
+        /**
+         * @param tags Input only. Resource manager tags to be bound to the subscription. Tag
+         * keys and values have the same definition as resource manager tags. Keys
+         * must be in the format tagKeys/{tag_key_id}, and values are in the format
+         * tagValues/456. The field is ignored when empty. The field is immutable and
+         * causes resource replacement when mutated. This field is only set at create
+         * time and modifying this field after creation will trigger recreation. To
+         * apply tags to an existing resource, see the `gcp.tags.TagValue`
+         * resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags Input only. Resource manager tags to be bound to the subscription. Tag
+         * keys and values have the same definition as resource manager tags. Keys
+         * must be in the format tagKeys/{tag_key_id}, and values are in the format
+         * tagValues/456. The field is ignored when empty. The field is immutable and
+         * causes resource replacement when mutated. This field is only set at create
+         * time and modifying this field after creation will trigger recreation. To
+         * apply tags to an existing resource, see the `gcp.tags.TagValue`
+         * resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         /**

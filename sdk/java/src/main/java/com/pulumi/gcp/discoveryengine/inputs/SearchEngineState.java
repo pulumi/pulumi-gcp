@@ -9,6 +9,7 @@ import com.pulumi.gcp.discoveryengine.inputs.SearchEngineCommonConfigArgs;
 import com.pulumi.gcp.discoveryengine.inputs.SearchEngineSearchEngineConfigArgs;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -128,6 +129,21 @@ public final class SearchEngineState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A map of the feature config for the engine to opt in or opt out of features.
+     * 
+     */
+    @Import(name="features")
+    private @Nullable Output<Map<String,String>> features;
+
+    /**
+     * @return A map of the feature config for the engine to opt in or opt out of features.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> features() {
+        return Optional.ofNullable(this.features);
+    }
+
+    /**
      * The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
      * Default value is `GENERIC`.
      * Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
@@ -241,6 +257,7 @@ public final class SearchEngineState extends com.pulumi.resources.ResourceArgs {
         this.dataStoreIds = $.dataStoreIds;
         this.displayName = $.displayName;
         this.engineId = $.engineId;
+        this.features = $.features;
         this.industryVertical = $.industryVertical;
         this.location = $.location;
         this.name = $.name;
@@ -426,6 +443,27 @@ public final class SearchEngineState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder engineId(String engineId) {
             return engineId(Output.of(engineId));
+        }
+
+        /**
+         * @param features A map of the feature config for the engine to opt in or opt out of features.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder features(@Nullable Output<Map<String,String>> features) {
+            $.features = features;
+            return this;
+        }
+
+        /**
+         * @param features A map of the feature config for the engine to opt in or opt out of features.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder features(Map<String,String> features) {
+            return features(Output.of(features));
         }
 
         /**

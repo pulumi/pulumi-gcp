@@ -144,6 +144,12 @@ namespace Pulumi.Gcp.Storage
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// If set, all the inventory report details associated with this report configuration are deleted.
+        /// </summary>
+        [Output("forceDestroy")]
+        public Output<bool?> ForceDestroy { get; private set; } = null!;
+
+        /// <summary>
         /// Options for configuring how inventory reports are generated.
         /// Structure is documented below.
         /// </summary>
@@ -243,6 +249,12 @@ namespace Pulumi.Gcp.Storage
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
+        /// If set, all the inventory report details associated with this report configuration are deleted.
+        /// </summary>
+        [Input("forceDestroy")]
+        public Input<bool>? ForceDestroy { get; set; }
+
+        /// <summary>
         /// Options for configuring how inventory reports are generated.
         /// Structure is documented below.
         /// </summary>
@@ -296,6 +308,12 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// If set, all the inventory report details associated with this report configuration are deleted.
+        /// </summary>
+        [Input("forceDestroy")]
+        public Input<bool>? ForceDestroy { get; set; }
 
         /// <summary>
         /// Options for configuring how inventory reports are generated.

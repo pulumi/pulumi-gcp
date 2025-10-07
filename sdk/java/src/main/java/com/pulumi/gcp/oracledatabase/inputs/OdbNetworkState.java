@@ -70,6 +70,25 @@ public final class OdbNetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The GCP Oracle zone where OdbNetwork is hosted.
+     * Example: us-east4-b-r2.
+     * If not specified, the system will pick a zone based on availability.
+     * 
+     */
+    @Import(name="gcpOracleZone")
+    private @Nullable Output<String> gcpOracleZone;
+
+    /**
+     * @return The GCP Oracle zone where OdbNetwork is hosted.
+     * Example: us-east4-b-r2.
+     * If not specified, the system will pick a zone based on availability.
+     * 
+     */
+    public Optional<Output<String>> gcpOracleZone() {
+        return Optional.ofNullable(this.gcpOracleZone);
+    }
+
+    /**
      * Labels or tags associated with the resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -224,6 +243,7 @@ public final class OdbNetworkState extends com.pulumi.resources.ResourceArgs {
         this.deletionProtection = $.deletionProtection;
         this.effectiveLabels = $.effectiveLabels;
         this.entitlementId = $.entitlementId;
+        this.gcpOracleZone = $.gcpOracleZone;
         this.labels = $.labels;
         this.location = $.location;
         this.name = $.name;
@@ -322,6 +342,31 @@ public final class OdbNetworkState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder entitlementId(String entitlementId) {
             return entitlementId(Output.of(entitlementId));
+        }
+
+        /**
+         * @param gcpOracleZone The GCP Oracle zone where OdbNetwork is hosted.
+         * Example: us-east4-b-r2.
+         * If not specified, the system will pick a zone based on availability.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcpOracleZone(@Nullable Output<String> gcpOracleZone) {
+            $.gcpOracleZone = gcpOracleZone;
+            return this;
+        }
+
+        /**
+         * @param gcpOracleZone The GCP Oracle zone where OdbNetwork is hosted.
+         * Example: us-east4-b-r2.
+         * If not specified, the system will pick a zone based on availability.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcpOracleZone(String gcpOracleZone) {
+            return gcpOracleZone(Output.of(gcpOracleZone));
         }
 
         /**

@@ -381,6 +381,46 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
+    /// ### Pubsub Topic Tags
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var tagKey = new Gcp.Tags.TagKey("tag_key", new()
+    ///     {
+    ///         Parent = project.Apply(getProjectResult =&gt; getProjectResult.Id),
+    ///         ShortName = "tag_key",
+    ///     });
+    /// 
+    ///     var tagValue = new Gcp.Tags.TagValue("tag_value", new()
+    ///     {
+    ///         Parent = tagKey.Id,
+    ///         ShortName = "tag_value",
+    ///     });
+    /// 
+    ///     var example = new Gcp.PubSub.Topic("example", new()
+    ///     {
+    ///         Name = "example-topic",
+    ///         Tags = Output.Tuple(tagKey.NamespacedName, tagValue.ShortName).Apply(values =&gt;
+    ///         {
+    ///             var namespacedName = values.Item1;
+    ///             var shortName = values.Item2;
+    ///             return 
+    ///             {
+    ///                 { namespacedName, shortName },
+    ///             };
+    ///         }),
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -497,6 +537,19 @@ namespace Pulumi.Gcp.PubSub
         /// </summary>
         [Output("schemaSettings")]
         public Output<Outputs.TopicSchemaSettings?> SchemaSettings { get; private set; } = null!;
+
+        /// <summary>
+        /// Input only. Resource manager tags to be bound to the topic. Tag keys and
+        /// values have the same definition as resource manager tags. Keys must be in
+        /// the format tagKeys/{tag_key_id}, and values are in the format
+        /// tagValues/456. The field is ignored when empty. The field is immutable and
+        /// causes resource replacement when mutated. This field is only set at create
+        /// time and modifying this field after creation will trigger recreation. To
+        /// apply tags to an existing resource, see the `gcp.tags.TagValue`
+        /// resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
 
         /// <summary>
@@ -637,6 +690,25 @@ namespace Pulumi.Gcp.PubSub
         [Input("schemaSettings")]
         public Input<Inputs.TopicSchemaSettingsArgs>? SchemaSettings { get; set; }
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Input only. Resource manager tags to be bound to the topic. Tag keys and
+        /// values have the same definition as resource manager tags. Keys must be in
+        /// the format tagKeys/{tag_key_id}, and values are in the format
+        /// tagValues/456. The field is ignored when empty. The field is immutable and
+        /// causes resource replacement when mutated. This field is only set at create
+        /// time and modifying this field after creation will trigger recreation. To
+        /// apply tags to an existing resource, see the `gcp.tags.TagValue`
+        /// resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
         public TopicArgs()
         {
         }
@@ -765,6 +837,25 @@ namespace Pulumi.Gcp.PubSub
         /// </summary>
         [Input("schemaSettings")]
         public Input<Inputs.TopicSchemaSettingsGetArgs>? SchemaSettings { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Input only. Resource manager tags to be bound to the topic. Tag keys and
+        /// values have the same definition as resource manager tags. Keys must be in
+        /// the format tagKeys/{tag_key_id}, and values are in the format
+        /// tagValues/456. The field is ignored when empty. The field is immutable and
+        /// causes resource replacement when mutated. This field is only set at create
+        /// time and modifying this field after creation will trigger recreation. To
+        /// apply tags to an existing resource, see the `gcp.tags.TagValue`
+        /// resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         public TopicState()
         {

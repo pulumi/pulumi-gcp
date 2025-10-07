@@ -150,6 +150,7 @@ namespace Pulumi.Gcp.Sql
         public readonly string MasterInstanceName;
         public readonly string Name;
         public readonly int NodeCount;
+        public readonly ImmutableArray<Outputs.GetDatabaseInstancePointInTimeRestoreContextResult> PointInTimeRestoreContexts;
         public readonly string PrivateIpAddress;
         public readonly string? Project;
         public readonly string PscServiceAttachmentLink;
@@ -203,6 +204,8 @@ namespace Pulumi.Gcp.Sql
 
             int nodeCount,
 
+            ImmutableArray<Outputs.GetDatabaseInstancePointInTimeRestoreContextResult> pointInTimeRestoreContexts,
+
             string privateIpAddress,
 
             string? project,
@@ -249,6 +252,7 @@ namespace Pulumi.Gcp.Sql
             MasterInstanceName = masterInstanceName;
             Name = name;
             NodeCount = nodeCount;
+            PointInTimeRestoreContexts = pointInTimeRestoreContexts;
             PrivateIpAddress = privateIpAddress;
             Project = project;
             PscServiceAttachmentLink = pscServiceAttachmentLink;

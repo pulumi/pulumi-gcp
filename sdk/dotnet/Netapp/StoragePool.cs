@@ -129,6 +129,12 @@ namespace Pulumi.Gcp.Netapp
         public Output<string> CapacityGib { get; private set; } = null!;
 
         /// <summary>
+        /// Total cold tier data rounded down to the nearest GiB used by the storage pool.
+        /// </summary>
+        [Output("coldTierSizeUsedGib")]
+        public Output<string> ColdTierSizeUsedGib { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
         /// </summary>
         [Output("customPerformanceEnabled")]
@@ -165,6 +171,12 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Output("hotTierSizeGib")]
         public Output<string?> HotTierSizeGib { get; private set; } = null!;
+
+        /// <summary>
+        /// Total hot tier data rounded down to the nearest GiB used by the storage pool.
+        /// </summary>
+        [Output("hotTierSizeUsedGib")]
+        public Output<string> HotTierSizeUsedGib { get; private set; } = null!;
 
         /// <summary>
         /// Specifies the CMEK policy to be used for volume encryption. Format: `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}`.
@@ -503,6 +515,12 @@ namespace Pulumi.Gcp.Netapp
         public Input<string>? CapacityGib { get; set; }
 
         /// <summary>
+        /// Total cold tier data rounded down to the nearest GiB used by the storage pool.
+        /// </summary>
+        [Input("coldTierSizeUsedGib")]
+        public Input<string>? ColdTierSizeUsedGib { get; set; }
+
+        /// <summary>
         /// Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
         /// </summary>
         [Input("customPerformanceEnabled")]
@@ -549,6 +567,12 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Input("hotTierSizeGib")]
         public Input<string>? HotTierSizeGib { get; set; }
+
+        /// <summary>
+        /// Total hot tier data rounded down to the nearest GiB used by the storage pool.
+        /// </summary>
+        [Input("hotTierSizeUsedGib")]
+        public Input<string>? HotTierSizeUsedGib { get; set; }
 
         /// <summary>
         /// Specifies the CMEK policy to be used for volume encryption. Format: `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}`.

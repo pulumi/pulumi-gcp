@@ -517,6 +517,12 @@ namespace Pulumi.Gcp.Sql
         public Output<int> NodeCount { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for creating a new instance using point-in-time-restore from backupdr backup.
+        /// </summary>
+        [Output("pointInTimeRestoreContext")]
+        public Output<Outputs.DatabaseInstancePointInTimeRestoreContext?> PointInTimeRestoreContext { get; private set; } = null!;
+
+        /// <summary>
         /// The first private (`PRIVATE`) IPv4 address assigned.
         /// </summary>
         [Output("privateIpAddress")]
@@ -749,6 +755,12 @@ namespace Pulumi.Gcp.Sql
         public Input<int>? NodeCount { get; set; }
 
         /// <summary>
+        /// Configuration for creating a new instance using point-in-time-restore from backupdr backup.
+        /// </summary>
+        [Input("pointInTimeRestoreContext")]
+        public Input<Inputs.DatabaseInstancePointInTimeRestoreContextArgs>? PointInTimeRestoreContext { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs. If it
         /// is not provided, the provider project is used.
         /// </summary>
@@ -978,6 +990,12 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Input("nodeCount")]
         public Input<int>? NodeCount { get; set; }
+
+        /// <summary>
+        /// Configuration for creating a new instance using point-in-time-restore from backupdr backup.
+        /// </summary>
+        [Input("pointInTimeRestoreContext")]
+        public Input<Inputs.DatabaseInstancePointInTimeRestoreContextGetArgs>? PointInTimeRestoreContext { get; set; }
 
         /// <summary>
         /// The first private (`PRIVATE`) IPv4 address assigned.

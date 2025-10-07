@@ -20,7 +20,7 @@ import (
 //
 // ## Example Usage
 //
-// ### Oracledatabase Odbnetwork
+// ### Oracledatabase Odbnetwork Basic
 //
 // ```go
 // package main
@@ -47,6 +47,47 @@ import (
 //				Location:     pulumi.String("us-west3"),
 //				Project:      pulumi.String("my-project"),
 //				Network:      pulumi.String(_default.Id),
+//				Labels: pulumi.StringMap{
+//					"terraform_created": pulumi.String("true"),
+//				},
+//				DeletionProtection: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Oracledatabase Odbnetwork Full
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
+//				Name:    "new",
+//				Project: pulumi.StringRef("my-project"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oracledatabase.NewOdbNetwork(ctx, "my-odbnetwork", &oracledatabase.OdbNetworkArgs{
+//				OdbNetworkId:  pulumi.String("my-odbnetwork"),
+//				Location:      pulumi.String("us-west3"),
+//				Project:       pulumi.String("my-project"),
+//				Network:       pulumi.String(_default.Id),
+//				GcpOracleZone: pulumi.String("us-west3-a-r1"),
 //				Labels: pulumi.StringMap{
 //					"terraform_created": pulumi.String("true"),
 //				},
@@ -94,6 +135,10 @@ type OdbNetwork struct {
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The ID of the subscription entitlement associated with the OdbNetwork.
 	EntitlementId pulumi.StringOutput `pulumi:"entitlementId"`
+	// The GCP Oracle zone where OdbNetwork is hosted.
+	// Example: us-east4-b-r2.
+	// If not specified, the system will pick a zone based on availability.
+	GcpOracleZone pulumi.StringOutput `pulumi:"gcpOracleZone"`
 	// Labels or tags associated with the resource.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -177,6 +222,10 @@ type odbNetworkState struct {
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The ID of the subscription entitlement associated with the OdbNetwork.
 	EntitlementId *string `pulumi:"entitlementId"`
+	// The GCP Oracle zone where OdbNetwork is hosted.
+	// Example: us-east4-b-r2.
+	// If not specified, the system will pick a zone based on availability.
+	GcpOracleZone *string `pulumi:"gcpOracleZone"`
 	// Labels or tags associated with the resource.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -217,6 +266,10 @@ type OdbNetworkState struct {
 	EffectiveLabels pulumi.StringMapInput
 	// The ID of the subscription entitlement associated with the OdbNetwork.
 	EntitlementId pulumi.StringPtrInput
+	// The GCP Oracle zone where OdbNetwork is hosted.
+	// Example: us-east4-b-r2.
+	// If not specified, the system will pick a zone based on availability.
+	GcpOracleZone pulumi.StringPtrInput
 	// Labels or tags associated with the resource.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -255,6 +308,10 @@ func (OdbNetworkState) ElementType() reflect.Type {
 
 type odbNetworkArgs struct {
 	DeletionProtection *bool `pulumi:"deletionProtection"`
+	// The GCP Oracle zone where OdbNetwork is hosted.
+	// Example: us-east4-b-r2.
+	// If not specified, the system will pick a zone based on availability.
+	GcpOracleZone *string `pulumi:"gcpOracleZone"`
 	// Labels or tags associated with the resource.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -277,6 +334,10 @@ type odbNetworkArgs struct {
 // The set of arguments for constructing a OdbNetwork resource.
 type OdbNetworkArgs struct {
 	DeletionProtection pulumi.BoolPtrInput
+	// The GCP Oracle zone where OdbNetwork is hosted.
+	// Example: us-east4-b-r2.
+	// If not specified, the system will pick a zone based on availability.
+	GcpOracleZone pulumi.StringPtrInput
 	// Labels or tags associated with the resource.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -400,6 +461,13 @@ func (o OdbNetworkOutput) EffectiveLabels() pulumi.StringMapOutput {
 // The ID of the subscription entitlement associated with the OdbNetwork.
 func (o OdbNetworkOutput) EntitlementId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OdbNetwork) pulumi.StringOutput { return v.EntitlementId }).(pulumi.StringOutput)
+}
+
+// The GCP Oracle zone where OdbNetwork is hosted.
+// Example: us-east4-b-r2.
+// If not specified, the system will pick a zone based on availability.
+func (o OdbNetworkOutput) GcpOracleZone() pulumi.StringOutput {
+	return o.ApplyT(func(v *OdbNetwork) pulumi.StringOutput { return v.GcpOracleZone }).(pulumi.StringOutput)
 }
 
 // Labels or tags associated with the resource.

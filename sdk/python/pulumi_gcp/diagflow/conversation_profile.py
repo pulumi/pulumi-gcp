@@ -29,6 +29,7 @@ class ConversationProfileArgs:
                  language_code: Optional[pulumi.Input[_builtins.str]] = None,
                  logging_config: Optional[pulumi.Input['ConversationProfileLoggingConfigArgs']] = None,
                  new_message_event_notification_config: Optional[pulumi.Input['ConversationProfileNewMessageEventNotificationConfigArgs']] = None,
+                 new_recognition_result_notification_config: Optional[pulumi.Input['ConversationProfileNewRecognitionResultNotificationConfigArgs']] = None,
                  notification_config: Optional[pulumi.Input['ConversationProfileNotificationConfigArgs']] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  security_settings: Optional[pulumi.Input[_builtins.str]] = None,
@@ -50,6 +51,8 @@ class ConversationProfileArgs:
                Structure is documented below.
         :param pulumi.Input['ConversationProfileNewMessageEventNotificationConfigArgs'] new_message_event_notification_config: Pub/Sub topic on which to publish new agent assistant events.
                Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
+               Structure is documented below.
+        :param pulumi.Input['ConversationProfileNewRecognitionResultNotificationConfigArgs'] new_recognition_result_notification_config: Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - "participant_id" - "participantRole" - "message_id"
                Structure is documented below.
         :param pulumi.Input['ConversationProfileNotificationConfigArgs'] notification_config: Pub/Sub topic on which to publish new agent assistant events.
                Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
@@ -77,6 +80,8 @@ class ConversationProfileArgs:
             pulumi.set(__self__, "logging_config", logging_config)
         if new_message_event_notification_config is not None:
             pulumi.set(__self__, "new_message_event_notification_config", new_message_event_notification_config)
+        if new_recognition_result_notification_config is not None:
+            pulumi.set(__self__, "new_recognition_result_notification_config", new_recognition_result_notification_config)
         if notification_config is not None:
             pulumi.set(__self__, "notification_config", notification_config)
         if project is not None:
@@ -193,6 +198,19 @@ class ConversationProfileArgs:
         pulumi.set(self, "new_message_event_notification_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="newRecognitionResultNotificationConfig")
+    def new_recognition_result_notification_config(self) -> Optional[pulumi.Input['ConversationProfileNewRecognitionResultNotificationConfigArgs']]:
+        """
+        Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - "participant_id" - "participantRole" - "message_id"
+        Structure is documented below.
+        """
+        return pulumi.get(self, "new_recognition_result_notification_config")
+
+    @new_recognition_result_notification_config.setter
+    def new_recognition_result_notification_config(self, value: Optional[pulumi.Input['ConversationProfileNewRecognitionResultNotificationConfigArgs']]):
+        pulumi.set(self, "new_recognition_result_notification_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="notificationConfig")
     def notification_config(self) -> Optional[pulumi.Input['ConversationProfileNotificationConfigArgs']]:
         """
@@ -282,6 +300,7 @@ class _ConversationProfileState:
                  logging_config: Optional[pulumi.Input['ConversationProfileLoggingConfigArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  new_message_event_notification_config: Optional[pulumi.Input['ConversationProfileNewMessageEventNotificationConfigArgs']] = None,
+                 new_recognition_result_notification_config: Optional[pulumi.Input['ConversationProfileNewRecognitionResultNotificationConfigArgs']] = None,
                  notification_config: Optional[pulumi.Input['ConversationProfileNotificationConfigArgs']] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  security_settings: Optional[pulumi.Input[_builtins.str]] = None,
@@ -304,6 +323,8 @@ class _ConversationProfileState:
         :param pulumi.Input[_builtins.str] name: name
         :param pulumi.Input['ConversationProfileNewMessageEventNotificationConfigArgs'] new_message_event_notification_config: Pub/Sub topic on which to publish new agent assistant events.
                Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
+               Structure is documented below.
+        :param pulumi.Input['ConversationProfileNewRecognitionResultNotificationConfigArgs'] new_recognition_result_notification_config: Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - "participant_id" - "participantRole" - "message_id"
                Structure is documented below.
         :param pulumi.Input['ConversationProfileNotificationConfigArgs'] notification_config: Pub/Sub topic on which to publish new agent assistant events.
                Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
@@ -335,6 +356,8 @@ class _ConversationProfileState:
             pulumi.set(__self__, "name", name)
         if new_message_event_notification_config is not None:
             pulumi.set(__self__, "new_message_event_notification_config", new_message_event_notification_config)
+        if new_recognition_result_notification_config is not None:
+            pulumi.set(__self__, "new_recognition_result_notification_config", new_recognition_result_notification_config)
         if notification_config is not None:
             pulumi.set(__self__, "notification_config", notification_config)
         if project is not None:
@@ -463,6 +486,19 @@ class _ConversationProfileState:
         pulumi.set(self, "new_message_event_notification_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="newRecognitionResultNotificationConfig")
+    def new_recognition_result_notification_config(self) -> Optional[pulumi.Input['ConversationProfileNewRecognitionResultNotificationConfigArgs']]:
+        """
+        Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - "participant_id" - "participantRole" - "message_id"
+        Structure is documented below.
+        """
+        return pulumi.get(self, "new_recognition_result_notification_config")
+
+    @new_recognition_result_notification_config.setter
+    def new_recognition_result_notification_config(self, value: Optional[pulumi.Input['ConversationProfileNewRecognitionResultNotificationConfigArgs']]):
+        pulumi.set(self, "new_recognition_result_notification_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="notificationConfig")
     def notification_config(self) -> Optional[pulumi.Input['ConversationProfileNotificationConfigArgs']]:
         """
@@ -554,6 +590,7 @@ class ConversationProfile(pulumi.CustomResource):
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  logging_config: Optional[pulumi.Input[Union['ConversationProfileLoggingConfigArgs', 'ConversationProfileLoggingConfigArgsDict']]] = None,
                  new_message_event_notification_config: Optional[pulumi.Input[Union['ConversationProfileNewMessageEventNotificationConfigArgs', 'ConversationProfileNewMessageEventNotificationConfigArgsDict']]] = None,
+                 new_recognition_result_notification_config: Optional[pulumi.Input[Union['ConversationProfileNewRecognitionResultNotificationConfigArgs', 'ConversationProfileNewRecognitionResultNotificationConfigArgsDict']]] = None,
                  notification_config: Optional[pulumi.Input[Union['ConversationProfileNotificationConfigArgs', 'ConversationProfileNotificationConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  security_settings: Optional[pulumi.Input[_builtins.str]] = None,
@@ -595,6 +632,21 @@ class ConversationProfile(pulumi.CustomResource):
                 },
             })
         ```
+        ### Dialogflow Conversation Profile Recognition Result Notification
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        recognition_result_notification_profile_topic = gcp.pubsub.Topic("recognition_result_notification_profile", name="recognition-result-notification")
+        recognition_result_notification_profile = gcp.diagflow.ConversationProfile("recognition_result_notification_profile",
+            display_name="dialogflow-profile",
+            location="global",
+            new_recognition_result_notification_config={
+                "topic": recognition_result_notification_profile_topic.id,
+                "message_format": "JSON",
+            })
+        ```
 
         ## Import
 
@@ -623,6 +675,8 @@ class ConversationProfile(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Union['ConversationProfileNewMessageEventNotificationConfigArgs', 'ConversationProfileNewMessageEventNotificationConfigArgsDict']] new_message_event_notification_config: Pub/Sub topic on which to publish new agent assistant events.
                Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
+               Structure is documented below.
+        :param pulumi.Input[Union['ConversationProfileNewRecognitionResultNotificationConfigArgs', 'ConversationProfileNewRecognitionResultNotificationConfigArgsDict']] new_recognition_result_notification_config: Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - "participant_id" - "participantRole" - "message_id"
                Structure is documented below.
         :param pulumi.Input[Union['ConversationProfileNotificationConfigArgs', 'ConversationProfileNotificationConfigArgsDict']] notification_config: Pub/Sub topic on which to publish new agent assistant events.
                Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
@@ -676,6 +730,21 @@ class ConversationProfile(pulumi.CustomResource):
                 },
             })
         ```
+        ### Dialogflow Conversation Profile Recognition Result Notification
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        recognition_result_notification_profile_topic = gcp.pubsub.Topic("recognition_result_notification_profile", name="recognition-result-notification")
+        recognition_result_notification_profile = gcp.diagflow.ConversationProfile("recognition_result_notification_profile",
+            display_name="dialogflow-profile",
+            location="global",
+            new_recognition_result_notification_config={
+                "topic": recognition_result_notification_profile_topic.id,
+                "message_format": "JSON",
+            })
+        ```
 
         ## Import
 
@@ -712,6 +781,7 @@ class ConversationProfile(pulumi.CustomResource):
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  logging_config: Optional[pulumi.Input[Union['ConversationProfileLoggingConfigArgs', 'ConversationProfileLoggingConfigArgsDict']]] = None,
                  new_message_event_notification_config: Optional[pulumi.Input[Union['ConversationProfileNewMessageEventNotificationConfigArgs', 'ConversationProfileNewMessageEventNotificationConfigArgsDict']]] = None,
+                 new_recognition_result_notification_config: Optional[pulumi.Input[Union['ConversationProfileNewRecognitionResultNotificationConfigArgs', 'ConversationProfileNewRecognitionResultNotificationConfigArgsDict']]] = None,
                  notification_config: Optional[pulumi.Input[Union['ConversationProfileNotificationConfigArgs', 'ConversationProfileNotificationConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  security_settings: Optional[pulumi.Input[_builtins.str]] = None,
@@ -739,6 +809,7 @@ class ConversationProfile(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["logging_config"] = logging_config
             __props__.__dict__["new_message_event_notification_config"] = new_message_event_notification_config
+            __props__.__dict__["new_recognition_result_notification_config"] = new_recognition_result_notification_config
             __props__.__dict__["notification_config"] = notification_config
             __props__.__dict__["project"] = project
             __props__.__dict__["security_settings"] = security_settings
@@ -765,6 +836,7 @@ class ConversationProfile(pulumi.CustomResource):
             logging_config: Optional[pulumi.Input[Union['ConversationProfileLoggingConfigArgs', 'ConversationProfileLoggingConfigArgsDict']]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             new_message_event_notification_config: Optional[pulumi.Input[Union['ConversationProfileNewMessageEventNotificationConfigArgs', 'ConversationProfileNewMessageEventNotificationConfigArgsDict']]] = None,
+            new_recognition_result_notification_config: Optional[pulumi.Input[Union['ConversationProfileNewRecognitionResultNotificationConfigArgs', 'ConversationProfileNewRecognitionResultNotificationConfigArgsDict']]] = None,
             notification_config: Optional[pulumi.Input[Union['ConversationProfileNotificationConfigArgs', 'ConversationProfileNotificationConfigArgsDict']]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             security_settings: Optional[pulumi.Input[_builtins.str]] = None,
@@ -793,6 +865,8 @@ class ConversationProfile(pulumi.CustomResource):
         :param pulumi.Input[Union['ConversationProfileNewMessageEventNotificationConfigArgs', 'ConversationProfileNewMessageEventNotificationConfigArgsDict']] new_message_event_notification_config: Pub/Sub topic on which to publish new agent assistant events.
                Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
                Structure is documented below.
+        :param pulumi.Input[Union['ConversationProfileNewRecognitionResultNotificationConfigArgs', 'ConversationProfileNewRecognitionResultNotificationConfigArgsDict']] new_recognition_result_notification_config: Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - "participant_id" - "participantRole" - "message_id"
+               Structure is documented below.
         :param pulumi.Input[Union['ConversationProfileNotificationConfigArgs', 'ConversationProfileNotificationConfigArgsDict']] notification_config: Pub/Sub topic on which to publish new agent assistant events.
                Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
                Structure is documented below.
@@ -818,6 +892,7 @@ class ConversationProfile(pulumi.CustomResource):
         __props__.__dict__["logging_config"] = logging_config
         __props__.__dict__["name"] = name
         __props__.__dict__["new_message_event_notification_config"] = new_message_event_notification_config
+        __props__.__dict__["new_recognition_result_notification_config"] = new_recognition_result_notification_config
         __props__.__dict__["notification_config"] = notification_config
         __props__.__dict__["project"] = project
         __props__.__dict__["security_settings"] = security_settings
@@ -903,6 +978,15 @@ class ConversationProfile(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "new_message_event_notification_config")
+
+    @_builtins.property
+    @pulumi.getter(name="newRecognitionResultNotificationConfig")
+    def new_recognition_result_notification_config(self) -> pulumi.Output[Optional['outputs.ConversationProfileNewRecognitionResultNotificationConfig']]:
+        """
+        Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - "participant_id" - "participantRole" - "message_id"
+        Structure is documented below.
+        """
+        return pulumi.get(self, "new_recognition_result_notification_config")
 
     @_builtins.property
     @pulumi.getter(name="notificationConfig")

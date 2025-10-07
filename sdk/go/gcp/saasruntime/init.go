@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:saasruntime/release:Release":
 		r = &Release{}
+	case "gcp:saasruntime/rolloutKind:RolloutKind":
+		r = &RolloutKind{}
 	case "gcp:saasruntime/saaS:SaaS":
 		r = &SaaS{}
 	case "gcp:saasruntime/unitKind:UnitKind":
@@ -43,6 +45,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"saasruntime/release",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"saasruntime/rolloutKind",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

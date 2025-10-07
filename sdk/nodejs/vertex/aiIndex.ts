@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const vertexaiSa = new gcp.projects.ServiceIdentity("vertexai_sa", {service: "aiplatform.googleapis.com"});
  * const bucket = new gcp.storage.Bucket("bucket", {
  *     name: "vertex-ai-index-test",
  *     location: "us-central1",
@@ -34,6 +35,11 @@ import * as utilities from "../utilities";
  *     content: `{"id": "42", "embedding": [0.5, 1.0], "restricts": [{"namespace": "class", "allow": ["cat", "pet"]},{"namespace": "category", "allow": ["feline"]}]}
  * {"id": "43", "embedding": [0.6, 1.0], "restricts": [{"namespace": "class", "allow": ["dog", "pet"]},{"namespace": "category", "allow": ["canine"]}]}
  * `,
+ * });
+ * const vertexaiEncrypterdecrypter = new gcp.kms.CryptoKeyIAMMember("vertexai_encrypterdecrypter", {
+ *     cryptoKeyId: "kms-name",
+ *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+ *     member: vertexaiSa.member,
  * });
  * const index = new gcp.vertex.AiIndex("index", {
  *     labels: {
@@ -57,7 +63,12 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     },
+ *     encryptionSpec: {
+ *         kmsKeyName: "kms-name",
+ *     },
  *     indexUpdateMethod: "BATCH_UPDATE",
+ * }, {
+ *     dependsOn: [vertexaiEncrypterdecrypter],
  * });
  * ```
  * ### Vertex Ai Index Streaming
@@ -183,6 +194,11 @@ export class AiIndex extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
+     * Customer-managed encryption key spec for an Index. If set, this Index and all sub-resources of this Index will be secured by this key.
+     * Structure is documented below.
+     */
+    declare public readonly encryptionSpec: pulumi.Output<outputs.vertex.AiIndexEncryptionSpec | undefined>;
+    /**
      * Used to perform consistent read-modify-write updates.
      */
     declare public /*out*/ readonly etag: pulumi.Output<string>;
@@ -255,6 +271,7 @@ export class AiIndex extends pulumi.CustomResource {
             resourceInputs["description"] = state?.description;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["encryptionSpec"] = state?.encryptionSpec;
             resourceInputs["etag"] = state?.etag;
             resourceInputs["indexStats"] = state?.indexStats;
             resourceInputs["indexUpdateMethod"] = state?.indexUpdateMethod;
@@ -276,6 +293,7 @@ export class AiIndex extends pulumi.CustomResource {
             }
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["encryptionSpec"] = args?.encryptionSpec;
             resourceInputs["indexUpdateMethod"] = args?.indexUpdateMethod;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["metadata"] = args?.metadata;
@@ -323,6 +341,11 @@ export interface AiIndexState {
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Customer-managed encryption key spec for an Index. If set, this Index and all sub-resources of this Index will be secured by this key.
+     * Structure is documented below.
+     */
+    encryptionSpec?: pulumi.Input<inputs.vertex.AiIndexEncryptionSpec>;
     /**
      * Used to perform consistent read-modify-write updates.
      */
@@ -391,6 +414,11 @@ export interface AiIndexArgs {
      * The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
      */
     displayName: pulumi.Input<string>;
+    /**
+     * Customer-managed encryption key spec for an Index. If set, this Index and all sub-resources of this Index will be secured by this key.
+     * Structure is documented below.
+     */
+    encryptionSpec?: pulumi.Input<inputs.vertex.AiIndexEncryptionSpec>;
     /**
      * The update method to use with this Index. The value must be the followings. If not set, BATCH_UPDATE will be used by default.
      * * BATCH_UPDATE: user can call indexes.patch with files on Cloud Storage of datapoints to update.

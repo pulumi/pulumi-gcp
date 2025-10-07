@@ -20,7 +20,7 @@ public final class EntitlementApprovalWorkflowManualApprovals {
      */
     private @Nullable Boolean requireApproverJustification;
     /**
-     * @return List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
+     * @return List of approval steps in this workflow. These steps would be followed in the specified order sequentially.
      * Structure is documented below.
      * 
      */
@@ -35,7 +35,7 @@ public final class EntitlementApprovalWorkflowManualApprovals {
         return Optional.ofNullable(this.requireApproverJustification);
     }
     /**
-     * @return List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
+     * @return List of approval steps in this workflow. These steps would be followed in the specified order sequentially.
      * Structure is documented below.
      * 
      */

@@ -5,6 +5,7 @@ package com.pulumi.gcp.netapp.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -37,7 +38,7 @@ public final class VolumeHybridReplicationParameters {
      * @return Required. List of node ip addresses to be peered with.
      * 
      */
-    private @Nullable String peerIpAddresses;
+    private @Nullable List<String> peerIpAddresses;
     /**
      * @return Required. Name of the user&#39;s local source vserver svm to be peered with the destination vserver svm.
      * 
@@ -88,8 +89,8 @@ public final class VolumeHybridReplicationParameters {
      * @return Required. List of node ip addresses to be peered with.
      * 
      */
-    public Optional<String> peerIpAddresses() {
-        return Optional.ofNullable(this.peerIpAddresses);
+    public List<String> peerIpAddresses() {
+        return this.peerIpAddresses == null ? List.of() : this.peerIpAddresses;
     }
     /**
      * @return Required. Name of the user&#39;s local source vserver svm to be peered with the destination vserver svm.
@@ -126,7 +127,7 @@ public final class VolumeHybridReplicationParameters {
         private @Nullable String description;
         private @Nullable Map<String,String> labels;
         private @Nullable String peerClusterName;
-        private @Nullable String peerIpAddresses;
+        private @Nullable List<String> peerIpAddresses;
         private @Nullable String peerSvmName;
         private @Nullable String peerVolumeName;
         private @Nullable String replication;
@@ -168,10 +169,13 @@ public final class VolumeHybridReplicationParameters {
             return this;
         }
         @CustomType.Setter
-        public Builder peerIpAddresses(@Nullable String peerIpAddresses) {
+        public Builder peerIpAddresses(@Nullable List<String> peerIpAddresses) {
 
             this.peerIpAddresses = peerIpAddresses;
             return this;
+        }
+        public Builder peerIpAddresses(String... peerIpAddresses) {
+            return peerIpAddresses(List.of(peerIpAddresses));
         }
         @CustomType.Setter
         public Builder peerSvmName(@Nullable String peerSvmName) {

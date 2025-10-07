@@ -21,6 +21,8 @@ __all__ = [
     'DatabaseInstanceDnsNameArgsDict',
     'DatabaseInstanceIpAddressArgs',
     'DatabaseInstanceIpAddressArgsDict',
+    'DatabaseInstancePointInTimeRestoreContextArgs',
+    'DatabaseInstancePointInTimeRestoreContextArgsDict',
     'DatabaseInstanceReplicaConfigurationArgs',
     'DatabaseInstanceReplicaConfigurationArgsDict',
     'DatabaseInstanceReplicationClusterArgs',
@@ -350,6 +352,123 @@ class DatabaseInstanceIpAddressArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class DatabaseInstancePointInTimeRestoreContextArgsDict(TypedDict):
+        datasource: pulumi.Input[_builtins.str]
+        """
+        The Google Cloud Backup and Disaster Recovery Datasource URI.
+        """
+        allocated_ip_range: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+        """
+        point_in_time: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The timestamp of the point in time that should be restored.
+
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        preferred_zone: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Point-in-time recovery of an instance to the specified zone. If no zone is specified, then clone to the same primary zone as the source instance.
+        """
+        target_instance: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The name of the target instance.
+        """
+elif False:
+    DatabaseInstancePointInTimeRestoreContextArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DatabaseInstancePointInTimeRestoreContextArgs:
+    def __init__(__self__, *,
+                 datasource: pulumi.Input[_builtins.str],
+                 allocated_ip_range: Optional[pulumi.Input[_builtins.str]] = None,
+                 point_in_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 preferred_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 target_instance: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] datasource: The Google Cloud Backup and Disaster Recovery Datasource URI.
+        :param pulumi.Input[_builtins.str] allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+        :param pulumi.Input[_builtins.str] point_in_time: The timestamp of the point in time that should be restored.
+               
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[_builtins.str] preferred_zone: Point-in-time recovery of an instance to the specified zone. If no zone is specified, then clone to the same primary zone as the source instance.
+        :param pulumi.Input[_builtins.str] target_instance: The name of the target instance.
+        """
+        pulumi.set(__self__, "datasource", datasource)
+        if allocated_ip_range is not None:
+            pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
+        if point_in_time is not None:
+            pulumi.set(__self__, "point_in_time", point_in_time)
+        if preferred_zone is not None:
+            pulumi.set(__self__, "preferred_zone", preferred_zone)
+        if target_instance is not None:
+            pulumi.set(__self__, "target_instance", target_instance)
+
+    @_builtins.property
+    @pulumi.getter
+    def datasource(self) -> pulumi.Input[_builtins.str]:
+        """
+        The Google Cloud Backup and Disaster Recovery Datasource URI.
+        """
+        return pulumi.get(self, "datasource")
+
+    @datasource.setter
+    def datasource(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "datasource", value)
+
+    @_builtins.property
+    @pulumi.getter(name="allocatedIpRange")
+    def allocated_ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+        """
+        return pulumi.get(self, "allocated_ip_range")
+
+    @allocated_ip_range.setter
+    def allocated_ip_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "allocated_ip_range", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pointInTime")
+    def point_in_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The timestamp of the point in time that should be restored.
+
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "point_in_time")
+
+    @point_in_time.setter
+    def point_in_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "point_in_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="preferredZone")
+    def preferred_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Point-in-time recovery of an instance to the specified zone. If no zone is specified, then clone to the same primary zone as the source instance.
+        """
+        return pulumi.get(self, "preferred_zone")
+
+    @preferred_zone.setter
+    def preferred_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "preferred_zone", value)
+
+    @_builtins.property
+    @pulumi.getter(name="targetInstance")
+    def target_instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the target instance.
+        """
+        return pulumi.get(self, "target_instance")
+
+    @target_instance.setter
+    def target_instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "target_instance", value)
 
 
 if not MYPY:
@@ -1981,7 +2100,7 @@ if not MYPY:
     class DatabaseInstanceSettingsDataCacheConfigArgsDict(TypedDict):
         data_cache_enabled: NotRequired[pulumi.Input[_builtins.bool]]
         """
-        Whether data cache is enabled for the instance. Defaults to `false`. Can be used with MYSQL and PostgreSQL only.
+        Whether data cache is enabled for the instance. Defaults to `true` for MYSQL Enterprise Plus and PostgreSQL Enterprise Plus instances only. For SQL Server Enterprise Plus instances it defaults to `false`.
         """
 elif False:
     DatabaseInstanceSettingsDataCacheConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -1991,7 +2110,7 @@ class DatabaseInstanceSettingsDataCacheConfigArgs:
     def __init__(__self__, *,
                  data_cache_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
-        :param pulumi.Input[_builtins.bool] data_cache_enabled: Whether data cache is enabled for the instance. Defaults to `false`. Can be used with MYSQL and PostgreSQL only.
+        :param pulumi.Input[_builtins.bool] data_cache_enabled: Whether data cache is enabled for the instance. Defaults to `true` for MYSQL Enterprise Plus and PostgreSQL Enterprise Plus instances only. For SQL Server Enterprise Plus instances it defaults to `false`.
         """
         if data_cache_enabled is not None:
             pulumi.set(__self__, "data_cache_enabled", data_cache_enabled)
@@ -2000,7 +2119,7 @@ class DatabaseInstanceSettingsDataCacheConfigArgs:
     @pulumi.getter(name="dataCacheEnabled")
     def data_cache_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether data cache is enabled for the instance. Defaults to `false`. Can be used with MYSQL and PostgreSQL only.
+        Whether data cache is enabled for the instance. Defaults to `true` for MYSQL Enterprise Plus and PostgreSQL Enterprise Plus instances only. For SQL Server Enterprise Plus instances it defaults to `false`.
         """
         return pulumi.get(self, "data_cache_enabled")
 
