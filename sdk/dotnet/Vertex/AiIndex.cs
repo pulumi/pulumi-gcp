@@ -28,6 +28,11 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var vertexaiSa = new Gcp.Projects.ServiceIdentity("vertexai_sa", new()
+    ///     {
+    ///         Service = "aiplatform.googleapis.com",
+    ///     });
+    /// 
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
     ///         Name = "vertex-ai-index-test",
@@ -44,6 +49,13 @@ namespace Pulumi.Gcp.Vertex
     ///         Content = @"{""id"": ""42"", ""embedding"": [0.5, 1.0], ""restricts"": [{""namespace"": ""class"", ""allow"": [""cat"", ""pet""]},{""namespace"": ""category"", ""allow"": [""feline""]}]}
     /// {""id"": ""43"", ""embedding"": [0.6, 1.0], ""restricts"": [{""namespace"": ""class"", ""allow"": [""dog"", ""pet""]},{""namespace"": ""category"", ""allow"": [""canine""]}]}
     /// ",
+    ///     });
+    /// 
+    ///     var vertexaiEncrypterdecrypter = new Gcp.Kms.CryptoKeyIAMMember("vertexai_encrypterdecrypter", new()
+    ///     {
+    ///         CryptoKeyId = "kms-name",
+    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+    ///         Member = vertexaiSa.Member,
     ///     });
     /// 
     ///     var index = new Gcp.Vertex.AiIndex("index", new()
@@ -74,7 +86,17 @@ namespace Pulumi.Gcp.Vertex
     ///                 },
     ///             },
     ///         },
+    ///         EncryptionSpec = new Gcp.Vertex.Inputs.AiIndexEncryptionSpecArgs
+    ///         {
+    ///             KmsKeyName = "kms-name",
+    ///         },
     ///         IndexUpdateMethod = "BATCH_UPDATE",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             vertexaiEncrypterdecrypter,
+    ///         },
     ///     });
     /// 
     /// });
@@ -200,6 +222,13 @@ namespace Pulumi.Gcp.Vertex
         /// </summary>
         [Output("effectiveLabels")]
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
+        /// Customer-managed encryption key spec for an Index. If set, this Index and all sub-resources of this Index will be secured by this key.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("encryptionSpec")]
+        public Output<Outputs.AiIndexEncryptionSpec?> EncryptionSpec { get; private set; } = null!;
 
         /// <summary>
         /// Used to perform consistent read-modify-write updates.
@@ -341,6 +370,13 @@ namespace Pulumi.Gcp.Vertex
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
+        /// Customer-managed encryption key spec for an Index. If set, this Index and all sub-resources of this Index will be secured by this key.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("encryptionSpec")]
+        public Input<Inputs.AiIndexEncryptionSpecArgs>? EncryptionSpec { get; set; }
+
+        /// <summary>
         /// The update method to use with this Index. The value must be the followings. If not set, BATCH_UPDATE will be used by default.
         /// * BATCH_UPDATE: user can call indexes.patch with files on Cloud Storage of datapoints to update.
         /// * STREAM_UPDATE: user can call indexes.upsertDatapoints/DeleteDatapoints to update the Index and the updates will be applied in corresponding DeployedIndexes in nearly real-time.
@@ -438,6 +474,13 @@ namespace Pulumi.Gcp.Vertex
                 _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// Customer-managed encryption key spec for an Index. If set, this Index and all sub-resources of this Index will be secured by this key.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("encryptionSpec")]
+        public Input<Inputs.AiIndexEncryptionSpecGetArgs>? EncryptionSpec { get; set; }
 
         /// <summary>
         /// Used to perform consistent read-modify-write updates.

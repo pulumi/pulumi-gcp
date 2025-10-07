@@ -151,6 +151,10 @@ export class Volume extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly hasReplication: pulumi.Output<boolean>;
     /**
+     * Total hot tier data rounded down to the nearest GiB used by the volume. This field is only used for flex Service Level
+     */
+    declare public /*out*/ readonly hotTierSizeUsedGib: pulumi.Output<string>;
+    /**
      * The Hybrid Replication parameters for the volume.
      * Structure is documented below.
      */
@@ -320,6 +324,7 @@ export class Volume extends pulumi.CustomResource {
             resourceInputs["encryptionType"] = state?.encryptionType;
             resourceInputs["exportPolicy"] = state?.exportPolicy;
             resourceInputs["hasReplication"] = state?.hasReplication;
+            resourceInputs["hotTierSizeUsedGib"] = state?.hotTierSizeUsedGib;
             resourceInputs["hybridReplicationParameters"] = state?.hybridReplicationParameters;
             resourceInputs["kerberosEnabled"] = state?.kerberosEnabled;
             resourceInputs["kmsConfig"] = state?.kmsConfig;
@@ -400,6 +405,7 @@ export class Volume extends pulumi.CustomResource {
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["encryptionType"] = undefined /*out*/;
             resourceInputs["hasReplication"] = undefined /*out*/;
+            resourceInputs["hotTierSizeUsedGib"] = undefined /*out*/;
             resourceInputs["kmsConfig"] = undefined /*out*/;
             resourceInputs["ldapEnabled"] = undefined /*out*/;
             resourceInputs["mountOptions"] = undefined /*out*/;
@@ -473,6 +479,10 @@ export interface VolumeState {
      * Indicates whether the volume is part of a volume replication relationship.
      */
     hasReplication?: pulumi.Input<boolean>;
+    /**
+     * Total hot tier data rounded down to the nearest GiB used by the volume. This field is only used for flex Service Level
+     */
+    hotTierSizeUsedGib?: pulumi.Input<string>;
     /**
      * The Hybrid Replication parameters for the volume.
      * Structure is documented below.

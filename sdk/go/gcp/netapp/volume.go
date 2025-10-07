@@ -131,6 +131,8 @@ type Volume struct {
 	ExportPolicy VolumeExportPolicyPtrOutput `pulumi:"exportPolicy"`
 	// Indicates whether the volume is part of a volume replication relationship.
 	HasReplication pulumi.BoolOutput `pulumi:"hasReplication"`
+	// Total hot tier data rounded down to the nearest GiB used by the volume. This field is only used for flex Service Level
+	HotTierSizeUsedGib pulumi.StringOutput `pulumi:"hotTierSizeUsedGib"`
 	// The Hybrid Replication parameters for the volume.
 	// Structure is documented below.
 	HybridReplicationParameters VolumeHybridReplicationParametersPtrOutput `pulumi:"hybridReplicationParameters"`
@@ -291,6 +293,8 @@ type volumeState struct {
 	ExportPolicy *VolumeExportPolicy `pulumi:"exportPolicy"`
 	// Indicates whether the volume is part of a volume replication relationship.
 	HasReplication *bool `pulumi:"hasReplication"`
+	// Total hot tier data rounded down to the nearest GiB used by the volume. This field is only used for flex Service Level
+	HotTierSizeUsedGib *string `pulumi:"hotTierSizeUsedGib"`
 	// The Hybrid Replication parameters for the volume.
 	// Structure is documented below.
 	HybridReplicationParameters *VolumeHybridReplicationParameters `pulumi:"hybridReplicationParameters"`
@@ -402,6 +406,8 @@ type VolumeState struct {
 	ExportPolicy VolumeExportPolicyPtrInput
 	// Indicates whether the volume is part of a volume replication relationship.
 	HasReplication pulumi.BoolPtrInput
+	// Total hot tier data rounded down to the nearest GiB used by the volume. This field is only used for flex Service Level
+	HotTierSizeUsedGib pulumi.StringPtrInput
 	// The Hybrid Replication parameters for the volume.
 	// Structure is documented below.
 	HybridReplicationParameters VolumeHybridReplicationParametersPtrInput
@@ -781,6 +787,11 @@ func (o VolumeOutput) ExportPolicy() VolumeExportPolicyPtrOutput {
 // Indicates whether the volume is part of a volume replication relationship.
 func (o VolumeOutput) HasReplication() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Volume) pulumi.BoolOutput { return v.HasReplication }).(pulumi.BoolOutput)
+}
+
+// Total hot tier data rounded down to the nearest GiB used by the volume. This field is only used for flex Service Level
+func (o VolumeOutput) HotTierSizeUsedGib() pulumi.StringOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.HotTierSizeUsedGib }).(pulumi.StringOutput)
 }
 
 // The Hybrid Replication parameters for the volume.

@@ -15,6 +15,11 @@ export type Api = import("./api").Api;
 export const Api: typeof import("./api").Api = null as any;
 utilities.lazyLoad(exports, ["Api"], () => require("./api"));
 
+export { ApiDeploymentArgs, ApiDeploymentState } from "./apiDeployment";
+export type ApiDeployment = import("./apiDeployment").ApiDeployment;
+export const ApiDeployment: typeof import("./apiDeployment").ApiDeployment = null as any;
+utilities.lazyLoad(exports, ["ApiDeployment"], () => require("./apiDeployment"));
+
 export { ApiProductArgs, ApiProductState } from "./apiProduct";
 export type ApiProduct = import("./apiProduct").ApiProduct;
 export const ApiProduct: typeof import("./apiProduct").ApiProduct = null as any;
@@ -189,6 +194,8 @@ const _module = {
                 return new AddonsConfig(name, <any>undefined, { urn })
             case "gcp:apigee/api:Api":
                 return new Api(name, <any>undefined, { urn })
+            case "gcp:apigee/apiDeployment:ApiDeployment":
+                return new ApiDeployment(name, <any>undefined, { urn })
             case "gcp:apigee/apiProduct:ApiProduct":
                 return new ApiProduct(name, <any>undefined, { urn })
             case "gcp:apigee/appGroup:AppGroup":
@@ -260,6 +267,7 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("gcp", "apigee/addonsConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/api", _module)
+pulumi.runtime.registerResourceModule("gcp", "apigee/apiDeployment", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/apiProduct", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/appGroup", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/controlPlaneAccess", _module)

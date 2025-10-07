@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceClone;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceDnsName;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceIpAddress;
+import com.pulumi.gcp.sql.outputs.GetDatabaseInstancePointInTimeRestoreContext;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceReplicaConfiguration;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceReplicationCluster;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceRestoreBackupContext;
@@ -45,6 +46,7 @@ public final class GetDatabaseInstanceResult {
     private String masterInstanceName;
     private String name;
     private Integer nodeCount;
+    private List<GetDatabaseInstancePointInTimeRestoreContext> pointInTimeRestoreContexts;
     private String privateIpAddress;
     private @Nullable String project;
     private String pscServiceAttachmentLink;
@@ -119,6 +121,9 @@ public final class GetDatabaseInstanceResult {
     public Integer nodeCount() {
         return this.nodeCount;
     }
+    public List<GetDatabaseInstancePointInTimeRestoreContext> pointInTimeRestoreContexts() {
+        return this.pointInTimeRestoreContexts;
+    }
     public String privateIpAddress() {
         return this.privateIpAddress;
     }
@@ -189,6 +194,7 @@ public final class GetDatabaseInstanceResult {
         private String masterInstanceName;
         private String name;
         private Integer nodeCount;
+        private List<GetDatabaseInstancePointInTimeRestoreContext> pointInTimeRestoreContexts;
         private String privateIpAddress;
         private @Nullable String project;
         private String pscServiceAttachmentLink;
@@ -224,6 +230,7 @@ public final class GetDatabaseInstanceResult {
     	      this.masterInstanceName = defaults.masterInstanceName;
     	      this.name = defaults.name;
     	      this.nodeCount = defaults.nodeCount;
+    	      this.pointInTimeRestoreContexts = defaults.pointInTimeRestoreContexts;
     	      this.privateIpAddress = defaults.privateIpAddress;
     	      this.project = defaults.project;
     	      this.pscServiceAttachmentLink = defaults.pscServiceAttachmentLink;
@@ -397,6 +404,17 @@ public final class GetDatabaseInstanceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pointInTimeRestoreContexts(List<GetDatabaseInstancePointInTimeRestoreContext> pointInTimeRestoreContexts) {
+            if (pointInTimeRestoreContexts == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceResult", "pointInTimeRestoreContexts");
+            }
+            this.pointInTimeRestoreContexts = pointInTimeRestoreContexts;
+            return this;
+        }
+        public Builder pointInTimeRestoreContexts(GetDatabaseInstancePointInTimeRestoreContext... pointInTimeRestoreContexts) {
+            return pointInTimeRestoreContexts(List.of(pointInTimeRestoreContexts));
+        }
+        @CustomType.Setter
         public Builder privateIpAddress(String privateIpAddress) {
             if (privateIpAddress == null) {
               throw new MissingRequiredPropertyException("GetDatabaseInstanceResult", "privateIpAddress");
@@ -544,6 +562,7 @@ public final class GetDatabaseInstanceResult {
             _resultValue.masterInstanceName = masterInstanceName;
             _resultValue.name = name;
             _resultValue.nodeCount = nodeCount;
+            _resultValue.pointInTimeRestoreContexts = pointInTimeRestoreContexts;
             _resultValue.privateIpAddress = privateIpAddress;
             _resultValue.project = project;
             _resultValue.pscServiceAttachmentLink = pscServiceAttachmentLink;

@@ -85,6 +85,58 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Network Security Mirroring Endpoint Group Broker Basic
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.networksecurity.MirroringDeploymentGroup;
+ * import com.pulumi.gcp.networksecurity.MirroringDeploymentGroupArgs;
+ * import com.pulumi.gcp.networksecurity.MirroringEndpointGroup;
+ * import com.pulumi.gcp.networksecurity.MirroringEndpointGroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var network = new Network("network", NetworkArgs.builder()
+ *             .name("example-network")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var deploymentGroup = new MirroringDeploymentGroup("deploymentGroup", MirroringDeploymentGroupArgs.builder()
+ *             .mirroringDeploymentGroupId("example-dg")
+ *             .location("global")
+ *             .network(network.id())
+ *             .build());
+ * 
+ *         var default_ = new MirroringEndpointGroup("default", MirroringEndpointGroupArgs.builder()
+ *             .mirroringEndpointGroupId("example-eg")
+ *             .location("global")
+ *             .type("BROKER")
+ *             .mirroringDeploymentGroups(deploymentGroup.id())
+ *             .description("some description")
+ *             .labels(Map.of("foo", "bar"))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -232,7 +284,7 @@ public class MirroringEndpointGroup extends com.pulumi.resources.CustomResource 
      * 
      */
     @Export(name="mirroringDeploymentGroup", refs={String.class}, tree="[0]")
-    private Output<String> mirroringDeploymentGroup;
+    private Output</* @Nullable */ String> mirroringDeploymentGroup;
 
     /**
      * @return The deployment group that this DIRECT endpoint group is connected to, for example:
@@ -240,8 +292,28 @@ public class MirroringEndpointGroup extends com.pulumi.resources.CustomResource 
      * See https://google.aip.dev/124.
      * 
      */
-    public Output<String> mirroringDeploymentGroup() {
-        return this.mirroringDeploymentGroup;
+    public Output<Optional<String>> mirroringDeploymentGroup() {
+        return Codegen.optional(this.mirroringDeploymentGroup);
+    }
+    /**
+     * A list of the deployment groups that this BROKER endpoint group is
+     * connected to, for example:
+     * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+     * See https://google.aip.dev/124.
+     * 
+     */
+    @Export(name="mirroringDeploymentGroups", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> mirroringDeploymentGroups;
+
+    /**
+     * @return A list of the deployment groups that this BROKER endpoint group is
+     * connected to, for example:
+     * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+     * See https://google.aip.dev/124.
+     * 
+     */
+    public Output<Optional<List<String>>> mirroringDeploymentGroups() {
+        return Codegen.optional(this.mirroringDeploymentGroups);
     }
     /**
      * The ID to use for the endpoint group, which will become the final component
@@ -354,6 +426,28 @@ public class MirroringEndpointGroup extends com.pulumi.resources.CustomResource 
      */
     public Output<String> state() {
         return this.state;
+    }
+    /**
+     * The type of the endpoint group.
+     * If left unspecified, defaults to DIRECT.
+     * Possible values:
+     * DIRECT
+     * BROKER
+     * 
+     */
+    @Export(name="type", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> type;
+
+    /**
+     * @return The type of the endpoint group.
+     * If left unspecified, defaults to DIRECT.
+     * Possible values:
+     * DIRECT
+     * BROKER
+     * 
+     */
+    public Output<Optional<String>> type() {
+        return Codegen.optional(this.type);
     }
     /**
      * The timestamp when the resource was most recently updated.

@@ -62,6 +62,7 @@ namespace Pulumi.Gcp.Looker
     ///         PlatformEdition = "LOOKER_CORE_STANDARD_ANNUAL",
     ///         Region = "us-central1",
     ///         PublicIpEnabled = true,
+    ///         GeminiEnabled = true,
     ///         AdminSettings = new Gcp.Looker.Inputs.InstanceAdminSettingsArgs
     ///         {
     ///             AllowedEmailDomains = new[]
@@ -178,6 +179,7 @@ namespace Pulumi.Gcp.Looker
     ///         Region = "us-central1",
     ///         PrivateIpEnabled = true,
     ///         PublicIpEnabled = false,
+    ///         GeminiEnabled = true,
     ///         ReservedRange = lookerRange.Name,
     ///         ConsumerNetwork = lookerNetwork.Id,
     ///         AdminSettings = new Gcp.Looker.Inputs.InstanceAdminSettingsArgs
@@ -436,6 +438,12 @@ namespace Pulumi.Gcp.Looker
         public Output<bool?> FipsEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// Gemini enablement for Looker (Google Cloud Core).
+        /// </summary>
+        [Output("geminiEnabled")]
+        public Output<bool?> GeminiEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// Private Ingress IP (IPv4).
         /// </summary>
         [Output("ingressPrivateIp")]
@@ -666,6 +674,12 @@ namespace Pulumi.Gcp.Looker
         public Input<bool>? FipsEnabled { get; set; }
 
         /// <summary>
+        /// Gemini enablement for Looker (Google Cloud Core).
+        /// </summary>
+        [Input("geminiEnabled")]
+        public Input<bool>? GeminiEnabled { get; set; }
+
+        /// <summary>
         /// Maintenance window for an instance.
         /// Maintenance of your instance takes place once a month, and will require
         /// your instance to be restarted during updates, which will temporarily
@@ -838,6 +852,12 @@ namespace Pulumi.Gcp.Looker
         /// </summary>
         [Input("fipsEnabled")]
         public Input<bool>? FipsEnabled { get; set; }
+
+        /// <summary>
+        /// Gemini enablement for Looker (Google Cloud Core).
+        /// </summary>
+        [Input("geminiEnabled")]
+        public Input<bool>? GeminiEnabled { get; set; }
 
         /// <summary>
         /// Private Ingress IP (IPv4).

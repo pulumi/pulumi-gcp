@@ -30,6 +30,13 @@ namespace Pulumi.Gcp.Vertex.Inputs
         [Input("endpointDisplayName")]
         public Input<string>? EndpointDisplayName { get; set; }
 
+        /// <summary>
+        /// The configuration for Private Service Connect (PSC).
+        /// Structure is documented below.
+        /// </summary>
+        [Input("privateServiceConnectConfig")]
+        public Input<Inputs.AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigGetArgs>? PrivateServiceConnectConfig { get; set; }
+
         public AiEndpointWithModelGardenDeploymentEndpointConfigGetArgs()
         {
         }

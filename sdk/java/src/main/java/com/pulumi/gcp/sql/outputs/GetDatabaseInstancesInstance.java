@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesInstanceClone;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesInstanceDnsName;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesInstanceIpAddress;
+import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesInstancePointInTimeRestoreContext;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesInstanceReplicaConfiguration;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesInstanceReplicationCluster;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesInstanceRestoreBackupContext;
@@ -86,6 +87,11 @@ public final class GetDatabaseInstancesInstance {
      * 
      */
     private Integer nodeCount;
+    /**
+     * @return Configuration for creating a new instance using point-in-time-restore from backupdr backup.
+     * 
+     */
+    private List<GetDatabaseInstancesInstancePointInTimeRestoreContext> pointInTimeRestoreContexts;
     private String privateIpAddress;
     /**
      * @return The ID of the project in which the resources belong. If it is not provided, the provider project is used.
@@ -241,6 +247,13 @@ public final class GetDatabaseInstancesInstance {
     public Integer nodeCount() {
         return this.nodeCount;
     }
+    /**
+     * @return Configuration for creating a new instance using point-in-time-restore from backupdr backup.
+     * 
+     */
+    public List<GetDatabaseInstancesInstancePointInTimeRestoreContext> pointInTimeRestoreContexts() {
+        return this.pointInTimeRestoreContexts;
+    }
     public String privateIpAddress() {
         return this.privateIpAddress;
     }
@@ -350,6 +363,7 @@ public final class GetDatabaseInstancesInstance {
         private String masterInstanceName;
         private String name;
         private Integer nodeCount;
+        private List<GetDatabaseInstancesInstancePointInTimeRestoreContext> pointInTimeRestoreContexts;
         private String privateIpAddress;
         private String project;
         private String pscServiceAttachmentLink;
@@ -384,6 +398,7 @@ public final class GetDatabaseInstancesInstance {
     	      this.masterInstanceName = defaults.masterInstanceName;
     	      this.name = defaults.name;
     	      this.nodeCount = defaults.nodeCount;
+    	      this.pointInTimeRestoreContexts = defaults.pointInTimeRestoreContexts;
     	      this.privateIpAddress = defaults.privateIpAddress;
     	      this.project = defaults.project;
     	      this.pscServiceAttachmentLink = defaults.pscServiceAttachmentLink;
@@ -549,6 +564,17 @@ public final class GetDatabaseInstancesInstance {
             return this;
         }
         @CustomType.Setter
+        public Builder pointInTimeRestoreContexts(List<GetDatabaseInstancesInstancePointInTimeRestoreContext> pointInTimeRestoreContexts) {
+            if (pointInTimeRestoreContexts == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "pointInTimeRestoreContexts");
+            }
+            this.pointInTimeRestoreContexts = pointInTimeRestoreContexts;
+            return this;
+        }
+        public Builder pointInTimeRestoreContexts(GetDatabaseInstancesInstancePointInTimeRestoreContext... pointInTimeRestoreContexts) {
+            return pointInTimeRestoreContexts(List.of(pointInTimeRestoreContexts));
+        }
+        @CustomType.Setter
         public Builder privateIpAddress(String privateIpAddress) {
             if (privateIpAddress == null) {
               throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "privateIpAddress");
@@ -697,6 +723,7 @@ public final class GetDatabaseInstancesInstance {
             _resultValue.masterInstanceName = masterInstanceName;
             _resultValue.name = name;
             _resultValue.nodeCount = nodeCount;
+            _resultValue.pointInTimeRestoreContexts = pointInTimeRestoreContexts;
             _resultValue.privateIpAddress = privateIpAddress;
             _resultValue.project = project;
             _resultValue.pscServiceAttachmentLink = pscServiceAttachmentLink;

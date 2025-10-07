@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -20,6 +19,9 @@ import (
 // * How-to Guides
 //   - [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
 //   - [Networks and Tunnel Routing](https://cloud.google.com/vpn/docs/concepts/choosing-networks-routing)
+//
+// > **Note:**  All arguments marked as write-only values will not be stored in the state: `sharedSecretWo`.
+// Read more about Write-only Attributes.
 //
 // ## Example Usage
 //
@@ -237,6 +239,17 @@ import (
 //
 // ```
 //
+// ## Ephemeral Attributes Reference
+//
+// The following write-only attributes are supported:
+//
+//   - `sharedSecretWo` -
+//     (Optional)
+//     Shared secret used to set the secure session between the Cloud VPN
+//     gateway and the peer VPN gateway.
+//     Note: This property is write-only and will not be read from the API. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+//     **Note**: This property is write-only and will not be read from the API.
+//
 // ## Import
 //
 // VpnTunnel can be imported using any of these accepted formats:
@@ -335,9 +348,11 @@ type VPNTunnel struct {
 	// Shared secret used to set the secure session between the Cloud VPN
 	// gateway and the peer VPN gateway.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	SharedSecret pulumi.StringOutput `pulumi:"sharedSecret"`
+	SharedSecret pulumi.StringPtrOutput `pulumi:"sharedSecret"`
 	// Hash of the shared secret.
 	SharedSecretHash pulumi.StringOutput `pulumi:"sharedSecretHash"`
+	// Triggers update of sharedSecretWo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+	SharedSecretWoVersion pulumi.StringPtrOutput `pulumi:"sharedSecretWoVersion"`
 	// URL of the Target VPN gateway with which this VPN tunnel is
 	// associated.
 	TargetVpnGateway pulumi.StringPtrOutput `pulumi:"targetVpnGateway"`
@@ -355,14 +370,11 @@ type VPNTunnel struct {
 func NewVPNTunnel(ctx *pulumi.Context,
 	name string, args *VPNTunnelArgs, opts ...pulumi.ResourceOption) (*VPNTunnel, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &VPNTunnelArgs{}
 	}
 
-	if args.SharedSecret == nil {
-		return nil, errors.New("invalid value for required argument 'SharedSecret'")
-	}
 	if args.SharedSecret != nil {
-		args.SharedSecret = pulumi.ToSecret(args.SharedSecret).(pulumi.StringInput)
+		args.SharedSecret = pulumi.ToSecret(args.SharedSecret).(pulumi.StringPtrInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"effectiveLabels",
@@ -462,6 +474,8 @@ type vpntunnelState struct {
 	SharedSecret *string `pulumi:"sharedSecret"`
 	// Hash of the shared secret.
 	SharedSecretHash *string `pulumi:"sharedSecretHash"`
+	// Triggers update of sharedSecretWo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+	SharedSecretWoVersion *string `pulumi:"sharedSecretWoVersion"`
 	// URL of the Target VPN gateway with which this VPN tunnel is
 	// associated.
 	TargetVpnGateway *string `pulumi:"targetVpnGateway"`
@@ -545,6 +559,8 @@ type VPNTunnelState struct {
 	SharedSecret pulumi.StringPtrInput
 	// Hash of the shared secret.
 	SharedSecretHash pulumi.StringPtrInput
+	// Triggers update of sharedSecretWo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+	SharedSecretWoVersion pulumi.StringPtrInput
 	// URL of the Target VPN gateway with which this VPN tunnel is
 	// associated.
 	TargetVpnGateway pulumi.StringPtrInput
@@ -615,7 +631,9 @@ type vpntunnelArgs struct {
 	// Shared secret used to set the secure session between the Cloud VPN
 	// gateway and the peer VPN gateway.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	SharedSecret string `pulumi:"sharedSecret"`
+	SharedSecret *string `pulumi:"sharedSecret"`
+	// Triggers update of sharedSecretWo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+	SharedSecretWoVersion *string `pulumi:"sharedSecretWoVersion"`
 	// URL of the Target VPN gateway with which this VPN tunnel is
 	// associated.
 	TargetVpnGateway *string `pulumi:"targetVpnGateway"`
@@ -681,7 +699,9 @@ type VPNTunnelArgs struct {
 	// Shared secret used to set the secure session between the Cloud VPN
 	// gateway and the peer VPN gateway.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	SharedSecret pulumi.StringInput
+	SharedSecret pulumi.StringPtrInput
+	// Triggers update of sharedSecretWo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+	SharedSecretWoVersion pulumi.StringPtrInput
 	// URL of the Target VPN gateway with which this VPN tunnel is
 	// associated.
 	TargetVpnGateway pulumi.StringPtrInput
@@ -906,13 +926,18 @@ func (o VPNTunnelOutput) SelfLink() pulumi.StringOutput {
 // Shared secret used to set the secure session between the Cloud VPN
 // gateway and the peer VPN gateway.
 // **Note**: This property is sensitive and will not be displayed in the plan.
-func (o VPNTunnelOutput) SharedSecret() pulumi.StringOutput {
-	return o.ApplyT(func(v *VPNTunnel) pulumi.StringOutput { return v.SharedSecret }).(pulumi.StringOutput)
+func (o VPNTunnelOutput) SharedSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VPNTunnel) pulumi.StringPtrOutput { return v.SharedSecret }).(pulumi.StringPtrOutput)
 }
 
 // Hash of the shared secret.
 func (o VPNTunnelOutput) SharedSecretHash() pulumi.StringOutput {
 	return o.ApplyT(func(v *VPNTunnel) pulumi.StringOutput { return v.SharedSecretHash }).(pulumi.StringOutput)
+}
+
+// Triggers update of sharedSecretWo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+func (o VPNTunnelOutput) SharedSecretWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VPNTunnel) pulumi.StringPtrOutput { return v.SharedSecretWoVersion }).(pulumi.StringPtrOutput)
 }
 
 // URL of the Target VPN gateway with which this VPN tunnel is

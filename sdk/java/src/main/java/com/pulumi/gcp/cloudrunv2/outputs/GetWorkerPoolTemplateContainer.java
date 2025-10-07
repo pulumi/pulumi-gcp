@@ -6,7 +6,9 @@ package com.pulumi.gcp.cloudrunv2.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.outputs.GetWorkerPoolTemplateContainerEnv;
+import com.pulumi.gcp.cloudrunv2.outputs.GetWorkerPoolTemplateContainerLivenessProbe;
 import com.pulumi.gcp.cloudrunv2.outputs.GetWorkerPoolTemplateContainerResource;
+import com.pulumi.gcp.cloudrunv2.outputs.GetWorkerPoolTemplateContainerStartupProbe;
 import com.pulumi.gcp.cloudrunv2.outputs.GetWorkerPoolTemplateContainerVolumeMount;
 import java.lang.String;
 import java.util.List;
@@ -35,6 +37,11 @@ public final class GetWorkerPoolTemplateContainer {
      */
     private String image;
     /**
+     * @return Periodic probe of container liveness. Container will be restarted if the probe fails.
+     * 
+     */
+    private List<GetWorkerPoolTemplateContainerLivenessProbe> livenessProbes;
+    /**
      * @return The name of the Cloud Run v2 Worker Pool.
      * 
      */
@@ -44,6 +51,11 @@ public final class GetWorkerPoolTemplateContainer {
      * 
      */
     private List<GetWorkerPoolTemplateContainerResource> resources;
+    /**
+     * @return Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
+     * 
+     */
+    private List<GetWorkerPoolTemplateContainerStartupProbe> startupProbes;
     /**
      * @return Volume to mount into the container&#39;s filesystem.
      * 
@@ -85,6 +97,13 @@ public final class GetWorkerPoolTemplateContainer {
         return this.image;
     }
     /**
+     * @return Periodic probe of container liveness. Container will be restarted if the probe fails.
+     * 
+     */
+    public List<GetWorkerPoolTemplateContainerLivenessProbe> livenessProbes() {
+        return this.livenessProbes;
+    }
+    /**
      * @return The name of the Cloud Run v2 Worker Pool.
      * 
      */
@@ -97,6 +116,13 @@ public final class GetWorkerPoolTemplateContainer {
      */
     public List<GetWorkerPoolTemplateContainerResource> resources() {
         return this.resources;
+    }
+    /**
+     * @return Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
+     * 
+     */
+    public List<GetWorkerPoolTemplateContainerStartupProbe> startupProbes() {
+        return this.startupProbes;
     }
     /**
      * @return Volume to mount into the container&#39;s filesystem.
@@ -126,8 +152,10 @@ public final class GetWorkerPoolTemplateContainer {
         private List<String> commands;
         private List<GetWorkerPoolTemplateContainerEnv> envs;
         private String image;
+        private List<GetWorkerPoolTemplateContainerLivenessProbe> livenessProbes;
         private String name;
         private List<GetWorkerPoolTemplateContainerResource> resources;
+        private List<GetWorkerPoolTemplateContainerStartupProbe> startupProbes;
         private List<GetWorkerPoolTemplateContainerVolumeMount> volumeMounts;
         private String workingDir;
         public Builder() {}
@@ -137,8 +165,10 @@ public final class GetWorkerPoolTemplateContainer {
     	      this.commands = defaults.commands;
     	      this.envs = defaults.envs;
     	      this.image = defaults.image;
+    	      this.livenessProbes = defaults.livenessProbes;
     	      this.name = defaults.name;
     	      this.resources = defaults.resources;
+    	      this.startupProbes = defaults.startupProbes;
     	      this.volumeMounts = defaults.volumeMounts;
     	      this.workingDir = defaults.workingDir;
         }
@@ -185,6 +215,17 @@ public final class GetWorkerPoolTemplateContainer {
             return this;
         }
         @CustomType.Setter
+        public Builder livenessProbes(List<GetWorkerPoolTemplateContainerLivenessProbe> livenessProbes) {
+            if (livenessProbes == null) {
+              throw new MissingRequiredPropertyException("GetWorkerPoolTemplateContainer", "livenessProbes");
+            }
+            this.livenessProbes = livenessProbes;
+            return this;
+        }
+        public Builder livenessProbes(GetWorkerPoolTemplateContainerLivenessProbe... livenessProbes) {
+            return livenessProbes(List.of(livenessProbes));
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetWorkerPoolTemplateContainer", "name");
@@ -202,6 +243,17 @@ public final class GetWorkerPoolTemplateContainer {
         }
         public Builder resources(GetWorkerPoolTemplateContainerResource... resources) {
             return resources(List.of(resources));
+        }
+        @CustomType.Setter
+        public Builder startupProbes(List<GetWorkerPoolTemplateContainerStartupProbe> startupProbes) {
+            if (startupProbes == null) {
+              throw new MissingRequiredPropertyException("GetWorkerPoolTemplateContainer", "startupProbes");
+            }
+            this.startupProbes = startupProbes;
+            return this;
+        }
+        public Builder startupProbes(GetWorkerPoolTemplateContainerStartupProbe... startupProbes) {
+            return startupProbes(List.of(startupProbes));
         }
         @CustomType.Setter
         public Builder volumeMounts(List<GetWorkerPoolTemplateContainerVolumeMount> volumeMounts) {
@@ -228,8 +280,10 @@ public final class GetWorkerPoolTemplateContainer {
             _resultValue.commands = commands;
             _resultValue.envs = envs;
             _resultValue.image = image;
+            _resultValue.livenessProbes = livenessProbes;
             _resultValue.name = name;
             _resultValue.resources = resources;
+            _resultValue.startupProbes = startupProbes;
             _resultValue.volumeMounts = volumeMounts;
             _resultValue.workingDir = workingDir;
             return _resultValue;

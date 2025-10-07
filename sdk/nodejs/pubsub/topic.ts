@@ -261,6 +261,28 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * ### Pubsub Topic Tags
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const tagKey = new gcp.tags.TagKey("tag_key", {
+ *     parent: project.then(project => project.id),
+ *     shortName: "tag_key",
+ * });
+ * const tagValue = new gcp.tags.TagValue("tag_value", {
+ *     parent: tagKey.id,
+ *     shortName: "tag_value",
+ * });
+ * const example = new gcp.pubsub.Topic("example", {
+ *     name: "example-topic",
+ *     tags: pulumi.all([tagKey.namespacedName, tagValue.shortName]).apply(([namespacedName, shortName]) => {
+ *         [namespacedName]: shortName,
+ *     }),
+ * });
+ * ```
  *
  * ## Import
  *
@@ -381,6 +403,17 @@ export class Topic extends pulumi.CustomResource {
      * Structure is documented below.
      */
     declare public readonly schemaSettings: pulumi.Output<outputs.pubsub.TopicSchemaSettings | undefined>;
+    /**
+     * Input only. Resource manager tags to be bound to the topic. Tag keys and
+     * values have the same definition as resource manager tags. Keys must be in
+     * the format tagKeys/{tag_key_id}, and values are in the format
+     * tagValues/456. The field is ignored when empty. The field is immutable and
+     * causes resource replacement when mutated. This field is only set at create
+     * time and modifying this field after creation will trigger recreation. To
+     * apply tags to an existing resource, see the `gcp.tags.TagValue`
+     * resource.
+     */
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Topic resource with the given unique name, arguments, and options.
@@ -406,6 +439,7 @@ export class Topic extends pulumi.CustomResource {
             resourceInputs["project"] = state?.project;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["schemaSettings"] = state?.schemaSettings;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as TopicArgs | undefined;
             resourceInputs["ingestionDataSourceSettings"] = args?.ingestionDataSourceSettings;
@@ -417,6 +451,7 @@ export class Topic extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["project"] = args?.project;
             resourceInputs["schemaSettings"] = args?.schemaSettings;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
         }
@@ -498,6 +533,17 @@ export interface TopicState {
      * Structure is documented below.
      */
     schemaSettings?: pulumi.Input<inputs.pubsub.TopicSchemaSettings>;
+    /**
+     * Input only. Resource manager tags to be bound to the topic. Tag keys and
+     * values have the same definition as resource manager tags. Keys must be in
+     * the format tagKeys/{tag_key_id}, and values are in the format
+     * tagValues/456. The field is ignored when empty. The field is immutable and
+     * causes resource replacement when mutated. This field is only set at create
+     * time and modifying this field after creation will trigger recreation. To
+     * apply tags to an existing resource, see the `gcp.tags.TagValue`
+     * resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -562,4 +608,15 @@ export interface TopicArgs {
      * Structure is documented below.
      */
     schemaSettings?: pulumi.Input<inputs.pubsub.TopicSchemaSettings>;
+    /**
+     * Input only. Resource manager tags to be bound to the topic. Tag keys and
+     * values have the same definition as resource manager tags. Keys must be in
+     * the format tagKeys/{tag_key_id}, and values are in the format
+     * tagValues/456. The field is ignored when empty. The field is immutable and
+     * causes resource replacement when mutated. This field is only set at create
+     * time and modifying this field after creation will trigger recreation. To
+     * apply tags to an existing resource, see the `gcp.tags.TagValue`
+     * resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

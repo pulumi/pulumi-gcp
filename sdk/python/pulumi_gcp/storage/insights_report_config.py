@@ -24,6 +24,7 @@ class InsightsReportConfigArgs:
                  location: pulumi.Input[_builtins.str],
                  csv_options: Optional[pulumi.Input['InsightsReportConfigCsvOptionsArgs']] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  frequency_options: Optional[pulumi.Input['InsightsReportConfigFrequencyOptionsArgs']] = None,
                  object_metadata_report_options: Optional[pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsArgs']] = None,
                  parquet_options: Optional[pulumi.Input['InsightsReportConfigParquetOptionsArgs']] = None,
@@ -35,6 +36,7 @@ class InsightsReportConfigArgs:
         :param pulumi.Input['InsightsReportConfigCsvOptionsArgs'] csv_options: Options for configuring the format of the inventory report CSV file.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] display_name: The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
+        :param pulumi.Input[_builtins.bool] force_destroy: If set, all the inventory report details associated with this report configuration are deleted.
         :param pulumi.Input['InsightsReportConfigFrequencyOptionsArgs'] frequency_options: Options for configuring how inventory reports are generated.
                Structure is documented below.
         :param pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsArgs'] object_metadata_report_options: Options for including metadata in an inventory report.
@@ -48,6 +50,8 @@ class InsightsReportConfigArgs:
             pulumi.set(__self__, "csv_options", csv_options)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if force_destroy is not None:
+            pulumi.set(__self__, "force_destroy", force_destroy)
         if frequency_options is not None:
             pulumi.set(__self__, "frequency_options", frequency_options)
         if object_metadata_report_options is not None:
@@ -94,6 +98,18 @@ class InsightsReportConfigArgs:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="forceDestroy")
+    def force_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If set, all the inventory report details associated with this report configuration are deleted.
+        """
+        return pulumi.get(self, "force_destroy")
+
+    @force_destroy.setter
+    def force_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "force_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="frequencyOptions")
@@ -152,6 +168,7 @@ class _InsightsReportConfigState:
     def __init__(__self__, *,
                  csv_options: Optional[pulumi.Input['InsightsReportConfigCsvOptionsArgs']] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  frequency_options: Optional[pulumi.Input['InsightsReportConfigFrequencyOptionsArgs']] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -163,6 +180,7 @@ class _InsightsReportConfigState:
         :param pulumi.Input['InsightsReportConfigCsvOptionsArgs'] csv_options: Options for configuring the format of the inventory report CSV file.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] display_name: The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
+        :param pulumi.Input[_builtins.bool] force_destroy: If set, all the inventory report details associated with this report configuration are deleted.
         :param pulumi.Input['InsightsReportConfigFrequencyOptionsArgs'] frequency_options: Options for configuring how inventory reports are generated.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
@@ -178,6 +196,8 @@ class _InsightsReportConfigState:
             pulumi.set(__self__, "csv_options", csv_options)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if force_destroy is not None:
+            pulumi.set(__self__, "force_destroy", force_destroy)
         if frequency_options is not None:
             pulumi.set(__self__, "frequency_options", frequency_options)
         if location is not None:
@@ -215,6 +235,18 @@ class _InsightsReportConfigState:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="forceDestroy")
+    def force_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If set, all the inventory report details associated with this report configuration are deleted.
+        """
+        return pulumi.get(self, "force_destroy")
+
+    @force_destroy.setter
+    def force_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "force_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="frequencyOptions")
@@ -301,6 +333,7 @@ class InsightsReportConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  csv_options: Optional[pulumi.Input[Union['InsightsReportConfigCsvOptionsArgs', 'InsightsReportConfigCsvOptionsArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  frequency_options: Optional[pulumi.Input[Union['InsightsReportConfigFrequencyOptionsArgs', 'InsightsReportConfigFrequencyOptionsArgsDict']]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  object_metadata_report_options: Optional[pulumi.Input[Union['InsightsReportConfigObjectMetadataReportOptionsArgs', 'InsightsReportConfigObjectMetadataReportOptionsArgsDict']]] = None,
@@ -401,6 +434,7 @@ class InsightsReportConfig(pulumi.CustomResource):
         :param pulumi.Input[Union['InsightsReportConfigCsvOptionsArgs', 'InsightsReportConfigCsvOptionsArgsDict']] csv_options: Options for configuring the format of the inventory report CSV file.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] display_name: The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
+        :param pulumi.Input[_builtins.bool] force_destroy: If set, all the inventory report details associated with this report configuration are deleted.
         :param pulumi.Input[Union['InsightsReportConfigFrequencyOptionsArgs', 'InsightsReportConfigFrequencyOptionsArgsDict']] frequency_options: Options for configuring how inventory reports are generated.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
@@ -523,6 +557,7 @@ class InsightsReportConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  csv_options: Optional[pulumi.Input[Union['InsightsReportConfigCsvOptionsArgs', 'InsightsReportConfigCsvOptionsArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  frequency_options: Optional[pulumi.Input[Union['InsightsReportConfigFrequencyOptionsArgs', 'InsightsReportConfigFrequencyOptionsArgsDict']]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  object_metadata_report_options: Optional[pulumi.Input[Union['InsightsReportConfigObjectMetadataReportOptionsArgs', 'InsightsReportConfigObjectMetadataReportOptionsArgsDict']]] = None,
@@ -539,6 +574,7 @@ class InsightsReportConfig(pulumi.CustomResource):
 
             __props__.__dict__["csv_options"] = csv_options
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["force_destroy"] = force_destroy
             __props__.__dict__["frequency_options"] = frequency_options
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -559,6 +595,7 @@ class InsightsReportConfig(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             csv_options: Optional[pulumi.Input[Union['InsightsReportConfigCsvOptionsArgs', 'InsightsReportConfigCsvOptionsArgsDict']]] = None,
             display_name: Optional[pulumi.Input[_builtins.str]] = None,
+            force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
             frequency_options: Optional[pulumi.Input[Union['InsightsReportConfigFrequencyOptionsArgs', 'InsightsReportConfigFrequencyOptionsArgsDict']]] = None,
             location: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -575,6 +612,7 @@ class InsightsReportConfig(pulumi.CustomResource):
         :param pulumi.Input[Union['InsightsReportConfigCsvOptionsArgs', 'InsightsReportConfigCsvOptionsArgsDict']] csv_options: Options for configuring the format of the inventory report CSV file.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] display_name: The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
+        :param pulumi.Input[_builtins.bool] force_destroy: If set, all the inventory report details associated with this report configuration are deleted.
         :param pulumi.Input[Union['InsightsReportConfigFrequencyOptionsArgs', 'InsightsReportConfigFrequencyOptionsArgsDict']] frequency_options: Options for configuring how inventory reports are generated.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
@@ -592,6 +630,7 @@ class InsightsReportConfig(pulumi.CustomResource):
 
         __props__.__dict__["csv_options"] = csv_options
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["force_destroy"] = force_destroy
         __props__.__dict__["frequency_options"] = frequency_options
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
@@ -616,6 +655,14 @@ class InsightsReportConfig(pulumi.CustomResource):
         The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
         """
         return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="forceDestroy")
+    def force_destroy(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        If set, all the inventory report details associated with this report configuration are deleted.
+        """
+        return pulumi.get(self, "force_destroy")
 
     @_builtins.property
     @pulumi.getter(name="frequencyOptions")

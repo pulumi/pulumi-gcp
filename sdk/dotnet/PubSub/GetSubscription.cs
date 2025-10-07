@@ -163,6 +163,7 @@ namespace Pulumi.Gcp.PubSub
         public readonly ImmutableArray<Outputs.GetSubscriptionPushConfigResult> PushConfigs;
         public readonly bool RetainAckedMessages;
         public readonly ImmutableArray<Outputs.GetSubscriptionRetryPolicyResult> RetryPolicies;
+        public readonly ImmutableDictionary<string, string> Tags;
         public readonly string Topic;
 
         [OutputConstructor]
@@ -205,6 +206,8 @@ namespace Pulumi.Gcp.PubSub
 
             ImmutableArray<Outputs.GetSubscriptionRetryPolicyResult> retryPolicies,
 
+            ImmutableDictionary<string, string> tags,
+
             string topic)
         {
             AckDeadlineSeconds = ackDeadlineSeconds;
@@ -226,6 +229,7 @@ namespace Pulumi.Gcp.PubSub
             PushConfigs = pushConfigs;
             RetainAckedMessages = retainAckedMessages;
             RetryPolicies = retryPolicies;
+            Tags = tags;
             Topic = topic;
         }
     }

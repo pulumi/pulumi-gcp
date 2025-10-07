@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceCloneArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceDnsNameArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceIpAddressArgs;
+import com.pulumi.gcp.sql.inputs.DatabaseInstancePointInTimeRestoreContextArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceReplicaConfigurationArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceReplicationClusterArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceRestoreBackupContextArgs;
@@ -322,6 +323,21 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Configuration for creating a new instance using point-in-time-restore from backupdr backup.
+     * 
+     */
+    @Import(name="pointInTimeRestoreContext")
+    private @Nullable Output<DatabaseInstancePointInTimeRestoreContextArgs> pointInTimeRestoreContext;
+
+    /**
+     * @return Configuration for creating a new instance using point-in-time-restore from backupdr backup.
+     * 
+     */
+    public Optional<Output<DatabaseInstancePointInTimeRestoreContextArgs>> pointInTimeRestoreContext() {
+        return Optional.ofNullable(this.pointInTimeRestoreContext);
+    }
+
+    /**
      * The first private (`PRIVATE`) IPv4 address assigned.
      * 
      */
@@ -563,6 +579,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         this.masterInstanceName = $.masterInstanceName;
         this.name = $.name;
         this.nodeCount = $.nodeCount;
+        this.pointInTimeRestoreContext = $.pointInTimeRestoreContext;
         this.privateIpAddress = $.privateIpAddress;
         this.project = $.project;
         this.pscServiceAttachmentLink = $.pscServiceAttachmentLink;
@@ -1012,6 +1029,27 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
          */
         public Builder nodeCount(Integer nodeCount) {
             return nodeCount(Output.of(nodeCount));
+        }
+
+        /**
+         * @param pointInTimeRestoreContext Configuration for creating a new instance using point-in-time-restore from backupdr backup.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pointInTimeRestoreContext(@Nullable Output<DatabaseInstancePointInTimeRestoreContextArgs> pointInTimeRestoreContext) {
+            $.pointInTimeRestoreContext = pointInTimeRestoreContext;
+            return this;
+        }
+
+        /**
+         * @param pointInTimeRestoreContext Configuration for creating a new instance using point-in-time-restore from backupdr backup.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pointInTimeRestoreContext(DatabaseInstancePointInTimeRestoreContextArgs pointInTimeRestoreContext) {
+            return pointInTimeRestoreContext(Output.of(pointInTimeRestoreContext));
         }
 
         /**

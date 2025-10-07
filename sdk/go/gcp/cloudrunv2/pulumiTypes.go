@@ -13659,11 +13659,17 @@ type WorkerPoolTemplateContainer struct {
 	Envs []WorkerPoolTemplateContainerEnv `pulumi:"envs"`
 	// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
 	Image string `pulumi:"image"`
+	// Periodic probe of container liveness. Container will be restarted if the probe fails.
+	// Structure is documented below.
+	LivenessProbe *WorkerPoolTemplateContainerLivenessProbe `pulumi:"livenessProbe"`
 	// Name of the container specified as a DNS_LABEL.
 	Name *string `pulumi:"name"`
 	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	// Structure is documented below.
 	Resources *WorkerPoolTemplateContainerResources `pulumi:"resources"`
+	// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
+	// Structure is documented below.
+	StartupProbe *WorkerPoolTemplateContainerStartupProbe `pulumi:"startupProbe"`
 	// Volume to mount into the container's filesystem.
 	// Structure is documented below.
 	VolumeMounts []WorkerPoolTemplateContainerVolumeMount `pulumi:"volumeMounts"`
@@ -13692,11 +13698,17 @@ type WorkerPoolTemplateContainerArgs struct {
 	Envs WorkerPoolTemplateContainerEnvArrayInput `pulumi:"envs"`
 	// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
 	Image pulumi.StringInput `pulumi:"image"`
+	// Periodic probe of container liveness. Container will be restarted if the probe fails.
+	// Structure is documented below.
+	LivenessProbe WorkerPoolTemplateContainerLivenessProbePtrInput `pulumi:"livenessProbe"`
 	// Name of the container specified as a DNS_LABEL.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	// Structure is documented below.
 	Resources WorkerPoolTemplateContainerResourcesPtrInput `pulumi:"resources"`
+	// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
+	// Structure is documented below.
+	StartupProbe WorkerPoolTemplateContainerStartupProbePtrInput `pulumi:"startupProbe"`
 	// Volume to mount into the container's filesystem.
 	// Structure is documented below.
 	VolumeMounts WorkerPoolTemplateContainerVolumeMountArrayInput `pulumi:"volumeMounts"`
@@ -13776,6 +13788,12 @@ func (o WorkerPoolTemplateContainerOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkerPoolTemplateContainer) string { return v.Image }).(pulumi.StringOutput)
 }
 
+// Periodic probe of container liveness. Container will be restarted if the probe fails.
+// Structure is documented below.
+func (o WorkerPoolTemplateContainerOutput) LivenessProbe() WorkerPoolTemplateContainerLivenessProbePtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainer) *WorkerPoolTemplateContainerLivenessProbe { return v.LivenessProbe }).(WorkerPoolTemplateContainerLivenessProbePtrOutput)
+}
+
 // Name of the container specified as a DNS_LABEL.
 func (o WorkerPoolTemplateContainerOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkerPoolTemplateContainer) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -13785,6 +13803,12 @@ func (o WorkerPoolTemplateContainerOutput) Name() pulumi.StringPtrOutput {
 // Structure is documented below.
 func (o WorkerPoolTemplateContainerOutput) Resources() WorkerPoolTemplateContainerResourcesPtrOutput {
 	return o.ApplyT(func(v WorkerPoolTemplateContainer) *WorkerPoolTemplateContainerResources { return v.Resources }).(WorkerPoolTemplateContainerResourcesPtrOutput)
+}
+
+// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
+// Structure is documented below.
+func (o WorkerPoolTemplateContainerOutput) StartupProbe() WorkerPoolTemplateContainerStartupProbePtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainer) *WorkerPoolTemplateContainerStartupProbe { return v.StartupProbe }).(WorkerPoolTemplateContainerStartupProbePtrOutput)
 }
 
 // Volume to mount into the container's filesystem.
@@ -14237,6 +14261,905 @@ func (o WorkerPoolTemplateContainerEnvValueSourceSecretKeyRefPtrOutput) Version(
 	}).(pulumi.StringPtrOutput)
 }
 
+type WorkerPoolTemplateContainerLivenessProbe struct {
+	// Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+	FailureThreshold *int `pulumi:"failureThreshold"`
+	// Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+	// Structure is documented below.
+	Grpc *WorkerPoolTemplateContainerLivenessProbeGrpc `pulumi:"grpc"`
+	// Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+	// Structure is documented below.
+	HttpGet *WorkerPoolTemplateContainerLivenessProbeHttpGet `pulumi:"httpGet"`
+	// Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
+	// Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+	PeriodSeconds *int `pulumi:"periodSeconds"`
+	// Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+	// Structure is documented below.
+	TcpSocket *WorkerPoolTemplateContainerLivenessProbeTcpSocket `pulumi:"tcpSocket"`
+	// Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
+}
+
+// WorkerPoolTemplateContainerLivenessProbeInput is an input type that accepts WorkerPoolTemplateContainerLivenessProbeArgs and WorkerPoolTemplateContainerLivenessProbeOutput values.
+// You can construct a concrete instance of `WorkerPoolTemplateContainerLivenessProbeInput` via:
+//
+//	WorkerPoolTemplateContainerLivenessProbeArgs{...}
+type WorkerPoolTemplateContainerLivenessProbeInput interface {
+	pulumi.Input
+
+	ToWorkerPoolTemplateContainerLivenessProbeOutput() WorkerPoolTemplateContainerLivenessProbeOutput
+	ToWorkerPoolTemplateContainerLivenessProbeOutputWithContext(context.Context) WorkerPoolTemplateContainerLivenessProbeOutput
+}
+
+type WorkerPoolTemplateContainerLivenessProbeArgs struct {
+	// Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
+	// Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+	// Structure is documented below.
+	Grpc WorkerPoolTemplateContainerLivenessProbeGrpcPtrInput `pulumi:"grpc"`
+	// Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+	// Structure is documented below.
+	HttpGet WorkerPoolTemplateContainerLivenessProbeHttpGetPtrInput `pulumi:"httpGet"`
+	// Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
+	// Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
+	// Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+	// Structure is documented below.
+	TcpSocket WorkerPoolTemplateContainerLivenessProbeTcpSocketPtrInput `pulumi:"tcpSocket"`
+	// Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
+}
+
+func (WorkerPoolTemplateContainerLivenessProbeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbe)(nil)).Elem()
+}
+
+func (i WorkerPoolTemplateContainerLivenessProbeArgs) ToWorkerPoolTemplateContainerLivenessProbeOutput() WorkerPoolTemplateContainerLivenessProbeOutput {
+	return i.ToWorkerPoolTemplateContainerLivenessProbeOutputWithContext(context.Background())
+}
+
+func (i WorkerPoolTemplateContainerLivenessProbeArgs) ToWorkerPoolTemplateContainerLivenessProbeOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerLivenessProbeOutput)
+}
+
+func (i WorkerPoolTemplateContainerLivenessProbeArgs) ToWorkerPoolTemplateContainerLivenessProbePtrOutput() WorkerPoolTemplateContainerLivenessProbePtrOutput {
+	return i.ToWorkerPoolTemplateContainerLivenessProbePtrOutputWithContext(context.Background())
+}
+
+func (i WorkerPoolTemplateContainerLivenessProbeArgs) ToWorkerPoolTemplateContainerLivenessProbePtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerLivenessProbeOutput).ToWorkerPoolTemplateContainerLivenessProbePtrOutputWithContext(ctx)
+}
+
+// WorkerPoolTemplateContainerLivenessProbePtrInput is an input type that accepts WorkerPoolTemplateContainerLivenessProbeArgs, WorkerPoolTemplateContainerLivenessProbePtr and WorkerPoolTemplateContainerLivenessProbePtrOutput values.
+// You can construct a concrete instance of `WorkerPoolTemplateContainerLivenessProbePtrInput` via:
+//
+//	        WorkerPoolTemplateContainerLivenessProbeArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkerPoolTemplateContainerLivenessProbePtrInput interface {
+	pulumi.Input
+
+	ToWorkerPoolTemplateContainerLivenessProbePtrOutput() WorkerPoolTemplateContainerLivenessProbePtrOutput
+	ToWorkerPoolTemplateContainerLivenessProbePtrOutputWithContext(context.Context) WorkerPoolTemplateContainerLivenessProbePtrOutput
+}
+
+type workerPoolTemplateContainerLivenessProbePtrType WorkerPoolTemplateContainerLivenessProbeArgs
+
+func WorkerPoolTemplateContainerLivenessProbePtr(v *WorkerPoolTemplateContainerLivenessProbeArgs) WorkerPoolTemplateContainerLivenessProbePtrInput {
+	return (*workerPoolTemplateContainerLivenessProbePtrType)(v)
+}
+
+func (*workerPoolTemplateContainerLivenessProbePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkerPoolTemplateContainerLivenessProbe)(nil)).Elem()
+}
+
+func (i *workerPoolTemplateContainerLivenessProbePtrType) ToWorkerPoolTemplateContainerLivenessProbePtrOutput() WorkerPoolTemplateContainerLivenessProbePtrOutput {
+	return i.ToWorkerPoolTemplateContainerLivenessProbePtrOutputWithContext(context.Background())
+}
+
+func (i *workerPoolTemplateContainerLivenessProbePtrType) ToWorkerPoolTemplateContainerLivenessProbePtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerLivenessProbePtrOutput)
+}
+
+type WorkerPoolTemplateContainerLivenessProbeOutput struct{ *pulumi.OutputState }
+
+func (WorkerPoolTemplateContainerLivenessProbeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbe)(nil)).Elem()
+}
+
+func (o WorkerPoolTemplateContainerLivenessProbeOutput) ToWorkerPoolTemplateContainerLivenessProbeOutput() WorkerPoolTemplateContainerLivenessProbeOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateContainerLivenessProbeOutput) ToWorkerPoolTemplateContainerLivenessProbeOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateContainerLivenessProbeOutput) ToWorkerPoolTemplateContainerLivenessProbePtrOutput() WorkerPoolTemplateContainerLivenessProbePtrOutput {
+	return o.ToWorkerPoolTemplateContainerLivenessProbePtrOutputWithContext(context.Background())
+}
+
+func (o WorkerPoolTemplateContainerLivenessProbeOutput) ToWorkerPoolTemplateContainerLivenessProbePtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerPoolTemplateContainerLivenessProbe) *WorkerPoolTemplateContainerLivenessProbe {
+		return &v
+	}).(WorkerPoolTemplateContainerLivenessProbePtrOutput)
+}
+
+// Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+func (o WorkerPoolTemplateContainerLivenessProbeOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerLivenessProbe) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
+}
+
+// Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+// Structure is documented below.
+func (o WorkerPoolTemplateContainerLivenessProbeOutput) Grpc() WorkerPoolTemplateContainerLivenessProbeGrpcPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerLivenessProbe) *WorkerPoolTemplateContainerLivenessProbeGrpc {
+		return v.Grpc
+	}).(WorkerPoolTemplateContainerLivenessProbeGrpcPtrOutput)
+}
+
+// Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+// Structure is documented below.
+func (o WorkerPoolTemplateContainerLivenessProbeOutput) HttpGet() WorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerLivenessProbe) *WorkerPoolTemplateContainerLivenessProbeHttpGet {
+		return v.HttpGet
+	}).(WorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutput)
+}
+
+// Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+func (o WorkerPoolTemplateContainerLivenessProbeOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerLivenessProbe) *int { return v.InitialDelaySeconds }).(pulumi.IntPtrOutput)
+}
+
+// Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+func (o WorkerPoolTemplateContainerLivenessProbeOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerLivenessProbe) *int { return v.PeriodSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+// Structure is documented below.
+func (o WorkerPoolTemplateContainerLivenessProbeOutput) TcpSocket() WorkerPoolTemplateContainerLivenessProbeTcpSocketPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerLivenessProbe) *WorkerPoolTemplateContainerLivenessProbeTcpSocket {
+		return v.TcpSocket
+	}).(WorkerPoolTemplateContainerLivenessProbeTcpSocketPtrOutput)
+}
+
+// Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+func (o WorkerPoolTemplateContainerLivenessProbeOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerLivenessProbe) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
+}
+
+type WorkerPoolTemplateContainerLivenessProbePtrOutput struct{ *pulumi.OutputState }
+
+func (WorkerPoolTemplateContainerLivenessProbePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkerPoolTemplateContainerLivenessProbe)(nil)).Elem()
+}
+
+func (o WorkerPoolTemplateContainerLivenessProbePtrOutput) ToWorkerPoolTemplateContainerLivenessProbePtrOutput() WorkerPoolTemplateContainerLivenessProbePtrOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateContainerLivenessProbePtrOutput) ToWorkerPoolTemplateContainerLivenessProbePtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbePtrOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateContainerLivenessProbePtrOutput) Elem() WorkerPoolTemplateContainerLivenessProbeOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerLivenessProbe) WorkerPoolTemplateContainerLivenessProbe {
+		if v != nil {
+			return *v
+		}
+		var ret WorkerPoolTemplateContainerLivenessProbe
+		return ret
+	}).(WorkerPoolTemplateContainerLivenessProbeOutput)
+}
+
+// Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+func (o WorkerPoolTemplateContainerLivenessProbePtrOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerLivenessProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FailureThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+// Structure is documented below.
+func (o WorkerPoolTemplateContainerLivenessProbePtrOutput) Grpc() WorkerPoolTemplateContainerLivenessProbeGrpcPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerLivenessProbe) *WorkerPoolTemplateContainerLivenessProbeGrpc {
+		if v == nil {
+			return nil
+		}
+		return v.Grpc
+	}).(WorkerPoolTemplateContainerLivenessProbeGrpcPtrOutput)
+}
+
+// Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+// Structure is documented below.
+func (o WorkerPoolTemplateContainerLivenessProbePtrOutput) HttpGet() WorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerLivenessProbe) *WorkerPoolTemplateContainerLivenessProbeHttpGet {
+		if v == nil {
+			return nil
+		}
+		return v.HttpGet
+	}).(WorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutput)
+}
+
+// Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+func (o WorkerPoolTemplateContainerLivenessProbePtrOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerLivenessProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InitialDelaySeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+func (o WorkerPoolTemplateContainerLivenessProbePtrOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerLivenessProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+// Structure is documented below.
+func (o WorkerPoolTemplateContainerLivenessProbePtrOutput) TcpSocket() WorkerPoolTemplateContainerLivenessProbeTcpSocketPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerLivenessProbe) *WorkerPoolTemplateContainerLivenessProbeTcpSocket {
+		if v == nil {
+			return nil
+		}
+		return v.TcpSocket
+	}).(WorkerPoolTemplateContainerLivenessProbeTcpSocketPtrOutput)
+}
+
+// Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+func (o WorkerPoolTemplateContainerLivenessProbePtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerLivenessProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type WorkerPoolTemplateContainerLivenessProbeGrpc struct {
+	// Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+	Port *int `pulumi:"port"`
+	// Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC
+	Service *string `pulumi:"service"`
+}
+
+// WorkerPoolTemplateContainerLivenessProbeGrpcInput is an input type that accepts WorkerPoolTemplateContainerLivenessProbeGrpcArgs and WorkerPoolTemplateContainerLivenessProbeGrpcOutput values.
+// You can construct a concrete instance of `WorkerPoolTemplateContainerLivenessProbeGrpcInput` via:
+//
+//	WorkerPoolTemplateContainerLivenessProbeGrpcArgs{...}
+type WorkerPoolTemplateContainerLivenessProbeGrpcInput interface {
+	pulumi.Input
+
+	ToWorkerPoolTemplateContainerLivenessProbeGrpcOutput() WorkerPoolTemplateContainerLivenessProbeGrpcOutput
+	ToWorkerPoolTemplateContainerLivenessProbeGrpcOutputWithContext(context.Context) WorkerPoolTemplateContainerLivenessProbeGrpcOutput
+}
+
+type WorkerPoolTemplateContainerLivenessProbeGrpcArgs struct {
+	// Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC
+	Service pulumi.StringPtrInput `pulumi:"service"`
+}
+
+func (WorkerPoolTemplateContainerLivenessProbeGrpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeGrpc)(nil)).Elem()
+}
+
+func (i WorkerPoolTemplateContainerLivenessProbeGrpcArgs) ToWorkerPoolTemplateContainerLivenessProbeGrpcOutput() WorkerPoolTemplateContainerLivenessProbeGrpcOutput {
+	return i.ToWorkerPoolTemplateContainerLivenessProbeGrpcOutputWithContext(context.Background())
+}
+
+func (i WorkerPoolTemplateContainerLivenessProbeGrpcArgs) ToWorkerPoolTemplateContainerLivenessProbeGrpcOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeGrpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerLivenessProbeGrpcOutput)
+}
+
+func (i WorkerPoolTemplateContainerLivenessProbeGrpcArgs) ToWorkerPoolTemplateContainerLivenessProbeGrpcPtrOutput() WorkerPoolTemplateContainerLivenessProbeGrpcPtrOutput {
+	return i.ToWorkerPoolTemplateContainerLivenessProbeGrpcPtrOutputWithContext(context.Background())
+}
+
+func (i WorkerPoolTemplateContainerLivenessProbeGrpcArgs) ToWorkerPoolTemplateContainerLivenessProbeGrpcPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeGrpcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerLivenessProbeGrpcOutput).ToWorkerPoolTemplateContainerLivenessProbeGrpcPtrOutputWithContext(ctx)
+}
+
+// WorkerPoolTemplateContainerLivenessProbeGrpcPtrInput is an input type that accepts WorkerPoolTemplateContainerLivenessProbeGrpcArgs, WorkerPoolTemplateContainerLivenessProbeGrpcPtr and WorkerPoolTemplateContainerLivenessProbeGrpcPtrOutput values.
+// You can construct a concrete instance of `WorkerPoolTemplateContainerLivenessProbeGrpcPtrInput` via:
+//
+//	        WorkerPoolTemplateContainerLivenessProbeGrpcArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkerPoolTemplateContainerLivenessProbeGrpcPtrInput interface {
+	pulumi.Input
+
+	ToWorkerPoolTemplateContainerLivenessProbeGrpcPtrOutput() WorkerPoolTemplateContainerLivenessProbeGrpcPtrOutput
+	ToWorkerPoolTemplateContainerLivenessProbeGrpcPtrOutputWithContext(context.Context) WorkerPoolTemplateContainerLivenessProbeGrpcPtrOutput
+}
+
+type workerPoolTemplateContainerLivenessProbeGrpcPtrType WorkerPoolTemplateContainerLivenessProbeGrpcArgs
+
+func WorkerPoolTemplateContainerLivenessProbeGrpcPtr(v *WorkerPoolTemplateContainerLivenessProbeGrpcArgs) WorkerPoolTemplateContainerLivenessProbeGrpcPtrInput {
+	return (*workerPoolTemplateContainerLivenessProbeGrpcPtrType)(v)
+}
+
+func (*workerPoolTemplateContainerLivenessProbeGrpcPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkerPoolTemplateContainerLivenessProbeGrpc)(nil)).Elem()
+}
+
+func (i *workerPoolTemplateContainerLivenessProbeGrpcPtrType) ToWorkerPoolTemplateContainerLivenessProbeGrpcPtrOutput() WorkerPoolTemplateContainerLivenessProbeGrpcPtrOutput {
+	return i.ToWorkerPoolTemplateContainerLivenessProbeGrpcPtrOutputWithContext(context.Background())
+}
+
+func (i *workerPoolTemplateContainerLivenessProbeGrpcPtrType) ToWorkerPoolTemplateContainerLivenessProbeGrpcPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeGrpcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerLivenessProbeGrpcPtrOutput)
+}
+
+type WorkerPoolTemplateContainerLivenessProbeGrpcOutput struct{ *pulumi.OutputState }
+
+func (WorkerPoolTemplateContainerLivenessProbeGrpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeGrpc)(nil)).Elem()
+}
+
+func (o WorkerPoolTemplateContainerLivenessProbeGrpcOutput) ToWorkerPoolTemplateContainerLivenessProbeGrpcOutput() WorkerPoolTemplateContainerLivenessProbeGrpcOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateContainerLivenessProbeGrpcOutput) ToWorkerPoolTemplateContainerLivenessProbeGrpcOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeGrpcOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateContainerLivenessProbeGrpcOutput) ToWorkerPoolTemplateContainerLivenessProbeGrpcPtrOutput() WorkerPoolTemplateContainerLivenessProbeGrpcPtrOutput {
+	return o.ToWorkerPoolTemplateContainerLivenessProbeGrpcPtrOutputWithContext(context.Background())
+}
+
+func (o WorkerPoolTemplateContainerLivenessProbeGrpcOutput) ToWorkerPoolTemplateContainerLivenessProbeGrpcPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeGrpcPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerPoolTemplateContainerLivenessProbeGrpc) *WorkerPoolTemplateContainerLivenessProbeGrpc {
+		return &v
+	}).(WorkerPoolTemplateContainerLivenessProbeGrpcPtrOutput)
+}
+
+// Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+func (o WorkerPoolTemplateContainerLivenessProbeGrpcOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerLivenessProbeGrpc) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC
+func (o WorkerPoolTemplateContainerLivenessProbeGrpcOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerLivenessProbeGrpc) *string { return v.Service }).(pulumi.StringPtrOutput)
+}
+
+type WorkerPoolTemplateContainerLivenessProbeGrpcPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkerPoolTemplateContainerLivenessProbeGrpcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkerPoolTemplateContainerLivenessProbeGrpc)(nil)).Elem()
+}
+
+func (o WorkerPoolTemplateContainerLivenessProbeGrpcPtrOutput) ToWorkerPoolTemplateContainerLivenessProbeGrpcPtrOutput() WorkerPoolTemplateContainerLivenessProbeGrpcPtrOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateContainerLivenessProbeGrpcPtrOutput) ToWorkerPoolTemplateContainerLivenessProbeGrpcPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeGrpcPtrOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateContainerLivenessProbeGrpcPtrOutput) Elem() WorkerPoolTemplateContainerLivenessProbeGrpcOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerLivenessProbeGrpc) WorkerPoolTemplateContainerLivenessProbeGrpc {
+		if v != nil {
+			return *v
+		}
+		var ret WorkerPoolTemplateContainerLivenessProbeGrpc
+		return ret
+	}).(WorkerPoolTemplateContainerLivenessProbeGrpcOutput)
+}
+
+// Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+func (o WorkerPoolTemplateContainerLivenessProbeGrpcPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerLivenessProbeGrpc) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC
+func (o WorkerPoolTemplateContainerLivenessProbeGrpcPtrOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerLivenessProbeGrpc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Service
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkerPoolTemplateContainerLivenessProbeHttpGet struct {
+	// Optional. Custom headers to set in the request. HTTP allows repeated headers.
+	// Structure is documented below.
+	HttpHeaders *WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders `pulumi:"httpHeaders"`
+	// Optional. Path to access on the HTTP server. Defaults to '/'.
+	Path *string `pulumi:"path"`
+	// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+	Port *int `pulumi:"port"`
+}
+
+// WorkerPoolTemplateContainerLivenessProbeHttpGetInput is an input type that accepts WorkerPoolTemplateContainerLivenessProbeHttpGetArgs and WorkerPoolTemplateContainerLivenessProbeHttpGetOutput values.
+// You can construct a concrete instance of `WorkerPoolTemplateContainerLivenessProbeHttpGetInput` via:
+//
+//	WorkerPoolTemplateContainerLivenessProbeHttpGetArgs{...}
+type WorkerPoolTemplateContainerLivenessProbeHttpGetInput interface {
+	pulumi.Input
+
+	ToWorkerPoolTemplateContainerLivenessProbeHttpGetOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetOutput
+	ToWorkerPoolTemplateContainerLivenessProbeHttpGetOutputWithContext(context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetOutput
+}
+
+type WorkerPoolTemplateContainerLivenessProbeHttpGetArgs struct {
+	// Optional. Custom headers to set in the request. HTTP allows repeated headers.
+	// Structure is documented below.
+	HttpHeaders WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrInput `pulumi:"httpHeaders"`
+	// Optional. Path to access on the HTTP server. Defaults to '/'.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+}
+
+func (WorkerPoolTemplateContainerLivenessProbeHttpGetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeHttpGet)(nil)).Elem()
+}
+
+func (i WorkerPoolTemplateContainerLivenessProbeHttpGetArgs) ToWorkerPoolTemplateContainerLivenessProbeHttpGetOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetOutput {
+	return i.ToWorkerPoolTemplateContainerLivenessProbeHttpGetOutputWithContext(context.Background())
+}
+
+func (i WorkerPoolTemplateContainerLivenessProbeHttpGetArgs) ToWorkerPoolTemplateContainerLivenessProbeHttpGetOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerLivenessProbeHttpGetOutput)
+}
+
+func (i WorkerPoolTemplateContainerLivenessProbeHttpGetArgs) ToWorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutput {
+	return i.ToWorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (i WorkerPoolTemplateContainerLivenessProbeHttpGetArgs) ToWorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerLivenessProbeHttpGetOutput).ToWorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutputWithContext(ctx)
+}
+
+// WorkerPoolTemplateContainerLivenessProbeHttpGetPtrInput is an input type that accepts WorkerPoolTemplateContainerLivenessProbeHttpGetArgs, WorkerPoolTemplateContainerLivenessProbeHttpGetPtr and WorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutput values.
+// You can construct a concrete instance of `WorkerPoolTemplateContainerLivenessProbeHttpGetPtrInput` via:
+//
+//	        WorkerPoolTemplateContainerLivenessProbeHttpGetArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkerPoolTemplateContainerLivenessProbeHttpGetPtrInput interface {
+	pulumi.Input
+
+	ToWorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutput
+	ToWorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutputWithContext(context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutput
+}
+
+type workerPoolTemplateContainerLivenessProbeHttpGetPtrType WorkerPoolTemplateContainerLivenessProbeHttpGetArgs
+
+func WorkerPoolTemplateContainerLivenessProbeHttpGetPtr(v *WorkerPoolTemplateContainerLivenessProbeHttpGetArgs) WorkerPoolTemplateContainerLivenessProbeHttpGetPtrInput {
+	return (*workerPoolTemplateContainerLivenessProbeHttpGetPtrType)(v)
+}
+
+func (*workerPoolTemplateContainerLivenessProbeHttpGetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkerPoolTemplateContainerLivenessProbeHttpGet)(nil)).Elem()
+}
+
+func (i *workerPoolTemplateContainerLivenessProbeHttpGetPtrType) ToWorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutput {
+	return i.ToWorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (i *workerPoolTemplateContainerLivenessProbeHttpGetPtrType) ToWorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutput)
+}
+
+type WorkerPoolTemplateContainerLivenessProbeHttpGetOutput struct{ *pulumi.OutputState }
+
+func (WorkerPoolTemplateContainerLivenessProbeHttpGetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeHttpGet)(nil)).Elem()
+}
+
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetOutput) ToWorkerPoolTemplateContainerLivenessProbeHttpGetOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetOutput) ToWorkerPoolTemplateContainerLivenessProbeHttpGetOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetOutput) ToWorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutput {
+	return o.ToWorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetOutput) ToWorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerPoolTemplateContainerLivenessProbeHttpGet) *WorkerPoolTemplateContainerLivenessProbeHttpGet {
+		return &v
+	}).(WorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutput)
+}
+
+// Optional. Custom headers to set in the request. HTTP allows repeated headers.
+// Structure is documented below.
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetOutput) HttpHeaders() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerLivenessProbeHttpGet) *WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders {
+		return v.HttpHeaders
+	}).(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput)
+}
+
+// Optional. Path to access on the HTTP server. Defaults to '/'.
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerLivenessProbeHttpGet) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerLivenessProbeHttpGet) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+type WorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkerPoolTemplateContainerLivenessProbeHttpGet)(nil)).Elem()
+}
+
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutput) ToWorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutput) ToWorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutput) Elem() WorkerPoolTemplateContainerLivenessProbeHttpGetOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerLivenessProbeHttpGet) WorkerPoolTemplateContainerLivenessProbeHttpGet {
+		if v != nil {
+			return *v
+		}
+		var ret WorkerPoolTemplateContainerLivenessProbeHttpGet
+		return ret
+	}).(WorkerPoolTemplateContainerLivenessProbeHttpGetOutput)
+}
+
+// Optional. Custom headers to set in the request. HTTP allows repeated headers.
+// Structure is documented below.
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutput) HttpHeaders() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerLivenessProbeHttpGet) *WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders {
+		if v == nil {
+			return nil
+		}
+		return v.HttpHeaders
+	}).(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput)
+}
+
+// Optional. Path to access on the HTTP server. Defaults to '/'.
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerLivenessProbeHttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerLivenessProbeHttpGet) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+type WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders struct {
+	// Required. The header field name
+	Port int `pulumi:"port"`
+	// Optional. The header field value
+	Value *string `pulumi:"value"`
+}
+
+// WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersInput is an input type that accepts WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs and WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput values.
+// You can construct a concrete instance of `WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersInput` via:
+//
+//	WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs{...}
+type WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersInput interface {
+	pulumi.Input
+
+	ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput
+	ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutputWithContext(context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput
+}
+
+type WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs struct {
+	// Required. The header field name
+	Port pulumi.IntInput `pulumi:"port"`
+	// Optional. The header field value
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders)(nil)).Elem()
+}
+
+func (i WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput {
+	return i.ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutputWithContext(context.Background())
+}
+
+func (i WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput)
+}
+
+func (i WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput {
+	return i.ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutputWithContext(context.Background())
+}
+
+func (i WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput).ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutputWithContext(ctx)
+}
+
+// WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrInput is an input type that accepts WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs, WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtr and WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput values.
+// You can construct a concrete instance of `WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrInput` via:
+//
+//	        WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrInput interface {
+	pulumi.Input
+
+	ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput
+	ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutputWithContext(context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput
+}
+
+type workerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrType WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs
+
+func WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtr(v *WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrInput {
+	return (*workerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrType)(v)
+}
+
+func (*workerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders)(nil)).Elem()
+}
+
+func (i *workerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrType) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput {
+	return i.ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutputWithContext(context.Background())
+}
+
+func (i *workerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrType) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput)
+}
+
+type WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput struct{ *pulumi.OutputState }
+
+func (WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders)(nil)).Elem()
+}
+
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput {
+	return o.ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutputWithContext(context.Background())
+}
+
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders) *WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders {
+		return &v
+	}).(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput)
+}
+
+// Required. The header field name
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Optional. The header field value
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders)(nil)).Elem()
+}
+
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput) Elem() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders {
+		if v != nil {
+			return *v
+		}
+		var ret WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders
+		return ret
+	}).(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput)
+}
+
+// Required. The header field name
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. The header field value
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkerPoolTemplateContainerLivenessProbeTcpSocket struct {
+	// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+	Port *int `pulumi:"port"`
+}
+
+// WorkerPoolTemplateContainerLivenessProbeTcpSocketInput is an input type that accepts WorkerPoolTemplateContainerLivenessProbeTcpSocketArgs and WorkerPoolTemplateContainerLivenessProbeTcpSocketOutput values.
+// You can construct a concrete instance of `WorkerPoolTemplateContainerLivenessProbeTcpSocketInput` via:
+//
+//	WorkerPoolTemplateContainerLivenessProbeTcpSocketArgs{...}
+type WorkerPoolTemplateContainerLivenessProbeTcpSocketInput interface {
+	pulumi.Input
+
+	ToWorkerPoolTemplateContainerLivenessProbeTcpSocketOutput() WorkerPoolTemplateContainerLivenessProbeTcpSocketOutput
+	ToWorkerPoolTemplateContainerLivenessProbeTcpSocketOutputWithContext(context.Context) WorkerPoolTemplateContainerLivenessProbeTcpSocketOutput
+}
+
+type WorkerPoolTemplateContainerLivenessProbeTcpSocketArgs struct {
+	// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+}
+
+func (WorkerPoolTemplateContainerLivenessProbeTcpSocketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeTcpSocket)(nil)).Elem()
+}
+
+func (i WorkerPoolTemplateContainerLivenessProbeTcpSocketArgs) ToWorkerPoolTemplateContainerLivenessProbeTcpSocketOutput() WorkerPoolTemplateContainerLivenessProbeTcpSocketOutput {
+	return i.ToWorkerPoolTemplateContainerLivenessProbeTcpSocketOutputWithContext(context.Background())
+}
+
+func (i WorkerPoolTemplateContainerLivenessProbeTcpSocketArgs) ToWorkerPoolTemplateContainerLivenessProbeTcpSocketOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeTcpSocketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerLivenessProbeTcpSocketOutput)
+}
+
+func (i WorkerPoolTemplateContainerLivenessProbeTcpSocketArgs) ToWorkerPoolTemplateContainerLivenessProbeTcpSocketPtrOutput() WorkerPoolTemplateContainerLivenessProbeTcpSocketPtrOutput {
+	return i.ToWorkerPoolTemplateContainerLivenessProbeTcpSocketPtrOutputWithContext(context.Background())
+}
+
+func (i WorkerPoolTemplateContainerLivenessProbeTcpSocketArgs) ToWorkerPoolTemplateContainerLivenessProbeTcpSocketPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeTcpSocketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerLivenessProbeTcpSocketOutput).ToWorkerPoolTemplateContainerLivenessProbeTcpSocketPtrOutputWithContext(ctx)
+}
+
+// WorkerPoolTemplateContainerLivenessProbeTcpSocketPtrInput is an input type that accepts WorkerPoolTemplateContainerLivenessProbeTcpSocketArgs, WorkerPoolTemplateContainerLivenessProbeTcpSocketPtr and WorkerPoolTemplateContainerLivenessProbeTcpSocketPtrOutput values.
+// You can construct a concrete instance of `WorkerPoolTemplateContainerLivenessProbeTcpSocketPtrInput` via:
+//
+//	        WorkerPoolTemplateContainerLivenessProbeTcpSocketArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkerPoolTemplateContainerLivenessProbeTcpSocketPtrInput interface {
+	pulumi.Input
+
+	ToWorkerPoolTemplateContainerLivenessProbeTcpSocketPtrOutput() WorkerPoolTemplateContainerLivenessProbeTcpSocketPtrOutput
+	ToWorkerPoolTemplateContainerLivenessProbeTcpSocketPtrOutputWithContext(context.Context) WorkerPoolTemplateContainerLivenessProbeTcpSocketPtrOutput
+}
+
+type workerPoolTemplateContainerLivenessProbeTcpSocketPtrType WorkerPoolTemplateContainerLivenessProbeTcpSocketArgs
+
+func WorkerPoolTemplateContainerLivenessProbeTcpSocketPtr(v *WorkerPoolTemplateContainerLivenessProbeTcpSocketArgs) WorkerPoolTemplateContainerLivenessProbeTcpSocketPtrInput {
+	return (*workerPoolTemplateContainerLivenessProbeTcpSocketPtrType)(v)
+}
+
+func (*workerPoolTemplateContainerLivenessProbeTcpSocketPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkerPoolTemplateContainerLivenessProbeTcpSocket)(nil)).Elem()
+}
+
+func (i *workerPoolTemplateContainerLivenessProbeTcpSocketPtrType) ToWorkerPoolTemplateContainerLivenessProbeTcpSocketPtrOutput() WorkerPoolTemplateContainerLivenessProbeTcpSocketPtrOutput {
+	return i.ToWorkerPoolTemplateContainerLivenessProbeTcpSocketPtrOutputWithContext(context.Background())
+}
+
+func (i *workerPoolTemplateContainerLivenessProbeTcpSocketPtrType) ToWorkerPoolTemplateContainerLivenessProbeTcpSocketPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeTcpSocketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerLivenessProbeTcpSocketPtrOutput)
+}
+
+type WorkerPoolTemplateContainerLivenessProbeTcpSocketOutput struct{ *pulumi.OutputState }
+
+func (WorkerPoolTemplateContainerLivenessProbeTcpSocketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeTcpSocket)(nil)).Elem()
+}
+
+func (o WorkerPoolTemplateContainerLivenessProbeTcpSocketOutput) ToWorkerPoolTemplateContainerLivenessProbeTcpSocketOutput() WorkerPoolTemplateContainerLivenessProbeTcpSocketOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateContainerLivenessProbeTcpSocketOutput) ToWorkerPoolTemplateContainerLivenessProbeTcpSocketOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeTcpSocketOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateContainerLivenessProbeTcpSocketOutput) ToWorkerPoolTemplateContainerLivenessProbeTcpSocketPtrOutput() WorkerPoolTemplateContainerLivenessProbeTcpSocketPtrOutput {
+	return o.ToWorkerPoolTemplateContainerLivenessProbeTcpSocketPtrOutputWithContext(context.Background())
+}
+
+func (o WorkerPoolTemplateContainerLivenessProbeTcpSocketOutput) ToWorkerPoolTemplateContainerLivenessProbeTcpSocketPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeTcpSocketPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerPoolTemplateContainerLivenessProbeTcpSocket) *WorkerPoolTemplateContainerLivenessProbeTcpSocket {
+		return &v
+	}).(WorkerPoolTemplateContainerLivenessProbeTcpSocketPtrOutput)
+}
+
+// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+func (o WorkerPoolTemplateContainerLivenessProbeTcpSocketOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerLivenessProbeTcpSocket) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+type WorkerPoolTemplateContainerLivenessProbeTcpSocketPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkerPoolTemplateContainerLivenessProbeTcpSocketPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkerPoolTemplateContainerLivenessProbeTcpSocket)(nil)).Elem()
+}
+
+func (o WorkerPoolTemplateContainerLivenessProbeTcpSocketPtrOutput) ToWorkerPoolTemplateContainerLivenessProbeTcpSocketPtrOutput() WorkerPoolTemplateContainerLivenessProbeTcpSocketPtrOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateContainerLivenessProbeTcpSocketPtrOutput) ToWorkerPoolTemplateContainerLivenessProbeTcpSocketPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeTcpSocketPtrOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateContainerLivenessProbeTcpSocketPtrOutput) Elem() WorkerPoolTemplateContainerLivenessProbeTcpSocketOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerLivenessProbeTcpSocket) WorkerPoolTemplateContainerLivenessProbeTcpSocket {
+		if v != nil {
+			return *v
+		}
+		var ret WorkerPoolTemplateContainerLivenessProbeTcpSocket
+		return ret
+	}).(WorkerPoolTemplateContainerLivenessProbeTcpSocketOutput)
+}
+
+// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+func (o WorkerPoolTemplateContainerLivenessProbeTcpSocketPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerLivenessProbeTcpSocket) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
 type WorkerPoolTemplateContainerResources struct {
 	// Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits map[string]string `pulumi:"limits"`
@@ -14372,6 +15295,905 @@ func (o WorkerPoolTemplateContainerResourcesPtrOutput) Limits() pulumi.StringMap
 		}
 		return v.Limits
 	}).(pulumi.StringMapOutput)
+}
+
+type WorkerPoolTemplateContainerStartupProbe struct {
+	// Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+	FailureThreshold *int `pulumi:"failureThreshold"`
+	// Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+	// Structure is documented below.
+	Grpc *WorkerPoolTemplateContainerStartupProbeGrpc `pulumi:"grpc"`
+	// Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+	// Structure is documented below.
+	HttpGet *WorkerPoolTemplateContainerStartupProbeHttpGet `pulumi:"httpGet"`
+	// Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
+	// Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+	PeriodSeconds *int `pulumi:"periodSeconds"`
+	// Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+	// Structure is documented below.
+	TcpSocket *WorkerPoolTemplateContainerStartupProbeTcpSocket `pulumi:"tcpSocket"`
+	// Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
+}
+
+// WorkerPoolTemplateContainerStartupProbeInput is an input type that accepts WorkerPoolTemplateContainerStartupProbeArgs and WorkerPoolTemplateContainerStartupProbeOutput values.
+// You can construct a concrete instance of `WorkerPoolTemplateContainerStartupProbeInput` via:
+//
+//	WorkerPoolTemplateContainerStartupProbeArgs{...}
+type WorkerPoolTemplateContainerStartupProbeInput interface {
+	pulumi.Input
+
+	ToWorkerPoolTemplateContainerStartupProbeOutput() WorkerPoolTemplateContainerStartupProbeOutput
+	ToWorkerPoolTemplateContainerStartupProbeOutputWithContext(context.Context) WorkerPoolTemplateContainerStartupProbeOutput
+}
+
+type WorkerPoolTemplateContainerStartupProbeArgs struct {
+	// Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
+	// Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+	// Structure is documented below.
+	Grpc WorkerPoolTemplateContainerStartupProbeGrpcPtrInput `pulumi:"grpc"`
+	// Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+	// Structure is documented below.
+	HttpGet WorkerPoolTemplateContainerStartupProbeHttpGetPtrInput `pulumi:"httpGet"`
+	// Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
+	// Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
+	// Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+	// Structure is documented below.
+	TcpSocket WorkerPoolTemplateContainerStartupProbeTcpSocketPtrInput `pulumi:"tcpSocket"`
+	// Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
+}
+
+func (WorkerPoolTemplateContainerStartupProbeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbe)(nil)).Elem()
+}
+
+func (i WorkerPoolTemplateContainerStartupProbeArgs) ToWorkerPoolTemplateContainerStartupProbeOutput() WorkerPoolTemplateContainerStartupProbeOutput {
+	return i.ToWorkerPoolTemplateContainerStartupProbeOutputWithContext(context.Background())
+}
+
+func (i WorkerPoolTemplateContainerStartupProbeArgs) ToWorkerPoolTemplateContainerStartupProbeOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerStartupProbeOutput)
+}
+
+func (i WorkerPoolTemplateContainerStartupProbeArgs) ToWorkerPoolTemplateContainerStartupProbePtrOutput() WorkerPoolTemplateContainerStartupProbePtrOutput {
+	return i.ToWorkerPoolTemplateContainerStartupProbePtrOutputWithContext(context.Background())
+}
+
+func (i WorkerPoolTemplateContainerStartupProbeArgs) ToWorkerPoolTemplateContainerStartupProbePtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerStartupProbeOutput).ToWorkerPoolTemplateContainerStartupProbePtrOutputWithContext(ctx)
+}
+
+// WorkerPoolTemplateContainerStartupProbePtrInput is an input type that accepts WorkerPoolTemplateContainerStartupProbeArgs, WorkerPoolTemplateContainerStartupProbePtr and WorkerPoolTemplateContainerStartupProbePtrOutput values.
+// You can construct a concrete instance of `WorkerPoolTemplateContainerStartupProbePtrInput` via:
+//
+//	        WorkerPoolTemplateContainerStartupProbeArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkerPoolTemplateContainerStartupProbePtrInput interface {
+	pulumi.Input
+
+	ToWorkerPoolTemplateContainerStartupProbePtrOutput() WorkerPoolTemplateContainerStartupProbePtrOutput
+	ToWorkerPoolTemplateContainerStartupProbePtrOutputWithContext(context.Context) WorkerPoolTemplateContainerStartupProbePtrOutput
+}
+
+type workerPoolTemplateContainerStartupProbePtrType WorkerPoolTemplateContainerStartupProbeArgs
+
+func WorkerPoolTemplateContainerStartupProbePtr(v *WorkerPoolTemplateContainerStartupProbeArgs) WorkerPoolTemplateContainerStartupProbePtrInput {
+	return (*workerPoolTemplateContainerStartupProbePtrType)(v)
+}
+
+func (*workerPoolTemplateContainerStartupProbePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkerPoolTemplateContainerStartupProbe)(nil)).Elem()
+}
+
+func (i *workerPoolTemplateContainerStartupProbePtrType) ToWorkerPoolTemplateContainerStartupProbePtrOutput() WorkerPoolTemplateContainerStartupProbePtrOutput {
+	return i.ToWorkerPoolTemplateContainerStartupProbePtrOutputWithContext(context.Background())
+}
+
+func (i *workerPoolTemplateContainerStartupProbePtrType) ToWorkerPoolTemplateContainerStartupProbePtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerStartupProbePtrOutput)
+}
+
+type WorkerPoolTemplateContainerStartupProbeOutput struct{ *pulumi.OutputState }
+
+func (WorkerPoolTemplateContainerStartupProbeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbe)(nil)).Elem()
+}
+
+func (o WorkerPoolTemplateContainerStartupProbeOutput) ToWorkerPoolTemplateContainerStartupProbeOutput() WorkerPoolTemplateContainerStartupProbeOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateContainerStartupProbeOutput) ToWorkerPoolTemplateContainerStartupProbeOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateContainerStartupProbeOutput) ToWorkerPoolTemplateContainerStartupProbePtrOutput() WorkerPoolTemplateContainerStartupProbePtrOutput {
+	return o.ToWorkerPoolTemplateContainerStartupProbePtrOutputWithContext(context.Background())
+}
+
+func (o WorkerPoolTemplateContainerStartupProbeOutput) ToWorkerPoolTemplateContainerStartupProbePtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerPoolTemplateContainerStartupProbe) *WorkerPoolTemplateContainerStartupProbe {
+		return &v
+	}).(WorkerPoolTemplateContainerStartupProbePtrOutput)
+}
+
+// Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+func (o WorkerPoolTemplateContainerStartupProbeOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerStartupProbe) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
+}
+
+// Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+// Structure is documented below.
+func (o WorkerPoolTemplateContainerStartupProbeOutput) Grpc() WorkerPoolTemplateContainerStartupProbeGrpcPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerStartupProbe) *WorkerPoolTemplateContainerStartupProbeGrpc {
+		return v.Grpc
+	}).(WorkerPoolTemplateContainerStartupProbeGrpcPtrOutput)
+}
+
+// Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+// Structure is documented below.
+func (o WorkerPoolTemplateContainerStartupProbeOutput) HttpGet() WorkerPoolTemplateContainerStartupProbeHttpGetPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerStartupProbe) *WorkerPoolTemplateContainerStartupProbeHttpGet {
+		return v.HttpGet
+	}).(WorkerPoolTemplateContainerStartupProbeHttpGetPtrOutput)
+}
+
+// Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+func (o WorkerPoolTemplateContainerStartupProbeOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerStartupProbe) *int { return v.InitialDelaySeconds }).(pulumi.IntPtrOutput)
+}
+
+// Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+func (o WorkerPoolTemplateContainerStartupProbeOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerStartupProbe) *int { return v.PeriodSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+// Structure is documented below.
+func (o WorkerPoolTemplateContainerStartupProbeOutput) TcpSocket() WorkerPoolTemplateContainerStartupProbeTcpSocketPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerStartupProbe) *WorkerPoolTemplateContainerStartupProbeTcpSocket {
+		return v.TcpSocket
+	}).(WorkerPoolTemplateContainerStartupProbeTcpSocketPtrOutput)
+}
+
+// Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+func (o WorkerPoolTemplateContainerStartupProbeOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerStartupProbe) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
+}
+
+type WorkerPoolTemplateContainerStartupProbePtrOutput struct{ *pulumi.OutputState }
+
+func (WorkerPoolTemplateContainerStartupProbePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkerPoolTemplateContainerStartupProbe)(nil)).Elem()
+}
+
+func (o WorkerPoolTemplateContainerStartupProbePtrOutput) ToWorkerPoolTemplateContainerStartupProbePtrOutput() WorkerPoolTemplateContainerStartupProbePtrOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateContainerStartupProbePtrOutput) ToWorkerPoolTemplateContainerStartupProbePtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbePtrOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateContainerStartupProbePtrOutput) Elem() WorkerPoolTemplateContainerStartupProbeOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerStartupProbe) WorkerPoolTemplateContainerStartupProbe {
+		if v != nil {
+			return *v
+		}
+		var ret WorkerPoolTemplateContainerStartupProbe
+		return ret
+	}).(WorkerPoolTemplateContainerStartupProbeOutput)
+}
+
+// Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+func (o WorkerPoolTemplateContainerStartupProbePtrOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerStartupProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FailureThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+// Structure is documented below.
+func (o WorkerPoolTemplateContainerStartupProbePtrOutput) Grpc() WorkerPoolTemplateContainerStartupProbeGrpcPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerStartupProbe) *WorkerPoolTemplateContainerStartupProbeGrpc {
+		if v == nil {
+			return nil
+		}
+		return v.Grpc
+	}).(WorkerPoolTemplateContainerStartupProbeGrpcPtrOutput)
+}
+
+// Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+// Structure is documented below.
+func (o WorkerPoolTemplateContainerStartupProbePtrOutput) HttpGet() WorkerPoolTemplateContainerStartupProbeHttpGetPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerStartupProbe) *WorkerPoolTemplateContainerStartupProbeHttpGet {
+		if v == nil {
+			return nil
+		}
+		return v.HttpGet
+	}).(WorkerPoolTemplateContainerStartupProbeHttpGetPtrOutput)
+}
+
+// Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+func (o WorkerPoolTemplateContainerStartupProbePtrOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerStartupProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InitialDelaySeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+func (o WorkerPoolTemplateContainerStartupProbePtrOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerStartupProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+// Structure is documented below.
+func (o WorkerPoolTemplateContainerStartupProbePtrOutput) TcpSocket() WorkerPoolTemplateContainerStartupProbeTcpSocketPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerStartupProbe) *WorkerPoolTemplateContainerStartupProbeTcpSocket {
+		if v == nil {
+			return nil
+		}
+		return v.TcpSocket
+	}).(WorkerPoolTemplateContainerStartupProbeTcpSocketPtrOutput)
+}
+
+// Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+func (o WorkerPoolTemplateContainerStartupProbePtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerStartupProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type WorkerPoolTemplateContainerStartupProbeGrpc struct {
+	// Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+	Port *int `pulumi:"port"`
+	// Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC
+	Service *string `pulumi:"service"`
+}
+
+// WorkerPoolTemplateContainerStartupProbeGrpcInput is an input type that accepts WorkerPoolTemplateContainerStartupProbeGrpcArgs and WorkerPoolTemplateContainerStartupProbeGrpcOutput values.
+// You can construct a concrete instance of `WorkerPoolTemplateContainerStartupProbeGrpcInput` via:
+//
+//	WorkerPoolTemplateContainerStartupProbeGrpcArgs{...}
+type WorkerPoolTemplateContainerStartupProbeGrpcInput interface {
+	pulumi.Input
+
+	ToWorkerPoolTemplateContainerStartupProbeGrpcOutput() WorkerPoolTemplateContainerStartupProbeGrpcOutput
+	ToWorkerPoolTemplateContainerStartupProbeGrpcOutputWithContext(context.Context) WorkerPoolTemplateContainerStartupProbeGrpcOutput
+}
+
+type WorkerPoolTemplateContainerStartupProbeGrpcArgs struct {
+	// Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC
+	Service pulumi.StringPtrInput `pulumi:"service"`
+}
+
+func (WorkerPoolTemplateContainerStartupProbeGrpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeGrpc)(nil)).Elem()
+}
+
+func (i WorkerPoolTemplateContainerStartupProbeGrpcArgs) ToWorkerPoolTemplateContainerStartupProbeGrpcOutput() WorkerPoolTemplateContainerStartupProbeGrpcOutput {
+	return i.ToWorkerPoolTemplateContainerStartupProbeGrpcOutputWithContext(context.Background())
+}
+
+func (i WorkerPoolTemplateContainerStartupProbeGrpcArgs) ToWorkerPoolTemplateContainerStartupProbeGrpcOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeGrpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerStartupProbeGrpcOutput)
+}
+
+func (i WorkerPoolTemplateContainerStartupProbeGrpcArgs) ToWorkerPoolTemplateContainerStartupProbeGrpcPtrOutput() WorkerPoolTemplateContainerStartupProbeGrpcPtrOutput {
+	return i.ToWorkerPoolTemplateContainerStartupProbeGrpcPtrOutputWithContext(context.Background())
+}
+
+func (i WorkerPoolTemplateContainerStartupProbeGrpcArgs) ToWorkerPoolTemplateContainerStartupProbeGrpcPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeGrpcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerStartupProbeGrpcOutput).ToWorkerPoolTemplateContainerStartupProbeGrpcPtrOutputWithContext(ctx)
+}
+
+// WorkerPoolTemplateContainerStartupProbeGrpcPtrInput is an input type that accepts WorkerPoolTemplateContainerStartupProbeGrpcArgs, WorkerPoolTemplateContainerStartupProbeGrpcPtr and WorkerPoolTemplateContainerStartupProbeGrpcPtrOutput values.
+// You can construct a concrete instance of `WorkerPoolTemplateContainerStartupProbeGrpcPtrInput` via:
+//
+//	        WorkerPoolTemplateContainerStartupProbeGrpcArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkerPoolTemplateContainerStartupProbeGrpcPtrInput interface {
+	pulumi.Input
+
+	ToWorkerPoolTemplateContainerStartupProbeGrpcPtrOutput() WorkerPoolTemplateContainerStartupProbeGrpcPtrOutput
+	ToWorkerPoolTemplateContainerStartupProbeGrpcPtrOutputWithContext(context.Context) WorkerPoolTemplateContainerStartupProbeGrpcPtrOutput
+}
+
+type workerPoolTemplateContainerStartupProbeGrpcPtrType WorkerPoolTemplateContainerStartupProbeGrpcArgs
+
+func WorkerPoolTemplateContainerStartupProbeGrpcPtr(v *WorkerPoolTemplateContainerStartupProbeGrpcArgs) WorkerPoolTemplateContainerStartupProbeGrpcPtrInput {
+	return (*workerPoolTemplateContainerStartupProbeGrpcPtrType)(v)
+}
+
+func (*workerPoolTemplateContainerStartupProbeGrpcPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkerPoolTemplateContainerStartupProbeGrpc)(nil)).Elem()
+}
+
+func (i *workerPoolTemplateContainerStartupProbeGrpcPtrType) ToWorkerPoolTemplateContainerStartupProbeGrpcPtrOutput() WorkerPoolTemplateContainerStartupProbeGrpcPtrOutput {
+	return i.ToWorkerPoolTemplateContainerStartupProbeGrpcPtrOutputWithContext(context.Background())
+}
+
+func (i *workerPoolTemplateContainerStartupProbeGrpcPtrType) ToWorkerPoolTemplateContainerStartupProbeGrpcPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeGrpcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerStartupProbeGrpcPtrOutput)
+}
+
+type WorkerPoolTemplateContainerStartupProbeGrpcOutput struct{ *pulumi.OutputState }
+
+func (WorkerPoolTemplateContainerStartupProbeGrpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeGrpc)(nil)).Elem()
+}
+
+func (o WorkerPoolTemplateContainerStartupProbeGrpcOutput) ToWorkerPoolTemplateContainerStartupProbeGrpcOutput() WorkerPoolTemplateContainerStartupProbeGrpcOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateContainerStartupProbeGrpcOutput) ToWorkerPoolTemplateContainerStartupProbeGrpcOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeGrpcOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateContainerStartupProbeGrpcOutput) ToWorkerPoolTemplateContainerStartupProbeGrpcPtrOutput() WorkerPoolTemplateContainerStartupProbeGrpcPtrOutput {
+	return o.ToWorkerPoolTemplateContainerStartupProbeGrpcPtrOutputWithContext(context.Background())
+}
+
+func (o WorkerPoolTemplateContainerStartupProbeGrpcOutput) ToWorkerPoolTemplateContainerStartupProbeGrpcPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeGrpcPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerPoolTemplateContainerStartupProbeGrpc) *WorkerPoolTemplateContainerStartupProbeGrpc {
+		return &v
+	}).(WorkerPoolTemplateContainerStartupProbeGrpcPtrOutput)
+}
+
+// Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+func (o WorkerPoolTemplateContainerStartupProbeGrpcOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerStartupProbeGrpc) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC
+func (o WorkerPoolTemplateContainerStartupProbeGrpcOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerStartupProbeGrpc) *string { return v.Service }).(pulumi.StringPtrOutput)
+}
+
+type WorkerPoolTemplateContainerStartupProbeGrpcPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkerPoolTemplateContainerStartupProbeGrpcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkerPoolTemplateContainerStartupProbeGrpc)(nil)).Elem()
+}
+
+func (o WorkerPoolTemplateContainerStartupProbeGrpcPtrOutput) ToWorkerPoolTemplateContainerStartupProbeGrpcPtrOutput() WorkerPoolTemplateContainerStartupProbeGrpcPtrOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateContainerStartupProbeGrpcPtrOutput) ToWorkerPoolTemplateContainerStartupProbeGrpcPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeGrpcPtrOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateContainerStartupProbeGrpcPtrOutput) Elem() WorkerPoolTemplateContainerStartupProbeGrpcOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerStartupProbeGrpc) WorkerPoolTemplateContainerStartupProbeGrpc {
+		if v != nil {
+			return *v
+		}
+		var ret WorkerPoolTemplateContainerStartupProbeGrpc
+		return ret
+	}).(WorkerPoolTemplateContainerStartupProbeGrpcOutput)
+}
+
+// Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+func (o WorkerPoolTemplateContainerStartupProbeGrpcPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerStartupProbeGrpc) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC
+func (o WorkerPoolTemplateContainerStartupProbeGrpcPtrOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerStartupProbeGrpc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Service
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkerPoolTemplateContainerStartupProbeHttpGet struct {
+	// Optional. Custom headers to set in the request. HTTP allows repeated headers.
+	// Structure is documented below.
+	HttpHeaders *WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders `pulumi:"httpHeaders"`
+	// Optional. Path to access on the HTTP server. Defaults to '/'.
+	Path *string `pulumi:"path"`
+	// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+	Port *int `pulumi:"port"`
+}
+
+// WorkerPoolTemplateContainerStartupProbeHttpGetInput is an input type that accepts WorkerPoolTemplateContainerStartupProbeHttpGetArgs and WorkerPoolTemplateContainerStartupProbeHttpGetOutput values.
+// You can construct a concrete instance of `WorkerPoolTemplateContainerStartupProbeHttpGetInput` via:
+//
+//	WorkerPoolTemplateContainerStartupProbeHttpGetArgs{...}
+type WorkerPoolTemplateContainerStartupProbeHttpGetInput interface {
+	pulumi.Input
+
+	ToWorkerPoolTemplateContainerStartupProbeHttpGetOutput() WorkerPoolTemplateContainerStartupProbeHttpGetOutput
+	ToWorkerPoolTemplateContainerStartupProbeHttpGetOutputWithContext(context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetOutput
+}
+
+type WorkerPoolTemplateContainerStartupProbeHttpGetArgs struct {
+	// Optional. Custom headers to set in the request. HTTP allows repeated headers.
+	// Structure is documented below.
+	HttpHeaders WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrInput `pulumi:"httpHeaders"`
+	// Optional. Path to access on the HTTP server. Defaults to '/'.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+}
+
+func (WorkerPoolTemplateContainerStartupProbeHttpGetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (i WorkerPoolTemplateContainerStartupProbeHttpGetArgs) ToWorkerPoolTemplateContainerStartupProbeHttpGetOutput() WorkerPoolTemplateContainerStartupProbeHttpGetOutput {
+	return i.ToWorkerPoolTemplateContainerStartupProbeHttpGetOutputWithContext(context.Background())
+}
+
+func (i WorkerPoolTemplateContainerStartupProbeHttpGetArgs) ToWorkerPoolTemplateContainerStartupProbeHttpGetOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerStartupProbeHttpGetOutput)
+}
+
+func (i WorkerPoolTemplateContainerStartupProbeHttpGetArgs) ToWorkerPoolTemplateContainerStartupProbeHttpGetPtrOutput() WorkerPoolTemplateContainerStartupProbeHttpGetPtrOutput {
+	return i.ToWorkerPoolTemplateContainerStartupProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (i WorkerPoolTemplateContainerStartupProbeHttpGetArgs) ToWorkerPoolTemplateContainerStartupProbeHttpGetPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerStartupProbeHttpGetOutput).ToWorkerPoolTemplateContainerStartupProbeHttpGetPtrOutputWithContext(ctx)
+}
+
+// WorkerPoolTemplateContainerStartupProbeHttpGetPtrInput is an input type that accepts WorkerPoolTemplateContainerStartupProbeHttpGetArgs, WorkerPoolTemplateContainerStartupProbeHttpGetPtr and WorkerPoolTemplateContainerStartupProbeHttpGetPtrOutput values.
+// You can construct a concrete instance of `WorkerPoolTemplateContainerStartupProbeHttpGetPtrInput` via:
+//
+//	        WorkerPoolTemplateContainerStartupProbeHttpGetArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkerPoolTemplateContainerStartupProbeHttpGetPtrInput interface {
+	pulumi.Input
+
+	ToWorkerPoolTemplateContainerStartupProbeHttpGetPtrOutput() WorkerPoolTemplateContainerStartupProbeHttpGetPtrOutput
+	ToWorkerPoolTemplateContainerStartupProbeHttpGetPtrOutputWithContext(context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetPtrOutput
+}
+
+type workerPoolTemplateContainerStartupProbeHttpGetPtrType WorkerPoolTemplateContainerStartupProbeHttpGetArgs
+
+func WorkerPoolTemplateContainerStartupProbeHttpGetPtr(v *WorkerPoolTemplateContainerStartupProbeHttpGetArgs) WorkerPoolTemplateContainerStartupProbeHttpGetPtrInput {
+	return (*workerPoolTemplateContainerStartupProbeHttpGetPtrType)(v)
+}
+
+func (*workerPoolTemplateContainerStartupProbeHttpGetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkerPoolTemplateContainerStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (i *workerPoolTemplateContainerStartupProbeHttpGetPtrType) ToWorkerPoolTemplateContainerStartupProbeHttpGetPtrOutput() WorkerPoolTemplateContainerStartupProbeHttpGetPtrOutput {
+	return i.ToWorkerPoolTemplateContainerStartupProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (i *workerPoolTemplateContainerStartupProbeHttpGetPtrType) ToWorkerPoolTemplateContainerStartupProbeHttpGetPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerStartupProbeHttpGetPtrOutput)
+}
+
+type WorkerPoolTemplateContainerStartupProbeHttpGetOutput struct{ *pulumi.OutputState }
+
+func (WorkerPoolTemplateContainerStartupProbeHttpGetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetOutput) ToWorkerPoolTemplateContainerStartupProbeHttpGetOutput() WorkerPoolTemplateContainerStartupProbeHttpGetOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetOutput) ToWorkerPoolTemplateContainerStartupProbeHttpGetOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetOutput) ToWorkerPoolTemplateContainerStartupProbeHttpGetPtrOutput() WorkerPoolTemplateContainerStartupProbeHttpGetPtrOutput {
+	return o.ToWorkerPoolTemplateContainerStartupProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetOutput) ToWorkerPoolTemplateContainerStartupProbeHttpGetPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerPoolTemplateContainerStartupProbeHttpGet) *WorkerPoolTemplateContainerStartupProbeHttpGet {
+		return &v
+	}).(WorkerPoolTemplateContainerStartupProbeHttpGetPtrOutput)
+}
+
+// Optional. Custom headers to set in the request. HTTP allows repeated headers.
+// Structure is documented below.
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetOutput) HttpHeaders() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerStartupProbeHttpGet) *WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders {
+		return v.HttpHeaders
+	}).(WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput)
+}
+
+// Optional. Path to access on the HTTP server. Defaults to '/'.
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerStartupProbeHttpGet) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerStartupProbeHttpGet) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+type WorkerPoolTemplateContainerStartupProbeHttpGetPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkerPoolTemplateContainerStartupProbeHttpGetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkerPoolTemplateContainerStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetPtrOutput) ToWorkerPoolTemplateContainerStartupProbeHttpGetPtrOutput() WorkerPoolTemplateContainerStartupProbeHttpGetPtrOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetPtrOutput) ToWorkerPoolTemplateContainerStartupProbeHttpGetPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetPtrOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetPtrOutput) Elem() WorkerPoolTemplateContainerStartupProbeHttpGetOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerStartupProbeHttpGet) WorkerPoolTemplateContainerStartupProbeHttpGet {
+		if v != nil {
+			return *v
+		}
+		var ret WorkerPoolTemplateContainerStartupProbeHttpGet
+		return ret
+	}).(WorkerPoolTemplateContainerStartupProbeHttpGetOutput)
+}
+
+// Optional. Custom headers to set in the request. HTTP allows repeated headers.
+// Structure is documented below.
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetPtrOutput) HttpHeaders() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerStartupProbeHttpGet) *WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders {
+		if v == nil {
+			return nil
+		}
+		return v.HttpHeaders
+	}).(WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput)
+}
+
+// Optional. Path to access on the HTTP server. Defaults to '/'.
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerStartupProbeHttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerStartupProbeHttpGet) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+type WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders struct {
+	// Required. The header field name
+	Port int `pulumi:"port"`
+	// Optional. The header field value
+	Value *string `pulumi:"value"`
+}
+
+// WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersInput is an input type that accepts WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs and WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput values.
+// You can construct a concrete instance of `WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersInput` via:
+//
+//	WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs{...}
+type WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersInput interface {
+	pulumi.Input
+
+	ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput
+	ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutputWithContext(context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput
+}
+
+type WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs struct {
+	// Required. The header field name
+	Port pulumi.IntInput `pulumi:"port"`
+	// Optional. The header field value
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders)(nil)).Elem()
+}
+
+func (i WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput {
+	return i.ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutputWithContext(context.Background())
+}
+
+func (i WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput)
+}
+
+func (i WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput {
+	return i.ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutputWithContext(context.Background())
+}
+
+func (i WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput).ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutputWithContext(ctx)
+}
+
+// WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrInput is an input type that accepts WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs, WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtr and WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput values.
+// You can construct a concrete instance of `WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrInput` via:
+//
+//	        WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrInput interface {
+	pulumi.Input
+
+	ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput
+	ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutputWithContext(context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput
+}
+
+type workerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrType WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs
+
+func WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtr(v *WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrInput {
+	return (*workerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrType)(v)
+}
+
+func (*workerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders)(nil)).Elem()
+}
+
+func (i *workerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrType) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput {
+	return i.ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutputWithContext(context.Background())
+}
+
+func (i *workerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrType) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput)
+}
+
+type WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput struct{ *pulumi.OutputState }
+
+func (WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders)(nil)).Elem()
+}
+
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput {
+	return o.ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutputWithContext(context.Background())
+}
+
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders) *WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders {
+		return &v
+	}).(WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput)
+}
+
+// Required. The header field name
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Optional. The header field value
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders)(nil)).Elem()
+}
+
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput) Elem() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders {
+		if v != nil {
+			return *v
+		}
+		var ret WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders
+		return ret
+	}).(WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput)
+}
+
+// Required. The header field name
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. The header field value
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkerPoolTemplateContainerStartupProbeTcpSocket struct {
+	// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+	Port *int `pulumi:"port"`
+}
+
+// WorkerPoolTemplateContainerStartupProbeTcpSocketInput is an input type that accepts WorkerPoolTemplateContainerStartupProbeTcpSocketArgs and WorkerPoolTemplateContainerStartupProbeTcpSocketOutput values.
+// You can construct a concrete instance of `WorkerPoolTemplateContainerStartupProbeTcpSocketInput` via:
+//
+//	WorkerPoolTemplateContainerStartupProbeTcpSocketArgs{...}
+type WorkerPoolTemplateContainerStartupProbeTcpSocketInput interface {
+	pulumi.Input
+
+	ToWorkerPoolTemplateContainerStartupProbeTcpSocketOutput() WorkerPoolTemplateContainerStartupProbeTcpSocketOutput
+	ToWorkerPoolTemplateContainerStartupProbeTcpSocketOutputWithContext(context.Context) WorkerPoolTemplateContainerStartupProbeTcpSocketOutput
+}
+
+type WorkerPoolTemplateContainerStartupProbeTcpSocketArgs struct {
+	// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+}
+
+func (WorkerPoolTemplateContainerStartupProbeTcpSocketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeTcpSocket)(nil)).Elem()
+}
+
+func (i WorkerPoolTemplateContainerStartupProbeTcpSocketArgs) ToWorkerPoolTemplateContainerStartupProbeTcpSocketOutput() WorkerPoolTemplateContainerStartupProbeTcpSocketOutput {
+	return i.ToWorkerPoolTemplateContainerStartupProbeTcpSocketOutputWithContext(context.Background())
+}
+
+func (i WorkerPoolTemplateContainerStartupProbeTcpSocketArgs) ToWorkerPoolTemplateContainerStartupProbeTcpSocketOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeTcpSocketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerStartupProbeTcpSocketOutput)
+}
+
+func (i WorkerPoolTemplateContainerStartupProbeTcpSocketArgs) ToWorkerPoolTemplateContainerStartupProbeTcpSocketPtrOutput() WorkerPoolTemplateContainerStartupProbeTcpSocketPtrOutput {
+	return i.ToWorkerPoolTemplateContainerStartupProbeTcpSocketPtrOutputWithContext(context.Background())
+}
+
+func (i WorkerPoolTemplateContainerStartupProbeTcpSocketArgs) ToWorkerPoolTemplateContainerStartupProbeTcpSocketPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeTcpSocketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerStartupProbeTcpSocketOutput).ToWorkerPoolTemplateContainerStartupProbeTcpSocketPtrOutputWithContext(ctx)
+}
+
+// WorkerPoolTemplateContainerStartupProbeTcpSocketPtrInput is an input type that accepts WorkerPoolTemplateContainerStartupProbeTcpSocketArgs, WorkerPoolTemplateContainerStartupProbeTcpSocketPtr and WorkerPoolTemplateContainerStartupProbeTcpSocketPtrOutput values.
+// You can construct a concrete instance of `WorkerPoolTemplateContainerStartupProbeTcpSocketPtrInput` via:
+//
+//	        WorkerPoolTemplateContainerStartupProbeTcpSocketArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkerPoolTemplateContainerStartupProbeTcpSocketPtrInput interface {
+	pulumi.Input
+
+	ToWorkerPoolTemplateContainerStartupProbeTcpSocketPtrOutput() WorkerPoolTemplateContainerStartupProbeTcpSocketPtrOutput
+	ToWorkerPoolTemplateContainerStartupProbeTcpSocketPtrOutputWithContext(context.Context) WorkerPoolTemplateContainerStartupProbeTcpSocketPtrOutput
+}
+
+type workerPoolTemplateContainerStartupProbeTcpSocketPtrType WorkerPoolTemplateContainerStartupProbeTcpSocketArgs
+
+func WorkerPoolTemplateContainerStartupProbeTcpSocketPtr(v *WorkerPoolTemplateContainerStartupProbeTcpSocketArgs) WorkerPoolTemplateContainerStartupProbeTcpSocketPtrInput {
+	return (*workerPoolTemplateContainerStartupProbeTcpSocketPtrType)(v)
+}
+
+func (*workerPoolTemplateContainerStartupProbeTcpSocketPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkerPoolTemplateContainerStartupProbeTcpSocket)(nil)).Elem()
+}
+
+func (i *workerPoolTemplateContainerStartupProbeTcpSocketPtrType) ToWorkerPoolTemplateContainerStartupProbeTcpSocketPtrOutput() WorkerPoolTemplateContainerStartupProbeTcpSocketPtrOutput {
+	return i.ToWorkerPoolTemplateContainerStartupProbeTcpSocketPtrOutputWithContext(context.Background())
+}
+
+func (i *workerPoolTemplateContainerStartupProbeTcpSocketPtrType) ToWorkerPoolTemplateContainerStartupProbeTcpSocketPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeTcpSocketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerStartupProbeTcpSocketPtrOutput)
+}
+
+type WorkerPoolTemplateContainerStartupProbeTcpSocketOutput struct{ *pulumi.OutputState }
+
+func (WorkerPoolTemplateContainerStartupProbeTcpSocketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeTcpSocket)(nil)).Elem()
+}
+
+func (o WorkerPoolTemplateContainerStartupProbeTcpSocketOutput) ToWorkerPoolTemplateContainerStartupProbeTcpSocketOutput() WorkerPoolTemplateContainerStartupProbeTcpSocketOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateContainerStartupProbeTcpSocketOutput) ToWorkerPoolTemplateContainerStartupProbeTcpSocketOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeTcpSocketOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateContainerStartupProbeTcpSocketOutput) ToWorkerPoolTemplateContainerStartupProbeTcpSocketPtrOutput() WorkerPoolTemplateContainerStartupProbeTcpSocketPtrOutput {
+	return o.ToWorkerPoolTemplateContainerStartupProbeTcpSocketPtrOutputWithContext(context.Background())
+}
+
+func (o WorkerPoolTemplateContainerStartupProbeTcpSocketOutput) ToWorkerPoolTemplateContainerStartupProbeTcpSocketPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeTcpSocketPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerPoolTemplateContainerStartupProbeTcpSocket) *WorkerPoolTemplateContainerStartupProbeTcpSocket {
+		return &v
+	}).(WorkerPoolTemplateContainerStartupProbeTcpSocketPtrOutput)
+}
+
+// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+func (o WorkerPoolTemplateContainerStartupProbeTcpSocketOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerStartupProbeTcpSocket) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+type WorkerPoolTemplateContainerStartupProbeTcpSocketPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkerPoolTemplateContainerStartupProbeTcpSocketPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkerPoolTemplateContainerStartupProbeTcpSocket)(nil)).Elem()
+}
+
+func (o WorkerPoolTemplateContainerStartupProbeTcpSocketPtrOutput) ToWorkerPoolTemplateContainerStartupProbeTcpSocketPtrOutput() WorkerPoolTemplateContainerStartupProbeTcpSocketPtrOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateContainerStartupProbeTcpSocketPtrOutput) ToWorkerPoolTemplateContainerStartupProbeTcpSocketPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeTcpSocketPtrOutput {
+	return o
+}
+
+func (o WorkerPoolTemplateContainerStartupProbeTcpSocketPtrOutput) Elem() WorkerPoolTemplateContainerStartupProbeTcpSocketOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerStartupProbeTcpSocket) WorkerPoolTemplateContainerStartupProbeTcpSocket {
+		if v != nil {
+			return *v
+		}
+		var ret WorkerPoolTemplateContainerStartupProbeTcpSocket
+		return ret
+	}).(WorkerPoolTemplateContainerStartupProbeTcpSocketOutput)
+}
+
+// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+func (o WorkerPoolTemplateContainerStartupProbeTcpSocketPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerStartupProbeTcpSocket) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
 }
 
 type WorkerPoolTemplateContainerVolumeMount struct {
@@ -25545,10 +27367,14 @@ type GetWorkerPoolTemplateContainer struct {
 	Envs []GetWorkerPoolTemplateContainerEnv `pulumi:"envs"`
 	// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
 	Image string `pulumi:"image"`
+	// Periodic probe of container liveness. Container will be restarted if the probe fails.
+	LivenessProbes []GetWorkerPoolTemplateContainerLivenessProbe `pulumi:"livenessProbes"`
 	// The name of the Cloud Run v2 Worker Pool.
 	Name string `pulumi:"name"`
 	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	Resources []GetWorkerPoolTemplateContainerResource `pulumi:"resources"`
+	// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
+	StartupProbes []GetWorkerPoolTemplateContainerStartupProbe `pulumi:"startupProbes"`
 	// Volume to mount into the container's filesystem.
 	VolumeMounts []GetWorkerPoolTemplateContainerVolumeMount `pulumi:"volumeMounts"`
 	// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
@@ -25575,10 +27401,14 @@ type GetWorkerPoolTemplateContainerArgs struct {
 	Envs GetWorkerPoolTemplateContainerEnvArrayInput `pulumi:"envs"`
 	// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
 	Image pulumi.StringInput `pulumi:"image"`
+	// Periodic probe of container liveness. Container will be restarted if the probe fails.
+	LivenessProbes GetWorkerPoolTemplateContainerLivenessProbeArrayInput `pulumi:"livenessProbes"`
 	// The name of the Cloud Run v2 Worker Pool.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	Resources GetWorkerPoolTemplateContainerResourceArrayInput `pulumi:"resources"`
+	// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
+	StartupProbes GetWorkerPoolTemplateContainerStartupProbeArrayInput `pulumi:"startupProbes"`
 	// Volume to mount into the container's filesystem.
 	VolumeMounts GetWorkerPoolTemplateContainerVolumeMountArrayInput `pulumi:"volumeMounts"`
 	// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
@@ -25656,6 +27486,13 @@ func (o GetWorkerPoolTemplateContainerOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkerPoolTemplateContainer) string { return v.Image }).(pulumi.StringOutput)
 }
 
+// Periodic probe of container liveness. Container will be restarted if the probe fails.
+func (o GetWorkerPoolTemplateContainerOutput) LivenessProbes() GetWorkerPoolTemplateContainerLivenessProbeArrayOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateContainer) []GetWorkerPoolTemplateContainerLivenessProbe {
+		return v.LivenessProbes
+	}).(GetWorkerPoolTemplateContainerLivenessProbeArrayOutput)
+}
+
 // The name of the Cloud Run v2 Worker Pool.
 func (o GetWorkerPoolTemplateContainerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkerPoolTemplateContainer) string { return v.Name }).(pulumi.StringOutput)
@@ -25664,6 +27501,13 @@ func (o GetWorkerPoolTemplateContainerOutput) Name() pulumi.StringOutput {
 // Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 func (o GetWorkerPoolTemplateContainerOutput) Resources() GetWorkerPoolTemplateContainerResourceArrayOutput {
 	return o.ApplyT(func(v GetWorkerPoolTemplateContainer) []GetWorkerPoolTemplateContainerResource { return v.Resources }).(GetWorkerPoolTemplateContainerResourceArrayOutput)
+}
+
+// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
+func (o GetWorkerPoolTemplateContainerOutput) StartupProbes() GetWorkerPoolTemplateContainerStartupProbeArrayOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateContainer) []GetWorkerPoolTemplateContainerStartupProbe {
+		return v.StartupProbes
+	}).(GetWorkerPoolTemplateContainerStartupProbeArrayOutput)
 }
 
 // Volume to mount into the container's filesystem.
@@ -26020,6 +27864,589 @@ func (o GetWorkerPoolTemplateContainerEnvValueSourceSecretKeyRefArrayOutput) Ind
 	}).(GetWorkerPoolTemplateContainerEnvValueSourceSecretKeyRefOutput)
 }
 
+type GetWorkerPoolTemplateContainerLivenessProbe struct {
+	// Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+	FailureThreshold int `pulumi:"failureThreshold"`
+	// Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+	Grpcs []GetWorkerPoolTemplateContainerLivenessProbeGrpc `pulumi:"grpcs"`
+	// Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+	HttpGets []GetWorkerPoolTemplateContainerLivenessProbeHttpGet `pulumi:"httpGets"`
+	// Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+	InitialDelaySeconds int `pulumi:"initialDelaySeconds"`
+	// Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+	PeriodSeconds int `pulumi:"periodSeconds"`
+	// Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+	TcpSockets []GetWorkerPoolTemplateContainerLivenessProbeTcpSocket `pulumi:"tcpSockets"`
+	// Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+	TimeoutSeconds int `pulumi:"timeoutSeconds"`
+}
+
+// GetWorkerPoolTemplateContainerLivenessProbeInput is an input type that accepts GetWorkerPoolTemplateContainerLivenessProbeArgs and GetWorkerPoolTemplateContainerLivenessProbeOutput values.
+// You can construct a concrete instance of `GetWorkerPoolTemplateContainerLivenessProbeInput` via:
+//
+//	GetWorkerPoolTemplateContainerLivenessProbeArgs{...}
+type GetWorkerPoolTemplateContainerLivenessProbeInput interface {
+	pulumi.Input
+
+	ToGetWorkerPoolTemplateContainerLivenessProbeOutput() GetWorkerPoolTemplateContainerLivenessProbeOutput
+	ToGetWorkerPoolTemplateContainerLivenessProbeOutputWithContext(context.Context) GetWorkerPoolTemplateContainerLivenessProbeOutput
+}
+
+type GetWorkerPoolTemplateContainerLivenessProbeArgs struct {
+	// Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+	FailureThreshold pulumi.IntInput `pulumi:"failureThreshold"`
+	// Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+	Grpcs GetWorkerPoolTemplateContainerLivenessProbeGrpcArrayInput `pulumi:"grpcs"`
+	// Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+	HttpGets GetWorkerPoolTemplateContainerLivenessProbeHttpGetArrayInput `pulumi:"httpGets"`
+	// Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+	InitialDelaySeconds pulumi.IntInput `pulumi:"initialDelaySeconds"`
+	// Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+	PeriodSeconds pulumi.IntInput `pulumi:"periodSeconds"`
+	// Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+	TcpSockets GetWorkerPoolTemplateContainerLivenessProbeTcpSocketArrayInput `pulumi:"tcpSockets"`
+	// Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+	TimeoutSeconds pulumi.IntInput `pulumi:"timeoutSeconds"`
+}
+
+func (GetWorkerPoolTemplateContainerLivenessProbeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkerPoolTemplateContainerLivenessProbe)(nil)).Elem()
+}
+
+func (i GetWorkerPoolTemplateContainerLivenessProbeArgs) ToGetWorkerPoolTemplateContainerLivenessProbeOutput() GetWorkerPoolTemplateContainerLivenessProbeOutput {
+	return i.ToGetWorkerPoolTemplateContainerLivenessProbeOutputWithContext(context.Background())
+}
+
+func (i GetWorkerPoolTemplateContainerLivenessProbeArgs) ToGetWorkerPoolTemplateContainerLivenessProbeOutputWithContext(ctx context.Context) GetWorkerPoolTemplateContainerLivenessProbeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkerPoolTemplateContainerLivenessProbeOutput)
+}
+
+// GetWorkerPoolTemplateContainerLivenessProbeArrayInput is an input type that accepts GetWorkerPoolTemplateContainerLivenessProbeArray and GetWorkerPoolTemplateContainerLivenessProbeArrayOutput values.
+// You can construct a concrete instance of `GetWorkerPoolTemplateContainerLivenessProbeArrayInput` via:
+//
+//	GetWorkerPoolTemplateContainerLivenessProbeArray{ GetWorkerPoolTemplateContainerLivenessProbeArgs{...} }
+type GetWorkerPoolTemplateContainerLivenessProbeArrayInput interface {
+	pulumi.Input
+
+	ToGetWorkerPoolTemplateContainerLivenessProbeArrayOutput() GetWorkerPoolTemplateContainerLivenessProbeArrayOutput
+	ToGetWorkerPoolTemplateContainerLivenessProbeArrayOutputWithContext(context.Context) GetWorkerPoolTemplateContainerLivenessProbeArrayOutput
+}
+
+type GetWorkerPoolTemplateContainerLivenessProbeArray []GetWorkerPoolTemplateContainerLivenessProbeInput
+
+func (GetWorkerPoolTemplateContainerLivenessProbeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkerPoolTemplateContainerLivenessProbe)(nil)).Elem()
+}
+
+func (i GetWorkerPoolTemplateContainerLivenessProbeArray) ToGetWorkerPoolTemplateContainerLivenessProbeArrayOutput() GetWorkerPoolTemplateContainerLivenessProbeArrayOutput {
+	return i.ToGetWorkerPoolTemplateContainerLivenessProbeArrayOutputWithContext(context.Background())
+}
+
+func (i GetWorkerPoolTemplateContainerLivenessProbeArray) ToGetWorkerPoolTemplateContainerLivenessProbeArrayOutputWithContext(ctx context.Context) GetWorkerPoolTemplateContainerLivenessProbeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkerPoolTemplateContainerLivenessProbeArrayOutput)
+}
+
+type GetWorkerPoolTemplateContainerLivenessProbeOutput struct{ *pulumi.OutputState }
+
+func (GetWorkerPoolTemplateContainerLivenessProbeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkerPoolTemplateContainerLivenessProbe)(nil)).Elem()
+}
+
+func (o GetWorkerPoolTemplateContainerLivenessProbeOutput) ToGetWorkerPoolTemplateContainerLivenessProbeOutput() GetWorkerPoolTemplateContainerLivenessProbeOutput {
+	return o
+}
+
+func (o GetWorkerPoolTemplateContainerLivenessProbeOutput) ToGetWorkerPoolTemplateContainerLivenessProbeOutputWithContext(ctx context.Context) GetWorkerPoolTemplateContainerLivenessProbeOutput {
+	return o
+}
+
+// Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+func (o GetWorkerPoolTemplateContainerLivenessProbeOutput) FailureThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateContainerLivenessProbe) int { return v.FailureThreshold }).(pulumi.IntOutput)
+}
+
+// Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+func (o GetWorkerPoolTemplateContainerLivenessProbeOutput) Grpcs() GetWorkerPoolTemplateContainerLivenessProbeGrpcArrayOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateContainerLivenessProbe) []GetWorkerPoolTemplateContainerLivenessProbeGrpc {
+		return v.Grpcs
+	}).(GetWorkerPoolTemplateContainerLivenessProbeGrpcArrayOutput)
+}
+
+// Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+func (o GetWorkerPoolTemplateContainerLivenessProbeOutput) HttpGets() GetWorkerPoolTemplateContainerLivenessProbeHttpGetArrayOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateContainerLivenessProbe) []GetWorkerPoolTemplateContainerLivenessProbeHttpGet {
+		return v.HttpGets
+	}).(GetWorkerPoolTemplateContainerLivenessProbeHttpGetArrayOutput)
+}
+
+// Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+func (o GetWorkerPoolTemplateContainerLivenessProbeOutput) InitialDelaySeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateContainerLivenessProbe) int { return v.InitialDelaySeconds }).(pulumi.IntOutput)
+}
+
+// Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+func (o GetWorkerPoolTemplateContainerLivenessProbeOutput) PeriodSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateContainerLivenessProbe) int { return v.PeriodSeconds }).(pulumi.IntOutput)
+}
+
+// Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+func (o GetWorkerPoolTemplateContainerLivenessProbeOutput) TcpSockets() GetWorkerPoolTemplateContainerLivenessProbeTcpSocketArrayOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateContainerLivenessProbe) []GetWorkerPoolTemplateContainerLivenessProbeTcpSocket {
+		return v.TcpSockets
+	}).(GetWorkerPoolTemplateContainerLivenessProbeTcpSocketArrayOutput)
+}
+
+// Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+func (o GetWorkerPoolTemplateContainerLivenessProbeOutput) TimeoutSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateContainerLivenessProbe) int { return v.TimeoutSeconds }).(pulumi.IntOutput)
+}
+
+type GetWorkerPoolTemplateContainerLivenessProbeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWorkerPoolTemplateContainerLivenessProbeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkerPoolTemplateContainerLivenessProbe)(nil)).Elem()
+}
+
+func (o GetWorkerPoolTemplateContainerLivenessProbeArrayOutput) ToGetWorkerPoolTemplateContainerLivenessProbeArrayOutput() GetWorkerPoolTemplateContainerLivenessProbeArrayOutput {
+	return o
+}
+
+func (o GetWorkerPoolTemplateContainerLivenessProbeArrayOutput) ToGetWorkerPoolTemplateContainerLivenessProbeArrayOutputWithContext(ctx context.Context) GetWorkerPoolTemplateContainerLivenessProbeArrayOutput {
+	return o
+}
+
+func (o GetWorkerPoolTemplateContainerLivenessProbeArrayOutput) Index(i pulumi.IntInput) GetWorkerPoolTemplateContainerLivenessProbeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkerPoolTemplateContainerLivenessProbe {
+		return vs[0].([]GetWorkerPoolTemplateContainerLivenessProbe)[vs[1].(int)]
+	}).(GetWorkerPoolTemplateContainerLivenessProbeOutput)
+}
+
+type GetWorkerPoolTemplateContainerLivenessProbeGrpc struct {
+	// Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+	Port int `pulumi:"port"`
+	// Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC
+	Service string `pulumi:"service"`
+}
+
+// GetWorkerPoolTemplateContainerLivenessProbeGrpcInput is an input type that accepts GetWorkerPoolTemplateContainerLivenessProbeGrpcArgs and GetWorkerPoolTemplateContainerLivenessProbeGrpcOutput values.
+// You can construct a concrete instance of `GetWorkerPoolTemplateContainerLivenessProbeGrpcInput` via:
+//
+//	GetWorkerPoolTemplateContainerLivenessProbeGrpcArgs{...}
+type GetWorkerPoolTemplateContainerLivenessProbeGrpcInput interface {
+	pulumi.Input
+
+	ToGetWorkerPoolTemplateContainerLivenessProbeGrpcOutput() GetWorkerPoolTemplateContainerLivenessProbeGrpcOutput
+	ToGetWorkerPoolTemplateContainerLivenessProbeGrpcOutputWithContext(context.Context) GetWorkerPoolTemplateContainerLivenessProbeGrpcOutput
+}
+
+type GetWorkerPoolTemplateContainerLivenessProbeGrpcArgs struct {
+	// Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+	Port pulumi.IntInput `pulumi:"port"`
+	// Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (GetWorkerPoolTemplateContainerLivenessProbeGrpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkerPoolTemplateContainerLivenessProbeGrpc)(nil)).Elem()
+}
+
+func (i GetWorkerPoolTemplateContainerLivenessProbeGrpcArgs) ToGetWorkerPoolTemplateContainerLivenessProbeGrpcOutput() GetWorkerPoolTemplateContainerLivenessProbeGrpcOutput {
+	return i.ToGetWorkerPoolTemplateContainerLivenessProbeGrpcOutputWithContext(context.Background())
+}
+
+func (i GetWorkerPoolTemplateContainerLivenessProbeGrpcArgs) ToGetWorkerPoolTemplateContainerLivenessProbeGrpcOutputWithContext(ctx context.Context) GetWorkerPoolTemplateContainerLivenessProbeGrpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkerPoolTemplateContainerLivenessProbeGrpcOutput)
+}
+
+// GetWorkerPoolTemplateContainerLivenessProbeGrpcArrayInput is an input type that accepts GetWorkerPoolTemplateContainerLivenessProbeGrpcArray and GetWorkerPoolTemplateContainerLivenessProbeGrpcArrayOutput values.
+// You can construct a concrete instance of `GetWorkerPoolTemplateContainerLivenessProbeGrpcArrayInput` via:
+//
+//	GetWorkerPoolTemplateContainerLivenessProbeGrpcArray{ GetWorkerPoolTemplateContainerLivenessProbeGrpcArgs{...} }
+type GetWorkerPoolTemplateContainerLivenessProbeGrpcArrayInput interface {
+	pulumi.Input
+
+	ToGetWorkerPoolTemplateContainerLivenessProbeGrpcArrayOutput() GetWorkerPoolTemplateContainerLivenessProbeGrpcArrayOutput
+	ToGetWorkerPoolTemplateContainerLivenessProbeGrpcArrayOutputWithContext(context.Context) GetWorkerPoolTemplateContainerLivenessProbeGrpcArrayOutput
+}
+
+type GetWorkerPoolTemplateContainerLivenessProbeGrpcArray []GetWorkerPoolTemplateContainerLivenessProbeGrpcInput
+
+func (GetWorkerPoolTemplateContainerLivenessProbeGrpcArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkerPoolTemplateContainerLivenessProbeGrpc)(nil)).Elem()
+}
+
+func (i GetWorkerPoolTemplateContainerLivenessProbeGrpcArray) ToGetWorkerPoolTemplateContainerLivenessProbeGrpcArrayOutput() GetWorkerPoolTemplateContainerLivenessProbeGrpcArrayOutput {
+	return i.ToGetWorkerPoolTemplateContainerLivenessProbeGrpcArrayOutputWithContext(context.Background())
+}
+
+func (i GetWorkerPoolTemplateContainerLivenessProbeGrpcArray) ToGetWorkerPoolTemplateContainerLivenessProbeGrpcArrayOutputWithContext(ctx context.Context) GetWorkerPoolTemplateContainerLivenessProbeGrpcArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkerPoolTemplateContainerLivenessProbeGrpcArrayOutput)
+}
+
+type GetWorkerPoolTemplateContainerLivenessProbeGrpcOutput struct{ *pulumi.OutputState }
+
+func (GetWorkerPoolTemplateContainerLivenessProbeGrpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkerPoolTemplateContainerLivenessProbeGrpc)(nil)).Elem()
+}
+
+func (o GetWorkerPoolTemplateContainerLivenessProbeGrpcOutput) ToGetWorkerPoolTemplateContainerLivenessProbeGrpcOutput() GetWorkerPoolTemplateContainerLivenessProbeGrpcOutput {
+	return o
+}
+
+func (o GetWorkerPoolTemplateContainerLivenessProbeGrpcOutput) ToGetWorkerPoolTemplateContainerLivenessProbeGrpcOutputWithContext(ctx context.Context) GetWorkerPoolTemplateContainerLivenessProbeGrpcOutput {
+	return o
+}
+
+// Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+func (o GetWorkerPoolTemplateContainerLivenessProbeGrpcOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateContainerLivenessProbeGrpc) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC
+func (o GetWorkerPoolTemplateContainerLivenessProbeGrpcOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateContainerLivenessProbeGrpc) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type GetWorkerPoolTemplateContainerLivenessProbeGrpcArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWorkerPoolTemplateContainerLivenessProbeGrpcArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkerPoolTemplateContainerLivenessProbeGrpc)(nil)).Elem()
+}
+
+func (o GetWorkerPoolTemplateContainerLivenessProbeGrpcArrayOutput) ToGetWorkerPoolTemplateContainerLivenessProbeGrpcArrayOutput() GetWorkerPoolTemplateContainerLivenessProbeGrpcArrayOutput {
+	return o
+}
+
+func (o GetWorkerPoolTemplateContainerLivenessProbeGrpcArrayOutput) ToGetWorkerPoolTemplateContainerLivenessProbeGrpcArrayOutputWithContext(ctx context.Context) GetWorkerPoolTemplateContainerLivenessProbeGrpcArrayOutput {
+	return o
+}
+
+func (o GetWorkerPoolTemplateContainerLivenessProbeGrpcArrayOutput) Index(i pulumi.IntInput) GetWorkerPoolTemplateContainerLivenessProbeGrpcOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkerPoolTemplateContainerLivenessProbeGrpc {
+		return vs[0].([]GetWorkerPoolTemplateContainerLivenessProbeGrpc)[vs[1].(int)]
+	}).(GetWorkerPoolTemplateContainerLivenessProbeGrpcOutput)
+}
+
+type GetWorkerPoolTemplateContainerLivenessProbeHttpGet struct {
+	// Optional. Custom headers to set in the request. HTTP allows repeated headers.
+	HttpHeaders []GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader `pulumi:"httpHeaders"`
+	// Optional. Path to access on the HTTP server. Defaults to '/'.
+	Path string `pulumi:"path"`
+	// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+	Port int `pulumi:"port"`
+}
+
+// GetWorkerPoolTemplateContainerLivenessProbeHttpGetInput is an input type that accepts GetWorkerPoolTemplateContainerLivenessProbeHttpGetArgs and GetWorkerPoolTemplateContainerLivenessProbeHttpGetOutput values.
+// You can construct a concrete instance of `GetWorkerPoolTemplateContainerLivenessProbeHttpGetInput` via:
+//
+//	GetWorkerPoolTemplateContainerLivenessProbeHttpGetArgs{...}
+type GetWorkerPoolTemplateContainerLivenessProbeHttpGetInput interface {
+	pulumi.Input
+
+	ToGetWorkerPoolTemplateContainerLivenessProbeHttpGetOutput() GetWorkerPoolTemplateContainerLivenessProbeHttpGetOutput
+	ToGetWorkerPoolTemplateContainerLivenessProbeHttpGetOutputWithContext(context.Context) GetWorkerPoolTemplateContainerLivenessProbeHttpGetOutput
+}
+
+type GetWorkerPoolTemplateContainerLivenessProbeHttpGetArgs struct {
+	// Optional. Custom headers to set in the request. HTTP allows repeated headers.
+	HttpHeaders GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayInput `pulumi:"httpHeaders"`
+	// Optional. Path to access on the HTTP server. Defaults to '/'.
+	Path pulumi.StringInput `pulumi:"path"`
+	// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+	Port pulumi.IntInput `pulumi:"port"`
+}
+
+func (GetWorkerPoolTemplateContainerLivenessProbeHttpGetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkerPoolTemplateContainerLivenessProbeHttpGet)(nil)).Elem()
+}
+
+func (i GetWorkerPoolTemplateContainerLivenessProbeHttpGetArgs) ToGetWorkerPoolTemplateContainerLivenessProbeHttpGetOutput() GetWorkerPoolTemplateContainerLivenessProbeHttpGetOutput {
+	return i.ToGetWorkerPoolTemplateContainerLivenessProbeHttpGetOutputWithContext(context.Background())
+}
+
+func (i GetWorkerPoolTemplateContainerLivenessProbeHttpGetArgs) ToGetWorkerPoolTemplateContainerLivenessProbeHttpGetOutputWithContext(ctx context.Context) GetWorkerPoolTemplateContainerLivenessProbeHttpGetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkerPoolTemplateContainerLivenessProbeHttpGetOutput)
+}
+
+// GetWorkerPoolTemplateContainerLivenessProbeHttpGetArrayInput is an input type that accepts GetWorkerPoolTemplateContainerLivenessProbeHttpGetArray and GetWorkerPoolTemplateContainerLivenessProbeHttpGetArrayOutput values.
+// You can construct a concrete instance of `GetWorkerPoolTemplateContainerLivenessProbeHttpGetArrayInput` via:
+//
+//	GetWorkerPoolTemplateContainerLivenessProbeHttpGetArray{ GetWorkerPoolTemplateContainerLivenessProbeHttpGetArgs{...} }
+type GetWorkerPoolTemplateContainerLivenessProbeHttpGetArrayInput interface {
+	pulumi.Input
+
+	ToGetWorkerPoolTemplateContainerLivenessProbeHttpGetArrayOutput() GetWorkerPoolTemplateContainerLivenessProbeHttpGetArrayOutput
+	ToGetWorkerPoolTemplateContainerLivenessProbeHttpGetArrayOutputWithContext(context.Context) GetWorkerPoolTemplateContainerLivenessProbeHttpGetArrayOutput
+}
+
+type GetWorkerPoolTemplateContainerLivenessProbeHttpGetArray []GetWorkerPoolTemplateContainerLivenessProbeHttpGetInput
+
+func (GetWorkerPoolTemplateContainerLivenessProbeHttpGetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkerPoolTemplateContainerLivenessProbeHttpGet)(nil)).Elem()
+}
+
+func (i GetWorkerPoolTemplateContainerLivenessProbeHttpGetArray) ToGetWorkerPoolTemplateContainerLivenessProbeHttpGetArrayOutput() GetWorkerPoolTemplateContainerLivenessProbeHttpGetArrayOutput {
+	return i.ToGetWorkerPoolTemplateContainerLivenessProbeHttpGetArrayOutputWithContext(context.Background())
+}
+
+func (i GetWorkerPoolTemplateContainerLivenessProbeHttpGetArray) ToGetWorkerPoolTemplateContainerLivenessProbeHttpGetArrayOutputWithContext(ctx context.Context) GetWorkerPoolTemplateContainerLivenessProbeHttpGetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkerPoolTemplateContainerLivenessProbeHttpGetArrayOutput)
+}
+
+type GetWorkerPoolTemplateContainerLivenessProbeHttpGetOutput struct{ *pulumi.OutputState }
+
+func (GetWorkerPoolTemplateContainerLivenessProbeHttpGetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkerPoolTemplateContainerLivenessProbeHttpGet)(nil)).Elem()
+}
+
+func (o GetWorkerPoolTemplateContainerLivenessProbeHttpGetOutput) ToGetWorkerPoolTemplateContainerLivenessProbeHttpGetOutput() GetWorkerPoolTemplateContainerLivenessProbeHttpGetOutput {
+	return o
+}
+
+func (o GetWorkerPoolTemplateContainerLivenessProbeHttpGetOutput) ToGetWorkerPoolTemplateContainerLivenessProbeHttpGetOutputWithContext(ctx context.Context) GetWorkerPoolTemplateContainerLivenessProbeHttpGetOutput {
+	return o
+}
+
+// Optional. Custom headers to set in the request. HTTP allows repeated headers.
+func (o GetWorkerPoolTemplateContainerLivenessProbeHttpGetOutput) HttpHeaders() GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateContainerLivenessProbeHttpGet) []GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader {
+		return v.HttpHeaders
+	}).(GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput)
+}
+
+// Optional. Path to access on the HTTP server. Defaults to '/'.
+func (o GetWorkerPoolTemplateContainerLivenessProbeHttpGetOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateContainerLivenessProbeHttpGet) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+func (o GetWorkerPoolTemplateContainerLivenessProbeHttpGetOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateContainerLivenessProbeHttpGet) int { return v.Port }).(pulumi.IntOutput)
+}
+
+type GetWorkerPoolTemplateContainerLivenessProbeHttpGetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWorkerPoolTemplateContainerLivenessProbeHttpGetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkerPoolTemplateContainerLivenessProbeHttpGet)(nil)).Elem()
+}
+
+func (o GetWorkerPoolTemplateContainerLivenessProbeHttpGetArrayOutput) ToGetWorkerPoolTemplateContainerLivenessProbeHttpGetArrayOutput() GetWorkerPoolTemplateContainerLivenessProbeHttpGetArrayOutput {
+	return o
+}
+
+func (o GetWorkerPoolTemplateContainerLivenessProbeHttpGetArrayOutput) ToGetWorkerPoolTemplateContainerLivenessProbeHttpGetArrayOutputWithContext(ctx context.Context) GetWorkerPoolTemplateContainerLivenessProbeHttpGetArrayOutput {
+	return o
+}
+
+func (o GetWorkerPoolTemplateContainerLivenessProbeHttpGetArrayOutput) Index(i pulumi.IntInput) GetWorkerPoolTemplateContainerLivenessProbeHttpGetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkerPoolTemplateContainerLivenessProbeHttpGet {
+		return vs[0].([]GetWorkerPoolTemplateContainerLivenessProbeHttpGet)[vs[1].(int)]
+	}).(GetWorkerPoolTemplateContainerLivenessProbeHttpGetOutput)
+}
+
+type GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader struct {
+	// Required. The header field name
+	Port int `pulumi:"port"`
+	// Optional. The header field value
+	Value string `pulumi:"value"`
+}
+
+// GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderInput is an input type that accepts GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs and GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput values.
+// You can construct a concrete instance of `GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderInput` via:
+//
+//	GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs{...}
+type GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderInput interface {
+	pulumi.Input
+
+	ToGetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput() GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput
+	ToGetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutputWithContext(context.Context) GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput
+}
+
+type GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs struct {
+	// Required. The header field name
+	Port pulumi.IntInput `pulumi:"port"`
+	// Optional. The header field value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (i GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs) ToGetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput() GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput {
+	return i.ToGetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutputWithContext(context.Background())
+}
+
+func (i GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs) ToGetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput)
+}
+
+// GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayInput is an input type that accepts GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArray and GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput values.
+// You can construct a concrete instance of `GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayInput` via:
+//
+//	GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArray{ GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs{...} }
+type GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayInput interface {
+	pulumi.Input
+
+	ToGetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput() GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput
+	ToGetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutputWithContext(context.Context) GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput
+}
+
+type GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArray []GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderInput
+
+func (GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (i GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArray) ToGetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput() GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
+	return i.ToGetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArray) ToGetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput)
+}
+
+type GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput struct{ *pulumi.OutputState }
+
+func (GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (o GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) ToGetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput() GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput {
+	return o
+}
+
+func (o GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) ToGetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput {
+	return o
+}
+
+// Required. The header field name
+func (o GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Optional. The header field value
+func (o GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (o GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput) ToGetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput() GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
+	return o
+}
+
+func (o GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput) ToGetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
+	return o
+}
+
+func (o GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput) Index(i pulumi.IntInput) GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader {
+		return vs[0].([]GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader)[vs[1].(int)]
+	}).(GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput)
+}
+
+type GetWorkerPoolTemplateContainerLivenessProbeTcpSocket struct {
+	// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+	Port int `pulumi:"port"`
+}
+
+// GetWorkerPoolTemplateContainerLivenessProbeTcpSocketInput is an input type that accepts GetWorkerPoolTemplateContainerLivenessProbeTcpSocketArgs and GetWorkerPoolTemplateContainerLivenessProbeTcpSocketOutput values.
+// You can construct a concrete instance of `GetWorkerPoolTemplateContainerLivenessProbeTcpSocketInput` via:
+//
+//	GetWorkerPoolTemplateContainerLivenessProbeTcpSocketArgs{...}
+type GetWorkerPoolTemplateContainerLivenessProbeTcpSocketInput interface {
+	pulumi.Input
+
+	ToGetWorkerPoolTemplateContainerLivenessProbeTcpSocketOutput() GetWorkerPoolTemplateContainerLivenessProbeTcpSocketOutput
+	ToGetWorkerPoolTemplateContainerLivenessProbeTcpSocketOutputWithContext(context.Context) GetWorkerPoolTemplateContainerLivenessProbeTcpSocketOutput
+}
+
+type GetWorkerPoolTemplateContainerLivenessProbeTcpSocketArgs struct {
+	// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+	Port pulumi.IntInput `pulumi:"port"`
+}
+
+func (GetWorkerPoolTemplateContainerLivenessProbeTcpSocketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkerPoolTemplateContainerLivenessProbeTcpSocket)(nil)).Elem()
+}
+
+func (i GetWorkerPoolTemplateContainerLivenessProbeTcpSocketArgs) ToGetWorkerPoolTemplateContainerLivenessProbeTcpSocketOutput() GetWorkerPoolTemplateContainerLivenessProbeTcpSocketOutput {
+	return i.ToGetWorkerPoolTemplateContainerLivenessProbeTcpSocketOutputWithContext(context.Background())
+}
+
+func (i GetWorkerPoolTemplateContainerLivenessProbeTcpSocketArgs) ToGetWorkerPoolTemplateContainerLivenessProbeTcpSocketOutputWithContext(ctx context.Context) GetWorkerPoolTemplateContainerLivenessProbeTcpSocketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkerPoolTemplateContainerLivenessProbeTcpSocketOutput)
+}
+
+// GetWorkerPoolTemplateContainerLivenessProbeTcpSocketArrayInput is an input type that accepts GetWorkerPoolTemplateContainerLivenessProbeTcpSocketArray and GetWorkerPoolTemplateContainerLivenessProbeTcpSocketArrayOutput values.
+// You can construct a concrete instance of `GetWorkerPoolTemplateContainerLivenessProbeTcpSocketArrayInput` via:
+//
+//	GetWorkerPoolTemplateContainerLivenessProbeTcpSocketArray{ GetWorkerPoolTemplateContainerLivenessProbeTcpSocketArgs{...} }
+type GetWorkerPoolTemplateContainerLivenessProbeTcpSocketArrayInput interface {
+	pulumi.Input
+
+	ToGetWorkerPoolTemplateContainerLivenessProbeTcpSocketArrayOutput() GetWorkerPoolTemplateContainerLivenessProbeTcpSocketArrayOutput
+	ToGetWorkerPoolTemplateContainerLivenessProbeTcpSocketArrayOutputWithContext(context.Context) GetWorkerPoolTemplateContainerLivenessProbeTcpSocketArrayOutput
+}
+
+type GetWorkerPoolTemplateContainerLivenessProbeTcpSocketArray []GetWorkerPoolTemplateContainerLivenessProbeTcpSocketInput
+
+func (GetWorkerPoolTemplateContainerLivenessProbeTcpSocketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkerPoolTemplateContainerLivenessProbeTcpSocket)(nil)).Elem()
+}
+
+func (i GetWorkerPoolTemplateContainerLivenessProbeTcpSocketArray) ToGetWorkerPoolTemplateContainerLivenessProbeTcpSocketArrayOutput() GetWorkerPoolTemplateContainerLivenessProbeTcpSocketArrayOutput {
+	return i.ToGetWorkerPoolTemplateContainerLivenessProbeTcpSocketArrayOutputWithContext(context.Background())
+}
+
+func (i GetWorkerPoolTemplateContainerLivenessProbeTcpSocketArray) ToGetWorkerPoolTemplateContainerLivenessProbeTcpSocketArrayOutputWithContext(ctx context.Context) GetWorkerPoolTemplateContainerLivenessProbeTcpSocketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkerPoolTemplateContainerLivenessProbeTcpSocketArrayOutput)
+}
+
+type GetWorkerPoolTemplateContainerLivenessProbeTcpSocketOutput struct{ *pulumi.OutputState }
+
+func (GetWorkerPoolTemplateContainerLivenessProbeTcpSocketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkerPoolTemplateContainerLivenessProbeTcpSocket)(nil)).Elem()
+}
+
+func (o GetWorkerPoolTemplateContainerLivenessProbeTcpSocketOutput) ToGetWorkerPoolTemplateContainerLivenessProbeTcpSocketOutput() GetWorkerPoolTemplateContainerLivenessProbeTcpSocketOutput {
+	return o
+}
+
+func (o GetWorkerPoolTemplateContainerLivenessProbeTcpSocketOutput) ToGetWorkerPoolTemplateContainerLivenessProbeTcpSocketOutputWithContext(ctx context.Context) GetWorkerPoolTemplateContainerLivenessProbeTcpSocketOutput {
+	return o
+}
+
+// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+func (o GetWorkerPoolTemplateContainerLivenessProbeTcpSocketOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateContainerLivenessProbeTcpSocket) int { return v.Port }).(pulumi.IntOutput)
+}
+
+type GetWorkerPoolTemplateContainerLivenessProbeTcpSocketArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWorkerPoolTemplateContainerLivenessProbeTcpSocketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkerPoolTemplateContainerLivenessProbeTcpSocket)(nil)).Elem()
+}
+
+func (o GetWorkerPoolTemplateContainerLivenessProbeTcpSocketArrayOutput) ToGetWorkerPoolTemplateContainerLivenessProbeTcpSocketArrayOutput() GetWorkerPoolTemplateContainerLivenessProbeTcpSocketArrayOutput {
+	return o
+}
+
+func (o GetWorkerPoolTemplateContainerLivenessProbeTcpSocketArrayOutput) ToGetWorkerPoolTemplateContainerLivenessProbeTcpSocketArrayOutputWithContext(ctx context.Context) GetWorkerPoolTemplateContainerLivenessProbeTcpSocketArrayOutput {
+	return o
+}
+
+func (o GetWorkerPoolTemplateContainerLivenessProbeTcpSocketArrayOutput) Index(i pulumi.IntInput) GetWorkerPoolTemplateContainerLivenessProbeTcpSocketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkerPoolTemplateContainerLivenessProbeTcpSocket {
+		return vs[0].([]GetWorkerPoolTemplateContainerLivenessProbeTcpSocket)[vs[1].(int)]
+	}).(GetWorkerPoolTemplateContainerLivenessProbeTcpSocketOutput)
+}
+
 type GetWorkerPoolTemplateContainerResource struct {
 	// Only memory, CPU, and nvidia.com/gpu are supported. Use key 'cpu' for CPU limit, 'memory' for memory limit, 'nvidia.com/gpu' for gpu limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits map[string]string `pulumi:"limits"`
@@ -26115,6 +28542,589 @@ func (o GetWorkerPoolTemplateContainerResourceArrayOutput) Index(i pulumi.IntInp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkerPoolTemplateContainerResource {
 		return vs[0].([]GetWorkerPoolTemplateContainerResource)[vs[1].(int)]
 	}).(GetWorkerPoolTemplateContainerResourceOutput)
+}
+
+type GetWorkerPoolTemplateContainerStartupProbe struct {
+	// Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+	FailureThreshold int `pulumi:"failureThreshold"`
+	// Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+	Grpcs []GetWorkerPoolTemplateContainerStartupProbeGrpc `pulumi:"grpcs"`
+	// Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+	HttpGets []GetWorkerPoolTemplateContainerStartupProbeHttpGet `pulumi:"httpGets"`
+	// Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+	InitialDelaySeconds int `pulumi:"initialDelaySeconds"`
+	// Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+	PeriodSeconds int `pulumi:"periodSeconds"`
+	// Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+	TcpSockets []GetWorkerPoolTemplateContainerStartupProbeTcpSocket `pulumi:"tcpSockets"`
+	// Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+	TimeoutSeconds int `pulumi:"timeoutSeconds"`
+}
+
+// GetWorkerPoolTemplateContainerStartupProbeInput is an input type that accepts GetWorkerPoolTemplateContainerStartupProbeArgs and GetWorkerPoolTemplateContainerStartupProbeOutput values.
+// You can construct a concrete instance of `GetWorkerPoolTemplateContainerStartupProbeInput` via:
+//
+//	GetWorkerPoolTemplateContainerStartupProbeArgs{...}
+type GetWorkerPoolTemplateContainerStartupProbeInput interface {
+	pulumi.Input
+
+	ToGetWorkerPoolTemplateContainerStartupProbeOutput() GetWorkerPoolTemplateContainerStartupProbeOutput
+	ToGetWorkerPoolTemplateContainerStartupProbeOutputWithContext(context.Context) GetWorkerPoolTemplateContainerStartupProbeOutput
+}
+
+type GetWorkerPoolTemplateContainerStartupProbeArgs struct {
+	// Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+	FailureThreshold pulumi.IntInput `pulumi:"failureThreshold"`
+	// Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+	Grpcs GetWorkerPoolTemplateContainerStartupProbeGrpcArrayInput `pulumi:"grpcs"`
+	// Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+	HttpGets GetWorkerPoolTemplateContainerStartupProbeHttpGetArrayInput `pulumi:"httpGets"`
+	// Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+	InitialDelaySeconds pulumi.IntInput `pulumi:"initialDelaySeconds"`
+	// Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+	PeriodSeconds pulumi.IntInput `pulumi:"periodSeconds"`
+	// Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+	TcpSockets GetWorkerPoolTemplateContainerStartupProbeTcpSocketArrayInput `pulumi:"tcpSockets"`
+	// Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+	TimeoutSeconds pulumi.IntInput `pulumi:"timeoutSeconds"`
+}
+
+func (GetWorkerPoolTemplateContainerStartupProbeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkerPoolTemplateContainerStartupProbe)(nil)).Elem()
+}
+
+func (i GetWorkerPoolTemplateContainerStartupProbeArgs) ToGetWorkerPoolTemplateContainerStartupProbeOutput() GetWorkerPoolTemplateContainerStartupProbeOutput {
+	return i.ToGetWorkerPoolTemplateContainerStartupProbeOutputWithContext(context.Background())
+}
+
+func (i GetWorkerPoolTemplateContainerStartupProbeArgs) ToGetWorkerPoolTemplateContainerStartupProbeOutputWithContext(ctx context.Context) GetWorkerPoolTemplateContainerStartupProbeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkerPoolTemplateContainerStartupProbeOutput)
+}
+
+// GetWorkerPoolTemplateContainerStartupProbeArrayInput is an input type that accepts GetWorkerPoolTemplateContainerStartupProbeArray and GetWorkerPoolTemplateContainerStartupProbeArrayOutput values.
+// You can construct a concrete instance of `GetWorkerPoolTemplateContainerStartupProbeArrayInput` via:
+//
+//	GetWorkerPoolTemplateContainerStartupProbeArray{ GetWorkerPoolTemplateContainerStartupProbeArgs{...} }
+type GetWorkerPoolTemplateContainerStartupProbeArrayInput interface {
+	pulumi.Input
+
+	ToGetWorkerPoolTemplateContainerStartupProbeArrayOutput() GetWorkerPoolTemplateContainerStartupProbeArrayOutput
+	ToGetWorkerPoolTemplateContainerStartupProbeArrayOutputWithContext(context.Context) GetWorkerPoolTemplateContainerStartupProbeArrayOutput
+}
+
+type GetWorkerPoolTemplateContainerStartupProbeArray []GetWorkerPoolTemplateContainerStartupProbeInput
+
+func (GetWorkerPoolTemplateContainerStartupProbeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkerPoolTemplateContainerStartupProbe)(nil)).Elem()
+}
+
+func (i GetWorkerPoolTemplateContainerStartupProbeArray) ToGetWorkerPoolTemplateContainerStartupProbeArrayOutput() GetWorkerPoolTemplateContainerStartupProbeArrayOutput {
+	return i.ToGetWorkerPoolTemplateContainerStartupProbeArrayOutputWithContext(context.Background())
+}
+
+func (i GetWorkerPoolTemplateContainerStartupProbeArray) ToGetWorkerPoolTemplateContainerStartupProbeArrayOutputWithContext(ctx context.Context) GetWorkerPoolTemplateContainerStartupProbeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkerPoolTemplateContainerStartupProbeArrayOutput)
+}
+
+type GetWorkerPoolTemplateContainerStartupProbeOutput struct{ *pulumi.OutputState }
+
+func (GetWorkerPoolTemplateContainerStartupProbeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkerPoolTemplateContainerStartupProbe)(nil)).Elem()
+}
+
+func (o GetWorkerPoolTemplateContainerStartupProbeOutput) ToGetWorkerPoolTemplateContainerStartupProbeOutput() GetWorkerPoolTemplateContainerStartupProbeOutput {
+	return o
+}
+
+func (o GetWorkerPoolTemplateContainerStartupProbeOutput) ToGetWorkerPoolTemplateContainerStartupProbeOutputWithContext(ctx context.Context) GetWorkerPoolTemplateContainerStartupProbeOutput {
+	return o
+}
+
+// Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+func (o GetWorkerPoolTemplateContainerStartupProbeOutput) FailureThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateContainerStartupProbe) int { return v.FailureThreshold }).(pulumi.IntOutput)
+}
+
+// Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+func (o GetWorkerPoolTemplateContainerStartupProbeOutput) Grpcs() GetWorkerPoolTemplateContainerStartupProbeGrpcArrayOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateContainerStartupProbe) []GetWorkerPoolTemplateContainerStartupProbeGrpc {
+		return v.Grpcs
+	}).(GetWorkerPoolTemplateContainerStartupProbeGrpcArrayOutput)
+}
+
+// Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+func (o GetWorkerPoolTemplateContainerStartupProbeOutput) HttpGets() GetWorkerPoolTemplateContainerStartupProbeHttpGetArrayOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateContainerStartupProbe) []GetWorkerPoolTemplateContainerStartupProbeHttpGet {
+		return v.HttpGets
+	}).(GetWorkerPoolTemplateContainerStartupProbeHttpGetArrayOutput)
+}
+
+// Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+func (o GetWorkerPoolTemplateContainerStartupProbeOutput) InitialDelaySeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateContainerStartupProbe) int { return v.InitialDelaySeconds }).(pulumi.IntOutput)
+}
+
+// Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+func (o GetWorkerPoolTemplateContainerStartupProbeOutput) PeriodSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateContainerStartupProbe) int { return v.PeriodSeconds }).(pulumi.IntOutput)
+}
+
+// Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+func (o GetWorkerPoolTemplateContainerStartupProbeOutput) TcpSockets() GetWorkerPoolTemplateContainerStartupProbeTcpSocketArrayOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateContainerStartupProbe) []GetWorkerPoolTemplateContainerStartupProbeTcpSocket {
+		return v.TcpSockets
+	}).(GetWorkerPoolTemplateContainerStartupProbeTcpSocketArrayOutput)
+}
+
+// Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+func (o GetWorkerPoolTemplateContainerStartupProbeOutput) TimeoutSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateContainerStartupProbe) int { return v.TimeoutSeconds }).(pulumi.IntOutput)
+}
+
+type GetWorkerPoolTemplateContainerStartupProbeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWorkerPoolTemplateContainerStartupProbeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkerPoolTemplateContainerStartupProbe)(nil)).Elem()
+}
+
+func (o GetWorkerPoolTemplateContainerStartupProbeArrayOutput) ToGetWorkerPoolTemplateContainerStartupProbeArrayOutput() GetWorkerPoolTemplateContainerStartupProbeArrayOutput {
+	return o
+}
+
+func (o GetWorkerPoolTemplateContainerStartupProbeArrayOutput) ToGetWorkerPoolTemplateContainerStartupProbeArrayOutputWithContext(ctx context.Context) GetWorkerPoolTemplateContainerStartupProbeArrayOutput {
+	return o
+}
+
+func (o GetWorkerPoolTemplateContainerStartupProbeArrayOutput) Index(i pulumi.IntInput) GetWorkerPoolTemplateContainerStartupProbeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkerPoolTemplateContainerStartupProbe {
+		return vs[0].([]GetWorkerPoolTemplateContainerStartupProbe)[vs[1].(int)]
+	}).(GetWorkerPoolTemplateContainerStartupProbeOutput)
+}
+
+type GetWorkerPoolTemplateContainerStartupProbeGrpc struct {
+	// Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+	Port int `pulumi:"port"`
+	// Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC
+	Service string `pulumi:"service"`
+}
+
+// GetWorkerPoolTemplateContainerStartupProbeGrpcInput is an input type that accepts GetWorkerPoolTemplateContainerStartupProbeGrpcArgs and GetWorkerPoolTemplateContainerStartupProbeGrpcOutput values.
+// You can construct a concrete instance of `GetWorkerPoolTemplateContainerStartupProbeGrpcInput` via:
+//
+//	GetWorkerPoolTemplateContainerStartupProbeGrpcArgs{...}
+type GetWorkerPoolTemplateContainerStartupProbeGrpcInput interface {
+	pulumi.Input
+
+	ToGetWorkerPoolTemplateContainerStartupProbeGrpcOutput() GetWorkerPoolTemplateContainerStartupProbeGrpcOutput
+	ToGetWorkerPoolTemplateContainerStartupProbeGrpcOutputWithContext(context.Context) GetWorkerPoolTemplateContainerStartupProbeGrpcOutput
+}
+
+type GetWorkerPoolTemplateContainerStartupProbeGrpcArgs struct {
+	// Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+	Port pulumi.IntInput `pulumi:"port"`
+	// Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (GetWorkerPoolTemplateContainerStartupProbeGrpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkerPoolTemplateContainerStartupProbeGrpc)(nil)).Elem()
+}
+
+func (i GetWorkerPoolTemplateContainerStartupProbeGrpcArgs) ToGetWorkerPoolTemplateContainerStartupProbeGrpcOutput() GetWorkerPoolTemplateContainerStartupProbeGrpcOutput {
+	return i.ToGetWorkerPoolTemplateContainerStartupProbeGrpcOutputWithContext(context.Background())
+}
+
+func (i GetWorkerPoolTemplateContainerStartupProbeGrpcArgs) ToGetWorkerPoolTemplateContainerStartupProbeGrpcOutputWithContext(ctx context.Context) GetWorkerPoolTemplateContainerStartupProbeGrpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkerPoolTemplateContainerStartupProbeGrpcOutput)
+}
+
+// GetWorkerPoolTemplateContainerStartupProbeGrpcArrayInput is an input type that accepts GetWorkerPoolTemplateContainerStartupProbeGrpcArray and GetWorkerPoolTemplateContainerStartupProbeGrpcArrayOutput values.
+// You can construct a concrete instance of `GetWorkerPoolTemplateContainerStartupProbeGrpcArrayInput` via:
+//
+//	GetWorkerPoolTemplateContainerStartupProbeGrpcArray{ GetWorkerPoolTemplateContainerStartupProbeGrpcArgs{...} }
+type GetWorkerPoolTemplateContainerStartupProbeGrpcArrayInput interface {
+	pulumi.Input
+
+	ToGetWorkerPoolTemplateContainerStartupProbeGrpcArrayOutput() GetWorkerPoolTemplateContainerStartupProbeGrpcArrayOutput
+	ToGetWorkerPoolTemplateContainerStartupProbeGrpcArrayOutputWithContext(context.Context) GetWorkerPoolTemplateContainerStartupProbeGrpcArrayOutput
+}
+
+type GetWorkerPoolTemplateContainerStartupProbeGrpcArray []GetWorkerPoolTemplateContainerStartupProbeGrpcInput
+
+func (GetWorkerPoolTemplateContainerStartupProbeGrpcArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkerPoolTemplateContainerStartupProbeGrpc)(nil)).Elem()
+}
+
+func (i GetWorkerPoolTemplateContainerStartupProbeGrpcArray) ToGetWorkerPoolTemplateContainerStartupProbeGrpcArrayOutput() GetWorkerPoolTemplateContainerStartupProbeGrpcArrayOutput {
+	return i.ToGetWorkerPoolTemplateContainerStartupProbeGrpcArrayOutputWithContext(context.Background())
+}
+
+func (i GetWorkerPoolTemplateContainerStartupProbeGrpcArray) ToGetWorkerPoolTemplateContainerStartupProbeGrpcArrayOutputWithContext(ctx context.Context) GetWorkerPoolTemplateContainerStartupProbeGrpcArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkerPoolTemplateContainerStartupProbeGrpcArrayOutput)
+}
+
+type GetWorkerPoolTemplateContainerStartupProbeGrpcOutput struct{ *pulumi.OutputState }
+
+func (GetWorkerPoolTemplateContainerStartupProbeGrpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkerPoolTemplateContainerStartupProbeGrpc)(nil)).Elem()
+}
+
+func (o GetWorkerPoolTemplateContainerStartupProbeGrpcOutput) ToGetWorkerPoolTemplateContainerStartupProbeGrpcOutput() GetWorkerPoolTemplateContainerStartupProbeGrpcOutput {
+	return o
+}
+
+func (o GetWorkerPoolTemplateContainerStartupProbeGrpcOutput) ToGetWorkerPoolTemplateContainerStartupProbeGrpcOutputWithContext(ctx context.Context) GetWorkerPoolTemplateContainerStartupProbeGrpcOutput {
+	return o
+}
+
+// Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+func (o GetWorkerPoolTemplateContainerStartupProbeGrpcOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateContainerStartupProbeGrpc) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC
+func (o GetWorkerPoolTemplateContainerStartupProbeGrpcOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateContainerStartupProbeGrpc) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type GetWorkerPoolTemplateContainerStartupProbeGrpcArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWorkerPoolTemplateContainerStartupProbeGrpcArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkerPoolTemplateContainerStartupProbeGrpc)(nil)).Elem()
+}
+
+func (o GetWorkerPoolTemplateContainerStartupProbeGrpcArrayOutput) ToGetWorkerPoolTemplateContainerStartupProbeGrpcArrayOutput() GetWorkerPoolTemplateContainerStartupProbeGrpcArrayOutput {
+	return o
+}
+
+func (o GetWorkerPoolTemplateContainerStartupProbeGrpcArrayOutput) ToGetWorkerPoolTemplateContainerStartupProbeGrpcArrayOutputWithContext(ctx context.Context) GetWorkerPoolTemplateContainerStartupProbeGrpcArrayOutput {
+	return o
+}
+
+func (o GetWorkerPoolTemplateContainerStartupProbeGrpcArrayOutput) Index(i pulumi.IntInput) GetWorkerPoolTemplateContainerStartupProbeGrpcOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkerPoolTemplateContainerStartupProbeGrpc {
+		return vs[0].([]GetWorkerPoolTemplateContainerStartupProbeGrpc)[vs[1].(int)]
+	}).(GetWorkerPoolTemplateContainerStartupProbeGrpcOutput)
+}
+
+type GetWorkerPoolTemplateContainerStartupProbeHttpGet struct {
+	// Optional. Custom headers to set in the request. HTTP allows repeated headers.
+	HttpHeaders []GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader `pulumi:"httpHeaders"`
+	// Optional. Path to access on the HTTP server. Defaults to '/'.
+	Path string `pulumi:"path"`
+	// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+	Port int `pulumi:"port"`
+}
+
+// GetWorkerPoolTemplateContainerStartupProbeHttpGetInput is an input type that accepts GetWorkerPoolTemplateContainerStartupProbeHttpGetArgs and GetWorkerPoolTemplateContainerStartupProbeHttpGetOutput values.
+// You can construct a concrete instance of `GetWorkerPoolTemplateContainerStartupProbeHttpGetInput` via:
+//
+//	GetWorkerPoolTemplateContainerStartupProbeHttpGetArgs{...}
+type GetWorkerPoolTemplateContainerStartupProbeHttpGetInput interface {
+	pulumi.Input
+
+	ToGetWorkerPoolTemplateContainerStartupProbeHttpGetOutput() GetWorkerPoolTemplateContainerStartupProbeHttpGetOutput
+	ToGetWorkerPoolTemplateContainerStartupProbeHttpGetOutputWithContext(context.Context) GetWorkerPoolTemplateContainerStartupProbeHttpGetOutput
+}
+
+type GetWorkerPoolTemplateContainerStartupProbeHttpGetArgs struct {
+	// Optional. Custom headers to set in the request. HTTP allows repeated headers.
+	HttpHeaders GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayInput `pulumi:"httpHeaders"`
+	// Optional. Path to access on the HTTP server. Defaults to '/'.
+	Path pulumi.StringInput `pulumi:"path"`
+	// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+	Port pulumi.IntInput `pulumi:"port"`
+}
+
+func (GetWorkerPoolTemplateContainerStartupProbeHttpGetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkerPoolTemplateContainerStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (i GetWorkerPoolTemplateContainerStartupProbeHttpGetArgs) ToGetWorkerPoolTemplateContainerStartupProbeHttpGetOutput() GetWorkerPoolTemplateContainerStartupProbeHttpGetOutput {
+	return i.ToGetWorkerPoolTemplateContainerStartupProbeHttpGetOutputWithContext(context.Background())
+}
+
+func (i GetWorkerPoolTemplateContainerStartupProbeHttpGetArgs) ToGetWorkerPoolTemplateContainerStartupProbeHttpGetOutputWithContext(ctx context.Context) GetWorkerPoolTemplateContainerStartupProbeHttpGetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkerPoolTemplateContainerStartupProbeHttpGetOutput)
+}
+
+// GetWorkerPoolTemplateContainerStartupProbeHttpGetArrayInput is an input type that accepts GetWorkerPoolTemplateContainerStartupProbeHttpGetArray and GetWorkerPoolTemplateContainerStartupProbeHttpGetArrayOutput values.
+// You can construct a concrete instance of `GetWorkerPoolTemplateContainerStartupProbeHttpGetArrayInput` via:
+//
+//	GetWorkerPoolTemplateContainerStartupProbeHttpGetArray{ GetWorkerPoolTemplateContainerStartupProbeHttpGetArgs{...} }
+type GetWorkerPoolTemplateContainerStartupProbeHttpGetArrayInput interface {
+	pulumi.Input
+
+	ToGetWorkerPoolTemplateContainerStartupProbeHttpGetArrayOutput() GetWorkerPoolTemplateContainerStartupProbeHttpGetArrayOutput
+	ToGetWorkerPoolTemplateContainerStartupProbeHttpGetArrayOutputWithContext(context.Context) GetWorkerPoolTemplateContainerStartupProbeHttpGetArrayOutput
+}
+
+type GetWorkerPoolTemplateContainerStartupProbeHttpGetArray []GetWorkerPoolTemplateContainerStartupProbeHttpGetInput
+
+func (GetWorkerPoolTemplateContainerStartupProbeHttpGetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkerPoolTemplateContainerStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (i GetWorkerPoolTemplateContainerStartupProbeHttpGetArray) ToGetWorkerPoolTemplateContainerStartupProbeHttpGetArrayOutput() GetWorkerPoolTemplateContainerStartupProbeHttpGetArrayOutput {
+	return i.ToGetWorkerPoolTemplateContainerStartupProbeHttpGetArrayOutputWithContext(context.Background())
+}
+
+func (i GetWorkerPoolTemplateContainerStartupProbeHttpGetArray) ToGetWorkerPoolTemplateContainerStartupProbeHttpGetArrayOutputWithContext(ctx context.Context) GetWorkerPoolTemplateContainerStartupProbeHttpGetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkerPoolTemplateContainerStartupProbeHttpGetArrayOutput)
+}
+
+type GetWorkerPoolTemplateContainerStartupProbeHttpGetOutput struct{ *pulumi.OutputState }
+
+func (GetWorkerPoolTemplateContainerStartupProbeHttpGetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkerPoolTemplateContainerStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (o GetWorkerPoolTemplateContainerStartupProbeHttpGetOutput) ToGetWorkerPoolTemplateContainerStartupProbeHttpGetOutput() GetWorkerPoolTemplateContainerStartupProbeHttpGetOutput {
+	return o
+}
+
+func (o GetWorkerPoolTemplateContainerStartupProbeHttpGetOutput) ToGetWorkerPoolTemplateContainerStartupProbeHttpGetOutputWithContext(ctx context.Context) GetWorkerPoolTemplateContainerStartupProbeHttpGetOutput {
+	return o
+}
+
+// Optional. Custom headers to set in the request. HTTP allows repeated headers.
+func (o GetWorkerPoolTemplateContainerStartupProbeHttpGetOutput) HttpHeaders() GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateContainerStartupProbeHttpGet) []GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader {
+		return v.HttpHeaders
+	}).(GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput)
+}
+
+// Optional. Path to access on the HTTP server. Defaults to '/'.
+func (o GetWorkerPoolTemplateContainerStartupProbeHttpGetOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateContainerStartupProbeHttpGet) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+func (o GetWorkerPoolTemplateContainerStartupProbeHttpGetOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateContainerStartupProbeHttpGet) int { return v.Port }).(pulumi.IntOutput)
+}
+
+type GetWorkerPoolTemplateContainerStartupProbeHttpGetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWorkerPoolTemplateContainerStartupProbeHttpGetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkerPoolTemplateContainerStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (o GetWorkerPoolTemplateContainerStartupProbeHttpGetArrayOutput) ToGetWorkerPoolTemplateContainerStartupProbeHttpGetArrayOutput() GetWorkerPoolTemplateContainerStartupProbeHttpGetArrayOutput {
+	return o
+}
+
+func (o GetWorkerPoolTemplateContainerStartupProbeHttpGetArrayOutput) ToGetWorkerPoolTemplateContainerStartupProbeHttpGetArrayOutputWithContext(ctx context.Context) GetWorkerPoolTemplateContainerStartupProbeHttpGetArrayOutput {
+	return o
+}
+
+func (o GetWorkerPoolTemplateContainerStartupProbeHttpGetArrayOutput) Index(i pulumi.IntInput) GetWorkerPoolTemplateContainerStartupProbeHttpGetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkerPoolTemplateContainerStartupProbeHttpGet {
+		return vs[0].([]GetWorkerPoolTemplateContainerStartupProbeHttpGet)[vs[1].(int)]
+	}).(GetWorkerPoolTemplateContainerStartupProbeHttpGetOutput)
+}
+
+type GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader struct {
+	// Required. The header field name
+	Port int `pulumi:"port"`
+	// Optional. The header field value
+	Value string `pulumi:"value"`
+}
+
+// GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderInput is an input type that accepts GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArgs and GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput values.
+// You can construct a concrete instance of `GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderInput` via:
+//
+//	GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArgs{...}
+type GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderInput interface {
+	pulumi.Input
+
+	ToGetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput() GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput
+	ToGetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutputWithContext(context.Context) GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput
+}
+
+type GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArgs struct {
+	// Required. The header field name
+	Port pulumi.IntInput `pulumi:"port"`
+	// Optional. The header field value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (i GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArgs) ToGetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput() GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput {
+	return i.ToGetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutputWithContext(context.Background())
+}
+
+func (i GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArgs) ToGetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput)
+}
+
+// GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayInput is an input type that accepts GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArray and GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput values.
+// You can construct a concrete instance of `GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayInput` via:
+//
+//	GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArray{ GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArgs{...} }
+type GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayInput interface {
+	pulumi.Input
+
+	ToGetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput() GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput
+	ToGetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(context.Context) GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput
+}
+
+type GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArray []GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderInput
+
+func (GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (i GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArray) ToGetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput() GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return i.ToGetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArray) ToGetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput)
+}
+
+type GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput struct{ *pulumi.OutputState }
+
+func (GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (o GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput) ToGetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput() GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput {
+	return o
+}
+
+func (o GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput) ToGetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput {
+	return o
+}
+
+// Required. The header field name
+func (o GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Optional. The header field value
+func (o GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (o GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput) ToGetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput() GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return o
+}
+
+func (o GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput) ToGetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return o
+}
+
+func (o GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput) Index(i pulumi.IntInput) GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader {
+		return vs[0].([]GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader)[vs[1].(int)]
+	}).(GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput)
+}
+
+type GetWorkerPoolTemplateContainerStartupProbeTcpSocket struct {
+	// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+	Port int `pulumi:"port"`
+}
+
+// GetWorkerPoolTemplateContainerStartupProbeTcpSocketInput is an input type that accepts GetWorkerPoolTemplateContainerStartupProbeTcpSocketArgs and GetWorkerPoolTemplateContainerStartupProbeTcpSocketOutput values.
+// You can construct a concrete instance of `GetWorkerPoolTemplateContainerStartupProbeTcpSocketInput` via:
+//
+//	GetWorkerPoolTemplateContainerStartupProbeTcpSocketArgs{...}
+type GetWorkerPoolTemplateContainerStartupProbeTcpSocketInput interface {
+	pulumi.Input
+
+	ToGetWorkerPoolTemplateContainerStartupProbeTcpSocketOutput() GetWorkerPoolTemplateContainerStartupProbeTcpSocketOutput
+	ToGetWorkerPoolTemplateContainerStartupProbeTcpSocketOutputWithContext(context.Context) GetWorkerPoolTemplateContainerStartupProbeTcpSocketOutput
+}
+
+type GetWorkerPoolTemplateContainerStartupProbeTcpSocketArgs struct {
+	// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+	Port pulumi.IntInput `pulumi:"port"`
+}
+
+func (GetWorkerPoolTemplateContainerStartupProbeTcpSocketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkerPoolTemplateContainerStartupProbeTcpSocket)(nil)).Elem()
+}
+
+func (i GetWorkerPoolTemplateContainerStartupProbeTcpSocketArgs) ToGetWorkerPoolTemplateContainerStartupProbeTcpSocketOutput() GetWorkerPoolTemplateContainerStartupProbeTcpSocketOutput {
+	return i.ToGetWorkerPoolTemplateContainerStartupProbeTcpSocketOutputWithContext(context.Background())
+}
+
+func (i GetWorkerPoolTemplateContainerStartupProbeTcpSocketArgs) ToGetWorkerPoolTemplateContainerStartupProbeTcpSocketOutputWithContext(ctx context.Context) GetWorkerPoolTemplateContainerStartupProbeTcpSocketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkerPoolTemplateContainerStartupProbeTcpSocketOutput)
+}
+
+// GetWorkerPoolTemplateContainerStartupProbeTcpSocketArrayInput is an input type that accepts GetWorkerPoolTemplateContainerStartupProbeTcpSocketArray and GetWorkerPoolTemplateContainerStartupProbeTcpSocketArrayOutput values.
+// You can construct a concrete instance of `GetWorkerPoolTemplateContainerStartupProbeTcpSocketArrayInput` via:
+//
+//	GetWorkerPoolTemplateContainerStartupProbeTcpSocketArray{ GetWorkerPoolTemplateContainerStartupProbeTcpSocketArgs{...} }
+type GetWorkerPoolTemplateContainerStartupProbeTcpSocketArrayInput interface {
+	pulumi.Input
+
+	ToGetWorkerPoolTemplateContainerStartupProbeTcpSocketArrayOutput() GetWorkerPoolTemplateContainerStartupProbeTcpSocketArrayOutput
+	ToGetWorkerPoolTemplateContainerStartupProbeTcpSocketArrayOutputWithContext(context.Context) GetWorkerPoolTemplateContainerStartupProbeTcpSocketArrayOutput
+}
+
+type GetWorkerPoolTemplateContainerStartupProbeTcpSocketArray []GetWorkerPoolTemplateContainerStartupProbeTcpSocketInput
+
+func (GetWorkerPoolTemplateContainerStartupProbeTcpSocketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkerPoolTemplateContainerStartupProbeTcpSocket)(nil)).Elem()
+}
+
+func (i GetWorkerPoolTemplateContainerStartupProbeTcpSocketArray) ToGetWorkerPoolTemplateContainerStartupProbeTcpSocketArrayOutput() GetWorkerPoolTemplateContainerStartupProbeTcpSocketArrayOutput {
+	return i.ToGetWorkerPoolTemplateContainerStartupProbeTcpSocketArrayOutputWithContext(context.Background())
+}
+
+func (i GetWorkerPoolTemplateContainerStartupProbeTcpSocketArray) ToGetWorkerPoolTemplateContainerStartupProbeTcpSocketArrayOutputWithContext(ctx context.Context) GetWorkerPoolTemplateContainerStartupProbeTcpSocketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkerPoolTemplateContainerStartupProbeTcpSocketArrayOutput)
+}
+
+type GetWorkerPoolTemplateContainerStartupProbeTcpSocketOutput struct{ *pulumi.OutputState }
+
+func (GetWorkerPoolTemplateContainerStartupProbeTcpSocketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkerPoolTemplateContainerStartupProbeTcpSocket)(nil)).Elem()
+}
+
+func (o GetWorkerPoolTemplateContainerStartupProbeTcpSocketOutput) ToGetWorkerPoolTemplateContainerStartupProbeTcpSocketOutput() GetWorkerPoolTemplateContainerStartupProbeTcpSocketOutput {
+	return o
+}
+
+func (o GetWorkerPoolTemplateContainerStartupProbeTcpSocketOutput) ToGetWorkerPoolTemplateContainerStartupProbeTcpSocketOutputWithContext(ctx context.Context) GetWorkerPoolTemplateContainerStartupProbeTcpSocketOutput {
+	return o
+}
+
+// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+func (o GetWorkerPoolTemplateContainerStartupProbeTcpSocketOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateContainerStartupProbeTcpSocket) int { return v.Port }).(pulumi.IntOutput)
+}
+
+type GetWorkerPoolTemplateContainerStartupProbeTcpSocketArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWorkerPoolTemplateContainerStartupProbeTcpSocketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkerPoolTemplateContainerStartupProbeTcpSocket)(nil)).Elem()
+}
+
+func (o GetWorkerPoolTemplateContainerStartupProbeTcpSocketArrayOutput) ToGetWorkerPoolTemplateContainerStartupProbeTcpSocketArrayOutput() GetWorkerPoolTemplateContainerStartupProbeTcpSocketArrayOutput {
+	return o
+}
+
+func (o GetWorkerPoolTemplateContainerStartupProbeTcpSocketArrayOutput) ToGetWorkerPoolTemplateContainerStartupProbeTcpSocketArrayOutputWithContext(ctx context.Context) GetWorkerPoolTemplateContainerStartupProbeTcpSocketArrayOutput {
+	return o
+}
+
+func (o GetWorkerPoolTemplateContainerStartupProbeTcpSocketArrayOutput) Index(i pulumi.IntInput) GetWorkerPoolTemplateContainerStartupProbeTcpSocketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkerPoolTemplateContainerStartupProbeTcpSocket {
+		return vs[0].([]GetWorkerPoolTemplateContainerStartupProbeTcpSocket)[vs[1].(int)]
+	}).(GetWorkerPoolTemplateContainerStartupProbeTcpSocketOutput)
 }
 
 type GetWorkerPoolTemplateContainerVolumeMount struct {
@@ -27710,8 +30720,28 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerEnvValueSourcePtrInput)(nil)).Elem(), WorkerPoolTemplateContainerEnvValueSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerEnvValueSourceSecretKeyRefInput)(nil)).Elem(), WorkerPoolTemplateContainerEnvValueSourceSecretKeyRefArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerEnvValueSourceSecretKeyRefPtrInput)(nil)).Elem(), WorkerPoolTemplateContainerEnvValueSourceSecretKeyRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeInput)(nil)).Elem(), WorkerPoolTemplateContainerLivenessProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbePtrInput)(nil)).Elem(), WorkerPoolTemplateContainerLivenessProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeGrpcInput)(nil)).Elem(), WorkerPoolTemplateContainerLivenessProbeGrpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeGrpcPtrInput)(nil)).Elem(), WorkerPoolTemplateContainerLivenessProbeGrpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeHttpGetInput)(nil)).Elem(), WorkerPoolTemplateContainerLivenessProbeHttpGetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeHttpGetPtrInput)(nil)).Elem(), WorkerPoolTemplateContainerLivenessProbeHttpGetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersInput)(nil)).Elem(), WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrInput)(nil)).Elem(), WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeTcpSocketInput)(nil)).Elem(), WorkerPoolTemplateContainerLivenessProbeTcpSocketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeTcpSocketPtrInput)(nil)).Elem(), WorkerPoolTemplateContainerLivenessProbeTcpSocketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerResourcesInput)(nil)).Elem(), WorkerPoolTemplateContainerResourcesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerResourcesPtrInput)(nil)).Elem(), WorkerPoolTemplateContainerResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeInput)(nil)).Elem(), WorkerPoolTemplateContainerStartupProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbePtrInput)(nil)).Elem(), WorkerPoolTemplateContainerStartupProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeGrpcInput)(nil)).Elem(), WorkerPoolTemplateContainerStartupProbeGrpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeGrpcPtrInput)(nil)).Elem(), WorkerPoolTemplateContainerStartupProbeGrpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeHttpGetInput)(nil)).Elem(), WorkerPoolTemplateContainerStartupProbeHttpGetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeHttpGetPtrInput)(nil)).Elem(), WorkerPoolTemplateContainerStartupProbeHttpGetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersInput)(nil)).Elem(), WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrInput)(nil)).Elem(), WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeTcpSocketInput)(nil)).Elem(), WorkerPoolTemplateContainerStartupProbeTcpSocketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeTcpSocketPtrInput)(nil)).Elem(), WorkerPoolTemplateContainerStartupProbeTcpSocketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerVolumeMountInput)(nil)).Elem(), WorkerPoolTemplateContainerVolumeMountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerVolumeMountArrayInput)(nil)).Elem(), WorkerPoolTemplateContainerVolumeMountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateNodeSelectorInput)(nil)).Elem(), WorkerPoolTemplateNodeSelectorArgs{})
@@ -27890,8 +30920,28 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateContainerEnvValueSourceArrayInput)(nil)).Elem(), GetWorkerPoolTemplateContainerEnvValueSourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateContainerEnvValueSourceSecretKeyRefInput)(nil)).Elem(), GetWorkerPoolTemplateContainerEnvValueSourceSecretKeyRefArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateContainerEnvValueSourceSecretKeyRefArrayInput)(nil)).Elem(), GetWorkerPoolTemplateContainerEnvValueSourceSecretKeyRefArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateContainerLivenessProbeInput)(nil)).Elem(), GetWorkerPoolTemplateContainerLivenessProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateContainerLivenessProbeArrayInput)(nil)).Elem(), GetWorkerPoolTemplateContainerLivenessProbeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateContainerLivenessProbeGrpcInput)(nil)).Elem(), GetWorkerPoolTemplateContainerLivenessProbeGrpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateContainerLivenessProbeGrpcArrayInput)(nil)).Elem(), GetWorkerPoolTemplateContainerLivenessProbeGrpcArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateContainerLivenessProbeHttpGetInput)(nil)).Elem(), GetWorkerPoolTemplateContainerLivenessProbeHttpGetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateContainerLivenessProbeHttpGetArrayInput)(nil)).Elem(), GetWorkerPoolTemplateContainerLivenessProbeHttpGetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderInput)(nil)).Elem(), GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayInput)(nil)).Elem(), GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateContainerLivenessProbeTcpSocketInput)(nil)).Elem(), GetWorkerPoolTemplateContainerLivenessProbeTcpSocketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateContainerLivenessProbeTcpSocketArrayInput)(nil)).Elem(), GetWorkerPoolTemplateContainerLivenessProbeTcpSocketArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateContainerResourceInput)(nil)).Elem(), GetWorkerPoolTemplateContainerResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateContainerResourceArrayInput)(nil)).Elem(), GetWorkerPoolTemplateContainerResourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateContainerStartupProbeInput)(nil)).Elem(), GetWorkerPoolTemplateContainerStartupProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateContainerStartupProbeArrayInput)(nil)).Elem(), GetWorkerPoolTemplateContainerStartupProbeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateContainerStartupProbeGrpcInput)(nil)).Elem(), GetWorkerPoolTemplateContainerStartupProbeGrpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateContainerStartupProbeGrpcArrayInput)(nil)).Elem(), GetWorkerPoolTemplateContainerStartupProbeGrpcArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateContainerStartupProbeHttpGetInput)(nil)).Elem(), GetWorkerPoolTemplateContainerStartupProbeHttpGetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateContainerStartupProbeHttpGetArrayInput)(nil)).Elem(), GetWorkerPoolTemplateContainerStartupProbeHttpGetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderInput)(nil)).Elem(), GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayInput)(nil)).Elem(), GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateContainerStartupProbeTcpSocketInput)(nil)).Elem(), GetWorkerPoolTemplateContainerStartupProbeTcpSocketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateContainerStartupProbeTcpSocketArrayInput)(nil)).Elem(), GetWorkerPoolTemplateContainerStartupProbeTcpSocketArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateContainerVolumeMountInput)(nil)).Elem(), GetWorkerPoolTemplateContainerVolumeMountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateContainerVolumeMountArrayInput)(nil)).Elem(), GetWorkerPoolTemplateContainerVolumeMountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolTemplateNodeSelectorInput)(nil)).Elem(), GetWorkerPoolTemplateNodeSelectorArgs{})
@@ -28082,8 +31132,28 @@ func init() {
 	pulumi.RegisterOutputType(WorkerPoolTemplateContainerEnvValueSourcePtrOutput{})
 	pulumi.RegisterOutputType(WorkerPoolTemplateContainerEnvValueSourceSecretKeyRefOutput{})
 	pulumi.RegisterOutputType(WorkerPoolTemplateContainerEnvValueSourceSecretKeyRefPtrOutput{})
+	pulumi.RegisterOutputType(WorkerPoolTemplateContainerLivenessProbeOutput{})
+	pulumi.RegisterOutputType(WorkerPoolTemplateContainerLivenessProbePtrOutput{})
+	pulumi.RegisterOutputType(WorkerPoolTemplateContainerLivenessProbeGrpcOutput{})
+	pulumi.RegisterOutputType(WorkerPoolTemplateContainerLivenessProbeGrpcPtrOutput{})
+	pulumi.RegisterOutputType(WorkerPoolTemplateContainerLivenessProbeHttpGetOutput{})
+	pulumi.RegisterOutputType(WorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutput{})
+	pulumi.RegisterOutputType(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput{})
+	pulumi.RegisterOutputType(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput{})
+	pulumi.RegisterOutputType(WorkerPoolTemplateContainerLivenessProbeTcpSocketOutput{})
+	pulumi.RegisterOutputType(WorkerPoolTemplateContainerLivenessProbeTcpSocketPtrOutput{})
 	pulumi.RegisterOutputType(WorkerPoolTemplateContainerResourcesOutput{})
 	pulumi.RegisterOutputType(WorkerPoolTemplateContainerResourcesPtrOutput{})
+	pulumi.RegisterOutputType(WorkerPoolTemplateContainerStartupProbeOutput{})
+	pulumi.RegisterOutputType(WorkerPoolTemplateContainerStartupProbePtrOutput{})
+	pulumi.RegisterOutputType(WorkerPoolTemplateContainerStartupProbeGrpcOutput{})
+	pulumi.RegisterOutputType(WorkerPoolTemplateContainerStartupProbeGrpcPtrOutput{})
+	pulumi.RegisterOutputType(WorkerPoolTemplateContainerStartupProbeHttpGetOutput{})
+	pulumi.RegisterOutputType(WorkerPoolTemplateContainerStartupProbeHttpGetPtrOutput{})
+	pulumi.RegisterOutputType(WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput{})
+	pulumi.RegisterOutputType(WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput{})
+	pulumi.RegisterOutputType(WorkerPoolTemplateContainerStartupProbeTcpSocketOutput{})
+	pulumi.RegisterOutputType(WorkerPoolTemplateContainerStartupProbeTcpSocketPtrOutput{})
 	pulumi.RegisterOutputType(WorkerPoolTemplateContainerVolumeMountOutput{})
 	pulumi.RegisterOutputType(WorkerPoolTemplateContainerVolumeMountArrayOutput{})
 	pulumi.RegisterOutputType(WorkerPoolTemplateNodeSelectorOutput{})
@@ -28262,8 +31332,28 @@ func init() {
 	pulumi.RegisterOutputType(GetWorkerPoolTemplateContainerEnvValueSourceArrayOutput{})
 	pulumi.RegisterOutputType(GetWorkerPoolTemplateContainerEnvValueSourceSecretKeyRefOutput{})
 	pulumi.RegisterOutputType(GetWorkerPoolTemplateContainerEnvValueSourceSecretKeyRefArrayOutput{})
+	pulumi.RegisterOutputType(GetWorkerPoolTemplateContainerLivenessProbeOutput{})
+	pulumi.RegisterOutputType(GetWorkerPoolTemplateContainerLivenessProbeArrayOutput{})
+	pulumi.RegisterOutputType(GetWorkerPoolTemplateContainerLivenessProbeGrpcOutput{})
+	pulumi.RegisterOutputType(GetWorkerPoolTemplateContainerLivenessProbeGrpcArrayOutput{})
+	pulumi.RegisterOutputType(GetWorkerPoolTemplateContainerLivenessProbeHttpGetOutput{})
+	pulumi.RegisterOutputType(GetWorkerPoolTemplateContainerLivenessProbeHttpGetArrayOutput{})
+	pulumi.RegisterOutputType(GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput{})
+	pulumi.RegisterOutputType(GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput{})
+	pulumi.RegisterOutputType(GetWorkerPoolTemplateContainerLivenessProbeTcpSocketOutput{})
+	pulumi.RegisterOutputType(GetWorkerPoolTemplateContainerLivenessProbeTcpSocketArrayOutput{})
 	pulumi.RegisterOutputType(GetWorkerPoolTemplateContainerResourceOutput{})
 	pulumi.RegisterOutputType(GetWorkerPoolTemplateContainerResourceArrayOutput{})
+	pulumi.RegisterOutputType(GetWorkerPoolTemplateContainerStartupProbeOutput{})
+	pulumi.RegisterOutputType(GetWorkerPoolTemplateContainerStartupProbeArrayOutput{})
+	pulumi.RegisterOutputType(GetWorkerPoolTemplateContainerStartupProbeGrpcOutput{})
+	pulumi.RegisterOutputType(GetWorkerPoolTemplateContainerStartupProbeGrpcArrayOutput{})
+	pulumi.RegisterOutputType(GetWorkerPoolTemplateContainerStartupProbeHttpGetOutput{})
+	pulumi.RegisterOutputType(GetWorkerPoolTemplateContainerStartupProbeHttpGetArrayOutput{})
+	pulumi.RegisterOutputType(GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput{})
+	pulumi.RegisterOutputType(GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput{})
+	pulumi.RegisterOutputType(GetWorkerPoolTemplateContainerStartupProbeTcpSocketOutput{})
+	pulumi.RegisterOutputType(GetWorkerPoolTemplateContainerStartupProbeTcpSocketArrayOutput{})
 	pulumi.RegisterOutputType(GetWorkerPoolTemplateContainerVolumeMountOutput{})
 	pulumi.RegisterOutputType(GetWorkerPoolTemplateContainerVolumeMountArrayOutput{})
 	pulumi.RegisterOutputType(GetWorkerPoolTemplateNodeSelectorOutput{})

@@ -1061,6 +1061,275 @@ func (o CmekConfigSingleRegionKeyArrayOutput) Index(i pulumi.IntInput) CmekConfi
 	}).(CmekConfigSingleRegionKeyOutput)
 }
 
+type DataConnectorEntity struct {
+	// (Output)
+	// The full resource name of the associated data store for the source
+	// entity.
+	// Format: `projects/*/locations/*/collections/*/dataStores/*`.
+	// When the connector is initialized by the DataConnectorService.SetUpDataConnector
+	// method, a DataStore is automatically created for each source entity.
+	DataStore *string `pulumi:"dataStore"`
+	// The name of the entity. Supported values by data source:
+	// * Salesforce: `Lead`, `Opportunity`, `Contact`, `Account`, `Case`, `Contract`, `Campaign`
+	// * Jira: project, issue, attachment, comment, worklog
+	// * Confluence: `Content`, `Space`
+	EntityName *string `pulumi:"entityName"`
+	// Attributes for indexing.
+	// Key: Field name.
+	// Value: The key property to map a field to, such as `title`, and
+	// `description`. Supported key properties:
+	KeyPropertyMappings map[string]string `pulumi:"keyPropertyMappings"`
+	// The parameters for the entity to facilitate data ingestion.
+	Params map[string]string `pulumi:"params"`
+}
+
+// DataConnectorEntityInput is an input type that accepts DataConnectorEntityArgs and DataConnectorEntityOutput values.
+// You can construct a concrete instance of `DataConnectorEntityInput` via:
+//
+//	DataConnectorEntityArgs{...}
+type DataConnectorEntityInput interface {
+	pulumi.Input
+
+	ToDataConnectorEntityOutput() DataConnectorEntityOutput
+	ToDataConnectorEntityOutputWithContext(context.Context) DataConnectorEntityOutput
+}
+
+type DataConnectorEntityArgs struct {
+	// (Output)
+	// The full resource name of the associated data store for the source
+	// entity.
+	// Format: `projects/*/locations/*/collections/*/dataStores/*`.
+	// When the connector is initialized by the DataConnectorService.SetUpDataConnector
+	// method, a DataStore is automatically created for each source entity.
+	DataStore pulumi.StringPtrInput `pulumi:"dataStore"`
+	// The name of the entity. Supported values by data source:
+	// * Salesforce: `Lead`, `Opportunity`, `Contact`, `Account`, `Case`, `Contract`, `Campaign`
+	// * Jira: project, issue, attachment, comment, worklog
+	// * Confluence: `Content`, `Space`
+	EntityName pulumi.StringPtrInput `pulumi:"entityName"`
+	// Attributes for indexing.
+	// Key: Field name.
+	// Value: The key property to map a field to, such as `title`, and
+	// `description`. Supported key properties:
+	KeyPropertyMappings pulumi.StringMapInput `pulumi:"keyPropertyMappings"`
+	// The parameters for the entity to facilitate data ingestion.
+	Params pulumi.StringMapInput `pulumi:"params"`
+}
+
+func (DataConnectorEntityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataConnectorEntity)(nil)).Elem()
+}
+
+func (i DataConnectorEntityArgs) ToDataConnectorEntityOutput() DataConnectorEntityOutput {
+	return i.ToDataConnectorEntityOutputWithContext(context.Background())
+}
+
+func (i DataConnectorEntityArgs) ToDataConnectorEntityOutputWithContext(ctx context.Context) DataConnectorEntityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataConnectorEntityOutput)
+}
+
+// DataConnectorEntityArrayInput is an input type that accepts DataConnectorEntityArray and DataConnectorEntityArrayOutput values.
+// You can construct a concrete instance of `DataConnectorEntityArrayInput` via:
+//
+//	DataConnectorEntityArray{ DataConnectorEntityArgs{...} }
+type DataConnectorEntityArrayInput interface {
+	pulumi.Input
+
+	ToDataConnectorEntityArrayOutput() DataConnectorEntityArrayOutput
+	ToDataConnectorEntityArrayOutputWithContext(context.Context) DataConnectorEntityArrayOutput
+}
+
+type DataConnectorEntityArray []DataConnectorEntityInput
+
+func (DataConnectorEntityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataConnectorEntity)(nil)).Elem()
+}
+
+func (i DataConnectorEntityArray) ToDataConnectorEntityArrayOutput() DataConnectorEntityArrayOutput {
+	return i.ToDataConnectorEntityArrayOutputWithContext(context.Background())
+}
+
+func (i DataConnectorEntityArray) ToDataConnectorEntityArrayOutputWithContext(ctx context.Context) DataConnectorEntityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataConnectorEntityArrayOutput)
+}
+
+type DataConnectorEntityOutput struct{ *pulumi.OutputState }
+
+func (DataConnectorEntityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataConnectorEntity)(nil)).Elem()
+}
+
+func (o DataConnectorEntityOutput) ToDataConnectorEntityOutput() DataConnectorEntityOutput {
+	return o
+}
+
+func (o DataConnectorEntityOutput) ToDataConnectorEntityOutputWithContext(ctx context.Context) DataConnectorEntityOutput {
+	return o
+}
+
+// (Output)
+// The full resource name of the associated data store for the source
+// entity.
+// Format: `projects/*/locations/*/collections/*/dataStores/*`.
+// When the connector is initialized by the DataConnectorService.SetUpDataConnector
+// method, a DataStore is automatically created for each source entity.
+func (o DataConnectorEntityOutput) DataStore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataConnectorEntity) *string { return v.DataStore }).(pulumi.StringPtrOutput)
+}
+
+// The name of the entity. Supported values by data source:
+// * Salesforce: `Lead`, `Opportunity`, `Contact`, `Account`, `Case`, `Contract`, `Campaign`
+// * Jira: project, issue, attachment, comment, worklog
+// * Confluence: `Content`, `Space`
+func (o DataConnectorEntityOutput) EntityName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataConnectorEntity) *string { return v.EntityName }).(pulumi.StringPtrOutput)
+}
+
+// Attributes for indexing.
+// Key: Field name.
+// Value: The key property to map a field to, such as `title`, and
+// `description`. Supported key properties:
+func (o DataConnectorEntityOutput) KeyPropertyMappings() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DataConnectorEntity) map[string]string { return v.KeyPropertyMappings }).(pulumi.StringMapOutput)
+}
+
+// The parameters for the entity to facilitate data ingestion.
+func (o DataConnectorEntityOutput) Params() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DataConnectorEntity) map[string]string { return v.Params }).(pulumi.StringMapOutput)
+}
+
+type DataConnectorEntityArrayOutput struct{ *pulumi.OutputState }
+
+func (DataConnectorEntityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataConnectorEntity)(nil)).Elem()
+}
+
+func (o DataConnectorEntityArrayOutput) ToDataConnectorEntityArrayOutput() DataConnectorEntityArrayOutput {
+	return o
+}
+
+func (o DataConnectorEntityArrayOutput) ToDataConnectorEntityArrayOutputWithContext(ctx context.Context) DataConnectorEntityArrayOutput {
+	return o
+}
+
+func (o DataConnectorEntityArrayOutput) Index(i pulumi.IntInput) DataConnectorEntityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataConnectorEntity {
+		return vs[0].([]DataConnectorEntity)[vs[1].(int)]
+	}).(DataConnectorEntityOutput)
+}
+
+type DataConnectorError struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code *int `pulumi:"code"`
+	// (Output)
+	// A developer-facing error message, which should be in English.
+	Message *string `pulumi:"message"`
+}
+
+// DataConnectorErrorInput is an input type that accepts DataConnectorErrorArgs and DataConnectorErrorOutput values.
+// You can construct a concrete instance of `DataConnectorErrorInput` via:
+//
+//	DataConnectorErrorArgs{...}
+type DataConnectorErrorInput interface {
+	pulumi.Input
+
+	ToDataConnectorErrorOutput() DataConnectorErrorOutput
+	ToDataConnectorErrorOutputWithContext(context.Context) DataConnectorErrorOutput
+}
+
+type DataConnectorErrorArgs struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// (Output)
+	// A developer-facing error message, which should be in English.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (DataConnectorErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataConnectorError)(nil)).Elem()
+}
+
+func (i DataConnectorErrorArgs) ToDataConnectorErrorOutput() DataConnectorErrorOutput {
+	return i.ToDataConnectorErrorOutputWithContext(context.Background())
+}
+
+func (i DataConnectorErrorArgs) ToDataConnectorErrorOutputWithContext(ctx context.Context) DataConnectorErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataConnectorErrorOutput)
+}
+
+// DataConnectorErrorArrayInput is an input type that accepts DataConnectorErrorArray and DataConnectorErrorArrayOutput values.
+// You can construct a concrete instance of `DataConnectorErrorArrayInput` via:
+//
+//	DataConnectorErrorArray{ DataConnectorErrorArgs{...} }
+type DataConnectorErrorArrayInput interface {
+	pulumi.Input
+
+	ToDataConnectorErrorArrayOutput() DataConnectorErrorArrayOutput
+	ToDataConnectorErrorArrayOutputWithContext(context.Context) DataConnectorErrorArrayOutput
+}
+
+type DataConnectorErrorArray []DataConnectorErrorInput
+
+func (DataConnectorErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataConnectorError)(nil)).Elem()
+}
+
+func (i DataConnectorErrorArray) ToDataConnectorErrorArrayOutput() DataConnectorErrorArrayOutput {
+	return i.ToDataConnectorErrorArrayOutputWithContext(context.Background())
+}
+
+func (i DataConnectorErrorArray) ToDataConnectorErrorArrayOutputWithContext(ctx context.Context) DataConnectorErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataConnectorErrorArrayOutput)
+}
+
+type DataConnectorErrorOutput struct{ *pulumi.OutputState }
+
+func (DataConnectorErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataConnectorError)(nil)).Elem()
+}
+
+func (o DataConnectorErrorOutput) ToDataConnectorErrorOutput() DataConnectorErrorOutput {
+	return o
+}
+
+func (o DataConnectorErrorOutput) ToDataConnectorErrorOutputWithContext(ctx context.Context) DataConnectorErrorOutput {
+	return o
+}
+
+// (Output)
+// The status code, which should be an enum value of google.rpc.Code.
+func (o DataConnectorErrorOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DataConnectorError) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// A developer-facing error message, which should be in English.
+func (o DataConnectorErrorOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataConnectorError) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type DataConnectorErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (DataConnectorErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataConnectorError)(nil)).Elem()
+}
+
+func (o DataConnectorErrorArrayOutput) ToDataConnectorErrorArrayOutput() DataConnectorErrorArrayOutput {
+	return o
+}
+
+func (o DataConnectorErrorArrayOutput) ToDataConnectorErrorArrayOutputWithContext(ctx context.Context) DataConnectorErrorArrayOutput {
+	return o
+}
+
+func (o DataConnectorErrorArrayOutput) Index(i pulumi.IntInput) DataConnectorErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataConnectorError {
+		return vs[0].([]DataConnectorError)[vs[1].(int)]
+	}).(DataConnectorErrorOutput)
+}
+
 type DataStoreAdvancedSiteSearchConfig struct {
 	// If set true, automatic refresh is disabled for the DataStore.
 	DisableAutomaticRefresh *bool `pulumi:"disableAutomaticRefresh"`
@@ -4837,6 +5106,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ChatEngineCommonConfigPtrInput)(nil)).Elem(), ChatEngineCommonConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CmekConfigSingleRegionKeyInput)(nil)).Elem(), CmekConfigSingleRegionKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CmekConfigSingleRegionKeyArrayInput)(nil)).Elem(), CmekConfigSingleRegionKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataConnectorEntityInput)(nil)).Elem(), DataConnectorEntityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataConnectorEntityArrayInput)(nil)).Elem(), DataConnectorEntityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataConnectorErrorInput)(nil)).Elem(), DataConnectorErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataConnectorErrorArrayInput)(nil)).Elem(), DataConnectorErrorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreAdvancedSiteSearchConfigInput)(nil)).Elem(), DataStoreAdvancedSiteSearchConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreAdvancedSiteSearchConfigPtrInput)(nil)).Elem(), DataStoreAdvancedSiteSearchConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigInput)(nil)).Elem(), DataStoreDocumentProcessingConfigArgs{})
@@ -4897,6 +5170,10 @@ func init() {
 	pulumi.RegisterOutputType(ChatEngineCommonConfigPtrOutput{})
 	pulumi.RegisterOutputType(CmekConfigSingleRegionKeyOutput{})
 	pulumi.RegisterOutputType(CmekConfigSingleRegionKeyArrayOutput{})
+	pulumi.RegisterOutputType(DataConnectorEntityOutput{})
+	pulumi.RegisterOutputType(DataConnectorEntityArrayOutput{})
+	pulumi.RegisterOutputType(DataConnectorErrorOutput{})
+	pulumi.RegisterOutputType(DataConnectorErrorArrayOutput{})
 	pulumi.RegisterOutputType(DataStoreAdvancedSiteSearchConfigOutput{})
 	pulumi.RegisterOutputType(DataStoreAdvancedSiteSearchConfigPtrOutput{})
 	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigOutput{})

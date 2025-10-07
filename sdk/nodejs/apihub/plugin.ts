@@ -152,7 +152,7 @@ export class Plugin extends pulumi.CustomResource {
      * ConfigTemplate represents the configuration template for a plugin.
      * Structure is documented below.
      */
-    declare public readonly configTemplate: pulumi.Output<outputs.apihub.PluginConfigTemplate | undefined>;
+    declare public readonly configTemplate: pulumi.Output<outputs.apihub.PluginConfigTemplate>;
     /**
      * Timestamp indicating when the plugin was created.
      */

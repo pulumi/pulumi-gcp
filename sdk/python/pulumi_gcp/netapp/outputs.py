@@ -448,7 +448,7 @@ class VolumeHybridReplicationParameters(dict):
                  description: Optional[_builtins.str] = None,
                  labels: Optional[Mapping[str, _builtins.str]] = None,
                  peer_cluster_name: Optional[_builtins.str] = None,
-                 peer_ip_addresses: Optional[_builtins.str] = None,
+                 peer_ip_addresses: Optional[Sequence[_builtins.str]] = None,
                  peer_svm_name: Optional[_builtins.str] = None,
                  peer_volume_name: Optional[_builtins.str] = None,
                  replication: Optional[_builtins.str] = None):
@@ -458,7 +458,7 @@ class VolumeHybridReplicationParameters(dict):
         :param Mapping[str, _builtins.str] labels: Optional. Labels to be added to the replication as the key value pairs.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param _builtins.str peer_cluster_name: Required. Name of the user's local source cluster to be peered with the destination cluster.
-        :param _builtins.str peer_ip_addresses: Required. List of node ip addresses to be peered with.
+        :param Sequence[_builtins.str] peer_ip_addresses: Required. List of node ip addresses to be peered with.
         :param _builtins.str peer_svm_name: Required. Name of the user's local source vserver svm to be peered with the destination vserver svm.
         :param _builtins.str peer_volume_name: Required. Name of the user's local source volume to be peered with the destination volume.
         :param _builtins.str replication: Required. Desired name for the replication of this volume.
@@ -515,7 +515,7 @@ class VolumeHybridReplicationParameters(dict):
 
     @_builtins.property
     @pulumi.getter(name="peerIpAddresses")
-    def peer_ip_addresses(self) -> Optional[_builtins.str]:
+    def peer_ip_addresses(self) -> Optional[Sequence[_builtins.str]]:
         """
         Required. List of node ip addresses to be peered with.
         """
@@ -553,6 +553,8 @@ class VolumeMountOption(dict):
         suggest = None
         if key == "exportFull":
             suggest = "export_full"
+        elif key == "ipAddress":
+            suggest = "ip_address"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in VolumeMountOption. Access the value via the '{suggest}' property getter instead.")
@@ -569,6 +571,7 @@ class VolumeMountOption(dict):
                  export: Optional[_builtins.str] = None,
                  export_full: Optional[_builtins.str] = None,
                  instructions: Optional[_builtins.str] = None,
+                 ip_address: Optional[_builtins.str] = None,
                  protocol: Optional[_builtins.str] = None):
         """
         :param _builtins.str export: (Output)
@@ -579,6 +582,8 @@ class VolumeMountOption(dict):
                Format for SMB volumes: `\\\\\\\\netbios_prefix-four_random_hex_letters.domain_name\\\\shareName`
         :param _builtins.str instructions: (Output)
                Human-readable mount instructions.
+        :param _builtins.str ip_address: (Output)
+               IP Address.
         :param _builtins.str protocol: (Output)
                Protocol to mount with.
         """
@@ -588,6 +593,8 @@ class VolumeMountOption(dict):
             pulumi.set(__self__, "export_full", export_full)
         if instructions is not None:
             pulumi.set(__self__, "instructions", instructions)
+        if ip_address is not None:
+            pulumi.set(__self__, "ip_address", ip_address)
         if protocol is not None:
             pulumi.set(__self__, "protocol", protocol)
 
@@ -619,6 +626,15 @@ class VolumeMountOption(dict):
         Human-readable mount instructions.
         """
         return pulumi.get(self, "instructions")
+
+    @_builtins.property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        IP Address.
+        """
+        return pulumi.get(self, "ip_address")
 
     @_builtins.property
     @pulumi.getter

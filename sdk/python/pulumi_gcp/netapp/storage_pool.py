@@ -379,12 +379,14 @@ class _StoragePoolState:
                  allow_auto_tiering: Optional[pulumi.Input[_builtins.bool]] = None,
                  available_throughput_mibps: Optional[pulumi.Input[_builtins.float]] = None,
                  capacity_gib: Optional[pulumi.Input[_builtins.str]] = None,
+                 cold_tier_size_used_gib: Optional[pulumi.Input[_builtins.str]] = None,
                  custom_performance_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  enable_hot_tier_auto_resize: Optional[pulumi.Input[_builtins.bool]] = None,
                  encryption_type: Optional[pulumi.Input[_builtins.str]] = None,
                  hot_tier_size_gib: Optional[pulumi.Input[_builtins.str]] = None,
+                 hot_tier_size_used_gib: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_config: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  ldap_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -409,6 +411,7 @@ class _StoragePoolState:
                Auto-tiering can be enabled after storage pool creation but it can't be disabled once enabled.
         :param pulumi.Input[_builtins.float] available_throughput_mibps: Available throughput of the storage pool (in MiB/s).
         :param pulumi.Input[_builtins.str] capacity_gib: Capacity of the storage pool (in GiB).
+        :param pulumi.Input[_builtins.str] cold_tier_size_used_gib: Total cold tier data rounded down to the nearest GiB used by the storage pool.
         :param pulumi.Input[_builtins.bool] custom_performance_enabled: Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -417,6 +420,7 @@ class _StoragePoolState:
         :param pulumi.Input[_builtins.str] encryption_type: Reports if volumes in the pool are encrypted using a Google-managed encryption key or CMEK.
         :param pulumi.Input[_builtins.str] hot_tier_size_gib: Total hot tier capacity for the Storage Pool. It is applicable only to Flex service level.
                It should be less than the minimum storage pool size and cannot be more than the current storage pool size. It cannot be decreased once set.
+        :param pulumi.Input[_builtins.str] hot_tier_size_used_gib: Total hot tier data rounded down to the nearest GiB used by the storage pool.
         :param pulumi.Input[_builtins.str] kms_config: Specifies the CMEK policy to be used for volume encryption. Format: `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}`.
                The policy needs to be in the same location as the storage pool.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
@@ -455,6 +459,8 @@ class _StoragePoolState:
             pulumi.set(__self__, "available_throughput_mibps", available_throughput_mibps)
         if capacity_gib is not None:
             pulumi.set(__self__, "capacity_gib", capacity_gib)
+        if cold_tier_size_used_gib is not None:
+            pulumi.set(__self__, "cold_tier_size_used_gib", cold_tier_size_used_gib)
         if custom_performance_enabled is not None:
             pulumi.set(__self__, "custom_performance_enabled", custom_performance_enabled)
         if description is not None:
@@ -467,6 +473,8 @@ class _StoragePoolState:
             pulumi.set(__self__, "encryption_type", encryption_type)
         if hot_tier_size_gib is not None:
             pulumi.set(__self__, "hot_tier_size_gib", hot_tier_size_gib)
+        if hot_tier_size_used_gib is not None:
+            pulumi.set(__self__, "hot_tier_size_used_gib", hot_tier_size_used_gib)
         if kms_config is not None:
             pulumi.set(__self__, "kms_config", kms_config)
         if labels is not None:
@@ -551,6 +559,18 @@ class _StoragePoolState:
         pulumi.set(self, "capacity_gib", value)
 
     @_builtins.property
+    @pulumi.getter(name="coldTierSizeUsedGib")
+    def cold_tier_size_used_gib(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Total cold tier data rounded down to the nearest GiB used by the storage pool.
+        """
+        return pulumi.get(self, "cold_tier_size_used_gib")
+
+    @cold_tier_size_used_gib.setter
+    def cold_tier_size_used_gib(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "cold_tier_size_used_gib", value)
+
+    @_builtins.property
     @pulumi.getter(name="customPerformanceEnabled")
     def custom_performance_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -623,6 +643,18 @@ class _StoragePoolState:
     @hot_tier_size_gib.setter
     def hot_tier_size_gib(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "hot_tier_size_gib", value)
+
+    @_builtins.property
+    @pulumi.getter(name="hotTierSizeUsedGib")
+    def hot_tier_size_used_gib(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Total hot tier data rounded down to the nearest GiB used by the storage pool.
+        """
+        return pulumi.get(self, "hot_tier_size_used_gib")
+
+    @hot_tier_size_used_gib.setter
+    def hot_tier_size_used_gib(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "hot_tier_size_used_gib", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsConfig")
@@ -1107,8 +1139,10 @@ class StoragePool(pulumi.CustomResource):
             __props__.__dict__["total_throughput_mibps"] = total_throughput_mibps
             __props__.__dict__["zone"] = zone
             __props__.__dict__["available_throughput_mibps"] = None
+            __props__.__dict__["cold_tier_size_used_gib"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["encryption_type"] = None
+            __props__.__dict__["hot_tier_size_used_gib"] = None
             __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["volume_capacity_gib"] = None
             __props__.__dict__["volume_count"] = None
@@ -1128,12 +1162,14 @@ class StoragePool(pulumi.CustomResource):
             allow_auto_tiering: Optional[pulumi.Input[_builtins.bool]] = None,
             available_throughput_mibps: Optional[pulumi.Input[_builtins.float]] = None,
             capacity_gib: Optional[pulumi.Input[_builtins.str]] = None,
+            cold_tier_size_used_gib: Optional[pulumi.Input[_builtins.str]] = None,
             custom_performance_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             enable_hot_tier_auto_resize: Optional[pulumi.Input[_builtins.bool]] = None,
             encryption_type: Optional[pulumi.Input[_builtins.str]] = None,
             hot_tier_size_gib: Optional[pulumi.Input[_builtins.str]] = None,
+            hot_tier_size_used_gib: Optional[pulumi.Input[_builtins.str]] = None,
             kms_config: Optional[pulumi.Input[_builtins.str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             ldap_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1163,6 +1199,7 @@ class StoragePool(pulumi.CustomResource):
                Auto-tiering can be enabled after storage pool creation but it can't be disabled once enabled.
         :param pulumi.Input[_builtins.float] available_throughput_mibps: Available throughput of the storage pool (in MiB/s).
         :param pulumi.Input[_builtins.str] capacity_gib: Capacity of the storage pool (in GiB).
+        :param pulumi.Input[_builtins.str] cold_tier_size_used_gib: Total cold tier data rounded down to the nearest GiB used by the storage pool.
         :param pulumi.Input[_builtins.bool] custom_performance_enabled: Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -1171,6 +1208,7 @@ class StoragePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] encryption_type: Reports if volumes in the pool are encrypted using a Google-managed encryption key or CMEK.
         :param pulumi.Input[_builtins.str] hot_tier_size_gib: Total hot tier capacity for the Storage Pool. It is applicable only to Flex service level.
                It should be less than the minimum storage pool size and cannot be more than the current storage pool size. It cannot be decreased once set.
+        :param pulumi.Input[_builtins.str] hot_tier_size_used_gib: Total hot tier data rounded down to the nearest GiB used by the storage pool.
         :param pulumi.Input[_builtins.str] kms_config: Specifies the CMEK policy to be used for volume encryption. Format: `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}`.
                The policy needs to be in the same location as the storage pool.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
@@ -1209,12 +1247,14 @@ class StoragePool(pulumi.CustomResource):
         __props__.__dict__["allow_auto_tiering"] = allow_auto_tiering
         __props__.__dict__["available_throughput_mibps"] = available_throughput_mibps
         __props__.__dict__["capacity_gib"] = capacity_gib
+        __props__.__dict__["cold_tier_size_used_gib"] = cold_tier_size_used_gib
         __props__.__dict__["custom_performance_enabled"] = custom_performance_enabled
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["enable_hot_tier_auto_resize"] = enable_hot_tier_auto_resize
         __props__.__dict__["encryption_type"] = encryption_type
         __props__.__dict__["hot_tier_size_gib"] = hot_tier_size_gib
+        __props__.__dict__["hot_tier_size_used_gib"] = hot_tier_size_used_gib
         __props__.__dict__["kms_config"] = kms_config
         __props__.__dict__["labels"] = labels
         __props__.__dict__["ldap_enabled"] = ldap_enabled
@@ -1268,6 +1308,14 @@ class StoragePool(pulumi.CustomResource):
         return pulumi.get(self, "capacity_gib")
 
     @_builtins.property
+    @pulumi.getter(name="coldTierSizeUsedGib")
+    def cold_tier_size_used_gib(self) -> pulumi.Output[_builtins.str]:
+        """
+        Total cold tier data rounded down to the nearest GiB used by the storage pool.
+        """
+        return pulumi.get(self, "cold_tier_size_used_gib")
+
+    @_builtins.property
     @pulumi.getter(name="customPerformanceEnabled")
     def custom_performance_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
@@ -1316,6 +1364,14 @@ class StoragePool(pulumi.CustomResource):
         It should be less than the minimum storage pool size and cannot be more than the current storage pool size. It cannot be decreased once set.
         """
         return pulumi.get(self, "hot_tier_size_gib")
+
+    @_builtins.property
+    @pulumi.getter(name="hotTierSizeUsedGib")
+    def hot_tier_size_used_gib(self) -> pulumi.Output[_builtins.str]:
+        """
+        Total hot tier data rounded down to the nearest GiB used by the storage pool.
+        """
+        return pulumi.get(self, "hot_tier_size_used_gib")
 
     @_builtins.property
     @pulumi.getter(name="kmsConfig")

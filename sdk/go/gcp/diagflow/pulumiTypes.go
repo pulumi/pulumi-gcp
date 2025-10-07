@@ -5454,6 +5454,178 @@ func (o ConversationProfileNewMessageEventNotificationConfigPtrOutput) Topic() p
 	}).(pulumi.StringPtrOutput)
 }
 
+type ConversationProfileNewRecognitionResultNotificationConfig struct {
+	// Format of message.
+	// Possible values are: `MESSAGE_FORMAT_UNSPECIFIED`, `PROTO`, `JSON`.
+	MessageFormat *string `pulumi:"messageFormat"`
+	// Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos.
+	// For telephony integration to receive notification, make sure either this topic is in the same project as the conversation or you grant service-<Conversation Project Number>@gcp-sa-dialogflow.iam.gserviceaccount.com the Dialogflow Service Agent role in the topic project.
+	// For chat integration to receive notification, make sure API caller has been granted the Dialogflow Service Agent role for the topic.
+	// Format: projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>.
+	Topic *string `pulumi:"topic"`
+}
+
+// ConversationProfileNewRecognitionResultNotificationConfigInput is an input type that accepts ConversationProfileNewRecognitionResultNotificationConfigArgs and ConversationProfileNewRecognitionResultNotificationConfigOutput values.
+// You can construct a concrete instance of `ConversationProfileNewRecognitionResultNotificationConfigInput` via:
+//
+//	ConversationProfileNewRecognitionResultNotificationConfigArgs{...}
+type ConversationProfileNewRecognitionResultNotificationConfigInput interface {
+	pulumi.Input
+
+	ToConversationProfileNewRecognitionResultNotificationConfigOutput() ConversationProfileNewRecognitionResultNotificationConfigOutput
+	ToConversationProfileNewRecognitionResultNotificationConfigOutputWithContext(context.Context) ConversationProfileNewRecognitionResultNotificationConfigOutput
+}
+
+type ConversationProfileNewRecognitionResultNotificationConfigArgs struct {
+	// Format of message.
+	// Possible values are: `MESSAGE_FORMAT_UNSPECIFIED`, `PROTO`, `JSON`.
+	MessageFormat pulumi.StringPtrInput `pulumi:"messageFormat"`
+	// Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos.
+	// For telephony integration to receive notification, make sure either this topic is in the same project as the conversation or you grant service-<Conversation Project Number>@gcp-sa-dialogflow.iam.gserviceaccount.com the Dialogflow Service Agent role in the topic project.
+	// For chat integration to receive notification, make sure API caller has been granted the Dialogflow Service Agent role for the topic.
+	// Format: projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>.
+	Topic pulumi.StringPtrInput `pulumi:"topic"`
+}
+
+func (ConversationProfileNewRecognitionResultNotificationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileNewRecognitionResultNotificationConfig)(nil)).Elem()
+}
+
+func (i ConversationProfileNewRecognitionResultNotificationConfigArgs) ToConversationProfileNewRecognitionResultNotificationConfigOutput() ConversationProfileNewRecognitionResultNotificationConfigOutput {
+	return i.ToConversationProfileNewRecognitionResultNotificationConfigOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileNewRecognitionResultNotificationConfigArgs) ToConversationProfileNewRecognitionResultNotificationConfigOutputWithContext(ctx context.Context) ConversationProfileNewRecognitionResultNotificationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileNewRecognitionResultNotificationConfigOutput)
+}
+
+func (i ConversationProfileNewRecognitionResultNotificationConfigArgs) ToConversationProfileNewRecognitionResultNotificationConfigPtrOutput() ConversationProfileNewRecognitionResultNotificationConfigPtrOutput {
+	return i.ToConversationProfileNewRecognitionResultNotificationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileNewRecognitionResultNotificationConfigArgs) ToConversationProfileNewRecognitionResultNotificationConfigPtrOutputWithContext(ctx context.Context) ConversationProfileNewRecognitionResultNotificationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileNewRecognitionResultNotificationConfigOutput).ToConversationProfileNewRecognitionResultNotificationConfigPtrOutputWithContext(ctx)
+}
+
+// ConversationProfileNewRecognitionResultNotificationConfigPtrInput is an input type that accepts ConversationProfileNewRecognitionResultNotificationConfigArgs, ConversationProfileNewRecognitionResultNotificationConfigPtr and ConversationProfileNewRecognitionResultNotificationConfigPtrOutput values.
+// You can construct a concrete instance of `ConversationProfileNewRecognitionResultNotificationConfigPtrInput` via:
+//
+//	        ConversationProfileNewRecognitionResultNotificationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConversationProfileNewRecognitionResultNotificationConfigPtrInput interface {
+	pulumi.Input
+
+	ToConversationProfileNewRecognitionResultNotificationConfigPtrOutput() ConversationProfileNewRecognitionResultNotificationConfigPtrOutput
+	ToConversationProfileNewRecognitionResultNotificationConfigPtrOutputWithContext(context.Context) ConversationProfileNewRecognitionResultNotificationConfigPtrOutput
+}
+
+type conversationProfileNewRecognitionResultNotificationConfigPtrType ConversationProfileNewRecognitionResultNotificationConfigArgs
+
+func ConversationProfileNewRecognitionResultNotificationConfigPtr(v *ConversationProfileNewRecognitionResultNotificationConfigArgs) ConversationProfileNewRecognitionResultNotificationConfigPtrInput {
+	return (*conversationProfileNewRecognitionResultNotificationConfigPtrType)(v)
+}
+
+func (*conversationProfileNewRecognitionResultNotificationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileNewRecognitionResultNotificationConfig)(nil)).Elem()
+}
+
+func (i *conversationProfileNewRecognitionResultNotificationConfigPtrType) ToConversationProfileNewRecognitionResultNotificationConfigPtrOutput() ConversationProfileNewRecognitionResultNotificationConfigPtrOutput {
+	return i.ToConversationProfileNewRecognitionResultNotificationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *conversationProfileNewRecognitionResultNotificationConfigPtrType) ToConversationProfileNewRecognitionResultNotificationConfigPtrOutputWithContext(ctx context.Context) ConversationProfileNewRecognitionResultNotificationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileNewRecognitionResultNotificationConfigPtrOutput)
+}
+
+type ConversationProfileNewRecognitionResultNotificationConfigOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileNewRecognitionResultNotificationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileNewRecognitionResultNotificationConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileNewRecognitionResultNotificationConfigOutput) ToConversationProfileNewRecognitionResultNotificationConfigOutput() ConversationProfileNewRecognitionResultNotificationConfigOutput {
+	return o
+}
+
+func (o ConversationProfileNewRecognitionResultNotificationConfigOutput) ToConversationProfileNewRecognitionResultNotificationConfigOutputWithContext(ctx context.Context) ConversationProfileNewRecognitionResultNotificationConfigOutput {
+	return o
+}
+
+func (o ConversationProfileNewRecognitionResultNotificationConfigOutput) ToConversationProfileNewRecognitionResultNotificationConfigPtrOutput() ConversationProfileNewRecognitionResultNotificationConfigPtrOutput {
+	return o.ToConversationProfileNewRecognitionResultNotificationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConversationProfileNewRecognitionResultNotificationConfigOutput) ToConversationProfileNewRecognitionResultNotificationConfigPtrOutputWithContext(ctx context.Context) ConversationProfileNewRecognitionResultNotificationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConversationProfileNewRecognitionResultNotificationConfig) *ConversationProfileNewRecognitionResultNotificationConfig {
+		return &v
+	}).(ConversationProfileNewRecognitionResultNotificationConfigPtrOutput)
+}
+
+// Format of message.
+// Possible values are: `MESSAGE_FORMAT_UNSPECIFIED`, `PROTO`, `JSON`.
+func (o ConversationProfileNewRecognitionResultNotificationConfigOutput) MessageFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConversationProfileNewRecognitionResultNotificationConfig) *string { return v.MessageFormat }).(pulumi.StringPtrOutput)
+}
+
+// Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos.
+// For telephony integration to receive notification, make sure either this topic is in the same project as the conversation or you grant service-<Conversation Project Number>@gcp-sa-dialogflow.iam.gserviceaccount.com the Dialogflow Service Agent role in the topic project.
+// For chat integration to receive notification, make sure API caller has been granted the Dialogflow Service Agent role for the topic.
+// Format: projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>.
+func (o ConversationProfileNewRecognitionResultNotificationConfigOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConversationProfileNewRecognitionResultNotificationConfig) *string { return v.Topic }).(pulumi.StringPtrOutput)
+}
+
+type ConversationProfileNewRecognitionResultNotificationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileNewRecognitionResultNotificationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileNewRecognitionResultNotificationConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileNewRecognitionResultNotificationConfigPtrOutput) ToConversationProfileNewRecognitionResultNotificationConfigPtrOutput() ConversationProfileNewRecognitionResultNotificationConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileNewRecognitionResultNotificationConfigPtrOutput) ToConversationProfileNewRecognitionResultNotificationConfigPtrOutputWithContext(ctx context.Context) ConversationProfileNewRecognitionResultNotificationConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileNewRecognitionResultNotificationConfigPtrOutput) Elem() ConversationProfileNewRecognitionResultNotificationConfigOutput {
+	return o.ApplyT(func(v *ConversationProfileNewRecognitionResultNotificationConfig) ConversationProfileNewRecognitionResultNotificationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConversationProfileNewRecognitionResultNotificationConfig
+		return ret
+	}).(ConversationProfileNewRecognitionResultNotificationConfigOutput)
+}
+
+// Format of message.
+// Possible values are: `MESSAGE_FORMAT_UNSPECIFIED`, `PROTO`, `JSON`.
+func (o ConversationProfileNewRecognitionResultNotificationConfigPtrOutput) MessageFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileNewRecognitionResultNotificationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MessageFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos.
+// For telephony integration to receive notification, make sure either this topic is in the same project as the conversation or you grant service-<Conversation Project Number>@gcp-sa-dialogflow.iam.gserviceaccount.com the Dialogflow Service Agent role in the topic project.
+// For chat integration to receive notification, make sure API caller has been granted the Dialogflow Service Agent role for the topic.
+// Format: projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>.
+func (o ConversationProfileNewRecognitionResultNotificationConfigPtrOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileNewRecognitionResultNotificationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Topic
+	}).(pulumi.StringPtrOutput)
+}
+
 type ConversationProfileNotificationConfig struct {
 	// Format of the message
 	// Possible values are: `MESSAGE_FORMAT_UNSPECIFIED`, `PROTO`, `JSON`.
@@ -41541,6 +41713,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileLoggingConfigPtrInput)(nil)).Elem(), ConversationProfileLoggingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileNewMessageEventNotificationConfigInput)(nil)).Elem(), ConversationProfileNewMessageEventNotificationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileNewMessageEventNotificationConfigPtrInput)(nil)).Elem(), ConversationProfileNewMessageEventNotificationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileNewRecognitionResultNotificationConfigInput)(nil)).Elem(), ConversationProfileNewRecognitionResultNotificationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileNewRecognitionResultNotificationConfigPtrInput)(nil)).Elem(), ConversationProfileNewRecognitionResultNotificationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileNotificationConfigInput)(nil)).Elem(), ConversationProfileNotificationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileNotificationConfigPtrInput)(nil)).Elem(), ConversationProfileNotificationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileSttConfigInput)(nil)).Elem(), ConversationProfileSttConfigArgs{})
@@ -42037,6 +42211,8 @@ func init() {
 	pulumi.RegisterOutputType(ConversationProfileLoggingConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConversationProfileNewMessageEventNotificationConfigOutput{})
 	pulumi.RegisterOutputType(ConversationProfileNewMessageEventNotificationConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConversationProfileNewRecognitionResultNotificationConfigOutput{})
+	pulumi.RegisterOutputType(ConversationProfileNewRecognitionResultNotificationConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConversationProfileNotificationConfigOutput{})
 	pulumi.RegisterOutputType(ConversationProfileNotificationConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConversationProfileSttConfigOutput{})

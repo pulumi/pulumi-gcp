@@ -232,6 +232,35 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.schemaSettings);
     }
 
+    /**
+     * Input only. Resource manager tags to be bound to the topic. Tag keys and
+     * values have the same definition as resource manager tags. Keys must be in
+     * the format tagKeys/{tag_key_id}, and values are in the format
+     * tagValues/456. The field is ignored when empty. The field is immutable and
+     * causes resource replacement when mutated. This field is only set at create
+     * time and modifying this field after creation will trigger recreation. To
+     * apply tags to an existing resource, see the `gcp.tags.TagValue`
+     * resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return Input only. Resource manager tags to be bound to the topic. Tag keys and
+     * values have the same definition as resource manager tags. Keys must be in
+     * the format tagKeys/{tag_key_id}, and values are in the format
+     * tagValues/456. The field is ignored when empty. The field is immutable and
+     * causes resource replacement when mutated. This field is only set at create
+     * time and modifying this field after creation will trigger recreation. To
+     * apply tags to an existing resource, see the `gcp.tags.TagValue`
+     * resource.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
     private TopicState() {}
 
     private TopicState(TopicState $) {
@@ -246,6 +275,7 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
         this.schemaSettings = $.schemaSettings;
+        this.tags = $.tags;
     }
 
     public static Builder builder() {
@@ -553,6 +583,41 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder schemaSettings(TopicSchemaSettingsArgs schemaSettings) {
             return schemaSettings(Output.of(schemaSettings));
+        }
+
+        /**
+         * @param tags Input only. Resource manager tags to be bound to the topic. Tag keys and
+         * values have the same definition as resource manager tags. Keys must be in
+         * the format tagKeys/{tag_key_id}, and values are in the format
+         * tagValues/456. The field is ignored when empty. The field is immutable and
+         * causes resource replacement when mutated. This field is only set at create
+         * time and modifying this field after creation will trigger recreation. To
+         * apply tags to an existing resource, see the `gcp.tags.TagValue`
+         * resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags Input only. Resource manager tags to be bound to the topic. Tag keys and
+         * values have the same definition as resource manager tags. Keys must be in
+         * the format tagKeys/{tag_key_id}, and values are in the format
+         * tagValues/456. The field is ignored when empty. The field is immutable and
+         * causes resource replacement when mutated. This field is only set at create
+         * time and modifying this field after creation will trigger recreation. To
+         * apply tags to an existing resource, see the `gcp.tags.TagValue`
+         * resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         public TopicState build() {

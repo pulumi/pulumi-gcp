@@ -416,6 +416,7 @@ class WireGroup(pulumi.CustomResource):
             wire_properties={
                 "bandwidth_unmetered": 10,
                 "fault_response": "NONE",
+                "bandwidth_allocation": "ALLOCATE_PER_WIRE",
             },
             wire_group_properties={
                 "type": "WIRE",
@@ -501,6 +502,7 @@ class WireGroup(pulumi.CustomResource):
             wire_properties={
                 "bandwidth_unmetered": 10,
                 "fault_response": "NONE",
+                "bandwidth_allocation": "ALLOCATE_PER_WIRE",
             },
             wire_group_properties={
                 "type": "WIRE",

@@ -16,6 +16,9 @@ import * as utilities from "../utilities";
  *     * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
  *     * [Networks and Tunnel Routing](https://cloud.google.com/vpn/docs/concepts/choosing-networks-routing)
  *
+ * > **Note:**  All arguments marked as write-only values will not be stored in the state: `sharedSecretWo`.
+ * Read more about Write-only Attributes.
+ *
  * ## Example Usage
  *
  * ### Vpn Tunnel Basic
@@ -141,6 +144,17 @@ import * as utilities from "../utilities";
  *     nextHopVpnTunnel: tunnel1.id,
  * });
  * ```
+ *
+ * ## Ephemeral Attributes Reference
+ *
+ * The following write-only attributes are supported:
+ *
+ * * `sharedSecretWo` -
+ *   (Optional)
+ *   Shared secret used to set the secure session between the Cloud VPN
+ *   gateway and the peer VPN gateway.
+ *    Note: This property is write-only and will not be read from the API. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+ *   **Note**: This property is write-only and will not be read from the API.
  *
  * ## Import
  *
@@ -308,11 +322,15 @@ export class VPNTunnel extends pulumi.CustomResource {
      * gateway and the peer VPN gateway.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    declare public readonly sharedSecret: pulumi.Output<string>;
+    declare public readonly sharedSecret: pulumi.Output<string | undefined>;
     /**
      * Hash of the shared secret.
      */
     declare public /*out*/ readonly sharedSecretHash: pulumi.Output<string>;
+    /**
+     * Triggers update of sharedSecretWo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     */
+    declare public readonly sharedSecretWoVersion: pulumi.Output<string | undefined>;
     /**
      * URL of the Target VPN gateway with which this VPN tunnel is
      * associated.
@@ -340,7 +358,7 @@ export class VPNTunnel extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: VPNTunnelArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: VPNTunnelArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VPNTunnelArgs | VPNTunnelState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -368,15 +386,13 @@ export class VPNTunnel extends pulumi.CustomResource {
             resourceInputs["selfLink"] = state?.selfLink;
             resourceInputs["sharedSecret"] = state?.sharedSecret;
             resourceInputs["sharedSecretHash"] = state?.sharedSecretHash;
+            resourceInputs["sharedSecretWoVersion"] = state?.sharedSecretWoVersion;
             resourceInputs["targetVpnGateway"] = state?.targetVpnGateway;
             resourceInputs["tunnelId"] = state?.tunnelId;
             resourceInputs["vpnGateway"] = state?.vpnGateway;
             resourceInputs["vpnGatewayInterface"] = state?.vpnGatewayInterface;
         } else {
             const args = argsOrState as VPNTunnelArgs | undefined;
-            if (args?.sharedSecret === undefined && !opts.urn) {
-                throw new Error("Missing required property 'sharedSecret'");
-            }
             resourceInputs["cipherSuite"] = args?.cipherSuite;
             resourceInputs["description"] = args?.description;
             resourceInputs["ikeVersion"] = args?.ikeVersion;
@@ -392,6 +408,7 @@ export class VPNTunnel extends pulumi.CustomResource {
             resourceInputs["remoteTrafficSelectors"] = args?.remoteTrafficSelectors;
             resourceInputs["router"] = args?.router;
             resourceInputs["sharedSecret"] = args?.sharedSecret ? pulumi.secret(args.sharedSecret) : undefined;
+            resourceInputs["sharedSecretWoVersion"] = args?.sharedSecretWoVersion;
             resourceInputs["targetVpnGateway"] = args?.targetVpnGateway;
             resourceInputs["vpnGateway"] = args?.vpnGateway;
             resourceInputs["vpnGatewayInterface"] = args?.vpnGatewayInterface;
@@ -529,6 +546,10 @@ export interface VPNTunnelState {
      */
     sharedSecretHash?: pulumi.Input<string>;
     /**
+     * Triggers update of sharedSecretWo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     */
+    sharedSecretWoVersion?: pulumi.Input<string>;
+    /**
      * URL of the Target VPN gateway with which this VPN tunnel is
      * associated.
      */
@@ -635,7 +656,11 @@ export interface VPNTunnelArgs {
      * gateway and the peer VPN gateway.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    sharedSecret: pulumi.Input<string>;
+    sharedSecret?: pulumi.Input<string>;
+    /**
+     * Triggers update of sharedSecretWo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     */
+    sharedSecretWoVersion?: pulumi.Input<string>;
     /**
      * URL of the Target VPN gateway with which this VPN tunnel is
      * associated.

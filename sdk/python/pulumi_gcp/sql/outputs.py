@@ -19,6 +19,7 @@ __all__ = [
     'DatabaseInstanceClone',
     'DatabaseInstanceDnsName',
     'DatabaseInstanceIpAddress',
+    'DatabaseInstancePointInTimeRestoreContext',
     'DatabaseInstanceReplicaConfiguration',
     'DatabaseInstanceReplicationCluster',
     'DatabaseInstanceRestoreBackupContext',
@@ -50,6 +51,7 @@ __all__ = [
     'GetDatabaseInstanceCloneResult',
     'GetDatabaseInstanceDnsNameResult',
     'GetDatabaseInstanceIpAddressResult',
+    'GetDatabaseInstancePointInTimeRestoreContextResult',
     'GetDatabaseInstanceReplicaConfigurationResult',
     'GetDatabaseInstanceReplicationClusterResult',
     'GetDatabaseInstanceRestoreBackupContextResult',
@@ -78,6 +80,7 @@ __all__ = [
     'GetDatabaseInstancesInstanceCloneResult',
     'GetDatabaseInstancesInstanceDnsNameResult',
     'GetDatabaseInstancesInstanceIpAddressResult',
+    'GetDatabaseInstancesInstancePointInTimeRestoreContextResult',
     'GetDatabaseInstancesInstanceReplicaConfigurationResult',
     'GetDatabaseInstancesInstanceReplicationClusterResult',
     'GetDatabaseInstancesInstanceRestoreBackupContextResult',
@@ -331,6 +334,99 @@ class DatabaseInstanceIpAddress(dict):
         The type of this IP address.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class DatabaseInstancePointInTimeRestoreContext(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allocatedIpRange":
+            suggest = "allocated_ip_range"
+        elif key == "pointInTime":
+            suggest = "point_in_time"
+        elif key == "preferredZone":
+            suggest = "preferred_zone"
+        elif key == "targetInstance":
+            suggest = "target_instance"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseInstancePointInTimeRestoreContext. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseInstancePointInTimeRestoreContext.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseInstancePointInTimeRestoreContext.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 datasource: _builtins.str,
+                 allocated_ip_range: Optional[_builtins.str] = None,
+                 point_in_time: Optional[_builtins.str] = None,
+                 preferred_zone: Optional[_builtins.str] = None,
+                 target_instance: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str datasource: The Google Cloud Backup and Disaster Recovery Datasource URI.
+        :param _builtins.str allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+        :param _builtins.str point_in_time: The timestamp of the point in time that should be restored.
+               
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param _builtins.str preferred_zone: Point-in-time recovery of an instance to the specified zone. If no zone is specified, then clone to the same primary zone as the source instance.
+        :param _builtins.str target_instance: The name of the target instance.
+        """
+        pulumi.set(__self__, "datasource", datasource)
+        if allocated_ip_range is not None:
+            pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
+        if point_in_time is not None:
+            pulumi.set(__self__, "point_in_time", point_in_time)
+        if preferred_zone is not None:
+            pulumi.set(__self__, "preferred_zone", preferred_zone)
+        if target_instance is not None:
+            pulumi.set(__self__, "target_instance", target_instance)
+
+    @_builtins.property
+    @pulumi.getter
+    def datasource(self) -> _builtins.str:
+        """
+        The Google Cloud Backup and Disaster Recovery Datasource URI.
+        """
+        return pulumi.get(self, "datasource")
+
+    @_builtins.property
+    @pulumi.getter(name="allocatedIpRange")
+    def allocated_ip_range(self) -> Optional[_builtins.str]:
+        """
+        The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+        """
+        return pulumi.get(self, "allocated_ip_range")
+
+    @_builtins.property
+    @pulumi.getter(name="pointInTime")
+    def point_in_time(self) -> Optional[_builtins.str]:
+        """
+        The timestamp of the point in time that should be restored.
+
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "point_in_time")
+
+    @_builtins.property
+    @pulumi.getter(name="preferredZone")
+    def preferred_zone(self) -> Optional[_builtins.str]:
+        """
+        Point-in-time recovery of an instance to the specified zone. If no zone is specified, then clone to the same primary zone as the source instance.
+        """
+        return pulumi.get(self, "preferred_zone")
+
+    @_builtins.property
+    @pulumi.getter(name="targetInstance")
+    def target_instance(self) -> Optional[_builtins.str]:
+        """
+        The name of the target instance.
+        """
+        return pulumi.get(self, "target_instance")
 
 
 @pulumi.output_type
@@ -1587,7 +1683,7 @@ class DatabaseInstanceSettingsDataCacheConfig(dict):
     def __init__(__self__, *,
                  data_cache_enabled: Optional[_builtins.bool] = None):
         """
-        :param _builtins.bool data_cache_enabled: Whether data cache is enabled for the instance. Defaults to `false`. Can be used with MYSQL and PostgreSQL only.
+        :param _builtins.bool data_cache_enabled: Whether data cache is enabled for the instance. Defaults to `true` for MYSQL Enterprise Plus and PostgreSQL Enterprise Plus instances only. For SQL Server Enterprise Plus instances it defaults to `false`.
         """
         if data_cache_enabled is not None:
             pulumi.set(__self__, "data_cache_enabled", data_cache_enabled)
@@ -1596,7 +1692,7 @@ class DatabaseInstanceSettingsDataCacheConfig(dict):
     @pulumi.getter(name="dataCacheEnabled")
     def data_cache_enabled(self) -> Optional[_builtins.bool]:
         """
-        Whether data cache is enabled for the instance. Defaults to `false`. Can be used with MYSQL and PostgreSQL only.
+        Whether data cache is enabled for the instance. Defaults to `true` for MYSQL Enterprise Plus and PostgreSQL Enterprise Plus instances only. For SQL Server Enterprise Plus instances it defaults to `false`.
         """
         return pulumi.get(self, "data_cache_enabled")
 
@@ -2884,6 +2980,68 @@ class GetDatabaseInstanceIpAddressResult(dict):
     @pulumi.getter
     def type(self) -> _builtins.str:
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDatabaseInstancePointInTimeRestoreContextResult(dict):
+    def __init__(__self__, *,
+                 allocated_ip_range: _builtins.str,
+                 datasource: _builtins.str,
+                 point_in_time: _builtins.str,
+                 preferred_zone: _builtins.str,
+                 target_instance: _builtins.str):
+        """
+        :param _builtins.str allocated_ip_range: The name of the allocated IP range for the internal IP Cloud SQL instance. For example: "google-managed-services-default". If you set this, then Cloud SQL creates the IP address for the cloned instance in the allocated range. This range must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035) standards. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+        :param _builtins.str datasource: The Google Cloud Backup and Disaster Recovery Datasource URI. For example: "projects/my-project/locations/us-central1/datasources/my-datasource".
+        :param _builtins.str point_in_time: The date and time to which you want to restore the instance.
+        :param _builtins.str preferred_zone: Point-in-time recovery of an instance to the specified zone. If no zone is specified, then clone to the same primary zone as the source instance.
+        :param _builtins.str target_instance: The name of the target instance to restore to.
+        """
+        pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
+        pulumi.set(__self__, "datasource", datasource)
+        pulumi.set(__self__, "point_in_time", point_in_time)
+        pulumi.set(__self__, "preferred_zone", preferred_zone)
+        pulumi.set(__self__, "target_instance", target_instance)
+
+    @_builtins.property
+    @pulumi.getter(name="allocatedIpRange")
+    def allocated_ip_range(self) -> _builtins.str:
+        """
+        The name of the allocated IP range for the internal IP Cloud SQL instance. For example: "google-managed-services-default". If you set this, then Cloud SQL creates the IP address for the cloned instance in the allocated range. This range must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035) standards. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+        """
+        return pulumi.get(self, "allocated_ip_range")
+
+    @_builtins.property
+    @pulumi.getter
+    def datasource(self) -> _builtins.str:
+        """
+        The Google Cloud Backup and Disaster Recovery Datasource URI. For example: "projects/my-project/locations/us-central1/datasources/my-datasource".
+        """
+        return pulumi.get(self, "datasource")
+
+    @_builtins.property
+    @pulumi.getter(name="pointInTime")
+    def point_in_time(self) -> _builtins.str:
+        """
+        The date and time to which you want to restore the instance.
+        """
+        return pulumi.get(self, "point_in_time")
+
+    @_builtins.property
+    @pulumi.getter(name="preferredZone")
+    def preferred_zone(self) -> _builtins.str:
+        """
+        Point-in-time recovery of an instance to the specified zone. If no zone is specified, then clone to the same primary zone as the source instance.
+        """
+        return pulumi.get(self, "preferred_zone")
+
+    @_builtins.property
+    @pulumi.getter(name="targetInstance")
+    def target_instance(self) -> _builtins.str:
+        """
+        The name of the target instance to restore to.
+        """
+        return pulumi.get(self, "target_instance")
 
 
 @pulumi.output_type
@@ -4393,6 +4551,7 @@ class GetDatabaseInstancesInstanceResult(dict):
                  master_instance_name: _builtins.str,
                  name: _builtins.str,
                  node_count: _builtins.int,
+                 point_in_time_restore_contexts: Sequence['outputs.GetDatabaseInstancesInstancePointInTimeRestoreContextResult'],
                  private_ip_address: _builtins.str,
                  project: _builtins.str,
                  psc_service_attachment_link: _builtins.str,
@@ -4420,6 +4579,7 @@ class GetDatabaseInstancesInstanceResult(dict):
         :param _builtins.str maintenance_version: Maintenance version.
         :param _builtins.str master_instance_name: The name of the instance that will act as the master in the replication setup. Note, this requires the master to have binary_log_enabled set, as well as existing backups.
         :param _builtins.int node_count: For a read pool instance, the number of nodes in the read pool.
+        :param Sequence['GetDatabaseInstancesInstancePointInTimeRestoreContextArgs'] point_in_time_restore_contexts: Configuration for creating a new instance using point-in-time-restore from backupdr backup.
         :param _builtins.str project: The ID of the project in which the resources belong. If it is not provided, the provider project is used.
         :param _builtins.str psc_service_attachment_link: The link to service attachment of PSC instance.
         :param _builtins.str region: To filter out the Cloud SQL instances which are located in the specified region.
@@ -4448,6 +4608,7 @@ class GetDatabaseInstancesInstanceResult(dict):
         pulumi.set(__self__, "master_instance_name", master_instance_name)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "node_count", node_count)
+        pulumi.set(__self__, "point_in_time_restore_contexts", point_in_time_restore_contexts)
         pulumi.set(__self__, "private_ip_address", private_ip_address)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "psc_service_attachment_link", psc_service_attachment_link)
@@ -4583,6 +4744,14 @@ class GetDatabaseInstancesInstanceResult(dict):
         For a read pool instance, the number of nodes in the read pool.
         """
         return pulumi.get(self, "node_count")
+
+    @_builtins.property
+    @pulumi.getter(name="pointInTimeRestoreContexts")
+    def point_in_time_restore_contexts(self) -> Sequence['outputs.GetDatabaseInstancesInstancePointInTimeRestoreContextResult']:
+        """
+        Configuration for creating a new instance using point-in-time-restore from backupdr backup.
+        """
+        return pulumi.get(self, "point_in_time_restore_contexts")
 
     @_builtins.property
     @pulumi.getter(name="privateIpAddress")
@@ -4797,6 +4966,68 @@ class GetDatabaseInstancesInstanceIpAddressResult(dict):
     @pulumi.getter
     def type(self) -> _builtins.str:
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDatabaseInstancesInstancePointInTimeRestoreContextResult(dict):
+    def __init__(__self__, *,
+                 allocated_ip_range: _builtins.str,
+                 datasource: _builtins.str,
+                 point_in_time: _builtins.str,
+                 preferred_zone: _builtins.str,
+                 target_instance: _builtins.str):
+        """
+        :param _builtins.str allocated_ip_range: The name of the allocated IP range for the internal IP Cloud SQL instance. For example: "google-managed-services-default". If you set this, then Cloud SQL creates the IP address for the cloned instance in the allocated range. This range must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035) standards. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+        :param _builtins.str datasource: The Google Cloud Backup and Disaster Recovery Datasource URI. For example: "projects/my-project/locations/us-central1/datasources/my-datasource".
+        :param _builtins.str point_in_time: The date and time to which you want to restore the instance.
+        :param _builtins.str preferred_zone: Point-in-time recovery of an instance to the specified zone. If no zone is specified, then clone to the same primary zone as the source instance.
+        :param _builtins.str target_instance: The name of the target instance to restore to.
+        """
+        pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
+        pulumi.set(__self__, "datasource", datasource)
+        pulumi.set(__self__, "point_in_time", point_in_time)
+        pulumi.set(__self__, "preferred_zone", preferred_zone)
+        pulumi.set(__self__, "target_instance", target_instance)
+
+    @_builtins.property
+    @pulumi.getter(name="allocatedIpRange")
+    def allocated_ip_range(self) -> _builtins.str:
+        """
+        The name of the allocated IP range for the internal IP Cloud SQL instance. For example: "google-managed-services-default". If you set this, then Cloud SQL creates the IP address for the cloned instance in the allocated range. This range must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035) standards. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+        """
+        return pulumi.get(self, "allocated_ip_range")
+
+    @_builtins.property
+    @pulumi.getter
+    def datasource(self) -> _builtins.str:
+        """
+        The Google Cloud Backup and Disaster Recovery Datasource URI. For example: "projects/my-project/locations/us-central1/datasources/my-datasource".
+        """
+        return pulumi.get(self, "datasource")
+
+    @_builtins.property
+    @pulumi.getter(name="pointInTime")
+    def point_in_time(self) -> _builtins.str:
+        """
+        The date and time to which you want to restore the instance.
+        """
+        return pulumi.get(self, "point_in_time")
+
+    @_builtins.property
+    @pulumi.getter(name="preferredZone")
+    def preferred_zone(self) -> _builtins.str:
+        """
+        Point-in-time recovery of an instance to the specified zone. If no zone is specified, then clone to the same primary zone as the source instance.
+        """
+        return pulumi.get(self, "preferred_zone")
+
+    @_builtins.property
+    @pulumi.getter(name="targetInstance")
+    def target_instance(self) -> _builtins.str:
+        """
+        The name of the target instance to restore to.
+        """
+        return pulumi.get(self, "target_instance")
 
 
 @pulumi.output_type

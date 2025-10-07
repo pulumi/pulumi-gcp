@@ -676,15 +676,15 @@ class Spoke(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         network = gcp.compute.Network("network",
-            name="tf-test-network_10393",
+            name="tf-test-network_60365",
             auto_create_subnetworks=False)
         subnetwork = gcp.compute.Subnetwork("subnetwork",
-            name="tf-test-subnet_33052",
+            name="tf-test-subnet_80215",
             ip_cidr_range="10.0.0.0/28",
             region="us-central1",
             network=network.self_link)
         instance = gcp.compute.Instance("instance",
-            name="tf-test-instance_3684",
+            name="tf-test-instance_59033",
             machine_type="e2-medium",
             can_ip_forward=True,
             zone="us-central1-a",
@@ -701,13 +701,13 @@ class Spoke(pulumi.CustomResource):
                 }],
             }])
         basic_hub = gcp.networkconnectivity.Hub("basic_hub",
-            name="tf-test-hub_10719",
+            name="tf-test-hub_32081",
             description="A sample hub",
             labels={
                 "label-two": "value-one",
             })
         primary = gcp.networkconnectivity.Spoke("primary",
-            name="tf-test-name_1443",
+            name="tf-test-name_10393",
             location="us-central1",
             description="A sample spoke with a linked routher appliance instance",
             labels={
@@ -939,8 +939,8 @@ class Spoke(pulumi.CustomResource):
             hub=star_hub.id,
             auto_accept={
                 "auto_accept_projects": [
-                    "foo_26032",
-                    "bar_8647",
+                    "foo_33052",
+                    "bar_3684",
                 ],
             })
         primary = gcp.networkconnectivity.Spoke("primary",
@@ -1134,15 +1134,15 @@ class Spoke(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         network = gcp.compute.Network("network",
-            name="tf-test-network_10393",
+            name="tf-test-network_60365",
             auto_create_subnetworks=False)
         subnetwork = gcp.compute.Subnetwork("subnetwork",
-            name="tf-test-subnet_33052",
+            name="tf-test-subnet_80215",
             ip_cidr_range="10.0.0.0/28",
             region="us-central1",
             network=network.self_link)
         instance = gcp.compute.Instance("instance",
-            name="tf-test-instance_3684",
+            name="tf-test-instance_59033",
             machine_type="e2-medium",
             can_ip_forward=True,
             zone="us-central1-a",
@@ -1159,13 +1159,13 @@ class Spoke(pulumi.CustomResource):
                 }],
             }])
         basic_hub = gcp.networkconnectivity.Hub("basic_hub",
-            name="tf-test-hub_10719",
+            name="tf-test-hub_32081",
             description="A sample hub",
             labels={
                 "label-two": "value-one",
             })
         primary = gcp.networkconnectivity.Spoke("primary",
-            name="tf-test-name_1443",
+            name="tf-test-name_10393",
             location="us-central1",
             description="A sample spoke with a linked routher appliance instance",
             labels={
@@ -1397,8 +1397,8 @@ class Spoke(pulumi.CustomResource):
             hub=star_hub.id,
             auto_accept={
                 "auto_accept_projects": [
-                    "foo_26032",
-                    "bar_8647",
+                    "foo_33052",
+                    "bar_3684",
                 ],
             })
         primary = gcp.networkconnectivity.Spoke("primary",

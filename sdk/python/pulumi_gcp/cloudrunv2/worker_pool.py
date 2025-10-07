@@ -1272,6 +1272,61 @@ class WorkerPool(pulumi.CustomResource):
                 }],
             })
         ```
+        ### Cloudrunv2 Worker Pool Startup Liveness Probe
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        custom_test = gcp.compute.Network("custom_test",
+            name="wp-net",
+            auto_create_subnetworks=False)
+        custom_test_subnetwork = gcp.compute.Subnetwork("custom_test",
+            name="wp-subnet",
+            ip_cidr_range="10.2.0.0/28",
+            region="us-central1",
+            network=custom_test.id)
+        default = gcp.cloudrunv2.WorkerPool("default",
+            name="cloudrun-worker-pool",
+            location="us-central1",
+            launch_stage="BETA",
+            deletion_protection=False,
+            template={
+                "annotations": {},
+                "labels": {},
+                "containers": [{
+                    "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                    "commands": [],
+                    "args": [],
+                    "startup_probe": {
+                        "initial_delay_seconds": 0,
+                        "timeout_seconds": 1,
+                        "period_seconds": 3,
+                        "failure_threshold": 3,
+                        "tcp_socket": {
+                            "port": 8080,
+                        },
+                    },
+                    "liveness_probe": {
+                        "initial_delay_seconds": 0,
+                        "timeout_seconds": 1,
+                        "period_seconds": 10,
+                        "failure_threshold": 3,
+                        "http_get": {
+                            "path": "/",
+                            "port": 8080,
+                        },
+                    },
+                }],
+                "vpc_access": {
+                    "network_interfaces": [{
+                        "network": custom_test.id,
+                        "subnetwork": custom_test_subnetwork.id,
+                        "tags": [],
+                    }],
+                },
+            })
+        ```
 
         ## Import
 
@@ -1693,6 +1748,61 @@ class WorkerPool(pulumi.CustomResource):
                 "containers": [{
                     "image": "us-docker.pkg.dev/cloudrun/container/worker-pool",
                 }],
+            })
+        ```
+        ### Cloudrunv2 Worker Pool Startup Liveness Probe
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        custom_test = gcp.compute.Network("custom_test",
+            name="wp-net",
+            auto_create_subnetworks=False)
+        custom_test_subnetwork = gcp.compute.Subnetwork("custom_test",
+            name="wp-subnet",
+            ip_cidr_range="10.2.0.0/28",
+            region="us-central1",
+            network=custom_test.id)
+        default = gcp.cloudrunv2.WorkerPool("default",
+            name="cloudrun-worker-pool",
+            location="us-central1",
+            launch_stage="BETA",
+            deletion_protection=False,
+            template={
+                "annotations": {},
+                "labels": {},
+                "containers": [{
+                    "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                    "commands": [],
+                    "args": [],
+                    "startup_probe": {
+                        "initial_delay_seconds": 0,
+                        "timeout_seconds": 1,
+                        "period_seconds": 3,
+                        "failure_threshold": 3,
+                        "tcp_socket": {
+                            "port": 8080,
+                        },
+                    },
+                    "liveness_probe": {
+                        "initial_delay_seconds": 0,
+                        "timeout_seconds": 1,
+                        "period_seconds": 10,
+                        "failure_threshold": 3,
+                        "http_get": {
+                            "path": "/",
+                            "port": 8080,
+                        },
+                    },
+                }],
+                "vpc_access": {
+                    "network_interfaces": [{
+                        "network": custom_test.id,
+                        "subnetwork": custom_test_subnetwork.id,
+                        "tags": [],
+                    }],
+                },
             })
         ```
 

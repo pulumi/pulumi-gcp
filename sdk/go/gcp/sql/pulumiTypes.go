@@ -476,6 +476,227 @@ func (o DatabaseInstanceIpAddressArrayOutput) Index(i pulumi.IntInput) DatabaseI
 	}).(DatabaseInstanceIpAddressOutput)
 }
 
+type DatabaseInstancePointInTimeRestoreContext struct {
+	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+	AllocatedIpRange *string `pulumi:"allocatedIpRange"`
+	// The Google Cloud Backup and Disaster Recovery Datasource URI.
+	Datasource string `pulumi:"datasource"`
+	// The timestamp of the point in time that should be restored.
+	//
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	PointInTime *string `pulumi:"pointInTime"`
+	// Point-in-time recovery of an instance to the specified zone. If no zone is specified, then clone to the same primary zone as the source instance.
+	PreferredZone *string `pulumi:"preferredZone"`
+	// The name of the target instance.
+	TargetInstance *string `pulumi:"targetInstance"`
+}
+
+// DatabaseInstancePointInTimeRestoreContextInput is an input type that accepts DatabaseInstancePointInTimeRestoreContextArgs and DatabaseInstancePointInTimeRestoreContextOutput values.
+// You can construct a concrete instance of `DatabaseInstancePointInTimeRestoreContextInput` via:
+//
+//	DatabaseInstancePointInTimeRestoreContextArgs{...}
+type DatabaseInstancePointInTimeRestoreContextInput interface {
+	pulumi.Input
+
+	ToDatabaseInstancePointInTimeRestoreContextOutput() DatabaseInstancePointInTimeRestoreContextOutput
+	ToDatabaseInstancePointInTimeRestoreContextOutputWithContext(context.Context) DatabaseInstancePointInTimeRestoreContextOutput
+}
+
+type DatabaseInstancePointInTimeRestoreContextArgs struct {
+	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+	AllocatedIpRange pulumi.StringPtrInput `pulumi:"allocatedIpRange"`
+	// The Google Cloud Backup and Disaster Recovery Datasource URI.
+	Datasource pulumi.StringInput `pulumi:"datasource"`
+	// The timestamp of the point in time that should be restored.
+	//
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	PointInTime pulumi.StringPtrInput `pulumi:"pointInTime"`
+	// Point-in-time recovery of an instance to the specified zone. If no zone is specified, then clone to the same primary zone as the source instance.
+	PreferredZone pulumi.StringPtrInput `pulumi:"preferredZone"`
+	// The name of the target instance.
+	TargetInstance pulumi.StringPtrInput `pulumi:"targetInstance"`
+}
+
+func (DatabaseInstancePointInTimeRestoreContextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstancePointInTimeRestoreContext)(nil)).Elem()
+}
+
+func (i DatabaseInstancePointInTimeRestoreContextArgs) ToDatabaseInstancePointInTimeRestoreContextOutput() DatabaseInstancePointInTimeRestoreContextOutput {
+	return i.ToDatabaseInstancePointInTimeRestoreContextOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstancePointInTimeRestoreContextArgs) ToDatabaseInstancePointInTimeRestoreContextOutputWithContext(ctx context.Context) DatabaseInstancePointInTimeRestoreContextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstancePointInTimeRestoreContextOutput)
+}
+
+func (i DatabaseInstancePointInTimeRestoreContextArgs) ToDatabaseInstancePointInTimeRestoreContextPtrOutput() DatabaseInstancePointInTimeRestoreContextPtrOutput {
+	return i.ToDatabaseInstancePointInTimeRestoreContextPtrOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstancePointInTimeRestoreContextArgs) ToDatabaseInstancePointInTimeRestoreContextPtrOutputWithContext(ctx context.Context) DatabaseInstancePointInTimeRestoreContextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstancePointInTimeRestoreContextOutput).ToDatabaseInstancePointInTimeRestoreContextPtrOutputWithContext(ctx)
+}
+
+// DatabaseInstancePointInTimeRestoreContextPtrInput is an input type that accepts DatabaseInstancePointInTimeRestoreContextArgs, DatabaseInstancePointInTimeRestoreContextPtr and DatabaseInstancePointInTimeRestoreContextPtrOutput values.
+// You can construct a concrete instance of `DatabaseInstancePointInTimeRestoreContextPtrInput` via:
+//
+//	        DatabaseInstancePointInTimeRestoreContextArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatabaseInstancePointInTimeRestoreContextPtrInput interface {
+	pulumi.Input
+
+	ToDatabaseInstancePointInTimeRestoreContextPtrOutput() DatabaseInstancePointInTimeRestoreContextPtrOutput
+	ToDatabaseInstancePointInTimeRestoreContextPtrOutputWithContext(context.Context) DatabaseInstancePointInTimeRestoreContextPtrOutput
+}
+
+type databaseInstancePointInTimeRestoreContextPtrType DatabaseInstancePointInTimeRestoreContextArgs
+
+func DatabaseInstancePointInTimeRestoreContextPtr(v *DatabaseInstancePointInTimeRestoreContextArgs) DatabaseInstancePointInTimeRestoreContextPtrInput {
+	return (*databaseInstancePointInTimeRestoreContextPtrType)(v)
+}
+
+func (*databaseInstancePointInTimeRestoreContextPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseInstancePointInTimeRestoreContext)(nil)).Elem()
+}
+
+func (i *databaseInstancePointInTimeRestoreContextPtrType) ToDatabaseInstancePointInTimeRestoreContextPtrOutput() DatabaseInstancePointInTimeRestoreContextPtrOutput {
+	return i.ToDatabaseInstancePointInTimeRestoreContextPtrOutputWithContext(context.Background())
+}
+
+func (i *databaseInstancePointInTimeRestoreContextPtrType) ToDatabaseInstancePointInTimeRestoreContextPtrOutputWithContext(ctx context.Context) DatabaseInstancePointInTimeRestoreContextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstancePointInTimeRestoreContextPtrOutput)
+}
+
+type DatabaseInstancePointInTimeRestoreContextOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstancePointInTimeRestoreContextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstancePointInTimeRestoreContext)(nil)).Elem()
+}
+
+func (o DatabaseInstancePointInTimeRestoreContextOutput) ToDatabaseInstancePointInTimeRestoreContextOutput() DatabaseInstancePointInTimeRestoreContextOutput {
+	return o
+}
+
+func (o DatabaseInstancePointInTimeRestoreContextOutput) ToDatabaseInstancePointInTimeRestoreContextOutputWithContext(ctx context.Context) DatabaseInstancePointInTimeRestoreContextOutput {
+	return o
+}
+
+func (o DatabaseInstancePointInTimeRestoreContextOutput) ToDatabaseInstancePointInTimeRestoreContextPtrOutput() DatabaseInstancePointInTimeRestoreContextPtrOutput {
+	return o.ToDatabaseInstancePointInTimeRestoreContextPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseInstancePointInTimeRestoreContextOutput) ToDatabaseInstancePointInTimeRestoreContextPtrOutputWithContext(ctx context.Context) DatabaseInstancePointInTimeRestoreContextPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseInstancePointInTimeRestoreContext) *DatabaseInstancePointInTimeRestoreContext {
+		return &v
+	}).(DatabaseInstancePointInTimeRestoreContextPtrOutput)
+}
+
+// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+func (o DatabaseInstancePointInTimeRestoreContextOutput) AllocatedIpRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstancePointInTimeRestoreContext) *string { return v.AllocatedIpRange }).(pulumi.StringPtrOutput)
+}
+
+// The Google Cloud Backup and Disaster Recovery Datasource URI.
+func (o DatabaseInstancePointInTimeRestoreContextOutput) Datasource() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseInstancePointInTimeRestoreContext) string { return v.Datasource }).(pulumi.StringOutput)
+}
+
+// The timestamp of the point in time that should be restored.
+//
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o DatabaseInstancePointInTimeRestoreContextOutput) PointInTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstancePointInTimeRestoreContext) *string { return v.PointInTime }).(pulumi.StringPtrOutput)
+}
+
+// Point-in-time recovery of an instance to the specified zone. If no zone is specified, then clone to the same primary zone as the source instance.
+func (o DatabaseInstancePointInTimeRestoreContextOutput) PreferredZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstancePointInTimeRestoreContext) *string { return v.PreferredZone }).(pulumi.StringPtrOutput)
+}
+
+// The name of the target instance.
+func (o DatabaseInstancePointInTimeRestoreContextOutput) TargetInstance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstancePointInTimeRestoreContext) *string { return v.TargetInstance }).(pulumi.StringPtrOutput)
+}
+
+type DatabaseInstancePointInTimeRestoreContextPtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstancePointInTimeRestoreContextPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseInstancePointInTimeRestoreContext)(nil)).Elem()
+}
+
+func (o DatabaseInstancePointInTimeRestoreContextPtrOutput) ToDatabaseInstancePointInTimeRestoreContextPtrOutput() DatabaseInstancePointInTimeRestoreContextPtrOutput {
+	return o
+}
+
+func (o DatabaseInstancePointInTimeRestoreContextPtrOutput) ToDatabaseInstancePointInTimeRestoreContextPtrOutputWithContext(ctx context.Context) DatabaseInstancePointInTimeRestoreContextPtrOutput {
+	return o
+}
+
+func (o DatabaseInstancePointInTimeRestoreContextPtrOutput) Elem() DatabaseInstancePointInTimeRestoreContextOutput {
+	return o.ApplyT(func(v *DatabaseInstancePointInTimeRestoreContext) DatabaseInstancePointInTimeRestoreContext {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseInstancePointInTimeRestoreContext
+		return ret
+	}).(DatabaseInstancePointInTimeRestoreContextOutput)
+}
+
+// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+func (o DatabaseInstancePointInTimeRestoreContextPtrOutput) AllocatedIpRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstancePointInTimeRestoreContext) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AllocatedIpRange
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Google Cloud Backup and Disaster Recovery Datasource URI.
+func (o DatabaseInstancePointInTimeRestoreContextPtrOutput) Datasource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstancePointInTimeRestoreContext) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Datasource
+	}).(pulumi.StringPtrOutput)
+}
+
+// The timestamp of the point in time that should be restored.
+//
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o DatabaseInstancePointInTimeRestoreContextPtrOutput) PointInTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstancePointInTimeRestoreContext) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PointInTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Point-in-time recovery of an instance to the specified zone. If no zone is specified, then clone to the same primary zone as the source instance.
+func (o DatabaseInstancePointInTimeRestoreContextPtrOutput) PreferredZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstancePointInTimeRestoreContext) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PreferredZone
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the target instance.
+func (o DatabaseInstancePointInTimeRestoreContextPtrOutput) TargetInstance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstancePointInTimeRestoreContext) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetInstance
+	}).(pulumi.StringPtrOutput)
+}
+
 type DatabaseInstanceReplicaConfiguration struct {
 	// PEM representation of the trusted CA's x509
 	// certificate.
@@ -3110,7 +3331,7 @@ func (o DatabaseInstanceSettingsConnectionPoolConfigFlagArrayOutput) Index(i pul
 }
 
 type DatabaseInstanceSettingsDataCacheConfig struct {
-	// Whether data cache is enabled for the instance. Defaults to `false`. Can be used with MYSQL and PostgreSQL only.
+	// Whether data cache is enabled for the instance. Defaults to `true` for MYSQL Enterprise Plus and PostgreSQL Enterprise Plus instances only. For SQL Server Enterprise Plus instances it defaults to `false`.
 	DataCacheEnabled *bool `pulumi:"dataCacheEnabled"`
 }
 
@@ -3126,7 +3347,7 @@ type DatabaseInstanceSettingsDataCacheConfigInput interface {
 }
 
 type DatabaseInstanceSettingsDataCacheConfigArgs struct {
-	// Whether data cache is enabled for the instance. Defaults to `false`. Can be used with MYSQL and PostgreSQL only.
+	// Whether data cache is enabled for the instance. Defaults to `true` for MYSQL Enterprise Plus and PostgreSQL Enterprise Plus instances only. For SQL Server Enterprise Plus instances it defaults to `false`.
 	DataCacheEnabled pulumi.BoolPtrInput `pulumi:"dataCacheEnabled"`
 }
 
@@ -3207,7 +3428,7 @@ func (o DatabaseInstanceSettingsDataCacheConfigOutput) ToDatabaseInstanceSetting
 	}).(DatabaseInstanceSettingsDataCacheConfigPtrOutput)
 }
 
-// Whether data cache is enabled for the instance. Defaults to `false`. Can be used with MYSQL and PostgreSQL only.
+// Whether data cache is enabled for the instance. Defaults to `true` for MYSQL Enterprise Plus and PostgreSQL Enterprise Plus instances only. For SQL Server Enterprise Plus instances it defaults to `false`.
 func (o DatabaseInstanceSettingsDataCacheConfigOutput) DataCacheEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsDataCacheConfig) *bool { return v.DataCacheEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -3236,7 +3457,7 @@ func (o DatabaseInstanceSettingsDataCacheConfigPtrOutput) Elem() DatabaseInstanc
 	}).(DatabaseInstanceSettingsDataCacheConfigOutput)
 }
 
-// Whether data cache is enabled for the instance. Defaults to `false`. Can be used with MYSQL and PostgreSQL only.
+// Whether data cache is enabled for the instance. Defaults to `true` for MYSQL Enterprise Plus and PostgreSQL Enterprise Plus instances only. For SQL Server Enterprise Plus instances it defaults to `false`.
 func (o DatabaseInstanceSettingsDataCacheConfigPtrOutput) DataCacheEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettingsDataCacheConfig) *bool {
 		if v == nil {
@@ -6284,6 +6505,139 @@ func (o GetDatabaseInstanceIpAddressArrayOutput) Index(i pulumi.IntInput) GetDat
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstanceIpAddress {
 		return vs[0].([]GetDatabaseInstanceIpAddress)[vs[1].(int)]
 	}).(GetDatabaseInstanceIpAddressOutput)
+}
+
+type GetDatabaseInstancePointInTimeRestoreContext struct {
+	// The name of the allocated IP range for the internal IP Cloud SQL instance. For example: "google-managed-services-default". If you set this, then Cloud SQL creates the IP address for the cloned instance in the allocated range. This range must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035) standards. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+	AllocatedIpRange string `pulumi:"allocatedIpRange"`
+	// The Google Cloud Backup and Disaster Recovery Datasource URI. For example: "projects/my-project/locations/us-central1/datasources/my-datasource".
+	Datasource string `pulumi:"datasource"`
+	// The date and time to which you want to restore the instance.
+	PointInTime string `pulumi:"pointInTime"`
+	// Point-in-time recovery of an instance to the specified zone. If no zone is specified, then clone to the same primary zone as the source instance.
+	PreferredZone string `pulumi:"preferredZone"`
+	// The name of the target instance to restore to.
+	TargetInstance string `pulumi:"targetInstance"`
+}
+
+// GetDatabaseInstancePointInTimeRestoreContextInput is an input type that accepts GetDatabaseInstancePointInTimeRestoreContextArgs and GetDatabaseInstancePointInTimeRestoreContextOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancePointInTimeRestoreContextInput` via:
+//
+//	GetDatabaseInstancePointInTimeRestoreContextArgs{...}
+type GetDatabaseInstancePointInTimeRestoreContextInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancePointInTimeRestoreContextOutput() GetDatabaseInstancePointInTimeRestoreContextOutput
+	ToGetDatabaseInstancePointInTimeRestoreContextOutputWithContext(context.Context) GetDatabaseInstancePointInTimeRestoreContextOutput
+}
+
+type GetDatabaseInstancePointInTimeRestoreContextArgs struct {
+	// The name of the allocated IP range for the internal IP Cloud SQL instance. For example: "google-managed-services-default". If you set this, then Cloud SQL creates the IP address for the cloned instance in the allocated range. This range must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035) standards. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+	AllocatedIpRange pulumi.StringInput `pulumi:"allocatedIpRange"`
+	// The Google Cloud Backup and Disaster Recovery Datasource URI. For example: "projects/my-project/locations/us-central1/datasources/my-datasource".
+	Datasource pulumi.StringInput `pulumi:"datasource"`
+	// The date and time to which you want to restore the instance.
+	PointInTime pulumi.StringInput `pulumi:"pointInTime"`
+	// Point-in-time recovery of an instance to the specified zone. If no zone is specified, then clone to the same primary zone as the source instance.
+	PreferredZone pulumi.StringInput `pulumi:"preferredZone"`
+	// The name of the target instance to restore to.
+	TargetInstance pulumi.StringInput `pulumi:"targetInstance"`
+}
+
+func (GetDatabaseInstancePointInTimeRestoreContextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancePointInTimeRestoreContext)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancePointInTimeRestoreContextArgs) ToGetDatabaseInstancePointInTimeRestoreContextOutput() GetDatabaseInstancePointInTimeRestoreContextOutput {
+	return i.ToGetDatabaseInstancePointInTimeRestoreContextOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancePointInTimeRestoreContextArgs) ToGetDatabaseInstancePointInTimeRestoreContextOutputWithContext(ctx context.Context) GetDatabaseInstancePointInTimeRestoreContextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancePointInTimeRestoreContextOutput)
+}
+
+// GetDatabaseInstancePointInTimeRestoreContextArrayInput is an input type that accepts GetDatabaseInstancePointInTimeRestoreContextArray and GetDatabaseInstancePointInTimeRestoreContextArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancePointInTimeRestoreContextArrayInput` via:
+//
+//	GetDatabaseInstancePointInTimeRestoreContextArray{ GetDatabaseInstancePointInTimeRestoreContextArgs{...} }
+type GetDatabaseInstancePointInTimeRestoreContextArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancePointInTimeRestoreContextArrayOutput() GetDatabaseInstancePointInTimeRestoreContextArrayOutput
+	ToGetDatabaseInstancePointInTimeRestoreContextArrayOutputWithContext(context.Context) GetDatabaseInstancePointInTimeRestoreContextArrayOutput
+}
+
+type GetDatabaseInstancePointInTimeRestoreContextArray []GetDatabaseInstancePointInTimeRestoreContextInput
+
+func (GetDatabaseInstancePointInTimeRestoreContextArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancePointInTimeRestoreContext)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancePointInTimeRestoreContextArray) ToGetDatabaseInstancePointInTimeRestoreContextArrayOutput() GetDatabaseInstancePointInTimeRestoreContextArrayOutput {
+	return i.ToGetDatabaseInstancePointInTimeRestoreContextArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancePointInTimeRestoreContextArray) ToGetDatabaseInstancePointInTimeRestoreContextArrayOutputWithContext(ctx context.Context) GetDatabaseInstancePointInTimeRestoreContextArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancePointInTimeRestoreContextArrayOutput)
+}
+
+type GetDatabaseInstancePointInTimeRestoreContextOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancePointInTimeRestoreContextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancePointInTimeRestoreContext)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancePointInTimeRestoreContextOutput) ToGetDatabaseInstancePointInTimeRestoreContextOutput() GetDatabaseInstancePointInTimeRestoreContextOutput {
+	return o
+}
+
+func (o GetDatabaseInstancePointInTimeRestoreContextOutput) ToGetDatabaseInstancePointInTimeRestoreContextOutputWithContext(ctx context.Context) GetDatabaseInstancePointInTimeRestoreContextOutput {
+	return o
+}
+
+// The name of the allocated IP range for the internal IP Cloud SQL instance. For example: "google-managed-services-default". If you set this, then Cloud SQL creates the IP address for the cloned instance in the allocated range. This range must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035) standards. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+func (o GetDatabaseInstancePointInTimeRestoreContextOutput) AllocatedIpRange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancePointInTimeRestoreContext) string { return v.AllocatedIpRange }).(pulumi.StringOutput)
+}
+
+// The Google Cloud Backup and Disaster Recovery Datasource URI. For example: "projects/my-project/locations/us-central1/datasources/my-datasource".
+func (o GetDatabaseInstancePointInTimeRestoreContextOutput) Datasource() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancePointInTimeRestoreContext) string { return v.Datasource }).(pulumi.StringOutput)
+}
+
+// The date and time to which you want to restore the instance.
+func (o GetDatabaseInstancePointInTimeRestoreContextOutput) PointInTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancePointInTimeRestoreContext) string { return v.PointInTime }).(pulumi.StringOutput)
+}
+
+// Point-in-time recovery of an instance to the specified zone. If no zone is specified, then clone to the same primary zone as the source instance.
+func (o GetDatabaseInstancePointInTimeRestoreContextOutput) PreferredZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancePointInTimeRestoreContext) string { return v.PreferredZone }).(pulumi.StringOutput)
+}
+
+// The name of the target instance to restore to.
+func (o GetDatabaseInstancePointInTimeRestoreContextOutput) TargetInstance() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancePointInTimeRestoreContext) string { return v.TargetInstance }).(pulumi.StringOutput)
+}
+
+type GetDatabaseInstancePointInTimeRestoreContextArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancePointInTimeRestoreContextArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancePointInTimeRestoreContext)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancePointInTimeRestoreContextArrayOutput) ToGetDatabaseInstancePointInTimeRestoreContextArrayOutput() GetDatabaseInstancePointInTimeRestoreContextArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancePointInTimeRestoreContextArrayOutput) ToGetDatabaseInstancePointInTimeRestoreContextArrayOutputWithContext(ctx context.Context) GetDatabaseInstancePointInTimeRestoreContextArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancePointInTimeRestoreContextArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancePointInTimeRestoreContextOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancePointInTimeRestoreContext {
+		return vs[0].([]GetDatabaseInstancePointInTimeRestoreContext)[vs[1].(int)]
+	}).(GetDatabaseInstancePointInTimeRestoreContextOutput)
 }
 
 type GetDatabaseInstanceReplicaConfiguration struct {
@@ -9570,8 +9924,10 @@ type GetDatabaseInstancesInstance struct {
 	MasterInstanceName string `pulumi:"masterInstanceName"`
 	Name               string `pulumi:"name"`
 	// For a read pool instance, the number of nodes in the read pool.
-	NodeCount        int    `pulumi:"nodeCount"`
-	PrivateIpAddress string `pulumi:"privateIpAddress"`
+	NodeCount int `pulumi:"nodeCount"`
+	// Configuration for creating a new instance using point-in-time-restore from backupdr backup.
+	PointInTimeRestoreContexts []GetDatabaseInstancesInstancePointInTimeRestoreContext `pulumi:"pointInTimeRestoreContexts"`
+	PrivateIpAddress           string                                                  `pulumi:"privateIpAddress"`
 	// The ID of the project in which the resources belong. If it is not provided, the provider project is used.
 	Project string `pulumi:"project"`
 	// The link to service attachment of PSC instance.
@@ -9637,8 +9993,10 @@ type GetDatabaseInstancesInstanceArgs struct {
 	MasterInstanceName pulumi.StringInput `pulumi:"masterInstanceName"`
 	Name               pulumi.StringInput `pulumi:"name"`
 	// For a read pool instance, the number of nodes in the read pool.
-	NodeCount        pulumi.IntInput    `pulumi:"nodeCount"`
-	PrivateIpAddress pulumi.StringInput `pulumi:"privateIpAddress"`
+	NodeCount pulumi.IntInput `pulumi:"nodeCount"`
+	// Configuration for creating a new instance using point-in-time-restore from backupdr backup.
+	PointInTimeRestoreContexts GetDatabaseInstancesInstancePointInTimeRestoreContextArrayInput `pulumi:"pointInTimeRestoreContexts"`
+	PrivateIpAddress           pulumi.StringInput                                              `pulumi:"privateIpAddress"`
 	// The ID of the project in which the resources belong. If it is not provided, the provider project is used.
 	Project pulumi.StringInput `pulumi:"project"`
 	// The link to service attachment of PSC instance.
@@ -9793,6 +10151,13 @@ func (o GetDatabaseInstancesInstanceOutput) Name() pulumi.StringOutput {
 // For a read pool instance, the number of nodes in the read pool.
 func (o GetDatabaseInstancesInstanceOutput) NodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstance) int { return v.NodeCount }).(pulumi.IntOutput)
+}
+
+// Configuration for creating a new instance using point-in-time-restore from backupdr backup.
+func (o GetDatabaseInstancesInstanceOutput) PointInTimeRestoreContexts() GetDatabaseInstancesInstancePointInTimeRestoreContextArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstance) []GetDatabaseInstancesInstancePointInTimeRestoreContext {
+		return v.PointInTimeRestoreContexts
+	}).(GetDatabaseInstancesInstancePointInTimeRestoreContextArrayOutput)
 }
 
 func (o GetDatabaseInstancesInstanceOutput) PrivateIpAddress() pulumi.StringOutput {
@@ -10232,6 +10597,139 @@ func (o GetDatabaseInstancesInstanceIpAddressArrayOutput) Index(i pulumi.IntInpu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceIpAddress {
 		return vs[0].([]GetDatabaseInstancesInstanceIpAddress)[vs[1].(int)]
 	}).(GetDatabaseInstancesInstanceIpAddressOutput)
+}
+
+type GetDatabaseInstancesInstancePointInTimeRestoreContext struct {
+	// The name of the allocated IP range for the internal IP Cloud SQL instance. For example: "google-managed-services-default". If you set this, then Cloud SQL creates the IP address for the cloned instance in the allocated range. This range must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035) standards. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+	AllocatedIpRange string `pulumi:"allocatedIpRange"`
+	// The Google Cloud Backup and Disaster Recovery Datasource URI. For example: "projects/my-project/locations/us-central1/datasources/my-datasource".
+	Datasource string `pulumi:"datasource"`
+	// The date and time to which you want to restore the instance.
+	PointInTime string `pulumi:"pointInTime"`
+	// Point-in-time recovery of an instance to the specified zone. If no zone is specified, then clone to the same primary zone as the source instance.
+	PreferredZone string `pulumi:"preferredZone"`
+	// The name of the target instance to restore to.
+	TargetInstance string `pulumi:"targetInstance"`
+}
+
+// GetDatabaseInstancesInstancePointInTimeRestoreContextInput is an input type that accepts GetDatabaseInstancesInstancePointInTimeRestoreContextArgs and GetDatabaseInstancesInstancePointInTimeRestoreContextOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstancePointInTimeRestoreContextInput` via:
+//
+//	GetDatabaseInstancesInstancePointInTimeRestoreContextArgs{...}
+type GetDatabaseInstancesInstancePointInTimeRestoreContextInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstancePointInTimeRestoreContextOutput() GetDatabaseInstancesInstancePointInTimeRestoreContextOutput
+	ToGetDatabaseInstancesInstancePointInTimeRestoreContextOutputWithContext(context.Context) GetDatabaseInstancesInstancePointInTimeRestoreContextOutput
+}
+
+type GetDatabaseInstancesInstancePointInTimeRestoreContextArgs struct {
+	// The name of the allocated IP range for the internal IP Cloud SQL instance. For example: "google-managed-services-default". If you set this, then Cloud SQL creates the IP address for the cloned instance in the allocated range. This range must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035) standards. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+	AllocatedIpRange pulumi.StringInput `pulumi:"allocatedIpRange"`
+	// The Google Cloud Backup and Disaster Recovery Datasource URI. For example: "projects/my-project/locations/us-central1/datasources/my-datasource".
+	Datasource pulumi.StringInput `pulumi:"datasource"`
+	// The date and time to which you want to restore the instance.
+	PointInTime pulumi.StringInput `pulumi:"pointInTime"`
+	// Point-in-time recovery of an instance to the specified zone. If no zone is specified, then clone to the same primary zone as the source instance.
+	PreferredZone pulumi.StringInput `pulumi:"preferredZone"`
+	// The name of the target instance to restore to.
+	TargetInstance pulumi.StringInput `pulumi:"targetInstance"`
+}
+
+func (GetDatabaseInstancesInstancePointInTimeRestoreContextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstancePointInTimeRestoreContext)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstancePointInTimeRestoreContextArgs) ToGetDatabaseInstancesInstancePointInTimeRestoreContextOutput() GetDatabaseInstancesInstancePointInTimeRestoreContextOutput {
+	return i.ToGetDatabaseInstancesInstancePointInTimeRestoreContextOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstancePointInTimeRestoreContextArgs) ToGetDatabaseInstancesInstancePointInTimeRestoreContextOutputWithContext(ctx context.Context) GetDatabaseInstancesInstancePointInTimeRestoreContextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstancePointInTimeRestoreContextOutput)
+}
+
+// GetDatabaseInstancesInstancePointInTimeRestoreContextArrayInput is an input type that accepts GetDatabaseInstancesInstancePointInTimeRestoreContextArray and GetDatabaseInstancesInstancePointInTimeRestoreContextArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstancePointInTimeRestoreContextArrayInput` via:
+//
+//	GetDatabaseInstancesInstancePointInTimeRestoreContextArray{ GetDatabaseInstancesInstancePointInTimeRestoreContextArgs{...} }
+type GetDatabaseInstancesInstancePointInTimeRestoreContextArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstancePointInTimeRestoreContextArrayOutput() GetDatabaseInstancesInstancePointInTimeRestoreContextArrayOutput
+	ToGetDatabaseInstancesInstancePointInTimeRestoreContextArrayOutputWithContext(context.Context) GetDatabaseInstancesInstancePointInTimeRestoreContextArrayOutput
+}
+
+type GetDatabaseInstancesInstancePointInTimeRestoreContextArray []GetDatabaseInstancesInstancePointInTimeRestoreContextInput
+
+func (GetDatabaseInstancesInstancePointInTimeRestoreContextArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstancePointInTimeRestoreContext)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstancePointInTimeRestoreContextArray) ToGetDatabaseInstancesInstancePointInTimeRestoreContextArrayOutput() GetDatabaseInstancesInstancePointInTimeRestoreContextArrayOutput {
+	return i.ToGetDatabaseInstancesInstancePointInTimeRestoreContextArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstancePointInTimeRestoreContextArray) ToGetDatabaseInstancesInstancePointInTimeRestoreContextArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstancePointInTimeRestoreContextArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstancePointInTimeRestoreContextArrayOutput)
+}
+
+type GetDatabaseInstancesInstancePointInTimeRestoreContextOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstancePointInTimeRestoreContextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstancePointInTimeRestoreContext)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstancePointInTimeRestoreContextOutput) ToGetDatabaseInstancesInstancePointInTimeRestoreContextOutput() GetDatabaseInstancesInstancePointInTimeRestoreContextOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstancePointInTimeRestoreContextOutput) ToGetDatabaseInstancesInstancePointInTimeRestoreContextOutputWithContext(ctx context.Context) GetDatabaseInstancesInstancePointInTimeRestoreContextOutput {
+	return o
+}
+
+// The name of the allocated IP range for the internal IP Cloud SQL instance. For example: "google-managed-services-default". If you set this, then Cloud SQL creates the IP address for the cloned instance in the allocated range. This range must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035) standards. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+func (o GetDatabaseInstancesInstancePointInTimeRestoreContextOutput) AllocatedIpRange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstancePointInTimeRestoreContext) string { return v.AllocatedIpRange }).(pulumi.StringOutput)
+}
+
+// The Google Cloud Backup and Disaster Recovery Datasource URI. For example: "projects/my-project/locations/us-central1/datasources/my-datasource".
+func (o GetDatabaseInstancesInstancePointInTimeRestoreContextOutput) Datasource() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstancePointInTimeRestoreContext) string { return v.Datasource }).(pulumi.StringOutput)
+}
+
+// The date and time to which you want to restore the instance.
+func (o GetDatabaseInstancesInstancePointInTimeRestoreContextOutput) PointInTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstancePointInTimeRestoreContext) string { return v.PointInTime }).(pulumi.StringOutput)
+}
+
+// Point-in-time recovery of an instance to the specified zone. If no zone is specified, then clone to the same primary zone as the source instance.
+func (o GetDatabaseInstancesInstancePointInTimeRestoreContextOutput) PreferredZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstancePointInTimeRestoreContext) string { return v.PreferredZone }).(pulumi.StringOutput)
+}
+
+// The name of the target instance to restore to.
+func (o GetDatabaseInstancesInstancePointInTimeRestoreContextOutput) TargetInstance() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstancePointInTimeRestoreContext) string { return v.TargetInstance }).(pulumi.StringOutput)
+}
+
+type GetDatabaseInstancesInstancePointInTimeRestoreContextArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstancePointInTimeRestoreContextArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstancePointInTimeRestoreContext)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstancePointInTimeRestoreContextArrayOutput) ToGetDatabaseInstancesInstancePointInTimeRestoreContextArrayOutput() GetDatabaseInstancesInstancePointInTimeRestoreContextArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstancePointInTimeRestoreContextArrayOutput) ToGetDatabaseInstancesInstancePointInTimeRestoreContextArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstancePointInTimeRestoreContextArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstancePointInTimeRestoreContextArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstancePointInTimeRestoreContextOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstancePointInTimeRestoreContext {
+		return vs[0].([]GetDatabaseInstancesInstancePointInTimeRestoreContext)[vs[1].(int)]
+	}).(GetDatabaseInstancesInstancePointInTimeRestoreContextOutput)
 }
 
 type GetDatabaseInstancesInstanceReplicaConfiguration struct {
@@ -13833,6 +14331,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceDnsNameArrayInput)(nil)).Elem(), DatabaseInstanceDnsNameArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceIpAddressInput)(nil)).Elem(), DatabaseInstanceIpAddressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceIpAddressArrayInput)(nil)).Elem(), DatabaseInstanceIpAddressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstancePointInTimeRestoreContextInput)(nil)).Elem(), DatabaseInstancePointInTimeRestoreContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstancePointInTimeRestoreContextPtrInput)(nil)).Elem(), DatabaseInstancePointInTimeRestoreContextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceReplicaConfigurationInput)(nil)).Elem(), DatabaseInstanceReplicaConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceReplicaConfigurationPtrInput)(nil)).Elem(), DatabaseInstanceReplicaConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceReplicationClusterInput)(nil)).Elem(), DatabaseInstanceReplicationClusterArgs{})
@@ -13895,6 +14395,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceDnsNameArrayInput)(nil)).Elem(), GetDatabaseInstanceDnsNameArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceIpAddressInput)(nil)).Elem(), GetDatabaseInstanceIpAddressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceIpAddressArrayInput)(nil)).Elem(), GetDatabaseInstanceIpAddressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancePointInTimeRestoreContextInput)(nil)).Elem(), GetDatabaseInstancePointInTimeRestoreContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancePointInTimeRestoreContextArrayInput)(nil)).Elem(), GetDatabaseInstancePointInTimeRestoreContextArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceReplicaConfigurationInput)(nil)).Elem(), GetDatabaseInstanceReplicaConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceReplicaConfigurationArrayInput)(nil)).Elem(), GetDatabaseInstanceReplicaConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceReplicationClusterInput)(nil)).Elem(), GetDatabaseInstanceReplicationClusterArgs{})
@@ -13951,6 +14453,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceDnsNameArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceDnsNameArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceIpAddressInput)(nil)).Elem(), GetDatabaseInstancesInstanceIpAddressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceIpAddressArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceIpAddressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstancePointInTimeRestoreContextInput)(nil)).Elem(), GetDatabaseInstancesInstancePointInTimeRestoreContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstancePointInTimeRestoreContextArrayInput)(nil)).Elem(), GetDatabaseInstancesInstancePointInTimeRestoreContextArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceReplicaConfigurationInput)(nil)).Elem(), GetDatabaseInstancesInstanceReplicaConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceReplicaConfigurationArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceReplicaConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceReplicationClusterInput)(nil)).Elem(), GetDatabaseInstancesInstanceReplicationClusterArgs{})
@@ -14009,6 +14513,8 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseInstanceDnsNameArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceIpAddressOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceIpAddressArrayOutput{})
+	pulumi.RegisterOutputType(DatabaseInstancePointInTimeRestoreContextOutput{})
+	pulumi.RegisterOutputType(DatabaseInstancePointInTimeRestoreContextPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceReplicaConfigurationOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceReplicaConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceReplicationClusterOutput{})
@@ -14071,6 +14577,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabaseInstanceDnsNameArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceIpAddressOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceIpAddressArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancePointInTimeRestoreContextOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancePointInTimeRestoreContextArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceReplicaConfigurationOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceReplicaConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceReplicationClusterOutput{})
@@ -14127,6 +14635,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceDnsNameArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceIpAddressOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceIpAddressArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstancePointInTimeRestoreContextOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstancePointInTimeRestoreContextArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceReplicaConfigurationOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceReplicaConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceReplicationClusterOutput{})

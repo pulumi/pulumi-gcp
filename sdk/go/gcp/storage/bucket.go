@@ -65,6 +65,22 @@ import (
 //						},
 //						MaxAgeSeconds: pulumi.Int(3600),
 //					},
+//					&storage.BucketCorArgs{
+//						Origins: pulumi.StringArray{
+//							pulumi.String("http://image-store.com"),
+//						},
+//						Methods: pulumi.StringArray{
+//							pulumi.String("GET"),
+//							pulumi.String("HEAD"),
+//							pulumi.String("PUT"),
+//							pulumi.String("POST"),
+//							pulumi.String("DELETE"),
+//						},
+//						ResponseHeaders: pulumi.StringArray{
+//							pulumi.String("*"),
+//						},
+//						MaxAgeSeconds: pulumi.Int(0),
+//					},
 //				},
 //			})
 //			if err != nil {

@@ -66,6 +66,7 @@ export interface GetTopicResult {
     readonly project?: string;
     readonly pulumiLabels: {[key: string]: string};
     readonly schemaSettings: outputs.pubsub.GetTopicSchemaSetting[];
+    readonly tags: {[key: string]: string};
 }
 /**
  * Get information about a Google Cloud Pub/Sub Topic. For more information see

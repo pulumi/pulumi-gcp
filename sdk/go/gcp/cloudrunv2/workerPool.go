@@ -640,6 +640,90 @@ import (
 //	}
 //
 // ```
+// ### Cloudrunv2 Worker Pool Startup Liveness Probe
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			customTest, err := compute.NewNetwork(ctx, "custom_test", &compute.NetworkArgs{
+//				Name:                  pulumi.String("wp-net"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			customTestSubnetwork, err := compute.NewSubnetwork(ctx, "custom_test", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("wp-subnet"),
+//				IpCidrRange: pulumi.String("10.2.0.0/28"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     customTest.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudrunv2.NewWorkerPool(ctx, "default", &cloudrunv2.WorkerPoolArgs{
+//				Name:               pulumi.String("cloudrun-worker-pool"),
+//				Location:           pulumi.String("us-central1"),
+//				LaunchStage:        pulumi.String("BETA"),
+//				DeletionProtection: pulumi.Bool(false),
+//				Template: &cloudrunv2.WorkerPoolTemplateArgs{
+//					Annotations: pulumi.StringMap{},
+//					Labels:      pulumi.StringMap{},
+//					Containers: cloudrunv2.WorkerPoolTemplateContainerArray{
+//						&cloudrunv2.WorkerPoolTemplateContainerArgs{
+//							Image:    pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+//							Commands: pulumi.StringArray{},
+//							Args:     pulumi.StringArray{},
+//							StartupProbe: &cloudrunv2.WorkerPoolTemplateContainerStartupProbeArgs{
+//								InitialDelaySeconds: pulumi.Int(0),
+//								TimeoutSeconds:      pulumi.Int(1),
+//								PeriodSeconds:       pulumi.Int(3),
+//								FailureThreshold:    pulumi.Int(3),
+//								TcpSocket: &cloudrunv2.WorkerPoolTemplateContainerStartupProbeTcpSocketArgs{
+//									Port: pulumi.Int(8080),
+//								},
+//							},
+//							LivenessProbe: &cloudrunv2.WorkerPoolTemplateContainerLivenessProbeArgs{
+//								InitialDelaySeconds: pulumi.Int(0),
+//								TimeoutSeconds:      pulumi.Int(1),
+//								PeriodSeconds:       pulumi.Int(10),
+//								FailureThreshold:    pulumi.Int(3),
+//								HttpGet: &cloudrunv2.WorkerPoolTemplateContainerLivenessProbeHttpGetArgs{
+//									Path: pulumi.String("/"),
+//									Port: pulumi.Int(8080),
+//								},
+//							},
+//						},
+//					},
+//					VpcAccess: &cloudrunv2.WorkerPoolTemplateVpcAccessArgs{
+//						NetworkInterfaces: cloudrunv2.WorkerPoolTemplateVpcAccessNetworkInterfaceArray{
+//							&cloudrunv2.WorkerPoolTemplateVpcAccessNetworkInterfaceArgs{
+//								Network:    customTest.ID(),
+//								Subnetwork: customTestSubnetwork.ID(),
+//								Tags:       pulumi.StringArray{},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

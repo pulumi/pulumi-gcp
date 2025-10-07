@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Oracledatabase Odbnetwork
+ * ### Oracledatabase Odbnetwork Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,6 +28,28 @@ import * as utilities from "../utilities";
  *     location: "us-west3",
  *     project: "my-project",
  *     network: _default.then(_default => _default.id),
+ *     labels: {
+ *         terraform_created: "true",
+ *     },
+ *     deletionProtection: true,
+ * });
+ * ```
+ * ### Oracledatabase Odbnetwork Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = gcp.compute.getNetwork({
+ *     name: "new",
+ *     project: "my-project",
+ * });
+ * const my_odbnetwork = new gcp.oracledatabase.OdbNetwork("my-odbnetwork", {
+ *     odbNetworkId: "my-odbnetwork",
+ *     location: "us-west3",
+ *     project: "my-project",
+ *     network: _default.then(_default => _default.id),
+ *     gcpOracleZone: "us-west3-a-r1",
  *     labels: {
  *         terraform_created: "true",
  *     },
@@ -101,6 +123,12 @@ export class OdbNetwork extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly entitlementId: pulumi.Output<string>;
     /**
+     * The GCP Oracle zone where OdbNetwork is hosted.
+     * Example: us-east4-b-r2.
+     * If not specified, the system will pick a zone based on availability.
+     */
+    declare public readonly gcpOracleZone: pulumi.Output<string>;
+    /**
      * Labels or tags associated with the resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -164,6 +192,7 @@ export class OdbNetwork extends pulumi.CustomResource {
             resourceInputs["deletionProtection"] = state?.deletionProtection;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["entitlementId"] = state?.entitlementId;
+            resourceInputs["gcpOracleZone"] = state?.gcpOracleZone;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
@@ -184,6 +213,7 @@ export class OdbNetwork extends pulumi.CustomResource {
                 throw new Error("Missing required property 'odbNetworkId'");
             }
             resourceInputs["deletionProtection"] = args?.deletionProtection;
+            resourceInputs["gcpOracleZone"] = args?.gcpOracleZone;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
             resourceInputs["network"] = args?.network;
@@ -220,6 +250,12 @@ export interface OdbNetworkState {
      * The ID of the subscription entitlement associated with the OdbNetwork.
      */
     entitlementId?: pulumi.Input<string>;
+    /**
+     * The GCP Oracle zone where OdbNetwork is hosted.
+     * Example: us-east4-b-r2.
+     * If not specified, the system will pick a zone based on availability.
+     */
+    gcpOracleZone?: pulumi.Input<string>;
     /**
      * Labels or tags associated with the resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -273,6 +309,12 @@ export interface OdbNetworkState {
  */
 export interface OdbNetworkArgs {
     deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * The GCP Oracle zone where OdbNetwork is hosted.
+     * Example: us-east4-b-r2.
+     * If not specified, the system will pick a zone based on availability.
+     */
+    gcpOracleZone?: pulumi.Input<string>;
     /**
      * Labels or tags associated with the resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.

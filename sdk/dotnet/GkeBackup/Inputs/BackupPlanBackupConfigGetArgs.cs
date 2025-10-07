@@ -56,6 +56,13 @@ namespace Pulumi.Gcp.GkeBackup.Inputs
         public Input<Inputs.BackupPlanBackupConfigSelectedApplicationsGetArgs>? SelectedApplications { get; set; }
 
         /// <summary>
+        /// If set, include just the resources in the listed namespace Labels.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("selectedNamespaceLabels")]
+        public Input<Inputs.BackupPlanBackupConfigSelectedNamespaceLabelsGetArgs>? SelectedNamespaceLabels { get; set; }
+
+        /// <summary>
         /// If set, include just the resources in the listed namespaces.
         /// Structure is documented below.
         /// </summary>

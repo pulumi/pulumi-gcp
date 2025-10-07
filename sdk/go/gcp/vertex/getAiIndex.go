@@ -36,12 +36,13 @@ type LookupAiIndexArgs struct {
 
 // A collection of values returned by getAiIndex.
 type LookupAiIndexResult struct {
-	CreateTime      string                    `pulumi:"createTime"`
-	DeployedIndexes []GetAiIndexDeployedIndex `pulumi:"deployedIndexes"`
-	Description     string                    `pulumi:"description"`
-	DisplayName     string                    `pulumi:"displayName"`
-	EffectiveLabels map[string]string         `pulumi:"effectiveLabels"`
-	Etag            string                    `pulumi:"etag"`
+	CreateTime      string                     `pulumi:"createTime"`
+	DeployedIndexes []GetAiIndexDeployedIndex  `pulumi:"deployedIndexes"`
+	Description     string                     `pulumi:"description"`
+	DisplayName     string                     `pulumi:"displayName"`
+	EffectiveLabels map[string]string          `pulumi:"effectiveLabels"`
+	EncryptionSpecs []GetAiIndexEncryptionSpec `pulumi:"encryptionSpecs"`
+	Etag            string                     `pulumi:"etag"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                string                `pulumi:"id"`
 	IndexStats        []GetAiIndexIndexStat `pulumi:"indexStats"`
@@ -114,6 +115,10 @@ func (o LookupAiIndexResultOutput) DisplayName() pulumi.StringOutput {
 
 func (o LookupAiIndexResultOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupAiIndexResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+func (o LookupAiIndexResultOutput) EncryptionSpecs() GetAiIndexEncryptionSpecArrayOutput {
+	return o.ApplyT(func(v LookupAiIndexResult) []GetAiIndexEncryptionSpec { return v.EncryptionSpecs }).(GetAiIndexEncryptionSpecArrayOutput)
 }
 
 func (o LookupAiIndexResultOutput) Etag() pulumi.StringOutput {

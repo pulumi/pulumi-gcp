@@ -3759,6 +3759,9 @@ type AiEndpointWithModelGardenDeploymentEndpointConfig struct {
 	// The user-specified display name of the endpoint. If not set, a
 	// default name will be used.
 	EndpointDisplayName *string `pulumi:"endpointDisplayName"`
+	// The configuration for Private Service Connect (PSC).
+	// Structure is documented below.
+	PrivateServiceConnectConfig *AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig `pulumi:"privateServiceConnectConfig"`
 }
 
 // AiEndpointWithModelGardenDeploymentEndpointConfigInput is an input type that accepts AiEndpointWithModelGardenDeploymentEndpointConfigArgs and AiEndpointWithModelGardenDeploymentEndpointConfigOutput values.
@@ -3783,6 +3786,9 @@ type AiEndpointWithModelGardenDeploymentEndpointConfigArgs struct {
 	// The user-specified display name of the endpoint. If not set, a
 	// default name will be used.
 	EndpointDisplayName pulumi.StringPtrInput `pulumi:"endpointDisplayName"`
+	// The configuration for Private Service Connect (PSC).
+	// Structure is documented below.
+	PrivateServiceConnectConfig AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrInput `pulumi:"privateServiceConnectConfig"`
 }
 
 func (AiEndpointWithModelGardenDeploymentEndpointConfigArgs) ElementType() reflect.Type {
@@ -3878,6 +3884,14 @@ func (o AiEndpointWithModelGardenDeploymentEndpointConfigOutput) EndpointDisplay
 	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentEndpointConfig) *string { return v.EndpointDisplayName }).(pulumi.StringPtrOutput)
 }
 
+// The configuration for Private Service Connect (PSC).
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigOutput) PrivateServiceConnectConfig() AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentEndpointConfig) *AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig {
+		return v.PrivateServiceConnectConfig
+	}).(AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrOutput)
+}
+
 type AiEndpointWithModelGardenDeploymentEndpointConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (AiEndpointWithModelGardenDeploymentEndpointConfigPtrOutput) ElementType() reflect.Type {
@@ -3925,6 +3939,495 @@ func (o AiEndpointWithModelGardenDeploymentEndpointConfigPtrOutput) EndpointDisp
 			return nil
 		}
 		return v.EndpointDisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The configuration for Private Service Connect (PSC).
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigPtrOutput) PrivateServiceConnectConfig() AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentEndpointConfig) *AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateServiceConnectConfig
+	}).(AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig struct {
+	// Required. If true, expose the IndexEndpoint via private service connect.
+	EnablePrivateServiceConnect bool `pulumi:"enablePrivateServiceConnect"`
+	// A list of Projects from which the forwarding rule will target the service attachment.
+	ProjectAllowlists []string `pulumi:"projectAllowlists"`
+	// PSC config that is used to automatically create PSC endpoints in the user projects.
+	// Structure is documented below.
+	PscAutomationConfigs *AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigs `pulumi:"pscAutomationConfigs"`
+	// (Output)
+	// Output only. The name of the generated service attachment resource.
+	// This is only populated if the endpoint is deployed with PrivateServiceConnect.
+	ServiceAttachment *string `pulumi:"serviceAttachment"`
+}
+
+// AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigInput is an input type that accepts AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs and AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigInput` via:
+//
+//	AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs{...}
+type AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigOutput() AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigOutput
+	ToAiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigOutput
+}
+
+type AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs struct {
+	// Required. If true, expose the IndexEndpoint via private service connect.
+	EnablePrivateServiceConnect pulumi.BoolInput `pulumi:"enablePrivateServiceConnect"`
+	// A list of Projects from which the forwarding rule will target the service attachment.
+	ProjectAllowlists pulumi.StringArrayInput `pulumi:"projectAllowlists"`
+	// PSC config that is used to automatically create PSC endpoints in the user projects.
+	// Structure is documented below.
+	PscAutomationConfigs AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrInput `pulumi:"pscAutomationConfigs"`
+	// (Output)
+	// Output only. The name of the generated service attachment resource.
+	// This is only populated if the endpoint is deployed with PrivateServiceConnect.
+	ServiceAttachment pulumi.StringPtrInput `pulumi:"serviceAttachment"`
+}
+
+func (AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig)(nil)).Elem()
+}
+
+func (i AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs) ToAiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigOutput() AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs) ToAiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigOutput)
+}
+
+func (i AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs) ToAiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrOutput() AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs) ToAiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigOutput).ToAiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrOutputWithContext(ctx)
+}
+
+// AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrInput is an input type that accepts AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs, AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtr and AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrInput` via:
+//
+//	        AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrOutput() AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrOutput
+	ToAiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrOutput
+}
+
+type aiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrType AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs
+
+func AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtr(v *AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs) AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrInput {
+	return (*aiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrType)(v)
+}
+
+func (*aiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig)(nil)).Elem()
+}
+
+func (i *aiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrType) ToAiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrOutput() AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrType) ToAiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigOutput) ToAiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigOutput() AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigOutput) ToAiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigOutput) ToAiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrOutput() AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrOutput {
+	return o.ToAiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigOutput) ToAiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig) *AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig {
+		return &v
+	}).(AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrOutput)
+}
+
+// Required. If true, expose the IndexEndpoint via private service connect.
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigOutput) EnablePrivateServiceConnect() pulumi.BoolOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig) bool {
+		return v.EnablePrivateServiceConnect
+	}).(pulumi.BoolOutput)
+}
+
+// A list of Projects from which the forwarding rule will target the service attachment.
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigOutput) ProjectAllowlists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig) []string {
+		return v.ProjectAllowlists
+	}).(pulumi.StringArrayOutput)
+}
+
+// PSC config that is used to automatically create PSC endpoints in the user projects.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigOutput) PscAutomationConfigs() AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig) *AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigs {
+		return v.PscAutomationConfigs
+	}).(AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutput)
+}
+
+// (Output)
+// Output only. The name of the generated service attachment resource.
+// This is only populated if the endpoint is deployed with PrivateServiceConnect.
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigOutput) ServiceAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig) *string {
+		return v.ServiceAttachment
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrOutput) ToAiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrOutput() AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrOutput) ToAiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrOutput) Elem() AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig) AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig
+		return ret
+	}).(AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigOutput)
+}
+
+// Required. If true, expose the IndexEndpoint via private service connect.
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrOutput) EnablePrivateServiceConnect() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnablePrivateServiceConnect
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A list of Projects from which the forwarding rule will target the service attachment.
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrOutput) ProjectAllowlists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectAllowlists
+	}).(pulumi.StringArrayOutput)
+}
+
+// PSC config that is used to automatically create PSC endpoints in the user projects.
+// Structure is documented below.
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrOutput) PscAutomationConfigs() AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig) *AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigs {
+		if v == nil {
+			return nil
+		}
+		return v.PscAutomationConfigs
+	}).(AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutput)
+}
+
+// (Output)
+// Output only. The name of the generated service attachment resource.
+// This is only populated if the endpoint is deployed with PrivateServiceConnect.
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrOutput) ServiceAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAttachment
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigs struct {
+	// (Output)
+	// Output only. Error message if the PSC service automation failed.
+	ErrorMessage *string `pulumi:"errorMessage"`
+	// (Output)
+	// Output only. Forwarding rule created by the PSC service automation.
+	ForwardingRule *string `pulumi:"forwardingRule"`
+	// (Output)
+	// Output only. IP address rule created by the PSC service automation.
+	IpAddress *string `pulumi:"ipAddress"`
+	// Required. The full name of the Google Compute Engine network.
+	// Format: projects/{project}/global/networks/{network}.
+	Network string `pulumi:"network"`
+	// Required. Project id used to create forwarding rule.
+	ProjectId string `pulumi:"projectId"`
+	// (Output)
+	// Output only. The state of the PSC service automation.
+	State *string `pulumi:"state"`
+}
+
+// AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsInput is an input type that accepts AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsArgs and AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsInput` via:
+//
+//	AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsArgs{...}
+type AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsOutput() AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsOutput
+	ToAiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsOutput
+}
+
+type AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsArgs struct {
+	// (Output)
+	// Output only. Error message if the PSC service automation failed.
+	ErrorMessage pulumi.StringPtrInput `pulumi:"errorMessage"`
+	// (Output)
+	// Output only. Forwarding rule created by the PSC service automation.
+	ForwardingRule pulumi.StringPtrInput `pulumi:"forwardingRule"`
+	// (Output)
+	// Output only. IP address rule created by the PSC service automation.
+	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
+	// Required. The full name of the Google Compute Engine network.
+	// Format: projects/{project}/global/networks/{network}.
+	Network pulumi.StringInput `pulumi:"network"`
+	// Required. Project id used to create forwarding rule.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// (Output)
+	// Output only. The state of the PSC service automation.
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigs)(nil)).Elem()
+}
+
+func (i AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsArgs) ToAiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsOutput() AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsArgs) ToAiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsOutput)
+}
+
+func (i AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsArgs) ToAiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutput() AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutputWithContext(context.Background())
+}
+
+func (i AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsArgs) ToAiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsOutput).ToAiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutputWithContext(ctx)
+}
+
+// AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrInput is an input type that accepts AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsArgs, AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtr and AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutput values.
+// You can construct a concrete instance of `AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrInput` via:
+//
+//	        AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrInput interface {
+	pulumi.Input
+
+	ToAiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutput() AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutput
+	ToAiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutputWithContext(context.Context) AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutput
+}
+
+type aiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrType AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsArgs
+
+func AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtr(v *AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsArgs) AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrInput {
+	return (*aiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrType)(v)
+}
+
+func (*aiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigs)(nil)).Elem()
+}
+
+func (i *aiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrType) ToAiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutput() AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutput {
+	return i.ToAiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutputWithContext(context.Background())
+}
+
+func (i *aiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrType) ToAiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigs)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsOutput) ToAiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsOutput() AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsOutput) ToAiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsOutput) ToAiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutput() AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutput {
+	return o.ToAiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutputWithContext(context.Background())
+}
+
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsOutput) ToAiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigs) *AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigs {
+		return &v
+	}).(AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutput)
+}
+
+// (Output)
+// Output only. Error message if the PSC service automation failed.
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsOutput) ErrorMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigs) *string {
+		return v.ErrorMessage
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. Forwarding rule created by the PSC service automation.
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsOutput) ForwardingRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigs) *string {
+		return v.ForwardingRule
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. IP address rule created by the PSC service automation.
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigs) *string {
+		return v.IpAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. The full name of the Google Compute Engine network.
+// Format: projects/{project}/global/networks/{network}.
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigs) string {
+		return v.Network
+	}).(pulumi.StringOutput)
+}
+
+// Required. Project id used to create forwarding rule.
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigs) string {
+		return v.ProjectId
+	}).(pulumi.StringOutput)
+}
+
+// (Output)
+// Output only. The state of the PSC service automation.
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigs) *string {
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigs)(nil)).Elem()
+}
+
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutput) ToAiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutput() AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutput) ToAiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutput {
+	return o
+}
+
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutput) Elem() AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigs) AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigs {
+		if v != nil {
+			return *v
+		}
+		var ret AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigs
+		return ret
+	}).(AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsOutput)
+}
+
+// (Output)
+// Output only. Error message if the PSC service automation failed.
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutput) ErrorMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ErrorMessage
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. Forwarding rule created by the PSC service automation.
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutput) ForwardingRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ForwardingRule
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. IP address rule created by the PSC service automation.
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IpAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. The full name of the Google Compute Engine network.
+// Format: projects/{project}/global/networks/{network}.
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. Project id used to create forwarding rule.
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The state of the PSC service automation.
+func (o AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -14550,6 +15053,143 @@ func (o AiIndexDeployedIndexArrayOutput) Index(i pulumi.IntInput) AiIndexDeploye
 	}).(AiIndexDeployedIndexOutput)
 }
 
+type AiIndexEncryptionSpec struct {
+	// Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. The key needs to be in the same region as where the compute resource is created.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+}
+
+// AiIndexEncryptionSpecInput is an input type that accepts AiIndexEncryptionSpecArgs and AiIndexEncryptionSpecOutput values.
+// You can construct a concrete instance of `AiIndexEncryptionSpecInput` via:
+//
+//	AiIndexEncryptionSpecArgs{...}
+type AiIndexEncryptionSpecInput interface {
+	pulumi.Input
+
+	ToAiIndexEncryptionSpecOutput() AiIndexEncryptionSpecOutput
+	ToAiIndexEncryptionSpecOutputWithContext(context.Context) AiIndexEncryptionSpecOutput
+}
+
+type AiIndexEncryptionSpecArgs struct {
+	// Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. The key needs to be in the same region as where the compute resource is created.
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+}
+
+func (AiIndexEncryptionSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiIndexEncryptionSpec)(nil)).Elem()
+}
+
+func (i AiIndexEncryptionSpecArgs) ToAiIndexEncryptionSpecOutput() AiIndexEncryptionSpecOutput {
+	return i.ToAiIndexEncryptionSpecOutputWithContext(context.Background())
+}
+
+func (i AiIndexEncryptionSpecArgs) ToAiIndexEncryptionSpecOutputWithContext(ctx context.Context) AiIndexEncryptionSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexEncryptionSpecOutput)
+}
+
+func (i AiIndexEncryptionSpecArgs) ToAiIndexEncryptionSpecPtrOutput() AiIndexEncryptionSpecPtrOutput {
+	return i.ToAiIndexEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiIndexEncryptionSpecArgs) ToAiIndexEncryptionSpecPtrOutputWithContext(ctx context.Context) AiIndexEncryptionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexEncryptionSpecOutput).ToAiIndexEncryptionSpecPtrOutputWithContext(ctx)
+}
+
+// AiIndexEncryptionSpecPtrInput is an input type that accepts AiIndexEncryptionSpecArgs, AiIndexEncryptionSpecPtr and AiIndexEncryptionSpecPtrOutput values.
+// You can construct a concrete instance of `AiIndexEncryptionSpecPtrInput` via:
+//
+//	        AiIndexEncryptionSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiIndexEncryptionSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiIndexEncryptionSpecPtrOutput() AiIndexEncryptionSpecPtrOutput
+	ToAiIndexEncryptionSpecPtrOutputWithContext(context.Context) AiIndexEncryptionSpecPtrOutput
+}
+
+type aiIndexEncryptionSpecPtrType AiIndexEncryptionSpecArgs
+
+func AiIndexEncryptionSpecPtr(v *AiIndexEncryptionSpecArgs) AiIndexEncryptionSpecPtrInput {
+	return (*aiIndexEncryptionSpecPtrType)(v)
+}
+
+func (*aiIndexEncryptionSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiIndexEncryptionSpec)(nil)).Elem()
+}
+
+func (i *aiIndexEncryptionSpecPtrType) ToAiIndexEncryptionSpecPtrOutput() AiIndexEncryptionSpecPtrOutput {
+	return i.ToAiIndexEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiIndexEncryptionSpecPtrType) ToAiIndexEncryptionSpecPtrOutputWithContext(ctx context.Context) AiIndexEncryptionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexEncryptionSpecPtrOutput)
+}
+
+type AiIndexEncryptionSpecOutput struct{ *pulumi.OutputState }
+
+func (AiIndexEncryptionSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiIndexEncryptionSpec)(nil)).Elem()
+}
+
+func (o AiIndexEncryptionSpecOutput) ToAiIndexEncryptionSpecOutput() AiIndexEncryptionSpecOutput {
+	return o
+}
+
+func (o AiIndexEncryptionSpecOutput) ToAiIndexEncryptionSpecOutputWithContext(ctx context.Context) AiIndexEncryptionSpecOutput {
+	return o
+}
+
+func (o AiIndexEncryptionSpecOutput) ToAiIndexEncryptionSpecPtrOutput() AiIndexEncryptionSpecPtrOutput {
+	return o.ToAiIndexEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiIndexEncryptionSpecOutput) ToAiIndexEncryptionSpecPtrOutputWithContext(ctx context.Context) AiIndexEncryptionSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiIndexEncryptionSpec) *AiIndexEncryptionSpec {
+		return &v
+	}).(AiIndexEncryptionSpecPtrOutput)
+}
+
+// Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. The key needs to be in the same region as where the compute resource is created.
+func (o AiIndexEncryptionSpecOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v AiIndexEncryptionSpec) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+type AiIndexEncryptionSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiIndexEncryptionSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiIndexEncryptionSpec)(nil)).Elem()
+}
+
+func (o AiIndexEncryptionSpecPtrOutput) ToAiIndexEncryptionSpecPtrOutput() AiIndexEncryptionSpecPtrOutput {
+	return o
+}
+
+func (o AiIndexEncryptionSpecPtrOutput) ToAiIndexEncryptionSpecPtrOutputWithContext(ctx context.Context) AiIndexEncryptionSpecPtrOutput {
+	return o
+}
+
+func (o AiIndexEncryptionSpecPtrOutput) Elem() AiIndexEncryptionSpecOutput {
+	return o.ApplyT(func(v *AiIndexEncryptionSpec) AiIndexEncryptionSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiIndexEncryptionSpec
+		return ret
+	}).(AiIndexEncryptionSpecOutput)
+}
+
+// Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. The key needs to be in the same region as where the compute resource is created.
+func (o AiIndexEncryptionSpecPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiIndexEncryptionSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
 type AiIndexEndpointDeployedIndexAutomaticResources struct {
 	// The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If maxReplicaCount is not set, the default value is minReplicaCount. The max allowed replica count is 1000.
 	// The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, a no upper bound for scaling under heavy traffic will be assume, though Vertex AI may be unable to scale beyond certain replica number.
@@ -15596,6 +16236,143 @@ func (o AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArrayOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint {
 		return vs[0].([]AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint)[vs[1].(int)]
 	}).(AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointOutput)
+}
+
+type AiIndexEndpointEncryptionSpec struct {
+	// Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. The key needs to be in the same region as where the compute resource is created.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+}
+
+// AiIndexEndpointEncryptionSpecInput is an input type that accepts AiIndexEndpointEncryptionSpecArgs and AiIndexEndpointEncryptionSpecOutput values.
+// You can construct a concrete instance of `AiIndexEndpointEncryptionSpecInput` via:
+//
+//	AiIndexEndpointEncryptionSpecArgs{...}
+type AiIndexEndpointEncryptionSpecInput interface {
+	pulumi.Input
+
+	ToAiIndexEndpointEncryptionSpecOutput() AiIndexEndpointEncryptionSpecOutput
+	ToAiIndexEndpointEncryptionSpecOutputWithContext(context.Context) AiIndexEndpointEncryptionSpecOutput
+}
+
+type AiIndexEndpointEncryptionSpecArgs struct {
+	// Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. The key needs to be in the same region as where the compute resource is created.
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+}
+
+func (AiIndexEndpointEncryptionSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiIndexEndpointEncryptionSpec)(nil)).Elem()
+}
+
+func (i AiIndexEndpointEncryptionSpecArgs) ToAiIndexEndpointEncryptionSpecOutput() AiIndexEndpointEncryptionSpecOutput {
+	return i.ToAiIndexEndpointEncryptionSpecOutputWithContext(context.Background())
+}
+
+func (i AiIndexEndpointEncryptionSpecArgs) ToAiIndexEndpointEncryptionSpecOutputWithContext(ctx context.Context) AiIndexEndpointEncryptionSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexEndpointEncryptionSpecOutput)
+}
+
+func (i AiIndexEndpointEncryptionSpecArgs) ToAiIndexEndpointEncryptionSpecPtrOutput() AiIndexEndpointEncryptionSpecPtrOutput {
+	return i.ToAiIndexEndpointEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiIndexEndpointEncryptionSpecArgs) ToAiIndexEndpointEncryptionSpecPtrOutputWithContext(ctx context.Context) AiIndexEndpointEncryptionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexEndpointEncryptionSpecOutput).ToAiIndexEndpointEncryptionSpecPtrOutputWithContext(ctx)
+}
+
+// AiIndexEndpointEncryptionSpecPtrInput is an input type that accepts AiIndexEndpointEncryptionSpecArgs, AiIndexEndpointEncryptionSpecPtr and AiIndexEndpointEncryptionSpecPtrOutput values.
+// You can construct a concrete instance of `AiIndexEndpointEncryptionSpecPtrInput` via:
+//
+//	        AiIndexEndpointEncryptionSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiIndexEndpointEncryptionSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiIndexEndpointEncryptionSpecPtrOutput() AiIndexEndpointEncryptionSpecPtrOutput
+	ToAiIndexEndpointEncryptionSpecPtrOutputWithContext(context.Context) AiIndexEndpointEncryptionSpecPtrOutput
+}
+
+type aiIndexEndpointEncryptionSpecPtrType AiIndexEndpointEncryptionSpecArgs
+
+func AiIndexEndpointEncryptionSpecPtr(v *AiIndexEndpointEncryptionSpecArgs) AiIndexEndpointEncryptionSpecPtrInput {
+	return (*aiIndexEndpointEncryptionSpecPtrType)(v)
+}
+
+func (*aiIndexEndpointEncryptionSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiIndexEndpointEncryptionSpec)(nil)).Elem()
+}
+
+func (i *aiIndexEndpointEncryptionSpecPtrType) ToAiIndexEndpointEncryptionSpecPtrOutput() AiIndexEndpointEncryptionSpecPtrOutput {
+	return i.ToAiIndexEndpointEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiIndexEndpointEncryptionSpecPtrType) ToAiIndexEndpointEncryptionSpecPtrOutputWithContext(ctx context.Context) AiIndexEndpointEncryptionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexEndpointEncryptionSpecPtrOutput)
+}
+
+type AiIndexEndpointEncryptionSpecOutput struct{ *pulumi.OutputState }
+
+func (AiIndexEndpointEncryptionSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiIndexEndpointEncryptionSpec)(nil)).Elem()
+}
+
+func (o AiIndexEndpointEncryptionSpecOutput) ToAiIndexEndpointEncryptionSpecOutput() AiIndexEndpointEncryptionSpecOutput {
+	return o
+}
+
+func (o AiIndexEndpointEncryptionSpecOutput) ToAiIndexEndpointEncryptionSpecOutputWithContext(ctx context.Context) AiIndexEndpointEncryptionSpecOutput {
+	return o
+}
+
+func (o AiIndexEndpointEncryptionSpecOutput) ToAiIndexEndpointEncryptionSpecPtrOutput() AiIndexEndpointEncryptionSpecPtrOutput {
+	return o.ToAiIndexEndpointEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiIndexEndpointEncryptionSpecOutput) ToAiIndexEndpointEncryptionSpecPtrOutputWithContext(ctx context.Context) AiIndexEndpointEncryptionSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiIndexEndpointEncryptionSpec) *AiIndexEndpointEncryptionSpec {
+		return &v
+	}).(AiIndexEndpointEncryptionSpecPtrOutput)
+}
+
+// Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. The key needs to be in the same region as where the compute resource is created.
+func (o AiIndexEndpointEncryptionSpecOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v AiIndexEndpointEncryptionSpec) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+type AiIndexEndpointEncryptionSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiIndexEndpointEncryptionSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiIndexEndpointEncryptionSpec)(nil)).Elem()
+}
+
+func (o AiIndexEndpointEncryptionSpecPtrOutput) ToAiIndexEndpointEncryptionSpecPtrOutput() AiIndexEndpointEncryptionSpecPtrOutput {
+	return o
+}
+
+func (o AiIndexEndpointEncryptionSpecPtrOutput) ToAiIndexEndpointEncryptionSpecPtrOutputWithContext(ctx context.Context) AiIndexEndpointEncryptionSpecPtrOutput {
+	return o
+}
+
+func (o AiIndexEndpointEncryptionSpecPtrOutput) Elem() AiIndexEndpointEncryptionSpecOutput {
+	return o.ApplyT(func(v *AiIndexEndpointEncryptionSpec) AiIndexEndpointEncryptionSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiIndexEndpointEncryptionSpec
+		return ret
+	}).(AiIndexEndpointEncryptionSpecOutput)
+}
+
+// Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. The key needs to be in the same region as where the compute resource is created.
+func (o AiIndexEndpointEncryptionSpecPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiIndexEndpointEncryptionSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
 }
 
 type AiIndexEndpointPrivateServiceConnectConfig struct {
@@ -17836,6 +18613,103 @@ func (o GetAiIndexDeployedIndexArrayOutput) Index(i pulumi.IntInput) GetAiIndexD
 	}).(GetAiIndexDeployedIndexOutput)
 }
 
+type GetAiIndexEncryptionSpec struct {
+	// Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: 'projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key'. The key needs to be in the same region as where the compute resource is created.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+}
+
+// GetAiIndexEncryptionSpecInput is an input type that accepts GetAiIndexEncryptionSpecArgs and GetAiIndexEncryptionSpecOutput values.
+// You can construct a concrete instance of `GetAiIndexEncryptionSpecInput` via:
+//
+//	GetAiIndexEncryptionSpecArgs{...}
+type GetAiIndexEncryptionSpecInput interface {
+	pulumi.Input
+
+	ToGetAiIndexEncryptionSpecOutput() GetAiIndexEncryptionSpecOutput
+	ToGetAiIndexEncryptionSpecOutputWithContext(context.Context) GetAiIndexEncryptionSpecOutput
+}
+
+type GetAiIndexEncryptionSpecArgs struct {
+	// Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: 'projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key'. The key needs to be in the same region as where the compute resource is created.
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+}
+
+func (GetAiIndexEncryptionSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiIndexEncryptionSpec)(nil)).Elem()
+}
+
+func (i GetAiIndexEncryptionSpecArgs) ToGetAiIndexEncryptionSpecOutput() GetAiIndexEncryptionSpecOutput {
+	return i.ToGetAiIndexEncryptionSpecOutputWithContext(context.Background())
+}
+
+func (i GetAiIndexEncryptionSpecArgs) ToGetAiIndexEncryptionSpecOutputWithContext(ctx context.Context) GetAiIndexEncryptionSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiIndexEncryptionSpecOutput)
+}
+
+// GetAiIndexEncryptionSpecArrayInput is an input type that accepts GetAiIndexEncryptionSpecArray and GetAiIndexEncryptionSpecArrayOutput values.
+// You can construct a concrete instance of `GetAiIndexEncryptionSpecArrayInput` via:
+//
+//	GetAiIndexEncryptionSpecArray{ GetAiIndexEncryptionSpecArgs{...} }
+type GetAiIndexEncryptionSpecArrayInput interface {
+	pulumi.Input
+
+	ToGetAiIndexEncryptionSpecArrayOutput() GetAiIndexEncryptionSpecArrayOutput
+	ToGetAiIndexEncryptionSpecArrayOutputWithContext(context.Context) GetAiIndexEncryptionSpecArrayOutput
+}
+
+type GetAiIndexEncryptionSpecArray []GetAiIndexEncryptionSpecInput
+
+func (GetAiIndexEncryptionSpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAiIndexEncryptionSpec)(nil)).Elem()
+}
+
+func (i GetAiIndexEncryptionSpecArray) ToGetAiIndexEncryptionSpecArrayOutput() GetAiIndexEncryptionSpecArrayOutput {
+	return i.ToGetAiIndexEncryptionSpecArrayOutputWithContext(context.Background())
+}
+
+func (i GetAiIndexEncryptionSpecArray) ToGetAiIndexEncryptionSpecArrayOutputWithContext(ctx context.Context) GetAiIndexEncryptionSpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiIndexEncryptionSpecArrayOutput)
+}
+
+type GetAiIndexEncryptionSpecOutput struct{ *pulumi.OutputState }
+
+func (GetAiIndexEncryptionSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiIndexEncryptionSpec)(nil)).Elem()
+}
+
+func (o GetAiIndexEncryptionSpecOutput) ToGetAiIndexEncryptionSpecOutput() GetAiIndexEncryptionSpecOutput {
+	return o
+}
+
+func (o GetAiIndexEncryptionSpecOutput) ToGetAiIndexEncryptionSpecOutputWithContext(ctx context.Context) GetAiIndexEncryptionSpecOutput {
+	return o
+}
+
+// Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: 'projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key'. The key needs to be in the same region as where the compute resource is created.
+func (o GetAiIndexEncryptionSpecOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiIndexEncryptionSpec) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+type GetAiIndexEncryptionSpecArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAiIndexEncryptionSpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAiIndexEncryptionSpec)(nil)).Elem()
+}
+
+func (o GetAiIndexEncryptionSpecArrayOutput) ToGetAiIndexEncryptionSpecArrayOutput() GetAiIndexEncryptionSpecArrayOutput {
+	return o
+}
+
+func (o GetAiIndexEncryptionSpecArrayOutput) ToGetAiIndexEncryptionSpecArrayOutputWithContext(ctx context.Context) GetAiIndexEncryptionSpecArrayOutput {
+	return o
+}
+
+func (o GetAiIndexEncryptionSpecArrayOutput) Index(i pulumi.IntInput) GetAiIndexEncryptionSpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAiIndexEncryptionSpec {
+		return vs[0].([]GetAiIndexEncryptionSpec)[vs[1].(int)]
+	}).(GetAiIndexEncryptionSpecOutput)
+}
+
 type GetAiIndexIndexStat struct {
 	// The number of shards in the Index.
 	ShardsCount int `pulumi:"shardsCount"`
@@ -18614,6 +19488,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentEndpointConfigInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentEndpointConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentEndpointConfigPtrInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentEndpointConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigPtrInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs{})
@@ -18728,6 +19606,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreOnlineServingConfigScalingPtrInput)(nil)).Elem(), AiFeatureStoreOnlineServingConfigScalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexDeployedIndexInput)(nil)).Elem(), AiIndexDeployedIndexArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexDeployedIndexArrayInput)(nil)).Elem(), AiIndexDeployedIndexArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexEncryptionSpecInput)(nil)).Elem(), AiIndexEncryptionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexEncryptionSpecPtrInput)(nil)).Elem(), AiIndexEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexEndpointDeployedIndexAutomaticResourcesInput)(nil)).Elem(), AiIndexEndpointDeployedIndexAutomaticResourcesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexEndpointDeployedIndexAutomaticResourcesPtrInput)(nil)).Elem(), AiIndexEndpointDeployedIndexAutomaticResourcesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexEndpointDeployedIndexDedicatedResourcesInput)(nil)).Elem(), AiIndexEndpointDeployedIndexDedicatedResourcesArgs{})
@@ -18742,6 +19622,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexEndpointDeployedIndexPrivateEndpointArrayInput)(nil)).Elem(), AiIndexEndpointDeployedIndexPrivateEndpointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointInput)(nil)).Elem(), AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArrayInput)(nil)).Elem(), AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexEndpointEncryptionSpecInput)(nil)).Elem(), AiIndexEndpointEncryptionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexEndpointEncryptionSpecPtrInput)(nil)).Elem(), AiIndexEndpointEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexEndpointPrivateServiceConnectConfigInput)(nil)).Elem(), AiIndexEndpointPrivateServiceConnectConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexEndpointPrivateServiceConnectConfigPtrInput)(nil)).Elem(), AiIndexEndpointPrivateServiceConnectConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexIndexStatInput)(nil)).Elem(), AiIndexIndexStatArgs{})
@@ -18772,6 +19654,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiTensorboardEncryptionSpecPtrInput)(nil)).Elem(), AiTensorboardEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiIndexDeployedIndexInput)(nil)).Elem(), GetAiIndexDeployedIndexArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiIndexDeployedIndexArrayInput)(nil)).Elem(), GetAiIndexDeployedIndexArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiIndexEncryptionSpecInput)(nil)).Elem(), GetAiIndexEncryptionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiIndexEncryptionSpecArrayInput)(nil)).Elem(), GetAiIndexEncryptionSpecArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiIndexIndexStatInput)(nil)).Elem(), GetAiIndexIndexStatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiIndexIndexStatArrayInput)(nil)).Elem(), GetAiIndexIndexStatArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiIndexMetadataInput)(nil)).Elem(), GetAiIndexMetadataArgs{})
@@ -18828,6 +19712,10 @@ func init() {
 	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityPtrOutput{})
 	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentEndpointConfigOutput{})
 	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentEndpointConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsOutput{})
+	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsPtrOutput{})
 	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigOutput{})
 	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigPtrOutput{})
 	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecOutput{})
@@ -18942,6 +19830,8 @@ func init() {
 	pulumi.RegisterOutputType(AiFeatureStoreOnlineServingConfigScalingPtrOutput{})
 	pulumi.RegisterOutputType(AiIndexDeployedIndexOutput{})
 	pulumi.RegisterOutputType(AiIndexDeployedIndexArrayOutput{})
+	pulumi.RegisterOutputType(AiIndexEncryptionSpecOutput{})
+	pulumi.RegisterOutputType(AiIndexEncryptionSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiIndexEndpointDeployedIndexAutomaticResourcesOutput{})
 	pulumi.RegisterOutputType(AiIndexEndpointDeployedIndexAutomaticResourcesPtrOutput{})
 	pulumi.RegisterOutputType(AiIndexEndpointDeployedIndexDedicatedResourcesOutput{})
@@ -18956,6 +19846,8 @@ func init() {
 	pulumi.RegisterOutputType(AiIndexEndpointDeployedIndexPrivateEndpointArrayOutput{})
 	pulumi.RegisterOutputType(AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointOutput{})
 	pulumi.RegisterOutputType(AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArrayOutput{})
+	pulumi.RegisterOutputType(AiIndexEndpointEncryptionSpecOutput{})
+	pulumi.RegisterOutputType(AiIndexEndpointEncryptionSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiIndexEndpointPrivateServiceConnectConfigOutput{})
 	pulumi.RegisterOutputType(AiIndexEndpointPrivateServiceConnectConfigPtrOutput{})
 	pulumi.RegisterOutputType(AiIndexIndexStatOutput{})
@@ -18986,6 +19878,8 @@ func init() {
 	pulumi.RegisterOutputType(AiTensorboardEncryptionSpecPtrOutput{})
 	pulumi.RegisterOutputType(GetAiIndexDeployedIndexOutput{})
 	pulumi.RegisterOutputType(GetAiIndexDeployedIndexArrayOutput{})
+	pulumi.RegisterOutputType(GetAiIndexEncryptionSpecOutput{})
+	pulumi.RegisterOutputType(GetAiIndexEncryptionSpecArrayOutput{})
 	pulumi.RegisterOutputType(GetAiIndexIndexStatOutput{})
 	pulumi.RegisterOutputType(GetAiIndexIndexStatArrayOutput{})
 	pulumi.RegisterOutputType(GetAiIndexMetadataOutput{})

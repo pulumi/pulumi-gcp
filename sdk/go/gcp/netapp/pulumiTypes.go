@@ -768,7 +768,7 @@ type VolumeHybridReplicationParameters struct {
 	// Required. Name of the user's local source cluster to be peered with the destination cluster.
 	PeerClusterName *string `pulumi:"peerClusterName"`
 	// Required. List of node ip addresses to be peered with.
-	PeerIpAddresses *string `pulumi:"peerIpAddresses"`
+	PeerIpAddresses []string `pulumi:"peerIpAddresses"`
 	// Required. Name of the user's local source vserver svm to be peered with the destination vserver svm.
 	PeerSvmName *string `pulumi:"peerSvmName"`
 	// Required. Name of the user's local source volume to be peered with the destination volume.
@@ -799,7 +799,7 @@ type VolumeHybridReplicationParametersArgs struct {
 	// Required. Name of the user's local source cluster to be peered with the destination cluster.
 	PeerClusterName pulumi.StringPtrInput `pulumi:"peerClusterName"`
 	// Required. List of node ip addresses to be peered with.
-	PeerIpAddresses pulumi.StringPtrInput `pulumi:"peerIpAddresses"`
+	PeerIpAddresses pulumi.StringArrayInput `pulumi:"peerIpAddresses"`
 	// Required. Name of the user's local source vserver svm to be peered with the destination vserver svm.
 	PeerSvmName pulumi.StringPtrInput `pulumi:"peerSvmName"`
 	// Required. Name of the user's local source volume to be peered with the destination volume.
@@ -907,8 +907,8 @@ func (o VolumeHybridReplicationParametersOutput) PeerClusterName() pulumi.String
 }
 
 // Required. List of node ip addresses to be peered with.
-func (o VolumeHybridReplicationParametersOutput) PeerIpAddresses() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VolumeHybridReplicationParameters) *string { return v.PeerIpAddresses }).(pulumi.StringPtrOutput)
+func (o VolumeHybridReplicationParametersOutput) PeerIpAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VolumeHybridReplicationParameters) []string { return v.PeerIpAddresses }).(pulumi.StringArrayOutput)
 }
 
 // Required. Name of the user's local source vserver svm to be peered with the destination vserver svm.
@@ -992,13 +992,13 @@ func (o VolumeHybridReplicationParametersPtrOutput) PeerClusterName() pulumi.Str
 }
 
 // Required. List of node ip addresses to be peered with.
-func (o VolumeHybridReplicationParametersPtrOutput) PeerIpAddresses() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VolumeHybridReplicationParameters) *string {
+func (o VolumeHybridReplicationParametersPtrOutput) PeerIpAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VolumeHybridReplicationParameters) []string {
 		if v == nil {
 			return nil
 		}
 		return v.PeerIpAddresses
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // Required. Name of the user's local source vserver svm to be peered with the destination vserver svm.
@@ -1044,6 +1044,9 @@ type VolumeMountOption struct {
 	// Human-readable mount instructions.
 	Instructions *string `pulumi:"instructions"`
 	// (Output)
+	// IP Address.
+	IpAddress *string `pulumi:"ipAddress"`
+	// (Output)
 	// Protocol to mount with.
 	Protocol *string `pulumi:"protocol"`
 }
@@ -1071,6 +1074,9 @@ type VolumeMountOptionArgs struct {
 	// (Output)
 	// Human-readable mount instructions.
 	Instructions pulumi.StringPtrInput `pulumi:"instructions"`
+	// (Output)
+	// IP Address.
+	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
 	// (Output)
 	// Protocol to mount with.
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
@@ -1145,6 +1151,12 @@ func (o VolumeMountOptionOutput) ExportFull() pulumi.StringPtrOutput {
 // Human-readable mount instructions.
 func (o VolumeMountOptionOutput) Instructions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeMountOption) *string { return v.Instructions }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// IP Address.
+func (o VolumeMountOptionOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeMountOption) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
 }
 
 // (Output)

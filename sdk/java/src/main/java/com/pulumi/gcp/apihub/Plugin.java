@@ -178,15 +178,15 @@ public class Plugin extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="configTemplate", refs={PluginConfigTemplate.class}, tree="[0]")
-    private Output</* @Nullable */ PluginConfigTemplate> configTemplate;
+    private Output<PluginConfigTemplate> configTemplate;
 
     /**
      * @return ConfigTemplate represents the configuration template for a plugin.
      * Structure is documented below.
      * 
      */
-    public Output<Optional<PluginConfigTemplate>> configTemplate() {
-        return Codegen.optional(this.configTemplate);
+    public Output<PluginConfigTemplate> configTemplate() {
+        return this.configTemplate;
     }
     /**
      * Timestamp indicating when the plugin was created.

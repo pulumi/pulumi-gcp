@@ -46,6 +46,7 @@ public final class GetSubscriptionResult {
     private List<GetSubscriptionPushConfig> pushConfigs;
     private Boolean retainAckedMessages;
     private List<GetSubscriptionRetryPolicy> retryPolicies;
+    private Map<String,String> tags;
     private String topic;
 
     private GetSubscriptionResult() {}
@@ -110,6 +111,9 @@ public final class GetSubscriptionResult {
     public List<GetSubscriptionRetryPolicy> retryPolicies() {
         return this.retryPolicies;
     }
+    public Map<String,String> tags() {
+        return this.tags;
+    }
     public String topic() {
         return this.topic;
     }
@@ -142,6 +146,7 @@ public final class GetSubscriptionResult {
         private List<GetSubscriptionPushConfig> pushConfigs;
         private Boolean retainAckedMessages;
         private List<GetSubscriptionRetryPolicy> retryPolicies;
+        private Map<String,String> tags;
         private String topic;
         public Builder() {}
         public Builder(GetSubscriptionResult defaults) {
@@ -165,6 +170,7 @@ public final class GetSubscriptionResult {
     	      this.pushConfigs = defaults.pushConfigs;
     	      this.retainAckedMessages = defaults.retainAckedMessages;
     	      this.retryPolicies = defaults.retryPolicies;
+    	      this.tags = defaults.tags;
     	      this.topic = defaults.topic;
         }
 
@@ -340,6 +346,14 @@ public final class GetSubscriptionResult {
             return retryPolicies(List.of(retryPolicies));
         }
         @CustomType.Setter
+        public Builder tags(Map<String,String> tags) {
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionResult", "tags");
+            }
+            this.tags = tags;
+            return this;
+        }
+        @CustomType.Setter
         public Builder topic(String topic) {
             if (topic == null) {
               throw new MissingRequiredPropertyException("GetSubscriptionResult", "topic");
@@ -368,6 +382,7 @@ public final class GetSubscriptionResult {
             _resultValue.pushConfigs = pushConfigs;
             _resultValue.retainAckedMessages = retainAckedMessages;
             _resultValue.retryPolicies = retryPolicies;
+            _resultValue.tags = tags;
             _resultValue.topic = topic;
             return _resultValue;
         }

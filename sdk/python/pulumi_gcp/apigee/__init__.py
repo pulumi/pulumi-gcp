@@ -8,6 +8,7 @@ import typing
 # Export this package's modules as members:
 from .addons_config import *
 from .api import *
+from .api_deployment import *
 from .api_product import *
 from .app_group import *
 from .control_plane_access import *

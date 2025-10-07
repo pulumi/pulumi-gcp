@@ -66,6 +66,26 @@ namespace Pulumi.Gcp.Storage
     ///                 },
     ///                 MaxAgeSeconds = 3600,
     ///             },
+    ///             new Gcp.Storage.Inputs.BucketCorArgs
+    ///             {
+    ///                 Origins = new[]
+    ///                 {
+    ///                     "http://image-store.com",
+    ///                 },
+    ///                 Methods = new[]
+    ///                 {
+    ///                     "GET",
+    ///                     "HEAD",
+    ///                     "PUT",
+    ///                     "POST",
+    ///                     "DELETE",
+    ///                 },
+    ///                 ResponseHeaders = new[]
+    ///                 {
+    ///                     "*",
+    ///                 },
+    ///                 MaxAgeSeconds = 0,
+    ///             },
     ///         },
     ///     });
     /// 

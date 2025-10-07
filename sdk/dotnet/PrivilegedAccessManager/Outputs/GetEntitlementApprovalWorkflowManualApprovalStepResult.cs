@@ -28,6 +28,10 @@ namespace Pulumi.Gcp.PrivilegedAccessManager.Outputs
         /// The potential set of approvers in this step. This list should contain at only one entry.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetEntitlementApprovalWorkflowManualApprovalStepApproverResult> Approvers;
+        /// <summary>
+        /// Output Only. The ID of the approval step.
+        /// </summary>
+        public readonly string Id;
 
         [OutputConstructor]
         private GetEntitlementApprovalWorkflowManualApprovalStepResult(
@@ -35,11 +39,14 @@ namespace Pulumi.Gcp.PrivilegedAccessManager.Outputs
 
             ImmutableArray<string> approverEmailRecipients,
 
-            ImmutableArray<Outputs.GetEntitlementApprovalWorkflowManualApprovalStepApproverResult> approvers)
+            ImmutableArray<Outputs.GetEntitlementApprovalWorkflowManualApprovalStepApproverResult> approvers,
+
+            string id)
         {
             ApprovalsNeeded = approvalsNeeded;
             ApproverEmailRecipients = approverEmailRecipients;
             Approvers = approvers;
+            Id = id;
         }
     }
 }

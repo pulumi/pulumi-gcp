@@ -129,6 +129,7 @@ import javax.annotation.Nullable;
  *             .location("us-central1")
  *             .datasetConfigId("my_config_excludes")
  *             .retentionPeriodDays(1)
+ *             .activityDataRetentionPeriodDays(2)
  *             .organizationScope(true)
  *             .identity(InsightsDatasetConfigIdentityArgs.builder()
  *                 .type("IDENTITY_TYPE_PER_PROJECT")
@@ -179,6 +180,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:storage/insightsDatasetConfig:InsightsDatasetConfig")
 public class InsightsDatasetConfig extends com.pulumi.resources.CustomResource {
+    /**
+     * Number of days of activity data that must be retained. If not specified, retentionPeriodDays will be used. Set to 0 to turn off the activity data.
+     * 
+     */
+    @Export(name="activityDataRetentionPeriodDays", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> activityDataRetentionPeriodDays;
+
+    /**
+     * @return Number of days of activity data that must be retained. If not specified, retentionPeriodDays will be used. Set to 0 to turn off the activity data.
+     * 
+     */
+    public Output<Optional<Integer>> activityDataRetentionPeriodDays() {
+        return Codegen.optional(this.activityDataRetentionPeriodDays);
+    }
     /**
      * The UTC time at which the DatasetConfig was created. This is auto-populated.
      * 

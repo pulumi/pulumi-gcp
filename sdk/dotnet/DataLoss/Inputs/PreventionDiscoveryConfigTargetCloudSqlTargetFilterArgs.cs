@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
     public sealed class PreventionDiscoveryConfigTargetCloudSqlTargetFilterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A specific set of buckets for this filter to apply to.
+        /// A collection of resources for this filter to apply to.
         /// Structure is documented below.
         /// </summary>
         [Input("collection")]

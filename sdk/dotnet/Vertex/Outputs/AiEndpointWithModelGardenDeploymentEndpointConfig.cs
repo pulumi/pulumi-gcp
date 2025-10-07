@@ -27,15 +27,23 @@ namespace Pulumi.Gcp.Vertex.Outputs
         /// default name will be used.
         /// </summary>
         public readonly string? EndpointDisplayName;
+        /// <summary>
+        /// The configuration for Private Service Connect (PSC).
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig? PrivateServiceConnectConfig;
 
         [OutputConstructor]
         private AiEndpointWithModelGardenDeploymentEndpointConfig(
             bool? dedicatedEndpointEnabled,
 
-            string? endpointDisplayName)
+            string? endpointDisplayName,
+
+            Outputs.AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig? privateServiceConnectConfig)
         {
             DedicatedEndpointEnabled = dedicatedEndpointEnabled;
             EndpointDisplayName = endpointDisplayName;
+            PrivateServiceConnectConfig = privateServiceConnectConfig;
         }
     }
 }

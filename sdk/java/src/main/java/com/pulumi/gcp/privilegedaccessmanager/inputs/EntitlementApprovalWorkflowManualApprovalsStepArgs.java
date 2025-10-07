@@ -72,12 +72,30 @@ public final class EntitlementApprovalWorkflowManualApprovalsStepArgs extends co
         return this.approvers;
     }
 
+    /**
+     * (Output, Beta)
+     * Output Only. The ID of the approval step.
+     * 
+     */
+    @Import(name="id")
+    private @Nullable Output<String> id;
+
+    /**
+     * @return (Output, Beta)
+     * Output Only. The ID of the approval step.
+     * 
+     */
+    public Optional<Output<String>> id() {
+        return Optional.ofNullable(this.id);
+    }
+
     private EntitlementApprovalWorkflowManualApprovalsStepArgs() {}
 
     private EntitlementApprovalWorkflowManualApprovalsStepArgs(EntitlementApprovalWorkflowManualApprovalsStepArgs $) {
         this.approvalsNeeded = $.approvalsNeeded;
         this.approverEmailRecipients = $.approverEmailRecipients;
         this.approvers = $.approvers;
+        this.id = $.id;
     }
 
     public static Builder builder() {
@@ -177,6 +195,29 @@ public final class EntitlementApprovalWorkflowManualApprovalsStepArgs extends co
          */
         public Builder approvers(EntitlementApprovalWorkflowManualApprovalsStepApproversArgs approvers) {
             return approvers(Output.of(approvers));
+        }
+
+        /**
+         * @param id (Output, Beta)
+         * Output Only. The ID of the approval step.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(@Nullable Output<String> id) {
+            $.id = id;
+            return this;
+        }
+
+        /**
+         * @param id (Output, Beta)
+         * Output Only. The ID of the approval step.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(String id) {
+            return id(Output.of(id));
         }
 
         public EntitlementApprovalWorkflowManualApprovalsStepArgs build() {

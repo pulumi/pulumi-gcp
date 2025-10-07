@@ -156,6 +156,7 @@ namespace Pulumi.Gcp.PubSub
         public readonly string? Project;
         public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly ImmutableArray<Outputs.GetTopicSchemaSettingResult> SchemaSettings;
+        public readonly ImmutableDictionary<string, string> Tags;
 
         [OutputConstructor]
         private GetTopicResult(
@@ -181,7 +182,9 @@ namespace Pulumi.Gcp.PubSub
 
             ImmutableDictionary<string, string> pulumiLabels,
 
-            ImmutableArray<Outputs.GetTopicSchemaSettingResult> schemaSettings)
+            ImmutableArray<Outputs.GetTopicSchemaSettingResult> schemaSettings,
+
+            ImmutableDictionary<string, string> tags)
         {
             EffectiveLabels = effectiveLabels;
             Id = id;
@@ -195,6 +198,7 @@ namespace Pulumi.Gcp.PubSub
             Project = project;
             PulumiLabels = pulumiLabels;
             SchemaSettings = schemaSettings;
+            Tags = tags;
         }
     }
 }
