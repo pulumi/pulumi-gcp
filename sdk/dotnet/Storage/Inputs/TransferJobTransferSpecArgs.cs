@@ -55,7 +55,7 @@ namespace Pulumi.Gcp.Storage.Inputs
         public Input<Inputs.TransferJobTransferSpecHttpDataSourceArgs>? HttpDataSource { get; set; }
 
         /// <summary>
-        /// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `last_modification_time` do not exclude objects in a data sink. Structure documented below.
+        /// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `LastModificationTime` do not exclude objects in a data sink. Structure documented below.
         /// </summary>
         [Input("objectConditions")]
         public Input<Inputs.TransferJobTransferSpecObjectConditionsArgs>? ObjectConditions { get; set; }
@@ -85,7 +85,7 @@ namespace Pulumi.Gcp.Storage.Inputs
         public Input<string>? SourceAgentPoolName { get; set; }
 
         /// <summary>
-        /// Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
+        /// Characteristics of how to treat files from datasource and sink during job. If the option `DeleteObjectsUniqueInSink` is true, object conditions based on objects' `LastModificationTime` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
         /// </summary>
         [Input("transferOptions")]
         public Input<Inputs.TransferJobTransferSpecTransferOptionsArgs>? TransferOptions { get; set; }

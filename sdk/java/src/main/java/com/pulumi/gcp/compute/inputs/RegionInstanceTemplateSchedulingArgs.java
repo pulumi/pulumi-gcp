@@ -139,14 +139,14 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
     }
 
     /**
-     * The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+     * The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instanceTerminationAction`. Only support `DELETE` `instanceTerminationAction` at this point. Structure is documented below.
      * 
      */
     @Import(name="maxRunDuration")
     private @Nullable Output<RegionInstanceTemplateSchedulingMaxRunDurationArgs> maxRunDuration;
 
     /**
-     * @return The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+     * @return The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instanceTerminationAction`. Only support `DELETE` `instanceTerminationAction` at this point. Structure is documented below.
      * 
      */
     public Optional<Output<RegionInstanceTemplateSchedulingMaxRunDurationArgs>> maxRunDuration() {
@@ -244,7 +244,7 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
 
     /**
      * Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
-     * `preemptible` should be `true` and `automatic_restart` should be
+     * `preemptible` should be `true` and `automaticRestart` should be
      * `false`. For more info about
      * `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
      * 
@@ -254,7 +254,7 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
 
     /**
      * @return Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
-     * `preemptible` should be `true` and `automatic_restart` should be
+     * `preemptible` should be `true` and `automaticRestart` should be
      * `false`. For more info about
      * `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
      * 
@@ -503,7 +503,7 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
         }
 
         /**
-         * @param maxRunDuration The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+         * @param maxRunDuration The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instanceTerminationAction`. Only support `DELETE` `instanceTerminationAction` at this point. Structure is documented below.
          * 
          * @return builder
          * 
@@ -514,7 +514,7 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
         }
 
         /**
-         * @param maxRunDuration The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+         * @param maxRunDuration The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instanceTerminationAction`. Only support `DELETE` `instanceTerminationAction` at this point. Structure is documented below.
          * 
          * @return builder
          * 
@@ -658,7 +658,7 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
 
         /**
          * @param provisioningModel Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
-         * `preemptible` should be `true` and `automatic_restart` should be
+         * `preemptible` should be `true` and `automaticRestart` should be
          * `false`. For more info about
          * `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
          * 
@@ -672,7 +672,7 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
 
         /**
          * @param provisioningModel Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
-         * `preemptible` should be `true` and `automatic_restart` should be
+         * `preemptible` should be `true` and `automaticRestart` should be
          * `false`. For more info about
          * `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
          * 

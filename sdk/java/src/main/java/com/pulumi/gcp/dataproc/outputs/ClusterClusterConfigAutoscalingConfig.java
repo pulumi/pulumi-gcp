@@ -15,8 +15,8 @@ public final class ClusterClusterConfigAutoscalingConfig {
      * 
      * Only resource names including projectid and location (region) are valid. Examples:
      * 
-     * `https://www.googleapis.com/compute/v1/projects/[projectId]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]`
-     * `projects/[projectId]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]`
+     * `https://www.googleapis.com/compute/v1/projects/[projectId]/locations/[dataprocRegion]/autoscalingPolicies/[policyId]`
+     * `projects/[projectId]/locations/[dataprocRegion]/autoscalingPolicies/[policyId]`
      * Note that the policy must be in the same project and Cloud Dataproc region.
      * 
      * ***
@@ -30,8 +30,8 @@ public final class ClusterClusterConfigAutoscalingConfig {
      * 
      * Only resource names including projectid and location (region) are valid. Examples:
      * 
-     * `https://www.googleapis.com/compute/v1/projects/[projectId]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]`
-     * `projects/[projectId]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]`
+     * `https://www.googleapis.com/compute/v1/projects/[projectId]/locations/[dataprocRegion]/autoscalingPolicies/[policyId]`
+     * `projects/[projectId]/locations/[dataprocRegion]/autoscalingPolicies/[policyId]`
      * Note that the policy must be in the same project and Cloud Dataproc region.
      * 
      * ***

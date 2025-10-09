@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *     * [GKE overview](https://cloud.google.com/kubernetes-engine/docs/concepts/kubernetes-engine-overview)
  *     * [About cluster configuration choices](https://cloud.google.com/kubernetes-engine/docs/concepts/types-of-clusters)
  * 
- * &gt; On version 5.0.0+ of the provider, you must explicitly set `deletion_protection = false`
+ * &gt; On version 5.0.0+ of the provider, you must explicitly set `deletionProtection = false`
  * and run `pulumi up` to write the field to state in order to destroy a cluster.
  * 
  * &gt; All arguments and attributes (including certificate outputs) will be stored in the raw state as
@@ -291,7 +291,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * Enable NET_ADMIN for the cluster. Defaults to
-     * `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
+     * `false`. This field should only be enabled for Autopilot clusters (`enableAutopilot`
      * set to `true`).
      * 
      */
@@ -300,7 +300,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Enable NET_ADMIN for the cluster. Defaults to
-     * `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
+     * `false`. This field should only be enabled for Autopilot clusters (`enableAutopilot`
      * set to `true`).
      * 
      */
@@ -381,7 +381,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The IP address range of the Kubernetes pods
      * in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
      * automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
-     * default a new cluster to routes-based, where `ip_allocation_policy` is not defined.
+     * default a new cluster to routes-based, where `ipAllocationPolicy` is not defined.
      * 
      */
     @Export(name="clusterIpv4Cidr", refs={String.class}, tree="[0]")
@@ -391,7 +391,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * @return The IP address range of the Kubernetes pods
      * in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
      * automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
-     * default a new cluster to routes-based, where `ip_allocation_policy` is not defined.
+     * default a new cluster to routes-based, where `ipAllocationPolicy` is not defined.
      * 
      */
     public Output<String> clusterIpv4Cidr() {
@@ -868,10 +868,10 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * The number of nodes to create in this
      * cluster&#39;s default node pool. In regional or multi-zonal clusters, this is the
-     * number of nodes per zone. Must be set if `node_pool` is not set. If you&#39;re using
+     * number of nodes per zone. Must be set if `nodePool` is not set. If you&#39;re using
      * `gcp.container.NodePool` objects with no default node pool, you&#39;ll need to
      * set this to a value of at least `1`, alongside setting
-     * `remove_default_node_pool` to `true`.
+     * `removeDefaultNodePool` to `true`.
      * 
      */
     @Export(name="initialNodeCount", refs={Integer.class}, tree="[0]")
@@ -880,10 +880,10 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * @return The number of nodes to create in this
      * cluster&#39;s default node pool. In regional or multi-zonal clusters, this is the
-     * number of nodes per zone. Must be set if `node_pool` is not set. If you&#39;re using
+     * number of nodes per zone. Must be set if `nodePool` is not set. If you&#39;re using
      * `gcp.container.NodePool` objects with no default node pool, you&#39;ll need to
      * set this to a value of at least `1`, alongside setting
-     * `remove_default_node_pool` to `true`.
+     * `removeDefaultNodePool` to `true`.
      * 
      */
     public Output<Optional<Integer>> initialNodeCount() {
@@ -1022,7 +1022,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * The desired
      * configuration options for master authorized networks. Omit the
-     * nested `cidr_blocks` attribute to disallow external access (except
+     * nested `cidrBlocks` attribute to disallow external access (except
      * the cluster node IPs, which GKE automatically whitelists).
      * Structure is documented below.
      * 
@@ -1033,7 +1033,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * @return The desired
      * configuration options for master authorized networks. Omit the
-     * nested `cidr_blocks` attribute to disallow external access (except
+     * nested `cidrBlocks` attribute to disallow external access (except
      * the cluster node IPs, which GKE automatically whitelists).
      * Structure is documented below.
      * 
@@ -1043,7 +1043,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * The current version of the master in the cluster. This may
-     * be different than the `min_master_version` set in the config if the master
+     * be different than the `minMasterVersion` set in the config if the master
      * has been updated by GKE.
      * 
      */
@@ -1052,7 +1052,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The current version of the master in the cluster. This may
-     * be different than the `min_master_version` set in the config if the master
+     * be different than the `minMasterVersion` set in the config if the master
      * has been updated by GKE.
      * 
      */
@@ -1076,7 +1076,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * The minimum version of the master. GKE
      * will auto-update the master to new versions, so this does not guarantee the
-     * current master version--use the read-only `master_version` field to obtain that.
+     * current master version--use the read-only `masterVersion` field to obtain that.
      * If unset, the cluster&#39;s version will be set by GKE to the version of the most recent
      * official release (which is not necessarily the latest version).  Most users will find
      * the `gcp.container.getEngineVersions` data source useful - it indicates which versions
@@ -1095,7 +1095,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * @return The minimum version of the master. GKE
      * will auto-update the master to new versions, so this does not guarantee the
-     * current master version--use the read-only `master_version` field to obtain that.
+     * current master version--use the read-only `masterVersion` field to obtain that.
      * If unset, the cluster&#39;s version will be set by GKE to the version of the most recent
      * official release (which is not necessarily the latest version).  Most users will find
      * the `gcp.container.getEngineVersions` data source useful - it indicates which versions
@@ -1174,7 +1174,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The name or self_link of the Google Compute Engine
+     * The name or selfLink of the Google Compute Engine
      * network to which the cluster is connected. For Shared VPC, set this to the self link of the
      * shared network.
      * 
@@ -1183,7 +1183,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> network;
 
     /**
-     * @return The name or self_link of the Google Compute Engine
+     * @return The name or selfLink of the Google Compute Engine
      * network to which the cluster is connected. For Shared VPC, set this to the self link of the
      * shared network.
      * 
@@ -1242,7 +1242,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * Parameters used in creating the default node pool.
      * Generally, this field should not be used at the same time as a
-     * `gcp.container.NodePool` or a `node_pool` block; this configuration
+     * `gcp.container.NodePool` or a `nodePool` block; this configuration
      * manages the default node pool, which isn&#39;t recommended to be used.
      * Structure is documented below.
      * 
@@ -1253,7 +1253,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * @return Parameters used in creating the default node pool.
      * Generally, this field should not be used at the same time as a
-     * `gcp.container.NodePool` or a `node_pool` block; this configuration
+     * `gcp.container.NodePool` or a `nodePool` block; this configuration
      * manages the default node pool, which isn&#39;t recommended to be used.
      * Structure is documented below.
      * 
@@ -1353,12 +1353,12 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * The Kubernetes version on the nodes. Must either be unset
-     * or set to the same value as `min_master_version` on create. Defaults to the default
+     * or set to the same value as `minMasterVersion` on create. Defaults to the default
      * version set by GKE which is not necessarily the latest version. This only affects
      * nodes in the default node pool. While a fuzzy version can be specified, it&#39;s
      * recommended that you specify explicit versions as the provider will see spurious diffs
      * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source&#39;s
-     * `version_prefix` field to approximate fuzzy versions.
+     * `versionPrefix` field to approximate fuzzy versions.
      * To update nodes in other node pools, use the `version` attribute on the node pool.
      * 
      */
@@ -1367,12 +1367,12 @@ public class Cluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The Kubernetes version on the nodes. Must either be unset
-     * or set to the same value as `min_master_version` on create. Defaults to the default
+     * or set to the same value as `minMasterVersion` on create. Defaults to the default
      * version set by GKE which is not necessarily the latest version. This only affects
      * nodes in the default node pool. While a fuzzy version can be specified, it&#39;s
      * recommended that you specify explicit versions as the provider will see spurious diffs
      * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source&#39;s
-     * `version_prefix` field to approximate fuzzy versions.
+     * `versionPrefix` field to approximate fuzzy versions.
      * To update nodes in other node pools, use the `version` attribute on the node pool.
      * 
      */
@@ -1510,7 +1510,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
+     * &lt;a name=&#34;nestedDefaultSnatStatus&#34;&gt;&lt;/a&gt;The `defaultSnatStatus` block supports
      * 
      */
     @Export(name="rbacBindingConfig", refs={ClusterRbacBindingConfig.class}, tree="[0]")
@@ -1519,7 +1519,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * @return RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
+     * &lt;a name=&#34;nestedDefaultSnatStatus&#34;&gt;&lt;/a&gt;The `defaultSnatStatus` block supports
      * 
      */
     public Output<ClusterRbacBindingConfig> rbacBindingConfig() {
@@ -1531,7 +1531,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * When updating this field, GKE imposes specific version requirements. See
      * [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
      * for more details; the `gcp.container.getEngineVersions` datasource can provide
-     * the default version for a channel. Note that removing the `release_channel`
+     * the default version for a channel. Note that removing the `releaseChannel`
      * field from your config will cause the provider to stop managing your cluster&#39;s
      * release channel, but will not unenroll it. Instead, use the `&#34;UNSPECIFIED&#34;`
      * channel. Structure is documented below.
@@ -1546,7 +1546,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * When updating this field, GKE imposes specific version requirements. See
      * [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
      * for more details; the `gcp.container.getEngineVersions` datasource can provide
-     * the default version for a channel. Note that removing the `release_channel`
+     * the default version for a channel. Note that removing the `releaseChannel`
      * field from your config will cause the provider to stop managing your cluster&#39;s
      * release channel, but will not unenroll it. Instead, use the `&#34;UNSPECIFIED&#34;`
      * channel. Structure is documented below.
@@ -1559,7 +1559,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * If `true`, deletes the default node
      * pool upon cluster creation. If you&#39;re using `gcp.container.NodePool`
      * resources with no default node pool, this should be set to `true`, alongside
-     * setting `initial_node_count` to at least `1`.
+     * setting `initialNodeCount` to at least `1`.
      * 
      */
     @Export(name="removeDefaultNodePool", refs={Boolean.class}, tree="[0]")
@@ -1569,7 +1569,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * @return If `true`, deletes the default node
      * pool upon cluster creation. If you&#39;re using `gcp.container.NodePool`
      * resources with no default node pool, this should be set to `true`, alongside
-     * setting `initial_node_count` to at least `1`.
+     * setting `initialNodeCount` to at least `1`.
      * 
      */
     public Output<Optional<Boolean>> removeDefaultNodePool() {
@@ -1694,7 +1694,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.servicesIpv4Cidr;
     }
     /**
-     * The name or self_link of the Google Compute Engine
+     * The name or selfLink of the Google Compute Engine
      * subnetwork in which the cluster&#39;s instances are launched.
      * 
      */
@@ -1702,7 +1702,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private Output<String> subnetwork;
 
     /**
-     * @return The name or self_link of the Google Compute Engine
+     * @return The name or selfLink of the Google Compute Engine
      * subnetwork in which the cluster&#39;s instances are launched.
      * 
      */

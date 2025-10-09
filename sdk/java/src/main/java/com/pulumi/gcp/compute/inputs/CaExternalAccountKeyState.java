@@ -22,10 +22,10 @@ public final class CaExternalAccountKeyState extends com.pulumi.resources.Resour
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      * @deprecated
-     * `b64_mac_key` is deprecated and will be removed in a future major release. Use `b64url_mac_key` instead.
+     * `b64MacKey` is deprecated and will be removed in a future major release. Use `b64urlMacKey` instead.
      * 
      */
-    @Deprecated /* `b64_mac_key` is deprecated and will be removed in a future major release. Use `b64url_mac_key` instead. */
+    @Deprecated /* `b64MacKey` is deprecated and will be removed in a future major release. Use `b64urlMacKey` instead. */
     @Import(name="b64MacKey")
     private @Nullable Output<String> b64MacKey;
 
@@ -36,10 +36,10 @@ public final class CaExternalAccountKeyState extends com.pulumi.resources.Resour
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      * @deprecated
-     * `b64_mac_key` is deprecated and will be removed in a future major release. Use `b64url_mac_key` instead.
+     * `b64MacKey` is deprecated and will be removed in a future major release. Use `b64urlMacKey` instead.
      * 
      */
-    @Deprecated /* `b64_mac_key` is deprecated and will be removed in a future major release. Use `b64url_mac_key` instead. */
+    @Deprecated /* `b64MacKey` is deprecated and will be removed in a future major release. Use `b64urlMacKey` instead. */
     public Optional<Output<String>> b64MacKey() {
         return Optional.ofNullable(this.b64MacKey);
     }
@@ -165,10 +165,10 @@ public final class CaExternalAccountKeyState extends com.pulumi.resources.Resour
          * @return builder
          * 
          * @deprecated
-         * `b64_mac_key` is deprecated and will be removed in a future major release. Use `b64url_mac_key` instead.
+         * `b64MacKey` is deprecated and will be removed in a future major release. Use `b64urlMacKey` instead.
          * 
          */
-        @Deprecated /* `b64_mac_key` is deprecated and will be removed in a future major release. Use `b64url_mac_key` instead. */
+        @Deprecated /* `b64MacKey` is deprecated and will be removed in a future major release. Use `b64urlMacKey` instead. */
         public Builder b64MacKey(@Nullable Output<String> b64MacKey) {
             $.b64MacKey = b64MacKey;
             return this;
@@ -183,10 +183,10 @@ public final class CaExternalAccountKeyState extends com.pulumi.resources.Resour
          * @return builder
          * 
          * @deprecated
-         * `b64_mac_key` is deprecated and will be removed in a future major release. Use `b64url_mac_key` instead.
+         * `b64MacKey` is deprecated and will be removed in a future major release. Use `b64urlMacKey` instead.
          * 
          */
-        @Deprecated /* `b64_mac_key` is deprecated and will be removed in a future major release. Use `b64url_mac_key` instead. */
+        @Deprecated /* `b64MacKey` is deprecated and will be removed in a future major release. Use `b64urlMacKey` instead. */
         public Builder b64MacKey(String b64MacKey) {
             return b64MacKey(Output.of(b64MacKey));
         }

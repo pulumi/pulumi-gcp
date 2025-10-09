@@ -199,14 +199,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:cloudfunctions/function:Function")
 public class Function extends com.pulumi.resources.CustomResource {
     /**
-     * Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `on_deploy_update_policy`.
+     * Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `onDeployUpdatePolicy`.
      * 
      */
     @Export(name="automaticUpdatePolicy", refs={FunctionAutomaticUpdatePolicy.class}, tree="[0]")
     private Output<FunctionAutomaticUpdatePolicy> automaticUpdatePolicy;
 
     /**
-     * @return Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `on_deploy_update_policy`.
+     * @return Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `onDeployUpdatePolicy`.
      * 
      */
     public Output<FunctionAutomaticUpdatePolicy> automaticUpdatePolicy() {
@@ -297,14 +297,14 @@ public class Function extends com.pulumi.resources.CustomResource {
         return this.dockerRegistry;
     }
     /**
-     * User-managed repository created in Artifact Registry to which the function&#39;s Docker image will be pushed after it is built by Cloud Build. May optionally be encrypted with a customer-managed encryption key (CMEK). If unspecified and `docker_registry` is not explicitly set to `CONTAINER_REGISTRY`, GCF will create and use a default Artifact Registry repository named &#39;gcf-artifacts&#39; in the region.
+     * User-managed repository created in Artifact Registry to which the function&#39;s Docker image will be pushed after it is built by Cloud Build. May optionally be encrypted with a customer-managed encryption key (CMEK). If unspecified and `dockerRegistry` is not explicitly set to `CONTAINER_REGISTRY`, GCF will create and use a default Artifact Registry repository named &#39;gcf-artifacts&#39; in the region.
      * 
      */
     @Export(name="dockerRepository", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dockerRepository;
 
     /**
-     * @return User-managed repository created in Artifact Registry to which the function&#39;s Docker image will be pushed after it is built by Cloud Build. May optionally be encrypted with a customer-managed encryption key (CMEK). If unspecified and `docker_registry` is not explicitly set to `CONTAINER_REGISTRY`, GCF will create and use a default Artifact Registry repository named &#39;gcf-artifacts&#39; in the region.
+     * @return User-managed repository created in Artifact Registry to which the function&#39;s Docker image will be pushed after it is built by Cloud Build. May optionally be encrypted with a customer-managed encryption key (CMEK). If unspecified and `dockerRegistry` is not explicitly set to `CONTAINER_REGISTRY`, GCF will create and use a default Artifact Registry repository named &#39;gcf-artifacts&#39; in the region.
      * 
      */
     public Output<Optional<String>> dockerRepository() {
@@ -353,14 +353,14 @@ public class Function extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.environmentVariables);
     }
     /**
-     * A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
+     * A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `triggerHttp`.
      * 
      */
     @Export(name="eventTrigger", refs={FunctionEventTrigger.class}, tree="[0]")
     private Output<FunctionEventTrigger> eventTrigger;
 
     /**
-     * @return A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
+     * @return A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `triggerHttp`.
      * 
      */
     public Output<FunctionEventTrigger> eventTrigger() {
@@ -387,14 +387,14 @@ public class Function extends com.pulumi.resources.CustomResource {
         return this.httpsTriggerSecurityLevel;
     }
     /**
-     * URL which triggers function execution. Returned only if `trigger_http` is used.
+     * URL which triggers function execution. Returned only if `triggerHttp` is used.
      * 
      */
     @Export(name="httpsTriggerUrl", refs={String.class}, tree="[0]")
     private Output<String> httpsTriggerUrl;
 
     /**
-     * @return URL which triggers function execution. Returned only if `trigger_http` is used.
+     * @return URL which triggers function execution. Returned only if `triggerHttp` is used.
      * 
      */
     public Output<String> httpsTriggerUrl() {
@@ -416,7 +416,7 @@ public class Function extends com.pulumi.resources.CustomResource {
     }
     /**
      * Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
-     * If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
+     * If specified, you must also provide an artifact registry repository using the `dockerRepository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
      * 
      */
     @Export(name="kmsKeyName", refs={String.class}, tree="[0]")
@@ -424,7 +424,7 @@ public class Function extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
-     * If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
+     * If specified, you must also provide an artifact registry repository using the `dockerRepository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
      * 
      */
     public Output<Optional<String>> kmsKeyName() {
@@ -493,14 +493,14 @@ public class Function extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `automatic_update_policy`. Structure is documented below.
+     * Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `automaticUpdatePolicy`. Structure is documented below.
      * 
      */
     @Export(name="onDeployUpdatePolicy", refs={FunctionOnDeployUpdatePolicy.class}, tree="[0]")
     private Output</* @Nullable */ FunctionOnDeployUpdatePolicy> onDeployUpdatePolicy;
 
     /**
-     * @return Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `automatic_update_policy`. Structure is documented below.
+     * @return Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `automaticUpdatePolicy`. Structure is documented below.
      * 
      */
     public Output<Optional<FunctionOnDeployUpdatePolicy>> onDeployUpdatePolicy() {
@@ -640,7 +640,7 @@ public class Function extends com.pulumi.resources.CustomResource {
     }
     /**
      * Represents parameters related to source repository where a function is hosted.
-     * Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
+     * Cannot be set alongside `sourceArchiveBucket` or `sourceArchiveObject`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
      * 
      */
     @Export(name="sourceRepository", refs={FunctionSourceRepository.class}, tree="[0]")
@@ -648,7 +648,7 @@ public class Function extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Represents parameters related to source repository where a function is hosted.
-     * Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
+     * Cannot be set alongside `sourceArchiveBucket` or `sourceArchiveObject`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
      * 
      */
     public Output<Optional<FunctionSourceRepository>> sourceRepository() {
@@ -683,14 +683,14 @@ public class Function extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.timeout);
     }
     /**
-     * Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `event_trigger`.
+     * Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `eventTrigger`.
      * 
      */
     @Export(name="triggerHttp", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> triggerHttp;
 
     /**
-     * @return Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `event_trigger`.
+     * @return Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `eventTrigger`.
      * 
      */
     public Output<Optional<Boolean>> triggerHttp() {

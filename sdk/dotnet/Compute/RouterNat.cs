@@ -380,7 +380,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// One or more subnetwork NAT configurations whose traffic should be translated by NAT64 Gateway.
-        /// Only used if `source_subnetwork_ip_ranges_to_nat64` is set to `LIST_OF_IPV6_SUBNETWORKS`
+        /// Only used if `SourceSubnetworkIpRangesToNat64` is set to `LIST_OF_IPV6_SUBNETWORKS`
         /// Structure is documented below.
         /// </summary>
         [Output("nat64Subnetworks")]
@@ -399,7 +399,7 @@ namespace Pulumi.Gcp.Compute
         /// Self-links of NAT IPs. Only valid if natIpAllocateOption
         /// is set to MANUAL_ONLY.
         /// If this field is used alongside with a count created list of address resources `google_compute_address.foobar.*.self_link`,
-        /// the access level resource for the address resource must have a `lifecycle` block with `create_before_destroy = true` so
+        /// the access level resource for the address resource must have a `Lifecycle` block with `CreateBeforeDestroy = true` so
         /// the number of resources can be increased/decreased without triggering the `resourceInUseByAnotherResource` error.
         /// </summary>
         [Output("natIps")]
@@ -460,7 +460,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// One or more subnetwork NAT configurations. Only used if
-        /// `source_subnetwork_ip_ranges_to_nat` is set to `LIST_OF_SUBNETWORKS`
+        /// `SourceSubnetworkIpRangesToNat` is set to `LIST_OF_SUBNETWORKS`
         /// Structure is documented below.
         /// </summary>
         [Output("subnetworks")]
@@ -656,7 +656,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// One or more subnetwork NAT configurations whose traffic should be translated by NAT64 Gateway.
-        /// Only used if `source_subnetwork_ip_ranges_to_nat64` is set to `LIST_OF_IPV6_SUBNETWORKS`
+        /// Only used if `SourceSubnetworkIpRangesToNat64` is set to `LIST_OF_IPV6_SUBNETWORKS`
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.RouterNatNat64SubnetworkArgs> Nat64Subnetworks
@@ -681,7 +681,7 @@ namespace Pulumi.Gcp.Compute
         /// Self-links of NAT IPs. Only valid if natIpAllocateOption
         /// is set to MANUAL_ONLY.
         /// If this field is used alongside with a count created list of address resources `google_compute_address.foobar.*.self_link`,
-        /// the access level resource for the address resource must have a `lifecycle` block with `create_before_destroy = true` so
+        /// the access level resource for the address resource must have a `Lifecycle` block with `CreateBeforeDestroy = true` so
         /// the number of resources can be increased/decreased without triggering the `resourceInUseByAnotherResource` error.
         /// </summary>
         public InputList<string> NatIps
@@ -754,7 +754,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// One or more subnetwork NAT configurations. Only used if
-        /// `source_subnetwork_ip_ranges_to_nat` is set to `LIST_OF_SUBNETWORKS`
+        /// `SourceSubnetworkIpRangesToNat` is set to `LIST_OF_SUBNETWORKS`
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.RouterNatSubnetworkArgs> Subnetworks
@@ -915,7 +915,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// One or more subnetwork NAT configurations whose traffic should be translated by NAT64 Gateway.
-        /// Only used if `source_subnetwork_ip_ranges_to_nat64` is set to `LIST_OF_IPV6_SUBNETWORKS`
+        /// Only used if `SourceSubnetworkIpRangesToNat64` is set to `LIST_OF_IPV6_SUBNETWORKS`
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.RouterNatNat64SubnetworkGetArgs> Nat64Subnetworks
@@ -940,7 +940,7 @@ namespace Pulumi.Gcp.Compute
         /// Self-links of NAT IPs. Only valid if natIpAllocateOption
         /// is set to MANUAL_ONLY.
         /// If this field is used alongside with a count created list of address resources `google_compute_address.foobar.*.self_link`,
-        /// the access level resource for the address resource must have a `lifecycle` block with `create_before_destroy = true` so
+        /// the access level resource for the address resource must have a `Lifecycle` block with `CreateBeforeDestroy = true` so
         /// the number of resources can be increased/decreased without triggering the `resourceInUseByAnotherResource` error.
         /// </summary>
         public InputList<string> NatIps
@@ -1013,7 +1013,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// One or more subnetwork NAT configurations. Only used if
-        /// `source_subnetwork_ip_ranges_to_nat` is set to `LIST_OF_SUBNETWORKS`
+        /// `SourceSubnetworkIpRangesToNat` is set to `LIST_OF_SUBNETWORKS`
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.RouterNatSubnetworkGetArgs> Subnetworks

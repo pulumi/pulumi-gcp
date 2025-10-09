@@ -112,7 +112,7 @@ namespace Pulumi.Gcp.ManagedKafka
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the topic. The `topic` segment is used when connecting directly to the cluster. Must be in the format `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID/topics/TOPIC_ID`.
+        /// The name of the topic. The `Topic` segment is used when connecting directly to the cluster. Must be in the format `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID/topics/TOPIC_ID`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -270,7 +270,7 @@ namespace Pulumi.Gcp.ManagedKafka
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The name of the topic. The `topic` segment is used when connecting directly to the cluster. Must be in the format `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID/topics/TOPIC_ID`.
+        /// The name of the topic. The `Topic` segment is used when connecting directly to the cluster. Must be in the format `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID/topics/TOPIC_ID`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

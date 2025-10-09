@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Dns.Inputs
     public sealed class RecordSetRoutingPolicyGeoGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+        /// For A and AAAA types only. The list of targets to be health checked. These can be specified along with `Rrdatas` within this item.
         /// Structure is documented below.
         /// </summary>
         [Input("healthCheckedTargets")]
@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.Dns.Inputs
         private InputList<string>? _rrdatas;
 
         /// <summary>
-        /// Same as `rrdatas` above.
+        /// Same as `Rrdatas` above.
         /// </summary>
         public InputList<string> Rrdatas
         {

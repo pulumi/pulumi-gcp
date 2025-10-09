@@ -19,7 +19,7 @@ public final class GetRegionInstanceTemplateArgs extends com.pulumi.resources.In
     /**
      * A filter to retrieve the instance templates.
      * See [API filter parameter documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceTemplates/list#body.QUERY_PARAMETERS.filter) for reference.
-     * If multiple instance templates match, either adjust the filter or specify `most_recent`. One of `name` or `filter` must be provided.
+     * If multiple instance templates match, either adjust the filter or specify `mostRecent`. One of `name` or `filter` must be provided.
      * 
      */
     @Import(name="filter")
@@ -28,7 +28,7 @@ public final class GetRegionInstanceTemplateArgs extends com.pulumi.resources.In
     /**
      * @return A filter to retrieve the instance templates.
      * See [API filter parameter documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceTemplates/list#body.QUERY_PARAMETERS.filter) for reference.
-     * If multiple instance templates match, either adjust the filter or specify `most_recent`. One of `name` or `filter` must be provided.
+     * If multiple instance templates match, either adjust the filter or specify `mostRecent`. One of `name` or `filter` must be provided.
      * 
      */
     public Optional<Output<String>> filter() {
@@ -130,7 +130,7 @@ public final class GetRegionInstanceTemplateArgs extends com.pulumi.resources.In
         /**
          * @param filter A filter to retrieve the instance templates.
          * See [API filter parameter documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceTemplates/list#body.QUERY_PARAMETERS.filter) for reference.
-         * If multiple instance templates match, either adjust the filter or specify `most_recent`. One of `name` or `filter` must be provided.
+         * If multiple instance templates match, either adjust the filter or specify `mostRecent`. One of `name` or `filter` must be provided.
          * 
          * @return builder
          * 
@@ -143,7 +143,7 @@ public final class GetRegionInstanceTemplateArgs extends com.pulumi.resources.In
         /**
          * @param filter A filter to retrieve the instance templates.
          * See [API filter parameter documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceTemplates/list#body.QUERY_PARAMETERS.filter) for reference.
-         * If multiple instance templates match, either adjust the filter or specify `most_recent`. One of `name` or `filter` must be provided.
+         * If multiple instance templates match, either adjust the filter or specify `mostRecent`. One of `name` or `filter` must be provided.
          * 
          * @return builder
          * 

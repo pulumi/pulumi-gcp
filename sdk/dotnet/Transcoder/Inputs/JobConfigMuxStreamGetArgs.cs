@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Transcoder.Inputs
     public sealed class JobConfigMuxStreamGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The container format. The default is `mp4`.
+        /// The container format. The default is `Mp4`.
         /// </summary>
         [Input("container")]
         public Input<string>? Container { get; set; }

@@ -11,7 +11,7 @@ namespace Pulumi.Gcp.Firebase
 {
     /// <summary>
     /// An app's Play Integrity configuration object. Note that your registered SHA-256 certificate fingerprints are used to validate tokens issued by the Play Integrity API.
-    /// Make sure your `gcp.firebase.AndroidApp` has at least one `sha256_hashes` present.
+    /// Make sure your `gcp.firebase.AndroidApp` has at least one `Sha256Hashes` present.
     /// 
     /// To get more information about PlayIntegrityConfig, see:
     /// 

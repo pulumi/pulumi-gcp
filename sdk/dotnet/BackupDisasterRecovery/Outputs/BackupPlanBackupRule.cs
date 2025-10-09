@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Outputs
         /// </summary>
         public readonly int BackupRetentionDays;
         /// <summary>
-        /// The unique ID of this `BackupRule`. The `rule_id` is unique per `BackupPlan`.
+        /// The unique ID of this `BackupRule`. The `RuleId` is unique per `BackupPlan`.
         /// </summary>
         public readonly string RuleId;
         /// <summary>

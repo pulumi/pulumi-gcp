@@ -16,7 +16,7 @@ public final class ConnectClusterGcpConfigAccessConfigArgs extends com.pulumi.re
     public static final ConnectClusterGcpConfigAccessConfigArgs Empty = new ConnectClusterGcpConfigAccessConfigArgs();
 
     /**
-     * Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka Connect cluster are allocated. To make the connect cluster available in a VPC, you must specify at least one subnet per network. You must specify between 1 and 10 subnets. Additional subnets may be specified with additional `network_configs` blocks.
+     * Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka Connect cluster are allocated. To make the connect cluster available in a VPC, you must specify at least one subnet per network. You must specify between 1 and 10 subnets. Additional subnets may be specified with additional `networkConfigs` blocks.
      * Structure is documented below.
      * 
      */
@@ -24,7 +24,7 @@ public final class ConnectClusterGcpConfigAccessConfigArgs extends com.pulumi.re
     private Output<List<ConnectClusterGcpConfigAccessConfigNetworkConfigArgs>> networkConfigs;
 
     /**
-     * @return Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka Connect cluster are allocated. To make the connect cluster available in a VPC, you must specify at least one subnet per network. You must specify between 1 and 10 subnets. Additional subnets may be specified with additional `network_configs` blocks.
+     * @return Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka Connect cluster are allocated. To make the connect cluster available in a VPC, you must specify at least one subnet per network. You must specify between 1 and 10 subnets. Additional subnets may be specified with additional `networkConfigs` blocks.
      * Structure is documented below.
      * 
      */
@@ -57,7 +57,7 @@ public final class ConnectClusterGcpConfigAccessConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param networkConfigs Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka Connect cluster are allocated. To make the connect cluster available in a VPC, you must specify at least one subnet per network. You must specify between 1 and 10 subnets. Additional subnets may be specified with additional `network_configs` blocks.
+         * @param networkConfigs Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka Connect cluster are allocated. To make the connect cluster available in a VPC, you must specify at least one subnet per network. You must specify between 1 and 10 subnets. Additional subnets may be specified with additional `networkConfigs` blocks.
          * Structure is documented below.
          * 
          * @return builder
@@ -69,7 +69,7 @@ public final class ConnectClusterGcpConfigAccessConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param networkConfigs Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka Connect cluster are allocated. To make the connect cluster available in a VPC, you must specify at least one subnet per network. You must specify between 1 and 10 subnets. Additional subnets may be specified with additional `network_configs` blocks.
+         * @param networkConfigs Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka Connect cluster are allocated. To make the connect cluster available in a VPC, you must specify at least one subnet per network. You must specify between 1 and 10 subnets. Additional subnets may be specified with additional `networkConfigs` blocks.
          * Structure is documented below.
          * 
          * @return builder
@@ -80,7 +80,7 @@ public final class ConnectClusterGcpConfigAccessConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param networkConfigs Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka Connect cluster are allocated. To make the connect cluster available in a VPC, you must specify at least one subnet per network. You must specify between 1 and 10 subnets. Additional subnets may be specified with additional `network_configs` blocks.
+         * @param networkConfigs Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka Connect cluster are allocated. To make the connect cluster available in a VPC, you must specify at least one subnet per network. You must specify between 1 and 10 subnets. Additional subnets may be specified with additional `networkConfigs` blocks.
          * Structure is documented below.
          * 
          * @return builder

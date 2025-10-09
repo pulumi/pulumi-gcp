@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.MemoryStore.Inputs
 
         /// <summary>
         /// (Output)
-        /// Output only. The consumer project_id where the forwarding rule is created from.
+        /// Output only. The consumer ProjectId where the forwarding rule is created from.
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;

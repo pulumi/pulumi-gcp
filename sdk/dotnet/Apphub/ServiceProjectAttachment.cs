@@ -157,7 +157,7 @@ namespace Pulumi.Gcp.Apphub
         public Output<string?> ServiceProject { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The service project attachment identifier must contain the project_id of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
+        /// Required. The service project attachment identifier must contain the ProjectId of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
         /// </summary>
         [Output("serviceProjectAttachmentId")]
         public Output<string> ServiceProjectAttachmentId { get; private set; } = null!;
@@ -236,7 +236,7 @@ namespace Pulumi.Gcp.Apphub
         public Input<string>? ServiceProject { get; set; }
 
         /// <summary>
-        /// Required. The service project attachment identifier must contain the project_id of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
+        /// Required. The service project attachment identifier must contain the ProjectId of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
         /// </summary>
         [Input("serviceProjectAttachmentId", required: true)]
         public Input<string> ServiceProjectAttachmentId { get; set; } = null!;
@@ -277,7 +277,7 @@ namespace Pulumi.Gcp.Apphub
         public Input<string>? ServiceProject { get; set; }
 
         /// <summary>
-        /// Required. The service project attachment identifier must contain the project_id of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
+        /// Required. The service project attachment identifier must contain the ProjectId of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
         /// </summary>
         [Input("serviceProjectAttachmentId")]
         public Input<string>? ServiceProjectAttachmentId { get; set; }

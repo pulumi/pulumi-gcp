@@ -23,19 +23,19 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly string? GrpcServiceName;
         /// <summary>
         /// The port number for the health check request.
-        /// Must be specified if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+        /// Must be specified if PortSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
         /// </summary>
         public readonly int? Port;
         /// <summary>
         /// Specifies how port is selected for health checking, can be one of the
         /// following values:
-        /// * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+        /// * `USE_FIXED_PORT`: The port number in `Port` is used for health checking.
         /// * `USE_NAMED_PORT`: Not supported for GRPC with TLS health checking.
         /// * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
         /// network endpoint is used for health checking. For other backends, the
         /// port or named port specified in the Backend Service is used for health
         /// checking.
-        /// If not specified, gRPC with TLS health check follows behavior specified in the `port` field.
+        /// If not specified, gRPC with TLS health check follows behavior specified in the `Port` field.
         /// Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
         /// </summary>
         public readonly string? PortSpecification;

@@ -13,7 +13,7 @@ public final class WorkloadIdentityPoolProviderSaml {
     /**
      * @return SAML Identity provider configuration metadata xml doc.
      * 
-     * &lt;a name=&#34;nested_x509&#34;&gt;&lt;/a&gt;The `x509` block supports:
+     * &lt;a name=&#34;nestedX509&#34;&gt;&lt;/a&gt;The `x509` block supports:
      * 
      */
     private String idpMetadataXml;
@@ -22,7 +22,7 @@ public final class WorkloadIdentityPoolProviderSaml {
     /**
      * @return SAML Identity provider configuration metadata xml doc.
      * 
-     * &lt;a name=&#34;nested_x509&#34;&gt;&lt;/a&gt;The `x509` block supports:
+     * &lt;a name=&#34;nestedX509&#34;&gt;&lt;/a&gt;The `x509` block supports:
      * 
      */
     public String idpMetadataXml() {

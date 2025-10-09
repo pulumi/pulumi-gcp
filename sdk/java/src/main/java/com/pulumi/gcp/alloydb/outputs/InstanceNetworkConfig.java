@@ -23,7 +23,7 @@ public final class InstanceNetworkConfig {
     private @Nullable String allocatedIpRangeOverride;
     /**
      * @return A list of external networks authorized to access this instance. This
-     * field is only allowed to be set when `enable_public_ip` is set to
+     * field is only allowed to be set when `enablePublicIp` is set to
      * true.
      * Structure is documented below.
      * 
@@ -54,7 +54,7 @@ public final class InstanceNetworkConfig {
     }
     /**
      * @return A list of external networks authorized to access this instance. This
-     * field is only allowed to be set when `enable_public_ip` is set to
+     * field is only allowed to be set when `enablePublicIp` is set to
      * true.
      * Structure is documented below.
      * 

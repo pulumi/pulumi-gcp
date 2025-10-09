@@ -36,7 +36,7 @@ public final class CertificateMapGclbTargetArgs extends com.pulumi.resources.Res
 
     /**
      * Proxy name must be in the format projects/*&#47;locations/*&#47;targetHttpsProxies/*.
-     * This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
+     * This field is part of a union field `targetProxy`: Only one of `targetHttpsProxy` or
      * `targetSslProxy` may be set.
      * 
      */
@@ -45,7 +45,7 @@ public final class CertificateMapGclbTargetArgs extends com.pulumi.resources.Res
 
     /**
      * @return Proxy name must be in the format projects/*&#47;locations/*&#47;targetHttpsProxies/*.
-     * This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
+     * This field is part of a union field `targetProxy`: Only one of `targetHttpsProxy` or
      * `targetSslProxy` may be set.
      * 
      */
@@ -55,7 +55,7 @@ public final class CertificateMapGclbTargetArgs extends com.pulumi.resources.Res
 
     /**
      * Proxy name must be in the format projects/*&#47;locations/*&#47;targetSslProxies/*.
-     * This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
+     * This field is part of a union field `targetProxy`: Only one of `targetHttpsProxy` or
      * `targetSslProxy` may be set.
      * 
      */
@@ -64,7 +64,7 @@ public final class CertificateMapGclbTargetArgs extends com.pulumi.resources.Res
 
     /**
      * @return Proxy name must be in the format projects/*&#47;locations/*&#47;targetSslProxies/*.
-     * This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
+     * This field is part of a union field `targetProxy`: Only one of `targetHttpsProxy` or
      * `targetSslProxy` may be set.
      * 
      */
@@ -134,7 +134,7 @@ public final class CertificateMapGclbTargetArgs extends com.pulumi.resources.Res
 
         /**
          * @param targetHttpsProxy Proxy name must be in the format projects/*&#47;locations/*&#47;targetHttpsProxies/*.
-         * This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
+         * This field is part of a union field `targetProxy`: Only one of `targetHttpsProxy` or
          * `targetSslProxy` may be set.
          * 
          * @return builder
@@ -147,7 +147,7 @@ public final class CertificateMapGclbTargetArgs extends com.pulumi.resources.Res
 
         /**
          * @param targetHttpsProxy Proxy name must be in the format projects/*&#47;locations/*&#47;targetHttpsProxies/*.
-         * This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
+         * This field is part of a union field `targetProxy`: Only one of `targetHttpsProxy` or
          * `targetSslProxy` may be set.
          * 
          * @return builder
@@ -159,7 +159,7 @@ public final class CertificateMapGclbTargetArgs extends com.pulumi.resources.Res
 
         /**
          * @param targetSslProxy Proxy name must be in the format projects/*&#47;locations/*&#47;targetSslProxies/*.
-         * This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
+         * This field is part of a union field `targetProxy`: Only one of `targetHttpsProxy` or
          * `targetSslProxy` may be set.
          * 
          * @return builder
@@ -172,7 +172,7 @@ public final class CertificateMapGclbTargetArgs extends com.pulumi.resources.Res
 
         /**
          * @param targetSslProxy Proxy name must be in the format projects/*&#47;locations/*&#47;targetSslProxies/*.
-         * This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
+         * This field is part of a union field `targetProxy`: Only one of `targetHttpsProxy` or
          * `targetSslProxy` may be set.
          * 
          * @return builder

@@ -21,7 +21,7 @@ public final class GetInstanceTemplateNetworkInterfaceIpv6AccessConfig {
      */
     private String externalIpv6PrefixLength;
     /**
-     * @return The name of the instance template. One of `name`, `filter` or `self_link_unique` must be provided.
+     * @return The name of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
      * 
      */
     private String name;
@@ -54,7 +54,7 @@ public final class GetInstanceTemplateNetworkInterfaceIpv6AccessConfig {
         return this.externalIpv6PrefixLength;
     }
     /**
-     * @return The name of the instance template. One of `name`, `filter` or `self_link_unique` must be provided.
+     * @return The name of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
      * 
      */
     public String name() {

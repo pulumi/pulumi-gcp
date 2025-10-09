@@ -18,7 +18,7 @@ public final class SubscriptionBigqueryConfigArgs extends com.pulumi.resources.R
     public static final SubscriptionBigqueryConfigArgs Empty = new SubscriptionBigqueryConfigArgs();
 
     /**
-     * When true and use_topic_schema or use_table_schema is true, any fields that are a part of the topic schema or message schema that
+     * When true and useTopicSchema or useTableSchema is true, any fields that are a part of the topic schema or message schema that
      * are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync
      * and any messages with extra fields are not written and remain in the subscription&#39;s backlog.
      * 
@@ -27,7 +27,7 @@ public final class SubscriptionBigqueryConfigArgs extends com.pulumi.resources.R
     private @Nullable Output<Boolean> dropUnknownFields;
 
     /**
-     * @return When true and use_topic_schema or use_table_schema is true, any fields that are a part of the topic schema or message schema that
+     * @return When true and useTopicSchema or useTableSchema is true, any fields that are a part of the topic schema or message schema that
      * are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync
      * and any messages with extra fields are not written and remain in the subscription&#39;s backlog.
      * 
@@ -72,7 +72,7 @@ public final class SubscriptionBigqueryConfigArgs extends com.pulumi.resources.R
 
     /**
      * When true, use the BigQuery table&#39;s schema as the columns to write to in BigQuery. Messages
-     * must be published in JSON format. Only one of use_topic_schema and use_table_schema can be set.
+     * must be published in JSON format. Only one of useTopicSchema and useTableSchema can be set.
      * 
      */
     @Import(name="useTableSchema")
@@ -80,7 +80,7 @@ public final class SubscriptionBigqueryConfigArgs extends com.pulumi.resources.R
 
     /**
      * @return When true, use the BigQuery table&#39;s schema as the columns to write to in BigQuery. Messages
-     * must be published in JSON format. Only one of use_topic_schema and use_table_schema can be set.
+     * must be published in JSON format. Only one of useTopicSchema and useTableSchema can be set.
      * 
      */
     public Optional<Output<Boolean>> useTableSchema() {
@@ -89,7 +89,7 @@ public final class SubscriptionBigqueryConfigArgs extends com.pulumi.resources.R
 
     /**
      * When true, use the topic&#39;s schema as the columns to write to in BigQuery, if it exists.
-     * Only one of use_topic_schema and use_table_schema can be set.
+     * Only one of useTopicSchema and useTableSchema can be set.
      * 
      */
     @Import(name="useTopicSchema")
@@ -97,7 +97,7 @@ public final class SubscriptionBigqueryConfigArgs extends com.pulumi.resources.R
 
     /**
      * @return When true, use the topic&#39;s schema as the columns to write to in BigQuery, if it exists.
-     * Only one of use_topic_schema and use_table_schema can be set.
+     * Only one of useTopicSchema and useTableSchema can be set.
      * 
      */
     public Optional<Output<Boolean>> useTopicSchema() {
@@ -151,7 +151,7 @@ public final class SubscriptionBigqueryConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param dropUnknownFields When true and use_topic_schema or use_table_schema is true, any fields that are a part of the topic schema or message schema that
+         * @param dropUnknownFields When true and useTopicSchema or useTableSchema is true, any fields that are a part of the topic schema or message schema that
          * are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync
          * and any messages with extra fields are not written and remain in the subscription&#39;s backlog.
          * 
@@ -164,7 +164,7 @@ public final class SubscriptionBigqueryConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param dropUnknownFields When true and use_topic_schema or use_table_schema is true, any fields that are a part of the topic schema or message schema that
+         * @param dropUnknownFields When true and useTopicSchema or useTableSchema is true, any fields that are a part of the topic schema or message schema that
          * are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync
          * and any messages with extra fields are not written and remain in the subscription&#39;s backlog.
          * 
@@ -223,7 +223,7 @@ public final class SubscriptionBigqueryConfigArgs extends com.pulumi.resources.R
 
         /**
          * @param useTableSchema When true, use the BigQuery table&#39;s schema as the columns to write to in BigQuery. Messages
-         * must be published in JSON format. Only one of use_topic_schema and use_table_schema can be set.
+         * must be published in JSON format. Only one of useTopicSchema and useTableSchema can be set.
          * 
          * @return builder
          * 
@@ -235,7 +235,7 @@ public final class SubscriptionBigqueryConfigArgs extends com.pulumi.resources.R
 
         /**
          * @param useTableSchema When true, use the BigQuery table&#39;s schema as the columns to write to in BigQuery. Messages
-         * must be published in JSON format. Only one of use_topic_schema and use_table_schema can be set.
+         * must be published in JSON format. Only one of useTopicSchema and useTableSchema can be set.
          * 
          * @return builder
          * 
@@ -246,7 +246,7 @@ public final class SubscriptionBigqueryConfigArgs extends com.pulumi.resources.R
 
         /**
          * @param useTopicSchema When true, use the topic&#39;s schema as the columns to write to in BigQuery, if it exists.
-         * Only one of use_topic_schema and use_table_schema can be set.
+         * Only one of useTopicSchema and useTableSchema can be set.
          * 
          * @return builder
          * 
@@ -258,7 +258,7 @@ public final class SubscriptionBigqueryConfigArgs extends com.pulumi.resources.R
 
         /**
          * @param useTopicSchema When true, use the topic&#39;s schema as the columns to write to in BigQuery, if it exists.
-         * Only one of use_topic_schema and use_table_schema can be set.
+         * Only one of useTopicSchema and useTableSchema can be set.
          * 
          * @return builder
          * 

@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class InstanceTemplateDisk
     {
         /// <summary>
-        /// The architecture of the attached disk. Valid values are `ARM64` or `x86_64`.
+        /// The architecture of the attached disk. Valid values are `ARM64` or `X8664`.
         /// </summary>
         public readonly string? Architecture;
         /// <summary>
@@ -101,17 +101,17 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// The name (**not self_link**)
         /// of the disk (such as those managed by `gcp.compute.Disk`) to attach.
-        /// &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+        /// &gt; **Note:** Either `Source`, `SourceImage`, or `SourceSnapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
         /// </summary>
         public readonly string? Source;
         /// <summary>
         /// The image from which to
-        /// initialize this disk. This can be one of: the image's `self_link`,
+        /// initialize this disk. This can be one of: the image's `SelfLink`,
         /// `projects/{project}/global/images/{image}`,
         /// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
         /// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
         /// `{project}/{image}`, `{family}`, or `{image}`.
-        /// &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+        /// &gt; **Note:** Either `Source`, `SourceImage`, or `SourceSnapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
         /// </summary>
         public readonly string? SourceImage;
         /// <summary>
@@ -127,7 +127,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly Outputs.InstanceTemplateDiskSourceImageEncryptionKey? SourceImageEncryptionKey;
         /// <summary>
         /// The source snapshot to create this disk.
-        /// &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+        /// &gt; **Note:** Either `Source`, `SourceImage`, or `SourceSnapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
         /// </summary>
         public readonly string? SourceSnapshot;
         /// <summary>

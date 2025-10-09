@@ -32,6 +32,8 @@ import * as utilities from "../utilities";
  *     };
  * }
  * ```
+ *
+ * ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
  */
 export function getClientOpenIdUserInfo(opts?: pulumi.InvokeOptions): Promise<GetClientOpenIdUserInfoResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -77,6 +79,8 @@ export interface GetClientOpenIdUserInfoResult {
  *     };
  * }
  * ```
+ *
+ * ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
  */
 export function getClientOpenIdUserInfoOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClientOpenIdUserInfoResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

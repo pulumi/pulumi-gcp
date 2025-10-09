@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.EdgeContainer.Inputs
         /// (Output)
         /// The time when the maintenance event ended, either successfully or not. If
         /// the maintenance event is split into multiple maintenance windows,
-        /// end_time is only updated when the whole flow ends.
+        /// EndTime is only updated when the whole flow ends.
         /// </summary>
         [Input("endTime")]
         public Input<string>? EndTime { get; set; }

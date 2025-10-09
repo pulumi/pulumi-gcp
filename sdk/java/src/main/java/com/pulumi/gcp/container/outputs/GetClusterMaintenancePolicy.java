@@ -14,7 +14,7 @@ import java.util.Objects;
 @CustomType
 public final class GetClusterMaintenancePolicy {
     /**
-     * @return Time window specified for daily maintenance operations. Specify start_time in RFC3339 format &#34;HH:MM”, where HH : [00-23] and MM : [00-59] GMT.
+     * @return Time window specified for daily maintenance operations. Specify startTime in RFC3339 format &#34;HH:MM”, where HH : [00-23] and MM : [00-59] GMT.
      * 
      */
     private List<GetClusterMaintenancePolicyDailyMaintenanceWindow> dailyMaintenanceWindows;
@@ -31,7 +31,7 @@ public final class GetClusterMaintenancePolicy {
 
     private GetClusterMaintenancePolicy() {}
     /**
-     * @return Time window specified for daily maintenance operations. Specify start_time in RFC3339 format &#34;HH:MM”, where HH : [00-23] and MM : [00-59] GMT.
+     * @return Time window specified for daily maintenance operations. Specify startTime in RFC3339 format &#34;HH:MM”, where HH : [00-23] and MM : [00-59] GMT.
      * 
      */
     public List<GetClusterMaintenancePolicyDailyMaintenanceWindow> dailyMaintenanceWindows() {

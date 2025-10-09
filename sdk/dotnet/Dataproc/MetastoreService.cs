@@ -539,14 +539,14 @@ namespace Pulumi.Gcp.Dataproc
         /// <summary>
         /// User-defined labels for the metastore service.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
         /// The location where the metastore service should reside.
-        /// The default value is `global`.
+        /// The default value is `Global`.
         /// </summary>
         [Output("location")]
         public Output<string?> Location { get; private set; } = null!;
@@ -761,7 +761,7 @@ namespace Pulumi.Gcp.Dataproc
         /// <summary>
         /// User-defined labels for the metastore service.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -771,7 +771,7 @@ namespace Pulumi.Gcp.Dataproc
 
         /// <summary>
         /// The location where the metastore service should reside.
-        /// The default value is `global`.
+        /// The default value is `Global`.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -940,7 +940,7 @@ namespace Pulumi.Gcp.Dataproc
         /// <summary>
         /// User-defined labels for the metastore service.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -950,7 +950,7 @@ namespace Pulumi.Gcp.Dataproc
 
         /// <summary>
         /// The location where the metastore service should reside.
-        /// The default value is `global`.
+        /// The default value is `Global`.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

@@ -47,7 +47,7 @@ public final class JobLoadDestinationTableArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
+     * The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
      * or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
      * 
      */
@@ -55,7 +55,7 @@ public final class JobLoadDestinationTableArgs extends com.pulumi.resources.Reso
     private Output<String> tableId;
 
     /**
-     * @return The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
+     * @return The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
      * or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
      * 
      */
@@ -132,7 +132,7 @@ public final class JobLoadDestinationTableArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param tableId The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
+         * @param tableId The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
          * or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
          * 
          * @return builder
@@ -144,7 +144,7 @@ public final class JobLoadDestinationTableArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param tableId The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
+         * @param tableId The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
          * or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
          * 
          * @return builder

@@ -167,7 +167,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// Structure is documented below.
         /// 
         /// 
-        /// &lt;a name="nested_match_layer4_configs"&gt;&lt;/a&gt;The `layer4_configs` block supports:
+        /// &lt;a name="NestedMatchLayer4Configs"&gt;&lt;/a&gt;The `Layer4Configs` block supports:
         /// </summary>
         public InputList<Inputs.FirewallPolicyRuleMatchSrcSecureTagArgs> SrcSecureTags
         {

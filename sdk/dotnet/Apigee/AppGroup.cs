@@ -269,7 +269,7 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// Valid values are active or inactive. Note that the status of the AppGroup should be updated via UpdateAppGroupRequest by setting the action as active or inactive.
-        /// Possible values are: `active`, `inactive`.
+        /// Possible values are: `Active`, `Inactive`.
         /// </summary>
         [Output("status")]
         public Output<string?> Status { get; private set; } = null!;
@@ -366,7 +366,7 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// Valid values are active or inactive. Note that the status of the AppGroup should be updated via UpdateAppGroupRequest by setting the action as active or inactive.
-        /// Possible values are: `active`, `inactive`.
+        /// Possible values are: `Active`, `Inactive`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -449,7 +449,7 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// Valid values are active or inactive. Note that the status of the AppGroup should be updated via UpdateAppGroupRequest by setting the action as active or inactive.
-        /// Possible values are: `active`, `inactive`.
+        /// Possible values are: `Active`, `Inactive`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

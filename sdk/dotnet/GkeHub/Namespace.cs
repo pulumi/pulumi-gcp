@@ -112,7 +112,7 @@ namespace Pulumi.Gcp.GkeHub
         /// Labels for this Namespace.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -126,7 +126,7 @@ namespace Pulumi.Gcp.GkeHub
         /// <summary>
         /// Namespace-level cluster namespace labels. These labels are applied
         /// to the related namespace of the member clusters bound to the parent
-        /// Scope. Scope-level labels (`namespace_labels` in the Fleet Scope
+        /// Scope. Scope-level labels (`NamespaceLabels` in the Fleet Scope
         /// resource) take precedence over Namespace-level labels if they share
         /// a key. Keys and values must be Kubernetes-conformant.
         /// </summary>
@@ -242,7 +242,7 @@ namespace Pulumi.Gcp.GkeHub
         /// Labels for this Namespace.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -256,7 +256,7 @@ namespace Pulumi.Gcp.GkeHub
         /// <summary>
         /// Namespace-level cluster namespace labels. These labels are applied
         /// to the related namespace of the member clusters bound to the parent
-        /// Scope. Scope-level labels (`namespace_labels` in the Fleet Scope
+        /// Scope. Scope-level labels (`NamespaceLabels` in the Fleet Scope
         /// resource) take precedence over Namespace-level labels if they share
         /// a key. Keys and values must be Kubernetes-conformant.
         /// </summary>
@@ -334,7 +334,7 @@ namespace Pulumi.Gcp.GkeHub
         /// Labels for this Namespace.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -354,7 +354,7 @@ namespace Pulumi.Gcp.GkeHub
         /// <summary>
         /// Namespace-level cluster namespace labels. These labels are applied
         /// to the related namespace of the member clusters bound to the parent
-        /// Scope. Scope-level labels (`namespace_labels` in the Fleet Scope
+        /// Scope. Scope-level labels (`NamespaceLabels` in the Fleet Scope
         /// resource) take precedence over Namespace-level labels if they share
         /// a key. Keys and values must be Kubernetes-conformant.
         /// </summary>

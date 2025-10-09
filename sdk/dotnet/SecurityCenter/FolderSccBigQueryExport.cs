@@ -106,7 +106,7 @@ namespace Pulumi.Gcp.SecurityCenter
 
         /// <summary>
         /// The dataset to write findings' updates to.
-        /// Its format is "projects/[projectId]/datasets/[bigquery_dataset_id]".
+        /// Its format is "projects/[projectId]/datasets/[BigqueryDatasetId]".
         /// BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
         /// </summary>
         [Output("dataset")]
@@ -231,7 +231,7 @@ namespace Pulumi.Gcp.SecurityCenter
 
         /// <summary>
         /// The dataset to write findings' updates to.
-        /// Its format is "projects/[projectId]/datasets/[bigquery_dataset_id]".
+        /// Its format is "projects/[projectId]/datasets/[BigqueryDatasetId]".
         /// BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
         /// </summary>
         [Input("dataset", required: true)]
@@ -298,7 +298,7 @@ namespace Pulumi.Gcp.SecurityCenter
 
         /// <summary>
         /// The dataset to write findings' updates to.
-        /// Its format is "projects/[projectId]/datasets/[bigquery_dataset_id]".
+        /// Its format is "projects/[projectId]/datasets/[BigqueryDatasetId]".
         /// BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
         /// </summary>
         [Input("dataset")]

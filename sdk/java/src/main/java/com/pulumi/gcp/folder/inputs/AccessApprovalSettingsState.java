@@ -20,7 +20,7 @@ public final class AccessApprovalSettingsState extends com.pulumi.resources.Reso
 
     /**
      * The asymmetric crypto key version to use for signing approval requests.
-     * Empty active_key_version indicates that a Google-managed key should be used for signing.
+     * Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
      * This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
      * 
      */
@@ -29,7 +29,7 @@ public final class AccessApprovalSettingsState extends com.pulumi.resources.Reso
 
     /**
      * @return The asymmetric crypto key version to use for signing approval requests.
-     * Empty active_key_version indicates that a Google-managed key should be used for signing.
+     * Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
      * This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
      * 
      */
@@ -106,7 +106,7 @@ public final class AccessApprovalSettingsState extends com.pulumi.resources.Reso
     }
 
     /**
-     * If the field is true, that indicates that there is some configuration issue with the active_key_version
+     * If the field is true, that indicates that there is some configuration issue with the activeKeyVersion
      * configured on this Folder (e.g. it doesn&#39;t exist or the Access Approval service account doesn&#39;t have the
      * correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
      * as key versions are inherited top-down.
@@ -116,7 +116,7 @@ public final class AccessApprovalSettingsState extends com.pulumi.resources.Reso
     private @Nullable Output<Boolean> invalidKeyVersion;
 
     /**
-     * @return If the field is true, that indicates that there is some configuration issue with the active_key_version
+     * @return If the field is true, that indicates that there is some configuration issue with the activeKeyVersion
      * configured on this Folder (e.g. it doesn&#39;t exist or the Access Approval service account doesn&#39;t have the
      * correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
      * as key versions are inherited top-down.
@@ -193,7 +193,7 @@ public final class AccessApprovalSettingsState extends com.pulumi.resources.Reso
 
         /**
          * @param activeKeyVersion The asymmetric crypto key version to use for signing approval requests.
-         * Empty active_key_version indicates that a Google-managed key should be used for signing.
+         * Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
          * This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
          * 
          * @return builder
@@ -206,7 +206,7 @@ public final class AccessApprovalSettingsState extends com.pulumi.resources.Reso
 
         /**
          * @param activeKeyVersion The asymmetric crypto key version to use for signing approval requests.
-         * Empty active_key_version indicates that a Google-managed key should be used for signing.
+         * Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
          * This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
          * 
          * @return builder
@@ -323,7 +323,7 @@ public final class AccessApprovalSettingsState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param invalidKeyVersion If the field is true, that indicates that there is some configuration issue with the active_key_version
+         * @param invalidKeyVersion If the field is true, that indicates that there is some configuration issue with the activeKeyVersion
          * configured on this Folder (e.g. it doesn&#39;t exist or the Access Approval service account doesn&#39;t have the
          * correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
          * as key versions are inherited top-down.
@@ -337,7 +337,7 @@ public final class AccessApprovalSettingsState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param invalidKeyVersion If the field is true, that indicates that there is some configuration issue with the active_key_version
+         * @param invalidKeyVersion If the field is true, that indicates that there is some configuration issue with the activeKeyVersion
          * configured on this Folder (e.g. it doesn&#39;t exist or the Access Approval service account doesn&#39;t have the
          * correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
          * as key versions are inherited top-down.

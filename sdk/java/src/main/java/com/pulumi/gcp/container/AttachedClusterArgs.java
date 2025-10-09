@@ -34,7 +34,7 @@ public final class AttachedClusterArgs extends com.pulumi.resources.ResourceArgs
      * with dashes (-), underscores (_), dots (.), and alphanumerics between.
      * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     @Import(name="annotations")
@@ -49,7 +49,7 @@ public final class AttachedClusterArgs extends com.pulumi.resources.ResourceArgs
      * with dashes (-), underscores (_), dots (.), and alphanumerics between.
      * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -229,9 +229,9 @@ public final class AttachedClusterArgs extends com.pulumi.resources.ResourceArgs
      * validate KSA tokens in order to allow system workloads (such as GKE Connect
      * and telemetry agents) to authenticate back to GCP.
      * Both clusters with public and private issuer URLs are supported.
-     * Clusters with public issuers only need to specify the `issuer_url` field
+     * Clusters with public issuers only need to specify the `issuerUrl` field
      * while clusters with private issuers need to provide both
-     * `issuer_url` and `jwks`.
+     * `issuerUrl` and `jwks`.
      * Structure is documented below.
      * 
      */
@@ -245,9 +245,9 @@ public final class AttachedClusterArgs extends com.pulumi.resources.ResourceArgs
      * validate KSA tokens in order to allow system workloads (such as GKE Connect
      * and telemetry agents) to authenticate back to GCP.
      * Both clusters with public and private issuer URLs are supported.
-     * Clusters with public issuers only need to specify the `issuer_url` field
+     * Clusters with public issuers only need to specify the `issuerUrl` field
      * while clusters with private issuers need to provide both
-     * `issuer_url` and `jwks`.
+     * `issuerUrl` and `jwks`.
      * Structure is documented below.
      * 
      */
@@ -309,13 +309,13 @@ public final class AttachedClusterArgs extends com.pulumi.resources.ResourceArgs
      * Enable/Disable Security Posture API features for the cluster.
      * Structure is documented below.
      * 
-     * &gt; **Warning:** `security_posture_config` is deprecated and will be removed in a future major release.
+     * &gt; **Warning:** `securityPostureConfig` is deprecated and will be removed in a future major release.
      * 
      * @deprecated
-     * `security_posture_config` is deprecated and will be removed in a future major release.
+     * `securityPostureConfig` is deprecated and will be removed in a future major release.
      * 
      */
-    @Deprecated /* `security_posture_config` is deprecated and will be removed in a future major release. */
+    @Deprecated /* `securityPostureConfig` is deprecated and will be removed in a future major release. */
     @Import(name="securityPostureConfig")
     private @Nullable Output<AttachedClusterSecurityPostureConfigArgs> securityPostureConfig;
 
@@ -324,13 +324,13 @@ public final class AttachedClusterArgs extends com.pulumi.resources.ResourceArgs
      * Enable/Disable Security Posture API features for the cluster.
      * Structure is documented below.
      * 
-     * &gt; **Warning:** `security_posture_config` is deprecated and will be removed in a future major release.
+     * &gt; **Warning:** `securityPostureConfig` is deprecated and will be removed in a future major release.
      * 
      * @deprecated
-     * `security_posture_config` is deprecated and will be removed in a future major release.
+     * `securityPostureConfig` is deprecated and will be removed in a future major release.
      * 
      */
-    @Deprecated /* `security_posture_config` is deprecated and will be removed in a future major release. */
+    @Deprecated /* `securityPostureConfig` is deprecated and will be removed in a future major release. */
     public Optional<Output<AttachedClusterSecurityPostureConfigArgs>> securityPostureConfig() {
         return Optional.ofNullable(this.securityPostureConfig);
     }
@@ -383,7 +383,7 @@ public final class AttachedClusterArgs extends com.pulumi.resources.ResourceArgs
          * with dashes (-), underscores (_), dots (.), and alphanumerics between.
          * 
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -402,7 +402,7 @@ public final class AttachedClusterArgs extends com.pulumi.resources.ResourceArgs
          * with dashes (-), underscores (_), dots (.), and alphanumerics between.
          * 
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -644,9 +644,9 @@ public final class AttachedClusterArgs extends com.pulumi.resources.ResourceArgs
          * validate KSA tokens in order to allow system workloads (such as GKE Connect
          * and telemetry agents) to authenticate back to GCP.
          * Both clusters with public and private issuer URLs are supported.
-         * Clusters with public issuers only need to specify the `issuer_url` field
+         * Clusters with public issuers only need to specify the `issuerUrl` field
          * while clusters with private issuers need to provide both
-         * `issuer_url` and `jwks`.
+         * `issuerUrl` and `jwks`.
          * Structure is documented below.
          * 
          * @return builder
@@ -664,9 +664,9 @@ public final class AttachedClusterArgs extends com.pulumi.resources.ResourceArgs
          * validate KSA tokens in order to allow system workloads (such as GKE Connect
          * and telemetry agents) to authenticate back to GCP.
          * Both clusters with public and private issuer URLs are supported.
-         * Clusters with public issuers only need to specify the `issuer_url` field
+         * Clusters with public issuers only need to specify the `issuerUrl` field
          * while clusters with private issuers need to provide both
-         * `issuer_url` and `jwks`.
+         * `issuerUrl` and `jwks`.
          * Structure is documented below.
          * 
          * @return builder
@@ -748,15 +748,15 @@ public final class AttachedClusterArgs extends com.pulumi.resources.ResourceArgs
          * Enable/Disable Security Posture API features for the cluster.
          * Structure is documented below.
          * 
-         * &gt; **Warning:** `security_posture_config` is deprecated and will be removed in a future major release.
+         * &gt; **Warning:** `securityPostureConfig` is deprecated and will be removed in a future major release.
          * 
          * @return builder
          * 
          * @deprecated
-         * `security_posture_config` is deprecated and will be removed in a future major release.
+         * `securityPostureConfig` is deprecated and will be removed in a future major release.
          * 
          */
-        @Deprecated /* `security_posture_config` is deprecated and will be removed in a future major release. */
+        @Deprecated /* `securityPostureConfig` is deprecated and will be removed in a future major release. */
         public Builder securityPostureConfig(@Nullable Output<AttachedClusterSecurityPostureConfigArgs> securityPostureConfig) {
             $.securityPostureConfig = securityPostureConfig;
             return this;
@@ -767,15 +767,15 @@ public final class AttachedClusterArgs extends com.pulumi.resources.ResourceArgs
          * Enable/Disable Security Posture API features for the cluster.
          * Structure is documented below.
          * 
-         * &gt; **Warning:** `security_posture_config` is deprecated and will be removed in a future major release.
+         * &gt; **Warning:** `securityPostureConfig` is deprecated and will be removed in a future major release.
          * 
          * @return builder
          * 
          * @deprecated
-         * `security_posture_config` is deprecated and will be removed in a future major release.
+         * `securityPostureConfig` is deprecated and will be removed in a future major release.
          * 
          */
-        @Deprecated /* `security_posture_config` is deprecated and will be removed in a future major release. */
+        @Deprecated /* `securityPostureConfig` is deprecated and will be removed in a future major release. */
         public Builder securityPostureConfig(AttachedClusterSecurityPostureConfigArgs securityPostureConfig) {
             return securityPostureConfig(Output.of(securityPostureConfig));
         }

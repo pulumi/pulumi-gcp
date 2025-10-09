@@ -43,7 +43,7 @@ namespace Pulumi.Gcp.PubSub.Inputs
 
         /// <summary>
         /// When set, the payload to the push endpoint is not wrapped.Sets the
-        /// `data` field as the HTTP body for delivery.
+        /// `Data` field as the HTTP body for delivery.
         /// Structure is documented below.
         /// </summary>
         [Input("noWrapper")]

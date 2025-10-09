@@ -46,7 +46,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfig {
      */
     private @Nullable WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig gceClusterConfig;
     /**
-     * @return The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as `gce_cluster_config`, `master_config`, `worker_config`, `secondary_worker_config`, and `autoscaling_config`.
+     * @return The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as `gceClusterConfig`, `masterConfig`, `workerConfig`, `secondaryWorkerConfig`, and `autoscalingConfig`.
      * 
      */
     private @Nullable WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig gkeClusterConfig;
@@ -133,7 +133,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfig {
         return Optional.ofNullable(this.gceClusterConfig);
     }
     /**
-     * @return The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as `gce_cluster_config`, `master_config`, `worker_config`, `secondary_worker_config`, and `autoscaling_config`.
+     * @return The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as `gceClusterConfig`, `masterConfig`, `workerConfig`, `secondaryWorkerConfig`, and `autoscalingConfig`.
      * 
      */
     public Optional<WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig> gkeClusterConfig() {

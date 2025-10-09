@@ -28,10 +28,10 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/identity/docs/how-to/setup)
  * 
  * &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
- * you must specify a `billing_project` and set `user_project_override` to true
+ * you must specify a `billingProject` and set `userProjectOverride` to true
  * in the provider configuration. Otherwise the Cloud Identity API will return a 403 error.
  * Your account must have the `serviceusage.services.use` permission on the
- * `billing_project` you defined.
+ * `billingProject` you defined.
  * 
  * ## Example Usage
  * 
@@ -213,7 +213,7 @@ public class Group extends com.pulumi.resources.CustomResource {
         return this.labels;
     }
     /**
-     * Resource name of the Group in the format: groups/{group_id}, where group_id
+     * Resource name of the Group in the format: groups/{group_id}, where groupId
      * is the unique ID assigned to the Group.
      * 
      */
@@ -221,7 +221,7 @@ public class Group extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return Resource name of the Group in the format: groups/{group_id}, where group_id
+     * @return Resource name of the Group in the format: groups/{group_id}, where groupId
      * is the unique ID assigned to the Group.
      * 
      */

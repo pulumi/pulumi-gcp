@@ -633,7 +633,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * such as Compute Engine VMs.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -644,7 +644,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * such as Compute Engine VMs.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -776,10 +776,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Service account which will be used to access resources in the customer project.
      * 
      * @deprecated
-     * `service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.
+     * `serviceAccount` is deprecated and will be removed in a future major release. Instead, use `tenantProjectId` to extract the tenant project ID.
      * 
      */
-    @Deprecated /* `service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID. */
+    @Deprecated /* `serviceAccount` is deprecated and will be removed in a future major release. Instead, use `tenantProjectId` to extract the tenant project ID. */
     @Export(name="serviceAccount", refs={String.class}, tree="[0]")
     private Output<String> serviceAccount;
 

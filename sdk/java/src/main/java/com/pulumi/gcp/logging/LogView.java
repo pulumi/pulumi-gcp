@@ -128,14 +128,14 @@ public class LogView extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Filter that restricts which log entries in a bucket are visible in this view. Filters are restricted to be a logical AND of ==/!= of any of the following: - originating project/folder/organization/billing account. - resource type - log id For example: SOURCE(&#34;projects/myproject&#34;) AND resource.type = &#34;gce_instance&#34; AND LOG_ID(&#34;stdout&#34;)
+     * Filter that restricts which log entries in a bucket are visible in this view. Filters are restricted to be a logical AND of ==/!= of any of the following: - originating project/folder/organization/billing account. - resource type - log id For example: SOURCE(&#34;projects/myproject&#34;) AND resource.type = &#34;gceInstance&#34; AND LOG_ID(&#34;stdout&#34;)
      * 
      */
     @Export(name="filter", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> filter;
 
     /**
-     * @return Filter that restricts which log entries in a bucket are visible in this view. Filters are restricted to be a logical AND of ==/!= of any of the following: - originating project/folder/organization/billing account. - resource type - log id For example: SOURCE(&#34;projects/myproject&#34;) AND resource.type = &#34;gce_instance&#34; AND LOG_ID(&#34;stdout&#34;)
+     * @return Filter that restricts which log entries in a bucket are visible in this view. Filters are restricted to be a logical AND of ==/!= of any of the following: - originating project/folder/organization/billing account. - resource type - log id For example: SOURCE(&#34;projects/myproject&#34;) AND resource.type = &#34;gceInstance&#34; AND LOG_ID(&#34;stdout&#34;)
      * 
      */
     public Output<Optional<String>> filter() {

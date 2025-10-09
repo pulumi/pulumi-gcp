@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Sql.Inputs
     public sealed class DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit
+        /// Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If RetentionUnit
         /// is 'COUNT', we will retain this many backups.
         /// </summary>
         [Input("retainedBackups", required: true)]

@@ -32,7 +32,7 @@ public final class InstanceGroupManagerVersionTargetSizeArgs extends com.pulumi.
 
     /**
      * , The number of instances (calculated as percentage) which are managed for this version. Conflicts with `fixed`.
-     * Note that when using `percent`, rounding will be in favor of explicitly set `target_size` values; a managed instance group with 2 instances and 2 `version`s,
+     * Note that when using `percent`, rounding will be in favor of explicitly set `targetSize` values; a managed instance group with 2 instances and 2 `version`s,
      * one of which has a `target_size.percent` of `60` will create 2 instances of that `version`.
      * 
      */
@@ -41,7 +41,7 @@ public final class InstanceGroupManagerVersionTargetSizeArgs extends com.pulumi.
 
     /**
      * @return , The number of instances (calculated as percentage) which are managed for this version. Conflicts with `fixed`.
-     * Note that when using `percent`, rounding will be in favor of explicitly set `target_size` values; a managed instance group with 2 instances and 2 `version`s,
+     * Note that when using `percent`, rounding will be in favor of explicitly set `targetSize` values; a managed instance group with 2 instances and 2 `version`s,
      * one of which has a `target_size.percent` of `60` will create 2 instances of that `version`.
      * 
      */
@@ -97,7 +97,7 @@ public final class InstanceGroupManagerVersionTargetSizeArgs extends com.pulumi.
 
         /**
          * @param percent , The number of instances (calculated as percentage) which are managed for this version. Conflicts with `fixed`.
-         * Note that when using `percent`, rounding will be in favor of explicitly set `target_size` values; a managed instance group with 2 instances and 2 `version`s,
+         * Note that when using `percent`, rounding will be in favor of explicitly set `targetSize` values; a managed instance group with 2 instances and 2 `version`s,
          * one of which has a `target_size.percent` of `60` will create 2 instances of that `version`.
          * 
          * @return builder
@@ -110,7 +110,7 @@ public final class InstanceGroupManagerVersionTargetSizeArgs extends com.pulumi.
 
         /**
          * @param percent , The number of instances (calculated as percentage) which are managed for this version. Conflicts with `fixed`.
-         * Note that when using `percent`, rounding will be in favor of explicitly set `target_size` values; a managed instance group with 2 instances and 2 `version`s,
+         * Note that when using `percent`, rounding will be in favor of explicitly set `targetSize` values; a managed instance group with 2 instances and 2 `version`s,
          * one of which has a `target_size.percent` of `60` will create 2 instances of that `version`.
          * 
          * @return builder

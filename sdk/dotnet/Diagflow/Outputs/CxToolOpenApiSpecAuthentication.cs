@@ -15,25 +15,25 @@ namespace Pulumi.Gcp.Diagflow.Outputs
     {
         /// <summary>
         /// Config for API key auth.
-        /// This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+        /// This field is part of a union field `AuthConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.CxToolOpenApiSpecAuthenticationApiKeyConfig? ApiKeyConfig;
         /// <summary>
         /// Config for bearer token auth.
-        /// This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+        /// This field is part of a union field `AuthConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.CxToolOpenApiSpecAuthenticationBearerTokenConfig? BearerTokenConfig;
         /// <summary>
         /// Config for OAuth.
-        /// This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+        /// This field is part of a union field `AuthConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.CxToolOpenApiSpecAuthenticationOauthConfig? OauthConfig;
         /// <summary>
         /// Config for [Diglogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent) auth.
-        /// This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+        /// This field is part of a union field `AuthConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.CxToolOpenApiSpecAuthenticationServiceAgentAuthConfig? ServiceAgentAuthConfig;

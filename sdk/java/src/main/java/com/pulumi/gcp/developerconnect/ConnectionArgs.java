@@ -28,7 +28,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Optional. Allows clients to store small amounts of arbitrary data.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     @Import(name="annotations")
@@ -37,7 +37,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Optional. Allows clients to store small amounts of arbitrary data.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -81,7 +81,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Required. Id of the requesting object
      * If auto-generating Id server-side, remove this field and
-     * connection_id from the method_signature of Create RPC
+     * connectionId from the methodSignature of Create RPC
      * 
      */
     @Import(name="connectionId", required=true)
@@ -90,7 +90,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Required. Id of the requesting object
      * If auto-generating Id server-side, remove this field and
-     * connection_id from the method_signature of Create RPC
+     * connectionId from the methodSignature of Create RPC
      * 
      */
     public Output<String> connectionId() {
@@ -225,7 +225,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Optional. Labels as key value pairs
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -234,7 +234,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Optional. Labels as key value pairs
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -313,7 +313,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param annotations Optional. Allows clients to store small amounts of arbitrary data.
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -326,7 +326,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param annotations Optional. Allows clients to store small amounts of arbitrary data.
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -384,7 +384,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param connectionId Required. Id of the requesting object
          * If auto-generating Id server-side, remove this field and
-         * connection_id from the method_signature of Create RPC
+         * connectionId from the methodSignature of Create RPC
          * 
          * @return builder
          * 
@@ -397,7 +397,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param connectionId Required. Id of the requesting object
          * If auto-generating Id server-side, remove this field and
-         * connection_id from the method_signature of Create RPC
+         * connectionId from the methodSignature of Create RPC
          * 
          * @return builder
          * 
@@ -576,7 +576,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels Optional. Labels as key value pairs
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -589,7 +589,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels Optional. Labels as key value pairs
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 

@@ -78,7 +78,7 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// Format:
         /// projects/{project}/locations/{location}/odbNetworks/{odb_network}
         /// It is optional but if specified, this should match the parent ODBNetwork of
-        /// the odb_subnet and backup_odb_subnet.
+        /// the OdbSubnet and backup_odb_subnet.
         /// </summary>
         public readonly string OdbNetwork;
         /// <summary>

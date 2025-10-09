@@ -22,11 +22,11 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// </summary>
         public readonly Outputs.TransferJobReplicationSpecGcsDataSource? GcsDataSource;
         /// <summary>
-        /// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `last_modification_time` do not exclude objects in a data sink. Structure documented below.
+        /// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `LastModificationTime` do not exclude objects in a data sink. Structure documented below.
         /// </summary>
         public readonly Outputs.TransferJobReplicationSpecObjectConditions? ObjectConditions;
         /// <summary>
-        /// Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
+        /// Characteristics of how to treat files from datasource and sink during job. If the option `DeleteObjectsUniqueInSink` is true, object conditions based on objects' `LastModificationTime` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
         /// </summary>
         public readonly Outputs.TransferJobReplicationSpecTransferOptions? TransferOptions;
 

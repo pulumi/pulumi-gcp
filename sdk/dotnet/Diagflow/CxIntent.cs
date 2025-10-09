@@ -141,7 +141,7 @@ namespace Pulumi.Gcp.Diagflow
         /// Marks this as the [Default Negative Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#negative) for an agent. When you create an agent, a Default Negative Intent is created automatically.
         /// The Default Negative Intent cannot be deleted; deleting the `gcp.diagflow.CxIntent` resource does nothing to the underlying GCP resources.
         /// 
-        /// &gt; Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `is_default_negative_intent = true` because they will compete to control a single Default Negative Intent resource in GCP.
+        /// &gt; Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `IsDefaultNegativeIntent = true` because they will compete to control a single Default Negative Intent resource in GCP.
         /// </summary>
         [Output("isDefaultNegativeIntent")]
         public Output<bool?> IsDefaultNegativeIntent { get; private set; } = null!;
@@ -150,7 +150,7 @@ namespace Pulumi.Gcp.Diagflow
         /// Marks this as the [Default Welcome Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#welcome) for an agent. When you create an agent, a Default Welcome Intent is created automatically.
         /// The Default Welcome Intent cannot be deleted; deleting the `gcp.diagflow.CxIntent` resource does nothing to the underlying GCP resources.
         /// 
-        /// &gt; Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `is_default_welcome_intent = true` because they will compete to control a single Default Welcome Intent resource in GCP.
+        /// &gt; Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `IsDefaultWelcomeIntent = true` because they will compete to control a single Default Welcome Intent resource in GCP.
         /// </summary>
         [Output("isDefaultWelcomeIntent")]
         public Output<bool?> IsDefaultWelcomeIntent { get; private set; } = null!;
@@ -158,7 +158,7 @@ namespace Pulumi.Gcp.Diagflow
         /// <summary>
         /// Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation.
         /// Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
-        /// To manage the fallback intent, set `is_default_negative_intent = true`
+        /// To manage the fallback intent, set `IsDefaultNegativeIntent = true`
         /// </summary>
         [Output("isFallback")]
         public Output<bool?> IsFallback { get; private set; } = null!;
@@ -169,7 +169,7 @@ namespace Pulumi.Gcp.Diagflow
         /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -292,7 +292,7 @@ namespace Pulumi.Gcp.Diagflow
         /// Marks this as the [Default Negative Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#negative) for an agent. When you create an agent, a Default Negative Intent is created automatically.
         /// The Default Negative Intent cannot be deleted; deleting the `gcp.diagflow.CxIntent` resource does nothing to the underlying GCP resources.
         /// 
-        /// &gt; Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `is_default_negative_intent = true` because they will compete to control a single Default Negative Intent resource in GCP.
+        /// &gt; Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `IsDefaultNegativeIntent = true` because they will compete to control a single Default Negative Intent resource in GCP.
         /// </summary>
         [Input("isDefaultNegativeIntent")]
         public Input<bool>? IsDefaultNegativeIntent { get; set; }
@@ -301,7 +301,7 @@ namespace Pulumi.Gcp.Diagflow
         /// Marks this as the [Default Welcome Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#welcome) for an agent. When you create an agent, a Default Welcome Intent is created automatically.
         /// The Default Welcome Intent cannot be deleted; deleting the `gcp.diagflow.CxIntent` resource does nothing to the underlying GCP resources.
         /// 
-        /// &gt; Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `is_default_welcome_intent = true` because they will compete to control a single Default Welcome Intent resource in GCP.
+        /// &gt; Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `IsDefaultWelcomeIntent = true` because they will compete to control a single Default Welcome Intent resource in GCP.
         /// </summary>
         [Input("isDefaultWelcomeIntent")]
         public Input<bool>? IsDefaultWelcomeIntent { get; set; }
@@ -309,7 +309,7 @@ namespace Pulumi.Gcp.Diagflow
         /// <summary>
         /// Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation.
         /// Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
-        /// To manage the fallback intent, set `is_default_negative_intent = true`
+        /// To manage the fallback intent, set `IsDefaultNegativeIntent = true`
         /// </summary>
         [Input("isFallback")]
         public Input<bool>? IsFallback { get; set; }
@@ -323,7 +323,7 @@ namespace Pulumi.Gcp.Diagflow
         /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -420,7 +420,7 @@ namespace Pulumi.Gcp.Diagflow
         /// Marks this as the [Default Negative Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#negative) for an agent. When you create an agent, a Default Negative Intent is created automatically.
         /// The Default Negative Intent cannot be deleted; deleting the `gcp.diagflow.CxIntent` resource does nothing to the underlying GCP resources.
         /// 
-        /// &gt; Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `is_default_negative_intent = true` because they will compete to control a single Default Negative Intent resource in GCP.
+        /// &gt; Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `IsDefaultNegativeIntent = true` because they will compete to control a single Default Negative Intent resource in GCP.
         /// </summary>
         [Input("isDefaultNegativeIntent")]
         public Input<bool>? IsDefaultNegativeIntent { get; set; }
@@ -429,7 +429,7 @@ namespace Pulumi.Gcp.Diagflow
         /// Marks this as the [Default Welcome Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#welcome) for an agent. When you create an agent, a Default Welcome Intent is created automatically.
         /// The Default Welcome Intent cannot be deleted; deleting the `gcp.diagflow.CxIntent` resource does nothing to the underlying GCP resources.
         /// 
-        /// &gt; Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `is_default_welcome_intent = true` because they will compete to control a single Default Welcome Intent resource in GCP.
+        /// &gt; Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `IsDefaultWelcomeIntent = true` because they will compete to control a single Default Welcome Intent resource in GCP.
         /// </summary>
         [Input("isDefaultWelcomeIntent")]
         public Input<bool>? IsDefaultWelcomeIntent { get; set; }
@@ -437,7 +437,7 @@ namespace Pulumi.Gcp.Diagflow
         /// <summary>
         /// Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation.
         /// Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
-        /// To manage the fallback intent, set `is_default_negative_intent = true`
+        /// To manage the fallback intent, set `IsDefaultNegativeIntent = true`
         /// </summary>
         [Input("isFallback")]
         public Input<bool>? IsFallback { get; set; }
@@ -451,7 +451,7 @@ namespace Pulumi.Gcp.Diagflow
         /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {

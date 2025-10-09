@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         private InputList<Inputs.CertificateTemplatePassthroughExtensionsAdditionalExtensionGetArgs>? _additionalExtensions;
 
         /// <summary>
-        /// Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with known_extensions to determine the full set of X.509 extensions.
+        /// Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with KnownExtensions to determine the full set of X.509 extensions.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.CertificateTemplatePassthroughExtensionsAdditionalExtensionGetArgs> AdditionalExtensions
@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         private InputList<string>? _knownExtensions;
 
         /// <summary>
-        /// Optional. A set of named X.509 extensions. Will be combined with additional_extensions to determine the full set of X.509 extensions.
+        /// Optional. A set of named X.509 extensions. Will be combined with AdditionalExtensions to determine the full set of X.509 extensions.
         /// </summary>
         public InputList<string> KnownExtensions
         {

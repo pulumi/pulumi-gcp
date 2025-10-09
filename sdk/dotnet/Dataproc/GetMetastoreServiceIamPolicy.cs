@@ -98,7 +98,7 @@ namespace Pulumi.Gcp.Dataproc
     {
         /// <summary>
         /// The location where the metastore service should reside.
-        /// The default value is `global`.
+        /// The default value is `Global`.
         /// Used to find the parent resource to bind the IAM policy to. If not specified,
         /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
         /// location is specified, it is taken from the provider configuration.
@@ -129,7 +129,7 @@ namespace Pulumi.Gcp.Dataproc
     {
         /// <summary>
         /// The location where the metastore service should reside.
-        /// The default value is `global`.
+        /// The default value is `Global`.
         /// Used to find the parent resource to bind the IAM policy to. If not specified,
         /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
         /// location is specified, it is taken from the provider configuration.

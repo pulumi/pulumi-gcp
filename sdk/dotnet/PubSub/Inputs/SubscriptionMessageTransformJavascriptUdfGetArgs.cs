@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.PubSub.Inputs
     public sealed class SubscriptionMessageTransformJavascriptUdfGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// JavaScript code that contains a function `function_name` with the
+        /// JavaScript code that contains a function `FunctionName` with the
         /// following signature:
         /// ```
         /// /**

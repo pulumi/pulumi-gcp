@@ -87,7 +87,7 @@ public final class GetClusterAddonsConfig {
      */
     private List<GetClusterAddonsConfigLustreCsiDriverConfig> lustreCsiDriverConfigs;
     /**
-     * @return Whether we should enable the network policy addon for the master. This must be enabled in order to enable network policy for the nodes. To enable this, you must also define a network_policy block, otherwise nothing will happen. It can only be disabled if the nodes already do not have network policies enabled. Defaults to disabled; set disabled = false to enable.
+     * @return Whether we should enable the network policy addon for the master. This must be enabled in order to enable network policy for the nodes. To enable this, you must also define a networkPolicy block, otherwise nothing will happen. It can only be disabled if the nodes already do not have network policies enabled. Defaults to disabled; set disabled = false to enable.
      * 
      */
     private List<GetClusterAddonsConfigNetworkPolicyConfig> networkPolicyConfigs;
@@ -193,7 +193,7 @@ public final class GetClusterAddonsConfig {
         return this.lustreCsiDriverConfigs;
     }
     /**
-     * @return Whether we should enable the network policy addon for the master. This must be enabled in order to enable network policy for the nodes. To enable this, you must also define a network_policy block, otherwise nothing will happen. It can only be disabled if the nodes already do not have network policies enabled. Defaults to disabled; set disabled = false to enable.
+     * @return Whether we should enable the network policy addon for the master. This must be enabled in order to enable network policy for the nodes. To enable this, you must also define a networkPolicy block, otherwise nothing will happen. It can only be disabled if the nodes already do not have network policies enabled. Defaults to disabled; set disabled = false to enable.
      * 
      */
     public List<GetClusterAddonsConfigNetworkPolicyConfig> networkPolicyConfigs() {

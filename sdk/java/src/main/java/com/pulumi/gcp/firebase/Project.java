@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  *     * Official Documentation
  * 
  * &gt; **Note:** This resource should usually be used with a provider configuration
- * with `user_project_override = true` unless you wish for your quota
+ * with `userProjectOverride = true` unless you wish for your quota
  * project to be different from the Firebase project.
  * 
  * ## Example Usage

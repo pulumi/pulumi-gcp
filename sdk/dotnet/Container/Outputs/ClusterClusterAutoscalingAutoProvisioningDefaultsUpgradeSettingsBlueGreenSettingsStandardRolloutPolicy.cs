@@ -14,11 +14,11 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy
     {
         /// <summary>
-        /// Number of blue nodes to drain in a batch. Only one of the batch_percentage or batch_node_count can be specified.
+        /// Number of blue nodes to drain in a batch. Only one of the BatchPercentage or BatchNodeCount can be specified.
         /// </summary>
         public readonly int? BatchNodeCount;
         /// <summary>
-        /// Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0). Only one of the batch_percentage or batch_node_count can be specified.
+        /// Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0). Only one of the BatchPercentage or BatchNodeCount can be specified.
         /// </summary>
         public readonly double? BatchPercentage;
         /// <summary>

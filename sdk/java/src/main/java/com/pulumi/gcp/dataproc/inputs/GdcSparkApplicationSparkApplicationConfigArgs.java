@@ -77,14 +77,14 @@ public final class GdcSparkApplicationSparkApplicationConfigArgs extends com.pul
     }
 
     /**
-     * The name of the driver main class. The jar file that contains the class must be in the classpath or specified in `jar_file_uris`.
+     * The name of the driver main class. The jar file that contains the class must be in the classpath or specified in `jarFileUris`.
      * 
      */
     @Import(name="mainClass")
     private @Nullable Output<String> mainClass;
 
     /**
-     * @return The name of the driver main class. The jar file that contains the class must be in the classpath or specified in `jar_file_uris`.
+     * @return The name of the driver main class. The jar file that contains the class must be in the classpath or specified in `jarFileUris`.
      * 
      */
     public Optional<Output<String>> mainClass() {
@@ -260,7 +260,7 @@ public final class GdcSparkApplicationSparkApplicationConfigArgs extends com.pul
         }
 
         /**
-         * @param mainClass The name of the driver main class. The jar file that contains the class must be in the classpath or specified in `jar_file_uris`.
+         * @param mainClass The name of the driver main class. The jar file that contains the class must be in the classpath or specified in `jarFileUris`.
          * 
          * @return builder
          * 
@@ -271,7 +271,7 @@ public final class GdcSparkApplicationSparkApplicationConfigArgs extends com.pul
         }
 
         /**
-         * @param mainClass The name of the driver main class. The jar file that contains the class must be in the classpath or specified in `jar_file_uris`.
+         * @param mainClass The name of the driver main class. The jar file that contains the class must be in the classpath or specified in `jarFileUris`.
          * 
          * @return builder
          * 

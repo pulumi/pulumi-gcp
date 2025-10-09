@@ -453,7 +453,7 @@ namespace Pulumi.Gcp.Dns
         /// A set of key/value label pairs to assign to this ManagedZone.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -472,7 +472,7 @@ namespace Pulumi.Gcp.Dns
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Delegate your managed_zone to these virtual name servers;
+        /// Delegate your ManagedZone to these virtual name servers;
         /// defined by the server
         /// </summary>
         [Output("nameServers")]
@@ -488,7 +488,7 @@ namespace Pulumi.Gcp.Dns
 
         /// <summary>
         /// For privately visible zones, the set of Virtual Private Cloud
-        /// resources that the zone is visible from. At least one of `gke_clusters` or `networks` must be specified.
+        /// resources that the zone is visible from. At least one of `GkeClusters` or `Networks` must be specified.
         /// Structure is documented below.
         /// </summary>
         [Output("privateVisibilityConfig")]
@@ -511,7 +511,7 @@ namespace Pulumi.Gcp.Dns
         /// <summary>
         /// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
         /// lookup queries using automatically configured records for VPC resources. This only applies
-        /// to networks listed under `private_visibility_config`.
+        /// to networks listed under `PrivateVisibilityConfig`.
         /// </summary>
         [Output("reverseLookup")]
         public Output<bool?> ReverseLookup { get; private set; } = null!;
@@ -526,8 +526,8 @@ namespace Pulumi.Gcp.Dns
         /// <summary>
         /// The zone's visibility: public zones are exposed to the Internet,
         /// while private zones are visible only to Virtual Private Cloud resources.
-        /// Default value is `public`.
-        /// Possible values are: `private`, `public`.
+        /// Default value is `Public`.
+        /// Possible values are: `Private`, `Public`.
         /// </summary>
         [Output("visibility")]
         public Output<string?> Visibility { get; private set; } = null!;
@@ -631,7 +631,7 @@ namespace Pulumi.Gcp.Dns
         /// A set of key/value label pairs to assign to this ManagedZone.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -656,7 +656,7 @@ namespace Pulumi.Gcp.Dns
 
         /// <summary>
         /// For privately visible zones, the set of Virtual Private Cloud
-        /// resources that the zone is visible from. At least one of `gke_clusters` or `networks` must be specified.
+        /// resources that the zone is visible from. At least one of `GkeClusters` or `Networks` must be specified.
         /// Structure is documented below.
         /// </summary>
         [Input("privateVisibilityConfig")]
@@ -672,7 +672,7 @@ namespace Pulumi.Gcp.Dns
         /// <summary>
         /// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
         /// lookup queries using automatically configured records for VPC resources. This only applies
-        /// to networks listed under `private_visibility_config`.
+        /// to networks listed under `PrivateVisibilityConfig`.
         /// </summary>
         [Input("reverseLookup")]
         public Input<bool>? ReverseLookup { get; set; }
@@ -687,8 +687,8 @@ namespace Pulumi.Gcp.Dns
         /// <summary>
         /// The zone's visibility: public zones are exposed to the Internet,
         /// while private zones are visible only to Virtual Private Cloud resources.
-        /// Default value is `public`.
-        /// Possible values are: `private`, `public`.
+        /// Default value is `Public`.
+        /// Possible values are: `Private`, `Public`.
         /// </summary>
         [Input("visibility")]
         public Input<string>? Visibility { get; set; }
@@ -773,7 +773,7 @@ namespace Pulumi.Gcp.Dns
         /// A set of key/value label pairs to assign to this ManagedZone.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -798,7 +798,7 @@ namespace Pulumi.Gcp.Dns
         private InputList<string>? _nameServers;
 
         /// <summary>
-        /// Delegate your managed_zone to these virtual name servers;
+        /// Delegate your ManagedZone to these virtual name servers;
         /// defined by the server
         /// </summary>
         public InputList<string> NameServers
@@ -817,7 +817,7 @@ namespace Pulumi.Gcp.Dns
 
         /// <summary>
         /// For privately visible zones, the set of Virtual Private Cloud
-        /// resources that the zone is visible from. At least one of `gke_clusters` or `networks` must be specified.
+        /// resources that the zone is visible from. At least one of `GkeClusters` or `Networks` must be specified.
         /// Structure is documented below.
         /// </summary>
         [Input("privateVisibilityConfig")]
@@ -850,7 +850,7 @@ namespace Pulumi.Gcp.Dns
         /// <summary>
         /// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
         /// lookup queries using automatically configured records for VPC resources. This only applies
-        /// to networks listed under `private_visibility_config`.
+        /// to networks listed under `PrivateVisibilityConfig`.
         /// </summary>
         [Input("reverseLookup")]
         public Input<bool>? ReverseLookup { get; set; }
@@ -865,8 +865,8 @@ namespace Pulumi.Gcp.Dns
         /// <summary>
         /// The zone's visibility: public zones are exposed to the Internet,
         /// while private zones are visible only to Virtual Private Cloud resources.
-        /// Default value is `public`.
-        /// Possible values are: `private`, `public`.
+        /// Default value is `Public`.
+        /// Possible values are: `Private`, `Public`.
         /// </summary>
         [Input("visibility")]
         public Input<string>? Visibility { get; set; }

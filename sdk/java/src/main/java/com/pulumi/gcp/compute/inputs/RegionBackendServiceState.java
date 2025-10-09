@@ -34,7 +34,7 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
     public static final RegionBackendServiceState Empty = new RegionBackendServiceState();
 
     /**
-     * Lifetime of cookies in seconds if session_affinity is
+     * Lifetime of cookies in seconds if sessionAffinity is
      * GENERATED_COOKIE. If set to 0, the cookie is non-persistent and lasts
      * only until the end of the browser session (or equivalent). The
      * maximum allowed value for TTL is one day.
@@ -45,7 +45,7 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
     private @Nullable Output<Integer> affinityCookieTtlSec;
 
     /**
-     * @return Lifetime of cookies in seconds if session_affinity is
+     * @return Lifetime of cookies in seconds if sessionAffinity is
      * GENERATED_COOKIE. If set to 0, the cookie is non-persistent and lasts
      * only until the end of the browser session (or equivalent). The
      * maximum allowed value for TTL is one day.
@@ -92,7 +92,7 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
 
     /**
      * Settings controlling the volume of connections to a backend service. This field
-     * is applicable only when the `load_balancing_scheme` is set to INTERNAL_MANAGED
+     * is applicable only when the `loadBalancingScheme` is set to INTERNAL_MANAGED
      * and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
      * Structure is documented below.
      * 
@@ -102,7 +102,7 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
 
     /**
      * @return Settings controlling the volume of connections to a backend service. This field
-     * is applicable only when the `load_balancing_scheme` is set to INTERNAL_MANAGED
+     * is applicable only when the `loadBalancingScheme` is set to INTERNAL_MANAGED
      * and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
      * Structure is documented below.
      * 
@@ -461,17 +461,17 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
      *   X-Endpoint-Load-Metrics. The reported metrics
      *   to use for computing the weights are specified via the
      *   backends[].customMetrics fields.
-     *   locality_lb_policy is applicable to either:
-     * * A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C,
+     *   localityLbPolicy is applicable to either:
+     * * A regional backend service with the serviceProtocol set to HTTP, HTTPS, HTTP2 or H2C,
      *   and loadBalancingScheme set to INTERNAL_MANAGED.
-     * * A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+     * * A global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
      * * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
      *   Load Balancing). Only MAGLEV and WEIGHTED_MAGLEV values are possible for External
      *   Network Load Balancing. The default is MAGLEV.
-     *   If session_affinity is not NONE, and locality_lb_policy is not set to MAGLEV, WEIGHTED_MAGLEV,
+     *   If sessionAffinity is not NONE, and localityLbPolicy is not set to MAGLEV, WEIGHTED_MAGLEV,
      *   or RING_HASH, session affinity settings will not take effect.
      *   Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
-     *   by a URL map that is bound to target gRPC proxy that has validate_for_proxyless
+     *   by a URL map that is bound to target gRPC proxy that has validateForProxyless
      *   field set to true.
      *   Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`, `WEIGHTED_ROUND_ROBIN`.
      * 
@@ -519,17 +519,17 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
      *   X-Endpoint-Load-Metrics. The reported metrics
      *   to use for computing the weights are specified via the
      *   backends[].customMetrics fields.
-     *   locality_lb_policy is applicable to either:
-     * * A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C,
+     *   localityLbPolicy is applicable to either:
+     * * A regional backend service with the serviceProtocol set to HTTP, HTTPS, HTTP2 or H2C,
      *   and loadBalancingScheme set to INTERNAL_MANAGED.
-     * * A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+     * * A global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
      * * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
      *   Load Balancing). Only MAGLEV and WEIGHTED_MAGLEV values are possible for External
      *   Network Load Balancing. The default is MAGLEV.
-     *   If session_affinity is not NONE, and locality_lb_policy is not set to MAGLEV, WEIGHTED_MAGLEV,
+     *   If sessionAffinity is not NONE, and localityLbPolicy is not set to MAGLEV, WEIGHTED_MAGLEV,
      *   or RING_HASH, session affinity settings will not take effect.
      *   Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
-     *   by a URL map that is bound to target gRPC proxy that has validate_for_proxyless
+     *   by a URL map that is bound to target gRPC proxy that has validateForProxyless
      *   field set to true.
      *   Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`, `WEIGHTED_ROUND_ROBIN`.
      * 
@@ -607,7 +607,7 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
 
     /**
      * Settings controlling eviction of unhealthy hosts from the load balancing pool.
-     * This field is applicable only when the `load_balancing_scheme` is set
+     * This field is applicable only when the `loadBalancingScheme` is set
      * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
      * Structure is documented below.
      * 
@@ -617,7 +617,7 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
 
     /**
      * @return Settings controlling eviction of unhealthy hosts from the load balancing pool.
-     * This field is applicable only when the `load_balancing_scheme` is set
+     * This field is applicable only when the `loadBalancingScheme` is set
      * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
      * Structure is documented below.
      * 
@@ -891,7 +891,7 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param affinityCookieTtlSec Lifetime of cookies in seconds if session_affinity is
+         * @param affinityCookieTtlSec Lifetime of cookies in seconds if sessionAffinity is
          * GENERATED_COOKIE. If set to 0, the cookie is non-persistent and lasts
          * only until the end of the browser session (or equivalent). The
          * maximum allowed value for TTL is one day.
@@ -906,7 +906,7 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param affinityCookieTtlSec Lifetime of cookies in seconds if session_affinity is
+         * @param affinityCookieTtlSec Lifetime of cookies in seconds if sessionAffinity is
          * GENERATED_COOKIE. If set to 0, the cookie is non-persistent and lasts
          * only until the end of the browser session (or equivalent). The
          * maximum allowed value for TTL is one day.
@@ -978,7 +978,7 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
 
         /**
          * @param circuitBreakers Settings controlling the volume of connections to a backend service. This field
-         * is applicable only when the `load_balancing_scheme` is set to INTERNAL_MANAGED
+         * is applicable only when the `loadBalancingScheme` is set to INTERNAL_MANAGED
          * and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
          * Structure is documented below.
          * 
@@ -992,7 +992,7 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
 
         /**
          * @param circuitBreakers Settings controlling the volume of connections to a backend service. This field
-         * is applicable only when the `load_balancing_scheme` is set to INTERNAL_MANAGED
+         * is applicable only when the `loadBalancingScheme` is set to INTERNAL_MANAGED
          * and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
          * Structure is documented below.
          * 
@@ -1460,17 +1460,17 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
          *   X-Endpoint-Load-Metrics. The reported metrics
          *   to use for computing the weights are specified via the
          *   backends[].customMetrics fields.
-         *   locality_lb_policy is applicable to either:
-         * * A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C,
+         *   localityLbPolicy is applicable to either:
+         * * A regional backend service with the serviceProtocol set to HTTP, HTTPS, HTTP2 or H2C,
          *   and loadBalancingScheme set to INTERNAL_MANAGED.
-         * * A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+         * * A global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
          * * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
          *   Load Balancing). Only MAGLEV and WEIGHTED_MAGLEV values are possible for External
          *   Network Load Balancing. The default is MAGLEV.
-         *   If session_affinity is not NONE, and locality_lb_policy is not set to MAGLEV, WEIGHTED_MAGLEV,
+         *   If sessionAffinity is not NONE, and localityLbPolicy is not set to MAGLEV, WEIGHTED_MAGLEV,
          *   or RING_HASH, session affinity settings will not take effect.
          *   Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
-         *   by a URL map that is bound to target gRPC proxy that has validate_for_proxyless
+         *   by a URL map that is bound to target gRPC proxy that has validateForProxyless
          *   field set to true.
          *   Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`, `WEIGHTED_ROUND_ROBIN`.
          * 
@@ -1522,17 +1522,17 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
          *   X-Endpoint-Load-Metrics. The reported metrics
          *   to use for computing the weights are specified via the
          *   backends[].customMetrics fields.
-         *   locality_lb_policy is applicable to either:
-         * * A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C,
+         *   localityLbPolicy is applicable to either:
+         * * A regional backend service with the serviceProtocol set to HTTP, HTTPS, HTTP2 or H2C,
          *   and loadBalancingScheme set to INTERNAL_MANAGED.
-         * * A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+         * * A global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
          * * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
          *   Load Balancing). Only MAGLEV and WEIGHTED_MAGLEV values are possible for External
          *   Network Load Balancing. The default is MAGLEV.
-         *   If session_affinity is not NONE, and locality_lb_policy is not set to MAGLEV, WEIGHTED_MAGLEV,
+         *   If sessionAffinity is not NONE, and localityLbPolicy is not set to MAGLEV, WEIGHTED_MAGLEV,
          *   or RING_HASH, session affinity settings will not take effect.
          *   Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
-         *   by a URL map that is bound to target gRPC proxy that has validate_for_proxyless
+         *   by a URL map that is bound to target gRPC proxy that has validateForProxyless
          *   field set to true.
          *   Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`, `WEIGHTED_ROUND_ROBIN`.
          * 
@@ -1630,7 +1630,7 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
 
         /**
          * @param outlierDetection Settings controlling eviction of unhealthy hosts from the load balancing pool.
-         * This field is applicable only when the `load_balancing_scheme` is set
+         * This field is applicable only when the `loadBalancingScheme` is set
          * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
          * Structure is documented below.
          * 
@@ -1644,7 +1644,7 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
 
         /**
          * @param outlierDetection Settings controlling eviction of unhealthy hosts from the load balancing pool.
-         * This field is applicable only when the `load_balancing_scheme` is set
+         * This field is applicable only when the `loadBalancingScheme` is set
          * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
          * Structure is documented below.
          * 

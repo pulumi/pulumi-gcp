@@ -40,41 +40,41 @@ namespace Pulumi.Gcp.OracleDatabase
         /// 
         /// The following attributes are exported:
         /// 
-        /// * `db_servers` - List of dbServers. Structure is documented below.
+        /// * `DbServers` - List of dbServers. Structure is documented below.
         /// 
-        /// &lt;a name="nested_dbservers"&gt;&lt;/a&gt; The `db_servers` block supports:
+        /// &lt;a name="NestedDbservers"&gt;&lt;/a&gt; The `DbServers` block supports:
         /// 
-        /// * `display_name` - User friendly name for the resource.
+        /// * `DisplayName` - User friendly name for the resource.
         /// 
-        /// * `properties` - Various properties of the databse server. Structure is documented below.
+        /// * `Properties` - Various properties of the databse server. Structure is documented below.
         /// 
-        /// &lt;a name="nested_properties"&gt;&lt;/a&gt; The `properties` block supports:
+        /// &lt;a name="NestedProperties"&gt;&lt;/a&gt; The `Properties` block supports:
         /// 
-        /// * `ocid` - The OCID of database server.
+        /// * `Ocid` - The OCID of database server.
         /// 
-        /// * `ocpu_count` - The OCPU count per database.
+        /// * `OcpuCount` - The OCPU count per database.
         /// 
-        /// * `max_ocpu_count` - The total number of CPU cores available.
+        /// * `MaxOcpuCount` - The total number of CPU cores available.
         /// 
-        /// * `memory_size_gb` - The allocated memory in gigabytes on the database server.
+        /// * `MemorySizeGb` - The allocated memory in gigabytes on the database server.
         /// 
-        /// * `max_memory_size_gb` - The total memory available in gigabytes.
+        /// * `MaxMemorySizeGb` - The total memory available in gigabytes.
         /// 
-        /// * `db_node_storage_size_gb` - The local storage per VM.
+        /// * `DbNodeStorageSizeGb` - The local storage per VM.
         /// 
-        /// * `max_db_node_storage_size_gb` - The total local node storage available in GBs.
+        /// * `MaxDbNodeStorageSizeGb` - The total local node storage available in GBs.
         /// 
-        /// * `vm_count` - The VM count per database.
+        /// * `VmCount` - The VM count per database.
         /// 
-        /// * `state` - The current state of the database server.
-        /// &lt;a name="nested_states"&gt;&lt;/a&gt;Allowed values for `state` are:&lt;br&gt;
+        /// * `State` - The current state of the database server.
+        /// &lt;a name="NestedStates"&gt;&lt;/a&gt;Allowed values for `State` are:&lt;br&gt;
         /// `CREATING` - Indicates that the resource is being created.&lt;br&gt;
         /// `AVAILABLE` - Indicates that the resource is available.&lt;br&gt;
         /// `UNAVAILABLE` - Indicates that the resource is unavailable.&lt;br&gt;
         /// `DELETING` - Indicates that the resource is being deleted.&lt;br&gt;
         /// `DELETED` - Indicates that the resource has been deleted.&lt;br&gt;
         /// 
-        /// * `db_node_ids` - The OCID of database nodes associated with the database server.
+        /// * `DbNodeIds` - The OCID of database nodes associated with the database server.
         /// </summary>
         public static Task<GetDbServersResult> InvokeAsync(GetDbServersArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDbServersResult>("gcp:oracledatabase/getDbServers:getDbServers", args ?? new GetDbServersArgs(), options.WithDefaults());
@@ -108,41 +108,41 @@ namespace Pulumi.Gcp.OracleDatabase
         /// 
         /// The following attributes are exported:
         /// 
-        /// * `db_servers` - List of dbServers. Structure is documented below.
+        /// * `DbServers` - List of dbServers. Structure is documented below.
         /// 
-        /// &lt;a name="nested_dbservers"&gt;&lt;/a&gt; The `db_servers` block supports:
+        /// &lt;a name="NestedDbservers"&gt;&lt;/a&gt; The `DbServers` block supports:
         /// 
-        /// * `display_name` - User friendly name for the resource.
+        /// * `DisplayName` - User friendly name for the resource.
         /// 
-        /// * `properties` - Various properties of the databse server. Structure is documented below.
+        /// * `Properties` - Various properties of the databse server. Structure is documented below.
         /// 
-        /// &lt;a name="nested_properties"&gt;&lt;/a&gt; The `properties` block supports:
+        /// &lt;a name="NestedProperties"&gt;&lt;/a&gt; The `Properties` block supports:
         /// 
-        /// * `ocid` - The OCID of database server.
+        /// * `Ocid` - The OCID of database server.
         /// 
-        /// * `ocpu_count` - The OCPU count per database.
+        /// * `OcpuCount` - The OCPU count per database.
         /// 
-        /// * `max_ocpu_count` - The total number of CPU cores available.
+        /// * `MaxOcpuCount` - The total number of CPU cores available.
         /// 
-        /// * `memory_size_gb` - The allocated memory in gigabytes on the database server.
+        /// * `MemorySizeGb` - The allocated memory in gigabytes on the database server.
         /// 
-        /// * `max_memory_size_gb` - The total memory available in gigabytes.
+        /// * `MaxMemorySizeGb` - The total memory available in gigabytes.
         /// 
-        /// * `db_node_storage_size_gb` - The local storage per VM.
+        /// * `DbNodeStorageSizeGb` - The local storage per VM.
         /// 
-        /// * `max_db_node_storage_size_gb` - The total local node storage available in GBs.
+        /// * `MaxDbNodeStorageSizeGb` - The total local node storage available in GBs.
         /// 
-        /// * `vm_count` - The VM count per database.
+        /// * `VmCount` - The VM count per database.
         /// 
-        /// * `state` - The current state of the database server.
-        /// &lt;a name="nested_states"&gt;&lt;/a&gt;Allowed values for `state` are:&lt;br&gt;
+        /// * `State` - The current state of the database server.
+        /// &lt;a name="NestedStates"&gt;&lt;/a&gt;Allowed values for `State` are:&lt;br&gt;
         /// `CREATING` - Indicates that the resource is being created.&lt;br&gt;
         /// `AVAILABLE` - Indicates that the resource is available.&lt;br&gt;
         /// `UNAVAILABLE` - Indicates that the resource is unavailable.&lt;br&gt;
         /// `DELETING` - Indicates that the resource is being deleted.&lt;br&gt;
         /// `DELETED` - Indicates that the resource has been deleted.&lt;br&gt;
         /// 
-        /// * `db_node_ids` - The OCID of database nodes associated with the database server.
+        /// * `DbNodeIds` - The OCID of database nodes associated with the database server.
         /// </summary>
         public static Output<GetDbServersResult> Invoke(GetDbServersInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDbServersResult>("gcp:oracledatabase/getDbServers:getDbServers", args ?? new GetDbServersInvokeArgs(), options.WithDefaults());
@@ -176,41 +176,41 @@ namespace Pulumi.Gcp.OracleDatabase
         /// 
         /// The following attributes are exported:
         /// 
-        /// * `db_servers` - List of dbServers. Structure is documented below.
+        /// * `DbServers` - List of dbServers. Structure is documented below.
         /// 
-        /// &lt;a name="nested_dbservers"&gt;&lt;/a&gt; The `db_servers` block supports:
+        /// &lt;a name="NestedDbservers"&gt;&lt;/a&gt; The `DbServers` block supports:
         /// 
-        /// * `display_name` - User friendly name for the resource.
+        /// * `DisplayName` - User friendly name for the resource.
         /// 
-        /// * `properties` - Various properties of the databse server. Structure is documented below.
+        /// * `Properties` - Various properties of the databse server. Structure is documented below.
         /// 
-        /// &lt;a name="nested_properties"&gt;&lt;/a&gt; The `properties` block supports:
+        /// &lt;a name="NestedProperties"&gt;&lt;/a&gt; The `Properties` block supports:
         /// 
-        /// * `ocid` - The OCID of database server.
+        /// * `Ocid` - The OCID of database server.
         /// 
-        /// * `ocpu_count` - The OCPU count per database.
+        /// * `OcpuCount` - The OCPU count per database.
         /// 
-        /// * `max_ocpu_count` - The total number of CPU cores available.
+        /// * `MaxOcpuCount` - The total number of CPU cores available.
         /// 
-        /// * `memory_size_gb` - The allocated memory in gigabytes on the database server.
+        /// * `MemorySizeGb` - The allocated memory in gigabytes on the database server.
         /// 
-        /// * `max_memory_size_gb` - The total memory available in gigabytes.
+        /// * `MaxMemorySizeGb` - The total memory available in gigabytes.
         /// 
-        /// * `db_node_storage_size_gb` - The local storage per VM.
+        /// * `DbNodeStorageSizeGb` - The local storage per VM.
         /// 
-        /// * `max_db_node_storage_size_gb` - The total local node storage available in GBs.
+        /// * `MaxDbNodeStorageSizeGb` - The total local node storage available in GBs.
         /// 
-        /// * `vm_count` - The VM count per database.
+        /// * `VmCount` - The VM count per database.
         /// 
-        /// * `state` - The current state of the database server.
-        /// &lt;a name="nested_states"&gt;&lt;/a&gt;Allowed values for `state` are:&lt;br&gt;
+        /// * `State` - The current state of the database server.
+        /// &lt;a name="NestedStates"&gt;&lt;/a&gt;Allowed values for `State` are:&lt;br&gt;
         /// `CREATING` - Indicates that the resource is being created.&lt;br&gt;
         /// `AVAILABLE` - Indicates that the resource is available.&lt;br&gt;
         /// `UNAVAILABLE` - Indicates that the resource is unavailable.&lt;br&gt;
         /// `DELETING` - Indicates that the resource is being deleted.&lt;br&gt;
         /// `DELETED` - Indicates that the resource has been deleted.&lt;br&gt;
         /// 
-        /// * `db_node_ids` - The OCID of database nodes associated with the database server.
+        /// * `DbNodeIds` - The OCID of database nodes associated with the database server.
         /// </summary>
         public static Output<GetDbServersResult> Invoke(GetDbServersInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetDbServersResult>("gcp:oracledatabase/getDbServers:getDbServers", args ?? new GetDbServersInvokeArgs(), options.WithDefaults());

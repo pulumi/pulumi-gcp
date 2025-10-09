@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
         /// or its network is deleted.
         /// 
-        /// &lt;a name="nested_rule_rule_match_layer4_config"&gt;&lt;/a&gt;The `layer4_config` block supports:
+        /// &lt;a name="NestedRuleRuleMatchLayer4Config"&gt;&lt;/a&gt;The `Layer4Config` block supports:
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

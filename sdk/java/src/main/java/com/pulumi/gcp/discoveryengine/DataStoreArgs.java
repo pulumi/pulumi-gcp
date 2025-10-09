@@ -145,7 +145,7 @@ public final class DataStoreArgs extends com.pulumi.resources.ResourceArgs {
      * The KMS key to be used to protect this DataStore at creation time. Must be
      * set for requests that need to comply with CMEK Org Policy protections.
      * If this field is set and processed successfully, the DataStore will be
-     * protected by the KMS key, as indicated in the cmek_config field.
+     * protected by the KMS key, as indicated in the cmekConfig field.
      * 
      */
     @Import(name="kmsKeyName")
@@ -157,7 +157,7 @@ public final class DataStoreArgs extends com.pulumi.resources.ResourceArgs {
      * The KMS key to be used to protect this DataStore at creation time. Must be
      * set for requests that need to comply with CMEK Org Policy protections.
      * If this field is set and processed successfully, the DataStore will be
-     * protected by the KMS key, as indicated in the cmek_config field.
+     * protected by the KMS key, as indicated in the cmekConfig field.
      * 
      */
     public Optional<Output<String>> kmsKeyName() {
@@ -444,7 +444,7 @@ public final class DataStoreArgs extends com.pulumi.resources.ResourceArgs {
          * The KMS key to be used to protect this DataStore at creation time. Must be
          * set for requests that need to comply with CMEK Org Policy protections.
          * If this field is set and processed successfully, the DataStore will be
-         * protected by the KMS key, as indicated in the cmek_config field.
+         * protected by the KMS key, as indicated in the cmekConfig field.
          * 
          * @return builder
          * 
@@ -460,7 +460,7 @@ public final class DataStoreArgs extends com.pulumi.resources.ResourceArgs {
          * The KMS key to be used to protect this DataStore at creation time. Must be
          * set for requests that need to comply with CMEK Org Policy protections.
          * If this field is set and processed successfully, the DataStore will be
-         * protected by the KMS key, as indicated in the cmek_config field.
+         * protected by the KMS key, as indicated in the cmekConfig field.
          * 
          * @return builder
          * 

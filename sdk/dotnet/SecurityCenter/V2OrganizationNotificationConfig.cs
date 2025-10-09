@@ -100,7 +100,7 @@ namespace Pulumi.Gcp.SecurityCenter
 
         /// <summary>
         /// The Pub/Sub topic to send notifications to. Its format is
-        /// "projects/[project_id]/topics/[topic]".
+        /// "projects/[ProjectId]/topics/[topic]".
         /// </summary>
         [Output("pubsubTopic")]
         public Output<string> PubsubTopic { get; private set; } = null!;
@@ -192,7 +192,7 @@ namespace Pulumi.Gcp.SecurityCenter
 
         /// <summary>
         /// The Pub/Sub topic to send notifications to. Its format is
-        /// "projects/[project_id]/topics/[topic]".
+        /// "projects/[ProjectId]/topics/[topic]".
         /// </summary>
         [Input("pubsubTopic", required: true)]
         public Input<string> PubsubTopic { get; set; } = null!;
@@ -246,7 +246,7 @@ namespace Pulumi.Gcp.SecurityCenter
 
         /// <summary>
         /// The Pub/Sub topic to send notifications to. Its format is
-        /// "projects/[project_id]/topics/[topic]".
+        /// "projects/[ProjectId]/topics/[topic]".
         /// </summary>
         [Input("pubsubTopic")]
         public Input<string>? PubsubTopic { get; set; }

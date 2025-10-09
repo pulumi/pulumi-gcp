@@ -14,13 +14,13 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class InstanceGroupManagerVersionTargetSize
     {
         /// <summary>
-        /// , The number of instances which are managed for this version. Conflicts with `percent`.
+        /// , The number of instances which are managed for this version. Conflicts with `Percent`.
         /// </summary>
         public readonly int? Fixed;
         /// <summary>
-        /// , The number of instances (calculated as percentage) which are managed for this version. Conflicts with `fixed`.
-        /// Note that when using `percent`, rounding will be in favor of explicitly set `target_size` values; a managed instance group with 2 instances and 2 `version`s,
-        /// one of which has a `target_size.percent` of `60` will create 2 instances of that `version`.
+        /// , The number of instances (calculated as percentage) which are managed for this version. Conflicts with `Fixed`.
+        /// Note that when using `Percent`, rounding will be in favor of explicitly set `TargetSize` values; a managed instance group with 2 instances and 2 `Version`s,
+        /// one of which has a `target_size.percent` of `60` will create 2 instances of that `Version`.
         /// </summary>
         public readonly int? Percent;
 

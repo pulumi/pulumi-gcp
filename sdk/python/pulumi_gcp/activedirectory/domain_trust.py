@@ -328,6 +328,8 @@ class DomainTrust(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Active Directory Domain Trust Basic
+
         ## Import
 
         DomainTrust can be imported using any of these accepted formats:
@@ -384,6 +386,8 @@ class DomainTrust(pulumi.CustomResource):
             * [Active Directory Trust](https://cloud.google.com/managed-microsoft-ad/docs/create-one-way-trust)
 
         ## Example Usage
+
+        ### Active Directory Domain Trust Basic
 
         ## Import
 

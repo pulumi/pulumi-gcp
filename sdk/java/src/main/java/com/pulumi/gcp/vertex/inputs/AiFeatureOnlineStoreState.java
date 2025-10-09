@@ -89,13 +89,13 @@ public final class AiFeatureOnlineStoreState extends com.pulumi.resources.Resour
      * The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
      * Structure is documented below.
      * 
-     * &gt; **Warning:** `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
+     * &gt; **Warning:** `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
      * 
      * @deprecated
-     * `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
+     * `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
      * 
      */
-    @Deprecated /* `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type */
+    @Deprecated /* `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type */
     @Import(name="embeddingManagement")
     private @Nullable Output<AiFeatureOnlineStoreEmbeddingManagementArgs> embeddingManagement;
 
@@ -103,13 +103,13 @@ public final class AiFeatureOnlineStoreState extends com.pulumi.resources.Resour
      * @return The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
      * Structure is documented below.
      * 
-     * &gt; **Warning:** `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
+     * &gt; **Warning:** `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
      * 
      * @deprecated
-     * `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
+     * `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
      * 
      */
-    @Deprecated /* `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type */
+    @Deprecated /* `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type */
     public Optional<Output<AiFeatureOnlineStoreEmbeddingManagementArgs>> embeddingManagement() {
         return Optional.ofNullable(this.embeddingManagement);
     }
@@ -147,7 +147,7 @@ public final class AiFeatureOnlineStoreState extends com.pulumi.resources.Resour
     /**
      * The labels with user-defined metadata to organize your feature online stores.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -156,7 +156,7 @@ public final class AiFeatureOnlineStoreState extends com.pulumi.resources.Resour
     /**
      * @return The labels with user-defined metadata to organize your feature online stores.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -402,15 +402,15 @@ public final class AiFeatureOnlineStoreState extends com.pulumi.resources.Resour
          * @param embeddingManagement The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
          * Structure is documented below.
          * 
-         * &gt; **Warning:** `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
+         * &gt; **Warning:** `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
          * 
          * @return builder
          * 
          * @deprecated
-         * `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
+         * `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
          * 
          */
-        @Deprecated /* `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type */
+        @Deprecated /* `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type */
         public Builder embeddingManagement(@Nullable Output<AiFeatureOnlineStoreEmbeddingManagementArgs> embeddingManagement) {
             $.embeddingManagement = embeddingManagement;
             return this;
@@ -420,15 +420,15 @@ public final class AiFeatureOnlineStoreState extends com.pulumi.resources.Resour
          * @param embeddingManagement The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
          * Structure is documented below.
          * 
-         * &gt; **Warning:** `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
+         * &gt; **Warning:** `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
          * 
          * @return builder
          * 
          * @deprecated
-         * `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
+         * `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
          * 
          */
-        @Deprecated /* `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type */
+        @Deprecated /* `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type */
         public Builder embeddingManagement(AiFeatureOnlineStoreEmbeddingManagementArgs embeddingManagement) {
             return embeddingManagement(Output.of(embeddingManagement));
         }
@@ -478,7 +478,7 @@ public final class AiFeatureOnlineStoreState extends com.pulumi.resources.Resour
         /**
          * @param labels The labels with user-defined metadata to organize your feature online stores.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -491,7 +491,7 @@ public final class AiFeatureOnlineStoreState extends com.pulumi.resources.Resour
         /**
          * @param labels The labels with user-defined metadata to organize your feature online stores.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 

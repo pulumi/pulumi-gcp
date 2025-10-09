@@ -29,10 +29,10 @@ import javax.annotation.Nullable;
  *     * [gcloud docs](https://cloud.google.com/beyondcorp-enterprise/docs/cross-org-authorization)
  * 
  * &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
- * you must specify a `billing_project` and set `user_project_override` to true
+ * you must specify a `billingProject` and set `userProjectOverride` to true
  * in the provider configuration. Otherwise the ACM API will return a 403 error.
  * Your account must have the `serviceusage.services.use` permission on the
- * `billing_project` you defined.
+ * `billingProject` you defined.
  * 
  * ## Example Usage
  * 
@@ -193,7 +193,7 @@ public class AuthorizedOrgsDesc extends com.pulumi.resources.CustomResource {
     /**
      * Resource name for the `AuthorizedOrgsDesc`. Format:
      * `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`.
-     * The `authorized_orgs_desc` component must begin with a letter, followed by
+     * The `authorizedOrgsDesc` component must begin with a letter, followed by
      * alphanumeric characters or `_`.
      * After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
      * 
@@ -204,7 +204,7 @@ public class AuthorizedOrgsDesc extends com.pulumi.resources.CustomResource {
     /**
      * @return Resource name for the `AuthorizedOrgsDesc`. Format:
      * `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`.
-     * The `authorized_orgs_desc` component must begin with a letter, followed by
+     * The `authorizedOrgsDesc` component must begin with a letter, followed by
      * alphanumeric characters or `_`.
      * After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
      * 

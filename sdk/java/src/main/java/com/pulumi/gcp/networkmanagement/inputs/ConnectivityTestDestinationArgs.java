@@ -50,8 +50,8 @@ public final class ConnectivityTestDestinationArgs extends com.pulumi.resources.
 
     /**
      * A DNS endpoint of Google Kubernetes Engine cluster control plane.
-     * Requires gke_master_cluster to be set, can&#39;t be used simultaneoulsly with
-     * ip_address or network. Applicable only to destination endpoint.
+     * Requires gkeMasterCluster to be set, can&#39;t be used simultaneoulsly with
+     * ipAddress or network. Applicable only to destination endpoint.
      * 
      */
     @Import(name="fqdn")
@@ -59,8 +59,8 @@ public final class ConnectivityTestDestinationArgs extends com.pulumi.resources.
 
     /**
      * @return A DNS endpoint of Google Kubernetes Engine cluster control plane.
-     * Requires gke_master_cluster to be set, can&#39;t be used simultaneoulsly with
-     * ip_address or network. Applicable only to destination endpoint.
+     * Requires gkeMasterCluster to be set, can&#39;t be used simultaneoulsly with
+     * ipAddress or network. Applicable only to destination endpoint.
      * 
      */
     public Optional<Output<String>> fqdn() {
@@ -285,8 +285,8 @@ public final class ConnectivityTestDestinationArgs extends com.pulumi.resources.
 
         /**
          * @param fqdn A DNS endpoint of Google Kubernetes Engine cluster control plane.
-         * Requires gke_master_cluster to be set, can&#39;t be used simultaneoulsly with
-         * ip_address or network. Applicable only to destination endpoint.
+         * Requires gkeMasterCluster to be set, can&#39;t be used simultaneoulsly with
+         * ipAddress or network. Applicable only to destination endpoint.
          * 
          * @return builder
          * 
@@ -298,8 +298,8 @@ public final class ConnectivityTestDestinationArgs extends com.pulumi.resources.
 
         /**
          * @param fqdn A DNS endpoint of Google Kubernetes Engine cluster control plane.
-         * Requires gke_master_cluster to be set, can&#39;t be used simultaneoulsly with
-         * ip_address or network. Applicable only to destination endpoint.
+         * Requires gkeMasterCluster to be set, can&#39;t be used simultaneoulsly with
+         * ipAddress or network. Applicable only to destination endpoint.
          * 
          * @return builder
          * 

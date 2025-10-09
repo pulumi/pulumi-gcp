@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class InstanceTemplateSchedulingOnInstanceStopActionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to discard local SSDs attached to the VM while terminating using `max_run_duration`. Only supports `true` at this point.
+        /// Whether to discard local SSDs attached to the VM while terminating using `MaxRunDuration`. Only supports `True` at this point.
         /// </summary>
         [Input("discardLocalSsd")]
         public Input<bool>? DiscardLocalSsd { get; set; }

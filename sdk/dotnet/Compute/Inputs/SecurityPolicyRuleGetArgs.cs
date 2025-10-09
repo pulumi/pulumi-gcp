@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class SecurityPolicyRuleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Action to take when `match` matches the request. Valid values:
+        /// Action to take when `Match` matches the request. Valid values:
         /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
@@ -32,7 +32,7 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// A match condition that incoming traffic is evaluated against.
-        /// If it evaluates to true, the corresponding `action` is enforced. Structure is documented below.
+        /// If it evaluates to true, the corresponding `Action` is enforced. Structure is documented below.
         /// </summary>
         [Input("match", required: true)]
         public Input<Inputs.SecurityPolicyRuleMatchGetArgs> Match { get; set; } = null!;
@@ -44,7 +44,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<Inputs.SecurityPolicyRulePreconfiguredWafConfigGetArgs>? PreconfiguredWafConfig { get; set; }
 
         /// <summary>
-        /// When set to true, the `action` specified above is not enforced.
+        /// When set to true, the `Action` specified above is not enforced.
         /// Stackdriver logs for requests that trigger a preview action are annotated as such.
         /// </summary>
         [Input("preview")]
@@ -58,13 +58,13 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<int> Priority { get; set; } = null!;
 
         /// <summary>
-        /// Must be specified if the `action` is `rate_based_ban` or `throttle`. Cannot be specified for other actions. Structure is documented below.
+        /// Must be specified if the `Action` is `RateBasedBan` or `Throttle`. Cannot be specified for other actions. Structure is documented below.
         /// </summary>
         [Input("rateLimitOptions")]
         public Input<Inputs.SecurityPolicyRuleRateLimitOptionsGetArgs>? RateLimitOptions { get; set; }
 
         /// <summary>
-        /// Can be specified if the `action` is `redirect`. Cannot be specified for other actions. Structure is documented below.
+        /// Can be specified if the `Action` is `Redirect`. Cannot be specified for other actions. Structure is documented below.
         /// </summary>
         [Input("redirectOptions")]
         public Input<Inputs.SecurityPolicyRuleRedirectOptionsGetArgs>? RedirectOptions { get; set; }

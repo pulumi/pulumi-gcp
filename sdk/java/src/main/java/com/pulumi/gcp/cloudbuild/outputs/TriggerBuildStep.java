@@ -70,7 +70,7 @@ public final class TriggerBuildStep {
      */
     private @Nullable List<String> envs;
     /**
-     * @return Unique identifier for this build step, used in `wait_for` to
+     * @return Unique identifier for this build step, used in `waitFor` to
      * reference this build step as a dependency.
      * 
      */
@@ -133,8 +133,8 @@ public final class TriggerBuildStep {
     private @Nullable List<TriggerBuildStepVolume> volumes;
     /**
      * @return The ID(s) of the step(s) that this build step depends on.
-     * This build step will not start until all the build steps in `wait_for`
-     * have completed successfully. If `wait_for` is empty, this build step
+     * This build step will not start until all the build steps in `waitFor`
+     * have completed successfully. If `waitFor` is empty, this build step
      * will start when all previous build steps in the `Build.Steps` list
      * have completed successfully.
      * 
@@ -208,7 +208,7 @@ public final class TriggerBuildStep {
         return this.envs == null ? List.of() : this.envs;
     }
     /**
-     * @return Unique identifier for this build step, used in `wait_for` to
+     * @return Unique identifier for this build step, used in `waitFor` to
      * reference this build step as a dependency.
      * 
      */
@@ -285,8 +285,8 @@ public final class TriggerBuildStep {
     }
     /**
      * @return The ID(s) of the step(s) that this build step depends on.
-     * This build step will not start until all the build steps in `wait_for`
-     * have completed successfully. If `wait_for` is empty, this build step
+     * This build step will not start until all the build steps in `waitFor`
+     * have completed successfully. If `waitFor` is empty, this build step
      * will start when all previous build steps in the `Build.Steps` list
      * have completed successfully.
      * 

@@ -22,7 +22,7 @@ public final class BackendServiceSecuritySettingsArgs extends com.pulumi.resourc
      * Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_security_settings_aws_v4_authentication&#34;&gt;&lt;/a&gt;The `aws_v4_authentication` block supports:
+     * &lt;a name=&#34;nestedSecuritySettingsAwsV4Authentication&#34;&gt;&lt;/a&gt;The `awsV4Authentication` block supports:
      * 
      */
     @Import(name="awsV4Authentication")
@@ -33,7 +33,7 @@ public final class BackendServiceSecuritySettingsArgs extends com.pulumi.resourc
      * Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_security_settings_aws_v4_authentication&#34;&gt;&lt;/a&gt;The `aws_v4_authentication` block supports:
+     * &lt;a name=&#34;nestedSecuritySettingsAwsV4Authentication&#34;&gt;&lt;/a&gt;The `awsV4Authentication` block supports:
      * 
      */
     public Optional<Output<BackendServiceSecuritySettingsAwsV4AuthenticationArgs>> awsV4Authentication() {
@@ -109,7 +109,7 @@ public final class BackendServiceSecuritySettingsArgs extends com.pulumi.resourc
          * Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_security_settings_aws_v4_authentication&#34;&gt;&lt;/a&gt;The `aws_v4_authentication` block supports:
+         * &lt;a name=&#34;nestedSecuritySettingsAwsV4Authentication&#34;&gt;&lt;/a&gt;The `awsV4Authentication` block supports:
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class BackendServiceSecuritySettingsArgs extends com.pulumi.resourc
          * Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_security_settings_aws_v4_authentication&#34;&gt;&lt;/a&gt;The `aws_v4_authentication` block supports:
+         * &lt;a name=&#34;nestedSecuritySettingsAwsV4Authentication&#34;&gt;&lt;/a&gt;The `awsV4Authentication` block supports:
          * 
          * @return builder
          * 

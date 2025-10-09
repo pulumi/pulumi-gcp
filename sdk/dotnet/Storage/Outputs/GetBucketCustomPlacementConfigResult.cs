@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Storage.Outputs
     public sealed class GetBucketCustomPlacementConfigResult
     {
         /// <summary>
-        /// The list of individual regions that comprise a dual-region bucket. See the docs for a list of acceptable regions. Note: If any of the data_locations changes, it will recreate the bucket.
+        /// The list of individual regions that comprise a dual-region bucket. See the docs for a list of acceptable regions. Note: If any of the DataLocations changes, it will recreate the bucket.
         /// </summary>
         public readonly ImmutableArray<string> DataLocations;
 

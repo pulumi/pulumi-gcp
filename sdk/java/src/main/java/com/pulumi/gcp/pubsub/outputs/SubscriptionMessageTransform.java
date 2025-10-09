@@ -20,7 +20,7 @@ public final class SubscriptionMessageTransform {
     private @Nullable Boolean disabled;
     /**
      * @return Javascript User Defined Function. If multiple Javascript UDFs are specified on a resource,
-     * each one must have a unique `function_name`.
+     * each one must have a unique `functionName`.
      * Structure is documented below.
      * 
      */
@@ -37,7 +37,7 @@ public final class SubscriptionMessageTransform {
     }
     /**
      * @return Javascript User Defined Function. If multiple Javascript UDFs are specified on a resource,
-     * each one must have a unique `function_name`.
+     * each one must have a unique `functionName`.
      * Structure is documented below.
      * 
      */

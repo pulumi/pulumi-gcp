@@ -152,7 +152,7 @@ public final class StoragePoolArgs extends com.pulumi.resources.ResourceArgs {
      * Labels as key value pairs. Example: `{ &#34;owner&#34;: &#34;Bob&#34;, &#34;department&#34;: &#34;finance&#34;, &#34;purpose&#34;: &#34;testing&#34; }`.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -162,7 +162,7 @@ public final class StoragePoolArgs extends com.pulumi.resources.ResourceArgs {
      * @return Labels as key value pairs. Example: `{ &#34;owner&#34;: &#34;Bob&#34;, &#34;department&#34;: &#34;finance&#34;, &#34;purpose&#34;: &#34;testing&#34; }`.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -268,7 +268,7 @@ public final class StoragePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+     * Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
      * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
      * 
      */
@@ -276,7 +276,7 @@ public final class StoragePoolArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> replicaZone;
 
     /**
-     * @return Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+     * @return Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
      * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
      * 
      */
@@ -332,7 +332,7 @@ public final class StoragePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+     * Specifies the active zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
      * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
      * If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
      * 
@@ -341,7 +341,7 @@ public final class StoragePoolArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> zone;
 
     /**
-     * @return Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+     * @return Specifies the active zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
      * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
      * If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
      * 
@@ -575,7 +575,7 @@ public final class StoragePoolArgs extends com.pulumi.resources.ResourceArgs {
          * @param labels Labels as key value pairs. Example: `{ &#34;owner&#34;: &#34;Bob&#34;, &#34;department&#34;: &#34;finance&#34;, &#34;purpose&#34;: &#34;testing&#34; }`.
          * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -589,7 +589,7 @@ public final class StoragePoolArgs extends com.pulumi.resources.ResourceArgs {
          * @param labels Labels as key value pairs. Example: `{ &#34;owner&#34;: &#34;Bob&#34;, &#34;department&#34;: &#34;finance&#34;, &#34;purpose&#34;: &#34;testing&#34; }`.
          * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -733,7 +733,7 @@ public final class StoragePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param replicaZone Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+         * @param replicaZone Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
          * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
          * 
          * @return builder
@@ -745,7 +745,7 @@ public final class StoragePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param replicaZone Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+         * @param replicaZone Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
          * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
          * 
          * @return builder
@@ -821,7 +821,7 @@ public final class StoragePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zone Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+         * @param zone Specifies the active zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
          * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
          * If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
          * 
@@ -834,7 +834,7 @@ public final class StoragePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zone Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+         * @param zone Specifies the active zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
          * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
          * If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
          * 

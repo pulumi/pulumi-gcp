@@ -32,10 +32,10 @@ public final class RecommendationEngineMediaRecommendationEngineConfig {
     private @Nullable String optimizationObjective;
     /**
      * @return Name and value of the custom threshold for cvr optimization_objective.
-     * For target_field `watch-time`, target_field_value must be an integer
+     * For targetField `watch-time`, targetFieldValue must be an integer
      * value indicating the media progress time in seconds between (0, 86400]
      * (excludes 0, includes 86400) (e.g., 90).
-     * For target_field `watch-percentage`, the target_field_value must be a
+     * For targetField `watch-percentage`, the targetFieldValue must be a
      * valid float value between (0, 1.0] (excludes 0, includes 1.0) (e.g., 0.5).
      * Structure is documented below.
      * 
@@ -86,10 +86,10 @@ public final class RecommendationEngineMediaRecommendationEngineConfig {
     }
     /**
      * @return Name and value of the custom threshold for cvr optimization_objective.
-     * For target_field `watch-time`, target_field_value must be an integer
+     * For targetField `watch-time`, targetFieldValue must be an integer
      * value indicating the media progress time in seconds between (0, 86400]
      * (excludes 0, includes 86400) (e.g., 90).
-     * For target_field `watch-percentage`, the target_field_value must be a
+     * For targetField `watch-percentage`, the targetFieldValue must be a
      * valid float value between (0, 1.0] (excludes 0, includes 1.0) (e.g., 0.5).
      * Structure is documented below.
      * 

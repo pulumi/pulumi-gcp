@@ -21,14 +21,14 @@ public final class CertificateMapGclbTarget {
     private @Nullable List<CertificateMapGclbTargetIpConfig> ipConfigs;
     /**
      * @return Proxy name must be in the format projects/*&#47;locations/*&#47;targetHttpsProxies/*.
-     * This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
+     * This field is part of a union field `targetProxy`: Only one of `targetHttpsProxy` or
      * `targetSslProxy` may be set.
      * 
      */
     private @Nullable String targetHttpsProxy;
     /**
      * @return Proxy name must be in the format projects/*&#47;locations/*&#47;targetSslProxies/*.
-     * This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
+     * This field is part of a union field `targetProxy`: Only one of `targetHttpsProxy` or
      * `targetSslProxy` may be set.
      * 
      */
@@ -45,7 +45,7 @@ public final class CertificateMapGclbTarget {
     }
     /**
      * @return Proxy name must be in the format projects/*&#47;locations/*&#47;targetHttpsProxies/*.
-     * This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
+     * This field is part of a union field `targetProxy`: Only one of `targetHttpsProxy` or
      * `targetSslProxy` may be set.
      * 
      */
@@ -54,7 +54,7 @@ public final class CertificateMapGclbTarget {
     }
     /**
      * @return Proxy name must be in the format projects/*&#47;locations/*&#47;targetSslProxies/*.
-     * This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
+     * This field is part of a union field `targetProxy`: Only one of `targetHttpsProxy` or
      * `targetSslProxy` may be set.
      * 
      */

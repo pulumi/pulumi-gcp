@@ -135,13 +135,13 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// <summary>
         /// Labels are key/value pairs that help to organize and filter resources.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// The cloud location of the endpoint group, currently restricted to `global`.
+        /// The cloud location of the endpoint group, currently restricted to `Global`.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -275,7 +275,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// <summary>
         /// Labels are key/value pairs that help to organize and filter resources.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -284,7 +284,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         }
 
         /// <summary>
-        /// The cloud location of the endpoint group, currently restricted to `global`.
+        /// The cloud location of the endpoint group, currently restricted to `Global`.
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -381,7 +381,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// <summary>
         /// Labels are key/value pairs that help to organize and filter resources.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -390,7 +390,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         }
 
         /// <summary>
-        /// The cloud location of the endpoint group, currently restricted to `global`.
+        /// The cloud location of the endpoint group, currently restricted to `Global`.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

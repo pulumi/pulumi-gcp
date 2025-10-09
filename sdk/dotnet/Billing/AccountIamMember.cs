@@ -221,7 +221,7 @@ namespace Pulumi.Gcp.Billing
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// Identities that will be granted the privilege in `role`.
+        /// Identities that will be granted the privilege in `Role`.
         /// Each entry can have one of the following values:
         /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
         /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
@@ -299,7 +299,7 @@ namespace Pulumi.Gcp.Billing
         public Input<Inputs.AccountIamMemberConditionArgs>? Condition { get; set; }
 
         /// <summary>
-        /// Identities that will be granted the privilege in `role`.
+        /// Identities that will be granted the privilege in `Role`.
         /// Each entry can have one of the following values:
         /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
         /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
@@ -345,7 +345,7 @@ namespace Pulumi.Gcp.Billing
         public Input<string>? Etag { get; set; }
 
         /// <summary>
-        /// Identities that will be granted the privilege in `role`.
+        /// Identities that will be granted the privilege in `Role`.
         /// Each entry can have one of the following values:
         /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
         /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.

@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         public readonly string? ClientCertificate;
         /// <summary>
         /// PEM representation of the replica's private key. The
-        /// corresponding public key in encoded in the `client_certificate`.
+        /// corresponding public key in encoded in the `ClientCertificate`.
         /// </summary>
         public readonly string? ClientKey;
         /// <summary>

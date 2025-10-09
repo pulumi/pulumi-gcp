@@ -238,9 +238,9 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
      * The list of zones in which the node pool&#39;s nodes should be located. Nodes must
      * be in the region of their regional cluster or in the same region as their
      * cluster&#39;s zone for zonal clusters. If unspecified, the cluster-level
-     * `node_locations` will be used.
+     * `nodeLocations` will be used.
      * 
-     * &gt; Note: `node_locations` will not revert to the cluster&#39;s default set of zones
+     * &gt; Note: `nodeLocations` will not revert to the cluster&#39;s default set of zones
      * upon being unset. You must manually reconcile the list of zones with your
      * cluster.
      * 
@@ -252,9 +252,9 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
      * @return The list of zones in which the node pool&#39;s nodes should be located. Nodes must
      * be in the region of their regional cluster or in the same region as their
      * cluster&#39;s zone for zonal clusters. If unspecified, the cluster-level
-     * `node_locations` will be used.
+     * `nodeLocations` will be used.
      * 
-     * &gt; Note: `node_locations` will not revert to the cluster&#39;s default set of zones
+     * &gt; Note: `nodeLocations` will not revert to the cluster&#39;s default set of zones
      * upon being unset. You must manually reconcile the list of zones with your
      * cluster.
      * 
@@ -301,7 +301,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
      * Specifies node pool-level settings of queued provisioning.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_autoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
+     * &lt;a name=&#34;nestedAutoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
      * 
      */
     @Import(name="queuedProvisioning")
@@ -311,7 +311,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
      * @return Specifies node pool-level settings of queued provisioning.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_autoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
+     * &lt;a name=&#34;nestedAutoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
      * 
      */
     public Optional<Output<NodePoolQueuedProvisioningArgs>> queuedProvisioning() {
@@ -337,11 +337,11 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The Kubernetes version for the nodes in this pool. Note that if this field
-     * and `auto_upgrade` are both specified, they will fight each other for what the node version should
+     * and `autoUpgrade` are both specified, they will fight each other for what the node version should
      * be, so setting both is highly discouraged. While a fuzzy version can be specified, it&#39;s
      * recommended that you specify explicit versions as the provider will see spurious diffs
      * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source&#39;s
-     * `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
+     * `versionPrefix` field to approximate fuzzy versions in a provider-compatible way.
      * 
      */
     @Import(name="version")
@@ -349,11 +349,11 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The Kubernetes version for the nodes in this pool. Note that if this field
-     * and `auto_upgrade` are both specified, they will fight each other for what the node version should
+     * and `autoUpgrade` are both specified, they will fight each other for what the node version should
      * be, so setting both is highly discouraged. While a fuzzy version can be specified, it&#39;s
      * recommended that you specify explicit versions as the provider will see spurious diffs
      * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source&#39;s
-     * `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
+     * `versionPrefix` field to approximate fuzzy versions in a provider-compatible way.
      * 
      */
     public Optional<Output<String>> version() {
@@ -679,9 +679,9 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
          * @param nodeLocations The list of zones in which the node pool&#39;s nodes should be located. Nodes must
          * be in the region of their regional cluster or in the same region as their
          * cluster&#39;s zone for zonal clusters. If unspecified, the cluster-level
-         * `node_locations` will be used.
+         * `nodeLocations` will be used.
          * 
-         * &gt; Note: `node_locations` will not revert to the cluster&#39;s default set of zones
+         * &gt; Note: `nodeLocations` will not revert to the cluster&#39;s default set of zones
          * upon being unset. You must manually reconcile the list of zones with your
          * cluster.
          * 
@@ -697,9 +697,9 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
          * @param nodeLocations The list of zones in which the node pool&#39;s nodes should be located. Nodes must
          * be in the region of their regional cluster or in the same region as their
          * cluster&#39;s zone for zonal clusters. If unspecified, the cluster-level
-         * `node_locations` will be used.
+         * `nodeLocations` will be used.
          * 
-         * &gt; Note: `node_locations` will not revert to the cluster&#39;s default set of zones
+         * &gt; Note: `nodeLocations` will not revert to the cluster&#39;s default set of zones
          * upon being unset. You must manually reconcile the list of zones with your
          * cluster.
          * 
@@ -714,9 +714,9 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
          * @param nodeLocations The list of zones in which the node pool&#39;s nodes should be located. Nodes must
          * be in the region of their regional cluster or in the same region as their
          * cluster&#39;s zone for zonal clusters. If unspecified, the cluster-level
-         * `node_locations` will be used.
+         * `nodeLocations` will be used.
          * 
-         * &gt; Note: `node_locations` will not revert to the cluster&#39;s default set of zones
+         * &gt; Note: `nodeLocations` will not revert to the cluster&#39;s default set of zones
          * upon being unset. You must manually reconcile the list of zones with your
          * cluster.
          * 
@@ -777,7 +777,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
          * @param queuedProvisioning Specifies node pool-level settings of queued provisioning.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_autoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
+         * &lt;a name=&#34;nestedAutoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
          * 
          * @return builder
          * 
@@ -791,7 +791,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
          * @param queuedProvisioning Specifies node pool-level settings of queued provisioning.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_autoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
+         * &lt;a name=&#34;nestedAutoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
          * 
          * @return builder
          * 
@@ -825,11 +825,11 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param version The Kubernetes version for the nodes in this pool. Note that if this field
-         * and `auto_upgrade` are both specified, they will fight each other for what the node version should
+         * and `autoUpgrade` are both specified, they will fight each other for what the node version should
          * be, so setting both is highly discouraged. While a fuzzy version can be specified, it&#39;s
          * recommended that you specify explicit versions as the provider will see spurious diffs
          * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source&#39;s
-         * `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
+         * `versionPrefix` field to approximate fuzzy versions in a provider-compatible way.
          * 
          * @return builder
          * 
@@ -841,11 +841,11 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param version The Kubernetes version for the nodes in this pool. Note that if this field
-         * and `auto_upgrade` are both specified, they will fight each other for what the node version should
+         * and `autoUpgrade` are both specified, they will fight each other for what the node version should
          * be, so setting both is highly discouraged. While a fuzzy version can be specified, it&#39;s
          * recommended that you specify explicit versions as the provider will see spurious diffs
          * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source&#39;s
-         * `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
+         * `versionPrefix` field to approximate fuzzy versions in a provider-compatible way.
          * 
          * @return builder
          * 

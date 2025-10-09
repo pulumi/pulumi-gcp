@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class ConnectClusterGcpConfigAccessConfig {
     /**
-     * @return Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka Connect cluster are allocated. To make the connect cluster available in a VPC, you must specify at least one subnet per network. You must specify between 1 and 10 subnets. Additional subnets may be specified with additional `network_configs` blocks.
+     * @return Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka Connect cluster are allocated. To make the connect cluster available in a VPC, you must specify at least one subnet per network. You must specify between 1 and 10 subnets. Additional subnets may be specified with additional `networkConfigs` blocks.
      * Structure is documented below.
      * 
      */
@@ -20,7 +20,7 @@ public final class ConnectClusterGcpConfigAccessConfig {
 
     private ConnectClusterGcpConfigAccessConfig() {}
     /**
-     * @return Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka Connect cluster are allocated. To make the connect cluster available in a VPC, you must specify at least one subnet per network. You must specify between 1 and 10 subnets. Additional subnets may be specified with additional `network_configs` blocks.
+     * @return Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka Connect cluster are allocated. To make the connect cluster available in a VPC, you must specify at least one subnet per network. You must specify between 1 and 10 subnets. Additional subnets may be specified with additional `networkConfigs` blocks.
      * Structure is documented below.
      * 
      */

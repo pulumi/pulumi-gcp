@@ -35,7 +35,7 @@ public final class InstanceDesiredPscAutoConnectionArgs extends com.pulumi.resou
 
     /**
      * (Output)
-     * Output only. The consumer project_id where the forwarding rule is created from.
+     * Output only. The consumer projectId where the forwarding rule is created from.
      * 
      */
     @Import(name="projectId", required=true)
@@ -43,7 +43,7 @@ public final class InstanceDesiredPscAutoConnectionArgs extends com.pulumi.resou
 
     /**
      * @return (Output)
-     * Output only. The consumer project_id where the forwarding rule is created from.
+     * Output only. The consumer projectId where the forwarding rule is created from.
      * 
      */
     public Output<String> projectId() {
@@ -102,7 +102,7 @@ public final class InstanceDesiredPscAutoConnectionArgs extends com.pulumi.resou
 
         /**
          * @param projectId (Output)
-         * Output only. The consumer project_id where the forwarding rule is created from.
+         * Output only. The consumer projectId where the forwarding rule is created from.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class InstanceDesiredPscAutoConnectionArgs extends com.pulumi.resou
 
         /**
          * @param projectId (Output)
-         * Output only. The consumer project_id where the forwarding rule is created from.
+         * Output only. The consumer projectId where the forwarding rule is created from.
          * 
          * @return builder
          * 

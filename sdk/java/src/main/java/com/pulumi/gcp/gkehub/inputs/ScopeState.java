@@ -67,7 +67,7 @@ public final class ScopeState extends com.pulumi.resources.ResourceArgs {
      * Labels for this Scope.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -77,7 +77,7 @@ public final class ScopeState extends com.pulumi.resources.ResourceArgs {
      * @return Labels for this Scope.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -103,7 +103,7 @@ public final class ScopeState extends com.pulumi.resources.ResourceArgs {
      * Scope-level cluster namespace labels. For the member clusters bound
      * to the Scope, these labels are applied to each namespace under the
      * Scope. Scope-level labels take precedence over Namespace-level
-     * labels (`namespace_labels` in the Fleet Namespace resource) if they
+     * labels (`namespaceLabels` in the Fleet Namespace resource) if they
      * share a key. Keys and values must be Kubernetes-conformant.
      * 
      */
@@ -114,7 +114,7 @@ public final class ScopeState extends com.pulumi.resources.ResourceArgs {
      * @return Scope-level cluster namespace labels. For the member clusters bound
      * to the Scope, these labels are applied to each namespace under the
      * Scope. Scope-level labels take precedence over Namespace-level
-     * labels (`namespace_labels` in the Fleet Namespace resource) if they
+     * labels (`namespaceLabels` in the Fleet Namespace resource) if they
      * share a key. Keys and values must be Kubernetes-conformant.
      * 
      */
@@ -320,7 +320,7 @@ public final class ScopeState extends com.pulumi.resources.ResourceArgs {
          * @param labels Labels for this Scope.
          * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -334,7 +334,7 @@ public final class ScopeState extends com.pulumi.resources.ResourceArgs {
          * @param labels Labels for this Scope.
          * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -368,7 +368,7 @@ public final class ScopeState extends com.pulumi.resources.ResourceArgs {
          * @param namespaceLabels Scope-level cluster namespace labels. For the member clusters bound
          * to the Scope, these labels are applied to each namespace under the
          * Scope. Scope-level labels take precedence over Namespace-level
-         * labels (`namespace_labels` in the Fleet Namespace resource) if they
+         * labels (`namespaceLabels` in the Fleet Namespace resource) if they
          * share a key. Keys and values must be Kubernetes-conformant.
          * 
          * @return builder
@@ -383,7 +383,7 @@ public final class ScopeState extends com.pulumi.resources.ResourceArgs {
          * @param namespaceLabels Scope-level cluster namespace labels. For the member clusters bound
          * to the Scope, these labels are applied to each namespace under the
          * Scope. Scope-level labels take precedence over Namespace-level
-         * labels (`namespace_labels` in the Fleet Namespace resource) if they
+         * labels (`namespaceLabels` in the Fleet Namespace resource) if they
          * share a key. Keys and values must be Kubernetes-conformant.
          * 
          * @return builder

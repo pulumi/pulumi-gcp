@@ -2940,7 +2940,7 @@ public final class StorageFunctions {
      *    you must take care for race conditions between the establishment of the IAM policy and creation of the relevant Cloud Storage resource.
      *    Cloud Storage APIs will require permissions on resources such as pub/sub topics or Cloud KMS keys to exist *before* the attempt to utilise them in a
      *    bucket configuration, otherwise the API calls will fail.
-     *    You may need to use `depends_on` to create an explicit dependency between the IAM policy resource and the Cloud Storage resource which depends on it.
+     *    You may need to use `dependsOn` to create an explicit dependency between the IAM policy resource and the Cloud Storage resource which depends on it.
      *    See the examples here and in the `gcp.storage.Notification` resource.
      * 
      * For more information see
@@ -3074,7 +3074,7 @@ public final class StorageFunctions {
      *    you must take care for race conditions between the establishment of the IAM policy and creation of the relevant Cloud Storage resource.
      *    Cloud Storage APIs will require permissions on resources such as pub/sub topics or Cloud KMS keys to exist *before* the attempt to utilise them in a
      *    bucket configuration, otherwise the API calls will fail.
-     *    You may need to use `depends_on` to create an explicit dependency between the IAM policy resource and the Cloud Storage resource which depends on it.
+     *    You may need to use `dependsOn` to create an explicit dependency between the IAM policy resource and the Cloud Storage resource which depends on it.
      *    See the examples here and in the `gcp.storage.Notification` resource.
      * 
      * For more information see
@@ -3208,7 +3208,7 @@ public final class StorageFunctions {
      *    you must take care for race conditions between the establishment of the IAM policy and creation of the relevant Cloud Storage resource.
      *    Cloud Storage APIs will require permissions on resources such as pub/sub topics or Cloud KMS keys to exist *before* the attempt to utilise them in a
      *    bucket configuration, otherwise the API calls will fail.
-     *    You may need to use `depends_on` to create an explicit dependency between the IAM policy resource and the Cloud Storage resource which depends on it.
+     *    You may need to use `dependsOn` to create an explicit dependency between the IAM policy resource and the Cloud Storage resource which depends on it.
      *    See the examples here and in the `gcp.storage.Notification` resource.
      * 
      * For more information see
@@ -3342,7 +3342,7 @@ public final class StorageFunctions {
      *    you must take care for race conditions between the establishment of the IAM policy and creation of the relevant Cloud Storage resource.
      *    Cloud Storage APIs will require permissions on resources such as pub/sub topics or Cloud KMS keys to exist *before* the attempt to utilise them in a
      *    bucket configuration, otherwise the API calls will fail.
-     *    You may need to use `depends_on` to create an explicit dependency between the IAM policy resource and the Cloud Storage resource which depends on it.
+     *    You may need to use `dependsOn` to create an explicit dependency between the IAM policy resource and the Cloud Storage resource which depends on it.
      *    See the examples here and in the `gcp.storage.Notification` resource.
      * 
      * For more information see
@@ -3476,7 +3476,7 @@ public final class StorageFunctions {
      *    you must take care for race conditions between the establishment of the IAM policy and creation of the relevant Cloud Storage resource.
      *    Cloud Storage APIs will require permissions on resources such as pub/sub topics or Cloud KMS keys to exist *before* the attempt to utilise them in a
      *    bucket configuration, otherwise the API calls will fail.
-     *    You may need to use `depends_on` to create an explicit dependency between the IAM policy resource and the Cloud Storage resource which depends on it.
+     *    You may need to use `dependsOn` to create an explicit dependency between the IAM policy resource and the Cloud Storage resource which depends on it.
      *    See the examples here and in the `gcp.storage.Notification` resource.
      * 
      * For more information see
@@ -3610,7 +3610,7 @@ public final class StorageFunctions {
      *    you must take care for race conditions between the establishment of the IAM policy and creation of the relevant Cloud Storage resource.
      *    Cloud Storage APIs will require permissions on resources such as pub/sub topics or Cloud KMS keys to exist *before* the attempt to utilise them in a
      *    bucket configuration, otherwise the API calls will fail.
-     *    You may need to use `depends_on` to create an explicit dependency between the IAM policy resource and the Cloud Storage resource which depends on it.
+     *    You may need to use `dependsOn` to create an explicit dependency between the IAM policy resource and the Cloud Storage resource which depends on it.
      *    See the examples here and in the `gcp.storage.Notification` resource.
      * 
      * For more information see
@@ -3744,7 +3744,7 @@ public final class StorageFunctions {
      *    you must take care for race conditions between the establishment of the IAM policy and creation of the relevant Cloud Storage resource.
      *    Cloud Storage APIs will require permissions on resources such as pub/sub topics or Cloud KMS keys to exist *before* the attempt to utilise them in a
      *    bucket configuration, otherwise the API calls will fail.
-     *    You may need to use `depends_on` to create an explicit dependency between the IAM policy resource and the Cloud Storage resource which depends on it.
+     *    You may need to use `dependsOn` to create an explicit dependency between the IAM policy resource and the Cloud Storage resource which depends on it.
      *    See the examples here and in the `gcp.storage.Notification` resource.
      * 
      * For more information see

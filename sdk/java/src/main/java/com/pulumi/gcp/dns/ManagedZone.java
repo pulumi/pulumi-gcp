@@ -611,7 +611,7 @@ public class ManagedZone extends com.pulumi.resources.CustomResource {
      * A set of key/value label pairs to assign to this ManagedZone.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -621,7 +621,7 @@ public class ManagedZone extends com.pulumi.resources.CustomResource {
      * @return A set of key/value label pairs to assign to this ManagedZone.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -658,7 +658,7 @@ public class ManagedZone extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Delegate your managed_zone to these virtual name servers;
+     * Delegate your managedZone to these virtual name servers;
      * defined by the server
      * 
      */
@@ -666,7 +666,7 @@ public class ManagedZone extends com.pulumi.resources.CustomResource {
     private Output<List<String>> nameServers;
 
     /**
-     * @return Delegate your managed_zone to these virtual name servers;
+     * @return Delegate your managedZone to these virtual name servers;
      * defined by the server
      * 
      */
@@ -693,7 +693,7 @@ public class ManagedZone extends com.pulumi.resources.CustomResource {
     }
     /**
      * For privately visible zones, the set of Virtual Private Cloud
-     * resources that the zone is visible from. At least one of `gke_clusters` or `networks` must be specified.
+     * resources that the zone is visible from. At least one of `gkeClusters` or `networks` must be specified.
      * Structure is documented below.
      * 
      */
@@ -702,7 +702,7 @@ public class ManagedZone extends com.pulumi.resources.CustomResource {
 
     /**
      * @return For privately visible zones, the set of Virtual Private Cloud
-     * resources that the zone is visible from. At least one of `gke_clusters` or `networks` must be specified.
+     * resources that the zone is visible from. At least one of `gkeClusters` or `networks` must be specified.
      * Structure is documented below.
      * 
      */
@@ -744,7 +744,7 @@ public class ManagedZone extends com.pulumi.resources.CustomResource {
     /**
      * Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
      * lookup queries using automatically configured records for VPC resources. This only applies
-     * to networks listed under `private_visibility_config`.
+     * to networks listed under `privateVisibilityConfig`.
      * 
      */
     @Export(name="reverseLookup", refs={Boolean.class}, tree="[0]")
@@ -753,7 +753,7 @@ public class ManagedZone extends com.pulumi.resources.CustomResource {
     /**
      * @return Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
      * lookup queries using automatically configured records for VPC resources. This only applies
-     * to networks listed under `private_visibility_config`.
+     * to networks listed under `privateVisibilityConfig`.
      * 
      */
     public Output<Optional<Boolean>> reverseLookup() {

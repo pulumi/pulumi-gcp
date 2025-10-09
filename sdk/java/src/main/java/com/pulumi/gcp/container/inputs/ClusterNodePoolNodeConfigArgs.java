@@ -122,7 +122,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
     /**
      * Size of the disk attached to each node, specified
      * in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated to `boot_disk.size_gb`, and must match if specified in both places.
-     * Prefer configuring `boot_disk`.
+     * Prefer configuring `bootDisk`.
      * 
      */
     @Import(name="diskSizeGb")
@@ -131,7 +131,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
     /**
      * @return Size of the disk attached to each node, specified
      * in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated to `boot_disk.size_gb`, and must match if specified in both places.
-     * Prefer configuring `boot_disk`.
+     * Prefer configuring `bootDisk`.
      * 
      */
     public Optional<Output<Integer>> diskSizeGb() {
@@ -140,7 +140,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
 
     /**
      * Type of the disk attached to each node
-     * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39;, &#39;pd-ssd&#39;, or &#39;hyperdisk-balanced&#39;). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`. This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
+     * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39;, &#39;pd-ssd&#39;, or &#39;hyperdisk-balanced&#39;). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`. This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `bootDisk`.
      * 
      */
     @Import(name="diskType")
@@ -148,7 +148,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
 
     /**
      * @return Type of the disk attached to each node
-     * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39;, &#39;pd-ssd&#39;, or &#39;hyperdisk-balanced&#39;). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`. This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
+     * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39;, &#39;pd-ssd&#39;, or &#39;hyperdisk-balanced&#39;). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`. This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `bootDisk`.
      * 
      */
     public Optional<Output<String>> diskType() {
@@ -253,9 +253,9 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
 
     /**
      * Parameters for the Google Container Filesystem (GCFS).
-     * If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = &#34;COS_CONTAINERD&#34;` and `node_version` from GKE versions 1.19 or later to use it.
-     * For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
-     * A `machine_type` that has more than 16 GiB of memory is also recommended.
+     * If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = &#34;COS_CONTAINERD&#34;` and `nodeVersion` from GKE versions 1.19 or later to use it.
+     * For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
+     * A `machineType` that has more than 16 GiB of memory is also recommended.
      * GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
      * Structure is documented below.
      * 
@@ -265,9 +265,9 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
 
     /**
      * @return Parameters for the Google Container Filesystem (GCFS).
-     * If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = &#34;COS_CONTAINERD&#34;` and `node_version` from GKE versions 1.19 or later to use it.
-     * For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
-     * A `machine_type` that has more than 16 GiB of memory is also recommended.
+     * If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = &#34;COS_CONTAINERD&#34;` and `nodeVersion` from GKE versions 1.19 or later to use it.
+     * For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
+     * A `machineType` that has more than 16 GiB of memory is also recommended.
      * GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
      * Structure is documented below.
      * 
@@ -563,7 +563,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
     /**
      * The set of Google API scopes to be made available
      * on all of the node VMs under the &#34;default&#34; service account.
-     * Use the &#34;https://www.googleapis.com/auth/cloud-platform&#34; scope to grant access to all APIs. It is recommended that you set `service_account` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
+     * Use the &#34;https://www.googleapis.com/auth/cloud-platform&#34; scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
      * 
      * See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/access-scopes) for information on migrating off of legacy access scopes.
      * 
@@ -574,7 +574,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
     /**
      * @return The set of Google API scopes to be made available
      * on all of the node VMs under the &#34;default&#34; service account.
-     * Use the &#34;https://www.googleapis.com/auth/cloud-platform&#34; scope to grant access to all APIs. It is recommended that you set `service_account` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
+     * Use the &#34;https://www.googleapis.com/auth/cloud-platform&#34; scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
      * 
      * See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/access-scopes) for information on migrating off of legacy access scopes.
      * 
@@ -665,14 +665,14 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfs_config` must be `enabled=true` for this feature to work. `min_master_version` must also be set to use GKE 1.28.3-gke.106700 or later versions.
+     * Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfsConfig` must be `enabled=true` for this feature to work. `minMasterVersion` must also be set to use GKE 1.28.3-gke.106700 or later versions.
      * 
      */
     @Import(name="secondaryBootDisks")
     private @Nullable Output<List<ClusterNodePoolNodeConfigSecondaryBootDiskArgs>> secondaryBootDisks;
 
     /**
-     * @return Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfs_config` must be `enabled=true` for this feature to work. `min_master_version` must also be set to use GKE 1.28.3-gke.106700 or later versions.
+     * @return Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfsConfig` must be `enabled=true` for this feature to work. `minMasterVersion` must also be set to use GKE 1.28.3-gke.106700 or later versions.
      * 
      */
     public Optional<Output<List<ClusterNodePoolNodeConfigSecondaryBootDiskArgs>>> secondaryBootDisks() {
@@ -1017,7 +1017,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
         /**
          * @param diskSizeGb Size of the disk attached to each node, specified
          * in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated to `boot_disk.size_gb`, and must match if specified in both places.
-         * Prefer configuring `boot_disk`.
+         * Prefer configuring `bootDisk`.
          * 
          * @return builder
          * 
@@ -1030,7 +1030,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
         /**
          * @param diskSizeGb Size of the disk attached to each node, specified
          * in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated to `boot_disk.size_gb`, and must match if specified in both places.
-         * Prefer configuring `boot_disk`.
+         * Prefer configuring `bootDisk`.
          * 
          * @return builder
          * 
@@ -1041,7 +1041,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
 
         /**
          * @param diskType Type of the disk attached to each node
-         * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39;, &#39;pd-ssd&#39;, or &#39;hyperdisk-balanced&#39;). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`. This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
+         * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39;, &#39;pd-ssd&#39;, or &#39;hyperdisk-balanced&#39;). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`. This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `bootDisk`.
          * 
          * @return builder
          * 
@@ -1053,7 +1053,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
 
         /**
          * @param diskType Type of the disk attached to each node
-         * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39;, &#39;pd-ssd&#39;, or &#39;hyperdisk-balanced&#39;). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`. This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
+         * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39;, &#39;pd-ssd&#39;, or &#39;hyperdisk-balanced&#39;). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`. This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `bootDisk`.
          * 
          * @return builder
          * 
@@ -1206,9 +1206,9 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
 
         /**
          * @param gcfsConfig Parameters for the Google Container Filesystem (GCFS).
-         * If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = &#34;COS_CONTAINERD&#34;` and `node_version` from GKE versions 1.19 or later to use it.
-         * For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
-         * A `machine_type` that has more than 16 GiB of memory is also recommended.
+         * If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = &#34;COS_CONTAINERD&#34;` and `nodeVersion` from GKE versions 1.19 or later to use it.
+         * For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
+         * A `machineType` that has more than 16 GiB of memory is also recommended.
          * GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
          * Structure is documented below.
          * 
@@ -1222,9 +1222,9 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
 
         /**
          * @param gcfsConfig Parameters for the Google Container Filesystem (GCFS).
-         * If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = &#34;COS_CONTAINERD&#34;` and `node_version` from GKE versions 1.19 or later to use it.
-         * For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
-         * A `machine_type` that has more than 16 GiB of memory is also recommended.
+         * If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = &#34;COS_CONTAINERD&#34;` and `nodeVersion` from GKE versions 1.19 or later to use it.
+         * For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
+         * A `machineType` that has more than 16 GiB of memory is also recommended.
          * GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
          * Structure is documented below.
          * 
@@ -1629,7 +1629,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
         /**
          * @param oauthScopes The set of Google API scopes to be made available
          * on all of the node VMs under the &#34;default&#34; service account.
-         * Use the &#34;https://www.googleapis.com/auth/cloud-platform&#34; scope to grant access to all APIs. It is recommended that you set `service_account` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
+         * Use the &#34;https://www.googleapis.com/auth/cloud-platform&#34; scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
          * 
          * See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/access-scopes) for information on migrating off of legacy access scopes.
          * 
@@ -1644,7 +1644,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
         /**
          * @param oauthScopes The set of Google API scopes to be made available
          * on all of the node VMs under the &#34;default&#34; service account.
-         * Use the &#34;https://www.googleapis.com/auth/cloud-platform&#34; scope to grant access to all APIs. It is recommended that you set `service_account` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
+         * Use the &#34;https://www.googleapis.com/auth/cloud-platform&#34; scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
          * 
          * See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/access-scopes) for information on migrating off of legacy access scopes.
          * 
@@ -1658,7 +1658,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
         /**
          * @param oauthScopes The set of Google API scopes to be made available
          * on all of the node VMs under the &#34;default&#34; service account.
-         * Use the &#34;https://www.googleapis.com/auth/cloud-platform&#34; scope to grant access to all APIs. It is recommended that you set `service_account` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
+         * Use the &#34;https://www.googleapis.com/auth/cloud-platform&#34; scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
          * 
          * See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/access-scopes) for information on migrating off of legacy access scopes.
          * 
@@ -1781,7 +1781,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param secondaryBootDisks Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfs_config` must be `enabled=true` for this feature to work. `min_master_version` must also be set to use GKE 1.28.3-gke.106700 or later versions.
+         * @param secondaryBootDisks Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfsConfig` must be `enabled=true` for this feature to work. `minMasterVersion` must also be set to use GKE 1.28.3-gke.106700 or later versions.
          * 
          * @return builder
          * 
@@ -1792,7 +1792,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param secondaryBootDisks Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfs_config` must be `enabled=true` for this feature to work. `min_master_version` must also be set to use GKE 1.28.3-gke.106700 or later versions.
+         * @param secondaryBootDisks Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfsConfig` must be `enabled=true` for this feature to work. `minMasterVersion` must also be set to use GKE 1.28.3-gke.106700 or later versions.
          * 
          * @return builder
          * 
@@ -1802,7 +1802,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param secondaryBootDisks Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfs_config` must be `enabled=true` for this feature to work. `min_master_version` must also be set to use GKE 1.28.3-gke.106700 or later versions.
+         * @param secondaryBootDisks Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfsConfig` must be `enabled=true` for this feature to work. `minMasterVersion` must also be set to use GKE 1.28.3-gke.106700 or later versions.
          * 
          * @return builder
          * 

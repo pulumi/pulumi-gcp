@@ -211,7 +211,7 @@ namespace Pulumi.Gcp.Firebase
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// The current database state. Set desired_state to :DISABLED to disable the database and :ACTIVE to reenable the database
+        /// The current database state. Set DesiredState to :DISABLED to disable the database and :ACTIVE to reenable the database
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -363,7 +363,7 @@ namespace Pulumi.Gcp.Firebase
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The current database state. Set desired_state to :DISABLED to disable the database and :ACTIVE to reenable the database
+        /// The current database state. Set DesiredState to :DISABLED to disable the database and :ACTIVE to reenable the database
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

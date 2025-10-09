@@ -256,8 +256,8 @@ public class Firewall extends com.pulumi.resources.CustomResource {
     }
     /**
      * Direction of traffic to which this firewall applies; default is
-     * INGRESS. Note: For INGRESS traffic, one of `source_ranges`,
-     * `source_tags` or `source_service_accounts` is required.
+     * INGRESS. Note: For INGRESS traffic, one of `sourceRanges`,
+     * `sourceTags` or `sourceServiceAccounts` is required.
      * Possible values are: `INGRESS`, `EGRESS`.
      * 
      */
@@ -266,8 +266,8 @@ public class Firewall extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Direction of traffic to which this firewall applies; default is
-     * INGRESS. Note: For INGRESS traffic, one of `source_ranges`,
-     * `source_tags` or `source_service_accounts` is required.
+     * INGRESS. Note: For INGRESS traffic, one of `sourceRanges`,
+     * `sourceTags` or `sourceServiceAccounts` is required.
      * Possible values are: `INGRESS`, `EGRESS`.
      * 
      */
@@ -296,7 +296,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
     }
     /**
      * This field denotes whether to enable logging for a particular firewall rule.
-     * If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `log_config`
+     * If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `logConfig`
      * 
      * @deprecated
      * Deprecated in favor of log_config
@@ -308,7 +308,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
 
     /**
      * @return This field denotes whether to enable logging for a particular firewall rule.
-     * If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `log_config`
+     * If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `logConfig`
      * 
      */
     public Output<Boolean> enableLogging() {
@@ -359,14 +359,14 @@ public class Firewall extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The name or self_link of the network to attach this firewall to.
+     * The name or selfLink of the network to attach this firewall to.
      * 
      */
     @Export(name="network", refs={String.class}, tree="[0]")
     private Output<String> network;
 
     /**
-     * @return The name or self_link of the network to attach this firewall to.
+     * @return The name or selfLink of the network to attach this firewall to.
      * 
      */
     public Output<String> network() {
@@ -451,7 +451,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * source IP that belongs to a tag listed in the sourceTags property. The
      * connection does not need to match both properties for the firewall to
      * apply. IPv4 or IPv6 ranges are supported. For INGRESS traffic, one of
-     * `source_ranges`, `source_tags` or `source_service_accounts` is required.
+     * `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
      * 
      */
     @Export(name="sourceRanges", refs={List.class,String.class}, tree="[0,1]")
@@ -466,7 +466,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * source IP that belongs to a tag listed in the sourceTags property. The
      * connection does not need to match both properties for the firewall to
      * apply. IPv4 or IPv6 ranges are supported. For INGRESS traffic, one of
-     * `source_ranges`, `source_tags` or `source_service_accounts` is required.
+     * `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
      * 
      */
     public Output<Optional<List<String>>> sourceRanges() {
@@ -484,7 +484,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * sourceServiceAccount. The connection does not need to match both
      * properties for the firewall to apply. sourceServiceAccounts cannot be
      * used at the same time as sourceTags or targetTags. For INGRESS traffic,
-     * one of `source_ranges`, `source_tags` or `source_service_accounts` is required.
+     * one of `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
      * 
      */
     @Export(name="sourceServiceAccounts", refs={List.class,String.class}, tree="[0,1]")
@@ -502,7 +502,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * sourceServiceAccount. The connection does not need to match both
      * properties for the firewall to apply. sourceServiceAccounts cannot be
      * used at the same time as sourceTags or targetTags. For INGRESS traffic,
-     * one of `source_ranges`, `source_tags` or `source_service_accounts` is required.
+     * one of `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
      * 
      */
     public Output<Optional<List<String>>> sourceServiceAccounts() {
@@ -518,7 +518,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * source IP address within sourceRanges OR the source IP that belongs to
      * a tag listed in the sourceTags property. The connection does not need
      * to match both properties for the firewall to apply. For INGRESS traffic,
-     * one of `source_ranges`, `source_tags` or `source_service_accounts` is required.
+     * one of `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
      * 
      */
     @Export(name="sourceTags", refs={List.class,String.class}, tree="[0,1]")
@@ -534,7 +534,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * source IP address within sourceRanges OR the source IP that belongs to
      * a tag listed in the sourceTags property. The connection does not need
      * to match both properties for the firewall to apply. For INGRESS traffic,
-     * one of `source_ranges`, `source_tags` or `source_service_accounts` is required.
+     * one of `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
      * 
      */
     public Output<Optional<List<String>>> sourceTags() {

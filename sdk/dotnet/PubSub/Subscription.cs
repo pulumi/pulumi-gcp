@@ -753,7 +753,7 @@ namespace Pulumi.Gcp.PubSub
 
         /// <summary>
         /// A policy that specifies the conditions for dead lettering messages in
-        /// this subscription. If dead_letter_policy is not set, dead lettering
+        /// this subscription. If DeadLetterPolicy is not set, dead lettering
         /// is disabled.
         /// The Cloud Pub/Sub service account associated with this subscription's
         /// parent project (i.e.,
@@ -771,18 +771,18 @@ namespace Pulumi.Gcp.PubSub
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
-        /// If `true`, Pub/Sub provides the following guarantees for the delivery
+        /// If `True`, Pub/Sub provides the following guarantees for the delivery
         /// of a message with a given value of messageId on this Subscriptions':
         /// - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
         /// - An acknowledged message will not be resent to a subscriber.
-        /// Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
+        /// Note that subscribers may still receive multiple copies of a message when `EnableExactlyOnceDelivery`
         /// is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
         /// </summary>
         [Output("enableExactlyOnceDelivery")]
         public Output<bool?> EnableExactlyOnceDelivery { get; private set; } = null!;
 
         /// <summary>
-        /// If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
+        /// If `True`, messages published with the same orderingKey in PubsubMessage will be delivered to
         /// the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
         /// may be delivered in any order.
         /// </summary>
@@ -815,7 +815,7 @@ namespace Pulumi.Gcp.PubSub
         /// A set of key/value label pairs to assign to this Subscription.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -823,7 +823,7 @@ namespace Pulumi.Gcp.PubSub
         /// <summary>
         /// How long to retain unacknowledged messages in the subscription's
         /// backlog, from the moment a message is published. If
-        /// retain_acked_messages is true, then this also configures the retention
+        /// RetainAckedMessages is true, then this also configures the retention
         /// of acknowledged messages, and thus configures how far back in time a
         /// subscriptions.seek can be done. Defaults to 7 days. Cannot be more
         /// than 31 days (`"2678400s"`) or less than 10 minutes (`"600s"`).
@@ -871,7 +871,7 @@ namespace Pulumi.Gcp.PubSub
         public Output<Outputs.SubscriptionPushConfig?> PushConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether to retain acknowledged messages. If `true`, then
+        /// Indicates whether to retain acknowledged messages. If `True`, then
         /// messages are not expunged from the subscription's backlog, even if
         /// they are acknowledged, until they fall out of the
         /// messageRetentionDuration window.
@@ -1000,7 +1000,7 @@ namespace Pulumi.Gcp.PubSub
 
         /// <summary>
         /// A policy that specifies the conditions for dead lettering messages in
-        /// this subscription. If dead_letter_policy is not set, dead lettering
+        /// this subscription. If DeadLetterPolicy is not set, dead lettering
         /// is disabled.
         /// The Cloud Pub/Sub service account associated with this subscription's
         /// parent project (i.e.,
@@ -1012,18 +1012,18 @@ namespace Pulumi.Gcp.PubSub
         public Input<Inputs.SubscriptionDeadLetterPolicyArgs>? DeadLetterPolicy { get; set; }
 
         /// <summary>
-        /// If `true`, Pub/Sub provides the following guarantees for the delivery
+        /// If `True`, Pub/Sub provides the following guarantees for the delivery
         /// of a message with a given value of messageId on this Subscriptions':
         /// - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
         /// - An acknowledged message will not be resent to a subscriber.
-        /// Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
+        /// Note that subscribers may still receive multiple copies of a message when `EnableExactlyOnceDelivery`
         /// is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
         /// </summary>
         [Input("enableExactlyOnceDelivery")]
         public Input<bool>? EnableExactlyOnceDelivery { get; set; }
 
         /// <summary>
-        /// If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
+        /// If `True`, messages published with the same orderingKey in PubsubMessage will be delivered to
         /// the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
         /// may be delivered in any order.
         /// </summary>
@@ -1059,7 +1059,7 @@ namespace Pulumi.Gcp.PubSub
         /// A set of key/value label pairs to assign to this Subscription.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -1070,7 +1070,7 @@ namespace Pulumi.Gcp.PubSub
         /// <summary>
         /// How long to retain unacknowledged messages in the subscription's
         /// backlog, from the moment a message is published. If
-        /// retain_acked_messages is true, then this also configures the retention
+        /// RetainAckedMessages is true, then this also configures the retention
         /// of acknowledged messages, and thus configures how far back in time a
         /// subscriptions.seek can be done. Defaults to 7 days. Cannot be more
         /// than 31 days (`"2678400s"`) or less than 10 minutes (`"600s"`).
@@ -1117,7 +1117,7 @@ namespace Pulumi.Gcp.PubSub
         public Input<Inputs.SubscriptionPushConfigArgs>? PushConfig { get; set; }
 
         /// <summary>
-        /// Indicates whether to retain acknowledged messages. If `true`, then
+        /// Indicates whether to retain acknowledged messages. If `True`, then
         /// messages are not expunged from the subscription's backlog, even if
         /// they are acknowledged, until they fall out of the
         /// messageRetentionDuration window.
@@ -1209,7 +1209,7 @@ namespace Pulumi.Gcp.PubSub
 
         /// <summary>
         /// A policy that specifies the conditions for dead lettering messages in
-        /// this subscription. If dead_letter_policy is not set, dead lettering
+        /// this subscription. If DeadLetterPolicy is not set, dead lettering
         /// is disabled.
         /// The Cloud Pub/Sub service account associated with this subscription's
         /// parent project (i.e.,
@@ -1237,18 +1237,18 @@ namespace Pulumi.Gcp.PubSub
         }
 
         /// <summary>
-        /// If `true`, Pub/Sub provides the following guarantees for the delivery
+        /// If `True`, Pub/Sub provides the following guarantees for the delivery
         /// of a message with a given value of messageId on this Subscriptions':
         /// - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
         /// - An acknowledged message will not be resent to a subscriber.
-        /// Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
+        /// Note that subscribers may still receive multiple copies of a message when `EnableExactlyOnceDelivery`
         /// is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
         /// </summary>
         [Input("enableExactlyOnceDelivery")]
         public Input<bool>? EnableExactlyOnceDelivery { get; set; }
 
         /// <summary>
-        /// If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
+        /// If `True`, messages published with the same orderingKey in PubsubMessage will be delivered to
         /// the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
         /// may be delivered in any order.
         /// </summary>
@@ -1284,7 +1284,7 @@ namespace Pulumi.Gcp.PubSub
         /// A set of key/value label pairs to assign to this Subscription.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -1295,7 +1295,7 @@ namespace Pulumi.Gcp.PubSub
         /// <summary>
         /// How long to retain unacknowledged messages in the subscription's
         /// backlog, from the moment a message is published. If
-        /// retain_acked_messages is true, then this also configures the retention
+        /// RetainAckedMessages is true, then this also configures the retention
         /// of acknowledged messages, and thus configures how far back in time a
         /// subscriptions.seek can be done. Defaults to 7 days. Cannot be more
         /// than 31 days (`"2678400s"`) or less than 10 minutes (`"600s"`).
@@ -1359,7 +1359,7 @@ namespace Pulumi.Gcp.PubSub
         public Input<Inputs.SubscriptionPushConfigGetArgs>? PushConfig { get; set; }
 
         /// <summary>
-        /// Indicates whether to retain acknowledged messages. If `true`, then
+        /// Indicates whether to retain acknowledged messages. If `True`, then
         /// messages are not expunged from the subscription's backlog, even if
         /// they are acknowledged, until they fall out of the
         /// messageRetentionDuration window.

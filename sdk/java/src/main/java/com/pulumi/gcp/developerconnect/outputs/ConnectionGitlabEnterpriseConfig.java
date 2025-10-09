@@ -36,7 +36,7 @@ public final class ConnectionGitlabEnterpriseConfig {
     private ConnectionGitlabEnterpriseConfigReadAuthorizerCredential readAuthorizerCredential;
     /**
      * @return (Output)
-     * Output only. Version of the GitLab Enterprise server running on the `host_uri`.
+     * Output only. Version of the GitLab Enterprise server running on the `hostUri`.
      * 
      */
     private @Nullable String serverVersion;
@@ -89,7 +89,7 @@ public final class ConnectionGitlabEnterpriseConfig {
     }
     /**
      * @return (Output)
-     * Output only. Version of the GitLab Enterprise server running on the `host_uri`.
+     * Output only. Version of the GitLab Enterprise server running on the `hostUri`.
      * 
      */
     public Optional<String> serverVersion() {

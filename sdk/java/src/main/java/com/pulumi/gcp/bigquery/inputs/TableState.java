@@ -141,7 +141,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
      * the recurring diff this causes. As a workaround, we recommend using the
      * schema as returned by the API.
      * 
-     * ~&gt;**NOTE:**  If you use `external_data_configuration`
+     * ~&gt;**NOTE:**  If you use `externalDataConfiguration`
      * documented below and do **not** set
      * `external_data_configuration.connection_id`, schemas must be specified
      * with `external_data_configuration.schema`. Otherwise, schemas must be
@@ -164,7 +164,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
      * the recurring diff this causes. As a workaround, we recommend using the
      * schema as returned by the API.
      * 
-     * ~&gt;**NOTE:**  If you use `external_data_configuration`
+     * ~&gt;**NOTE:**  If you use `externalDataConfiguration`
      * documented below and do **not** set
      * `external_data_configuration.connection_id`, schemas must be specified
      * with `external_data_configuration.schema`. Otherwise, schemas must be
@@ -648,7 +648,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
     /**
      * Replication info of a table created
      * using &#34;AS REPLICA&#34; DDL like:
-     * `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`.
+     * `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF srcMv`.
      * Structure is documented below.
      * 
      */
@@ -658,7 +658,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Replication info of a table created
      * using &#34;AS REPLICA&#34; DDL like:
-     * `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`.
+     * `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF srcMv`.
      * Structure is documented below.
      * 
      */
@@ -936,7 +936,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
          * the recurring diff this causes. As a workaround, we recommend using the
          * schema as returned by the API.
          * 
-         * ~&gt;**NOTE:**  If you use `external_data_configuration`
+         * ~&gt;**NOTE:**  If you use `externalDataConfiguration`
          * documented below and do **not** set
          * `external_data_configuration.connection_id`, schemas must be specified
          * with `external_data_configuration.schema`. Otherwise, schemas must be
@@ -963,7 +963,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
          * the recurring diff this causes. As a workaround, we recommend using the
          * schema as returned by the API.
          * 
-         * ~&gt;**NOTE:**  If you use `external_data_configuration`
+         * ~&gt;**NOTE:**  If you use `externalDataConfiguration`
          * documented below and do **not** set
          * `external_data_configuration.connection_id`, schemas must be specified
          * with `external_data_configuration.schema`. Otherwise, schemas must be
@@ -1624,7 +1624,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param tableReplicationInfo Replication info of a table created
          * using &#34;AS REPLICA&#34; DDL like:
-         * `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`.
+         * `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF srcMv`.
          * Structure is documented below.
          * 
          * @return builder
@@ -1638,7 +1638,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param tableReplicationInfo Replication info of a table created
          * using &#34;AS REPLICA&#34; DDL like:
-         * `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`.
+         * `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF srcMv`.
          * Structure is documented below.
          * 
          * @return builder

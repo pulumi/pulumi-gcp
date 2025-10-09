@@ -82,7 +82,7 @@ public class SubAccount extends com.pulumi.resources.CustomResource {
         return this.billingAccountId;
     }
     /**
-     * If set to &#34;RENAME_ON_DESTROY&#34; the billing account display_name
+     * If set to &#34;RENAME_ON_DESTROY&#34; the billing account displayName
      * will be changed to &#34;Destroyed&#34; along with a timestamp.  If set to &#34;&#34; this will not occur.
      * Default is &#34;&#34;.
      * 
@@ -91,7 +91,7 @@ public class SubAccount extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> deletionPolicy;
 
     /**
-     * @return If set to &#34;RENAME_ON_DESTROY&#34; the billing account display_name
+     * @return If set to &#34;RENAME_ON_DESTROY&#34; the billing account displayName
      * will be changed to &#34;Destroyed&#34; along with a timestamp.  If set to &#34;&#34; this will not occur.
      * Default is &#34;&#34;.
      * 

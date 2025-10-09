@@ -64,8 +64,8 @@ public final class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssi
 
     /**
      * A one word, unique name for this repository. This is  the `repo
-     * id` in the yum config file and also the `display_name` if
-     * `display_name` is omitted. This id is also used as the unique
+     * id` in the yum config file and also the `displayName` if
+     * `displayName` is omitted. This id is also used as the unique
      * identifier when checking for resource conflicts.
      * 
      */
@@ -74,8 +74,8 @@ public final class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssi
 
     /**
      * @return A one word, unique name for this repository. This is  the `repo
-     * id` in the yum config file and also the `display_name` if
-     * `display_name` is omitted. This id is also used as the unique
+     * id` in the yum config file and also the `displayName` if
+     * `displayName` is omitted. This id is also used as the unique
      * identifier when checking for resource conflicts.
      * 
      */
@@ -185,8 +185,8 @@ public final class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssi
 
         /**
          * @param id A one word, unique name for this repository. This is  the `repo
-         * id` in the yum config file and also the `display_name` if
-         * `display_name` is omitted. This id is also used as the unique
+         * id` in the yum config file and also the `displayName` if
+         * `displayName` is omitted. This id is also used as the unique
          * identifier when checking for resource conflicts.
          * 
          * @return builder
@@ -199,8 +199,8 @@ public final class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssi
 
         /**
          * @param id A one word, unique name for this repository. This is  the `repo
-         * id` in the yum config file and also the `display_name` if
-         * `display_name` is omitted. This id is also used as the unique
+         * id` in the yum config file and also the `displayName` if
+         * `displayName` is omitted. This id is also used as the unique
          * identifier when checking for resource conflicts.
          * 
          * @return builder

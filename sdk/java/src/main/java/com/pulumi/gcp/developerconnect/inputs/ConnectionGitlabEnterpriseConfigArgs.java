@@ -74,7 +74,7 @@ public final class ConnectionGitlabEnterpriseConfigArgs extends com.pulumi.resou
 
     /**
      * (Output)
-     * Output only. Version of the GitLab Enterprise server running on the `host_uri`.
+     * Output only. Version of the GitLab Enterprise server running on the `hostUri`.
      * 
      */
     @Import(name="serverVersion")
@@ -82,7 +82,7 @@ public final class ConnectionGitlabEnterpriseConfigArgs extends com.pulumi.resou
 
     /**
      * @return (Output)
-     * Output only. Version of the GitLab Enterprise server running on the `host_uri`.
+     * Output only. Version of the GitLab Enterprise server running on the `hostUri`.
      * 
      */
     public Optional<Output<String>> serverVersion() {
@@ -247,7 +247,7 @@ public final class ConnectionGitlabEnterpriseConfigArgs extends com.pulumi.resou
 
         /**
          * @param serverVersion (Output)
-         * Output only. Version of the GitLab Enterprise server running on the `host_uri`.
+         * Output only. Version of the GitLab Enterprise server running on the `hostUri`.
          * 
          * @return builder
          * 
@@ -259,7 +259,7 @@ public final class ConnectionGitlabEnterpriseConfigArgs extends com.pulumi.resou
 
         /**
          * @param serverVersion (Output)
-         * Output only. Version of the GitLab Enterprise server running on the `host_uri`.
+         * Output only. Version of the GitLab Enterprise server running on the `hostUri`.
          * 
          * @return builder
          * 

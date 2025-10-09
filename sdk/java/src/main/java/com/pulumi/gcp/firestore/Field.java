@@ -29,7 +29,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Warning:** This resource creates a Firestore Single Field override on a project that
  *  already has a Firestore database. If you haven&#39;t already created it, you may
- * create a `gcp.firestore.Database` resource with `location_id` set to your
+ * create a `gcp.firestore.Database` resource with `locationId` set to your
  * chosen location.
  * 
  * ## Example Usage
@@ -372,7 +372,7 @@ public class Field extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * The TTL configuration for this Field. If set to an empty block (i.e. `ttl_config {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
+     * The TTL configuration for this Field. If set to an empty block (i.e. `ttlConfig {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
      * Structure is documented below.
      * 
      */
@@ -380,7 +380,7 @@ public class Field extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ FieldTtlConfig> ttlConfig;
 
     /**
-     * @return The TTL configuration for this Field. If set to an empty block (i.e. `ttl_config {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
+     * @return The TTL configuration for this Field. If set to an empty block (i.e. `ttlConfig {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
      * Structure is documented below.
      * 
      */

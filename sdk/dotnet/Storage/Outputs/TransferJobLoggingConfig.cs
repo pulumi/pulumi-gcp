@@ -18,11 +18,11 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// </summary>
         public readonly bool? EnableOnPremGcsTransferLogs;
         /// <summary>
-        /// States in which logActions are logged. Not supported for transfers with PosifxFilesystem data sources; use enable_on_prem_gcs_transfer_logs instead.
+        /// States in which logActions are logged. Not supported for transfers with PosifxFilesystem data sources; use EnableOnPremGcsTransferLogs instead.
         /// </summary>
         public readonly ImmutableArray<string> LogActionStates;
         /// <summary>
-        /// Specifies the actions to be logged. Not supported for transfers with PosifxFilesystem data sources; use enable_on_prem_gcs_transfer_logs instead.
+        /// Specifies the actions to be logged. Not supported for transfers with PosifxFilesystem data sources; use EnableOnPremGcsTransferLogs instead.
         /// </summary>
         public readonly ImmutableArray<string> LogActions;
 

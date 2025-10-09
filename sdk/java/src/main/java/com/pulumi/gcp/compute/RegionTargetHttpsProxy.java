@@ -467,7 +467,7 @@ public class RegionTargetHttpsProxy extends com.pulumi.resources.CustomResource 
     /**
      * URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
      * sslCertificates and certificateManagerCertificates can&#39;t be defined together.
-     * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
+     * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
      * 
      */
     @Export(name="certificateManagerCertificates", refs={List.class,String.class}, tree="[0,1]")
@@ -476,7 +476,7 @@ public class RegionTargetHttpsProxy extends com.pulumi.resources.CustomResource 
     /**
      * @return URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
      * sslCertificates and certificateManagerCertificates can&#39;t be defined together.
-     * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
+     * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
      * 
      */
     public Output<Optional<List<String>>> certificateManagerCertificates() {

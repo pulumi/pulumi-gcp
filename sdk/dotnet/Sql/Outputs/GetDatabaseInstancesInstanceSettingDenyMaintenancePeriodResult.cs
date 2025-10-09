@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string StartDate;
         /// <summary>
-        /// Time in UTC when the "deny maintenance period" starts on start_date and ends on end_date. The time is in format: HH:mm:SS, i.e., 00:00:00
+        /// Time in UTC when the "deny maintenance period" starts on StartDate and ends on end_date. The time is in format: HH:mm:SS, i.e., 00:00:00
         /// </summary>
         public readonly string Time;
 

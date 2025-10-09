@@ -12,6 +12,12 @@ import (
 )
 
 // List all certificates within Google Certificate Manager for a given project, region or filter.
+//
+// ## Example Usage
+//
+// ### With A Filter
+//
+// ### Regional Certificates With A Filter
 func GetCertificates(ctx *pulumi.Context, args *GetCertificatesArgs, opts ...pulumi.InvokeOption) (*GetCertificatesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCertificatesResult

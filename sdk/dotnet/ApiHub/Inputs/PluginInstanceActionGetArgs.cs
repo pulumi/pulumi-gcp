@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.ApiHub.Inputs
     {
         /// <summary>
         /// This should map to one of the action id specified
-        /// in actions_config in the plugin.
+        /// in ActionsConfig in the plugin.
         /// </summary>
         [Input("actionId", required: true)]
         public Input<string> ActionId { get; set; } = null!;
@@ -52,7 +52,7 @@ namespace Pulumi.Gcp.ApiHub.Inputs
         /// be used.
         /// 
         /// 
-        /// &lt;a name="nested_actions_actions_hub_instance_action"&gt;&lt;/a&gt;The `hub_instance_action` block contains:
+        /// &lt;a name="NestedActionsActionsHubInstanceAction"&gt;&lt;/a&gt;The `HubInstanceAction` block contains:
         /// </summary>
         [Input("scheduleTimeZone")]
         public Input<string>? ScheduleTimeZone { get; set; }

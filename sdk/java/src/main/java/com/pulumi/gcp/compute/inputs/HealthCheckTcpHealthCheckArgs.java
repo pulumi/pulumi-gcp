@@ -35,7 +35,7 @@ public final class HealthCheckTcpHealthCheckArgs extends com.pulumi.resources.Re
 
     /**
      * Port name as defined in InstanceGroup#NamedPort#name. If both port and
-     * port_name are defined, port takes precedence.
+     * portName are defined, port takes precedence.
      * 
      */
     @Import(name="portName")
@@ -43,7 +43,7 @@ public final class HealthCheckTcpHealthCheckArgs extends com.pulumi.resources.Re
 
     /**
      * @return Port name as defined in InstanceGroup#NamedPort#name. If both port and
-     * port_name are defined, port takes precedence.
+     * portName are defined, port takes precedence.
      * 
      */
     public Optional<Output<String>> portName() {
@@ -200,7 +200,7 @@ public final class HealthCheckTcpHealthCheckArgs extends com.pulumi.resources.Re
 
         /**
          * @param portName Port name as defined in InstanceGroup#NamedPort#name. If both port and
-         * port_name are defined, port takes precedence.
+         * portName are defined, port takes precedence.
          * 
          * @return builder
          * 
@@ -212,7 +212,7 @@ public final class HealthCheckTcpHealthCheckArgs extends com.pulumi.resources.Re
 
         /**
          * @param portName Port name as defined in InstanceGroup#NamedPort#name. If both port and
-         * port_name are defined, port takes precedence.
+         * portName are defined, port takes precedence.
          * 
          * @return builder
          * 

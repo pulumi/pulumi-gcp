@@ -253,14 +253,14 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
+     * The current software version on the instance. This attribute can not be set during creation. Refer to `availableMaintenanceVersions` attribute to see what `maintenanceVersion` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenanceVersion` value that is older than the current one on the instance will be ignored.
      * 
      */
     @Import(name="maintenanceVersion")
     private @Nullable Output<String> maintenanceVersion;
 
     /**
-     * @return The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
+     * @return The current software version on the instance. This attribute can not be set during creation. Refer to `availableMaintenanceVersions` attribute to see what `maintenanceVersion` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenanceVersion` value that is older than the current one on the instance will be ignored.
      * 
      */
     public Optional<Output<String>> maintenanceVersion() {
@@ -270,7 +270,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     /**
      * The name of the existing instance that will
      * act as the master in the replication setup. Note, this requires the master to
-     * have `binary_log_enabled` set, as well as existing backups.
+     * have `binaryLogEnabled` set, as well as existing backups.
      * 
      */
     @Import(name="masterInstanceName")
@@ -279,7 +279,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     /**
      * @return The name of the existing instance that will
      * act as the master in the replication setup. Note, this requires the master to
-     * have `binary_log_enabled` set, as well as existing backups.
+     * have `binaryLogEnabled` set, as well as existing backups.
      * 
      */
     public Optional<Output<String>> masterInstanceName() {
@@ -938,7 +938,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param maintenanceVersion The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
+         * @param maintenanceVersion The current software version on the instance. This attribute can not be set during creation. Refer to `availableMaintenanceVersions` attribute to see what `maintenanceVersion` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenanceVersion` value that is older than the current one on the instance will be ignored.
          * 
          * @return builder
          * 
@@ -949,7 +949,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param maintenanceVersion The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
+         * @param maintenanceVersion The current software version on the instance. This attribute can not be set during creation. Refer to `availableMaintenanceVersions` attribute to see what `maintenanceVersion` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenanceVersion` value that is older than the current one on the instance will be ignored.
          * 
          * @return builder
          * 
@@ -961,7 +961,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         /**
          * @param masterInstanceName The name of the existing instance that will
          * act as the master in the replication setup. Note, this requires the master to
-         * have `binary_log_enabled` set, as well as existing backups.
+         * have `binaryLogEnabled` set, as well as existing backups.
          * 
          * @return builder
          * 
@@ -974,7 +974,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         /**
          * @param masterInstanceName The name of the existing instance that will
          * act as the master in the replication setup. Note, this requires the master to
-         * have `binary_log_enabled` set, as well as existing backups.
+         * have `binaryLogEnabled` set, as well as existing backups.
          * 
          * @return builder
          * 

@@ -34,11 +34,11 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly Outputs.JobHadoopConfigLoggingConfig? LoggingConfig;
         /// <summary>
-        /// The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in `jar_file_uris`. Conflicts with `main_jar_file_uri`
+        /// The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in `JarFileUris`. Conflicts with `MainJarFileUri`
         /// </summary>
         public readonly string? MainClass;
         /// <summary>
-        /// The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'. Conflicts with `main_class`
+        /// The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'. Conflicts with `MainClass`
         /// </summary>
         public readonly string? MainJarFileUri;
         /// <summary>

@@ -17,7 +17,7 @@ public final class VolumeRestoreParametersArgs extends com.pulumi.resources.Reso
 
     /**
      * Full name of the backup to use for creating this volume.
-     * `source_snapshot` and `source_backup` cannot be used simultaneously.
+     * `sourceSnapshot` and `sourceBackup` cannot be used simultaneously.
      * Format: `projects/{{project}}/locations/{{location}}/backupVaults/{{backupVaultId}}/backups/{{backup}}`.
      * 
      */
@@ -26,7 +26,7 @@ public final class VolumeRestoreParametersArgs extends com.pulumi.resources.Reso
 
     /**
      * @return Full name of the backup to use for creating this volume.
-     * `source_snapshot` and `source_backup` cannot be used simultaneously.
+     * `sourceSnapshot` and `sourceBackup` cannot be used simultaneously.
      * Format: `projects/{{project}}/locations/{{location}}/backupVaults/{{backupVaultId}}/backups/{{backup}}`.
      * 
      */
@@ -36,7 +36,7 @@ public final class VolumeRestoreParametersArgs extends com.pulumi.resources.Reso
 
     /**
      * Full name of the snapshot to use for creating this volume.
-     * `source_snapshot` and `source_backup` cannot be used simultaneously.
+     * `sourceSnapshot` and `sourceBackup` cannot be used simultaneously.
      * Format: `projects/{{project}}/locations/{{location}}/volumes/{{volume}}/snapshots/{{snapshot}}`.
      * 
      */
@@ -45,7 +45,7 @@ public final class VolumeRestoreParametersArgs extends com.pulumi.resources.Reso
 
     /**
      * @return Full name of the snapshot to use for creating this volume.
-     * `source_snapshot` and `source_backup` cannot be used simultaneously.
+     * `sourceSnapshot` and `sourceBackup` cannot be used simultaneously.
      * Format: `projects/{{project}}/locations/{{location}}/volumes/{{volume}}/snapshots/{{snapshot}}`.
      * 
      */
@@ -80,7 +80,7 @@ public final class VolumeRestoreParametersArgs extends com.pulumi.resources.Reso
 
         /**
          * @param sourceBackup Full name of the backup to use for creating this volume.
-         * `source_snapshot` and `source_backup` cannot be used simultaneously.
+         * `sourceSnapshot` and `sourceBackup` cannot be used simultaneously.
          * Format: `projects/{{project}}/locations/{{location}}/backupVaults/{{backupVaultId}}/backups/{{backup}}`.
          * 
          * @return builder
@@ -93,7 +93,7 @@ public final class VolumeRestoreParametersArgs extends com.pulumi.resources.Reso
 
         /**
          * @param sourceBackup Full name of the backup to use for creating this volume.
-         * `source_snapshot` and `source_backup` cannot be used simultaneously.
+         * `sourceSnapshot` and `sourceBackup` cannot be used simultaneously.
          * Format: `projects/{{project}}/locations/{{location}}/backupVaults/{{backupVaultId}}/backups/{{backup}}`.
          * 
          * @return builder
@@ -105,7 +105,7 @@ public final class VolumeRestoreParametersArgs extends com.pulumi.resources.Reso
 
         /**
          * @param sourceSnapshot Full name of the snapshot to use for creating this volume.
-         * `source_snapshot` and `source_backup` cannot be used simultaneously.
+         * `sourceSnapshot` and `sourceBackup` cannot be used simultaneously.
          * Format: `projects/{{project}}/locations/{{location}}/volumes/{{volume}}/snapshots/{{snapshot}}`.
          * 
          * @return builder
@@ -118,7 +118,7 @@ public final class VolumeRestoreParametersArgs extends com.pulumi.resources.Reso
 
         /**
          * @param sourceSnapshot Full name of the snapshot to use for creating this volume.
-         * `source_snapshot` and `source_backup` cannot be used simultaneously.
+         * `sourceSnapshot` and `sourceBackup` cannot be used simultaneously.
          * Format: `projects/{{project}}/locations/{{location}}/volumes/{{volume}}/snapshots/{{snapshot}}`.
          * 
          * @return builder

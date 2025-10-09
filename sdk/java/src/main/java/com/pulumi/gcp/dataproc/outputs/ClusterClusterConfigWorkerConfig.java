@@ -53,7 +53,7 @@ public final class ClusterClusterConfigWorkerConfig {
      */
     private @Nullable String minCpuPlatform;
     /**
-     * @return The minimum number of primary worker instances to create.  If `min_num_instances` is set, cluster creation will succeed if the number of primary workers created is at least equal to the `min_num_instances` number.
+     * @return The minimum number of primary worker instances to create.  If `minNumInstances` is set, cluster creation will succeed if the number of primary workers created is at least equal to the `minNumInstances` number.
      * 
      */
     private @Nullable Integer minNumInstances;
@@ -120,7 +120,7 @@ public final class ClusterClusterConfigWorkerConfig {
         return Optional.ofNullable(this.minCpuPlatform);
     }
     /**
-     * @return The minimum number of primary worker instances to create.  If `min_num_instances` is set, cluster creation will succeed if the number of primary workers created is at least equal to the `min_num_instances` number.
+     * @return The minimum number of primary worker instances to create.  If `minNumInstances` is set, cluster creation will succeed if the number of primary workers created is at least equal to the `minNumInstances` number.
      * 
      */
     public Optional<Integer> minNumInstances() {

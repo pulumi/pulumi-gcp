@@ -144,7 +144,7 @@ namespace Pulumi.Gcp.SecurityCenter
     {
         /// <summary>
         /// If empty, indicates that the custom module was created in the organization,folder,
-        /// or project in which you are viewing the custom module. Otherwise, ancestor_module
+        /// or project in which you are viewing the custom module. Otherwise, AncestorModule
         /// specifies the organization or folder from which the custom module is inherited.
         /// </summary>
         [Output("ancestorModule")]
@@ -289,7 +289,7 @@ namespace Pulumi.Gcp.SecurityCenter
     {
         /// <summary>
         /// If empty, indicates that the custom module was created in the organization,folder,
-        /// or project in which you are viewing the custom module. Otherwise, ancestor_module
+        /// or project in which you are viewing the custom module. Otherwise, AncestorModule
         /// specifies the organization or folder from which the custom module is inherited.
         /// </summary>
         [Input("ancestorModule")]

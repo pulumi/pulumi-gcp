@@ -85,7 +85,7 @@ public final class RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatch {
      * Maximum number of source tag values allowed is 256.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_rule_rule_match_layer4_config&#34;&gt;&lt;/a&gt;The `layer4_config` block supports:
+     * &lt;a name=&#34;nestedRuleRuleMatchLayer4Config&#34;&gt;&lt;/a&gt;The `layer4Config` block supports:
      * 
      */
     private @Nullable List<RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTag> srcSecureTags;
@@ -189,7 +189,7 @@ public final class RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatch {
      * Maximum number of source tag values allowed is 256.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_rule_rule_match_layer4_config&#34;&gt;&lt;/a&gt;The `layer4_config` block supports:
+     * &lt;a name=&#34;nestedRuleRuleMatchLayer4Config&#34;&gt;&lt;/a&gt;The `layer4Config` block supports:
      * 
      */
     public List<RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTag> srcSecureTags() {

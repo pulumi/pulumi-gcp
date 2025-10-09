@@ -15,14 +15,14 @@ public final class FunctionSecretVolumeVersionArgs extends com.pulumi.resources.
     public static final FunctionSecretVolumeVersionArgs Empty = new FunctionSecretVolumeVersionArgs();
 
     /**
-     * Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mount_path as &#34;/etc/secrets&#34; and path as &#34;/secret_foo&#34; would mount the secret value file at &#34;/etc/secrets/secret_foo&#34;.
+     * Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mountPath as &#34;/etc/secrets&#34; and path as &#34;/secret_foo&#34; would mount the secret value file at &#34;/etc/secrets/secret_foo&#34;.
      * 
      */
     @Import(name="path", required=true)
     private Output<String> path;
 
     /**
-     * @return Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mount_path as &#34;/etc/secrets&#34; and path as &#34;/secret_foo&#34; would mount the secret value file at &#34;/etc/secrets/secret_foo&#34;.
+     * @return Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mountPath as &#34;/etc/secrets&#34; and path as &#34;/secret_foo&#34; would mount the secret value file at &#34;/etc/secrets/secret_foo&#34;.
      * 
      */
     public Output<String> path() {
@@ -70,7 +70,7 @@ public final class FunctionSecretVolumeVersionArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param path Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mount_path as &#34;/etc/secrets&#34; and path as &#34;/secret_foo&#34; would mount the secret value file at &#34;/etc/secrets/secret_foo&#34;.
+         * @param path Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mountPath as &#34;/etc/secrets&#34; and path as &#34;/secret_foo&#34; would mount the secret value file at &#34;/etc/secrets/secret_foo&#34;.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class FunctionSecretVolumeVersionArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param path Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mount_path as &#34;/etc/secrets&#34; and path as &#34;/secret_foo&#34; would mount the secret value file at &#34;/etc/secrets/secret_foo&#34;.
+         * @param path Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mountPath as &#34;/etc/secrets&#34; and path as &#34;/secret_foo&#34; would mount the secret value file at &#34;/etc/secrets/secret_foo&#34;.
          * 
          * @return builder
          * 

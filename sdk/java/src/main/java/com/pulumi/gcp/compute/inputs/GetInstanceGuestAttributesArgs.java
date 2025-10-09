@@ -17,14 +17,14 @@ public final class GetInstanceGuestAttributesArgs extends com.pulumi.resources.I
     public static final GetInstanceGuestAttributesArgs Empty = new GetInstanceGuestAttributesArgs();
 
     /**
-     * The name or self_link of the instance.
+     * The name or selfLink of the instance.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name or self_link of the instance.
+     * @return The name or selfLink of the instance.
      * 
      */
     public Output<String> name() {
@@ -33,7 +33,7 @@ public final class GetInstanceGuestAttributesArgs extends com.pulumi.resources.I
 
     /**
      * The ID of the project in which the resource belongs.
-     * If `self_link` is provided, this value is ignored.  If neither `self_link`
+     * If `selfLink` is provided, this value is ignored.  If neither `selfLink`
      * nor `project` are provided, the provider project is used.
      * 
      */
@@ -42,7 +42,7 @@ public final class GetInstanceGuestAttributesArgs extends com.pulumi.resources.I
 
     /**
      * @return The ID of the project in which the resource belongs.
-     * If `self_link` is provided, this value is ignored.  If neither `self_link`
+     * If `selfLink` is provided, this value is ignored.  If neither `selfLink`
      * nor `project` are provided, the provider project is used.
      * 
      */
@@ -92,8 +92,8 @@ public final class GetInstanceGuestAttributesArgs extends com.pulumi.resources.I
     }
 
     /**
-     * The zone of the instance. If `self_link` is provided, this
-     * value is ignored.  If neither `self_link` nor `zone` are provided, the
+     * The zone of the instance. If `selfLink` is provided, this
+     * value is ignored.  If neither `selfLink` nor `zone` are provided, the
      * provider zone is used.
      * 
      */
@@ -101,8 +101,8 @@ public final class GetInstanceGuestAttributesArgs extends com.pulumi.resources.I
     private @Nullable Output<String> zone;
 
     /**
-     * @return The zone of the instance. If `self_link` is provided, this
-     * value is ignored.  If neither `self_link` nor `zone` are provided, the
+     * @return The zone of the instance. If `selfLink` is provided, this
+     * value is ignored.  If neither `selfLink` nor `zone` are provided, the
      * provider zone is used.
      * 
      */
@@ -140,7 +140,7 @@ public final class GetInstanceGuestAttributesArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param name The name or self_link of the instance.
+         * @param name The name or selfLink of the instance.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class GetInstanceGuestAttributesArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param name The name or self_link of the instance.
+         * @param name The name or selfLink of the instance.
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class GetInstanceGuestAttributesArgs extends com.pulumi.resources.I
 
         /**
          * @param project The ID of the project in which the resource belongs.
-         * If `self_link` is provided, this value is ignored.  If neither `self_link`
+         * If `selfLink` is provided, this value is ignored.  If neither `selfLink`
          * nor `project` are provided, the provider project is used.
          * 
          * @return builder
@@ -175,7 +175,7 @@ public final class GetInstanceGuestAttributesArgs extends com.pulumi.resources.I
 
         /**
          * @param project The ID of the project in which the resource belongs.
-         * If `self_link` is provided, this value is ignored.  If neither `self_link`
+         * If `selfLink` is provided, this value is ignored.  If neither `selfLink`
          * nor `project` are provided, the provider project is used.
          * 
          * @return builder
@@ -241,8 +241,8 @@ public final class GetInstanceGuestAttributesArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param zone The zone of the instance. If `self_link` is provided, this
-         * value is ignored.  If neither `self_link` nor `zone` are provided, the
+         * @param zone The zone of the instance. If `selfLink` is provided, this
+         * value is ignored.  If neither `selfLink` nor `zone` are provided, the
          * provider zone is used.
          * 
          * @return builder
@@ -254,8 +254,8 @@ public final class GetInstanceGuestAttributesArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param zone The zone of the instance. If `self_link` is provided, this
-         * value is ignored.  If neither `self_link` nor `zone` are provided, the
+         * @param zone The zone of the instance. If `selfLink` is provided, this
+         * value is ignored.  If neither `selfLink` nor `zone` are provided, the
          * provider zone is used.
          * 
          * @return builder

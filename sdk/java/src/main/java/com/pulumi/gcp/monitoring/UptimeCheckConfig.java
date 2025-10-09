@@ -101,6 +101,8 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Uptime Check Config Http Password Wo
+ * 
  * ### Uptime Check Config Status Code
  * 
  * <pre>
@@ -402,7 +404,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig")
 public class UptimeCheckConfig extends com.pulumi.resources.CustomResource {
     /**
-     * The checker type to use for the check. If the monitored resource type is `servicedirectory_service`, `checker_type` must be set to `VPC_CHECKERS`.
+     * The checker type to use for the check. If the monitored resource type is `servicedirectoryService`, `checkerType` must be set to `VPC_CHECKERS`.
      * Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
      * 
      */
@@ -410,7 +412,7 @@ public class UptimeCheckConfig extends com.pulumi.resources.CustomResource {
     private Output<String> checkerType;
 
     /**
-     * @return The checker type to use for the check. If the monitored resource type is `servicedirectory_service`, `checker_type` must be set to `VPC_CHECKERS`.
+     * @return The checker type to use for the check. If the monitored resource type is `servicedirectoryService`, `checkerType` must be set to `VPC_CHECKERS`.
      * Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
      * 
      */

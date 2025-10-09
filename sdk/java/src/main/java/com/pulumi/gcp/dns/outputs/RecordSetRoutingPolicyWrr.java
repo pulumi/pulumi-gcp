@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RecordSetRoutingPolicyWrr {
     /**
-     * @return The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
+     * @return The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `healthCheckedTargets` can be set.
      * Structure is documented below.
      * 
      */
@@ -34,7 +34,7 @@ public final class RecordSetRoutingPolicyWrr {
 
     private RecordSetRoutingPolicyWrr() {}
     /**
-     * @return The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
+     * @return The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `healthCheckedTargets` can be set.
      * Structure is documented below.
      * 
      */

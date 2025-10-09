@@ -88,14 +88,14 @@ namespace Pulumi.Gcp.SecretManager
     public sealed class GetSecretVersionArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// If set to `false`, the `secret_data` 
-        /// will not be fetched. Default is `true`.
+        /// If set to `False`, the `SecretData` 
+        /// will not be fetched. Default is `True`.
         /// </summary>
         [Input("fetchSecretData")]
         public bool? FetchSecretData { get; set; }
 
         /// <summary>
-        /// If set to `true`, the secret data is
+        /// If set to `True`, the secret data is
         /// expected to be base64-encoded string.
         /// </summary>
         [Input("isSecretDataBase64")]
@@ -130,14 +130,14 @@ namespace Pulumi.Gcp.SecretManager
     public sealed class GetSecretVersionInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// If set to `false`, the `secret_data` 
-        /// will not be fetched. Default is `true`.
+        /// If set to `False`, the `SecretData` 
+        /// will not be fetched. Default is `True`.
         /// </summary>
         [Input("fetchSecretData")]
         public Input<bool>? FetchSecretData { get; set; }
 
         /// <summary>
-        /// If set to `true`, the secret data is
+        /// If set to `True`, the secret data is
         /// expected to be base64-encoded string.
         /// </summary>
         [Input("isSecretDataBase64")]

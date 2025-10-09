@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name or self_link of the Google Compute Engine
+        /// The name or SelfLink of the Google Compute Engine
         /// network to which the cluster is connected. For Shared VPC, set this to the self link of the
         /// shared network.
         /// </summary>
@@ -21,7 +21,7 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// The name or self_link of the Google Compute Engine
+        /// The name or SelfLink of the Google Compute Engine
         /// subnetwork in which the cluster's instances are launched.
         /// </summary>
         [Input("subnetwork")]

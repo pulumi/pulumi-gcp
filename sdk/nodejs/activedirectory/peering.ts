@@ -14,6 +14,12 @@ import * as utilities from "../utilities";
  *     * [Active Directory Domain Peering](https://cloud.google.com/managed-microsoft-ad/docs/domain-peering)
  *
  * ## Example Usage
+ *
+ * ### Active Directory Peering Basic
+ *
+ * ## Import
+ *
+ * This resource does not support import.
  */
 export class Peering extends pulumi.CustomResource {
     /**

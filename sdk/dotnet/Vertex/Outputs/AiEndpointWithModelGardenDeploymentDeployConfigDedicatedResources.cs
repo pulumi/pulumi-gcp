@@ -46,7 +46,7 @@ namespace Pulumi.Gcp.Vertex.Outputs
         /// many replicas is guaranteed (barring service outages). If traffic increases
         /// beyond what its replicas at maximum may handle, a portion of the traffic
         /// will be dropped. If this value is not provided, will use
-        /// min_replica_count as the default value.
+        /// MinReplicaCount as the default value.
         /// The value of this field impacts the charge against Vertex CPU and GPU
         /// quotas. Specifically, you will be charged for (max_replica_count *
         /// number of cores in the selected machine type) and (max_replica_count *
@@ -64,9 +64,9 @@ namespace Pulumi.Gcp.Vertex.Outputs
         /// Number of required available replicas for the deployment to succeed.
         /// This field is only needed when partial deployment/mutation is
         /// desired. If set, the deploy/mutate operation will succeed once
-        /// available_replica_count reaches required_replica_count, and the rest of
+        /// AvailableReplicaCount reaches required_replica_count, and the rest of
         /// the replicas will be retried. If not set, the default
-        /// required_replica_count will be min_replica_count.
+        /// RequiredReplicaCount will be min_replica_count.
         /// </summary>
         public readonly int? RequiredReplicaCount;
         /// <summary>

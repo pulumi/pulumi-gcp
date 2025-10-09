@@ -18,7 +18,7 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIde
     /**
      * @return The client (directory) ID of the application with federated credentials.
      * 
-     * &lt;a name=&#34;nested_schedule_start_end_date&#34;&gt;&lt;/a&gt;The `schedule_start_date` and `schedule_end_date` blocks support:
+     * &lt;a name=&#34;nestedScheduleStartEndDate&#34;&gt;&lt;/a&gt;The `scheduleStartDate` and `scheduleEndDate` blocks support:
      * 
      */
     private String tenantId;
@@ -34,7 +34,7 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIde
     /**
      * @return The client (directory) ID of the application with federated credentials.
      * 
-     * &lt;a name=&#34;nested_schedule_start_end_date&#34;&gt;&lt;/a&gt;The `schedule_start_date` and `schedule_end_date` blocks support:
+     * &lt;a name=&#34;nestedScheduleStartEndDate&#34;&gt;&lt;/a&gt;The `scheduleStartDate` and `scheduleEndDate` blocks support:
      * 
      */
     public String tenantId() {

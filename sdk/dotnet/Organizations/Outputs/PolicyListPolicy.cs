@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Organizations.Outputs
     public sealed class PolicyListPolicy
     {
         /// <summary>
-        /// or `deny` - (Optional) One or the other must be set.
+        /// or `Deny` - (Optional) One or the other must be set.
         /// </summary>
         public readonly Outputs.PolicyListPolicyAllow? Allow;
         /// <summary>
@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.Organizations.Outputs
         /// If set to true, the values from the effective Policy of the parent resource
         /// are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
         /// 
-        /// The `allow` or `deny` blocks support:
+        /// The `Allow` or `Deny` blocks support:
         /// </summary>
         public readonly bool? InheritFromParent;
         /// <summary>

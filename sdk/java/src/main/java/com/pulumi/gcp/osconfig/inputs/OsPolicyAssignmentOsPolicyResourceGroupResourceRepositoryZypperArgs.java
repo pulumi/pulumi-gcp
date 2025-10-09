@@ -64,8 +64,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypp
 
     /**
      * A one word, unique name for this repository. This is the
-     * `repo id` in the zypper config file and also the `display_name` if
-     * `display_name` is omitted. This id is also used as the unique identifier
+     * `repo id` in the zypper config file and also the `displayName` if
+     * `displayName` is omitted. This id is also used as the unique identifier
      * when checking for GuestPolicy conflicts.
      * 
      */
@@ -74,8 +74,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypp
 
     /**
      * @return A one word, unique name for this repository. This is the
-     * `repo id` in the zypper config file and also the `display_name` if
-     * `display_name` is omitted. This id is also used as the unique identifier
+     * `repo id` in the zypper config file and also the `displayName` if
+     * `displayName` is omitted. This id is also used as the unique identifier
      * when checking for GuestPolicy conflicts.
      * 
      */
@@ -185,8 +185,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypp
 
         /**
          * @param id A one word, unique name for this repository. This is the
-         * `repo id` in the zypper config file and also the `display_name` if
-         * `display_name` is omitted. This id is also used as the unique identifier
+         * `repo id` in the zypper config file and also the `displayName` if
+         * `displayName` is omitted. This id is also used as the unique identifier
          * when checking for GuestPolicy conflicts.
          * 
          * @return builder
@@ -199,8 +199,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypp
 
         /**
          * @param id A one word, unique name for this repository. This is the
-         * `repo id` in the zypper config file and also the `display_name` if
-         * `display_name` is omitted. This id is also used as the unique identifier
+         * `repo id` in the zypper config file and also the `displayName` if
+         * `displayName` is omitted. This id is also used as the unique identifier
          * when checking for GuestPolicy conflicts.
          * 
          * @return builder

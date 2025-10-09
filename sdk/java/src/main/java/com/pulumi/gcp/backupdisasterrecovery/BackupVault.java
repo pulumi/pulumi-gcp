@@ -135,7 +135,7 @@ public class BackupVault extends com.pulumi.resources.CustomResource {
      * Optional. User annotations. See https://google.aip.dev/128#annotations
      * Stores small amounts of arbitrary data.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -145,7 +145,7 @@ public class BackupVault extends com.pulumi.resources.CustomResource {
      * @return Optional. User annotations. See https://google.aip.dev/128#annotations
      * Stores small amounts of arbitrary data.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> annotations() {
@@ -305,13 +305,13 @@ public class BackupVault extends com.pulumi.resources.CustomResource {
      * * deletion of a backup vault instance containing no backups, but still containing empty datasources.
      * * deletion of a backup vault instance that is being referenced by an active backup plan.
      * 
-     * &gt; **Warning:** `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.
+     * &gt; **Warning:** `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
      * 
      * @deprecated
-     * `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.
+     * `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
      * 
      */
-    @Deprecated /* `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead. */
+    @Deprecated /* `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead. */
     @Export(name="forceDelete", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDelete;
 
@@ -321,7 +321,7 @@ public class BackupVault extends com.pulumi.resources.CustomResource {
      * * deletion of a backup vault instance containing no backups, but still containing empty datasources.
      * * deletion of a backup vault instance that is being referenced by an active backup plan.
      * 
-     * &gt; **Warning:** `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.
+     * &gt; **Warning:** `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
      * 
      */
     public Output<Optional<Boolean>> forceDelete() {
@@ -382,7 +382,7 @@ public class BackupVault extends com.pulumi.resources.CustomResource {
     /**
      * Optional. Resource labels to represent user provided metadata.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -391,7 +391,7 @@ public class BackupVault extends com.pulumi.resources.CustomResource {
     /**
      * @return Optional. Resource labels to represent user provided metadata.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {

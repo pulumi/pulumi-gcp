@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.GkeBackup.Inputs
         /// will automatically pick up the new value.
         /// NOTE: backupRetainDays must be &gt;= backupDeleteLockDays.
         /// If cronSchedule is defined, then this must be &lt;= 360 * the creation interval.
-        /// If rpo_config is defined, then this must be
+        /// If RpoConfig is defined, then this must be
         /// &lt;= 360 * targetRpoMinutes/(1440minutes/day)
         /// </summary>
         [Input("backupRetainDays")]

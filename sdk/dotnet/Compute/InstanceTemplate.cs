@@ -437,7 +437,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-        /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+        /// **Note**: `AllowStoppingForUpdate` must be set to true in order to update this field.
         /// </summary>
         [Output("enableDisplay")]
         public Output<bool?> EnableDisplay { get; private set; } = null!;
@@ -492,7 +492,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// An alternative to using the
-        /// startup-script metadata key, mostly to match the compute_instance resource.
+        /// startup-script metadata key, mostly to match the ComputeInstance resource.
         /// This replaces the startup-script metadata key on the created instance and
         /// thus the two mechanisms are not allowed to be used simultaneously.
         /// </summary>
@@ -515,14 +515,14 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Creates a unique name beginning with the specified
-        /// prefix. Conflicts with `name`. Max length is 54 characters.
+        /// prefix. Conflicts with `Name`. Max length is 54 characters.
         /// Prefixes with lengths longer than 37 characters will use a shortened
         /// UUID that will be more prone to collisions.
         /// 
-        /// Resulting name for a `name_prefix` &lt;= 37 characters:
-        /// `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
-        /// Resulting name for a `name_prefix` 38 - 54 characters:
-        /// `name_prefix` + YYmmdd + 3 digit incremental counter
+        /// Resulting name for a `NamePrefix` &lt;= 37 characters:
+        /// `NamePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+        /// Resulting name for a `NamePrefix` 38 - 54 characters:
+        /// `NamePrefix` + YYmmdd + 3 digit incremental counter
         /// </summary>
         [Output("namePrefix")]
         public Output<string> NamePrefix { get; private set; } = null!;
@@ -537,9 +537,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// (Optional, Configures network performance settings for the instance created from the
-        /// template. Structure is documented below. **Note**: `machine_type`
+        /// template. Structure is documented below. **Note**: `MachineType`
         /// must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
-        /// the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
+        /// the `Image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
         /// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
         /// in order for this setting to take effect.
         /// </summary>
@@ -575,7 +575,7 @@ namespace Pulumi.Gcp.Compute
         /// An instance template is a global resource that is not
         /// bound to a zone or a region. However, you can still specify some regional
         /// resources in an instance template, which restricts the template to the
-        /// region where that resource resides. For example, a custom `subnetwork`
+        /// region where that resource resides. For example, a custom `Subnetwork`
         /// resource is tied to a specific region. Defaults to the region of the
         /// Provider if no value is given.
         /// </summary>
@@ -596,7 +596,7 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableDictionary<string, string>?> ResourceManagerTags { get; private set; } = null!;
 
         /// <summary>
-        /// - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+        /// - A list of SelfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
         /// </summary>
         [Output("resourcePolicies")]
         public Output<string?> ResourcePolicies { get; private set; } = null!;
@@ -629,7 +629,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
-        /// **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+        /// **Note**: `ShieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
         /// </summary>
         [Output("shieldedInstanceConfig")]
         public Output<Outputs.InstanceTemplateShieldedInstanceConfig> ShieldedInstanceConfig { get; private set; } = null!;
@@ -738,7 +738,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-        /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+        /// **Note**: `AllowStoppingForUpdate` must be set to true in order to update this field.
         /// </summary>
         [Input("enableDisplay")]
         public Input<bool>? EnableDisplay { get; set; }
@@ -805,7 +805,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// An alternative to using the
-        /// startup-script metadata key, mostly to match the compute_instance resource.
+        /// startup-script metadata key, mostly to match the ComputeInstance resource.
         /// This replaces the startup-script metadata key on the created instance and
         /// thus the two mechanisms are not allowed to be used simultaneously.
         /// </summary>
@@ -828,14 +828,14 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Creates a unique name beginning with the specified
-        /// prefix. Conflicts with `name`. Max length is 54 characters.
+        /// prefix. Conflicts with `Name`. Max length is 54 characters.
         /// Prefixes with lengths longer than 37 characters will use a shortened
         /// UUID that will be more prone to collisions.
         /// 
-        /// Resulting name for a `name_prefix` &lt;= 37 characters:
-        /// `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
-        /// Resulting name for a `name_prefix` 38 - 54 characters:
-        /// `name_prefix` + YYmmdd + 3 digit incremental counter
+        /// Resulting name for a `NamePrefix` &lt;= 37 characters:
+        /// `NamePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+        /// Resulting name for a `NamePrefix` 38 - 54 characters:
+        /// `NamePrefix` + YYmmdd + 3 digit incremental counter
         /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
@@ -856,9 +856,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// (Optional, Configures network performance settings for the instance created from the
-        /// template. Structure is documented below. **Note**: `machine_type`
+        /// template. Structure is documented below. **Note**: `MachineType`
         /// must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
-        /// the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
+        /// the `Image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
         /// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
         /// in order for this setting to take effect.
         /// </summary>
@@ -888,7 +888,7 @@ namespace Pulumi.Gcp.Compute
         /// An instance template is a global resource that is not
         /// bound to a zone or a region. However, you can still specify some regional
         /// resources in an instance template, which restricts the template to the
-        /// region where that resource resides. For example, a custom `subnetwork`
+        /// region where that resource resides. For example, a custom `Subnetwork`
         /// resource is tied to a specific region. Defaults to the region of the
         /// Provider if no value is given.
         /// </summary>
@@ -915,7 +915,7 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+        /// - A list of SelfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
         /// </summary>
         [Input("resourcePolicies")]
         public Input<string>? ResourcePolicies { get; set; }
@@ -935,7 +935,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
-        /// **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+        /// **Note**: `ShieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
         /// </summary>
         [Input("shieldedInstanceConfig")]
         public Input<Inputs.InstanceTemplateShieldedInstanceConfigArgs>? ShieldedInstanceConfig { get; set; }
@@ -1023,7 +1023,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-        /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+        /// **Note**: `AllowStoppingForUpdate` must be set to true in order to update this field.
         /// </summary>
         [Input("enableDisplay")]
         public Input<bool>? EnableDisplay { get; set; }
@@ -1096,7 +1096,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// An alternative to using the
-        /// startup-script metadata key, mostly to match the compute_instance resource.
+        /// startup-script metadata key, mostly to match the ComputeInstance resource.
         /// This replaces the startup-script metadata key on the created instance and
         /// thus the two mechanisms are not allowed to be used simultaneously.
         /// </summary>
@@ -1119,14 +1119,14 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Creates a unique name beginning with the specified
-        /// prefix. Conflicts with `name`. Max length is 54 characters.
+        /// prefix. Conflicts with `Name`. Max length is 54 characters.
         /// Prefixes with lengths longer than 37 characters will use a shortened
         /// UUID that will be more prone to collisions.
         /// 
-        /// Resulting name for a `name_prefix` &lt;= 37 characters:
-        /// `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
-        /// Resulting name for a `name_prefix` 38 - 54 characters:
-        /// `name_prefix` + YYmmdd + 3 digit incremental counter
+        /// Resulting name for a `NamePrefix` &lt;= 37 characters:
+        /// `NamePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+        /// Resulting name for a `NamePrefix` 38 - 54 characters:
+        /// `NamePrefix` + YYmmdd + 3 digit incremental counter
         /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
@@ -1147,9 +1147,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// (Optional, Configures network performance settings for the instance created from the
-        /// template. Structure is documented below. **Note**: `machine_type`
+        /// template. Structure is documented below. **Note**: `MachineType`
         /// must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
-        /// the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
+        /// the `Image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
         /// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
         /// in order for this setting to take effect.
         /// </summary>
@@ -1201,7 +1201,7 @@ namespace Pulumi.Gcp.Compute
         /// An instance template is a global resource that is not
         /// bound to a zone or a region. However, you can still specify some regional
         /// resources in an instance template, which restricts the template to the
-        /// region where that resource resides. For example, a custom `subnetwork`
+        /// region where that resource resides. For example, a custom `Subnetwork`
         /// resource is tied to a specific region. Defaults to the region of the
         /// Provider if no value is given.
         /// </summary>
@@ -1228,7 +1228,7 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+        /// - A list of SelfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
         /// </summary>
         [Input("resourcePolicies")]
         public Input<string>? ResourcePolicies { get; set; }
@@ -1261,7 +1261,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
-        /// **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+        /// **Note**: `ShieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
         /// </summary>
         [Input("shieldedInstanceConfig")]
         public Input<Inputs.InstanceTemplateShieldedInstanceConfigGetArgs>? ShieldedInstanceConfig { get; set; }

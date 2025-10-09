@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.Dns.Outputs
         /// Specifies parameters that will be used for generating initial DnsKeys
         /// for this ManagedZone. If you provide a spec for keySigning or zoneSigning,
         /// you must also provide one for the other.
-        /// default_key_specs can only be updated when the state is `off`.
+        /// DefaultKeySpecs can only be updated when the state is `Off`.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ManagedZoneDnssecConfigDefaultKeySpec> DefaultKeySpecs;
@@ -27,13 +27,13 @@ namespace Pulumi.Gcp.Dns.Outputs
         public readonly string? Kind;
         /// <summary>
         /// Specifies the mechanism used to provide authenticated denial-of-existence responses.
-        /// non_existence can only be updated when the state is `off`.
-        /// Possible values are: `nsec`, `nsec3`.
+        /// NonExistence can only be updated when the state is `Off`.
+        /// Possible values are: `Nsec`, `Nsec3`.
         /// </summary>
         public readonly string? NonExistence;
         /// <summary>
         /// Specifies whether DNSSEC is enabled, and what mode it is in
-        /// Possible values are: `off`, `on`, `transfer`.
+        /// Possible values are: `Off`, `On`, `Transfer`.
         /// </summary>
         public readonly string? State;
 

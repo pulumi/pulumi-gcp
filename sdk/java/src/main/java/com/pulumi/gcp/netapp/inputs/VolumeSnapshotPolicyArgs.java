@@ -38,7 +38,7 @@ public final class VolumeSnapshotPolicyArgs extends com.pulumi.resources.Resourc
 
     /**
      * Enables automated snapshot creation according to defined schedule. Default is false.
-     * To disable automatic snapshot creation you have to remove the whole snapshot_policy block.
+     * To disable automatic snapshot creation you have to remove the whole snapshotPolicy block.
      * 
      */
     @Import(name="enabled")
@@ -46,7 +46,7 @@ public final class VolumeSnapshotPolicyArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return Enables automated snapshot creation according to defined schedule. Default is false.
-     * To disable automatic snapshot creation you have to remove the whole snapshot_policy block.
+     * To disable automatic snapshot creation you have to remove the whole snapshotPolicy block.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -157,7 +157,7 @@ public final class VolumeSnapshotPolicyArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param enabled Enables automated snapshot creation according to defined schedule. Default is false.
-         * To disable automatic snapshot creation you have to remove the whole snapshot_policy block.
+         * To disable automatic snapshot creation you have to remove the whole snapshotPolicy block.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class VolumeSnapshotPolicyArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param enabled Enables automated snapshot creation according to defined schedule. Default is false.
-         * To disable automatic snapshot creation you have to remove the whole snapshot_policy block.
+         * To disable automatic snapshot creation you have to remove the whole snapshotPolicy block.
          * 
          * @return builder
          * 

@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly string Script;
         /// <summary>
-        /// The maximum duration (in seconds) which `script` is
+        /// The maximum duration (in seconds) which `Script` is
         /// allowed to take to execute its action. GCP will default to a predetermined
         /// computed value if not set (currently 300).
         /// 

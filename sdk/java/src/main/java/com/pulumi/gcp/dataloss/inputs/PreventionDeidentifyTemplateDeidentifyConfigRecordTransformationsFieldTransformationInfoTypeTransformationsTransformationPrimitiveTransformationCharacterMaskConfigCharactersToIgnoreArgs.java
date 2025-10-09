@@ -16,14 +16,14 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
     public static final PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs Empty = new PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs();
 
     /**
-     * Characters to not transform when masking. Only one of this or `common_characters_to_ignore` must be specified.
+     * Characters to not transform when masking. Only one of this or `commonCharactersToIgnore` must be specified.
      * 
      */
     @Import(name="charactersToSkip")
     private @Nullable Output<String> charactersToSkip;
 
     /**
-     * @return Characters to not transform when masking. Only one of this or `common_characters_to_ignore` must be specified.
+     * @return Characters to not transform when masking. Only one of this or `commonCharactersToIgnore` must be specified.
      * 
      */
     public Optional<Output<String>> charactersToSkip() {
@@ -31,7 +31,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
     }
 
     /**
-     * Common characters to not transform when masking. Useful to avoid removing punctuation. Only one of this or `characters_to_skip` must be specified.
+     * Common characters to not transform when masking. Useful to avoid removing punctuation. Only one of this or `charactersToSkip` must be specified.
      * Possible values are: `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, `WHITESPACE`.
      * 
      */
@@ -39,7 +39,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
     private @Nullable Output<String> commonCharactersToIgnore;
 
     /**
-     * @return Common characters to not transform when masking. Useful to avoid removing punctuation. Only one of this or `characters_to_skip` must be specified.
+     * @return Common characters to not transform when masking. Useful to avoid removing punctuation. Only one of this or `charactersToSkip` must be specified.
      * Possible values are: `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, `WHITESPACE`.
      * 
      */
@@ -73,7 +73,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
         }
 
         /**
-         * @param charactersToSkip Characters to not transform when masking. Only one of this or `common_characters_to_ignore` must be specified.
+         * @param charactersToSkip Characters to not transform when masking. Only one of this or `commonCharactersToIgnore` must be specified.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
         }
 
         /**
-         * @param charactersToSkip Characters to not transform when masking. Only one of this or `common_characters_to_ignore` must be specified.
+         * @param charactersToSkip Characters to not transform when masking. Only one of this or `commonCharactersToIgnore` must be specified.
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
         }
 
         /**
-         * @param commonCharactersToIgnore Common characters to not transform when masking. Useful to avoid removing punctuation. Only one of this or `characters_to_skip` must be specified.
+         * @param commonCharactersToIgnore Common characters to not transform when masking. Useful to avoid removing punctuation. Only one of this or `charactersToSkip` must be specified.
          * Possible values are: `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, `WHITESPACE`.
          * 
          * @return builder
@@ -106,7 +106,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
         }
 
         /**
-         * @param commonCharactersToIgnore Common characters to not transform when masking. Useful to avoid removing punctuation. Only one of this or `characters_to_skip` must be specified.
+         * @param commonCharactersToIgnore Common characters to not transform when masking. Useful to avoid removing punctuation. Only one of this or `charactersToSkip` must be specified.
          * Possible values are: `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, `WHITESPACE`.
          * 
          * @return builder

@@ -34,14 +34,14 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         public Input<string>? Owner { get; set; }
 
         /// <summary>
-        /// filter to match changes in pull requests. Specify only one of `pull_request` or `push`.
+        /// filter to match changes in pull requests. Specify only one of `PullRequest` or `Push`.
         /// Structure is documented below.
         /// </summary>
         [Input("pullRequest")]
         public Input<Inputs.TriggerGithubPullRequestGetArgs>? PullRequest { get; set; }
 
         /// <summary>
-        /// filter to match changes in refs, like branches or tags. Specify only one of `pull_request` or `push`.
+        /// filter to match changes in refs, like branches or tags. Specify only one of `PullRequest` or `Push`.
         /// Structure is documented below.
         /// </summary>
         [Input("push")]

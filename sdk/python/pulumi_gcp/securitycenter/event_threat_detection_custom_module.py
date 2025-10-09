@@ -275,6 +275,8 @@ class EventThreatDetectionCustomModule(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Scc Event Threat Detection Custom Module
+
         ## Import
 
         EventThreatDetectionCustomModule can be imported using any of these accepted formats:
@@ -321,6 +323,8 @@ class EventThreatDetectionCustomModule(pulumi.CustomResource):
             * [Overview of custom modules for Event Threat Detection](https://cloud.google.com/security-command-center/docs/custom-modules-etd-overview)
 
         ## Example Usage
+
+        ### Scc Event Threat Detection Custom Module
 
         ## Import
 

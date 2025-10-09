@@ -452,7 +452,7 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Replication info of a table created
      * using &#34;AS REPLICA&#34; DDL like:
-     * `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`.
+     * `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF srcMv`.
      * Structure is documented below.
      * 
      */
@@ -462,7 +462,7 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Replication info of a table created
      * using &#34;AS REPLICA&#34; DDL like:
-     * `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`.
+     * `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF srcMv`.
      * Structure is documented below.
      * 
      */
@@ -1138,7 +1138,7 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param tableReplicationInfo Replication info of a table created
          * using &#34;AS REPLICA&#34; DDL like:
-         * `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`.
+         * `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF srcMv`.
          * Structure is documented below.
          * 
          * @return builder
@@ -1152,7 +1152,7 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param tableReplicationInfo Replication info of a table created
          * using &#34;AS REPLICA&#34; DDL like:
-         * `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`.
+         * `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF srcMv`.
          * Structure is documented below.
          * 
          * @return builder

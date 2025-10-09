@@ -173,7 +173,7 @@ namespace Pulumi.Gcp.Spanner
         /// <summary>
         /// The type of this instance. The type can be used to distinguish product variants, that can affect aspects like:
         /// usage restrictions, quotas and billing. Currently this is used to distinguish FREE_INSTANCE vs PROVISIONED instances.
-        /// When configured as FREE_INSTANCE, the field `edition` should not be configured.
+        /// When configured as FREE_INSTANCE, the field `Edition` should not be configured.
         /// Possible values are: `PROVISIONED`, `FREE_INSTANCE`.
         /// </summary>
         [Output("instanceType")]
@@ -184,7 +184,7 @@ namespace Pulumi.Gcp.Spanner
         /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -322,7 +322,7 @@ namespace Pulumi.Gcp.Spanner
         /// <summary>
         /// The type of this instance. The type can be used to distinguish product variants, that can affect aspects like:
         /// usage restrictions, quotas and billing. Currently this is used to distinguish FREE_INSTANCE vs PROVISIONED instances.
-        /// When configured as FREE_INSTANCE, the field `edition` should not be configured.
+        /// When configured as FREE_INSTANCE, the field `Edition` should not be configured.
         /// Possible values are: `PROVISIONED`, `FREE_INSTANCE`.
         /// </summary>
         [Input("instanceType")]
@@ -336,7 +336,7 @@ namespace Pulumi.Gcp.Spanner
         /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -437,7 +437,7 @@ namespace Pulumi.Gcp.Spanner
         /// <summary>
         /// The type of this instance. The type can be used to distinguish product variants, that can affect aspects like:
         /// usage restrictions, quotas and billing. Currently this is used to distinguish FREE_INSTANCE vs PROVISIONED instances.
-        /// When configured as FREE_INSTANCE, the field `edition` should not be configured.
+        /// When configured as FREE_INSTANCE, the field `Edition` should not be configured.
         /// Possible values are: `PROVISIONED`, `FREE_INSTANCE`.
         /// </summary>
         [Input("instanceType")]
@@ -451,7 +451,7 @@ namespace Pulumi.Gcp.Spanner
         /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {

@@ -19,25 +19,25 @@ namespace Pulumi.Gcp.Netapp.Inputs
         public Input<int> BackupMinimumEnforcedRetentionDays { get; set; } = null!;
 
         /// <summary>
-        /// Indicates if the daily backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+        /// Indicates if the daily backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, MonthlyBackupImmutable and ManualBackupImmutable must be true.
         /// </summary>
         [Input("dailyBackupImmutable")]
         public Input<bool>? DailyBackupImmutable { get; set; }
 
         /// <summary>
-        /// Indicates if the manual backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+        /// Indicates if the manual backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, MonthlyBackupImmutable and ManualBackupImmutable must be true.
         /// </summary>
         [Input("manualBackupImmutable")]
         public Input<bool>? ManualBackupImmutable { get; set; }
 
         /// <summary>
-        /// Indicates if the monthly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+        /// Indicates if the monthly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, MonthlyBackupImmutable and ManualBackupImmutable must be true.
         /// </summary>
         [Input("monthlyBackupImmutable")]
         public Input<bool>? MonthlyBackupImmutable { get; set; }
 
         /// <summary>
-        /// Indicates if the weekly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
+        /// Indicates if the weekly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, MonthlyBackupImmutable and ManualBackupImmutable must be true.
         /// </summary>
         [Input("weeklyBackupImmutable")]
         public Input<bool>? WeeklyBackupImmutable { get; set; }

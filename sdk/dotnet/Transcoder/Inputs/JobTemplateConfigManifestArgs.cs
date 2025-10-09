@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Transcoder.Inputs
     public sealed class JobTemplateConfigManifestArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the generated file. The default is `manifest`.
+        /// The name of the generated file. The default is `Manifest`.
         /// </summary>
         [Input("fileName")]
         public Input<string>? FileName { get; set; }

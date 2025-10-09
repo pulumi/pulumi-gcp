@@ -628,7 +628,7 @@ import javax.annotation.Nullable;
 public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResource {
     /**
      * This field is only used for SERVERLESS NEGs.
-     * Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
+     * Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
      * Structure is documented below.
      * 
      */
@@ -637,7 +637,7 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
 
     /**
      * @return This field is only used for SERVERLESS NEGs.
-     * Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
+     * Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
      * Structure is documented below.
      * 
      */
@@ -646,7 +646,7 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
     }
     /**
      * This field is only used for SERVERLESS NEGs.
-     * Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
+     * Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
      * Structure is documented below.
      * 
      */
@@ -655,7 +655,7 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
 
     /**
      * @return This field is only used for SERVERLESS NEGs.
-     * Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
+     * Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
      * Structure is documented below.
      * 
      */
@@ -664,7 +664,7 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
     }
     /**
      * This field is only used for SERVERLESS NEGs.
-     * Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
+     * Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
      * Structure is documented below.
      * 
      */
@@ -673,7 +673,7 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
 
     /**
      * @return This field is only used for SERVERLESS NEGs.
-     * Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
+     * Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
      * Structure is documented below.
      * 
      */

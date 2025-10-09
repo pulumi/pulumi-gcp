@@ -94,14 +94,14 @@ public final class JobHadoopConfigArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The name of the driver&#39;s main class. The jar file containing the class must be in the default CLASSPATH or specified in `jar_file_uris`. Conflicts with `main_jar_file_uri`
+     * The name of the driver&#39;s main class. The jar file containing the class must be in the default CLASSPATH or specified in `jarFileUris`. Conflicts with `mainJarFileUri`
      * 
      */
     @Import(name="mainClass")
     private @Nullable Output<String> mainClass;
 
     /**
-     * @return The name of the driver&#39;s main class. The jar file containing the class must be in the default CLASSPATH or specified in `jar_file_uris`. Conflicts with `main_jar_file_uri`
+     * @return The name of the driver&#39;s main class. The jar file containing the class must be in the default CLASSPATH or specified in `jarFileUris`. Conflicts with `mainJarFileUri`
      * 
      */
     public Optional<Output<String>> mainClass() {
@@ -109,14 +109,14 @@ public final class JobHadoopConfigArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The HCFS URI of the jar file containing the main class. Examples: &#39;gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar&#39; &#39;hdfs:/tmp/test-samples/custom-wordcount.jar&#39; &#39;file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar&#39;. Conflicts with `main_class`
+     * The HCFS URI of the jar file containing the main class. Examples: &#39;gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar&#39; &#39;hdfs:/tmp/test-samples/custom-wordcount.jar&#39; &#39;file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar&#39;. Conflicts with `mainClass`
      * 
      */
     @Import(name="mainJarFileUri")
     private @Nullable Output<String> mainJarFileUri;
 
     /**
-     * @return The HCFS URI of the jar file containing the main class. Examples: &#39;gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar&#39; &#39;hdfs:/tmp/test-samples/custom-wordcount.jar&#39; &#39;file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar&#39;. Conflicts with `main_class`
+     * @return The HCFS URI of the jar file containing the main class. Examples: &#39;gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar&#39; &#39;hdfs:/tmp/test-samples/custom-wordcount.jar&#39; &#39;file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar&#39;. Conflicts with `mainClass`
      * 
      */
     public Optional<Output<String>> mainJarFileUri() {
@@ -319,7 +319,7 @@ public final class JobHadoopConfigArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param mainClass The name of the driver&#39;s main class. The jar file containing the class must be in the default CLASSPATH or specified in `jar_file_uris`. Conflicts with `main_jar_file_uri`
+         * @param mainClass The name of the driver&#39;s main class. The jar file containing the class must be in the default CLASSPATH or specified in `jarFileUris`. Conflicts with `mainJarFileUri`
          * 
          * @return builder
          * 
@@ -330,7 +330,7 @@ public final class JobHadoopConfigArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param mainClass The name of the driver&#39;s main class. The jar file containing the class must be in the default CLASSPATH or specified in `jar_file_uris`. Conflicts with `main_jar_file_uri`
+         * @param mainClass The name of the driver&#39;s main class. The jar file containing the class must be in the default CLASSPATH or specified in `jarFileUris`. Conflicts with `mainJarFileUri`
          * 
          * @return builder
          * 
@@ -340,7 +340,7 @@ public final class JobHadoopConfigArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param mainJarFileUri The HCFS URI of the jar file containing the main class. Examples: &#39;gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar&#39; &#39;hdfs:/tmp/test-samples/custom-wordcount.jar&#39; &#39;file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar&#39;. Conflicts with `main_class`
+         * @param mainJarFileUri The HCFS URI of the jar file containing the main class. Examples: &#39;gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar&#39; &#39;hdfs:/tmp/test-samples/custom-wordcount.jar&#39; &#39;file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar&#39;. Conflicts with `mainClass`
          * 
          * @return builder
          * 
@@ -351,7 +351,7 @@ public final class JobHadoopConfigArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param mainJarFileUri The HCFS URI of the jar file containing the main class. Examples: &#39;gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar&#39; &#39;hdfs:/tmp/test-samples/custom-wordcount.jar&#39; &#39;file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar&#39;. Conflicts with `main_class`
+         * @param mainJarFileUri The HCFS URI of the jar file containing the main class. Examples: &#39;gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar&#39; &#39;hdfs:/tmp/test-samples/custom-wordcount.jar&#39; &#39;file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar&#39;. Conflicts with `mainClass`
          * 
          * @return builder
          * 

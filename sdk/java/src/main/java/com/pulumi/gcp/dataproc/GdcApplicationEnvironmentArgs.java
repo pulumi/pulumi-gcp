@@ -21,7 +21,7 @@ public final class GdcApplicationEnvironmentArgs extends com.pulumi.resources.Re
     /**
      * The annotations to associate with this application environment. Annotations may be used to store client information, but are not used by the server.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     @Import(name="annotations")
@@ -30,7 +30,7 @@ public final class GdcApplicationEnvironmentArgs extends com.pulumi.resources.Re
     /**
      * @return The annotations to associate with this application environment. Annotations may be used to store client information, but are not used by the server.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -70,7 +70,7 @@ public final class GdcApplicationEnvironmentArgs extends com.pulumi.resources.Re
     /**
      * The labels to associate with this application environment. Labels may be used for filtering and billing tracking.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -79,7 +79,7 @@ public final class GdcApplicationEnvironmentArgs extends com.pulumi.resources.Re
     /**
      * @return The labels to associate with this application environment. Labels may be used for filtering and billing tracking.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -200,7 +200,7 @@ public final class GdcApplicationEnvironmentArgs extends com.pulumi.resources.Re
         /**
          * @param annotations The annotations to associate with this application environment. Annotations may be used to store client information, but are not used by the server.
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -213,7 +213,7 @@ public final class GdcApplicationEnvironmentArgs extends com.pulumi.resources.Re
         /**
          * @param annotations The annotations to associate with this application environment. Annotations may be used to store client information, but are not used by the server.
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class GdcApplicationEnvironmentArgs extends com.pulumi.resources.Re
         /**
          * @param labels The labels to associate with this application environment. Labels may be used for filtering and billing tracking.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -280,7 +280,7 @@ public final class GdcApplicationEnvironmentArgs extends com.pulumi.resources.Re
         /**
          * @param labels The labels to associate with this application environment. Labels may be used for filtering and billing tracking.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 

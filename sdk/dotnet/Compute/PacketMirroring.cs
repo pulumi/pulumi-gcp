@@ -190,7 +190,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
         /// that will be used as collector for mirrored traffic. The
-        /// specified forwarding rule must have is_mirroring_collector
+        /// specified forwarding rule must have IsMirroringCollector
         /// set to true.
         /// Structure is documented below.
         /// </summary>
@@ -303,7 +303,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
         /// that will be used as collector for mirrored traffic. The
-        /// specified forwarding rule must have is_mirroring_collector
+        /// specified forwarding rule must have IsMirroringCollector
         /// set to true.
         /// Structure is documented below.
         /// </summary>
@@ -378,7 +378,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
         /// that will be used as collector for mirrored traffic. The
-        /// specified forwarding rule must have is_mirroring_collector
+        /// specified forwarding rule must have IsMirroringCollector
         /// set to true.
         /// Structure is documented below.
         /// </summary>

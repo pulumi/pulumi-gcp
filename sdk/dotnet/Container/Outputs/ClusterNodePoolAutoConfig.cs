@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterNodePoolAutoConfig
     {
         /// <summary>
-        /// Linux system configuration for the cluster's automatically provisioned node pools. Only `cgroup_mode` field is supported in `node_pool_auto_config`. Structure is documented below.
+        /// Linux system configuration for the cluster's automatically provisioned node pools. Only `CgroupMode` field is supported in `NodePoolAutoConfig`. Structure is documented below.
         /// </summary>
         public readonly Outputs.ClusterNodePoolAutoConfigLinuxNodeConfig? LinuxNodeConfig;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterNodePoolAutoConfigNetworkTags? NetworkTags;
         /// <summary>
-        /// Kubelet configuration for Autopilot clusters. Currently, only `insecure_kubelet_readonly_port_enabled` is supported here.
+        /// Kubelet configuration for Autopilot clusters. Currently, only `InsecureKubeletReadonlyPortEnabled` is supported here.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ClusterNodePoolAutoConfigNodeKubeletConfig? NodeKubeletConfig;

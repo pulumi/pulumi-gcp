@@ -195,7 +195,7 @@ namespace Pulumi.Gcp.AppEngine
         public Output<Outputs.StandardAppVersionBasicScaling?> BasicScaling { get; private set; } = null!;
 
         /// <summary>
-        /// If set to `true`, the service will be deleted if it is the last version.
+        /// If set to `True`, the service will be deleted if it is the last version.
         /// </summary>
         [Output("deleteServiceOnDestroy")]
         public Output<bool?> DeleteServiceOnDestroy { get; private set; } = null!;
@@ -265,7 +265,7 @@ namespace Pulumi.Gcp.AppEngine
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// If set to `true`, the application version will not be deleted.
+        /// If set to `True`, the application version will not be deleted.
         /// </summary>
         [Output("noopOnDestroy")]
         public Output<bool?> NoopOnDestroy { get; private set; } = null!;
@@ -286,7 +286,7 @@ namespace Pulumi.Gcp.AppEngine
         /// <summary>
         /// The version of the API in the given runtime environment.
         /// Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/&lt;language&gt;/config/appref`\
-        /// Substitute `&lt;language&gt;` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
+        /// Substitute `&lt;language&gt;` with `Python`, `Java`, `Php`, `Ruby`, `Go` or `Nodejs`.
         /// </summary>
         [Output("runtimeApiVersion")]
         public Output<string?> RuntimeApiVersion { get; private set; } = null!;
@@ -310,7 +310,7 @@ namespace Pulumi.Gcp.AppEngine
         public Output<bool?> Threadsafe { get; private set; } = null!;
 
         /// <summary>
-        /// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
+        /// Relative name of the version within the service. For example, `V1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
         /// </summary>
         [Output("versionId")]
         public Output<string?> VersionId { get; private set; } = null!;
@@ -389,7 +389,7 @@ namespace Pulumi.Gcp.AppEngine
         public Input<Inputs.StandardAppVersionBasicScalingArgs>? BasicScaling { get; set; }
 
         /// <summary>
-        /// If set to `true`, the service will be deleted if it is the last version.
+        /// If set to `True`, the service will be deleted if it is the last version.
         /// </summary>
         [Input("deleteServiceOnDestroy")]
         public Input<bool>? DeleteServiceOnDestroy { get; set; }
@@ -477,7 +477,7 @@ namespace Pulumi.Gcp.AppEngine
         public Input<Inputs.StandardAppVersionManualScalingArgs>? ManualScaling { get; set; }
 
         /// <summary>
-        /// If set to `true`, the application version will not be deleted.
+        /// If set to `True`, the application version will not be deleted.
         /// </summary>
         [Input("noopOnDestroy")]
         public Input<bool>? NoopOnDestroy { get; set; }
@@ -498,7 +498,7 @@ namespace Pulumi.Gcp.AppEngine
         /// <summary>
         /// The version of the API in the given runtime environment.
         /// Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/&lt;language&gt;/config/appref`\
-        /// Substitute `&lt;language&gt;` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
+        /// Substitute `&lt;language&gt;` with `Python`, `Java`, `Php`, `Ruby`, `Go` or `Nodejs`.
         /// </summary>
         [Input("runtimeApiVersion")]
         public Input<string>? RuntimeApiVersion { get; set; }
@@ -522,7 +522,7 @@ namespace Pulumi.Gcp.AppEngine
         public Input<bool>? Threadsafe { get; set; }
 
         /// <summary>
-        /// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
+        /// Relative name of the version within the service. For example, `V1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
         /// </summary>
         [Input("versionId")]
         public Input<string>? VersionId { get; set; }
@@ -563,7 +563,7 @@ namespace Pulumi.Gcp.AppEngine
         public Input<Inputs.StandardAppVersionBasicScalingGetArgs>? BasicScaling { get; set; }
 
         /// <summary>
-        /// If set to `true`, the service will be deleted if it is the last version.
+        /// If set to `True`, the service will be deleted if it is the last version.
         /// </summary>
         [Input("deleteServiceOnDestroy")]
         public Input<bool>? DeleteServiceOnDestroy { get; set; }
@@ -657,7 +657,7 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// If set to `true`, the application version will not be deleted.
+        /// If set to `True`, the application version will not be deleted.
         /// </summary>
         [Input("noopOnDestroy")]
         public Input<bool>? NoopOnDestroy { get; set; }
@@ -678,7 +678,7 @@ namespace Pulumi.Gcp.AppEngine
         /// <summary>
         /// The version of the API in the given runtime environment.
         /// Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/&lt;language&gt;/config/appref`\
-        /// Substitute `&lt;language&gt;` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
+        /// Substitute `&lt;language&gt;` with `Python`, `Java`, `Php`, `Ruby`, `Go` or `Nodejs`.
         /// </summary>
         [Input("runtimeApiVersion")]
         public Input<string>? RuntimeApiVersion { get; set; }
@@ -702,7 +702,7 @@ namespace Pulumi.Gcp.AppEngine
         public Input<bool>? Threadsafe { get; set; }
 
         /// <summary>
-        /// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
+        /// Relative name of the version within the service. For example, `V1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
         /// </summary>
         [Input("versionId")]
         public Input<string>? VersionId { get; set; }

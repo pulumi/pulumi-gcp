@@ -100,28 +100,28 @@ namespace Pulumi.Gcp.Compute
     public sealed class GetInstanceArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the instance. One of `name` or `self_link` must be provided.
+        /// The name of the instance. One of `Name` or `SelfLink` must be provided.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
-        /// If `self_link` is provided, this value is ignored.  If neither `self_link`
-        /// nor `project` are provided, the provider project is used.
+        /// If `SelfLink` is provided, this value is ignored.  If neither `SelfLink`
+        /// nor `Project` are provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public string? Project { get; set; }
 
         /// <summary>
-        /// The self link of the instance. One of `name` or `self_link` must be provided.
+        /// The self link of the instance. One of `Name` or `SelfLink` must be provided.
         /// </summary>
         [Input("selfLink")]
         public string? SelfLink { get; set; }
 
         /// <summary>
-        /// The zone of the instance. If `self_link` is provided, this
-        /// value is ignored.  If neither `self_link` nor `zone` are provided, the
+        /// The zone of the instance. If `SelfLink` is provided, this
+        /// value is ignored.  If neither `SelfLink` nor `Zone` are provided, the
         /// provider zone is used.
         /// </summary>
         [Input("zone")]
@@ -136,28 +136,28 @@ namespace Pulumi.Gcp.Compute
     public sealed class GetInstanceInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the instance. One of `name` or `self_link` must be provided.
+        /// The name of the instance. One of `Name` or `SelfLink` must be provided.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
-        /// If `self_link` is provided, this value is ignored.  If neither `self_link`
-        /// nor `project` are provided, the provider project is used.
+        /// If `SelfLink` is provided, this value is ignored.  If neither `SelfLink`
+        /// nor `Project` are provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The self link of the instance. One of `name` or `self_link` must be provided.
+        /// The self link of the instance. One of `Name` or `SelfLink` must be provided.
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
 
         /// <summary>
-        /// The zone of the instance. If `self_link` is provided, this
-        /// value is ignored.  If neither `self_link` nor `zone` are provided, the
+        /// The zone of the instance. If `SelfLink` is provided, this
+        /// value is ignored.  If neither `SelfLink` nor `Zone` are provided, the
         /// provider zone is used.
         /// </summary>
         [Input("zone")]
@@ -272,7 +272,7 @@ namespace Pulumi.Gcp.Compute
         public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly ImmutableArray<Outputs.GetInstanceReservationAffinityResult> ReservationAffinities;
         /// <summary>
-        /// A list of self_links to resource policies attached to the selected `boot_disk`
+        /// A list of SelfLinks to resource policies attached to the selected `BootDisk`
         /// </summary>
         public readonly ImmutableArray<string> ResourcePolicies;
         /// <summary>

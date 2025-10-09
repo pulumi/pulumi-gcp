@@ -498,7 +498,7 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
     /**
      * User-defined annotations. See https://google.aip.dev/128#annotations.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -507,7 +507,7 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
     /**
      * @return User-defined annotations. See https://google.aip.dev/128#annotations.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> annotations() {
@@ -644,7 +644,7 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      * resources. An object containing a list of &#34;key&#34;: value pairs. Example: {
      * &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -655,7 +655,7 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      * resources. An object containing a list of &#34;key&#34;: value pairs. Example: {
      * &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -784,7 +784,7 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      * The backoff starts with a 5 second delay and doubles the
      * delay after each failed attempt (10 seconds, 20 seconds, 40 seconds, etc.).
      * The delay is capped at 60 seconds by default.
-     * Please note that if you set the min_retry_delay and max_retry_delay fields
+     * Please note that if you set the minRetryDelay and maxRetryDelay fields
      * to the same value this will make the duration between retries constant.
      * Structure is documented below.
      * 
@@ -799,7 +799,7 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      * The backoff starts with a 5 second delay and doubles the
      * delay after each failed attempt (10 seconds, 20 seconds, 40 seconds, etc.).
      * The delay is capped at 60 seconds by default.
-     * Please note that if you set the min_retry_delay and max_retry_delay fields
+     * Please note that if you set the minRetryDelay and maxRetryDelay fields
      * to the same value this will make the duration between retries constant.
      * Structure is documented below.
      * 

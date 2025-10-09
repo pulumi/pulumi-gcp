@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig {
     /**
-     * @return If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This `internal_ip_only` restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
+     * @return If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This `internalIpOnly` restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
      * 
      */
     private @Nullable Boolean internalIpOnly;
@@ -28,7 +28,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
      */
     private @Nullable Map<String,String> metadata;
     /**
-     * @return The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `network_uri` nor `subnetwork_uri` is specified, the &#34;default&#34; network of the project is used, if it exists. Cannot be a &#34;Custom Subnet Network&#34; (see /regions/global/default`*`default`
+     * @return The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `networkUri` nor `subnetworkUri` is specified, the &#34;default&#34; network of the project is used, if it exists. Cannot be a &#34;Custom Subnet Network&#34; (see /regions/global/default`*`default`
      * 
      */
     private @Nullable String network;
@@ -80,7 +80,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
 
     private WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig() {}
     /**
-     * @return If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This `internal_ip_only` restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
+     * @return If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This `internalIpOnly` restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
      * 
      */
     public Optional<Boolean> internalIpOnly() {
@@ -94,7 +94,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         return this.metadata == null ? Map.of() : this.metadata;
     }
     /**
-     * @return The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `network_uri` nor `subnetwork_uri` is specified, the &#34;default&#34; network of the project is used, if it exists. Cannot be a &#34;Custom Subnet Network&#34; (see /regions/global/default`*`default`
+     * @return The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `networkUri` nor `subnetworkUri` is specified, the &#34;default&#34; network of the project is used, if it exists. Cannot be a &#34;Custom Subnet Network&#34; (see /regions/global/default`*`default`
      * 
      */
     public Optional<String> network() {

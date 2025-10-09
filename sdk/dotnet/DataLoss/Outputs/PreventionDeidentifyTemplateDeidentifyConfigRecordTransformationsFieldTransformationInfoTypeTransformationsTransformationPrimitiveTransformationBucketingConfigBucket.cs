@@ -15,19 +15,19 @@ namespace Pulumi.Gcp.DataLoss.Outputs
     {
         /// <summary>
         /// Upper bound of the range, exclusive; type must match min.
-        /// The `max` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
+        /// The `Max` block must only contain one argument. See the `BucketingConfig` block description for more information about choosing a data type.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMax? Max;
         /// <summary>
         /// Lower bound of the range, inclusive. Type should be the same as max if used.
-        /// The `min` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
+        /// The `Min` block must only contain one argument. See the `BucketingConfig` block description for more information about choosing a data type.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMin? Min;
         /// <summary>
         /// Replacement value for this bucket.
-        /// The `replacement_value` block must only contain one argument.
+        /// The `ReplacementValue` block must only contain one argument.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValue ReplacementValue;

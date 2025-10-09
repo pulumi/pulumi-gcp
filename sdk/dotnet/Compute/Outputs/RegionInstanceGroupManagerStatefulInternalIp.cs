@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? DeleteRule;
         /// <summary>
-        /// , The network interface name of the internal Ip. Possible value: `nic0`.
+        /// , The network interface name of the internal Ip. Possible value: `Nic0`.
         /// </summary>
         public readonly string? InterfaceName;
 

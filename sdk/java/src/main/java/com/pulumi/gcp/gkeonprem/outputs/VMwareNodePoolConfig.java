@@ -41,7 +41,7 @@ public final class VMwareNodePoolConfig {
     private @Nullable String image;
     /**
      * @return The OS image to be used for each node in a node pool.
-     * Currently `cos`, `cos_cgv2`, `ubuntu`, `ubuntu_cgv2`, `ubuntu_containerd` and `windows` are supported.
+     * Currently `cos`, `cosCgv2`, `ubuntu`, `ubuntuCgv2`, `ubuntuContainerd` and `windows` are supported.
      * 
      */
     private String imageType;
@@ -110,7 +110,7 @@ public final class VMwareNodePoolConfig {
     }
     /**
      * @return The OS image to be used for each node in a node pool.
-     * Currently `cos`, `cos_cgv2`, `ubuntu`, `ubuntu_cgv2`, `ubuntu_containerd` and `windows` are supported.
+     * Currently `cos`, `cosCgv2`, `ubuntu`, `ubuntuCgv2`, `ubuntuContainerd` and `windows` are supported.
      * 
      */
     public String imageType() {

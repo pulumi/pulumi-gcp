@@ -393,7 +393,7 @@ namespace Pulumi.Gcp.Vertex
         public Output<string> DeployedModelId { get; private set; } = null!;
 
         /// <summary>
-        /// Resource ID segment making up resource `endpoint`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        /// Resource ID segment making up resource `Endpoint`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         /// </summary>
         [Output("endpoint")]
         public Output<string> Endpoint { get; private set; } = null!;
@@ -413,7 +413,7 @@ namespace Pulumi.Gcp.Vertex
         public Output<string?> HuggingFaceModelId { get; private set; } = null!;
 
         /// <summary>
-        /// Resource ID segment making up resource `location`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        /// Resource ID segment making up resource `Location`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -509,7 +509,7 @@ namespace Pulumi.Gcp.Vertex
         public Input<string>? HuggingFaceModelId { get; set; }
 
         /// <summary>
-        /// Resource ID segment making up resource `location`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        /// Resource ID segment making up resource `Location`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -568,7 +568,7 @@ namespace Pulumi.Gcp.Vertex
         public Input<string>? DeployedModelId { get; set; }
 
         /// <summary>
-        /// Resource ID segment making up resource `endpoint`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        /// Resource ID segment making up resource `Endpoint`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         /// </summary>
         [Input("endpoint")]
         public Input<string>? Endpoint { get; set; }
@@ -588,7 +588,7 @@ namespace Pulumi.Gcp.Vertex
         public Input<string>? HuggingFaceModelId { get; set; }
 
         /// <summary>
-        /// Resource ID segment making up resource `location`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        /// Resource ID segment making up resource `Location`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

@@ -15,7 +15,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Persistent disks can be attached to a compute instance using the `attached_disk`
+ * Persistent disks can be attached to a compute instance using the `attachedDisk`
  * section within the compute instance configuration.
  * However there may be situations where managing the attached disks via the compute
  * instance config isn&#39;t preferable or possible, such as attaching dynamic
@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
  * * How-to Guides
  *     * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
  * 
- * **Note:** When using `gcp.compute.AttachedDisk` you **must** use `lifecycle.ignore_changes = [&#34;attached_disk&#34;]` on the `gcp.compute.Instance` resource that has the disks attached. Otherwise the two resources will fight for control of the attached disk block.
+ * **Note:** When using `gcp.compute.AttachedDisk` you **must** use `lifecycle.ignore_changes = [&#34;attachedDisk&#34;]` on the `gcp.compute.Instance` resource that has the disks attached. Otherwise the two resources will fight for control of the attached disk block.
  * 
  * ## Example Usage
  * 
@@ -134,7 +134,7 @@ public class AttachedDisk extends com.pulumi.resources.CustomResource {
         return this.deviceName;
     }
     /**
-     * `name` or `self_link` of the disk that will be attached.
+     * `name` or `selfLink` of the disk that will be attached.
      * 
      * ***
      * 
@@ -143,7 +143,7 @@ public class AttachedDisk extends com.pulumi.resources.CustomResource {
     private Output<String> disk;
 
     /**
-     * @return `name` or `self_link` of the disk that will be attached.
+     * @return `name` or `selfLink` of the disk that will be attached.
      * 
      * ***
      * 
@@ -152,8 +152,8 @@ public class AttachedDisk extends com.pulumi.resources.CustomResource {
         return this.disk;
     }
     /**
-     * `name` or `self_link` of the compute instance that the disk will be attached to.
-     * If the `self_link` is provided then `zone` and `project` are extracted from the
+     * `name` or `selfLink` of the compute instance that the disk will be attached to.
+     * If the `selfLink` is provided then `zone` and `project` are extracted from the
      * self link. If only the name is used then `zone` and `project` must be defined
      * as properties on the resource or provider.
      * 
@@ -162,8 +162,8 @@ public class AttachedDisk extends com.pulumi.resources.CustomResource {
     private Output<String> instance;
 
     /**
-     * @return `name` or `self_link` of the compute instance that the disk will be attached to.
-     * If the `self_link` is provided then `zone` and `project` are extracted from the
+     * @return `name` or `selfLink` of the compute instance that the disk will be attached to.
+     * If the `selfLink` is provided then `zone` and `project` are extracted from the
      * self link. If only the name is used then `zone` and `project` must be defined
      * as properties on the resource or provider.
      * 
@@ -229,7 +229,7 @@ public class AttachedDisk extends com.pulumi.resources.CustomResource {
     }
     /**
      * The project that the referenced compute instance is a part of. If `instance` is referenced by its
-     * `self_link` the project defined in the link will take precedence.
+     * `selfLink` the project defined in the link will take precedence.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
@@ -237,7 +237,7 @@ public class AttachedDisk extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The project that the referenced compute instance is a part of. If `instance` is referenced by its
-     * `self_link` the project defined in the link will take precedence.
+     * `selfLink` the project defined in the link will take precedence.
      * 
      */
     public Output<String> project() {
@@ -245,7 +245,7 @@ public class AttachedDisk extends com.pulumi.resources.CustomResource {
     }
     /**
      * The zone that the referenced compute instance is located within. If `instance` is referenced by its
-     * `self_link` the zone defined in the link will take precedence.
+     * `selfLink` the zone defined in the link will take precedence.
      * 
      */
     @Export(name="zone", refs={String.class}, tree="[0]")
@@ -253,7 +253,7 @@ public class AttachedDisk extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The zone that the referenced compute instance is located within. If `instance` is referenced by its
-     * `self_link` the zone defined in the link will take precedence.
+     * `selfLink` the zone defined in the link will take precedence.
      * 
      */
     public Output<String> zone() {

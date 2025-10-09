@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
 
         /// <summary>
         /// Specifies the type of identities that are allowed access to outside the
-        /// perimeter. If left unspecified, then members of `identities` field will
+        /// perimeter. If left unspecified, then members of `Identities` field will
         /// be allowed access.
         /// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
         /// </summary>
@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         public Input<string>? IdentityType { get; set; }
 
         /// <summary>
-        /// Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+        /// Whether to enforce traffic restrictions based on `Sources` field. If the `Sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
         /// Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
         /// </summary>
         [Input("sourceRestriction")]

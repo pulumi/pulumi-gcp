@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Netapp.Inputs
         public Input<string>? AllowedClients { get; set; }
 
         /// <summary>
-        /// An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squash_mode` is `ROOT_SQUASH` or `ALL_SQUASH`.
+        /// An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `SquashMode` is `ROOT_SQUASH` or `ALL_SQUASH`.
         /// </summary>
         [Input("anonUid")]
         public Input<int>? AnonUid { get; set; }

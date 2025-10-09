@@ -161,7 +161,7 @@ namespace Pulumi.Gcp.Dataform
 
         /// <summary>
         /// Optional. The reference to a KMS encryption key. If provided, it will be used to encrypt user data in the repository and all child resources.
-        /// It is not possible to add or update the encryption key after the repository is created. Example projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
+        /// It is not possible to add or update the encryption key after the repository is created. Example projects/[KmsProjectId]/locations/[region]/keyRings/[KeyRegion]/cryptoKeys/[key]
         /// </summary>
         [Output("kmsKeyName")]
         public Output<string?> KmsKeyName { get; private set; } = null!;
@@ -171,7 +171,7 @@ namespace Pulumi.Gcp.Dataform
         /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -293,7 +293,7 @@ namespace Pulumi.Gcp.Dataform
 
         /// <summary>
         /// Optional. The reference to a KMS encryption key. If provided, it will be used to encrypt user data in the repository and all child resources.
-        /// It is not possible to add or update the encryption key after the repository is created. Example projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
+        /// It is not possible to add or update the encryption key after the repository is created. Example projects/[KmsProjectId]/locations/[region]/keyRings/[KeyRegion]/cryptoKeys/[key]
         /// </summary>
         [Input("kmsKeyName")]
         public Input<string>? KmsKeyName { get; set; }
@@ -306,7 +306,7 @@ namespace Pulumi.Gcp.Dataform
         /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -397,7 +397,7 @@ namespace Pulumi.Gcp.Dataform
 
         /// <summary>
         /// Optional. The reference to a KMS encryption key. If provided, it will be used to encrypt user data in the repository and all child resources.
-        /// It is not possible to add or update the encryption key after the repository is created. Example projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
+        /// It is not possible to add or update the encryption key after the repository is created. Example projects/[KmsProjectId]/locations/[region]/keyRings/[KeyRegion]/cryptoKeys/[key]
         /// </summary>
         [Input("kmsKeyName")]
         public Input<string>? KmsKeyName { get; set; }
@@ -410,7 +410,7 @@ namespace Pulumi.Gcp.Dataform
         /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {

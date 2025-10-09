@@ -25,7 +25,7 @@ public final class TriggerBitbucketServerTriggerConfigPullRequest {
      */
     private @Nullable String commentControl;
     /**
-     * @return If true, branches that do NOT match the git_ref will trigger a build.
+     * @return If true, branches that do NOT match the gitRef will trigger a build.
      * 
      */
     private @Nullable Boolean invertRegex;
@@ -47,7 +47,7 @@ public final class TriggerBitbucketServerTriggerConfigPullRequest {
         return Optional.ofNullable(this.commentControl);
     }
     /**
-     * @return If true, branches that do NOT match the git_ref will trigger a build.
+     * @return If true, branches that do NOT match the gitRef will trigger a build.
      * 
      */
     public Optional<Boolean> invertRegex() {

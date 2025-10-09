@@ -299,14 +299,14 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the object. If you&#39;re interpolating the name of this object, see `output_name` instead.
+     * The name of the object. If you&#39;re interpolating the name of this object, see `outputName` instead.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the object. If you&#39;re interpolating the name of this object, see `output_name` instead.
+     * @return The name of the object. If you&#39;re interpolating the name of this object, see `outputName` instead.
      * 
      */
     public Optional<Output<String>> name() {
@@ -864,7 +864,7 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the object. If you&#39;re interpolating the name of this object, see `output_name` instead.
+         * @param name The name of the object. If you&#39;re interpolating the name of this object, see `outputName` instead.
          * 
          * @return builder
          * 
@@ -875,7 +875,7 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the object. If you&#39;re interpolating the name of this object, see `output_name` instead.
+         * @param name The name of the object. If you&#39;re interpolating the name of this object, see `outputName` instead.
          * 
          * @return builder
          * 

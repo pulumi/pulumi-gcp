@@ -633,18 +633,18 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.desiredAutoCreatedEndpoints);
     }
     /**
-     * `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
+     * `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead `pulumi import` will only work with desiredAutoCreatedEndpoints`.
      * 
      * @deprecated
-     * `desired_psc_auto_connections` is deprecated. Use `desired_auto_created_endpoints` instead. `terraform import` will only work with desired_auto_created_endpoints`.
+     * `desiredPscAutoConnections` is deprecated. Use `desiredAutoCreatedEndpoints` instead. `terraform import` will only work with desiredAutoCreatedEndpoints`.
      * 
      */
-    @Deprecated /* `desired_psc_auto_connections` is deprecated. Use `desired_auto_created_endpoints` instead. `terraform import` will only work with desired_auto_created_endpoints`. */
+    @Deprecated /* `desiredPscAutoConnections` is deprecated. Use `desiredAutoCreatedEndpoints` instead. `terraform import` will only work with desiredAutoCreatedEndpoints`. */
     @Export(name="desiredPscAutoConnections", refs={List.class,InstanceDesiredPscAutoConnection.class}, tree="[0,1]")
     private Output</* @Nullable */ List<InstanceDesiredPscAutoConnection>> desiredPscAutoConnections;
 
     /**
-     * @return `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
+     * @return `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead `pulumi import` will only work with desiredAutoCreatedEndpoints`.
      * 
      */
     public Output<Optional<List<InstanceDesiredPscAutoConnection>>> desiredPscAutoConnections() {
@@ -656,10 +656,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      * @deprecated
-     * This field is deprecated. As a result it will not be populated if the connections are created using `desired_auto_created_endpoints` parameter or `gcp.memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY.
+     * This field is deprecated. As a result it will not be populated if the connections are created using `desiredAutoCreatedEndpoints` parameter or `gcp.memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY.
      * 
      */
-    @Deprecated /* This field is deprecated. As a result it will not be populated if the connections are created using `desired_auto_created_endpoints` parameter or `gcp.memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY. */
+    @Deprecated /* This field is deprecated. As a result it will not be populated if the connections are created using `desiredAutoCreatedEndpoints` parameter or `gcp.memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY. */
     @Export(name="discoveryEndpoints", refs={List.class,InstanceDiscoveryEndpoint.class}, tree="[0,1]")
     private Output<List<InstanceDiscoveryEndpoint>> discoveryEndpoints;
 
@@ -791,7 +791,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * Optional. Labels to represent user-provided metadata.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -800,7 +800,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * @return Optional. Labels to represent user-provided metadata.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -869,7 +869,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.managedBackupSource);
     }
     /**
-     * Instance&#39;s Certificate Authority. This field will only be populated if instance&#39;s transit_encryption_mode is SERVER_AUTHENTICATION
+     * Instance&#39;s Certificate Authority. This field will only be populated if instance&#39;s transitEncryptionMode is SERVER_AUTHENTICATION
      * Structure is documented below.
      * 
      */
@@ -877,7 +877,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<List<InstanceManagedServerCa>> managedServerCas;
 
     /**
-     * @return Instance&#39;s Certificate Authority. This field will only be populated if instance&#39;s transit_encryption_mode is SERVER_AUTHENTICATION
+     * @return Instance&#39;s Certificate Authority. This field will only be populated if instance&#39;s transitEncryptionMode is SERVER_AUTHENTICATION
      * Structure is documented below.
      * 
      */
@@ -1016,10 +1016,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      * @deprecated
-     * `psc_auto_connections` is deprecated  Use `endpoints.connections.pscAutoConnections` instead.
+     * `pscAutoConnections` is deprecated  Use `endpoints.connections.pscAutoConnections` instead.
      * 
      */
-    @Deprecated /* `psc_auto_connections` is deprecated  Use `endpoints.connections.pscAutoConnections` instead. */
+    @Deprecated /* `pscAutoConnections` is deprecated  Use `endpoints.connections.pscAutoConnections` instead. */
     @Export(name="pscAutoConnections", refs={List.class,InstancePscAutoConnection.class}, tree="[0,1]")
     private Output<List<InstancePscAutoConnection>> pscAutoConnections;
 

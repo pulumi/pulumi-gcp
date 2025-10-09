@@ -30,11 +30,11 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string Network;
         /// <summary>
-        /// The name of the parent network computed from `network` attribute.
+        /// The name of the parent network computed from `Network` attribute.
         /// </summary>
         public readonly string NetworkName;
         /// <summary>
-        /// (Deprecated) The name of the parent network computed from `network` attribute. (deprecated and will be removed in a future major release. Use `network_name` instead.)
+        /// (Deprecated) The name of the parent network computed from `Network` attribute. (deprecated and will be removed in a future major release. Use `NetworkName` instead.)
         /// </summary>
         public readonly string NetworkSelfLink;
         /// <summary>

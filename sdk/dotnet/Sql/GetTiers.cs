@@ -127,7 +127,7 @@ namespace Pulumi.Gcp.Sql
     public sealed class GetTiersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The Project ID for which to list tiers. If `project` is not provided, the project defined within the default provider configuration is used.
+        /// The Project ID for which to list tiers. If `Project` is not provided, the project defined within the default provider configuration is used.
         /// </summary>
         [Input("project")]
         public string? Project { get; set; }
@@ -141,7 +141,7 @@ namespace Pulumi.Gcp.Sql
     public sealed class GetTiersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The Project ID for which to list tiers. If `project` is not provided, the project defined within the default provider configuration is used.
+        /// The Project ID for which to list tiers. If `Project` is not provided, the project defined within the default provider configuration is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }

@@ -10,11 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute
 {
     /// <summary>
-    /// Persistent disks can be attached to a compute instance using the `attached_disk`
+    /// Persistent disks can be attached to a compute instance using the `AttachedDisk`
     /// section within the compute instance configuration.
     /// However there may be situations where managing the attached disks via the compute
     /// instance config isn't preferable or possible, such as attaching dynamic
-    /// numbers of disks using the `count` variable.
+    /// numbers of disks using the `Count` variable.
     /// 
     /// To get more information about attaching disks, see:
     /// 
@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Compute
     /// * How-to Guides
     ///     * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
     /// 
-    /// **Note:** When using `gcp.compute.AttachedDisk` you **must** use `lifecycle.ignore_changes = ["attached_disk"]` on the `gcp.compute.Instance` resource that has the disks attached. Otherwise the two resources will fight for control of the attached disk block.
+    /// **Note:** When using `gcp.compute.AttachedDisk` you **must** use `lifecycle.ignore_changes = ["AttachedDisk"]` on the `gcp.compute.Instance` resource that has the disks attached. Otherwise the two resources will fight for control of the attached disk block.
     /// 
     /// ## Example Usage
     /// 
@@ -100,7 +100,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> DeviceName { get; private set; } = null!;
 
         /// <summary>
-        /// `name` or `self_link` of the disk that will be attached.
+        /// `Name` or `SelfLink` of the disk that will be attached.
         /// 
         /// 
         /// - - -
@@ -109,9 +109,9 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Disk { get; private set; } = null!;
 
         /// <summary>
-        /// `name` or `self_link` of the compute instance that the disk will be attached to.
-        /// If the `self_link` is provided then `zone` and `project` are extracted from the
-        /// self link. If only the name is used then `zone` and `project` must be defined
+        /// `Name` or `SelfLink` of the compute instance that the disk will be attached to.
+        /// If the `SelfLink` is provided then `Zone` and `Project` are extracted from the
+        /// self link. If only the name is used then `Zone` and `Project` must be defined
         /// as properties on the resource or provider.
         /// </summary>
         [Output("instance")]
@@ -144,15 +144,15 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Mode { get; private set; } = null!;
 
         /// <summary>
-        /// The project that the referenced compute instance is a part of. If `instance` is referenced by its
-        /// `self_link` the project defined in the link will take precedence.
+        /// The project that the referenced compute instance is a part of. If `Instance` is referenced by its
+        /// `SelfLink` the project defined in the link will take precedence.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The zone that the referenced compute instance is located within. If `instance` is referenced by its
-        /// `self_link` the zone defined in the link will take precedence.
+        /// The zone that the referenced compute instance is located within. If `Instance` is referenced by its
+        /// `SelfLink` the zone defined in the link will take precedence.
         /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
@@ -218,7 +218,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? DeviceName { get; set; }
 
         /// <summary>
-        /// `name` or `self_link` of the disk that will be attached.
+        /// `Name` or `SelfLink` of the disk that will be attached.
         /// 
         /// 
         /// - - -
@@ -227,9 +227,9 @@ namespace Pulumi.Gcp.Compute
         public Input<string> Disk { get; set; } = null!;
 
         /// <summary>
-        /// `name` or `self_link` of the compute instance that the disk will be attached to.
-        /// If the `self_link` is provided then `zone` and `project` are extracted from the
-        /// self link. If only the name is used then `zone` and `project` must be defined
+        /// `Name` or `SelfLink` of the compute instance that the disk will be attached to.
+        /// If the `SelfLink` is provided then `Zone` and `Project` are extracted from the
+        /// self link. If only the name is used then `Zone` and `Project` must be defined
         /// as properties on the resource or provider.
         /// </summary>
         [Input("instance", required: true)]
@@ -262,15 +262,15 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Mode { get; set; }
 
         /// <summary>
-        /// The project that the referenced compute instance is a part of. If `instance` is referenced by its
-        /// `self_link` the project defined in the link will take precedence.
+        /// The project that the referenced compute instance is a part of. If `Instance` is referenced by its
+        /// `SelfLink` the project defined in the link will take precedence.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The zone that the referenced compute instance is located within. If `instance` is referenced by its
-        /// `self_link` the zone defined in the link will take precedence.
+        /// The zone that the referenced compute instance is located within. If `Instance` is referenced by its
+        /// `SelfLink` the zone defined in the link will take precedence.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
@@ -298,7 +298,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? DeviceName { get; set; }
 
         /// <summary>
-        /// `name` or `self_link` of the disk that will be attached.
+        /// `Name` or `SelfLink` of the disk that will be attached.
         /// 
         /// 
         /// - - -
@@ -307,9 +307,9 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Disk { get; set; }
 
         /// <summary>
-        /// `name` or `self_link` of the compute instance that the disk will be attached to.
-        /// If the `self_link` is provided then `zone` and `project` are extracted from the
-        /// self link. If only the name is used then `zone` and `project` must be defined
+        /// `Name` or `SelfLink` of the compute instance that the disk will be attached to.
+        /// If the `SelfLink` is provided then `Zone` and `Project` are extracted from the
+        /// self link. If only the name is used then `Zone` and `Project` must be defined
         /// as properties on the resource or provider.
         /// </summary>
         [Input("instance")]
@@ -342,15 +342,15 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Mode { get; set; }
 
         /// <summary>
-        /// The project that the referenced compute instance is a part of. If `instance` is referenced by its
-        /// `self_link` the project defined in the link will take precedence.
+        /// The project that the referenced compute instance is a part of. If `Instance` is referenced by its
+        /// `SelfLink` the project defined in the link will take precedence.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The zone that the referenced compute instance is located within. If `instance` is referenced by its
-        /// `self_link` the zone defined in the link will take precedence.
+        /// The zone that the referenced compute instance is located within. If `Instance` is referenced by its
+        /// `SelfLink` the zone defined in the link will take precedence.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

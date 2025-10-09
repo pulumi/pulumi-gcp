@@ -137,7 +137,7 @@ public class Template extends com.pulumi.resources.CustomResource {
     /**
      * Labels as key value pairs
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -146,7 +146,7 @@ public class Template extends com.pulumi.resources.CustomResource {
     /**
      * @return Labels as key value pairs
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -215,7 +215,7 @@ public class Template extends com.pulumi.resources.CustomResource {
     /**
      * Id of the requesting object
      * If auto-generating Id server-side, remove this field and
-     * template_id from the method_signature of Create RPC
+     * templateId from the methodSignature of Create RPC
      * 
      */
     @Export(name="templateId", refs={String.class}, tree="[0]")
@@ -224,7 +224,7 @@ public class Template extends com.pulumi.resources.CustomResource {
     /**
      * @return Id of the requesting object
      * If auto-generating Id server-side, remove this field and
-     * template_id from the method_signature of Create RPC
+     * templateId from the methodSignature of Create RPC
      * 
      */
     public Output<String> templateId() {

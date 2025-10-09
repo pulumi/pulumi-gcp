@@ -138,7 +138,7 @@ namespace Pulumi.Gcp.Projects
     {
         /// <summary>
         /// The asymmetric crypto key version to use for signing approval requests.
-        /// Empty active_key_version indicates that a Google-managed key should be used for signing.
+        /// Empty ActiveKeyVersion indicates that a Google-managed key should be used for signing.
         /// This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
         /// </summary>
         [Output("activeKeyVersion")]
@@ -167,7 +167,7 @@ namespace Pulumi.Gcp.Projects
         public Output<ImmutableArray<Outputs.AccessApprovalSettingsEnrolledService>> EnrolledServices { get; private set; } = null!;
 
         /// <summary>
-        /// If the field is true, that indicates that there is some configuration issue with the active_key_version
+        /// If the field is true, that indicates that there is some configuration issue with the ActiveKeyVersion
         /// configured on this Project (e.g. it doesn't exist or the Access Approval service account doesn't have the
         /// correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
         /// as key versions are inherited top-down.
@@ -193,7 +193,7 @@ namespace Pulumi.Gcp.Projects
         /// (Optional, Deprecated)
         /// Project id.
         /// 
-        /// &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
+        /// &gt; **Warning:** `Project` is deprecated and will be removed in a future major release. Use `ProjectId` instead.
         /// </summary>
         [Output("project")]
         public Output<string?> Project { get; private set; } = null!;
@@ -252,7 +252,7 @@ namespace Pulumi.Gcp.Projects
     {
         /// <summary>
         /// The asymmetric crypto key version to use for signing approval requests.
-        /// Empty active_key_version indicates that a Google-managed key should be used for signing.
+        /// Empty ActiveKeyVersion indicates that a Google-managed key should be used for signing.
         /// This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
         /// </summary>
         [Input("activeKeyVersion")]
@@ -292,7 +292,7 @@ namespace Pulumi.Gcp.Projects
         /// (Optional, Deprecated)
         /// Project id.
         /// 
-        /// &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
+        /// &gt; **Warning:** `Project` is deprecated and will be removed in a future major release. Use `ProjectId` instead.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -313,7 +313,7 @@ namespace Pulumi.Gcp.Projects
     {
         /// <summary>
         /// The asymmetric crypto key version to use for signing approval requests.
-        /// Empty active_key_version indicates that a Google-managed key should be used for signing.
+        /// Empty ActiveKeyVersion indicates that a Google-managed key should be used for signing.
         /// This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
         /// </summary>
         [Input("activeKeyVersion")]
@@ -348,7 +348,7 @@ namespace Pulumi.Gcp.Projects
         }
 
         /// <summary>
-        /// If the field is true, that indicates that there is some configuration issue with the active_key_version
+        /// If the field is true, that indicates that there is some configuration issue with the ActiveKeyVersion
         /// configured on this Project (e.g. it doesn't exist or the Access Approval service account doesn't have the
         /// correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
         /// as key versions are inherited top-down.
@@ -380,7 +380,7 @@ namespace Pulumi.Gcp.Projects
         /// (Optional, Deprecated)
         /// Project id.
         /// 
-        /// &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
+        /// &gt; **Warning:** `Project` is deprecated and will be removed in a future major release. Use `ProjectId` instead.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }

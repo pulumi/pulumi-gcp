@@ -13,13 +13,13 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class InstanceGroupManagerUpdatePolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with `max_surge_percent`. Both cannot be 0.
+        /// , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with `MaxSurgePercent`. Both cannot be 0.
         /// </summary>
         [Input("maxSurgeFixed")]
         public Input<int>? MaxSurgeFixed { get; set; }
 
         /// <summary>
-        /// , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with `max_surge_fixed`.
+        /// , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with `MaxSurgeFixed`.
         /// </summary>
         [Input("maxSurgePercent")]
         public Input<int>? MaxSurgePercent { get; set; }
@@ -55,7 +55,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? MostDisruptiveAllowedAction { get; set; }
 
         /// <summary>
-        /// , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
+        /// , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set MaxUnavailableFixed or MaxUnavailablePercent to be greater than 0.
         /// - - -
         /// </summary>
         [Input("replacementMethod")]

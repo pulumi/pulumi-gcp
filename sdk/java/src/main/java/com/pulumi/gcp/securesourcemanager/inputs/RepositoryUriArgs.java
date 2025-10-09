@@ -34,7 +34,7 @@ public final class RepositoryUriArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * (Output)
-     * git_https is the git HTTPS URI for git operations.
+     * gitHttps is the git HTTPS URI for git operations.
      * 
      */
     @Import(name="gitHttps")
@@ -42,7 +42,7 @@ public final class RepositoryUriArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return (Output)
-     * git_https is the git HTTPS URI for git operations.
+     * gitHttps is the git HTTPS URI for git operations.
      * 
      */
     public Optional<Output<String>> gitHttps() {
@@ -117,7 +117,7 @@ public final class RepositoryUriArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param gitHttps (Output)
-         * git_https is the git HTTPS URI for git operations.
+         * gitHttps is the git HTTPS URI for git operations.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class RepositoryUriArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param gitHttps (Output)
-         * git_https is the git HTTPS URI for git operations.
+         * gitHttps is the git HTTPS URI for git operations.
          * 
          * @return builder
          * 

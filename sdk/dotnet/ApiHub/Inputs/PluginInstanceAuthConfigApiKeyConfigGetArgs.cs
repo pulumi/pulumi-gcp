@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.ApiHub.Inputs
         /// <summary>
         /// The parameter name of the API key.
         /// E.g. If the API request is "https://example.com/act?api_key=",
-        /// "api_key" would be the parameter name.
+        /// "ApiKey" would be the parameter name.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

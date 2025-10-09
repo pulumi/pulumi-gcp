@@ -30,14 +30,14 @@ public final class GetClientArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The client_id of the brand.
+     * The clientId of the brand.
      * 
      */
     @Import(name="clientId", required=true)
     private Output<String> clientId;
 
     /**
-     * @return The client_id of the brand.
+     * @return The clientId of the brand.
      * 
      */
     public Output<String> clientId() {
@@ -91,7 +91,7 @@ public final class GetClientArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param clientId The client_id of the brand.
+         * @param clientId The clientId of the brand.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class GetClientArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param clientId The client_id of the brand.
+         * @param clientId The clientId of the brand.
          * 
          * @return builder
          * 

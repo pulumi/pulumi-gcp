@@ -104,7 +104,7 @@ public final class FieldArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The TTL configuration for this Field. If set to an empty block (i.e. `ttl_config {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
+     * The TTL configuration for this Field. If set to an empty block (i.e. `ttlConfig {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
      * Structure is documented below.
      * 
      */
@@ -112,7 +112,7 @@ public final class FieldArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<FieldTtlConfigArgs> ttlConfig;
 
     /**
-     * @return The TTL configuration for this Field. If set to an empty block (i.e. `ttl_config {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
+     * @return The TTL configuration for this Field. If set to an empty block (i.e. `ttlConfig {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
      * Structure is documented below.
      * 
      */
@@ -265,7 +265,7 @@ public final class FieldArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ttlConfig The TTL configuration for this Field. If set to an empty block (i.e. `ttl_config {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
+         * @param ttlConfig The TTL configuration for this Field. If set to an empty block (i.e. `ttlConfig {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
          * Structure is documented below.
          * 
          * @return builder
@@ -277,7 +277,7 @@ public final class FieldArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ttlConfig The TTL configuration for this Field. If set to an empty block (i.e. `ttl_config {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
+         * @param ttlConfig The TTL configuration for this Field. If set to an empty block (i.e. `ttlConfig {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
          * Structure is documented below.
          * 
          * @return builder

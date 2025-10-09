@@ -21,10 +21,10 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// &gt; **Warning:** This resource creates a Firestore Document on a project that already has
     /// a Firestore database. If you haven't already created it, you may
-    /// create a `gcp.firestore.Database` resource with `type` set to
-    /// `"FIRESTORE_NATIVE"` and `location_id` set to your chosen location.
+    /// create a `gcp.firestore.Database` resource with `Type` set to
+    /// `"FIRESTORE_NATIVE"` and `LocationId` set to your chosen location.
     /// If you wish to use App Engine, you may instead create a
-    /// `gcp.appengine.Application` resource with `database_type` set to
+    /// `gcp.appengine.Application` resource with `DatabaseType` set to
     /// `"CLOUD_FIRESTORE"`. Your Firestore location will be the same as
     /// the App Engine location specified.
     /// 

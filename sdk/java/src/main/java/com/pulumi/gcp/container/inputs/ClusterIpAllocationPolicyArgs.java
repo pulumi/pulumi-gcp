@@ -59,7 +59,7 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
     /**
      * All the information related to Auto IPAM. Structure is documented below
      * 
-     * &lt;a name=&#34;nested_auto_ipam_config&#34;&gt;&lt;/a&gt;The auto ipam config supports:
+     * &lt;a name=&#34;nestedAutoIpamConfig&#34;&gt;&lt;/a&gt;The auto ipam config supports:
      * 
      */
     @Import(name="autoIpamConfig")
@@ -68,7 +68,7 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
     /**
      * @return All the information related to Auto IPAM. Structure is documented below
      * 
-     * &lt;a name=&#34;nested_auto_ipam_config&#34;&gt;&lt;/a&gt;The auto ipam config supports:
+     * &lt;a name=&#34;nestedAutoIpamConfig&#34;&gt;&lt;/a&gt;The auto ipam config supports:
      * 
      */
     public Optional<Output<ClusterIpAllocationPolicyAutoIpamConfigArgs>> autoIpamConfig() {
@@ -101,7 +101,7 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
     /**
      * The name of the existing secondary
      * range in the cluster&#39;s subnetwork to use for pod IP addresses. Alternatively,
-     * `cluster_ipv4_cidr_block` can be used to automatically create a GKE-managed one.
+     * `clusterIpv4CidrBlock` can be used to automatically create a GKE-managed one.
      * 
      */
     @Import(name="clusterSecondaryRangeName")
@@ -110,7 +110,7 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
     /**
      * @return The name of the existing secondary
      * range in the cluster&#39;s subnetwork to use for pod IP addresses. Alternatively,
-     * `cluster_ipv4_cidr_block` can be used to automatically create a GKE-managed one.
+     * `clusterIpv4CidrBlock` can be used to automatically create a GKE-managed one.
      * 
      */
     public Optional<Output<String>> clusterSecondaryRangeName() {
@@ -158,7 +158,7 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
     /**
      * The name of the existing
      * secondary range in the cluster&#39;s subnetwork to use for service `ClusterIP`s.
-     * Alternatively, `services_ipv4_cidr_block` can be used to automatically create a
+     * Alternatively, `servicesIpv4CidrBlock` can be used to automatically create a
      * GKE-managed one.
      * 
      */
@@ -168,7 +168,7 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
     /**
      * @return The name of the existing
      * secondary range in the cluster&#39;s subnetwork to use for service `ClusterIP`s.
-     * Alternatively, `services_ipv4_cidr_block` can be used to automatically create a
+     * Alternatively, `servicesIpv4CidrBlock` can be used to automatically create a
      * GKE-managed one.
      * 
      */
@@ -289,7 +289,7 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
         /**
          * @param autoIpamConfig All the information related to Auto IPAM. Structure is documented below
          * 
-         * &lt;a name=&#34;nested_auto_ipam_config&#34;&gt;&lt;/a&gt;The auto ipam config supports:
+         * &lt;a name=&#34;nestedAutoIpamConfig&#34;&gt;&lt;/a&gt;The auto ipam config supports:
          * 
          * @return builder
          * 
@@ -302,7 +302,7 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
         /**
          * @param autoIpamConfig All the information related to Auto IPAM. Structure is documented below
          * 
-         * &lt;a name=&#34;nested_auto_ipam_config&#34;&gt;&lt;/a&gt;The auto ipam config supports:
+         * &lt;a name=&#34;nestedAutoIpamConfig&#34;&gt;&lt;/a&gt;The auto ipam config supports:
          * 
          * @return builder
          * 
@@ -343,7 +343,7 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
         /**
          * @param clusterSecondaryRangeName The name of the existing secondary
          * range in the cluster&#39;s subnetwork to use for pod IP addresses. Alternatively,
-         * `cluster_ipv4_cidr_block` can be used to automatically create a GKE-managed one.
+         * `clusterIpv4CidrBlock` can be used to automatically create a GKE-managed one.
          * 
          * @return builder
          * 
@@ -356,7 +356,7 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
         /**
          * @param clusterSecondaryRangeName The name of the existing secondary
          * range in the cluster&#39;s subnetwork to use for pod IP addresses. Alternatively,
-         * `cluster_ipv4_cidr_block` can be used to automatically create a GKE-managed one.
+         * `clusterIpv4CidrBlock` can be used to automatically create a GKE-managed one.
          * 
          * @return builder
          * 
@@ -418,7 +418,7 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
         /**
          * @param servicesSecondaryRangeName The name of the existing
          * secondary range in the cluster&#39;s subnetwork to use for service `ClusterIP`s.
-         * Alternatively, `services_ipv4_cidr_block` can be used to automatically create a
+         * Alternatively, `servicesIpv4CidrBlock` can be used to automatically create a
          * GKE-managed one.
          * 
          * @return builder
@@ -432,7 +432,7 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
         /**
          * @param servicesSecondaryRangeName The name of the existing
          * secondary range in the cluster&#39;s subnetwork to use for service `ClusterIP`s.
-         * Alternatively, `services_ipv4_cidr_block` can be used to automatically create a
+         * Alternatively, `servicesIpv4CidrBlock` can be used to automatically create a
          * GKE-managed one.
          * 
          * @return builder

@@ -109,7 +109,7 @@ namespace Pulumi.Gcp.Container
         public string? Project { get; set; }
 
         /// <summary>
-        /// The GCR region to use.  As of this writing, one of `asia`, `eu`, and `us`.  See [the documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling) for additional information.
+        /// The GCR region to use.  As of this writing, one of `Asia`, `Eu`, and `Us`.  See [the documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling) for additional information.
         /// </summary>
         [Input("region")]
         public string? Region { get; set; }
@@ -129,7 +129,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The GCR region to use.  As of this writing, one of `asia`, `eu`, and `us`.  See [the documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling) for additional information.
+        /// The GCR region to use.  As of this writing, one of `Asia`, `Eu`, and `Us`.  See [the documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling) for additional information.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

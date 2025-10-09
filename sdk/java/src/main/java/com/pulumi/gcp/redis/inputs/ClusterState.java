@@ -247,7 +247,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cluster&#39;s Certificate Authority. This field will only be populated if Redis Cluster&#39;s transit_encryption_mode is TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION
+     * Cluster&#39;s Certificate Authority. This field will only be populated if Redis Cluster&#39;s transitEncryptionMode is TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION
      * Structure is documented below.
      * 
      */
@@ -255,7 +255,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<ClusterManagedServerCaArgs>> managedServerCas;
 
     /**
-     * @return Cluster&#39;s Certificate Authority. This field will only be populated if Redis Cluster&#39;s transit_encryption_mode is TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION
+     * @return Cluster&#39;s Certificate Authority. This field will only be populated if Redis Cluster&#39;s transitEncryptionMode is TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION
      * Structure is documented below.
      * 
      */
@@ -930,7 +930,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param managedServerCas Cluster&#39;s Certificate Authority. This field will only be populated if Redis Cluster&#39;s transit_encryption_mode is TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION
+         * @param managedServerCas Cluster&#39;s Certificate Authority. This field will only be populated if Redis Cluster&#39;s transitEncryptionMode is TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION
          * Structure is documented below.
          * 
          * @return builder
@@ -942,7 +942,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param managedServerCas Cluster&#39;s Certificate Authority. This field will only be populated if Redis Cluster&#39;s transit_encryption_mode is TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION
+         * @param managedServerCas Cluster&#39;s Certificate Authority. This field will only be populated if Redis Cluster&#39;s transitEncryptionMode is TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION
          * Structure is documented below.
          * 
          * @return builder
@@ -953,7 +953,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param managedServerCas Cluster&#39;s Certificate Authority. This field will only be populated if Redis Cluster&#39;s transit_encryption_mode is TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION
+         * @param managedServerCas Cluster&#39;s Certificate Authority. This field will only be populated if Redis Cluster&#39;s transitEncryptionMode is TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION
          * Structure is documented below.
          * 
          * @return builder

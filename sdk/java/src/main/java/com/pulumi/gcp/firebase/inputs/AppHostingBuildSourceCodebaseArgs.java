@@ -56,7 +56,7 @@ public final class AppHostingBuildSourceCodebaseArgs extends com.pulumi.resource
     /**
      * The commit in the codebase to build from.
      * 
-     * &lt;a name=&#34;nested_source_codebase_author&#34;&gt;&lt;/a&gt;The `author` block contains:
+     * &lt;a name=&#34;nestedSourceCodebaseAuthor&#34;&gt;&lt;/a&gt;The `author` block contains:
      * 
      */
     @Import(name="commit")
@@ -65,7 +65,7 @@ public final class AppHostingBuildSourceCodebaseArgs extends com.pulumi.resource
     /**
      * @return The commit in the codebase to build from.
      * 
-     * &lt;a name=&#34;nested_source_codebase_author&#34;&gt;&lt;/a&gt;The `author` block contains:
+     * &lt;a name=&#34;nestedSourceCodebaseAuthor&#34;&gt;&lt;/a&gt;The `author` block contains:
      * 
      */
     public Optional<Output<String>> commit() {
@@ -256,7 +256,7 @@ public final class AppHostingBuildSourceCodebaseArgs extends com.pulumi.resource
         /**
          * @param commit The commit in the codebase to build from.
          * 
-         * &lt;a name=&#34;nested_source_codebase_author&#34;&gt;&lt;/a&gt;The `author` block contains:
+         * &lt;a name=&#34;nestedSourceCodebaseAuthor&#34;&gt;&lt;/a&gt;The `author` block contains:
          * 
          * @return builder
          * 
@@ -269,7 +269,7 @@ public final class AppHostingBuildSourceCodebaseArgs extends com.pulumi.resource
         /**
          * @param commit The commit in the codebase to build from.
          * 
-         * &lt;a name=&#34;nested_source_codebase_author&#34;&gt;&lt;/a&gt;The `author` block contains:
+         * &lt;a name=&#34;nestedSourceCodebaseAuthor&#34;&gt;&lt;/a&gt;The `author` block contains:
          * 
          * @return builder
          * 

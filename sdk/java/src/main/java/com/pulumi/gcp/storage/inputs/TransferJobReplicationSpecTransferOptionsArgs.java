@@ -18,14 +18,14 @@ public final class TransferJobReplicationSpecTransferOptionsArgs extends com.pul
     public static final TransferJobReplicationSpecTransferOptionsArgs Empty = new TransferJobReplicationSpecTransferOptionsArgs();
 
     /**
-     * Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `delete_objects_unique_in_sink` are mutually exclusive.
+     * Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `deleteObjectsUniqueInSink` are mutually exclusive.
      * 
      */
     @Import(name="deleteObjectsFromSourceAfterTransfer")
     private @Nullable Output<Boolean> deleteObjectsFromSourceAfterTransfer;
 
     /**
-     * @return Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `delete_objects_unique_in_sink` are mutually exclusive.
+     * @return Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `deleteObjectsUniqueInSink` are mutually exclusive.
      * 
      */
     public Optional<Output<Boolean>> deleteObjectsFromSourceAfterTransfer() {
@@ -34,7 +34,7 @@ public final class TransferJobReplicationSpecTransferOptionsArgs extends com.pul
 
     /**
      * Whether objects that exist only in the sink should be deleted. Note that this option and
-     * `delete_objects_from_source_after_transfer` are mutually exclusive.
+     * `deleteObjectsFromSourceAfterTransfer` are mutually exclusive.
      * 
      */
     @Import(name="deleteObjectsUniqueInSink")
@@ -42,7 +42,7 @@ public final class TransferJobReplicationSpecTransferOptionsArgs extends com.pul
 
     /**
      * @return Whether objects that exist only in the sink should be deleted. Note that this option and
-     * `delete_objects_from_source_after_transfer` are mutually exclusive.
+     * `deleteObjectsFromSourceAfterTransfer` are mutually exclusive.
      * 
      */
     public Optional<Output<Boolean>> deleteObjectsUniqueInSink() {
@@ -80,14 +80,14 @@ public final class TransferJobReplicationSpecTransferOptionsArgs extends com.pul
     }
 
     /**
-     * When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwrite_objects_already_existing_in_sink`. Possible values: ALWAYS, DIFFERENT, NEVER.
+     * When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwriteObjectsAlreadyExistingInSink`. Possible values: ALWAYS, DIFFERENT, NEVER.
      * 
      */
     @Import(name="overwriteWhen")
     private @Nullable Output<String> overwriteWhen;
 
     /**
-     * @return When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwrite_objects_already_existing_in_sink`. Possible values: ALWAYS, DIFFERENT, NEVER.
+     * @return When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwriteObjectsAlreadyExistingInSink`. Possible values: ALWAYS, DIFFERENT, NEVER.
      * 
      */
     public Optional<Output<String>> overwriteWhen() {
@@ -123,7 +123,7 @@ public final class TransferJobReplicationSpecTransferOptionsArgs extends com.pul
         }
 
         /**
-         * @param deleteObjectsFromSourceAfterTransfer Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `delete_objects_unique_in_sink` are mutually exclusive.
+         * @param deleteObjectsFromSourceAfterTransfer Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `deleteObjectsUniqueInSink` are mutually exclusive.
          * 
          * @return builder
          * 
@@ -134,7 +134,7 @@ public final class TransferJobReplicationSpecTransferOptionsArgs extends com.pul
         }
 
         /**
-         * @param deleteObjectsFromSourceAfterTransfer Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `delete_objects_unique_in_sink` are mutually exclusive.
+         * @param deleteObjectsFromSourceAfterTransfer Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `deleteObjectsUniqueInSink` are mutually exclusive.
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class TransferJobReplicationSpecTransferOptionsArgs extends com.pul
 
         /**
          * @param deleteObjectsUniqueInSink Whether objects that exist only in the sink should be deleted. Note that this option and
-         * `delete_objects_from_source_after_transfer` are mutually exclusive.
+         * `deleteObjectsFromSourceAfterTransfer` are mutually exclusive.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class TransferJobReplicationSpecTransferOptionsArgs extends com.pul
 
         /**
          * @param deleteObjectsUniqueInSink Whether objects that exist only in the sink should be deleted. Note that this option and
-         * `delete_objects_from_source_after_transfer` are mutually exclusive.
+         * `deleteObjectsFromSourceAfterTransfer` are mutually exclusive.
          * 
          * @return builder
          * 
@@ -209,7 +209,7 @@ public final class TransferJobReplicationSpecTransferOptionsArgs extends com.pul
         }
 
         /**
-         * @param overwriteWhen When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwrite_objects_already_existing_in_sink`. Possible values: ALWAYS, DIFFERENT, NEVER.
+         * @param overwriteWhen When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwriteObjectsAlreadyExistingInSink`. Possible values: ALWAYS, DIFFERENT, NEVER.
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class TransferJobReplicationSpecTransferOptionsArgs extends com.pul
         }
 
         /**
-         * @param overwriteWhen When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwrite_objects_already_existing_in_sink`. Possible values: ALWAYS, DIFFERENT, NEVER.
+         * @param overwriteWhen When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwriteObjectsAlreadyExistingInSink`. Possible values: ALWAYS, DIFFERENT, NEVER.
          * 
          * @return builder
          * 

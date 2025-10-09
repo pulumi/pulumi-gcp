@@ -69,7 +69,7 @@ public final class TriggerGithubArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * filter to match changes in pull requests. Specify only one of `pull_request` or `push`.
+     * filter to match changes in pull requests. Specify only one of `pullRequest` or `push`.
      * Structure is documented below.
      * 
      */
@@ -77,7 +77,7 @@ public final class TriggerGithubArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<TriggerGithubPullRequestArgs> pullRequest;
 
     /**
-     * @return filter to match changes in pull requests. Specify only one of `pull_request` or `push`.
+     * @return filter to match changes in pull requests. Specify only one of `pullRequest` or `push`.
      * Structure is documented below.
      * 
      */
@@ -86,7 +86,7 @@ public final class TriggerGithubArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * filter to match changes in refs, like branches or tags. Specify only one of `pull_request` or `push`.
+     * filter to match changes in refs, like branches or tags. Specify only one of `pullRequest` or `push`.
      * Structure is documented below.
      * 
      */
@@ -94,7 +94,7 @@ public final class TriggerGithubArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<TriggerGithubPushArgs> push;
 
     /**
-     * @return filter to match changes in refs, like branches or tags. Specify only one of `pull_request` or `push`.
+     * @return filter to match changes in refs, like branches or tags. Specify only one of `pullRequest` or `push`.
      * Structure is documented below.
      * 
      */
@@ -200,7 +200,7 @@ public final class TriggerGithubArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pullRequest filter to match changes in pull requests. Specify only one of `pull_request` or `push`.
+         * @param pullRequest filter to match changes in pull requests. Specify only one of `pullRequest` or `push`.
          * Structure is documented below.
          * 
          * @return builder
@@ -212,7 +212,7 @@ public final class TriggerGithubArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pullRequest filter to match changes in pull requests. Specify only one of `pull_request` or `push`.
+         * @param pullRequest filter to match changes in pull requests. Specify only one of `pullRequest` or `push`.
          * Structure is documented below.
          * 
          * @return builder
@@ -223,7 +223,7 @@ public final class TriggerGithubArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param push filter to match changes in refs, like branches or tags. Specify only one of `pull_request` or `push`.
+         * @param push filter to match changes in refs, like branches or tags. Specify only one of `pullRequest` or `push`.
          * Structure is documented below.
          * 
          * @return builder
@@ -235,7 +235,7 @@ public final class TriggerGithubArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param push filter to match changes in refs, like branches or tags. Specify only one of `pull_request` or `push`.
+         * @param push filter to match changes in refs, like branches or tags. Specify only one of `pullRequest` or `push`.
          * Structure is documented below.
          * 
          * @return builder

@@ -18,7 +18,7 @@ public final class PluginInstanceAuthConfigApiKeyConfigApiKeyArgs extends com.pu
      * The resource name of the secret version in the format,
      * format as: `projects/*&#47;secrets/*&#47;versions/*`.
      * 
-     * &lt;a name=&#34;nested_auth_config_oauth2_client_credentials_config&#34;&gt;&lt;/a&gt;The `oauth2_client_credentials_config` block supports:
+     * &lt;a name=&#34;nestedAuthConfigOauth2ClientCredentialsConfig&#34;&gt;&lt;/a&gt;The `oauth2ClientCredentialsConfig` block supports:
      * 
      */
     @Import(name="secretVersion", required=true)
@@ -28,7 +28,7 @@ public final class PluginInstanceAuthConfigApiKeyConfigApiKeyArgs extends com.pu
      * @return The resource name of the secret version in the format,
      * format as: `projects/*&#47;secrets/*&#47;versions/*`.
      * 
-     * &lt;a name=&#34;nested_auth_config_oauth2_client_credentials_config&#34;&gt;&lt;/a&gt;The `oauth2_client_credentials_config` block supports:
+     * &lt;a name=&#34;nestedAuthConfigOauth2ClientCredentialsConfig&#34;&gt;&lt;/a&gt;The `oauth2ClientCredentialsConfig` block supports:
      * 
      */
     public Output<String> secretVersion() {
@@ -63,7 +63,7 @@ public final class PluginInstanceAuthConfigApiKeyConfigApiKeyArgs extends com.pu
          * @param secretVersion The resource name of the secret version in the format,
          * format as: `projects/*&#47;secrets/*&#47;versions/*`.
          * 
-         * &lt;a name=&#34;nested_auth_config_oauth2_client_credentials_config&#34;&gt;&lt;/a&gt;The `oauth2_client_credentials_config` block supports:
+         * &lt;a name=&#34;nestedAuthConfigOauth2ClientCredentialsConfig&#34;&gt;&lt;/a&gt;The `oauth2ClientCredentialsConfig` block supports:
          * 
          * @return builder
          * 
@@ -77,7 +77,7 @@ public final class PluginInstanceAuthConfigApiKeyConfigApiKeyArgs extends com.pu
          * @param secretVersion The resource name of the secret version in the format,
          * format as: `projects/*&#47;secrets/*&#47;versions/*`.
          * 
-         * &lt;a name=&#34;nested_auth_config_oauth2_client_credentials_config&#34;&gt;&lt;/a&gt;The `oauth2_client_credentials_config` block supports:
+         * &lt;a name=&#34;nestedAuthConfigOauth2ClientCredentialsConfig&#34;&gt;&lt;/a&gt;The `oauth2ClientCredentialsConfig` block supports:
          * 
          * @return builder
          * 

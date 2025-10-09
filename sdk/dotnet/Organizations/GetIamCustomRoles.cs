@@ -103,13 +103,13 @@ namespace Pulumi.Gcp.Organizations
         public string? OrgId { get; set; }
 
         /// <summary>
-        /// Include Roles that have been deleted. Defaults to `false`.
+        /// Include Roles that have been deleted. Defaults to `False`.
         /// </summary>
         [Input("showDeleted")]
         public bool? ShowDeleted { get; set; }
 
         /// <summary>
-        /// When `"FULL"` is specified, the `permissions` field is returned, which includes a list of all permissions in the role. The default value is `"BASIC"`, which does not return the `permissions`.
+        /// When `"FULL"` is specified, the `Permissions` field is returned, which includes a list of all permissions in the role. The default value is `"BASIC"`, which does not return the `Permissions`.
         /// </summary>
         [Input("view")]
         public string? View { get; set; }
@@ -129,13 +129,13 @@ namespace Pulumi.Gcp.Organizations
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Include Roles that have been deleted. Defaults to `false`.
+        /// Include Roles that have been deleted. Defaults to `False`.
         /// </summary>
         [Input("showDeleted")]
         public Input<bool>? ShowDeleted { get; set; }
 
         /// <summary>
-        /// When `"FULL"` is specified, the `permissions` field is returned, which includes a list of all permissions in the role. The default value is `"BASIC"`, which does not return the `permissions`.
+        /// When `"FULL"` is specified, the `Permissions` field is returned, which includes a list of all permissions in the role. The default value is `"BASIC"`, which does not return the `Permissions`.
         /// </summary>
         [Input("view")]
         public Input<string>? View { get; set; }

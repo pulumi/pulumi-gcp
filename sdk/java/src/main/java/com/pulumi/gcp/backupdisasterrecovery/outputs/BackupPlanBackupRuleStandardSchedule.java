@@ -29,14 +29,14 @@ public final class BackupPlanBackupRuleStandardSchedule {
      */
     private @Nullable List<Integer> daysOfMonths;
     /**
-     * @return Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for `recurrence_type`, `WEEKLY` and is not applicable otherwise.
+     * @return Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for `recurrenceType`, `WEEKLY` and is not applicable otherwise.
      * Each value may be one of: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
      * 
      */
     private @Nullable List<String> daysOfWeeks;
     /**
      * @return Specifies frequency for hourly backups. An hourly frequency of 2 means jobs will run every 2 hours from start time till end time defined.
-     * This is required for `recurrence_type`, `HOURLY` and is not applicable otherwise.
+     * This is required for `recurrenceType`, `HOURLY` and is not applicable otherwise.
      * 
      */
     private @Nullable Integer hourlyFrequency;
@@ -82,7 +82,7 @@ public final class BackupPlanBackupRuleStandardSchedule {
         return this.daysOfMonths == null ? List.of() : this.daysOfMonths;
     }
     /**
-     * @return Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for `recurrence_type`, `WEEKLY` and is not applicable otherwise.
+     * @return Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for `recurrenceType`, `WEEKLY` and is not applicable otherwise.
      * Each value may be one of: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
      * 
      */
@@ -91,7 +91,7 @@ public final class BackupPlanBackupRuleStandardSchedule {
     }
     /**
      * @return Specifies frequency for hourly backups. An hourly frequency of 2 means jobs will run every 2 hours from start time till end time defined.
-     * This is required for `recurrence_type`, `HOURLY` and is not applicable otherwise.
+     * This is required for `recurrenceType`, `HOURLY` and is not applicable otherwise.
      * 
      */
     public Optional<Integer> hourlyFrequency() {

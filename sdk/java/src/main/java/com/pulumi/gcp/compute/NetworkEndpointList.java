@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE** In case the Endpoint&#39;s Instance is recreated, it&#39;s needed to
  * perform `apply` twice. To avoid situations like this, please use this resource
- * with the lifecycle `replace_triggered_by` method, with the passed Instance&#39;s ID.
+ * with the lifecycle `replaceTriggeredBy` method, with the passed Instance&#39;s ID.
  * 
  * To get more information about NetworkEndpoints, see:
  * 

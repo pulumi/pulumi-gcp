@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.DeveloperConnect.Inputs
 
         /// <summary>
         /// (Output)
-        /// Output only. Version of the Bitbucket Data Center server running on the `host_uri`.
+        /// Output only. Version of the Bitbucket Data Center server running on the `HostUri`.
         /// </summary>
         [Input("serverVersion")]
         public Input<string>? ServerVersion { get; set; }

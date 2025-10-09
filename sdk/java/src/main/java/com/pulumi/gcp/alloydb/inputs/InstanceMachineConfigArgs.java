@@ -34,7 +34,7 @@ public final class InstanceMachineConfigArgs extends com.pulumi.resources.Resour
     /**
      * Machine type of the VM instance.
      * E.g. &#34;n2-highmem-4&#34;, &#34;n2-highmem-8&#34;, &#34;c4a-highmem-4-lssd&#34;.
-     * `cpu_count` must match the number of vCPUs in the machine type.
+     * `cpuCount` must match the number of vCPUs in the machine type.
      * 
      */
     @Import(name="machineType")
@@ -43,7 +43,7 @@ public final class InstanceMachineConfigArgs extends com.pulumi.resources.Resour
     /**
      * @return Machine type of the VM instance.
      * E.g. &#34;n2-highmem-4&#34;, &#34;n2-highmem-8&#34;, &#34;c4a-highmem-4-lssd&#34;.
-     * `cpu_count` must match the number of vCPUs in the machine type.
+     * `cpuCount` must match the number of vCPUs in the machine type.
      * 
      */
     public Optional<Output<String>> machineType() {
@@ -99,7 +99,7 @@ public final class InstanceMachineConfigArgs extends com.pulumi.resources.Resour
         /**
          * @param machineType Machine type of the VM instance.
          * E.g. &#34;n2-highmem-4&#34;, &#34;n2-highmem-8&#34;, &#34;c4a-highmem-4-lssd&#34;.
-         * `cpu_count` must match the number of vCPUs in the machine type.
+         * `cpuCount` must match the number of vCPUs in the machine type.
          * 
          * @return builder
          * 
@@ -112,7 +112,7 @@ public final class InstanceMachineConfigArgs extends com.pulumi.resources.Resour
         /**
          * @param machineType Machine type of the VM instance.
          * E.g. &#34;n2-highmem-4&#34;, &#34;n2-highmem-8&#34;, &#34;c4a-highmem-4-lssd&#34;.
-         * `cpu_count` must match the number of vCPUs in the machine type.
+         * `cpuCount` must match the number of vCPUs in the machine type.
          * 
          * @return builder
          * 

@@ -123,7 +123,7 @@ namespace Pulumi.Gcp.Vertex
     public partial class AiFeatureGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Indicates that features for this group come from BigQuery Table/View. By default treats the source as a sparse time series source, which is required to have an entityId and a feature_timestamp column in the source.
+        /// Indicates that features for this group come from BigQuery Table/View. By default treats the source as a sparse time series source, which is required to have an entityId and a FeatureTimestamp column in the source.
         /// Structure is documented below.
         /// </summary>
         [Output("bigQuery")]
@@ -156,7 +156,7 @@ namespace Pulumi.Gcp.Vertex
         /// <summary>
         /// The labels with user-defined metadata to organize your FeatureGroup.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -245,7 +245,7 @@ namespace Pulumi.Gcp.Vertex
     public sealed class AiFeatureGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Indicates that features for this group come from BigQuery Table/View. By default treats the source as a sparse time series source, which is required to have an entityId and a feature_timestamp column in the source.
+        /// Indicates that features for this group come from BigQuery Table/View. By default treats the source as a sparse time series source, which is required to have an entityId and a FeatureTimestamp column in the source.
         /// Structure is documented below.
         /// </summary>
         [Input("bigQuery")]
@@ -263,7 +263,7 @@ namespace Pulumi.Gcp.Vertex
         /// <summary>
         /// The labels with user-defined metadata to organize your FeatureGroup.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -299,7 +299,7 @@ namespace Pulumi.Gcp.Vertex
     public sealed class AiFeatureGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Indicates that features for this group come from BigQuery Table/View. By default treats the source as a sparse time series source, which is required to have an entityId and a feature_timestamp column in the source.
+        /// Indicates that features for this group come from BigQuery Table/View. By default treats the source as a sparse time series source, which is required to have an entityId and a FeatureTimestamp column in the source.
         /// Structure is documented below.
         /// </summary>
         [Input("bigQuery")]
@@ -345,7 +345,7 @@ namespace Pulumi.Gcp.Vertex
         /// <summary>
         /// The labels with user-defined metadata to organize your FeatureGroup.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {

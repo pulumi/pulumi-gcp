@@ -386,7 +386,7 @@ namespace Pulumi.Gcp.Apphub
     public partial class Service : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
+        /// Part of `Parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
         /// </summary>
         [Output("applicationId")]
         public Output<string> ApplicationId { get; private set; } = null!;
@@ -423,7 +423,7 @@ namespace Pulumi.Gcp.Apphub
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
+        /// Part of `Parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -528,7 +528,7 @@ namespace Pulumi.Gcp.Apphub
     public sealed class ServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
+        /// Part of `Parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
         /// </summary>
         [Input("applicationId", required: true)]
         public Input<string> ApplicationId { get; set; } = null!;
@@ -559,7 +559,7 @@ namespace Pulumi.Gcp.Apphub
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
+        /// Part of `Parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -586,7 +586,7 @@ namespace Pulumi.Gcp.Apphub
     public sealed class ServiceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
+        /// Part of `Parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
         /// </summary>
         [Input("applicationId")]
         public Input<string>? ApplicationId { get; set; }
@@ -623,7 +623,7 @@ namespace Pulumi.Gcp.Apphub
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
+        /// Part of `Parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

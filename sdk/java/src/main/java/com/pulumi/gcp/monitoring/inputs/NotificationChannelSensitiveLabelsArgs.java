@@ -33,7 +33,7 @@ public final class NotificationChannelSensitiveLabelsArgs extends com.pulumi.res
     }
 
     /**
-     * An password for a notification channel. Channel types that support this field include: webhook_basicauth
+     * An password for a notification channel. Channel types that support this field include: webhookBasicauth
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
@@ -41,7 +41,7 @@ public final class NotificationChannelSensitiveLabelsArgs extends com.pulumi.res
     private @Nullable Output<String> password;
 
     /**
-     * @return An password for a notification channel. Channel types that support this field include: webhook_basicauth
+     * @return An password for a notification channel. Channel types that support this field include: webhookBasicauth
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
@@ -116,7 +116,7 @@ public final class NotificationChannelSensitiveLabelsArgs extends com.pulumi.res
         }
 
         /**
-         * @param password An password for a notification channel. Channel types that support this field include: webhook_basicauth
+         * @param password An password for a notification channel. Channel types that support this field include: webhookBasicauth
          * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
@@ -128,7 +128,7 @@ public final class NotificationChannelSensitiveLabelsArgs extends com.pulumi.res
         }
 
         /**
-         * @param password An password for a notification channel. Channel types that support this field include: webhook_basicauth
+         * @param password An password for a notification channel. Channel types that support this field include: webhookBasicauth
          * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder

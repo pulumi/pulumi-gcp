@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.GkeOnPrem.Outputs
         /// <summary>
         /// If true, prevent IP addresses from being automatically assigned.
         /// 
-        /// &lt;a name="nested_dataplane_v2"&gt;&lt;/a&gt;The `dataplane_v2` block supports:
+        /// &lt;a name="NestedDataplaneV2"&gt;&lt;/a&gt;The `DataplaneV2` block supports:
         /// </summary>
         public readonly bool? ManualAssign;
         /// <summary>

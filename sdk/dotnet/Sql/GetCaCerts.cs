@@ -49,7 +49,7 @@ namespace Pulumi.Gcp.Sql
         public string Instance { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the project in which the resource belongs. If `project` is not provided, the provider project is used.
+        /// The ID of the project in which the resource belongs. If `Project` is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public string? Project { get; set; }
@@ -69,7 +69,7 @@ namespace Pulumi.Gcp.Sql
         public Input<string> Instance { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the project in which the resource belongs. If `project` is not provided, the provider project is used.
+        /// The ID of the project in which the resource belongs. If `Project` is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }

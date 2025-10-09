@@ -127,7 +127,7 @@ public class BackupChannel extends com.pulumi.resources.CustomResource {
         return this.destinationProject;
     }
     /**
-     * The project_id where Backups are allowed to be stored.
+     * The projectId where Backups are allowed to be stored.
      * Example Project ID: &#34;my-project-id&#34;.
      * 
      */
@@ -135,7 +135,7 @@ public class BackupChannel extends com.pulumi.resources.CustomResource {
     private Output<String> destinationProjectId;
 
     /**
-     * @return The project_id where Backups are allowed to be stored.
+     * @return The projectId where Backups are allowed to be stored.
      * Example Project ID: &#34;my-project-id&#34;.
      * 
      */
@@ -186,7 +186,7 @@ public class BackupChannel extends com.pulumi.resources.CustomResource {
      * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -198,7 +198,7 @@ public class BackupChannel extends com.pulumi.resources.CustomResource {
      * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {

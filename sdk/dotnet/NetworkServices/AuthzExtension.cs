@@ -134,7 +134,7 @@ namespace Pulumi.Gcp.NetworkServices
         /// Set of labels associated with the AuthzExtension resource.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -154,7 +154,7 @@ namespace Pulumi.Gcp.NetworkServices
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The metadata provided here is included as part of the metadata_context (of type google.protobuf.Struct) in the ProcessingRequest message sent to the extension server. The metadata is available under the namespace com.google.authz_extension.&lt;resourceName&gt;. The following variables are supported in the metadata Struct:
+        /// The metadata provided here is included as part of the MetadataContext (of type google.protobuf.Struct) in the ProcessingRequest message sent to the extension server. The metadata is available under the namespace com.google.authz_extension.&lt;resourceName&gt;. The following variables are supported in the metadata Struct:
         /// {forwarding_rule_id} - substituted with the forwarding rule's fully qualified resource name.
         /// </summary>
         [Output("metadata")]
@@ -298,7 +298,7 @@ namespace Pulumi.Gcp.NetworkServices
         /// Set of labels associated with the AuthzExtension resource.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -324,7 +324,7 @@ namespace Pulumi.Gcp.NetworkServices
         private InputMap<string>? _metadata;
 
         /// <summary>
-        /// The metadata provided here is included as part of the metadata_context (of type google.protobuf.Struct) in the ProcessingRequest message sent to the extension server. The metadata is available under the namespace com.google.authz_extension.&lt;resourceName&gt;. The following variables are supported in the metadata Struct:
+        /// The metadata provided here is included as part of the MetadataContext (of type google.protobuf.Struct) in the ProcessingRequest message sent to the extension server. The metadata is available under the namespace com.google.authz_extension.&lt;resourceName&gt;. The following variables are supported in the metadata Struct:
         /// {forwarding_rule_id} - substituted with the forwarding rule's fully qualified resource name.
         /// </summary>
         public InputMap<string> Metadata
@@ -437,7 +437,7 @@ namespace Pulumi.Gcp.NetworkServices
         /// Set of labels associated with the AuthzExtension resource.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -463,7 +463,7 @@ namespace Pulumi.Gcp.NetworkServices
         private InputMap<string>? _metadata;
 
         /// <summary>
-        /// The metadata provided here is included as part of the metadata_context (of type google.protobuf.Struct) in the ProcessingRequest message sent to the extension server. The metadata is available under the namespace com.google.authz_extension.&lt;resourceName&gt;. The following variables are supported in the metadata Struct:
+        /// The metadata provided here is included as part of the MetadataContext (of type google.protobuf.Struct) in the ProcessingRequest message sent to the extension server. The metadata is available under the namespace com.google.authz_extension.&lt;resourceName&gt;. The following variables are supported in the metadata Struct:
         /// {forwarding_rule_id} - substituted with the forwarding rule's fully qualified resource name.
         /// </summary>
         public InputMap<string> Metadata

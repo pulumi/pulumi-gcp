@@ -27,6 +27,12 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * ### Active Directory Peering Basic
+ * 
+ * ## Import
+ * 
+ * This resource does not support import.
+ * 
  */
 @ResourceType(type="gcp:activedirectory/peering:Peering")
 public class Peering extends com.pulumi.resources.CustomResource {
@@ -75,7 +81,7 @@ public class Peering extends com.pulumi.resources.CustomResource {
     /**
      * Resource labels that can contain user-provided metadata
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -84,7 +90,7 @@ public class Peering extends com.pulumi.resources.CustomResource {
     /**
      * @return Resource labels that can contain user-provided metadata
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {

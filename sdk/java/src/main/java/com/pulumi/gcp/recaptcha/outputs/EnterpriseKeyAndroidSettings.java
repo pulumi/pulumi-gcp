@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class EnterpriseKeyAndroidSettings {
     /**
-     * @return If set to true, it means allowed_package_names will not be enforced.
+     * @return If set to true, it means allowedPackageNames will not be enforced.
      * 
      */
     private @Nullable Boolean allowAllPackageNames;
@@ -26,7 +26,7 @@ public final class EnterpriseKeyAndroidSettings {
 
     private EnterpriseKeyAndroidSettings() {}
     /**
-     * @return If set to true, it means allowed_package_names will not be enforced.
+     * @return If set to true, it means allowedPackageNames will not be enforced.
      * 
      */
     public Optional<Boolean> allowAllPackageNames() {

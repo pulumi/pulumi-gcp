@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetAncestryAncestor {
     /**
-     * @return If it&#39;s a project, the `project_id` is exported, else the numeric folder id or organization id.
+     * @return If it&#39;s a project, the `projectId` is exported, else the numeric folder id or organization id.
      * 
      */
     private String id;
@@ -23,7 +23,7 @@ public final class GetAncestryAncestor {
 
     private GetAncestryAncestor() {}
     /**
-     * @return If it&#39;s a project, the `project_id` is exported, else the numeric folder id or organization id.
+     * @return If it&#39;s a project, the `projectId` is exported, else the numeric folder id or organization id.
      * 
      */
     public String id() {

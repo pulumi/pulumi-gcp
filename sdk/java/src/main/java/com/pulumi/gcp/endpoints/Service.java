@@ -138,7 +138,7 @@ public class Service extends com.pulumi.resources.CustomResource {
     }
     /**
      * The full text of the Service Config YAML file (Example located [here](https://github.com/GoogleCloudPlatform/python-docs-samples/blob/main/endpoints/bookstore-grpc/api_config.yaml)).
-     * If provided, must also provide `protoc_output_base64`.  `open_api` config must *not* be provided.
+     * If provided, must also provide `protocOutputBase64`.  `openApi` config must *not* be provided.
      * 
      */
     @Export(name="grpcConfig", refs={String.class}, tree="[0]")
@@ -146,7 +146,7 @@ public class Service extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The full text of the Service Config YAML file (Example located [here](https://github.com/GoogleCloudPlatform/python-docs-samples/blob/main/endpoints/bookstore-grpc/api_config.yaml)).
-     * If provided, must also provide `protoc_output_base64`.  `open_api` config must *not* be provided.
+     * If provided, must also provide `protocOutputBase64`.  `openApi` config must *not* be provided.
      * 
      */
     public Output<Optional<String>> grpcConfig() {
@@ -154,7 +154,7 @@ public class Service extends com.pulumi.resources.CustomResource {
     }
     /**
      * The full text of the OpenAPI YAML configuration as described [here](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/2.0.md).
-     * Either this, or *both* of `grpc_config` and `protoc_output_base64` must be specified.
+     * Either this, or *both* of `grpcConfig` and `protocOutputBase64` must be specified.
      * 
      */
     @Export(name="openapiConfig", refs={String.class}, tree="[0]")
@@ -162,7 +162,7 @@ public class Service extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The full text of the OpenAPI YAML configuration as described [here](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/2.0.md).
-     * Either this, or *both* of `grpc_config` and `protoc_output_base64` must be specified.
+     * Either this, or *both* of `grpcConfig` and `protocOutputBase64` must be specified.
      * 
      */
     public Output<Optional<String>> openapiConfig() {

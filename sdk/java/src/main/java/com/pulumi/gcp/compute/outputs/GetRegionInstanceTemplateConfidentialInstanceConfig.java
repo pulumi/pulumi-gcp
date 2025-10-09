@@ -14,13 +14,13 @@ public final class GetRegionInstanceTemplateConfidentialInstanceConfig {
     /**
      * @return The confidential computing technology the instance uses.
      * 								SEV is an AMD feature. TDX is an Intel feature. One of the following
-     * 								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
+     * 								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, minCpuPlatform =
      * 								&#34;AMD Milan&#34; is currently required.
      * 
      */
     private String confidentialInstanceType;
     /**
-     * @return Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+     * @return Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
      * 
      */
     private Boolean enableConfidentialCompute;
@@ -29,7 +29,7 @@ public final class GetRegionInstanceTemplateConfidentialInstanceConfig {
     /**
      * @return The confidential computing technology the instance uses.
      * 								SEV is an AMD feature. TDX is an Intel feature. One of the following
-     * 								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
+     * 								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, minCpuPlatform =
      * 								&#34;AMD Milan&#34; is currently required.
      * 
      */
@@ -37,7 +37,7 @@ public final class GetRegionInstanceTemplateConfidentialInstanceConfig {
         return this.confidentialInstanceType;
     }
     /**
-     * @return Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+     * @return Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
      * 
      */
     public Boolean enableConfidentialCompute() {

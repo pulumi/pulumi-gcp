@@ -106,7 +106,7 @@ public final class Datapolicyv2DataPolicyState extends com.pulumi.resources.Reso
      * syntax](https://cloud.google.com/iam/docs/principal-identifiers#v2) Only
      * supports principal types users, groups, serviceaccounts, cloudidentity.
      * This field is supported in V2 Data Policy only. In case of V1 data policies
-     * (i.e. verion = 1 and policy_tag is set), this field is not populated.
+     * (i.e. verion = 1 and policyTag is set), this field is not populated.
      * 
      */
     @Import(name="grantees")
@@ -119,7 +119,7 @@ public final class Datapolicyv2DataPolicyState extends com.pulumi.resources.Reso
      * syntax](https://cloud.google.com/iam/docs/principal-identifiers#v2) Only
      * supports principal types users, groups, serviceaccounts, cloudidentity.
      * This field is supported in V2 Data Policy only. In case of V1 data policies
-     * (i.e. verion = 1 and policy_tag is set), this field is not populated.
+     * (i.e. verion = 1 and policyTag is set), this field is not populated.
      * 
      */
     public Optional<Output<List<String>>> grantees() {
@@ -161,7 +161,7 @@ public final class Datapolicyv2DataPolicyState extends com.pulumi.resources.Reso
     /**
      * Policy tag resource name, in the format of
      * `projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{policyTag_id}`.
-     * policy_tag is supported only for V1 data policies.
+     * policyTag is supported only for V1 data policies.
      * 
      */
     @Import(name="policyTag")
@@ -170,7 +170,7 @@ public final class Datapolicyv2DataPolicyState extends com.pulumi.resources.Reso
     /**
      * @return Policy tag resource name, in the format of
      * `projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{policyTag_id}`.
-     * policy_tag is supported only for V1 data policies.
+     * policyTag is supported only for V1 data policies.
      * 
      */
     public Optional<Output<String>> policyTag() {
@@ -361,7 +361,7 @@ public final class Datapolicyv2DataPolicyState extends com.pulumi.resources.Reso
          * syntax](https://cloud.google.com/iam/docs/principal-identifiers#v2) Only
          * supports principal types users, groups, serviceaccounts, cloudidentity.
          * This field is supported in V2 Data Policy only. In case of V1 data policies
-         * (i.e. verion = 1 and policy_tag is set), this field is not populated.
+         * (i.e. verion = 1 and policyTag is set), this field is not populated.
          * 
          * @return builder
          * 
@@ -378,7 +378,7 @@ public final class Datapolicyv2DataPolicyState extends com.pulumi.resources.Reso
          * syntax](https://cloud.google.com/iam/docs/principal-identifiers#v2) Only
          * supports principal types users, groups, serviceaccounts, cloudidentity.
          * This field is supported in V2 Data Policy only. In case of V1 data policies
-         * (i.e. verion = 1 and policy_tag is set), this field is not populated.
+         * (i.e. verion = 1 and policyTag is set), this field is not populated.
          * 
          * @return builder
          * 
@@ -394,7 +394,7 @@ public final class Datapolicyv2DataPolicyState extends com.pulumi.resources.Reso
          * syntax](https://cloud.google.com/iam/docs/principal-identifiers#v2) Only
          * supports principal types users, groups, serviceaccounts, cloudidentity.
          * This field is supported in V2 Data Policy only. In case of V1 data policies
-         * (i.e. verion = 1 and policy_tag is set), this field is not populated.
+         * (i.e. verion = 1 and policyTag is set), this field is not populated.
          * 
          * @return builder
          * 
@@ -450,7 +450,7 @@ public final class Datapolicyv2DataPolicyState extends com.pulumi.resources.Reso
         /**
          * @param policyTag Policy tag resource name, in the format of
          * `projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{policyTag_id}`.
-         * policy_tag is supported only for V1 data policies.
+         * policyTag is supported only for V1 data policies.
          * 
          * @return builder
          * 
@@ -463,7 +463,7 @@ public final class Datapolicyv2DataPolicyState extends com.pulumi.resources.Reso
         /**
          * @param policyTag Policy tag resource name, in the format of
          * `projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{policyTag_id}`.
-         * policy_tag is supported only for V1 data policies.
+         * policyTag is supported only for V1 data policies.
          * 
          * @return builder
          * 

@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterNodePoolAutoConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Linux system configuration for the cluster's automatically provisioned node pools. Only `cgroup_mode` field is supported in `node_pool_auto_config`. Structure is documented below.
+        /// Linux system configuration for the cluster's automatically provisioned node pools. Only `CgroupMode` field is supported in `NodePoolAutoConfig`. Structure is documented below.
         /// </summary>
         [Input("linuxNodeConfig")]
         public Input<Inputs.ClusterNodePoolAutoConfigLinuxNodeConfigArgs>? LinuxNodeConfig { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<Inputs.ClusterNodePoolAutoConfigNetworkTagsArgs>? NetworkTags { get; set; }
 
         /// <summary>
-        /// Kubelet configuration for Autopilot clusters. Currently, only `insecure_kubelet_readonly_port_enabled` is supported here.
+        /// Kubelet configuration for Autopilot clusters. Currently, only `InsecureKubeletReadonlyPortEnabled` is supported here.
         /// Structure is documented below.
         /// </summary>
         [Input("nodeKubeletConfig")]

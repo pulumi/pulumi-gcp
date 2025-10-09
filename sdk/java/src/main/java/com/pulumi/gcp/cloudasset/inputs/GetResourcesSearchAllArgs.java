@@ -33,14 +33,14 @@ public final class GetResourcesSearchAllArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * The query statement. See [how to construct a query](https://cloud.google.com/asset-inventory/docs/searching-resources#how_to_construct_a_query) for more information. If not specified or empty, it will search all the resources within the specified `scope` and `asset_types`.
+     * The query statement. See [how to construct a query](https://cloud.google.com/asset-inventory/docs/searching-resources#how_to_construct_a_query) for more information. If not specified or empty, it will search all the resources within the specified `scope` and `assetTypes`.
      * 
      */
     @Import(name="query")
     private @Nullable Output<String> query;
 
     /**
-     * @return The query statement. See [how to construct a query](https://cloud.google.com/asset-inventory/docs/searching-resources#how_to_construct_a_query) for more information. If not specified or empty, it will search all the resources within the specified `scope` and `asset_types`.
+     * @return The query statement. See [how to construct a query](https://cloud.google.com/asset-inventory/docs/searching-resources#how_to_construct_a_query) for more information. If not specified or empty, it will search all the resources within the specified `scope` and `assetTypes`.
      * 
      */
     public Optional<Output<String>> query() {
@@ -120,7 +120,7 @@ public final class GetResourcesSearchAllArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param query The query statement. See [how to construct a query](https://cloud.google.com/asset-inventory/docs/searching-resources#how_to_construct_a_query) for more information. If not specified or empty, it will search all the resources within the specified `scope` and `asset_types`.
+         * @param query The query statement. See [how to construct a query](https://cloud.google.com/asset-inventory/docs/searching-resources#how_to_construct_a_query) for more information. If not specified or empty, it will search all the resources within the specified `scope` and `assetTypes`.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class GetResourcesSearchAllArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param query The query statement. See [how to construct a query](https://cloud.google.com/asset-inventory/docs/searching-resources#how_to_construct_a_query) for more information. If not specified or empty, it will search all the resources within the specified `scope` and `asset_types`.
+         * @param query The query statement. See [how to construct a query](https://cloud.google.com/asset-inventory/docs/searching-resources#how_to_construct_a_query) for more information. If not specified or empty, it will search all the resources within the specified `scope` and `assetTypes`.
          * 
          * @return builder
          * 

@@ -112,13 +112,13 @@ namespace Pulumi.Gcp.NetworkManagement
         /// Optional. Resource labels to represent the user-provided metadata.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Resource ID segment making up resource `name`. It identifies the resource
+        /// Resource ID segment making up resource `Name`. It identifies the resource
         /// within its parent collection as described in https://google.aip.dev/122. See documentation
         /// for resource type `networkmanagement.googleapis.com/VpcFlowLogsConfig`.
         /// </summary>
@@ -147,7 +147,7 @@ namespace Pulumi.Gcp.NetworkManagement
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         /// </summary>
         [Output("organization")]
         public Output<string> Organization { get; private set; } = null!;
@@ -278,7 +278,7 @@ namespace Pulumi.Gcp.NetworkManagement
         /// Optional. Resource labels to represent the user-provided metadata.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -287,7 +287,7 @@ namespace Pulumi.Gcp.NetworkManagement
         }
 
         /// <summary>
-        /// Resource ID segment making up resource `name`. It identifies the resource
+        /// Resource ID segment making up resource `Name`. It identifies the resource
         /// within its parent collection as described in https://google.aip.dev/122. See documentation
         /// for resource type `networkmanagement.googleapis.com/VpcFlowLogsConfig`.
         /// </summary>
@@ -316,7 +316,7 @@ namespace Pulumi.Gcp.NetworkManagement
         }
 
         /// <summary>
-        /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         /// </summary>
         [Input("organization", required: true)]
         public Input<string> Organization { get; set; } = null!;
@@ -413,7 +413,7 @@ namespace Pulumi.Gcp.NetworkManagement
         /// Optional. Resource labels to represent the user-provided metadata.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -422,7 +422,7 @@ namespace Pulumi.Gcp.NetworkManagement
         }
 
         /// <summary>
-        /// Resource ID segment making up resource `name`. It identifies the resource
+        /// Resource ID segment making up resource `Name`. It identifies the resource
         /// within its parent collection as described in https://google.aip.dev/122. See documentation
         /// for resource type `networkmanagement.googleapis.com/VpcFlowLogsConfig`.
         /// </summary>
@@ -457,7 +457,7 @@ namespace Pulumi.Gcp.NetworkManagement
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         /// </summary>
         [Input("organization")]
         public Input<string>? Organization { get; set; }

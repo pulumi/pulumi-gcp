@@ -372,14 +372,14 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.metadata);
     }
     /**
-     * The name of the object. If you&#39;re interpolating the name of this object, see `output_name` instead.
+     * The name of the object. If you&#39;re interpolating the name of this object, see `outputName` instead.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the object. If you&#39;re interpolating the name of this object, see `output_name` instead.
+     * @return The name of the object. If you&#39;re interpolating the name of this object, see `outputName` instead.
      * 
      */
     public Output<String> name() {

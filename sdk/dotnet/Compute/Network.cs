@@ -167,10 +167,10 @@ namespace Pulumi.Gcp.Compute
     public partial class Network : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// When set to `true`, the network is created in "auto subnet mode" and
+        /// When set to `True`, the network is created in "auto subnet mode" and
         /// it will create a subnet for each region automatically across the
         /// `10.128.0.0/9` address range.
-        /// When set to `false`, the network is created in "custom subnet mode" so
+        /// When set to `False`, the network is created in "custom subnet mode" so
         /// the user can explicitly connect subnetwork resources.
         /// </summary>
         [Output("autoCreateSubnetworks")]
@@ -198,8 +198,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string> BgpInterRegionCost { get; private set; } = null!;
 
         /// <summary>
-        /// If set to `true`, default routes (`0.0.0.0/0`) will be deleted
-        /// immediately after network creation. Defaults to `false`.
+        /// If set to `True`, default routes (`0.0.0.0/0`) will be deleted
+        /// immediately after network creation. Defaults to `False`.
         /// </summary>
         [Output("deleteDefaultRoutesOnCreate")]
         public Output<bool?> DeleteDefaultRoutesOnCreate { get; private set; } = null!;
@@ -366,10 +366,10 @@ namespace Pulumi.Gcp.Compute
     public sealed class NetworkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// When set to `true`, the network is created in "auto subnet mode" and
+        /// When set to `True`, the network is created in "auto subnet mode" and
         /// it will create a subnet for each region automatically across the
         /// `10.128.0.0/9` address range.
-        /// When set to `false`, the network is created in "custom subnet mode" so
+        /// When set to `False`, the network is created in "custom subnet mode" so
         /// the user can explicitly connect subnetwork resources.
         /// </summary>
         [Input("autoCreateSubnetworks")]
@@ -397,8 +397,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? BgpInterRegionCost { get; set; }
 
         /// <summary>
-        /// If set to `true`, default routes (`0.0.0.0/0`) will be deleted
-        /// immediately after network creation. Defaults to `false`.
+        /// If set to `True`, default routes (`0.0.0.0/0`) will be deleted
+        /// immediately after network creation. Defaults to `False`.
         /// </summary>
         [Input("deleteDefaultRoutesOnCreate")]
         public Input<bool>? DeleteDefaultRoutesOnCreate { get; set; }
@@ -501,10 +501,10 @@ namespace Pulumi.Gcp.Compute
     public sealed class NetworkState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// When set to `true`, the network is created in "auto subnet mode" and
+        /// When set to `True`, the network is created in "auto subnet mode" and
         /// it will create a subnet for each region automatically across the
         /// `10.128.0.0/9` address range.
-        /// When set to `false`, the network is created in "custom subnet mode" so
+        /// When set to `False`, the network is created in "custom subnet mode" so
         /// the user can explicitly connect subnetwork resources.
         /// </summary>
         [Input("autoCreateSubnetworks")]
@@ -532,8 +532,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? BgpInterRegionCost { get; set; }
 
         /// <summary>
-        /// If set to `true`, default routes (`0.0.0.0/0`) will be deleted
-        /// immediately after network creation. Defaults to `false`.
+        /// If set to `True`, default routes (`0.0.0.0/0`) will be deleted
+        /// immediately after network creation. Defaults to `False`.
         /// </summary>
         [Input("deleteDefaultRoutesOnCreate")]
         public Input<bool>? DeleteDefaultRoutesOnCreate { get; set; }

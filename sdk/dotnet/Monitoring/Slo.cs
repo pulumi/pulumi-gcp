@@ -326,7 +326,7 @@ namespace Pulumi.Gcp.Monitoring
         /// SLIs are used to measure and calculate the quality of the Service's
         /// performance with respect to a single aspect of service quality.
         /// Exactly one of the following must be set:
-        /// `basic_sli`, `request_based_sli`, `windows_based_sli`
+        /// `BasicSli`, `RequestBasedSli`, `WindowsBasedSli`
         /// Structure is documented below.
         /// </summary>
         [Output("basicSli")]
@@ -374,7 +374,7 @@ namespace Pulumi.Gcp.Monitoring
         /// It is used to measure and calculate the quality of the Service's
         /// performance with respect to a single aspect of service quality.
         /// Exactly one of the following must be set:
-        /// `basic_sli`, `request_based_sli`, `windows_based_sli`
+        /// `BasicSli`, `RequestBasedSli`, `WindowsBasedSli`
         /// Structure is documented below.
         /// </summary>
         [Output("requestBasedSli")]
@@ -411,13 +411,13 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// A windows-based SLI defines the criteria for time windows.
-        /// good_service is defined based off the count of these time windows
+        /// GoodService is defined based off the count of these time windows
         /// for which the provided service was of good quality.
         /// A SLI describes a good service. It is used to measure and calculate
         /// the quality of the Service's performance with respect to a single
         /// aspect of service quality.
         /// Exactly one of the following must be set:
-        /// `basic_sli`, `request_based_sli`, `windows_based_sli`
+        /// `BasicSli`, `RequestBasedSli`, `WindowsBasedSli`
         /// Structure is documented below.
         /// </summary>
         [Output("windowsBasedSli")]
@@ -475,7 +475,7 @@ namespace Pulumi.Gcp.Monitoring
         /// SLIs are used to measure and calculate the quality of the Service's
         /// performance with respect to a single aspect of service quality.
         /// Exactly one of the following must be set:
-        /// `basic_sli`, `request_based_sli`, `windows_based_sli`
+        /// `BasicSli`, `RequestBasedSli`, `WindowsBasedSli`
         /// Structure is documented below.
         /// </summary>
         [Input("basicSli")]
@@ -516,7 +516,7 @@ namespace Pulumi.Gcp.Monitoring
         /// It is used to measure and calculate the quality of the Service's
         /// performance with respect to a single aspect of service quality.
         /// Exactly one of the following must be set:
-        /// `basic_sli`, `request_based_sli`, `windows_based_sli`
+        /// `BasicSli`, `RequestBasedSli`, `WindowsBasedSli`
         /// Structure is documented below.
         /// </summary>
         [Input("requestBasedSli")]
@@ -559,13 +559,13 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// A windows-based SLI defines the criteria for time windows.
-        /// good_service is defined based off the count of these time windows
+        /// GoodService is defined based off the count of these time windows
         /// for which the provided service was of good quality.
         /// A SLI describes a good service. It is used to measure and calculate
         /// the quality of the Service's performance with respect to a single
         /// aspect of service quality.
         /// Exactly one of the following must be set:
-        /// `basic_sli`, `request_based_sli`, `windows_based_sli`
+        /// `BasicSli`, `RequestBasedSli`, `WindowsBasedSli`
         /// Structure is documented below.
         /// </summary>
         [Input("windowsBasedSli")]
@@ -585,7 +585,7 @@ namespace Pulumi.Gcp.Monitoring
         /// SLIs are used to measure and calculate the quality of the Service's
         /// performance with respect to a single aspect of service quality.
         /// Exactly one of the following must be set:
-        /// `basic_sli`, `request_based_sli`, `windows_based_sli`
+        /// `BasicSli`, `RequestBasedSli`, `WindowsBasedSli`
         /// Structure is documented below.
         /// </summary>
         [Input("basicSli")]
@@ -633,7 +633,7 @@ namespace Pulumi.Gcp.Monitoring
         /// It is used to measure and calculate the quality of the Service's
         /// performance with respect to a single aspect of service quality.
         /// Exactly one of the following must be set:
-        /// `basic_sli`, `request_based_sli`, `windows_based_sli`
+        /// `BasicSli`, `RequestBasedSli`, `WindowsBasedSli`
         /// Structure is documented below.
         /// </summary>
         [Input("requestBasedSli")]
@@ -676,13 +676,13 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// A windows-based SLI defines the criteria for time windows.
-        /// good_service is defined based off the count of these time windows
+        /// GoodService is defined based off the count of these time windows
         /// for which the provided service was of good quality.
         /// A SLI describes a good service. It is used to measure and calculate
         /// the quality of the Service's performance with respect to a single
         /// aspect of service quality.
         /// Exactly one of the following must be set:
-        /// `basic_sli`, `request_based_sli`, `windows_based_sli`
+        /// `BasicSli`, `RequestBasedSli`, `WindowsBasedSli`
         /// Structure is documented below.
         /// </summary>
         [Input("windowsBasedSli")]

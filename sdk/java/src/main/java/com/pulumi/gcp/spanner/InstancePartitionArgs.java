@@ -87,7 +87,7 @@ public final class InstancePartitionArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * The number of nodes allocated to this instance partition. One node equals
-     * 1000 processing units. Exactly one of either node_count or processing_units
+     * 1000 processing units. Exactly one of either nodeCount or processingUnits
      * must be present.
      * 
      */
@@ -96,7 +96,7 @@ public final class InstancePartitionArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return The number of nodes allocated to this instance partition. One node equals
-     * 1000 processing units. Exactly one of either node_count or processing_units
+     * 1000 processing units. Exactly one of either nodeCount or processingUnits
      * must be present.
      * 
      */
@@ -106,7 +106,7 @@ public final class InstancePartitionArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * The number of processing units allocated to this instance partition.
-     * Exactly one of either node_count or processing_units must be present.
+     * Exactly one of either nodeCount or processingUnits must be present.
      * 
      */
     @Import(name="processingUnits")
@@ -114,7 +114,7 @@ public final class InstancePartitionArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return The number of processing units allocated to this instance partition.
-     * Exactly one of either node_count or processing_units must be present.
+     * Exactly one of either nodeCount or processingUnits must be present.
      * 
      */
     public Optional<Output<Integer>> processingUnits() {
@@ -262,7 +262,7 @@ public final class InstancePartitionArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param nodeCount The number of nodes allocated to this instance partition. One node equals
-         * 1000 processing units. Exactly one of either node_count or processing_units
+         * 1000 processing units. Exactly one of either nodeCount or processingUnits
          * must be present.
          * 
          * @return builder
@@ -275,7 +275,7 @@ public final class InstancePartitionArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param nodeCount The number of nodes allocated to this instance partition. One node equals
-         * 1000 processing units. Exactly one of either node_count or processing_units
+         * 1000 processing units. Exactly one of either nodeCount or processingUnits
          * must be present.
          * 
          * @return builder
@@ -287,7 +287,7 @@ public final class InstancePartitionArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param processingUnits The number of processing units allocated to this instance partition.
-         * Exactly one of either node_count or processing_units must be present.
+         * Exactly one of either nodeCount or processingUnits must be present.
          * 
          * @return builder
          * 
@@ -299,7 +299,7 @@ public final class InstancePartitionArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param processingUnits The number of processing units allocated to this instance partition.
-         * Exactly one of either node_count or processing_units must be present.
+         * Exactly one of either nodeCount or processingUnits must be present.
          * 
          * @return builder
          * 

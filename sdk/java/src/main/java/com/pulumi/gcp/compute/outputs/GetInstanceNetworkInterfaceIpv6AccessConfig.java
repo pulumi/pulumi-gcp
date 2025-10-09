@@ -21,7 +21,7 @@ public final class GetInstanceNetworkInterfaceIpv6AccessConfig {
      */
     private String externalIpv6PrefixLength;
     /**
-     * @return The name of the instance. One of `name` or `self_link` must be provided.
+     * @return The name of the instance. One of `name` or `selfLink` must be provided.
      * 
      */
     private String name;
@@ -57,7 +57,7 @@ public final class GetInstanceNetworkInterfaceIpv6AccessConfig {
         return this.externalIpv6PrefixLength;
     }
     /**
-     * @return The name of the instance. One of `name` or `self_link` must be provided.
+     * @return The name of the instance. One of `name` or `selfLink` must be provided.
      * 
      */
     public String name() {

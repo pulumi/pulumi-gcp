@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         /// Structure is documented below.
         /// 
         /// 
-        /// &lt;a name="nested_targets_targets_other_cloud_target_filter_single_resource_amazon_s3_bucket"&gt;&lt;/a&gt;The `amazon_s3_bucket` block supports:
+        /// &lt;a name="NestedTargetsTargetsOtherCloudTargetFilterSingleResourceAmazonS3Bucket"&gt;&lt;/a&gt;The `AmazonS3Bucket` block supports:
         /// </summary>
         [Input("amazonS3Bucket")]
         public Input<Inputs.PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3BucketGetArgs>? AmazonS3Bucket { get; set; }

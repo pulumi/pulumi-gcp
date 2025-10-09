@@ -23,11 +23,11 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string DeviceName;
         /// <summary>
-        /// A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
+        /// A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, DiskEncryptionKeyRaw and DiskEncryptionKeyRsa may be set.
         /// </summary>
         public readonly string DiskEncryptionKeyRaw;
         /// <summary>
-        /// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
+        /// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, DiskEncryptionKeyRaw and DiskEncryptionKeyRsa may be set.
         /// </summary>
         public readonly string DiskEncryptionKeyRsa;
         /// <summary>
@@ -58,7 +58,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string Interface;
         /// <summary>
-        /// The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
+        /// The SelfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, DiskEncryptionKeyRaw and DiskEncryptionKeyRsa may be set.
         /// </summary>
         public readonly string KmsKeySelfLink;
         /// <summary>
@@ -66,7 +66,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string Mode;
         /// <summary>
-        /// The self_link of the disk attached to this instance.
+        /// The SelfLink of the disk attached to this instance.
         /// </summary>
         public readonly string Source;
 

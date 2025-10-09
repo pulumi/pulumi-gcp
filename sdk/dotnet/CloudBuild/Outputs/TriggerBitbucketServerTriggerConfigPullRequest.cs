@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         /// </summary>
         public readonly string? CommentControl;
         /// <summary>
-        /// If true, branches that do NOT match the git_ref will trigger a build.
+        /// If true, branches that do NOT match the GitRef will trigger a build.
         /// </summary>
         public readonly bool? InvertRegex;
 

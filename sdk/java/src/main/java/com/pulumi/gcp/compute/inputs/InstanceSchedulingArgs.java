@@ -139,14 +139,14 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Structure is documented below.
+     * The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instanceTerminationAction`. Structure is documented below.
      * 
      */
     @Import(name="maxRunDuration")
     private @Nullable Output<InstanceSchedulingMaxRunDurationArgs> maxRunDuration;
 
     /**
-     * @return The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Structure is documented below.
+     * @return The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instanceTerminationAction`. Structure is documented below.
      * 
      */
     public Optional<Output<InstanceSchedulingMaxRunDurationArgs>> maxRunDuration() {
@@ -211,14 +211,14 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Specifies the action to be performed when the instance is terminated using `max_run_duration` and `STOP` `instance_termination_action`. Only support `true` `discard_local_ssd` at this point. Structure is documented below.
+     * Specifies the action to be performed when the instance is terminated using `maxRunDuration` and `STOP` `instanceTerminationAction`. Only support `true` `discardLocalSsd` at this point. Structure is documented below.
      * 
      */
     @Import(name="onInstanceStopAction")
     private @Nullable Output<InstanceSchedulingOnInstanceStopActionArgs> onInstanceStopAction;
 
     /**
-     * @return Specifies the action to be performed when the instance is terminated using `max_run_duration` and `STOP` `instance_termination_action`. Only support `true` `discard_local_ssd` at this point. Structure is documented below.
+     * @return Specifies the action to be performed when the instance is terminated using `maxRunDuration` and `STOP` `instanceTerminationAction`. Only support `true` `discardLocalSsd` at this point. Structure is documented below.
      * 
      */
     public Optional<Output<InstanceSchedulingOnInstanceStopActionArgs>> onInstanceStopAction() {
@@ -227,7 +227,7 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
 
     /**
      * Specifies if the instance is preemptible.
-     * If this field is set to true, then `automatic_restart` must be
+     * If this field is set to true, then `automaticRestart` must be
      * set to false.  Defaults to false.
      * 
      */
@@ -236,7 +236,7 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return Specifies if the instance is preemptible.
-     * If this field is set to true, then `automatic_restart` must be
+     * If this field is set to true, then `automaticRestart` must be
      * set to false.  Defaults to false.
      * 
      */
@@ -246,7 +246,7 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
 
     /**
      * Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
-     * `preemptible` should be `true` and `automatic_restart` should be
+     * `preemptible` should be `true` and `automaticRestart` should be
      * `false`. For more info about
      * `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
      * 
@@ -256,7 +256,7 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
-     * `preemptible` should be `true` and `automatic_restart` should be
+     * `preemptible` should be `true` and `automaticRestart` should be
      * `false`. For more info about
      * `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
      * 
@@ -492,7 +492,7 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param maxRunDuration The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Structure is documented below.
+         * @param maxRunDuration The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instanceTerminationAction`. Structure is documented below.
          * 
          * @return builder
          * 
@@ -503,7 +503,7 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param maxRunDuration The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Structure is documented below.
+         * @param maxRunDuration The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instanceTerminationAction`. Structure is documented below.
          * 
          * @return builder
          * 
@@ -602,7 +602,7 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param onInstanceStopAction Specifies the action to be performed when the instance is terminated using `max_run_duration` and `STOP` `instance_termination_action`. Only support `true` `discard_local_ssd` at this point. Structure is documented below.
+         * @param onInstanceStopAction Specifies the action to be performed when the instance is terminated using `maxRunDuration` and `STOP` `instanceTerminationAction`. Only support `true` `discardLocalSsd` at this point. Structure is documented below.
          * 
          * @return builder
          * 
@@ -613,7 +613,7 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param onInstanceStopAction Specifies the action to be performed when the instance is terminated using `max_run_duration` and `STOP` `instance_termination_action`. Only support `true` `discard_local_ssd` at this point. Structure is documented below.
+         * @param onInstanceStopAction Specifies the action to be performed when the instance is terminated using `maxRunDuration` and `STOP` `instanceTerminationAction`. Only support `true` `discardLocalSsd` at this point. Structure is documented below.
          * 
          * @return builder
          * 
@@ -624,7 +624,7 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param preemptible Specifies if the instance is preemptible.
-         * If this field is set to true, then `automatic_restart` must be
+         * If this field is set to true, then `automaticRestart` must be
          * set to false.  Defaults to false.
          * 
          * @return builder
@@ -637,7 +637,7 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param preemptible Specifies if the instance is preemptible.
-         * If this field is set to true, then `automatic_restart` must be
+         * If this field is set to true, then `automaticRestart` must be
          * set to false.  Defaults to false.
          * 
          * @return builder
@@ -649,7 +649,7 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param provisioningModel Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
-         * `preemptible` should be `true` and `automatic_restart` should be
+         * `preemptible` should be `true` and `automaticRestart` should be
          * `false`. For more info about
          * `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
          * 
@@ -663,7 +663,7 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param provisioningModel Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
-         * `preemptible` should be `true` and `automatic_restart` should be
+         * `preemptible` should be `true` and `automaticRestart` should be
          * `false`. For more info about
          * `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
          * 

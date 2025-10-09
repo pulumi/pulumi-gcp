@@ -25,6 +25,8 @@ namespace Pulumi.Gcp.SecurityCenter
     /// 
     /// ## Example Usage
     /// 
+    /// ### Scc V2 Project Big Query Export Config Basic
+    /// 
     /// ## Import
     /// 
     /// ProjectSccBigQueryExport can be imported using any of these accepted formats:
@@ -68,7 +70,7 @@ namespace Pulumi.Gcp.SecurityCenter
 
         /// <summary>
         /// The dataset to write findings' updates to.
-        /// Its format is "projects/[projectId]/datasets/[bigquery_dataset_id]".
+        /// Its format is "projects/[projectId]/datasets/[BigqueryDatasetId]".
         /// BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
         /// </summary>
         [Output("dataset")]
@@ -200,7 +202,7 @@ namespace Pulumi.Gcp.SecurityCenter
 
         /// <summary>
         /// The dataset to write findings' updates to.
-        /// Its format is "projects/[projectId]/datasets/[bigquery_dataset_id]".
+        /// Its format is "projects/[projectId]/datasets/[BigqueryDatasetId]".
         /// BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
         /// </summary>
         [Input("dataset")]
@@ -273,7 +275,7 @@ namespace Pulumi.Gcp.SecurityCenter
 
         /// <summary>
         /// The dataset to write findings' updates to.
-        /// Its format is "projects/[projectId]/datasets/[bigquery_dataset_id]".
+        /// Its format is "projects/[projectId]/datasets/[BigqueryDatasetId]".
         /// BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
         /// </summary>
         [Input("dataset")]

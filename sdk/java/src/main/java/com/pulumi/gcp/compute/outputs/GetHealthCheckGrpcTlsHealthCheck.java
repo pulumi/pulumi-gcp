@@ -22,7 +22,7 @@ public final class GetHealthCheckGrpcTlsHealthCheck {
     private String grpcServiceName;
     /**
      * @return The port number for the health check request.
-     * Must be specified if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+     * Must be specified if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
      * 
      */
     private Integer port;
@@ -58,7 +58,7 @@ public final class GetHealthCheckGrpcTlsHealthCheck {
     }
     /**
      * @return The port number for the health check request.
-     * Must be specified if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+     * Must be specified if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
      * 
      */
     public Integer port() {

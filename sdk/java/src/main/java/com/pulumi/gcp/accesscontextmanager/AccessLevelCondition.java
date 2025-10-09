@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
  * to enable them to be added separately.
  * 
  * &gt; **Note:** If this resource is used alongside a `gcp.accesscontextmanager.AccessLevel` resource,
- * the access level resource must have a `lifecycle` block with `ignore_changes = [basic[0].conditions]` so
+ * the access level resource must have a `lifecycle` block with `ignoreChanges = [basic[0].conditions]` so
  * they don&#39;t fight over which service accounts should be included.
  * 
  * To get more information about AccessLevelCondition, see:
@@ -35,10 +35,10 @@ import javax.annotation.Nullable;
  *     * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
  * 
  * &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
- * you must specify a `billing_project` and set `user_project_override` to true
+ * you must specify a `billingProject` and set `userProjectOverride` to true
  * in the provider configuration. Otherwise the ACM API will return a 403 error.
  * Your account must have the `serviceusage.services.use` permission on the
- * `billing_project` you defined.
+ * `billingProject` you defined.
  * 
  * ## Example Usage
  * 
@@ -301,7 +301,7 @@ public class AccessLevelCondition extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.requiredAccessLevels);
     }
     /**
-     * The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+     * The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ipSubnetworks`.
      * Structure is documented below.
      * 
      */
@@ -309,7 +309,7 @@ public class AccessLevelCondition extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ List<AccessLevelConditionVpcNetworkSource>> vpcNetworkSources;
 
     /**
-     * @return The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+     * @return The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ipSubnetworks`.
      * Structure is documented below.
      * 
      */

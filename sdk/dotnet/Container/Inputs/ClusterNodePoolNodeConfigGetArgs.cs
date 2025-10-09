@@ -46,14 +46,14 @@ namespace Pulumi.Gcp.Container.Inputs
         /// <summary>
         /// Size of the disk attached to each node, specified
         /// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated to `boot_disk.size_gb`, and must match if specified in both places.
-        /// Prefer configuring `boot_disk`.
+        /// Prefer configuring `BootDisk`.
         /// </summary>
         [Input("diskSizeGb")]
         public Input<int>? DiskSizeGb { get; set; }
 
         /// <summary>
         /// Type of the disk attached to each node
-        /// (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', or 'hyperdisk-balanced'). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`. This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
+        /// (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', or 'hyperdisk-balanced'). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`. This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `BootDisk`.
         /// </summary>
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }
@@ -105,9 +105,9 @@ namespace Pulumi.Gcp.Container.Inputs
 
         /// <summary>
         /// Parameters for the Google Container Filesystem (GCFS).
-        /// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version` from GKE versions 1.19 or later to use it.
-        /// For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
-        /// A `machine_type` that has more than 16 GiB of memory is also recommended.
+        /// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `ImageType = "COS_CONTAINERD"` and `NodeVersion` from GKE versions 1.19 or later to use it.
+        /// For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `NodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
+        /// A `MachineType` that has more than 16 GiB of memory is also recommended.
         /// GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
         /// Structure is documented below.
         /// </summary>
@@ -233,7 +233,7 @@ namespace Pulumi.Gcp.Container.Inputs
         /// <summary>
         /// The metadata key/value pairs assigned to instances in
         /// the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
-        /// `true` by the API; if `metadata` is set but that default value is not
+        /// `True` by the API; if `Metadata` is set but that default value is not
         /// included, the provider will attempt to unset the value. To avoid this, set the
         /// value in your config.
         /// </summary>
@@ -265,7 +265,7 @@ namespace Pulumi.Gcp.Container.Inputs
         /// <summary>
         /// The set of Google API scopes to be made available
         /// on all of the node VMs under the "default" service account.
-        /// Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `service_account` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
+        /// Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `ServiceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
         /// 
         /// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/access-scopes) for information on migrating off of legacy access scopes.
         /// </summary>
@@ -324,7 +324,7 @@ namespace Pulumi.Gcp.Container.Inputs
         private InputList<Inputs.ClusterNodePoolNodeConfigSecondaryBootDiskGetArgs>? _secondaryBootDisks;
 
         /// <summary>
-        /// Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfs_config` must be `enabled=true` for this feature to work. `min_master_version` must also be set to use GKE 1.28.3-gke.106700 or later versions.
+        /// Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `GcfsConfig` must be `enabled=true` for this feature to work. `MinMasterVersion` must also be set to use GKE 1.28.3-gke.106700 or later versions.
         /// </summary>
         public InputList<Inputs.ClusterNodePoolNodeConfigSecondaryBootDiskGetArgs> SecondaryBootDisks
         {
@@ -393,7 +393,7 @@ namespace Pulumi.Gcp.Container.Inputs
         /// However, GKE will add taints to your nodes if you enable certain features such
         /// as GPUs. If this field is set, any diffs on this field will cause the provider to
         /// recreate the underlying resource. Taint values can be updated safely in
-        /// Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
+        /// Kubernetes (eg. through `Kubectl`), and it's recommended that you do not use
         /// this field to manage taints. If you do, `lifecycle.ignore_changes` is
         /// recommended. Structure is documented below.
         /// </summary>

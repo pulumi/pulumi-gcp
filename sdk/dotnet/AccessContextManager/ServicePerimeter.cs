@@ -28,10 +28,10 @@ namespace Pulumi.Gcp.AccessContextManager
     ///     * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
     /// 
     /// &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
-    /// you must specify a `billing_project` and set `user_project_override` to true
+    /// you must specify a `BillingProject` and set `UserProjectOverride` to true
     /// in the provider configuration. Otherwise the ACM API will return a 403 error.
     /// Your account must have the `serviceusage.services.use` permission on the
-    /// `billing_project` you defined.
+    /// `BillingProject` you defined.
     /// 
     /// ## Example Usage
     /// 
@@ -356,7 +356,7 @@ namespace Pulumi.Gcp.AccessContextManager
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Resource name for the ServicePerimeter. The short_name component must
+        /// Resource name for the ServicePerimeter. The ShortName component must
         /// begin with a letter and only include alphanumeric and '_'.
         /// Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
         /// </summary>
@@ -490,7 +490,7 @@ namespace Pulumi.Gcp.AccessContextManager
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Resource name for the ServicePerimeter. The short_name component must
+        /// Resource name for the ServicePerimeter. The ShortName component must
         /// begin with a letter and only include alphanumeric and '_'.
         /// Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
         /// </summary>
@@ -586,7 +586,7 @@ namespace Pulumi.Gcp.AccessContextManager
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Resource name for the ServicePerimeter. The short_name component must
+        /// Resource name for the ServicePerimeter. The ShortName component must
         /// begin with a letter and only include alphanumeric and '_'.
         /// Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
         /// </summary>

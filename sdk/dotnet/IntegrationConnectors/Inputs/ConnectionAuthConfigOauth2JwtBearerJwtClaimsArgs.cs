@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.IntegrationConnectors.Inputs
         /// <summary>
         /// Value for the "aud" claim.
         /// 
-        /// &lt;a name="nested_auth_config_oauth2_client_credentials"&gt;&lt;/a&gt;The `oauth2_client_credentials` block supports:
+        /// &lt;a name="NestedAuthConfigOauth2ClientCredentials"&gt;&lt;/a&gt;The `Oauth2ClientCredentials` block supports:
         /// </summary>
         [Input("audience")]
         public Input<string>? Audience { get; set; }

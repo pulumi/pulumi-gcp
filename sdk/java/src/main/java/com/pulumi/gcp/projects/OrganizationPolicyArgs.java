@@ -87,7 +87,7 @@ public final class OrganizationPolicyArgs extends com.pulumi.resources.ResourceA
     /**
      * A restore policy is a constraint to restore the default policy. Structure is documented below.
      * 
-     * &gt; **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
+     * &gt; **Note:** If none of [`booleanPolicy`, `listPolicy`, `restorePolicy`] are defined the policy for a given constraint will
      * effectively be unset. This is represented in the UI as the constraint being &#39;Inherited&#39;.
      * 
      * ***
@@ -99,7 +99,7 @@ public final class OrganizationPolicyArgs extends com.pulumi.resources.ResourceA
     /**
      * @return A restore policy is a constraint to restore the default policy. Structure is documented below.
      * 
-     * &gt; **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
+     * &gt; **Note:** If none of [`booleanPolicy`, `listPolicy`, `restorePolicy`] are defined the policy for a given constraint will
      * effectively be unset. This is represented in the UI as the constraint being &#39;Inherited&#39;.
      * 
      * ***
@@ -244,7 +244,7 @@ public final class OrganizationPolicyArgs extends com.pulumi.resources.ResourceA
         /**
          * @param restorePolicy A restore policy is a constraint to restore the default policy. Structure is documented below.
          * 
-         * &gt; **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
+         * &gt; **Note:** If none of [`booleanPolicy`, `listPolicy`, `restorePolicy`] are defined the policy for a given constraint will
          * effectively be unset. This is represented in the UI as the constraint being &#39;Inherited&#39;.
          * 
          * ***
@@ -260,7 +260,7 @@ public final class OrganizationPolicyArgs extends com.pulumi.resources.ResourceA
         /**
          * @param restorePolicy A restore policy is a constraint to restore the default policy. Structure is documented below.
          * 
-         * &gt; **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
+         * &gt; **Note:** If none of [`booleanPolicy`, `listPolicy`, `restorePolicy`] are defined the policy for a given constraint will
          * effectively be unset. This is represented in the UI as the constraint being &#39;Inherited&#39;.
          * 
          * ***

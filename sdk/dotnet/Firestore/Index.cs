@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// &gt; **Warning:** This resource creates a Firestore Index on a project that already has
     /// a Firestore database. If you haven't already created it, you may
-    /// create a `gcp.firestore.Database` resource and `location_id` set
+    /// create a `gcp.firestore.Database` resource and `LocationId` set
     /// to your chosen location. If you wish to use App Engine, you may
     /// instead create a `gcp.appengine.Application` resource.
     /// Your Firestore location will be the same as the App Engine location specified.

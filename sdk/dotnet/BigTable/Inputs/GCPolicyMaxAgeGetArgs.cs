@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.BigTable.Inputs
         public Input<int>? Days { get; set; }
 
         /// <summary>
-        /// Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
+        /// Duration before applying GC policy (ex. "8h"). This is required when `Days` isn't set
         /// 
         /// -----
         /// </summary>

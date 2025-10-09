@@ -32,11 +32,11 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         /// <summary>
         /// (Optional) Supported from Config Sync versions 1.12.0 onwards. Structure is documented below.
         /// 
-        /// Use either `git` or `oci` config option.
+        /// Use either `Git` or `Oci` config option.
         /// </summary>
         public readonly Outputs.FeatureMembershipConfigmanagementConfigSyncOci? Oci;
         /// <summary>
-        /// Supported from Config Sync versions 1.10.0 onwards. Set to `true` to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
+        /// Supported from Config Sync versions 1.10.0 onwards. Set to `True` to enable the Config Sync admission webhook to prevent drifts. If set to `False`, disables the Config Sync admission webhook and does not prevent drifts.
         /// </summary>
         public readonly bool? PreventDrift;
         /// <summary>
@@ -44,7 +44,7 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         /// </summary>
         public readonly string? SourceFormat;
         /// <summary>
-        /// Set to `true` to stop syncing configurations for a single cluster. This field is only available on clusters using Config Sync [auto-upgrades](http://cloud/kubernetes-engine/enterprise/config-sync/docs/how-to/upgrade-config-sync#auto-upgrade-config) or on Config Sync version 1.20.0 or later. Defaults: `false`.
+        /// Set to `True` to stop syncing configurations for a single cluster. This field is only available on clusters using Config Sync [auto-upgrades](http://cloud/kubernetes-engine/enterprise/config-sync/docs/how-to/upgrade-config-sync#auto-upgrade-config) or on Config Sync version 1.20.0 or later. Defaults: `False`.
         /// </summary>
         public readonly bool? StopSyncing;
 

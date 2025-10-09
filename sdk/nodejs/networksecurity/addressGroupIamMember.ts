@@ -21,6 +21,8 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.networksecurity.AddressGroupIamBinding` resources **can be** used in conjunction with `gcp.networksecurity.AddressGroupIamMember` resources **only if** they do not grant privilege to the same role.
  *
+ * ## gcp.networksecurity.AddressGroupIamPolicy
+ *
  * ## Import
  *
  * For all import syntaxes, the "resource in question" can take any of the following forms:

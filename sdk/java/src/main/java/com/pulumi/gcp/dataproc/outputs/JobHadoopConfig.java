@@ -40,12 +40,12 @@ public final class JobHadoopConfig {
      */
     private @Nullable JobHadoopConfigLoggingConfig loggingConfig;
     /**
-     * @return The name of the driver&#39;s main class. The jar file containing the class must be in the default CLASSPATH or specified in `jar_file_uris`. Conflicts with `main_jar_file_uri`
+     * @return The name of the driver&#39;s main class. The jar file containing the class must be in the default CLASSPATH or specified in `jarFileUris`. Conflicts with `mainJarFileUri`
      * 
      */
     private @Nullable String mainClass;
     /**
-     * @return The HCFS URI of the jar file containing the main class. Examples: &#39;gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar&#39; &#39;hdfs:/tmp/test-samples/custom-wordcount.jar&#39; &#39;file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar&#39;. Conflicts with `main_class`
+     * @return The HCFS URI of the jar file containing the main class. Examples: &#39;gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar&#39; &#39;hdfs:/tmp/test-samples/custom-wordcount.jar&#39; &#39;file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar&#39;. Conflicts with `mainClass`
      * 
      */
     private @Nullable String mainJarFileUri;
@@ -94,14 +94,14 @@ public final class JobHadoopConfig {
         return Optional.ofNullable(this.loggingConfig);
     }
     /**
-     * @return The name of the driver&#39;s main class. The jar file containing the class must be in the default CLASSPATH or specified in `jar_file_uris`. Conflicts with `main_jar_file_uri`
+     * @return The name of the driver&#39;s main class. The jar file containing the class must be in the default CLASSPATH or specified in `jarFileUris`. Conflicts with `mainJarFileUri`
      * 
      */
     public Optional<String> mainClass() {
         return Optional.ofNullable(this.mainClass);
     }
     /**
-     * @return The HCFS URI of the jar file containing the main class. Examples: &#39;gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar&#39; &#39;hdfs:/tmp/test-samples/custom-wordcount.jar&#39; &#39;file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar&#39;. Conflicts with `main_class`
+     * @return The HCFS URI of the jar file containing the main class. Examples: &#39;gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar&#39; &#39;hdfs:/tmp/test-samples/custom-wordcount.jar&#39; &#39;file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar&#39;. Conflicts with `mainClass`
      * 
      */
     public Optional<String> mainJarFileUri() {

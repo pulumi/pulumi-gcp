@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Dns.Outputs
     {
         /// <summary>
         /// String mnemonic specifying the DNSSEC algorithm of this key
-        /// Possible values are: `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, `rsasha512`.
+        /// Possible values are: `Ecdsap256sha256`, `Ecdsap384sha384`, `Rsasha1`, `Rsasha256`, `Rsasha512`.
         /// </summary>
         public readonly string? Algorithm;
         /// <summary>

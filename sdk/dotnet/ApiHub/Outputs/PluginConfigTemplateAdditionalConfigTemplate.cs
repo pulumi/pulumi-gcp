@@ -37,7 +37,7 @@ namespace Pulumi.Gcp.ApiHub.Outputs
         /// </summary>
         public readonly bool? Required;
         /// <summary>
-        /// Regular expression in RE2 syntax used for validating the `value` of a
+        /// Regular expression in RE2 syntax used for validating the `Value` of a
         /// `ConfigVariable`.
         /// </summary>
         public readonly string? ValidationRegex;

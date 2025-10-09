@@ -103,8 +103,8 @@ public final class AlertPolicyConditionConditionMonitoringQueryLanguageArgs exte
      * the condition will trigger if the comparison
      * is true for any of the time series that have
      * been identified by filter and aggregations,
-     * or by the ratio, if denominator_filter and
-     * denominator_aggregations are specified.
+     * or by the ratio, if denominatorFilter and
+     * denominatorAggregations are specified.
      * Structure is documented below.
      * 
      */
@@ -118,8 +118,8 @@ public final class AlertPolicyConditionConditionMonitoringQueryLanguageArgs exte
      * the condition will trigger if the comparison
      * is true for any of the time series that have
      * been identified by filter and aggregations,
-     * or by the ratio, if denominator_filter and
-     * denominator_aggregations are specified.
+     * or by the ratio, if denominatorFilter and
+     * denominatorAggregations are specified.
      * Structure is documented below.
      * 
      */
@@ -258,8 +258,8 @@ public final class AlertPolicyConditionConditionMonitoringQueryLanguageArgs exte
          * the condition will trigger if the comparison
          * is true for any of the time series that have
          * been identified by filter and aggregations,
-         * or by the ratio, if denominator_filter and
-         * denominator_aggregations are specified.
+         * or by the ratio, if denominatorFilter and
+         * denominatorAggregations are specified.
          * Structure is documented below.
          * 
          * @return builder
@@ -277,8 +277,8 @@ public final class AlertPolicyConditionConditionMonitoringQueryLanguageArgs exte
          * the condition will trigger if the comparison
          * is true for any of the time series that have
          * been identified by filter and aggregations,
-         * or by the ratio, if denominator_filter and
-         * denominator_aggregations are specified.
+         * or by the ratio, if denominatorFilter and
+         * denominatorAggregations are specified.
          * Structure is documented below.
          * 
          * @return builder

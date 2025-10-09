@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         public readonly ImmutableArray<string> JarUris;
         /// <summary>
         /// The fully qualified name of a class in jarUris, for example, com.example.wordcount.
-        /// Exactly one of mainClass and main_jar_uri field should be set for Java/Scala language type.
+        /// Exactly one of mainClass and MainJarUri field should be set for Java/Scala language type.
         /// </summary>
         public readonly string? MainClass;
         /// <summary>

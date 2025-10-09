@@ -55,7 +55,7 @@ namespace Pulumi.Gcp.Apigee
         public Output<string> LatestRevisionId { get; private set; } = null!;
 
         /// <summary>
-        /// (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned last_modified timestamp.
+        /// (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned LastModified timestamp.
         /// </summary>
         [Output("md5hash")]
         public Output<string> Md5hash { get; private set; } = null!;
@@ -180,7 +180,7 @@ namespace Pulumi.Gcp.Apigee
         public Input<string>? LatestRevisionId { get; set; }
 
         /// <summary>
-        /// (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned last_modified timestamp.
+        /// (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned LastModified timestamp.
         /// </summary>
         [Input("md5hash")]
         public Input<string>? Md5hash { get; set; }

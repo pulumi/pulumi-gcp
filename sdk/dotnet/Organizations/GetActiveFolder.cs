@@ -12,7 +12,7 @@ namespace Pulumi.Gcp.Organizations
     public static class GetActiveFolder
     {
         /// <summary>
-        /// Get an active folder within GCP by `display_name` and `parent`.
+        /// Get an active folder within GCP by `DisplayName` and `Parent`.
         /// 
         /// ## Example Usage
         /// 
@@ -37,7 +37,7 @@ namespace Pulumi.Gcp.Organizations
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetActiveFolderResult>("gcp:organizations/getActiveFolder:getActiveFolder", args ?? new GetActiveFolderArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Get an active folder within GCP by `display_name` and `parent`.
+        /// Get an active folder within GCP by `DisplayName` and `Parent`.
         /// 
         /// ## Example Usage
         /// 
@@ -62,7 +62,7 @@ namespace Pulumi.Gcp.Organizations
             => global::Pulumi.Deployment.Instance.Invoke<GetActiveFolderResult>("gcp:organizations/getActiveFolder:getActiveFolder", args ?? new GetActiveFolderInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Get an active folder within GCP by `display_name` and `parent`.
+        /// Get an active folder within GCP by `DisplayName` and `Parent`.
         /// 
         /// ## Example Usage
         /// 

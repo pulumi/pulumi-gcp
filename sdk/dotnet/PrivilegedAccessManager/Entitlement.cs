@@ -155,7 +155,7 @@ namespace Pulumi.Gcp.PrivilegedAccessManager
         /// <summary>
         /// The ID to use for this Entitlement. This will become the last part of the resource name.
         /// This value should be 4-63 characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z].
-        /// This value should be unique among all other Entitlements under the specified `parent`.
+        /// This value should be unique among all other Entitlements under the specified `Parent`.
         /// </summary>
         [Output("entitlementId")]
         public Output<string> EntitlementId { get; private set; } = null!;
@@ -297,7 +297,7 @@ namespace Pulumi.Gcp.PrivilegedAccessManager
         /// <summary>
         /// The ID to use for this Entitlement. This will become the last part of the resource name.
         /// This value should be 4-63 characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z].
-        /// This value should be unique among all other Entitlements under the specified `parent`.
+        /// This value should be unique among all other Entitlements under the specified `Parent`.
         /// </summary>
         [Input("entitlementId", required: true)]
         public Input<string> EntitlementId { get; set; } = null!;
@@ -382,7 +382,7 @@ namespace Pulumi.Gcp.PrivilegedAccessManager
         /// <summary>
         /// The ID to use for this Entitlement. This will become the last part of the resource name.
         /// This value should be 4-63 characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z].
-        /// This value should be unique among all other Entitlements under the specified `parent`.
+        /// This value should be unique among all other Entitlements under the specified `Parent`.
         /// </summary>
         [Input("entitlementId")]
         public Input<string>? EntitlementId { get; set; }

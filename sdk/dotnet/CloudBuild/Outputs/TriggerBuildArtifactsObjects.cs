@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         /// Structure is documented below.
         /// 
         /// 
-        /// &lt;a name="nested_build_artifacts_objects_timing"&gt;&lt;/a&gt;The `timing` block contains:
+        /// &lt;a name="NestedBuildArtifactsObjectsTiming"&gt;&lt;/a&gt;The `Timing` block contains:
         /// </summary>
         public readonly ImmutableArray<Outputs.TriggerBuildArtifactsObjectsTiming> Timings;
 

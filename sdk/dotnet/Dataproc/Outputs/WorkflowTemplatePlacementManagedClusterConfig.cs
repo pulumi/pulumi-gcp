@@ -30,11 +30,11 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly Outputs.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig? GceClusterConfig;
         /// <summary>
-        /// The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as `gce_cluster_config`, `master_config`, `worker_config`, `secondary_worker_config`, and `autoscaling_config`.
+        /// The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as `GceClusterConfig`, `MasterConfig`, `WorkerConfig`, `SecondaryWorkerConfig`, and `AutoscalingConfig`.
         /// </summary>
         public readonly Outputs.WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig? GkeClusterConfig;
         /// <summary>
-        /// Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's `role` metadata to run an executable on a master or worker node, as shown below using `curl` (you can also use `wget`): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if ; then ... master specific actions ... else ... worker specific actions ... fi
+        /// Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's `Role` metadata to run an executable on a master or worker node, as shown below using `Curl` (you can also use `Wget`): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if ; then ... master specific actions ... else ... worker specific actions ... fi
         /// </summary>
         public readonly ImmutableArray<Outputs.WorkflowTemplatePlacementManagedClusterConfigInitializationAction> InitializationActions;
         /// <summary>

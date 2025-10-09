@@ -38,20 +38,20 @@ public final class BackendBucketCdnPolicy {
     private @Nullable String cacheMode;
     /**
      * @return Specifies the maximum allowed TTL for cached content served by this origin. When the
-     * `cache_mode` is set to &#34;USE_ORIGIN_HEADERS&#34;, you must omit this field.
+     * `cacheMode` is set to &#34;USE_ORIGIN_HEADERS&#34;, you must omit this field.
      * 
      */
     private @Nullable Integer clientTtl;
     /**
      * @return Specifies the default TTL for cached content served by this origin for responses
-     * that do not have an existing valid TTL (max-age or s-max-age). When the `cache_mode`
+     * that do not have an existing valid TTL (max-age or s-max-age). When the `cacheMode`
      * is set to &#34;USE_ORIGIN_HEADERS&#34;, you must omit this field.
      * 
      */
     private @Nullable Integer defaultTtl;
     /**
      * @return Specifies the maximum allowed TTL for cached content served by this origin. When the
-     * `cache_mode` is set to &#34;USE_ORIGIN_HEADERS&#34;, you must omit this field.
+     * `cacheMode` is set to &#34;USE_ORIGIN_HEADERS&#34;, you must omit this field.
      * 
      */
     private @Nullable Integer maxTtl;
@@ -118,7 +118,7 @@ public final class BackendBucketCdnPolicy {
     }
     /**
      * @return Specifies the maximum allowed TTL for cached content served by this origin. When the
-     * `cache_mode` is set to &#34;USE_ORIGIN_HEADERS&#34;, you must omit this field.
+     * `cacheMode` is set to &#34;USE_ORIGIN_HEADERS&#34;, you must omit this field.
      * 
      */
     public Optional<Integer> clientTtl() {
@@ -126,7 +126,7 @@ public final class BackendBucketCdnPolicy {
     }
     /**
      * @return Specifies the default TTL for cached content served by this origin for responses
-     * that do not have an existing valid TTL (max-age or s-max-age). When the `cache_mode`
+     * that do not have an existing valid TTL (max-age or s-max-age). When the `cacheMode`
      * is set to &#34;USE_ORIGIN_HEADERS&#34;, you must omit this field.
      * 
      */
@@ -135,7 +135,7 @@ public final class BackendBucketCdnPolicy {
     }
     /**
      * @return Specifies the maximum allowed TTL for cached content served by this origin. When the
-     * `cache_mode` is set to &#34;USE_ORIGIN_HEADERS&#34;, you must omit this field.
+     * `cacheMode` is set to &#34;USE_ORIGIN_HEADERS&#34;, you must omit this field.
      * 
      */
     public Optional<Integer> maxTtl() {

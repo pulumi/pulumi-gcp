@@ -58,7 +58,7 @@ public final class NodePoolAutoscalingArgs extends com.pulumi.resources.Resource
 
     /**
      * Minimum number of nodes per zone in the NodePool.
-     * Must be &gt;=0 and &lt;= `max_node_count`. Cannot be used with total limits.
+     * Must be &gt;=0 and &lt;= `maxNodeCount`. Cannot be used with total limits.
      * 
      */
     @Import(name="minNodeCount")
@@ -66,7 +66,7 @@ public final class NodePoolAutoscalingArgs extends com.pulumi.resources.Resource
 
     /**
      * @return Minimum number of nodes per zone in the NodePool.
-     * Must be &gt;=0 and &lt;= `max_node_count`. Cannot be used with total limits.
+     * Must be &gt;=0 and &lt;= `maxNodeCount`. Cannot be used with total limits.
      * 
      */
     public Optional<Output<Integer>> minNodeCount() {
@@ -94,7 +94,7 @@ public final class NodePoolAutoscalingArgs extends com.pulumi.resources.Resource
 
     /**
      * Total minimum number of nodes in the NodePool.
-     * Must be &gt;=0 and &lt;= `total_max_node_count`. Cannot be used with per zone limits.
+     * Must be &gt;=0 and &lt;= `totalMaxNodeCount`. Cannot be used with per zone limits.
      * Total size limits are supported only in 1.24.1+ clusters.
      * 
      */
@@ -103,7 +103,7 @@ public final class NodePoolAutoscalingArgs extends com.pulumi.resources.Resource
 
     /**
      * @return Total minimum number of nodes in the NodePool.
-     * Must be &gt;=0 and &lt;= `total_max_node_count`. Cannot be used with per zone limits.
+     * Must be &gt;=0 and &lt;= `totalMaxNodeCount`. Cannot be used with per zone limits.
      * Total size limits are supported only in 1.24.1+ clusters.
      * 
      */
@@ -193,7 +193,7 @@ public final class NodePoolAutoscalingArgs extends com.pulumi.resources.Resource
 
         /**
          * @param minNodeCount Minimum number of nodes per zone in the NodePool.
-         * Must be &gt;=0 and &lt;= `max_node_count`. Cannot be used with total limits.
+         * Must be &gt;=0 and &lt;= `maxNodeCount`. Cannot be used with total limits.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class NodePoolAutoscalingArgs extends com.pulumi.resources.Resource
 
         /**
          * @param minNodeCount Minimum number of nodes per zone in the NodePool.
-         * Must be &gt;=0 and &lt;= `max_node_count`. Cannot be used with total limits.
+         * Must be &gt;=0 and &lt;= `maxNodeCount`. Cannot be used with total limits.
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class NodePoolAutoscalingArgs extends com.pulumi.resources.Resource
 
         /**
          * @param totalMinNodeCount Total minimum number of nodes in the NodePool.
-         * Must be &gt;=0 and &lt;= `total_max_node_count`. Cannot be used with per zone limits.
+         * Must be &gt;=0 and &lt;= `totalMaxNodeCount`. Cannot be used with per zone limits.
          * Total size limits are supported only in 1.24.1+ clusters.
          * 
          * @return builder
@@ -254,7 +254,7 @@ public final class NodePoolAutoscalingArgs extends com.pulumi.resources.Resource
 
         /**
          * @param totalMinNodeCount Total minimum number of nodes in the NodePool.
-         * Must be &gt;=0 and &lt;= `total_max_node_count`. Cannot be used with per zone limits.
+         * Must be &gt;=0 and &lt;= `totalMaxNodeCount`. Cannot be used with per zone limits.
          * Total size limits are supported only in 1.24.1+ clusters.
          * 
          * @return builder

@@ -19,7 +19,7 @@ public final class CertificateConfig {
      * @return A PublicKey describes a public key.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_config_x509_config&#34;&gt;&lt;/a&gt;The `x509_config` block supports:
+     * &lt;a name=&#34;nestedConfigX509Config&#34;&gt;&lt;/a&gt;The `x509Config` block supports:
      * 
      */
     private CertificateConfigPublicKey publicKey;
@@ -47,7 +47,7 @@ public final class CertificateConfig {
      * @return A PublicKey describes a public key.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_config_x509_config&#34;&gt;&lt;/a&gt;The `x509_config` block supports:
+     * &lt;a name=&#34;nestedConfigX509Config&#34;&gt;&lt;/a&gt;The `x509Config` block supports:
      * 
      */
     public CertificateConfigPublicKey publicKey() {

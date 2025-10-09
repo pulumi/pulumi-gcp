@@ -22,7 +22,7 @@ public final class NodeGroupState extends com.pulumi.resources.ResourceArgs {
     /**
      * If you use sole-tenant nodes for your workloads, you can use the node
      * group autoscaler to automatically manage the sizes of your node groups.
-     * One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
+     * One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
      * Structure is documented below.
      * 
      */
@@ -32,7 +32,7 @@ public final class NodeGroupState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return If you use sole-tenant nodes for your workloads, you can use the node
      * group autoscaler to automatically manage the sizes of your node groups.
-     * One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
+     * One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
      * Structure is documented below.
      * 
      */
@@ -71,14 +71,14 @@ public final class NodeGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The initial number of nodes in the node group. One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
+     * The initial number of nodes in the node group. One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
      * 
      */
     @Import(name="initialSize")
     private @Nullable Output<Integer> initialSize;
 
     /**
-     * @return The initial number of nodes in the node group. One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
+     * @return The initial number of nodes in the node group. One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
      * 
      */
     public Optional<Output<Integer>> initialSize() {
@@ -287,7 +287,7 @@ public final class NodeGroupState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param autoscalingPolicy If you use sole-tenant nodes for your workloads, you can use the node
          * group autoscaler to automatically manage the sizes of your node groups.
-         * One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
+         * One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
          * Structure is documented below.
          * 
          * @return builder
@@ -301,7 +301,7 @@ public final class NodeGroupState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param autoscalingPolicy If you use sole-tenant nodes for your workloads, you can use the node
          * group autoscaler to automatically manage the sizes of your node groups.
-         * One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
+         * One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
          * Structure is documented below.
          * 
          * @return builder
@@ -354,7 +354,7 @@ public final class NodeGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param initialSize The initial number of nodes in the node group. One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
+         * @param initialSize The initial number of nodes in the node group. One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
          * 
          * @return builder
          * 
@@ -365,7 +365,7 @@ public final class NodeGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param initialSize The initial number of nodes in the node group. One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
+         * @param initialSize The initial number of nodes in the node group. One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
          * 
          * @return builder
          * 

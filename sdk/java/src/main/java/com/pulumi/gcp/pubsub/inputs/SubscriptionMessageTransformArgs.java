@@ -35,7 +35,7 @@ public final class SubscriptionMessageTransformArgs extends com.pulumi.resources
 
     /**
      * Javascript User Defined Function. If multiple Javascript UDFs are specified on a resource,
-     * each one must have a unique `function_name`.
+     * each one must have a unique `functionName`.
      * Structure is documented below.
      * 
      */
@@ -44,7 +44,7 @@ public final class SubscriptionMessageTransformArgs extends com.pulumi.resources
 
     /**
      * @return Javascript User Defined Function. If multiple Javascript UDFs are specified on a resource,
-     * each one must have a unique `function_name`.
+     * each one must have a unique `functionName`.
      * Structure is documented below.
      * 
      */
@@ -102,7 +102,7 @@ public final class SubscriptionMessageTransformArgs extends com.pulumi.resources
 
         /**
          * @param javascriptUdf Javascript User Defined Function. If multiple Javascript UDFs are specified on a resource,
-         * each one must have a unique `function_name`.
+         * each one must have a unique `functionName`.
          * Structure is documented below.
          * 
          * @return builder
@@ -115,7 +115,7 @@ public final class SubscriptionMessageTransformArgs extends com.pulumi.resources
 
         /**
          * @param javascriptUdf Javascript User Defined Function. If multiple Javascript UDFs are specified on a resource,
-         * each one must have a unique `function_name`.
+         * each one must have a unique `functionName`.
          * Structure is documented below.
          * 
          * @return builder

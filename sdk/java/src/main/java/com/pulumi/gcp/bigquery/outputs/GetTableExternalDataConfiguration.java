@@ -26,7 +26,7 @@ public final class GetTableExternalDataConfiguration {
      */
     private Boolean autodetect;
     /**
-     * @return Additional options if source_format is set to &#34;AVRO&#34;
+     * @return Additional options if sourceFormat is set to &#34;AVRO&#34;
      * 
      */
     private List<GetTableExternalDataConfigurationAvroOption> avroOptions;
@@ -46,7 +46,7 @@ public final class GetTableExternalDataConfiguration {
      */
     private String connectionId;
     /**
-     * @return Additional properties to set if source_format is set to &#34;CSV&#34;.
+     * @return Additional properties to set if sourceFormat is set to &#34;CSV&#34;.
      * 
      */
     private List<GetTableExternalDataConfigurationCsvOption> csvOptions;
@@ -56,7 +56,7 @@ public final class GetTableExternalDataConfiguration {
      */
     private String fileSetSpecType;
     /**
-     * @return Additional options if source_format is set to &#34;GOOGLE_SHEETS&#34;.
+     * @return Additional options if sourceFormat is set to &#34;GOOGLE_SHEETS&#34;.
      * 
      */
     private List<GetTableExternalDataConfigurationGoogleSheetsOption> googleSheetsOptions;
@@ -130,7 +130,7 @@ public final class GetTableExternalDataConfiguration {
         return this.autodetect;
     }
     /**
-     * @return Additional options if source_format is set to &#34;AVRO&#34;
+     * @return Additional options if sourceFormat is set to &#34;AVRO&#34;
      * 
      */
     public List<GetTableExternalDataConfigurationAvroOption> avroOptions() {
@@ -158,7 +158,7 @@ public final class GetTableExternalDataConfiguration {
         return this.connectionId;
     }
     /**
-     * @return Additional properties to set if source_format is set to &#34;CSV&#34;.
+     * @return Additional properties to set if sourceFormat is set to &#34;CSV&#34;.
      * 
      */
     public List<GetTableExternalDataConfigurationCsvOption> csvOptions() {
@@ -172,7 +172,7 @@ public final class GetTableExternalDataConfiguration {
         return this.fileSetSpecType;
     }
     /**
-     * @return Additional options if source_format is set to &#34;GOOGLE_SHEETS&#34;.
+     * @return Additional options if sourceFormat is set to &#34;GOOGLE_SHEETS&#34;.
      * 
      */
     public List<GetTableExternalDataConfigurationGoogleSheetsOption> googleSheetsOptions() {

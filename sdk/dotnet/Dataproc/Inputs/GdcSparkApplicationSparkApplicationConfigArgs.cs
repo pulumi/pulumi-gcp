@@ -61,7 +61,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         }
 
         /// <summary>
-        /// The name of the driver main class. The jar file that contains the class must be in the classpath or specified in `jar_file_uris`.
+        /// The name of the driver main class. The jar file that contains the class must be in the classpath or specified in `JarFileUris`.
         /// </summary>
         [Input("mainClass")]
         public Input<string>? MainClass { get; set; }

@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 
 /**
  * An app&#39;s Play Integrity configuration object. Note that your registered SHA-256 certificate fingerprints are used to validate tokens issued by the Play Integrity API.
- * Make sure your `gcp.firebase.AndroidApp` has at least one `sha256_hashes` present.
+ * Make sure your `gcp.firebase.AndroidApp` has at least one `sha256Hashes` present.
  * 
  * To get more information about PlayIntegrityConfig, see:
  * 

@@ -259,7 +259,7 @@ namespace Pulumi.Gcp.CloudAsset
         }
 
         /// <summary>
-        /// The query statement. See [how to construct a query](https://cloud.google.com/asset-inventory/docs/searching-resources#how_to_construct_a_query) for more information. If not specified or empty, it will search all the resources within the specified `scope` and `asset_types`.
+        /// The query statement. See [how to construct a query](https://cloud.google.com/asset-inventory/docs/searching-resources#how_to_construct_a_query) for more information. If not specified or empty, it will search all the resources within the specified `Scope` and `AssetTypes`.
         /// </summary>
         [Input("query")]
         public string? Query { get; set; }
@@ -291,7 +291,7 @@ namespace Pulumi.Gcp.CloudAsset
         }
 
         /// <summary>
-        /// The query statement. See [how to construct a query](https://cloud.google.com/asset-inventory/docs/searching-resources#how_to_construct_a_query) for more information. If not specified or empty, it will search all the resources within the specified `scope` and `asset_types`.
+        /// The query statement. See [how to construct a query](https://cloud.google.com/asset-inventory/docs/searching-resources#how_to_construct_a_query) for more information. If not specified or empty, it will search all the resources within the specified `Scope` and `AssetTypes`.
         /// </summary>
         [Input("query")]
         public Input<string>? Query { get; set; }

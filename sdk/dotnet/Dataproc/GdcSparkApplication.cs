@@ -306,7 +306,7 @@ namespace Pulumi.Gcp.Dataproc
         /// <summary>
         /// The annotations to associate with this application. Annotations may be used to store client information, but are not used by the server.
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Please refer to the field `EffectiveAnnotations` for all of the annotations present on the resource.
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
@@ -347,7 +347,7 @@ namespace Pulumi.Gcp.Dataproc
         /// <summary>
         /// The labels to associate with this application. Labels may be used for filtering and billing tracking.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -543,7 +543,7 @@ namespace Pulumi.Gcp.Dataproc
         /// <summary>
         /// The annotations to associate with this application. Annotations may be used to store client information, but are not used by the server.
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Please refer to the field `EffectiveAnnotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -581,7 +581,7 @@ namespace Pulumi.Gcp.Dataproc
         /// <summary>
         /// The labels to associate with this application. Labels may be used for filtering and billing tracking.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -680,7 +680,7 @@ namespace Pulumi.Gcp.Dataproc
         /// <summary>
         /// The annotations to associate with this application. Annotations may be used to store client information, but are not used by the server.
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Please refer to the field `EffectiveAnnotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -748,7 +748,7 @@ namespace Pulumi.Gcp.Dataproc
         /// <summary>
         /// The labels to associate with this application. Labels may be used for filtering and billing tracking.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {

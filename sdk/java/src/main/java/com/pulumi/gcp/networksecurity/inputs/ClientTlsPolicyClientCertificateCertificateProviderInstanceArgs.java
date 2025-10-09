@@ -15,14 +15,14 @@ public final class ClientTlsPolicyClientCertificateCertificateProviderInstanceAr
     public static final ClientTlsPolicyClientCertificateCertificateProviderInstanceArgs Empty = new ClientTlsPolicyClientCertificateCertificateProviderInstanceArgs();
 
     /**
-     * Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to &#34;google_cloud_private_spiffe&#34; to use Certificate Authority Service certificate provider instance.
+     * Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to &#34;googleCloudPrivateSpiffe&#34; to use Certificate Authority Service certificate provider instance.
      * 
      */
     @Import(name="pluginInstance", required=true)
     private Output<String> pluginInstance;
 
     /**
-     * @return Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to &#34;google_cloud_private_spiffe&#34; to use Certificate Authority Service certificate provider instance.
+     * @return Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to &#34;googleCloudPrivateSpiffe&#34; to use Certificate Authority Service certificate provider instance.
      * 
      */
     public Output<String> pluginInstance() {
@@ -54,7 +54,7 @@ public final class ClientTlsPolicyClientCertificateCertificateProviderInstanceAr
         }
 
         /**
-         * @param pluginInstance Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to &#34;google_cloud_private_spiffe&#34; to use Certificate Authority Service certificate provider instance.
+         * @param pluginInstance Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to &#34;googleCloudPrivateSpiffe&#34; to use Certificate Authority Service certificate provider instance.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class ClientTlsPolicyClientCertificateCertificateProviderInstanceAr
         }
 
         /**
-         * @param pluginInstance Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to &#34;google_cloud_private_spiffe&#34; to use Certificate Authority Service certificate provider instance.
+         * @param pluginInstance Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to &#34;googleCloudPrivateSpiffe&#34; to use Certificate Authority Service certificate provider instance.
          * 
          * @return builder
          * 

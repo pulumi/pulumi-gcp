@@ -22,7 +22,7 @@ public final class VPNTunnelCipherSuite {
      * @return Cipher configuration for phase 2 of the IKE protocol.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_cipher_suite_phase1&#34;&gt;&lt;/a&gt;The `phase1` block supports:
+     * &lt;a name=&#34;nestedCipherSuitePhase1&#34;&gt;&lt;/a&gt;The `phase1` block supports:
      * 
      */
     private @Nullable VPNTunnelCipherSuitePhase2 phase2;
@@ -40,7 +40,7 @@ public final class VPNTunnelCipherSuite {
      * @return Cipher configuration for phase 2 of the IKE protocol.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_cipher_suite_phase1&#34;&gt;&lt;/a&gt;The `phase1` block supports:
+     * &lt;a name=&#34;nestedCipherSuitePhase1&#34;&gt;&lt;/a&gt;The `phase1` block supports:
      * 
      */
     public Optional<VPNTunnelCipherSuitePhase2> phase2() {

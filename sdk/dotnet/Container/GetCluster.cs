@@ -113,7 +113,7 @@ namespace Pulumi.Gcp.Container
     {
         /// <summary>
         /// The location (zone or region) this cluster has been
-        /// created in. One of `location`, `region`, `zone`, or a provider-level `zone` must
+        /// created in. One of `Location`, `Region`, `Zone`, or a provider-level `Zone` must
         /// be specified.
         /// </summary>
         [Input("location")]
@@ -142,7 +142,7 @@ namespace Pulumi.Gcp.Container
     {
         /// <summary>
         /// The location (zone or region) this cluster has been
-        /// created in. One of `location`, `region`, `zone`, or a provider-level `zone` must
+        /// created in. One of `Location`, `Region`, `Zone`, or a provider-level `Zone` must
         /// be specified.
         /// </summary>
         [Input("location")]

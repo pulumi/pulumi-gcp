@@ -110,7 +110,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The list of instances in the group, in `self_link` format.
+        /// The list of instances in the group, in `SelfLink` format.
         /// When adding instances they must all be in the same network and zone as the instance group.
         /// </summary>
         [Output("instances")]
@@ -136,7 +136,7 @@ namespace Pulumi.Gcp.Compute
         /// The URL of the network the instance group is in. If
         /// this is different from the network where the instances are in, the creation
         /// fails. Defaults to the network where the instances are in (if neither
-        /// `network` nor `instances` is specified, this field will be blank).
+        /// `Network` nor `Instances` is specified, this field will be blank).
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
@@ -225,7 +225,7 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _instances;
 
         /// <summary>
-        /// The list of instances in the group, in `self_link` format.
+        /// The list of instances in the group, in `SelfLink` format.
         /// When adding instances they must all be in the same network and zone as the instance group.
         /// </summary>
         public InputList<string> Instances
@@ -260,7 +260,7 @@ namespace Pulumi.Gcp.Compute
         /// The URL of the network the instance group is in. If
         /// this is different from the network where the instances are in, the creation
         /// fails. Defaults to the network where the instances are in (if neither
-        /// `network` nor `instances` is specified, this field will be blank).
+        /// `Network` nor `Instances` is specified, this field will be blank).
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
@@ -299,7 +299,7 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _instances;
 
         /// <summary>
-        /// The list of instances in the group, in `self_link` format.
+        /// The list of instances in the group, in `SelfLink` format.
         /// When adding instances they must all be in the same network and zone as the instance group.
         /// </summary>
         public InputList<string> Instances
@@ -334,7 +334,7 @@ namespace Pulumi.Gcp.Compute
         /// The URL of the network the instance group is in. If
         /// this is different from the network where the instances are in, the creation
         /// fails. Defaults to the network where the instances are in (if neither
-        /// `network` nor `instances` is specified, this field will be blank).
+        /// `Network` nor `Instances` is specified, this field will be blank).
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }

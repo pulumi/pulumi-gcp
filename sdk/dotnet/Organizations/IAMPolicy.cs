@@ -109,7 +109,7 @@ namespace Pulumi.Gcp.Organizations
     /// 
     /// ## gcp.organizations.IAMBinding
     /// 
-    /// &gt; **Note:** If `role` is set to `roles/owner` and you don't specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
+    /// &gt; **Note:** If `Role` is set to `roles/owner` and you don't specify a user or service account you have access to in `Members`, you can lock yourself out of your organization.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -243,7 +243,7 @@ namespace Pulumi.Gcp.Organizations
     /// 
     /// ## gcp.organizations.IAMBinding
     /// 
-    /// &gt; **Note:** If `role` is set to `roles/owner` and you don't specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
+    /// &gt; **Note:** If `Role` is set to `roles/owner` and you don't specify a user or service account you have access to in `Members`, you can lock yourself out of your organization.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

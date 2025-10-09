@@ -26,10 +26,10 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
         public readonly ImmutableArray<Outputs.CaPoolIssuancePolicyAllowedKeyType> AllowedKeyTypes;
         /// <summary>
         /// The duration to backdate all certificates issued from this CaPool. If not set, the
-        /// certificates will be issued with a not_before_time of the issuance time (i.e. the current
-        /// time). If set, the certificates will be issued with a not_before_time of the issuance
-        /// time minus the backdate_duration. The not_after_time will be adjusted to preserve the
-        /// requested lifetime. The backdate_duration must be less than or equal to 48 hours.
+        /// certificates will be issued with a NotBeforeTime of the issuance time (i.e. the current
+        /// time). If set, the certificates will be issued with a NotBeforeTime of the issuance
+        /// time minus the backdate_duration. The NotAfterTime will be adjusted to preserve the
+        /// requested lifetime. The BackdateDuration must be less than or equal to 48 hours.
         /// </summary>
         public readonly string? BackdateDuration;
         /// <summary>

@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.MemoryStore.Outputs
         /// </summary>
         public readonly string Network;
         /// <summary>
-        /// Required. The consumer project_id where the forwarding rule is created from.
+        /// Required. The consumer ProjectId where the forwarding rule is created from.
         /// </summary>
         public readonly string ProjectId;
 

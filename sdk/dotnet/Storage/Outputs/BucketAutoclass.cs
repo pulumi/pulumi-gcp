@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Storage.Outputs
     public sealed class BucketAutoclass
     {
         /// <summary>
-        /// While set to `true`, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern.
+        /// While set to `True`, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>

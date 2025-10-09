@@ -90,7 +90,7 @@ public class RuleDeployment extends com.pulumi.resources.CustomResource {
      * archiving requires a two-step process: first, disable the rule by
      * setting &#39;enabled&#39; to false, then set &#39;archive&#39; to true.
      * If set to true, alerting will automatically be set to false.
-     * If currently set to true, enabled, alerting, and run_frequency cannot be
+     * If currently set to true, enabled, alerting, and runFrequency cannot be
      * updated.
      * 
      */
@@ -103,7 +103,7 @@ public class RuleDeployment extends com.pulumi.resources.CustomResource {
      * archiving requires a two-step process: first, disable the rule by
      * setting &#39;enabled&#39; to false, then set &#39;archive&#39; to true.
      * If set to true, alerting will automatically be set to false.
-     * If currently set to true, enabled, alerting, and run_frequency cannot be
+     * If currently set to true, enabled, alerting, and runFrequency cannot be
      * updated.
      * 
      */

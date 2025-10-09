@@ -23,7 +23,7 @@ public final class NetworkFirewallPolicyWithRulesPredefinedRuleArgs extends com.
     /**
      * (Output)
      * The Action to perform when the client connection triggers the rule. Can currently be either
-     * &#34;allow&#34;, &#34;deny&#34;, &#34;apply_security_profile_group&#34; or &#34;goto_next&#34;.
+     * &#34;allow&#34;, &#34;deny&#34;, &#34;applySecurityProfileGroup&#34; or &#34;gotoNext&#34;.
      * 
      */
     @Import(name="action")
@@ -32,7 +32,7 @@ public final class NetworkFirewallPolicyWithRulesPredefinedRuleArgs extends com.
     /**
      * @return (Output)
      * The Action to perform when the client connection triggers the rule. Can currently be either
-     * &#34;allow&#34;, &#34;deny&#34;, &#34;apply_security_profile_group&#34; or &#34;goto_next&#34;.
+     * &#34;allow&#34;, &#34;deny&#34;, &#34;applySecurityProfileGroup&#34; or &#34;gotoNext&#34;.
      * 
      */
     public Optional<Output<String>> action() {
@@ -202,7 +202,7 @@ public final class NetworkFirewallPolicyWithRulesPredefinedRuleArgs extends com.
      * A list of secure tags that controls which instances the firewall rule
      * applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, then the
      * firewall rule applies only to instances in the VPC network that have one
-     * of those EFFECTIVE secure tags, if all the target_secure_tag are in
+     * of those EFFECTIVE secure tags, if all the targetSecureTag are in
      * INEFFECTIVE state, then this rule will be ignored.
      * &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as
      * &lt;code&gt;targetServiceAccounts&lt;/code&gt;.
@@ -221,7 +221,7 @@ public final class NetworkFirewallPolicyWithRulesPredefinedRuleArgs extends com.
      * A list of secure tags that controls which instances the firewall rule
      * applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, then the
      * firewall rule applies only to instances in the VPC network that have one
-     * of those EFFECTIVE secure tags, if all the target_secure_tag are in
+     * of those EFFECTIVE secure tags, if all the targetSecureTag are in
      * INEFFECTIVE state, then this rule will be ignored.
      * &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as
      * &lt;code&gt;targetServiceAccounts&lt;/code&gt;.
@@ -312,7 +312,7 @@ public final class NetworkFirewallPolicyWithRulesPredefinedRuleArgs extends com.
         /**
          * @param action (Output)
          * The Action to perform when the client connection triggers the rule. Can currently be either
-         * &#34;allow&#34;, &#34;deny&#34;, &#34;apply_security_profile_group&#34; or &#34;goto_next&#34;.
+         * &#34;allow&#34;, &#34;deny&#34;, &#34;applySecurityProfileGroup&#34; or &#34;gotoNext&#34;.
          * 
          * @return builder
          * 
@@ -325,7 +325,7 @@ public final class NetworkFirewallPolicyWithRulesPredefinedRuleArgs extends com.
         /**
          * @param action (Output)
          * The Action to perform when the client connection triggers the rule. Can currently be either
-         * &#34;allow&#34;, &#34;deny&#34;, &#34;apply_security_profile_group&#34; or &#34;goto_next&#34;.
+         * &#34;allow&#34;, &#34;deny&#34;, &#34;applySecurityProfileGroup&#34; or &#34;gotoNext&#34;.
          * 
          * @return builder
          * 
@@ -557,7 +557,7 @@ public final class NetworkFirewallPolicyWithRulesPredefinedRuleArgs extends com.
          * A list of secure tags that controls which instances the firewall rule
          * applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, then the
          * firewall rule applies only to instances in the VPC network that have one
-         * of those EFFECTIVE secure tags, if all the target_secure_tag are in
+         * of those EFFECTIVE secure tags, if all the targetSecureTag are in
          * INEFFECTIVE state, then this rule will be ignored.
          * &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as
          * &lt;code&gt;targetServiceAccounts&lt;/code&gt;.
@@ -580,7 +580,7 @@ public final class NetworkFirewallPolicyWithRulesPredefinedRuleArgs extends com.
          * A list of secure tags that controls which instances the firewall rule
          * applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, then the
          * firewall rule applies only to instances in the VPC network that have one
-         * of those EFFECTIVE secure tags, if all the target_secure_tag are in
+         * of those EFFECTIVE secure tags, if all the targetSecureTag are in
          * INEFFECTIVE state, then this rule will be ignored.
          * &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as
          * &lt;code&gt;targetServiceAccounts&lt;/code&gt;.
@@ -602,7 +602,7 @@ public final class NetworkFirewallPolicyWithRulesPredefinedRuleArgs extends com.
          * A list of secure tags that controls which instances the firewall rule
          * applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, then the
          * firewall rule applies only to instances in the VPC network that have one
-         * of those EFFECTIVE secure tags, if all the target_secure_tag are in
+         * of those EFFECTIVE secure tags, if all the targetSecureTag are in
          * INEFFECTIVE state, then this rule will be ignored.
          * &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as
          * &lt;code&gt;targetServiceAccounts&lt;/code&gt;.

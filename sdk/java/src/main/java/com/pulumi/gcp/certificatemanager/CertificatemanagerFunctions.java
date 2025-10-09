@@ -224,12 +224,24 @@ public final class CertificatemanagerFunctions {
     /**
      * List all certificates within Google Certificate Manager for a given project, region or filter.
      * 
+     * ## Example Usage
+     * 
+     * ### With A Filter
+     * 
+     * ### Regional Certificates With A Filter
+     * 
      */
     public static Output<GetCertificatesResult> getCertificates() {
         return getCertificates(GetCertificatesArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * List all certificates within Google Certificate Manager for a given project, region or filter.
+     * 
+     * ## Example Usage
+     * 
+     * ### With A Filter
+     * 
+     * ### Regional Certificates With A Filter
      * 
      */
     public static CompletableFuture<GetCertificatesResult> getCertificatesPlain() {
@@ -238,12 +250,24 @@ public final class CertificatemanagerFunctions {
     /**
      * List all certificates within Google Certificate Manager for a given project, region or filter.
      * 
+     * ## Example Usage
+     * 
+     * ### With A Filter
+     * 
+     * ### Regional Certificates With A Filter
+     * 
      */
     public static Output<GetCertificatesResult> getCertificates(GetCertificatesArgs args) {
         return getCertificates(args, InvokeOptions.Empty);
     }
     /**
      * List all certificates within Google Certificate Manager for a given project, region or filter.
+     * 
+     * ## Example Usage
+     * 
+     * ### With A Filter
+     * 
+     * ### Regional Certificates With A Filter
      * 
      */
     public static CompletableFuture<GetCertificatesResult> getCertificatesPlain(GetCertificatesPlainArgs args) {
@@ -252,6 +276,12 @@ public final class CertificatemanagerFunctions {
     /**
      * List all certificates within Google Certificate Manager for a given project, region or filter.
      * 
+     * ## Example Usage
+     * 
+     * ### With A Filter
+     * 
+     * ### Regional Certificates With A Filter
+     * 
      */
     public static Output<GetCertificatesResult> getCertificates(GetCertificatesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:certificatemanager/getCertificates:getCertificates", TypeShape.of(GetCertificatesResult.class), args, Utilities.withVersion(options));
@@ -259,12 +289,24 @@ public final class CertificatemanagerFunctions {
     /**
      * List all certificates within Google Certificate Manager for a given project, region or filter.
      * 
+     * ## Example Usage
+     * 
+     * ### With A Filter
+     * 
+     * ### Regional Certificates With A Filter
+     * 
      */
     public static Output<GetCertificatesResult> getCertificates(GetCertificatesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:certificatemanager/getCertificates:getCertificates", TypeShape.of(GetCertificatesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * List all certificates within Google Certificate Manager for a given project, region or filter.
+     * 
+     * ## Example Usage
+     * 
+     * ### With A Filter
+     * 
+     * ### Regional Certificates With A Filter
      * 
      */
     public static CompletableFuture<GetCertificatesResult> getCertificatesPlain(GetCertificatesPlainArgs args, InvokeOptions options) {

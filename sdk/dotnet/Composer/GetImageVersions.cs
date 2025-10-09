@@ -186,7 +186,7 @@ namespace Pulumi.Gcp.Composer
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of composer image versions available in the given project and location. Each `image_version` contains:
+        /// A list of composer image versions available in the given project and location. Each `ImageVersion` contains:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetImageVersionsImageVersionResult> ImageVersions;
         public readonly string Project;

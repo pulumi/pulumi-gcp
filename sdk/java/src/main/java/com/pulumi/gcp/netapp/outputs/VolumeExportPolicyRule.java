@@ -25,7 +25,7 @@ public final class VolumeExportPolicyRule {
      */
     private @Nullable String allowedClients;
     /**
-     * @return An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squash_mode` is `ROOT_SQUASH` or `ALL_SQUASH`.
+     * @return An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squashMode` is `ROOT_SQUASH` or `ALL_SQUASH`.
      * 
      */
     private @Nullable Integer anonUid;
@@ -98,7 +98,7 @@ public final class VolumeExportPolicyRule {
         return Optional.ofNullable(this.allowedClients);
     }
     /**
-     * @return An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squash_mode` is `ROOT_SQUASH` or `ALL_SQUASH`.
+     * @return An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squashMode` is `ROOT_SQUASH` or `ALL_SQUASH`.
      * 
      */
     public Optional<Integer> anonUid() {

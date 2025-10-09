@@ -33,7 +33,7 @@ public final class ConnectionProfileOracleForwardSshConnectivityArgs extends com
     }
 
     /**
-     * Input only. SSH password. Only one of `password` and `private_key` can be configured.
+     * Input only. SSH password. Only one of `password` and `privateKey` can be configured.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
@@ -41,7 +41,7 @@ public final class ConnectionProfileOracleForwardSshConnectivityArgs extends com
     private @Nullable Output<String> password;
 
     /**
-     * @return Input only. SSH password. Only one of `password` and `private_key` can be configured.
+     * @return Input only. SSH password. Only one of `password` and `privateKey` can be configured.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
@@ -65,7 +65,7 @@ public final class ConnectionProfileOracleForwardSshConnectivityArgs extends com
     }
 
     /**
-     * Input only. SSH private key. Only one of `password` and `private_key` can be configured.
+     * Input only. SSH private key. Only one of `password` and `privateKey` can be configured.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
@@ -73,7 +73,7 @@ public final class ConnectionProfileOracleForwardSshConnectivityArgs extends com
     private @Nullable Output<String> privateKey;
 
     /**
-     * @return Input only. SSH private key. Only one of `password` and `private_key` can be configured.
+     * @return Input only. SSH private key. Only one of `password` and `privateKey` can be configured.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
@@ -146,7 +146,7 @@ public final class ConnectionProfileOracleForwardSshConnectivityArgs extends com
         }
 
         /**
-         * @param password Input only. SSH password. Only one of `password` and `private_key` can be configured.
+         * @param password Input only. SSH password. Only one of `password` and `privateKey` can be configured.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
@@ -158,7 +158,7 @@ public final class ConnectionProfileOracleForwardSshConnectivityArgs extends com
         }
 
         /**
-         * @param password Input only. SSH password. Only one of `password` and `private_key` can be configured.
+         * @param password Input only. SSH password. Only one of `password` and `privateKey` can be configured.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
@@ -190,7 +190,7 @@ public final class ConnectionProfileOracleForwardSshConnectivityArgs extends com
         }
 
         /**
-         * @param privateKey Input only. SSH private key. Only one of `password` and `private_key` can be configured.
+         * @param privateKey Input only. SSH private key. Only one of `password` and `privateKey` can be configured.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
@@ -202,7 +202,7 @@ public final class ConnectionProfileOracleForwardSshConnectivityArgs extends com
         }
 
         /**
-         * @param privateKey Input only. SSH private key. Only one of `password` and `private_key` can be configured.
+         * @param privateKey Input only. SSH private key. Only one of `password` and `privateKey` can be configured.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder

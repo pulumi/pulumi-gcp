@@ -36,7 +36,7 @@ public final class NodePoolUpgradeSettingsArgs extends com.pulumi.resources.Reso
 
     /**
      * The number of additional nodes that can be added to the node pool during
-     * an upgrade. Increasing `max_surge` raises the number of nodes that can be upgraded simultaneously.
+     * an upgrade. Increasing `maxSurge` raises the number of nodes that can be upgraded simultaneously.
      * Can be set to 0 or greater.
      * 
      */
@@ -45,7 +45,7 @@ public final class NodePoolUpgradeSettingsArgs extends com.pulumi.resources.Reso
 
     /**
      * @return The number of additional nodes that can be added to the node pool during
-     * an upgrade. Increasing `max_surge` raises the number of nodes that can be upgraded simultaneously.
+     * an upgrade. Increasing `maxSurge` raises the number of nodes that can be upgraded simultaneously.
      * Can be set to 0 or greater.
      * 
      */
@@ -55,10 +55,10 @@ public final class NodePoolUpgradeSettingsArgs extends com.pulumi.resources.Reso
 
     /**
      * The number of nodes that can be simultaneously unavailable during
-     * an upgrade. Increasing `max_unavailable` raises the number of nodes that can be upgraded in
+     * an upgrade. Increasing `maxUnavailable` raises the number of nodes that can be upgraded in
      * parallel. Can be set to 0 or greater.
      * 
-     * `max_surge` and `max_unavailable` must not be negative and at least one of them must be greater than zero.
+     * `maxSurge` and `maxUnavailable` must not be negative and at least one of them must be greater than zero.
      * 
      */
     @Import(name="maxUnavailable")
@@ -66,10 +66,10 @@ public final class NodePoolUpgradeSettingsArgs extends com.pulumi.resources.Reso
 
     /**
      * @return The number of nodes that can be simultaneously unavailable during
-     * an upgrade. Increasing `max_unavailable` raises the number of nodes that can be upgraded in
+     * an upgrade. Increasing `maxUnavailable` raises the number of nodes that can be upgraded in
      * parallel. Can be set to 0 or greater.
      * 
-     * `max_surge` and `max_unavailable` must not be negative and at least one of them must be greater than zero.
+     * `maxSurge` and `maxUnavailable` must not be negative and at least one of them must be greater than zero.
      * 
      */
     public Optional<Output<Integer>> maxUnavailable() {
@@ -143,7 +143,7 @@ public final class NodePoolUpgradeSettingsArgs extends com.pulumi.resources.Reso
 
         /**
          * @param maxSurge The number of additional nodes that can be added to the node pool during
-         * an upgrade. Increasing `max_surge` raises the number of nodes that can be upgraded simultaneously.
+         * an upgrade. Increasing `maxSurge` raises the number of nodes that can be upgraded simultaneously.
          * Can be set to 0 or greater.
          * 
          * @return builder
@@ -156,7 +156,7 @@ public final class NodePoolUpgradeSettingsArgs extends com.pulumi.resources.Reso
 
         /**
          * @param maxSurge The number of additional nodes that can be added to the node pool during
-         * an upgrade. Increasing `max_surge` raises the number of nodes that can be upgraded simultaneously.
+         * an upgrade. Increasing `maxSurge` raises the number of nodes that can be upgraded simultaneously.
          * Can be set to 0 or greater.
          * 
          * @return builder
@@ -168,10 +168,10 @@ public final class NodePoolUpgradeSettingsArgs extends com.pulumi.resources.Reso
 
         /**
          * @param maxUnavailable The number of nodes that can be simultaneously unavailable during
-         * an upgrade. Increasing `max_unavailable` raises the number of nodes that can be upgraded in
+         * an upgrade. Increasing `maxUnavailable` raises the number of nodes that can be upgraded in
          * parallel. Can be set to 0 or greater.
          * 
-         * `max_surge` and `max_unavailable` must not be negative and at least one of them must be greater than zero.
+         * `maxSurge` and `maxUnavailable` must not be negative and at least one of them must be greater than zero.
          * 
          * @return builder
          * 
@@ -183,10 +183,10 @@ public final class NodePoolUpgradeSettingsArgs extends com.pulumi.resources.Reso
 
         /**
          * @param maxUnavailable The number of nodes that can be simultaneously unavailable during
-         * an upgrade. Increasing `max_unavailable` raises the number of nodes that can be upgraded in
+         * an upgrade. Increasing `maxUnavailable` raises the number of nodes that can be upgraded in
          * parallel. Can be set to 0 or greater.
          * 
-         * `max_surge` and `max_unavailable` must not be negative and at least one of them must be greater than zero.
+         * `maxSurge` and `maxUnavailable` must not be negative and at least one of them must be greater than zero.
          * 
          * @return builder
          * 

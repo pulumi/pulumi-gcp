@@ -139,7 +139,7 @@ public class GdcApplicationEnvironment extends com.pulumi.resources.CustomResour
     /**
      * The annotations to associate with this application environment. Annotations may be used to store client information, but are not used by the server.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -148,7 +148,7 @@ public class GdcApplicationEnvironment extends com.pulumi.resources.CustomResour
     /**
      * @return The annotations to associate with this application environment. Annotations may be used to store client information, but are not used by the server.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> annotations() {
@@ -219,7 +219,7 @@ public class GdcApplicationEnvironment extends com.pulumi.resources.CustomResour
     /**
      * The labels to associate with this application environment. Labels may be used for filtering and billing tracking.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -228,7 +228,7 @@ public class GdcApplicationEnvironment extends com.pulumi.resources.CustomResour
     /**
      * @return The labels to associate with this application environment. Labels may be used for filtering and billing tracking.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {

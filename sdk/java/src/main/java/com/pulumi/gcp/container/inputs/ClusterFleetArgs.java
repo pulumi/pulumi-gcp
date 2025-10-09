@@ -32,14 +32,14 @@ public final class ClusterFleetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The short name of the fleet membership, extracted from `fleet.0.membership`. You can use this field to configure `membership_id` under google_gkehub_feature_membership.
+     * The short name of the fleet membership, extracted from `fleet.0.membership`. You can use this field to configure `membershipId` under google_gkehub_feature_membership.
      * 
      */
     @Import(name="membershipId")
     private @Nullable Output<String> membershipId;
 
     /**
-     * @return The short name of the fleet membership, extracted from `fleet.0.membership`. You can use this field to configure `membership_id` under google_gkehub_feature_membership.
+     * @return The short name of the fleet membership, extracted from `fleet.0.membership`. You can use this field to configure `membershipId` under google_gkehub_feature_membership.
      * 
      */
     public Optional<Output<String>> membershipId() {
@@ -47,14 +47,14 @@ public final class ClusterFleetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `membership_location` under google_gkehub_feature_membership.
+     * The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `membershipLocation` under google_gkehub_feature_membership.
      * 
      */
     @Import(name="membershipLocation")
     private @Nullable Output<String> membershipLocation;
 
     /**
-     * @return The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `membership_location` under google_gkehub_feature_membership.
+     * @return The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `membershipLocation` under google_gkehub_feature_membership.
      * 
      */
     public Optional<Output<String>> membershipLocation() {
@@ -141,7 +141,7 @@ public final class ClusterFleetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param membershipId The short name of the fleet membership, extracted from `fleet.0.membership`. You can use this field to configure `membership_id` under google_gkehub_feature_membership.
+         * @param membershipId The short name of the fleet membership, extracted from `fleet.0.membership`. You can use this field to configure `membershipId` under google_gkehub_feature_membership.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class ClusterFleetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param membershipId The short name of the fleet membership, extracted from `fleet.0.membership`. You can use this field to configure `membership_id` under google_gkehub_feature_membership.
+         * @param membershipId The short name of the fleet membership, extracted from `fleet.0.membership`. You can use this field to configure `membershipId` under google_gkehub_feature_membership.
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class ClusterFleetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param membershipLocation The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `membership_location` under google_gkehub_feature_membership.
+         * @param membershipLocation The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `membershipLocation` under google_gkehub_feature_membership.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class ClusterFleetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param membershipLocation The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `membership_location` under google_gkehub_feature_membership.
+         * @param membershipLocation The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `membershipLocation` under google_gkehub_feature_membership.
          * 
          * @return builder
          * 

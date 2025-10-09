@@ -34,7 +34,7 @@ public final class DatabaseInstanceReplicaConfiguration {
     private @Nullable String clientCertificate;
     /**
      * @return PEM representation of the replica&#39;s private key. The
-     * corresponding public key in encoded in the `client_certificate`.
+     * corresponding public key in encoded in the `clientCertificate`.
      * 
      */
     private @Nullable String clientKey;
@@ -116,7 +116,7 @@ public final class DatabaseInstanceReplicaConfiguration {
     }
     /**
      * @return PEM representation of the replica&#39;s private key. The
-     * corresponding public key in encoded in the `client_certificate`.
+     * corresponding public key in encoded in the `clientCertificate`.
      * 
      */
     public Optional<String> clientKey() {

@@ -21,7 +21,7 @@ public final class GetDatabaseInstanceSettingIpConfiguration {
     private String allocatedIpRange;
     private List<GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork> authorizedNetworks;
     /**
-     * @return The custom subject alternative names for an instance with &#34;CUSTOMER_MANAGED_CAS_CA&#34; as the &#34;server_ca_mode&#34;.
+     * @return The custom subject alternative names for an instance with &#34;CUSTOMER_MANAGED_CAS_CA&#34; as the &#34;serverCaMode&#34;.
      * 
      */
     private List<String> customSubjectAlternativeNames;
@@ -31,12 +31,12 @@ public final class GetDatabaseInstanceSettingIpConfiguration {
      */
     private Boolean enablePrivatePathForGoogleCloudServices;
     /**
-     * @return Whether this Cloud SQL instance should be assigned a public IPV4 address. At least ipv4_enabled must be enabled or a private_network must be configured.
+     * @return Whether this Cloud SQL instance should be assigned a public IPV4 address. At least ipv4Enabled must be enabled or a privateNetwork must be configured.
      * 
      */
     private Boolean ipv4Enabled;
     /**
-     * @return The VPC network from which the Cloud SQL instance is accessible for private IP. For example, projects/myProject/global/networks/default. Specifying a network enables private IP. At least ipv4_enabled must be enabled or a private_network must be configured. This setting can be updated, but it cannot be removed after it is set.
+     * @return The VPC network from which the Cloud SQL instance is accessible for private IP. For example, projects/myProject/global/networks/default. Specifying a network enables private IP. At least ipv4Enabled must be enabled or a privateNetwork must be configured. This setting can be updated, but it cannot be removed after it is set.
      * 
      */
     private String privateNetwork;
@@ -51,7 +51,7 @@ public final class GetDatabaseInstanceSettingIpConfiguration {
      */
     private String serverCaMode;
     /**
-     * @return The resource name of the server CA pool for an instance with &#34;CUSTOMER_MANAGED_CAS_CA&#34; as the &#34;server_ca_mode&#34;.
+     * @return The resource name of the server CA pool for an instance with &#34;CUSTOMER_MANAGED_CAS_CA&#34; as the &#34;serverCaMode&#34;.
      * 
      */
     private String serverCaPool;
@@ -73,7 +73,7 @@ public final class GetDatabaseInstanceSettingIpConfiguration {
         return this.authorizedNetworks;
     }
     /**
-     * @return The custom subject alternative names for an instance with &#34;CUSTOMER_MANAGED_CAS_CA&#34; as the &#34;server_ca_mode&#34;.
+     * @return The custom subject alternative names for an instance with &#34;CUSTOMER_MANAGED_CAS_CA&#34; as the &#34;serverCaMode&#34;.
      * 
      */
     public List<String> customSubjectAlternativeNames() {
@@ -87,14 +87,14 @@ public final class GetDatabaseInstanceSettingIpConfiguration {
         return this.enablePrivatePathForGoogleCloudServices;
     }
     /**
-     * @return Whether this Cloud SQL instance should be assigned a public IPV4 address. At least ipv4_enabled must be enabled or a private_network must be configured.
+     * @return Whether this Cloud SQL instance should be assigned a public IPV4 address. At least ipv4Enabled must be enabled or a privateNetwork must be configured.
      * 
      */
     public Boolean ipv4Enabled() {
         return this.ipv4Enabled;
     }
     /**
-     * @return The VPC network from which the Cloud SQL instance is accessible for private IP. For example, projects/myProject/global/networks/default. Specifying a network enables private IP. At least ipv4_enabled must be enabled or a private_network must be configured. This setting can be updated, but it cannot be removed after it is set.
+     * @return The VPC network from which the Cloud SQL instance is accessible for private IP. For example, projects/myProject/global/networks/default. Specifying a network enables private IP. At least ipv4Enabled must be enabled or a privateNetwork must be configured. This setting can be updated, but it cannot be removed after it is set.
      * 
      */
     public String privateNetwork() {
@@ -115,7 +115,7 @@ public final class GetDatabaseInstanceSettingIpConfiguration {
         return this.serverCaMode;
     }
     /**
-     * @return The resource name of the server CA pool for an instance with &#34;CUSTOMER_MANAGED_CAS_CA&#34; as the &#34;server_ca_mode&#34;.
+     * @return The resource name of the server CA pool for an instance with &#34;CUSTOMER_MANAGED_CAS_CA&#34; as the &#34;serverCaMode&#34;.
      * 
      */
     public String serverCaPool() {

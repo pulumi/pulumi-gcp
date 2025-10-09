@@ -18,14 +18,14 @@ public final class RepositoryGitRemoteSettingsArgs extends com.pulumi.resources.
     public static final RepositoryGitRemoteSettingsArgs Empty = new RepositoryGitRemoteSettingsArgs();
 
     /**
-     * The name of the Secret Manager secret version to use as an authentication token for Git operations. This secret is for assigning with HTTPS only(for SSH use `ssh_authentication_config`). Must be in the format projects/*&#47;secrets/*&#47;versions/*.
+     * The name of the Secret Manager secret version to use as an authentication token for Git operations. This secret is for assigning with HTTPS only(for SSH use `sshAuthenticationConfig`). Must be in the format projects/*&#47;secrets/*&#47;versions/*.
      * 
      */
     @Import(name="authenticationTokenSecretVersion")
     private @Nullable Output<String> authenticationTokenSecretVersion;
 
     /**
-     * @return The name of the Secret Manager secret version to use as an authentication token for Git operations. This secret is for assigning with HTTPS only(for SSH use `ssh_authentication_config`). Must be in the format projects/*&#47;secrets/*&#47;versions/*.
+     * @return The name of the Secret Manager secret version to use as an authentication token for Git operations. This secret is for assigning with HTTPS only(for SSH use `sshAuthenticationConfig`). Must be in the format projects/*&#47;secrets/*&#47;versions/*.
      * 
      */
     public Optional<Output<String>> authenticationTokenSecretVersion() {
@@ -125,7 +125,7 @@ public final class RepositoryGitRemoteSettingsArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param authenticationTokenSecretVersion The name of the Secret Manager secret version to use as an authentication token for Git operations. This secret is for assigning with HTTPS only(for SSH use `ssh_authentication_config`). Must be in the format projects/*&#47;secrets/*&#47;versions/*.
+         * @param authenticationTokenSecretVersion The name of the Secret Manager secret version to use as an authentication token for Git operations. This secret is for assigning with HTTPS only(for SSH use `sshAuthenticationConfig`). Must be in the format projects/*&#47;secrets/*&#47;versions/*.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class RepositoryGitRemoteSettingsArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param authenticationTokenSecretVersion The name of the Secret Manager secret version to use as an authentication token for Git operations. This secret is for assigning with HTTPS only(for SSH use `ssh_authentication_config`). Must be in the format projects/*&#47;secrets/*&#47;versions/*.
+         * @param authenticationTokenSecretVersion The name of the Secret Manager secret version to use as an authentication token for Git operations. This secret is for assigning with HTTPS only(for SSH use `sshAuthenticationConfig`). Must be in the format projects/*&#47;secrets/*&#47;versions/*.
          * 
          * @return builder
          * 

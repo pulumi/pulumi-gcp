@@ -23,14 +23,14 @@ public final class InstanceTemplateDiskArgs extends com.pulumi.resources.Resourc
     public static final InstanceTemplateDiskArgs Empty = new InstanceTemplateDiskArgs();
 
     /**
-     * The architecture of the attached disk. Valid values are `ARM64` or `x86_64`.
+     * The architecture of the attached disk. Valid values are `ARM64` or `x8664`.
      * 
      */
     @Import(name="architecture")
     private @Nullable Output<String> architecture;
 
     /**
-     * @return The architecture of the attached disk. Valid values are `ARM64` or `x86_64`.
+     * @return The architecture of the attached disk. Valid values are `ARM64` or `x8664`.
      * 
      */
     public Optional<Output<String>> architecture() {
@@ -307,7 +307,7 @@ public final class InstanceTemplateDiskArgs extends com.pulumi.resources.Resourc
     /**
      * The name (**not self_link**)
      * of the disk (such as those managed by `gcp.compute.Disk`) to attach.
-     * &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+     * &gt; **Note:** Either `source`, `sourceImage`, or `sourceSnapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
      * 
      */
     @Import(name="source")
@@ -316,7 +316,7 @@ public final class InstanceTemplateDiskArgs extends com.pulumi.resources.Resourc
     /**
      * @return The name (**not self_link**)
      * of the disk (such as those managed by `gcp.compute.Disk`) to attach.
-     * &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+     * &gt; **Note:** Either `source`, `sourceImage`, or `sourceSnapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
      * 
      */
     public Optional<Output<String>> source() {
@@ -325,12 +325,12 @@ public final class InstanceTemplateDiskArgs extends com.pulumi.resources.Resourc
 
     /**
      * The image from which to
-     * initialize this disk. This can be one of: the image&#39;s `self_link`,
+     * initialize this disk. This can be one of: the image&#39;s `selfLink`,
      * `projects/{project}/global/images/{image}`,
      * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
      * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
      * `{project}/{image}`, `{family}`, or `{image}`.
-     * &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+     * &gt; **Note:** Either `source`, `sourceImage`, or `sourceSnapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
      * 
      */
     @Import(name="sourceImage")
@@ -338,12 +338,12 @@ public final class InstanceTemplateDiskArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return The image from which to
-     * initialize this disk. This can be one of: the image&#39;s `self_link`,
+     * initialize this disk. This can be one of: the image&#39;s `selfLink`,
      * `projects/{project}/global/images/{image}`,
      * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
      * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
      * `{project}/{image}`, `{family}`, or `{image}`.
-     * &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+     * &gt; **Note:** Either `source`, `sourceImage`, or `sourceSnapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
      * 
      */
     public Optional<Output<String>> sourceImage() {
@@ -381,7 +381,7 @@ public final class InstanceTemplateDiskArgs extends com.pulumi.resources.Resourc
 
     /**
      * The source snapshot to create this disk.
-     * &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+     * &gt; **Note:** Either `source`, `sourceImage`, or `sourceSnapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
      * 
      */
     @Import(name="sourceSnapshot")
@@ -389,7 +389,7 @@ public final class InstanceTemplateDiskArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return The source snapshot to create this disk.
-     * &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+     * &gt; **Note:** Either `source`, `sourceImage`, or `sourceSnapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
      * 
      */
     public Optional<Output<String>> sourceSnapshot() {
@@ -478,7 +478,7 @@ public final class InstanceTemplateDiskArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param architecture The architecture of the attached disk. Valid values are `ARM64` or `x86_64`.
+         * @param architecture The architecture of the attached disk. Valid values are `ARM64` or `x8664`.
          * 
          * @return builder
          * 
@@ -489,7 +489,7 @@ public final class InstanceTemplateDiskArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param architecture The architecture of the attached disk. Valid values are `ARM64` or `x86_64`.
+         * @param architecture The architecture of the attached disk. Valid values are `ARM64` or `x8664`.
          * 
          * @return builder
          * 
@@ -868,7 +868,7 @@ public final class InstanceTemplateDiskArgs extends com.pulumi.resources.Resourc
         /**
          * @param source The name (**not self_link**)
          * of the disk (such as those managed by `gcp.compute.Disk`) to attach.
-         * &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+         * &gt; **Note:** Either `source`, `sourceImage`, or `sourceSnapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
          * 
          * @return builder
          * 
@@ -881,7 +881,7 @@ public final class InstanceTemplateDiskArgs extends com.pulumi.resources.Resourc
         /**
          * @param source The name (**not self_link**)
          * of the disk (such as those managed by `gcp.compute.Disk`) to attach.
-         * &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+         * &gt; **Note:** Either `source`, `sourceImage`, or `sourceSnapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
          * 
          * @return builder
          * 
@@ -892,12 +892,12 @@ public final class InstanceTemplateDiskArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param sourceImage The image from which to
-         * initialize this disk. This can be one of: the image&#39;s `self_link`,
+         * initialize this disk. This can be one of: the image&#39;s `selfLink`,
          * `projects/{project}/global/images/{image}`,
          * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
          * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
          * `{project}/{image}`, `{family}`, or `{image}`.
-         * &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+         * &gt; **Note:** Either `source`, `sourceImage`, or `sourceSnapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
          * 
          * @return builder
          * 
@@ -909,12 +909,12 @@ public final class InstanceTemplateDiskArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param sourceImage The image from which to
-         * initialize this disk. This can be one of: the image&#39;s `self_link`,
+         * initialize this disk. This can be one of: the image&#39;s `selfLink`,
          * `projects/{project}/global/images/{image}`,
          * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
          * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
          * `{project}/{image}`, `{family}`, or `{image}`.
-         * &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+         * &gt; **Note:** Either `source`, `sourceImage`, or `sourceSnapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
          * 
          * @return builder
          * 
@@ -960,7 +960,7 @@ public final class InstanceTemplateDiskArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param sourceSnapshot The source snapshot to create this disk.
-         * &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+         * &gt; **Note:** Either `source`, `sourceImage`, or `sourceSnapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
          * 
          * @return builder
          * 
@@ -972,7 +972,7 @@ public final class InstanceTemplateDiskArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param sourceSnapshot The source snapshot to create this disk.
-         * &gt; **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+         * &gt; **Note:** Either `source`, `sourceImage`, or `sourceSnapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
          * 
          * @return builder
          * 

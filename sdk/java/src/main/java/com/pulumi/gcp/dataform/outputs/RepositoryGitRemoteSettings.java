@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RepositoryGitRemoteSettings {
     /**
-     * @return The name of the Secret Manager secret version to use as an authentication token for Git operations. This secret is for assigning with HTTPS only(for SSH use `ssh_authentication_config`). Must be in the format projects/*&#47;secrets/*&#47;versions/*.
+     * @return The name of the Secret Manager secret version to use as an authentication token for Git operations. This secret is for assigning with HTTPS only(for SSH use `sshAuthenticationConfig`). Must be in the format projects/*&#47;secrets/*&#47;versions/*.
      * 
      */
     private @Nullable String authenticationTokenSecretVersion;
@@ -43,7 +43,7 @@ public final class RepositoryGitRemoteSettings {
 
     private RepositoryGitRemoteSettings() {}
     /**
-     * @return The name of the Secret Manager secret version to use as an authentication token for Git operations. This secret is for assigning with HTTPS only(for SSH use `ssh_authentication_config`). Must be in the format projects/*&#47;secrets/*&#47;versions/*.
+     * @return The name of the Secret Manager secret version to use as an authentication token for Git operations. This secret is for assigning with HTTPS only(for SSH use `sshAuthenticationConfig`). Must be in the format projects/*&#47;secrets/*&#47;versions/*.
      * 
      */
     public Optional<String> authenticationTokenSecretVersion() {

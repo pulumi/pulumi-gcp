@@ -22,13 +22,13 @@ public final class GeminiGcpEnablementSettingArgs extends com.pulumi.resources.R
      * (Optional, Deprecated)
      * Whether web grounding should be disabled.
      * 
-     * &gt; **Warning:** `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
+     * &gt; **Warning:** `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
      * 
      * @deprecated
-     * `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
+     * `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
      * 
      */
-    @Deprecated /* `disable_web_grounding` is deprecated. Use `web_grounding_type` instead. */
+    @Deprecated /* `disableWebGrounding` is deprecated. Use `webGroundingType` instead. */
     @Import(name="disableWebGrounding")
     private @Nullable Output<Boolean> disableWebGrounding;
 
@@ -36,13 +36,13 @@ public final class GeminiGcpEnablementSettingArgs extends com.pulumi.resources.R
      * @return (Optional, Deprecated)
      * Whether web grounding should be disabled.
      * 
-     * &gt; **Warning:** `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
+     * &gt; **Warning:** `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
      * 
      * @deprecated
-     * `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
+     * `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
      * 
      */
-    @Deprecated /* `disable_web_grounding` is deprecated. Use `web_grounding_type` instead. */
+    @Deprecated /* `disableWebGrounding` is deprecated. Use `webGroundingType` instead. */
     public Optional<Output<Boolean>> disableWebGrounding() {
         return Optional.ofNullable(this.disableWebGrounding);
     }
@@ -80,7 +80,7 @@ public final class GeminiGcpEnablementSettingArgs extends com.pulumi.resources.R
     /**
      * Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -89,7 +89,7 @@ public final class GeminiGcpEnablementSettingArgs extends com.pulumi.resources.R
     /**
      * @return Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -183,15 +183,15 @@ public final class GeminiGcpEnablementSettingArgs extends com.pulumi.resources.R
          * @param disableWebGrounding (Optional, Deprecated)
          * Whether web grounding should be disabled.
          * 
-         * &gt; **Warning:** `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
+         * &gt; **Warning:** `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
+         * `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
          * 
          */
-        @Deprecated /* `disable_web_grounding` is deprecated. Use `web_grounding_type` instead. */
+        @Deprecated /* `disableWebGrounding` is deprecated. Use `webGroundingType` instead. */
         public Builder disableWebGrounding(@Nullable Output<Boolean> disableWebGrounding) {
             $.disableWebGrounding = disableWebGrounding;
             return this;
@@ -201,15 +201,15 @@ public final class GeminiGcpEnablementSettingArgs extends com.pulumi.resources.R
          * @param disableWebGrounding (Optional, Deprecated)
          * Whether web grounding should be disabled.
          * 
-         * &gt; **Warning:** `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
+         * &gt; **Warning:** `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
+         * `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
          * 
          */
-        @Deprecated /* `disable_web_grounding` is deprecated. Use `web_grounding_type` instead. */
+        @Deprecated /* `disableWebGrounding` is deprecated. Use `webGroundingType` instead. */
         public Builder disableWebGrounding(Boolean disableWebGrounding) {
             return disableWebGrounding(Output.of(disableWebGrounding));
         }
@@ -259,7 +259,7 @@ public final class GeminiGcpEnablementSettingArgs extends com.pulumi.resources.R
         /**
          * @param labels Labels as key value pairs.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -272,7 +272,7 @@ public final class GeminiGcpEnablementSettingArgs extends com.pulumi.resources.R
         /**
          * @param labels Labels as key value pairs.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 

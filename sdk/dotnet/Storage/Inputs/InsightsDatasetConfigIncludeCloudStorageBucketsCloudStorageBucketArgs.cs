@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Storage.Inputs
     {
         /// <summary>
         /// The list of cloud storage bucket names to exclude in the DatasetConfig.
-        /// Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+        /// Exactly one of the BucketName and BucketPrefixRegex should be specified.
         /// </summary>
         [Input("bucketName")]
         public Input<string>? BucketName { get; set; }
@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Storage.Inputs
         /// <summary>
         /// The list of regex patterns for bucket names matching the regex.
         /// Regex should follow the syntax specified in google/re2 on GitHub.
-        /// Exactly one of the bucket_name and bucket_prefix_regex should be specified.
+        /// Exactly one of the BucketName and BucketPrefixRegex should be specified.
         /// </summary>
         [Input("bucketPrefixRegex")]
         public Input<string>? BucketPrefixRegex { get; set; }

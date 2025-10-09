@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.SecureSourceManager.Outputs
         public readonly string? Api;
         /// <summary>
         /// (Output)
-        /// git_https is the git HTTPS URI for git operations.
+        /// GitHttps is the git HTTPS URI for git operations.
         /// </summary>
         public readonly string? GitHttps;
         /// <summary>

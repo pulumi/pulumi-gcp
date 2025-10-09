@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class TopicMessageTransformJavascriptUdf {
     /**
-     * @return JavaScript code that contains a function `function_name` with the
+     * @return JavaScript code that contains a function `functionName` with the
      * following signature:
      * 
      */
@@ -24,7 +24,7 @@ public final class TopicMessageTransformJavascriptUdf {
 
     private TopicMessageTransformJavascriptUdf() {}
     /**
-     * @return JavaScript code that contains a function `function_name` with the
+     * @return JavaScript code that contains a function `functionName` with the
      * following signature:
      * 
      */

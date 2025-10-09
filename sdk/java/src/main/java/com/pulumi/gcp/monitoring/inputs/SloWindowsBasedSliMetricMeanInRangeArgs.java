@@ -16,11 +16,11 @@ public final class SloWindowsBasedSliMetricMeanInRangeArgs extends com.pulumi.re
     public static final SloWindowsBasedSliMetricMeanInRangeArgs Empty = new SloWindowsBasedSliMetricMeanInRangeArgs();
 
     /**
-     * Range of numerical values. The computed good_service
+     * Range of numerical values. The computed goodService
      * will be the count of values x in the Distribution such
      * that range.min &lt;= x &lt;= range.max. inclusive of min and
      * max. Open ranges can be defined by setting
-     * just one of min or max. Mean value `X` of `time_series`
+     * just one of min or max. Mean value `X` of `timeSeries`
      * values should satisfy `range.min &lt;= X &lt;= range.max` for a
      * good service.
      * Structure is documented below.
@@ -30,11 +30,11 @@ public final class SloWindowsBasedSliMetricMeanInRangeArgs extends com.pulumi.re
     private Output<SloWindowsBasedSliMetricMeanInRangeRangeArgs> range;
 
     /**
-     * @return Range of numerical values. The computed good_service
+     * @return Range of numerical values. The computed goodService
      * will be the count of values x in the Distribution such
      * that range.min &lt;= x &lt;= range.max. inclusive of min and
      * max. Open ranges can be defined by setting
-     * just one of min or max. Mean value `X` of `time_series`
+     * just one of min or max. Mean value `X` of `timeSeries`
      * values should satisfy `range.min &lt;= X &lt;= range.max` for a
      * good service.
      * Structure is documented below.
@@ -95,11 +95,11 @@ public final class SloWindowsBasedSliMetricMeanInRangeArgs extends com.pulumi.re
         }
 
         /**
-         * @param range Range of numerical values. The computed good_service
+         * @param range Range of numerical values. The computed goodService
          * will be the count of values x in the Distribution such
          * that range.min &lt;= x &lt;= range.max. inclusive of min and
          * max. Open ranges can be defined by setting
-         * just one of min or max. Mean value `X` of `time_series`
+         * just one of min or max. Mean value `X` of `timeSeries`
          * values should satisfy `range.min &lt;= X &lt;= range.max` for a
          * good service.
          * Structure is documented below.
@@ -113,11 +113,11 @@ public final class SloWindowsBasedSliMetricMeanInRangeArgs extends com.pulumi.re
         }
 
         /**
-         * @param range Range of numerical values. The computed good_service
+         * @param range Range of numerical values. The computed goodService
          * will be the count of values x in the Distribution such
          * that range.min &lt;= x &lt;= range.max. inclusive of min and
          * max. Open ranges can be defined by setting
-         * just one of min or max. Mean value `X` of `time_series`
+         * just one of min or max. Mean value `X` of `timeSeries`
          * values should satisfy `range.min &lt;= X &lt;= range.max` for a
          * good service.
          * Structure is documented below.

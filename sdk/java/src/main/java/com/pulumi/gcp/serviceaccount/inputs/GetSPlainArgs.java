@@ -15,14 +15,14 @@ public final class GetSPlainArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetSPlainArgs Empty = new GetSPlainArgs();
 
     /**
-     * A prefix for filtering. It&#39;s applied with the `account_id`.
+     * A prefix for filtering. It&#39;s applied with the `accountId`.
      * 
      */
     @Import(name="prefix")
     private @Nullable String prefix;
 
     /**
-     * @return A prefix for filtering. It&#39;s applied with the `account_id`.
+     * @return A prefix for filtering. It&#39;s applied with the `accountId`.
      * 
      */
     public Optional<String> prefix() {
@@ -86,7 +86,7 @@ public final class GetSPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param prefix A prefix for filtering. It&#39;s applied with the `account_id`.
+         * @param prefix A prefix for filtering. It&#39;s applied with the `accountId`.
          * 
          * @return builder
          * 

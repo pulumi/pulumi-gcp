@@ -17,7 +17,7 @@ public final class InstancePerformanceConfigFixedIopsArgs extends com.pulumi.res
 
     /**
      * The number of IOPS to provision for the instance.
-     * max_iops must be in multiple of 1000.
+     * maxIops must be in multiple of 1000.
      * 
      */
     @Import(name="maxIops")
@@ -25,7 +25,7 @@ public final class InstancePerformanceConfigFixedIopsArgs extends com.pulumi.res
 
     /**
      * @return The number of IOPS to provision for the instance.
-     * max_iops must be in multiple of 1000.
+     * maxIops must be in multiple of 1000.
      * 
      */
     public Optional<Output<Integer>> maxIops() {
@@ -58,7 +58,7 @@ public final class InstancePerformanceConfigFixedIopsArgs extends com.pulumi.res
 
         /**
          * @param maxIops The number of IOPS to provision for the instance.
-         * max_iops must be in multiple of 1000.
+         * maxIops must be in multiple of 1000.
          * 
          * @return builder
          * 
@@ -70,7 +70,7 @@ public final class InstancePerformanceConfigFixedIopsArgs extends com.pulumi.res
 
         /**
          * @param maxIops The number of IOPS to provision for the instance.
-         * max_iops must be in multiple of 1000.
+         * maxIops must be in multiple of 1000.
          * 
          * @return builder
          * 

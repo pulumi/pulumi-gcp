@@ -18,7 +18,7 @@ public final class AuthConfigDecryptedCredentialUsernameAndPasswordArgs extends 
     /**
      * Password to be used.
      * 
-     * &lt;a name=&#34;nested_decrypted_credential_oauth2_authorization_code&#34;&gt;&lt;/a&gt;The `oauth2_authorization_code` block supports:
+     * &lt;a name=&#34;nestedDecryptedCredentialOauth2AuthorizationCode&#34;&gt;&lt;/a&gt;The `oauth2AuthorizationCode` block supports:
      * 
      */
     @Import(name="password")
@@ -27,7 +27,7 @@ public final class AuthConfigDecryptedCredentialUsernameAndPasswordArgs extends 
     /**
      * @return Password to be used.
      * 
-     * &lt;a name=&#34;nested_decrypted_credential_oauth2_authorization_code&#34;&gt;&lt;/a&gt;The `oauth2_authorization_code` block supports:
+     * &lt;a name=&#34;nestedDecryptedCredentialOauth2AuthorizationCode&#34;&gt;&lt;/a&gt;The `oauth2AuthorizationCode` block supports:
      * 
      */
     public Optional<Output<String>> password() {
@@ -77,7 +77,7 @@ public final class AuthConfigDecryptedCredentialUsernameAndPasswordArgs extends 
         /**
          * @param password Password to be used.
          * 
-         * &lt;a name=&#34;nested_decrypted_credential_oauth2_authorization_code&#34;&gt;&lt;/a&gt;The `oauth2_authorization_code` block supports:
+         * &lt;a name=&#34;nestedDecryptedCredentialOauth2AuthorizationCode&#34;&gt;&lt;/a&gt;The `oauth2AuthorizationCode` block supports:
          * 
          * @return builder
          * 
@@ -90,7 +90,7 @@ public final class AuthConfigDecryptedCredentialUsernameAndPasswordArgs extends 
         /**
          * @param password Password to be used.
          * 
-         * &lt;a name=&#34;nested_decrypted_credential_oauth2_authorization_code&#34;&gt;&lt;/a&gt;The `oauth2_authorization_code` block supports:
+         * &lt;a name=&#34;nestedDecryptedCredentialOauth2AuthorizationCode&#34;&gt;&lt;/a&gt;The `oauth2AuthorizationCode` block supports:
          * 
          * @return builder
          * 

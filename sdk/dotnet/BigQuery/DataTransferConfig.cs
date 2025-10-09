@@ -194,9 +194,9 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// The following write-only attributes are supported:
     /// 
-    /// &lt;a name="nested_sensitive_params"&gt;&lt;/a&gt;The `sensitive_params` block supports:
+    /// &lt;a name="NestedSensitiveParams"&gt;&lt;/a&gt;The `SensitiveParams` block supports:
     /// 
-    /// * `secret_access_key_wo` -
+    /// * `SecretAccessKeyWo` -
     ///   (Optional)
     ///   The Secret Access Key of the AWS account transferring data from.
     ///   **Note**: This property is write-only and will not be read from the API.
@@ -339,10 +339,10 @@ namespace Pulumi.Gcp.BigQuery
         public Output<Outputs.DataTransferConfigScheduleOptions?> ScheduleOptions { get; private set; } = null!;
 
         /// <summary>
-        /// Different parameters are configured primarily using the the `params` field on this
+        /// Different parameters are configured primarily using the the `Params` field on this
         /// resource. This block contains the parameters which contain secrets or passwords so that they can be marked
         /// sensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key
-        /// in the `params` map in the api request.
+        /// in the `Params` map in the api request.
         /// Credentials may not be specified in both locations and will cause an error. Changing from one location
         /// to a different credential configuration in the config will require an apply to update state.
         /// Structure is documented below.
@@ -511,10 +511,10 @@ namespace Pulumi.Gcp.BigQuery
         public Input<Inputs.DataTransferConfigScheduleOptionsArgs>? ScheduleOptions { get; set; }
 
         /// <summary>
-        /// Different parameters are configured primarily using the the `params` field on this
+        /// Different parameters are configured primarily using the the `Params` field on this
         /// resource. This block contains the parameters which contain secrets or passwords so that they can be marked
         /// sensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key
-        /// in the `params` map in the api request.
+        /// in the `Params` map in the api request.
         /// Credentials may not be specified in both locations and will cause an error. Changing from one location
         /// to a different credential configuration in the config will require an apply to update state.
         /// Structure is documented below.
@@ -655,10 +655,10 @@ namespace Pulumi.Gcp.BigQuery
         public Input<Inputs.DataTransferConfigScheduleOptionsGetArgs>? ScheduleOptions { get; set; }
 
         /// <summary>
-        /// Different parameters are configured primarily using the the `params` field on this
+        /// Different parameters are configured primarily using the the `Params` field on this
         /// resource. This block contains the parameters which contain secrets or passwords so that they can be marked
         /// sensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key
-        /// in the `params` map in the api request.
+        /// in the `Params` map in the api request.
         /// Credentials may not be specified in both locations and will cause an error. Changing from one location
         /// to a different credential configuration in the config will require an apply to update state.
         /// Structure is documented below.

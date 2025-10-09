@@ -81,10 +81,10 @@ public class CaExternalAccountKey extends com.pulumi.resources.CustomResource {
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      * @deprecated
-     * `b64_mac_key` is deprecated and will be removed in a future major release. Use `b64url_mac_key` instead.
+     * `b64MacKey` is deprecated and will be removed in a future major release. Use `b64urlMacKey` instead.
      * 
      */
-    @Deprecated /* `b64_mac_key` is deprecated and will be removed in a future major release. Use `b64url_mac_key` instead. */
+    @Deprecated /* `b64MacKey` is deprecated and will be removed in a future major release. Use `b64urlMacKey` instead. */
     @Export(name="b64MacKey", refs={String.class}, tree="[0]")
     private Output<String> b64MacKey;
 

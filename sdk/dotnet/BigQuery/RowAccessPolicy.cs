@@ -99,15 +99,15 @@ namespace Pulumi.Gcp.BigQuery
         /// References to other tables, routines, and temporary functions are not
         /// supported.
         /// Examples: region="EU"
-        /// date_field = CAST('2019-9-27' as DATE)
-        /// nullable_field is not NULL
-        /// numeric_field BETWEEN 1.0 AND 5.0
+        /// DateField = CAST('2019-9-27' as DATE)
+        /// NullableField is not NULL
+        /// NumericField BETWEEN 1.0 AND 5.0
         /// </summary>
         [Output("filterPredicate")]
         public Output<string> FilterPredicate { get; private set; } = null!;
 
         /// <summary>
-        /// Input only. The optional list of iam_member users or groups that specifies the initial
+        /// Input only. The optional list of IamMember users or groups that specifies the initial
         /// members that the row-level access policy should be created with.
         /// grantees types:
         /// - "user:alice@example.com": An email address that represents a specific
@@ -219,9 +219,9 @@ namespace Pulumi.Gcp.BigQuery
         /// References to other tables, routines, and temporary functions are not
         /// supported.
         /// Examples: region="EU"
-        /// date_field = CAST('2019-9-27' as DATE)
-        /// nullable_field is not NULL
-        /// numeric_field BETWEEN 1.0 AND 5.0
+        /// DateField = CAST('2019-9-27' as DATE)
+        /// NullableField is not NULL
+        /// NumericField BETWEEN 1.0 AND 5.0
         /// </summary>
         [Input("filterPredicate", required: true)]
         public Input<string> FilterPredicate { get; set; } = null!;
@@ -230,7 +230,7 @@ namespace Pulumi.Gcp.BigQuery
         private InputList<string>? _grantees;
 
         /// <summary>
-        /// Input only. The optional list of iam_member users or groups that specifies the initial
+        /// Input only. The optional list of IamMember users or groups that specifies the initial
         /// members that the row-level access policy should be created with.
         /// grantees types:
         /// - "user:alice@example.com": An email address that represents a specific
@@ -307,9 +307,9 @@ namespace Pulumi.Gcp.BigQuery
         /// References to other tables, routines, and temporary functions are not
         /// supported.
         /// Examples: region="EU"
-        /// date_field = CAST('2019-9-27' as DATE)
-        /// nullable_field is not NULL
-        /// numeric_field BETWEEN 1.0 AND 5.0
+        /// DateField = CAST('2019-9-27' as DATE)
+        /// NullableField is not NULL
+        /// NumericField BETWEEN 1.0 AND 5.0
         /// </summary>
         [Input("filterPredicate")]
         public Input<string>? FilterPredicate { get; set; }
@@ -318,7 +318,7 @@ namespace Pulumi.Gcp.BigQuery
         private InputList<string>? _grantees;
 
         /// <summary>
-        /// Input only. The optional list of iam_member users or groups that specifies the initial
+        /// Input only. The optional list of IamMember users or groups that specifies the initial
         /// members that the row-level access policy should be created with.
         /// grantees types:
         /// - "user:alice@example.com": An email address that represents a specific

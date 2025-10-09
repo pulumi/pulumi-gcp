@@ -18,7 +18,7 @@ public final class GCPolicyMaxVersionArgs extends com.pulumi.resources.ResourceA
      * Number of version before applying the GC policy.
      * 
      * ***
-     * `gc_rules` include 2 fields:
+     * `gcRules` include 2 fields:
      * 
      */
     @Import(name="number", required=true)
@@ -28,7 +28,7 @@ public final class GCPolicyMaxVersionArgs extends com.pulumi.resources.ResourceA
      * @return Number of version before applying the GC policy.
      * 
      * ***
-     * `gc_rules` include 2 fields:
+     * `gcRules` include 2 fields:
      * 
      */
     public Output<Integer> number() {
@@ -63,7 +63,7 @@ public final class GCPolicyMaxVersionArgs extends com.pulumi.resources.ResourceA
          * @param number Number of version before applying the GC policy.
          * 
          * ***
-         * `gc_rules` include 2 fields:
+         * `gcRules` include 2 fields:
          * 
          * @return builder
          * 
@@ -77,7 +77,7 @@ public final class GCPolicyMaxVersionArgs extends com.pulumi.resources.ResourceA
          * @param number Number of version before applying the GC policy.
          * 
          * ***
-         * `gc_rules` include 2 fields:
+         * `gcRules` include 2 fields:
          * 
          * @return builder
          * 

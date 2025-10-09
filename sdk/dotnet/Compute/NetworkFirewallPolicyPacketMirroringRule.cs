@@ -160,7 +160,7 @@ namespace Pulumi.Gcp.Compute
     public partial class NetworkFirewallPolicyPacketMirroringRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The Action to perform when the client connection triggers the rule. Valid actions are "mirror", "do_not_mirror", "goto_next".
+        /// The Action to perform when the client connection triggers the rule. Valid actions are "mirror", "DoNotMirror", "GotoNext".
         /// </summary>
         [Output("action")]
         public Output<string> Action { get; private set; } = null!;
@@ -309,7 +309,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class NetworkFirewallPolicyPacketMirroringRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Action to perform when the client connection triggers the rule. Valid actions are "mirror", "do_not_mirror", "goto_next".
+        /// The Action to perform when the client connection triggers the rule. Valid actions are "mirror", "DoNotMirror", "GotoNext".
         /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
@@ -408,7 +408,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class NetworkFirewallPolicyPacketMirroringRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Action to perform when the client connection triggers the rule. Valid actions are "mirror", "do_not_mirror", "goto_next".
+        /// The Action to perform when the client connection triggers the rule. Valid actions are "mirror", "DoNotMirror", "GotoNext".
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }

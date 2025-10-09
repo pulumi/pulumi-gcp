@@ -356,6 +356,8 @@ def get_region_disk(name: Optional[_builtins.str] = None,
 
     [the official documentation](https://cloud.google.com/compute/docs/disks) and its [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionDisks).
 
+    ## Example Usage
+
 
     :param _builtins.str name: The name of a specific disk.
            
@@ -414,6 +416,8 @@ def get_region_disk_output(name: Optional[pulumi.Input[_builtins.str]] = None,
     Get information about a Google Compute Regional Persistent disks.
 
     [the official documentation](https://cloud.google.com/compute/docs/disks) and its [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionDisks).
+
+    ## Example Usage
 
 
     :param _builtins.str name: The name of a specific disk.

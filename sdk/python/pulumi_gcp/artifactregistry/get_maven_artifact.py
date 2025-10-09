@@ -166,6 +166,8 @@ def get_maven_artifact(artifact_id: Optional[_builtins.str] = None,
     """
     This data source fetches information from a provided Artifact Registry repository, based on a the latest version of the artifact and optional version.
 
+    ## Example Usage
+
 
     :param _builtins.str artifact_id: The name of the artifact to fetch. Can optionally include a specific version (e.g., `my_artifact:1.2.3`). If no version is provided, the latest version is used.
     :param _builtins.str group_id: Group ID for the artifact. Example: `com.google.guava`
@@ -202,6 +204,8 @@ def get_maven_artifact_output(artifact_id: Optional[pulumi.Input[_builtins.str]]
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMavenArtifactResult]:
     """
     This data source fetches information from a provided Artifact Registry repository, based on a the latest version of the artifact and optional version.
+
+    ## Example Usage
 
 
     :param _builtins.str artifact_id: The name of the artifact to fetch. Can optionally include a specific version (e.g., `my_artifact:1.2.3`). If no version is provided, the latest version is used.

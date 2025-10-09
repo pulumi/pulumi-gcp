@@ -177,14 +177,14 @@ public final class AwsNodePoolConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instance_type`
+     * Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instanceType`
      * 
      */
     @Import(name="spotConfig")
     private @Nullable Output<AwsNodePoolConfigSpotConfigArgs> spotConfig;
 
     /**
-     * @return Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instance_type`
+     * @return Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instanceType`
      * 
      */
     public Optional<Output<AwsNodePoolConfigSpotConfigArgs>> spotConfig() {
@@ -494,7 +494,7 @@ public final class AwsNodePoolConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param spotConfig Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instance_type`
+         * @param spotConfig Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instanceType`
          * 
          * @return builder
          * 
@@ -505,7 +505,7 @@ public final class AwsNodePoolConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param spotConfig Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instance_type`
+         * @param spotConfig Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instanceType`
          * 
          * @return builder
          * 

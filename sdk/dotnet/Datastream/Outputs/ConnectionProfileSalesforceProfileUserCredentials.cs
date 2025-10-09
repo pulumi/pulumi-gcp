@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Datastream.Outputs
         /// <summary>
         /// A reference to a Secret Manager resource name storing the user's security token.
         /// 
-        /// &lt;a name="nested_salesforce_profile_oauth2_client_credentials"&gt;&lt;/a&gt;The `oauth2_client_credentials` block supports:
+        /// &lt;a name="NestedSalesforceProfileOauth2ClientCredentials"&gt;&lt;/a&gt;The `Oauth2ClientCredentials` block supports:
         /// </summary>
         public readonly string? SecretManagerStoredSecurityToken;
         /// <summary>

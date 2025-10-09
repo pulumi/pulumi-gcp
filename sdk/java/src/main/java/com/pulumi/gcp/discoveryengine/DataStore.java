@@ -381,7 +381,7 @@ public class DataStore extends com.pulumi.resources.CustomResource {
      * The KMS key to be used to protect this DataStore at creation time. Must be
      * set for requests that need to comply with CMEK Org Policy protections.
      * If this field is set and processed successfully, the DataStore will be
-     * protected by the KMS key, as indicated in the cmek_config field.
+     * protected by the KMS key, as indicated in the cmekConfig field.
      * 
      */
     @Export(name="kmsKeyName", refs={String.class}, tree="[0]")
@@ -393,7 +393,7 @@ public class DataStore extends com.pulumi.resources.CustomResource {
      * The KMS key to be used to protect this DataStore at creation time. Must be
      * set for requests that need to comply with CMEK Org Policy protections.
      * If this field is set and processed successfully, the DataStore will be
-     * protected by the KMS key, as indicated in the cmek_config field.
+     * protected by the KMS key, as indicated in the cmekConfig field.
      * 
      */
     public Output<Optional<String>> kmsKeyName() {

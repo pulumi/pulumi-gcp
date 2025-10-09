@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class AzureNodePoolConfigSshConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The SSH public key data for VMs managed by Anthos. This accepts the authorized_keys file format used in OpenSSH according to the sshd(8) manual page.
+        /// The SSH public key data for VMs managed by Anthos. This accepts the AuthorizedKeys file format used in OpenSSH according to the sshd(8) manual page.
         /// </summary>
         [Input("authorizedKey", required: true)]
         public Input<string> AuthorizedKey { get; set; } = null!;

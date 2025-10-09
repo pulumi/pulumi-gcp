@@ -149,14 +149,14 @@ namespace Pulumi.Gcp.Monitoring
     {
         /// <summary>
         /// The name of the Kubernetes cluster in which this Istio service 
-        /// is defined. Corresponds to the clusterName resource label in k8s_cluster resources.
+        /// is defined. Corresponds to the clusterName resource label in K8sCluster resources.
         /// </summary>
         [Input("clusterName", required: true)]
         public string ClusterName { get; set; } = null!;
 
         /// <summary>
         /// The location of the Kubernetes cluster in which this Istio service 
-        /// is defined. Corresponds to the location resource label in k8s_cluster resources.
+        /// is defined. Corresponds to the location resource label in K8sCluster resources.
         /// </summary>
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -170,7 +170,7 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// The name of the Istio service underlying this service.
-        /// Corresponds to the destination_service_name metric label in Istio metrics.
+        /// Corresponds to the DestinationServiceName metric label in Istio metrics.
         /// 
         /// - - -
         /// 
@@ -181,7 +181,7 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// The namespace of the Istio service underlying this service.
-        /// Corresponds to the destination_service_namespace metric label in Istio metrics.
+        /// Corresponds to the DestinationServiceNamespace metric label in Istio metrics.
         /// </summary>
         [Input("serviceNamespace", required: true)]
         public string ServiceNamespace { get; set; } = null!;
@@ -196,14 +196,14 @@ namespace Pulumi.Gcp.Monitoring
     {
         /// <summary>
         /// The name of the Kubernetes cluster in which this Istio service 
-        /// is defined. Corresponds to the clusterName resource label in k8s_cluster resources.
+        /// is defined. Corresponds to the clusterName resource label in K8sCluster resources.
         /// </summary>
         [Input("clusterName", required: true)]
         public Input<string> ClusterName { get; set; } = null!;
 
         /// <summary>
         /// The location of the Kubernetes cluster in which this Istio service 
-        /// is defined. Corresponds to the location resource label in k8s_cluster resources.
+        /// is defined. Corresponds to the location resource label in K8sCluster resources.
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -217,7 +217,7 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// The name of the Istio service underlying this service.
-        /// Corresponds to the destination_service_name metric label in Istio metrics.
+        /// Corresponds to the DestinationServiceName metric label in Istio metrics.
         /// 
         /// - - -
         /// 
@@ -228,7 +228,7 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// The namespace of the Istio service underlying this service.
-        /// Corresponds to the destination_service_namespace metric label in Istio metrics.
+        /// Corresponds to the DestinationServiceNamespace metric label in Istio metrics.
         /// </summary>
         [Input("serviceNamespace", required: true)]
         public Input<string> ServiceNamespace { get; set; } = null!;

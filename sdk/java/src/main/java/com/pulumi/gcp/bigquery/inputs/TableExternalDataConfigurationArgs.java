@@ -44,7 +44,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
     }
 
     /**
-     * Additional options if `source_format` is set to
+     * Additional options if `sourceFormat` is set to
      * &#34;AVRO&#34;.  Structure is documented below.
      * 
      */
@@ -52,7 +52,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
     private @Nullable Output<TableExternalDataConfigurationAvroOptionsArgs> avroOptions;
 
     /**
-     * @return Additional options if `source_format` is set to
+     * @return Additional options if `sourceFormat` is set to
      * &#34;AVRO&#34;.  Structure is documented below.
      * 
      */
@@ -62,7 +62,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
 
     /**
      * Additional properties to set if
-     * `source_format` is set to &#34;BIGTABLE&#34;. Structure is documented below.
+     * `sourceFormat` is set to &#34;BIGTABLE&#34;. Structure is documented below.
      * 
      */
     @Import(name="bigtableOptions")
@@ -70,7 +70,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
 
     /**
      * @return Additional properties to set if
-     * `source_format` is set to &#34;BIGTABLE&#34;. Structure is documented below.
+     * `sourceFormat` is set to &#34;BIGTABLE&#34;. Structure is documented below.
      * 
      */
     public Optional<Output<TableExternalDataConfigurationBigtableOptionsArgs>> bigtableOptions() {
@@ -96,7 +96,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
 
     /**
      * The connection specifying the credentials to be used to read
-     * external storage, such as Azure Blob, Cloud Storage, or S3. The `connection_id` can have
+     * external storage, such as Azure Blob, Cloud Storage, or S3. The `connectionId` can have
      * the form `{{project}}.{{location}}.{{connection_id}}`
      * or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
      * 
@@ -110,7 +110,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
 
     /**
      * @return The connection specifying the credentials to be used to read
-     * external storage, such as Azure Blob, Cloud Storage, or S3. The `connection_id` can have
+     * external storage, such as Azure Blob, Cloud Storage, or S3. The `connectionId` can have
      * the form `{{project}}.{{location}}.{{connection_id}}`
      * or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
      * 
@@ -125,7 +125,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
 
     /**
      * Additional properties to set if
-     * `source_format` is set to &#34;CSV&#34;. Structure is documented below.
+     * `sourceFormat` is set to &#34;CSV&#34;. Structure is documented below.
      * 
      */
     @Import(name="csvOptions")
@@ -133,7 +133,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
 
     /**
      * @return Additional properties to set if
-     * `source_format` is set to &#34;CSV&#34;. Structure is documented below.
+     * `sourceFormat` is set to &#34;CSV&#34;. Structure is documented below.
      * 
      */
     public Optional<Output<TableExternalDataConfigurationCsvOptionsArgs>> csvOptions() {
@@ -161,7 +161,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
 
     /**
      * Additional options if
-     * `source_format` is set to &#34;GOOGLE_SHEETS&#34;. Structure is
+     * `sourceFormat` is set to &#34;GOOGLE_SHEETS&#34;. Structure is
      * documented below.
      * 
      */
@@ -170,7 +170,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
 
     /**
      * @return Additional options if
-     * `source_format` is set to &#34;GOOGLE_SHEETS&#34;. Structure is
+     * `sourceFormat` is set to &#34;GOOGLE_SHEETS&#34;. Structure is
      * documented below.
      * 
      */
@@ -241,7 +241,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
 
     /**
      * Additional properties to set if
-     * `source_format` is set to &#34;JSON&#34;. Structure is documented below.
+     * `sourceFormat` is set to &#34;JSON&#34;. Structure is documented below.
      * 
      */
     @Import(name="jsonOptions")
@@ -249,7 +249,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
 
     /**
      * @return Additional properties to set if
-     * `source_format` is set to &#34;JSON&#34;. Structure is documented below.
+     * `sourceFormat` is set to &#34;JSON&#34;. Structure is documented below.
      * 
      */
     public Optional<Output<TableExternalDataConfigurationJsonOptionsArgs>> jsonOptions() {
@@ -289,14 +289,14 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
     }
 
     /**
-     * Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `object_metadata` is set, `source_format` should be omitted.
+     * Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `objectMetadata` is set, `sourceFormat` should be omitted.
      * 
      */
     @Import(name="objectMetadata")
     private @Nullable Output<String> objectMetadata;
 
     /**
-     * @return Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `object_metadata` is set, `source_format` should be omitted.
+     * @return Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `objectMetadata` is set, `sourceFormat` should be omitted.
      * 
      */
     public Optional<Output<String>> objectMetadata() {
@@ -305,7 +305,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
 
     /**
      * Additional properties to set if
-     * `source_format` is set to &#34;PARQUET&#34;. Structure is documented below.
+     * `sourceFormat` is set to &#34;PARQUET&#34;. Structure is documented below.
      * 
      */
     @Import(name="parquetOptions")
@@ -313,7 +313,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
 
     /**
      * @return Additional properties to set if
-     * `source_format` is set to &#34;PARQUET&#34;. Structure is documented below.
+     * `sourceFormat` is set to &#34;PARQUET&#34;. Structure is documented below.
      * 
      */
     public Optional<Output<TableExternalDataConfigurationParquetOptionsArgs>> parquetOptions() {
@@ -483,7 +483,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param avroOptions Additional options if `source_format` is set to
+         * @param avroOptions Additional options if `sourceFormat` is set to
          * &#34;AVRO&#34;.  Structure is documented below.
          * 
          * @return builder
@@ -495,7 +495,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param avroOptions Additional options if `source_format` is set to
+         * @param avroOptions Additional options if `sourceFormat` is set to
          * &#34;AVRO&#34;.  Structure is documented below.
          * 
          * @return builder
@@ -507,7 +507,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
 
         /**
          * @param bigtableOptions Additional properties to set if
-         * `source_format` is set to &#34;BIGTABLE&#34;. Structure is documented below.
+         * `sourceFormat` is set to &#34;BIGTABLE&#34;. Structure is documented below.
          * 
          * @return builder
          * 
@@ -519,7 +519,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
 
         /**
          * @param bigtableOptions Additional properties to set if
-         * `source_format` is set to &#34;BIGTABLE&#34;. Structure is documented below.
+         * `sourceFormat` is set to &#34;BIGTABLE&#34;. Structure is documented below.
          * 
          * @return builder
          * 
@@ -553,7 +553,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
 
         /**
          * @param connectionId The connection specifying the credentials to be used to read
-         * external storage, such as Azure Blob, Cloud Storage, or S3. The `connection_id` can have
+         * external storage, such as Azure Blob, Cloud Storage, or S3. The `connectionId` can have
          * the form `{{project}}.{{location}}.{{connection_id}}`
          * or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
          * 
@@ -571,7 +571,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
 
         /**
          * @param connectionId The connection specifying the credentials to be used to read
-         * external storage, such as Azure Blob, Cloud Storage, or S3. The `connection_id` can have
+         * external storage, such as Azure Blob, Cloud Storage, or S3. The `connectionId` can have
          * the form `{{project}}.{{location}}.{{connection_id}}`
          * or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
          * 
@@ -588,7 +588,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
 
         /**
          * @param csvOptions Additional properties to set if
-         * `source_format` is set to &#34;CSV&#34;. Structure is documented below.
+         * `sourceFormat` is set to &#34;CSV&#34;. Structure is documented below.
          * 
          * @return builder
          * 
@@ -600,7 +600,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
 
         /**
          * @param csvOptions Additional properties to set if
-         * `source_format` is set to &#34;CSV&#34;. Structure is documented below.
+         * `sourceFormat` is set to &#34;CSV&#34;. Structure is documented below.
          * 
          * @return builder
          * 
@@ -636,7 +636,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
 
         /**
          * @param googleSheetsOptions Additional options if
-         * `source_format` is set to &#34;GOOGLE_SHEETS&#34;. Structure is
+         * `sourceFormat` is set to &#34;GOOGLE_SHEETS&#34;. Structure is
          * documented below.
          * 
          * @return builder
@@ -649,7 +649,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
 
         /**
          * @param googleSheetsOptions Additional options if
-         * `source_format` is set to &#34;GOOGLE_SHEETS&#34;. Structure is
+         * `sourceFormat` is set to &#34;GOOGLE_SHEETS&#34;. Structure is
          * documented below.
          * 
          * @return builder
@@ -740,7 +740,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
 
         /**
          * @param jsonOptions Additional properties to set if
-         * `source_format` is set to &#34;JSON&#34;. Structure is documented below.
+         * `sourceFormat` is set to &#34;JSON&#34;. Structure is documented below.
          * 
          * @return builder
          * 
@@ -752,7 +752,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
 
         /**
          * @param jsonOptions Additional properties to set if
-         * `source_format` is set to &#34;JSON&#34;. Structure is documented below.
+         * `sourceFormat` is set to &#34;JSON&#34;. Structure is documented below.
          * 
          * @return builder
          * 
@@ -806,7 +806,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param objectMetadata Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `object_metadata` is set, `source_format` should be omitted.
+         * @param objectMetadata Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `objectMetadata` is set, `sourceFormat` should be omitted.
          * 
          * @return builder
          * 
@@ -817,7 +817,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param objectMetadata Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `object_metadata` is set, `source_format` should be omitted.
+         * @param objectMetadata Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `objectMetadata` is set, `sourceFormat` should be omitted.
          * 
          * @return builder
          * 
@@ -828,7 +828,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
 
         /**
          * @param parquetOptions Additional properties to set if
-         * `source_format` is set to &#34;PARQUET&#34;. Structure is documented below.
+         * `sourceFormat` is set to &#34;PARQUET&#34;. Structure is documented below.
          * 
          * @return builder
          * 
@@ -840,7 +840,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
 
         /**
          * @param parquetOptions Additional properties to set if
-         * `source_format` is set to &#34;PARQUET&#34;. Structure is documented below.
+         * `sourceFormat` is set to &#34;PARQUET&#34;. Structure is documented below.
          * 
          * @return builder
          * 

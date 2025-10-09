@@ -87,7 +87,7 @@ public final class DatascanDataQualitySpecArgs extends com.pulumi.resources.Reso
     /**
      * The percentage of the records to be selected from the dataset for DataScan.
      * Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
-     * Sampling is not applied if `sampling_percent` is not specified, 0 or 100.
+     * Sampling is not applied if `samplingPercent` is not specified, 0 or 100.
      * 
      */
     @Import(name="samplingPercent")
@@ -96,7 +96,7 @@ public final class DatascanDataQualitySpecArgs extends com.pulumi.resources.Reso
     /**
      * @return The percentage of the records to be selected from the dataset for DataScan.
      * Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
-     * Sampling is not applied if `sampling_percent` is not specified, 0 or 100.
+     * Sampling is not applied if `samplingPercent` is not specified, 0 or 100.
      * 
      */
     public Optional<Output<Double>> samplingPercent() {
@@ -233,7 +233,7 @@ public final class DatascanDataQualitySpecArgs extends com.pulumi.resources.Reso
         /**
          * @param samplingPercent The percentage of the records to be selected from the dataset for DataScan.
          * Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
-         * Sampling is not applied if `sampling_percent` is not specified, 0 or 100.
+         * Sampling is not applied if `samplingPercent` is not specified, 0 or 100.
          * 
          * @return builder
          * 
@@ -246,7 +246,7 @@ public final class DatascanDataQualitySpecArgs extends com.pulumi.resources.Reso
         /**
          * @param samplingPercent The percentage of the records to be selected from the dataset for DataScan.
          * Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
-         * Sampling is not applied if `sampling_percent` is not specified, 0 or 100.
+         * Sampling is not applied if `samplingPercent` is not specified, 0 or 100.
          * 
          * @return builder
          * 

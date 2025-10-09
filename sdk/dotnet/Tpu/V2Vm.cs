@@ -199,16 +199,16 @@ namespace Pulumi.Gcp.Tpu
     public partial class V2Vm : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The AccleratorConfig for the TPU Node. `accelerator_config` cannot be used at the same time
-        /// as `accelerator_type`. If neither is specified, `accelerator_type` defaults to 'v2-8'.
+        /// The AccleratorConfig for the TPU Node. `AcceleratorConfig` cannot be used at the same time
+        /// as `AcceleratorType`. If neither is specified, `AcceleratorType` defaults to 'v2-8'.
         /// Structure is documented below.
         /// </summary>
         [Output("acceleratorConfig")]
         public Output<Outputs.V2VmAcceleratorConfig> AcceleratorConfig { get; private set; } = null!;
 
         /// <summary>
-        /// TPU accelerator type for the TPU. `accelerator_type` cannot be used at the same time as
-        /// `accelerator_config`. If neither is specified, `accelerator_type` defaults to 'v2-8'.
+        /// TPU accelerator type for the TPU. `AcceleratorType` cannot be used at the same time as
+        /// `AcceleratorConfig`. If neither is specified, `AcceleratorType` defaults to 'v2-8'.
         /// </summary>
         [Output("acceleratorType")]
         public Output<string> AcceleratorType { get; private set; } = null!;
@@ -264,7 +264,7 @@ namespace Pulumi.Gcp.Tpu
         /// <summary>
         /// Resource labels to represent user-provided metadata.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -435,16 +435,16 @@ namespace Pulumi.Gcp.Tpu
     public sealed class V2VmArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The AccleratorConfig for the TPU Node. `accelerator_config` cannot be used at the same time
-        /// as `accelerator_type`. If neither is specified, `accelerator_type` defaults to 'v2-8'.
+        /// The AccleratorConfig for the TPU Node. `AcceleratorConfig` cannot be used at the same time
+        /// as `AcceleratorType`. If neither is specified, `AcceleratorType` defaults to 'v2-8'.
         /// Structure is documented below.
         /// </summary>
         [Input("acceleratorConfig")]
         public Input<Inputs.V2VmAcceleratorConfigArgs>? AcceleratorConfig { get; set; }
 
         /// <summary>
-        /// TPU accelerator type for the TPU. `accelerator_type` cannot be used at the same time as
-        /// `accelerator_config`. If neither is specified, `accelerator_type` defaults to 'v2-8'.
+        /// TPU accelerator type for the TPU. `AcceleratorType` cannot be used at the same time as
+        /// `AcceleratorConfig`. If neither is specified, `AcceleratorType` defaults to 'v2-8'.
         /// </summary>
         [Input("acceleratorType")]
         public Input<string>? AcceleratorType { get; set; }
@@ -485,7 +485,7 @@ namespace Pulumi.Gcp.Tpu
         /// <summary>
         /// Resource labels to represent user-provided metadata.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -594,16 +594,16 @@ namespace Pulumi.Gcp.Tpu
     public sealed class V2VmState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The AccleratorConfig for the TPU Node. `accelerator_config` cannot be used at the same time
-        /// as `accelerator_type`. If neither is specified, `accelerator_type` defaults to 'v2-8'.
+        /// The AccleratorConfig for the TPU Node. `AcceleratorConfig` cannot be used at the same time
+        /// as `AcceleratorType`. If neither is specified, `AcceleratorType` defaults to 'v2-8'.
         /// Structure is documented below.
         /// </summary>
         [Input("acceleratorConfig")]
         public Input<Inputs.V2VmAcceleratorConfigGetArgs>? AcceleratorConfig { get; set; }
 
         /// <summary>
-        /// TPU accelerator type for the TPU. `accelerator_type` cannot be used at the same time as
-        /// `accelerator_config`. If neither is specified, `accelerator_type` defaults to 'v2-8'.
+        /// TPU accelerator type for the TPU. `AcceleratorType` cannot be used at the same time as
+        /// `AcceleratorConfig`. If neither is specified, `AcceleratorType` defaults to 'v2-8'.
         /// </summary>
         [Input("acceleratorType")]
         public Input<string>? AcceleratorType { get; set; }
@@ -678,7 +678,7 @@ namespace Pulumi.Gcp.Tpu
         /// <summary>
         /// Resource labels to represent user-provided metadata.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {

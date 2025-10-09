@@ -123,14 +123,14 @@ public class ObjectACL extends com.pulumi.resources.CustomResource {
         return this.object;
     }
     /**
-     * The &#34;canned&#34; [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
+     * The &#34;canned&#34; [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `roleEntity` is not.
      * 
      */
     @Export(name="predefinedAcl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> predefinedAcl;
 
     /**
-     * @return The &#34;canned&#34; [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
+     * @return The &#34;canned&#34; [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `roleEntity` is not.
      * 
      */
     public Output<Optional<String>> predefinedAcl() {
@@ -138,7 +138,7 @@ public class ObjectACL extends com.pulumi.resources.CustomResource {
     }
     /**
      * List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-     * Must be set if `predefined_acl` is not.
+     * Must be set if `predefinedAcl` is not.
      * 
      */
     @Export(name="roleEntities", refs={List.class,String.class}, tree="[0,1]")
@@ -146,7 +146,7 @@ public class ObjectACL extends com.pulumi.resources.CustomResource {
 
     /**
      * @return List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-     * Must be set if `predefined_acl` is not.
+     * Must be set if `predefinedAcl` is not.
      * 
      */
     public Output<List<String>> roleEntities() {

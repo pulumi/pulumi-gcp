@@ -146,7 +146,7 @@ namespace Pulumi.Gcp.Monitoring
     {
         /// <summary>
         /// The name of the canonical service underlying this service.
-        /// Corresponds to the destination_canonical_service_name metric label in label in Istio metrics.
+        /// Corresponds to the DestinationCanonicalServiceName metric label in label in Istio metrics.
         /// 
         /// - - -
         /// 
@@ -157,7 +157,7 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// The namespace of the canonical service underlying this service.
-        /// Corresponds to the destination_canonical_service_namespace metric label in Istio metrics.
+        /// Corresponds to the DestinationCanonicalServiceNamespace metric label in Istio metrics.
         /// </summary>
         [Input("canonicalServiceNamespace", required: true)]
         public string CanonicalServiceNamespace { get; set; } = null!;
@@ -186,7 +186,7 @@ namespace Pulumi.Gcp.Monitoring
     {
         /// <summary>
         /// The name of the canonical service underlying this service.
-        /// Corresponds to the destination_canonical_service_name metric label in label in Istio metrics.
+        /// Corresponds to the DestinationCanonicalServiceName metric label in label in Istio metrics.
         /// 
         /// - - -
         /// 
@@ -197,7 +197,7 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// The namespace of the canonical service underlying this service.
-        /// Corresponds to the destination_canonical_service_namespace metric label in Istio metrics.
+        /// Corresponds to the DestinationCanonicalServiceNamespace metric label in Istio metrics.
         /// </summary>
         [Input("canonicalServiceNamespace", required: true)]
         public Input<string> CanonicalServiceNamespace { get; set; } = null!;

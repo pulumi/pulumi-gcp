@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.DataPlex.Inputs
     {
         /// <summary>
         /// The fields to exclude from data profile.
-        /// If specified, the fields will be excluded from data profile, regardless of `include_fields` value.
+        /// If specified, the fields will be excluded from data profile, regardless of `IncludeFields` value.
         /// Structure is documented below.
         /// </summary>
         [Input("excludeFields")]
@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.DataPlex.Inputs
 
         /// <summary>
         /// The fields to include in data profile.
-        /// If not specified, all fields at the time of profile scan job execution are included, except for ones listed in `exclude_fields`.
+        /// If not specified, all fields at the time of profile scan job execution are included, except for ones listed in `ExcludeFields`.
         /// Structure is documented below.
         /// </summary>
         [Input("includeFields")]
@@ -44,7 +44,7 @@ namespace Pulumi.Gcp.DataPlex.Inputs
         /// <summary>
         /// The percentage of the records to be selected from the dataset for DataScan.
         /// Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
-        /// Sampling is not applied if `sampling_percent` is not specified, 0 or 100.
+        /// Sampling is not applied if `SamplingPercent` is not specified, 0 or 100.
         /// </summary>
         [Input("samplingPercent")]
         public Input<double>? SamplingPercent { get; set; }

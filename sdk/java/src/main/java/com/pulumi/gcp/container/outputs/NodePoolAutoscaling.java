@@ -29,7 +29,7 @@ public final class NodePoolAutoscaling {
     private @Nullable Integer maxNodeCount;
     /**
      * @return Minimum number of nodes per zone in the NodePool.
-     * Must be &gt;=0 and &lt;= `max_node_count`. Cannot be used with total limits.
+     * Must be &gt;=0 and &lt;= `maxNodeCount`. Cannot be used with total limits.
      * 
      */
     private @Nullable Integer minNodeCount;
@@ -42,7 +42,7 @@ public final class NodePoolAutoscaling {
     private @Nullable Integer totalMaxNodeCount;
     /**
      * @return Total minimum number of nodes in the NodePool.
-     * Must be &gt;=0 and &lt;= `total_max_node_count`. Cannot be used with per zone limits.
+     * Must be &gt;=0 and &lt;= `totalMaxNodeCount`. Cannot be used with per zone limits.
      * Total size limits are supported only in 1.24.1+ clusters.
      * 
      */
@@ -70,7 +70,7 @@ public final class NodePoolAutoscaling {
     }
     /**
      * @return Minimum number of nodes per zone in the NodePool.
-     * Must be &gt;=0 and &lt;= `max_node_count`. Cannot be used with total limits.
+     * Must be &gt;=0 and &lt;= `maxNodeCount`. Cannot be used with total limits.
      * 
      */
     public Optional<Integer> minNodeCount() {
@@ -87,7 +87,7 @@ public final class NodePoolAutoscaling {
     }
     /**
      * @return Total minimum number of nodes in the NodePool.
-     * Must be &gt;=0 and &lt;= `total_max_node_count`. Cannot be used with per zone limits.
+     * Must be &gt;=0 and &lt;= `totalMaxNodeCount`. Cannot be used with per zone limits.
      * Total size limits are supported only in 1.24.1+ clusters.
      * 
      */

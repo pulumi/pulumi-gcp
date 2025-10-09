@@ -100,14 +100,14 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
+     * The Confidential VM config being used by the instance.  onHostMaintenance has to be set to TERMINATE or this will fail to create.
      * 
      */
     @Import(name="confidentialInstanceConfig")
     private @Nullable Output<InstanceFromTemplateConfidentialInstanceConfigArgs> confidentialInstanceConfig;
 
     /**
-     * @return The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
+     * @return The Confidential VM config being used by the instance.  onHostMaintenance has to be set to TERMINATE or this will fail to create.
      * 
      */
     public Optional<Output<InstanceFromTemplateConfidentialInstanceConfigArgs>> confidentialInstanceConfig() {
@@ -494,14 +494,14 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
+     * The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink nor project are provided, the provider project is used.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
+     * @return The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink nor project are provided, the provider project is used.
      * 
      */
     public Optional<Output<String>> project() {
@@ -539,14 +539,14 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
     }
 
     /**
-     * A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
+     * A list of selfLinks of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
      * 
      */
     @Import(name="resourcePolicies")
     private @Nullable Output<String> resourcePolicies;
 
     /**
-     * @return A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
+     * @return A list of selfLinks of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
      * 
      */
     public Optional<Output<String>> resourcePolicies() {
@@ -631,7 +631,7 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
     /**
      * Name or self link of an instance
      * template to create the instance based on. It is recommended to reference
-     * instance templates through their unique id (`self_link_unique` attribute).
+     * instance templates through their unique id (`selfLinkUnique` attribute).
      * 
      * ***
      * 
@@ -642,7 +642,7 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
     /**
      * @return Name or self link of an instance
      * template to create the instance based on. It is recommended to reference
-     * instance templates through their unique id (`self_link_unique` attribute).
+     * instance templates through their unique id (`selfLinkUnique` attribute).
      * 
      * ***
      * 
@@ -877,7 +877,7 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param confidentialInstanceConfig The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
+         * @param confidentialInstanceConfig The Confidential VM config being used by the instance.  onHostMaintenance has to be set to TERMINATE or this will fail to create.
          * 
          * @return builder
          * 
@@ -888,7 +888,7 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param confidentialInstanceConfig The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
+         * @param confidentialInstanceConfig The Confidential VM config being used by the instance.  onHostMaintenance has to be set to TERMINATE or this will fail to create.
          * 
          * @return builder
          * 
@@ -1443,7 +1443,7 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param project The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
+         * @param project The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink nor project are provided, the provider project is used.
          * 
          * @return builder
          * 
@@ -1454,7 +1454,7 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param project The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
+         * @param project The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink nor project are provided, the provider project is used.
          * 
          * @return builder
          * 
@@ -1506,7 +1506,7 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param resourcePolicies A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
+         * @param resourcePolicies A list of selfLinks of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
          * 
          * @return builder
          * 
@@ -1517,7 +1517,7 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param resourcePolicies A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
+         * @param resourcePolicies A list of selfLinks of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
          * 
          * @return builder
          * 
@@ -1644,7 +1644,7 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
         /**
          * @param sourceInstanceTemplate Name or self link of an instance
          * template to create the instance based on. It is recommended to reference
-         * instance templates through their unique id (`self_link_unique` attribute).
+         * instance templates through their unique id (`selfLinkUnique` attribute).
          * 
          * ***
          * 
@@ -1659,7 +1659,7 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
         /**
          * @param sourceInstanceTemplate Name or self link of an instance
          * template to create the instance based on. It is recommended to reference
-         * instance templates through their unique id (`self_link_unique` attribute).
+         * instance templates through their unique id (`selfLinkUnique` attribute).
          * 
          * ***
          * 

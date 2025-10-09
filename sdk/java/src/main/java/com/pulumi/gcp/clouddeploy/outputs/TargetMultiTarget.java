@@ -12,14 +12,14 @@ import java.util.Objects;
 @CustomType
 public final class TargetMultiTarget {
     /**
-     * @return Required. The target_ids of this multiTarget.
+     * @return Required. The targetIds of this multiTarget.
      * 
      */
     private List<String> targetIds;
 
     private TargetMultiTarget() {}
     /**
-     * @return Required. The target_ids of this multiTarget.
+     * @return Required. The targetIds of this multiTarget.
      * 
      */
     public List<String> targetIds() {

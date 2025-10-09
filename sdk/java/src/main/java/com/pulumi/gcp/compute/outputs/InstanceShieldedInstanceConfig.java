@@ -13,19 +13,19 @@ import javax.annotation.Nullable;
 public final class InstanceShieldedInstanceConfig {
     /**
      * @return - Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
-     * **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
+     * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      * 
      */
     private @Nullable Boolean enableIntegrityMonitoring;
     /**
      * @return - Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
-     * **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
+     * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      * 
      */
     private @Nullable Boolean enableSecureBoot;
     /**
      * @return - Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
-     * **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
+     * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      * 
      */
     private @Nullable Boolean enableVtpm;
@@ -33,7 +33,7 @@ public final class InstanceShieldedInstanceConfig {
     private InstanceShieldedInstanceConfig() {}
     /**
      * @return - Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
-     * **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
+     * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      * 
      */
     public Optional<Boolean> enableIntegrityMonitoring() {
@@ -41,7 +41,7 @@ public final class InstanceShieldedInstanceConfig {
     }
     /**
      * @return - Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
-     * **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
+     * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      * 
      */
     public Optional<Boolean> enableSecureBoot() {
@@ -49,7 +49,7 @@ public final class InstanceShieldedInstanceConfig {
     }
     /**
      * @return - Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
-     * **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
+     * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      * 
      */
     public Optional<Boolean> enableVtpm() {

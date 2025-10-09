@@ -21,13 +21,13 @@ public final class ServiceAttachmentConsumerAcceptList {
     private Integer connectionLimit;
     /**
      * @return The network that is allowed to connect to this service attachment.
-     * Only one of project_id_or_num and network_url may be set.
+     * Only one of projectIdOrNum and networkUrl may be set.
      * 
      */
     private @Nullable String networkUrl;
     /**
      * @return A project that is allowed to connect to this service attachment.
-     * Only one of project_id_or_num and network_url may be set.
+     * Only one of projectIdOrNum and networkUrl may be set.
      * 
      */
     private @Nullable String projectIdOrNum;
@@ -43,7 +43,7 @@ public final class ServiceAttachmentConsumerAcceptList {
     }
     /**
      * @return The network that is allowed to connect to this service attachment.
-     * Only one of project_id_or_num and network_url may be set.
+     * Only one of projectIdOrNum and networkUrl may be set.
      * 
      */
     public Optional<String> networkUrl() {
@@ -51,7 +51,7 @@ public final class ServiceAttachmentConsumerAcceptList {
     }
     /**
      * @return A project that is allowed to connect to this service attachment.
-     * Only one of project_id_or_num and network_url may be set.
+     * Only one of projectIdOrNum and networkUrl may be set.
      * 
      */
     public Optional<String> projectIdOrNum() {

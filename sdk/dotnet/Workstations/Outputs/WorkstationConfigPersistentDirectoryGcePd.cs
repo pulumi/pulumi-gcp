@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Workstations.Outputs
         /// </summary>
         public readonly string? DiskType;
         /// <summary>
-        /// Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if `sourceSnapshot` is set. Defaults to `ext4`.
+        /// Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if `sourceSnapshot` is set. Defaults to `Ext4`.
         /// </summary>
         public readonly string? FsType;
         /// <summary>
@@ -34,8 +34,8 @@ namespace Pulumi.Gcp.Workstations.Outputs
         /// <summary>
         /// Name of the snapshot to use as the source for the disk.
         /// Must be empty if `sourceImage` is set.
-        /// Must be empty if `read_only` is false.
-        /// Updating `source_snapshot` will update content in the ephemeral directory after the workstation is restarted.
+        /// Must be empty if `ReadOnly` is false.
+        /// Updating `SourceSnapshot` will update content in the ephemeral directory after the workstation is restarted.
         /// </summary>
         public readonly string? SourceSnapshot;
 

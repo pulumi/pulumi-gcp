@@ -47,7 +47,7 @@ public final class AttachedDiskState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * `name` or `self_link` of the disk that will be attached.
+     * `name` or `selfLink` of the disk that will be attached.
      * 
      * ***
      * 
@@ -56,7 +56,7 @@ public final class AttachedDiskState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> disk;
 
     /**
-     * @return `name` or `self_link` of the disk that will be attached.
+     * @return `name` or `selfLink` of the disk that will be attached.
      * 
      * ***
      * 
@@ -66,8 +66,8 @@ public final class AttachedDiskState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * `name` or `self_link` of the compute instance that the disk will be attached to.
-     * If the `self_link` is provided then `zone` and `project` are extracted from the
+     * `name` or `selfLink` of the compute instance that the disk will be attached to.
+     * If the `selfLink` is provided then `zone` and `project` are extracted from the
      * self link. If only the name is used then `zone` and `project` must be defined
      * as properties on the resource or provider.
      * 
@@ -76,8 +76,8 @@ public final class AttachedDiskState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> instance;
 
     /**
-     * @return `name` or `self_link` of the compute instance that the disk will be attached to.
-     * If the `self_link` is provided then `zone` and `project` are extracted from the
+     * @return `name` or `selfLink` of the compute instance that the disk will be attached to.
+     * If the `selfLink` is provided then `zone` and `project` are extracted from the
      * self link. If only the name is used then `zone` and `project` must be defined
      * as properties on the resource or provider.
      * 
@@ -146,7 +146,7 @@ public final class AttachedDiskState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The project that the referenced compute instance is a part of. If `instance` is referenced by its
-     * `self_link` the project defined in the link will take precedence.
+     * `selfLink` the project defined in the link will take precedence.
      * 
      */
     @Import(name="project")
@@ -154,7 +154,7 @@ public final class AttachedDiskState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The project that the referenced compute instance is a part of. If `instance` is referenced by its
-     * `self_link` the project defined in the link will take precedence.
+     * `selfLink` the project defined in the link will take precedence.
      * 
      */
     public Optional<Output<String>> project() {
@@ -163,7 +163,7 @@ public final class AttachedDiskState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The zone that the referenced compute instance is located within. If `instance` is referenced by its
-     * `self_link` the zone defined in the link will take precedence.
+     * `selfLink` the zone defined in the link will take precedence.
      * 
      */
     @Import(name="zone")
@@ -171,7 +171,7 @@ public final class AttachedDiskState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The zone that the referenced compute instance is located within. If `instance` is referenced by its
-     * `self_link` the zone defined in the link will take precedence.
+     * `selfLink` the zone defined in the link will take precedence.
      * 
      */
     public Optional<Output<String>> zone() {
@@ -246,7 +246,7 @@ public final class AttachedDiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disk `name` or `self_link` of the disk that will be attached.
+         * @param disk `name` or `selfLink` of the disk that will be attached.
          * 
          * ***
          * 
@@ -259,7 +259,7 @@ public final class AttachedDiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disk `name` or `self_link` of the disk that will be attached.
+         * @param disk `name` or `selfLink` of the disk that will be attached.
          * 
          * ***
          * 
@@ -271,8 +271,8 @@ public final class AttachedDiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instance `name` or `self_link` of the compute instance that the disk will be attached to.
-         * If the `self_link` is provided then `zone` and `project` are extracted from the
+         * @param instance `name` or `selfLink` of the compute instance that the disk will be attached to.
+         * If the `selfLink` is provided then `zone` and `project` are extracted from the
          * self link. If only the name is used then `zone` and `project` must be defined
          * as properties on the resource or provider.
          * 
@@ -285,8 +285,8 @@ public final class AttachedDiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instance `name` or `self_link` of the compute instance that the disk will be attached to.
-         * If the `self_link` is provided then `zone` and `project` are extracted from the
+         * @param instance `name` or `selfLink` of the compute instance that the disk will be attached to.
+         * If the `selfLink` is provided then `zone` and `project` are extracted from the
          * self link. If only the name is used then `zone` and `project` must be defined
          * as properties on the resource or provider.
          * 
@@ -369,7 +369,7 @@ public final class AttachedDiskState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param project The project that the referenced compute instance is a part of. If `instance` is referenced by its
-         * `self_link` the project defined in the link will take precedence.
+         * `selfLink` the project defined in the link will take precedence.
          * 
          * @return builder
          * 
@@ -381,7 +381,7 @@ public final class AttachedDiskState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param project The project that the referenced compute instance is a part of. If `instance` is referenced by its
-         * `self_link` the project defined in the link will take precedence.
+         * `selfLink` the project defined in the link will take precedence.
          * 
          * @return builder
          * 
@@ -392,7 +392,7 @@ public final class AttachedDiskState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param zone The zone that the referenced compute instance is located within. If `instance` is referenced by its
-         * `self_link` the zone defined in the link will take precedence.
+         * `selfLink` the zone defined in the link will take precedence.
          * 
          * @return builder
          * 
@@ -404,7 +404,7 @@ public final class AttachedDiskState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param zone The zone that the referenced compute instance is located within. If `instance` is referenced by its
-         * `self_link` the zone defined in the link will take precedence.
+         * `selfLink` the zone defined in the link will take precedence.
          * 
          * @return builder
          * 

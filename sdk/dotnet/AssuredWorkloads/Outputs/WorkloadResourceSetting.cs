@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.AssuredWorkloads.Outputs
         /// </summary>
         public readonly string? DisplayName;
         /// <summary>
-        /// Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as folder_id is assigned by Google.
+        /// Resource identifier. For a project this represents projectId. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as FolderId is assigned by Google.
         /// </summary>
         public readonly string? ResourceId;
         /// <summary>

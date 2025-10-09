@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         /// Structure is documented below.
         /// 
         /// 
-        /// &lt;a name="nested_synthetic_monitor_cloud_function_v2"&gt;&lt;/a&gt;The `cloud_function_v2` block supports:
+        /// &lt;a name="NestedSyntheticMonitorCloudFunctionV2"&gt;&lt;/a&gt;The `CloudFunctionV2` block supports:
         /// </summary>
         [Input("cloudFunctionV2", required: true)]
         public Input<Inputs.UptimeCheckConfigSyntheticMonitorCloudFunctionV2GetArgs> CloudFunctionV2 { get; set; } = null!;

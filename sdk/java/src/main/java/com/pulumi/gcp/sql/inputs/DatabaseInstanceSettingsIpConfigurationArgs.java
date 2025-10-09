@@ -42,14 +42,14 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
     }
 
     /**
-     * The custom subject alternative names for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
+     * The custom subject alternative names for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `serverCaMode`.
      * 
      */
     @Import(name="customSubjectAlternativeNames")
     private @Nullable Output<List<String>> customSubjectAlternativeNames;
 
     /**
-     * @return The custom subject alternative names for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
+     * @return The custom subject alternative names for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `serverCaMode`.
      * 
      */
     public Optional<Output<List<String>>> customSubjectAlternativeNames() {
@@ -73,8 +73,8 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
 
     /**
      * Whether this Cloud SQL instance should be assigned
-     * a public IPV4 address. At least `ipv4_enabled` must be enabled or a
-     * `private_network` must be configured.
+     * a public IPV4 address. At least `ipv4Enabled` must be enabled or a
+     * `privateNetwork` must be configured.
      * 
      */
     @Import(name="ipv4Enabled")
@@ -82,8 +82,8 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
 
     /**
      * @return Whether this Cloud SQL instance should be assigned
-     * a public IPV4 address. At least `ipv4_enabled` must be enabled or a
-     * `private_network` must be configured.
+     * a public IPV4 address. At least `ipv4Enabled` must be enabled or a
+     * `privateNetwork` must be configured.
      * 
      */
     public Optional<Output<Boolean>> ipv4Enabled() {
@@ -94,7 +94,7 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
      * The VPC network from which the Cloud SQL
      * instance is accessible for private IP. For example, projects/myProject/global/networks/default.
      * Specifying a network enables private IP.
-     * At least `ipv4_enabled` must be enabled or a `private_network` must be configured.
+     * At least `ipv4Enabled` must be enabled or a `privateNetwork` must be configured.
      * This setting can be updated, but it cannot be removed after it is set.
      * 
      */
@@ -105,7 +105,7 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
      * @return The VPC network from which the Cloud SQL
      * instance is accessible for private IP. For example, projects/myProject/global/networks/default.
      * Specifying a network enables private IP.
-     * At least `ipv4_enabled` must be enabled or a `private_network` must be configured.
+     * At least `ipv4Enabled` must be enabled or a `privateNetwork` must be configured.
      * This setting can be updated, but it cannot be removed after it is set.
      * 
      */
@@ -144,14 +144,14 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
     }
 
     /**
-     * The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
+     * The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `serverCaMode`.
      * 
      */
     @Import(name="serverCaPool")
     private @Nullable Output<String> serverCaPool;
 
     /**
-     * @return The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
+     * @return The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `serverCaMode`.
      * 
      */
     public Optional<Output<String>> serverCaPool() {
@@ -241,7 +241,7 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
         }
 
         /**
-         * @param customSubjectAlternativeNames The custom subject alternative names for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
+         * @param customSubjectAlternativeNames The custom subject alternative names for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `serverCaMode`.
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
         }
 
         /**
-         * @param customSubjectAlternativeNames The custom subject alternative names for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
+         * @param customSubjectAlternativeNames The custom subject alternative names for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `serverCaMode`.
          * 
          * @return builder
          * 
@@ -262,7 +262,7 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
         }
 
         /**
-         * @param customSubjectAlternativeNames The custom subject alternative names for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
+         * @param customSubjectAlternativeNames The custom subject alternative names for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `serverCaMode`.
          * 
          * @return builder
          * 
@@ -294,8 +294,8 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
 
         /**
          * @param ipv4Enabled Whether this Cloud SQL instance should be assigned
-         * a public IPV4 address. At least `ipv4_enabled` must be enabled or a
-         * `private_network` must be configured.
+         * a public IPV4 address. At least `ipv4Enabled` must be enabled or a
+         * `privateNetwork` must be configured.
          * 
          * @return builder
          * 
@@ -307,8 +307,8 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
 
         /**
          * @param ipv4Enabled Whether this Cloud SQL instance should be assigned
-         * a public IPV4 address. At least `ipv4_enabled` must be enabled or a
-         * `private_network` must be configured.
+         * a public IPV4 address. At least `ipv4Enabled` must be enabled or a
+         * `privateNetwork` must be configured.
          * 
          * @return builder
          * 
@@ -321,7 +321,7 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
          * @param privateNetwork The VPC network from which the Cloud SQL
          * instance is accessible for private IP. For example, projects/myProject/global/networks/default.
          * Specifying a network enables private IP.
-         * At least `ipv4_enabled` must be enabled or a `private_network` must be configured.
+         * At least `ipv4Enabled` must be enabled or a `privateNetwork` must be configured.
          * This setting can be updated, but it cannot be removed after it is set.
          * 
          * @return builder
@@ -336,7 +336,7 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
          * @param privateNetwork The VPC network from which the Cloud SQL
          * instance is accessible for private IP. For example, projects/myProject/global/networks/default.
          * Specifying a network enables private IP.
-         * At least `ipv4_enabled` must be enabled or a `private_network` must be configured.
+         * At least `ipv4Enabled` must be enabled or a `privateNetwork` must be configured.
          * This setting can be updated, but it cannot be removed after it is set.
          * 
          * @return builder
@@ -399,7 +399,7 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
         }
 
         /**
-         * @param serverCaPool The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
+         * @param serverCaPool The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `serverCaMode`.
          * 
          * @return builder
          * 
@@ -410,7 +410,7 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
         }
 
         /**
-         * @param serverCaPool The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
+         * @param serverCaPool The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `serverCaMode`.
          * 
          * @return builder
          * 

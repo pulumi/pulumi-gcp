@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.PubSub.Outputs
     public sealed class TopicMessageTransformJavascriptUdf
     {
         /// <summary>
-        /// JavaScript code that contains a function `function_name` with the
+        /// JavaScript code that contains a function `FunctionName` with the
         /// following signature:
         /// ```
         /// /**

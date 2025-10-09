@@ -19,13 +19,13 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<string>? Membership { get; set; }
 
         /// <summary>
-        /// The short name of the fleet membership, extracted from `fleet.0.membership`. You can use this field to configure `membership_id` under google_gkehub_feature_membership.
+        /// The short name of the fleet membership, extracted from `fleet.0.membership`. You can use this field to configure `MembershipId` under google_gkehub_feature_membership.
         /// </summary>
         [Input("membershipId")]
         public Input<string>? MembershipId { get; set; }
 
         /// <summary>
-        /// The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `membership_location` under google_gkehub_feature_membership.
+        /// The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `MembershipLocation` under google_gkehub_feature_membership.
         /// </summary>
         [Input("membershipLocation")]
         public Input<string>? MembershipLocation { get; set; }

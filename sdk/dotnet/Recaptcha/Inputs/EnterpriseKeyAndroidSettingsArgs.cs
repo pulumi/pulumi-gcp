@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Recaptcha.Inputs
     public sealed class EnterpriseKeyAndroidSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If set to true, it means allowed_package_names will not be enforced.
+        /// If set to true, it means AllowedPackageNames will not be enforced.
         /// </summary>
         [Input("allowAllPackageNames")]
         public Input<bool>? AllowAllPackageNames { get; set; }

@@ -12,7 +12,7 @@ namespace Pulumi.Gcp.Storage
     /// <summary>
     /// Authoritatively manages the access control list (ACL) for an object in a Google
     /// Cloud Storage (GCS) bucket. Removing a `gcp.storage.ObjectACL` sets the
-    /// acl to the `private` [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl).
+    /// acl to the `Private` [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl).
     /// 
     /// For more information see
     /// [the official documentation](https://cloud.google.com/storage/docs/access-control/lists)
@@ -83,14 +83,14 @@ namespace Pulumi.Gcp.Storage
         public Output<string> Object { get; private set; } = null!;
 
         /// <summary>
-        /// The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
+        /// The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `RoleEntity` is not.
         /// </summary>
         [Output("predefinedAcl")]
         public Output<string?> PredefinedAcl { get; private set; } = null!;
 
         /// <summary>
         /// List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-        /// Must be set if `predefined_acl` is not.
+        /// Must be set if `PredefinedAcl` is not.
         /// </summary>
         [Output("roleEntities")]
         public Output<ImmutableArray<string>> RoleEntities { get; private set; } = null!;
@@ -156,7 +156,7 @@ namespace Pulumi.Gcp.Storage
         public Input<string> Object { get; set; } = null!;
 
         /// <summary>
-        /// The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
+        /// The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `RoleEntity` is not.
         /// </summary>
         [Input("predefinedAcl")]
         public Input<string>? PredefinedAcl { get; set; }
@@ -166,7 +166,7 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-        /// Must be set if `predefined_acl` is not.
+        /// Must be set if `PredefinedAcl` is not.
         /// </summary>
         public InputList<string> RoleEntities
         {
@@ -197,7 +197,7 @@ namespace Pulumi.Gcp.Storage
         public Input<string>? Object { get; set; }
 
         /// <summary>
-        /// The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
+        /// The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `RoleEntity` is not.
         /// </summary>
         [Input("predefinedAcl")]
         public Input<string>? PredefinedAcl { get; set; }
@@ -207,7 +207,7 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-        /// Must be set if `predefined_acl` is not.
+        /// Must be set if `PredefinedAcl` is not.
         /// </summary>
         public InputList<string> RoleEntities
         {

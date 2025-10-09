@@ -26,6 +26,8 @@ import (
 //
 // > **Note:** `networksecurity.AddressGroupIamBinding` resources **can be** used in conjunction with `networksecurity.AddressGroupIamMember` resources **only if** they do not grant privilege to the same role.
 //
+// ## networksecurity.AddressGroupIamPolicy
+//
 // ## Import
 //
 // For all import syntaxes, the "resource in question" can take any of the following forms:

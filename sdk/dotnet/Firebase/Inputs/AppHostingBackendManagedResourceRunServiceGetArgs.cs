@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Firebase.Inputs
         /// <summary>
         /// (Output)
         /// The name of the Cloud Run
-        /// [`service`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-service),
+        /// [`Service`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-service),
         /// in the format:
         /// projects/{project}/locations/{location}/services/{serviceId}
         /// </summary>

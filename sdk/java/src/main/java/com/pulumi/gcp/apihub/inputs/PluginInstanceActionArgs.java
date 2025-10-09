@@ -21,7 +21,7 @@ public final class PluginInstanceActionArgs extends com.pulumi.resources.Resourc
 
     /**
      * This should map to one of the action id specified
-     * in actions_config in the plugin.
+     * in actionsConfig in the plugin.
      * 
      */
     @Import(name="actionId", required=true)
@@ -29,7 +29,7 @@ public final class PluginInstanceActionArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return This should map to one of the action id specified
-     * in actions_config in the plugin.
+     * in actionsConfig in the plugin.
      * 
      */
     public Output<String> actionId() {
@@ -93,7 +93,7 @@ public final class PluginInstanceActionArgs extends com.pulumi.resources.Resourc
      * The time zone for the schedule cron expression. If not provided, UTC will
      * be used.
      * 
-     * &lt;a name=&#34;nested_actions_actions_hub_instance_action&#34;&gt;&lt;/a&gt;The `hub_instance_action` block contains:
+     * &lt;a name=&#34;nestedActionsActionsHubInstanceAction&#34;&gt;&lt;/a&gt;The `hubInstanceAction` block contains:
      * 
      */
     @Import(name="scheduleTimeZone")
@@ -103,7 +103,7 @@ public final class PluginInstanceActionArgs extends com.pulumi.resources.Resourc
      * @return The time zone for the schedule cron expression. If not provided, UTC will
      * be used.
      * 
-     * &lt;a name=&#34;nested_actions_actions_hub_instance_action&#34;&gt;&lt;/a&gt;The `hub_instance_action` block contains:
+     * &lt;a name=&#34;nestedActionsActionsHubInstanceAction&#34;&gt;&lt;/a&gt;The `hubInstanceAction` block contains:
      * 
      */
     public Optional<Output<String>> scheduleTimeZone() {
@@ -172,7 +172,7 @@ public final class PluginInstanceActionArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param actionId This should map to one of the action id specified
-         * in actions_config in the plugin.
+         * in actionsConfig in the plugin.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class PluginInstanceActionArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param actionId This should map to one of the action id specified
-         * in actions_config in the plugin.
+         * in actionsConfig in the plugin.
          * 
          * @return builder
          * 
@@ -280,7 +280,7 @@ public final class PluginInstanceActionArgs extends com.pulumi.resources.Resourc
          * @param scheduleTimeZone The time zone for the schedule cron expression. If not provided, UTC will
          * be used.
          * 
-         * &lt;a name=&#34;nested_actions_actions_hub_instance_action&#34;&gt;&lt;/a&gt;The `hub_instance_action` block contains:
+         * &lt;a name=&#34;nestedActionsActionsHubInstanceAction&#34;&gt;&lt;/a&gt;The `hubInstanceAction` block contains:
          * 
          * @return builder
          * 
@@ -294,7 +294,7 @@ public final class PluginInstanceActionArgs extends com.pulumi.resources.Resourc
          * @param scheduleTimeZone The time zone for the schedule cron expression. If not provided, UTC will
          * be used.
          * 
-         * &lt;a name=&#34;nested_actions_actions_hub_instance_action&#34;&gt;&lt;/a&gt;The `hub_instance_action` block contains:
+         * &lt;a name=&#34;nestedActionsActionsHubInstanceAction&#34;&gt;&lt;/a&gt;The `hubInstanceAction` block contains:
          * 
          * @return builder
          * 

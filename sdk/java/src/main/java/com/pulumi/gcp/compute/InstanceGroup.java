@@ -152,7 +152,7 @@ public class InstanceGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The list of instances in the group, in `self_link` format.
+     * The list of instances in the group, in `selfLink` format.
      * When adding instances they must all be in the same network and zone as the instance group.
      * 
      */
@@ -160,7 +160,7 @@ public class InstanceGroup extends com.pulumi.resources.CustomResource {
     private Output<List<String>> instances;
 
     /**
-     * @return The list of instances in the group, in `self_link` format.
+     * @return The list of instances in the group, in `selfLink` format.
      * When adding instances they must all be in the same network and zone as the instance group.
      * 
      */

@@ -116,7 +116,7 @@ public final class AutonomousDatabaseArgs extends com.pulumi.resources.ResourceA
     /**
      * The labels or tags associated with the Autonomous Database.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -125,7 +125,7 @@ public final class AutonomousDatabaseArgs extends com.pulumi.resources.ResourceA
     /**
      * @return The labels or tags associated with the Autonomous Database.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -169,7 +169,7 @@ public final class AutonomousDatabaseArgs extends com.pulumi.resources.ResourceA
      * Format:
      * projects/{project}/locations/{location}/odbNetworks/{odb_network}
      * It is optional but if specified, this should match the parent ODBNetwork of
-     * the odb_subnet and backup_odb_subnet.
+     * the odbSubnet and backup_odb_subnet.
      * 
      */
     @Import(name="odbNetwork")
@@ -180,7 +180,7 @@ public final class AutonomousDatabaseArgs extends com.pulumi.resources.ResourceA
      * Format:
      * projects/{project}/locations/{location}/odbNetworks/{odb_network}
      * It is optional but if specified, this should match the parent ODBNetwork of
-     * the odb_subnet and backup_odb_subnet.
+     * the odbSubnet and backup_odb_subnet.
      * 
      */
     public Optional<Output<String>> odbNetwork() {
@@ -405,7 +405,7 @@ public final class AutonomousDatabaseArgs extends com.pulumi.resources.ResourceA
         /**
          * @param labels The labels or tags associated with the Autonomous Database.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -418,7 +418,7 @@ public final class AutonomousDatabaseArgs extends com.pulumi.resources.ResourceA
         /**
          * @param labels The labels or tags associated with the Autonomous Database.
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -476,7 +476,7 @@ public final class AutonomousDatabaseArgs extends com.pulumi.resources.ResourceA
          * Format:
          * projects/{project}/locations/{location}/odbNetworks/{odb_network}
          * It is optional but if specified, this should match the parent ODBNetwork of
-         * the odb_subnet and backup_odb_subnet.
+         * the odbSubnet and backup_odb_subnet.
          * 
          * @return builder
          * 
@@ -491,7 +491,7 @@ public final class AutonomousDatabaseArgs extends com.pulumi.resources.ResourceA
          * Format:
          * projects/{project}/locations/{location}/odbNetworks/{odb_network}
          * It is optional but if specified, this should match the parent ODBNetwork of
-         * the odb_subnet and backup_odb_subnet.
+         * the odbSubnet and backup_odb_subnet.
          * 
          * @return builder
          * 

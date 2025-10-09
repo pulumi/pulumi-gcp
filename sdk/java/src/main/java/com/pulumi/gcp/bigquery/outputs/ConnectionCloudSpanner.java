@@ -30,7 +30,7 @@ public final class ConnectionCloudSpanner {
      */
     private @Nullable Integer maxParallelism;
     /**
-     * @return If set, the request will be executed via Spanner independent compute resources. `use_parallelism` must be set when using data boost.
+     * @return If set, the request will be executed via Spanner independent compute resources. `useParallelism` must be set when using data boost.
      * 
      */
     private @Nullable Boolean useDataBoost;
@@ -75,7 +75,7 @@ public final class ConnectionCloudSpanner {
         return Optional.ofNullable(this.maxParallelism);
     }
     /**
-     * @return If set, the request will be executed via Spanner independent compute resources. `use_parallelism` must be set when using data boost.
+     * @return If set, the request will be executed via Spanner independent compute resources. `useParallelism` must be set when using data boost.
      * 
      */
     public Optional<Boolean> useDataBoost() {

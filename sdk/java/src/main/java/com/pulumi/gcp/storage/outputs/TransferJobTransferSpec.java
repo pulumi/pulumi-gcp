@@ -58,7 +58,7 @@ public final class TransferJobTransferSpec {
      */
     private @Nullable TransferJobTransferSpecHttpDataSource httpDataSource;
     /**
-     * @return Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects&#39; `last_modification_time` do not exclude objects in a data sink. Structure documented below.
+     * @return Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects&#39; `lastModificationTime` do not exclude objects in a data sink. Structure documented below.
      * 
      */
     private @Nullable TransferJobTransferSpecObjectConditions objectConditions;
@@ -83,7 +83,7 @@ public final class TransferJobTransferSpec {
      */
     private @Nullable String sourceAgentPoolName;
     /**
-     * @return Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects&#39; `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
+     * @return Characteristics of how to treat files from datasource and sink during job. If the option `deleteObjectsUniqueInSink` is true, object conditions based on objects&#39; `lastModificationTime` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
      * 
      */
     private @Nullable TransferJobTransferSpecTransferOptions transferOptions;
@@ -139,7 +139,7 @@ public final class TransferJobTransferSpec {
         return Optional.ofNullable(this.httpDataSource);
     }
     /**
-     * @return Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects&#39; `last_modification_time` do not exclude objects in a data sink. Structure documented below.
+     * @return Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects&#39; `lastModificationTime` do not exclude objects in a data sink. Structure documented below.
      * 
      */
     public Optional<TransferJobTransferSpecObjectConditions> objectConditions() {
@@ -174,7 +174,7 @@ public final class TransferJobTransferSpec {
         return Optional.ofNullable(this.sourceAgentPoolName);
     }
     /**
-     * @return Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects&#39; `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
+     * @return Characteristics of how to treat files from datasource and sink during job. If the option `deleteObjectsUniqueInSink` is true, object conditions based on objects&#39; `lastModificationTime` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
      * 
      */
     public Optional<TransferJobTransferSpecTransferOptions> transferOptions() {

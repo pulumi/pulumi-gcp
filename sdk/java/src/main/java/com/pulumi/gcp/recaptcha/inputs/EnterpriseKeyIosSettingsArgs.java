@@ -18,14 +18,14 @@ public final class EnterpriseKeyIosSettingsArgs extends com.pulumi.resources.Res
     public static final EnterpriseKeyIosSettingsArgs Empty = new EnterpriseKeyIosSettingsArgs();
 
     /**
-     * If set to true, it means allowed_bundle_ids will not be enforced.
+     * If set to true, it means allowedBundleIds will not be enforced.
      * 
      */
     @Import(name="allowAllBundleIds")
     private @Nullable Output<Boolean> allowAllBundleIds;
 
     /**
-     * @return If set to true, it means allowed_bundle_ids will not be enforced.
+     * @return If set to true, it means allowedBundleIds will not be enforced.
      * 
      */
     public Optional<Output<Boolean>> allowAllBundleIds() {
@@ -73,7 +73,7 @@ public final class EnterpriseKeyIosSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param allowAllBundleIds If set to true, it means allowed_bundle_ids will not be enforced.
+         * @param allowAllBundleIds If set to true, it means allowedBundleIds will not be enforced.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class EnterpriseKeyIosSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param allowAllBundleIds If set to true, it means allowed_bundle_ids will not be enforced.
+         * @param allowAllBundleIds If set to true, it means allowedBundleIds will not be enforced.
          * 
          * @return builder
          * 

@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class AttachedClusterOidcConfig
     {
         /// <summary>
-        /// A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://`
+        /// A JSON Web Token (JWT) issuer URI. `Issuer` must start with `https://`
         /// </summary>
         public readonly string IssuerUrl;
         /// <summary>

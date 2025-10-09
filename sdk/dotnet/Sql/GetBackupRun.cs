@@ -92,7 +92,7 @@ namespace Pulumi.Gcp.Sql
     {
         /// <summary>
         /// The identifier for this backup run. Unique only for a specific Cloud SQL instance.
-        /// If left empty and multiple backups exist for the instance, `most_recent` must be set to `true`.
+        /// If left empty and multiple backups exist for the instance, `MostRecent` must be set to `True`.
         /// </summary>
         [Input("backupId")]
         public int? BackupId { get; set; }
@@ -127,7 +127,7 @@ namespace Pulumi.Gcp.Sql
     {
         /// <summary>
         /// The identifier for this backup run. Unique only for a specific Cloud SQL instance.
-        /// If left empty and multiple backups exist for the instance, `most_recent` must be set to `true`.
+        /// If left empty and multiple backups exist for the instance, `MostRecent` must be set to `True`.
         /// </summary>
         [Input("backupId")]
         public Input<int>? BackupId { get; set; }

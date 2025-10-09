@@ -104,13 +104,13 @@ public class GeminiGcpEnablementSetting extends com.pulumi.resources.CustomResou
      * (Optional, Deprecated)
      * Whether web grounding should be disabled.
      * 
-     * &gt; **Warning:** `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
+     * &gt; **Warning:** `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
      * 
      * @deprecated
-     * `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
+     * `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
      * 
      */
-    @Deprecated /* `disable_web_grounding` is deprecated. Use `web_grounding_type` instead. */
+    @Deprecated /* `disableWebGrounding` is deprecated. Use `webGroundingType` instead. */
     @Export(name="disableWebGrounding", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disableWebGrounding;
 
@@ -118,7 +118,7 @@ public class GeminiGcpEnablementSetting extends com.pulumi.resources.CustomResou
      * @return (Optional, Deprecated)
      * Whether web grounding should be disabled.
      * 
-     * &gt; **Warning:** `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
+     * &gt; **Warning:** `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
      * 
      */
     public Output<Optional<Boolean>> disableWebGrounding() {
@@ -169,7 +169,7 @@ public class GeminiGcpEnablementSetting extends com.pulumi.resources.CustomResou
     /**
      * Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -178,7 +178,7 @@ public class GeminiGcpEnablementSetting extends com.pulumi.resources.CustomResou
     /**
      * @return Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {

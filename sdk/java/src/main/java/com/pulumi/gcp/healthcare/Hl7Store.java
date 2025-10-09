@@ -318,7 +318,7 @@ public class Hl7Store extends com.pulumi.resources.CustomResource {
      * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -335,7 +335,7 @@ public class Hl7Store extends com.pulumi.resources.CustomResource {
      * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -362,13 +362,13 @@ public class Hl7Store extends com.pulumi.resources.CustomResource {
      * A nested object resource.
      * Structure is documented below.
      * 
-     * &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
+     * &gt; **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
      * 
      * @deprecated
-     * `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
+     * `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
      * 
      */
-    @Deprecated /* `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead. */
+    @Deprecated /* `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead. */
     @Export(name="notificationConfig", refs={Hl7StoreNotificationConfig.class}, tree="[0]")
     private Output</* @Nullable */ Hl7StoreNotificationConfig> notificationConfig;
 
@@ -377,7 +377,7 @@ public class Hl7Store extends com.pulumi.resources.CustomResource {
      * A nested object resource.
      * Structure is documented below.
      * 
-     * &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
+     * &gt; **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
      * 
      */
     public Output<Optional<Hl7StoreNotificationConfig>> notificationConfig() {

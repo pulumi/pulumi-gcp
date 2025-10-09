@@ -98,7 +98,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     {
         /// <summary>
         /// The name of the repository's location. In addition to specific regions,
-        /// special values for multi-region locations are `asia`, `europe`, and `us`.
+        /// special values for multi-region locations are `Asia`, `Europe`, and `Us`.
         /// See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
         /// or use the
         /// gcp.artifactregistry.getLocations
@@ -132,7 +132,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     {
         /// <summary>
         /// The name of the repository's location. In addition to specific regions,
-        /// special values for multi-region locations are `asia`, `europe`, and `us`.
+        /// special values for multi-region locations are `Asia`, `Europe`, and `Us`.
         /// See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
         /// or use the
         /// gcp.artifactregistry.getLocations

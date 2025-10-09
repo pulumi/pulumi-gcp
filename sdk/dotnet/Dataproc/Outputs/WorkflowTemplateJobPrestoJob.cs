@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly ImmutableArray<string> ClientTags;
         /// <summary>
-        /// Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+        /// Whether to continue executing queries if a query fails. The default value is `False`. Setting to `True` can be useful when executing independent parallel queries.
         /// </summary>
         public readonly bool? ContinueOnFailure;
         /// <summary>

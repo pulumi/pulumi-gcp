@@ -17,7 +17,7 @@ public final class GetNetblockIPRangesPlainArgs extends com.pulumi.resources.Inv
     /**
      * The type of range for which to provide results.
      * 
-     * Defaults to `cloud-netblocks`. The following `range_type`s are supported:
+     * Defaults to `cloud-netblocks`. The following `rangeType`s are supported:
      * 
      * * `cloud-netblocks` - Corresponds to the IP addresses used for resources on Google Cloud Platform. [More details.](https://cloud.google.com/compute/docs/faq#where_can_i_find_product_name_short_ip_ranges)
      * 
@@ -46,7 +46,7 @@ public final class GetNetblockIPRangesPlainArgs extends com.pulumi.resources.Inv
     /**
      * @return The type of range for which to provide results.
      * 
-     * Defaults to `cloud-netblocks`. The following `range_type`s are supported:
+     * Defaults to `cloud-netblocks`. The following `rangeType`s are supported:
      * 
      * * `cloud-netblocks` - Corresponds to the IP addresses used for resources on Google Cloud Platform. [More details.](https://cloud.google.com/compute/docs/faq#where_can_i_find_product_name_short_ip_ranges)
      * 
@@ -100,7 +100,7 @@ public final class GetNetblockIPRangesPlainArgs extends com.pulumi.resources.Inv
         /**
          * @param rangeType The type of range for which to provide results.
          * 
-         * Defaults to `cloud-netblocks`. The following `range_type`s are supported:
+         * Defaults to `cloud-netblocks`. The following `rangeType`s are supported:
          * 
          * * `cloud-netblocks` - Corresponds to the IP addresses used for resources on Google Cloud Platform. [More details.](https://cloud.google.com/compute/docs/faq#where_can_i_find_product_name_short_ip_ranges)
          * 

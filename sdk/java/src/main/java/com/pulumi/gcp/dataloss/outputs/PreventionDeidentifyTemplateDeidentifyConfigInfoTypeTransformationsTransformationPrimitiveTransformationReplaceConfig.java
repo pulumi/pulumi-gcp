@@ -12,7 +12,7 @@ import java.util.Objects;
 public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig {
     /**
      * @return Replace each input value with a given value.
-     * The `new_value` block must only contain one argument. For example when replacing the contents of a string-type field, only `string_value` should be set.
+     * The `newValue` block must only contain one argument. For example when replacing the contents of a string-type field, only `stringValue` should be set.
      * Structure is documented below.
      * 
      */
@@ -21,7 +21,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
     private PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig() {}
     /**
      * @return Replace each input value with a given value.
-     * The `new_value` block must only contain one argument. For example when replacing the contents of a string-type field, only `string_value` should be set.
+     * The `newValue` block must only contain one argument. For example when replacing the contents of a string-type field, only `stringValue` should be set.
      * Structure is documented below.
      * 
      */

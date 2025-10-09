@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
     public sealed class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Common alphabets. Only one of this, `custom_alphabet` or `radix` must be specified.
+        /// Common alphabets. Only one of this, `CustomAlphabet` or `Radix` must be specified.
         /// Possible values are: `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
         /// </summary>
         [Input("commonAlphabet")]
@@ -43,13 +43,13 @@ namespace Pulumi.Gcp.DataLoss.Inputs
 
         /// <summary>
         /// This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \[2, 95\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
-        /// ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&amp;*()_-+={[}]|:;"'&lt;,&gt;.?/``. Only one of this, `common_alphabet` or `radix` must be specified.
+        /// ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&amp;*()_-+={[}]|:;"'&lt;,&gt;.?/``. Only one of this, `CommonAlphabet` or `Radix` must be specified.
         /// </summary>
         [Input("customAlphabet")]
         public Input<string>? CustomAlphabet { get; set; }
 
         /// <summary>
-        /// The native way to select the alphabet. Must be in the range \[2, 95\]. Only one of this, `custom_alphabet` or `common_alphabet` must be specified.
+        /// The native way to select the alphabet. Must be in the range \[2, 95\]. Only one of this, `CustomAlphabet` or `CommonAlphabet` must be specified.
         /// </summary>
         [Input("radix")]
         public Input<int>? Radix { get; set; }

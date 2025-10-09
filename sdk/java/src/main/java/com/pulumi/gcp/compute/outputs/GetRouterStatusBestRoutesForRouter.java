@@ -91,7 +91,7 @@ public final class GetRouterStatusBestRoutesForRouter {
      */
     private String nextHopInstance;
     /**
-     * @return The zone of the instance specified in next_hop_instance. Omit if next_hop_instance is specified as a URL.
+     * @return The zone of the instance specified in next_hop_instance. Omit if nextHopInstance is specified as a URL.
      * 
      */
     private String nextHopInstanceZone;
@@ -277,7 +277,7 @@ public final class GetRouterStatusBestRoutesForRouter {
         return this.nextHopInstance;
     }
     /**
-     * @return The zone of the instance specified in next_hop_instance. Omit if next_hop_instance is specified as a URL.
+     * @return The zone of the instance specified in next_hop_instance. Omit if nextHopInstance is specified as a URL.
      * 
      */
     public String nextHopInstanceZone() {

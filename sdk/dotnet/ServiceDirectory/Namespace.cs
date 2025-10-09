@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.ServiceDirectory
 {
     /// <summary>
-    /// A container for `services`. Namespaces allow administrators to group services
+    /// A container for `Services`. Namespaces allow administrators to group services
     /// together and define permissions for a collection of services.
     /// 
     /// To get more information about Namespace, see:
@@ -84,7 +84,7 @@ namespace Pulumi.Gcp.ServiceDirectory
         /// be no longer than 63 characters.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -185,7 +185,7 @@ namespace Pulumi.Gcp.ServiceDirectory
         /// be no longer than 63 characters.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -248,7 +248,7 @@ namespace Pulumi.Gcp.ServiceDirectory
         /// be no longer than 63 characters.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {

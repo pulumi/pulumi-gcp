@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// The email address used by Oracle to send notifications regarding databases
         /// and infrastructure.
         /// 
-        /// &lt;a name="nested_properties_apex_details"&gt;&lt;/a&gt;The `apex_details` block contains:
+        /// &lt;a name="NestedPropertiesApexDetails"&gt;&lt;/a&gt;The `ApexDetails` block contains:
         /// </summary>
         public readonly string Email;
 

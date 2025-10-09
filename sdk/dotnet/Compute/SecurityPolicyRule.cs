@@ -267,7 +267,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+        /// Must be specified if the action is "RateBasedBan" or "throttle". Cannot be specified for any other actions.
         /// Structure is documented below.
         /// </summary>
         [Output("rateLimitOptions")]
@@ -394,7 +394,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+        /// Must be specified if the action is "RateBasedBan" or "throttle". Cannot be specified for any other actions.
         /// Structure is documented below.
         /// </summary>
         [Input("rateLimitOptions")]
@@ -483,7 +483,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+        /// Must be specified if the action is "RateBasedBan" or "throttle". Cannot be specified for any other actions.
         /// Structure is documented below.
         /// </summary>
         [Input("rateLimitOptions")]

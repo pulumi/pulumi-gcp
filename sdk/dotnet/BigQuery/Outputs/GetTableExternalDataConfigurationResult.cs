@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// </summary>
         public readonly bool Autodetect;
         /// <summary>
-        /// Additional options if source_format is set to "AVRO"
+        /// Additional options if SourceFormat is set to "AVRO"
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTableExternalDataConfigurationAvroOptionResult> AvroOptions;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// </summary>
         public readonly string ConnectionId;
         /// <summary>
-        /// Additional properties to set if source_format is set to "CSV".
+        /// Additional properties to set if SourceFormat is set to "CSV".
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTableExternalDataConfigurationCsvOptionResult> CsvOptions;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// </summary>
         public readonly string FileSetSpecType;
         /// <summary>
-        /// Additional options if source_format is set to "GOOGLE_SHEETS".
+        /// Additional options if SourceFormat is set to "GOOGLE_SHEETS".
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTableExternalDataConfigurationGoogleSheetsOptionResult> GoogleSheetsOptions;
         /// <summary>

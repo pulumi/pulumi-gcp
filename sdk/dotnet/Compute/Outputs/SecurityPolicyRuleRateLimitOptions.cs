@@ -14,12 +14,12 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class SecurityPolicyRuleRateLimitOptions
     {
         /// <summary>
-        /// Can only be specified if the action for the rule is "rate_based_ban".
+        /// Can only be specified if the action for the rule is "RateBasedBan".
         /// If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
         /// </summary>
         public readonly int? BanDurationSec;
         /// <summary>
-        /// Can only be specified if the action for the rule is "rate_based_ban".
+        /// Can only be specified if the action for the rule is "RateBasedBan".
         /// If specified, the key will be banned for the configured 'banDurationSec' when the number of requests that exceed the 'rateLimitThreshold' also exceed this 'banThreshold'.
         /// Structure is documented below.
         /// </summary>

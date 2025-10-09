@@ -141,7 +141,7 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
 
     /**
      * Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-     * **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+     * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
      * 
      */
     @Import(name="enableDisplay")
@@ -149,7 +149,7 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-     * **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+     * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
      * 
      */
     public Optional<Output<Boolean>> enableDisplay() {
@@ -275,7 +275,7 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
 
     /**
      * An alternative to using the
-     * startup-script metadata key, mostly to match the compute_instance resource.
+     * startup-script metadata key, mostly to match the computeInstance resource.
      * This replaces the startup-script metadata key on the created instance and
      * thus the two mechanisms are not allowed to be used simultaneously.
      * 
@@ -285,7 +285,7 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return An alternative to using the
-     * startup-script metadata key, mostly to match the compute_instance resource.
+     * startup-script metadata key, mostly to match the computeInstance resource.
      * This replaces the startup-script metadata key on the created instance and
      * thus the two mechanisms are not allowed to be used simultaneously.
      * 
@@ -334,10 +334,10 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
      * Prefixes with lengths longer than 37 characters will use a shortened
      * UUID that will be more prone to collisions.
      * 
-     * Resulting name for a `name_prefix` &lt;= 37 characters:
-     * `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
-     * Resulting name for a `name_prefix` 38 - 54 characters:
-     * `name_prefix` + YYmmdd + 3 digit incremental counter
+     * Resulting name for a `namePrefix` &lt;= 37 characters:
+     * `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+     * Resulting name for a `namePrefix` 38 - 54 characters:
+     * `namePrefix` + YYmmdd + 3 digit incremental counter
      * 
      */
     @Import(name="namePrefix")
@@ -349,10 +349,10 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
      * Prefixes with lengths longer than 37 characters will use a shortened
      * UUID that will be more prone to collisions.
      * 
-     * Resulting name for a `name_prefix` &lt;= 37 characters:
-     * `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
-     * Resulting name for a `name_prefix` 38 - 54 characters:
-     * `name_prefix` + YYmmdd + 3 digit incremental counter
+     * Resulting name for a `namePrefix` &lt;= 37 characters:
+     * `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+     * Resulting name for a `namePrefix` 38 - 54 characters:
+     * `namePrefix` + YYmmdd + 3 digit incremental counter
      * 
      */
     public Optional<Output<String>> namePrefix() {
@@ -380,7 +380,7 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
 
     /**
      * (Optional, Configures network performance settings for the instance created from the
-     * template. Structure is documented below. **Note**: `machine_type`
+     * template. Structure is documented below. **Note**: `machineType`
      * must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
      * the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
      * in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
@@ -392,7 +392,7 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return (Optional, Configures network performance settings for the instance created from the
-     * template. Structure is documented below. **Note**: `machine_type`
+     * template. Structure is documented below. **Note**: `machineType`
      * must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
      * the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
      * in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
@@ -523,14 +523,14 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     * - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      * 
      */
     @Import(name="resourcePolicies")
     private @Nullable Output<String> resourcePolicies;
 
     /**
-     * @return - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     * @return - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      * 
      */
     public Optional<Output<String>> resourcePolicies() {
@@ -603,7 +603,7 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
 
     /**
      * Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
-     * **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+     * **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
      * 
      */
     @Import(name="shieldedInstanceConfig")
@@ -611,7 +611,7 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
-     * **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+     * **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
      * 
      */
     public Optional<Output<InstanceTemplateShieldedInstanceConfigArgs>> shieldedInstanceConfig() {
@@ -874,7 +874,7 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param enableDisplay Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-         * **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+         * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
          * 
          * @return builder
          * 
@@ -886,7 +886,7 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param enableDisplay Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-         * **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+         * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
          * 
          * @return builder
          * 
@@ -1066,7 +1066,7 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param metadataStartupScript An alternative to using the
-         * startup-script metadata key, mostly to match the compute_instance resource.
+         * startup-script metadata key, mostly to match the computeInstance resource.
          * This replaces the startup-script metadata key on the created instance and
          * thus the two mechanisms are not allowed to be used simultaneously.
          * 
@@ -1080,7 +1080,7 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param metadataStartupScript An alternative to using the
-         * startup-script metadata key, mostly to match the compute_instance resource.
+         * startup-script metadata key, mostly to match the computeInstance resource.
          * This replaces the startup-script metadata key on the created instance and
          * thus the two mechanisms are not allowed to be used simultaneously.
          * 
@@ -1143,10 +1143,10 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
          * Prefixes with lengths longer than 37 characters will use a shortened
          * UUID that will be more prone to collisions.
          * 
-         * Resulting name for a `name_prefix` &lt;= 37 characters:
-         * `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
-         * Resulting name for a `name_prefix` 38 - 54 characters:
-         * `name_prefix` + YYmmdd + 3 digit incremental counter
+         * Resulting name for a `namePrefix` &lt;= 37 characters:
+         * `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+         * Resulting name for a `namePrefix` 38 - 54 characters:
+         * `namePrefix` + YYmmdd + 3 digit incremental counter
          * 
          * @return builder
          * 
@@ -1162,10 +1162,10 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
          * Prefixes with lengths longer than 37 characters will use a shortened
          * UUID that will be more prone to collisions.
          * 
-         * Resulting name for a `name_prefix` &lt;= 37 characters:
-         * `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
-         * Resulting name for a `name_prefix` 38 - 54 characters:
-         * `name_prefix` + YYmmdd + 3 digit incremental counter
+         * Resulting name for a `namePrefix` &lt;= 37 characters:
+         * `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+         * Resulting name for a `namePrefix` 38 - 54 characters:
+         * `namePrefix` + YYmmdd + 3 digit incremental counter
          * 
          * @return builder
          * 
@@ -1213,7 +1213,7 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param networkPerformanceConfig (Optional, Configures network performance settings for the instance created from the
-         * template. Structure is documented below. **Note**: `machine_type`
+         * template. Structure is documented below. **Note**: `machineType`
          * must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
          * the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
          * in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
@@ -1229,7 +1229,7 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param networkPerformanceConfig (Optional, Configures network performance settings for the instance created from the
-         * template. Structure is documented below. **Note**: `machine_type`
+         * template. Structure is documented below. **Note**: `machineType`
          * must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
          * the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
          * in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
@@ -1404,7 +1404,7 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param resourcePolicies - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+         * @param resourcePolicies - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
          * 
          * @return builder
          * 
@@ -1415,7 +1415,7 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param resourcePolicies - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+         * @param resourcePolicies - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
          * 
          * @return builder
          * 
@@ -1514,7 +1514,7 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param shieldedInstanceConfig Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
-         * **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+         * **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
          * 
          * @return builder
          * 
@@ -1526,7 +1526,7 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param shieldedInstanceConfig Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
-         * **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+         * **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
          * 
          * @return builder
          * 

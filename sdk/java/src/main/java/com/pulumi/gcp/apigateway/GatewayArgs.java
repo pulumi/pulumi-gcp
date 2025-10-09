@@ -20,7 +20,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
      * When changing api configs please ensure the new config is a new resource and the
-     * lifecycle rule `create_before_destroy` is set.
+     * lifecycle rule `createBeforeDestroy` is set.
      * 
      */
     @Import(name="apiConfig", required=true)
@@ -29,7 +29,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
      * When changing api configs please ensure the new config is a new resource and the
-     * lifecycle rule `create_before_destroy` is set.
+     * lifecycle rule `createBeforeDestroy` is set.
      * 
      */
     public Output<String> apiConfig() {
@@ -70,7 +70,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
      * Resource labels to represent user-provided metadata.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -80,7 +80,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
      * @return Resource labels to represent user-provided metadata.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -151,7 +151,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param apiConfig Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
          * When changing api configs please ensure the new config is a new resource and the
-         * lifecycle rule `create_before_destroy` is set.
+         * lifecycle rule `createBeforeDestroy` is set.
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param apiConfig Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
          * When changing api configs please ensure the new config is a new resource and the
-         * lifecycle rule `create_before_destroy` is set.
+         * lifecycle rule `createBeforeDestroy` is set.
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
          * @param labels Resource labels to represent user-provided metadata.
          * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -233,7 +233,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
          * @param labels Resource labels to represent user-provided metadata.
          * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          * 
          * @return builder
          * 

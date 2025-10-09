@@ -14,7 +14,7 @@ public final class AutonomousDatabasePropertiesCustomerContact {
      * @return The email address used by Oracle to send notifications regarding databases
      * and infrastructure.
      * 
-     * &lt;a name=&#34;nested_properties_apex_details&#34;&gt;&lt;/a&gt;The `apex_details` block contains:
+     * &lt;a name=&#34;nestedPropertiesApexDetails&#34;&gt;&lt;/a&gt;The `apexDetails` block contains:
      * 
      */
     private String email;
@@ -24,7 +24,7 @@ public final class AutonomousDatabasePropertiesCustomerContact {
      * @return The email address used by Oracle to send notifications regarding databases
      * and infrastructure.
      * 
-     * &lt;a name=&#34;nested_properties_apex_details&#34;&gt;&lt;/a&gt;The `apex_details` block contains:
+     * &lt;a name=&#34;nestedPropertiesApexDetails&#34;&gt;&lt;/a&gt;The `apexDetails` block contains:
      * 
      */
     public String email() {

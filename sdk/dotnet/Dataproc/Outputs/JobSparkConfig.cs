@@ -35,12 +35,12 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         public readonly Outputs.JobSparkConfigLoggingConfig? LoggingConfig;
         /// <summary>
         /// The class containing the main method of the driver. Must be in a
-        /// provided jar or jar that is already on the classpath. Conflicts with `main_jar_file_uri`
+        /// provided jar or jar that is already on the classpath. Conflicts with `MainJarFileUri`
         /// </summary>
         public readonly string? MainClass;
         /// <summary>
         /// The HCFS URI of jar file containing
-        /// the driver jar. Conflicts with `main_class`
+        /// the driver jar. Conflicts with `MainClass`
         /// </summary>
         public readonly string? MainJarFileUri;
         /// <summary>

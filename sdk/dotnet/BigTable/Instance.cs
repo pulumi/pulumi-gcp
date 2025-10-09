@@ -146,7 +146,7 @@ namespace Pulumi.Gcp.BigTable
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
-        /// The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
+        /// The human-readable display name of the Bigtable instance. Defaults to the instance `Name`.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -160,7 +160,7 @@ namespace Pulumi.Gcp.BigTable
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+        /// Deleting a BigTable instance can be blocked if any backups are present in the instance. When `ForceDestroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
         /// </summary>
         [Output("forceDestroy")]
         public Output<bool?> ForceDestroy { get; private set; } = null!;
@@ -278,13 +278,13 @@ namespace Pulumi.Gcp.BigTable
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
+        /// The human-readable display name of the Bigtable instance. Defaults to the instance `Name`.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+        /// Deleting a BigTable instance can be blocked if any backups are present in the instance. When `ForceDestroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
         /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
@@ -359,7 +359,7 @@ namespace Pulumi.Gcp.BigTable
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
+        /// The human-readable display name of the Bigtable instance. Defaults to the instance `Name`.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
@@ -383,7 +383,7 @@ namespace Pulumi.Gcp.BigTable
         }
 
         /// <summary>
-        /// Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+        /// Deleting a BigTable instance can be blocked if any backups are present in the instance. When `ForceDestroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
         /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }

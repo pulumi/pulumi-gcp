@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.Storage.Inputs
 
         /// <summary>
         /// The team.
-        /// Possible values are: `editors`, `owners`, `viewers`.
+        /// Possible values are: `Editors`, `Owners`, `Viewers`.
         /// </summary>
         [Input("team")]
         public Input<string>? Team { get; set; }

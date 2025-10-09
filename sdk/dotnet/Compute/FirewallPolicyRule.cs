@@ -324,7 +324,7 @@ namespace Pulumi.Gcp.Compute
     public partial class FirewallPolicyRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "goto_next" and "apply_security_profile_group".
+        /// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "GotoNext" and "ApplySecurityProfileGroup".
         /// </summary>
         [Output("action")]
         public Output<string> Action { get; private set; } = null!;
@@ -360,7 +360,7 @@ namespace Pulumi.Gcp.Compute
         /// Denotes whether to enable logging for a particular rule.
         /// If logging is enabled, logs will be exported to the configured export destination in Stackdriver.
         /// Logs may be exported to BigQuery or Pub/Sub.
-        /// Note: you cannot enable logging on "goto_next" rules.
+        /// Note: you cannot enable logging on "GotoNext" rules.
         /// </summary>
         [Output("enableLogging")]
         public Output<bool?> EnableLogging { get; private set; } = null!;
@@ -483,7 +483,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class FirewallPolicyRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "goto_next" and "apply_security_profile_group".
+        /// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "GotoNext" and "ApplySecurityProfileGroup".
         /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
@@ -513,7 +513,7 @@ namespace Pulumi.Gcp.Compute
         /// Denotes whether to enable logging for a particular rule.
         /// If logging is enabled, logs will be exported to the configured export destination in Stackdriver.
         /// Logs may be exported to BigQuery or Pub/Sub.
-        /// Note: you cannot enable logging on "goto_next" rules.
+        /// Note: you cannot enable logging on "GotoNext" rules.
         /// </summary>
         [Input("enableLogging")]
         public Input<bool>? EnableLogging { get; set; }
@@ -604,7 +604,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class FirewallPolicyRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "goto_next" and "apply_security_profile_group".
+        /// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "GotoNext" and "ApplySecurityProfileGroup".
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
@@ -640,7 +640,7 @@ namespace Pulumi.Gcp.Compute
         /// Denotes whether to enable logging for a particular rule.
         /// If logging is enabled, logs will be exported to the configured export destination in Stackdriver.
         /// Logs may be exported to BigQuery or Pub/Sub.
-        /// Note: you cannot enable logging on "goto_next" rules.
+        /// Note: you cannot enable logging on "GotoNext" rules.
         /// </summary>
         [Input("enableLogging")]
         public Input<bool>? EnableLogging { get; set; }

@@ -193,7 +193,7 @@ namespace Pulumi.Gcp.Netapp
         /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -324,7 +324,7 @@ namespace Pulumi.Gcp.Netapp
 
         /// <summary>
         /// Snapshot policy defines the schedule for automatic snapshot creation.
-        /// To disable automatic snapshot creation you have to remove the whole snapshot_policy block.
+        /// To disable automatic snapshot creation you have to remove the whole SnapshotPolicy block.
         /// Structure is documented below.
         /// </summary>
         [Output("snapshotPolicy")]
@@ -485,7 +485,7 @@ namespace Pulumi.Gcp.Netapp
         /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -593,7 +593,7 @@ namespace Pulumi.Gcp.Netapp
 
         /// <summary>
         /// Snapshot policy defines the schedule for automatic snapshot creation.
-        /// To disable automatic snapshot creation you have to remove the whole snapshot_policy block.
+        /// To disable automatic snapshot creation you have to remove the whole SnapshotPolicy block.
         /// Structure is documented below.
         /// </summary>
         [Input("snapshotPolicy")]
@@ -745,7 +745,7 @@ namespace Pulumi.Gcp.Netapp
         /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -913,7 +913,7 @@ namespace Pulumi.Gcp.Netapp
 
         /// <summary>
         /// Snapshot policy defines the schedule for automatic snapshot creation.
-        /// To disable automatic snapshot creation you have to remove the whole snapshot_policy block.
+        /// To disable automatic snapshot creation you have to remove the whole SnapshotPolicy block.
         /// Structure is documented below.
         /// </summary>
         [Input("snapshotPolicy")]

@@ -18,14 +18,14 @@ public final class EnterpriseKeyAndroidSettingsArgs extends com.pulumi.resources
     public static final EnterpriseKeyAndroidSettingsArgs Empty = new EnterpriseKeyAndroidSettingsArgs();
 
     /**
-     * If set to true, it means allowed_package_names will not be enforced.
+     * If set to true, it means allowedPackageNames will not be enforced.
      * 
      */
     @Import(name="allowAllPackageNames")
     private @Nullable Output<Boolean> allowAllPackageNames;
 
     /**
-     * @return If set to true, it means allowed_package_names will not be enforced.
+     * @return If set to true, it means allowedPackageNames will not be enforced.
      * 
      */
     public Optional<Output<Boolean>> allowAllPackageNames() {
@@ -73,7 +73,7 @@ public final class EnterpriseKeyAndroidSettingsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param allowAllPackageNames If set to true, it means allowed_package_names will not be enforced.
+         * @param allowAllPackageNames If set to true, it means allowedPackageNames will not be enforced.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class EnterpriseKeyAndroidSettingsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param allowAllPackageNames If set to true, it means allowed_package_names will not be enforced.
+         * @param allowAllPackageNames If set to true, it means allowedPackageNames will not be enforced.
          * 
          * @return builder
          * 

@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.ApiHub.Outputs
     {
         /// <summary>
         /// This should map to one of the action id specified
-        /// in actions_config in the plugin.
+        /// in ActionsConfig in the plugin.
         /// </summary>
         public readonly string ActionId;
         /// <summary>
@@ -39,7 +39,7 @@ namespace Pulumi.Gcp.ApiHub.Outputs
         /// be used.
         /// 
         /// 
-        /// &lt;a name="nested_actions_actions_hub_instance_action"&gt;&lt;/a&gt;The `hub_instance_action` block contains:
+        /// &lt;a name="NestedActionsActionsHubInstanceAction"&gt;&lt;/a&gt;The `HubInstanceAction` block contains:
         /// </summary>
         public readonly string? ScheduleTimeZone;
         /// <summary>

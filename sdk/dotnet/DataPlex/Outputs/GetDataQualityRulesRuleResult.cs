@@ -75,7 +75,7 @@ namespace Pulumi.Gcp.DataPlex.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDataQualityRulesRuleTableConditionExpectationResult> TableConditionExpectations;
         /// <summary>
-        /// The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0). This field is only valid for row-level type rules.
+        /// The minimum ratio of PassingRows / TotalRows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0). This field is only valid for row-level type rules.
         /// </summary>
         public readonly double Threshold;
         /// <summary>

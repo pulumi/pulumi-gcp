@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.CloudBuildV2.Inputs
 
         /// <summary>
         /// (Output)
-        /// Output only. Version of the Bitbucket Data Center running on the `host_uri`.
+        /// Output only. Version of the Bitbucket Data Center running on the `HostUri`.
         /// </summary>
         [Input("serverVersion")]
         public Input<string>? ServerVersion { get; set; }

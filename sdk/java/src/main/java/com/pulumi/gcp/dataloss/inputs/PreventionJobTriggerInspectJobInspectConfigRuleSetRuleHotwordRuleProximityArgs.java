@@ -16,14 +16,14 @@ public final class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotword
     public static final PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximityArgs Empty = new PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximityArgs();
 
     /**
-     * Number of characters after the finding to consider. Either this or window_before must be specified
+     * Number of characters after the finding to consider. Either this or windowBefore must be specified
      * 
      */
     @Import(name="windowAfter")
     private @Nullable Output<Integer> windowAfter;
 
     /**
-     * @return Number of characters after the finding to consider. Either this or window_before must be specified
+     * @return Number of characters after the finding to consider. Either this or windowBefore must be specified
      * 
      */
     public Optional<Output<Integer>> windowAfter() {
@@ -31,14 +31,14 @@ public final class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotword
     }
 
     /**
-     * Number of characters before the finding to consider. Either this or window_after must be specified
+     * Number of characters before the finding to consider. Either this or windowAfter must be specified
      * 
      */
     @Import(name="windowBefore")
     private @Nullable Output<Integer> windowBefore;
 
     /**
-     * @return Number of characters before the finding to consider. Either this or window_after must be specified
+     * @return Number of characters before the finding to consider. Either this or windowAfter must be specified
      * 
      */
     public Optional<Output<Integer>> windowBefore() {
@@ -71,7 +71,7 @@ public final class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotword
         }
 
         /**
-         * @param windowAfter Number of characters after the finding to consider. Either this or window_before must be specified
+         * @param windowAfter Number of characters after the finding to consider. Either this or windowBefore must be specified
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotword
         }
 
         /**
-         * @param windowAfter Number of characters after the finding to consider. Either this or window_before must be specified
+         * @param windowAfter Number of characters after the finding to consider. Either this or windowBefore must be specified
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotword
         }
 
         /**
-         * @param windowBefore Number of characters before the finding to consider. Either this or window_after must be specified
+         * @param windowBefore Number of characters before the finding to consider. Either this or windowAfter must be specified
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotword
         }
 
         /**
-         * @param windowBefore Number of characters before the finding to consider. Either this or window_after must be specified
+         * @param windowBefore Number of characters before the finding to consider. Either this or windowAfter must be specified
          * 
          * @return builder
          * 

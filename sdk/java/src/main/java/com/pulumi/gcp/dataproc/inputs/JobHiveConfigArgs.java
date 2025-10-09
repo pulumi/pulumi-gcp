@@ -65,7 +65,7 @@ public final class JobHiveConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * HCFS URI of file containing Hive script to execute as the job.
-     * Conflicts with `query_list`
+     * Conflicts with `queryList`
      * 
      */
     @Import(name="queryFileUri")
@@ -73,7 +73,7 @@ public final class JobHiveConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return HCFS URI of file containing Hive script to execute as the job.
-     * Conflicts with `query_list`
+     * Conflicts with `queryList`
      * 
      */
     public Optional<Output<String>> queryFileUri() {
@@ -82,7 +82,7 @@ public final class JobHiveConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The list of Hive queries or statements to execute as part of the job.
-     * Conflicts with `query_file_uri`
+     * Conflicts with `queryFileUri`
      * 
      */
     @Import(name="queryLists")
@@ -90,7 +90,7 @@ public final class JobHiveConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The list of Hive queries or statements to execute as part of the job.
-     * Conflicts with `query_file_uri`
+     * Conflicts with `queryFileUri`
      * 
      */
     public Optional<Output<List<String>>> queryLists() {
@@ -216,7 +216,7 @@ public final class JobHiveConfigArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param queryFileUri HCFS URI of file containing Hive script to execute as the job.
-         * Conflicts with `query_list`
+         * Conflicts with `queryList`
          * 
          * @return builder
          * 
@@ -228,7 +228,7 @@ public final class JobHiveConfigArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param queryFileUri HCFS URI of file containing Hive script to execute as the job.
-         * Conflicts with `query_list`
+         * Conflicts with `queryList`
          * 
          * @return builder
          * 
@@ -239,7 +239,7 @@ public final class JobHiveConfigArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param queryLists The list of Hive queries or statements to execute as part of the job.
-         * Conflicts with `query_file_uri`
+         * Conflicts with `queryFileUri`
          * 
          * @return builder
          * 
@@ -251,7 +251,7 @@ public final class JobHiveConfigArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param queryLists The list of Hive queries or statements to execute as part of the job.
-         * Conflicts with `query_file_uri`
+         * Conflicts with `queryFileUri`
          * 
          * @return builder
          * 
@@ -262,7 +262,7 @@ public final class JobHiveConfigArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param queryLists The list of Hive queries or statements to execute as part of the job.
-         * Conflicts with `query_file_uri`
+         * Conflicts with `queryFileUri`
          * 
          * @return builder
          * 

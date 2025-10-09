@@ -410,7 +410,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Replication configuration, once set, this cannot be updated.
-     * Additionally this should be specified on the replica instance only, indicating the active as the peer_instance
+     * Additionally this should be specified on the replica instance only, indicating the active as the peerInstance
      * Structure is documented below.
      * 
      */
@@ -419,7 +419,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Replication configuration, once set, this cannot be updated.
-     * Additionally this should be specified on the replica instance only, indicating the active as the peer_instance
+     * Additionally this should be specified on the replica instance only, indicating the active as the peerInstance
      * Structure is documented below.
      * 
      */
@@ -444,7 +444,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Resource labels to represent user-provided metadata.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -454,7 +454,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * @return Resource labels to represent user-provided metadata.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {

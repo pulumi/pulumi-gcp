@@ -21,7 +21,7 @@ public final class SubnetworkSecondaryIpRangeArgs extends com.pulumi.resources.R
      * range. Provide this property when you create the subnetwork.
      * Ranges must be unique and non-overlapping with all primary and
      * secondary IP ranges within a network. Only IPv4 is supported.
-     * Field is optional when `reserved_internal_range` is defined, otherwise required.
+     * Field is optional when `reservedInternalRange` is defined, otherwise required.
      * 
      */
     @Import(name="ipCidrRange")
@@ -32,7 +32,7 @@ public final class SubnetworkSecondaryIpRangeArgs extends com.pulumi.resources.R
      * range. Provide this property when you create the subnetwork.
      * Ranges must be unique and non-overlapping with all primary and
      * secondary IP ranges within a network. Only IPv4 is supported.
-     * Field is optional when `reserved_internal_range` is defined, otherwise required.
+     * Field is optional when `reservedInternalRange` is defined, otherwise required.
      * 
      */
     public Optional<Output<String>> ipCidrRange() {
@@ -108,7 +108,7 @@ public final class SubnetworkSecondaryIpRangeArgs extends com.pulumi.resources.R
          * range. Provide this property when you create the subnetwork.
          * Ranges must be unique and non-overlapping with all primary and
          * secondary IP ranges within a network. Only IPv4 is supported.
-         * Field is optional when `reserved_internal_range` is defined, otherwise required.
+         * Field is optional when `reservedInternalRange` is defined, otherwise required.
          * 
          * @return builder
          * 
@@ -123,7 +123,7 @@ public final class SubnetworkSecondaryIpRangeArgs extends com.pulumi.resources.R
          * range. Provide this property when you create the subnetwork.
          * Ranges must be unique and non-overlapping with all primary and
          * secondary IP ranges within a network. Only IPv4 is supported.
-         * Field is optional when `reserved_internal_range` is defined, otherwise required.
+         * Field is optional when `reservedInternalRange` is defined, otherwise required.
          * 
          * @return builder
          * 

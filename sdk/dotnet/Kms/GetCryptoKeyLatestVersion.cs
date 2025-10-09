@@ -133,7 +133,7 @@ namespace Pulumi.Gcp.Kms
     public sealed class GetCryptoKeyLatestVersionArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the 
+        /// The `Id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `Id` field of the 
         /// `gcp.kms.CryptoKey` resource/datasource.
         /// </summary>
         [Input("cryptoKey", required: true)]
@@ -160,7 +160,7 @@ namespace Pulumi.Gcp.Kms
     public sealed class GetCryptoKeyLatestVersionInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the 
+        /// The `Id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `Id` field of the 
         /// `gcp.kms.CryptoKey` resource/datasource.
         /// </summary>
         [Input("cryptoKey", required: true)]
@@ -200,7 +200,7 @@ namespace Pulumi.Gcp.Kms
         public readonly string Id;
         public readonly string Name;
         /// <summary>
-        /// The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion. See the [protection_level reference](https://cloud.google.com/kms/docs/reference/rest/v1/ProtectionLevel) for possible outputs.
+        /// The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion. See the [ProtectionLevel reference](https://cloud.google.com/kms/docs/reference/rest/v1/ProtectionLevel) for possible outputs.
         /// </summary>
         public readonly string ProtectionLevel;
         /// <summary>

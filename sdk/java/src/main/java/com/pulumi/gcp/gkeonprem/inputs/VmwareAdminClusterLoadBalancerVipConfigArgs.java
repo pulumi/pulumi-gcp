@@ -19,7 +19,7 @@ public final class VmwareAdminClusterLoadBalancerVipConfigArgs extends com.pulum
     /**
      * The VIP to configure the load balancer for add-ons.
      * 
-     * &lt;a name=&#34;nested_load_balancer_f5_config&#34;&gt;&lt;/a&gt;The `f5_config` block supports:
+     * &lt;a name=&#34;nestedLoadBalancerF5Config&#34;&gt;&lt;/a&gt;The `f5Config` block supports:
      * 
      */
     @Import(name="addonsVip")
@@ -28,7 +28,7 @@ public final class VmwareAdminClusterLoadBalancerVipConfigArgs extends com.pulum
     /**
      * @return The VIP to configure the load balancer for add-ons.
      * 
-     * &lt;a name=&#34;nested_load_balancer_f5_config&#34;&gt;&lt;/a&gt;The `f5_config` block supports:
+     * &lt;a name=&#34;nestedLoadBalancerF5Config&#34;&gt;&lt;/a&gt;The `f5Config` block supports:
      * 
      */
     public Optional<Output<String>> addonsVip() {
@@ -80,7 +80,7 @@ public final class VmwareAdminClusterLoadBalancerVipConfigArgs extends com.pulum
         /**
          * @param addonsVip The VIP to configure the load balancer for add-ons.
          * 
-         * &lt;a name=&#34;nested_load_balancer_f5_config&#34;&gt;&lt;/a&gt;The `f5_config` block supports:
+         * &lt;a name=&#34;nestedLoadBalancerF5Config&#34;&gt;&lt;/a&gt;The `f5Config` block supports:
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class VmwareAdminClusterLoadBalancerVipConfigArgs extends com.pulum
         /**
          * @param addonsVip The VIP to configure the load balancer for add-ons.
          * 
-         * &lt;a name=&#34;nested_load_balancer_f5_config&#34;&gt;&lt;/a&gt;The `f5_config` block supports:
+         * &lt;a name=&#34;nestedLoadBalancerF5Config&#34;&gt;&lt;/a&gt;The `f5Config` block supports:
          * 
          * @return builder
          * 

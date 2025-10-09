@@ -37,7 +37,7 @@ public final class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1P
     /**
      * Required. This determines the minimum duration of time to wait after the
      * configuration changes are applied through the current rollout. A
-     * VM continues to count towards the `disruption_budget` at least
+     * VM continues to count towards the `disruptionBudget` at least
      * until this duration of time has passed after configuration changes are
      * applied.
      * 
@@ -48,7 +48,7 @@ public final class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1P
     /**
      * @return Required. This determines the minimum duration of time to wait after the
      * configuration changes are applied through the current rollout. A
-     * VM continues to count towards the `disruption_budget` at least
+     * VM continues to count towards the `disruptionBudget` at least
      * until this duration of time has passed after configuration changes are
      * applied.
      * 
@@ -110,7 +110,7 @@ public final class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1P
         /**
          * @param minWaitDuration Required. This determines the minimum duration of time to wait after the
          * configuration changes are applied through the current rollout. A
-         * VM continues to count towards the `disruption_budget` at least
+         * VM continues to count towards the `disruptionBudget` at least
          * until this duration of time has passed after configuration changes are
          * applied.
          * 
@@ -125,7 +125,7 @@ public final class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1P
         /**
          * @param minWaitDuration Required. This determines the minimum duration of time to wait after the
          * configuration changes are applied through the current rollout. A
-         * VM continues to count towards the `disruption_budget` at least
+         * VM continues to count towards the `disruptionBudget` at least
          * until this duration of time has passed after configuration changes are
          * applied.
          * 

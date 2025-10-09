@@ -21,7 +21,7 @@ public final class ClusterMaintenanceEvent {
      * @return (Output)
      * The time when the maintenance event ended, either successfully or not. If
      * the maintenance event is split into multiple maintenance windows,
-     * end_time is only updated when the whole flow ends.
+     * endTime is only updated when the whole flow ends.
      * 
      */
     private @Nullable String endTime;
@@ -89,7 +89,7 @@ public final class ClusterMaintenanceEvent {
      * @return (Output)
      * The time when the maintenance event ended, either successfully or not. If
      * the maintenance event is split into multiple maintenance windows,
-     * end_time is only updated when the whole flow ends.
+     * endTime is only updated when the whole flow ends.
      * 
      */
     public Optional<String> endTime() {

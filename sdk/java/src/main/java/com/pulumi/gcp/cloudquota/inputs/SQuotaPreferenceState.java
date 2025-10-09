@@ -53,7 +53,7 @@ public final class SQuotaPreferenceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as &#34;region&#34;, &#34;zone&#34;, &#34;network_id&#34;, and the value of the map entry is the dimension value. If a dimension is missing from the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota preferences configured for the specific value.
+     * The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as &#34;region&#34;, &#34;zone&#34;, &#34;networkId&#34;, and the value of the map entry is the dimension value. If a dimension is missing from the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota preferences configured for the specific value.
      * NOTE: QuotaPreferences can only be applied across all values of &#34;user&#34; and &#34;resource&#34; dimension. Do not set values for &#34;user&#34; or &#34;resource&#34; in the dimension map.
      * Example: `{&#34;provider&#34;: &#34;Foo Inc&#34;}` where &#34;provider&#34; is a service specific dimension.
      * 
@@ -62,7 +62,7 @@ public final class SQuotaPreferenceState extends com.pulumi.resources.ResourceAr
     private @Nullable Output<Map<String,String>> dimensions;
 
     /**
-     * @return The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as &#34;region&#34;, &#34;zone&#34;, &#34;network_id&#34;, and the value of the map entry is the dimension value. If a dimension is missing from the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota preferences configured for the specific value.
+     * @return The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as &#34;region&#34;, &#34;zone&#34;, &#34;networkId&#34;, and the value of the map entry is the dimension value. If a dimension is missing from the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota preferences configured for the specific value.
      * NOTE: QuotaPreferences can only be applied across all values of &#34;user&#34; and &#34;resource&#34; dimension. Do not set values for &#34;user&#34; or &#34;resource&#34; in the dimension map.
      * Example: `{&#34;provider&#34;: &#34;Foo Inc&#34;}` where &#34;provider&#34; is a service specific dimension.
      * 
@@ -314,7 +314,7 @@ public final class SQuotaPreferenceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dimensions The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as &#34;region&#34;, &#34;zone&#34;, &#34;network_id&#34;, and the value of the map entry is the dimension value. If a dimension is missing from the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota preferences configured for the specific value.
+         * @param dimensions The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as &#34;region&#34;, &#34;zone&#34;, &#34;networkId&#34;, and the value of the map entry is the dimension value. If a dimension is missing from the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota preferences configured for the specific value.
          * NOTE: QuotaPreferences can only be applied across all values of &#34;user&#34; and &#34;resource&#34; dimension. Do not set values for &#34;user&#34; or &#34;resource&#34; in the dimension map.
          * Example: `{&#34;provider&#34;: &#34;Foo Inc&#34;}` where &#34;provider&#34; is a service specific dimension.
          * 
@@ -327,7 +327,7 @@ public final class SQuotaPreferenceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dimensions The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as &#34;region&#34;, &#34;zone&#34;, &#34;network_id&#34;, and the value of the map entry is the dimension value. If a dimension is missing from the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota preferences configured for the specific value.
+         * @param dimensions The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as &#34;region&#34;, &#34;zone&#34;, &#34;networkId&#34;, and the value of the map entry is the dimension value. If a dimension is missing from the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota preferences configured for the specific value.
          * NOTE: QuotaPreferences can only be applied across all values of &#34;user&#34; and &#34;resource&#34; dimension. Do not set values for &#34;user&#34; or &#34;resource&#34; in the dimension map.
          * Example: `{&#34;provider&#34;: &#34;Foo Inc&#34;}` where &#34;provider&#34; is a service specific dimension.
          * 

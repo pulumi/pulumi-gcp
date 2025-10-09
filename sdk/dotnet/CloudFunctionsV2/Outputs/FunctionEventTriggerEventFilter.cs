@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
         /// <summary>
         /// 'Required. The name of a CloudEvents attribute.
         /// Currently, only a subset of attributes are supported for filtering. Use the `gcloud eventarc providers describe` command to learn more about events and their attributes.
-        /// Do not filter for the 'type' attribute here, as this is already achieved by the resource's `event_type` attribute.
+        /// Do not filter for the 'type' attribute here, as this is already achieved by the resource's `EventType` attribute.
         /// </summary>
         public readonly string Attribute;
         /// <summary>

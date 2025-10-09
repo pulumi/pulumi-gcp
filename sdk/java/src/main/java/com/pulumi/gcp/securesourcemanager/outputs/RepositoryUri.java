@@ -19,7 +19,7 @@ public final class RepositoryUri {
     private @Nullable String api;
     /**
      * @return (Output)
-     * git_https is the git HTTPS URI for git operations.
+     * gitHttps is the git HTTPS URI for git operations.
      * 
      */
     private @Nullable String gitHttps;
@@ -41,7 +41,7 @@ public final class RepositoryUri {
     }
     /**
      * @return (Output)
-     * git_https is the git HTTPS URI for git operations.
+     * gitHttps is the git HTTPS URI for git operations.
      * 
      */
     public Optional<String> gitHttps() {

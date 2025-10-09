@@ -21,7 +21,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **Warning:** `google_notebook_runtime` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
+ * &gt; **Warning:** `googleNotebookRuntime` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
  * 
  * A Cloud AI Platform Notebook runtime.
  * 
@@ -418,7 +418,7 @@ public class Runtime extends com.pulumi.resources.CustomResource {
      * more than 32 labels can be associated with a cluster.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -433,7 +433,7 @@ public class Runtime extends com.pulumi.resources.CustomResource {
      * more than 32 labels can be associated with a cluster.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {

@@ -16,14 +16,14 @@ public final class GetInstanceGuestAttributesPlainArgs extends com.pulumi.resour
     public static final GetInstanceGuestAttributesPlainArgs Empty = new GetInstanceGuestAttributesPlainArgs();
 
     /**
-     * The name or self_link of the instance.
+     * The name or selfLink of the instance.
      * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
-     * @return The name or self_link of the instance.
+     * @return The name or selfLink of the instance.
      * 
      */
     public String name() {
@@ -32,7 +32,7 @@ public final class GetInstanceGuestAttributesPlainArgs extends com.pulumi.resour
 
     /**
      * The ID of the project in which the resource belongs.
-     * If `self_link` is provided, this value is ignored.  If neither `self_link`
+     * If `selfLink` is provided, this value is ignored.  If neither `selfLink`
      * nor `project` are provided, the provider project is used.
      * 
      */
@@ -41,7 +41,7 @@ public final class GetInstanceGuestAttributesPlainArgs extends com.pulumi.resour
 
     /**
      * @return The ID of the project in which the resource belongs.
-     * If `self_link` is provided, this value is ignored.  If neither `self_link`
+     * If `selfLink` is provided, this value is ignored.  If neither `selfLink`
      * nor `project` are provided, the provider project is used.
      * 
      */
@@ -91,8 +91,8 @@ public final class GetInstanceGuestAttributesPlainArgs extends com.pulumi.resour
     }
 
     /**
-     * The zone of the instance. If `self_link` is provided, this
-     * value is ignored.  If neither `self_link` nor `zone` are provided, the
+     * The zone of the instance. If `selfLink` is provided, this
+     * value is ignored.  If neither `selfLink` nor `zone` are provided, the
      * provider zone is used.
      * 
      */
@@ -100,8 +100,8 @@ public final class GetInstanceGuestAttributesPlainArgs extends com.pulumi.resour
     private @Nullable String zone;
 
     /**
-     * @return The zone of the instance. If `self_link` is provided, this
-     * value is ignored.  If neither `self_link` nor `zone` are provided, the
+     * @return The zone of the instance. If `selfLink` is provided, this
+     * value is ignored.  If neither `selfLink` nor `zone` are provided, the
      * provider zone is used.
      * 
      */
@@ -139,7 +139,7 @@ public final class GetInstanceGuestAttributesPlainArgs extends com.pulumi.resour
         }
 
         /**
-         * @param name The name or self_link of the instance.
+         * @param name The name or selfLink of the instance.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class GetInstanceGuestAttributesPlainArgs extends com.pulumi.resour
 
         /**
          * @param project The ID of the project in which the resource belongs.
-         * If `self_link` is provided, this value is ignored.  If neither `self_link`
+         * If `selfLink` is provided, this value is ignored.  If neither `selfLink`
          * nor `project` are provided, the provider project is used.
          * 
          * @return builder
@@ -192,8 +192,8 @@ public final class GetInstanceGuestAttributesPlainArgs extends com.pulumi.resour
         }
 
         /**
-         * @param zone The zone of the instance. If `self_link` is provided, this
-         * value is ignored.  If neither `self_link` nor `zone` are provided, the
+         * @param zone The zone of the instance. If `selfLink` is provided, this
+         * value is ignored.  If neither `selfLink` nor `zone` are provided, the
          * provider zone is used.
          * 
          * @return builder

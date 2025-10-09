@@ -18,7 +18,7 @@ public final class TriggerDeveloperConnectEventConfigPush {
      */
     private @Nullable String branch;
     /**
-     * @return If true, only trigger a build if the revision regex does NOT match the git_ref regex.
+     * @return If true, only trigger a build if the revision regex does NOT match the gitRef regex.
      * 
      */
     private @Nullable Boolean invertRegex;
@@ -37,7 +37,7 @@ public final class TriggerDeveloperConnectEventConfigPush {
         return Optional.ofNullable(this.branch);
     }
     /**
-     * @return If true, only trigger a build if the revision regex does NOT match the git_ref regex.
+     * @return If true, only trigger a build if the revision regex does NOT match the gitRef regex.
      * 
      */
     public Optional<Boolean> invertRegex() {

@@ -15,14 +15,14 @@ public final class GetInstanceGroupManagerPlainArgs extends com.pulumi.resources
     public static final GetInstanceGroupManagerPlainArgs Empty = new GetInstanceGroupManagerPlainArgs();
 
     /**
-     * The name of the instance group. Either `name` or `self_link` must be provided.
+     * The name of the instance group. Either `name` or `selfLink` must be provided.
      * 
      */
     @Import(name="name")
     private @Nullable String name;
 
     /**
-     * @return The name of the instance group. Either `name` or `self_link` must be provided.
+     * @return The name of the instance group. Either `name` or `selfLink` must be provided.
      * 
      */
     public Optional<String> name() {
@@ -45,14 +45,14 @@ public final class GetInstanceGroupManagerPlainArgs extends com.pulumi.resources
     }
 
     /**
-     * The self link of the instance group. Either `name` or `self_link` must be provided.
+     * The self link of the instance group. Either `name` or `selfLink` must be provided.
      * 
      */
     @Import(name="selfLink")
     private @Nullable String selfLink;
 
     /**
-     * @return The self link of the instance group. Either `name` or `self_link` must be provided.
+     * @return The self link of the instance group. Either `name` or `selfLink` must be provided.
      * 
      */
     public Optional<String> selfLink() {
@@ -102,7 +102,7 @@ public final class GetInstanceGroupManagerPlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param name The name of the instance group. Either `name` or `self_link` must be provided.
+         * @param name The name of the instance group. Either `name` or `selfLink` must be provided.
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class GetInstanceGroupManagerPlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param selfLink The self link of the instance group. Either `name` or `self_link` must be provided.
+         * @param selfLink The self link of the instance group. Either `name` or `selfLink` must be provided.
          * 
          * @return builder
          * 

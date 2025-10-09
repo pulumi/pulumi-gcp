@@ -17,7 +17,7 @@ public final class GetAppEngineServicePlainArgs extends com.pulumi.resources.Inv
 
     /**
      * The ID of the App Engine module underlying this
-     * service. Corresponds to the moduleId resource label in the [gae_app](https://cloud.google.com/monitoring/api/resources#tag_gae_app) monitored resource, or the service/module name.
+     * service. Corresponds to the moduleId resource label in the [gaeApp](https://cloud.google.com/monitoring/api/resources#tag_gae_app) monitored resource, or the service/module name.
      * 
      * ***
      * 
@@ -29,7 +29,7 @@ public final class GetAppEngineServicePlainArgs extends com.pulumi.resources.Inv
 
     /**
      * @return The ID of the App Engine module underlying this
-     * service. Corresponds to the moduleId resource label in the [gae_app](https://cloud.google.com/monitoring/api/resources#tag_gae_app) monitored resource, or the service/module name.
+     * service. Corresponds to the moduleId resource label in the [gaeApp](https://cloud.google.com/monitoring/api/resources#tag_gae_app) monitored resource, or the service/module name.
      * 
      * ***
      * 
@@ -84,7 +84,7 @@ public final class GetAppEngineServicePlainArgs extends com.pulumi.resources.Inv
 
         /**
          * @param moduleId The ID of the App Engine module underlying this
-         * service. Corresponds to the moduleId resource label in the [gae_app](https://cloud.google.com/monitoring/api/resources#tag_gae_app) monitored resource, or the service/module name.
+         * service. Corresponds to the moduleId resource label in the [gaeApp](https://cloud.google.com/monitoring/api/resources#tag_gae_app) monitored resource, or the service/module name.
          * 
          * ***
          * 

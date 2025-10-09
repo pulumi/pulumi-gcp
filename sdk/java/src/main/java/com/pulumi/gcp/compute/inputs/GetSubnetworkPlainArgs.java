@@ -15,7 +15,7 @@ public final class GetSubnetworkPlainArgs extends com.pulumi.resources.InvokeArg
     public static final GetSubnetworkPlainArgs Empty = new GetSubnetworkPlainArgs();
 
     /**
-     * The name of the subnetwork. One of `name` or `self_link`
+     * The name of the subnetwork. One of `name` or `selfLink`
      * must be specified.
      * 
      */
@@ -23,7 +23,7 @@ public final class GetSubnetworkPlainArgs extends com.pulumi.resources.InvokeArg
     private @Nullable String name;
 
     /**
-     * @return The name of the subnetwork. One of `name` or `self_link`
+     * @return The name of the subnetwork. One of `name` or `selfLink`
      * must be specified.
      * 
      */
@@ -66,7 +66,7 @@ public final class GetSubnetworkPlainArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * The self link of the subnetwork. If `self_link` is
+     * The self link of the subnetwork. If `selfLink` is
      * specified, `name`, `project`, and `region` are ignored.
      * 
      */
@@ -74,7 +74,7 @@ public final class GetSubnetworkPlainArgs extends com.pulumi.resources.InvokeArg
     private @Nullable String selfLink;
 
     /**
-     * @return The self link of the subnetwork. If `self_link` is
+     * @return The self link of the subnetwork. If `selfLink` is
      * specified, `name`, `project`, and `region` are ignored.
      * 
      */
@@ -110,7 +110,7 @@ public final class GetSubnetworkPlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param name The name of the subnetwork. One of `name` or `self_link`
+         * @param name The name of the subnetwork. One of `name` or `selfLink`
          * must be specified.
          * 
          * @return builder
@@ -146,7 +146,7 @@ public final class GetSubnetworkPlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param selfLink The self link of the subnetwork. If `self_link` is
+         * @param selfLink The self link of the subnetwork. If `selfLink` is
          * specified, `name`, `project`, and `region` are ignored.
          * 
          * @return builder

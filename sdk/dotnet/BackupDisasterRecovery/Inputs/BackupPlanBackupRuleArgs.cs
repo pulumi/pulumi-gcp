@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Inputs
         public Input<int> BackupRetentionDays { get; set; } = null!;
 
         /// <summary>
-        /// The unique ID of this `BackupRule`. The `rule_id` is unique per `BackupPlan`.
+        /// The unique ID of this `BackupRule`. The `RuleId` is unique per `BackupPlan`.
         /// </summary>
         [Input("ruleId", required: true)]
         public Input<string> RuleId { get; set; } = null!;

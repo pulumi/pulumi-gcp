@@ -165,7 +165,7 @@ import javax.annotation.Nullable;
  * </pre>
  * 
  * ### Life Cycle Settings For Storage Bucket Objects With `Send_age_if_zero` Disabled
- * When creating a life cycle condition that does not also include an `age` field, a default `age` of 0 will be set. Set the `send_age_if_zero` flag to `false` to prevent this and avoid any potentially unintended interactions.
+ * When creating a life cycle condition that does not also include an `age` field, a default `age` of 0 will be set. Set the `sendAgeIfZero` flag to `false` to prevent this and avoid any potentially unintended interactions.
  * 
  * <pre>
  * {@code
@@ -429,14 +429,14 @@ public class Bucket extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.forceDestroy);
     }
     /**
-     * The bucket&#39;s hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniform_bucket_level_access` must be enabled on bucket.
+     * The bucket&#39;s hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniformBucketLevelAccess` must be enabled on bucket.
      * 
      */
     @Export(name="hierarchicalNamespace", refs={BucketHierarchicalNamespace.class}, tree="[0]")
     private Output</* @Nullable */ BucketHierarchicalNamespace> hierarchicalNamespace;
 
     /**
-     * @return The bucket&#39;s hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniform_bucket_level_access` must be enabled on bucket.
+     * @return The bucket&#39;s hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniformBucketLevelAccess` must be enabled on bucket.
      * 
      */
     public Output<Optional<BucketHierarchicalNamespace>> hierarchicalNamespace() {

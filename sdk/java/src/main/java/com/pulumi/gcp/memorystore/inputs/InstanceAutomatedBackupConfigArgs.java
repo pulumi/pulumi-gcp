@@ -35,7 +35,7 @@ public final class InstanceAutomatedBackupConfigArgs extends com.pulumi.resource
     /**
      * How long to keep automated backups before the backups are deleted.
      * The value should be between 1 day and 365 days. If not specified, the default value is 35 days.
-     * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;. The default_value is &#34;3024000s&#34;
+     * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;. The defaultValue is &#34;3024000s&#34;
      * 
      */
     @Import(name="retention", required=true)
@@ -44,7 +44,7 @@ public final class InstanceAutomatedBackupConfigArgs extends com.pulumi.resource
     /**
      * @return How long to keep automated backups before the backups are deleted.
      * The value should be between 1 day and 365 days. If not specified, the default value is 35 days.
-     * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;. The default_value is &#34;3024000s&#34;
+     * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;. The defaultValue is &#34;3024000s&#34;
      * 
      */
     public Output<String> retention() {
@@ -102,7 +102,7 @@ public final class InstanceAutomatedBackupConfigArgs extends com.pulumi.resource
         /**
          * @param retention How long to keep automated backups before the backups are deleted.
          * The value should be between 1 day and 365 days. If not specified, the default value is 35 days.
-         * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;. The default_value is &#34;3024000s&#34;
+         * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;. The defaultValue is &#34;3024000s&#34;
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class InstanceAutomatedBackupConfigArgs extends com.pulumi.resource
         /**
          * @param retention How long to keep automated backups before the backups are deleted.
          * The value should be between 1 day and 365 days. If not specified, the default value is 35 days.
-         * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;. The default_value is &#34;3024000s&#34;
+         * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;. The defaultValue is &#34;3024000s&#34;
          * 
          * @return builder
          * 

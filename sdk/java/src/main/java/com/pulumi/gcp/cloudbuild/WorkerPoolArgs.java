@@ -24,7 +24,7 @@ public final class WorkerPoolArgs extends com.pulumi.resources.ResourceArgs {
      * User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
      * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     @Import(name="annotations")
@@ -34,7 +34,7 @@ public final class WorkerPoolArgs extends com.pulumi.resources.ResourceArgs {
      * @return User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
      * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -185,7 +185,7 @@ public final class WorkerPoolArgs extends com.pulumi.resources.ResourceArgs {
          * @param annotations User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
          * 
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class WorkerPoolArgs extends com.pulumi.resources.ResourceArgs {
          * @param annotations User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
          * 
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 

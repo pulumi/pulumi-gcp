@@ -31,10 +31,10 @@ public final class CaPoolIssuancePolicy {
     private @Nullable List<CaPoolIssuancePolicyAllowedKeyType> allowedKeyTypes;
     /**
      * @return The duration to backdate all certificates issued from this CaPool. If not set, the
-     * certificates will be issued with a not_before_time of the issuance time (i.e. the current
-     * time). If set, the certificates will be issued with a not_before_time of the issuance
-     * time minus the backdate_duration. The not_after_time will be adjusted to preserve the
-     * requested lifetime. The backdate_duration must be less than or equal to 48 hours.
+     * certificates will be issued with a notBeforeTime of the issuance time (i.e. the current
+     * time). If set, the certificates will be issued with a notBeforeTime of the issuance
+     * time minus the backdate_duration. The notAfterTime will be adjusted to preserve the
+     * requested lifetime. The backdateDuration must be less than or equal to 48 hours.
      * 
      */
     private @Nullable String backdateDuration;
@@ -81,10 +81,10 @@ public final class CaPoolIssuancePolicy {
     }
     /**
      * @return The duration to backdate all certificates issued from this CaPool. If not set, the
-     * certificates will be issued with a not_before_time of the issuance time (i.e. the current
-     * time). If set, the certificates will be issued with a not_before_time of the issuance
-     * time minus the backdate_duration. The not_after_time will be adjusted to preserve the
-     * requested lifetime. The backdate_duration must be less than or equal to 48 hours.
+     * certificates will be issued with a notBeforeTime of the issuance time (i.e. the current
+     * time). If set, the certificates will be issued with a notBeforeTime of the issuance
+     * time minus the backdate_duration. The notAfterTime will be adjusted to preserve the
+     * requested lifetime. The backdateDuration must be less than or equal to 48 hours.
      * 
      */
     public Optional<String> backdateDuration() {

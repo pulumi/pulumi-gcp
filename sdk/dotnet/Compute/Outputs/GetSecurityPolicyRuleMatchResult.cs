@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class GetSecurityPolicyRuleMatchResult
     {
         /// <summary>
-        /// The configuration options available when specifying versioned_expr. This field must be specified if versioned_expr is specified and cannot be specified if versioned_expr is not specified.
+        /// The configuration options available when specifying versioned_expr. This field must be specified if VersionedExpr is specified and cannot be specified if VersionedExpr is not specified.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetSecurityPolicyRuleMatchConfigResult> Configs;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetSecurityPolicyRuleMatchExprResult> Exprs;
         /// <summary>
-        /// Predefined rule expression. If this field is specified, config must also be specified. Available options:   SRC_IPS_V1: Must specify the corresponding src_ip_ranges field in config.
+        /// Predefined rule expression. If this field is specified, config must also be specified. Available options:   SRC_IPS_V1: Must specify the corresponding SrcIpRanges field in config.
         /// </summary>
         public readonly string VersionedExpr;
 

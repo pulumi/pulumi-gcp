@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// <summary>
         /// The Cloud Storage staging bucket used to stage files,
         /// such as Hadoop jars, between client machines and the cluster.
-        /// Note: If you don't explicitly specify a `staging_bucket`
+        /// Note: If you don't explicitly specify a `StagingBucket`
         /// then GCP will auto create / assign one for you. However, you are not guaranteed
         /// an auto generated bucket which is solely dedicated to your cluster; it may be shared
         /// with other clusters in the same region/zone also choosing to use the auto generation

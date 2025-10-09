@@ -85,14 +85,14 @@ namespace Pulumi.Gcp.Endpoints
 
         /// <summary>
         /// The full text of the Service Config YAML file (Example located [here](https://github.com/GoogleCloudPlatform/python-docs-samples/blob/main/endpoints/bookstore-grpc/api_config.yaml)).
-        /// If provided, must also provide `protoc_output_base64`.  `open_api` config must *not* be provided.
+        /// If provided, must also provide `ProtocOutputBase64`.  `OpenApi` config must *not* be provided.
         /// </summary>
         [Output("grpcConfig")]
         public Output<string?> GrpcConfig { get; private set; } = null!;
 
         /// <summary>
         /// The full text of the OpenAPI YAML configuration as described [here](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/2.0.md).
-        /// Either this, or *both* of `grpc_config` and `protoc_output_base64` must be specified.
+        /// Either this, or *both* of `GrpcConfig` and `ProtocOutputBase64` must be specified.
         /// </summary>
         [Output("openapiConfig")]
         public Output<string?> OpenapiConfig { get; private set; } = null!;
@@ -165,14 +165,14 @@ namespace Pulumi.Gcp.Endpoints
     {
         /// <summary>
         /// The full text of the Service Config YAML file (Example located [here](https://github.com/GoogleCloudPlatform/python-docs-samples/blob/main/endpoints/bookstore-grpc/api_config.yaml)).
-        /// If provided, must also provide `protoc_output_base64`.  `open_api` config must *not* be provided.
+        /// If provided, must also provide `ProtocOutputBase64`.  `OpenApi` config must *not* be provided.
         /// </summary>
         [Input("grpcConfig")]
         public Input<string>? GrpcConfig { get; set; }
 
         /// <summary>
         /// The full text of the OpenAPI YAML configuration as described [here](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/2.0.md).
-        /// Either this, or *both* of `grpc_config` and `protoc_output_base64` must be specified.
+        /// Either this, or *both* of `GrpcConfig` and `ProtocOutputBase64` must be specified.
         /// </summary>
         [Input("openapiConfig")]
         public Input<string>? OpenapiConfig { get; set; }
@@ -243,14 +243,14 @@ namespace Pulumi.Gcp.Endpoints
 
         /// <summary>
         /// The full text of the Service Config YAML file (Example located [here](https://github.com/GoogleCloudPlatform/python-docs-samples/blob/main/endpoints/bookstore-grpc/api_config.yaml)).
-        /// If provided, must also provide `protoc_output_base64`.  `open_api` config must *not* be provided.
+        /// If provided, must also provide `ProtocOutputBase64`.  `OpenApi` config must *not* be provided.
         /// </summary>
         [Input("grpcConfig")]
         public Input<string>? GrpcConfig { get; set; }
 
         /// <summary>
         /// The full text of the OpenAPI YAML configuration as described [here](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/2.0.md).
-        /// Either this, or *both* of `grpc_config` and `protoc_output_base64` must be specified.
+        /// Either this, or *both* of `GrpcConfig` and `ProtocOutputBase64` must be specified.
         /// </summary>
         [Input("openapiConfig")]
         public Input<string>? OpenapiConfig { get; set; }

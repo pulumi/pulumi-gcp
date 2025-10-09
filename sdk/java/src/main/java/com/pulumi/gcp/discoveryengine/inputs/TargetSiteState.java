@@ -35,11 +35,11 @@ public final class TargetSiteState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If set to false, a uri_pattern is generated to include all pages whose
-     * address contains the provided_uri_pattern. If set to true, an uri_pattern
-     * is generated to try to be an exact match of the provided_uri_pattern or
-     * just the specific page if the provided_uri_pattern is a specific one.
-     * provided_uri_pattern is always normalized to generate the URI pattern to
+     * If set to false, a uriPattern is generated to include all pages whose
+     * address contains the provided_uri_pattern. If set to true, an uriPattern
+     * is generated to try to be an exact match of the providedUriPattern or
+     * just the specific page if the providedUriPattern is a specific one.
+     * providedUriPattern is always normalized to generate the URI pattern to
      * be used by the search engine.
      * 
      */
@@ -47,11 +47,11 @@ public final class TargetSiteState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> exactMatch;
 
     /**
-     * @return If set to false, a uri_pattern is generated to include all pages whose
-     * address contains the provided_uri_pattern. If set to true, an uri_pattern
-     * is generated to try to be an exact match of the provided_uri_pattern or
-     * just the specific page if the provided_uri_pattern is a specific one.
-     * provided_uri_pattern is always normalized to generate the URI pattern to
+     * @return If set to false, a uriPattern is generated to include all pages whose
+     * address contains the provided_uri_pattern. If set to true, an uriPattern
+     * is generated to try to be an exact match of the providedUriPattern or
+     * just the specific page if the providedUriPattern is a specific one.
+     * providedUriPattern is always normalized to generate the URI pattern to
      * be used by the search engine.
      * 
      */
@@ -77,14 +77,14 @@ public final class TargetSiteState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This is system-generated based on the `provided_uri_pattern`.
+     * This is system-generated based on the `providedUriPattern`.
      * 
      */
     @Import(name="generatedUriPattern")
     private @Nullable Output<String> generatedUriPattern;
 
     /**
-     * @return This is system-generated based on the `provided_uri_pattern`.
+     * @return This is system-generated based on the `providedUriPattern`.
      * 
      */
     public Optional<Output<String>> generatedUriPattern() {
@@ -162,7 +162,7 @@ public final class TargetSiteState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The user provided URI pattern from which the `generated_uri_pattern` is
+     * The user provided URI pattern from which the `generatedUriPattern` is
      * generated.
      * 
      */
@@ -170,7 +170,7 @@ public final class TargetSiteState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> providedUriPattern;
 
     /**
-     * @return The user provided URI pattern from which the `generated_uri_pattern` is
+     * @return The user provided URI pattern from which the `generatedUriPattern` is
      * generated.
      * 
      */
@@ -179,14 +179,14 @@ public final class TargetSiteState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Root domain of the `provided_uri_pattern`.
+     * Root domain of the `providedUriPattern`.
      * 
      */
     @Import(name="rootDomainUri")
     private @Nullable Output<String> rootDomainUri;
 
     /**
-     * @return Root domain of the `provided_uri_pattern`.
+     * @return Root domain of the `providedUriPattern`.
      * 
      */
     public Optional<Output<String>> rootDomainUri() {
@@ -316,11 +316,11 @@ public final class TargetSiteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param exactMatch If set to false, a uri_pattern is generated to include all pages whose
-         * address contains the provided_uri_pattern. If set to true, an uri_pattern
-         * is generated to try to be an exact match of the provided_uri_pattern or
-         * just the specific page if the provided_uri_pattern is a specific one.
-         * provided_uri_pattern is always normalized to generate the URI pattern to
+         * @param exactMatch If set to false, a uriPattern is generated to include all pages whose
+         * address contains the provided_uri_pattern. If set to true, an uriPattern
+         * is generated to try to be an exact match of the providedUriPattern or
+         * just the specific page if the providedUriPattern is a specific one.
+         * providedUriPattern is always normalized to generate the URI pattern to
          * be used by the search engine.
          * 
          * @return builder
@@ -332,11 +332,11 @@ public final class TargetSiteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param exactMatch If set to false, a uri_pattern is generated to include all pages whose
-         * address contains the provided_uri_pattern. If set to true, an uri_pattern
-         * is generated to try to be an exact match of the provided_uri_pattern or
-         * just the specific page if the provided_uri_pattern is a specific one.
-         * provided_uri_pattern is always normalized to generate the URI pattern to
+         * @param exactMatch If set to false, a uriPattern is generated to include all pages whose
+         * address contains the provided_uri_pattern. If set to true, an uriPattern
+         * is generated to try to be an exact match of the providedUriPattern or
+         * just the specific page if the providedUriPattern is a specific one.
+         * providedUriPattern is always normalized to generate the URI pattern to
          * be used by the search engine.
          * 
          * @return builder
@@ -381,7 +381,7 @@ public final class TargetSiteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param generatedUriPattern This is system-generated based on the `provided_uri_pattern`.
+         * @param generatedUriPattern This is system-generated based on the `providedUriPattern`.
          * 
          * @return builder
          * 
@@ -392,7 +392,7 @@ public final class TargetSiteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param generatedUriPattern This is system-generated based on the `provided_uri_pattern`.
+         * @param generatedUriPattern This is system-generated based on the `providedUriPattern`.
          * 
          * @return builder
          * 
@@ -496,7 +496,7 @@ public final class TargetSiteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param providedUriPattern The user provided URI pattern from which the `generated_uri_pattern` is
+         * @param providedUriPattern The user provided URI pattern from which the `generatedUriPattern` is
          * generated.
          * 
          * @return builder
@@ -508,7 +508,7 @@ public final class TargetSiteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param providedUriPattern The user provided URI pattern from which the `generated_uri_pattern` is
+         * @param providedUriPattern The user provided URI pattern from which the `generatedUriPattern` is
          * generated.
          * 
          * @return builder
@@ -519,7 +519,7 @@ public final class TargetSiteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rootDomainUri Root domain of the `provided_uri_pattern`.
+         * @param rootDomainUri Root domain of the `providedUriPattern`.
          * 
          * @return builder
          * 
@@ -530,7 +530,7 @@ public final class TargetSiteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rootDomainUri Root domain of the `provided_uri_pattern`.
+         * @param rootDomainUri Root domain of the `providedUriPattern`.
          * 
          * @return builder
          * 

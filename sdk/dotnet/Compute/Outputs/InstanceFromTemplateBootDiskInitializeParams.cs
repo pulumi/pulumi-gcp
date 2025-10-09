@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? ResourceManagerTags;
         /// <summary>
-        /// A list of self_links of resource policies to attach to the instance's boot disk. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+        /// A list of SelfLinks of resource policies to attach to the instance's boot disk. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
         /// </summary>
         public readonly string? ResourcePolicies;
         /// <summary>

@@ -19,8 +19,8 @@ public final class GetInstanceTemplateArgs extends com.pulumi.resources.InvokeAr
     /**
      * A filter to retrieve the instance templates.
      * See [API filter parameter documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/list#body.QUERY_PARAMETERS.filter) for reference.
-     * If multiple instance templates match, either adjust the filter or specify `most_recent`.
-     * One of `name`, `filter` or `self_link_unique` must be provided.
+     * If multiple instance templates match, either adjust the filter or specify `mostRecent`.
+     * One of `name`, `filter` or `selfLinkUnique` must be provided.
      * 
      */
     @Import(name="filter")
@@ -29,8 +29,8 @@ public final class GetInstanceTemplateArgs extends com.pulumi.resources.InvokeAr
     /**
      * @return A filter to retrieve the instance templates.
      * See [API filter parameter documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/list#body.QUERY_PARAMETERS.filter) for reference.
-     * If multiple instance templates match, either adjust the filter or specify `most_recent`.
-     * One of `name`, `filter` or `self_link_unique` must be provided.
+     * If multiple instance templates match, either adjust the filter or specify `mostRecent`.
+     * One of `name`, `filter` or `selfLinkUnique` must be provided.
      * 
      */
     public Optional<Output<String>> filter() {
@@ -38,14 +38,14 @@ public final class GetInstanceTemplateArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name`, `filter` or `self_link_unique` must be provided.
+     * If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name`, `filter` or `selfLinkUnique` must be provided.
      * 
      */
     @Import(name="mostRecent")
     private @Nullable Output<Boolean> mostRecent;
 
     /**
-     * @return If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name`, `filter` or `self_link_unique` must be provided.
+     * @return If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name`, `filter` or `selfLinkUnique` must be provided.
      * 
      */
     public Optional<Output<Boolean>> mostRecent() {
@@ -53,14 +53,14 @@ public final class GetInstanceTemplateArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * The name of the instance template. One of `name`, `filter` or `self_link_unique` must be provided.
+     * The name of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the instance template. One of `name`, `filter` or `self_link_unique` must be provided.
+     * @return The name of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
      * 
      */
     public Optional<Output<String>> name() {
@@ -85,14 +85,14 @@ public final class GetInstanceTemplateArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * The self_link_unique URI of the instance template. One of `name`, `filter` or `self_link_unique` must be provided.
+     * The selfLinkUnique URI of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
      * 
      */
     @Import(name="selfLinkUnique")
     private @Nullable Output<String> selfLinkUnique;
 
     /**
-     * @return The self_link_unique URI of the instance template. One of `name`, `filter` or `self_link_unique` must be provided.
+     * @return The selfLinkUnique URI of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
      * 
      */
     public Optional<Output<String>> selfLinkUnique() {
@@ -130,8 +130,8 @@ public final class GetInstanceTemplateArgs extends com.pulumi.resources.InvokeAr
         /**
          * @param filter A filter to retrieve the instance templates.
          * See [API filter parameter documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/list#body.QUERY_PARAMETERS.filter) for reference.
-         * If multiple instance templates match, either adjust the filter or specify `most_recent`.
-         * One of `name`, `filter` or `self_link_unique` must be provided.
+         * If multiple instance templates match, either adjust the filter or specify `mostRecent`.
+         * One of `name`, `filter` or `selfLinkUnique` must be provided.
          * 
          * @return builder
          * 
@@ -144,8 +144,8 @@ public final class GetInstanceTemplateArgs extends com.pulumi.resources.InvokeAr
         /**
          * @param filter A filter to retrieve the instance templates.
          * See [API filter parameter documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/list#body.QUERY_PARAMETERS.filter) for reference.
-         * If multiple instance templates match, either adjust the filter or specify `most_recent`.
-         * One of `name`, `filter` or `self_link_unique` must be provided.
+         * If multiple instance templates match, either adjust the filter or specify `mostRecent`.
+         * One of `name`, `filter` or `selfLinkUnique` must be provided.
          * 
          * @return builder
          * 
@@ -155,7 +155,7 @@ public final class GetInstanceTemplateArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param mostRecent If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name`, `filter` or `self_link_unique` must be provided.
+         * @param mostRecent If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name`, `filter` or `selfLinkUnique` must be provided.
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class GetInstanceTemplateArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param mostRecent If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name`, `filter` or `self_link_unique` must be provided.
+         * @param mostRecent If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name`, `filter` or `selfLinkUnique` must be provided.
          * 
          * @return builder
          * 
@@ -176,7 +176,7 @@ public final class GetInstanceTemplateArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param name The name of the instance template. One of `name`, `filter` or `self_link_unique` must be provided.
+         * @param name The name of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
          * 
          * @return builder
          * 
@@ -187,7 +187,7 @@ public final class GetInstanceTemplateArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param name The name of the instance template. One of `name`, `filter` or `self_link_unique` must be provided.
+         * @param name The name of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class GetInstanceTemplateArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param selfLinkUnique The self_link_unique URI of the instance template. One of `name`, `filter` or `self_link_unique` must be provided.
+         * @param selfLinkUnique The selfLinkUnique URI of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class GetInstanceTemplateArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param selfLinkUnique The self_link_unique URI of the instance template. One of `name`, `filter` or `self_link_unique` must be provided.
+         * @param selfLinkUnique The selfLinkUnique URI of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
          * 
          * @return builder
          * 

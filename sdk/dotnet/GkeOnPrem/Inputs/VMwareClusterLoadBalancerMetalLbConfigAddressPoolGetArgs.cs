@@ -37,7 +37,7 @@ namespace Pulumi.Gcp.GkeOnPrem.Inputs
         /// <summary>
         /// If true, prevent IP addresses from being automatically assigned.
         /// 
-        /// &lt;a name="nested_dataplane_v2"&gt;&lt;/a&gt;The `dataplane_v2` block supports:
+        /// &lt;a name="NestedDataplaneV2"&gt;&lt;/a&gt;The `DataplaneV2` block supports:
         /// </summary>
         [Input("manualAssign")]
         public Input<bool>? ManualAssign { get; set; }

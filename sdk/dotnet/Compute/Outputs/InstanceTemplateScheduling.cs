@@ -47,7 +47,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? MaintenanceInterval;
         /// <summary>
-        /// The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Structure is documented below.
+        /// The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `InstanceTerminationAction`. Structure is documented below.
         /// </summary>
         public readonly Outputs.InstanceTemplateSchedulingMaxRunDuration? MaxRunDuration;
         /// <summary>
@@ -68,7 +68,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? OnHostMaintenance;
         /// <summary>
-        /// Specifies the action to be performed when the instance is terminated using `max_run_duration` and `STOP` `instance_termination_action`. Only support `true` `discard_local_ssd` at this point. Structure is documented below.
+        /// Specifies the action to be performed when the instance is terminated using `MaxRunDuration` and `STOP` `InstanceTerminationAction`. Only support `True` `DiscardLocalSsd` at this point. Structure is documented below.
         /// </summary>
         public readonly Outputs.InstanceTemplateSchedulingOnInstanceStopAction? OnInstanceStopAction;
         /// <summary>
@@ -79,8 +79,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly bool? Preemptible;
         /// <summary>
         /// Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
-        /// `preemptible` should be `true` and `automatic_restart` should be
-        /// `false`. For more info about
+        /// `Preemptible` should be `True` and `AutomaticRestart` should be
+        /// `False`. For more info about
         /// `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
         /// </summary>
         public readonly string? ProvisioningModel;

@@ -499,7 +499,7 @@ public final class ServiceaccountFunctions {
         return Deployment.getInstance().invokeAsync("gcp:serviceaccount/getAccount:getAccount", TypeShape.of(GetAccountResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides a google `oauth2` `access_token` for a different service account than the one initially running the script.
+     * This data source provides a google `oauth2` `accessToken` for a different service account than the one initially running the script.
      * 
      * For more information see
      * [the official documentation](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials) as well as [iamcredentials.generateAccessToken()](https://cloud.google.com/iam/credentials/reference/rest/v1/projects.serviceAccounts/generateAccessToken)
@@ -595,7 +595,7 @@ public final class ServiceaccountFunctions {
         return getAccountAccessToken(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides a google `oauth2` `access_token` for a different service account than the one initially running the script.
+     * This data source provides a google `oauth2` `accessToken` for a different service account than the one initially running the script.
      * 
      * For more information see
      * [the official documentation](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials) as well as [iamcredentials.generateAccessToken()](https://cloud.google.com/iam/credentials/reference/rest/v1/projects.serviceAccounts/generateAccessToken)
@@ -691,7 +691,7 @@ public final class ServiceaccountFunctions {
         return getAccountAccessTokenPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides a google `oauth2` `access_token` for a different service account than the one initially running the script.
+     * This data source provides a google `oauth2` `accessToken` for a different service account than the one initially running the script.
      * 
      * For more information see
      * [the official documentation](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials) as well as [iamcredentials.generateAccessToken()](https://cloud.google.com/iam/credentials/reference/rest/v1/projects.serviceAccounts/generateAccessToken)
@@ -787,7 +787,7 @@ public final class ServiceaccountFunctions {
         return Deployment.getInstance().invoke("gcp:serviceaccount/getAccountAccessToken:getAccountAccessToken", TypeShape.of(GetAccountAccessTokenResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides a google `oauth2` `access_token` for a different service account than the one initially running the script.
+     * This data source provides a google `oauth2` `accessToken` for a different service account than the one initially running the script.
      * 
      * For more information see
      * [the official documentation](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials) as well as [iamcredentials.generateAccessToken()](https://cloud.google.com/iam/credentials/reference/rest/v1/projects.serviceAccounts/generateAccessToken)
@@ -883,7 +883,7 @@ public final class ServiceaccountFunctions {
         return Deployment.getInstance().invoke("gcp:serviceaccount/getAccountAccessToken:getAccountAccessToken", TypeShape.of(GetAccountAccessTokenResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides a google `oauth2` `access_token` for a different service account than the one initially running the script.
+     * This data source provides a google `oauth2` `accessToken` for a different service account than the one initially running the script.
      * 
      * For more information see
      * [the official documentation](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials) as well as [iamcredentials.generateAccessToken()](https://cloud.google.com/iam/credentials/reference/rest/v1/projects.serviceAccounts/generateAccessToken)
@@ -979,7 +979,7 @@ public final class ServiceaccountFunctions {
         return Deployment.getInstance().invokeAsync("gcp:serviceaccount/getAccountAccessToken:getAccountAccessToken", TypeShape.of(GetAccountAccessTokenResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides a Google OpenID Connect (`oidc`) `id_token`.  Tokens issued from this data source are typically used to call external services that accept OIDC tokens for authentication (e.g. [Google Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service)).
+     * This data source provides a Google OpenID Connect (`oidc`) `idToken`.  Tokens issued from this data source are typically used to call external services that accept OIDC tokens for authentication (e.g. [Google Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service)).
      * 
      * For more information see
      * [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#IDToken).
@@ -1024,7 +1024,7 @@ public final class ServiceaccountFunctions {
      * ### Service Account Impersonation.
      *   `gcp.serviceaccount.getAccountIdToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
      * 
-     *   Note: to use the following, you must grant `target_service_account` the
+     *   Note: to use the following, you must grant `targetServiceAccount` the
      *   `roles/iam.serviceAccountTokenCreator` role on itself.
      * 
      * <pre>
@@ -1120,7 +1120,7 @@ public final class ServiceaccountFunctions {
         return getAccountIdToken(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides a Google OpenID Connect (`oidc`) `id_token`.  Tokens issued from this data source are typically used to call external services that accept OIDC tokens for authentication (e.g. [Google Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service)).
+     * This data source provides a Google OpenID Connect (`oidc`) `idToken`.  Tokens issued from this data source are typically used to call external services that accept OIDC tokens for authentication (e.g. [Google Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service)).
      * 
      * For more information see
      * [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#IDToken).
@@ -1165,7 +1165,7 @@ public final class ServiceaccountFunctions {
      * ### Service Account Impersonation.
      *   `gcp.serviceaccount.getAccountIdToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
      * 
-     *   Note: to use the following, you must grant `target_service_account` the
+     *   Note: to use the following, you must grant `targetServiceAccount` the
      *   `roles/iam.serviceAccountTokenCreator` role on itself.
      * 
      * <pre>
@@ -1261,7 +1261,7 @@ public final class ServiceaccountFunctions {
         return getAccountIdTokenPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides a Google OpenID Connect (`oidc`) `id_token`.  Tokens issued from this data source are typically used to call external services that accept OIDC tokens for authentication (e.g. [Google Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service)).
+     * This data source provides a Google OpenID Connect (`oidc`) `idToken`.  Tokens issued from this data source are typically used to call external services that accept OIDC tokens for authentication (e.g. [Google Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service)).
      * 
      * For more information see
      * [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#IDToken).
@@ -1306,7 +1306,7 @@ public final class ServiceaccountFunctions {
      * ### Service Account Impersonation.
      *   `gcp.serviceaccount.getAccountIdToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
      * 
-     *   Note: to use the following, you must grant `target_service_account` the
+     *   Note: to use the following, you must grant `targetServiceAccount` the
      *   `roles/iam.serviceAccountTokenCreator` role on itself.
      * 
      * <pre>
@@ -1402,7 +1402,7 @@ public final class ServiceaccountFunctions {
         return Deployment.getInstance().invoke("gcp:serviceaccount/getAccountIdToken:getAccountIdToken", TypeShape.of(GetAccountIdTokenResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides a Google OpenID Connect (`oidc`) `id_token`.  Tokens issued from this data source are typically used to call external services that accept OIDC tokens for authentication (e.g. [Google Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service)).
+     * This data source provides a Google OpenID Connect (`oidc`) `idToken`.  Tokens issued from this data source are typically used to call external services that accept OIDC tokens for authentication (e.g. [Google Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service)).
      * 
      * For more information see
      * [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#IDToken).
@@ -1447,7 +1447,7 @@ public final class ServiceaccountFunctions {
      * ### Service Account Impersonation.
      *   `gcp.serviceaccount.getAccountIdToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
      * 
-     *   Note: to use the following, you must grant `target_service_account` the
+     *   Note: to use the following, you must grant `targetServiceAccount` the
      *   `roles/iam.serviceAccountTokenCreator` role on itself.
      * 
      * <pre>
@@ -1543,7 +1543,7 @@ public final class ServiceaccountFunctions {
         return Deployment.getInstance().invoke("gcp:serviceaccount/getAccountIdToken:getAccountIdToken", TypeShape.of(GetAccountIdTokenResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides a Google OpenID Connect (`oidc`) `id_token`.  Tokens issued from this data source are typically used to call external services that accept OIDC tokens for authentication (e.g. [Google Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service)).
+     * This data source provides a Google OpenID Connect (`oidc`) `idToken`.  Tokens issued from this data source are typically used to call external services that accept OIDC tokens for authentication (e.g. [Google Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service)).
      * 
      * For more information see
      * [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#IDToken).
@@ -1588,7 +1588,7 @@ public final class ServiceaccountFunctions {
      * ### Service Account Impersonation.
      *   `gcp.serviceaccount.getAccountIdToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
      * 
-     *   Note: to use the following, you must grant `target_service_account` the
+     *   Note: to use the following, you must grant `targetServiceAccount` the
      *   `roles/iam.serviceAccountTokenCreator` role on itself.
      * 
      * <pre>
@@ -1688,7 +1688,7 @@ public final class ServiceaccountFunctions {
      * 
      * ## Example Usage
      * 
-     * Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `target_service_account`.
+     * Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `targetServiceAccount`.
      * 
      * <pre>
      * {@code
@@ -1738,7 +1738,7 @@ public final class ServiceaccountFunctions {
      * 
      * ## Example Usage
      * 
-     * Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `target_service_account`.
+     * Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `targetServiceAccount`.
      * 
      * <pre>
      * {@code
@@ -1788,7 +1788,7 @@ public final class ServiceaccountFunctions {
      * 
      * ## Example Usage
      * 
-     * Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `target_service_account`.
+     * Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `targetServiceAccount`.
      * 
      * <pre>
      * {@code
@@ -1838,7 +1838,7 @@ public final class ServiceaccountFunctions {
      * 
      * ## Example Usage
      * 
-     * Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `target_service_account`.
+     * Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `targetServiceAccount`.
      * 
      * <pre>
      * {@code
@@ -1888,7 +1888,7 @@ public final class ServiceaccountFunctions {
      * 
      * ## Example Usage
      * 
-     * Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `target_service_account`.
+     * Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `targetServiceAccount`.
      * 
      * <pre>
      * {@code

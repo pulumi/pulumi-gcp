@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
         /// to the response or request headers with the
         /// same field names. The added values are
         /// separated by commas.
-        /// To overwrite existing values, set `replace` to `true`.
+        /// To overwrite existing values, set `Replace` to `True`.
         /// </summary>
         public readonly bool? Replace;
 

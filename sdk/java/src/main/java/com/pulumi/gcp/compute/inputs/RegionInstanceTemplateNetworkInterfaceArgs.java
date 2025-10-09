@@ -126,7 +126,7 @@ public final class RegionInstanceTemplateNetworkInterfaceArgs extends com.pulumi
     }
 
     /**
-     * The name or self_link of the network to attach this interface to.
+     * The name or selfLink of the network to attach this interface to.
      * Use `network` attribute for Legacy or Auto subnetted networks and
      * `subnetwork` for custom subnetted networks.
      * 
@@ -135,7 +135,7 @@ public final class RegionInstanceTemplateNetworkInterfaceArgs extends com.pulumi
     private @Nullable Output<String> network;
 
     /**
-     * @return The name or self_link of the network to attach this interface to.
+     * @return The name or selfLink of the network to attach this interface to.
      * Use `network` attribute for Legacy or Auto subnetted networks and
      * `subnetwork` for custom subnetted networks.
      * 
@@ -451,7 +451,7 @@ public final class RegionInstanceTemplateNetworkInterfaceArgs extends com.pulumi
         }
 
         /**
-         * @param network The name or self_link of the network to attach this interface to.
+         * @param network The name or selfLink of the network to attach this interface to.
          * Use `network` attribute for Legacy or Auto subnetted networks and
          * `subnetwork` for custom subnetted networks.
          * 
@@ -464,7 +464,7 @@ public final class RegionInstanceTemplateNetworkInterfaceArgs extends com.pulumi
         }
 
         /**
-         * @param network The name or self_link of the network to attach this interface to.
+         * @param network The name or selfLink of the network to attach this interface to.
          * Use `network` attribute for Legacy or Auto subnetted networks and
          * `subnetwork` for custom subnetted networks.
          * 
